@@ -55,6 +55,16 @@ sequences[], preview_skeletal_mesh, compatible_skeletal_meshes/animsets, map_usa
 | `vs_props.py [MAP]` | (checkpoint, not in pipeline) authored prop/static-mesh setup, validated vs cooked sections |
 | `vs_mapfx.py [MAP]` | decals / particle components of a map with transforms and prefab provenance |
 | `vs_evidence.py` | `manifests/vs_evidence.json` targeted slice evidence (see `docs/EVIDENCE_TARGETED_PASS.md`) |
+| `pstream.py <PKG> <ParticleSystem prefix>` | **WFC compiled particle module stream decoder**: ModuleId (cooked `EParticleModuleId` enum) per module + every distribution assigned to module/property; `pstream.system()` = tagged summary + decoded modules. Cross-checked by `pstream_validate.py` |
+| `fsb4.py` | FSB4 bank / sample-header reader (rate, channels, sample count, loop points, mode flags, raw header) for cooked SoundNodeWaveEx payloads |
+| `gfxscan.py <file.gfx> [--grep RX]` / `as2dis.py <file.gfx> <sprite>` | Scaleform GFX/SWF tag scanner (exports, sprites, placements, AS2 constant pools) and ActionScript 2 disassembler |
+| `vs_destructibles.py` | `manifests/streets_destructibles.json` (M03, see `docs/EVIDENCE_M03.md`) |
+| `vs_pickups.py` | `manifests/streets_pickup_factories.json` + `streets_pickup_fx.json` (M03) |
+| `vs_fineaim_hud.py` | `manifests/fineaim_hud.json` (M03) |
+| `vs_surface_audio.py` | `manifests/streets_surface_audio.json` (M03) |
+| `vs_audio_concurrency.py` | `manifests/vertical_slice_audio_concurrency.json` (M03) |
+| `vs_vehicle_loops.py` + `validate_vehicle_loops.py` | `manifests/vehicle_audio_loops.json` (M03) and its header-level validator |
+| `validate_m03.py` | cross-manifest validation of the M03 outputs (`logs/validate_m03.json`) |
 | `schema.py`, `typed_props.py` | UnrealScript type registry (`manifests/schema.json`) and the schema-driven tag reader |
 | `authored_db.py` / `authored_db_safe.py` | global **`manifests/authored.db`** (SQLite, 2.5 GB): `objects` (1,102,518 unique objects with typed props JSON, 0 unparsed), `refs` (2.5 M object references), `types` (schema). Build shards with `authored_db_safe.py --jobs 4 --merge` (one child per package, memory/timeout watchdog, failures in `logs/authored_db_failures.json`) |
 

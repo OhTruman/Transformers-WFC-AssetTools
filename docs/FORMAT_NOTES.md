@@ -141,3 +141,22 @@ UTF-16 strings use negative length. Community tools (Decrypticon/TFGamesUtil) do
   e.g. `FMaterialUniformExpressionScalarParameter` / `...TextureSetIntermediateParameter`; it reflects the instance's static permutation.
 * **TextureSet / TextureSetBlueprint** (licensee): blueprint Textures[] + Intermediates[{Name, Min/MaxSize, GetSizeFrom, Channels[]}];
   intermediates are ordinary Texture2D (DXT5) whose UnpackMin/UnpackMax define per-channel remaps (alpha -1..1 = normal component).
+
+## Milestone-03 format findings (2026-10-02)
+* **Compiled particle module stream** (ParticleLODLevel native tail, `pstream.py`): `+24` u8 module count; from `+35` one
+  10-byte record per module (`u8 ModuleId`, two raw flag bytes, 5 zero bytes, `u16le` payload offset) separated by 7-byte
+  running-count blocks; then `u8 n` + n module indices; then a **float distribution group** (`u32 nF` + nF raw distributions
+  of types 1-4) immediately followed by a **vector group** (`u32 nV` + types 7-10). ModuleId indexes the cooked
+  `Engine.ParticleModule.EParticleModuleId` enum (PMI_Lifetime=1 ... PMI_SubUVDirect=33). Inside a group, distributions
+  follow module order and, per module, its RawDistributionFloat / RawDistributionVector properties. Exact consumption
+  verified on 2,290 + 193 LODs (A1_IAC_Base_m, TransGame) with zero leftovers; tagged-module cross-check 12/12 matches.
+  Census-proven counts: Gravity / ColorByParameter / Unknown / LocationEmitter carry none, DynamicParameter 4 floats,
+  LocationDirect 3 vectors, SubUVDirect 2 vectors, VelocityInheritParent 1 vector; Orbit unresolved.
+* **FSB4 sample header** (`fsb4.py`): all 1,929 FSB4 samples in MP_IAC_Streets_BASE_m, A1_IAC_Base_m and TransGame carry
+  `loopstart=0, loopend=lengthsamples-1` and no LOOP_* mode bit; codec XMA (mode bit 0x01000000). Bytes from +72 of the
+  sample header are a codec tail (kept raw).
+* **Scaleform HUD**: `UI_GFxHud_p.Hud_GFX_1` is an uncompressed `GFX` v8 SWF (1120x720 stage, 30 fps). TnHUD data observers
+  name `_global.*` AS2 callbacks (CallbackBindingName); the HUD logic is AS2 bytecode in DoAction tags (`as2dis.py`).
+* **Destructibles**: HmDestructibleBlueprint -> PieceBlueprints -> StateBlueprints (handle = list index) -> EffectFactories
+  + LinkBlueprints (NextStateHandle, TransitionTrigger class). The placed piece cooks one StaticMeshComponent per
+  HmStaticMeshDestructionEffect (archetype TextureLightmapMeshTemplate0).

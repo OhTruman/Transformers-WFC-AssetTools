@@ -42,6 +42,16 @@ STEPS = [
     ('vs_evidence',  [PY, os.path.join(S, 'vs_evidence.py')]),       # targeted authored-evidence manifest
     ('vs_character_materials', [PY, os.path.join(S, 'vs_character_materials.py')]),  # Optimus material handoff
     ('vs_evidence2', [PY, os.path.join(S, 'vs_evidence2.py')]),      # pass-2 manifest (needs the steps above)
+    # Milestone-03 targeted manifests -> AssetTools/manifests/ (need authored.db + the slice JSONs above)
+    ('pstream_validate', [PY, os.path.join(S, 'pstream_validate.py')]),       # particle stream decoder vs tagged modules
+    ('vs_destructibles', [PY, os.path.join(S, 'vs_destructibles.py')]),
+    ('vs_pickups',       [PY, os.path.join(S, 'vs_pickups.py')]),
+    ('vs_fineaim_hud',   [PY, os.path.join(S, 'vs_fineaim_hud.py')]),
+    ('vs_surface_audio', [PY, os.path.join(S, 'vs_surface_audio.py')]),
+    ('vs_audio_concurrency', [PY, os.path.join(S, 'vs_audio_concurrency.py')]),
+    ('vs_vehicle_loops', [PY, os.path.join(S, 'vs_vehicle_loops.py')]),
+    ('validate_vehicle_loops', [PY, os.path.join(S, 'validate_vehicle_loops.py')]),
+    ('validate_m03',     [PY, os.path.join(S, 'validate_m03.py')]),
     # vs_props.py (props_authored.json) is a checkpointed, validated pass kept OUT of the pipeline on request
 ]
 

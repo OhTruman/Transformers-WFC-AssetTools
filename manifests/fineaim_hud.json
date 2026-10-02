@@ -1,0 +1,880 @@
+{
+ "generated_by": "AssetTools/scripts/wfc/vs_fineaim_hud.py",
+ "answer": {
+  "special_fine_aim_reticle_for_ion_blaster": {
+   "value": false,
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "proof": [
+    "Hud_GFX NotifyFineAimChanged(newFineAimState): state 1 shows a scope ONLY for CurrentWeapon == TnWeaponHeavyPistol (short) / TnWeaponBurstRifle (medium) / TnWeaponSniperRifle (long); every other weapon -> hideScope(). It never touches the crosshair clip.",
+    "TnWeaponIonBlaster leaves HasFineAimScope unset (false) while HeavyPistol and SniperRifle set it true",
+    "TnWeaponIonBlaster leaves ReticuleType unset -> WRT_Default"
+   ]
+  },
+  "normal_and_fine_aim_reticle_asset": {
+   "value": "mc_crosshairIonBlaster (same clip in both states)",
+   "confidence": "CONFIRMED AUTHORED DATA"
+  },
+  "normal_reticle_hidden_or_replaced_during_fine_aim": {
+   "value": false,
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": "no ShowCrosshair/SetWeaponCrosshair call in the fine-aim handler"
+  },
+  "fine_aim_visible_change": {
+   "value": "the 3 prongs move inward because the weapon spread shrinks (prong offset = spread * 300 px, eased 0.2 s); Ion Blaster WEPDATA FineAimSpreadModifier = 0.5",
+   "confidence": "HIGH CONFIDENCE",
+   "note": "HUD reaction to spread is CONFIRMED (ActionScript); the spread value fed through NotifyWeaponSpreadChanged and how FineAimSpreadModifier enters it are native"
+  }
+ },
+ "hud_movie": {
+  "TnHUD.HudMovie": {
+   "value": "UI_GFxHud_p.Hud_GFX_1",
+   "source_package": "TransGame",
+   "object": "TransGame.Default__TnHUD",
+   "class": "TnHUD",
+   "property": "HudMovie",
+   "origin": "authored on object",
+   "confidence": "CONFIRMED AUTHORED DATA"
+  },
+  "TnHUD.DefaultHudMovie": {
+   "value": "UI_GFxHud_p.Hud_GFX_1",
+   "source_package": "TransGame",
+   "object": "TransGame.Default__TnHUD",
+   "class": "TnHUD",
+   "property": "DefaultHudMovie",
+   "origin": "authored on object",
+   "confidence": "CONFIRMED AUTHORED DATA"
+  },
+  "extracted_file": "content/UI_GFxHud_p/Hud_GFX.gfx",
+  "stage": {
+   "width_px": 1120.0,
+   "height_px": 720.0,
+   "fps": 30.0
+  },
+  "signature": "GFX",
+  "swf_version": 8
+ },
+ "data_observers (TnHUD CDO, CONFIRMED)": {
+  "WeaponSpreadObserver0": {
+   "object": "TransGame.Default__TnHUD.WeaponSpreadObserver0",
+   "class": "TnHudDataObserverWeaponSpread",
+   "CallbackBindingName": "_global.NotifyWeaponSpreadChanged",
+   "ConversionFactor": 1.0
+  },
+  "ReticuleTypeObserver0": {
+   "object": "TransGame.Default__TnHUD.ReticuleTypeObserver0",
+   "class": "TnHudDataObserverWeaponReticule",
+   "CallbackBindingName": "_global.NotifyWeaponReticuleTypeChanged"
+  },
+  "CurrentWeaponAndAim0": {
+   "object": "TransGame.Default__TnHUD.CurrentWeaponAndAim0",
+   "class": "TnHudDataObserverCurrentWeaponAndAim",
+   "CallbackBindingName": null
+  },
+  "TargetType0": {
+   "object": "TransGame.Default__TnHUD.TargetType0",
+   "class": "TnHudDataObserverTargetType",
+   "CallbackBindingName": "_global.NotifyTargetTypeChanged"
+  }
+ },
+ "observer_enums": {
+  "EHudAimType (TnHudDataObserverCurrentWeaponAndAim)": [
+   "kHudStandardAim",
+   "kHudFineAim",
+   "EHudAimType_MAX"
+  ],
+  "ETargetTypeForHud (TnHudDataObserverTargetType)": [
+   "TTFH_Friend",
+   "TTFH_Enemy",
+   "TTFH_None",
+   "TTFH_MAX"
+  ]
+ },
+ "observer_to_callback": {
+  "CurrentWeaponAndAim0": {
+   "callbacks": [
+    "_global.NotifyCurrentWeaponChanged(WeaponName)",
+    "_global.NotifyFineAimChanged(state)"
+   ],
+   "confidence": "HIGH CONFIDENCE",
+   "evidence": "observer stores SavedWeaponClass + SavedAimType (kHudStandardAim=0, kHudFineAim=1) and has no CallbackBindingName; the movie defines exactly these two handlers taking a weapon class name and a 0/1 state. The native call site is not in authored data."
+  },
+  "WeaponSpreadObserver0": {
+   "callbacks": [
+    "_global.NotifyWeaponSpreadChanged(newWeaponSpread)"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA"
+  },
+  "TargetType0": {
+   "callbacks": [
+    "_global.NotifyTargetTypeChanged(TargetType)"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA"
+  },
+  "ReticuleTypeObserver0": {
+   "callbacks": [
+    "_global.NotifyWeaponReticuleTypeChanged"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": "Hud_GFX defines NO handler with this name: the reticule-type callback has no effect in this movie (turret reticule uses DisplayTurretReticule instead)"
+  }
+ },
+ "weapons": {
+  "TnWeaponIonBlaster": {
+   "cdo": "TransContent.Default__TnWeaponIonBlaster",
+   "ItemName": "Ion Blaster (SMG)",
+   "ReticuleType": {
+    "value": "WRT_Default",
+    "source_package": "A1_IAC_Base_m",
+    "object": "TransContent.Default__TnWeaponIonBlaster",
+    "class": "TnWeaponIonBlaster",
+    "property": "ReticuleType",
+    "origin": "unset in whole chain -> property zero/None default",
+    "confidence": "CONFIRMED AUTHORED DATA",
+    "note": "enum TransGame.TnWeapon.EWeaponReticuleType = ['WRT_Default', 'WRT_Turret', 'WRT_MAX']; unset -> 0 = WRT_Default"
+   },
+   "HasFineAimScope": {
+    "value": false,
+    "source_package": "A1_IAC_Base_m",
+    "object": "TransContent.Default__TnWeaponIonBlaster",
+    "class": "TnWeaponIonBlaster",
+    "property": "HasFineAimScope",
+    "origin": "unset in whole chain -> property zero/None default",
+    "confidence": "CONFIRMED AUTHORED DATA"
+   }
+  },
+  "TnWeaponHeavyPistol": {
+   "cdo": "TransContent.Default__TnWeaponHeavyPistol",
+   "ItemName": "Energon Battle Pistol (5x Scope)",
+   "ReticuleType": {
+    "value": "WRT_Default",
+    "source_package": "A1_IAC_Base_m",
+    "object": "TransContent.Default__TnWeaponHeavyPistol",
+    "class": "TnWeaponHeavyPistol",
+    "property": "ReticuleType",
+    "origin": "unset in whole chain -> property zero/None default",
+    "confidence": "CONFIRMED AUTHORED DATA",
+    "note": "enum TransGame.TnWeapon.EWeaponReticuleType = ['WRT_Default', 'WRT_Turret', 'WRT_MAX']; unset -> 0 = WRT_Default"
+   },
+   "HasFineAimScope": {
+    "value": true,
+    "source_package": "A1_IAC_Base_m",
+    "object": "TransContent.Default__TnWeaponHeavyPistol",
+    "class": "TnWeaponHeavyPistol",
+    "property": "HasFineAimScope",
+    "origin": "authored on object",
+    "confidence": "CONFIRMED AUTHORED DATA"
+   }
+  },
+  "TnWeaponSniperRifle": {
+   "cdo": "TransContent.Default__TnWeaponSniperRifle",
+   "ItemName": "Null Ray (10x Scope)",
+   "ReticuleType": {
+    "value": "WRT_Default",
+    "source_package": "A1_IAC_Base_m",
+    "object": "TransContent.Default__TnWeaponSniperRifle",
+    "class": "TnWeaponSniperRifle",
+    "property": "ReticuleType",
+    "origin": "unset in whole chain -> property zero/None default",
+    "confidence": "CONFIRMED AUTHORED DATA",
+    "note": "enum TransGame.TnWeapon.EWeaponReticuleType = ['WRT_Default', 'WRT_Turret', 'WRT_MAX']; unset -> 0 = WRT_Default"
+   },
+   "HasFineAimScope": {
+    "value": true,
+    "source_package": "A1_IAC_Base_m",
+    "object": "TransContent.Default__TnWeaponSniperRifle",
+    "class": "TnWeaponSniperRifle",
+    "property": "HasFineAimScope",
+    "origin": "authored on object",
+    "confidence": "CONFIRMED AUTHORED DATA"
+   }
+  },
+  "TnWeaponBurstRifle": {
+   "cdo": "TransContent.Default__TnWeaponBurstRifle",
+   "ItemName": "Photon Burst Rifle (2x Scope)",
+   "ReticuleType": {
+    "value": "WRT_Default",
+    "source_package": "A1_IAC_Base_m",
+    "object": "TransContent.Default__TnWeaponBurstRifle",
+    "class": "TnWeaponBurstRifle",
+    "property": "ReticuleType",
+    "origin": "unset in whole chain -> property zero/None default",
+    "confidence": "CONFIRMED AUTHORED DATA",
+    "note": "enum TransGame.TnWeapon.EWeaponReticuleType = ['WRT_Default', 'WRT_Turret', 'WRT_MAX']; unset -> 0 = WRT_Default"
+   },
+   "HasFineAimScope": {
+    "value": false,
+    "source_package": "A1_IAC_Base_m",
+    "object": "TransContent.Default__TnWeaponBurstRifle",
+    "class": "TnWeaponBurstRifle",
+    "property": "HasFineAimScope",
+    "origin": "unset in whole chain -> property zero/None default",
+    "confidence": "CONFIRMED AUTHORED DATA"
+   }
+  }
+ },
+ "ion_blaster_weapon_data": {
+  "FineAimSpreadModifier": {
+   "value": 0.5,
+   "source_package": "A1_IAC_Base_m",
+   "object": "WEP_IonBlaster_p.IonBlaster_WEPDATA",
+   "class": "TnWeaponData",
+   "property": "FineAimSpreadModifier",
+   "origin": "authored on object",
+   "confidence": "CONFIRMED AUTHORED DATA"
+  },
+  "PerShotSpreadModifier": {
+   "value": {
+    "Modifier": {
+     "Min": 0.07999999821186066,
+     "Max": 0.18000000715255737
+    },
+    "ModifierChangePerShot": 0.004999999888241291,
+    "Cooldown": 2.0
+   },
+   "source_package": "A1_IAC_Base_m",
+   "object": "WEP_IonBlaster_p.IonBlaster_WEPDATA",
+   "class": "TnWeaponData",
+   "property": "PerShotSpreadModifier",
+   "origin": "authored on object",
+   "confidence": "CONFIRMED AUTHORED DATA"
+  },
+  "GroundSpeedMultiplier": {
+   "value": 1.0,
+   "source_package": "TransGame",
+   "object": "TransGame.Default__TnWeaponData",
+   "class": "TnWeaponData",
+   "property": "GroundSpeedMultiplier",
+   "origin": "inherited from TransGame.Default__TnWeaponData",
+   "confidence": "CONFIRMED AUTHORED DATA"
+  },
+  "TargetSnapRange": {
+   "value": {
+    "Min": 1000.0,
+    "Max": 10000.0
+   },
+   "source_package": "A1_IAC_Base_m",
+   "object": "WEP_IonBlaster_p.IonBlaster_WEPDATA",
+   "class": "TnWeaponData",
+   "property": "TargetSnapRange",
+   "origin": "authored on object",
+   "confidence": "CONFIRMED AUTHORED DATA"
+  },
+  "bShouldApplyFineAimTargetFocus": {
+   "value": null,
+   "source_package": "A1_IAC_Base_m",
+   "object": "WEP_IonBlaster_p.IonBlaster_WEPDATA",
+   "class": "TnWeaponData",
+   "property": "bShouldApplyFineAimTargetFocus",
+   "origin": "absent (engine default)",
+   "confidence": "CONFIRMED AUTHORED DATA"
+  },
+  "FineAimTargetFocusParams": {
+   "value": {
+    "DOF_BlurKernelSize": 8.0,
+    "DOF_FocusSize": 1000.0,
+    "DOF_FalloffExponent": 1.0,
+    "DOF_MaxNearBlurAmount": 0.6000000238418579,
+    "DOF_MaxFarBlurAmount": 1.0
+   },
+   "source_package": "TransGame",
+   "object": "TransGame.Default__TnWeaponData",
+   "class": "TnWeaponData",
+   "property": "FineAimTargetFocusParams",
+   "origin": "inherited from TransGame.Default__TnWeaponData",
+   "confidence": "CONFIRMED AUTHORED DATA"
+  }
+ },
+ "fine_aim_manager": {
+  "_TargetSnapTimeout": {
+   "value": 1.0,
+   "source_package": "TransGame",
+   "object": "TransGame.Default__TnFineAimManager",
+   "class": "TnFineAimManager",
+   "property": "_TargetSnapTimeout",
+   "origin": "authored on object",
+   "confidence": "CONFIRMED AUTHORED DATA"
+  },
+  "_GroundSpeedMultiplier": {
+   "value": 0.5,
+   "source_package": "TransGame",
+   "object": "TransGame.Default__TnFineAimManager",
+   "class": "TnFineAimManager",
+   "property": "_GroundSpeedMultiplier",
+   "origin": "authored on object",
+   "confidence": "CONFIRMED AUTHORED DATA"
+  }
+ },
+ "crosshair_selection (sprite 599, NotifyCurrentWeaponChanged)": {
+  "rule": {
+   "TnWeaponShotgun / TnWeaponEmpShotgun": "SetWeaponCrosshair(1) -> mc_crosshairShotgun",
+   "TnWeaponIonBlaster": "SetWeaponCrosshair(2) -> mc_crosshairIonBlaster",
+   "TnWeaponBazooka": "SetWeaponCrosshair(3) -> mc_crosshairBazooka",
+   "any other weapon": "SetWeaponCrosshair(0) -> mc_crosshairGeneric",
+   "TnWeaponMountedRocketTurret / TnWeaponMountedHeavyIonBlaster": "DisplayTurretReticule(true)",
+   "TnWeaponGrenadeLauncher": "DisplayRangeFinder(true)"
+  },
+  "confidence": "CONFIRMED AUTHORED DATA",
+  "disassembly": [
+   "816 DefineFunction2 function <anon>(r3:WeaponName) [925 bytes]",
+   "839 Push r1, 'CurrentWeapon', r3",
+   "848 SetMember",
+   "849 Push 'CurrentWeaponIconClip'",
+   "854 GetVariable",
+   "855 Push '_name'",
+   "860 GetMember",
+   "861 Push undefined",
+   "865 Equals2",
+   "866 Not",
+   "867 Not",
+   "868 If -> 946",
+   "873 Push 'CurrentWeaponIconClip'",
+   "878 GetVariable",
+   "879 Push 'fadeOut'",
+   "884 GetMember",
+   "885 Push undefined",
+   "889 Equals2",
+   "890 Not",
+   "891 Not",
+   "892 If -> 924",
+   "897 Push 0, 'CurrentWeaponIconClip'",
+   "911 GetVariable",
+   "912 Push 'fadeOut'",
+   "917 CallMethod",
+   "918 Pop",
+   "919 Jump -> 946",
+   "924 Push 0, 'CurrentWeaponIconClip'",
+   "938 GetVariable",
+   "939 Push 'removeMovieClip'",
+   "944 CallMethod",
+   "945 Pop",
+   "946 Push 'CurrentWeaponTextClip'",
+   "951 GetVariable",
+   "952 Push '_name'",
+   "957 GetMember",
+   "958 Push undefined",
+   "962 Equals2",
+   "963 Not",
+   "964 Not",
+   "965 If -> 992",
+   "970 Push 0, 'CurrentWeaponTextClip'",
+   "984 GetVariable",
+   "985 Push 'removeMovieClip'",
+   "990 CallMethod",
+   "991 Pop",
+   "992 Push undefined",
+   "996 StoreRegister r2",
+   "1000 Pop",
+   "1001 Push r1, 'CurrentWeapon'",
+   "1008 GetMember",
+   "1009 StoreRegister r0",
+   "1013 Push 'TnWeaponRocketVh'",
+   "1018 StrictEquals",
+   "1019 If -> 1146",
+   "1024 Push r0, 'TnWeaponAssaultRifleVh'",
+   "1031 StrictEquals",
+   "1032 If -> 1161",
+   "1037 Push r0, 'TnWeaponHomingRocketVh'",
+   "1044 StrictEquals",
+   "1045 If -> 1176",
+   "1050 Push r0, 'TnWeaponHomingRocketVh'",
+   "1057 StrictEquals",
+   "1058 If -> 1191",
+   "1063 Push r0, 'TnWeaponHomingRocketVh'",
+   "1070 StrictEquals",
+   "1071 If -> 1206",
+   "1076 Push r0, 'TnWeaponHomingRocketVh'",
+   "1083 StrictEquals",
+   "1084 If -> 1221",
+   "1089 Push r0, 'TnWeaponPlaneMachineGun'",
+   "1096 StrictEquals",
+   "1097 If -> 1236",
+   "1102 Push r0, 'TnWeaponAssaultRiflePlane'",
+   "1109 StrictEquals",
+   "1110 If -> 1251",
+   "1115 Push r0, 'TnWeaponRocketPlane'",
+   "1122 StrictEquals",
+   "1123 If -> 1266",
+   "1128 Push r0, 'TnWeaponGatlingGun'",
+   "1135 StrictEquals",
+   "1136 If -> 1281",
+   "1141 Jump -> 1296",
+   "1146 Push 'TnWeaponRocketVehicle'",
+   "1151 StoreRegister r2",
+   "1155 Pop",
+   "1156 Jump -> 1314",
+   "1161 Push 'TnWeaponAssaultRifleVehicle'",
+   "1166 StoreRegister r2",
+   "1170 Pop",
+   "1171 Jump -> 1314",
+   "1176 Push 'TnWeaponHomingRocketVehicle'",
+   "1181 StoreRegister r2",
+   "1185 Pop",
+   "1186 Jump -> 1314",
+   "1191 Push 'TnWeaponHomingRocketVehicle'",
+   "1196 StoreRegister r2",
+   "1200 Pop",
+   "1201 Jump -> 1314",
+   "1206 Push 'TnWeaponHomingRocketVehicle'",
+   "1211 StoreRegister r2",
+   "1215 Pop",
+   "1216 Jump -> 1314",
+   "1221 Push 'TnWeaponHomingRocketVehicle'",
+   "1226 StoreRegister r2",
+   "1230 Pop",
+   "1231 Jump -> 1314",
+   "1236 Push 'TnWeaponAssaultRifleVehicle'",
+   "1241 StoreRegister r2",
+   "1245 Pop",
+   "1246 Jump -> 1314",
+   "1251 Push 'TnWeaponAssaultRifleVehicle'",
+   "1256 StoreRegister r2",
+   "1260 Pop",
+   "1261 Jump -> 1314",
+   "1266 Push 'TnWeaponRocketVehicle'",
+   "1271 StoreRegister r2",
+   "1275 Pop",
+   "1276 Jump -> 1314",
+   "1281 Push 'TnWeaponHeavyRocketTurret'",
+   "1286 StoreRegister r2",
+   "1290 Pop",
+   "1291 Jump -> 1314",
+   "1296 Push r1, 'CurrentWeapon'",
+   "1303 GetMember",
+   "1304 StoreRegister r2",
+   "1308 Pop",
+   "1309 Jump -> 1314",
+   "1314 Push 'CurrentWeaponIconClip', 'WeaponIconID', r2, 1",
+   "1328 InitObject",
+   "1329 Push 0, 'iconAnchor_mc'",
+   "1343 GetVariable",
+   "1344 Push 'getNextHighestDepth'",
+   "1349 CallMethod",
+   "1350 Push 'weaponIcon', 'WeaponCounter'",
+   "1357 GetVariable",
+   "1358 Add2",
+   "1359 Push '_mc'",
+   "1364 Add2",
+   "1365 Push 'mc_currentWeaponIcon', 4, 'iconAnchor_mc'",
+   "1377 GetVariable",
+   "1378 Push 'attachMovie'",
+   "1383 CallMethod",
+   "1384 SetVariable",
+   "1385 Push 'CurrentWeaponTextClip', 0, 'textAnchor_mc'",
+   "1401 GetVariable",
+   "1402 Push 'getNextHighestDepth'",
+   "1407 CallMethod",
+   "1408 Push 'weaponText', 'WeaponCounter'",
+   "1415 GetVariable",
+   "1416 Add2",
+   "1417 Push '_mc'",
+   "1422 Add2",
+   "1423 Push 'mc_currentWeaponText', 3, 'textAnchor_mc'",
+   "1435 GetVariable",
+   "1436 Push 'attachMovie'",
+   "1441 CallMethod",
+   "1442 SetVariable",
+   "1443 Push 'WeaponCounter', 'WeaponCounter'",
+   "1450 GetVariable",
+   "1451 Increment",
+   "1452 SetVariable",
+   "1453 Push r1, 'CurrentWeapon'",
+   "1460 GetMember",
+   "1461 Push 'TnWeaponMountedRocketTurret'",
+   "1466 Equals2",
+   "1467 PushDuplicate",
+   "1468 If -> 1488",
+   "1473 Pop",
+   "1474 Push r1, 'CurrentWeapon'",
+   "1481 GetMember",
+   "1482 Push 'TnWeaponMountedHeavyIonBlaster'",
+   "1487 Equals2",
+   "1488 Not",
+   "1489 If -> 1515",
+   "1494 Push true, 1, r1, 'DisplayTurretReticule'",
+   "1508 CallMethod",
+   "1509 Pop",
+   "1510 Jump -> 1531",
+   "1515 Push false, 1, r1, 'DisplayTurretReticule'",
+   "1529 CallMethod",
+   "1530 Pop",
+   "1531 Push r1, 'CurrentWeapon'",
+   "1538 GetMember",
+   "1539 Push 'TnWeaponGrenadeLauncher'",
+   "1544 Equals2",
+   "1545 Not",
+   "1546 If -> 1572",
+   "1551 Push true, 1, r1, 'DisplayRangeFinder'",
+   "1565 CallMethod",
+   "1566 Pop",
+   "1567 Jump -> 1588",
+   "1572 Push false, 1, r1, 'DisplayRangeFinder'",
+   "1586 CallMethod",
+   "1587 Pop",
+   "1588 Push r1, 'CurrentWeapon'",
+   "1595 GetMember",
+   "1596 Push 'TnWeaponEmpShotgun'",
+   "1601 Equals2",
+   "1602 PushDuplicate",
+   "1603 If -> 1623",
+   "1608 Pop",
+   "1609 Push r1, 'CurrentWeapon'",
+   "1616 GetMember",
+   "1617 Push 'TnWeaponShotgun'",
+   "1622 Equals2",
+   "1623 Not",
+   "1624 If -> 1653",
+   "1629 Push 1, 1, r1, 'SetWeaponCrosshair'",
+   "1646 CallMethod",
+   "1647 Pop",
+   "1648 Jump -> 1764",
+   "1653 Push r1, 'CurrentWeapon'",
+   "1660 GetMember",
+   "1661 Push 'TnWeaponIonBlaster'",
+   "1666 Equals2",
+   "1667 Not",
+   "1668 If -> 1697",
+   "1673 Push 2, 1, r1, 'SetWeaponCrosshair'",
+   "1690 CallMethod",
+   "1691 Pop",
+   "1692 Jump -> 1764",
+   "1697 Push r1, 'CurrentWeapon'",
+   "1704 GetMember",
+   "1705 Push 'TnWeaponBazooka'",
+   "1710 Equals2",
+   "1711 Not",
+   "1712 If -> 1741",
+   "1717 Push 3, 1, r1, 'SetWeaponCrosshair'",
+   "1734 CallMethod",
+   "1735 Pop",
+   "1736 Jump -> 1764",
+   "1741 Push 0, 1, r1, 'SetWeaponCrosshair'",
+   "1762 CallMethod",
+   "1763 Pop"
+  ]
+ },
+ "SetWeaponCrosshair (sprite 621)": {
+  "behaviour": "if type changed: remove old clip; attachMovie(symbol, \"crosshair<N>_mc\") under crosshairAnchor_mc with {_rotation: 60}, then interp to {_rotation: 0} over 0.3 s \"easeout\"",
+  "confidence": "CONFIRMED AUTHORED DATA",
+  "disassembly": [
+   "1230 DefineFunction2 function <anon>(r3:newCrosshairType) [375 bytes]",
+   "1259 Push 'CrosshairType'",
+   "1264 GetVariable",
+   "1265 Push r3",
+   "1270 Equals2",
+   "1271 Not",
+   "1272 Not",
+   "1273 If -> 1634",
+   "1278 Push 'CrosshairType', r3",
+   "1285 SetVariable",
+   "1286 Push 'CrosshairClip'",
+   "1291 GetVariable",
+   "1292 Push '_name'",
+   "1297 GetMember",
+   "1298 Push undefined",
+   "1302 Equals2",
+   "1303 Not",
+   "1304 Not",
+   "1305 If -> 1332",
+   "1310 Push 0, 'CrosshairClip'",
+   "1324 GetVariable",
+   "1325 Push 'removeMovieClip'",
+   "1330 CallMethod",
+   "1331 Pop",
+   "1332 Push undefined",
+   "1336 StoreRegister r1",
+   "1340 Pop",
+   "1341 Push 'CrosshairType'",
+   "1346 GetVariable",
+   "1347 StoreRegister r0",
+   "1351 Push 0",
+   "1363 StrictEquals",
+   "1364 If -> 1422",
+   "1369 Push r0, 1",
+   "1379 StrictEquals",
+   "1380 If -> 1437",
+   "1385 Push r0, 2",
+   "1395 StrictEquals",
+   "1396 If -> 1452",
+   "1401 Push r0, 3",
+   "1411 StrictEquals",
+   "1412 If -> 1467",
+   "1417 Jump -> 1482",
+   "1422 Push 'mc_crosshairGeneric'",
+   "1427 StoreRegister r1",
+   "1431 Pop",
+   "1432 Jump -> 1482",
+   "1437 Push 'mc_crosshairShotgun'",
+   "1442 StoreRegister r1",
+   "1446 Pop",
+   "1447 Jump -> 1482",
+   "1452 Push 'mc_crosshairIonBlaster'",
+   "1457 StoreRegister r1",
+   "1461 Pop",
+   "1462 Jump -> 1482",
+   "1467 Push 'mc_crosshairBazooka'",
+   "1472 StoreRegister r1",
+   "1476 Pop",
+   "1477 Jump -> 1482",
+   "1482 Push r1, undefined",
+   "1488 Equals2",
+   "1489 Not",
+   "1490 Not",
+   "1491 If -> 1634",
+   "1496 Push 'CrosshairClip', '_rotation', 60, 1",
+   "1513 InitObject",
+   "1514 Push 0, 'crosshairAnchor_mc'",
+   "1528 GetVariable",
+   "1529 Push 'getNextHighestDepth'",
+   "1534 CallMethod",
+   "1535 Push 'crosshair', 'CrosshairCounter'",
+   "1542 GetVariable",
+   "1543 Add2",
+   "1544 Push '_mc'",
+   "1549 Add2",
+   "1550 Push r1, 4, 'crosshairAnchor_mc'",
+   "1562 GetVariable",
+   "1563 Push 'attachMovie'",
+   "1568 CallMethod",
+   "1569 SetVariable",
+   "1570 Push '_rotation', 0, 1",
+   "1589 InitObject",
+   "1590 Push 3, 'easeout', 0.3, 4, 'CrosshairClip'",
+   "1616 GetVariable",
+   "1617 Push 'interp'",
+   "1622 CallMethod",
+   "1623 Pop",
+   "1624 Push 'CrosshairCounter', 'CrosshairCounter'",
+   "1631 GetVariable",
+   "1632 Increment",
+   "1633 SetVariable"
+  ]
+ },
+ "NotifyFineAimChanged (sprite 621)": {
+  "behaviour": {
+   "0 (kHudStandardAim)": "hideScope(); turretReticuleClip.fineAim(false) if a turret reticule exists",
+   "1 (kHudFineAim)": "HeavyPistol -> showScope(\"short\"); BurstRifle -> showScope(\"medium\"); SniperRifle -> showScope(\"long\"); otherwise hideScope(); turretReticuleClip.fineAim(true) if present"
+  },
+  "confidence": "CONFIRMED AUTHORED DATA",
+  "disassembly": [
+   "1899 DefineFunction2 function <anon>(r2:newFineAimState) [308 bytes]",
+   "1927 Push 'FineAimState', r2",
+   "1934 SetVariable",
+   "1935 Push 'FineAimState'",
+   "1940 GetVariable",
+   "1941 StoreRegister r0",
+   "1945 Push 0",
+   "1957 StrictEquals",
+   "1958 If -> 1984",
+   "1963 Push r0, 1",
+   "1973 StrictEquals",
+   "1974 If -> 2051",
+   "1979 Jump -> 2235",
+   "1984 Push 0, r1, 'hideScope'",
+   "2000 CallMethod",
+   "2001 Pop",
+   "2002 Push 'turretReticuleClip'",
+   "2007 GetVariable",
+   "2008 Push 'fineAim'",
+   "2013 GetMember",
+   "2014 Push undefined",
+   "2018 Equals2",
+   "2019 Not",
+   "2020 Not",
+   "2021 If -> 2046",
+   "2026 Push false, 1, 'turretReticuleClip'",
+   "2038 GetVariable",
+   "2039 Push 'fineAim'",
+   "2044 CallMethod",
+   "2045 Pop",
+   "2046 Jump -> 2235",
+   "2051 Push r1, 'CurrentWeapon'",
+   "2058 GetMember",
+   "2059 StoreRegister r0",
+   "2063 Push 'TnWeaponHeavyPistol'",
+   "2068 StrictEquals",
+   "2069 If -> 2105",
+   "2074 Push r0, 'TnWeaponBurstRifle'",
+   "2081 StrictEquals",
+   "2082 If -> 2126",
+   "2087 Push r0, 'TnWeaponSniperRifle'",
+   "2094 StrictEquals",
+   "2095 If -> 2147",
+   "2100 Jump -> 2168",
+   "2105 Push 'short', 1, r1, 'showScope'",
+   "2119 CallMethod",
+   "2120 Pop",
+   "2121 Jump -> 2186",
+   "2126 Push 'medium', 1, r1, 'showScope'",
+   "2140 CallMethod",
+   "2141 Pop",
+   "2142 Jump -> 2186",
+   "2147 Push 'long', 1, r1, 'showScope'",
+   "2161 CallMethod",
+   "2162 Pop",
+   "2163 Jump -> 2186",
+   "2168 Push 0, r1, 'hideScope'",
+   "2184 CallMethod",
+   "2185 Pop",
+   "2186 Push 'turretReticuleClip'",
+   "2191 GetVariable",
+   "2192 Push 'fineAim'",
+   "2197 GetMember",
+   "2198 Push undefined",
+   "2202 Equals2",
+   "2203 Not",
+   "2204 Not",
+   "2205 If -> 2230",
+   "2210 Push true, 1, 'turretReticuleClip'",
+   "2222 GetVariable",
+   "2223 Push 'fineAim'",
+   "2228 CallMethod",
+   "2229 Pop",
+   "2230 Jump -> 2235"
+  ]
+ },
+ "NotifyWeaponSpreadChanged (sprite 621) + mc_crosshairIonBlaster spread watch (sprite 404)": {
+  "behaviour": "WeaponSpread stored on the controller; the crosshair clip watches it: each prongN_mc.prong_mc._y = spread * -SpreadMultiplier, eased 0.2 s \"easeout\" (first value applied instantly)",
+  "SpreadMultiplier": 300,
+  "units": "HUD stage pixels (1120x720 stage) per unit of spread value",
+  "confidence": "CONFIRMED AUTHORED DATA",
+  "disassembly_controller": [
+   "1845 DefineFunction2 function <anon>(r1:newWeaponSpread) [8 bytes]",
+   "1873 Push 'WeaponSpread', r1",
+   "1880 SetVariable"
+  ]
+ },
+ "NotifyTargetTypeChanged (sprite 621)": {
+  "behaviour": "tint crosshairAnchor_mc over 0.2 s easeout: TTFH_Friend(0) -> 0x50B5D5, TTFH_Enemy(1) -> 0xFF3333, other -> 0xFFFFFF",
+  "colors_rgb": {
+   "TTFH_Friend": [
+    80,
+    181,
+    213
+   ],
+   "TTFH_Enemy": [
+    255,
+    51,
+    51
+   ],
+   "TTFH_None": [
+    255,
+    255,
+    255
+   ]
+  },
+  "confidence": "CONFIRMED AUTHORED DATA",
+  "disassembly": [
+   "1646 DefineFunction2 function <anon>(r3:TargetType) [158 bytes]",
+   "1669 Push undefined",
+   "1673 StoreRegister r1",
+   "1677 Pop",
+   "1678 Push r3",
+   "1683 StoreRegister r0",
+   "1687 Push 0",
+   "1699 StrictEquals",
+   "1700 If -> 1726",
+   "1705 Push r0, 1",
+   "1715 StrictEquals",
+   "1716 If -> 1744",
+   "1721 Jump -> 1762",
+   "1726 Push 5289429",
+   "1734 StoreRegister r1",
+   "1738 Pop",
+   "1739 Jump -> 1780",
+   "1744 Push 16724787",
+   "1752 StoreRegister r1",
+   "1756 Pop",
+   "1757 Jump -> 1780",
+   "1762 Push 16777215",
+   "1770 StoreRegister r1",
+   "1774 Pop",
+   "1775 Jump -> 1780",
+   "1780 Push 'color', r1, 1",
+   "1792 InitObject",
+   "1793 Push 3, 'easeout', 0.2, 4, 'crosshairAnchor_mc'",
+   "1819 GetVariable",
+   "1820 Push 'interp'",
+   "1825 CallMethod",
+   "1826 Pop"
+  ]
+ },
+ "ShowCrosshair (sprite 621 handler, called from the ammo panel sprite 600)": {
+  "behaviour": "crosshairAnchor_mc._visible = arg; the ammo panel calls ShowCrosshair(false) when ReserveAmmo == -2 or ReserveCapacity < 0 (and fades the ammo panel to alpha 0 over 0.5 s), ShowCrosshair(true) otherwise",
+  "confidence": "CONFIRMED AUTHORED DATA"
+ },
+ "symbols": {
+  "mc_crosshairGeneric": 419,
+  "mc_crosshairShotgun": 414,
+  "mc_crosshairIonBlaster": 404,
+  "mc_crosshairBazooka": 409,
+  "mc_crosshairIncreaseDamage": 316,
+  "mc_turretReticule": 290,
+  "mc_rangeFinderCrosshair": 548,
+  "mc_zoomScope": 262,
+  "mc_shortScope": 255,
+  "mc_mediumScope": 244,
+  "mc_longScope": 254
+ },
+ "ion_blaster_reticle_geometry": {
+  "symbol": "mc_crosshairIonBlaster (character 404)",
+  "prongs": [
+   {
+    "instance": "prong1_mc",
+    "rotation_deg": 0
+   },
+   {
+    "instance": "prong2_mc",
+    "rotation_deg": 120
+   },
+   {
+    "instance": "prong3_mc",
+    "rotation_deg": 240
+   }
+  ],
+  "prong_art": {
+   "shape": 401,
+   "bitmap_character": 400,
+   "extracted_png": "content/UI_GFxHud_p/Hud_GFX_I190.png",
+   "bitmap_size_px": [
+    32,
+    16
+   ],
+   "drawn_size_px": [
+    30,
+    12
+   ],
+   "drawn_offset_px": [
+    -15,
+    -6
+   ],
+   "note": "bitmap fill matrix scale 18.75/15 twips per texel; placed at prong_mc origin; the prong moves along its local -Y (outward) with spread"
+  },
+  "other_crosshairs_prong_art": {
+   "mc_crosshairBazooka": "Hud_GFX_I195.png (char 405)",
+   "mc_crosshairShotgun": "Hud_GFX_I19A.png (char 410)",
+   "mc_crosshairGeneric": "Hud_GFX_I19F.png (char 415)"
+  },
+  "screen_placement": "root hud_mc (0,0) -> midCenter_mc at (560, 360) px -> crosshair controller sprite 621 at (0.2, 0.2) px -> crosshairAnchor_mc (0,0): reticle centre = stage centre",
+  "scale": 1.0,
+  "base_opacity": "100 % (bitmap alpha); tint by target type",
+  "confidence": "CONFIRMED AUTHORED DATA"
+ },
+ "scope_system (not used by the Ion Blaster)": {
+  "showScope(type)": "attach mc_zoomScope at zoomScopeAttachPoint_mc (stage centre) + mc_<type>Scope; fade scope in (alpha 100, 0.2 s linear) and fade HUD corner panels to alpha 0",
+  "symbols": {
+   "mc_zoomScope": 262,
+   "mc_shortScope": 255,
+   "mc_mediumScope": 244,
+   "mc_longScope": 254
+  }
+ },
+ "related_overlays": {
+  "mc_crosshairIncreaseDamage": "NotifyDamageIncrease(true) attaches it at increaseDamageAnchor_mc",
+  "mc_causeDamage": "CausedDamage() hit marker + HmExternalInterface.Sound.PlaySound(\"HUD_POSITIVE_HIT_INDICATOR\")"
+ },
+ "still_native": [
+  "the call sites that invoke NotifyCurrentWeaponChanged / NotifyFineAimChanged / NotifyWeaponSpreadChanged",
+  "the spread value passed to the HUD (how FineAimSpreadModifier 0.5 and PerShotSpreadModifier combine)",
+  "TnPCS_FineAim camera state (no authored properties)"
+ ]
+}
