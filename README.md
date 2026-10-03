@@ -68,6 +68,7 @@ sequences[], preview_skeletal_mesh, compatible_skeletal_meshes/animsets, map_usa
 | `m05_bsp_default_faces.py` | default-material BSP faces: provenance + memory-bounded play-visibility ray test (`manifests/streets_bsp_default_faces.json`, `docs/STREETS_NATIVE_FIDELITY_M05.md`) |
 | `validate_smca_transforms.py [--before DIR]` | transform-level validation of every StaticMeshCollectionActor component (translation / rotation / signed scale / determinant / bounds vs native + RE table) and the before/after audit |
 | `m04_lightmap_atlases.py`, `validate_m04.py` | export missing lightmap atlas PNGs; map-completeness validation (`logs/validate_m04.json`) |
+| `fe_frontend.py` + `validate_frontend.py` | **frontend / game flow**: `manifests/frontend_{flow,gfx,bindings,re_handoff,maps,modes,audio,loading,localization}.json` (startup chain, 38 GFx movies, AS bridge, MP map + mode catalog, loading presentation; `docs/FRONTEND.md`) |
 | `validate_m03.py` | cross-manifest validation of the M03 outputs (`logs/validate_m03.json`) |
 | `schema.py`, `typed_props.py` | UnrealScript type registry (`manifests/schema.json`) and the schema-driven tag reader |
 | `authored_db.py` / `authored_db_safe.py` | global **`manifests/authored.db`** (SQLite, 2.5 GB): `objects` (1,102,518 unique objects with typed props JSON, 0 unparsed), `refs` (2.5 M object references), `types` (schema). Build shards with `authored_db_safe.py --jobs 4 --merge` (one child per package, memory/timeout watchdog, failures in `logs/authored_db_failures.json`) |

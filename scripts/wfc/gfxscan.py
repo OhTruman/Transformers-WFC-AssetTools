@@ -84,12 +84,36 @@ def _place(code, d):
         rec['name'], i = _cstr(d, i)
     return rec
 
+def _edit_text(d):
+    """DefineEditText (tag 37): variable name, initial text, font, flags."""
+    i = 2 + _rect_len(d, 2)
+    f1, f2 = d[i], d[i + 1]; i += 2
+    r = {'flags': {'html': bool(f2 & 0x02), 'multiline': bool(f1 & 0x20), 'readonly': bool(f1 & 0x08),
+                   'autosize': bool(f2 & 0x40), 'wordwrap': bool(f1 & 0x40), 'noselect': bool(f2 & 0x10)}}
+    if f1 & 0x01:
+        r['font'] = struct.unpack_from('<H', d, i)[0]; i += 2
+    if f2 & 0x80:
+        r['font_class'], i = _cstr(d, i)
+    if f1 & 0x01 or f2 & 0x80:
+        r['height_twips'] = struct.unpack_from('<H', d, i)[0]; i += 2
+    if f1 & 0x04:
+        r['color_rgba'] = list(d[i:i + 4]); i += 4
+    if f1 & 0x02:
+        r['max_length'] = struct.unpack_from('<H', d, i)[0]; i += 2
+    if f2 & 0x20:
+        r['align'] = d[i]; i += 9
+    r['variable'], i = _cstr(d, i)
+    if f1 & 0x80:
+        r['initial_text'], i = _cstr(d, i)
+    return r
+
 def scan(path):
     b = open(path, 'rb').read()
     sig = b[:3]
     if sig in (b'CFX', b'CWS'): b = b[:8] + zlib.decompress(b[8:])
     i = 8 + _rect_len(b, 8) + 4
     out = {'file': path, 'signature': sig.decode(), 'version': b[3], 'exports': {}, 'sprites': {}, 'root': {'labels': [], 'places': []},
+           'text_fields': {}, 'imports': [], 'fonts': {},
            'action_strings': [], 'external_images': []}
     def walk(start, end, tgt, sprite_id=None):
         frame = 0
@@ -105,6 +129,27 @@ def scan(path):
                 try: out['action_strings'].append({'sprite': sprite_id if code == 12 else struct.unpack_from('<H', d, 0)[0],
                                                    'init': code == 59, 'strings': _consts(body)})
                 except Exception: pass
+            elif code == 37:
+                try:
+                    out['text_fields'][struct.unpack_from('<H', d, 0)[0]] = _edit_text(d)
+                except Exception:
+                    pass
+            elif code in (57, 71):
+                try:
+                    url, j = _cstr(d, 0)
+                    if code == 71: j += 2
+                    n = struct.unpack_from('<H', d, j)[0]; j += 2
+                    for _ in range(n):
+                        cid = struct.unpack_from('<H', d, j)[0]; nm, j = _cstr(d, j + 2)
+                        out['imports'].append({'url': url, 'char': cid, 'name': nm})
+                except Exception:
+                    pass
+            elif code in (48, 75):   # DefineFont2 / DefineFont3: id, flags, lang, name
+                try:
+                    cid = struct.unpack_from('<H', d, 0)[0]; ln = d[4]
+                    out['fonts'][cid] = d[5:5 + ln].decode('latin-1').rstrip(chr(0))
+                except Exception:
+                    pass
             elif code == 56:
                 n = struct.unpack_from('<H', d, 0)[0]; j = 2
                 for _ in range(n):
