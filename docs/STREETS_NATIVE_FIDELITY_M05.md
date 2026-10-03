@@ -77,7 +77,14 @@ Census of all 1,906 SMCA components. Archetype: `Engine.Default__StaticMeshActor
   (glTF extracted).
   * The level cooks no instance of it; it is created from the class template at spawn.
   * Shown only for the active zone in KOTH.
+  * The ring is placed with the zone transform, including DrawScale3D (1, 1, 2), so it stands twice as tall. Material
+    `FX_Materials_p.MatInst.CaptureZone_Reverse_MAT_INST`.
 * **Collision:** hidden InterpActors still collide (stock UE3).
+* **In `render_index.json` (2026-10-03):**
+  * the 3 totems and 5 KOTH rings are listed under `not_in_world_glb (authored renderables)`, with glTF paths, UE + glTF
+    matrices and visible modes;
+  * domes and SkyBeam actors are under `authored_render_state`;
+  * motion data is in `manifests/streets_movers.json`.
 
 ## 4. LightsVisibilitiesVolume: purpose now known (RE)
 * A baked light-visibility octree queried only by light-environment updates at the owner's bounds origin: pawns, vehicles,
@@ -99,7 +106,20 @@ Per RE runtime semantics plus authored Kismet:
 | capture / plant points | inert |
 | ammo / health / overshield factories | active |
 
-`render_index.json` lists the mode-gated actors. Rendering and Gameplay must apply the table.
+**In `render_index.json` (2026-10-03):**
+* `mode_visual_state`: per-class visibility for DM/TDM/CTF/EXT/DOM/KOTH, with mechanism, collision and actor lists.
+* `tdm_render_state`: the 19 actors to hide in the slice (4 bases, 3 totems, 5 KOTH zones, 2 flag + 1 bomb factories, 4
+  capture/plant points).
+* `pickup_factory_visuals`: 14 ammo crate meshes (placement PROVISIONAL), 10 health/overshield particle meshes (approximate
+  matrices), flag/bomb resting visual UNKNOWN.
+* `pickup_fx_components`: all 37 pickup effects with draw rules.
+  * The `Pickup_FX` beam is switched on whenever its factory is available (`SetPickupVisible` → `ActivateSystem`, RE script).
+  * The 10 health/overshield copies are never attached.
+  * 24 effects are drawn in TDM.
+* The destructible wall panel (outside the play space) is listed with all 3 states. State meshes are CONFIRMED; spawned
+  chunk/debris placement is PROVISIONAL.
+
+Rendering and Gameplay should consume these sections rather than re-deriving the table.
 
 ## 6. Map-wide visibility, culling and streaming
 * No CullDistanceVolume, occlusion, portal or precomputed-visibility actor exists in Streets.
