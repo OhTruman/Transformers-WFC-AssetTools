@@ -305,7 +305,7 @@ def main():
     # KOTH active-zone rings: class template component ActiveMeshComponent0 (no instance cooked in the level; created at
     # spawn from TransContent.Default__TnKingOfTheHillZone), placed with the zone actor transform (DrawScale3D applies).
     import smsections
-    from vs_common import ue_actor_matrix, ue_to_gltf_matrix
+    from vs_common import ue_actor_matrix, ue_to_gltf_matrix, ue_scale
     tmpl = 'TransContent.Default__TnKingOfTheHillZone.ActiveMeshComponent0'
     tv = A.values(tmpl); kz = A.values('TransContent.Default__TnKingOfTheHillZone')
     tmesh = tv.get('StaticMesh')
@@ -328,6 +328,51 @@ def main():
             'visible_in_modes': ['KOTH'], 'visibility_rule': 'only the currently active zone (random at MatchStarting, rotates via ActivateNewZone)',
             'confidence': CONF})
     from vs_common import ue_trans
+    # ---------------- pickup factory visuals (streets_pickup_factories.json + streets_pickup_fx.json)
+    pf = J(os.path.join(MANI, 'streets_pickup_factories.json'))
+    pfx = J(os.path.join(MANI, 'streets_pickup_fx.json'))['systems']
+    def fx_mesh(ps):
+        """mesh emitter of a pickup FX: mesh, gltf, authored StartLocation / StartSize / MeshRotation (LOD0)."""
+        for e in pfx[ps]['emitters']:
+            L = e['lods'][0]
+            if not L.get('mesh_record'): continue
+            d = {m['module']: {x['property']: x['values'] for x in m['distributions']} for m in L['compiled_modules']}
+            return {'mesh': L['mesh'], 'gltf': L['mesh_record']['gltf'], 'section_materials': L['mesh_record']['section_materials'],
+                    'StartLocation': (d.get('PMI_Location') or {}).get('StartLocation'), 'StartSize': (d.get('PMI_Size') or {}).get('StartSize'),
+                    'MeshStartRotation': (d.get('PMI_MeshRotation') or {}).get('StartRotation'),
+                    'MeshRotationRate': (d.get('PMI_MeshRotationRate') or {}).get('StartRotationRate'),
+                    'emitter': e['name']}
+    ammo = pf['factory_classes']['TnAmmoCratePickupFactory']['inventory']['pickup_mesh']
+    pick_entries = []
+    for i in pf['instances']:
+        t = i['transform']
+        Af = ue_actor_matrix(v3(t['Location'], 'XYZ', 0.0), v3(t['Rotation'], ('Pitch', 'Yaw', 'Roll'), 0), t.get('DrawScale') or 1.0, [1, 1, 1])
+        base = {'actor': i['actor'], 'class': i['class'], 'factory_gltf_matrix': ue_to_gltf_matrix(Af)}
+        if i['class'] == 'TnAmmoCratePickupFactory':
+            pick_entries.append(dict(base, kind='ammo crate pickup mesh (inventory PickupFactoryMesh)', mesh=ammo['StaticMesh'], gltf=ammo['gltf'],
+                                     component_template=ammo['component'], ue_matrix=Af.tolist(), gltf_matrix=ue_to_gltf_matrix(Af),
+                                     rotation_rate=ammo['PickupRotationRate'], rotation_deg_per_s=round(ammo['PickupRotationRate']['Yaw'] * 360 / 65536, 3),
+                                     CastShadow=ammo['CastShadow'], CollideActors=ammo['CollideActors'], CullDistance=ammo['CullDistance'],
+                                     visible_in_modes=MODES, visible_when='pickup available (hidden after pickup until RespawnTime %s s)' % i['RespawnTime']['value'],
+                                     placement_confidence=PART, placement_note='component has no authored Translation; attach offset is set '
+                                     'natively (TnPickupFactory.SetPickupMesh) - factory origin assumed'))
+        elif i['class'] in ('TnHealthPickupFactory', 'TnOverShieldPickupFactory'):
+            ps = i['effects']['CustomPickupEffect']['Template']
+            m = fx_mesh(ps)
+            sl = m['StartLocation'] or [0, 0, 0]; ss = m['StartSize'] or [1, 1, 1]
+            Mp = ue_scale(ss[:3]) @ ue_trans(sl[:3]) @ Af
+            pick_entries.append(dict(base, kind='%s mesh particle (%s emitter %s)' % (i['class'], ps, m['emitter']), mesh=m['mesh'], gltf=m['gltf'],
+                                     section_materials=m['section_materials'], authored_particle=m,
+                                     approx_ue_matrix=Mp.tolist(), approx_gltf_matrix=ue_to_gltf_matrix(Mp),
+                                     approx_note='StartLocation and StartSize (LOD0, local space) only; size-over-life curve, mesh '
+                                     'rotation and rotation rate are particle-driven - render through the particle system for exact motion',
+                                     visible_in_modes=MODES, visible_when='CustomPickupEffect active while available', placement_confidence=PART))
+        else:
+            pick_entries.append(dict(base, kind='objective factory (%s)' % i['class'], mesh=None,
+                                     note='no PickupFactoryMesh authored on TnWeaponFlag / TnWeaponBomb; the at-rest visual is set natively '
+                                          '(TnWeaponBomb.DroppedMesh0 = WEP_MPBomb_p.NEU_MPBomb_SKEL is the dropped mesh) - UNKNOWN',
+                                     visible_in_modes=['CTF'] if 'Flag' in i['class'] else ['EXT'], confidence=UNK))
+    ri['pickup_factory_visuals'] = pick_entries
     for x in ri['not_in_world_glb (authored renderables)']:
         if x['kind'].startswith('destructible'):
             # intact-state StaticMeshComponent: Translation (0,0,-160) relative to the actor (component x actor, UE row vectors)
