@@ -24,10 +24,13 @@ import authored as A, objtree, vs_mapfx  # noqa: E402
 from m03_common import write, CONF, HIGH, PART, UNK  # noqa: E402
 from vs_common import VS  # noqa: E402
 
-MAP = 'MP_IAC_Streets'
+MAP = sys.argv[1] if len(sys.argv) > 1 else 'MP_IAC_Streets'   # positional, same convention as vs_map (imported via vs_mapfx)
+def out_name(n):
+    """Streets keeps its canonical manifest names; other maps write manifests/next_map/<MAP>_<name>."""
+    return n if MAP == 'MP_IAC_Streets' else 'next_map/%s_%s' % (MAP, n.replace('streets_', ''))
 LEVELS = [MAP + '_BASE_m', MAP + '_ART_m', MAP + '_AUDIO_m']
 SLICE = os.path.join(VS, 'Maps', MAP)
-AUDIT = r'F:/Transformers Rebuild/Rebuild-Rendering/work/render/MP_IAC_Streets/map_audit.json'
+AUDIT = r'F:/Transformers Rebuild/Rebuild-Rendering/work/render/%s/map_audit.json' % MAP
 
 CLS = ['PRESENT AND MATCHING', 'PRESENT BUT WRONG TRANSFORM', 'PRESENT BUT WRONG MATERIAL', 'PRESENT BUT WRONG STATE',
        'PRESENT BUT INCOMPLETE', 'MISSING FROM REBUILD', 'EXTRA / REBUILD-ONLY', 'CONTAINER / NON-RENDERED AUTHORED OBJECT']
@@ -263,14 +266,14 @@ def main():
             'sources': {'cooked': LEVELS, 'slice': SLICE, 'rebuild_render_evidence': {'file': AUDIT, 'mtime': audit_mtime,
                         'summary': (audit or {}).get('summary'), 'note': 'Rendering lane renderer-dump audit; read-only'}},
             'classification_vocabulary': CLS}
-    write('streets_actor_inventory.json', {**meta, 'actor_counts_by_class': dict(sorted(cls_counts.items())),
+    write(out_name('streets_actor_inventory.json'), {**meta, 'actor_counts_by_class': dict(sorted(cls_counts.items())),
                                            'component_counts_by_class': dict(sorted(comp_counts.items())),
                                            'actors': inv})
-    write('streets_rebuild_diff.json', {**meta, 'classification_counts': {k: dict(v) for k, v in counts.items()},
+    write(out_name('streets_rebuild_diff.json'), {**meta, 'classification_counts': {k: dict(v) for k, v in counts.items()},
                                         'non_matching': {k: v for k, v in sorted(diff.items())}})
     # lighting audit
     lt = Counter((v['type'], v.get('bound_in_lightmaps_json')) for v in lmt.values())
-    write('streets_lighting_audit.json', {**meta, 'static_mesh_components': len(lmt),
+    write(out_name('streets_lighting_audit.json'), {**meta, 'static_mesh_components': len(lmt),
           'by_lightmap_type': {'%s / bound=%s' % ({0: 'none(0)', 1: 'vertex 1D (1)', 2: 'texture 2D (2)', None: 'unparsed'}[t], b): n for (t, b), n in lt.items()},
           'texture_lightmapped_not_bound': [k for k, v in lmt.items() if v['type'] == 2 and not v['bound_in_lightmaps_json']],
           'vertex_lightmapped': [k for k, v in lmt.items() if v['type'] == 1],
@@ -289,7 +292,7 @@ def main():
                        'RotationRate': A.values(r['actor']).get('RotationRate'), 'bHidden': r['bHidden'],
                        'mesh': next((c.get('StaticMesh') for c in r['components'] if c.get('StaticMesh')), None),
                        'matinee': movers.get(sh), 'transform': r['transform'], 'classification': r['classification']})
-    write('streets_movers.json', {**meta, 'movers': mv, 'matinee': gp.get('matinee'),
+    write(out_name('streets_movers.json'), {**meta, 'movers': mv, 'matinee': gp.get('matinee'),
                                   'rotation_units': 'RotationRate in Unreal rotation units per second (65536 = 360 deg): 2730 = 15.0 deg/s'})
     # prefabs
     pf = defaultdict(list)
@@ -302,7 +305,7 @@ def main():
                      else ('present as cooked actor %s' % exists[0] if exists else 'NOT COOKED (editor-only or merged)'))))
         pf[m['prefab_instance']].append({'member': member, 'archetype': m['archetype'], 'template_prefab': m['template_prefab'],
                                          'cooked_class': exists[0] if exists else None, 'slice_coverage': cov})
-    write('streets_prefabs.json', {**meta, 'prefab_instances': len(pf), 'members': sum(len(v) for v in pf.values()),
+    write(out_name('streets_prefabs.json'), {**meta, 'prefab_instances': len(pf), 'members': sum(len(v) for v in pf.values()),
                                    'uncovered_members': [m for v in pf.values() for m in v if m['slice_coverage'].startswith('NOT')],
                                    'prefabs': pf})
     print('actors', len(inv), 'components', sum(len(r['components']) for r in inv), 'extras', len(extra))

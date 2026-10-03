@@ -70,8 +70,24 @@ volumes and the extra `GLB_Audio_m` level.
 
 The Streets regression after these edits: `vs_validate` 44/44, `validate_m04` 15,918/0, frontend validators 0 failures.
 
+**Inventory generalized (`m04_inventory.py MP_UND_Gorge`).** It writes
+`manifests/next_map/MP_UND_Gorge_{actor_inventory,rebuild_diff,lighting_audit,movers,prefabs}.json`.
+* **Results.** 2,196 components are present and matching in the exports. All 1,137 lightmap-type-2 components are bound, and
+  there are no prefabs.
+* **Remaining items** are the same categories `render_index` already resolves for Streets:
+  * 4 hidden objective bases (CTF/EXT);
+  * 9 `PHYS_Rotating` vent fans drawn static;
+  * pickup / emitter FX: 31 particle components, plus 15 pickup and 3 objective factories;
+  * 3 domination totems (4 skeletal components).
+* **Gorge-only remaining item:** the `SkeletalMeshActor`.
+* **Wording caveat.** Gorge has no Rendering-lane audit, so its "rebuild" means the AssetTools exports only. Notes that say
+  "Rendering audit" are inherited template text.
+* **Pending refresh (not applied).** The Rendering lane's Streets audit has been refreshed: 2026-10-03 01:58, with 2,399
+  rendered_correctly and 23 intentionally_invisible. Rerunning `m04_inventory.py` would refresh the committed Streets
+  classifications. That is a separate decision, so this pass leaves them as they are.
+
 **Not yet generalized (needed before Gorge gets a render index):**
-* These scripts hard-code `MAP = 'MP_IAC_Streets'`: `m04_inventory.py`, `m04_kismet.py`, `m04_complete.py`
+* These scripts hard-code `MAP = 'MP_IAC_Streets'`: `m04_kismet.py`, `m04_complete.py`
   (`render_index.json`), `vs_destructibles.py`, `vs_pickups.py`, `vs_surface_audio.py`.
 * These Gorge features need RE semantics before faithful rendering or gameplay; the authored data is all present:
   * TnRadialForceVolume: pushes planes, tanks and cars along `ArrowDirection`, with per-instance `ForceStrength` (1500 on the
