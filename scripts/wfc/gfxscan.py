@@ -227,7 +227,7 @@ def scan(path):
                     ln = d[8]; nm = d[9:9 + ln].decode('latin-1'); j = 9 + ln
                     lf = d[j]; fn = d[j + 1:j + 1 + lf].decode('latin-1')
                     out['external_images'].append({'char': cid, 'tag': code, 'format': fmt, 'width': w, 'height': h,
-                                                   'name': nm, 'file': fn})
+                                                   'name': nm or fn.rsplit('.', 1)[0], 'export_name': nm, 'file': fn})
                 except Exception:
                     pass
             elif code == 1009 or code == 1000:   # Scaleform DefineExternalImage(2)

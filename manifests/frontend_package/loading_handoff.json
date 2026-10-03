@@ -1,0 +1,600 @@
+{
+ "generated_by": "AssetTools/scripts/wfc/fe_package.py",
+ "script_source": "RE-Workspace/work/script/decomp/TransGame.TnMoviePlayer.txt (read-only); callers TnGame.ServerTravelToMap, TnPlayerController.PreClientTravel",
+ "decision (TnMoviePlayer.StartLoadingMovie(PendingURL))": [
+  {
+   "when": "URL option Game contains \"TnPartyLobbyGame\"",
+   "title": "",
+   "text": "",
+   "tips": "TnOnlineGameSettingsBase.EngageText"
+  },
+  {
+   "when": "Game contains \"TnGameLobbyGame\"",
+   "title": "",
+   "text": "",
+   "tips": "TnOnlineGameSettingsBase.EngageText"
+  },
+  {
+   "when": "MapId option present (match load)",
+   "title": "FriendlyName of the settings class for GameModeTag (UIDataStore_OnlineGameSettings.GetSettingsClassForName) e.g. \"Team Deathmatch\"",
+   "text": "Localize(\"LoadScreen\",\"LoadingMap\",\"UIText\") = \"in `m\" with `m = TnDataStore_MenuItems.ConvertMapIdToFriendlyName(MapId) e.g. \"in Streets\"",
+   "tips": "settings class EngageText (falls back to base when the class is not found)"
+  },
+  {
+   "when": "otherwise",
+   "title": "",
+   "text": "",
+   "tips": "TnOnlineGameSettingsBase.EngageText"
+  },
+  {
+   "when": "campaign checkpoint load",
+   "title": "$UIText.LoadScreen.ResumeAutobot|ResumeDecepticon",
+   "text": "",
+   "tips": "TnOnlineGameSettingsCP.EngageText"
+  }
+ ],
+ "delivery_to_movie": {
+  "SetLevelText": "HmMoviePlayer.AddDeferredMethod(\"_global.SetLevelText\", [Title, Message]) -> AS stores LevelTitle = Title.toUpperCase(), LevelDescription = Message, calls levelInfo_mc.UpdateLevelInfo",
+  "AddEngageText": "called 3 times, each with EngageText[RandomInt(len)] (independent picks, repeats possible) -> AS pushes to EngageTextArray, engageText_mc.UpdateEngageText",
+  "confidence": "CONFIRMED AUTHORED DATA (script + LoadScreen_GFX bytecode)"
+ },
+ "movies": {
+  "gfx_loading_screen": {
+   "movie": "UI_GFxLoading_p/LoadScreen_GFX",
+   "file": "content/UI_GFxLoading_p/LoadScreen_GFX.gfx",
+   "set_by": "UI_FrontEnd_m Kismet SeqAct_SetLoadingMovieFilename(Filename = SeqVar_String \"UI_GFxLoading_p.LoadScreen_GFX\") on entering the front end and on SeqEvent_PreGameplaySetup",
+   "native": "TnOnlineActionScriptBindingNative.SetLoadingMovieFilename (RE)"
+  },
+  "video_default": {
+   "config": "[LoadingMovie] DefaultFileName=TF_LoadingScreen",
+   "files": {
+    "TF_LoadingScreen_FRA.mkv": {
+     "duration_s": 4.0,
+     "width": 1280,
+     "height": 720,
+     "audio": false,
+     "content": "black screen with a spinning ring + \"LOADING...\" at about (0.83, 0.79) of the frame (looping indicator)"
+    },
+    "TF_LoadingScreen_INT.mkv": {
+     "duration_s": 4.0,
+     "width": 1280,
+     "height": 720,
+     "audio": false,
+     "content": "black screen with a spinning ring + \"LOADING...\" at about (0.83, 0.79) of the frame (looping indicator)"
+    }
+   }
+  },
+  "alpha_overlay": {
+   "config": "[LoadingMovie] AlphaFileName=UI_GFxLoading_p.LoadScreenAlpha_GFX",
+   "movie": "UI_GFxLoading_p/LoadScreenAlpha_GFX",
+   "exports": [
+    "mc_connectingToHost"
+   ],
+   "video": {
+    "duration_s": 0.5,
+    "width": 1280,
+    "height": 720,
+    "audio": false,
+    "content": "black screen, \"LOADING ..\" text at the upper right (0.5 s loop)"
+   }
+  },
+  "initial_startup": {
+   "config": "[LoadingMovie] InitialStartupFileName=TF_InitialStartup",
+   "files": {
+    "TF_InitialStartup.mkv": {
+     "duration_s": 5.0,
+     "width": 1280,
+     "height": 720,
+     "audio": false,
+     "content": "legal screen: \"Powered by Unreal Technology\" + \"PhysX by NVIDIA\" logos and Hasbro / Activision / Epic / NVIDIA trademark text; NA variants add \"The ratings icon is a registered trademark of the Entertainment Software Association\", EU variants omit it"
+    },
+    "TF_InitialStartup_EU_FRA.mkv": {
+     "duration_s": 5.0,
+     "width": 1280,
+     "height": 720,
+     "audio": false,
+     "content": "legal screen: \"Powered by Unreal Technology\" + \"PhysX by NVIDIA\" logos and Hasbro / Activision / Epic / NVIDIA trademark text; NA variants add \"The ratings icon is a registered trademark of the Entertainment Software Association\", EU variants omit it"
+    },
+    "TF_InitialStartup_EU_INT.mkv": {
+     "duration_s": 5.0,
+     "width": 1280,
+     "height": 720,
+     "audio": false,
+     "content": "legal screen: \"Powered by Unreal Technology\" + \"PhysX by NVIDIA\" logos and Hasbro / Activision / Epic / NVIDIA trademark text; NA variants add \"The ratings icon is a registered trademark of the Entertainment Software Association\", EU variants omit it"
+    },
+    "TF_InitialStartup_FRA.mkv": {
+     "duration_s": 5.0,
+     "width": 1280,
+     "height": 720,
+     "audio": false,
+     "content": "legal screen: \"Powered by Unreal Technology\" + \"PhysX by NVIDIA\" logos and Hasbro / Activision / Epic / NVIDIA trademark text; NA variants add \"The ratings icon is a registered trademark of the Entertainment Software Association\", EU variants omit it"
+    },
+    "TF_InitialStartup_NA_FRA.mkv": {
+     "duration_s": 5.0,
+     "width": 1280,
+     "height": 720,
+     "audio": false,
+     "content": "legal screen: \"Powered by Unreal Technology\" + \"PhysX by NVIDIA\" logos and Hasbro / Activision / Epic / NVIDIA trademark text; NA variants add \"The ratings icon is a registered trademark of the Entertainment Software Association\", EU variants omit it"
+    },
+    "TF_InitialStartup_NA_INT.mkv": {
+     "duration_s": 5.0,
+     "width": 1280,
+     "height": 720,
+     "audio": false,
+     "content": "legal screen: \"Powered by Unreal Technology\" + \"PhysX by NVIDIA\" logos and Hasbro / Activision / Epic / NVIDIA trademark text; NA variants add \"The ratings icon is a registered trademark of the Entertainment Software Association\", EU variants omit it"
+    }
+   }
+  },
+  "which_plays_when": "Kismet points the loading movie at LoadScreen_GFX once the front end is up, so front-end -> lobby -> match loads use the GFx screen; DefaultFileName (TF_LoadingScreen video) is the configured default before that. Composition/selection inside HmMoviePlayer is native (RE) - HIGH"
+ },
+ "loadscreen_gfx_layout": {
+  "root": [
+   {
+    "instance": "mc_loadingMotifAnim",
+    "sprite": 141
+   }
+  ],
+  "mc_levelInfo": {
+   "title_txt": {
+    "flags": {
+     "html": true,
+     "multiline": false,
+     "readonly": true,
+     "autosize": false,
+     "wordwrap": false,
+     "noselect": true
+    },
+    "font": 1,
+    "height_twips": 480,
+    "color_rgba": [
+     255,
+     255,
+     255,
+     255
+    ],
+    "align": 2,
+    "variable": "",
+    "initial_text": "<p align=\"center\"></p>"
+   },
+   "description_txt": {
+    "flags": {
+     "html": true,
+     "multiline": true,
+     "readonly": true,
+     "autosize": false,
+     "wordwrap": true,
+     "noselect": true
+    },
+    "font": 1,
+    "height_twips": 480,
+    "color_rgba": [
+     169,
+     170,
+     176,
+     255
+    ],
+    "align": 2,
+    "variable": "",
+    "initial_text": "<p align=\"center\"></p>"
+   },
+   "animation": "alpha ease-in of title/description (interp \"easeout\")"
+  },
+  "mc_engageText": {
+   "engage_txt": {
+    "flags": {
+     "html": true,
+     "multiline": true,
+     "readonly": true,
+     "autosize": false,
+     "wordwrap": true,
+     "noselect": true
+    },
+    "font": 1,
+    "height_twips": 400,
+    "color_rgba": [
+     169,
+     170,
+     176,
+     255
+    ],
+    "align": 2,
+    "variable": "",
+    "initial_text": "<p align=\"center\"></p>"
+   }
+  },
+  "loading_label": {
+   "flags": {
+    "html": true,
+    "multiline": false,
+    "readonly": true,
+    "autosize": false,
+    "wordwrap": false,
+    "noselect": true
+   },
+   "font": 1,
+   "height_twips": 400,
+   "color_rgba": [
+    169,
+    170,
+    176,
+    255
+   ],
+   "align": 2,
+   "variable": "",
+   "initial_text": "<p align=\"center\"><font face=\"Distilla Cyrillic Regular\" size=\"20\" color=\"#a9aab0\" letterSpacing=\"0.000000\" kerning=\"1\">LOADING</font></p>"
+  },
+  "fonts": {
+   "1": "Distilla Cyrillic Regular",
+   "54": "Cybertron Glyphs"
+  },
+  "font_note": "title/description/tips use embedded \"Distilla Cyrillic Regular\"",
+  "spinner_motif (sprite timelines + ring textures)": {
+   "141": {
+    "frames": 1,
+    "labels": [],
+    "bitmaps": [
+     {
+      "image": "LoadScreen_GFX_I20",
+      "png": "content/UI_GFxLoading_p/LoadScreen_GFX_I20.png"
+     },
+     {
+      "image": "LoadScreen_GFX_I24",
+      "png": "content/UI_GFxLoading_p/LoadScreen_GFX_I24.png"
+     },
+     {
+      "image": "LoadScreen_GFX_I27",
+      "png": "content/UI_GFxLoading_p/LoadScreen_GFX_I27.png"
+     },
+     {
+      "image": "LoadScreen_GFX_I2D",
+      "png": "content/UI_GFxLoading_p/LoadScreen_GFX_I2D.png"
+     }
+    ]
+   },
+   "140": {
+    "frames": 1000,
+    "labels": [],
+    "bitmaps": [
+     {
+      "image": "LoadScreen_GFX_I20",
+      "png": "content/UI_GFxLoading_p/LoadScreen_GFX_I20.png"
+     },
+     {
+      "image": "LoadScreen_GFX_I24",
+      "png": "content/UI_GFxLoading_p/LoadScreen_GFX_I24.png"
+     },
+     {
+      "image": "LoadScreen_GFX_I27",
+      "png": "content/UI_GFxLoading_p/LoadScreen_GFX_I27.png"
+     },
+     {
+      "image": "LoadScreen_GFX_I2D",
+      "png": "content/UI_GFxLoading_p/LoadScreen_GFX_I2D.png"
+     }
+    ]
+   },
+   "18": {
+    "frames": 590,
+    "labels": [
+     {
+      "frame": 0,
+      "label": "spinIn"
+     },
+     {
+      "frame": 34,
+      "label": "loopStart"
+     }
+    ],
+    "bitmaps": []
+   },
+   "136": {
+    "frames": 90,
+    "labels": [
+     {
+      "frame": 38,
+      "label": "loop"
+     }
+    ],
+    "bitmaps": []
+   }
+  },
+  "gradients_and_font_textures": [
+   "content/UI_GFxLoading_p/LoadScreen_GFX_F0.png",
+   "content/UI_GFxLoading_p/LoadScreen_GFX_G0.png",
+   "content/UI_GFxLoading_p/LoadScreen_GFX_G1.png",
+   "content/UI_GFxLoading_p/LoadScreen_GFX_G2.png",
+   "content/UI_GFxLoading_p/LoadScreen_GFX_G3.png",
+   "content/UI_GFxLoading_p/LoadScreen_GFX_G4.png",
+   "content/UI_GFxLoading_p/LoadScreen_GFX_G5.png",
+   "content/UI_GFxLoading_p/LoadScreen_GFX_I20.png",
+   "content/UI_GFxLoading_p/LoadScreen_GFX_I24.png",
+   "content/UI_GFxLoading_p/LoadScreen_GFX_I27.png",
+   "content/UI_GFxLoading_p/LoadScreen_GFX_I2D.png"
+  ],
+  "confidence": "CONFIRMED AUTHORED DATA"
+ },
+ "text": {
+  "$UIText.LoadScreen": {
+   "Loading": "Loading",
+   "LoadingMap": "in `m",
+   "ResumeAutobot": "Autobot Campaign",
+   "ResumeDecepticon": "Decepticon Campaign"
+  },
+  "FRA": {
+   "Loading": "Chargement...",
+   "LoadingMap": "dans `m",
+   "ResumeAutobot": "Campagne des Autobots",
+   "ResumeDecepticon": "Campagne des Decepticons"
+  }
+ },
+ "tips": {
+  "base (TnOnlineGameSettingsBase.EngageText)": [
+   "Thermo Mines will seek their target.",
+   "Remember to reload your weapon after every fire fight.",
+   "The longer the Plasma Cannon is charged, the more damage it causes.",
+   "The Scatter Blaster is most effective at close range.",
+   "Energon Grenades create a healing aura when they explode.",
+   "Use EMP Grenades to disorient your enemies.",
+   "Bring on the pain train. In truck form, take out enemies using your Ram ability.",
+   "The Thermo Rocket Launcher can only lock-on to vehicles.",
+   "The Whirlwind Ability is a devastating melee attack capable of hitting multiple targets.",
+   "Do a Barrel Roll while in jet form to avoid getting hit.",
+   "Use the Energon Repair Ray to heal spawned Sentries.",
+   "Use Fine Aim for precision targeting.",
+   "You can remotely detonate grenades launched by the Magma Frag Launcher.",
+   "The X12 Scrapmaker winds up slowly before unleashing its full power.",
+   "If you run out of ammo for your Robot weapons, don't forget about your Vehicle weapons.",
+   "If an enemy gets too close for comfort, bash them with a melee attack.",
+   "Double jump in Robot form by pressing the jump button a second time while in the air.",
+   "Cancel certain Abilities like Barrier and Cloaking by pressing the Ability button after activation.",
+   "The Hover Ability increases all weapon damage.",
+   "While using the Hover Ability, you can press the Jump button at any time to cancel it.",
+   "Warcry buffs your teammates with increased armor and damage.",
+   "Use the Cloaking Ability to turn invisible for a brief time.",
+   "Continuously firing your weapons makes them less accurate. Try firing in bursts.",
+   "The Energon Repair Ray is a beam weapon that heals teammates and damages enemies.",
+   "Grab an Overshield for increased armor.",
+   "Jumping decreases the accuracy of your weapons."
+  ],
+  "per_mode": {
+   "DM": {
+    "name": {
+     "INT": "Deathmatch",
+     "FRA": "Match à élimination"
+    },
+    "tips_unique": [
+     "Don't get fooled. Decoy Traps can be destroyed by shooting them."
+    ],
+    "note": "all 26 array entries are the same sentence in the shipped data: every loading screen for this mode shows that one tip"
+   },
+   "TDM": {
+    "name": {
+     "INT": "Team Deathmatch",
+     "FRA": "Match à élimination en équipe"
+    },
+    "tips_unique": [
+     "Don't get fooled. Decoy Traps can be destroyed by shooting them."
+    ],
+    "note": "all 26 array entries are the same sentence in the shipped data: every loading screen for this mode shows that one tip"
+   },
+   "CTF": {
+    "name": {
+     "INT": "Code of Power",
+     "FRA": "Codex"
+    },
+    "tips_unique": [
+     "You can't shoot while carrying the Code of Power but you can use your Abilities.",
+     "The Code of Power will be dropped if the carrier changes into vehicle form.",
+     "The Code of Power can be used for a powerful melee attack.",
+     "Don't get fooled. Decoy Traps can be destroyed by shooting them."
+    ],
+    "note": null
+   },
+   "KOTH": {
+    "name": {
+     "INT": "Power Struggle",
+     "FRA": "Lutte pour le pouvoir"
+    },
+    "tips_unique": [
+     "Don't get fooled. Decoy Traps can be destroyed by shooting them.",
+     "No loitering! Power nodes move around quickly so be sure to keep up when they do.",
+     "Buff your defenses before entering an active node."
+    ],
+    "note": null
+   },
+   "DOM": {
+    "name": {
+     "INT": "Conquest",
+     "FRA": "Conquête"
+    },
+    "tips_unique": [
+     "Set up Barriers, Sentries, and Thermo Mines to defend captured power nodes.",
+     "Defending your team's power nodes is just as important as capturing new power nodes.",
+     "Don't get fooled. Decoy Traps can be destroyed by shooting them."
+    ],
+    "note": null
+   },
+   "SV": {
+    "name": {
+     "INT": "Escalation",
+     "FRA": "Escalade"
+    },
+    "tips_unique": [
+     "Thermo Mines will seek their target.",
+     "Use Fine Aim for precision targeting.",
+     "The Hover Ability increases all weapon damage.",
+     "While using the Hover Ability, you can press the Jump button at any time to cancel it.",
+     "Warcry buffs your teammates with increased armor and damage.",
+     "Use the Cloaking Ability to turn invisible for a brief time.",
+     "Continuously firing your weapons makes them less accurate. Try firing in bursts.",
+     "The Energon Repair Ray is a beam weapon that heals teammates and damages enemies.",
+     "Grab an Overshield for increased armor.",
+     "Jumping decreases the accuracy of your weapons.",
+     "Remember to reload your weapon after every fire fight.",
+     "The longer the Plasma Cannon is charged, the more damage it causes.",
+     "The Scatter Blaster is most effective at close range.",
+     "Energon Grenades create a healing aura when they explode.",
+     "Use EMP Grenades to disorient your enemies.",
+     "Bring on the pain train. In truck form, take out enemies using your Ram ability.",
+     "The Thermo Rocket Launcher can only lock-on to vehicles.",
+     "The Whirlwind Ability is a devastating melee attack capable of hitting multiple targets.",
+     "Do a Barrel Roll while in jet form to avoid getting hit.",
+     "Use the Energon Repair Ray to heal spawned Sentries.",
+     "You can remotely detonate grenades launched by the Magma Frag Launcher.",
+     "The X12 Scrapmaker winds up slowly before unleashing its full power.",
+     "If you run out of ammo for your Robot weapons, don't forget about your Vehicle weapons.",
+     "If an enemy gets too close for comfort, bash them with a melee attack.",
+     "Double jump in Robot form by pressing the jump button a second time while in the air.",
+     "Cancel certain Abilities like Barrier and Cloaking by pressing the Ability button after activation."
+    ],
+    "note": null
+   },
+   "EXT": {
+    "name": {
+     "INT": "Countdown to Extinction",
+     "FRA": "Équilibrage équipes"
+    },
+    "tips_unique": [
+     "You can't shoot while carrying the bomb but you can use your Abilities.",
+     "The bomb carrier will drop the bomb if they change into vehicle form.",
+     "The bomb carrier can use the bomb for a powerful melee attack.",
+     "Follow the HUD marker to locate the bomb carrier.",
+     "Don't get fooled. Decoy Traps can be destroyed by shooting them."
+    ],
+    "note": null
+   },
+   "CP": {
+    "name": {
+     "INT": "Campaign",
+     "FRA": "Campagne"
+    },
+    "tips_unique": [
+     "Collect Energon shards from fallen enemies to power up your abilities.",
+     "The only way to kill a Brute is to destroy its backpack.",
+     "Avoid the Brute's ground pound attack by jumping.",
+     "Smash Energon crates to find weapons, grenades, ammo, and health.",
+     "When you're in a turret, you can rip the weapon free of its mounting and fire it while moving.",
+     "Look for special destructible Autobot and Decepticon symbols.",
+     "Don't take a Tank head on. Flank around it and destroy the Fuel Cell at the back of the Tank.",
+     "When fighting Cloakers look for their charged Plasma Cannon to track them down."
+    ],
+    "note": null
+   },
+   "CCP": {
+    "name": {
+     "INT": "Campaign",
+     "FRA": "Campagne"
+    },
+    "tips_unique": [
+     "Even if you're full collect Energon Shards for extra points.",
+     "Score bonus points with headshots and melee kills.",
+     "Score points for healing  your teammates.",
+     "Increase your score multiplier by killing enemies quickly."
+    ],
+    "note": null
+   }
+  }
+ },
+ "map_names (MapId -> display name used on the loading screen)": {
+  "501": {
+   "INT": "Seed Of Corruption",
+   "FRA": "Graine de corruption",
+   "map": "MP_IAC_Seed_Base_m",
+   "cooked": true
+  },
+  "502": {
+   "INT": "Berth",
+   "FRA": "Poste d'amarrage",
+   "map": "MP_IAC_Berth_Base_m",
+   "cooked": true
+  },
+  "503": {
+   "INT": "Complex",
+   "FRA": "Complexe",
+   "map": "MP_UND_Complex_BASE_m",
+   "cooked": true
+  },
+  "504": {
+   "INT": "Rust",
+   "FRA": "Rouille",
+   "map": "MP_IAC_Rust_BASE_m",
+   "cooked": true
+  },
+  "505": {
+   "INT": "Broken Hope",
+   "FRA": "Espoir perdu",
+   "map": "MP_ESC_BrokenHope_BASE_m",
+   "cooked": true
+  },
+  "506": {
+   "INT": "Remnant",
+   "FRA": "Vestiges",
+   "map": "MP_ESC_Remnant_BASE_m",
+   "cooked": true
+  },
+  "507": {
+   "INT": "Orbital Debris",
+   "FRA": "Débris orbitaux",
+   "map": "MP_ORB_Debris_BASE_m",
+   "cooked": true
+  },
+  "508": {
+   "INT": "Streets",
+   "FRA": "Rues",
+   "map": "MP_IAC_Streets_Base_m",
+   "cooked": true
+  },
+  "509": {
+   "INT": "Molten",
+   "FRA": "En fusion",
+   "map": "MP_KON_Molten_Base_m",
+   "cooked": true
+  },
+  "510": {
+   "INT": "Gorge",
+   "FRA": "Gorge",
+   "map": "MP_UND_Gorge_BASE_m",
+   "cooked": true
+  },
+  "512": {
+   "INT": "Fortress",
+   "FRA": "Forteresse",
+   "map": "MP_KON_Fortress_BASE_m",
+   "cooked": false
+  },
+  "511": {
+   "INT": "Havoc",
+   "FRA": "Dévastation",
+   "map": "MP_ORB_Havoc_BASE_m",
+   "cooked": false
+  },
+  "513": {
+   "INT": "Forsaken",
+   "FRA": "Oublié",
+   "map": "MP_ESC_Tranquillity_BASE_m",
+   "cooked": false
+  }
+ },
+ "audio": {
+  "loading_music": "none authored (no Kismet/script loading music)",
+  "video_audio": {
+   "LoadingScreenAlpha.mkv": false,
+   "TF_InitialStartup.mkv": false,
+   "TF_InitialStartup_EU_FRA.mkv": false,
+   "TF_InitialStartup_EU_INT.mkv": false,
+   "TF_InitialStartup_FRA.mkv": false,
+   "TF_InitialStartup_NA_FRA.mkv": false,
+   "TF_InitialStartup_NA_INT.mkv": false,
+   "TF_LoadingScreen_FRA.mkv": false,
+   "TF_LoadingScreen_INT.mkv": false
+  },
+  "gfx_sounds": []
+ },
+ "example (vertical slice)": {
+  "url": "MP_IAC_Streets_Base_m?MapId=508?Game=TransContent.TnVersusGame?GameModeTag=TDM...",
+  "title": "TEAM DEATHMATCH (AS upper-cases)",
+  "text": "in Streets",
+  "tips": "3 picks from TnOnlineGameSettingsTDM.EngageText = \"Don't get fooled. Decoy Traps can be destroyed by shooting them.\"",
+  "confidence": "CONFIRMED AUTHORED DATA (composition of the rules above)"
+ }
+}
