@@ -100,15 +100,35 @@ Pickup sounds:
 * Plus a `PickupObtainedDialog` event each.
 
 State machine:
-* It is native: TnPickupFactory `SetPickupVisible` / `SetPickupHidden` / `IsReadyToPickup` / `GiveTo` / `TakePickUp` /
-  `GetRespawnTime`, and state `Pickup`. These are 50–144-byte stubs with no bytecode.
-* TnHealthPickupFactory overrides `SetPickupVisible`.
+* It is **UnrealScript** (decompiled by RE): TnPickupFactory `SetPickupVisible` / `SetPickupHidden` / `IsReadyToPickup` /
+  `GiveTo` / `TakePickUp` / `GetRespawnTime`, and state `Pickup`. TnHealthPickupFactory overrides `SetPickupVisible`.
+* **Correction (2026-10-03):** this pass first called these functions native stubs because their exports are only 50–144
+  bytes. That was wrong.
+
+**Beam activation (CONFIRMED; RE `MILESTONE04_STREETS_PICKUP_OBJECTIVE_PRESENTATION.md` §1, script decompilation):**
+* `SetPickupVisible` → `PickupEffect.ActivateSystem()`; `SetPickupHidden` → `PickupEffect.DeactivateSystem()`.
+* `InitializePickup` calls `SetPickupVisible` at begin play. So the `Pickup_FX` beam, although authored
+  `bAutoActivate=false`, is **on whenever an attached factory is available** and off while taken or Sleeping.
+
+| factory | beam |
+|---|---|
+| ammo crates (14) | on while available, every mode; off when taken; on again after the 30 s respawn |
+| flag factories (2) | CTF only; otherwise Disabled (hidden, no collision). Each round only the defending team's factory is available (beam on); the other sleeps (beam off). Taken → Sleeping; returned → available immediately |
+| bomb factory (1) | EXT only; otherwise Disabled. After a score it returns after `WaitAfterScoreTime` 5.0 s; other returns are immediate |
+| health / overshield `Pickup_FX` (10) | never drawn: not in the `Components` array, so never attached |
+
+* The health and overshield `CustomPickupEffect` follows the same visible/hidden path: shown while available, hidden on
+  pickup, back after `RespawnTime`.
+* `ShouldDisplayHighlightFx` = true on `TnAmmoCratePickupFactory` and `TnWeaponPickupFactory` (inherited by flag/bomb).
+* Machine-readable: the `state_behaviour.beam_activation` section of `streets_pickup_factories.json`, and
+  `render_index.json` `pickup_fx_components`.
 
 ## 3. Pickup FX (`streets_pickup_fx.json`): **27 / 9 / 1 confirmed**
 * **The particle systems are cooked in `TransGame`**, not in the Streets packages.
 * **"Weapon pickup effect" is `FX_Pickups_p.FX.Pickup_FX`**:
   * 14 ammo + 9 health + 1 overshield + 2 flag + 1 bomb = **27 components**.
-  * Its stated role is a highlight light beam, which is **inactive by default** (bAutoActivate false).
+  * It is a highlight light beam with `bAutoActivate=false`. Script activates it whenever the factory is available (see
+    the beam-activation rule in §2).
   * The 10 copies on health/overshield factories are not attached.
 * **`Pickup_FX`:** one mesh emitter, `LightBeam_WepPickup_STAT`, material `LightVolume_WepPickup_MAT` (additive, unlit,
   two-sided).
