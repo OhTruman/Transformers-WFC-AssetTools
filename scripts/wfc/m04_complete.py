@@ -377,6 +377,17 @@ def main():
     attached = {c: {k: v['in_Components_array']['value'] for k, v in r.get('effect_components', {}).items()}
                 for c, r in pf['factory_classes'].items() if isinstance(r, dict)}
     mode_of = {'TnGameObjectivePickupFactoryFlag': ['CTF'], 'TnGameObjectivePickupFactoryBomb': ['EXT']}
+    def draw_rule(i, att, auto):
+        if not att:
+            return 'do not draw: not attached at spawn'
+        if auto:
+            return ('draw while the pickup is available (auto-activates; hide when taken, back after RespawnTime %s s)'
+                    % i['RespawnTime']['value'])
+        tail = ('; CTF: only the defending team factory is available each round' if 'Flag' in i['class'] else
+                '; returns 5 s after a score (WaitAfterScoreTime)' if 'Bomb' in i['class'] else
+                '; back after RespawnTime %s s' % i['RespawnTime']['value'])
+        return ('draw while the factory is available: highlight beam activated by SetPickupVisible, deactivated by '
+                'SetPickupHidden (taken / Sleeping)' + tail)
     fxc = []
     for i in pf['instances']:
         t = i['transform']
@@ -385,7 +396,10 @@ def main():
             att = attached.get(i['class'], {}).get(slot)
             auto = e['bAutoActivate'] if e['bAutoActivate'] is not None else True
             sysd = pfx.get(e['Template']) or {}
-            draws = bool(att) and auto
+            # RE (MILESTONE04_STREETS_PICKUP_OBJECTIVE_PRESENTATION.md s1, UnrealScript decompilation, read-only):
+            # TnPickupFactory.SetPickupVisible -> PickupEffect.ActivateSystem, SetPickupHidden -> DeactivateSystem; called from
+            # InitializePickup at begin play, so an attached PickupEffect is ON whenever the factory is available.
+            draws = bool(att)
             fxc.append({'component': e['component'], 'factory': i['actor'], 'factory_class': i['class'], 'slot': slot,
                         'template': e['Template'], 'archetype': e['archetype'],
                         'attached_at_spawn (in Components array)': att, 'bAutoActivate': auto,
@@ -395,13 +409,11 @@ def main():
                         'emitters': [em['name'] for em in sysd.get('emitters', [])],
                         'decoded_system': 'manifests/streets_pickup_fx.json -> systems["%s"]' % e['Template'],
                         'visible_in_modes': mode_of.get(i['class'], MODES),
-                        'draw_rule': ('draw while the pickup is available (auto-activates; hide when taken, back after RespawnTime %s s)'
-                                      % i['RespawnTime']['value']) if draws else
-                                     ('do not draw: not attached at spawn' if not att else
-                                      'attached but inactive (bAutoActivate false): highlight beam, activation condition native (UNKNOWN)'),
-                        'confidence': CONF if (draws or not att) else PART})
+                        'draw_rule': draw_rule(i, att, auto),
+                        'confidence': CONF})
     ri['pickup_fx_components'] = {'count': len(fxc), 'by_template': dict(Counter(x['template'] for x in fxc)),
-                                  'drawn_at_load': sum(1 for x in fxc if x['draw_rule'].startswith('draw')),
+                                  'drawn_when_available': sum(1 for x in fxc if x['draw_rule'].startswith('draw')),
+                                  'drawn_in_tdm': sum(1 for x in fxc if x['draw_rule'].startswith('draw') and 'TDM' in x['visible_in_modes']),
                                   'components': fxc,
                                   'level_emitters': 'the 8 level steam emitters are in map_fx.json (always active)'}
     for x in ri['not_in_world_glb (authored renderables)']:
