@@ -363,8 +363,8 @@ def main():
                                   'mode_tags': mode_tags,
                                   'maps_per_mode': {t: [m['MapFilename'] for m in sel if t in m['CompatibleGameTypes']] for t in mode_tags},
                                   'menu_visible_playlists': [p['section'] for p in pls if str(p.get('VisibleInMenu')).lower() == 'true'],
-                                  'icons': 'no per-mode icon asset found by name; mode presentation is text + GFx symbols '
-                                           '(see frontend_gfx.json PartyLobby/GameLobby) - UNKNOWN beyond that',
+                                  'icons': 'UI_GFxShared_p/SharedIcons_GFX exports mc_gameModeIcon<TAG> for every mode; full mode '
+                                           'presentation (text, icons, announcer, music, HUD panels) in frontend_mode_presentation.json',
                                   'confidence': CONF})
 
     # ---------------- audio

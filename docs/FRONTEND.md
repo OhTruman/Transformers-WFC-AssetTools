@@ -105,7 +105,11 @@ Fields of each `frontend_gfx.json` record:
 * **Menu order:** the `TnOnlinePlaylistManager.Playlists` order is TDM, DM, DOM, CTF, EXT, KOTH, SV, CP, CCP. HIGH that the
   menu follows it.
 * **One Must Fall (OMF):** has a GameModeInfo but no playlist.
-* **Mode icons:** no per-mode icon asset was found by name. UNKNOWN.
+* **Mode icons:** `UI_GFxShared_p/SharedIcons_GFX` exports `mc_gameModeIcon<TAG>` for every mode (CONFIRMED symbol). The
+  lobbies load it through `mc_gameModeIconLoadReference` (HIGH, name). Which bitmap each icon draws is not decoded (PARTIAL).
+* **Cut mode:** `mc_gameModeIconRO` and announcer line `MP_GameTypeRollOutDialog` exist, but no GameModeInfo, playlist or settings
+  class does: an unshipped "Roll Out" mode. UNKNOWN.
+* Full per-mode presentation is in `frontend_mode_presentation.json` (next section).
 
 ## Loading presentation (`frontend_loading.json`)
 
@@ -135,4 +139,73 @@ Fields of each `frontend_gfx.json` record:
 | CONFIRMED | config values; Kismet links and the movie order; GFx tags, labels, exports and bytecode strings; cue graphs; MapInfo and playlist records; binding classes and function exports |
 | HIGH | menu order equals ini/playlist order; `PlaySound` name equals cue name; roles of LoadScreen symbols; runtime-suffixed key prefixes |
 | PARTIAL | bridge calls without a binding-class function; `TnSurveyActionScriptBinding` is listed but not cooked |
-| UNKNOWN | native vs script status of each function (the WFC FunctionFlags tail is not decoded); mode icons; map descriptions; the 10 missing keys |
+| UNKNOWN | native vs script status of each function (the WFC FunctionFlags tail is not decoded); per-icon bitmap binding; map descriptions; the 10 missing keys |
+
+## Mode presentation (`frontend_mode_presentation.json`, `scripts/wfc/fe_presentation.py`)
+Per mode (DM, TDM, CTF, KOTH, DOM, EXT, SV, CP, CCP):
+* **Text.** Localized FriendlyName / Description / RulesFormat (INT + FRA) from `TnOnlineGameSettings<TAG>`.
+  * Rule tokens: `` `p `` = goal score, `` `t `` = time, `` `r `` = rounds (`RulePairs` property ids).
+  * The `UIText [GameTypes]` key also applies.
+  * The mode's loading tips (`EngageText`, de-duplicated).
+* **Order and settings.**
+  * Menu order (playlist manager).
+  * Settings: GameClass `TnVersusGame`, lobby class, required players, team type, time limits, rules classes
+    (`TnGameRules_*`), and the public connection count.
+* **Announcer.**
+  * `TnGameTypeMessage<TAG>.GameTypeDialog` / `GameDescriptionDialog` → event → `CHR_ANNOUNCER_DIALOG` (`HmSoundEventSet`, bound
+    by every MP map's `TnWorldInfo.AnnouncerSoundEventSet`) → `BL_DX_SWITCHBOARD` cue → WAVs.
+  * Each cue carries the Optimus (team 0) and Megatron (team 1) takes; which one plays is script (RE).
+  * CTF has no GameTypeDialog; it uses `TnCTFMessage` attacker/defender lines.
+* **Music.** `GameTypeMusic`, `GameNearlyCompleteMusic`, Autobots/Decepticons win and tie stingers in `BL_LVL_MP_MX`. Each cue
+  has several per-campaign variants, e.g. TDM/DM `DM_START` has 4 WAVs.
+* **Icon and HUD score panel.**
+  * Icon: `mc_gameModeIcon<TAG>`.
+  * Score panel (Hud_GFX, name-based HIGH): `mc_scoreTeam` for the team modes, `mc_scoreFreeForAll` for DM, `mc_scoreSurvival`
+    for SV, `mc_scoreCoop` for CP/CCP.
+* **Shared messages (all resolved).** `TnGameProgressAnnouncementMessage` (time/score remaining lines), `TnVersusGameOverMessage`
+  (win/lose/tie text and win lines), `TnDominationMessage` (capturing/captured A–E), `TnKillStreakAnnouncer` (streaks 3/5/7/10),
+  `TnMessageTextColors`.
+
+## HUD / scoreboard / match flow (`frontend_hud.json`)
+* **`TnHUD`.**
+  * `HudMovie` = `UI_GFxHud_p.Hud_GFX_1`; `ScoreboardMovie` = `UI_GFxInGameStats_p.InGameStats_GFX_1`.
+  * 32 data observers plus 2 temporary mode observers (Domination capture, bomb defuse timer). Each has a `CallbackBindingName`.
+  * 21 more `_global` callbacks are TnHUD properties.
+* **`TnUIControllerMultiplayer`.**
+  * Pre-match countdown: `PreGameCountdown_GFX`. `TnVersusGame.MatchAutoStartCountdown` is 10 and `MatchOverCountdown` is 15.
+  * Pause: `PauseMenu_GFX`. Spectate/respawn: `MultiplayerRespawn_GFX`. Results: `EndGameStats_GFX`.
+  * In-game lobby: `CustomTransformers_GFX`. Also message, text and notification prompts and the cursor.
+* **Callback resolution:**
+  * 41 of 52 script→AS callbacks are defined as `_global` functions in these movies (CONFIRMED name match).
+  * 11 are defined in none of them and go to RE: CompleteObjective, NotifyFirstSpawn, NotifyHeat / NormalizedHeat, the
+    Primary / Secondary / Melee weapon changed callbacks, NotifyWeaponReticuleTypeChanged, SetAbility, UpdatePlayerListData,
+    WaveformData.
+* **Element catalog (name-based, HIGH).** Covers health (segmented), overshield, ammo (clip/reserve/grenade), reload/jam, weapon,
+  crosshair (reticule/spread/lock-on), heat, timer, team score, kill/streak, objective markers, damage, abilities, form, messages
+  and grenades. Each element lists its script-side observers and callbacks and its Hud_GFX symbols, labels and images.
+* **Objective markers are drawn on the canvas, not in Scaleform.**
+  * `TnObjectiveMarkerTypeTransformerVersus` uses `UI_HudMarkers_p.MarkerEnemy_MAT` / `MarkerAlly_MAT` / `TargetHealthBar_MAT`
+    and `UI_TransEngineFonts_p.MarkerFont`, with sizes, label colours and the focus threshold.
+  * `TnObjectiveMarkerTypeDomination` uses `MPMarkerDominationNode_MAT` with "Capture"/"Defend" labels.
+* **Text:** `UIText [Hud] / [EndGameStats] / [Respawn] / [PauseMenu] / [Downed] / [GameOver]`.
+
+## Asset inventory (`frontend_assets.json`)
+* **UI packages.** All 57 `UI_*` packages: role, size, cooked classes, and extracted files by type. The extracted files include
+  175 HUD PNGs, 105 CharacterSelect PNGs, 154 Extras images, 84 checkpoint thumbnails, 12 level thumbnails, 19 HUD markers and
+  12 localized logos.
+* **UI levels.** Each UI level's cooked source packages are listed. UI_FrontEnd_m uses `ENV_NEU_CybertronOrbit_P`,
+  `FX_UI_FrontEnd_p`, `UI_FrontEndMaterials_p` and others for the orbit backdrop.
+* **Faction imagery.** There is no dedicated package. It comes from `UI_CustomChar_p` palettes, CharacterSelect / Customize PNGs
+  and the lobby faction fscommands.
+
+## MP map catalog (`mp_map_catalog.json`, `scripts/wfc/fe_map_catalog.py`)
+* **What each record holds.** Each MapInfo map gets:
+  * selection data;
+  * the family prefix (IAC / UND / ORB / KON / ESC is the package code; its expansion is not authored);
+  * streamed levels (`LevelStreamingKismet`: `_ART_m`, `_AUDIO_m`; Seed also streams `MP_IAC_Global_Art_m`; Seed, Berth and Rust
+    stream `GLB_Audio_m`) and `_LM` / `_LOC` companions;
+  * source-package dependencies, actor profile and mode-actor counts;
+  * WorldInfo announcer set and LevelCamera.
+* **Streets** carries `reference_implementation` pointers to its complete manifests.
+* Configured but uncooked maps are listed as `cooked: false`.
+* Second-map readiness: see `docs/NEXT_MAP_READINESS.md`.

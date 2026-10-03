@@ -1,0 +1,2080 @@
+{
+ "generated_by": "AssetTools/scripts/wfc/fe_presentation.py",
+ "sources": [
+  "TransGame.Default__TnOnlineGameSettings<TAG>(Public) CDOs",
+  "TransGame.int / TransGame.FRA [TnOnlineGameSettings<TAG>]",
+  "TransGame.Default__TnGameTypeMessage<TAG>",
+  "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG (bound by every MP TnWorldInfo.AnnouncerSoundEventSet)",
+  "TransPlaylists.ini",
+  "UIText.int [GameTypes]",
+  "frontend_gfx.json"
+ ],
+ "announcer_voices (TnAnnouncer: Team0/Team1 DialogCharacter)": {
+  "Team0DialogCharacter": "DialogCharacters.OPRIME",
+  "Team1DialogCharacter": "DialogCharacters.MGTRON"
+ },
+ "announcer_note": "each switchboard cue carries the Optimus (team 0) and Megatron (team 1) take; which one plays is decided by script/native (RE)",
+ "modes": {
+  "DM": {
+   "menu_order (TnOnlinePlaylistManager.Playlists)": 1,
+   "mode_property_id (TagToModeMap)": 3,
+   "settings_class": "TransGame.TnOnlineGameSettingsDM",
+   "text": {
+    "FriendlyName": {
+     "INT": "Deathmatch",
+     "FRA": "Match \u00e0 \u00e9limination"
+    },
+    "Description": {
+     "INT": "Free-for-all deathmatch.",
+     "FRA": "Match \u00e0 \u00e9limination en m\u00eal\u00e9e g\u00e9n\u00e9rale."
+    },
+    "RulesFormat": {
+     "INT": "Kill `p enemies to win.",
+     "FRA": "\u00c9liminer `p ennemis pour gagner."
+    },
+    "rules_tokens (TnOnlineGameSettingsBase.RulePairs)": [
+     {
+      "Token": "`p",
+      "PropertyId": 1073741832
+     },
+     {
+      "Token": "`t",
+      "PropertyId": 1073741831
+     },
+     {
+      "Token": "`r",
+      "PropertyId": 1073741830
+     }
+    ],
+    "UIText.GameTypes": {
+     "Deathmatch": "Deathmatch",
+     "TeamDeathmatch": "Team Deathmatch"
+    }
+   },
+   "loading_tips (EngageText, de-duplicated; base tips in frontend_loading.json)": [
+    "Don't get fooled. Decoy Traps can be destroyed by shooting them."
+   ],
+   "settings": {
+    "GameClass": "TransContent.TnFreeForAllGame",
+    "LobbyGameClass": "TransContent.TnGameLobbyGameFreeForAll",
+    "NumRequiredPlayers": 4,
+    "TeamType": "GTS_FreeForAllGame",
+    "TimeLimits": [
+     600.0,
+     900.0,
+     1200.0
+    ],
+    "Rules": [
+     "TransGame.TnGameRules_ScoreKillsDM",
+     "TransGame.TnGameRules_TrackKillsMP",
+     "TransGame.TnGameRules_ReportGameProgressTime",
+     "TransGame.TnGameRules_ReportGameProgressKills"
+    ]
+   },
+   "public_settings": {
+    "NumPublicConnections": 10,
+    "StatsWriters": [
+     "TransGame.TnStatsWriteDM",
+     "TransGame.TnStatsWriteKills",
+     "TransGame.TnStatsWriteAccuracy"
+    ]
+   },
+   "announcer": {
+    "GameTypeDialog": {
+     "event": "SoundEvents_Dialog.Announcer.MP_GameTypeDeathMatchDialog",
+     "cue": "BL_DX_SWITCHBOARD.SC002656",
+     "wavs": [
+      "content/WL_DX_OPRIME/DX_OPRIME_LK002656.wav",
+      "content/WL_DX_MGTRON/DX_MGTRON_LK002665.wav"
+     ],
+     "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "GameDescriptionDialog": {
+     "event": "SoundEvents_Dialog.Announcer.MP_GameDescriptionDeathMatchDialog",
+     "cue": "BL_DX_SWITCHBOARD.SC008977",
+     "wavs": [
+      "content/WL_DX_OPRIME/DX_OPRIME_LK008977.wav",
+      "content/WL_DX_MGTRON/DX_MGTRON_LK008978.wav"
+     ],
+     "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    }
+   },
+   "music": {
+    "GameTypeMusic": {
+     "cue": "BL_LVL_MP_MX.DM_START",
+     "missing": false,
+     "category": "MUSIC_DRY",
+     "wavs": [
+      "content/WL_MX_05/STNG_OMEGA_LIVES_DM_START_01.wav",
+      "content/WL_MX_04/STNG_PRISON_BREAK_DM_START_01.wav",
+      "content/WL_MX_02/STNG_ENTER_THE_CORE_DM_START_01.wav",
+      "content/WL_MX_06/STNG_MEGATRONS_POWER_DM_START_01.wav"
+     ]
+    },
+    "GameNearlyCompleteMusic": {
+     "cue": "BL_LVL_MP_MX.DM_FINALSTRETCH_LP",
+     "missing": false,
+     "category": "MUSIC_DRY",
+     "wavs": [
+      "content/WL_MX_05/MX_OMEGA_LIVES_PERC_LP_01.wav",
+      "content/WL_MX_04/MX_PRISON_BREAK_PERC_BASS_LP_01.wav",
+      "content/WL_MX_02/MX_ENTER_THE_CORE_COMPLETE_01_LP.wav",
+      "content/WL_MX_02/MX_ENTER_THE_CORE_NO_BRASS_STRINGS_LP.wav",
+      "content/WL_MX_06/MX_MEGATRONS_POWER_FULL_03_LP.wav",
+      "content/WL_MX_06/MX_MEGATRONS_POWER_FULL_03_LP_PERC.wav"
+     ]
+    },
+    "AutobotsWinMusic": {
+     "cue": "BL_LVL_MP_MX.DM_END_AUTOBOTS_WIN",
+     "missing": false,
+     "category": "MUSIC_DRY",
+     "wavs": [
+      "content/WL_MX_05/STNG_OMEGA_LIVES_GTR.wav",
+      "content/WL_MX_04/L2_STINGER_TURRET_WAVE_DESTROYED.wav",
+      "content/WL_MX_04/STNG_PRISON_BREAK_HORN_PERC.wav",
+      "content/WL_MX_02/STNG_ENTER_CORE_STRING_SWELL.wav",
+      "content/WL_MX_06/STNG_MEGATRONS_POWER_SWELL_HIT.wav",
+      "content/WL_MX_06/STNG_SYBERTRONS_FATE_CYMBAL_ROLL_HIT.wav",
+      "content/WL_MX_06/STNG_MEGATRONS_POWER_STRING_PITCH_DROP.wav"
+     ]
+    },
+    "DecepticonsWinMusic": {
+     "cue": "BL_LVL_MP_MX.DM_END_DECEPTICONS_WIN",
+     "missing": false,
+     "category": "MUSIC_DRY",
+     "wavs": [
+      "content/WL_MX_05/STNG_OMEGA_LIVES_FULL_02.wav",
+      "content/WL_MX_05/STNG_OMEGA_LIVES_PLAYER_DEATH.wav",
+      "content/WL_MX_04/L2_SENTINELS_DEAD_STRING_FLUTTER_HEAVY.wav",
+      "content/WL_MX_04/STNG_PRISON_BREAK_HORN_PERC.wav",
+      "content/WL_MX_06/STNG_MEGATRONS_POWER_DRUM_FILL_HIT_BREATH_01.wav",
+      "content/WL_MX_06/STNG_MEGATRONS_POWER_GTR_DRUM_HIT_01.wav",
+      "content/WL_MX_02/STNG_ENTERING_THE_CORE_PERC_LONG.wav",
+      "content/WL_MX_02/STNG_ENTER_THE_CORE_A5_BOTTOM_FLR_TRANS.wav"
+     ]
+    },
+    "TieMusic": {
+     "cue": "BL_LVL_MP_MX.DM_END_TIE",
+     "missing": false,
+     "category": "MUSIC_DRY",
+     "wavs": [
+      "content/WL_MX_05/STNG_OMEGA_LIVES_FULL_02.wav",
+      "content/WL_MX_05/STNG_OMEGA_LIVES_PLAYER_DEATH.wav",
+      "content/WL_MX_04/L2_SENTINELS_DEAD_STRING_FLUTTER_HEAVY.wav",
+      "content/WL_MX_04/STNG_PRISON_BREAK_HORN_PERC.wav",
+      "content/WL_MX_02/STNG_ENTER_CORE_STRING_SWELL.wav",
+      "content/WL_MX_06/STNG_MEGATRONS_POWER_SWELL_HIT.wav",
+      "content/WL_MX_06/STNG_SYBERTRONS_FATE_CYMBAL_ROLL_HIT.wav",
+      "content/WL_MX_06/STNG_MEGATRONS_POWER_STRING_PITCH_DROP.wav"
+     ]
+    }
+   },
+   "game_type_message": {
+    "class": "TransGame.Default__TnGameTypeMessageDM",
+    "GameTypeMessage": "Deathmatch",
+    "Lifetime": 3.0,
+    "PosY": 0.8299999833106995
+   },
+   "gfx_symbols_named_after_mode (name match, HIGH)": [
+    {
+     "movie": "UI_GFxHud_p/Hud_GFX",
+     "names": [
+      "mc_scoreFreeForAll"
+     ]
+    },
+    {
+     "movie": "UI_GFxShared_p/SharedIcons_GFX",
+     "names": [
+      "mc_gameModeIconDM"
+     ]
+    }
+   ],
+   "icon": {
+    "movie": "UI_GFxShared_p/SharedIcons_GFX",
+    "file": "content/UI_GFxShared_p/SharedIcons_GFX.gfx",
+    "symbol": "mc_gameModeIconDM",
+    "loaded_by": "GameLobby_GFX / PartyLobby_GFX mc_gameModeIconLoadReference (HIGH, name)",
+    "bitmaps": "drawn from SharedIcons_GFX images (images_extracted in frontend_gfx.json); per-symbol bitmap binding not decoded (PARTIAL)",
+    "confidence": "CONFIRMED AUTHORED DATA (exported symbol)"
+   },
+   "hud_score_panel (Hud_GFX export, name-based HIGH)": "mc_scoreFreeForAll",
+   "confidence": "CONFIRMED AUTHORED DATA (authored text/classes/cues); behaviour of rules/messages = RE/Gameplay"
+  },
+  "TDM": {
+   "menu_order (TnOnlinePlaylistManager.Playlists)": 0,
+   "mode_property_id (TagToModeMap)": 7,
+   "settings_class": "TransGame.TnOnlineGameSettingsTDM",
+   "text": {
+    "FriendlyName": {
+     "INT": "Team Deathmatch",
+     "FRA": "Match \u00e0 \u00e9limination en \u00e9quipe"
+    },
+    "Description": {
+     "INT": "Eliminate the enemy team.",
+     "FRA": "\u00c9limine l'\u00e9quipe ennemie."
+    },
+    "RulesFormat": {
+     "INT": "Kill `p enemies from the other team to win.",
+     "FRA": "\u00c9liminer `p ennemis de l'autre \u00e9quipe pour gagner."
+    },
+    "rules_tokens (TnOnlineGameSettingsBase.RulePairs)": [
+     {
+      "Token": "`p",
+      "PropertyId": 1073741832
+     },
+     {
+      "Token": "`t",
+      "PropertyId": 1073741831
+     },
+     {
+      "Token": "`r",
+      "PropertyId": 1073741830
+     }
+    ],
+    "UIText.GameTypes": {
+     "TeamDeathmatch": "Team Deathmatch"
+    }
+   },
+   "loading_tips (EngageText, de-duplicated; base tips in frontend_loading.json)": [
+    "Don't get fooled. Decoy Traps can be destroyed by shooting them."
+   ],
+   "settings": {
+    "GameClass": "TransContent.TnVersusGame",
+    "LobbyGameClass": "TransContent.TnGameLobbyGameTeam",
+    "NumRequiredPlayers": 4,
+    "TeamType": "GTS_TeamGame",
+    "TimeLimits": [
+     600.0,
+     900.0,
+     1200.0
+    ],
+    "Rules": [
+     "TransGame.TnGameRules_ScoreKillsTDM",
+     "TransGame.TnGameRules_TrackKillsMP",
+     "TransGame.TnGameRules_ReportGameProgressTime",
+     "TransGame.TnGameRules_ReportGameProgressKills"
+    ]
+   },
+   "public_settings": {
+    "NumPublicConnections": 10,
+    "StatsWriters": [
+     "TransGame.TnStatsWriteTDM",
+     "TransGame.TnStatsWriteKills",
+     "TransGame.TnStatsWriteAccuracy"
+    ]
+   },
+   "announcer": {
+    "GameTypeDialog": {
+     "event": "SoundEvents_Dialog.Announcer.MP_GameTypeTeamDeathMatchDialog",
+     "cue": "BL_DX_SWITCHBOARD.SC002657",
+     "wavs": [
+      "content/WL_DX_OPRIME/DX_OPRIME_LK002657.wav",
+      "content/WL_DX_MGTRON/DX_MGTRON_LK002666.wav"
+     ],
+     "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "GameDescriptionDialog": {
+     "event": "SoundEvents_Dialog.Announcer.MP_GameDescriptionTeamDeathMatchDialog",
+     "cue": "BL_DX_SWITCHBOARD.SC008993",
+     "wavs": [
+      "content/WL_DX_OPRIME/DX_OPRIME_LK008993.wav",
+      "content/WL_DX_MGTRON/DX_MGTRON_LK008994.wav"
+     ],
+     "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    }
+   },
+   "music": {
+    "GameTypeMusic": {
+     "cue": "BL_LVL_MP_MX.DM_START",
+     "missing": false,
+     "category": "MUSIC_DRY",
+     "wavs": [
+      "content/WL_MX_05/STNG_OMEGA_LIVES_DM_START_01.wav",
+      "content/WL_MX_04/STNG_PRISON_BREAK_DM_START_01.wav",
+      "content/WL_MX_02/STNG_ENTER_THE_CORE_DM_START_01.wav",
+      "content/WL_MX_06/STNG_MEGATRONS_POWER_DM_START_01.wav"
+     ]
+    },
+    "GameNearlyCompleteMusic": {
+     "cue": "BL_LVL_MP_MX.DM_FINALSTRETCH_LP",
+     "missing": false,
+     "category": "MUSIC_DRY",
+     "wavs": [
+      "content/WL_MX_05/MX_OMEGA_LIVES_PERC_LP_01.wav",
+      "content/WL_MX_04/MX_PRISON_BREAK_PERC_BASS_LP_01.wav",
+      "content/WL_MX_02/MX_ENTER_THE_CORE_COMPLETE_01_LP.wav",
+      "content/WL_MX_02/MX_ENTER_THE_CORE_NO_BRASS_STRINGS_LP.wav",
+      "content/WL_MX_06/MX_MEGATRONS_POWER_FULL_03_LP.wav",
+      "content/WL_MX_06/MX_MEGATRONS_POWER_FULL_03_LP_PERC.wav"
+     ]
+    },
+    "AutobotsWinMusic": {
+     "cue": "BL_LVL_MP_MX.DM_END_AUTOBOTS_WIN",
+     "missing": false,
+     "category": "MUSIC_DRY",
+     "wavs": [
+      "content/WL_MX_05/STNG_OMEGA_LIVES_GTR.wav",
+      "content/WL_MX_04/L2_STINGER_TURRET_WAVE_DESTROYED.wav",
+      "content/WL_MX_04/STNG_PRISON_BREAK_HORN_PERC.wav",
+      "content/WL_MX_02/STNG_ENTER_CORE_STRING_SWELL.wav",
+      "content/WL_MX_06/STNG_MEGATRONS_POWER_SWELL_HIT.wav",
+      "content/WL_MX_06/STNG_SYBERTRONS_FATE_CYMBAL_ROLL_HIT.wav",
+      "content/WL_MX_06/STNG_MEGATRONS_POWER_STRING_PITCH_DROP.wav"
+     ]
+    },
+    "DecepticonsWinMusic": {
+     "cue": "BL_LVL_MP_MX.DM_END_DECEPTICONS_WIN",
+     "missing": false,
+     "category": "MUSIC_DRY",
+     "wavs": [
+      "content/WL_MX_05/STNG_OMEGA_LIVES_FULL_02.wav",
+      "content/WL_MX_05/STNG_OMEGA_LIVES_PLAYER_DEATH.wav",
+      "content/WL_MX_04/L2_SENTINELS_DEAD_STRING_FLUTTER_HEAVY.wav",
+      "content/WL_MX_04/STNG_PRISON_BREAK_HORN_PERC.wav",
+      "content/WL_MX_06/STNG_MEGATRONS_POWER_DRUM_FILL_HIT_BREATH_01.wav",
+      "content/WL_MX_06/STNG_MEGATRONS_POWER_GTR_DRUM_HIT_01.wav",
+      "content/WL_MX_02/STNG_ENTERING_THE_CORE_PERC_LONG.wav",
+      "content/WL_MX_02/STNG_ENTER_THE_CORE_A5_BOTTOM_FLR_TRANS.wav"
+     ]
+    },
+    "TieMusic": {
+     "cue": "BL_LVL_MP_MX.DM_END_TIE",
+     "missing": false,
+     "category": "MUSIC_DRY",
+     "wavs": [
+      "content/WL_MX_05/STNG_OMEGA_LIVES_FULL_02.wav",
+      "content/WL_MX_05/STNG_OMEGA_LIVES_PLAYER_DEATH.wav",
+      "content/WL_MX_04/L2_SENTINELS_DEAD_STRING_FLUTTER_HEAVY.wav",
+      "content/WL_MX_04/STNG_PRISON_BREAK_HORN_PERC.wav",
+      "content/WL_MX_02/STNG_ENTER_CORE_STRING_SWELL.wav",
+      "content/WL_MX_06/STNG_MEGATRONS_POWER_SWELL_HIT.wav",
+      "content/WL_MX_06/STNG_SYBERTRONS_FATE_CYMBAL_ROLL_HIT.wav",
+      "content/WL_MX_06/STNG_MEGATRONS_POWER_STRING_PITCH_DROP.wav"
+     ]
+    }
+   },
+   "game_type_message": {
+    "class": "TransGame.Default__TnGameTypeMessageTDM",
+    "GameTypeMessage": "Team Deathmatch",
+    "Lifetime": 3.0,
+    "PosY": 0.8299999833106995
+   },
+   "gfx_symbols_named_after_mode (name match, HIGH)": [
+    {
+     "movie": "UI_GFxShared_p/SharedIcons_GFX",
+     "names": [
+      "mc_gameModeIconTDM"
+     ]
+    }
+   ],
+   "icon": {
+    "movie": "UI_GFxShared_p/SharedIcons_GFX",
+    "file": "content/UI_GFxShared_p/SharedIcons_GFX.gfx",
+    "symbol": "mc_gameModeIconTDM",
+    "loaded_by": "GameLobby_GFX / PartyLobby_GFX mc_gameModeIconLoadReference (HIGH, name)",
+    "bitmaps": "drawn from SharedIcons_GFX images (images_extracted in frontend_gfx.json); per-symbol bitmap binding not decoded (PARTIAL)",
+    "confidence": "CONFIRMED AUTHORED DATA (exported symbol)"
+   },
+   "hud_score_panel (Hud_GFX export, name-based HIGH)": "mc_scoreTeam",
+   "confidence": "CONFIRMED AUTHORED DATA (authored text/classes/cues); behaviour of rules/messages = RE/Gameplay"
+  },
+  "CTF": {
+   "menu_order (TnOnlinePlaylistManager.Playlists)": 3,
+   "mode_property_id (TagToModeMap)": 2,
+   "settings_class": "TransGame.TnOnlineGameSettingsCTF",
+   "text": {
+    "FriendlyName": {
+     "INT": "Code of Power",
+     "FRA": "Codex"
+    },
+    "Description": {
+     "INT": "Capture the Code of Power. Teams switch between offense and defense.",
+     "FRA": "L'objectif est de capturer le Codex. Les \u00e9quipes jouent \u00e0 tour de r\u00f4le en d\u00e9fense et en attaque."
+    },
+    "RulesFormat": {
+     "INT": "Capture and plant the Code of Power. Team with the highest score after `r rounds wins.",
+     "FRA": "L'objectif est de capturer et poser le Codex. L'\u00e9quipe avec le meilleur score apr\u00e8s `r manches gagne la partie."
+    },
+    "rules_tokens (TnOnlineGameSettingsBase.RulePairs)": [
+     {
+      "Token": "`p",
+      "PropertyId": 1073741832
+     },
+     {
+      "Token": "`t",
+      "PropertyId": 1073741831
+     },
+     {
+      "Token": "`r",
+      "PropertyId": 1073741830
+     }
+    ],
+    "UIText.GameTypes": {
+     "CodeOfPower": "Code Of Power"
+    }
+   },
+   "loading_tips (EngageText, de-duplicated; base tips in frontend_loading.json)": [
+    "You can't shoot while carrying the Code of Power but you can use your Abilities.",
+    "The Code of Power will be dropped if the carrier changes into vehicle form.",
+    "The Code of Power can be used for a powerful melee attack.",
+    "Don't get fooled. Decoy Traps can be destroyed by shooting them."
+   ],
+   "settings": {
+    "GameClass": "TransContent.TnVersusGame",
+    "LobbyGameClass": "TransContent.TnGameLobbyGameTeam",
+    "NumRequiredPlayers": 4,
+    "TeamType": "GTS_TeamGame",
+    "TimeLimits": [
+     240.0,
+     300.0,
+     360.0
+    ],
+    "Rules": [
+     "TransGame.TnGameRules_ScoreKillsMP",
+     "TransGame.TnGameRules_SingleFlagCTF",
+     "TransGame.TnGameRules_ScoreFlags",
+     "TransGame.TnGameRules_TrackKillsMP",
+     "TransGame.TnGameRules_ReportGameProgressTimeCTF"
+    ]
+   },
+   "public_settings": {
+    "NumPublicConnections": 10,
+    "StatsWriters": [
+     "TransGame.TnStatsWriteCTF",
+     "TransGame.TnStatsWriteKills",
+     "TransGame.TnStatsWriteAccuracy"
+    ]
+   },
+   "announcer": {
+    "GameTypeDialog": null,
+    "GameDescriptionDialog": null
+   },
+   "music": {
+    "GameTypeMusic": {
+     "cue": "BL_LVL_MP_MX.COP_START",
+     "missing": false,
+     "category": "MUSIC_DRY",
+     "wavs": [
+      "content/WL_MX_04/STNG_THE_DECAGON_COP_START.wav",
+      "content/WL_MX_05/STNG_MATRIX_OF_LEADERSHIP_COP_START.wav",
+      "content/WL_MX_03/STNG_MEGATRONS_QUEST_COP_START.wav",
+      "content/WL_MX_01/STNG_TRYP_STATION_COP_START.wav"
+     ]
+    },
+    "GameNearlyCompleteMusic": {
+     "cue": "BL_LVL_MP_MX.COP_FINALSTRETCH_LP",
+     "missing": false,
+     "category": "MUSIC_DRY",
+     "wavs": [
+      "content/WL_MX_04/MX_THE_DECAGON_FULL_02_LP.wav",
+      "content/WL_MX_04/MX_THE_DECAGON_PERC_LP_03.wav",
+      "content/WL_MX_01/MX_DARK_ENERGIES_FULL_LP_01.wav",
+      "content/WL_MX_02/MX_ACTIVATING_TRYP_FULL_LP_02.wav"
+     ]
+    },
+    "AutobotsWinMusic": {
+     "cue": "BL_LVL_MP_MX.COP_END_AUTOBOTS_WIN",
+     "missing": false,
+     "category": "MUSIC_DRY",
+     "wavs": [
+      "content/WL_MX_05/STNG_MATRIX_OF_LEADERSHIP_ROLL_TO_HORNS_01.wav",
+      "content/WL_MX_04/STNG_THE_DECAGON_PERC_02.wav",
+      "content/WL_MX_01/STNG_TRYP_STATION_SWELL_LONG.wav",
+      "content/WL_MX_03/STNG_L7_REVERSE_WHSH_VERB.wav"
+     ]
+    },
+    "DecepticonsWinMusic": {
+     "cue": "BL_LVL_MP_MX.COP_END_DECEPTICONS_WIN",
+     "missing": false,
+     "category": "MUSIC_DRY",
+     "wavs": [
+      "content/WL_MX_05/STNG_A3_MATRIX_OF_LEADERSHIP_HERO_FULL.wav",
+      "content/WL_MX_04/STNG_THE_DECAGON_PERC_02.wav",
+      "content/WL_MX_01/STNG_TRYP_STATION_END_PERC.wav",
+      "content/WL_MX_03/STNG_MEGATRONS_QUEST_FULL_01.wav"
+     ]
+    },
+    "TieMusic": {
+     "cue": "BL_LVL_MP_MX.COP_END_TIE",
+     "missing": false,
+     "category": "MUSIC_DRY",
+     "wavs": [
+      "content/WL_MX_05/STNG_OMEGA_LIVES_FULL_02.wav",
+      "content/WL_MX_05/STNG_OMEGA_LIVES_PLAYER_DEATH.wav",
+      "content/WL_MX_04/L2_SENTINELS_DEAD_STRING_FLUTTER_HEAVY.wav",
+      "content/WL_MX_04/STNG_PRISON_BREAK_HORN_PERC.wav",
+      "content/WL_MX_02/STNG_ENTER_CORE_STRING_SWELL.wav",
+      "content/WL_MX_06/STNG_MEGATRONS_POWER_SWELL_HIT.wav",
+      "content/WL_MX_06/STNG_SYBERTRONS_FATE_CYMBAL_ROLL_HIT.wav",
+      "content/WL_MX_06/STNG_MEGATRONS_POWER_STRING_PITCH_DROP.wav"
+     ]
+    }
+   },
+   "game_type_message": {
+    "class": "TransGame.Default__TnGameTypeMessageCTF",
+    "GameTypeMessage": "Code of Power",
+    "Lifetime": 3.0,
+    "PosY": 0.8299999833106995
+   },
+   "gfx_symbols_named_after_mode (name match, HIGH)": [
+    {
+     "movie": "UI_GFxShared_p/SharedIcons_GFX",
+     "names": [
+      "mc_gameModeIconCTF"
+     ]
+    }
+   ],
+   "icon": {
+    "movie": "UI_GFxShared_p/SharedIcons_GFX",
+    "file": "content/UI_GFxShared_p/SharedIcons_GFX.gfx",
+    "symbol": "mc_gameModeIconCTF",
+    "loaded_by": "GameLobby_GFX / PartyLobby_GFX mc_gameModeIconLoadReference (HIGH, name)",
+    "bitmaps": "drawn from SharedIcons_GFX images (images_extracted in frontend_gfx.json); per-symbol bitmap binding not decoded (PARTIAL)",
+    "confidence": "CONFIRMED AUTHORED DATA (exported symbol)"
+   },
+   "hud_score_panel (Hud_GFX export, name-based HIGH)": "mc_scoreTeam",
+   "confidence": "CONFIRMED AUTHORED DATA (authored text/classes/cues); behaviour of rules/messages = RE/Gameplay"
+  },
+  "KOTH": {
+   "menu_order (TnOnlinePlaylistManager.Playlists)": 5,
+   "mode_property_id (TagToModeMap)": 5,
+   "settings_class": "TransGame.TnOnlineGameSettingsKOTH",
+   "text": {
+    "FriendlyName": {
+     "INT": "Power Struggle",
+     "FRA": "Lutte pour le pouvoir"
+    },
+    "Description": {
+     "INT": "Gain control of the active power node.",
+     "FRA": "Prends le contr\u00f4le du noeud \u00e9nerg\u00e9tique actif."
+    },
+    "RulesFormat": {
+     "INT": "Control the active power node and accumulate `p points to win.",
+     "FRA": "Prends le contr\u00f4le du noeud \u00e9nerg\u00e9tique actif et obtiens `p points pour gagner."
+    },
+    "rules_tokens (TnOnlineGameSettingsBase.RulePairs)": [
+     {
+      "Token": "`p",
+      "PropertyId": 1073741832
+     },
+     {
+      "Token": "`t",
+      "PropertyId": 1073741831
+     },
+     {
+      "Token": "`r",
+      "PropertyId": 1073741830
+     }
+    ],
+    "UIText.GameTypes": {
+     "PowerStruggle": "Power Struggle"
+    }
+   },
+   "loading_tips (EngageText, de-duplicated; base tips in frontend_loading.json)": [
+    "Don't get fooled. Decoy Traps can be destroyed by shooting them.",
+    "No loitering! Power nodes move around quickly so be sure to keep up when they do.",
+    "Buff your defenses before entering an active node."
+   ],
+   "settings": {
+    "GameClass": "TransContent.TnVersusGame",
+    "LobbyGameClass": "TransContent.TnGameLobbyGameTeam",
+    "NumRequiredPlayers": 4,
+    "TeamType": "GTS_TeamGame",
+    "TimeLimits": [
+     600.0,
+     900.0,
+     1200.0
+    ],
+    "Rules": [
+     "TransGame.TnGameRules_ScoreKillsMP",
+     "TransGame.TnGameRules_ScoreKingOfTheHill",
+     "TransGame.TnGameRules_TrackKillsMP",
+     "TransGame.TnGameRules_ReportGameProgressTime",
+     "TransGame.TnGameRules_ReportGameProgressPoints"
+    ]
+   },
+   "public_settings": {
+    "NumPublicConnections": 10,
+    "StatsWriters": [
+     "TransGame.TnStatsWriteKOTH",
+     "TransGame.TnStatsWriteKills",
+     "TransGame.TnStatsWriteAccuracy"
+    ]
+   },
+   "announcer": {
+    "GameTypeDialog": {
+     "event": "SoundEvents_Dialog.Announcer.MP_GameTypePowerStruggleDialog",
+     "cue": "BL_DX_SWITCHBOARD.SC002653",
+     "wavs": [
+      "content/WL_DX_OPRIME/DX_OPRIME_LK002653.wav",
+      "content/WL_DX_MGTRON/DX_MGTRON_LK002662.wav"
+     ],
+     "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "GameDescriptionDialog": {
+     "event": "SoundEvents_Dialog.Announcer.MP_GameDescriptionPowerStruggleDialog",
+     "cue": "BL_DX_SWITCHBOARD.SC009003",
+     "wavs": [
+      "content/WL_DX_OPRIME/DX_OPRIME_LK009003.wav",
+      "content/WL_DX_MGTRON/DX_MGTRON_LK009004.wav"
+     ],
+     "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    }
+   },
+   "music": {
+    "GameTypeMusic": {
+     "cue": "BL_LVL_MP_MX.POWER_STRUGGLE_START",
+     "missing": false,
+     "category": "MUSIC_DRY",
+     "wavs": [
+      "content/WL_MX_05/STNG_OMEGA_LIVES_DM_START_01.wav",
+      "content/WL_MX_04/STNG_PRISON_BREAK_DM_START_01.wav",
+      "content/WL_MX_02/STNG_ENTER_THE_CORE_DM_START_01.wav",
+      "content/WL_MX_06/STNG_MEGATRONS_POWER_DM_START_01.wav"
+     ]
+    },
+    "GameNearlyCompleteMusic": {
+     "cue": "BL_LVL_MP_MX.POWER_STRUGGLE_FINALSTRETCH_LP",
+     "missing": false,
+     "category": "MUSIC_DRY",
+     "wavs": [
+      "content/WL_MX_05/MX_OMEGA_LIVES_PERC_LP_01.wav",
+      "content/WL_MX_04/MX_PRISON_BREAK_PERC_BASS_LP_01.wav",
+      "content/WL_MX_02/MX_ENTER_THE_CORE_COMPLETE_01_LP.wav",
+      "content/WL_MX_02/MX_ENTER_THE_CORE_NO_BRASS_STRINGS_LP.wav",
+      "content/WL_MX_06/MX_MEGATRONS_POWER_FULL_03_LP.wav",
+      "content/WL_MX_06/MX_MEGATRONS_POWER_FULL_03_LP_PERC.wav"
+     ]
+    },
+    "AutobotsWinMusic": {
+     "cue": "BL_LVL_MP_MX.POWER_STRUGGLE_END_AUTOBOTS_WIN",
+     "missing": false,
+     "category": "MUSIC_DRY",
+     "wavs": [
+      "content/WL_MX_05/STNG_OMEGA_LIVES_GTR.wav",
+      "content/WL_MX_04/L2_STINGER_TURRET_WAVE_DESTROYED.wav",
+      "content/WL_MX_04/STNG_PRISON_BREAK_HORN_PERC.wav",
+      "content/WL_MX_02/STNG_ENTER_CORE_STRING_SWELL.wav",
+      "content/WL_MX_06/STNG_MEGATRONS_POWER_SWELL_HIT.wav",
+      "content/WL_MX_06/STNG_SYBERTRONS_FATE_CYMBAL_ROLL_HIT.wav",
+      "content/WL_MX_06/STNG_MEGATRONS_POWER_STRING_PITCH_DROP.wav"
+     ]
+    },
+    "DecepticonsWinMusic": {
+     "cue": "BL_LVL_MP_MX.POWER_STRUGGLE_END_DECEPTICONS_WIN",
+     "missing": false,
+     "category": "MUSIC_DRY",
+     "wavs": [
+      "content/WL_MX_05/STNG_OMEGA_LIVES_FULL_02.wav",
+      "content/WL_MX_05/STNG_OMEGA_LIVES_PLAYER_DEATH.wav",
+      "content/WL_MX_04/L2_SENTINELS_DEAD_STRING_FLUTTER_HEAVY.wav",
+      "content/WL_MX_04/STNG_PRISON_BREAK_HORN_PERC.wav",
+      "content/WL_MX_06/STNG_MEGATRONS_POWER_DRUM_FILL_HIT_BREATH_01.wav",
+      "content/WL_MX_06/STNG_MEGATRONS_POWER_GTR_DRUM_HIT_01.wav",
+      "content/WL_MX_02/STNG_ENTERING_THE_CORE_PERC_LONG.wav",
+      "content/WL_MX_02/STNG_ENTER_THE_CORE_A5_BOTTOM_FLR_TRANS.wav"
+     ]
+    },
+    "TieMusic": {
+     "cue": "BL_LVL_MP_MX.POWER_STRUGGLE_END_TIE",
+     "missing": false,
+     "category": "MUSIC_DRY",
+     "wavs": [
+      "content/WL_MX_05/STNG_OMEGA_LIVES_FULL_02.wav",
+      "content/WL_MX_05/STNG_OMEGA_LIVES_PLAYER_DEATH.wav",
+      "content/WL_MX_04/L2_SENTINELS_DEAD_STRING_FLUTTER_HEAVY.wav",
+      "content/WL_MX_04/STNG_PRISON_BREAK_HORN_PERC.wav",
+      "content/WL_MX_02/STNG_ENTER_CORE_STRING_SWELL.wav",
+      "content/WL_MX_06/STNG_MEGATRONS_POWER_SWELL_HIT.wav",
+      "content/WL_MX_06/STNG_SYBERTRONS_FATE_CYMBAL_ROLL_HIT.wav",
+      "content/WL_MX_06/STNG_MEGATRONS_POWER_STRING_PITCH_DROP.wav"
+     ]
+    }
+   },
+   "game_type_message": {
+    "class": "TransGame.Default__TnGameTypeMessageKOTH",
+    "GameTypeMessage": "Power Struggle",
+    "Lifetime": 3.0,
+    "PosY": 0.8299999833106995
+   },
+   "gfx_symbols_named_after_mode (name match, HIGH)": [
+    {
+     "movie": "UI_GFxShared_p/SharedIcons_GFX",
+     "names": [
+      "mc_gameModeIconKOTH"
+     ]
+    }
+   ],
+   "icon": {
+    "movie": "UI_GFxShared_p/SharedIcons_GFX",
+    "file": "content/UI_GFxShared_p/SharedIcons_GFX.gfx",
+    "symbol": "mc_gameModeIconKOTH",
+    "loaded_by": "GameLobby_GFX / PartyLobby_GFX mc_gameModeIconLoadReference (HIGH, name)",
+    "bitmaps": "drawn from SharedIcons_GFX images (images_extracted in frontend_gfx.json); per-symbol bitmap binding not decoded (PARTIAL)",
+    "confidence": "CONFIRMED AUTHORED DATA (exported symbol)"
+   },
+   "hud_score_panel (Hud_GFX export, name-based HIGH)": "mc_scoreTeam",
+   "confidence": "CONFIRMED AUTHORED DATA (authored text/classes/cues); behaviour of rules/messages = RE/Gameplay"
+  },
+  "DOM": {
+   "menu_order (TnOnlinePlaylistManager.Playlists)": 2,
+   "mode_property_id (TagToModeMap)": 8,
+   "settings_class": "TransGame.TnOnlineGameSettingsDOM",
+   "text": {
+    "FriendlyName": {
+     "INT": "Conquest",
+     "FRA": "Conqu\u00eate"
+    },
+    "Description": {
+     "INT": "Maintain control over multiple power nodes.",
+     "FRA": "Garde le contr\u00f4le de plusieurs noeuds \u00e9nerg\u00e9tiques."
+    },
+    "RulesFormat": {
+     "INT": "Control multiple nodes and accumulate `p points to win.",
+     "FRA": "Prends le contr\u00f4le de plusieurs noeuds et obtiens `p points pour gagner."
+    },
+    "rules_tokens (TnOnlineGameSettingsBase.RulePairs)": [
+     {
+      "Token": "`p",
+      "PropertyId": 1073741832
+     },
+     {
+      "Token": "`t",
+      "PropertyId": 1073741831
+     },
+     {
+      "Token": "`r",
+      "PropertyId": 1073741830
+     }
+    ],
+    "UIText.GameTypes": {
+     "Domination": "Conquest"
+    }
+   },
+   "loading_tips (EngageText, de-duplicated; base tips in frontend_loading.json)": [
+    "Set up Barriers, Sentries, and Thermo Mines to defend captured power nodes.",
+    "Defending your team's power nodes is just as important as capturing new power nodes.",
+    "Don't get fooled. Decoy Traps can be destroyed by shooting them."
+   ],
+   "settings": {
+    "GameClass": "TransContent.TnVersusGame",
+    "LobbyGameClass": "TransContent.TnGameLobbyGameTeam",
+    "NumRequiredPlayers": 4,
+    "TeamType": "GTS_TeamGame",
+    "TimeLimits": [
+     600.0,
+     900.0,
+     1200.0
+    ],
+    "Rules": [
+     "TransGame.TnGameRules_ScoreKillsMP",
+     "TransGame.TnGameRules_ScoreDomination",
+     "TransGame.TnGameRules_TrackKillsMP",
+     "TransGame.TnGameRules_ReportGameProgressTime",
+     "TransGame.TnGameRules_ReportGameProgressPoints"
+    ]
+   },
+   "public_settings": {
+    "NumPublicConnections": 10,
+    "StatsWriters": [
+     "TransGame.TnStatsWriteDOM",
+     "TransGame.TnStatsWriteKills",
+     "TransGame.TnStatsWriteAccuracy"
+    ]
+   },
+   "announcer": {
+    "GameTypeDialog": {
+     "event": "SoundEvents_Dialog.Announcer.MP_GameTypeConquestDialog",
+     "cue": "BL_DX_SWITCHBOARD.SC010575",
+     "wavs": [
+      "content/WL_DX_OPRIME/DX_OPRIME_LK010575.wav",
+      "content/WL_DX_MGTRON/DX_MGTRON_LK010576.wav"
+     ],
+     "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "GameDescriptionDialog": {
+     "event": "SoundEvents_Dialog.Announcer.MP_GameDescriptionConquestDialog",
+     "cue": "BL_DX_SWITCHBOARD.SC010577",
+     "wavs": [
+      "content/WL_DX_OPRIME/DX_OPRIME_LK010577.wav",
+      "content/WL_DX_MGTRON/DX_MGTRON_LK010578.wav"
+     ],
+     "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    }
+   },
+   "music": {
+    "GameTypeMusic": {
+     "cue": "BL_LVL_MP_MX.CONQUEST_START",
+     "missing": false,
+     "category": "MUSIC_DRY",
+     "wavs": [
+      "content/WL_MX_04/MX_IACON_IN_RUINS_FULLBAND_INTRO_LP_01.wav",
+      "content/WL_MX_03/MX_ZETAS_STAND_PERC_01_LP.wav",
+      "content/WL_MX_03/MX_MEGATRONS_QUEST_PERC_01_LP.wav",
+      "content/WL_MX_02/MX_ACTIVATING_TRYP_PERC_LP_01.wav"
+     ]
+    },
+    "GameNearlyCompleteMusic": {
+     "cue": "BL_LVL_MP_MX.CONQUEST_FINALSTRETCH_LP",
+     "missing": false,
+     "category": "MUSIC_DRY",
+     "wavs": [
+      "content/WL_MX_03/MX_ZETAS_LAST_STAND_FULLTHEME_LP_01.wav",
+      "content/WL_MX_03/MX_ZETAS_LAST_STAND_DRUMS_GTR_LP_01.wav",
+      "content/WL_MX_04/MX_IACON_IN_RUINS_FULLBAND_LONG_LP_01.wav",
+      "content/WL_MX_03/MX_MEGATRONS_QUEST_SYNTH_PERC_03_LP_LONG.wav",
+      "content/WL_MX_02/MX_ACTIVATE_TRYP_RHYTHMSEC_LP_01.wav",
+      "content/WL_MX_02/MX_ACTIVATING_TRYP_FULL_NO_GTR_LP_01.wav"
+     ]
+    },
+    "AutobotsWinMusic": {
+     "cue": "BL_LVL_MP_MX.CONQUEST_END_AUTOBOTS_WIN",
+     "missing": false,
+     "category": "MUSIC_DRY",
+     "wavs": [
+      "content/WL_MX_04/STNG_L11_DEC_MARCH.wav",
+      "content/WL_MX_03/STNG_ZETAS_LAST_STAND_GTR_END.wav",
+      "content/WL_MX_03/STNG_MEGATRONS_QUEST_PERC_03.wav",
+      "content/WL_MX_03/STNG_ZETAS_LAST_STAND_CLUST_02.wav"
+     ]
+    },
+    "DecepticonsWinMusic": {
+     "cue": "BL_LVL_MP_MX.CONQUEST_END_DECEPTICONS_WIN",
+     "missing": false,
+     "category": "MUSIC_DRY",
+     "wavs": [
+      "content/WL_MX_04/STNG_IACON_RUINS_DRUM_HIT_FADE.wav",
+      "content/WL_MX_03/STNG_ZETAS_STAND_WHSH_SOFT_W_GTR_01.wav",
+      "content/WL_MX_03/STNG_MEGATRONS_QUEST_FULL_01.wav",
+      "content/WL_MX_02/STNG_ACTIVATE_TRYP_ORCH_TAG.wav"
+     ]
+    },
+    "TieMusic": {
+     "cue": "BL_LVL_MP_MX.CONQUEST_END_TIE",
+     "missing": false,
+     "category": "MUSIC_DRY",
+     "wavs": [
+      "content/WL_MX_05/STNG_OMEGA_LIVES_FULL_02.wav",
+      "content/WL_MX_05/STNG_OMEGA_LIVES_PLAYER_DEATH.wav",
+      "content/WL_MX_04/L2_SENTINELS_DEAD_STRING_FLUTTER_HEAVY.wav",
+      "content/WL_MX_04/STNG_PRISON_BREAK_HORN_PERC.wav",
+      "content/WL_MX_02/STNG_ENTER_CORE_STRING_SWELL.wav",
+      "content/WL_MX_06/STNG_MEGATRONS_POWER_SWELL_HIT.wav",
+      "content/WL_MX_06/STNG_SYBERTRONS_FATE_CYMBAL_ROLL_HIT.wav",
+      "content/WL_MX_06/STNG_MEGATRONS_POWER_STRING_PITCH_DROP.wav"
+     ]
+    }
+   },
+   "game_type_message": {
+    "class": "TransGame.Default__TnGameTypeMessageDOM",
+    "GameTypeMessage": "Conquest",
+    "Lifetime": 3.0,
+    "PosY": 0.8299999833106995
+   },
+   "gfx_symbols_named_after_mode (name match, HIGH)": [
+    {
+     "movie": "UI_GFxShared_p/SharedIcons_GFX",
+     "names": [
+      "mc_gameModeIconDOM"
+     ]
+    }
+   ],
+   "icon": {
+    "movie": "UI_GFxShared_p/SharedIcons_GFX",
+    "file": "content/UI_GFxShared_p/SharedIcons_GFX.gfx",
+    "symbol": "mc_gameModeIconDOM",
+    "loaded_by": "GameLobby_GFX / PartyLobby_GFX mc_gameModeIconLoadReference (HIGH, name)",
+    "bitmaps": "drawn from SharedIcons_GFX images (images_extracted in frontend_gfx.json); per-symbol bitmap binding not decoded (PARTIAL)",
+    "confidence": "CONFIRMED AUTHORED DATA (exported symbol)"
+   },
+   "hud_score_panel (Hud_GFX export, name-based HIGH)": "mc_scoreTeam",
+   "confidence": "CONFIRMED AUTHORED DATA (authored text/classes/cues); behaviour of rules/messages = RE/Gameplay"
+  },
+  "SV": {
+   "menu_order (TnOnlinePlaylistManager.Playlists)": 6,
+   "mode_property_id (TagToModeMap)": 6,
+   "settings_class": "TransGame.TnOnlineGameSettingsSV",
+   "text": {
+    "FriendlyName": {
+     "INT": "Escalation",
+     "FRA": "Escalade"
+    },
+    "Description": {
+     "INT": "Survive waves of attacks",
+     "FRA": "Survis aux vagues d'attaques."
+    },
+    "RulesFormat": {
+     "INT": "Survive waves of attacks",
+     "FRA": "Survis aux vagues d'attaques."
+    },
+    "rules_tokens (TnOnlineGameSettingsBase.RulePairs)": [
+     {
+      "Token": "`p",
+      "PropertyId": 1073741832
+     },
+     {
+      "Token": "`t",
+      "PropertyId": 1073741831
+     },
+     {
+      "Token": "`r",
+      "PropertyId": 1073741830
+     }
+    ],
+    "UIText.GameTypes": {
+     "Escalation": "Escalation"
+    }
+   },
+   "loading_tips (EngageText, de-duplicated; base tips in frontend_loading.json)": [
+    "Thermo Mines will seek their target.",
+    "Use Fine Aim for precision targeting.",
+    "The Hover Ability increases all weapon damage.",
+    "While using the Hover Ability, you can press the Jump button at any time to cancel it.",
+    "Warcry buffs your teammates with increased armor and damage.",
+    "Use the Cloaking Ability to turn invisible for a brief time.",
+    "Continuously firing your weapons makes them less accurate. Try firing in bursts.",
+    "The Energon Repair Ray is a beam weapon that heals teammates and damages enemies.",
+    "Grab an Overshield for increased armor.",
+    "Jumping decreases the accuracy of your weapons.",
+    "Remember to reload your weapon after every fire fight.",
+    "The longer the Plasma Cannon is charged, the more damage it causes.",
+    "The Scatter Blaster is most effective at close range.",
+    "Energon Grenades create a healing aura when they explode.",
+    "Use EMP Grenades to disorient your enemies.",
+    "Bring on the pain train. In truck form, take out enemies using your Ram ability.",
+    "The Thermo Rocket Launcher can only lock-on to vehicles.",
+    "The Whirlwind Ability is a devastating melee attack capable of hitting multiple targets.",
+    "Do a Barrel Roll while in jet form to avoid getting hit.",
+    "Use the Energon Repair Ray to heal spawned Sentries.",
+    "You can remotely detonate grenades launched by the Magma Frag Launcher.",
+    "The X12 Scrapmaker winds up slowly before unleashing its full power.",
+    "If you run out of ammo for your Robot weapons, don't forget about your Vehicle weapons.",
+    "If an enemy gets too close for comfort, bash them with a melee attack.",
+    "Double jump in Robot form by pressing the jump button a second time while in the air.",
+    "Cancel certain Abilities like Barrier and Cloaking by pressing the Ability button after activation."
+   ],
+   "settings": {
+    "GameClass": "TransContent.TnSurvivalGame",
+    "LobbyGameClass": "TransContent.TnGameLobbyGameSurvival",
+    "NumRequiredPlayers": 2,
+    "TeamType": "GTS_SingleTeamGame",
+    "Rules": [
+     "TransGame.TnGameRules_CompetitiveScoring",
+     "TransGame.TnGameRules_TrackKills"
+    ]
+   },
+   "public_settings": {
+    "NumPublicConnections": 4,
+    "StatsWriters": [
+     "TransGame.TnStatsWriteSV"
+    ]
+   },
+   "announcer": {
+    "GameTypeDialog": {
+     "event": "SoundEvents_Dialog.Announcer.MP_GameTypeEscalationDialog",
+     "cue": "BL_DX_SWITCHBOARD.SC009019",
+     "wavs": [
+      "content/WL_DX_OPRIME/DX_OPRIME_LK009019.wav",
+      "content/WL_DX_MGTRON/DX_MGTRON_LK009020.wav"
+     ],
+     "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "GameDescriptionDialog": null
+   },
+   "music": {},
+   "game_type_message": {
+    "class": "TransGame.Default__TnGameTypeMessageSV",
+    "GameTypeMessage": null,
+    "Lifetime": 3.0,
+    "PosY": 0.8299999833106995
+   },
+   "gfx_symbols_named_after_mode (name match, HIGH)": [
+    {
+     "movie": "UI_GFxHud_p/Hud_GFX",
+     "names": [
+      "mc_scoreSurvival",
+      "mc_scoreSurvivalPlayerPanel"
+     ]
+    },
+    {
+     "movie": "UI_GFxLobbies_p/GameLobby_GFX",
+     "names": [
+      "mc_tutEscalation"
+     ]
+    },
+    {
+     "movie": "UI_GFxLobbies_p/PartyLobby_GFX",
+     "names": [
+      "mc_menuEscalation",
+      "mc_menuEscalation360",
+      "mc_menuEscalationHostGame",
+      "mc_menuEscalationPC",
+      "mc_menuEscalationPS3",
+      "mc_tutEscalation"
+     ]
+    },
+    {
+     "movie": "UI_GFxShared_p/SharedIcons_GFX",
+     "names": [
+      "mc_gameModeIconSV"
+     ]
+    }
+   ],
+   "icon": {
+    "movie": "UI_GFxShared_p/SharedIcons_GFX",
+    "file": "content/UI_GFxShared_p/SharedIcons_GFX.gfx",
+    "symbol": "mc_gameModeIconSV",
+    "loaded_by": "GameLobby_GFX / PartyLobby_GFX mc_gameModeIconLoadReference (HIGH, name)",
+    "bitmaps": "drawn from SharedIcons_GFX images (images_extracted in frontend_gfx.json); per-symbol bitmap binding not decoded (PARTIAL)",
+    "confidence": "CONFIRMED AUTHORED DATA (exported symbol)"
+   },
+   "hud_score_panel (Hud_GFX export, name-based HIGH)": "mc_scoreSurvival",
+   "confidence": "CONFIRMED AUTHORED DATA (authored text/classes/cues); behaviour of rules/messages = RE/Gameplay"
+  },
+  "EXT": {
+   "menu_order (TnOnlinePlaylistManager.Playlists)": 4,
+   "mode_property_id (TagToModeMap)": 4,
+   "settings_class": "TransGame.TnOnlineGameSettingsEXT",
+   "text": {
+    "FriendlyName": {
+     "INT": "Countdown to Extinction",
+     "FRA": "\u00c9quilibrage \u00e9quipes"
+    },
+    "Description": {
+     "INT": "Use the neutral bomb to destroy the enemy team's base.",
+     "FRA": "Utilise la bombe neutre pour d\u00e9truire la base de l'\u00e9quipe ennemie."
+    },
+    "RulesFormat": {
+     "INT": "Plant the bomb in the enemy's base `p times to win.",
+     "FRA": "Pose `p fois la bombe dans la base ennemie pour gagner."
+    },
+    "rules_tokens (TnOnlineGameSettingsBase.RulePairs)": [
+     {
+      "Token": "`p",
+      "PropertyId": 1073741832
+     },
+     {
+      "Token": "`t",
+      "PropertyId": 1073741831
+     },
+     {
+      "Token": "`r",
+      "PropertyId": 1073741830
+     }
+    ],
+    "UIText.GameTypes": {}
+   },
+   "loading_tips (EngageText, de-duplicated; base tips in frontend_loading.json)": [
+    "You can't shoot while carrying the bomb but you can use your Abilities.",
+    "The bomb carrier will drop the bomb if they change into vehicle form.",
+    "The bomb carrier can use the bomb for a powerful melee attack.",
+    "Follow the HUD marker to locate the bomb carrier.",
+    "Don't get fooled. Decoy Traps can be destroyed by shooting them."
+   ],
+   "settings": {
+    "GameClass": "TransContent.TnVersusGame",
+    "LobbyGameClass": "TransContent.TnGameLobbyGameTeam",
+    "NumRequiredPlayers": 4,
+    "TeamType": "GTS_TeamGame",
+    "TimeLimits": [
+     600.0,
+     900.0,
+     1200.0
+    ],
+    "Rules": [
+     "TransGame.TnGameRules_ScoreKillsMP",
+     "TransGame.TnGameRules_ScoreBombingRun",
+     "TransGame.TnGameRules_TrackKillsMP",
+     "TransGame.TnGameRules_ReportGameProgressTime"
+    ]
+   },
+   "public_settings": {
+    "NumPublicConnections": 10,
+    "StatsWriters": [
+     "TransGame.TnStatsWriteEXT",
+     "TransGame.TnStatsWriteKills",
+     "TransGame.TnStatsWriteAccuracy"
+    ]
+   },
+   "announcer": {
+    "GameTypeDialog": {
+     "event": "SoundEvents_Dialog.Announcer.MP_GameTypeExtinctionDialog",
+     "cue": "BL_DX_SWITCHBOARD.SC002650",
+     "wavs": [
+      "content/WL_DX_OPRIME/DX_OPRIME_LK002650.wav",
+      "content/WL_DX_MGTRON/DX_MGTRON_LK002659.wav"
+     ],
+     "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "GameDescriptionDialog": {
+     "event": "SoundEvents_Dialog.Announcer.MP_GameDescriptionExtinctionDialog",
+     "cue": "BL_DX_SWITCHBOARD.SC009011",
+     "wavs": [
+      "content/WL_DX_OPRIME/DX_OPRIME_LK009011.wav",
+      "content/WL_DX_MGTRON/DX_MGTRON_LK009012.wav"
+     ],
+     "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    }
+   },
+   "music": {
+    "GameTypeMusic": {
+     "cue": "BL_LVL_MP_MX.BOMB_START",
+     "missing": false,
+     "category": "MUSIC_DRY",
+     "wavs": [
+      "content/WL_MX_06/MX_ASSAULT_TRYP_SYNTH_END_LP.wav",
+      "content/WL_MX_04/MX_RESCUE_ZETA_BEAT_LP_01.wav",
+      "content/WL_MX_01/MX_DARK_ENERGIES_FULL_SHORT_01_LP.wav",
+      "content/WL_MX_03/MX_IACON_INVASION_BASS_TO_FULL_ORCH_01_LP.wav"
+     ]
+    },
+    "GameNearlyCompleteMusic": {
+     "cue": "BL_LVL_MP_MX.BOMB_FINALSTRETCH_LP",
+     "missing": false,
+     "category": "MUSIC_DRY",
+     "wavs": [
+      "content/WL_MX_06/MX_ASSAULT_TRYPTICON_FULL.wav",
+      "content/WL_MX_04/MX_RESCUE_ZETA_BIGBEAT_LP_01.wav",
+      "content/WL_MX_01/MX_DARK_ENERGIES_DRUMS_GTR_LP.wav",
+      "content/WL_MX_03/MX_IACON_INVASION_GTR_01.wav"
+     ]
+    },
+    "AutobotsWinMusic": {
+     "cue": "BL_LVL_MP_MX.BOMB_END_AUTOBOTS_WIN",
+     "missing": false,
+     "category": "MUSIC_DRY",
+     "wavs": [
+      "content/WL_MX_04/STNG_RESCUE_ZETA_DRUMS_SYNTH_END_01.wav",
+      "content/WL_MX_03/STNG_IACON_INVASION_FULL_01.wav",
+      "content/WL_MX_01/STNG_D1_ANCIENT_SECRETS_HORNS_01.wav"
+     ]
+    },
+    "DecepticonsWinMusic": {
+     "cue": "BL_LVL_MP_MX.BOMB_END_DECEPTICONS_WIN",
+     "missing": false,
+     "category": "MUSIC_DRY",
+     "wavs": [
+      "content/WL_MX_04/STNG_RESCUE_ZETA_GTR_CYMBAL_01.wav",
+      "content/WL_MX_06/STNG_A4_ASSAULT_TRYPTICON_QUICK.wav",
+      "content/WL_MX_03/STNG_IACON_INVASION_GTR_HIT_01.wav"
+     ]
+    },
+    "TieMusic": {
+     "cue": "BL_LVL_MP_MX.BOMB_END_TIE",
+     "missing": false,
+     "category": "MUSIC_DRY",
+     "wavs": [
+      "content/WL_MX_05/STNG_OMEGA_LIVES_FULL_02.wav",
+      "content/WL_MX_05/STNG_OMEGA_LIVES_PLAYER_DEATH.wav",
+      "content/WL_MX_04/L2_SENTINELS_DEAD_STRING_FLUTTER_HEAVY.wav",
+      "content/WL_MX_04/STNG_PRISON_BREAK_HORN_PERC.wav",
+      "content/WL_MX_02/STNG_ENTER_CORE_STRING_SWELL.wav",
+      "content/WL_MX_06/STNG_MEGATRONS_POWER_SWELL_HIT.wav",
+      "content/WL_MX_06/STNG_SYBERTRONS_FATE_CYMBAL_ROLL_HIT.wav",
+      "content/WL_MX_06/STNG_MEGATRONS_POWER_STRING_PITCH_DROP.wav"
+     ]
+    }
+   },
+   "game_type_message": {
+    "class": "TransGame.Default__TnGameTypeMessageEXT",
+    "GameTypeMessage": "Countdown to Extinction",
+    "Lifetime": 3.0,
+    "PosY": 0.8299999833106995
+   },
+   "gfx_symbols_named_after_mode (name match, HIGH)": [
+    {
+     "movie": "UI_GFxShared_p/SharedIcons_GFX",
+     "names": [
+      "mc_gameModeIconEXT"
+     ]
+    }
+   ],
+   "icon": {
+    "movie": "UI_GFxShared_p/SharedIcons_GFX",
+    "file": "content/UI_GFxShared_p/SharedIcons_GFX.gfx",
+    "symbol": "mc_gameModeIconEXT",
+    "loaded_by": "GameLobby_GFX / PartyLobby_GFX mc_gameModeIconLoadReference (HIGH, name)",
+    "bitmaps": "drawn from SharedIcons_GFX images (images_extracted in frontend_gfx.json); per-symbol bitmap binding not decoded (PARTIAL)",
+    "confidence": "CONFIRMED AUTHORED DATA (exported symbol)"
+   },
+   "hud_score_panel (Hud_GFX export, name-based HIGH)": "mc_scoreTeam",
+   "confidence": "CONFIRMED AUTHORED DATA (authored text/classes/cues); behaviour of rules/messages = RE/Gameplay"
+  },
+  "CP": {
+   "menu_order (TnOnlinePlaylistManager.Playlists)": 7,
+   "mode_property_id (TagToModeMap)": 1,
+   "settings_class": "TransGame.TnOnlineGameSettingsCP",
+   "text": {
+    "FriendlyName": {
+     "INT": "Campaign",
+     "FRA": "Campagne"
+    },
+    "Description": {
+     "INT": "Cooperative Adventure",
+     "FRA": "Aventure en coop\u00e9ration"
+    },
+    "RulesFormat": {
+     "INT": "Cooperative Adventure",
+     "FRA": "Aventure en Coop"
+    },
+    "rules_tokens (TnOnlineGameSettingsBase.RulePairs)": [
+     {
+      "Token": "`p",
+      "PropertyId": 1073741832
+     },
+     {
+      "Token": "`t",
+      "PropertyId": 1073741831
+     },
+     {
+      "Token": "`r",
+      "PropertyId": 1073741830
+     }
+    ],
+    "UIText.GameTypes": {
+     "COOP": "Cooperative Campaign"
+    }
+   },
+   "loading_tips (EngageText, de-duplicated; base tips in frontend_loading.json)": [
+    "Collect Energon shards from fallen enemies to power up your abilities.",
+    "The only way to kill a Brute is to destroy its backpack.",
+    "Avoid the Brute's ground pound attack by jumping.",
+    "Smash Energon crates to find weapons, grenades, ammo, and health.",
+    "When you're in a turret, you can rip the weapon free of its mounting and fire it while moving.",
+    "Look for special destructible Autobot and Decepticon symbols.",
+    "Don't take a Tank head on. Flank around it and destroy the Fuel Cell at the back of the Tank.",
+    "When fighting Cloakers look for their charged Plasma Cannon to track them down."
+   ],
+   "settings": {
+    "GameClass": "TransContent.TnCoopGame",
+    "LobbyGameClass": "TransContent.TnGameLobbyGameCoop",
+    "NumRequiredPlayers": 2,
+    "TeamType": "GTS_CampaignGame",
+    "Rules": [
+     "TransGame.TnGameRules_ScoreKills",
+     "TransGame.TnGameRules_TrackKills"
+    ]
+   },
+   "public_settings": {
+    "NumPublicConnections": 3,
+    "StatsWriters": [
+     "TransGame.TnStatsWriteCP"
+    ]
+   },
+   "announcer": {
+    "GameTypeDialog": null,
+    "GameDescriptionDialog": null
+   },
+   "music": {},
+   "game_type_message": {
+    "class": null,
+    "GameTypeMessage": null,
+    "Lifetime": null,
+    "PosY": null
+   },
+   "gfx_symbols_named_after_mode (name match, HIGH)": [
+    {
+     "movie": "UI_GFxShared_p/SharedIcons_GFX",
+     "names": [
+      "mc_gameModeIconCP"
+     ]
+    }
+   ],
+   "icon": {
+    "movie": "UI_GFxShared_p/SharedIcons_GFX",
+    "file": "content/UI_GFxShared_p/SharedIcons_GFX.gfx",
+    "symbol": "mc_gameModeIconCP",
+    "loaded_by": "GameLobby_GFX / PartyLobby_GFX mc_gameModeIconLoadReference (HIGH, name)",
+    "bitmaps": "drawn from SharedIcons_GFX images (images_extracted in frontend_gfx.json); per-symbol bitmap binding not decoded (PARTIAL)",
+    "confidence": "CONFIRMED AUTHORED DATA (exported symbol)"
+   },
+   "hud_score_panel (Hud_GFX export, name-based HIGH)": "mc_scoreCoop",
+   "confidence": "CONFIRMED AUTHORED DATA (authored text/classes/cues); behaviour of rules/messages = RE/Gameplay"
+  },
+  "CCP": {
+   "menu_order (TnOnlinePlaylistManager.Playlists)": 8,
+   "mode_property_id (TagToModeMap)": 0,
+   "settings_class": "TransGame.TnOnlineGameSettingsCCP",
+   "text": {
+    "FriendlyName": {
+     "INT": "Campaign",
+     "FRA": "Campagne"
+    },
+    "Description": {
+     "INT": "Cooperative Adventure where you compete for points",
+     "FRA": "Aventure en Coop o\u00f9 tu dois gagner un maximum de points."
+    },
+    "RulesFormat": {
+     "INT": "Competitive Cooperative Adventure",
+     "FRA": "Aventure en coop\u00e9ration en comp\u00e9tition"
+    },
+    "rules_tokens (TnOnlineGameSettingsBase.RulePairs)": [
+     {
+      "Token": "`p",
+      "PropertyId": 1073741832
+     },
+     {
+      "Token": "`t",
+      "PropertyId": 1073741831
+     },
+     {
+      "Token": "`r",
+      "PropertyId": 1073741830
+     }
+    ],
+    "UIText.GameTypes": {
+     "CCP": "Competitive Cooperative Campaign"
+    }
+   },
+   "loading_tips (EngageText, de-duplicated; base tips in frontend_loading.json)": [
+    "Even if you're full collect Energon Shards for extra points.",
+    "Score bonus points with headshots and melee kills.",
+    "Score points for healing  your teammates.",
+    "Increase your score multiplier by killing enemies quickly."
+   ],
+   "settings": {
+    "GameClass": "TransContent.TnCoopGame",
+    "LobbyGameClass": "TransContent.TnGameLobbyGameCoop",
+    "NumRequiredPlayers": 2,
+    "TeamType": "GTS_CampaignGame",
+    "Rules": [
+     "TransGame.TnGameRules_TrackKills",
+     "TransGame.TnGameRules_CompetitiveScoring"
+    ]
+   },
+   "public_settings": {
+    "NumPublicConnections": 3,
+    "StatsWriters": [
+     "TransGame.TnStatsWriteCCP"
+    ]
+   },
+   "announcer": {
+    "GameTypeDialog": null,
+    "GameDescriptionDialog": null
+   },
+   "music": {},
+   "game_type_message": {
+    "class": null,
+    "GameTypeMessage": null,
+    "Lifetime": null,
+    "PosY": null
+   },
+   "gfx_symbols_named_after_mode (name match, HIGH)": [
+    {
+     "movie": "UI_GFxShared_p/SharedIcons_GFX",
+     "names": [
+      "mc_gameModeIconCCP"
+     ]
+    }
+   ],
+   "icon": {
+    "movie": "UI_GFxShared_p/SharedIcons_GFX",
+    "file": "content/UI_GFxShared_p/SharedIcons_GFX.gfx",
+    "symbol": "mc_gameModeIconCCP",
+    "loaded_by": "GameLobby_GFX / PartyLobby_GFX mc_gameModeIconLoadReference (HIGH, name)",
+    "bitmaps": "drawn from SharedIcons_GFX images (images_extracted in frontend_gfx.json); per-symbol bitmap binding not decoded (PARTIAL)",
+    "confidence": "CONFIRMED AUTHORED DATA (exported symbol)"
+   },
+   "hud_score_panel (Hud_GFX export, name-based HIGH)": "mc_scoreCoop",
+   "confidence": "CONFIRMED AUTHORED DATA (authored text/classes/cues); behaviour of rules/messages = RE/Gameplay"
+  }
+ },
+ "shared_messages": {
+  "TnCTFMessage": {
+   "AttackerDialog": "SoundEvents_Dialog.Announcer.MP_GameTypeCaptureCodeOfPowerDialog",
+   "DefenderDialog": "SoundEvents_Dialog.Announcer.MP_DefendCodeOfPowerDialog",
+   "Lifetime": 3.0,
+   "DrawColor": {
+    "B": 255,
+    "G": 255,
+    "R": 255,
+    "A": 255
+   },
+   "PosY": 0.8299999833106995,
+   "dialog_resolved": {
+    "SoundEvents_Dialog.Announcer.MP_DefendCodeOfPowerDialog": {
+     "event": "SoundEvents_Dialog.Announcer.MP_DefendCodeOfPowerDialog",
+     "cue": "BL_DX_SWITCHBOARD.SC002670",
+     "wavs": [
+      "content/WL_DX_OPRIME/DX_OPRIME_LK002670.wav",
+      "content/WL_DX_MGTRON/DX_MGTRON_LK002671.wav"
+     ],
+     "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "SoundEvents_Dialog.Announcer.MP_GameTypeCaptureCodeOfPowerDialog": {
+     "event": "SoundEvents_Dialog.Announcer.MP_GameTypeCaptureCodeOfPowerDialog",
+     "cue": "BL_DX_SWITCHBOARD.SC002649",
+     "wavs": [
+      "content/WL_DX_OPRIME/DX_OPRIME_LK002649.wav",
+      "content/WL_DX_MGTRON/DX_MGTRON_LK002658.wav"
+     ],
+     "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    }
+   }
+  },
+  "TnDominationMessage": {
+   "AutobotsCapturingPointDialog": [
+    "SoundEvents_Dialog.Announcer.MP_AutobotsCapturing_A_Dialog",
+    "SoundEvents_Dialog.Announcer.MP_AutobotsCapturing_B_Dialog",
+    "SoundEvents_Dialog.Announcer.MP_AutobotsCapturing_C_Dialog",
+    "SoundEvents_Dialog.Announcer.MP_AutobotsCapturing_D_Dialog",
+    "SoundEvents_Dialog.Announcer.MP_AutobotsCapturing_E_Dialog"
+   ],
+   "DecepticonsCapturingPointDialog": [
+    "SoundEvents_Dialog.Announcer.MP_DecepticonsCapturing_A_Dialog",
+    "SoundEvents_Dialog.Announcer.MP_DecepticonsCapturing_B_Dialog",
+    "SoundEvents_Dialog.Announcer.MP_DecepticonsCapturing_C_Dialog",
+    "SoundEvents_Dialog.Announcer.MP_DecepticonsCapturing_D_Dialog",
+    "SoundEvents_Dialog.Announcer.MP_DecepticonsCapturing_E_Dialog"
+   ],
+   "AutobotsTakePointDialog": [
+    "SoundEvents_Dialog.Announcer.MP_AutobotCaptured_A_Dialog",
+    "SoundEvents_Dialog.Announcer.MP_AutobotCaptured_B_Dialog",
+    "SoundEvents_Dialog.Announcer.MP_AutobotCaptured_C_Dialog",
+    "SoundEvents_Dialog.Announcer.MP_AutobotCaptured_D_Dialog",
+    "SoundEvents_Dialog.Announcer.MP_AutobotCaptured_E_Dialog"
+   ],
+   "DecepticonsTakePointDialog": [
+    "SoundEvents_Dialog.Announcer.MP_DecepticonCaptured_A_Dialog",
+    "SoundEvents_Dialog.Announcer.MP_DecepticonCaptured_B_Dialog",
+    "SoundEvents_Dialog.Announcer.MP_DecepticonCaptured_C_Dialog",
+    "SoundEvents_Dialog.Announcer.MP_DecepticonCaptured_D_Dialog",
+    "SoundEvents_Dialog.Announcer.MP_DecepticonCaptured_E_Dialog"
+   ],
+   "Lifetime": 3.0,
+   "DrawColor": {
+    "B": 255,
+    "G": 255,
+    "R": 255,
+    "A": 255
+   },
+   "PosY": 0.8299999833106995,
+   "dialog_resolved": {
+    "SoundEvents_Dialog.Announcer.MP_AutobotCaptured_A_Dialog": {
+     "event": "SoundEvents_Dialog.Announcer.MP_AutobotCaptured_A_Dialog",
+     "cue": "BL_DX_SWITCHBOARD.SC010599",
+     "wavs": [
+      "content/WL_DX_OPRIME/DX_OPRIME_LK010579.wav",
+      "content/WL_DX_MGTRON/DX_MGTRON_LK010600.wav"
+     ],
+     "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "SoundEvents_Dialog.Announcer.MP_AutobotCaptured_B_Dialog": {
+     "event": "SoundEvents_Dialog.Announcer.MP_AutobotCaptured_B_Dialog",
+     "cue": "BL_DX_SWITCHBOARD.SC010601",
+     "wavs": [
+      "content/WL_DX_OPRIME/DX_OPRIME_LK010581.wav",
+      "content/WL_DX_MGTRON/DX_MGTRON_LK010602.wav"
+     ],
+     "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "SoundEvents_Dialog.Announcer.MP_AutobotCaptured_C_Dialog": {
+     "event": "SoundEvents_Dialog.Announcer.MP_AutobotCaptured_C_Dialog",
+     "cue": "BL_DX_SWITCHBOARD.SC010603",
+     "wavs": [
+      "content/WL_DX_OPRIME/DX_OPRIME_LK010583.wav",
+      "content/WL_DX_MGTRON/DX_MGTRON_LK010604.wav"
+     ],
+     "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "SoundEvents_Dialog.Announcer.MP_AutobotCaptured_D_Dialog": {
+     "event": "SoundEvents_Dialog.Announcer.MP_AutobotCaptured_D_Dialog",
+     "cue": "BL_DX_SWITCHBOARD.SC010605",
+     "wavs": [
+      "content/WL_DX_OPRIME/DX_OPRIME_LK010585.wav",
+      "content/WL_DX_MGTRON/DX_MGTRON_LK010606.wav"
+     ],
+     "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "SoundEvents_Dialog.Announcer.MP_AutobotCaptured_E_Dialog": {
+     "event": "SoundEvents_Dialog.Announcer.MP_AutobotCaptured_E_Dialog",
+     "cue": "BL_DX_SWITCHBOARD.SC010607",
+     "wavs": [
+      "content/WL_DX_OPRIME/DX_OPRIME_LK010588.wav",
+      "content/WL_DX_MGTRON/DX_MGTRON_LK010608.wav"
+     ],
+     "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "SoundEvents_Dialog.Announcer.MP_AutobotsCapturing_A_Dialog": {
+     "event": "SoundEvents_Dialog.Announcer.MP_AutobotsCapturing_A_Dialog",
+     "cue": "BL_DX_SWITCHBOARD.SC010633",
+     "wavs": [
+      "content/WL_DX_MGTRON/DX_MGTRON_LK010590.wav",
+      "content/WL_DX_OPRIME/DX_OPRIME_LK010633.wav"
+     ],
+     "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "SoundEvents_Dialog.Announcer.MP_AutobotsCapturing_B_Dialog": {
+     "event": "SoundEvents_Dialog.Announcer.MP_AutobotsCapturing_B_Dialog",
+     "cue": "BL_DX_SWITCHBOARD.SC010634",
+     "wavs": [
+      "content/WL_DX_MGTRON/DX_MGTRON_LK010592.wav",
+      "content/WL_DX_OPRIME/DX_OPRIME_LK010634.wav"
+     ],
+     "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "SoundEvents_Dialog.Announcer.MP_AutobotsCapturing_C_Dialog": {
+     "event": "SoundEvents_Dialog.Announcer.MP_AutobotsCapturing_C_Dialog",
+     "cue": "BL_DX_SWITCHBOARD.SC010635",
+     "wavs": [
+      "content/WL_DX_MGTRON/DX_MGTRON_LK010594.wav",
+      "content/WL_DX_OPRIME/DX_OPRIME_LK010635.wav"
+     ],
+     "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "SoundEvents_Dialog.Announcer.MP_AutobotsCapturing_D_Dialog": {
+     "event": "SoundEvents_Dialog.Announcer.MP_AutobotsCapturing_D_Dialog",
+     "cue": "BL_DX_SWITCHBOARD.SC010636",
+     "wavs": [
+      "content/WL_DX_MGTRON/DX_MGTRON_LK010596.wav",
+      "content/WL_DX_OPRIME/DX_OPRIME_LK010636.wav"
+     ],
+     "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "SoundEvents_Dialog.Announcer.MP_AutobotsCapturing_E_Dialog": {
+     "event": "SoundEvents_Dialog.Announcer.MP_AutobotsCapturing_E_Dialog",
+     "cue": "BL_DX_SWITCHBOARD.SC010637",
+     "wavs": [
+      "content/WL_DX_MGTRON/DX_MGTRON_LK010598.wav",
+      "content/WL_DX_OPRIME/DX_OPRIME_LK010637.wav"
+     ],
+     "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "SoundEvents_Dialog.Announcer.MP_DecepticonCaptured_A_Dialog": {
+     "event": "SoundEvents_Dialog.Announcer.MP_DecepticonCaptured_A_Dialog",
+     "cue": "BL_DX_SWITCHBOARD.SC010579",
+     "wavs": [
+      "content/WL_DX_OPRIME/DX_OPRIME_LK010599.wav",
+      "content/WL_DX_MGTRON/DX_MGTRON_LK010580.wav"
+     ],
+     "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "SoundEvents_Dialog.Announcer.MP_DecepticonCaptured_B_Dialog": {
+     "event": "SoundEvents_Dialog.Announcer.MP_DecepticonCaptured_B_Dialog",
+     "cue": "BL_DX_SWITCHBOARD.SC010581",
+     "wavs": [
+      "content/WL_DX_OPRIME/DX_OPRIME_LK010601.wav",
+      "content/WL_DX_MGTRON/DX_MGTRON_LK010582.wav"
+     ],
+     "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "SoundEvents_Dialog.Announcer.MP_DecepticonCaptured_C_Dialog": {
+     "event": "SoundEvents_Dialog.Announcer.MP_DecepticonCaptured_C_Dialog",
+     "cue": "BL_DX_SWITCHBOARD.SC010583",
+     "wavs": [
+      "content/WL_DX_OPRIME/DX_OPRIME_LK010603.wav",
+      "content/WL_DX_MGTRON/DX_MGTRON_LK010584.wav"
+     ],
+     "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "SoundEvents_Dialog.Announcer.MP_DecepticonCaptured_D_Dialog": {
+     "event": "SoundEvents_Dialog.Announcer.MP_DecepticonCaptured_D_Dialog",
+     "cue": "BL_DX_SWITCHBOARD.SC010585",
+     "wavs": [
+      "content/WL_DX_OPRIME/DX_OPRIME_LK010605.wav",
+      "content/WL_DX_MGTRON/DX_MGTRON_LK010587.wav"
+     ],
+     "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "SoundEvents_Dialog.Announcer.MP_DecepticonCaptured_E_Dialog": {
+     "event": "SoundEvents_Dialog.Announcer.MP_DecepticonCaptured_E_Dialog",
+     "cue": "BL_DX_SWITCHBOARD.SC010586",
+     "wavs": [
+      "content/WL_DX_MGTRON/DX_MGTRON_LK010586.wav",
+      "content/WL_DX_OPRIME/DX_OPRIME_LK010607.wav"
+     ],
+     "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "SoundEvents_Dialog.Announcer.MP_DecepticonsCapturing_A_Dialog": {
+     "event": "SoundEvents_Dialog.Announcer.MP_DecepticonsCapturing_A_Dialog",
+     "cue": "BL_DX_SWITCHBOARD.SC010628",
+     "wavs": [
+      "content/WL_DX_OPRIME/DX_OPRIME_LK010589.wav",
+      "content/WL_DX_MGTRON/DX_MGTRON_LK010628.wav"
+     ],
+     "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "SoundEvents_Dialog.Announcer.MP_DecepticonsCapturing_B_Dialog": {
+     "event": "SoundEvents_Dialog.Announcer.MP_DecepticonsCapturing_B_Dialog",
+     "cue": "BL_DX_SWITCHBOARD.SC010629",
+     "wavs": [
+      "content/WL_DX_OPRIME/DX_OPRIME_LK010591.wav",
+      "content/WL_DX_MGTRON/DX_MGTRON_LK010629.wav"
+     ],
+     "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "SoundEvents_Dialog.Announcer.MP_DecepticonsCapturing_C_Dialog": {
+     "event": "SoundEvents_Dialog.Announcer.MP_DecepticonsCapturing_C_Dialog",
+     "cue": "BL_DX_SWITCHBOARD.SC010630",
+     "wavs": [
+      "content/WL_DX_OPRIME/DX_OPRIME_LK010593.wav",
+      "content/WL_DX_MGTRON/DX_MGTRON_LK010630.wav"
+     ],
+     "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "SoundEvents_Dialog.Announcer.MP_DecepticonsCapturing_D_Dialog": {
+     "event": "SoundEvents_Dialog.Announcer.MP_DecepticonsCapturing_D_Dialog",
+     "cue": "BL_DX_SWITCHBOARD.SC010631",
+     "wavs": [
+      "content/WL_DX_OPRIME/DX_OPRIME_LK010595.wav",
+      "content/WL_DX_MGTRON/DX_MGTRON_LK010631.wav"
+     ],
+     "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "SoundEvents_Dialog.Announcer.MP_DecepticonsCapturing_E_Dialog": {
+     "event": "SoundEvents_Dialog.Announcer.MP_DecepticonsCapturing_E_Dialog",
+     "cue": "BL_DX_SWITCHBOARD.SC010632",
+     "wavs": [
+      "content/WL_DX_OPRIME/DX_OPRIME_LK010597.wav",
+      "content/WL_DX_MGTRON/DX_MGTRON_LK010632.wav"
+     ],
+     "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    }
+   }
+  },
+  "TnGameProgressAnnouncementMessage": {
+   "Sounds": [
+    "SoundEvents_Dialog.Announcer.MP_30SecondsLeftDialog",
+    "SoundEvents_Dialog.Announcer.MP_1MinuteLeftDialog",
+    "SoundEvents_Dialog.Announcer.MP_2MinutesLeftDialog",
+    "SoundEvents_Dialog.Announcer.MP_25PointsRemaining",
+    "SoundEvents_Dialog.Announcer.MP_50PointsRemainingDialog",
+    "SoundEvents_Dialog.Announcer.MP_1KillRemainingDialog",
+    "SoundEvents_Dialog.Announcer.MP_3KillsRemainingDialog",
+    "SoundEvents_Dialog.Announcer.MP_5KillsRemainingDialog"
+   ],
+   "Lifetime": 3.0,
+   "DrawColor": {
+    "B": 255,
+    "G": 255,
+    "R": 255,
+    "A": 255
+   },
+   "PosY": 0.8299999833106995,
+   "dialog_resolved": {
+    "SoundEvents_Dialog.Announcer.MP_1KillRemainingDialog": {
+     "event": "SoundEvents_Dialog.Announcer.MP_1KillRemainingDialog",
+     "cue": "BL_DX_SWITCHBOARD.SC010609",
+     "wavs": [
+      "content/WL_DX_OPRIME/DX_OPRIME_LK010609.wav",
+      "content/WL_DX_MGTRON/DX_MGTRON_LK010610.wav"
+     ],
+     "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "SoundEvents_Dialog.Announcer.MP_1MinuteLeftDialog": {
+     "event": "SoundEvents_Dialog.Announcer.MP_1MinuteLeftDialog",
+     "cue": "BL_DX_SWITCHBOARD.SC008962",
+     "wavs": [
+      "content/WL_DX_OPRIME/DX_OPRIME_LK008962.wav",
+      "content/WL_DX_MGTRON/DX_MGTRON_LK008963.wav"
+     ],
+     "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "SoundEvents_Dialog.Announcer.MP_25PointsRemaining": {
+     "event": "SoundEvents_Dialog.Announcer.MP_25PointsRemaining",
+     "cue": "BL_DX_SWITCHBOARD.SC009009",
+     "wavs": [
+      "content/WL_DX_OPRIME/DX_OPRIME_LK009009.wav",
+      "content/WL_DX_MGTRON/DX_MGTRON_LK009010.wav"
+     ],
+     "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "SoundEvents_Dialog.Announcer.MP_2MinutesLeftDialog": {
+     "event": "SoundEvents_Dialog.Announcer.MP_2MinutesLeftDialog",
+     "cue": "BL_DX_SWITCHBOARD.SC008961",
+     "wavs": [
+      "content/WL_DX_OPRIME/DX_OPRIME_LK008960.wav",
+      "content/WL_DX_MGTRON/DX_MGTRON_LK008961.wav"
+     ],
+     "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "SoundEvents_Dialog.Announcer.MP_30SecondsLeftDialog": {
+     "event": "SoundEvents_Dialog.Announcer.MP_30SecondsLeftDialog",
+     "cue": "BL_DX_SWITCHBOARD.SC008964",
+     "wavs": [
+      "content/WL_DX_OPRIME/DX_OPRIME_LK008964.wav",
+      "content/WL_DX_MGTRON/DX_MGTRON_LK009049.wav"
+     ],
+     "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "SoundEvents_Dialog.Announcer.MP_3KillsRemainingDialog": {
+     "event": "SoundEvents_Dialog.Announcer.MP_3KillsRemainingDialog",
+     "cue": "BL_DX_SWITCHBOARD.SC010611",
+     "wavs": [
+      "content/WL_DX_OPRIME/DX_OPRIME_LK010611.wav",
+      "content/WL_DX_MGTRON/DX_MGTRON_LK010612.wav"
+     ],
+     "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "SoundEvents_Dialog.Announcer.MP_50PointsRemainingDialog": {
+     "event": "SoundEvents_Dialog.Announcer.MP_50PointsRemainingDialog",
+     "cue": "BL_DX_SWITCHBOARD.SC009007",
+     "wavs": [
+      "content/WL_DX_OPRIME/DX_OPRIME_LK009007.wav",
+      "content/WL_DX_MGTRON/DX_MGTRON_LK009008.wav"
+     ],
+     "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "SoundEvents_Dialog.Announcer.MP_5KillsRemainingDialog": {
+     "event": "SoundEvents_Dialog.Announcer.MP_5KillsRemainingDialog",
+     "cue": "BL_DX_SWITCHBOARD.SC010613",
+     "wavs": [
+      "content/WL_DX_OPRIME/DX_OPRIME_LK010613.wav",
+      "content/WL_DX_MGTRON/DX_MGTRON_LK010614.wav"
+     ],
+     "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    }
+   }
+  },
+  "TnKillStreakAnnouncer": {
+   "AnnouncementsForStreakLengths": [
+    3,
+    5,
+    7,
+    10
+   ],
+   "dialog_resolved": {}
+  },
+  "TnAnnouncer": {
+   "Team0DialogCharacter": "DialogCharacters.OPRIME",
+   "Team1DialogCharacter": "DialogCharacters.MGTRON",
+   "dialog_resolved": {}
+  },
+  "TnMessageTextColors": {
+   "PlayerColor": {
+    "B": 255,
+    "G": 255,
+    "R": 255,
+    "A": 255
+   },
+   "FriendlyColor": {
+    "B": 213,
+    "G": 181,
+    "R": 80,
+    "A": 255
+   },
+   "EnemyColor": {
+    "B": 60,
+    "G": 60,
+    "R": 240,
+    "A": 255
+   },
+   "NeutralColor": {
+    "B": 51,
+    "G": 147,
+    "R": 255,
+    "A": 255
+   },
+   "dialog_resolved": {}
+  },
+  "TnGameMessage": {
+   "LeftGameString": "`k has left the game",
+   "JoinedGameString": "`k has joined the game",
+   "SwitchLevelMessage": "Switching Levels",
+   "LeftMessage": "left the game.",
+   "FailedTeamMessage": "Could not find team for player",
+   "FailedPlaceMessage": "Could not find a starting spot",
+   "FailedSpawnMessage": "Could not spawn player",
+   "EnteredMessage": "entered the game.",
+   "MaxedOutMessage": "Server is already at capacity.",
+   "ArbitrationMessage": "The session has already started.",
+   "OvertimeMessage": "Score tied at the end of regulation. Sudden Death Overtime!!!",
+   "GlobalNameChange": "changed name to",
+   "NewTeamMessage": "is now on",
+   "NoNameChange": "Name is already in use.",
+   "VoteStarted": "started a vote.",
+   "VotePassed": "Vote passed.",
+   "MustHaveStats": "Must have stats enabled to join this server.",
+   "CantBeSpectator": "Sorry, you cannot become a spectator at this time.",
+   "CantBePlayer": "Sorry, you cannot become an active player at this time.",
+   "BecameSpectator": "became a spectator.",
+   "NewPlayerMessage": "A new player entered the game.",
+   "KickWarning": "You are about to be kicked for idling!",
+   "NewSpecMessage": "A spectator entered the game/",
+   "SpecEnteredMessage": "joined as a spectator.",
+   "Lifetime": 3.0,
+   "DrawColor": {
+    "B": 255,
+    "G": 255,
+    "R": 255,
+    "A": 255
+   },
+   "PosY": 0.8299999833106995,
+   "dialog_resolved": {}
+  },
+  "TnKillStreakMessage": {
+   "LocalStreakerMessage": "`n Kill Streak!",
+   "RemoteStreakerMessage": "`k is on a `n Kill Streak!",
+   "Lifetime": 3.0,
+   "DrawColor": {
+    "B": 255,
+    "G": 255,
+    "R": 255,
+    "A": 255
+   },
+   "PosY": 0.8299999833106995,
+   "dialog_resolved": {}
+  },
+  "TnKillStreakEndedMessage": {
+   "KillStreakEnded": "`k ended `o kill streak",
+   "Lifetime": 3.0,
+   "DrawColor": {
+    "B": 255,
+    "G": 255,
+    "R": 255,
+    "A": 255
+   },
+   "PosY": 0.8299999833106995,
+   "dialog_resolved": {}
+  },
+  "TnKillstreakActivatedMessage": {
+   "Lifetime": 3.0,
+   "DrawColor": {
+    "B": 255,
+    "G": 255,
+    "R": 255,
+    "A": 255
+   },
+   "PosY": 0.8299999833106995,
+   "dialog_resolved": {}
+  },
+  "TnVersusGameOverMessage": {
+   "AutobotWinSound": "SoundEvents_Dialog.Announcer.MP_GameAutobotWin",
+   "DecepticonWinSound": "SoundEvents_Dialog.Announcer.MP_GameDecepticonWin",
+   "YouWinMessage": "Your team won",
+   "YouLoseMessage": "Your team lost",
+   "ForfeitMessage": "Enemy team forfeits",
+   "TieMessage": "Tie game",
+   "bIsSpecial": true,
+   "bIsConsoleMessage": true,
+   "Lifetime": 3.0,
+   "DrawColor": {
+    "B": 255,
+    "G": 255,
+    "R": 255,
+    "A": 255
+   },
+   "PosY": 0.8299999833106995,
+   "dialog_resolved": {
+    "AutobotWinSound": {
+     "event": "SoundEvents_Dialog.Announcer.MP_GameAutobotWin",
+     "cue": "BL_DX_SWITCHBOARD.SC002491",
+     "wavs": [
+      "content/WL_DX_OPRIME/DX_OPRIME_LK002491.wav",
+      "content/WL_DX_MGTRON/DX_MGTRON_LK009276.wav"
+     ],
+     "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "DecepticonWinSound": {
+     "event": "SoundEvents_Dialog.Announcer.MP_GameDecepticonWin",
+     "cue": "BL_DX_SWITCHBOARD.SC002481",
+     "wavs": [
+      "content/WL_DX_MGTRON/DX_MGTRON_LK002481.wav",
+      "content/WL_DX_OPRIME/DX_OPRIME_LK009274.wav"
+     ],
+     "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    }
+   }
+  }
+ },
+ "other_mode_icons (SharedIcons_GFX)": [
+  "mc_gameModeIconCCP",
+  "mc_gameModeIconCP",
+  "mc_gameModeIconCTF",
+  "mc_gameModeIconDM",
+  "mc_gameModeIconDOM",
+  "mc_gameModeIconEXT",
+  "mc_gameModeIconKOTH",
+  "mc_gameModeIconPlayer",
+  "mc_gameModeIconRO",
+  "mc_gameModeIconSV",
+  "mc_gameModeIconTDM",
+  "mc_gameModeIconWeapons"
+ ],
+ "unlisted_mode_RO": "SharedIcons mc_gameModeIconRO and announcer event MP_GameTypeRollOutDialog exist, but no GameModeInfo, playlist or settings class: a cut/unused \"Roll Out\" mode (UNKNOWN status, not shipped as playable)",
+ "announcer_event_table": {
+  "SoundEvents_Dialog.Announcer.MP_10KillsRemainingDialog": "BL_DX_SWITCHBOARD.SC010615",
+  "SoundEvents_Dialog.Announcer.MP_12KillStreakDialog": "BL_DX_SWITCHBOARD.SC009043",
+  "SoundEvents_Dialog.Announcer.MP_15KillStreakDialog": "BL_DX_SWITCHBOARD.SC009045",
+  "SoundEvents_Dialog.Announcer.MP_1KillLeftDialog": "BL_DX_SWITCHBOARD.SC008987",
+  "SoundEvents_Dialog.Announcer.MP_1KillRemainingDialog": "BL_DX_SWITCHBOARD.SC010609",
+  "SoundEvents_Dialog.Announcer.MP_1MinuteLeftDialog": "BL_DX_SWITCHBOARD.SC008962",
+  "SoundEvents_Dialog.Announcer.MP_20KillStreakDialog": "BL_DX_SWITCHBOARD.SC009047",
+  "SoundEvents_Dialog.Announcer.MP_25PointsRemaining": "BL_DX_SWITCHBOARD.SC009009",
+  "SoundEvents_Dialog.Announcer.MP_2KillsLeftDialog": "BL_DX_SWITCHBOARD.SC008985",
+  "SoundEvents_Dialog.Announcer.MP_2MinutesLeftDialog": "BL_DX_SWITCHBOARD.SC008961",
+  "SoundEvents_Dialog.Announcer.MP_30SecondsLeftDialog": "BL_DX_SWITCHBOARD.SC008964",
+  "SoundEvents_Dialog.Announcer.MP_3KillsLeftDialog": "BL_DX_SWITCHBOARD.SC008983",
+  "SoundEvents_Dialog.Announcer.MP_3KillsRemainingDialog": "BL_DX_SWITCHBOARD.SC010611",
+  "SoundEvents_Dialog.Announcer.MP_50PointsRemainingDialog": "BL_DX_SWITCHBOARD.SC009007",
+  "SoundEvents_Dialog.Announcer.MP_5KillsLeftDialog": "BL_DX_SWITCHBOARD.SC008997",
+  "SoundEvents_Dialog.Announcer.MP_5KillsRemainingDialog": "BL_DX_SWITCHBOARD.SC010613",
+  "SoundEvents_Dialog.Announcer.MP_9KillStreakDialog": "BL_DX_SWITCHBOARD.SC009041",
+  "SoundEvents_Dialog.Announcer.MP_AmmoMatrixAcquiredDialog": "BL_DX_SWITCHBOARD.SC010678",
+  "SoundEvents_Dialog.Announcer.MP_AmmoMatrixOnlineDialog": "BL_DX_SWITCHBOARD.SC010680",
+  "SoundEvents_Dialog.Announcer.MP_AutobotAbilitiesJammedDialog": "BL_DX_SWITCHBOARD.SC010654",
+  "SoundEvents_Dialog.Announcer.MP_AutobotCaptured_A_Dialog": "BL_DX_SWITCHBOARD.SC010599",
+  "SoundEvents_Dialog.Announcer.MP_AutobotCaptured_B_Dialog": "BL_DX_SWITCHBOARD.SC010601",
+  "SoundEvents_Dialog.Announcer.MP_AutobotCaptured_C_Dialog": "BL_DX_SWITCHBOARD.SC010603",
+  "SoundEvents_Dialog.Announcer.MP_AutobotCaptured_D_Dialog": "BL_DX_SWITCHBOARD.SC010605",
+  "SoundEvents_Dialog.Announcer.MP_AutobotCaptured_E_Dialog": "BL_DX_SWITCHBOARD.SC010607",
+  "SoundEvents_Dialog.Announcer.MP_AutobotDetonatedBombDialog": "BL_DX_SWITCHBOARD.SC004527",
+  "SoundEvents_Dialog.Announcer.MP_AutobotFiredOmegaMissleDialog": "BL_DX_SWITCHBOARD.SC010686",
+  "SoundEvents_Dialog.Announcer.MP_AutobotOrbitalBeacon2point0OnlineDialog": "BL_DX_SWITCHBOARD.SC010672",
+  "SoundEvents_Dialog.Announcer.MP_AutobotPickupBombDialog": "BL_DX_SWITCHBOARD.SC002475",
+  "SoundEvents_Dialog.Announcer.MP_AutobotTakenLeadDialog": "BL_DX_SWITCHBOARD.SC008973",
+  "SoundEvents_Dialog.Announcer.MP_AutobotTeamLeaderDeadDialog": "BL_DX_SWITCHBOARD.SC002936",
+  "SoundEvents_Dialog.Announcer.MP_AutobotsAboutToWinDialog": "BL_DX_SWITCHBOARD.SC010617",
+  "SoundEvents_Dialog.Announcer.MP_AutobotsCapturing_A_Dialog": "BL_DX_SWITCHBOARD.SC010633",
+  "SoundEvents_Dialog.Announcer.MP_AutobotsCapturing_B_Dialog": "BL_DX_SWITCHBOARD.SC010634",
+  "SoundEvents_Dialog.Announcer.MP_AutobotsCapturing_C_Dialog": "BL_DX_SWITCHBOARD.SC010635",
+  "SoundEvents_Dialog.Announcer.MP_AutobotsCapturing_D_Dialog": "BL_DX_SWITCHBOARD.SC010636",
+  "SoundEvents_Dialog.Announcer.MP_AutobotsCapturing_E_Dialog": "BL_DX_SWITCHBOARD.SC010637",
+  "SoundEvents_Dialog.Announcer.MP_AutobotsVergeOfVictoryDialog": "BL_DX_SWITCHBOARD.SC010621",
+  "SoundEvents_Dialog.Announcer.MP_BombDefusedDialog": "BL_DX_SWITCHBOARD.SC002478",
+  "SoundEvents_Dialog.Announcer.MP_BombDroppedDialog": "BL_DX_SWITCHBOARD.SC002477",
+  "SoundEvents_Dialog.Announcer.MP_BombPlantedDialog": "BL_DX_SWITCHBOARD.SC002480",
+  "SoundEvents_Dialog.Announcer.MP_BreakFreeDialog": "BL_DX_SWITCHBOARD.SC009029",
+  "SoundEvents_Dialog.Announcer.MP_DecepticonAbilitiesJammedDialog": "BL_DX_SWITCHBOARD.SC010652",
+  "SoundEvents_Dialog.Announcer.MP_DecepticonCaptured_A_Dialog": "BL_DX_SWITCHBOARD.SC010579",
+  "SoundEvents_Dialog.Announcer.MP_DecepticonCaptured_B_Dialog": "BL_DX_SWITCHBOARD.SC010581",
+  "SoundEvents_Dialog.Announcer.MP_DecepticonCaptured_C_Dialog": "BL_DX_SWITCHBOARD.SC010583",
+  "SoundEvents_Dialog.Announcer.MP_DecepticonCaptured_D_Dialog": "BL_DX_SWITCHBOARD.SC010585",
+  "SoundEvents_Dialog.Announcer.MP_DecepticonCaptured_E_Dialog": "BL_DX_SWITCHBOARD.SC010586",
+  "SoundEvents_Dialog.Announcer.MP_DecepticonDetonatedBombDialog": "BL_DX_SWITCHBOARD.SC004529",
+  "SoundEvents_Dialog.Announcer.MP_DecepticonFiredOmegaMissleDialog": "BL_DX_SWITCHBOARD.SC010688",
+  "SoundEvents_Dialog.Announcer.MP_DecepticonOrbitalBeacon2point0OnlineDialog": "BL_DX_SWITCHBOARD.SC010670",
+  "SoundEvents_Dialog.Announcer.MP_DecepticonPickupBombDialog": "BL_DX_SWITCHBOARD.SC002476",
+  "SoundEvents_Dialog.Announcer.MP_DecepticonTakenLeadDialog": "BL_DX_SWITCHBOARD.SC008974",
+  "SoundEvents_Dialog.Announcer.MP_DecepticonTeamLeaderDeadDialog": "BL_DX_SWITCHBOARD.SC002935",
+  "SoundEvents_Dialog.Announcer.MP_DecepticonsAboutToWinDialog": "BL_DX_SWITCHBOARD.SC010619",
+  "SoundEvents_Dialog.Announcer.MP_DecepticonsCapturing_A_Dialog": "BL_DX_SWITCHBOARD.SC010628",
+  "SoundEvents_Dialog.Announcer.MP_DecepticonsCapturing_B_Dialog": "BL_DX_SWITCHBOARD.SC010629",
+  "SoundEvents_Dialog.Announcer.MP_DecepticonsCapturing_C_Dialog": "BL_DX_SWITCHBOARD.SC010630",
+  "SoundEvents_Dialog.Announcer.MP_DecepticonsCapturing_D_Dialog": "BL_DX_SWITCHBOARD.SC010631",
+  "SoundEvents_Dialog.Announcer.MP_DecepticonsCapturing_E_Dialog": "BL_DX_SWITCHBOARD.SC010632",
+  "SoundEvents_Dialog.Announcer.MP_DecepticonsVergeOfVictoryDialog": "BL_DX_SWITCHBOARD.SC010623",
+  "SoundEvents_Dialog.Announcer.MP_DefendCodeOfPowerDialog": "BL_DX_SWITCHBOARD.SC002670",
+  "SoundEvents_Dialog.Announcer.MP_DoubleKillDialog": "BL_DX_SWITCHBOARD.SC009035",
+  "SoundEvents_Dialog.Announcer.MP_ElectromagneticPulseAcquiredDialog": "BL_DX_SWITCHBOARD.SC010650",
+  "SoundEvents_Dialog.Announcer.MP_EnergonRechargerAcquiredDialog": "BL_DX_SWITCHBOARD.SC010647",
+  "SoundEvents_Dialog.Announcer.MP_EnergonRechargerActivatedDialog": "BL_DX_SWITCHBOARD.SC010649",
+  "SoundEvents_Dialog.Announcer.MP_FFAGainedTheLeadDialog": "BL_DX_SWITCHBOARD.SC010571",
+  "SoundEvents_Dialog.Announcer.MP_FFALostTheLeadDialog": "BL_DX_SWITCHBOARD.SC010573",
+  "SoundEvents_Dialog.Announcer.MP_FirstBlood": "BL_DX_SWITCHBOARD.SC009031",
+  "SoundEvents_Dialog.Announcer.MP_FlagDroppedDialog": "BL_DX_SWITCHBOARD.SC002231",
+  "SoundEvents_Dialog.Announcer.MP_FlagPickedUpDialog": "BL_DX_SWITCHBOARD.SC002230",
+  "SoundEvents_Dialog.Announcer.MP_FlagReturnedDialog": "BL_DX_SWITCHBOARD.SC002232",
+  "SoundEvents_Dialog.Announcer.MP_FlagScoredDialog": "BL_DX_SWITCHBOARD.SC002233",
+  "SoundEvents_Dialog.Announcer.MP_FlySwatterDialog": "BL_DX_SWITCHBOARD.SC009021",
+  "SoundEvents_Dialog.Announcer.MP_FunkillerDialog": "BL_DX_SWITCHBOARD.SC002443",
+  "SoundEvents_Dialog.Announcer.MP_GameAutobotWin": "BL_DX_SWITCHBOARD.SC002491",
+  "SoundEvents_Dialog.Announcer.MP_GameDecepticonWin": "BL_DX_SWITCHBOARD.SC002481",
+  "SoundEvents_Dialog.Announcer.MP_GameDescriptionConquestDialog": "BL_DX_SWITCHBOARD.SC010577",
+  "SoundEvents_Dialog.Announcer.MP_GameDescriptionDeathMatchDialog": "BL_DX_SWITCHBOARD.SC008977",
+  "SoundEvents_Dialog.Announcer.MP_GameDescriptionExtinctionDialog": "BL_DX_SWITCHBOARD.SC009011",
+  "SoundEvents_Dialog.Announcer.MP_GameDescriptionPowerStruggleDialog": "BL_DX_SWITCHBOARD.SC009003",
+  "SoundEvents_Dialog.Announcer.MP_GameDescriptionTeamDeathMatchDialog": "BL_DX_SWITCHBOARD.SC008993",
+  "SoundEvents_Dialog.Announcer.MP_GameTypeCaptureCodeOfPowerDialog": "BL_DX_SWITCHBOARD.SC002649",
+  "SoundEvents_Dialog.Announcer.MP_GameTypeConquestDialog": "BL_DX_SWITCHBOARD.SC010575",
+  "SoundEvents_Dialog.Announcer.MP_GameTypeDeathMatchDialog": "BL_DX_SWITCHBOARD.SC002656",
+  "SoundEvents_Dialog.Announcer.MP_GameTypeEscalationDialog": "BL_DX_SWITCHBOARD.SC009019",
+  "SoundEvents_Dialog.Announcer.MP_GameTypeExtinctionDialog": "BL_DX_SWITCHBOARD.SC002650",
+  "SoundEvents_Dialog.Announcer.MP_GameTypePowerStruggleDialog": "BL_DX_SWITCHBOARD.SC002653",
+  "SoundEvents_Dialog.Announcer.MP_GameTypeRollOutDialog": "BL_DX_SWITCHBOARD.SC003118",
+  "SoundEvents_Dialog.Announcer.MP_GameTypeTeamDeathMatchDialog": "BL_DX_SWITCHBOARD.SC002657",
+  "SoundEvents_Dialog.Announcer.MP_GrimReaperDialog": "BL_DX_SWITCHBOARD.SC009023",
+  "SoundEvents_Dialog.Announcer.MP_HattrickDialog": "BL_DX_SWITCHBOARD.SC009033",
+  "SoundEvents_Dialog.Announcer.MP_HealthMatrixAcquiredDialog": "BL_DX_SWITCHBOARD.SC010674",
+  "SoundEvents_Dialog.Announcer.MP_HealthMatrixOnlineDialog": "BL_DX_SWITCHBOARD.SC010676",
+  "SoundEvents_Dialog.Announcer.MP_HillCapturedAutobotDialog": "BL_DX_SWITCHBOARD.SC001504",
+  "SoundEvents_Dialog.Announcer.MP_HillCapturedDecepticonDialog": "BL_DX_SWITCHBOARD.SC001505",
+  "SoundEvents_Dialog.Announcer.MP_HillContestedDialog": "BL_DX_SWITCHBOARD.SC001503",
+  "SoundEvents_Dialog.Announcer.MP_HillMovedDialog": "BL_DX_SWITCHBOARD.SC001501",
+  "SoundEvents_Dialog.Announcer.MP_HillNeutralDialog": "BL_DX_SWITCHBOARD.SC001502",
+  "SoundEvents_Dialog.Announcer.MP_IntercoolerActivatedDialog": "BL_DX_SWITCHBOARD.SC010641",
+  "SoundEvents_Dialog.Announcer.MP_IntercoolerAquiredDialog": "BL_DX_SWITCHBOARD.SC010639",
+  "SoundEvents_Dialog.Announcer.MP_LastRoundDialog": "BL_DX_SWITCHBOARD.SC009015",
+  "SoundEvents_Dialog.Announcer.MP_MatchOverDialog": "BL_DX_SWITCHBOARD.SC002583",
+  "SoundEvents_Dialog.Announcer.MP_MultiKillDialog": "BL_DX_SWITCHBOARD.SC002422",
+  "SoundEvents_Dialog.Announcer.MP_NodeAvailableDialog": "BL_DX_SWITCHBOARD.SC001502",
+  "SoundEvents_Dialog.Announcer.MP_NodeContestedDialog": "BL_DX_SWITCHBOARD.SC001503",
+  "SoundEvents_Dialog.Announcer.MP_NodeControlledAutobotDialog": "BL_DX_SWITCHBOARD.SC001504",
+  "SoundEvents_Dialog.Announcer.MP_NodeControlledDecepticonDialog": "BL_DX_SWITCHBOARD.SC001505",
+  "SoundEvents_Dialog.Announcer.MP_NodeHasMovedDialog": "BL_DX_SWITCHBOARD.SC001501",
+  "SoundEvents_Dialog.Announcer.MP_NucleonCannonAquiredDialog": "BL_DX_SWITCHBOARD.SC010643",
+  "SoundEvents_Dialog.Announcer.MP_NucleonCannonEquippedDialog": "BL_DX_SWITCHBOARD.SC010645",
+  "SoundEvents_Dialog.Announcer.MP_OmegaMissleAcquiredDialog": "BL_DX_SWITCHBOARD.SC010682",
+  "SoundEvents_Dialog.Announcer.MP_OmegaMissleOnlineDialog": "BL_DX_SWITCHBOARD.SC010684",
+  "SoundEvents_Dialog.Announcer.MP_OrbitalBeaconAquiredDialog": "BL_DX_SWITCHBOARD.SC010656",
+  "SoundEvents_Dialog.Announcer.MP_OrbitalBeaconOnlineDialog": "BL_DX_SWITCHBOARD.SC010658",
+  "SoundEvents_Dialog.Announcer.MP_OrbitalReconActivatedEnemyDialog": "BL_DX_SWITCHBOARD.SC002580",
+  "SoundEvents_Dialog.Announcer.MP_OrbitalReconActivatedFriendlyDialog": "BL_DX_SWITCHBOARD.SC002579",
+  "SoundEvents_Dialog.Announcer.MP_OrbitalReconActivatedSelfDialog": "BL_DX_SWITCHBOARD.SC002579",
+  "SoundEvents_Dialog.Announcer.MP_OvertimeDialog": "BL_DX_SWITCHBOARD.SC008969",
+  "SoundEvents_Dialog.Announcer.MP_Payback": "BL_DX_SWITCHBOARD.SC009025",
+  "SoundEvents_Dialog.Announcer.MP_PunchOfKillAquiredDialog": "BL_DX_SWITCHBOARD.SC010660",
+  "SoundEvents_Dialog.Announcer.MP_PunchOfKillEquippedDialog": "BL_DX_SWITCHBOARD.SC010662",
+  "SoundEvents_Dialog.Announcer.MP_QuadKillDialog": "BL_DX_SWITCHBOARD.SC009039",
+  "SoundEvents_Dialog.Announcer.MP_RefillAmmoActivatedSelfDialog": "BL_DX_SWITCHBOARD.SC004515",
+  "SoundEvents_Dialog.Announcer.MP_RoundAutobotWinDialog": "BL_DX_SWITCHBOARD.SC002492",
+  "SoundEvents_Dialog.Announcer.MP_RoundDecepticonWinDialog": "BL_DX_SWITCHBOARD.SC002482",
+  "SoundEvents_Dialog.Announcer.MP_RoundSwitchingSidesDialog": "BL_DX_SWITCHBOARD.SC009001",
+  "SoundEvents_Dialog.Announcer.MP_RoundTimeUp": "BL_DX_SWITCHBOARD.SC008965",
+  "SoundEvents_Dialog.Announcer.MP_RoundTimeUpDialog": "BL_DX_SWITCHBOARD.SC008965",
+  "SoundEvents_Dialog.Announcer.MP_SuddenDeathDialog": "BL_DX_SWITCHBOARD.SC008967",
+  "SoundEvents_Dialog.Announcer.MP_TeamAmmoReplenished": "BL_DX_SWITCHBOARD.SC004515",
+  "SoundEvents_Dialog.Announcer.MP_ThermoMineRespawnerActivatedDialog": "BL_DX_SWITCHBOARD.SC010664",
+  "SoundEvents_Dialog.Announcer.MP_ThermoMineRespawnerAquiredDialog": "BL_DX_SWITCHBOARD.SC010666",
+  "SoundEvents_Dialog.Announcer.MP_TimeAlmostUpDialog": "BL_DX_SWITCHBOARD.SC010625",
+  "SoundEvents_Dialog.Announcer.MP_TimeIsUpDialog": "BL_DX_SWITCHBOARD.SC002468",
+  "SoundEvents_Dialog.Announcer.MP_TripleKillDialog": "BL_DX_SWITCHBOARD.SC009037",
+  "SoundEvents_Dialog.Announcer.MP_WaypointTakenDialog": "BL_DX_SWITCHBOARD.SC009017",
+  "SoundEvents_Dialog.Announcer.MP_YouAreTeamLeaderDialog": "BL_DX_SWITCHBOARD.SC004055",
+  "SoundEvents_Dialog.Announcer.MP_YouLoseDeathmatchDialog": "BL_DX_SWITCHBOARD.SC008991",
+  "SoundEvents_Dialog.Announcer.MP_YouWinDeathmatchDialog": "BL_DX_SWITCHBOARD.SC008989"
+ }
+}

@@ -6,6 +6,9 @@
   maps_modes         every shipped map's CompatibleGameTypes are known mode tags; every menu-visible playlist has a mode
   ui_cues            every music / ambience / GFx UI sound resolves to a SoundCue with at least one WAV
   bindings           every binding class exists; bridge calls carry a resolution status
+  mode_presentation  every mode has name + icon symbol; music / announcer cues resolve to existing WAVs
+  hud                every HUD/UIController movie has a GFx record; observers exist; marker textures exist
+  map_catalog        Streets reference record; streamed levels present; thumbnails exist; readiness covers all maps
   loc                GFx localization keys: resolved share reported (unresolved listed, not a failure)
 """
 import json, os, re, sys
@@ -64,6 +67,33 @@ def main():
     for r in M['frontend_gfx.json']['movies'].values():
         for b in r['bridge_calls (ExternalInterface.call)']:
             chk('bindings', 'function_exported' in b, b['call'])
+    # presentation / HUD / catalog (fe_presentation.py, fe_map_catalog.py)
+    mp = J('frontend_mode_presentation.json')
+    for tag, r in mp['modes'].items():
+        chk('mode_presentation', bool(r['text']['FriendlyName']['INT']), tag + ' name')
+        chk('mode_presentation', r['icon'].get('symbol') is not None, tag + ' icon')
+        for k, c in r['music'].items():
+            chk('mode_presentation', c and not c['missing'] and all(os.path.exists(os.path.join(ROOT, w)) for w in c['wavs']), tag + ' ' + k)
+        for k, d in r['announcer'].items():
+            if d: chk('mode_presentation', bool(d['wavs']) and all(os.path.exists(os.path.join(ROOT, w)) for w in d['wavs']), tag + ' ' + k)
+    for tag in VERSUS:
+        chk('mode_presentation', tag in mp['modes'], 'missing mode ' + tag)
+    hd = J('frontend_hud.json')
+    for k, v in hd['movies'].items():
+        chk('hud', v['record'] is not None, 'movie record ' + k)
+    for o in hd['data_observers']:
+        chk('hud', A.get(o['object']) is not None, o['object'])
+    for p in hd['hud_marker_textures (UI_HudMarkers_p)']:
+        chk('hud', os.path.exists(os.path.join(ROOT, p)), p)
+    cat = J('mp_map_catalog.json')
+    st = [m for m in cat['maps'] if m['MapFilename'].lower() == 'mp_iac_streets_base_m']
+    chk('map_catalog', len(st) == 1 and 'reference_implementation' in st[0], 'streets reference')
+    for m in cat['maps']:
+        if m.get('cooked'):
+            chk('map_catalog', not m['packages']['missing_streamed'], m['MapFilename'] + ' streamed levels')
+            chk('map_catalog', bool(m['thumbnail_png']) and os.path.exists(os.path.join(ROOT, m['thumbnail_png'])), m['MapFilename'] + ' thumb')
+    rd = J('mp_next_map_readiness.json')
+    chk('map_catalog', len(rd['ranking']) == sum(1 for m in cat['maps'] if m.get('cooked')) - 1, 'readiness covers all cooked maps')
     lk = M['frontend_localization.json']
     resolved = sum(1 for v in lk['gfx_keys'].values() if v['INT'])
     os.makedirs(LOGS, exist_ok=True)
