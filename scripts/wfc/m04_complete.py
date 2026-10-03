@@ -337,6 +337,49 @@ def main():
             M = ue_trans(x['component_translation_ue']) @ A_
             x['ue_matrix'] = M.tolist(); x['gltf_matrix'] = ue_to_gltf_matrix(M)
             x['visible_in_modes'] = MODES
+            # every state's meshes (streets_destructibles.json). State meshes use the piece transform (CONFIRMED: the cooked
+            # per-state StaticMeshComponents carry exactly the piece Translation). Spawned meshes: factory Transform x piece x
+            # actor is PROVISIONAL (composition order of the native HmDestructible spawn not recovered).
+            from vs_common import ue_rot
+            dm = J(os.path.join(MANI, 'streets_destructibles.json'))['actors'][0]
+            gl = {m: v['gltf'] for m, v in dm['meshes'].items()}
+            states = []
+            for pc in dm['pieces']:
+                pp = (pc.get('Transform') or {}).get('Position') or {}
+                PT = ue_trans([pp.get('X', 0), pp.get('Y', 0), pp.get('Z', 0)])
+                for st in pc['states']:
+                    ent = {'handle': st['handle'], 'InitialHealth': st['InitialHealth']['value'],
+                           'AutomaticTransitionTime': st['AutomaticTransitionTime']['value'],
+                           'links': [{'to': l['NextStateHandle'], 'trigger': l['TransitionTrigger']} for l in st['links']],
+                           'static_meshes': [], 'spawned_meshes': []}
+                    for e in st['effects']:
+                        au = e['authored']
+                        if e['class'] == 'HmStaticMeshDestructionEffectFactory':
+                            Ms = PT @ A_
+                            ent['static_meshes'].append({'mesh': au['Mesh'], 'gltf': gl.get(au['Mesh']), 'ue_matrix': Ms.tolist(),
+                                                         'gltf_matrix': ue_to_gltf_matrix(Ms), 'lighting': au.get('LightingOption'),
+                                                         'confidence': CONF})
+                        elif e['class'] in ('HmPhysicalMeshDestructionEffectFactory', 'HmDebrisDestructionEffectFactory'):
+                            tr = au.get('Transform') or {}
+                            p_ = tr.get('Position') or {}; o_ = tr.get('Orientation') or {}
+                            FT = ue_rot(o_.get('Pitch', 0), o_.get('Yaw', 0), o_.get('Roll', 0)) @ ue_trans([p_.get('X', 0), p_.get('Y', 0), p_.get('Z', 0)])
+                            Mf = FT @ PT @ A_
+                            m_ = au.get('MeshTemplate')
+                            ent['spawned_meshes'].append({
+                                'factory': e['class'], 'mesh': m_, 'gltf': gl.get(m_),
+                                'spawn_ue_matrix (PROVISIONAL: factory x piece x actor)': Mf.tolist(),
+                                'spawn_gltf_matrix (PROVISIONAL)': ue_to_gltf_matrix(Mf),
+                                'authored': {k: v for k, v in au.items() if k not in ('MeshTemplate',)},
+                                'runtime': ('rigid body, LinearVelocity/AngularVelocity as authored, collides with pawns'
+                                            if 'Physical' in e['class'] else
+                                            '%s chunks at random points in SpawnVolumeScale, speed LinearSpeed in a cone, '
+                                            'lifespan ChunkLifespan s' % au.get('NumChunks')),
+                                'confidence': PART})
+                    states.append(ent)
+            x['states'] = states
+            x['state_note'] = ('handle 0 intact (drawn at load) -> 1 destroyed on damage/touch/Kismet -> 2 settled after 10 s. '
+                               'Draw only the current state static meshes; spawned meshes appear on entering state 1. '
+                               'Particles/sounds: streets_destructibles.json.')
         if 'domination' in x['kind']:
             x['visible_in_modes'] = ['DOM']
             t = x['transform']
