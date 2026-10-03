@@ -57,7 +57,8 @@ FX particle-system references (not converted), tracer material, impact decal.
 * Sub-levels: `MP_IAC_Streets_BASE_m` (persistent: gameplay, volumes) streams `_ART_m` (geometry) and `_AUDIO_m`.
 * All 84 player starts have ground ≤ 6 m below (median 0.84 m); 19 stand on invisible BlockingVolumes
   (matches their authored `Base` property) — load `collision.glb`, not only `world.glb`.
-* Static-mesh simple collision bodies were not extracted: use the render mesh where `block` is true.
+* Static-mesh collision: `collision_pawn.glb` / `collision_weapon.glb` (`vs_physics.py`) carry the authored simple hulls and
+  per-trace flags. Prefer them to the render mesh.
 
 ### Slice game mode: TDM pickup / objective state (added 2026-10-03, CONFIRMED)
 The slice runs **TDM** (Civil War; DM is identical for these actors). Sources: the authored `RequiredGameRuleClass` and
@@ -78,12 +79,47 @@ Kismet, plus RE script decompilation (read-only `RE-Workspace/notes/MILESTONE04_
   `SetPickupHidden` drive this.
 * Load from `render_index.json`: `tdm_render_state`, `pickup_fx_components`, `pickup_factory_visuals`.
 
-## Known gaps / fallbacks
-* Lightmaps / baked lighting not extracted → use a simple directional + ambient light.
-* Particle systems, decals (25, listed with material + transform), emitters (8) are references only.
-* Glass / fog / light-ray materials (23 of 164 map materials) have no base texture → constant fallback.
-* Character colours are an approximation of the customization shader; reflection cubemaps not exported.
-* KingOfTheHill zones have no brush (use their location; radius in props if present).
+## Known gaps / fallbacks (updated 2026-10-03)
+* **Geometry:** since `8d8195e`, the 1,906 StaticMeshCollectionActor meshes carry their full component transform
+  (non-uniform and negative scale; 478 mirrored).
+  * Earlier `world.glb` / collision exports were mis-scaled. Reload them.
+  * `validate_smca_transforms.py` checks every component.
+* **Baked lighting:** extracted.
+  * `lightmaps.json`: 1,794 texture-lightmap bindings (all levels, actor-placed props included).
+  * `lightmaps/`: all 63 directional coefficient atlases as PNG.
+  * `world.glb` node extras `lm_*`.
+  * Not in AssetTools output:
+    * 28 components with vertex (1D) lightmaps; Rendering decodes these in its own tool.
+    * 133 components authored with no baked lighting.
+  * `manifests/streets_lighting_audit.json` lists each case.
+* **Decals:** 25 in `map_fx.json`, with material, transform and size; Rendering draws them.
+* **Particles:** fully decoded data, not runtime.
+  * 8 level steam emitters: `map_fx.json`.
+  * 37 pickup effects decoded module-by-module: `manifests/streets_pickup_fx.json`.
+  * Draw rules: `render_index.json` `pickup_fx_components`.
+  * Drawing them at runtime is Rendering/Systems work.
+* **Materials:**
+  * `materials_authored.json` has the full authored record per material (MIC chain, parameters, textures, switches).
+  * Rendering compiles the original graphs.
+  * 36 materials are unverified and 1 renders wrongly (`DeadBodies_Mat_INST`); see `manifests/streets_rebuild_diff.json`.
+  * The constant base-colour fallback mentioned earlier applies only to the simple PBR materials inside `world.glb`.
+* **Character colours:**
+  * Authored team colours and parameter bindings are in `Characters/Optimus/materials_authored.json`.
+  * Reflection cubemaps are still not exported.
+* **KOTH zones:**
+  * No brush. Use the zone's `CylinderComponent`.
+  * The active-zone ring (`pTorus1_STAT`, zone scale (1, 1, 2)) is in `render_index.json`; KOTH only.
+* **Not in `world.glb`, listed in `render_index.json`:**
+  * 3 domination totems (DOM only);
+  * the destructible wall panel (outside the play space; states included);
+  * pickup factory meshes.
+* **Movers:**
+  * The 3 rotating domes and the SkyBeam Matinee must be animated at runtime.
+  * Data: `manifests/streets_movers.json`, `gameplay.json`.
+* **Still UNKNOWN or PROVISIONAL:**
+  * the flag/bomb factories' resting visual;
+  * the ammo crate mesh's attach offset (placed at the factory origin, PROVISIONAL);
+  * spawn placement of the destructible's chunk and debris.
 
 ## Targeted evidence pass additions (2026-10-01)
 * **`AssetTools/manifests/vs_evidence.json`**: answers for the open fidelity questions (boost FX/sockets/cues/anim
