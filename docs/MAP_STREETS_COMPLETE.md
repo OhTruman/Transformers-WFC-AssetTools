@@ -7,6 +7,39 @@ links). Every focused manifest below keeps per-record provenance (package / obje
 1. `run_pipeline.py --only m04_lightmap_atlases m04_bsp m04_inventory m04_kismet m04_complete validate_m04`
 2. After any change to `lightmaps.json`, also run `vs_lightmap.py` then `--only vs_map vs_collision vs_physics vs_validate`.
 
+## Geometry fix (2026-10-03): StaticMeshCollectionActor component transforms
+**Root cause:** reported by ReverseEngineering (`RE-Workspace/notes/MILESTONE04_STREETS_NATIVE_SCENE.md`,
+`notes/data/streets_smca_component_scale.json`). `vs_map.py` placed the 1,906 SMCA members with the serialized
+CachedParentToWorld only. The engine also applies the component `S(Scale*Scale3D) * R * T`.
+
+**Fix:** `M = component_matrix(cd) @ CachedParentToWorld`. The fix flows into `props.json`, `world.glb`, `collision.glb`,
+`collision_pawn.glb`, `collision_weapon.glb`, `physics.json`, `map.json`, `render_index.json` and the M04 manifests.
+
+**Transform validation (`validate_smca_transforms.py`, `manifests/streets_transform_validation.json`):** 1,906 components
+checked against an independent recomputation (native parent re-read, component values through the archetype chain) and the
+RE table.
+* 1,906/1,906 exact matches; 0 mismatches in translation, rotation, scale, sign, determinant, glTF matrix or bounds.
+* RE table agreement: 1,906/1,906.
+* 1,672 components changed versus the pre-fix export.
+* 478 are mirrored (det < 0); 4 have two negative axes, which is not mirroring.
+* All three collision GLBs carry the corrected matrices, with 0 stale pre-fix matrices.
+* Lightmap bindings are unchanged (1,755 SMCA bindings identical; `world.glb` has 1,794 lightmapped nodes).
+* All 46 non-SMCA placements are unchanged.
+
+**Before/after audit (`manifests/streets_transform_fix_audit.json`):**
+* `CityBackdrop_STAT` ×2: 1.0 → 0.41.
+* `SquareLightPlane_STAT` up to 13.88×.
+* `Cratestack_Debri_01` up to 18.5× / (14.7, 14.7, 27.1).
+* `Saucer_8192` → (0.07, 0.07, 0.035).
+* `OmegaCeilingDome` → 0.086.
+* Mirrored wall and support halves: `Wall_Top_Straight` (−1, 1, 1), `SideSuppPillar` (−0.78, 0.78, 0.78).
+* By family: `ENV_CORE_InroomWall_C` 92, `SquareLightPlane` 69, `ArchTop01` 63, `CurveWall_7168` 63, `GS_SupportB` 62,
+  `SideSuppPillar` 61.
+
+**Bounds:** the authored world bounds excluding sky and backdrop are now 842 × 929 × 843 m. Playable bounds are unchanged.
+
+**Caveat:** this fixes a structural export defect. It does not by itself make the map visually 1:1.
+
 ## Identity and hierarchy (CONFIRMED)
 | package | role | streaming | actors (+BSP comps) | components |
 |---|---|---|---|---|

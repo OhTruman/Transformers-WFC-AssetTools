@@ -256,12 +256,16 @@ def main():
                     mop = ref(cd.get('StaticMesh'))
                     ov = [ref(x) for x in (cd.get('Materials') or [])]
                     if mats is None: other['smca_without_matrices'] += 1; continue
-                    M = mats[k]
+                    # UE3 UPrimitiveComponent::SetTransformedToWorld (RE: 0x82DC3508): the component's own
+                    # S(Scale*Scale3D) * R(Rotation) * T(Translation) is applied on top of the serialized
+                    # CachedParentToWorld. In Streets the native matrices are pure rotation+translation; all
+                    # per-instance (non-uniform / negative) scale lives in the component. Row-vector order.
+                    M = component_matrix(cd) @ mats[k]
                     gl, err = mesh_node(mop, ov, M, '%s.%d' % (nm, k), lm_extras({'actor': nm, 'class': c, 'component': cr, 'mesh': mop}, cr), pkg=L.name)
                     props_out.append(dict(rec_base, component=cr, mesh=mop, gltf=gl, material_overrides=ov,
                                           ue_matrix=M.tolist(), gltf_matrix=ue_to_gltf_matrix(M), error=err, section_materials=secmats(L.name, mop),
                                           collide=cd.get('CollideActors', True), block=cd.get('BlockActors', True),
-                                          transform_source='StaticMeshCollectionActor native LocalToWorld'))
+                                          transform_source='component S(Scale*Scale3D)*R*T x StaticMeshCollectionActor native CachedParentToWorld'))
                 continue
             smc = ref(d.get('StaticMeshComponent')) or (ref(d.get('CollisionComponent')) if c in ('StaticMeshActor', 'InterpActor', 'StaticInterpActor') else None)
             if c in ('StaticMeshActor', 'InterpActor', 'StaticInterpActor', 'TnStaticDestructibleActor') or (smc and 'StaticMesh' in L.cls[(L.idx(smc) or 1) - 1]):

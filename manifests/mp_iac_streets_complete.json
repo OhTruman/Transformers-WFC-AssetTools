@@ -1,6 +1,6 @@
 {
  "map": "MP_IAC_Streets",
- "generated": "2026-10-02 22:46",
+ "generated": "2026-10-02 23:48",
  "generated_by": "AssetTools/scripts/wfc/m04_complete.py",
  "identity": {
   "map": "MP_IAC_Streets",
@@ -362,19 +362,27 @@
     ]
    },
    {
-    "mesh": "ENV_IAC_Background_p.Vista_Buildings.CityBackdrop_STAT",
+    "mesh": "ENV_IAC_LightSources_p.LightPlanes.SquareLightPlane_STAT",
     "aabb_size_m": [
-     0.0,
-     1276.5,
-     638.3
+     0.7,
+     709.1,
+     709.1
     ]
    },
    {
-    "mesh": "ENV_IAC_Background_p.Vista_Buildings.CityBackdrop_STAT",
+    "mesh": "ENV_IAC_LightSources_p.LightPlanes.SquareLightPlane_STAT",
     "aabb_size_m": [
-     1179.3,
-     488.5,
-     638.3
+     0.7,
+     709.1,
+     709.1
+    ]
+   },
+   {
+    "mesh": "ENV_IAC_LightSources_p.LightPlanes.SquareLightPlane_STAT",
+    "aabb_size_m": [
+     587.2,
+     57.9,
+     584.3
     ]
    },
    {
@@ -384,32 +392,24 @@
      269.1,
      523.4
     ]
-   },
-   {
-    "mesh": "ENV_GLB_EnvEffects_p.StaticMesh.LightBeam_Cone_STAT",
-    "aabb_size_m": [
-     251.0,
-     280.7,
-     511.5
-    ]
    }
   ],
   "world_bounds_excluding_sky_and_backdrop_ue": [
    [
     -23520.3,
-    -87466.6,
-    -79998.0
+    -97048.2,
+    -95688.2
    ],
    [
-    60634.4,
-    -7234.5,
+    60664.7,
+    -4159.8,
     -11375.1
    ]
   ],
   "world_size_excluding_sky_and_backdrop_m": [
-   841.5,
-   802.3,
-   686.2
+   841.9,
+   928.9,
+   843.1
   ],
   "playable_bounds_ue (player starts)": [
    [
@@ -649,27 +649,39 @@
   },
   "by_classification (visible components)": {
    "PRESENT BUT WRONG STATE": 10,
-   "PRESENT AND MATCHING": 1966,
+   "PRESENT AND MATCHING": 1967,
    "PRESENT BUT INCOMPLETE": 45,
-   "MISSING FROM REBUILD": 3,
-   "PRESENT BUT WRONG MATERIAL": 1
+   "MISSING FROM REBUILD": 3
   },
-  "percent_of_visible_items_present_and_matching": 97.66,
+  "percent_of_visible_items_present_and_matching": 97.7,
   "percent_missing_or_not_drawn": 1.91,
-  "percent_wrong_state_or_material": 0.43,
+  "percent_wrong_state_or_material": 0.39,
   "actor_classification": {
    "CONTAINER / NON-RENDERED AUTHORED OBJECT": 406,
    "PRESENT BUT WRONG STATE": 10,
-   "PRESENT AND MATCHING": 645,
+   "PRESENT AND MATCHING": 646,
    "PRESENT BUT INCOMPLETE": 38,
    "MISSING FROM REBUILD": 2,
-   "PRESENT BUT WRONG MATERIAL": 1,
    "EXTRA / REBUILD-ONLY": 0
   },
   "non_matching_detail": "manifests/streets_rebuild_diff.json",
-  "evidence": "slice exports + Rendering lane renderer-dump audit (2026-10-02 12:58)"
+  "evidence": "slice exports + Rendering lane renderer-dump audit (2026-10-02 23:01)",
+  "transform_fix (StaticMeshCollectionActor component scale, this pass)": {
+   "components_checked": 1906,
+   "exact_matches": 1906,
+   "pre_fix_export_wrong_transform": 1672,
+   "mirrored_det_negative": 478,
+   "any_negative_axis": 482,
+   "note": "The pre-fix world.glb / collision drew these components with CachedParentToWorld only (component Scale*Scale3D dropped): PRESENT BUT WRONG TRANSFORM in any rebuild still loading the pre-fix export. The Rendering audit statuses quoted above were measured against that pre-fix world.glb and do not cover transform correctness.",
+   "details": "manifests/streets_transform_validation.json, manifests/streets_transform_fix_audit.json"
+  }
  },
  "why_the_rebuild_reads_as_incomplete": [
+  {
+   "cause": "PRIMARY (fixed in this export): 1672 of 1906 StaticMeshCollectionActor meshes were exported without their component Scale*Scale3D - wrong size and 478 mirrored copies drawn un-mirrored; collision had the same error (RE M04 native-scene report)",
+   "items": 1672,
+   "confidence": "CONFIRMED AUTHORED DATA"
+  },
   {
    "cause": "all 45 particle components (8 level steam emitters + 37 pickup effects) are exported but not drawn",
    "items": 45,
@@ -711,7 +723,7 @@
    "confidence": "CONFIRMED AUTHORED DATA"
   },
   {
-   "cause": "NOT a geometry gap: BSP 2460/2460 triangles, 1952/1952 placed static meshes, 25/25 decals, 268/268 light components, 0 rebuild-only extras, 3 sublevels all loaded; the authored playable footprint is ~379 x 370 m",
+   "cause": "not missing geometry: BSP 2460/2460 triangles, 1952/1952 placed static meshes, 25/25 decals, 268/268 light components, 0 rebuild-only extras, 3 sublevels all loaded; the authored playable footprint is ~379 x 370 m",
    "confidence": "CONFIRMED AUTHORED DATA"
   }
  ],

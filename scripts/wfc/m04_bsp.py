@@ -21,8 +21,8 @@ from vs_common import VS  # noqa: E402
 MAP = 'MP_IAC_Streets'
 LEVELS = [MAP + '_BASE_m', MAP + '_ART_m', MAP + '_AUDIO_m']
 FLAG_NAMES = {0x1: 'Invisible', 0x2: 'Masked', 0x4: 'Translucent', 0x8: 'NotSolid', 0x10: 'Environment', 0x20: 'Semisolid',
-              0x40: 'BeveledEdges', 0x80: 'Portal?0x80', 0x100: 'TwoSided', 0x200: 'Cutout', 0x400: 'FakeBackdrop',
-              0x800: 'Mirror', 0x1000: 'Unused1000', 0x2000: 'NoSmooth', 0x8000: 'NoBounce?', 0x10000: 'BrightCorners',
+              0x40: 'BeveledEdges', 0x80: 'Portal?0x80', 0x100: 'TwoSided', 0x200: 'UE3 flag 0x200 (name UNKNOWN; not UE2 Cutout)', 0x400: 'UE3 flag 0x400 (name UNKNOWN; not UE2 FakeBackdrop)',
+              0x800: 'UE3 flag 0x800 (name UNKNOWN; not UE2 Mirror)', 0x1000: 'Unused1000', 0x2000: 'NoSmooth', 0x8000: 'NoBounce?', 0x10000: 'BrightCorners',
               0x40000: 'Unused40000', 0x80000: 'SpecialLit', 0x100000: 'Flat?', 0x400000: 'NoImpact?',
               0x1000000: 'Unused1000000', 0x4000000: 'Portal', 0x8000000: 'Mirror?', 0x10000000: 'Unused',
               0x40000000: 'Selected?', 0x80000000: 'Memorized?'}

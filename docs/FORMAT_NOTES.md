@@ -160,3 +160,12 @@ UTF-16 strings use negative length. Community tools (Decrypticon/TFGamesUtil) do
 * **Destructibles**: HmDestructibleBlueprint -> PieceBlueprints -> StateBlueprints (handle = list index) -> EffectFactories
   + LinkBlueprints (NextStateHandle, TransitionTrigger class). The placed piece cooks one StaticMeshComponent per
   HmStaticMeshDestructionEffect (archetype TextureLightmapMeshTemplate0).
+
+## StaticMeshCollectionActor component transform (M04 geometry fix, 2026-10-03)
+* The SMCA native tail stores one CachedParentToWorld (16 BE floats) per StaticMeshComponents entry. In Streets every
+  one is a pure rotation + translation (unit rows, det +1).
+* The engine (RE: UPrimitiveComponent::SetTransformedToWorld 0x82DC3508) applies the component on top:
+  `LocalToWorld = S(Scale*Scale3D) * R(Rotation) * T(Translation) * CachedParentToWorld` (UE row vectors).
+* All per-instance scale lives in the component: 1672/1906 have scale != 1, 1121 are non-uniform, 482 have a negative
+  axis (478 odd count = mirrored, det < 0; 4 have two negative axes = a 180 deg rotation).
+* vs_map.py exported the parent matrix alone until 2026-10-03.

@@ -65,6 +65,7 @@ sequences[], preview_skeletal_mesh, compatible_skeletal_meshes/animsets, map_usa
 | `vs_audio_concurrency.py` | `manifests/vertical_slice_audio_concurrency.json` (M03) |
 | `vs_vehicle_loops.py` + `validate_vehicle_loops.py` | `manifests/vehicle_audio_loops.json` (M03) and its header-level validator |
 | `m04_bsp.py` / `m04_inventory.py` / `m04_kismet.py` / `m04_complete.py` | **complete MP_IAC_Streets map**: BSP audit, full actor/component inventory + rebuild classification, lighting/mover/prefab audits, Kismet + HUD references, canonical `manifests/mp_iac_streets_complete.json` + `render_index.json` (`docs/MAP_STREETS_COMPLETE.md`) |
+| `validate_smca_transforms.py [--before DIR]` | transform-level validation of every StaticMeshCollectionActor component (translation / rotation / signed scale / determinant / bounds vs native + RE table) and the before/after audit |
 | `m04_lightmap_atlases.py`, `validate_m04.py` | export missing lightmap atlas PNGs; map-completeness validation (`logs/validate_m04.json`) |
 | `validate_m03.py` | cross-manifest validation of the M03 outputs (`logs/validate_m03.json`) |
 | `schema.py`, `typed_props.py` | UnrealScript type registry (`manifests/schema.json`) and the schema-driven tag reader |

@@ -60,6 +60,7 @@ STEPS = [
     ('m04_kismet',       [PY, os.path.join(S, 'm04_kismet.py')]),
     ('m04_complete',     [PY, os.path.join(S, 'm04_complete.py')]),
     ('validate_m04',     [PY, os.path.join(S, 'validate_m04.py')]),
+    ('validate_smca_transforms', [PY, os.path.join(S, 'validate_smca_transforms.py')]),  # per-component transform check (add --before DIR for a diff)
     # vs_props.py (props_authored.json) is a checkpointed, validated pass kept OUT of the pipeline on request
 ]
 

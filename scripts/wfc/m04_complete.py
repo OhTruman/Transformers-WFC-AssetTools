@@ -161,7 +161,21 @@ def main():
         'actor_classification': diff['classification_counts']['actors'],
         'non_matching_detail': 'manifests/streets_rebuild_diff.json',
         'evidence': 'slice exports + Rendering lane renderer-dump audit (%s)' % inv['sources']['rebuild_render_evidence']['mtime']}
+    tv = J(os.path.join(MANI, 'streets_transform_validation.json')) if os.path.exists(os.path.join(MANI, 'streets_transform_validation.json')) else {'stats': {}}
+    ts = tv['stats']
+    comparison['transform_fix (StaticMeshCollectionActor component scale, this pass)'] = {
+        'components_checked': ts.get('components_checked'), 'exact_matches': ts.get('exact_matches'),
+        'pre_fix_export_wrong_transform': ts.get('smca_records_changed_vs_before'),
+        'mirrored_det_negative': ts.get('mirrored_det_negative'), 'any_negative_axis': ts.get('any_negative_axis'),
+        'note': 'The pre-fix world.glb / collision drew these components with CachedParentToWorld only (component Scale*Scale3D dropped): '
+                'PRESENT BUT WRONG TRANSFORM in any rebuild still loading the pre-fix export. The Rendering audit statuses quoted '
+                'above were measured against that pre-fix world.glb and do not cover transform correctness.',
+        'details': 'manifests/streets_transform_validation.json, manifests/streets_transform_fix_audit.json'}
     why = [
+        {'cause': 'PRIMARY (fixed in this export): %s of 1906 StaticMeshCollectionActor meshes were exported without their component '
+                  'Scale*Scale3D - wrong size and %s mirrored copies drawn un-mirrored; collision had the same error (RE M04 native-scene '
+                  'report)' % (ts.get('smca_records_changed_vs_before'), ts.get('mirrored_det_negative')), 'items': ts.get('smca_records_changed_vs_before'),
+         'confidence': CONF},
         {'cause': 'all 45 particle components (8 level steam emitters + 37 pickup effects) are exported but not drawn', 'items': 45, 'confidence': CONF},
         {'cause': 'all 70 ambient-sound actors (40 point, 13 line, 17 volume) + 9 audio zones/reverb + 11 positional one-shot pools: exported in '
                   'audio.json; Experimental M03 measured 0 active (Systems runtime since in progress)', 'items': 70, 'confidence': HIGH},
@@ -172,7 +186,7 @@ def main():
                   'its own lightmaps, so the runtime effect depends on which binding the renderer used', 'items': 39, 'confidence': CONF},
         {'cause': '360 of 540 BSP render elements carry no static light interactions (LightMapType 0); authored, not an export defect', 'items': 360, 'confidence': CONF},
         {'cause': 'LightsVisibilitiesVolume not implemented (semantics UNKNOWN)', 'items': 1, 'confidence': CONF},
-        {'cause': 'NOT a geometry gap: BSP 2460/2460 triangles, 1952/1952 placed static meshes, 25/25 decals, 268/268 light components, '
+        {'cause': 'not missing geometry: BSP 2460/2460 triangles, 1952/1952 placed static meshes, 25/25 decals, 268/268 light components, '
                   '0 rebuild-only extras, 3 sublevels all loaded; the authored playable footprint is ~%.0f x %.0f m' %
                   tuple(extents['playable_size_m (player starts)'][:2]), 'confidence': CONF}]
     files = {
