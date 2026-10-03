@@ -169,3 +169,31 @@ UTF-16 strings use negative length. Community tools (Decrypticon/TFGamesUtil) do
 * All per-instance scale lives in the component: 1672/1906 have scale != 1, 1121 are non-uniform, 482 have a negative
   axis (478 odd count = mirrored, det < 0; 4 have two negative axes = a 180 deg rotation).
 * vs_map.py exported the parent matrix alone until 2026-10-03.
+
+## Render-index rules (2026-10-03, `m04_complete.py` → `render_index.json`)
+* **Class-template components are not cooked into the level.**
+  * A component listed in a class CDO's `Components` array is created from the template at spawn, for example
+    `TnKingOfTheHillZone.ActiveMeshComponent0` = `FX_Mesh_p.Mesh.pTorus1_STAT`.
+  * Its placement is the actor transform (DrawScale / DrawScale3D apply; the KOTH zones carry (1, 1, 2)) times the
+    template's own Translation/Rotation/Scale (identity here).
+* **Components outside the `Components` array are never attached**, even when cooked and referenced. Example: the
+  health/overshield `PickupEffect0` (`Pickup_FX`). They render nothing unless script attaches them.
+* **`bAutoActivate=false` does not mean "never drawn".** `TnPickupFactory.SetPickupVisible` / `SetPickupHidden` call
+  `PickupEffect.ActivateSystem` / `DeactivateSystem` (UnrealScript, RE decompilation). The pickup beam is on whenever the
+  factory is available.
+* **Export size does not distinguish native from script:** the TnPickupFactory functions are 50–144-byte exports yet carry
+  UnrealScript bytecode.
+* **Pickup visuals:**
+  * Ammo crates use the inventory CDO's `PickupFactoryMesh` (`TnAmmoCratePickup.MeshComponentA`, no authored Translation;
+    the attach offset is set by script/native and not recovered). It spins at `PickupRotationRate` Yaw 10000 per second.
+  * Health and overshield have no factory mesh. Their visible cube/shield is a **mesh-emitter particle** in the
+    CustomPickupEffect, positioned by the decoded `PMI_Location` / `PMI_Size` / `PMI_MeshRotation*` modules in local space.
+* **Destructible placement:**
+  * Each state's StaticMeshComponent = piece `Transform` × actor. Confirmed: the cooked per-state components carry
+    exactly the piece Translation (0, 0, −160).
+  * Spawned pieces (physical chunk, debris) carry a factory `Transform` relative to the piece. The composition order is
+    not recovered (PROVISIONAL).
+* **Mode gating** is an exact rule-class match on the mode's Rules list (`GameInfo.HasRule`). Two mechanisms:
+  * Kismet (`SeqCond_GameRuleActive` → `SeqAct_ToggleHidden`) for the objective bases;
+  * script `PostBeginPlay` / `InitialState` for factories, totems and KOTH zones.
+  * `Disabled` = SetHidden + SetCollision(false, false). Kismet-hidden InterpActors keep collision.
