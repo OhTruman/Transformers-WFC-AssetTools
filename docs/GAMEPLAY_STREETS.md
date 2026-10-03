@@ -28,9 +28,26 @@ Game class defaults: MaxPlayers 10, MaxSpectators 2, MaxIdleTime 180, DefaultPaw
 ## Pickups
 | factory | count | respawn | inventory (CDO payload) | effect |
 |---|---|---|---|---|
-| TnAmmoCratePickupFactory | 14 | **30 s** | TnAmmoCratePickup: refills ValidWeaponTypes Primary/Secondary/Vehicle (amount native) | `FX_Pickups_p.FX.Pickup_FX` |
-| TnHealthPickupFactory | 9 | **60 s** | TnHealthPickup: **AddedHealth 50** | `HealthPickup_FX` + `Pickup_FX` |
-| TnOverShieldPickupFactory | 1 | **120 s** | TnOverShieldPickup: no authored amount or duration (native) | `OvershieldPickup_FX` + `Pickup_FX` |
+| TnAmmoCratePickupFactory | 14 | **30 s** | TnAmmoCratePickup: refills ValidWeaponTypes Primary/Secondary/Vehicle (amount native) | `FX_Pickups_p.FX.Pickup_FX` highlight beam + crate mesh `PROP_NEU_AmmoPickup_STAT` |
+| TnHealthPickupFactory | 9 | **60 s** | TnHealthPickup: **AddedHealth 50** | `HealthPickup_FX` (its `Pickup_FX` component is cooked but never attached) |
+| TnOverShieldPickupFactory | 1 | **120 s** | TnOverShieldPickup: no authored amount or duration (native) | `OvershieldPickup_FX` (its `Pickup_FX` component is never attached) |
+
+**Visibility rule (CONFIRMED; RE script decompilation, `RE-Workspace/notes/MILESTONE04_STREETS_PICKUP_OBJECTIVE_PRESENTATION.md` §1):**
+* `SetPickupVisible` activates the effect and `SetPickupHidden` deactivates it.
+* A factory is visible (mesh + effect) while available and hidden from pickup until `RespawnTime`.
+
+**TDM pickup state** (vertical-slice mode; DM identical; CONFIRMED):
+
+| factories | TDM state | drawn / touchable |
+|---|---|---|
+| ammo crates (14) | active | crate mesh + beam while available; touchable |
+| health (9) | active | `HealthPickup_FX` while available; touchable |
+| overshield (1) | active | `OvershieldPickup_FX` while available; touchable |
+| flag factories (2) | **Disabled** (no SingleFlagCTF rule) | hidden, `SetCollision(false,false)`, no touch |
+| bomb factory (1) | **Disabled** (no ScoreBombingRun rule) | hidden, no collision, no touch |
+
+In total: 24 pickup effects + 14 crate meshes drawn. Machine-readable: `render_index.json` `tdm_render_state` /
+`pickup_fx_components`, and the `state_behaviour` section of `manifests/streets_pickup_factories.json`.
 
 ## Objectives
 Two team bases plus central and spread objectives. Objective volumes are TriggerVolumes with world polygons (12/12 resolved).
@@ -45,7 +62,18 @@ Two team bases plus central and spread objectives. Objective volumes are Trigger
 * Spawn modifier on the flag, bomb and KOTH objectives: `TnSpawnModifierRuleInverseDistance`, CutoffDistance 5000, Factor −50. Spawning
   is penalized near the objective (scoring formula native).
 * Base 0 actors leave `DefenderTeamIndex` unset (byte default 0 = Autobots); base 1 sets 1 (Decepticons). Recorded as `defender_team`.
-* How a single-flag CTF round picks which flag factory is active is native. INFERRED: per round attacker/defender, with TimeBetweenRounds 5.
+* **Single-flag CTF rounds (CONFIRMED, RE script):** `TnGameRules_SingleFlagCTF.SetupRoundStart` calls `ActivateIfMatchingTeam`
+  on each flag factory.
+  * The factory whose `DefenderTeamIndex` matches the defending team goes to `Pickup`; the other one Sleeps (hidden, beam off).
+  * Taken → Sleeping (RespawnTime 9999999); returned → `Pickup` immediately.
+  * Bomb: returns after `WaitAfterScoreTime` 5 s after a score, immediately otherwise.
+* **Mode gating of objective actors (CONFIRMED, RE script + Kismet), in modes other than their own:**
+  * flag/bomb factories are Disabled;
+  * capture/plant points are inert;
+  * domination totems are hidden outside DOM;
+  * KOTH zones are hidden except the one active zone in KOTH;
+  * the 4 objective bases are visible only in CTF/EXT and still collide while hidden.
+  * Full table: `render_index.json` `mode_visual_state`.
 
 ## Kismet (BASE Main_Sequence, CONFIRMED graph)
 * `SeqEvent_GameplayStarted` →
@@ -60,5 +88,10 @@ Two team bases plus central and spread objectives. Objective volumes are Trigger
 * `TnAssetReferencesMultiplayer` lists every MP transformer definition (Optimus, Bumblebee, Megatron …) for cooking.
 
 ## Native / unknown
-Cluster and spawn scoring; ammo-crate refill amount and overshield strength/duration; single-flag round flow; KOTH zone rotation
-order (no authored order field; 5 zones with ZoneActiveTime 60); DOM capture contest rules beyond the authored timings.
+Cluster and spawn scoring; ammo-crate refill amount and overshield strength/duration; DOM capture contest rules beyond the authored
+timings.
+
+Resolved since 2026-10-01 by RE script work:
+* the single-flag round flow (above);
+* KOTH zone selection: a random initial zone at MatchStarting, then `ActivateNewZone` every `ZoneActiveTime` 60 s. The exact choice
+  of the next zone is in that script (see the RE note).
