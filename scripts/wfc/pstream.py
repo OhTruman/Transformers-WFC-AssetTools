@@ -4,7 +4,8 @@ Layout (verified by validate_tagged.py-style cross-checks against surviving tagg
   +24  u8 N                      number of compiled modules
   +35  N records, 10 bytes each, separated by 7-byte running-count blocks:
          u8 ModuleId             Engine.ParticleModule.EParticleModuleId (enum names read from the cooked Engine enum)
-         u8 flagA, u8 flagB      raw per-module flags (reported raw; semantics not asserted)
+         u8 flagA, u8 flagB      flagA = module enabled (HIGH); flagB = constant per module class, meaning UNKNOWN
+                                 (pstream_flag_census.py over 2,736 MP-map LODs / 24,327 records)
          5 x 00, u16le payload   per-particle payload offset
   u8 count + count x u8          module indices (list following the records)
   ...                            further native lists (kept as raw hex, not decoded)
@@ -191,7 +192,9 @@ def system(ps, pkg=None):
             for r in pr['records']:
                 mods.append({'index': r['index'], 'module': r['module'], 'module_id': r['module_id'],
                              'in_list_after_records': r['index'] in pr['list_after_records'],
-                             'raw_flags': [r['flagA'], r['flagB']], 'payload_offset': r['payload_offset'],
+                             'raw_flags': [r['flagA'], r['flagB']],
+                             'enabled (flagA; HIGH - particle_flag_census.json)': r['flagA'] == 1,
+                             'payload_offset': r['payload_offset'],
                              'distributions': [{'property': x['property'], 'property_candidates': x.get('property_candidates'),
                                                 'kind': x['dist']['kind'], 'op': x['dist']['op'],
                                                 'values': x['dist']['values'], 'confidence': x['confidence'],

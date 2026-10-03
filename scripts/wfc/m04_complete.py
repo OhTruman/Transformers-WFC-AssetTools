@@ -42,6 +42,44 @@ def prop_aabbs(props, meshes):
         out.append((w[:, :3].min(0), w[:, :3].max(0)))
     return out
 
+def objective_rest_visual(i, base, Af):
+    """Flag / bomb factory resting mesh. Script (RE decomp): PickupFactory.SetPickupMesh -> TnWeapon.CreatePickupFactoryMesh:
+    PMC = TnWeaponMesh(default.WeaponMeshTemplate).GetValidPickupMesh(); Clone; SetRotation(default.SpawnOffsetAngle);
+    SetScale(default.PickupScale) -> AttachComponent. GetValidPickupMesh applies PickupMaterialOverride when set."""
+    from vs_common import ue_actor_matrix, ue_to_gltf_matrix
+    def v3(d, keys, dflt):
+        return [d.get(k, dflt) for k in keys] if isinstance(d, dict) else list(d or [dflt] * 3)
+    inv = A.effective(A.effective(i['actor'])['InventoryType']['value'].replace('.', '.Default__', 1))
+    tmpl = inv['WeaponMeshTemplate']['value']
+    te = A.effective(tmpl)
+    pm = te['PickupMesh']['value']
+    pe = A.effective(pm)
+    tr = (pe.get('Translation') or {}).get('value') or {'X': 0.0, 'Y': 0.0, 'Z': 0.0}
+    rot = inv['SpawnOffsetAngle']['value']; sc = inv['PickupScale']['value']
+    mesh = pe['SkeletalMesh']['value'] if 'SkeletalMesh' in pe else pe['StaticMesh']['value']
+    pkg, *grp, nm = mesh.split('.')
+    gltf = 'content/' + '/'.join([pkg] + grp + [nm]) + '.gltf'
+    Mc = ue_actor_matrix(v3(tr, 'XYZ', 0.0), v3(rot, ('Pitch', 'Yaw', 'Roll'), 0), sc, [1, 1, 1])
+    M = Mc @ Af
+    flag = 'Flag' in i['class']
+    return dict(base, kind='objective factory resting mesh (%s)' % i['class'], mesh=mesh, mesh_class=A.get(pm)['class'], gltf=gltf,
+                gltf_exists=os.path.exists(os.path.join(ROOT, gltf)),
+                inventory=inv['WeaponMeshTemplate']['from'].replace('Default__', ''), weapon_mesh_template=tmpl, pickup_mesh_component=pm,
+                component_transform={'Translation': tr, 'Rotation (SpawnOffsetAngle)': rot, 'Scale (PickupScale)': sc},
+                PickupMaterialOverride=(te.get('PickupMaterialOverride') or {}).get('value'),
+                CastShadow=(pe.get('CastShadow') or {}).get('value'),
+                rotation_rate=inv['PickupRotationRate']['value'],
+                rotation_deg_per_s=round(inv['PickupRotationRate']['value']['Yaw'] * 360 / 65536, 3),
+                ue_matrix=M.tolist(), gltf_matrix=ue_to_gltf_matrix(M),
+                visible_in_modes=['CTF'] if flag else ['EXT'],
+                visible_when=('CTF: only the defending team factory is available each round; hidden while carried (Sleeping)' if flag else
+                              'EXT: available until picked up; returns 5 s after a score (WaitAfterScoreTime)') +
+                             '; Disabled (hidden, no collision) in every other mode - TDM: not drawn',
+                placement_confidence=CONF,
+                placement_note='script TnWeapon.CreatePickupFactoryMesh + TnWeaponMesh.GetValidPickupMesh (RE decomp, read-only); '
+                               'values authored on the inventory class and weapon-mesh template. Skeletal mesh at rest pose (no anim '
+                               'started by these functions). Superseded the earlier UNKNOWN.')
+
 def main():
     inv = J(os.path.join(MANI, 'streets_actor_inventory.json'))
     diff = J(os.path.join(MANI, 'streets_rebuild_diff.json'))
@@ -185,7 +223,7 @@ def main():
         {'cause': 'AssetTools lightmaps.json lacked 39 actor-placed bindings + 9 coefficient atlases (FIXED in this pass); Rendering binds '
                   'its own lightmaps, so the runtime effect depends on which binding the renderer used', 'items': 39, 'confidence': CONF},
         {'cause': '360 of 540 BSP render elements carry no static light interactions (LightMapType 0); authored, not an export defect', 'items': 360, 'confidence': CONF},
-        {'cause': 'LightsVisibilitiesVolume not implemented (semantics UNKNOWN)', 'items': 1, 'confidence': CONF},
+        {'cause': 'LightsVisibilitiesVolume not implemented: baked light-visibility octree queried only by light-environment updates (pawns, vehicles, pickups, totems); no effect on world geometry, culling or static lighting (RE MILESTONE03_RENDERING_LIGHTVIS_SHADOW, read-only)', 'items': 1, 'confidence': HIGH},
         {'cause': 'not missing geometry: BSP 2460/2460 triangles, 1952/1952 placed static meshes, 25/25 decals, 268/268 light components, '
                   '0 rebuild-only extras, 3 sublevels all loaded; the authored playable footprint is ~%.0f x %.0f m' %
                   tuple(extents['playable_size_m (player starts)'][:2]), 'confidence': CONF}]
@@ -354,8 +392,12 @@ def main():
                                      rotation_rate=ammo['PickupRotationRate'], rotation_deg_per_s=round(ammo['PickupRotationRate']['Yaw'] * 360 / 65536, 3),
                                      CastShadow=ammo['CastShadow'], CollideActors=ammo['CollideActors'], CullDistance=ammo['CullDistance'],
                                      visible_in_modes=MODES, visible_when='pickup available (hidden after pickup until RespawnTime %s s)' % i['RespawnTime']['value'],
-                                     placement_confidence=PART, placement_note='component has no authored Translation; attach offset is set '
-                                     'natively (TnPickupFactory.SetPickupMesh) - factory origin assumed'))
+                                     placement_confidence=CONF,
+                                     placement_note='mesh = factory origin. Script (RE decomp, read-only): TnPickupFactory.SetPickupMesh -> '
+                                     'PickupFactory.SetPickupMesh -> Inventory.CreatePickupFactoryMesh = new copy of PickupFactoryMesh '
+                                     '(TnAmmoCratePickup.MeshComponentA) -> AttachComponent; no script offset. Template authors no '
+                                     'Translation/Rotation, Scale 1; factories author no Rotation/PrePivot, DrawScale 1. Attach = stock UE3 '
+                                     'component-relative transform (HIGH). Yaw spins at PickupRotationRate in state Pickup (PHYS_Rotating).'))
         elif i['class'] in ('TnHealthPickupFactory', 'TnOverShieldPickupFactory'):
             ps = i['effects']['CustomPickupEffect']['Template']
             m = fx_mesh(ps)
@@ -368,10 +410,7 @@ def main():
                                      'rotation and rotation rate are particle-driven - render through the particle system for exact motion',
                                      visible_in_modes=MODES, visible_when='CustomPickupEffect active while available', placement_confidence=PART))
         else:
-            pick_entries.append(dict(base, kind='objective factory (%s)' % i['class'], mesh=None,
-                                     note='no PickupFactoryMesh authored on TnWeaponFlag / TnWeaponBomb; the at-rest visual is set natively '
-                                          '(TnWeaponBomb.DroppedMesh0 = WEP_MPBomb_p.NEU_MPBomb_SKEL is the dropped mesh) - UNKNOWN',
-                                     visible_in_modes=['CTF'] if 'Flag' in i['class'] else ['EXT'], confidence=UNK))
+            pick_entries.append(objective_rest_visual(i, base, Af))
     ri['pickup_factory_visuals'] = pick_entries
     # ---------------- pickup particle components (37): decoded systems in streets_pickup_fx.json
     attached = {c: {k: v['in_Components_array']['value'] for k, v in r.get('effect_components', {}).items()}
@@ -426,8 +465,9 @@ def main():
             x['ue_matrix'] = M.tolist(); x['gltf_matrix'] = ue_to_gltf_matrix(M)
             x['visible_in_modes'] = MODES
             # every state's meshes (streets_destructibles.json). State meshes use the piece transform (CONFIRMED: the cooked
-            # per-state StaticMeshComponents carry exactly the piece Translation). Spawned meshes: factory Transform x piece x
-            # actor is PROVISIONAL (composition order of the native HmDestructible spawn not recovered).
+            # per-state StaticMeshComponents carry exactly the piece Translation). Spawned meshes (RE script decomp, read-only):
+            # EffectToWorld = CombineTransforms(CombineTransforms(factory.Transform, PieceToActor), MakeAffineTransform(Actor.Rotation,
+            # Actor.Location)); CombineTransforms(AtoB, BtoC) applies AtoB first -> factory x piece x actor (row vectors), no DrawScale.
             from vs_common import ue_rot
             dm = J(os.path.join(MANI, 'streets_destructibles.json'))['actors'][0]
             gl = {m: v['gltf'] for m, v in dm['meshes'].items()}
@@ -455,14 +495,26 @@ def main():
                             m_ = au.get('MeshTemplate')
                             ent['spawned_meshes'].append({
                                 'factory': e['class'], 'mesh': m_, 'gltf': gl.get(m_),
-                                'spawn_ue_matrix (PROVISIONAL: factory x piece x actor)': Mf.tolist(),
-                                'spawn_gltf_matrix (PROVISIONAL)': ue_to_gltf_matrix(Mf),
+                                'spawn_ue_matrix (effect origin: factory x piece x actor)': Mf.tolist(),
+                                'spawn_gltf_matrix (effect origin)': ue_to_gltf_matrix(Mf),
+                                'composition': 'HmDestructionEffect.GetEffectToWorldTransform = CombineTransforms(GetEffectToActorTransform(), '
+                                               'MakeAffineTransform(AttachingActor.Rotation, AttachingActor.Location)); GetEffectToActorTransform = '
+                                               'CombineTransforms(EffectToPieceTransform (= factory Transform), Piece.GetPieceToActorTransform()); '
+                                               'PieceToActor = CombineTransforms(AttachToActorTransform (identity: only set by '
+                                               'HmDestructibleComponent.SetRelativeLocation, no script caller), Blueprint.Transform). Actor term '
+                                               'carries no DrawScale (Streets panel DrawScale 1).',
+                                'spawn_position': ('exactly the effect origin (HmPhysicalMeshDestructionEffect.BeginEffect -> '
+                                                   'SpawnRigidBodyActor(MeshTemplate, E2W.Position, E2W.Orientation))' if 'Physical' in e['class'] else
+                                                   'each chunk at TransformPoint(RandomUnitVector() * SpawnVolumeScale, E2W), orientation = E2W '
+                                                   'orientation, chunk DrawScale3D = actor DrawScale x DrawScale3D (HmDebrisDestructionEffect.'
+                                                   'SpawnNewDebrisChunk / BeginEffect): matrix above is the scatter-volume centre'),
                                 'authored': {k: v for k, v in au.items() if k not in ('MeshTemplate',)},
                                 'runtime': ('rigid body, LinearVelocity/AngularVelocity as authored, collides with pawns'
                                             if 'Physical' in e['class'] else
                                             '%s chunks at random points in SpawnVolumeScale, speed LinearSpeed in a cone, '
                                             'lifespan ChunkLifespan s' % au.get('NumChunks')),
-                                'confidence': PART})
+                                'confidence': CONF + ' (composition order and spawn rule: script); per-chunk debris offsets are '
+                                                     'random at runtime (by design, not recoverable)'})
                     states.append(ent)
             x['states'] = states
             x['state_note'] = ('handle 0 intact (drawn at load) -> 1 destroyed on damage/touch/Kismet -> 2 settled after 10 s. '

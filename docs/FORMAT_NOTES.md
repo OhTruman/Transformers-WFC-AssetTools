@@ -150,6 +150,13 @@ UTF-16 strings use negative length. Community tools (Decrypticon/TFGamesUtil) do
   `Engine.ParticleModule.EParticleModuleId` enum (PMI_Lifetime=1 ... PMI_SubUVDirect=33). Inside a group, distributions
   follow module order and, per module, its RawDistributionFloat / RawDistributionVector properties. Exact consumption
   verified on 2,290 + 193 LODs (A1_IAC_Base_m, TransGame) with zero leftovers; tagged-module cross-check 12/12 matches.
+  * **Flag bytes** (`pstream_flag_census.py` → `manifests/particle_flag_census.json`: 2,736 LODs and 24,327 records in the MP
+    maps):
+    * **flagA = module enabled** (HIGH). Every flagA=0 record is absent from the post-record list, and flagA=0 occurs in
+      every module class. Do not evaluate those modules.
+    * **The post-record list is the enabled modules minus whole classes.** Gravity, SizeScale, AccelerationOverLife and
+      SubUVDirect are never listed. That fits a spawn-step list; PARTIAL.
+    * **flagB is constant per module class.** It is a class trait with meaning UNKNOWN; do not gate on it.
   Census-proven counts: Gravity / ColorByParameter / Unknown / LocationEmitter carry none, DynamicParameter 4 floats,
   LocationDirect 3 vectors, SubUVDirect 2 vectors, VelocityInheritParent 1 vector; Orbit unresolved.
 * **FSB4 sample header** (`fsb4.py`): all 1,929 FSB4 samples in MP_IAC_Streets_BASE_m, A1_IAC_Base_m and TransGame carry
@@ -184,15 +191,30 @@ UTF-16 strings use negative length. Community tools (Decrypticon/TFGamesUtil) do
 * **Export size does not distinguish native from script:** the TnPickupFactory functions are 50–144-byte exports yet carry
   UnrealScript bytecode.
 * **Pickup visuals:**
-  * Ammo crates use the inventory CDO's `PickupFactoryMesh` (`TnAmmoCratePickup.MeshComponentA`, no authored Translation;
-    the attach offset is set by script/native and not recovered). It spins at `PickupRotationRate` Yaw 10000 per second.
+  * Ammo crates use the inventory CDO's `PickupFactoryMesh` (`TnAmmoCratePickup.MeshComponentA`). It spins at
+    `PickupRotationRate` Yaw 10000.
+    * The mesh sits exactly at the factory origin. CONFIRMED: `PickupFactory.SetPickupMesh` →
+      `Inventory.CreatePickupFactoryMesh` (a new copy of the template) → `AttachComponent`, with no script offset (RE script
+      decomp).
+    * The template authors no Translation/Rotation and Scale 1. The factories author no Rotation or PrePivot and DrawScale 1.
+  * **Flag / bomb resting mesh:** `TnWeapon.CreatePickupFactoryMesh`.
+    * It clones `TnWeaponMesh(WeaponMeshTemplate).GetValidPickupMesh()`, then calls `SetRotation(SpawnOffsetAngle)` and
+      `SetScale(PickupScale)`. `GetValidPickupMesh` applies `PickupMaterialOverride` when set.
+    * Flag: `WEP_CodeOfPower2H_SKEL`. Bomb: `NEU_MPBomb_SKEL`.
+    * Both are skeletal meshes with component Translation (0, 0, 150), SpawnOffsetAngle 0 and PickupScale 1. CONFIRMED.
   * Health and overshield have no factory mesh. Their visible cube/shield is a **mesh-emitter particle** in the
     CustomPickupEffect, positioned by the decoded `PMI_Location` / `PMI_Size` / `PMI_MeshRotation*` modules in local space.
 * **Destructible placement:**
   * Each state's StaticMeshComponent = piece `Transform` × actor. Confirmed: the cooked per-state components carry
     exactly the piece Translation (0, 0, −160).
-  * Spawned pieces (physical chunk, debris) carry a factory `Transform` relative to the piece. The composition order is
-    not recovered (PROVISIONAL).
+  * **Spawned pieces (physical chunk, debris): factory `Transform` × piece × actor (row vectors).** CONFIRMED by script.
+    * `HmDestructionEffect.GetEffectToWorldTransform` = `CombineTransforms(CombineTransforms(EffectToPiece, PieceToActor),
+      MakeAffineTransform(Actor.Rotation, Actor.Location))`.
+    * `CombineTransforms(AtoB, BtoC)` applies AtoB first.
+    * The actor term has no DrawScale.
+    * Physical chunks spawn exactly at that transform.
+    * Debris chunks spawn at `TransformPoint(RandomUnitVector() * SpawnVolumeScale, E2W)`: random positions around that
+      origin.
 * **Mode gating** is an exact rule-class match on the mode's Rules list (`GameInfo.HasRule`). Two mechanisms:
   * Kismet (`SeqCond_GameRuleActive` → `SeqAct_ToggleHidden`) for the objective bases;
   * script `PostBeginPlay` / `InitialState` for factories, totems and KOTH zones.

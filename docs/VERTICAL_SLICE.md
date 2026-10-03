@@ -116,10 +116,12 @@ Kismet, plus RE script decompilation (read-only `RE-Workspace/notes/MILESTONE04_
 * **Movers:**
   * The 3 rotating domes and the SkyBeam Matinee must be animated at runtime.
   * Data: `manifests/streets_movers.json`, `gameplay.json`.
-* **Still UNKNOWN or PROVISIONAL:**
-  * the flag/bomb factories' resting visual;
-  * the ammo crate mesh's attach offset (placed at the factory origin, PROVISIONAL);
-  * spawn placement of the destructible's chunk and debris.
+* **Resolved 2026-10-03** (RE script decompilation plus authored data):
+  * Flag/bomb resting meshes: `WEP_CodeOfPower2H_SKEL` / `NEU_MPBomb_SKEL`, 150 UU above the factory. CTF/EXT only, so not
+    drawn in TDM.
+  * The ammo crate sits exactly at the factory origin.
+  * Destructible spawn composition is factory × piece × actor.
+* **Still PARTIAL:** health/overshield particle-mesh matrices (particle-driven motion).
 
 ## Targeted evidence pass additions (2026-10-01)
 * **`AssetTools/manifests/vs_evidence.json`**: answers for the open fidelity questions (boost FX/sockets/cues/anim

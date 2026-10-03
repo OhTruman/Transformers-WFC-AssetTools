@@ -70,6 +70,7 @@ sequences[], preview_skeletal_mesh, compatible_skeletal_meshes/animsets, map_usa
 | `m04_lightmap_atlases.py`, `validate_m04.py` | export missing lightmap atlas PNGs; map-completeness validation (`logs/validate_m04.json`) |
 | `fe_frontend.py` + `validate_frontend.py` | **frontend / game flow**: `manifests/frontend_{flow,gfx,bindings,re_handoff,maps,modes,audio,loading,localization}.json` (startup chain, 38 GFx movies, AS bridge, MP map + mode catalog, loading presentation; `docs/FRONTEND.md`) |
 | `fe_presentation.py` | `manifests/frontend_assets.json` (57 UI packages), `frontend_mode_presentation.json` (per-mode text, icons, announcer, music, HUD panel), `frontend_hud.json` (TnHUD observers/callbacks, HUD/scoreboard/countdown/pause/results movies, markers) |
+| `pstream_flag_census.py` | `manifests/particle_flag_census.json`: compiled particle-module flag census over the MP maps (flagA = enabled, flagB class-constant) |
 | `fe_map_catalog.py` | `manifests/mp_map_catalog.json` (every MP map: selection data, streamed levels, dependencies, actor profile; Streets = reference) and `mp_next_map_readiness.json` (`docs/NEXT_MAP_READINESS.md`) |
 | `validate_m03.py` | cross-manifest validation of the M03 outputs (`logs/validate_m03.json`) |
 | `schema.py`, `typed_props.py` | UnrealScript type registry (`manifests/schema.json`) and the schema-driven tag reader |
@@ -83,10 +84,10 @@ The full-map render index, beyond `world.glb`:
 | section | content |
 |---|---|
 | `layers` | world.glb, lightmaps, map_fx, lighting, postprocess, audio summaries |
-| `not_in_world_glb (authored renderables)` | 3 domination totems (DOM only), 5 KOTH active-zone rings (`pTorus1_STAT`, KOTH only), the destructible wall panel with all 3 states (state meshes CONFIRMED; spawned chunk/debris PROVISIONAL) - each with glTF path and UE + glTF matrices |
+| `not_in_world_glb (authored renderables)` | 3 domination totems (DOM only), 5 KOTH active-zone rings (`pTorus1_STAT`, KOTH only), the destructible wall panel with all 3 states (state meshes CONFIRMED; spawned chunk/debris composition CONFIRMED by script, debris offsets random) - each with glTF path and UE + glTF matrices |
 | `authored_render_state` | hidden objective bases (CTF/EXT only), rotating domes, SkyBeam Matinee actors |
 | `mode_visual_state` / `tdm_render_state` | per-class visibility across DM/TDM/CTF/EXT/DOM/KOTH; the 19 actors hidden in TDM (the slice mode) |
-| `pickup_factory_visuals` | 27 factories: ammo crate meshes (placement PROVISIONAL), health/overshield particle meshes (approximate matrix), flag/bomb resting visual UNKNOWN |
+| `pickup_factory_visuals` | 27 factories: ammo crate meshes (factory origin, CONFIRMED), health/overshield particle meshes (approximate matrix), flag/bomb resting meshes (CONFIRMED, CTF/EXT only) |
 | `pickup_fx_components` | all 37 pickup effects: template, matrix, attach/activation state, draw rule (beam on while the factory is available - RE script), modes; 24 drawn in TDM |
 
 Docs: `docs/MAP_STREETS_COMPLETE.md`, `docs/VERTICAL_SLICE.md`, `docs/EVIDENCE_M03.md` §2. Validated by `validate_m04.py`.

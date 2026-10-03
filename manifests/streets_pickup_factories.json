@@ -240,6 +240,17 @@
       "Yaw": 10000,
       "Roll": 0
      },
+     "component_transform": {
+      "Translation": null,
+      "Rotation": null,
+      "Scale": 1.0,
+      "Scale3D": {
+       "X": 1.0,
+       "Y": 1.0,
+       "Z": 1.0
+      }
+     },
+     "attach": "PickupFactory.SetPickupMesh -> Inventory.CreatePickupFactoryMesh (new copy of the template) -> AttachComponent; no script offset (RE script decomp, read-only). Mesh sits at the factory origin (component transform identity).",
      "confidence": "CONFIRMED AUTHORED DATA"
     },
     "pickup_sound_cue": {
@@ -1346,9 +1357,31 @@
      }
     },
     "pickup_mesh": {
-     "value": null,
-     "confidence": "CONFIRMED AUTHORED DATA",
-     "note": "inventory CDO has no PickupFactoryMesh: the visible pickup is the particle effect (mesh emitter)"
+     "via": "TnWeapon.CreatePickupFactoryMesh: TnWeaponMesh(default.WeaponMeshTemplate).GetValidPickupMesh() cloned, SetRotation(default.SpawnOffsetAngle), SetScale(default.PickupScale) (RE script decomp, read-only)",
+     "WeaponMeshTemplate": "WEP_CodeOfPower_p.CodeOfPower2H_WEPMESH",
+     "component": "WEP_CodeOfPower_p.CodeOfPower2H_WEPMESH.SkeletalMeshComponent_7298",
+     "component_class": "SkeletalMeshComponent",
+     "mesh": "WEP_CodeOfPower_p.WEP_CodeOfPower2H_SKEL",
+     "gltf": "content/WEP_CodeOfPower_p/WEP_CodeOfPower2H_SKEL.gltf",
+     "Translation": {
+      "X": 0.0,
+      "Y": 0.0,
+      "Z": 150.0
+     },
+     "SpawnOffsetAngle": {
+      "Pitch": 0,
+      "Yaw": 0,
+      "Roll": 0
+     },
+     "PickupScale": 1.0,
+     "PickupMaterialOverride": null,
+     "CastShadow": false,
+     "PickupRotationRate": {
+      "Pitch": 0,
+      "Yaw": 10000,
+      "Roll": 0
+     },
+     "confidence": "CONFIRMED AUTHORED DATA"
     }
    },
    "native_functions": [
@@ -1661,9 +1694,31 @@
      }
     },
     "pickup_mesh": {
-     "value": null,
-     "confidence": "CONFIRMED AUTHORED DATA",
-     "note": "inventory CDO has no PickupFactoryMesh: the visible pickup is the particle effect (mesh emitter)"
+     "via": "TnWeapon.CreatePickupFactoryMesh: TnWeaponMesh(default.WeaponMeshTemplate).GetValidPickupMesh() cloned, SetRotation(default.SpawnOffsetAngle), SetScale(default.PickupScale) (RE script decomp, read-only)",
+     "WeaponMeshTemplate": "WEP_MPBomb_p.MPBomb_WEPMESH",
+     "component": "WEP_MPBomb_p.MPBomb_WEPMESH.SkeletalMeshComponent_6360",
+     "component_class": "SkeletalMeshComponent",
+     "mesh": "PROP_NEU_Pickups_p.MPBomb.NEU_MPBomb_SKEL",
+     "gltf": "content/PROP_NEU_Pickups_p/MPBomb/NEU_MPBomb_SKEL.gltf",
+     "Translation": {
+      "X": 0.0,
+      "Y": 0.0,
+      "Z": 150.0
+     },
+     "SpawnOffsetAngle": {
+      "Pitch": 0,
+      "Yaw": 0,
+      "Roll": 0
+     },
+     "PickupScale": 1.0,
+     "PickupMaterialOverride": null,
+     "CastShadow": false,
+     "PickupRotationRate": {
+      "Pitch": 0,
+      "Yaw": 10000,
+      "Roll": 0
+     },
+     "confidence": "CONFIRMED AUTHORED DATA"
     }
    },
    "native_functions": [

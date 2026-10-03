@@ -91,7 +91,25 @@ def factory_class_rec(cls):
         rec['inventory']['pickup_mesh'] = {'component': pm, 'StaticMesh': mv.get('StaticMesh'), 'gltf': gltf(mv['StaticMesh']) if mv.get('StaticMesh') else None,
                                            'CullDistance': mv.get('CullDistance'), 'CastShadow': mv.get('CastShadow'),
                                            'CollideActors': mv.get('CollideActors'), 'PickupRotationRate': ivals.get('PickupRotationRate'),
+                                           'component_transform': {'Translation': mv.get('Translation'), 'Rotation': mv.get('Rotation'),
+                                                                   'Scale': mv.get('Scale'), 'Scale3D': mv.get('Scale3D')},
+                                           'attach': 'PickupFactory.SetPickupMesh -> Inventory.CreatePickupFactoryMesh (new copy of the '
+                                                     'template) -> AttachComponent; no script offset (RE script decomp, read-only). '
+                                                     'Mesh sits at the factory origin (component transform identity).',
                                            'confidence': CONF}
+    elif inv_cdo and 'WeaponMeshTemplate' in A.effective(inv_cdo):
+        ie = A.effective(inv_cdo)
+        tmpl = ie['WeaponMeshTemplate']['value']; te = A.effective(tmpl); pmc = te['PickupMesh']['value']; pe = A.effective(pmc)
+        mesh = (pe.get('SkeletalMesh') or pe.get('StaticMesh') or {}).get('value')
+        rec['inventory']['pickup_mesh'] = {
+            'via': 'TnWeapon.CreatePickupFactoryMesh: TnWeaponMesh(default.WeaponMeshTemplate).GetValidPickupMesh() cloned, '
+                   'SetRotation(default.SpawnOffsetAngle), SetScale(default.PickupScale) (RE script decomp, read-only)',
+            'WeaponMeshTemplate': tmpl, 'component': pmc, 'component_class': A.get(pmc)['class'], 'mesh': mesh,
+            'gltf': gltf(mesh) if mesh else None,
+            'Translation': (pe.get('Translation') or {}).get('value'), 'SpawnOffsetAngle': ie['SpawnOffsetAngle']['value'],
+            'PickupScale': ie['PickupScale']['value'], 'PickupMaterialOverride': (te.get('PickupMaterialOverride') or {}).get('value'),
+            'CastShadow': (pe.get('CastShadow') or {}).get('value'), 'PickupRotationRate': ie['PickupRotationRate']['value'],
+            'confidence': CONF}
     else:
         rec['inventory']['pickup_mesh'] = {'value': None, 'confidence': CONF,
                                            'note': 'inventory CDO has no PickupFactoryMesh: the visible pickup is the particle effect (mesh emitter)'}

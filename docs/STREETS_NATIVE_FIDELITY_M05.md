@@ -110,14 +110,17 @@ Per RE runtime semantics plus authored Kismet:
 * `mode_visual_state`: per-class visibility for DM/TDM/CTF/EXT/DOM/KOTH, with mechanism, collision and actor lists.
 * `tdm_render_state`: the 19 actors to hide in the slice (4 bases, 3 totems, 5 KOTH zones, 2 flag + 1 bomb factories, 4
   capture/plant points).
-* `pickup_factory_visuals`: 14 ammo crate meshes (placement PROVISIONAL), 10 health/overshield particle meshes (approximate
-  matrices), flag/bomb resting visual UNKNOWN.
+* `pickup_factory_visuals`:
+  * 14 ammo crate meshes at the factory origin (CONFIRMED, 2026-10-03);
+  * 10 health/overshield particle meshes (approximate matrices);
+  * 3 flag/bomb resting meshes (CONFIRMED, CTF/EXT only, not drawn in TDM).
 * `pickup_fx_components`: all 37 pickup effects with draw rules.
   * The `Pickup_FX` beam is switched on whenever its factory is available (`SetPickupVisible` → `ActivateSystem`, RE script).
   * The 10 health/overshield copies are never attached.
   * 24 effects are drawn in TDM.
 * The destructible wall panel (outside the play space) is listed with all 3 states. State meshes are CONFIRMED; spawned
-  chunk/debris placement is PROVISIONAL.
+  chunk/debris placement follows the script composition factory × piece × actor (CONFIRMED 2026-10-03); debris offsets are
+  random at runtime.
 
 Rendering and Gameplay should consume these sections rather than re-deriving the table.
 
