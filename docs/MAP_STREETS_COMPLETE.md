@@ -155,6 +155,17 @@ Further detail:
   * 4 capture/plant points (no visual)
 * **Pickup beam:** script activates it whenever the factory is available, although it is authored `bAutoActivate=false`.
   The 10 `Pickup_FX` copies on health/overshield factories are never attached.
+* **TDM pickup state** (slice mode; DM identical; CONFIRMED):
+
+  | factories | TDM state | drawn |
+  |---|---|---|
+  | ammo crates (14) | active, 30 s respawn | 14 crate meshes + 14 `Pickup_FX` beams |
+  | health (9) | active, 60 s respawn | 9 `HealthPickup_FX` |
+  | overshield (1) | active, 120 s respawn | 1 `OvershieldPickup_FX` |
+  | flag (2) + bomb (1) | Disabled: hidden, no collision, no touch | none |
+  | health/overshield `Pickup_FX` copies (10) | never attached | none |
+
+  In total: 24 pickup effects + 14 crate meshes. Details are in `docs/EVIDENCE_M03.md` §2.
 
 ## Handoffs
 * **RENDERING:**
