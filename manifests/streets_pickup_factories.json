@@ -3574,14 +3574,21 @@
    "objective factories: RequiredGameRuleClass (flag: TnGameRules_SingleFlagCTF, bomb: TnGameRules_ScoreBombingRun)",
    "Engine.PickupFactory SupportedEvents include SeqEvent_PickupStatusChange"
   ],
-  "native (not in authored data)": [
-   "TnPickupFactory.SetPickupVisible / SetPickupHidden / SetPickupMesh / IsReadyToPickup / GiveTo / TakePickUp / GetRespawnTime and state Pickup (serial sizes 50-144 bytes = native stubs, no bytecode)",
-   "TnHealthPickupFactory overrides SetPickupVisible (native)",
-   "when Pickup_FX is activated (highlight) and when CustomPickupEffect is deactivated/reactivated around pickup and respawn"
+  "script (UnrealScript, decompiled by RE; not authored data)": [
+   "TnPickupFactory.SetPickupVisible / SetPickupHidden / SetPickupMesh / IsReadyToPickup / GiveTo / TakePickUp / GetRespawnTime and state Pickup are UnrealScript (RE decompilation). Correction: an earlier version of this manifest called them native stubs from their 50-144-byte export sizes - that was wrong.",
+   "TnHealthPickupFactory overrides SetPickupVisible"
   ],
-  "implementation_guidance (HIGH CONFIDENCE, from the authored component setup)": [
-   "health/overshield: CustomPickupEffect visible while the pickup is available; hide on pickup; show again after RespawnTime",
-   "ammo crate: static mesh PROP_NEU_AmmoPickup_STAT (rotating Yaw 10000/65536 turn/s) is the pickup visual; Pickup_FX is the inactive highlight beam (activation condition native)",
+  "beam_activation (CONFIRMED - RE MILESTONE04_STREETS_PICKUP_OBJECTIVE_PRESENTATION.md s1, script decompilation)": {
+   "rule": "TnPickupFactory.SetPickupVisible -> PickupEffect.ActivateSystem(); SetPickupHidden -> PickupEffect.DeactivateSystem(). InitializePickup calls SetPickupVisible at begin play, so an attached Pickup_FX beam is ON whenever the factory is available, OFF while taken/Sleeping.",
+   "ammo crates (14)": "beam on while available, every mode; off when taken; on again after RespawnTime 30 s",
+   "flag factories (2)": "CTF only (otherwise Disabled: actor hidden, no collision). Each round only the defending-team factory is in Pickup (beam on); the other Sleeps (beam off). Taken -> Sleeping (RespawnTime 9999999); returned -> Pickup immediately",
+   "bomb factory (1)": "EXT only (otherwise Disabled). Taken -> Sleeping; returned after a score after WaitAfterScoreTime 5.0 s, other returns immediately",
+   "health / overshield Pickup_FX (10)": "never drawn: not in the Components array, never attached",
+   "ShouldDisplayHighlightFx": "True on TnAmmoCratePickupFactory and on TnWeaponPickupFactory (inherited by flag/bomb); the controlling authored value"
+  },
+  "implementation_guidance": [
+   "health/overshield: CustomPickupEffect visible while the pickup is available; hide on pickup; show again after RespawnTime (CONFIRMED by the same SetPickupVisible/Hidden path)",
+   "ammo crate: static mesh PROP_NEU_AmmoPickup_STAT (rotating Yaw 10000/65536 turn/s) plus the Pickup_FX highlight beam, both shown while available",
    "health/overshield Pickup_FX components: do not render (not attached)"
   ]
  }
