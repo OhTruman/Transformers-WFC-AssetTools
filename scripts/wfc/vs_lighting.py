@@ -28,6 +28,7 @@ from vs_common import VS, ue_to_gltf_matrix, ue_points_to_gltf, ue_actor_matrix 
 
 MAP = sys.argv[1] if len(sys.argv) > 1 else 'MP_IAC_Streets'
 OUT = os.path.join(VS, 'Maps', MAP)
+os.makedirs(OUT, exist_ok=True)
 SKIP = ('HashGridBBox', 'TickGroup', 'CachedParentToWorld')
 
 def color(c, brightness=None):

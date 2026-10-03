@@ -15,6 +15,7 @@ from vs_common import VS  # noqa: E402
 
 MAP = sys.argv[1] if len(sys.argv) > 1 else 'MP_IAC_Streets'
 OUT = os.path.join(VS, 'Maps', MAP, 'lightmaps')
+os.makedirs(OUT, exist_ok=True)
 
 def main():
     lm = json.load(open(os.path.join(VS, 'Maps', MAP, 'lightmaps.json'), encoding='utf-8'))

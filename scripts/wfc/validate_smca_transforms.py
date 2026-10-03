@@ -1,4 +1,5 @@
-"""Transform-level validation of every StaticMeshCollectionActor component in MP_IAC_Streets (M04 geometry fix).
+"""Transform-level validation of every StaticMeshCollectionActor component (default MP_IAC_Streets; --map <MAP> for others,
+written to manifests/next_map/<MAP>_transform_validation.json) (M04 geometry fix).
 
 Independent expected transform per component (does not reuse vs_map code paths):
   P  = serialized CachedParentToWorld: the SMCA native tail, N x 16 big-endian floats in StaticMeshComponents order
@@ -24,11 +25,15 @@ sys.path.insert(0, HERE)
 import authored as A, objtree  # noqa: E402
 from vs_common import VS, read_glb, ue_to_gltf_matrix  # noqa: E402
 
-MAP = 'MP_IAC_Streets'
+MAP = next((sys.argv[i + 1] for i, x in enumerate(sys.argv[:-1]) if x == '--map'), 'MP_IAC_Streets')
 LV = MAP + '_ART_m'
 SLICE = os.path.join(VS, 'Maps', MAP)
 MANI = os.path.normpath(os.path.join(HERE, '..', '..', 'manifests'))
-RE_TABLE = r'F:/Transformers Rebuild/RE-Workspace/notes/data/streets_smca_component_scale.json'
+RE_TABLE = (r'F:/Transformers Rebuild/RE-Workspace/notes/data/streets_smca_component_scale.json' if MAP == 'MP_IAC_Streets' else '')
+OUT_VALID = (os.path.join(MANI, 'streets_transform_validation.json') if MAP == 'MP_IAC_Streets' else
+             os.path.join(MANI, 'next_map', MAP + '_transform_validation.json'))
+OUT_AUDIT = (os.path.join(MANI, 'streets_transform_fix_audit.json') if MAP == 'MP_IAC_Streets' else
+             os.path.join(MANI, 'next_map', MAP + '_transform_audit.json'))
 TOL_T, TOL_S, TOL_R = 0.05, 1e-4, 1e-4          # UU, relative scale, rotation-matrix element
 
 def rot(p, y, r):
@@ -88,7 +93,7 @@ def glb_nodes(path):
     return out
 
 def main():
-    ap = argparse.ArgumentParser(); ap.add_argument('--before'); a = ap.parse_args()
+    ap = argparse.ArgumentParser(); ap.add_argument('--before'); ap.add_argument('--map'); a = ap.parse_args()
     props = json.load(open(os.path.join(SLICE, 'props.json'), encoding='utf-8'))['props']
     meshes = json.load(open(os.path.join(SLICE, 'props_authored.json'), encoding='utf-8')).get('meshes') or {}
     re_t = json.load(open(RE_TABLE, encoding='utf-8')) if os.path.exists(RE_TABLE) else {}
@@ -129,8 +134,10 @@ def main():
                 and np.allclose(r['translation'], tr, atol=1e-3)
             st['re_table_agree'] += int(ok_re)
             if not ok_re: fails.append('RE table disagrees: ' + comp)
-        else:
+        elif RE_TABLE:
             st['re_table_missing'] += 1; fails.append('not in RE table: ' + comp)
+        else:
+            st['re_table_not_applicable (no RE table for this map)'] += 1
         Mx = np.array(x['ue_matrix'], 'f8')
         sx, off = decompose(Mx, Q); se = np.array([s * v for v in s3])
         t_ok = np.allclose(Mx[3, :3], Mexp[3, :3], atol=TOL_T)
@@ -207,7 +214,7 @@ def main():
            'rule': 'M = S(Scale*Scale3D) * R(Rotation) * T(Translation) * CachedParentToWorld (UE row vectors)',
            'tolerances': {'translation_uu': TOL_T, 'scale_rel': TOL_S, 'rotation_offdiag': TOL_R, 'bounds_uu': 0.5},
            'stats': dict(st), 'failures': fails}
-    json.dump(out, open(os.path.join(MANI, 'streets_transform_validation.json'), 'w'), indent=1)
+    json.dump(out, open(OUT_VALID, 'w'), indent=1)
     if a.before:
         big = sorted((r for r in recs if r.get('before')), key=lambda r: -abs(math.log(max(1e-6, abs(np.prod(r['expected_scale']))) /
                                                                                   max(1e-6, abs(np.prod(r['before']['scale']))))))
@@ -217,7 +224,7 @@ def main():
                    'changed_components': st.get('smca_records_changed_vs_before'), 'changed_by_mesh': dict(fam.most_common()),
                    'largest_volume_corrections': big[:25], 'mirrored_examples': mir[:15],
                    'backdrop': [r for r in recs if 'CityBackdrop' in r['mesh'] or 'SpaceDome' in r['mesh']],
-                   'all_components': recs}, open(os.path.join(MANI, 'streets_transform_fix_audit.json'), 'w'), indent=1)
+                   'all_components': recs}, open(OUT_AUDIT, 'w'), indent=1)
     print(json.dumps(dict(st), indent=1)); print('failures', len(fails)); [print('  FAIL', f) for f in fails[:20]]
     sys.exit(1 if fails else 0)
 

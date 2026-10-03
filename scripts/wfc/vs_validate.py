@@ -138,7 +138,7 @@ def spawn_ground(world_glb, spawns):
 
 def main():
     A = os.path.join(VS, 'Characters', 'Optimus'); W = os.path.join(VS, 'Weapons', 'IonBlaster')
-    MP = 'MP_IAC_Streets'; M = os.path.join(VS, 'Maps', MP)
+    MP = sys.argv[1] if len(sys.argv) > 1 else 'MP_IAC_Streets'; M = os.path.join(VS, 'Maps', MP)
     robot = glb_checks(os.path.join(A, 'robot.glb'), True)
     vehicle = glb_checks(os.path.join(A, 'vehicle.glb'), True)
     weapon = glb_checks(os.path.join(W, 'weapon.glb'), True)
@@ -220,8 +220,12 @@ def main():
         'validation': {'checks': len(REPORT['checks']), 'failures': REPORT['failures'],
                        'report': 'AssetTools/manifests/vertical_slice_validation.json'},
     }
-    json.dump(REPORT, open(os.path.join(extract.MANI, 'vertical_slice_validation.json'), 'w'), indent=1, default=str)
-    json.dump(vs, open(os.path.join(extract.MANI, 'vertical_slice.json'), 'w'), indent=1, default=str)
+    if MP == 'MP_IAC_Streets':
+        json.dump(REPORT, open(os.path.join(extract.MANI, 'vertical_slice_validation.json'), 'w'), indent=1, default=str)
+        json.dump(vs, open(os.path.join(extract.MANI, 'vertical_slice.json'), 'w'), indent=1, default=str)
+    else:   # second-map probe: same checks, separate report, slice manifests untouched
+        os.makedirs(os.path.join(extract.MANI, 'next_map'), exist_ok=True)
+        json.dump(REPORT, open(os.path.join(extract.MANI, 'next_map', MP + '_validation.json'), 'w'), indent=1, default=str)
     for c in REPORT['checks']:
         print('%-4s %s %s' % ('OK' if c['ok'] else 'FAIL', c['check'], '' if c['ok'] else json.dumps(c['detail'], default=str)[:400]))
     print('checks', len(REPORT['checks']), 'failures', REPORT['failures'])

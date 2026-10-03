@@ -23,6 +23,7 @@ from vs_common import VS  # noqa: E402
 
 MAP = sys.argv[1] if len(sys.argv) > 1 else 'MP_IAC_Streets'
 OUT = os.path.join(VS, 'Maps', MAP)
+os.makedirs(OUT, exist_ok=True)
 CFG = os.path.join(os.path.dirname(extract.OUT), 'config', 'Coalesced_ini', 'TransGame', 'Config', 'Xenon', 'Cooked')
 EDITOR = ('NodePosX', 'NodePosY', 'DrawWidth', 'DrawHeight', 'OutDrawY', 'InDrawY')
 

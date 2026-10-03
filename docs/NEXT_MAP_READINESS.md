@@ -1,89 +1,85 @@
-# Second MP map after Streets: readiness report (2026-10-03)
+# Second MP map after Streets: readiness and generalization probe (2026-10-03)
 
-This is a report only. No second-map extraction was started.
+**Recommendation: `MP_UND_Gorge` ("Gorge", MapId 510).**
 
-* **Machine-readable:** `manifests/mp_next_map_readiness.json`, with per-map profiles, metrics, weights and ranking.
-* **Generator:** `scripts/wfc/fe_map_catalog.py`.
-  * It uses only indexed queries on `inventory.db` and `authored.db` and holds one map's sets at a time.
-  * Its working-set guard is 6 GB; the observed peak was 0.05 GB.
+The existing Streets pipeline already runs end to end on it: 14 stages, all rc 0, with the transform validator and `vs_validate`
+both passing. The recommendation rests on the measured criteria below, not on preference.
 
-## Method
-* **Metrics.** Every metric is a CONFIRMED count from cooked data. Each covers the BASE level plus every streamed level (ART,
-  AUDIO, shared art/audio).
-  * Package completeness: streamed levels referenced vs present.
-  * Dependencies: source packages not used by Streets; share of cooked objects also present in Streets.
-  * Geometry: StaticMesh and BSP Model bytes vs Streets; SMCA component count.
-  * Unique code/state: Kismet nodes, Matinee count, actor/component classes Streets does not use.
-  * Movers (`InterpActor`, `StaticInterpActor`, `KActor`) and destructibles.
-  * Lighting format: the set of lightmap-related classes compared with Streets.
-* **Effort index.**
-  * Weighted metrics, each normalised to the candidate maximum:
-    * weight 3: new source packages, new classes;
-    * weight 2: geometry ratio;
-    * weight 1: Kismet, Matinee, movers, destructibles, SMCA components.
-  * Penalties:
-    * +3 × (1 − object overlap with Streets);
-    * +2 if the lightmap format differs;
-    * +5 if a streamed level is missing;
-    * +2 if the map lacks the six versus modes.
-* **What is fact and what is judgment.** The weighting is an analysis choice, so the ranking is a recommendation. The metrics
-  themselves are fact.
+**Machine-readable outputs:**
+* `manifests/next_map/readiness.json`: per-map criteria (`scripts/wfc/next_map_readiness.py`).
+* `manifests/next_map/MP_UND_Gorge_probe.json`: stage runs, peak memory and outputs (`next_map_probe_summary.py`).
+* `manifests/next_map/MP_UND_Gorge_validation.json` and `MP_UND_Gorge_transform_validation.json`: validator reports.
+* `manifests/mp_next_map_readiness.json`: the earlier weighted ranking (`fe_map_catalog.py`).
 
-## Result
+## Criteria (all 9 other cooked MP maps measured; counts include BASE plus every streamed level)
 
-| rank | map | effort | new pkgs | overlap | geometry vs Streets | new classes | Kismet | movers | destructibles | lightmap format |
-|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | **Gorge** (`MP_UND_Gorge_BASE_m`) | 2.91 | 17 | 95.2% | 0.60× | 9 | 91 | 13 InterpActor | 0 | same |
-| 2 | Berth | 3.20 | 19 | 95.9% | 0.64× | 12 | 150 | 4 | 9 (+9 components) | same |
-| 3 | Complex | 3.25 | 18 | 95.6% | 0.71× | 12 | 124 | 7 | 0 | same |
-| 4 | Molten | 3.46 | 16 | 94.2% | 0.87× | 9 | 353 | 4 | 0 | same |
-| 5 | Seed of Corruption | 5.47 | 27 | 92.7% | 1.19× | 15 | 575 | 16 | 6 | same |
-| 6 | Rust | 6.30 | 24 | 94.1% | 1.02× | 14 | 275 | 8 | 0 | **differs** (light-mapped skeletal meshes) |
-| 7 | Orbital Debris | 6.96 | 53 | 88.1% | 1.03× | 19 | 347 | 18 (15 Matinee) | 12 | same |
-| 8 | Broken Hope (Escalation only) | 14.57 | 101 | 64.9% | 1.33× | 28 | 1057 | 2 | 100 | differs |
-| 9 | Remnant (Escalation only) | 16.51 | 82 | 68.9% | 1.20× | 44 | 1125 | 50 | 94 | differs |
+**Extraction coverage is not a differentiator.** Every map's cooked dependencies are already extracted: StaticMesh glTF 100%,
+Texture2D PNG 99.3–99.5%, SoundNodeWaveEx WAV 100%, and the level's own objects are about 99.9% present in authored.db.
 
-**Streets for reference:**
-* geometry: 11.7 MB StaticMesh plus 0.85 MB BSP; 1,953 SMCA components;
-* code/state: 70 Kismet nodes, 1 Matinee;
-* movers: 4 InterpActor and 8 StaticInterpActor;
-* destructibles: 1;
-* lighting: 81 `LightMapTexture2D`; 182 point, 83 spot, 2 directional and 1 sky light components.
+| map | sublevels | geometry (SM MB / BSP MB / SMCA) | lightmaps | new materials | collision vols | movers | destructibles | new particles / cues | special native behaviour vs Streets |
+|---|---|---|---|---|---|---|---|---|---|
+| Streets (ref) | ART, AUDIO | 11.7 / 0.85 / 1906 | LightMapTexture2D ×81 | — | 71 BlockingVolume | 4 InterpActor + 8 StaticInterpActor | 1 | — | — |
+| **Gorge** | ART, AUDIO | 6.5 / 1.0 / 1752 | LightMapTexture2D ×39 (same format) | 25 | 80 BlockingVolume + 28 TnTransformerBlockingVolume | 13 InterpActor (4 hidden objective bases + 9 PHYS_Rotating vent fans), 0 Matinee | 0 | 2 / 32 | TnRadialForceVolume ×9, LensFlareSource ×1, SkeletalMeshActor ×1, PhysicsVolume, PostProcessVolume |
+| Berth | ART, AUDIO, **GLB_Audio_m** | 7.1 / 0.86 / 1457 | same | 14 | 55 | 4 | **9** | 3 / 29 | fog volume, 12 placed light actors, SkeletalMeshActor ×4, TnRadialForceVolume ×6, 4 new Kismet classes |
+| Molten | ART, AUDIO | 7.7 / 3.2 / 2155 | same | 24 | 156 | 4 | 0 | 2 / 36 | **HmRoomVolume ×9 / HmRoomPortal ×33** (native visibility system) |
+| Complex | ART, AUDIO | 7.2 / 1.8 / 1902 | same | 17 | 101 | 7 | 0 | 5 / 41 | **HmRoomVolume ×14 / HmRoomPortal ×34** |
+| Rust | ART, AUDIO, GLB_Audio_m | 11.9 / 0.95 / 2205 | **+ HmInterpolatedLightMappedSkeletalMeshComponent** | 35 | 133 | 8 | 0 | 2 / 57 | TnTransformingWorldActor, fog volumes, lens flare |
+| Seed | 4 (+ MP_IAC_Global_Art_m, GLB_Audio_m) | larger | same | 35 | — | 16 | 6 | 11 / — | 15 new classes, Kismet ×8 Streets |
+| Orbital Debris | ART, AUDIO | similar | same | 27 | — | 18 | 12 | 14 / — | 15 Matinee sequences, 19 new classes |
+| Broken Hope / Remnant | ART, AUDIO | larger | + light-mapped skeletal meshes | 42 / 70 | — | 2 / 50 | ~100 | 45 / 32 | Escalation-only (SV), AI waves, 28 / 44 new classes |
 
-## Recommendation: Gorge, with Berth as the alternative
-**Gorge.**
-* **Pipeline fit.** Same packaging as Streets: BASE plus ART plus AUDIO, plus `_LM` and `_LOC` companions. It streams no
-  `GLB_Audio_m`. All six versus modes. Same lightmap format: `LightMapTexture2D` only.
-* **Size and overlap.**
-  * Smallest geometry (0.60× Streets) and fewest Kismet nodes (91).
-  * 95.2% of its cooked objects are shared with Streets.
-  * 17 new source packages: UND floors/walls/bridges, core floors/mech parts, IAC bridge/turret/spacedome, `TPRO_COR_AmbientMovers_p`,
-    the `BL_LVL_MP_UND_GORGE` bank and others.
-* **New classes (9):**
-  * `InterpActor` ×13: ambient movers (`TPRO_COR_AmbientMovers_p`), a larger set than Streets has;
-  * `SkeletalMeshActor`;
-  * `LensFlareSource` / `LensFlareComponent` (new render feature);
-  * `TnRadialForceVolume`;
-  * `PhysicsVolume`, `PostProcessVolume`, `BeastLightEnvironmentVolume`, `TnTransformerBlockingVolume`, plain `PlayerStart`.
-  * The radial-force volume and lens flares are the only new runtime semantics. Volumes are data.
-* **No destructibles.**
+**Why Gorge:**
+* **Same structure as Streets:** BASE + ART + AUDIO with `_LM` / `_LOC` companions, and no shared extra level.
+* **Same lightmap format.**
+* **Movers use only mechanisms the pipeline already handles:** hidden objective bases toggled by Kismet, and constant
+  `PHYS_Rotating` like the Streets domes.
+* **No destructibles and no Matinee.**
+* **The fewest special classes.** The new collision class is a blocking-volume subclass the pipeline already includes.
 
-**Berth** is the close second.
-* It needs the destructible pipeline for 9 `TnStaticDestructibleActor` (`DES_NEU_Barricade_DSYS_p`). That pipeline was proven on
-  Streets' wall panel.
-* Other new classes: fog volumes (`FogVolumeConstantDensityInfo`), placed `PointLight` / `SpotLight` actors, and some new Kismet
-  classes (`SeqAct_CauseDamage`, `SeqAct_Mixer`).
+**Berth is the alternative.** It needs the destructible pipeline (proven on one Streets panel) for 9 barricades, plus fog
+volumes and the extra `GLB_Audio_m` level.
 
-**Complex and Molten** are small, but both use `HmRoomVolume` / `HmRoomPortal`. That is a native room/portal visibility system
-Streets does not use, and its runtime semantics need RE before a faithful render.
+**Molten and Complex** depend on the native HmRoom/Portal visibility system, which RE has not characterised.
 
-**Not recommended next:**
-* Orbital Debris: 53 new packages and 15 Matinee sequences.
-* Seed: Kismet ×8 Streets and an extra shared-art level.
-* Rust: light-mapped skeletal meshes.
-* Broken Hope and Remnant: Escalation-only maps with roughly 100 destructibles and an AI/wave state.
+## Generalization probe on Gorge (done; low risk)
+* **How it ran.** Every stage ran through `scripts/wfc/run_bounded.py`: a Windows Job Object with a hard **6 GB** cap, where
+  allocations beyond the cap fail inside the child. Peak was **4.52 GB** (`vs_map`); every other stage stayed at or below
+  3.2 GB.
+* **Where outputs went.** `ExtractedAssets/VerticalSlice/Maps/MP_UND_Gorge/` (57 files, including `world.glb`, collision
+  glbs, 36 lightmap PNGs).
 
-## Cheap next steps (not done)
-`vs_map.py` takes the map name as its first argument (default `MP_IAC_Streets`), so `vs_map.py MP_UND_Gorge` would be the first
-test. The `m04_*` scripts hard-code `MAP = 'MP_IAC_Streets'` and need a parameter first. This report
-does not run them; per the brief, no giant second-map extraction is started.
+| stage | result |
+|---|---|
+| `vs_map` | ART BSP 657 nodes / 1,824 triangles, 0 skipped polys, 0 validation issues; 1,765 props from 166 unique meshes, **0 missing meshes**; unexported actor classes vs Streets: LensFlareSource ×1, SkeletalMeshActor ×1 |
+| `vs_lighting` | 411 lights; cached vs native placement compared on 409, max error 0 |
+| `vs_postprocess`, `vs_navigation` | OK (148 nav nodes, 738 reach specs) |
+| `m04_lightmap_atlases` + `vs_lightmap` | 12 atlases exported (ART and `_LM`); 1,137 props lightmapped, 0 atlases without PNG |
+| `vs_materials` | 136 materials, 0 missing, 31 masters |
+| `vs_props`, `vs_collision`, `vs_physics` | OK; TnTransformerBlockingVolume blocks pawns (28), TnRadialForceVolume non-blocking (9) |
+| `vs_gameplay` | 97 team starts (51 / 46) + 18 FFA, all clustered; 14 objective volumes with geometry |
+| `vs_audio` | 15 emitters, 23 zones, 6 reverb presets, 37 / 37 WAVs |
+| `validate_smca_transforms --map MP_UND_Gorge` | **1,752 / 1,752 exact** (390 mirrored), 1,137 lightmapped world nodes, collision glbs carry corrected matrices |
+| `vs_validate MP_UND_Gorge` | **44 / 44** |
+
+**Generalization gaps found and fixed:**
+1. `vs_lighting`, `vs_postprocess` and `m04_lightmap_atlases` assumed their output folder existed; they now call `makedirs`.
+2. `validate_smca_transforms.py` was Streets-only. It now takes `--map`, writes non-Streets reports to `manifests/next_map/`,
+   and skips the Streets-only RE scale table instead of failing.
+3. `vs_validate.py` was Streets-only. It now takes the map as an argument; non-Streets reports go to `manifests/next_map/`,
+   leaving the slice manifests untouched.
+
+The Streets regression after these edits: `vs_validate` 44/44, `validate_m04` 15,918/0, frontend validators 0 failures.
+
+**Not yet generalized (needed before Gorge gets a render index):**
+* These scripts hard-code `MAP = 'MP_IAC_Streets'`: `m04_inventory.py`, `m04_kismet.py`, `m04_complete.py`
+  (`render_index.json`), `vs_destructibles.py`, `vs_pickups.py`, `vs_surface_audio.py`.
+* These Gorge features need RE semantics before faithful rendering or gameplay; the authored data is all present:
+  * TnRadialForceVolume: pushes planes, tanks and cars along `ArrowDirection`, with per-instance `ForceStrength` (1500 on the
+    sampled volume); IsAffected / HardBlock / Touch logic in `TransGame.TnRadialForceVolume` script;
+  * the lens flare (`LensFlareSource`);
+  * one `SkeletalMeshActor`.
+
+## Confidence
+* **CONFIRMED:** counts and set differences from cooked data; probe results (stage logs and validator reports).
+* **HIGH:** the comparative judgment.
+* **UNKNOWN:** the runtime semantics of the Gorge-only classes (RE).
