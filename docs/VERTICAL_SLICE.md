@@ -59,6 +59,25 @@ FX particle-system references (not converted), tracer material, impact decal.
   (matches their authored `Base` property) — load `collision.glb`, not only `world.glb`.
 * Static-mesh simple collision bodies were not extracted: use the render mesh where `block` is true.
 
+### Slice game mode: TDM pickup / objective state (added 2026-10-03, CONFIRMED)
+The slice runs **TDM** (Civil War; DM is identical for these actors). Sources: the authored `RequiredGameRuleClass` and
+Kismet, plus RE script decompilation (read-only `RE-Workspace/notes/MILESTONE04_STREETS_*`).
+
+| actors | TDM state |
+|---|---|
+| ammo crates (14) | active: `PROP_NEU_AmmoPickup_STAT` mesh + `Pickup_FX` beam while available; respawn 30 s |
+| health (9) | active: `HealthPickup_FX` while available; respawn 60 s |
+| overshield (1) | active: `OvershieldPickup_FX` while available; respawn 120 s |
+| flag (2) / bomb (1) factories | **Disabled**: hidden, no collision, no touch |
+| health/overshield `Pickup_FX` copies (10) | never attached: do not draw |
+| objective bases (4 InterpActors in `world.glb`) | **hidden**, still collide |
+| domination totems (3), KOTH zones (5) | **hidden** |
+
+* Drawn in TDM: 24 pickup effects + 14 crate meshes.
+* A pickup's mesh and effect show while it is available and hide from pickup until `RespawnTime`. `SetPickupVisible` /
+  `SetPickupHidden` drive this.
+* Load from `render_index.json`: `tdm_render_state`, `pickup_fx_components`, `pickup_factory_visuals`.
+
 ## Known gaps / fallbacks
 * Lightmaps / baked lighting not extracted → use a simple directional + ambient light.
 * Particle systems, decals (25, listed with material + transform), emitters (8) are references only.
