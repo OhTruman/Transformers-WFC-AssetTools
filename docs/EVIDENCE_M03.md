@@ -120,6 +120,22 @@ State machine:
 * The health and overshield `CustomPickupEffect` follows the same visible/hidden path: shown while available, hidden on
   pickup, back after `RespawnTime`.
 * `ShouldDisplayHighlightFx` = true on `TnAmmoCratePickupFactory` and `TnWeaponPickupFactory` (inherited by flag/bomb).
+
+**TDM pickup state** (the vertical-slice mode; DM is identical). CONFIRMED: RE script decompilation plus the authored
+`RequiredGameRuleClass`.
+
+| factories | TDM state | drawn in TDM |
+|---|---|---|
+| ammo crates (14) | active: crate mesh + `Pickup_FX` beam while available, 30 s respawn | 14 meshes + 14 beams |
+| health (9) | active: `HealthPickup_FX` while available, 60 s respawn | 9 effects |
+| overshield (1) | active: `OvershieldPickup_FX` while available, 120 s respawn | 1 effect |
+| flag factories (2) | **Disabled**: actor hidden, `SetCollision(false, false)`, no touch | 0 |
+| bomb factory (1) | **Disabled** (same) | 0 |
+| health/overshield `Pickup_FX` copies (10) | never attached | 0 |
+
+* Drawn in TDM: **24 pickup effect components** (14 beams + 9 health + 1 overshield) and 14 ammo crate meshes.
+* Machine-readable: `render_index.json` `tdm_render_state`, `pickup_fx_components` (`drawn_in_tdm` = 24) and
+  `pickup_factory_visuals`.
 * Machine-readable: the `state_behaviour.beam_activation` section of `streets_pickup_factories.json`, and
   `render_index.json` `pickup_fx_components`.
 
