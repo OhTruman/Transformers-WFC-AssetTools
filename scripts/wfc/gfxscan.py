@@ -107,13 +107,69 @@ def _edit_text(d):
         r['initial_text'], i = _cstr(d, i)
     return r
 
+class _Bits:
+    def __init__(self, d, i): self.d, self.p = d, i * 8
+    def u(self, n):
+        v = 0
+        for _ in range(n):
+            v = (v << 1) | ((self.d[self.p >> 3] >> (7 - (self.p & 7))) & 1); self.p += 1
+        return v
+    def byte(self): return (self.p + 7) // 8
+
+def _skip_matrix(d, i):
+    b = _Bits(d, i)
+    if b.u(1): n = b.u(5); b.u(n); b.u(n)
+    if b.u(1): n = b.u(5); b.u(n); b.u(n)
+    n = b.u(5); b.u(n); b.u(n)
+    return b.byte()
+
+def _shape_bitmaps(code, d):
+    """DefineShape/2/3/4 (tags 2, 22, 32, 83): bitmap ids used by the first FILLSTYLEARRAY."""
+    i = 2 + _rect_len(d, 2)
+    if code == 83: i += _rect_len(d, i) + 1
+    n = d[i]; i += 1
+    if n == 0xFF and code != 2: n = struct.unpack_from('<H', d, i)[0]; i += 2
+    rgba = code in (32, 83)
+    out = []
+    for _ in range(n):
+        t = d[i]; i += 1
+        if t == 0x00:
+            i += 4 if rgba else 3
+        elif t in (0x10, 0x12, 0x13):
+            i = _skip_matrix(d, i)
+            g = d[i]; i += 1
+            i += (g & 0x0F) * (5 if rgba else 4)
+            if t == 0x13: i += 2
+        elif 0x40 <= t <= 0x43:
+            out.append(struct.unpack_from('<H', d, i)[0]); i += 2
+            i = _skip_matrix(d, i)
+        else:
+            break
+    return out
+
+def symbol_bitmaps(sc, cid, _seen=None):
+    """Bitmap (external image) names drawn by character `cid`, following sprite placements and shape bitmap fills."""
+    _seen = set() if _seen is None else _seen
+    if cid in _seen: return set()
+    _seen.add(cid)
+    imgs = {e['char']: e.get('name') for e in sc['external_images'] if e.get('name')}
+    out = set()
+    if cid in imgs: out.add(imgs[cid])
+    for b in sc['shapes'].get(cid, []):
+        if b in imgs: out.add(imgs[b])
+    sp = sc['sprites'].get(cid)
+    if sp:
+        for pl in sp['places']:
+            if 'char' in pl: out |= symbol_bitmaps(sc, pl['char'], _seen)
+    return out
+
 def scan(path):
     b = open(path, 'rb').read()
     sig = b[:3]
     if sig in (b'CFX', b'CWS'): b = b[:8] + zlib.decompress(b[8:])
     i = 8 + _rect_len(b, 8) + 4
     out = {'file': path, 'signature': sig.decode(), 'version': b[3], 'exports': {}, 'sprites': {}, 'root': {'labels': [], 'places': []},
-           'text_fields': {}, 'imports': [], 'fonts': {},
+           'text_fields': {}, 'imports': [], 'fonts': {}, 'shapes': {},
            'action_strings': [], 'external_images': []}
     def walk(start, end, tgt, sprite_id=None):
         frame = 0
@@ -159,6 +215,21 @@ def scan(path):
                 s = {'frames': fc, 'labels': [], 'places': []}
                 out['sprites'][sid] = s
                 walk(off + 4, off + len(d), s, sid)
+            elif code in (2, 22, 32, 83):
+                try:
+                    bm = _shape_bitmaps(code, d)
+                    if bm: out['shapes'][struct.unpack_from('<H', d, 0)[0]] = bm
+                except Exception:
+                    pass
+            elif code == 1001:   # Scaleform DefineExternalImage: id, format, width, height, u8-str export name, u8-str file
+                try:
+                    cid, fmt, w, h = struct.unpack_from('<HHHH', d, 0)
+                    ln = d[8]; nm = d[9:9 + ln].decode('latin-1'); j = 9 + ln
+                    lf = d[j]; fn = d[j + 1:j + 1 + lf].decode('latin-1')
+                    out['external_images'].append({'char': cid, 'tag': code, 'format': fmt, 'width': w, 'height': h,
+                                                   'name': nm, 'file': fn})
+                except Exception:
+                    pass
             elif code == 1009 or code == 1000:   # Scaleform DefineExternalImage(2)
                 try:
                     cid = struct.unpack_from('<H', d, 0)[0]

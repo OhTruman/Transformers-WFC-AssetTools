@@ -98,8 +98,10 @@ def icon_rec(gfx, tag):
         return {'symbol': None, 'confidence': UNK}
     return {'movie': 'UI_GFxShared_p/SharedIcons_GFX', 'file': r['file'], 'symbol': sym,
             'loaded_by': 'GameLobby_GFX / PartyLobby_GFX mc_gameModeIconLoadReference (HIGH, name)',
-            'bitmaps': 'drawn from SharedIcons_GFX images (images_extracted in frontend_gfx.json); per-symbol bitmap '
-                       'binding not decoded (PARTIAL)',
+            'bitmaps': (r.get('symbol_bitmaps (export -> bitmaps drawn via placements / shape bitmap fills)') or {}).get(sym) or [],
+            'art': ('vector shapes only (no bitmap fill or external image under the symbol; CONFIRMED by gfxscan.symbol_bitmaps) - '
+                    'render the symbol from SharedIcons_GFX'
+                    if sym in (r.get('vector_only_exports') or []) else 'bitmap-backed (see bitmaps)'),
             'confidence': CONF + ' (exported symbol)'}
 
 def modes(gfx):
@@ -217,6 +219,11 @@ def movie_brief(r):
             'ue_objects': r['ue_objects']}
 
 def hud(gfx):
+    import gfxscan
+    allstr = {}
+    for k, r in gfx.items():
+        sc = gfxscan.scan(os.path.join(ROOT, r['file']))
+        allstr[k] = {x for a in sc['action_strings'] for x in a['strings']}
     h = A.values('TransGame.Default__TnHUD')
     obs = []
     for o in h.get('DataObservers') or []:
@@ -276,7 +283,7 @@ def hud(gfx):
                        for c in r['ui_sound_cues_named']})
     markers = sorted(rel(p) for p in glob.glob(os.path.join(CONTENT, 'UI_HudMarkers_p', '*.png')))
     mk = {}
-    for c in ('TnObjectiveMarkerTypeTransformerVersus', 'TnObjectiveMarkerTypeDomination'):
+    for c in ('TnObjectiveMarkerTypeTransformerVersus', 'TnObjectiveMarkerTypeDomination'):  # canvas-drawn markers
         o = 'TransGame.Default__' + c
         if A.get(o): mk[c] = A.values(o)
     write('frontend_hud.json', {
@@ -289,7 +296,10 @@ def hud(gfx):
         'data_observers': obs,
         'hud_callbacks (TnHUD properties)': cbs,
         'callback_resolution (callback -> movies defining that _global function)': resolved,
-        'unresolved_callbacks (no movie in this set defines it)': sorted(k for k, v in resolved.items() if not v),
+        'unresolved_callbacks (no movie in this set defines it)': {
+            k: {'name_string_in_any_movie': sorted(m for m, st in allstr.items() if k.split('.', 1)[1] in st),
+                'status': 'no shipped movie defines it: the script invoke has no AS target (no-op at runtime unless native '
+                          'handles it) - RE'} for k, v in sorted(resolved.items()) if not v},
         'elements (name-based classification, HIGH)': elements,
         'movies': {k: {'instance': inst, 'record': movie_brief(rec_for(inst)[1])} for k, inst in movies.items()},
         'objective_marker_types': mk,

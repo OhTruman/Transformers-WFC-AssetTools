@@ -106,7 +106,10 @@ Fields of each `frontend_gfx.json` record:
   menu follows it.
 * **One Must Fall (OMF):** has a GameModeInfo but no playlist.
 * **Mode icons:** `UI_GFxShared_p/SharedIcons_GFX` exports `mc_gameModeIcon<TAG>` for every mode (CONFIRMED symbol). The
-  lobbies load it through `mc_gameModeIconLoadReference` (HIGH, name). Which bitmap each icon draws is not decoded (PARTIAL).
+  lobbies load it through `mc_gameModeIconLoadReference` (HIGH, name).
+  * The icons are **vector art**: no bitmap fill or external image sits under any `mc_gameModeIcon*` symbol (CONFIRMED,
+    `gfxscan.symbol_bitmaps`).
+  * Render them from the movie; there is no texture to substitute.
 * **Cut mode:** `mc_gameModeIconRO` and announcer line `MP_GameTypeRollOutDialog` exist, but no GameModeInfo, playlist or settings
   class does: an unshipped "Roll Out" mode. UNKNOWN.
 * Full per-mode presentation is in `frontend_mode_presentation.json` (next section).
@@ -139,7 +142,20 @@ Fields of each `frontend_gfx.json` record:
 | CONFIRMED | config values; Kismet links and the movie order; GFx tags, labels, exports and bytecode strings; cue graphs; MapInfo and playlist records; binding classes and function exports |
 | HIGH | menu order equals ini/playlist order; `PlaySound` name equals cue name; roles of LoadScreen symbols; runtime-suffixed key prefixes |
 | PARTIAL | bridge calls without a binding-class function; `TnSurveyActionScriptBinding` is listed but not cooked |
-| UNKNOWN | native vs script status of each function (the WFC FunctionFlags tail is not decoded); per-icon bitmap binding; map descriptions; the 10 missing keys |
+| UNKNOWN | native vs script status of each function (the WFC FunctionFlags tail is not decoded); map descriptions; the 10 missing keys |
+
+## Symbol → bitmap binding (`frontend_gfx.json`)
+* **What is decoded.** `gfxscan.py` decodes Scaleform `DefineExternalImage` (tag 1001: id, size, export name, `.tga` name) and
+  the bitmap fills of DefineShape 1–4.
+* **The resolver.** `symbol_bitmaps()` follows sprite placements recursively. Each movie record lists:
+  * `external_images`, each with its extracted PNG;
+  * `symbol_bitmaps` (export → bitmaps → PNG);
+  * `vector_only_exports`.
+* **Coverage.** 371 exported symbols across the 38 movies draw bitmaps. One example is the Hud_GFX kill-feed `death_<Weapon>`
+  icons; 123 of Hud_GFX's 216 exports resolve to bitmaps.
+* **Uncooked bitmaps (CONFIRMED absence).** 8 bitmap references have no cooked texture: they are absent from
+  `GFxMovieInfo.References` and from the inventory. These are Hud `Optimus`, `Car`, `TnAbilityBarrier/GuidedMissile/ScrambleHud`,
+  CharacterSelect `Barrier` / `ScrambleHud`, and PlayerList `Optimus`. They draw nothing in the shipped game.
 
 ## Mode presentation (`frontend_mode_presentation.json`, `scripts/wfc/fe_presentation.py`)
 Per mode (DM, TDM, CTF, KOTH, DOM, EXT, SV, CP, CCP):
@@ -180,6 +196,9 @@ Per mode (DM, TDM, CTF, KOTH, DOM, EXT, SV, CP, CCP):
   * 11 are defined in none of them and go to RE: CompleteObjective, NotifyFirstSpawn, NotifyHeat / NormalizedHeat, the
     Primary / Secondary / Melee weapon changed callbacks, NotifyWeaponReticuleTypeChanged, SetAbility, UpdatePlayerListData,
     WaveformData.
+    * 10 of the 11 names do not occur as a string in **any** of the 38 movies. The script invokes them, but no AS target
+      exists (CONFIRMED absence).
+    * `UpdatePlayerListData` occurs only in PlayerList_GFX.
 * **Element catalog (name-based, HIGH).** Covers health (segmented), overshield, ammo (clip/reserve/grenade), reload/jam, weapon,
   crosshair (reticule/spread/lock-on), heat, timer, team score, kill/streak, objective markers, damage, abilities, form, messages
   and grenades. Each element lists its script-side observers and callbacks and its Hud_GFX symbols, labels and images.

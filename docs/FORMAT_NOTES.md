@@ -143,6 +143,12 @@ UTF-16 strings use negative length. Community tools (Decrypticon/TFGamesUtil) do
   intermediates are ordinary Texture2D (DXT5) whose UnpackMin/UnpackMax define per-channel remaps (alpha -1..1 = normal component).
 
 ## Milestone-03 format findings (2026-10-02)
+* **Scaleform GFx images:** tag 1001 `DefineExternalImage` = `u16 id, u16 format, u16 width, u16 height, u8-len export name,
+  u8-len file name (.tga)`.
+  * The export name equals the cooked Texture2D name, which is the extracted PNG.
+  * Tag 1002 is font-texture info; tag 1003 holds gradient textures (`_G<n>.tga`).
+  * Shapes reference bitmaps through fill styles 0x40–0x43 (`u16 bitmap id` + MATRIX).
+  * `gfxscan.symbol_bitmaps()` resolves exported symbols to bitmaps.
 * **Compiled particle module stream** (ParticleLODLevel native tail, `pstream.py`): `+24` u8 module count; from `+35` one
   10-byte record per module (`u8 ModuleId`, two raw flag bytes, 5 zero bytes, `u16le` payload offset) separated by 7-byte
   running-count blocks; then `u8 n` + n module indices; then a **float distribution group** (`u32 nF` + nF raw distributions

@@ -133,6 +133,19 @@ def gfx_record(path, ue):
     fs = sorted({x for x in strings if x in ('fscommand',) or x.startswith('enter') or x.startswith('start')})
     d = os.path.dirname(path); base = os.path.splitext(os.path.basename(path))[0]
     imgs = sorted(rel(p) for p in glob.glob(os.path.join(d, base + '_*.png')))
+    ext = [e for e in s['external_images'] if e.get('name')]
+    def png(n):
+        q = os.path.join(d, n + '.png')
+        return rel(q) if os.path.exists(q) else None
+    cooked_refs = {r.split('.')[-1] for r in (((ue or {}).get('movie_info') or {}).get('References') or [])}
+    sym_bm = {}
+    for cid, nm in ex.items():
+        b = sorted(gfxscan.symbol_bitmaps(s, cid))
+        if b: sym_bm[nm] = [{'image': x, 'png': png(x),
+                             **({} if png(x) else {'cooked_texture': x in cooked_refs,
+                                                   'note': 'referenced by the SWF but no texture of that name is cooked (not in '
+                                                           'GFxMovieInfo.References): draws nothing in the shipped game (CONFIRMED absence)'})}
+                            for x in b]
     return {'file': rel(path), 'signature': s['signature'], 'swf_version': s['version'],
             'stage': None, 'exports': sorted(ex.values()), 'sprite_count': len(s['sprites']),
             'sprites_exported_or_labelled': sprites, 'root_labels': s['root']['labels'],
@@ -148,6 +161,11 @@ def gfx_record(path, ue):
             'as2_classes': sorted(v for v in ex.values() if v.startswith('__Packages.')),
             'ui_sound_cues_named': ui_sounds, 'input_names': inputs, 'fscommand_like_strings': fs,
             'images_extracted': imgs, 'ue_objects': ue,
+            'external_images (DefineExternalImage: id, size, export name -> extracted PNG)': [
+                {'char': e['char'], 'name': e['name'], 'file': e['file'], 'width': e['width'], 'height': e['height'], 'png': png(e['name'])}
+                for e in ext],
+            'symbol_bitmaps (export -> bitmaps drawn via placements / shape bitmap fills)': sym_bm,
+            'vector_only_exports': sorted(nm for nm in ex.values() if nm not in sym_bm and not nm.startswith('__Packages.')),
             'confidence': CONF + ' (tags/bytecode of the cooked movie); behaviour of callbacks belongs to script/native (RE)'}
 
 def ue_movie_objects():
