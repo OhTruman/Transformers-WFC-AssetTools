@@ -86,6 +86,13 @@ unless native code scales them.
     * the 10 health/overshield `Pickup_FX` copies, never attached.
   * Tables: `docs/EVIDENCE_M03.md` §2, `docs/GAMEPLAY_STREETS.md`, `docs/MAP_STREETS_COMPLETE.md`; machine-readable in
     `render_index.json`.
+* **Other map objects in `render_index.json` (2026-10-03):** none of these are level emitters, so they sit outside this
+  section's scope.
+  * Domination totems (DOM only), KOTH active-zone rings (`pTorus1_STAT`, KOTH only) and the destructible wall panel's 3
+    states: `not_in_world_glb (authored renderables)`.
+  * Per-mode visibility (`mode_visual_state`) and the 19 actors hidden in TDM (`tdm_render_state`).
+  * Pickup factory meshes: `pickup_factory_visuals`.
+  * The 8 steam emitters above stay in `map_fx.json`, always active.
 
 ## Also in this checkpoint
 * **Props pass stopped on request.** `vs_props.py` and `props_authored.json` are kept, validated (171/171 meshes: LOD0 triangles = cooked
