@@ -64,61 +64,80 @@ def parse_component(p, nat):
             'scaleVec': list(coeffs[0][1]), 'coordScale': list(cs), 'coordBias': list(cb)}
 
 
-def main():
-    global SHARED
-    p = ue3pkg.Package(os.path.join(CK, MAP + '_ART_m.xxx'))
-    pr = propsmod.PropReader(p)
-
-    # Pass 1: discover the shared dominant-light GUID = the 16 bytes right after LightMapType=2
-    # in the first lightmapped component (it recurs in every lightmapped component).
-    for i, e in enumerate(p.exports):
-        if p.class_name(e) != 'StaticMeshComponent':
-            continue
-        try:
-            used = pr.read_object(i + 1)[1]
-        except Exception:
-            continue
-        nat = p.data[e['serial_offset'] + used:e['serial_offset'] + e['serial_size']]
-        if len(nat) > 40 and struct.unpack_from('<i', nat, 16)[0] == 2:
-            SHARED = nat[21:37]
+def parse_generic(p, nat):
+    """Same record without the shared-GUID anchor: [13] BE i32 LightMapType, [17] BE i32 LightGuids.Num,
+    GUIDs, lead int32, 3 x (tex, ScaleVector), CoordinateScale, CoordinateBias. Works for every level package."""
+    if len(nat) < 41 or struct.unpack_from('>i', nat, 13)[0] != 2:
+        return None
+    n = struct.unpack_from('>i', nat, 17)[0]
+    if not 0 <= n < 64:
+        return None
+    o = 21 + 16 * n + 4
+    coeffs = []
+    while o + 20 <= len(nat) and len(coeffs) < 3:
+        nm = lm_name(p, struct.unpack_from('>i', nat, o)[0])
+        if not nm:
             break
-    if SHARED is None:
-        print('ERROR: no lightmapped component found', file=sys.stderr); sys.exit(1)
-    print('shared dominant-light GUID:', SHARED.hex())
+        coeffs.append((nm, struct.unpack_from('>3f', nat, o + 4))); o += 20
+    if not coeffs or o + 16 > len(nat):
+        return None
+    return {'atlas': coeffs[0][0], 'coeffs': [c[0] for c in coeffs], 'scaleVec': list(coeffs[0][1]),
+            'coordScale': list(struct.unpack_from('>2f', nat, o)), 'coordBias': list(struct.unpack_from('>2f', nat, o + 8))}
 
-    # Pass 2: parse every lightmapped component, keyed by object path.
-    by_path = {}
-    for i, e in enumerate(p.exports):
-        if p.class_name(e) != 'StaticMeshComponent':
-            continue
-        try:
-            used = pr.read_object(i + 1)[1]
-        except Exception:
-            continue
-        nat = p.data[e['serial_offset'] + used:e['serial_offset'] + e['serial_size']]
-        rec = parse_component(p, nat)
-        if rec:
-            by_path[p.object_path(i + 1).lower()] = rec
-    print('parsed lightmapped components:', len(by_path))
 
-    # Join to placed props.
+def main():
+    """All lightmapped level packages of the map (ART + BASE); props joined by component path, actor-placed props
+    (StaticMeshActor / StaticInterpActor / InterpActor rows without a component key) through their cooked
+    StaticMeshComponent (the only one under the actor)."""
+    levels = [n[:-4] for n in os.listdir(CK) if n.lower().startswith(MAP.lower() + '_') and n.lower().endswith('_m.xxx')]
+    by_path, comp_of_actor = {}, {}
+    for lv in sorted(levels):
+        p = ue3pkg.Package(os.path.join(CK, lv + '.xxx'))
+        pr = propsmod.PropReader(p)
+        n = 0
+        for i, e in enumerate(p.exports):
+            if p.class_name(e) != 'StaticMeshComponent':
+                continue
+            op = p.object_path(i + 1)
+            if not op.startswith(lv + '.TheWorld.PersistentLevel.'):
+                continue
+            if op.count('.') == 4:
+                comp_of_actor.setdefault((lv, op.split('.')[3]), []).append(op)
+            try:
+                used = pr.read_object(i + 1)[1]
+            except Exception:
+                continue
+            nat = p.data[e['serial_offset'] + used:e['serial_offset'] + e['serial_size']]
+            rec = parse_generic(p, nat)
+            if rec:
+                rec['atlas_package'] = lv + ('_LM' if lv.endswith('_ART_m') else '').replace('_BASE_m', '_Base_m_LM')
+                by_path[op.lower()] = rec; n += 1
+        print('%s: lightmapped components %d' % (lv, n))
     pj = json.load(open(os.path.join(OUT, 'props.json'), encoding='utf-8'))
+    pngdir = os.path.join(OUT, 'lightmaps')
     out = []
     hit = miss = 0
     atlases = set()
     for pr_ in pj['props']:
-        comp = (pr_.get('component') or '').lower()
-        rec = by_path.get(comp)
+        comp = pr_.get('component')
+        if not comp:
+            cands = comp_of_actor.get((pr_['sublevel'], pr_['actor']), [])
+            comp = cands[0] if len(cands) == 1 else None
+        rec = by_path.get((comp or '').lower())
         if rec:
             atlases.add(rec['atlas'])
-            out.append({'actor': pr_.get('actor'), 'component': pr_.get('component'),
-                        'atlas': rec['atlas'], 'coordScale': rec['coordScale'],
-                        'coordBias': rec['coordBias'], 'scaleVec': rec['scaleVec']})
+            png = os.path.join(pngdir, rec['atlas'] + '.png')
+            out.append({'actor': pr_.get('actor'), 'component': comp, 'sublevel': pr_['sublevel'],
+                        'atlas': rec['atlas'], 'coeffs': rec['coeffs'], 'atlas_package': rec['atlas_package'],
+                        'atlas_png': ('lightmaps/' + rec['atlas'] + '.png') if os.path.exists(png) else None,
+                        'coordScale': rec['coordScale'], 'coordBias': rec['coordBias'], 'scaleVec': rec['scaleVec']})
             hit += 1
         else:
             miss += 1
     json.dump({'map': MAP, 'count': hit, 'atlases_used': sorted(atlases),
-               'note': 'atlas = _LM LightMapTexture2D (coeff0). lightmap UV = TEXCOORD_1*coordScale+coordBias.',
+               'atlases_without_png': sorted(a for a in atlases if not os.path.exists(os.path.join(pngdir, a + '.png'))),
+               'note': 'atlas = _LM LightMapTexture2D (coeff0). lightmap UV = TEXCOORD_1*coordScale+coordBias. '
+                       'Covers every level package; actor-placed props joined through their StaticMeshComponent.',
                'props': out}, open(os.path.join(OUT, 'lightmaps.json'), 'w'), indent=0)
     print('props with lightmap: %d   without: %d   unique atlases used: %d'
           % (hit, miss, len(atlases)))

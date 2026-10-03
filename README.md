@@ -64,6 +64,8 @@ sequences[], preview_skeletal_mesh, compatible_skeletal_meshes/animsets, map_usa
 | `vs_surface_audio.py` | `manifests/streets_surface_audio.json` (M03) |
 | `vs_audio_concurrency.py` | `manifests/vertical_slice_audio_concurrency.json` (M03) |
 | `vs_vehicle_loops.py` + `validate_vehicle_loops.py` | `manifests/vehicle_audio_loops.json` (M03) and its header-level validator |
+| `m04_bsp.py` / `m04_inventory.py` / `m04_kismet.py` / `m04_complete.py` | **complete MP_IAC_Streets map**: BSP audit, full actor/component inventory + rebuild classification, lighting/mover/prefab audits, Kismet + HUD references, canonical `manifests/mp_iac_streets_complete.json` + `render_index.json` (`docs/MAP_STREETS_COMPLETE.md`) |
+| `m04_lightmap_atlases.py`, `validate_m04.py` | export missing lightmap atlas PNGs; map-completeness validation (`logs/validate_m04.json`) |
 | `validate_m03.py` | cross-manifest validation of the M03 outputs (`logs/validate_m03.json`) |
 | `schema.py`, `typed_props.py` | UnrealScript type registry (`manifests/schema.json`) and the schema-driven tag reader |
 | `authored_db.py` / `authored_db_safe.py` | global **`manifests/authored.db`** (SQLite, 2.5 GB): `objects` (1,102,518 unique objects with typed props JSON, 0 unparsed), `refs` (2.5 M object references), `types` (schema). Build shards with `authored_db_safe.py --jobs 4 --merge` (one child per package, memory/timeout watchdog, failures in `logs/authored_db_failures.json`) |

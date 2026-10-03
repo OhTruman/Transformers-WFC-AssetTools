@@ -1,0 +1,773 @@
+{
+ "map": "MP_IAC_Streets",
+ "generated": "2026-10-02 22:46",
+ "generated_by": "AssetTools/scripts/wfc/m04_complete.py",
+ "identity": {
+  "map": "MP_IAC_Streets",
+  "game_mode_playlists": [
+   "DM",
+   "TDM",
+   "CTF",
+   "KOTH",
+   "EXT",
+   "DOM"
+  ],
+  "packages": [
+   "MP_IAC_Streets_BASE_m",
+   "MP_IAC_Streets_ART_m",
+   "MP_IAC_Streets_AUDIO_m"
+  ],
+  "persistent": "MP_IAC_Streets_BASE_m"
+ },
+ "hierarchy": {
+  "persistent_level_package": "MP_IAC_Streets_BASE_m",
+  "streaming_levels": [
+   {
+    "object": "MP_IAC_Streets_BASE_m.TheWorld.LevelStreamingKismet_8751",
+    "class": "LevelStreamingKismet",
+    "PackageName": "MP_IAC_Streets_ART_m",
+    "confidence": "CONFIRMED AUTHORED DATA"
+   },
+   {
+    "object": "MP_IAC_Streets_BASE_m.TheWorld.LevelStreamingKismet_12838",
+    "class": "LevelStreamingKismet",
+    "PackageName": "MP_IAC_Streets_AUDIO_m",
+    "confidence": "CONFIRMED AUTHORED DATA"
+   }
+  ],
+  "level_streaming_state": {
+   "Levels": [
+    {
+     "LevelName": "MP_IAC_Streets_ART_m",
+     "LevelVisible": true
+    },
+    {
+     "LevelName": "MP_IAC_Streets_AUDIO_m",
+     "LevelVisible": true
+    }
+   ]
+  },
+  "kismet_streaming_actions": "none: no SeqAct_LevelStreaming / SeqAct_LevelVisibility in any Streets sequence",
+  "normal_play_coexistence": {
+   "value": "BASE + ART + AUDIO all loaded and visible for the whole match",
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "evidence": "LevelStreamingState \"Default\" lists both sublevels LevelVisible=true; nothing in Kismet streams them out"
+  },
+  "companions": [
+   {
+    "package": "BL_LVL_MP_IAC_STREETS",
+    "family": "BL_LVL_MP_IAC_STREETS",
+    "role": "sound event/cue bank",
+    "exports": 0,
+    "bytes": 32768
+   },
+   {
+    "package": "MP_IAC_Streets_ART_m",
+    "family": "MP_IAC_Streets_ART_m",
+    "role": "map/level; multiplayer map",
+    "exports": 5669,
+    "bytes": 39592536
+   },
+   {
+    "package": "MP_IAC_Streets_ART_m_LM",
+    "family": "MP_IAC_Streets_ART_m",
+    "role": "lightmap companion; map/level; multiplayer map",
+    "exports": 78,
+    "bytes": 1605632
+   },
+   {
+    "package": "MP_IAC_Streets_AUDIO_m",
+    "family": "MP_IAC_Streets_AUDIO_m",
+    "role": "map/level; multiplayer map",
+    "exports": 502,
+    "bytes": 5432804
+   },
+   {
+    "package": "MP_IAC_Streets_BASE_m",
+    "family": "MP_IAC_Streets_BASE_m",
+    "role": "map/level; multiplayer map",
+    "exports": 32624,
+    "bytes": 116731656
+   },
+   {
+    "package": "MP_IAC_Streets_Base_m_LM",
+    "family": "MP_IAC_Streets_Base_m",
+    "role": "lightmap companion; map/level; multiplayer map",
+    "exports": 3,
+    "bytes": 32768
+   },
+   {
+    "package": "MP_IAC_Streets_BASE_m_LOC_FRA",
+    "family": "MP_IAC_Streets_BASE_m",
+    "role": "localized companion (FRA); multiplayer map",
+    "exports": 1127,
+    "bytes": 2931525
+   },
+   {
+    "package": "MP_IAC_Streets_BASE_m_LOC_int",
+    "family": "MP_IAC_Streets_BASE_m",
+    "role": "localized companion (int); multiplayer map",
+    "exports": 1127,
+    "bytes": 5834164
+   }
+  ],
+  "closure": {
+   "normal_play_level_references": [
+    "MP_IAC_Streets_ART_m",
+    "MP_IAC_Streets_AUDIO_m"
+   ],
+   "all_resolved": true
+  },
+  "levels": {
+   "MP_IAC_Streets_BASE_m": {
+    "level_object": "MP_IAC_Streets_BASE_m.TheWorld.PersistentLevel",
+    "world_info": "MP_IAC_Streets_BASE_m.TheWorld.PersistentLevel.TnWorldInfo_15559",
+    "role": "persistent level (gameplay/design: starts, pickups, objectives, volumes, Kismet, movers)",
+    "streaming": "persistent",
+    "level_transform": "none (UE3 streaming levels have no offset; all placements are world space)",
+    "actors": 224,
+    "components": 268,
+    "actor_location_bounds_ue": [
+     [
+      -26423.8984375,
+      -83609.5,
+      -72908.0
+     ],
+     [
+      72960.0,
+      0.0,
+      0.0
+     ]
+    ],
+    "world_info_flags": {
+     "FlushTextureStreamingOnInitialLoad": false,
+     "ServerShouldWaitForAllClientsToFullyLoad": false,
+     "bMapNeedsLightingFullyRebuilt": true,
+     "bPathsRebuilt": true,
+     "CameraTimeStepSeconds": 0.005481705069541931
+    },
+    "package_dependencies": [
+     "Core",
+     "Engine",
+     "GFxUI",
+     "HM_Engine",
+     "TransGame",
+     "WL_DX_AIRAID",
+     "WL_DX_Arcee",
+     "WL_DX_BRAWL",
+     "WL_DX_BRCADE",
+     "WL_DX_BRKDWN",
+     "WL_DX_BUMBEE",
+     "WL_DX_IRNHDE",
+     "WL_DX_JETFIR",
+     "WL_DX_MGTRON",
+     "WL_DX_MPLDRA",
+     "WL_DX_MPLDRD",
+     "WL_DX_MPSCFA",
+     "WL_DX_MPSCMA",
+     "WL_DX_MPSCMD",
+     "WL_DX_MPSIFD",
+     "WL_DX_MPSIMA",
+     "WL_DX_MPSIMD",
+     "WL_DX_MPSLDA",
+     "WL_DX_MPSLDD",
+     "WL_DX_ONSLT",
+     "WL_DX_OPRIME",
+     "WL_DX_RTCHET",
+     "WL_DX_SIDSWP",
+     "WL_DX_SKYWRP",
+     "WL_DX_SLIPST",
+     "WL_DX_SLVBLT",
+     "WL_DX_SNDWAV",
+     "WL_DX_STSCRM",
+     "WL_DX_THUNDR",
+     "WL_DX_WARPTH",
+     "WL_DX_ZPRIME"
+    ]
+   },
+   "MP_IAC_Streets_ART_m": {
+    "level_object": "MP_IAC_Streets_ART_m.TheWorld.PersistentLevel",
+    "world_info": "MP_IAC_Streets_ART_m.TheWorld.PersistentLevel.TnWorldInfo_6805",
+    "role": "art sublevel (static meshes, BSP, lights, decals, emitters, fog, destructible)",
+    "streaming": "LevelStreamingKismet in persistent WorldInfo.StreamingLevels; LevelStreamingState \"Default\": LevelVisible=true",
+    "level_transform": "none (UE3 streaming levels have no offset; all placements are world space)",
+    "actors": 794,
+    "components": 2365,
+    "actor_location_bounds_ue": [
+     [
+      -30720.0,
+      -90112.0,
+      -79360.0
+     ],
+     [
+      148224.0,
+      89968.0,
+      0.0
+     ]
+    ],
+    "world_info_flags": {
+     "bMapNeedsLightingFullyRebuilt": true
+    },
+    "package_dependencies": [
+     "BL_FX_EXPLO",
+     "Core",
+     "ENV_ORB_CoolantRoom_p",
+     "Engine",
+     "EngineMaterials",
+     "FX_Materials_p",
+     "FX_Mesh_p",
+     "FX_Textures_p",
+     "HM_Engine",
+     "SoundEvents_Footsteps",
+     "TransGame"
+    ]
+   },
+   "MP_IAC_Streets_AUDIO_m": {
+    "level_object": "MP_IAC_Streets_AUDIO_m.TheWorld.PersistentLevel",
+    "world_info": "MP_IAC_Streets_AUDIO_m.TheWorld.PersistentLevel.TnWorldInfo_7840",
+    "role": "audio sublevel (ambient sounds, audio zones, reverb Kismet)",
+    "streaming": "LevelStreamingKismet in persistent WorldInfo.StreamingLevels; LevelStreamingState \"Default\": LevelVisible=true",
+    "level_transform": "none (UE3 streaming levels have no offset; all placements are world space)",
+    "actors": 84,
+    "components": 51,
+    "actor_location_bounds_ue": [
+     [
+      -18048.0,
+      -66336.984375,
+      -73546.1796875
+     ],
+     [
+      69631.953125,
+      0.0,
+      0.0
+     ]
+    ],
+    "world_info_flags": {
+     "CameraTimeStepSeconds": 0.0009839236736297607
+    },
+    "package_dependencies": [
+     "Core",
+     "Engine",
+     "HM_Engine",
+     "TransGame"
+    ]
+   }
+  }
+ },
+ "world_settings": {
+  "world_info": "MP_IAC_Streets_BASE_m.TheWorld.PersistentLevel.TnWorldInfo_15559",
+  "DefaultPostProcessSettings": {
+   "bEnableBloom": true,
+   "bEnableDOF": true,
+   "bEnableMotionBlur": false,
+   "bEnableSceneEffect": true,
+   "bAllowAmbientOcclusion": false,
+   "Bloom_Scale": 0.10000000149011612,
+   "Bloom_Threshold": 1.0,
+   "DOFXScale": 1.0,
+   "DOFYScale": 1.0,
+   "DOFAndBloomXScale": 1.0,
+   "DOFAndBloomYScale": 1.0,
+   "Bloom_InterpolationDuration": 1.0,
+   "Bloom_InterpolationProgress": 0.0,
+   "DOF_FalloffExponent": 4.0,
+   "DOF_BlurKernelSize": 16.0,
+   "DOF_MaxNearBlurAmount": 1.0,
+   "DOF_MaxFarBlurAmount": 0.6000000238418579,
+   "DOF_ModulateBlurColor": {
+    "B": 255,
+    "G": 255,
+    "R": 255,
+    "A": 255
+   },
+   "DOF_FocusType": "FOCUS_Distance",
+   "DOF_FocusNearFalloff": 2000.0,
+   "DOF_FocusFarFalloff": 40000.0,
+   "DOF_FocusDistance": 0.0,
+   "DOF_FocusPosition": {
+    "X": 0.0,
+    "Y": 0.0,
+    "Z": 0.0
+   },
+   "DOF_InterpolationDuration": 1.0,
+   "DOF_InterpolationProgress": 0.0,
+   "MotionBlur_Technique": "MBT_CameraAndObjectMotion",
+   "MotionBlur_MaxVelocity": 1.0,
+   "MotionBlur_Amount": 0.5,
+   "MotionBlur_CurveExponent": 1.0,
+   "MotionBlur_InnerRadius": 0.20000000298023224,
+   "MotionBlur_OuterRadius": 1.0,
+   "MotionBlur_RadialBlurExponent": 2.0,
+   "MotionBlur_RadialStretch": 0.0,
+   "MotionBlur_AccumulationSoftness": 0.5,
+   "MotionBlur_NumSamples": "MBSC_5_Samples",
+   "MotionBlur_InterpolationDuration": 1.0,
+   "MotionBlur_InterpolationProgress": 0.0,
+   "Scene_Desaturation": 0.0,
+   "Scene_HighLights": {
+    "X": 1.0,
+    "Y": 1.0,
+    "Z": 1.0
+   },
+   "Scene_MidTones": {
+    "X": 1.0,
+    "Y": 1.0,
+    "Z": 1.0
+   },
+   "Scene_Shadows": {
+    "X": 0.0,
+    "Y": 0.0,
+    "Z": 0.0
+   },
+   "Scene_InterpolationDuration": 1.0,
+   "Scene_InterpolationProgress": 0.0,
+   "ColorCorrectionTexture": "ENV_MPCLUT_p.MP_Streets_CLUT",
+   "ColorCorrectionTextureLerpTarget": null,
+   "PostProcessVolumeHeightFog_InterpolationDuration": 1.0,
+   "PostProcessVolumeHeightFog": [],
+   "PostProcessVolumeHeightFog_InterpolateDensity": true,
+   "PostProcessVolumeHeightFog_InterpolateHeight": false,
+   "PostProcessVolumeHeightFog_InterpolateColor": false
+  },
+  "LevelCamera": "MP_IAC_Streets_BASE_m.TheWorld.PersistentLevel.CameraActor_13199",
+  "AnnouncerSoundEventSet": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+  "height_fog / lights / post process": "lighting.json + postprocess.json (M02 passes)",
+  "confidence": "CONFIRMED AUTHORED DATA"
+ },
+ "extents": {
+  "authored_world_bounds_ue (union of every placed static-mesh AABB)": [
+   [
+    -752935.4,
+    -757272.5,
+    -467826.5
+   ],
+   [
+    685166.3,
+    699913.5,
+    702830.4
+   ]
+  ],
+  "authored_world_size_m": [
+   14381.0,
+   14571.9,
+   11706.6
+  ],
+  "largest_contributors": [
+   {
+    "mesh": "ENV_ORB_Spacedome_p.SpaceDome_STATMESH",
+    "aabb_size_m": [
+     14381.0,
+     14571.9,
+     11706.6
+    ]
+   },
+   {
+    "mesh": "ENV_IAC_Background_p.Vista_Buildings.CityBackdrop_STAT",
+    "aabb_size_m": [
+     0.0,
+     1276.5,
+     638.3
+    ]
+   },
+   {
+    "mesh": "ENV_IAC_Background_p.Vista_Buildings.CityBackdrop_STAT",
+    "aabb_size_m": [
+     1179.3,
+     488.5,
+     638.3
+    ]
+   },
+   {
+    "mesh": "ENV_GLB_EnvEffects_p.StaticMesh.LightBeam_Cone_STAT",
+    "aabb_size_m": [
+     132.8,
+     269.1,
+     523.4
+    ]
+   },
+   {
+    "mesh": "ENV_GLB_EnvEffects_p.StaticMesh.LightBeam_Cone_STAT",
+    "aabb_size_m": [
+     251.0,
+     280.7,
+     511.5
+    ]
+   }
+  ],
+  "world_bounds_excluding_sky_and_backdrop_ue": [
+   [
+    -23520.3,
+    -87466.6,
+    -79998.0
+   ],
+   [
+    60634.4,
+    -7234.5,
+    -11375.1
+   ]
+  ],
+  "world_size_excluding_sky_and_backdrop_m": [
+   841.5,
+   802.3,
+   686.2
+  ],
+  "playable_bounds_ue (player starts)": [
+   [
+    1992.0,
+    -66048.0,
+    -72620.0
+   ],
+   [
+    39890.7,
+    -29056.0,
+    -70533.0
+   ]
+  ],
+  "playable_size_m (player starts)": [
+   379.0,
+   369.9,
+   20.9
+  ],
+  "navigation_bounds_ue": [
+   [
+    1992.0,
+    -66048.0,
+    -72700.0
+   ],
+   [
+    39890.7,
+    -28416.0,
+    -70336.0
+   ]
+  ],
+  "vertical_bounds_ue": {
+   "player_starts_z": [
+    -72620.0,
+    -70533.046875
+   ],
+   "geometry_z": [
+    -467826.45325065067,
+    702830.3901729059
+   ]
+  },
+  "background_geometry": "CityBackdrop_STAT x2, SpaceDome_STATMESH, distant towers/buildings - included in props.json",
+  "outlier_actor": "TnStaticDestructibleActor_14465 at Z=-352 (only actor above Z=-50000; outside play space)",
+  "level_regions": {
+   "value": 9,
+   "basis": "authored audio zones (Kismet SeqEvent_Touch volumes), the only authored region partition of the playable space",
+   "names": [
+    "ENTER_NEU_BASE",
+    "ENTER_AUTO_ROOM_02",
+    "ENTER_NEU_HALL",
+    "ENTER_EXTERIOR",
+    "ENTER_TRAIN_TUNNEL",
+    "ENTER_NEU_STAIRWELL",
+    "ENTER_DEC_ROOM_LOWER",
+    "ENTER_DEC_ROOM_UPPER",
+    "ENTER_AUTO_ROOM_01"
+   ]
+  },
+  "gameplay_spaces": {
+   "spawn_clusters": 12,
+   "koth_zones": 5,
+   "domination_points": 3,
+   "ctf_bases": 2,
+   "bomb_sites": 2
+  },
+  "confidence": "CONFIRMED AUTHORED DATA (positions/bounds from cooked transforms and StaticMesh Bounds)"
+ },
+ "counts": {
+  "placed_actors": 1102,
+  "placed_components": 2684,
+  "actors_by_class": {
+   "AmbientSound": 40,
+   "BRUSH": 109,
+   "BeastSettingsReferer": 1,
+   "BlockingVolume": 71,
+   "CameraActor": 1,
+   "DecalActor": 25,
+   "Emitter": 8,
+   "HeightFog": 1,
+   "HmAmbientSoundLineEmitter": 13,
+   "HmAmbientSoundVolumeEmitter": 17,
+   "InterpActor": 4,
+   "LightsVisibilitiesVolume": 1,
+   "Model": 3,
+   "ModelComponent": 422,
+   "PrefabInstance": 16,
+   "Sequence": 3,
+   "StaticInterpActor": 8,
+   "StaticLightCollectionActor": 1,
+   "StaticMeshActor": 34,
+   "StaticMeshCollectionActor": 160,
+   "TnAmmoCratePickupFactory": 14,
+   "TnAssetReferencesMultiplayer": 1,
+   "TnBombPlantPoint": 2,
+   "TnDominationPoint": 3,
+   "TnFlagCapturePoint": 2,
+   "TnForcedDirVolume": 4,
+   "TnFreeForAllPlayerStart": 24,
+   "TnGameObjectivePickupFactoryBomb": 1,
+   "TnGameObjectivePickupFactoryFlag": 2,
+   "TnHealthPickupFactory": 9,
+   "TnKingOfTheHillZone": 5,
+   "TnOverShieldPickupFactory": 1,
+   "TnSpawnCluster": 12,
+   "TnStaticDestructibleActor": 1,
+   "TnTeamPlayerStart": 60,
+   "TnWorldInfo": 3,
+   "TriggerVolume": 20
+  },
+  "components_by_class": {
+   "ArrowComponent": 4,
+   "AudioComponent": 40,
+   "BrushComponent": 216,
+   "CylinderComponent": 123,
+   "DecalComponent": 25,
+   "DirectionalLightComponent": 2,
+   "DrawFrustumComponent": 1,
+   "HeightFogComponent": 1,
+   "HmDestructibleComponent": 1,
+   "LightEnvironmentComponent": 4,
+   "ParticleSystemComponent": 45,
+   "PointLightComponent": 182,
+   "SkeletalMeshComponent": 3,
+   "SkyLightComponent": 1,
+   "SpotLightComponent": 83,
+   "StaticMeshComponent": 1953
+  },
+  "visible_components": {
+   "StaticMeshComponent": 1953,
+   "SkeletalMeshComponent": 3,
+   "ParticleSystemComponent": 45,
+   "DecalComponent": 25,
+   "ModelComponent": 0,
+   "HeightFogComponent": 1
+  },
+  "bsp": {
+   "nodes": 889,
+   "surfaces": 427,
+   "points": 1420,
+   "triangles_in_render_elements": 2460,
+   "render_elements": 540,
+   "model_components": 422
+  },
+  "static_meshes": {
+   "placed": 1952,
+   "unique_meshes": 171
+  },
+  "movers": 12,
+  "destructibles": 1,
+  "decals": 25,
+  "lights": {
+   "PointLightComponent": 182,
+   "SpotLightComponent": 83,
+   "DirectionalLightComponent": 2,
+   "SkyLightComponent": 1
+  },
+  "lightmaps": {
+   "none(0) / bound=False": 133,
+   "vertex 1D (1) / bound=False": 28,
+   "texture 2D (2) / bound=True": 1794,
+   "texture 2D (2) / bound=False": 1
+  },
+  "lightmap_atlases_png": 81,
+  "fx": {
+   "particle_components": 45,
+   "level_emitters": 8,
+   "pickup_fx_components": 37,
+   "destructible_fx_factories": 2
+  },
+  "audio": {
+   "point": 40,
+   "line": 13,
+   "volume": 17,
+   "zones": 9,
+   "reverb_presets": 10,
+   "cues": 32
+  },
+  "pickups": {
+   "TnAmmoCratePickupFactory": 14,
+   "TnHealthPickupFactory": 9,
+   "TnOverShieldPickupFactory": 1
+  },
+  "starts": {
+   "TnTeamPlayerStart": 60,
+   "TnFreeForAllPlayerStart": 24
+  },
+  "objectives": {
+   "TnGameObjectivePickupFactoryFlag": 2,
+   "TnGameObjectivePickupFactoryBomb": 1,
+   "TnFlagCapturePoint": 2,
+   "TnBombPlantPoint": 2,
+   "TnDominationPoint": 3,
+   "TnKingOfTheHillZone": 5
+  },
+  "volumes": {
+   "BlockingVolume": 71,
+   "TriggerVolume": 20,
+   "TnForcedDirVolume": 4,
+   "TnSpawnCluster": 12
+  },
+  "kismet": {
+   "MP_IAC_Streets_BASE_m": {
+    "Sequence": 2,
+    "SeqEvent_GameplayStarted": 1,
+    "SeqAct_Interp": 1,
+    "InterpData": 1,
+    "SeqEvent_RemoteEvent": 1,
+    "SeqVar_Object": 7,
+    "SeqAct_ActivateRemoteEvent": 1,
+    "SeqCond_GameRuleActive": 2,
+    "SeqAct_ToggleHidden": 1
+   },
+   "MP_IAC_Streets_ART_m": {
+    "Sequence": 1
+   },
+   "MP_IAC_Streets_AUDIO_m": {
+    "Sequence": 10,
+    "SeqEvent_Touch": 9,
+    "SeqAct_AmbientAudioZone": 9,
+    "SeqAct_Reverb": 9,
+    "SeqEvent_SequenceActivated": 18,
+    "SeqAct_PlayPlayerPositionalSound": 11,
+    "SequenceFrame": 5
+   }
+  },
+  "prefabs": {
+   "instances": 16,
+   "members": 35,
+   "uncovered_members": 0
+  }
+ },
+ "current_rebuild_comparison": {
+  "visible_authored_render_items": {
+   "static/skeletal/particle/decal components": 2025,
+   "bsp_render_elements": 540,
+   "destructible_actor": 1,
+   "total": 2566
+  },
+  "by_classification (visible components)": {
+   "PRESENT BUT WRONG STATE": 10,
+   "PRESENT AND MATCHING": 1966,
+   "PRESENT BUT INCOMPLETE": 45,
+   "MISSING FROM REBUILD": 3,
+   "PRESENT BUT WRONG MATERIAL": 1
+  },
+  "percent_of_visible_items_present_and_matching": 97.66,
+  "percent_missing_or_not_drawn": 1.91,
+  "percent_wrong_state_or_material": 0.43,
+  "actor_classification": {
+   "CONTAINER / NON-RENDERED AUTHORED OBJECT": 406,
+   "PRESENT BUT WRONG STATE": 10,
+   "PRESENT AND MATCHING": 645,
+   "PRESENT BUT INCOMPLETE": 38,
+   "MISSING FROM REBUILD": 2,
+   "PRESENT BUT WRONG MATERIAL": 1,
+   "EXTRA / REBUILD-ONLY": 0
+  },
+  "non_matching_detail": "manifests/streets_rebuild_diff.json",
+  "evidence": "slice exports + Rendering lane renderer-dump audit (2026-10-02 12:58)"
+ },
+ "why_the_rebuild_reads_as_incomplete": [
+  {
+   "cause": "all 45 particle components (8 level steam emitters + 37 pickup effects) are exported but not drawn",
+   "items": 45,
+   "confidence": "CONFIRMED AUTHORED DATA"
+  },
+  {
+   "cause": "all 70 ambient-sound actors (40 point, 13 line, 17 volume) + 9 audio zones/reverb + 11 positional one-shot pools: exported in audio.json; Experimental M03 measured 0 active (Systems runtime since in progress)",
+   "items": 70,
+   "confidence": "HIGH CONFIDENCE"
+  },
+  {
+   "cause": "animated environment drawn frozen: 3 PHYS_Rotating DecoSphere domes (15 deg/s) + SkyBeam Matinee (9 s loop) on 3 actors",
+   "items": 6,
+   "confidence": "CONFIRMED AUTHORED DATA"
+  },
+  {
+   "cause": "mode-dependent state ignored: 4 objective-base InterpActors are authored bHidden and only unhidden in CTF/EXT, but are drawn always",
+   "items": 4,
+   "confidence": "CONFIRMED AUTHORED DATA"
+  },
+  {
+   "cause": "3 domination energon totems (animated SkeletalMesh) not exported",
+   "items": 3,
+   "confidence": "CONFIRMED AUTHORED DATA"
+  },
+  {
+   "cause": "AssetTools lightmaps.json lacked 39 actor-placed bindings + 9 coefficient atlases (FIXED in this pass); Rendering binds its own lightmaps, so the runtime effect depends on which binding the renderer used",
+   "items": 39,
+   "confidence": "CONFIRMED AUTHORED DATA"
+  },
+  {
+   "cause": "360 of 540 BSP render elements carry no static light interactions (LightMapType 0); authored, not an export defect",
+   "items": 360,
+   "confidence": "CONFIRMED AUTHORED DATA"
+  },
+  {
+   "cause": "LightsVisibilitiesVolume not implemented (semantics UNKNOWN)",
+   "items": 1,
+   "confidence": "CONFIRMED AUTHORED DATA"
+  },
+  {
+   "cause": "NOT a geometry gap: BSP 2460/2460 triangles, 1952/1952 placed static meshes, 25/25 decals, 268/268 light components, 0 rebuild-only extras, 3 sublevels all loaded; the authored playable footprint is ~379 x 370 m",
+   "confidence": "CONFIRMED AUTHORED DATA"
+  }
+ ],
+ "presentation_vs_mode_logic": {
+  "always_relevant_presentation": [
+   "world.glb geometry",
+   "decals",
+   "lights/lightmaps/fog/post",
+   "8 level steam emitters",
+   "movers (rotating domes, SkyBeam Matinee)",
+   "ambient audio",
+   "pickup factories + their FX (all modes)",
+   "domination totems (placed in every mode; behaviour DOM-only, native)"
+  ],
+  "game_mode_specific": [
+   "objective-base InterpActors (CTF / EXT unhide)",
+   "flag factories (SingleFlagCTF)",
+   "bomb factory (ScoreBombingRun)",
+   "TnFlagCapturePoint / TnBombPlantPoint / TnKingOfTheHillZone / TnDominationPoint logic",
+   "team vs FFA starts"
+  ]
+ },
+ "files": {
+  "focused_manifests (AssetTools/manifests/)": {
+   "streets_actor_inventory.json": "every placed actor + component, transforms, flags, classification",
+   "streets_rebuild_diff.json": "classification counts + every non-matching record",
+   "streets_bsp_audit.json": "BSP model, surfaces, render elements, node accounting",
+   "streets_lighting_audit.json": "per StaticMeshComponent lightmap type + binding",
+   "streets_movers.json": "movers / rotating / Matinee",
+   "streets_prefabs.json": "PrefabInstance members -> placed objects",
+   "streets_kismet.json": "sequence graph + actor relationships",
+   "future_hud_handoff.json": "HUD/objective references",
+   "streets_destructibles.json": "destructible (M03)",
+   "streets_pickup_factories.json": "pickups (M03)",
+   "streets_pickup_fx.json": "pickup FX decoded (M03)",
+   "streets_surface_audio.json": "surface audio (M03)",
+   "vertical_slice_audio_concurrency.json": "cue concurrency (M03)"
+  },
+  "render_and_world_data (ExtractedAssets/VerticalSlice/Maps/MP_IAC_Streets/)": {
+   "world.glb": "BSP + every placed static mesh (instanced)",
+   "render_index.json": "full-map render layer index (this pass)",
+   "props.json": "placed meshes",
+   "props_authored.json": "authored per-component render/movement flags",
+   "lightmaps.json": "texture-lightmap bindings (all levels, this pass)",
+   "lightmaps/": "atlas PNGs",
+   "map_fx.json": "decals + particle components",
+   "lighting.json": "lights, fog, channels",
+   "postprocess.json": "post process + CLUT",
+   "materials_authored.json": "map materials",
+   "audio.json": "ambient audio placement/zones",
+   "gameplay.json": "starts, pickups, objectives, modes, Kismet, Matinee",
+   "physics.json": "collision/physics",
+   "collision_pawn.glb": "pawn collision world",
+   "collision_weapon.glb": "weapon-trace collision world",
+   "navigation.json": "path network",
+   "spawnpoints.json": "starts/clusters"
+  }
+ }
+}

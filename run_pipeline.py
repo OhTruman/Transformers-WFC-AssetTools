@@ -52,6 +52,14 @@ STEPS = [
     ('vs_vehicle_loops', [PY, os.path.join(S, 'vs_vehicle_loops.py')]),
     ('validate_vehicle_loops', [PY, os.path.join(S, 'validate_vehicle_loops.py')]),
     ('validate_m03',     [PY, os.path.join(S, 'validate_m03.py')]),
+    # Milestone-04 complete-map manifests (after the slice steps). vs_lightmap.py stays manual (vs_map reads its output):
+    # after changing it, re-run --only vs_map vs_collision vs_physics vs_validate.
+    ('m04_lightmap_atlases', [PY, os.path.join(S, 'm04_lightmap_atlases.py')]),   # export missing lightmap atlas PNGs
+    ('m04_bsp',          [PY, os.path.join(S, 'm04_bsp.py')]),
+    ('m04_inventory',    [PY, os.path.join(S, 'm04_inventory.py')]),
+    ('m04_kismet',       [PY, os.path.join(S, 'm04_kismet.py')]),
+    ('m04_complete',     [PY, os.path.join(S, 'm04_complete.py')]),
+    ('validate_m04',     [PY, os.path.join(S, 'validate_m04.py')]),
     # vs_props.py (props_authored.json) is a checkpointed, validated pass kept OUT of the pipeline on request
 ]
 
