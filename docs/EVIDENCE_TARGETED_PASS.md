@@ -103,8 +103,11 @@ this chain, so every value below is the one the object actually has, with the ob
 | 6b | CONFIRMED | 〃 | 4 decal materials | BlendMode / LightingModel | `landmark_{Dchevrons,dcorner,corner,chevrons}_clr_Mat` — all **Additive + Unlit** (10/6/5/4 uses) | Rendering |
 | 6c | CONFIRMED | 〃 | 8 × Emitter / ParticleSystemComponent | Template / InstanceParameters | all `FX_Level_Generic_p.FX.Steam_Sm_FX` (emitter `Smoke_Dup`, `Steam_Mat`); per-emitter **`SteamColor`**: (106,17,255) ×2, (124,17,255), (111,26,253), (100,17,255), (101,18,254), prefab vent (33,167,239), one with no override | Systems |
 | 6d | CONFIRMED | 〃 | `PrefabInstance_4340` | native ArchetypeToInstanceMap | `ENV_IAC_Deco_PFB_p.SteamVentFX.SteamVentFX_Arc0 → Emitter_5707`: the prefab vent **is one of the 8** (no 9th emitter) | Rendering / Systems |
-| 6e | CONFIRMED | Streets_BASE | 37 pickup/objective ParticleSystemComponents | Template | AmmoCrate ×14 `Pickup_FX`; Health ×9 `HealthPickup_FX` + ×9 `Pickup_FX`; Flag ×2, Bomb ×1, OverShield `Pickup_FX` + `OvershieldPickup_FX` (previously omitted relationships) | Systems |
+| 6e | CONFIRMED | Streets_BASE | 37 pickup/objective ParticleSystemComponents | Template | AmmoCrate ×14 `Pickup_FX`; Health ×9 `HealthPickup_FX` + ×9 `Pickup_FX` (not attached - see 6g); Flag ×2, Bomb ×1, OverShield `Pickup_FX` + `OvershieldPickup_FX` (previously omitted relationships) | Systems |
 | 6f | CONFIRMED | Streets_ART/BASE | all 171 StaticMeshes | FStaticMeshElement | `props.json` now carries `section_materials` for **1952/1952** props; 5 slots that umodel left `dummy_material_N` are bound (e.g. `stain_long_STAT` → `stains_01_CLR_MatINST_BAT`, `InteriorDoor_STAT` → `InteriorDoorLock_MATINST`, D1 debris break faces → `ENV_cboard_CLR_Mat`, a real textured material) | Rendering |
+| 6g | CONFIRMED | Streets_BASE / TransContent | 37 pickup PSCs (update 2026-10-03) | Components array, bAutoActivate, script | the 10 `Pickup_FX` copies on health/overshield factories are **never attached** (not in `Components`). The other 27 beams are switched on by `SetPickupVisible` whenever the factory is available (RE script). Draw rules + matrices: `render_index.json` `pickup_fx_components` (24 drawn in TDM) | Rendering / Systems |
+| 6h | CONFIRMED | Streets_BASE / TransContent | 3 TnDominationPoint, 5 TnKingOfTheHillZone (update 2026-10-03) | PointMesh0 / ActiveMeshComponent0 | totems `NEU_EnergonTotem_SKEL` (DOM only) and KOTH rings `FX_Mesh_p.Mesh.pTorus1_STAT` (template component, zone DrawScale3D (1, 1, 2), KOTH active zone only) with matrices in `render_index.json` | Rendering |
+| 6i | CONFIRMED | Kismet + script | mode-gated actors (update 2026-10-03) | RequiredGameRuleClass / SeqCond_GameRuleActive / PostBeginPlay | `render_index.json` `mode_visual_state` and `tdm_render_state`: 19 actors hidden in TDM (4 objective bases, 3 totems, 5 KOTH zones, 3 objective factories, 4 capture/plant points) | Rendering / Gameplay |
 
 ---------------------------------------------------------------------------------------------------------------
 ## Still requires native RE (not authored in cooked data)
@@ -114,7 +117,7 @@ this chain, so every value below is the one the object actually has, with the ob
 4. `_RestoreWeaponTransformFractionRemaining` usage and weapon holster/unholster during transforms (5h).
 5. TnTransformerMomentumBlueprint semantics (4g); dodge trigger (input / double-tap) and DodgeSpeed application.
 6. Runtime team override of `EnergonColor` (2f); FOV axis (horizontal vs vertical) for TnFovCameraBehavior (3c).
-7. Particle module identity inside WFC's compiled per-LOD stream (values exact; roles by order only).
+7. ~~Particle module identity inside WFC's compiled per-LOD stream~~ **Resolved 2026-10-02:** `pstream.py` decodes the ModuleId (cooked `EParticleModuleId` enum) and assigns every distribution to module + property (`docs/EVIDENCE_M03.md`).
 
 **Correction (audio pass):** `vs_evidence.py` previously kept only the first child of each `SoundNodeWaveEvent`; 7 events in the
 slice cues have several variant waves (e.g. `OPTIMUS_BOT2VEH` @0.642: `MECH_TRUCK_LAND_HEAVY_01/02/03`). `wave_events[].variants`
