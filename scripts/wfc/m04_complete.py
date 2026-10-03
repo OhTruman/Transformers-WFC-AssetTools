@@ -255,6 +255,59 @@ def main():
                                                 if a['Physics'] == 'PHYS_Rotating' else 'SkyBeam Matinee track (streets_movers.json)',
                                                 'in_world_glb': True, 'confidence': CONF})
     ri['not_drawn_but_exported'] = {'particle_components': len(fx['particle_components']), 'ambient_audio_actors': 70}
+    # ---------------- game-mode visual state (exact rule-class match on the mode's Rules list)
+    # sources: authored Kismet (streets_kismet.json: GameplayStarted -> SeqCond_GameRuleActive -> SeqAct_ToggleHidden UnHide),
+    # authored class defaults (bHidden, RequiredGameRuleClass), and the RE script decompilation of the PostBeginPlay /
+    # InitialState gates (RE-Workspace/notes/MILESTONE04_STREETS_RUNTIME_SEMANTICS.md section 4, read-only).
+    MODES = ['DM', 'TDM', 'CTF', 'EXT', 'DOM', 'KOTH']
+    def row(shown, how, conf, collision=None, extra=None):
+        r = {'visible_by_mode': {m: (m in shown) for m in MODES}, 'mechanism': how, 'confidence': conf}
+        if collision: r['collision'] = collision
+        if extra: r.update(extra)
+        return r
+    rules = {
+        'InterpActor (objective bases, authored bHidden)': row({'CTF', 'EXT'},
+            'authored bHidden=true; Kismet UnHide when GameRuleActive(SingleFlagCTF) or (ScoreBombingRun)', CONF,
+            'collides while hidden (stock UE3 SetHidden does not change collision; HIGH)'),
+        'TnDominationPoint': row({'DOM'}, 'PostBeginPlay: !HasRule(ScoreDomination) -> InitialState Inactive -> SetHidden(true)', CONF,
+            'cylinder kept, Touch/UnTouch ignored', {'note': 'idle anim EnergonTotem_StandBy starts in every mode (hidden outside DOM)'}),
+        'TnKingOfTheHillZone': row(set(), 'class default bHidden=true; in KOTH only the randomly chosen active zone is shown '
+                                   '(ActivateNewZone) with ActiveMesh FX_Mesh_p.Mesh.pTorus1_STAT', CONF,
+                                   extra={'visible_by_mode_note': {'KOTH': 'one active zone at a time'}}),
+        'TnGameObjectivePickupFactoryFlag': row({'CTF'}, 'RequiredGameRuleClass SingleFlagCTF; otherwise InitialState Disabled '
+                                                '(SetHidden + SetCollision(false,false))', CONF, 'none outside CTF'),
+        'TnGameObjectivePickupFactoryBomb': row({'EXT'}, 'RequiredGameRuleClass ScoreBombingRun; otherwise Disabled', CONF, 'none outside EXT'),
+        'TnFlagCapturePoint': row(set(), 'no visual component; objective logic + HUD marker only in CTF', CONF),
+        'TnBombPlantPoint': row(set(), 'no placed visual; objective logic + HUD marker only in EXT (PlantedBombMesh spawned on plant)', CONF),
+        'TnAmmoCratePickupFactory / TnHealthPickupFactory / TnOverShieldPickupFactory': row(set(MODES),
+            'no mode gate', CONF)}
+    targets = {'TnDominationPoint': [], 'TnKingOfTheHillZone': [], 'TnGameObjectivePickupFactoryFlag': [],
+               'TnGameObjectivePickupFactoryBomb': [], 'TnFlagCapturePoint': [], 'TnBombPlantPoint': []}
+    bases = []
+    for a in inv['actors']:
+        if a['class'] in targets: targets[a['class']].append(a['actor'])
+        if a['class'] == 'InterpActor' and a['bHidden']: bases.append(a['actor'])
+    ri['mode_visual_state'] = {
+        'modes': MODES, 'rule_match': 'exact rule-class match against the mode Rules list (GameInfo.HasRule)',
+        'by_class': {k: dict(v, actors=(bases if k.startswith('InterpActor') else targets.get(k, 'all instances')))
+                     for k, v in rules.items()}}
+    tdm_hidden = []
+    for k, v in ri['mode_visual_state']['by_class'].items():
+        if isinstance(v['actors'], list) and not v['visible_by_mode']['TDM']:
+            tdm_hidden += [{'actor': x, 'class': k, 'collision': v.get('collision')} for x in v['actors']]
+    ri['tdm_render_state'] = {
+        'mode': 'TDM (Civil War, vertical-slice mode; DM identical)',
+        'hide': tdm_hidden,
+        'note': 'objective bases (4) remain in world.glb but must not be drawn; totems are not in world.glb (render_index '
+                'not_in_world_glb lists them) and must not be spawned visible; KOTH rings are template components, do not '
+                'instance; flag/bomb factories are Disabled (no draw, no collision). Ammo/health/overshield pickups are active.',
+        'confidence': CONF}
+    for x in ri['not_in_world_glb (authored renderables)']:
+        if 'domination' in x['kind']:
+            x['visible_in_modes'] = ['DOM']
+    for x in ri['authored_render_state']:
+        if x['actor'] in bases:
+            x['visible_in_modes'] = ['CTF', 'EXT']; x['tdm'] = 'hidden'
     json.dump(ri, open(os.path.join(SLICE, 'render_index.json'), 'w', encoding='utf-8'), indent=1, default=str)
     print('->', os.path.join(SLICE, 'render_index.json'))
     print(json.dumps({'extents': {k: v for k, v in extents.items() if 'size' in k or 'bounds_ue' in k}, 'comparison': {k: v for k, v in comparison.items() if k.startswith('percent') or k.startswith('visible') or k.startswith('by_')}}, indent=1, default=str))
