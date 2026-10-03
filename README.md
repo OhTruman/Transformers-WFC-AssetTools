@@ -65,6 +65,7 @@ sequences[], preview_skeletal_mesh, compatible_skeletal_meshes/animsets, map_usa
 | `vs_audio_concurrency.py` | `manifests/vertical_slice_audio_concurrency.json` (M03) |
 | `vs_vehicle_loops.py` + `validate_vehicle_loops.py` | `manifests/vehicle_audio_loops.json` (M03) and its header-level validator |
 | `m04_bsp.py` / `m04_inventory.py` / `m04_kismet.py` / `m04_complete.py` | **complete MP_IAC_Streets map**: BSP audit, full actor/component inventory + rebuild classification, lighting/mover/prefab audits, Kismet + HUD references, canonical `manifests/mp_iac_streets_complete.json` + `render_index.json` (`docs/MAP_STREETS_COMPLETE.md`) |
+| `m05_bsp_default_faces.py` | default-material BSP faces: provenance + memory-bounded play-visibility ray test (`manifests/streets_bsp_default_faces.json`, `docs/STREETS_NATIVE_FIDELITY_M05.md`) |
 | `validate_smca_transforms.py [--before DIR]` | transform-level validation of every StaticMeshCollectionActor component (translation / rotation / signed scale / determinant / bounds vs native + RE table) and the before/after audit |
 | `m04_lightmap_atlases.py`, `validate_m04.py` | export missing lightmap atlas PNGs; map-completeness validation (`logs/validate_m04.json`) |
 | `validate_m03.py` | cross-manifest validation of the M03 outputs (`logs/validate_m03.json`) |
@@ -72,3 +73,17 @@ sequences[], preview_skeletal_mesh, compatible_skeletal_meshes/animsets, map_usa
 | `authored_db.py` / `authored_db_safe.py` | global **`manifests/authored.db`** (SQLite, 2.5 GB): `objects` (1,102,518 unique objects with typed props JSON, 0 unparsed), `refs` (2.5 M object references), `types` (schema). Build shards with `authored_db_safe.py --jobs 4 --merge` (one child per package, memory/timeout watchdog, failures in `logs/authored_db_failures.json`) |
 
 See `docs/FORMAT_NOTES.md` (formats), `docs/FIRST_PASS_REPORT.md` (results), `docs/EVIDENCE_TARGETED_PASS.md` (slice evidence).
+
+### `render_index.json` (ExtractedAssets/VerticalSlice/Maps/MP_IAC_Streets/, written by `m04_complete.py`)
+The full-map render index, beyond `world.glb`:
+
+| section | content |
+|---|---|
+| `layers` | world.glb, lightmaps, map_fx, lighting, postprocess, audio summaries |
+| `not_in_world_glb (authored renderables)` | 3 domination totems (DOM only), 5 KOTH active-zone rings (`pTorus1_STAT`, KOTH only), the destructible wall panel with all 3 states (state meshes CONFIRMED; spawned chunk/debris PROVISIONAL) - each with glTF path and UE + glTF matrices |
+| `authored_render_state` | hidden objective bases (CTF/EXT only), rotating domes, SkyBeam Matinee actors |
+| `mode_visual_state` / `tdm_render_state` | per-class visibility across DM/TDM/CTF/EXT/DOM/KOTH; the 19 actors hidden in TDM (the slice mode) |
+| `pickup_factory_visuals` | 27 factories: ammo crate meshes (placement PROVISIONAL), health/overshield particle meshes (approximate matrix), flag/bomb resting visual UNKNOWN |
+| `pickup_fx_components` | all 37 pickup effects: template, matrix, attach/activation state, draw rule (beam on while the factory is available - RE script), modes; 24 drawn in TDM |
+
+Docs: `docs/MAP_STREETS_COMPLETE.md`, `docs/VERTICAL_SLICE.md`, `docs/EVIDENCE_M03.md` §2. Validated by `validate_m04.py`.
