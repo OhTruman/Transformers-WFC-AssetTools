@@ -7,7 +7,9 @@ Occlusion: for each default-material polygon node, sample points (centroid + ver
 from each sample (started 1 cm behind the face) cast a ray along the face normal (front side) against the placed
 static-mesh triangles of world.glb (corrected SMCA transforms, checkpoint 8d8195e+). A sample is COVERED when a mesh
 triangle is hit within COVER_M metres. Node verdicts: hidden (all samples covered), partial, exposed.
-Play visibility: viewpoints = every navigation node and player start at eye height (+EYE_UU); a face is VISIBLE IN PLAY
+Occluders exclude the sky dome and the 126 unlit components (light planes / beams; additive). Grid: triangles spanning
+>64 cells are tested on every ray; in-script memory guard (8 GB).
+Play visibility: viewpoints = every navigation node and every player start (deduplicated) at eye height (+EYE_UU); a face is VISIBLE IN PLAY
 when some viewpoint on its front side within VIEW_M metres has an unobstructed line (placed static meshes + every other
 rendered BSP polygon, uniform-grid ray caster) to one of its samples. This is a lower bound of the original visibility
 set (players also jump / fly in vehicle form), so "never visible" is HIGH confidence, not CONFIRMED.
@@ -39,7 +41,13 @@ def acc(g, b, i):
     return np.frombuffer(b, '<' + CT[a['componentType']], a['count'] * n, off).reshape(a['count'], n) if n > 1 else \
         np.frombuffer(b, '<' + CT[a['componentType']], a['count'], off)
 
+NONOCC = set()
+
 def scene_triangles():
+    pa = json.load(open(os.path.join(VS, 'Maps', MAP, 'props_authored.json'), encoding='utf-8'))['props']
+    for x in pa:
+        if x.get('lighting_channels_on') == [] or (x.get('render') or {}).get('bAcceptsLights') is False:
+            NONOCC.add(x['component'] if x.get('container_class') == 'StaticMeshCollectionActor' else x['actor'])
     g, bins = read_glb(GLB); b = bins[0]
     cache = {}
     tris, owners, boxes = [], [], []
@@ -47,6 +55,7 @@ def scene_triangles():
         if 'mesh' not in n or 'matrix' not in n: continue
         ex = n.get('extras') or {}
         if 'actor' not in ex: continue
+        if (ex.get('component') or ex.get('actor')) in NONOCC or 'SpaceDome' in (ex.get('mesh') or ''): continue
         mi = n['mesh']
         if mi not in cache:
             T = []
@@ -73,18 +82,42 @@ def ray_hits(o, d, T, maxt):
     hit = ok & (u >= 0) & (u <= 1) & (v >= 0) & (u + v <= 1) & (t > 0) & (t <= maxt)
     return float(t[hit].min()) if hit.any() else None
 
+MAX_CELLS_PER_TRI = 64          # larger triangles go to an always-tested list (memory bound)
+MEM_LIMIT_GB = 8.0
+
+def rss_gb():
+    import ctypes, ctypes.wintypes as w
+    class PMC(ctypes.Structure):
+        _fields_ = [('cb', w.DWORD), ('PageFaultCount', w.DWORD), ('PeakWorkingSetSize', ctypes.c_size_t),
+                    ('WorkingSetSize', ctypes.c_size_t), ('QuotaPeakPagedPoolUsage', ctypes.c_size_t),
+                    ('QuotaPagedPoolUsage', ctypes.c_size_t), ('QuotaPeakNonPagedPoolUsage', ctypes.c_size_t),
+                    ('QuotaNonPagedPoolUsage', ctypes.c_size_t), ('PagefileUsage', ctypes.c_size_t), ('PeakPagefileUsage', ctypes.c_size_t)]
+    c = PMC(); c.cb = ctypes.sizeof(PMC)
+    k = ctypes.windll.kernel32; k.GetCurrentProcess.restype = ctypes.c_void_p
+    ps = ctypes.windll.psapi; ps.GetProcessMemoryInfo.argtypes = [ctypes.c_void_p, ctypes.c_void_p, w.DWORD]
+    ps.GetProcessMemoryInfo(k.GetCurrentProcess(), ctypes.byref(c), c.cb)
+    return c.WorkingSetSize / 2 ** 30
+
+def guard():
+    if rss_gb() > MEM_LIMIT_GB:
+        print('MEMORY GUARD: working set > %.1f GB, aborting' % MEM_LIMIT_GB); sys.exit(3)
+
 class Grid:
     def __init__(self, T):
         self.T = T
         lo = T.min(1); hi = T.max(1)
         self.o = lo.min(0)
-        a = np.floor((lo - self.o) / CELL).astype(int); b = np.floor((hi - self.o) / CELL).astype(int)
+        a = np.floor((lo - self.o) / CELL).astype(np.int64); b = np.floor((hi - self.o) / CELL).astype(np.int64)
+        span = np.prod(b - a + 1, axis=1)
+        self.big = np.where(span > MAX_CELLS_PER_TRI)[0]
         self.cells = defaultdict(list)
-        for i in range(len(T)):
+        for i in np.where(span <= MAX_CELLS_PER_TRI)[0]:
             for x in range(a[i, 0], b[i, 0] + 1):
                 for y in range(a[i, 1], b[i, 1] + 1):
                     for z in range(a[i, 2], b[i, 2] + 1):
-                        self.cells[(x, y, z)].append(i)
+                        self.cells[(x, y, z)].append(int(i))
+        self.bigset = set(int(i) for i in self.big)
+        guard()
     def blocked(self, p0, p1, skip):
         d = p1 - p0; L = float(np.linalg.norm(d))
         if L < 1e-6: return False
@@ -94,6 +127,7 @@ class Grid:
         for k in range(n):
             c = tuple(np.floor((p0 + d * (L * k / (n - 1)) - self.o) / CELL).astype(int))
             ids.update(self.cells.get(c, ()))
+        ids |= self.bigset
         ids -= skip
         if not ids: return False
         t = ray_hits(p0, d, self.T[list(ids)], L - 0.02)
@@ -120,8 +154,12 @@ def main():
     for k, ni in enumerate(bown): tri_of_node[ni].add(nmesh + k)
     grid = Grid(allT)
     nav = json.load(open(os.path.join(VS, 'Maps', MAP, 'navigation.json'), encoding='utf-8'))['nodes']
-    V = np.array([[n['location_ue'][0], n['location_ue'][2] + EYE_UU, n['location_ue'][1]] for n in nav if n.get('location_ue')]) * 0.01
-    print('obstacles', len(allT), 'viewpoints', len(V))
+    pts = [n['location_ue'] for n in nav if n.get('location_ue')]
+    sp = json.load(open(os.path.join(VS, 'Maps', MAP, 'gameplay.json'), encoding='utf-8'))['player_starts']
+    for x in (sp if isinstance(sp, list) else [y for v in sp.values() for y in v]):
+        if x.get('location_ue'): pts.append(x['location_ue'])
+    V = np.unique(np.array([[q[0], q[2] + EYE_UU, q[1]] for q in pts]), axis=0) * 0.01
+    print('obstacles', len(allT), 'big', len(grid.big), 'cells', len(grid.cells), 'viewpoints', len(V), 'mem %.2f GB' % rss_gb(), flush=True)
     nodes = []
     for ni, (si, pts, node) in enumerate(bsp.polygons(M)):
         s = M['surfs'][si]; mat = int(s['Material'])
@@ -148,6 +186,7 @@ def main():
                 if not grid.blocked(v, sp + 0.02 * n, tri_of_node[ni]):
                     seen_by += 1; first = first or (v[[0, 2, 1]] * 100).round(0).tolist(); break
             if seen_by >= 3: break
+        guard()
         nodes.append({'node_index': ni, 'surface': si, 'brush': p.object_path(int(s['Actor'])) if int(s['Actor']) > 0 else None,
                       'poly_flags_raw': '0x%08X' % int(s['PolyFlags']), 'centroid_ue': (c[[0, 2, 1]] * 100).round(1).tolist(),
                       'normal_ue': [round(float(x), 4) for x in n[[0, 2, 1]]], 'area_m2': round(float(area), 3),

@@ -16,13 +16,29 @@ Lane boundary: AssetTools does not write to RE-Workspace, so this report lives h
     assignment.** CONFIRMED.
 * **Occlusion, first pass:** rays along the face normal against the corrected placed meshes, up to 0.64 m.
   * Most faces are not covered by a mesh. Several are very large (up to 8,228 m²); many face down or outward.
-* **Play visibility (any player viewpoint): UNKNOWN.**
-  * The nav-viewpoint ray test was stopped by Claude Code under low system memory: the uniform grid indexed the 14 km sky
-    dome / 700 m light planes.
-  * Rerun only on request, with oversized triangles tested directly.
+* **Play visibility (rerun 2026-10-03, memory-bounded, peak 0.54 GB):**
+  * **Method.**
+    * Viewpoints: 182 = 123 nav nodes + player starts, at +200 UU eye height.
+    * A face counts as seen if any viewpoint on its front side, within 200 m, has an unobstructed line to a face sample.
+    * Occluders: the corrected placed meshes plus all other rendered BSP.
+    * Not occluders: the sky dome and the 126 unlit light planes / beams.
+    * Grid: triangles spanning more than 64 cells are tested on every ray.
+  * **84 of 87 default-material nodes are never visible from any viewpoint.** HIGH; this is a lower bound because players
+    also jump and drive.
+  * **3 nodes are partly visible:**
+
+    | node | brush | area | normal | seen from |
+    |---|---|---|---|---|
+    | 572 | `BRUSH_9457` | 33 m² | wall, +Y | 23 m away, at (35842, −38592, −70848) |
+    | 498 | `BRUSH_11694` | 10 m² | ceiling, −Z | 22 m away, at (13504, −35712, −69120) |
+    | 265 | `BRUSH_2106` | 2,831 m² | floor, +Z | only at a grazing angle (eye 2.8 m above the plane, 110 m away), centre (17006, −64183, −71680) |
+
+    * Samples covered by meshes: 1 of 8 (node 265), 2 of 5 (nodes 572 and 498).
+  * Shipped WFC draws these visible parts with `EngineMaterials.DefaultMaterial` too, so they are not a rebuild defect.
+  * Rendering should match this, not substitute a material.
+  * They are the right spots for Experimental to compare against original footage.
 * **Handoffs:**
   * Rendering: draw them with DefaultMaterial, not a guessed material.
-  * AssetTools: finish the play-visibility pass.
 
 ## 2. StaticMeshCollectionActor per-component state beyond the transform
 Census of all 1,906 SMCA components. Archetype: `Engine.Default__StaticMeshActor.StaticMeshComponent0`.
