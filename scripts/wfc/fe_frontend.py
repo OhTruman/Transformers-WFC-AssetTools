@@ -68,6 +68,32 @@ def loc_tables(lang_dir):
         t[os.path.splitext(os.path.basename(f))[0]] = read_ini(f)
     return t
 
+FFPROBE = os.path.normpath(os.path.join(HERE, '..', '..', 'bin', 'ffmpeg', 'ffprobe.exe'))
+INSPECTED = {   # frames viewed locally (ffmpeg contact sheets), 2026-10-03 - CONFIRMED by inspection
+    'TF_InitialStartup': 'legal screen: "Powered by Unreal Technology" + "PhysX by NVIDIA" logos and Hasbro / Activision / Epic / '
+                         'NVIDIA trademark text; NA variants add "The ratings icon is a registered trademark of the Entertainment '
+                         'Software Association", EU variants omit it',
+    'TF_LoadingScreen': 'black screen with a spinning ring + "LOADING..." at about (0.83, 0.79) of the frame (looping indicator)',
+    'LoadingScreenAlpha': 'black screen, "LOADING .." text at the upper right (0.5 s loop)',
+}
+
+def probe(path):
+    import subprocess
+    try:
+        o = subprocess.run([FFPROBE, '-v', 'error', '-show_entries', 'format=duration:stream=width,height,codec_type',
+                            '-of', 'json', path], capture_output=True, text=True, timeout=60).stdout
+        j = json.loads(o)
+        v = next((x for x in j.get('streams', []) if x.get('codec_type') == 'video'), {})
+        return {'duration_s': float(j['format']['duration']), 'width': v.get('width'), 'height': v.get('height'),
+                'audio': any(x.get('codec_type') == 'audio' for x in j.get('streams', []))}
+    except Exception as ex:
+        return {'error': str(ex)}
+
+def inspected(name):
+    for k, v in INSPECTED.items():
+        if name.startswith(k): return v
+    return None
+
 # ------------------------------------------------------------------ GFx
 IFACES, BINDFUNCS = {}, {}
 
@@ -254,6 +280,8 @@ def main():
             'frontend_game_class': {'TransContent.TnFrontEndGame': gm.get('TransContent.TnFrontEndGame'),
                                     'TransContent.TnPartyLobbyGame': gm.get('TransContent.TnPartyLobbyGame')},
             'movie_files': {m: rel(os.path.join(MOVIES, m)) for m in movies},
+            'movie_probe (ffprobe; content CONFIRMED where inspected)': {
+                m: {**probe(os.path.join(MOVIES, m)), **({'content': inspected(m)} if inspected(m) else {})} for m in movies},
             'levels': {}}
     for lv in UI_LEVELS:
         if not A.con().execute('SELECT 1 FROM objects WHERE package=? LIMIT 1', (lv,)).fetchone():
@@ -411,7 +439,12 @@ def main():
                                     'config (Xe-TransGame.ini [LoadingMovie])': gm.get('LoadingMovie'),
                                     'region_rects (Xe-TransEngine.ini)': {k: v for sec in eng.values() for k, v in sec.items()
                                                                           if k in ('RegionLoadingScreen', 'RegionMovie')},
-                                    'movies': {m: rel(os.path.join(MOVIES, m)) for m in movies if 'Loading' in m or 'InitialStartup' in m},
+                                    'movies': {m: {'file': rel(os.path.join(MOVIES, m)), **probe(os.path.join(MOVIES, m)),
+                                                   'content': inspected(m)}
+                                               for m in movies if 'Loading' in m or 'InitialStartup' in m},
+                                    'startup_order (engine)': 'TF_InitialStartup (legal screen, [LoadingMovie] InitialStartupFileName) '
+                                                              'plays while the first map loads; then UI_FrontEnd_m Kismet starts the '
+                                                              'logo chain (frontend_flow.json). Region variant selection is native (RE).',
                                     'gfx': {k: recs[k] for k in recs if k.startswith('UI_GFxLoading_p/')},
                                     'kismet_hooks': {'UI_FrontEnd_m SeqAct_SetLoadingMovieFilename': 'set on PreGameplaySetup and on '
                                                      'entering the front end; native TnOnlineActionScriptBindingNative.SetLoadingMovieFilename'},

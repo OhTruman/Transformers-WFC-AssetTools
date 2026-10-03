@@ -10,16 +10,80 @@
   "RegionMovie": "0.2,0.6,0.8,0.9"
  },
  "movies": {
-  "LoadingScreenAlpha.mkv": "movies/LoadingScreenAlpha.mkv",
-  "TF_InitialStartup.mkv": "movies/TF_InitialStartup.mkv",
-  "TF_InitialStartup_EU_FRA.mkv": "movies/TF_InitialStartup_EU_FRA.mkv",
-  "TF_InitialStartup_EU_INT.mkv": "movies/TF_InitialStartup_EU_INT.mkv",
-  "TF_InitialStartup_FRA.mkv": "movies/TF_InitialStartup_FRA.mkv",
-  "TF_InitialStartup_NA_FRA.mkv": "movies/TF_InitialStartup_NA_FRA.mkv",
-  "TF_InitialStartup_NA_INT.mkv": "movies/TF_InitialStartup_NA_INT.mkv",
-  "TF_LoadingScreen_FRA.mkv": "movies/TF_LoadingScreen_FRA.mkv",
-  "TF_LoadingScreen_INT.mkv": "movies/TF_LoadingScreen_INT.mkv"
+  "LoadingScreenAlpha.mkv": {
+   "file": "movies/LoadingScreenAlpha.mkv",
+   "duration_s": 0.5,
+   "width": 1280,
+   "height": 720,
+   "audio": false,
+   "content": "black screen, \"LOADING ..\" text at the upper right (0.5 s loop)"
+  },
+  "TF_InitialStartup.mkv": {
+   "file": "movies/TF_InitialStartup.mkv",
+   "duration_s": 5.0,
+   "width": 1280,
+   "height": 720,
+   "audio": false,
+   "content": "legal screen: \"Powered by Unreal Technology\" + \"PhysX by NVIDIA\" logos and Hasbro / Activision / Epic / NVIDIA trademark text; NA variants add \"The ratings icon is a registered trademark of the Entertainment Software Association\", EU variants omit it"
+  },
+  "TF_InitialStartup_EU_FRA.mkv": {
+   "file": "movies/TF_InitialStartup_EU_FRA.mkv",
+   "duration_s": 5.0,
+   "width": 1280,
+   "height": 720,
+   "audio": false,
+   "content": "legal screen: \"Powered by Unreal Technology\" + \"PhysX by NVIDIA\" logos and Hasbro / Activision / Epic / NVIDIA trademark text; NA variants add \"The ratings icon is a registered trademark of the Entertainment Software Association\", EU variants omit it"
+  },
+  "TF_InitialStartup_EU_INT.mkv": {
+   "file": "movies/TF_InitialStartup_EU_INT.mkv",
+   "duration_s": 5.0,
+   "width": 1280,
+   "height": 720,
+   "audio": false,
+   "content": "legal screen: \"Powered by Unreal Technology\" + \"PhysX by NVIDIA\" logos and Hasbro / Activision / Epic / NVIDIA trademark text; NA variants add \"The ratings icon is a registered trademark of the Entertainment Software Association\", EU variants omit it"
+  },
+  "TF_InitialStartup_FRA.mkv": {
+   "file": "movies/TF_InitialStartup_FRA.mkv",
+   "duration_s": 5.0,
+   "width": 1280,
+   "height": 720,
+   "audio": false,
+   "content": "legal screen: \"Powered by Unreal Technology\" + \"PhysX by NVIDIA\" logos and Hasbro / Activision / Epic / NVIDIA trademark text; NA variants add \"The ratings icon is a registered trademark of the Entertainment Software Association\", EU variants omit it"
+  },
+  "TF_InitialStartup_NA_FRA.mkv": {
+   "file": "movies/TF_InitialStartup_NA_FRA.mkv",
+   "duration_s": 5.0,
+   "width": 1280,
+   "height": 720,
+   "audio": false,
+   "content": "legal screen: \"Powered by Unreal Technology\" + \"PhysX by NVIDIA\" logos and Hasbro / Activision / Epic / NVIDIA trademark text; NA variants add \"The ratings icon is a registered trademark of the Entertainment Software Association\", EU variants omit it"
+  },
+  "TF_InitialStartup_NA_INT.mkv": {
+   "file": "movies/TF_InitialStartup_NA_INT.mkv",
+   "duration_s": 5.0,
+   "width": 1280,
+   "height": 720,
+   "audio": false,
+   "content": "legal screen: \"Powered by Unreal Technology\" + \"PhysX by NVIDIA\" logos and Hasbro / Activision / Epic / NVIDIA trademark text; NA variants add \"The ratings icon is a registered trademark of the Entertainment Software Association\", EU variants omit it"
+  },
+  "TF_LoadingScreen_FRA.mkv": {
+   "file": "movies/TF_LoadingScreen_FRA.mkv",
+   "duration_s": 4.0,
+   "width": 1280,
+   "height": 720,
+   "audio": false,
+   "content": "black screen with a spinning ring + \"LOADING...\" at about (0.83, 0.79) of the frame (looping indicator)"
+  },
+  "TF_LoadingScreen_INT.mkv": {
+   "file": "movies/TF_LoadingScreen_INT.mkv",
+   "duration_s": 4.0,
+   "width": 1280,
+   "height": 720,
+   "audio": false,
+   "content": "black screen with a spinning ring + \"LOADING...\" at about (0.83, 0.79) of the frame (looping indicator)"
+  }
  },
+ "startup_order (engine)": "TF_InitialStartup (legal screen, [LoadingMovie] InitialStartupFileName) plays while the first map loads; then UI_FrontEnd_m Kismet starts the logo chain (frontend_flow.json). Region variant selection is native (RE).",
  "gfx": {
   "UI_GFxLoading_p/LoadScreenAlpha_GFX": {
    "file": "content/UI_GFxLoading_p/LoadScreenAlpha_GFX.gfx",

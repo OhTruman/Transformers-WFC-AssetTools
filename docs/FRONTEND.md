@@ -37,6 +37,12 @@ Fields of each `frontend_gfx.json` record:
 
 ## Startup → main menu (CONFIRMED, authored)
 
+0. **Legal screen (engine, before any map script).** `[LoadingMovie] InitialStartupFileName=TF_InitialStartup` (5 s, 1280×720).
+   * Frame inspection (CONFIRMED): "Powered by Unreal Technology" and "PhysX by NVIDIA" logos plus the Hasbro / Activision /
+     Epic / NVIDIA trademark text.
+   * The `_NA_*` variants add the ESA ratings-icon sentence; the `_EU_*` variants omit it. Region selection is native (RE).
+   * No title, legal or warning text screens exist in the localization (only `MainMenu.PressStart` = "Press START button").
+
 1. **Boot.** `Xe-TransEngine.ini [URL] Map=UI_FrontEnd_m`.
 2. **Open MovieLoader.** In UI_FrontEnd_m: `TnSeqAct_OpenFrontEnd` → `SeqAct_InstallGame` → `GFxAction_OpenMovie`
    `UI_GFxFrontEnd_p.MovieLoader_GFX_1`.
@@ -122,6 +128,10 @@ Fields of each `frontend_gfx.json` record:
   * `AlphaFileName=UI_GFxLoading_p.LoadScreenAlpha_GFX`.
 * **Movies.** `TF_LoadingScreen_INT/FRA`, `TF_InitialStartup` (+ EU/NA, INT/FRA variants) and `LoadingScreenAlpha` are
   extracted. The movie region is `RegionLoadingScreen=0.2,0.6,0.8,0.9`.
+  * `TF_LoadingScreen` (4 s loop): black, spinning ring plus "LOADING..." at about (0.83, 0.79). CONFIRMED by frame inspection.
+  * `LoadingScreenAlpha` (0.5 s): "LOADING .." text at the upper right.
+  * No map art, faction art or map name is baked into the loading movies. Map name and tips come from LoadScreen_GFX.
+  * Durations and resolutions of every movie: `frontend_flow.json` `movie_probe`.
 * **LoadScreen_GFX symbols:** `mc_levelInfo` (map name) and `mc_engageText` (tips).
   * Script calls the `_global` callbacks `SetLevelText` / `AddEngageText`. The caller is RE scope.
 * **Tips:** 26 `TnOnlineGameSettingsBase.EngageText` strings (INT).
