@@ -302,9 +302,40 @@ def main():
                 'not_in_world_glb lists them) and must not be spawned visible; KOTH rings are template components, do not '
                 'instance; flag/bomb factories are Disabled (no draw, no collision). Ammo/health/overshield pickups are active.',
         'confidence': CONF}
+    # KOTH active-zone rings: class template component ActiveMeshComponent0 (no instance cooked in the level; created at
+    # spawn from TransContent.Default__TnKingOfTheHillZone), placed with the zone actor transform (DrawScale3D applies).
+    import smsections
+    from vs_common import ue_actor_matrix, ue_to_gltf_matrix
+    tmpl = 'TransContent.Default__TnKingOfTheHillZone.ActiveMeshComponent0'
+    tv = A.values(tmpl); kz = A.values('TransContent.Default__TnKingOfTheHillZone')
+    tmesh = tv.get('StaticMesh')
+    secs = smsections.sections(MAP + '_BASE_m', tmesh) or []
+    def v3(d, keys, dflt):
+        return [d.get(k, dflt) for k in keys] if isinstance(d, dict) else list(d or [dflt] * 3)
+    for a in inv['actors']:
+        if a['class'] != 'TnKingOfTheHillZone': continue
+        t = a['transform']
+        M = ue_actor_matrix(v3(t['Location'], 'XYZ', 0.0), v3(t['Rotation'], ('Pitch', 'Yaw', 'Roll'), 0), t.get('DrawScale', 1.0),
+                            v3(t['DrawScale3D'], 'XYZ', 1.0))
+        ri['not_in_world_glb (authored renderables)'].append({
+            'actor': a['actor'], 'kind': 'KOTH active-zone ring (class template StaticMeshComponent)', 'mesh': tmesh,
+            'gltf': 'content/' + tmesh.split('.')[0] + '/Mesh/' + tmesh.rsplit('.', 1)[-1] + '.gltf',
+            'component_template': tmpl, 'component_transform': 'identity (template has no Translation/Rotation; Scale 1)',
+            'section_materials': [s['material'] for s in secs], 'material_overrides': tv.get('Materials'),
+            'transform': t, 'ue_matrix': M.tolist(), 'gltf_matrix': ue_to_gltf_matrix(M),
+            'CastShadow': tv.get('CastShadow'), 'CollideActors': tv.get('CollideActors'),
+            'runtime_colors (zone class defaults)': {'NeutralColor': kz.get('NeutralColor'), 'CaptureColor': kz.get('CaptureColor')},
+            'visible_in_modes': ['KOTH'], 'visibility_rule': 'only the currently active zone (random at MatchStarting, rotates via ActivateNewZone)',
+            'confidence': CONF})
     for x in ri['not_in_world_glb (authored renderables)']:
         if 'domination' in x['kind']:
             x['visible_in_modes'] = ['DOM']
+            t = x['transform']
+            M = ue_actor_matrix(v3(t['Location'], 'XYZ', 0.0), v3(t['Rotation'], ('Pitch', 'Yaw', 'Roll'), 0), t.get('DrawScale', 1.0),
+                                v3(t['DrawScale3D'], 'XYZ', 1.0))
+            x['ue_matrix'] = M.tolist(); x['gltf_matrix'] = ue_to_gltf_matrix(M)
+            x['section_materials'] = 'skeletal mesh slots (see glTF materials)'
+            x['component_template'] = 'TransContent.Default__TnDominationPoint.PointMesh0'
     for x in ri['authored_render_state']:
         if x['actor'] in bases:
             x['visible_in_modes'] = ['CTF', 'EXT']; x['tdm'] = 'hidden'
