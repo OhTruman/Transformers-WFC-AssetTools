@@ -327,7 +327,16 @@ def main():
             'runtime_colors (zone class defaults)': {'NeutralColor': kz.get('NeutralColor'), 'CaptureColor': kz.get('CaptureColor')},
             'visible_in_modes': ['KOTH'], 'visibility_rule': 'only the currently active zone (random at MatchStarting, rotates via ActivateNewZone)',
             'confidence': CONF})
+    from vs_common import ue_trans
     for x in ri['not_in_world_glb (authored renderables)']:
+        if x['kind'].startswith('destructible'):
+            # intact-state StaticMeshComponent: Translation (0,0,-160) relative to the actor (component x actor, UE row vectors)
+            t = x['transform']
+            A_ = ue_actor_matrix(v3(t['Location'], 'XYZ', 0.0), v3(t['Rotation'], ('Pitch', 'Yaw', 'Roll'), 0), t.get('DrawScale', 1.0),
+                                 v3(t['DrawScale3D'], 'XYZ', 1.0))
+            M = ue_trans(x['component_translation_ue']) @ A_
+            x['ue_matrix'] = M.tolist(); x['gltf_matrix'] = ue_to_gltf_matrix(M)
+            x['visible_in_modes'] = MODES
         if 'domination' in x['kind']:
             x['visible_in_modes'] = ['DOM']
             t = x['transform']
