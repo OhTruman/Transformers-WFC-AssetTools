@@ -75,6 +75,17 @@ unless native code scales them.
   * Per-emitter `SteamColor`: violet (100–124, 17–26, 253–255) ×6, the prefab vent cyan (33, 167, 239), one default.
 * Transforms are in `map_fx.json`.
 * Each emitter sits 2–15 m from an energon-vent or energon-crater ambient sound (spatial pairing; no authored link).
+* **Pickup effects (added 2026-10-03):** pass 2 covered only the 8 level emitters.
+  * The 37 pickup effect components are decoded in `manifests/streets_pickup_fx.json` (M03).
+  * TDM state (vertical-slice mode, CONFIRMED): **24 drawn** while their factory is available, plus 14 ammo crate meshes:
+    * 14 ammo-crate `Pickup_FX` beams;
+    * 9 `HealthPickup_FX`;
+    * 1 `OvershieldPickup_FX`.
+  * Not drawn in TDM:
+    * flag/bomb factories, Disabled outside CTF/EXT;
+    * the 10 health/overshield `Pickup_FX` copies, never attached.
+  * Tables: `docs/EVIDENCE_M03.md` §2, `docs/GAMEPLAY_STREETS.md`, `docs/MAP_STREETS_COMPLETE.md`; machine-readable in
+    `render_index.json`.
 
 ## Also in this checkpoint
 * **Props pass stopped on request.** `vs_props.py` and `props_authored.json` are kept, validated (171/171 meshes: LOD0 triangles = cooked
