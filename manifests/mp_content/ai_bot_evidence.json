@@ -1,0 +1,1691 @@
+{
+ "generated_by": "AssetTools/scripts/wfc/mp_handoffs.py",
+ "conclusion": {
+  "multiplayer_versus_bots": "NOT SHIPPED. No versus map (all 8) cooks an AI spawner (TnActorFactoryAI, TnSeqAct_AiSpawnCharacter, TnSurvivalGenerator); versus game classes (TnVersusGame / TnTeamGame / TnFreeForAllGame) have no bot path in script; the only NumBots references are stock Engine.GameInfo / HmGameInfo counters. Automated-testing policies (TnAutomatedTestingPolicy, TnOnlineTestingPolicy) drive real player controllers for QA, not AI. Any offline versus AI in the rebuild is a NEW FEATURE, not original behaviour.",
+  "exception_noted": "MP_ORB_Debris_BASE_m cooks one TnAiSquad actor with no spawner (unused / leftover) - CONFIRMED presence, role UNKNOWN",
+  "escalation": "Escalation (SV, MP_ESC_*) is the shipped MP mode with AI: 36 TnSurvivalGenerator per map + TnSurvivalSpawnList waves",
+  "campaign": "campaign levels cook TnActorFactoryAI / TnTacticalVolume / TnAiSquad in 109 packages",
+  "confidence": "CONFIRMED AUTHORED DATA (cooked class census + script decompilation)"
+ },
+ "versus_levels_with_ai_classes": {
+  "MP_ORB_Debris_BASE_m": {
+   "TnAiSquad": 1
+  }
+ },
+ "escalation_levels": {
+  "MP_ESC_BrokenHope_Base_m": {
+   "TnSurvivalGenerator": 36,
+   "TnSurvivalSpawnList": 1,
+   "TnSurvivalSpawnPoint": 58
+  },
+  "MP_ESC_Remnant_BASE_m": {
+   "TnSurvivalGenerator": 36,
+   "TnSurvivalSpawnList": 1,
+   "TnSurvivalSpawnPoint": 62
+  }
+ },
+ "useful_for_future_bots (authored, reusable)": {
+  "weapon_ai_data": {
+   "TransContent.TnWeaponAssaultRifle": {
+    "ai_data": {
+     "object": "WEP_AssaultRifle_AI_p.AssaultRifle_AI_WEPDATA",
+     "same_as_player_data": false,
+     "DesiredFiringRange": "RANGE_Medium"
+    }
+   },
+   "TransContent.TnWeaponAssaultRiflePlane": {
+    "ai_data": {
+     "object": "WEP_AssaultRifleVH_p.AssaultRifle_Vehicle_AI_WEPDATA",
+     "same_as_player_data": false,
+     "DesiredFiringRange": "RANGE_Far"
+    }
+   },
+   "TransContent.TnWeaponAssaultRifleVehicle": {
+    "ai_data": {
+     "object": "WEP_AssaultRifleVH_p.AssaultRifle_Vehicle_AI_WEPDATA",
+     "same_as_player_data": false,
+     "DesiredFiringRange": "RANGE_Far"
+    }
+   },
+   "TransContent.TnWeaponAxe": {
+    "ai_data": {
+     "object": "WEP_Axe_p.Axe_WEPDATA",
+     "same_as_player_data": true,
+     "DesiredFiringRange": "RANGE_Medium"
+    }
+   },
+   "TransContent.TnWeaponBazooka": {
+    "ai_data": {
+     "object": "WEP_Bazooka_AI_p.Bazooka_AI_WEPDATA",
+     "same_as_player_data": false,
+     "DesiredFiringRange": "RANGE_Medium"
+    }
+   },
+   "TransContent.TnWeaponBeatDownClub": {
+    "ai_data": {
+     "object": "WEP_BeatDownClub_p.BeatDownClub_WEPDATA",
+     "same_as_player_data": true,
+     "DesiredFiringRange": "RANGE_Medium"
+    }
+   },
+   "TransContent.TnWeaponBroadSword": {
+    "ai_data": {
+     "object": "WEP_BroadSword_p.BroadSword_WEPDATA",
+     "same_as_player_data": true,
+     "DesiredFiringRange": "RANGE_Medium"
+    }
+   },
+   "TransContent.TnWeaponBurstRifle": {
+    "ai_data": {
+     "object": "WEP_BurstRifle_AI_p.BurstRifle_AI_WEPDATA",
+     "same_as_player_data": false,
+     "DesiredFiringRange": "RANGE_Medium"
+    }
+   },
+   "TransContent.TnWeaponButterflyAxe": {
+    "ai_data": {
+     "object": "WEP_ButterflyAxe_p.ButterflyAxe_WEPDATA",
+     "same_as_player_data": true,
+     "DesiredFiringRange": "RANGE_Medium"
+    }
+   },
+   "TransContent.TnWeaponCeremonialStaff": {
+    "ai_data": {
+     "object": "WEP_CeremonialStaff_p.CeremonialStaff_WEPDATA",
+     "same_as_player_data": true,
+     "DesiredFiringRange": "RANGE_Medium"
+    }
+   },
+   "TransContent.TnWeaponEmpShotgun": {
+    "ai_data": {
+     "object": "WEP_EMPShotgun_AI_p.EMPShotgun_AI_WEPDATA",
+     "same_as_player_data": false,
+     "DesiredFiringRange": "RANGE_Close"
+    }
+   },
+   "TransContent.TnWeaponFightingStaff": {
+    "ai_data": {
+     "object": "WEP_FightingStaff_p.FightingStaff_WEPDATA",
+     "same_as_player_data": true,
+     "DesiredFiringRange": "RANGE_Medium"
+    }
+   },
+   "TransContent.TnWeaponFlakGrenades": {
+    "ai_data": {
+     "object": "WEP_Grenade_AI_p.FlakGrenades_AI_WEPDATA",
+     "same_as_player_data": false,
+     "DesiredFiringRange": "RANGE_Medium"
+    }
+   },
+   "TransContent.TnWeaponFlashBangs": {
+    "ai_data": {
+     "object": "WEP_FlashBangs_AI_p.FlashBangs_AI_WEPDATA",
+     "same_as_player_data": false,
+     "DesiredFiringRange": "RANGE_Medium"
+    }
+   },
+   "TransContent.TnWeaponGatlingGun": {
+    "ai_data": {
+     "object": "WEP_TurretIonGun_AI_p.TurretIonGun_AI_WEPDATA",
+     "same_as_player_data": false,
+     "DesiredFiringRange": "RANGE_Far"
+    }
+   },
+   "TransContent.TnWeaponGrenadeLauncher": {
+    "ai_data": {
+     "object": "WEP_GrenadeLauncher_AI_p.GrenadeLauncher_AI_WEPDATA",
+     "same_as_player_data": false,
+     "DesiredFiringRange": "RANGE_Medium"
+    }
+   },
+   "TransContent.TnWeaponHalberdAxe": {
+    "ai_data": {
+     "object": "WEP_HalberdAxe_p.HalberdAxe_WEPDATA",
+     "same_as_player_data": true,
+     "DesiredFiringRange": "RANGE_Medium"
+    }
+   },
+   "TransContent.TnWeaponHammer": {
+    "ai_data": {
+     "object": "WEP_Hammer_p.Hammer_WEPDATA",
+     "same_as_player_data": true,
+     "DesiredFiringRange": "RANGE_Medium"
+    }
+   },
+   "TransContent.TnWeaponHealGrenades": {
+    "ai_data": {
+     "object": "WEP_HealGrenades_p.HealGrenades_WEPDATA",
+     "same_as_player_data": false,
+     "DesiredFiringRange": "RANGE_Medium"
+    }
+   },
+   "TransContent.TnWeaponHeavyMG": {
+    "ai_data": {
+     "object": "WEP_HeavyMG_AI_p.HeavyMG_AI_WEPDATA",
+     "same_as_player_data": false,
+     "DesiredFiringRange": "RANGE_Far"
+    }
+   },
+   "TransContent.TnWeaponHeavyPistol": {
+    "ai_data": {
+     "object": "WEP_HeavyPistol_AI_p.HeavyPistol_AI_WEPDATA",
+     "same_as_player_data": false,
+     "DesiredFiringRange": "RANGE_Medium"
+    }
+   },
+   "TransContent.TnWeaponHeavyRepairRay": {
+    "ai_data": {
+     "object": "WEP_TurretRepairRay_p.HeavyRepairRay_WEPDATA",
+     "same_as_player_data": true,
+     "DesiredFiringRange": "RANGE_Medium"
+    }
+   },
+   "TransContent.TnWeaponHeavyRocketTurret": {
+    "ai_data": {
+     "object": "WEP_TurretRocket_p.HeavyTurret_Rocket_WEPDATA",
+     "same_as_player_data": false,
+     "DesiredFiringRange": "RANGE_Medium"
+    }
+   },
+   "TransContent.TnWeaponHomingRocketVehicle": {
+    "ai_data": {
+     "object": "WEP_HomingRocketVh_p.HomingRocket_Vehicle_AI_WEPDATA",
+     "same_as_player_data": false,
+     "DesiredFiringRange": "RANGE_Far"
+    }
+   },
+   "TransContent.TnWeaponHuntingDagger": {
+    "ai_data": {
+     "object": "WEP_HuntingDagger_p.HuntingDagger_WEPDATA",
+     "same_as_player_data": true,
+     "DesiredFiringRange": "RANGE_Medium"
+    }
+   },
+   "TransContent.TnWeaponIonBlaster": {
+    "ai_data": {
+     "object": "WEP_IonBlaster_AI_p.IonBlaster_AI_WEPDATA",
+     "same_as_player_data": false,
+     "DesiredFiringRange": "RANGE_Medium"
+    }
+   },
+   "TransContent.TnWeaponKamikazeMines": {
+    "ai_data": {
+     "object": "WEP_KamikazeMine_AI_p.KamikazeMines_WEPDATA",
+     "same_as_player_data": false,
+     "DesiredFiringRange": "RANGE_Medium"
+    }
+   },
+   "TransContent.TnWeaponLancingSpear": {
+    "ai_data": {
+     "object": "WEP_LancingSpear_p.LancingSpear_WEPDATA",
+     "same_as_player_data": true,
+     "DesiredFiringRange": "RANGE_Medium"
+    }
+   },
+   "TransContent.TnWeaponLongSword": {
+    "ai_data": {
+     "object": "WEP_LongSword_p.LongSword_WEPDATA",
+     "same_as_player_data": true,
+     "DesiredFiringRange": "RANGE_Medium"
+    }
+   },
+   "TransContent.TnWeaponMaul": {
+    "ai_data": {
+     "object": "WEP_Maul_p.Maul_WEPDATA",
+     "same_as_player_data": true,
+     "DesiredFiringRange": "RANGE_Medium"
+    }
+   },
+   "TransContent.TnWeaponMountedHeavyIonBlaster": {
+    "ai_data": {
+     "object": "WEP_TurretIonGun_AI_p.TurretIonGun_AI_WEPDATA",
+     "same_as_player_data": false,
+     "DesiredFiringRange": "RANGE_Far"
+    }
+   },
+   "TransContent.TnWeaponMountedRepairRay": {
+    "ai_data": {
+     "object": "WEP_TurretRepairRay_p.MountedRepairRay_WEPDATA",
+     "same_as_player_data": true,
+     "DesiredFiringRange": "RANGE_Medium"
+    }
+   },
+   "TransContent.TnWeaponMountedRocketTurret": {
+    "ai_data": {
+     "object": "WEP_TurretRocket_AI_p.MountedTurret_Rocket_AI_WEPDATA",
+     "same_as_player_data": false,
+     "DesiredFiringRange": "RANGE_Medium"
+    }
+   },
+   "TransContent.TnWeaponPlaneMachineGun": {
+    "ai_data": {
+     "object": "WEP_PlaneMachineGun_AI_p.PlaneMachineGun_AI_WEPDATA",
+     "same_as_player_data": false,
+     "DesiredFiringRange": "RANGE_Far"
+    }
+   },
+   "TransContent.TnWeaponPlasmaCannon": {
+    "ai_data": {
+     "object": "WEP_PlasmaCannon_AI_p.PlasmaCannon_AI_WEPDATA",
+     "same_as_player_data": false,
+     "DesiredFiringRange": "RANGE_Medium"
+    }
+   },
+   "TransContent.TnWeaponPoke": {
+    "ai_data": {
+     "object": null,
+     "same_as_player_data": false,
+     "DesiredFiringRange": null
+    }
+   },
+   "TransContent.TnWeaponProngDagger": {
+    "ai_data": {
+     "object": "WEP_ProngDagger_p.ProngDagger_WEPDATA",
+     "same_as_player_data": true,
+     "DesiredFiringRange": "RANGE_Medium"
+    }
+   },
+   "TransContent.TnWeaponRepairRay": {
+    "ai_data": {
+     "object": "WEP_RepairBeam_AI_p.RepairBeam_AI_WEPDATA",
+     "same_as_player_data": false,
+     "DesiredFiringRange": "RANGE_Medium"
+    }
+   },
+   "TransContent.TnWeaponRocketLauncher": {
+    "ai_data": {
+     "object": "WEP_RocketLauncher_AI_p.RocketLauncher_AI_WEPDATA",
+     "same_as_player_data": false,
+     "DesiredFiringRange": "RANGE_Retreated"
+    }
+   },
+   "TransContent.TnWeaponRocketPlane": {
+    "ai_data": {
+     "object": "WEP_RocketVh_p.Rocket_Vehicle_AI_WEPDATA",
+     "same_as_player_data": false,
+     "DesiredFiringRange": "RANGE_Retreated"
+    }
+   },
+   "TransContent.TnWeaponRocketTemp": {
+    "ai_data": {
+     "object": "WEP_Rocket_AI_p.Rocket_AI_WEPDATA",
+     "same_as_player_data": false,
+     "DesiredFiringRange": "RANGE_Medium"
+    }
+   },
+   "TransContent.TnWeaponRocketTurretKillStreak": {
+    "ai_data": {
+     "object": "WEP_TurretRocket_p.HeavyTurret_Rocket_WEPDATA",
+     "same_as_player_data": false,
+     "DesiredFiringRange": "RANGE_Medium"
+    }
+   },
+   "TransContent.TnWeaponRocketVehicle": {
+    "ai_data": {
+     "object": "WEP_RocketVh_p.Rocket_Vehicle_AI_WEPDATA",
+     "same_as_player_data": false,
+     "DesiredFiringRange": "RANGE_Retreated"
+    }
+   },
+   "TransContent.TnWeaponSerratedBlade": {
+    "ai_data": {
+     "object": "WEP_SerratedBlade_p.SerratedBlade_WEPDATA",
+     "same_as_player_data": true,
+     "DesiredFiringRange": "RANGE_Medium"
+    }
+   },
+   "TransContent.TnWeaponShortSword": {
+    "ai_data": {
+     "object": "WEP_ShortSword_p.ShortSword_WEPDATA",
+     "same_as_player_data": true,
+     "DesiredFiringRange": "RANGE_Medium"
+    }
+   },
+   "TransContent.TnWeaponShotgun": {
+    "ai_data": {
+     "object": "WEP_Shotgun_p.Shotgun_WEPDATA",
+     "same_as_player_data": true,
+     "DesiredFiringRange": "RANGE_Medium"
+    }
+   },
+   "TransContent.TnWeaponSniperRifle": {
+    "ai_data": {
+     "object": "WEP_SniperRifle_AI_p.SniperRifle_AI_WEPDATA",
+     "same_as_player_data": false,
+     "DesiredFiringRange": "RANGE_Retreated"
+    }
+   },
+   "TransContent.TnWeaponSpikedBat": {
+    "ai_data": {
+     "object": "WEP_SpikedBat_p.SpikedBat_WEPDATA",
+     "same_as_player_data": true,
+     "DesiredFiringRange": "RANGE_Medium"
+    }
+   },
+   "TransContent.TnWeaponSpikedMace": {
+    "ai_data": {
+     "object": "WEP_SpikedMace_p.SpikedMace_WEPDATA",
+     "same_as_player_data": true,
+     "DesiredFiringRange": "RANGE_Medium"
+    }
+   },
+   "TransContent.TnWeaponTankCannon": {
+    "ai_data": {
+     "object": "WEP_TankCannon_AI_p.TankCannon_AI_WEPDATA",
+     "same_as_player_data": false,
+     "DesiredFiringRange": "RANGE_Retreated"
+    }
+   },
+   "TransContent.TnWeaponTortureSword": {
+    "ai_data": {
+     "object": "WEP_TortureSword_p.TortureSword_WEPDATA",
+     "same_as_player_data": true,
+     "DesiredFiringRange": "RANGE_Medium"
+    }
+   },
+   "TransContent.TnWeaponViciousAxe": {
+    "ai_data": {
+     "object": "WEP_ViciousAxe_p.ViciousAxe_WEPDATA",
+     "same_as_player_data": true,
+     "DesiredFiringRange": "RANGE_Medium"
+    }
+   },
+   "TransContent.TnWeaponWarHammer": {
+    "ai_data": {
+     "object": "WEP_WarHammer_p.WarHammer_WEPDATA",
+     "same_as_player_data": true,
+     "DesiredFiringRange": "RANGE_Medium"
+    }
+   }
+  },
+  "ai_ability_variants (config)": [
+   "TransGame.TnAbilityCloakingAi",
+   "TransGame.TnAbilityHoverAi",
+   "TransGame.TnAbilityShockwaveAi"
+  ],
+  "ai_config_sections": {
+   "TransGame.TnAiSquad": {
+    "AIRespawnDelay": "0"
+   },
+   "TransGame.TnAiPawn": {
+    "AiVersusAiDamageScale": "0.6",
+    "BoneDamageOverrides": "(BoneName=C_Spine04_Head_XB,DamageModifier=3.0) // Head",
+    "DownedEnemySpreadModifier": "2.5",
+    "DownedEnemyFireIntervalModifier": "2",
+    "CloakedEnemySpreadModifier": "5"
+   },
+   "TransGame.TnAiLineOfFireSensor": {
+    "TimeRangeBeforeLineOfFireRegisters": "(Min=2,Max=4)",
+    "GrenadeDistance": "400"
+   },
+   "TransGame.TnAiConfidenceSensorEnemyRange": {
+    "TimeAtUnsafeRangeBeforeConfidenceIsLow": "1.5",
+    "TimeAtSafeDistanceBeforeReturningToMediumConfidence": "1.5"
+   },
+   "TransGame.TnAiConfidenceSensorAggressiveAttack": {
+    "TimeBeforeAggressiveAttack": "4"
+   },
+   "TransGame.TnAbilityCloakingAi": {
+    "Cooldown": "7 // Cooldown for Ai cloaking starts from when Cloaking ends"
+   },
+   "TransGame.TnBuffCloakAi": {
+    "BuffTime": "-1"
+   },
+   "TransGame.TnAbilityHoverAi": {
+    "Cooldown": "2"
+   },
+   "TransGame.TnAbilityShockwaveAi": {
+    "Cooldown": "2"
+   },
+   "TransGame.TnBuffEmpGrenadeAiRobot": {
+    "BuffTime": "3"
+   },
+   "TransGame.TnBuffEmpGrenadeAiVehicle": {
+    "BuffTime": "3",
+    "FloatModifier": "0.5"
+   },
+   "TransGame.TnBuffDifficultyDamageCausedAiVsAi": {
+    "FloatModifier[0]": "0.45\t\t//Easy",
+    "FloatModifier[1]": "0.35\t\t//Easy +1",
+    "FloatModifier[2]": "0.25\t\t//Easy +2",
+    "FloatModifier[3]": "0.3\t\t//Normal",
+    "FloatModifier[4]": "0.2\t\t//Normal +1",
+    "FloatModifier[5]": "0.1\t\t//Normal +2",
+    "FloatModifier[6]": "0.25\t\t//Hard",
+    "FloatModifier[7]": "0.15\t\t//Hard +1",
+    "FloatModifier[8]": "0.05\t\t//Hard +2",
+    "BuffTime": "-1"
+   },
+   "TransGame.TnBuffDifficultyPlayerDamageTaken": {
+    "FloatModifier[0]": "0.5\t        //Easy",
+    "FloatModifier[1]": "0.75        \t//Easy +1",
+    "FloatModifier[2]": "1.0        \t//Easy +2",
+    "FloatModifier[3]": "1.0         \t//Normal",
+    "FloatModifier[4]": "1.25        \t//Normal +1",
+    "FloatModifier[5]": "1.5         \t//Noraml +2",
+    "FloatModifier[6]": "1.75         \t//Hard",
+    "FloatModifier[7]": "2.0       \t//Hard +1",
+    "FloatModifier[8]": "2.25         \t//Hard +2",
+    "BuffTime": "-1"
+   },
+   "TransGame.TnBuffDifficultyPlayerDamageCaused": {
+    "FloatModifier[0]": "1.5\t\t//Easy",
+    "FloatModifier[1]": "1.25\t\t//Easy +1",
+    "FloatModifier[2]": "1.0\t\t//Easy +2",
+    "FloatModifier[3]": "1.0\t\t//Normal",
+    "FloatModifier[4]": "0.9\t\t//Normal +1",
+    "FloatModifier[5]": "0.8\t\t//Normal +2",
+    "FloatModifier[6]": "0.7\t\t//Hard",
+    "FloatModifier[7]": "0.6\t\t//Hard +1",
+    "FloatModifier[8]": "0.5\t\t//Hard +2",
+    "BuffTime": "-1"
+   },
+   "TransGame.TnBuffDifficultyPlayerDamageTakenDowned": {
+    "FloatModifier[0]": "0.5\t\t//Easy",
+    "FloatModifier[1]": "0.4\t\t//Easy +1",
+    "FloatModifier[2]": "0.3\t\t//Easy +2",
+    "FloatModifier[3]": "0.5\t\t//Normal",
+    "FloatModifier[4]": "0.4\t\t//Normal +1",
+    "FloatModifier[5]": "0.3\t\t//Normal +2",
+    "FloatModifier[6]": "0.25\t\t//Hard",
+    "FloatModifier[7]": "0.2           //Hard +1",
+    "FloatModifier[8]": "0.15\t\t//Hard +2",
+    "BuffTime": "-1"
+   },
+   "TransGame.TnBuffDifficultyPlayerDamageTakenRevived": {
+    "FloatModifier[0]": "0.15\t        //Easy",
+    "FloatModifier[1]": "0.15       \t//Easy +1",
+    "FloatModifier[2]": "0.15        \t//Easy +2",
+    "FloatModifier[3]": "0.25         \t//Normal",
+    "FloatModifier[4]": "0.25        \t//Normal +1",
+    "FloatModifier[5]": "0.25        \t//Noraml +2",
+    "FloatModifier[6]": "0.35        \t//Hard",
+    "FloatModifier[7]": "0.35        \t//Hard +1",
+    "FloatModifier[8]": "0.35        \t//Hard +2",
+    "BuffTimeByDifficulty[0]": "10\t\t//Easy",
+    "BuffTimeByDifficulty[1]": "10\t\t//Easy +1",
+    "BuffTimeByDifficulty[2]": "10\t\t//Easy +2",
+    "BuffTimeByDifficulty[3]": "7\t\t//Normal",
+    "BuffTimeByDifficulty[4]": "7\t\t//Normal +1",
+    "BuffTimeByDifficulty[5]": "7\t\t//Normal +2",
+    "BuffTimeByDifficulty[6]": "5\t\t//Hard",
+    "BuffTimeByDifficulty[7]": "5\t\t//Hard +1",
+    "BuffTimeByDifficulty[8]": "5\t\t//Hard +2"
+   },
+   "TransGame.TnBuffDifficultyJamAbilitiesRevived": {
+    "BuffTimeByDifficulty[0]": "5\t\t//Easy",
+    "BuffTimeByDifficulty[1]": "5\t\t//Easy +1",
+    "BuffTimeByDifficulty[2]": "5\t\t//Easy +2",
+    "BuffTimeByDifficulty[3]": "7\t\t//Normal",
+    "BuffTimeByDifficulty[4]": "7\t\t//Normal +1",
+    "BuffTimeByDifficulty[5]": "7\t\t//Normal +2",
+    "BuffTimeByDifficulty[6]": "10\t\t//Hard",
+    "BuffTimeByDifficulty[7]": "10\t\t//Hard +1",
+    "BuffTimeByDifficulty[8]": "10\t\t//Hard +2"
+   },
+   "TransGame.TnBuffDifficultyAbilityResourceModifier": {
+    "FloatModifier[0]": "0.75\t\t//Easy",
+    "FloatModifier[1]": "0.65\t\t//Easy +1",
+    "FloatModifier[2]": "0.55\t\t//Easy +2",
+    "FloatModifier[3]": "1.0\t\t//Normal",
+    "FloatModifier[4]": "0.9\t\t//Normal +1",
+    "FloatModifier[5]": "0.8\t\t//Normal +2",
+    "FloatModifier[6]": "1.25\t\t//Hard",
+    "FloatModifier[7]": "1.0\t\t//Hard +1",
+    "FloatModifier[8]": "0.9\t\t//Hard +2",
+    "BuffTime": "-1"
+   }
+  },
+  "ai_character_names (TransGame.int [AICharacterNames])": {
+   "Brute": "Brute",
+   "CQC": "CQC Specialist",
+   "Kamikaze": "Kamikaze",
+   "SoldierJet": "Jet",
+   "SoldierMG": "Machine Gunner",
+   "SoldierRocket": "Rocketeer",
+   "SoldierShotgun": "Shotgunner",
+   "SoldierSniper": "Sniper",
+   "SoldierTank": "Tank",
+   "Titan": "Titan",
+   "Spider": "Spider",
+   "HoloBrute": "Holo-Brute"
+  },
+  "ai_transformer_archetypes": [
+   {
+    "definition": "TR_AiEscalation_p.HoloBruteAut_ROBODEF",
+    "skeletal_mesh": "TR_HoloBruteAut_ROBO_p.RB_HoloBruteAut_SKEL",
+    "cooked_in": [
+     "MP_ESC_Remnant_BASE_m"
+    ],
+    "cooked_in_count": 1,
+    "category": "campaign / escalation (cooked into campaign or ESC maps only)"
+   },
+   {
+    "definition": "TR_BruteAut_ROBODEF_p.BruteAut_ROBODEF",
+    "skeletal_mesh": "TR_BruteAut_ROBO_p.RB_BruteAut_SKEL",
+    "cooked_in": [
+     "A2_KON_Jailbreak_Design_m",
+     "D2_COR_Gorge_03_Design_m",
+     "D3A_IAC_Alley1_DESIGN",
+     "D3A_IAC_City2B_DESIGN_m",
+     "D3A_IAC_CityTrans_DESIGN_m",
+     "D3B_IAC_BottomInt_DSN_m",
+     "D3B_IAC_Lift2_DSN_m",
+     "D3B_IAC_MiddleInt1_DSN_m",
+     "MP_ESC_Remnant_BASE_m"
+    ],
+    "cooked_in_count": 9,
+    "category": "campaign / escalation (cooked into campaign or ESC maps only)"
+   },
+   {
+    "definition": "TR_BruteAut_ROBODEF_p.TitanAut_ROBODEF",
+    "skeletal_mesh": "TR_SoldierAut_ROBO_p.RB_SoldierAut_SKEL",
+    "cooked_in": [
+     "A1_IAC_Strts1_Design_m",
+     "D3A_IAC_City2_DESIGN_m",
+     "D3A_IAC_Planet1_DESIGN_m",
+     "D3B_IAC_Balcony_DSN_m",
+     "D3B_IAC_BottomInt_DSN_m",
+     "D3B_IAC_BridgeStation1_DSN_m",
+     "D3B_IAC_MiddleInt1_DSN_m",
+     "MP_ESC_Remnant_BASE_m"
+    ],
+    "cooked_in_count": 8,
+    "category": "campaign / escalation (cooked into campaign or ESC maps only)"
+   },
+   {
+    "definition": "TR_BruteDec_ROBODEF_p.BruteDec_ROBODEF",
+    "skeletal_mesh": "TR_BruteDec_ROBO_p.RB_BruteDec_SKEL",
+    "cooked_in": [
+     "A1_IAC_DecoFoyer_Design_m",
+     "A1_IAC_Intr1_Trans_Design_m",
+     "A2_KON_Command_Design_m",
+     "A2_KON_Dungeons2_Design_m",
+     "A2_KON_Hangar_Design_m",
+     "A4_ORB_Relay2Int_DSN_m",
+     "A4_ORB_RelayCmdRoom_DSN_m",
+     "D3A_IAC_Alley1_DESIGN",
+     "MP_ESC_BrokenHope_Base_m"
+    ],
+    "cooked_in_count": 9,
+    "category": "campaign / escalation (cooked into campaign or ESC maps only)"
+   },
+   {
+    "definition": "TR_BruteDec_ROBODEF_p.TitanDec_ROBODEF",
+    "skeletal_mesh": "TR_SoldierDec_ROBO_p.RB_SoldierDec_SKEL",
+    "cooked_in": [
+     "A1_IAC_DecoPlaza_Design_m",
+     "A1_IAC_Terminal1_Design_m",
+     "A2_KON_Dungeons2_Design_m",
+     "A3_COR_OmegaGate_Design_m",
+     "A4_ORB_RelayCmdRoom_DSN_m",
+     "A4_ORB_TrypFlyingIntro_DSN_m",
+     "D3A_IAC_City1_DESIGN_m",
+     "D3A_IAC_City2B_DESIGN_m",
+     "MP_ESC_BrokenHope_Base_m"
+    ],
+    "cooked_in_count": 9,
+    "category": "campaign / escalation (cooked into campaign or ESC maps only)"
+   },
+   {
+    "definition": "TR_BruteNeu_ROBODEF_p.BruteNeu_ROBODEF",
+    "skeletal_mesh": "TR_BruteAut_ROBO_p.RB_BruteAut_SKEL",
+    "cooked_in": [
+     "D1_ORB_Assmebly2_DGN_m",
+     "D1_ORB_DataCenter_DGN_m",
+     "D1_ORB_Exterior2_DGN_m"
+    ],
+    "cooked_in_count": 3,
+    "category": "campaign / escalation (cooked into campaign or ESC maps only)"
+   },
+   {
+    "definition": "TR_BruteNeu_ROBODEF_p.TitanNeu_ROBODEF",
+    "skeletal_mesh": "TR_SoldierAut_ROBO_p.RB_SoldierAut_SKEL",
+    "cooked_in": [
+     "D1_ORB_DarkEnergon_DGN_m"
+    ],
+    "cooked_in_count": 1,
+    "category": "campaign / escalation (cooked into campaign or ESC maps only)"
+   },
+   {
+    "definition": "TR_CQCAut_ROBODEF_p.CQCAut_ROBODEF",
+    "skeletal_mesh": "TR_CQCAut_ROBO_p.RB_CQCAut_SKEL",
+    "cooked_in": [
+     "D2_COR_Gorge_02_Design_m",
+     "D2_COR_TNLMR_Design_m",
+     "D3A_IAC_CourtNew_DESIGN_m",
+     "D3A_IAC_DriveTrans_DESIGN_m",
+     "D3B_IAC_BottomLift2_DSN_m",
+     "D3B_IAC_BridgeStation1_DSN_m",
+     "MP_ESC_Remnant_BASE_m"
+    ],
+    "cooked_in_count": 7,
+    "category": "campaign / escalation (cooked into campaign or ESC maps only)"
+   },
+   {
+    "definition": "TR_CQCDec_ROBODEF_p.CQCDec_ROBODEF",
+    "skeletal_mesh": "TR_CQCDec_ROBO_p.RB_CQCDec_SKEL",
+    "cooked_in": [
+     "A2_KON_AirRaid_Design_m",
+     "A3_COR_OmegaFacility_Design_m",
+     "A4_ORB_CommandRoomCQC_DSN_m",
+     "A4_ORB_Flying2_DSN_m",
+     "MP_ESC_BrokenHope_Base_m"
+    ],
+    "cooked_in_count": 5,
+    "category": "campaign / escalation (cooked into campaign or ESC maps only)"
+   },
+   {
+    "definition": "TR_HoloBruteAut_ROBODEF_p.HoloBruteAut_ROBODEF",
+    "skeletal_mesh": "TR_HoloBruteAut_ROBO_p.RB_HoloBruteAut_SKEL",
+    "cooked_in": [
+     "D3A_IAC_Sentinel_DESIGN_m"
+    ],
+    "cooked_in_count": 1,
+    "category": "campaign / escalation (cooked into campaign or ESC maps only)"
+   },
+   {
+    "definition": "TR_OmegaSupreme_ROBODEF_p.OmegaSupreme_ROBODEF",
+    "skeletal_mesh": "TR_OmegaSupreme_ROBO_p.RB_OmegaSupreme_SKEL",
+    "cooked_in": [
+     "D5_OME_DSN_m"
+    ],
+    "cooked_in_count": 1,
+    "category": "campaign / escalation (cooked into campaign or ESC maps only)"
+   },
+   {
+    "definition": "TR_Ratchet_ROBODEF_p.Ratchet_VIP_ROBODEF",
+    "skeletal_mesh": "TR_Ratchet_ROBO_p.RB_Ratchet_SKEL",
+    "cooked_in": [
+     "A3_COR_OmegaGate_Design_m",
+     "TR_Ratchet_ROBODEF_p"
+    ],
+    "cooked_in_count": 2,
+    "category": "campaign / escalation (cooked into campaign or ESC maps only)"
+   },
+   {
+    "definition": "TR_SecurityDrone_ROBODEF_p.SecurityDrone_ROBODEF",
+    "skeletal_mesh": "TPRO_COR_AmbientMovers_p.COR_ProbeSensor_SKEL",
+    "cooked_in": [
+     "D2_COR_Cave_Design_m",
+     "D2_COR_Chamber_Design_m",
+     "D2_COR_IntroGorge_Design_m",
+     "D2_COR_TNLMR_Design_m"
+    ],
+    "cooked_in_count": 4,
+    "category": "campaign / escalation (cooked into campaign or ESC maps only)"
+   },
+   {
+    "definition": "TR_SoldierCarAut_ROBODEF_p.SoldierCarAut_ROBODEF",
+    "skeletal_mesh": "TR_SoldierCarAut_ROBO_p.RB_SoldierCarAut_SKEL",
+    "cooked_in": [
+     "A1_IAC_DecoInt_Design_m",
+     "A1_IAC_Elevator_Design_m",
+     "A1_IAC_HGHWY2_Design_m",
+     "A1_IAC_Strts0_Design_m",
+     "A1_IAC_Strts1_Design_m",
+     "A2_KON_Courtyard_Design_m",
+     "A2_KON_DRIVE3_Design_m",
+     "A2_KON_IntroWalk_Vig_m",
+     "A2_KON_Megatron_Design_m",
+     "A3_COR_OmegaGate_Design_m",
+     "A3_COR_Routing2C_Design_m",
+     "A4_ORB_NerveCenter_DSN_m"
+    ],
+    "cooked_in_count": 27,
+    "category": "campaign / escalation (cooked into campaign or ESC maps only)"
+   },
+   {
+    "definition": "TR_SoldierCarAut_ROBODEF_p.SoldierCarProtectorAut_ROBODEF",
+    "skeletal_mesh": "TR_SoldierCarAut_ROBO_p.RB_SoldierProtectorAut_SKEL",
+    "cooked_in": [
+     "D2_COR_TNL3_Design_m",
+     "D3A_IAC_Alley1_DESIGN",
+     "D3A_IAC_CourtNew_DESIGN_m",
+     "D3A_IAC_Planet1_DESIGN_m",
+     "D3B_IAC_Balcony_DSN_m",
+     "D3B_IAC_BottomInt_DSN_m",
+     "D3B_IAC_BridgeStation1_DSN_m",
+     "D3B_IAC_Lift1B_DSN_m",
+     "D3B_IAC_Lift2_DSN_m",
+     "D3B_IAC_MiddleInt1_DSN_m",
+     "D3B_IAC_MiddleInt2_DSN_m",
+     "D3B_IAC_TunnelDrop_DSN_m"
+    ],
+    "cooked_in_count": 12,
+    "category": "campaign / escalation (cooked into campaign or ESC maps only)"
+   },
+   {
+    "definition": "TR_SoldierCarAut_ROBODEF_p.SoldierCarRocketAut_ROBODEF",
+    "skeletal_mesh": "TR_SoldierCarAut_ROBO_p.RB_SoldierRocketAut_SKEL",
+    "cooked_in": [
+     "A1_IAC_SideAlley_Design_m",
+     "A2_KON_IntroWalk_Vig_m",
+     "D1_ORB_DataCenter_DGN_m",
+     "D2_COR_Cave_Design2_m",
+     "D2_COR_Gorge_01_Design_m",
+     "D2_COR_Gorge_03_Design_m",
+     "D2_COR_IntroGorge_Design_m",
+     "D2_COR_TNL2_Design_m",
+     "D2_COR_TNL3_Design_m",
+     "D2_COR_TNLMR_Design_m",
+     "D3A_IAC_Alley1_DESIGN",
+     "D3A_IAC_City2B_DESIGN_m"
+    ],
+    "cooked_in_count": 16,
+    "category": "campaign / escalation (cooked into campaign or ESC maps only)"
+   },
+   {
+    "definition": "TR_SoldierCarAut_ROBODEF_p.SoldierCarShotgunAut_ROBODEF",
+    "skeletal_mesh": "TR_SoldierCarAut_ROBO_p.RB_SoldierShotGunAut_SKEL",
+    "cooked_in": [
+     "D2_COR_Cave_Design2_m",
+     "D2_COR_Gorge_01_Design_m",
+     "D2_COR_Gorge_03_Design_m",
+     "D2_COR_TNL3_Design_m",
+     "D3A_IAC_Alley1_DESIGN",
+     "D3A_IAC_CityTrans_DESIGN_m",
+     "D3A_IAC_CourtTrans_DESIGN_m",
+     "D3B_IAC_Balcony_DSN_m",
+     "D3B_IAC_BridgeStation1_DSN_m",
+     "D3B_IAC_MiddleInt2_DSN_m",
+     "D3B_IAC_TunnelDrop_DSN_m",
+     "MP_ESC_Remnant_BASE_m"
+    ],
+    "cooked_in_count": 12,
+    "category": "campaign / escalation (cooked into campaign or ESC maps only)"
+   },
+   {
+    "definition": "TR_SoldierCarDec_ROBODEF_p.SoldierCarDec_ROBODEF",
+    "skeletal_mesh": "TR_SoldierCarDec_ROBO_p.RB_SoldierCarDec_SKEL",
+    "cooked_in": [
+     "A1_IAC_DecoInt_Design_m",
+     "A1_IAC_Elevator_Design_m",
+     "A1_IAC_HGHWY2_Design_m",
+     "A1_IAC_Strts0_Design_m",
+     "A1_IAC_Strts1_Design_m",
+     "A2_KON_Courtyard_Design_m",
+     "A2_KON_DRIVE3_Design_m",
+     "A2_KON_Megatron_Design_m",
+     "A3_COR_OmegaGate_Design_m",
+     "A3_COR_Routing2C_Design_m",
+     "A4_ORB_NerveCenter_DSN_m",
+     "A4_ORB_Relay2Int_DSN_m"
+    ],
+    "cooked_in_count": 15,
+    "category": "campaign / escalation (cooked into campaign or ESC maps only)"
+   },
+   {
+    "definition": "TR_SoldierCarDec_ROBODEF_p.SoldierCarProtectorDec_ROBODEF",
+    "skeletal_mesh": "TR_SoldierCarDec_ROBO_p.RB_SoldierProtectorDec_SKEL",
+    "cooked_in": [
+     "A1_IAC_DecoFoyer_Design_m",
+     "A1_IAC_DecoInt_Design_m",
+     "A1_IAC_DecoPlaza_Design_m",
+     "A1_IAC_HGHWY2_Design_m",
+     "A1_IAC_Strts1_Design_m",
+     "A2_KON_Command_Design_m",
+     "A2_KON_Courtyard_Design_m",
+     "A3_COR_OmegaFacility_Design_m"
+    ],
+    "cooked_in_count": 8,
+    "category": "campaign / escalation (cooked into campaign or ESC maps only)"
+   },
+   {
+    "definition": "TR_SoldierCarDec_ROBODEF_p.SoldierCarRocketDec_ROBODEF",
+    "skeletal_mesh": "TR_SoldierCarDec_ROBO_p.RB_SoldierRocketDec_SKEL",
+    "cooked_in": [
+     "A1_IAC_DecoPlaza_Design_m",
+     "A1_IAC_Intr1_Design_m",
+     "A1_IAC_SideAlley_Design_m",
+     "A1_IAC_Strts1_Design_m",
+     "A1_IAC_Terminal1_Design_m",
+     "A2_KON_Courtyard2_Design_m",
+     "A2_KON_DRIVE3_Design_m",
+     "A2_KON_Dungeons2_Design_m",
+     "A2_KON_Jailbreak_Design_m",
+     "A2_KON_WallCrawler_Design_m",
+     "A3_COR_Caves_Split_Design_m",
+     "A3_COR_OmegaFacility_Design_m"
+    ],
+    "cooked_in_count": 23,
+    "category": "campaign / escalation (cooked into campaign or ESC maps only)"
+   },
+   {
+    "definition": "TR_SoldierCarDec_ROBODEF_p.SoldierCarShotgunDec_ROBODEF",
+    "skeletal_mesh": "TR_SoldierCarDec_ROBO_p.RB_SoldierShotgunDec_SKEL",
+    "cooked_in": [
+     "A3_COR_Routing2C_Design_m",
+     "A4_ORB_NerveCenter_DSN_m",
+     "A4_ORB_Relay1Int_DSN_m",
+     "D2_COR_Cave_Design2_m",
+     "D2_COR_Gorge_01_Design_m",
+     "D2_COR_Gorge_03_Design_m",
+     "D2_COR_TNL3_Design_m",
+     "D3A_IAC_Alley1_DESIGN",
+     "D3A_IAC_CityTrans_DESIGN_m",
+     "D3A_IAC_CourtTrans_DESIGN_m",
+     "D3B_IAC_Balcony_DSN_m",
+     "D3B_IAC_BridgeStation1_DSN_m"
+    ],
+    "cooked_in_count": 16,
+    "category": "campaign / escalation (cooked into campaign or ESC maps only)"
+   },
+   {
+    "definition": "TR_SoldierCarNeu_ROBODEF_p.SoldierCarNeu_ROBODEF",
+    "skeletal_mesh": "TR_SoldierCarNeu_ROBO_p.Old.RB_SoldierCarNeu_SKEL",
+    "cooked_in": [
+     "D1_ORB_Assmebly1_DGN_m",
+     "D1_ORB_Exterior2_DGN_m"
+    ],
+    "cooked_in_count": 2,
+    "category": "campaign / escalation (cooked into campaign or ESC maps only)"
+   },
+   {
+    "definition": "TR_SoldierCarNeu_ROBODEF_p.SoldierCarProtectorNeu_ROBODEF",
+    "skeletal_mesh": "TR_SoldierCarNeu_ROBO_p.RB_SoldierProtectorNeu_SKEL",
+    "cooked_in": [
+     "D1_ORB_DataCenter_DGN_m"
+    ],
+    "cooked_in_count": 1,
+    "category": "campaign / escalation (cooked into campaign or ESC maps only)"
+   },
+   {
+    "definition": "TR_SoldierCarNeu_ROBODEF_p.SoldierCarRocketNeu_ROBODEF",
+    "skeletal_mesh": "TR_SoldierCarNeu_ROBO_p.RB_SoldierRocketNeu_SKEL",
+    "cooked_in": [
+     "D1_ORB_Crash2B_DGN_m",
+     "D1_ORB_DarkEnergon_DGN_m",
+     "D1_ORB_Exterior3_DGN_m"
+    ],
+    "cooked_in_count": 3,
+    "category": "campaign / escalation (cooked into campaign or ESC maps only)"
+   },
+   {
+    "definition": "TR_SoldierJetAut_ROBODEF_p.SoldierJetAut_ROBODEF",
+    "skeletal_mesh": "TR_SoldierJetAut_ROBO_p.RB_SoldierJetAutNoLeg_SKEL",
+    "cooked_in": [
+     "A1_IAC_DecoInt_Design_m",
+     "A1_IAC_Strts0_Design_m",
+     "D2_COR_Gorge_01_Design_m",
+     "D2_COR_Gorge_03_Design_m",
+     "D2_COR_TNL2_Design_m",
+     "D2_COR_TNLMR_Design_m",
+     "D3A_IAC_Alley1_DESIGN",
+     "D3A_IAC_City2_DESIGN_m",
+     "D3A_IAC_Planet1_DESIGN_m",
+     "D3B_IAC_Balcony_DSN_m",
+     "D3B_IAC_MiddleInt1_DSN_m",
+     "D3B_IAC_TunnelDrop_DSN_m"
+    ],
+    "cooked_in_count": 13,
+    "category": "campaign / escalation (cooked into campaign or ESC maps only)"
+   },
+   {
+    "definition": "TR_SoldierJetDec_ROBODEF_p.SoldierJetDec_ROBODEF",
+    "skeletal_mesh": "TR_SoldierJetDec_ROBO_p.RB_SoldierJetDecNoLeg_SKEL",
+    "cooked_in": [
+     "A1_IAC_DecoFoyer_Design_m",
+     "A1_IAC_DecoInt_Design_m",
+     "A1_IAC_Elevator_Design_m",
+     "A1_IAC_HGHWY2_Design_m",
+     "A1_IAC_Intr1_Design_m",
+     "A1_IAC_SideAlley_Design_m",
+     "A1_IAC_Strts0_Design_m",
+     "A2_KON_Hangar_Design_m",
+     "A2_KON_Megatron_Design_m",
+     "A2_KON_WallCrawler_Design_m",
+     "A3_COR_Caves_Split_Design_m",
+     "A3_COR_OmegaGate_Design_m"
+    ],
+    "cooked_in_count": 22,
+    "category": "campaign / escalation (cooked into campaign or ESC maps only)"
+   },
+   {
+    "definition": "TR_SoldierJetNeu_ROBODEF_p.SoldierJetNeu_ROBODEF",
+    "skeletal_mesh": "TR_SoldierJetNeu_ROBO_p.RB_SoldierJetAutNoLeg_SKEL",
+    "cooked_in": [
+     "D1_ORB_DETrans_DGN_m",
+     "D1_ORB_Exterior1_DGN_m",
+     "D1_ORB_Exterior3_DGN_m",
+     "D1_ORB_ScienceLabs_DGN_m"
+    ],
+    "cooked_in_count": 4,
+    "category": "campaign / escalation (cooked into campaign or ESC maps only)"
+   },
+   {
+    "definition": "TR_SoldierTankAut_ROBODEF_p.SoldierTankAut_ROBODEF",
+    "skeletal_mesh": "TR_SoldierTankAut_ROBO_p.RB_SoldierTankAut_SKEL",
+    "cooked_in": [
+     "D3A_IAC_CityTank_DESIGN_m",
+     "D3B_IAC_Balcony_DSN_m",
+     "D3B_IAC_MiddleInt2_DSN_m"
+    ],
+    "cooked_in_count": 3,
+    "category": "campaign / escalation (cooked into campaign or ESC maps only)"
+   },
+   {
+    "definition": "TR_SoldierTankDec_ROBODEF_p.SoldierTankDec_ROBODEF",
+    "skeletal_mesh": "TR_SoldierTankDec_ROBO_p.RB_SoldierTankDec_SKEL",
+    "cooked_in": [
+     "A3_COR_Caves_Split_Design_m",
+     "A3_COR_OmegaGate_Design_m",
+     "A3_COR_Routing3C_DesignPart2_m",
+     "A4_ORB_Relay2Int_DSN_m",
+     "A4_ORB_TrypFlyingIntro_DSN_m",
+     "MP_ESC_BrokenHope_Base_m"
+    ],
+    "cooked_in_count": 6,
+    "category": "campaign / escalation (cooked into campaign or ESC maps only)"
+   },
+   {
+    "definition": "TR_Soundwave_ROBODEF_p.SoundwaveBoss_ROBODEF",
+    "skeletal_mesh": "TR_Soundwave_ROBO_p.RB_SoundwaveWeaponArm_SKEL",
+    "cooked_in": [
+     "A2_KON_Soundwave_Design_m",
+     "TR_Soundwave_ROBODEF_p"
+    ],
+    "cooked_in_count": 2,
+    "category": "campaign / escalation (cooked into campaign or ESC maps only)"
+   },
+   {
+    "definition": "TR_SpiderDec_ROBODEF_p.Spider_ROBODEF",
+    "skeletal_mesh": "TR_SpiderDec_VEH_p.VH_SpiderDec_SKEL",
+    "cooked_in": [
+     "A2_KON_AirRaid_Design_m",
+     "A2_KON_Megatron_Design_m",
+     "A2_KON_Vents_Design_m",
+     "A3_COR_Caves_Split_Design_m",
+     "A3_COR_CoreInt_Design_m",
+     "A5_TRY_DSN_m",
+     "MP_ESC_BrokenHope_Base_m"
+    ],
+    "cooked_in_count": 7,
+    "category": "campaign / escalation (cooked into campaign or ESC maps only)"
+   },
+   {
+    "definition": "TR_StarScreamBoss_ROBODEF_p.StarScreamBoss_ROBODEF",
+    "skeletal_mesh": "TR_StarScream_ROBO_p.RB_Starscream_SKEL",
+    "cooked_in": [
+     "A1_IAC_DecoEnd_Art_m",
+     "A1_IAC_DecoEnd_Design_m"
+    ],
+    "cooked_in_count": 2,
+    "category": "campaign / escalation (cooked into campaign or ESC maps only)"
+   },
+   {
+    "definition": "TR_Trypticon_ROBODEF_p.Trypticon_ROBODEF",
+    "skeletal_mesh": "TR_Trypticon_ROBO_p.RB_Trypticon_SKEL",
+    "cooked_in": [
+     "A5_TRY_DSN_m"
+    ],
+    "cooked_in_count": 1,
+    "category": "campaign / escalation (cooked into campaign or ESC maps only)"
+   }
+  ],
+  "navigation": "every versus map has a NavigationPoint / ReachSpec network (vs_navigation.py; Streets 123 nodes, Gorge 148) - authored for AI pathing; usable by future bots",
+  "escalation_spawn_lists (sample)": {
+   "TR_Escalation_m.SpawnList.BrokenHope_Spawn_List": {
+    "Enemies": [
+     {
+      "EnemyType": "TR_SpiderDec_AI_p.Spider_AICD",
+      "MinWave": 0,
+      "MaxWave": 4,
+      "MinCount": 2,
+      "MaxCount": 8,
+      "Cost": 5,
+      "SpawnType": "EST_Standard",
+      "LootClassification": "GENERIC",
+      "PowerReward": 10.0
+     },
+     {
+      "EnemyType": "TR_AiEscalation_p.Soldier_MachineGun_Decepticon_AICD",
+      "MinWave": 0,
+      "MaxWave": 0,
+      "MinCount": 0,
+      "MaxCount": 8,
+      "Cost": 10,
+      "SpawnType": "EST_Standard",
+      "LootClassification": "SoldierDec",
+      "PowerReward": 25.0
+     },
+     {
+      "EnemyType": "TR_AiEscalation_p.Soldier_Rocket_Decepticon_AICD",
+      "MinWave": 2,
+      "MaxWave": 0,
+      "MinCount": 0,
+      "MaxCount": 4,
+      "Cost": 20,
+      "SpawnType": "EST_LongRange",
+      "LootClassification": "SoldierDec",
+      "PowerReward": 30.0
+     },
+     {
+      "EnemyType": "TR_AiEscalation_p.Soldier_Jet_Decepticon_AICD",
+      "MinWave": 4,
+      "MaxWave": 0,
+      "MinCount": 0,
+      "MaxCount": 4,
+      "Cost": 20,
+      "SpawnType": "EST_Air",
+      "LootClassification": "GENERIC",
+      "PowerReward": 75.0
+     },
+     {
+      "EnemyType": "TR_AiEscalation_p.CQCSpecialist_Decepticon_AICD",
+      "MinWave": 2,
+      "MaxWave": 3,
+      "MinCount": 0,
+      "MaxCount": 2,
+      "Cost": 20,
+      "SpawnType": "EST_Standard",
+      "LootClassification": "SoldierDec",
+      "PowerReward": 50.0
+     },
+     {
+      "EnemyType": "TR_AiEscalation_p.CQCSpecialist_Decepticon_AICD",
+      "MinWave": 4,
+      "MaxWave": 0,
+      "MinCount": 0,
+      "MaxCount": 6,
+      "Cost": 20,
+      "SpawnType": "EST_Standard",
+      "LootClassification": "SoldierDec",
+      "PowerReward": 50.0
+     },
+     {
+      "EnemyType": "TR_AiEscalation_p.Brute_Decepticon_AICD",
+      "MinWave": 7,
+      "MaxWave": 8,
+      "MinCount": 0,
+      "MaxCount": 1,
+      "Cost": 60,
+      "SpawnType": "EST_Standard",
+      "LootClassification": "BruteDec",
+      "PowerReward": 100.0
+     },
+     {
+      "EnemyType": "TR_AiEscalation_p.Soldier_Shotgun_Decepticon_AICD",
+      "MinWave": 5,
+      "MaxWave": 6,
+      "MinCount": 0,
+      "MaxCount": 2,
+      "Cost": 30,
+      "SpawnType": "EST_Standard",
+      "LootClassification": "SoldierDec",
+      "PowerReward": 75.0
+     },
+     {
+      "EnemyType": "TR_AiEscalation_p.Soldier_Shotgun_Decepticon_AICD",
+      "MinWave": 7,
+      "MaxWave": 0,
+      "MinCount": 0,
+      "MaxCount": 6,
+      "Cost": 30,
+      "SpawnType": "EST_Standard",
+      "LootClassification": "SoldierDec",
+      "PowerReward": 75.0
+     },
+     {
+      "EnemyType": "TR_AiEscalation_p.Soldier_Tank_Decepticon_AICD",
+      "MinWave": 14,
+      "MaxWave": 0,
+      "MinCount": 0,
+      "MaxCount": 1,
+      "Cost": 60,
+      "SpawnType": "EST_Boss",
+      "LootClassification": "SoldierTankDec",
+      "PowerReward": 300.0
+     },
+     {
+      "EnemyType": "TR_AiEscalation_p.Titan_Decepticon_AICD",
+      "MinWave": 9,
+      "MaxWave": 10,
+      "MinCount": 0,
+      "MaxCount": 1,
+      "Cost": 60,
+      "SpawnType": "EST_Standard",
+      "LootClassification": "TitanDec",
+      "PowerReward": 100.0
+     },
+     {
+      "EnemyType": "TR_AiEscalation_p.Brute_Decepticon_AICD",
+      "MinWave": 11,
+      "MaxWave": 0,
+      "MinCount": 0,
+      "MaxCount": 1,
+      "Cost": 60,
+      "SpawnType": "EST_Standard",
+      "LootClassification": "BruteDec",
+      "PowerReward": 100.0
+     },
+     {
+      "EnemyType": "TR_AiEscalation_p.Titan_Decepticon_AICD",
+      "MinWave": 10,
+      "MaxWave": 0,
+      "MinCount": 0,
+      "MaxCount": 2,
+      "Cost": 60,
+      "SpawnType": "EST_Standard",
+      "LootClassification": "BruteDec",
+      "PowerReward": 100.0
+     }
+    ],
+    "Waves": [
+     {
+      "Budget": 100,
+      "BudgetAlive": 50,
+      "BudgetDeficitThreshold": 20,
+      "Buffs": []
+     },
+     {
+      "Budget": 150,
+      "BudgetAlive": 80,
+      "BudgetDeficitThreshold": 40,
+      "Buffs": []
+     },
+     {
+      "Budget": 200,
+      "BudgetAlive": 100,
+      "BudgetDeficitThreshold": 50,
+      "Buffs": []
+     },
+     {
+      "Budget": 300,
+      "BudgetAlive": 125,
+      "BudgetDeficitThreshold": 100,
+      "Buffs": []
+     },
+     {
+      "Budget": 400,
+      "BudgetAlive": 150,
+      "BudgetDeficitThreshold": 120,
+      "Buffs": []
+     },
+     {
+      "Budget": 500,
+      "BudgetAlive": 200,
+      "BudgetDeficitThreshold": 170,
+      "Buffs": []
+     },
+     {
+      "Budget": 600,
+      "BudgetAlive": 200,
+      "BudgetDeficitThreshold": 180,
+      "Buffs": []
+     },
+     {
+      "Budget": 800,
+      "BudgetAlive": 230,
+      "BudgetDeficitThreshold": 200,
+      "Buffs": []
+     },
+     {
+      "Budget": 1000,
+      "BudgetAlive": 230,
+      "BudgetDeficitThreshold": 200,
+      "Buffs": []
+     },
+     {
+      "Budget": 1200,
+      "BudgetAlive": 230,
+      "BudgetDeficitThreshold": 220,
+      "Buffs": [
+       {
+        "BuffClass": "TransGame.TnBuffSurvivalDecreaseDamageTaken",
+        "BuffLevel": 0
+       }
+      ]
+     },
+     {
+      "Budget": 1200,
+      "BudgetAlive": 230,
+      "BudgetDeficitThreshold": 220,
+      "Buffs": [
+       {
+        "BuffClass": "TransGame.TnBuffSurvivalDecreaseDamageTaken",
+        "BuffLevel": 1
+       }
+      ]
+     },
+     {
+      "Budget": 1200,
+      "BudgetAlive": 230,
+      "BudgetDeficitThreshold": 220,
+      "Buffs": [
+       {
+        "BuffClass": "TransGame.TnBuffSurvivalDecreaseDamageTaken",
+        "BuffLevel": 2
+       }
+      ]
+     },
+     {
+      "Budget": 1200,
+      "BudgetAlive": 230,
+      "BudgetDeficitThreshold": 220,
+      "Buffs": [
+       {
+        "BuffClass": "TransGame.TnBuffSurvivalDecreaseDamageTaken",
+        "BuffLevel": 3
+       }
+      ]
+     },
+     {
+      "Budget": 1200,
+      "BudgetAlive": 230,
+      "BudgetDeficitThreshold": 220,
+      "Buffs": [
+       {
+        "BuffClass": "TransGame.TnBuffSurvivalDecreaseDamageTaken",
+        "BuffLevel": 4
+       },
+       {
+        "BuffClass": "TransGame.TnBuffSurvivalIncreaseDamage",
+        "BuffLevel": 0
+       }
+      ]
+     },
+     {
+      "Budget": 1300,
+      "BudgetAlive": 230,
+      "BudgetDeficitThreshold": 220,
+      "Buffs": [
+       {
+        "BuffClass": "TransGame.TnBuffSurvivalDecreaseDamageTaken",
+        "BuffLevel": 4
+       },
+       {
+        "BuffClass": "TransGame.TnBuffSurvivalIncreaseDamage",
+        "BuffLevel": 1
+       }
+      ]
+     },
+     {
+      "Budget": 1300,
+      "BudgetAlive": 230,
+      "BudgetDeficitThreshold": 220,
+      "Buffs": [
+       {
+        "BuffClass": "TransGame.TnBuffSurvivalDecreaseDamageTaken",
+        "BuffLevel": 4
+       },
+       {
+        "BuffClass": "TransGame.TnBuffSurvivalIncreaseDamage",
+        "BuffLevel": 2
+       }
+      ]
+     },
+     {
+      "Budget": 1300,
+      "BudgetAlive": 230,
+      "BudgetDeficitThreshold": 220,
+      "Buffs": [
+       {
+        "BuffClass": "TransGame.TnBuffSurvivalDecreaseDamageTaken",
+        "BuffLevel": 4
+       },
+       {
+        "BuffClass": "TransGame.TnBuffSurvivalIncreaseDamage",
+        "BuffLevel": 3
+       }
+      ]
+     }
+    ],
+    "PreGameTime": 30.0,
+    "TimeBetweenWaves": 25.0,
+    "EditVersion": 1455,
+    "FillWaveReCheckTime": 0.5
+   },
+   "TR_Escalation_m.SpawnList.Remnant_Spawn_List": {
+    "Enemies": [
+     {
+      "EnemyType": "TR_AiEscalation_p.HoloBrute_Autobot_AICD",
+      "MinWave": 0,
+      "MaxWave": 5,
+      "MinCount": 3,
+      "MaxCount": 6,
+      "Cost": 10,
+      "SpawnType": "EST_ShortRange",
+      "LootClassification": "SoldierAut",
+      "PowerReward": 25.0
+     },
+     {
+      "EnemyType": "TR_AiEscalation_p.Soldier_MachineGun_Autobot_AICD",
+      "MinWave": 0,
+      "MaxWave": 0,
+      "MinCount": 2,
+      "MaxCount": 6,
+      "Cost": 10,
+      "SpawnType": "EST_ShortRange",
+      "LootClassification": "SoldierAut",
+      "PowerReward": 25.0
+     },
+     {
+      "EnemyType": "TR_AiEscalation_p.Soldier_Rocket_Autobot_AICD",
+      "MinWave": 2,
+      "MaxWave": 0,
+      "MinCount": 0,
+      "MaxCount": 2,
+      "Cost": 20,
+      "SpawnType": "EST_ShortRange",
+      "LootClassification": "SoldierAut",
+      "PowerReward": 30.0
+     },
+     {
+      "EnemyType": "TR_AiEscalation_p.CQCSpecialist_Autobot_AICD",
+      "MinWave": 4,
+      "MaxWave": 0,
+      "MinCount": 0,
+      "MaxCount": 3,
+      "Cost": 20,
+      "SpawnType": "EST_ShortRange",
+      "LootClassification": "SoldierAut",
+      "PowerReward": 50.0
+     },
+     {
+      "EnemyType": "TR_AiEscalation_p.Soldier_Shotgun_Autobot_AICD",
+      "MinWave": 6,
+      "MaxWave": 0,
+      "MinCount": 0,
+      "MaxCount": 2,
+      "Cost": 25,
+      "SpawnType": "EST_Standard",
+      "LootClassification": "SoldierAut",
+      "PowerReward": 75.0
+     },
+     {
+      "EnemyType": "TR_AiEscalation_p.Titan_Autobot_AICD",
+      "MinWave": 7,
+      "MaxWave": 9,
+      "MinCount": 0,
+      "MaxCount": 1,
+      "Cost": 45,
+      "SpawnType": "EST_Standard",
+      "LootClassification": "BruteAut",
+      "PowerReward": 100.0
+     },
+     {
+      "EnemyType": "TR_AiEscalation_p.Brute_Autobot_AICD",
+      "MinWave": 9,
+      "MaxWave": 10,
+      "MinCount": 0,
+      "MaxCount": 1,
+      "Cost": 45,
+      "SpawnType": "EST_Standard",
+      "LootClassification": "BruteAut",
+      "PowerReward": 100.0
+     },
+     {
+      "EnemyType": "TR_AiEscalation_p.Titan_Autobot_AICD",
+      "MinWave": 11,
+      "MaxWave": 0,
+      "MinCount": 1,
+      "MaxCount": 2,
+      "Cost": 45,
+      "SpawnType": "EST_Standard",
+      "LootClassification": "TitanAut",
+      "PowerReward": 100.0
+     },
+     {
+      "EnemyType": "TR_AiEscalation_p.Brute_Autobot_AICD",
+      "MinWave": 12,
+      "MaxWave": 0,
+      "MinCount": 1,
+      "MaxCount": 1,
+      "Cost": 45,
+      "SpawnType": "EST_Standard",
+      "LootClassification": "BruteAut",
+      "PowerReward": 100.0
+     }
+    ],
+    "Waves": [
+     {
+      "Budget": 100,
+      "BudgetAlive": 50,
+      "BudgetDeficitThreshold": 30,
+      "Buffs": []
+     },
+     {
+      "Budget": 150,
+      "BudgetAlive": 70,
+      "BudgetDeficitThreshold": 40,
+      "Buffs": []
+     },
+     {
+      "Budget": 200,
+      "BudgetAlive": 80,
+      "BudgetDeficitThreshold": 50,
+      "Buffs": []
+     },
+     {
+      "Budget": 300,
+      "BudgetAlive": 110,
+      "BudgetDeficitThreshold": 70,
+      "Buffs": []
+     },
+     {
+      "Budget": 400,
+      "BudgetAlive": 130,
+      "BudgetDeficitThreshold": 90,
+      "Buffs": []
+     },
+     {
+      "Budget": 550,
+      "BudgetAlive": 160,
+      "BudgetDeficitThreshold": 110,
+      "Buffs": [
+       {
+        "BuffClass": "TransGame.TnBuffSurvivalDecreaseDamageTaken",
+        "BuffLevel": 0
+       }
+      ]
+     },
+     {
+      "Budget": 700,
+      "BudgetAlive": 180,
+      "BudgetDeficitThreshold": 130,
+      "Buffs": [
+       {
+        "BuffClass": "TransGame.TnBuffSurvivalDecreaseDamageTaken",
+        "BuffLevel": 1
+       }
+      ]
+     },
+     {
+      "Budget": 900,
+      "BudgetAlive": 210,
+      "BudgetDeficitThreshold": 150,
+      "Buffs": [
+       {
+        "BuffClass": "TransGame.TnBuffSurvivalDecreaseDamageTaken",
+        "BuffLevel": 2
+       }
+      ]
+     },
+     {
+      "Budget": 1100,
+      "BudgetAlive": 230,
+      "BudgetDeficitThreshold": 170,
+      "Buffs": [
+       {
+        "BuffClass": "TransGame.TnBuffSurvivalDecreaseDamageTaken",
+        "BuffLevel": 3
+       }
+      ]
+     },
+     {
+      "Budget": 1200,
+      "BudgetAlive": 230,
+      "BudgetDeficitThreshold": 190,
+      "Buffs": [
+       {
+        "BuffClass": "TransGame.TnBuffSurvivalDecreaseDamageTaken",
+        "BuffLevel": 4
+       }
+      ]
+     },
+     {
+      "Budget": 1200,
+      "BudgetAlive": 230,
+      "BudgetDeficitThreshold": 190,
+      "Buffs": [
+       {
+        "BuffClass": "TransGame.TnBuffSurvivalDecreaseDamageTaken",
+        "BuffLevel": 4
+       },
+       {
+        "BuffClass": "TransGame.TnBuffSurvivalIncreaseDamage",
+        "BuffLevel": 0
+       }
+      ]
+     },
+     {
+      "Budget": 1200,
+      "BudgetAlive": 230,
+      "BudgetDeficitThreshold": 190,
+      "Buffs": [
+       {
+        "BuffClass": "TransGame.TnBuffSurvivalDecreaseDamageTaken",
+        "BuffLevel": 4
+       },
+       {
+        "BuffClass": "TransGame.TnBuffSurvivalIncreaseDamage",
+        "BuffLevel": 1
+       }
+      ]
+     },
+     {
+      "Budget": 1200,
+      "BudgetAlive": 230,
+      "BudgetDeficitThreshold": 190,
+      "Buffs": [
+       {
+        "BuffClass": "TransGame.TnBuffSurvivalDecreaseDamageTaken",
+        "BuffLevel": 4
+       },
+       {
+        "BuffClass": "TransGame.TnBuffSurvivalIncreaseDamage",
+        "BuffLevel": 2
+       }
+      ]
+     },
+     {
+      "Budget": 1200,
+      "BudgetAlive": 230,
+      "BudgetDeficitThreshold": 190,
+      "Buffs": [
+       {
+        "BuffClass": "TransGame.TnBuffSurvivalDecreaseDamageTaken",
+        "BuffLevel": 4
+       },
+       {
+        "BuffClass": "TransGame.TnBuffSurvivalIncreaseDamage",
+        "BuffLevel": 3
+       }
+      ]
+     },
+     {
+      "Budget": 1200,
+      "BudgetAlive": 230,
+      "BudgetDeficitThreshold": 190,
+      "Buffs": [
+       {
+        "BuffClass": "TransGame.TnBuffSurvivalDecreaseDamageTaken",
+        "BuffLevel": 4
+       },
+       {
+        "BuffClass": "TransGame.TnBuffSurvivalIncreaseDamage",
+        "BuffLevel": 4
+       }
+      ]
+     },
+     {
+      "Budget": 1200,
+      "BudgetAlive": 250,
+      "BudgetDeficitThreshold": 190,
+      "Buffs": [
+       {
+        "BuffClass": "TransGame.TnBuffSurvivalDecreaseDamageTaken",
+        "BuffLevel": 4
+       },
+       {
+        "BuffClass": "TransGame.TnBuffSurvivalIncreaseDamage",
+        "BuffLevel": 4
+       }
+      ]
+     },
+     {
+      "Budget": 1200,
+      "BudgetAlive": 230,
+      "BudgetDeficitThreshold": 190,
+      "Buffs": [
+       {
+        "BuffClass": "TransGame.TnBuffSurvivalDecreaseDamageTaken",
+        "BuffLevel": 4
+       },
+       {
+        "BuffClass": "TransGame.TnBuffSurvivalIncreaseDamage",
+        "BuffLevel": 4
+       }
+      ]
+     },
+     {
+      "Budget": 1200,
+      "BudgetAlive": 230,
+      "BudgetDeficitThreshold": 190,
+      "Buffs": [
+       {
+        "BuffClass": "TransGame.TnBuffSurvivalDecreaseDamageTaken",
+        "BuffLevel": 4
+       },
+       {
+        "BuffClass": "TransGame.TnBuffSurvivalIncreaseDamage",
+        "BuffLevel": 4
+       }
+      ]
+     },
+     {
+      "Budget": 1200,
+      "BudgetAlive": 230,
+      "BudgetDeficitThreshold": 190,
+      "Buffs": [
+       {
+        "BuffClass": "TransGame.TnBuffSurvivalDecreaseDamageTaken",
+        "BuffLevel": 4
+       },
+       {
+        "BuffClass": "TransGame.TnBuffSurvivalIncreaseDamage",
+        "BuffLevel": 4
+       }
+      ]
+     },
+     {
+      "Budget": 1200,
+      "BudgetAlive": 230,
+      "BudgetDeficitThreshold": 190,
+      "Buffs": [
+       {
+        "BuffClass": "TransGame.TnBuffSurvivalDecreaseDamageTaken",
+        "BuffLevel": 4
+       },
+       {
+        "BuffClass": "TransGame.TnBuffSurvivalIncreaseDamage",
+        "BuffLevel": 4
+       }
+      ]
+     }
+    ],
+    "FillWaveReCheckTime": 3.0,
+    "PreGameTime": 10.0,
+    "TimeBetweenWaves": 25.0,
+    "EditVersion": 1308
+   },
+   "TransGame.Default__TnSurvivalSpawnList": {
+    "FillWaveReCheckTime": 0.5,
+    "PreGameTime": 6.0,
+    "TimeBetweenWaves": 5.0
+   }
+  }
+ },
+ "owner": "Gameplay/RE own AI behaviour; this is content evidence only"
+}

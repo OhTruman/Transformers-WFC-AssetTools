@@ -1,0 +1,526 @@
+{
+ "generated_by": "AssetTools/scripts/wfc/mp_handoffs.py",
+ "source": "class defaults (TransContent / TransGame), weapon-mesh templates, frontend_mode_presentation.json, frontend_hud.json; per-map placement stays in each map manifest (Streets: render_index.json)",
+ "modes": {
+  "CTF": {
+   "flag_weapon": {
+    "class": "TransContent.TnWeaponFlag",
+    "weapon_mesh_template": "WEP_CodeOfPower_p.CodeOfPower2H_WEPMESH",
+    "pickup_component": "WEP_CodeOfPower_p.CodeOfPower2H_WEPMESH.SkeletalMeshComponent_7298",
+    "SkeletalMesh": "WEP_CodeOfPower_p.WEP_CodeOfPower2H_SKEL",
+    "Translation": {
+     "X": 0.0,
+     "Y": 0.0,
+     "Z": 150.0
+    },
+    "Scale3D": {
+     "X": 1.0,
+     "Y": 1.0,
+     "Z": 1.0
+    }
+   },
+   "factory": "TransContent.TnGameObjectivePickupFactoryFlag (resting mesh = TnWeapon.CreatePickupFactoryMesh; beam FX_Pickups_p.FX.Pickup_FX)",
+   "capture_point": "no mesh component on the class default",
+   "dropped_pickup": "TransContent.TnDroppedPickupFlag",
+   "objective_bases": "PROP_NEU_Pickups_p.ObjBases.Base_A / Base_D (InterpActors per map, Kismet-shown in CTF/EXT)",
+   "icon": "mc_gameModeIconCTF",
+   "announcer": {
+    "GameTypeDialog": null,
+    "GameDescriptionDialog": null
+   },
+   "music": [
+    "GameTypeMusic",
+    "GameNearlyCompleteMusic",
+    "AutobotsWinMusic",
+    "DecepticonsWinMusic",
+    "TieMusic"
+   ],
+   "name": {
+    "INT": "Code of Power",
+    "FRA": "Codex"
+   },
+   "hud_score_panel": "mc_scoreTeam"
+  },
+  "EXT": {
+   "bomb_weapon": {
+    "class": "TransContent.TnWeaponBomb",
+    "weapon_mesh_template": "WEP_MPBomb_p.MPBomb_WEPMESH",
+    "pickup_component": "WEP_MPBomb_p.MPBomb_WEPMESH.SkeletalMeshComponent_6360",
+    "SkeletalMesh": "PROP_NEU_Pickups_p.MPBomb.NEU_MPBomb_SKEL",
+    "Translation": {
+     "X": 0.0,
+     "Y": 0.0,
+     "Z": 150.0
+    },
+    "Scale3D": {
+     "X": 1.0,
+     "Y": 1.0,
+     "Z": 1.0
+    }
+   },
+   "dropped_mesh": "TransContent.Default__TnWeaponBomb.DroppedMesh0",
+   "dropped_pickup": "TransContent.TnDroppedPickupBomb",
+   "bomb_explode_mesh": "PROP_NEU_Pickups_p.MPBomb.NEU_MPBombExplode_SKEL (+ MPBombExplode_ANIM)",
+   "factory": "TransContent.TnGameObjectivePickupFactoryBomb",
+   "plant_point": {
+    "PlantedBombMesh:PlantedBombMesh0": {
+     "class": "SkeletalMeshComponent",
+     "SkeletalMesh": "PROP_NEU_Pickups_p.MPBomb.NEU_MPBombExplode_SKEL",
+     "Scale3D": {
+      "X": 1.0,
+      "Y": 1.0,
+      "Z": 1.0
+     }
+    },
+    "DetonateEffect:DetonateEffect0": {
+     "class": "ParticleSystemComponent",
+     "Scale3D": {
+      "X": 1.0,
+      "Y": 1.0,
+      "Z": 1.0
+     },
+     "Template": "FX_Explosives_p.FX.Exp_GenericLvl_LRG_FX"
+    },
+    "Components:DetonateEffect0": {
+     "class": "ParticleSystemComponent",
+     "Scale3D": {
+      "X": 1.0,
+      "Y": 1.0,
+      "Z": 1.0
+     },
+     "Template": "FX_Explosives_p.FX.Exp_GenericLvl_LRG_FX"
+    },
+    "Components:PlantedBombMesh0": {
+     "class": "SkeletalMeshComponent",
+     "SkeletalMesh": "PROP_NEU_Pickups_p.MPBomb.NEU_MPBombExplode_SKEL",
+     "Scale3D": {
+      "X": 1.0,
+      "Y": 1.0,
+      "Z": 1.0
+     }
+    }
+   },
+   "hud": "TnHudDataObserverBombDefuseTimer",
+   "icon": "mc_gameModeIconEXT",
+   "announcer": {
+    "GameTypeDialog": {
+     "event": "SoundEvents_Dialog.Announcer.MP_GameTypeExtinctionDialog",
+     "cue": "BL_DX_SWITCHBOARD.SC002650",
+     "wavs": [
+      "content/WL_DX_OPRIME/DX_OPRIME_LK002650.wav",
+      "content/WL_DX_MGTRON/DX_MGTRON_LK002659.wav"
+     ],
+     "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "GameDescriptionDialog": {
+     "event": "SoundEvents_Dialog.Announcer.MP_GameDescriptionExtinctionDialog",
+     "cue": "BL_DX_SWITCHBOARD.SC009011",
+     "wavs": [
+      "content/WL_DX_OPRIME/DX_OPRIME_LK009011.wav",
+      "content/WL_DX_MGTRON/DX_MGTRON_LK009012.wav"
+     ],
+     "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    }
+   },
+   "music": [
+    "GameTypeMusic",
+    "GameNearlyCompleteMusic",
+    "AutobotsWinMusic",
+    "DecepticonsWinMusic",
+    "TieMusic"
+   ],
+   "name": {
+    "INT": "Countdown to Extinction",
+    "FRA": "Équilibrage équipes"
+   },
+   "hud_score_panel": "mc_scoreTeam"
+  },
+  "KOTH": {
+   "mesh_components": {
+    "ActiveMesh:ActiveMeshComponent0": {
+     "class": "StaticMeshComponent",
+     "StaticMesh": "FX_Mesh_p.Mesh.pTorus1_STAT",
+     "Scale3D": {
+      "X": 1.0,
+      "Y": 1.0,
+      "Z": 1.0
+     }
+    },
+    "Components:ActiveMeshComponent0": {
+     "class": "StaticMeshComponent",
+     "StaticMesh": "FX_Mesh_p.Mesh.pTorus1_STAT",
+     "Scale3D": {
+      "X": 1.0,
+      "Y": 1.0,
+      "Z": 1.0
+     }
+    }
+   },
+   "zone_colors": {
+    "NeutralColor": {
+     "R": 0.8050000071525574,
+     "G": 0.3019999861717224,
+     "B": 0.028999999165534973,
+     "A": 1.0
+    },
+    "CaptureColor": [
+     {
+      "R": 0.7299000024795532,
+      "G": 0.1274999976158142,
+      "B": 0.1274999976158142,
+      "A": 1.0
+     },
+     {
+      "R": 0.267300009727478,
+      "G": 0.18690000474452972,
+      "B": 0.7592999935150146,
+      "A": 1.0
+     }
+    ]
+   },
+   "icon": "mc_gameModeIconKOTH",
+   "announcer": {
+    "GameTypeDialog": {
+     "event": "SoundEvents_Dialog.Announcer.MP_GameTypePowerStruggleDialog",
+     "cue": "BL_DX_SWITCHBOARD.SC002653",
+     "wavs": [
+      "content/WL_DX_OPRIME/DX_OPRIME_LK002653.wav",
+      "content/WL_DX_MGTRON/DX_MGTRON_LK002662.wav"
+     ],
+     "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "GameDescriptionDialog": {
+     "event": "SoundEvents_Dialog.Announcer.MP_GameDescriptionPowerStruggleDialog",
+     "cue": "BL_DX_SWITCHBOARD.SC009003",
+     "wavs": [
+      "content/WL_DX_OPRIME/DX_OPRIME_LK009003.wav",
+      "content/WL_DX_MGTRON/DX_MGTRON_LK009004.wav"
+     ],
+     "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    }
+   },
+   "music": [
+    "GameTypeMusic",
+    "GameNearlyCompleteMusic",
+    "AutobotsWinMusic",
+    "DecepticonsWinMusic",
+    "TieMusic"
+   ],
+   "name": {
+    "INT": "Power Struggle",
+    "FRA": "Lutte pour le pouvoir"
+   },
+   "hud_score_panel": "mc_scoreTeam"
+  },
+  "DOM": {
+   "mesh_components": {
+    "PointMesh:PointMesh0": {
+     "class": "SkeletalMeshComponent",
+     "SkeletalMesh": "PROP_NEU_Pickups_p.EnergonTotem.NEU_EnergonTotem_SKEL",
+     "Scale3D": {
+      "X": 1.0,
+      "Y": 1.0,
+      "Z": 1.0
+     }
+    },
+    "Components:PointMesh0": {
+     "class": "SkeletalMeshComponent",
+     "SkeletalMesh": "PROP_NEU_Pickups_p.EnergonTotem.NEU_EnergonTotem_SKEL",
+     "Scale3D": {
+      "X": 1.0,
+      "Y": 1.0,
+      "Z": 1.0
+     }
+    }
+   },
+   "marker": "TnObjectiveMarkerTypeDomination -> UI_HudMarkers_p.MPMarkerDominationNode_MAT",
+   "anim_set": "NEU_EnergonTotem_ANM (StandBy / DeActivate / AUT_Activate / DEC_Activate)",
+   "icon": "mc_gameModeIconDOM",
+   "announcer": {
+    "GameTypeDialog": {
+     "event": "SoundEvents_Dialog.Announcer.MP_GameTypeConquestDialog",
+     "cue": "BL_DX_SWITCHBOARD.SC010575",
+     "wavs": [
+      "content/WL_DX_OPRIME/DX_OPRIME_LK010575.wav",
+      "content/WL_DX_MGTRON/DX_MGTRON_LK010576.wav"
+     ],
+     "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "GameDescriptionDialog": {
+     "event": "SoundEvents_Dialog.Announcer.MP_GameDescriptionConquestDialog",
+     "cue": "BL_DX_SWITCHBOARD.SC010577",
+     "wavs": [
+      "content/WL_DX_OPRIME/DX_OPRIME_LK010577.wav",
+      "content/WL_DX_MGTRON/DX_MGTRON_LK010578.wav"
+     ],
+     "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    }
+   },
+   "music": [
+    "GameTypeMusic",
+    "GameNearlyCompleteMusic",
+    "AutobotsWinMusic",
+    "DecepticonsWinMusic",
+    "TieMusic"
+   ],
+   "name": {
+    "INT": "Conquest",
+    "FRA": "Conquête"
+   },
+   "hud_score_panel": "mc_scoreTeam"
+  },
+  "DM": {
+   "icon": "mc_gameModeIconDM",
+   "announcer": {
+    "GameTypeDialog": {
+     "event": "SoundEvents_Dialog.Announcer.MP_GameTypeDeathMatchDialog",
+     "cue": "BL_DX_SWITCHBOARD.SC002656",
+     "wavs": [
+      "content/WL_DX_OPRIME/DX_OPRIME_LK002656.wav",
+      "content/WL_DX_MGTRON/DX_MGTRON_LK002665.wav"
+     ],
+     "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "GameDescriptionDialog": {
+     "event": "SoundEvents_Dialog.Announcer.MP_GameDescriptionDeathMatchDialog",
+     "cue": "BL_DX_SWITCHBOARD.SC008977",
+     "wavs": [
+      "content/WL_DX_OPRIME/DX_OPRIME_LK008977.wav",
+      "content/WL_DX_MGTRON/DX_MGTRON_LK008978.wav"
+     ],
+     "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    }
+   },
+   "music": [
+    "GameTypeMusic",
+    "GameNearlyCompleteMusic",
+    "AutobotsWinMusic",
+    "DecepticonsWinMusic",
+    "TieMusic"
+   ],
+   "name": {
+    "INT": "Deathmatch",
+    "FRA": "Match à élimination"
+   },
+   "hud_score_panel": "mc_scoreFreeForAll"
+  },
+  "TDM": {
+   "icon": "mc_gameModeIconTDM",
+   "announcer": {
+    "GameTypeDialog": {
+     "event": "SoundEvents_Dialog.Announcer.MP_GameTypeTeamDeathMatchDialog",
+     "cue": "BL_DX_SWITCHBOARD.SC002657",
+     "wavs": [
+      "content/WL_DX_OPRIME/DX_OPRIME_LK002657.wav",
+      "content/WL_DX_MGTRON/DX_MGTRON_LK002666.wav"
+     ],
+     "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "GameDescriptionDialog": {
+     "event": "SoundEvents_Dialog.Announcer.MP_GameDescriptionTeamDeathMatchDialog",
+     "cue": "BL_DX_SWITCHBOARD.SC008993",
+     "wavs": [
+      "content/WL_DX_OPRIME/DX_OPRIME_LK008993.wav",
+      "content/WL_DX_MGTRON/DX_MGTRON_LK008994.wav"
+     ],
+     "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    }
+   },
+   "music": [
+    "GameTypeMusic",
+    "GameNearlyCompleteMusic",
+    "AutobotsWinMusic",
+    "DecepticonsWinMusic",
+    "TieMusic"
+   ],
+   "name": {
+    "INT": "Team Deathmatch",
+    "FRA": "Match à élimination en équipe"
+   },
+   "hud_score_panel": "mc_scoreTeam"
+  },
+  "SV": {
+   "icon": "mc_gameModeIconSV",
+   "announcer": {
+    "GameTypeDialog": {
+     "event": "SoundEvents_Dialog.Announcer.MP_GameTypeEscalationDialog",
+     "cue": "BL_DX_SWITCHBOARD.SC009019",
+     "wavs": [
+      "content/WL_DX_OPRIME/DX_OPRIME_LK009019.wav",
+      "content/WL_DX_MGTRON/DX_MGTRON_LK009020.wav"
+     ],
+     "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "GameDescriptionDialog": null
+   },
+   "music": [],
+   "name": {
+    "INT": "Escalation",
+    "FRA": "Escalade"
+   },
+   "hud_score_panel": "mc_scoreSurvival"
+  },
+  "markers (canvas)": {
+   "TnObjectiveMarkerTypeTransformerVersus": {
+    "EnemyMarkerSetup": {
+     "Mat": "UI_HudMarkers_p.MarkerEnemy_MAT",
+     "MatInst": null,
+     "HealthBarMat": null,
+     "HealthBarMatInst": null,
+     "MarkerZOffsetWS": 0.0,
+     "DrawLabelWhenFocused": true,
+     "DrawLabelWhenUnfocused": false,
+     "DrawLabelWhenOffscreen": false,
+     "LabelOffset": {
+      "X": 0.0,
+      "Y": -0.03999999910593033,
+      "Z": 0.0
+     },
+     "LabelZOffsetWS": 0.0,
+     "LabelColor": {
+      "B": 20,
+      "G": 20,
+      "R": 240,
+      "A": 220
+     },
+     "FocusParam": "Over",
+     "FocusedMarkerSize": 0.03125,
+     "UnfocusedMarkerSize": 0.03125,
+     "DrawWhenOffscreen": false,
+     "OnScreenParam": "OnScreen",
+     "OffscreenMarkerSize": 0.0625,
+     "RotationParam": "ArrowAngle"
+    },
+    "AllyMarkerSetup": {
+     "Mat": "UI_HudMarkers_p.MarkerAlly_MAT",
+     "MatInst": null,
+     "HealthBarMat": "UI_HudMarkers_p.TargetHealthBar_MAT",
+     "HealthBarMatInst": null,
+     "MarkerZOffsetWS": 0.0,
+     "DrawLabelWhenFocused": true,
+     "DrawLabelWhenUnfocused": true,
+     "DrawLabelWhenOffscreen": false,
+     "LabelOffset": {
+      "X": 0.0,
+      "Y": -0.03999999910593033,
+      "Z": 0.0
+     },
+     "LabelZOffsetWS": 0.0,
+     "LabelColor": {
+      "B": 250,
+      "G": 210,
+      "R": 100,
+      "A": 220
+     },
+     "FocusParam": "Over",
+     "FocusedMarkerSize": 0.07999999821186066,
+     "UnfocusedMarkerSize": 0.03999999910593033,
+     "DrawWhenOffscreen": false,
+     "OnScreenParam": "OnScreen",
+     "OffscreenMarkerSize": 0.0625,
+     "RotationParam": "ArrowAngle"
+    },
+    "DistanceFromCenterFocusThreshold": 0.02734375,
+    "FocusHysterisis": 1.0,
+    "AutoFocusRange": 3000.0,
+    "HealthBarSize": {
+     "X": 0.05999999865889549,
+     "Y": 0.014999999664723873,
+     "Z": 0.0
+    },
+    "HealthBarOffsetFromLabel": {
+     "X": 0.0,
+     "Y": 0.019999999552965164,
+     "Z": 0.0
+    },
+    "LabelFont": "UI_TransEngineFonts_p.MarkerFont",
+    "SafeFramePaddingPercent": 0.07999999821186066,
+    "FriendlyLabelColor": {
+     "B": 213,
+     "G": 181,
+     "R": 80,
+     "A": 255
+    },
+    "EnemyLabelColor": {
+     "B": 60,
+     "G": 60,
+     "R": 240,
+     "A": 255
+    },
+    "NeutralLabelColor": {
+     "B": 255,
+     "G": 255,
+     "R": 255,
+     "A": 255
+    }
+   },
+   "TnObjectiveMarkerTypeDomination": {
+    "MarkerSetup": {
+     "Mat": "UI_HudMarkers_p.MPMarkerDominationNode_MAT",
+     "MatInst": null,
+     "HealthBarMat": null,
+     "HealthBarMatInst": null,
+     "MarkerZOffsetWS": 0.0,
+     "DrawLabelWhenFocused": true,
+     "DrawLabelWhenUnfocused": true,
+     "DrawLabelWhenOffscreen": true,
+     "LabelOffset": {
+      "X": 0.0,
+      "Y": -0.03999999910593033,
+      "Z": 0.0
+     },
+     "LabelZOffsetWS": 0.0,
+     "LabelColor": {
+      "B": 250,
+      "G": 210,
+      "R": 100,
+      "A": 220
+     },
+     "FocusParam": "Over",
+     "FocusedMarkerSize": 0.05000000074505806,
+     "UnfocusedMarkerSize": 0.05000000074505806,
+     "DrawWhenOffscreen": true,
+     "OnScreenParam": "OnScreen",
+     "OffscreenMarkerSize": 0.0625,
+     "RotationParam": "ArrowAngle"
+    },
+    "CaptureLabel": "Capture",
+    "DefendLabel": "Defend",
+    "LabelFont": "UI_TransEngineFonts_p.MarkerFont",
+    "DistanceFromCenterFocusThreshold": 0.0625,
+    "SafeFramePaddingPercent": 0.07999999821186066,
+    "FocusHysterisis": 0.20000000298023224,
+    "FriendlyLabelColor": {
+     "B": 213,
+     "G": 181,
+     "R": 80,
+     "A": 255
+    },
+    "EnemyLabelColor": {
+     "B": 60,
+     "G": 60,
+     "R": 240,
+     "A": 255
+    },
+    "NeutralLabelColor": {
+     "B": 255,
+     "G": 255,
+     "R": 255,
+     "A": 255
+    }
+   }
+  }
+ },
+ "confidence": "CONFIRMED AUTHORED DATA"
+}

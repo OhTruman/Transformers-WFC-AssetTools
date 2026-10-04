@@ -1,0 +1,1838 @@
+{
+ "generated_by": "AssetTools/scripts/wfc/mp_roster.py",
+ "source": "TransCustomization.ini providers + TransGame.int/.FRA + class CDOs",
+ "specialties (classes)": {
+  "Soldier": {
+   "UniqueId": "Soldier",
+   "XpPropertyId": "0x0051",
+   "ObjectPath": "TransGame.TnSpecialtySoldier",
+   "DefaultSecondaryWeapon": "HomingRocket",
+   "name": {
+    "INT": "Soldier",
+    "FRA": "Soldat"
+   },
+   "description": {
+    "INT": null,
+    "FRA": null
+   },
+   "class_defaults": {
+    "SpeedMultiplier": 0.8999999761581421,
+    "HealthBlueprint": "TR_Health_p.Health_Soldier",
+    "Tag": "Soldier"
+   },
+   "speed_multiplier": "0.9"
+  },
+  "Leader": {
+   "UniqueId": "Leader",
+   "XpPropertyId": "0x0053",
+   "ObjectPath": "TransGame.TnSpecialtyLeader",
+   "DefaultSecondaryWeapon": "HeavyPistol",
+   "name": {
+    "INT": "Leader",
+    "FRA": "Chef"
+   },
+   "description": {
+    "INT": null,
+    "FRA": null
+   },
+   "class_defaults": {
+    "SpeedMultiplier": 0.949999988079071,
+    "HealthBlueprint": "TR_Health_p.Health_Leader",
+    "Tag": "Leader"
+   },
+   "speed_multiplier": "0.95"
+  },
+  "Scientist": {
+   "UniqueId": "Scientist",
+   "XpPropertyId": "0x0052",
+   "ObjectPath": "TransGame.TnSpecialtyScientist",
+   "DefaultSecondaryWeapon": "RepairRay",
+   "name": {
+    "INT": "Scientist",
+    "FRA": "Scientifique"
+   },
+   "description": {
+    "INT": null,
+    "FRA": null
+   },
+   "class_defaults": {
+    "SpeedMultiplier": 0.8999999761581421,
+    "HealthBlueprint": "TR_Health_p.Health_Scientist",
+    "Tag": "Scientist"
+   },
+   "speed_multiplier": "0.9"
+  },
+  "Scout": {
+   "UniqueId": "Scout",
+   "XpPropertyId": "0x0050",
+   "ObjectPath": "TransGame.TnSpecialtyScout",
+   "DefaultSecondaryWeapon": "EMPShotgun",
+   "name": {
+    "INT": "Scout",
+    "FRA": "Éclaireur"
+   },
+   "description": {
+    "INT": null,
+    "FRA": null
+   },
+   "class_defaults": {
+    "SpeedMultiplier": 1.0,
+    "HealthBlueprint": "TR_Health_p.Health_Scout",
+    "Tag": "Scout"
+   },
+   "speed_multiplier": "1.0"
+  }
+ },
+ "abilities": {
+  "Cloaking": {
+   "UniqueId": "Cloaking",
+   "SpecialtyRestriction": "Scout",
+   "LevelRestriction": "0",
+   "ObjectPath": "TransGame.TnAbilityCloaking",
+   "name": {
+    "INT": "Cloaking",
+    "FRA": "Camouflage"
+   },
+   "description": {
+    "INT": "Become nearly invisible on the battlefield.",
+    "FRA": "Deviens quasiment invisible sur le champ de bataille."
+   },
+   "class_defaults": {
+    "BuffToAdd": "TransGame.TnBuffCloak",
+    "CanBeForceEnded": true,
+    "CooldownCondition": "TransGame.Default__TnAbilityCloaking.HadAndLostBuffCondition0",
+    "AbilityStimulusType": "TransGame.TnStimulusType_Cloaking",
+    "OnTriggerEffectSocket": "PositionSocket",
+    "CooldownReductionModifier": 0.75,
+    "bServerCanStartCooldown": true,
+    "ResourceAmountModifier": "TransGame.Default__TnAbility.ResourceAmountModifier0"
+   }
+  },
+  "HardLock": {
+   "UniqueId": "HardLock",
+   "SpecialtyRestriction": "Scout",
+   "LevelRestriction": "5",
+   "ObjectPath": "TransGame.TnAbilityHardLock",
+   "name": {
+    "INT": "Mark Target",
+    "FRA": "Marquage de cible"
+   },
+   "description": {
+    "INT": "Tags an enemy with an electromagnetic pulse which weakens their armor and reveals their location.",
+    "FRA": "Marque un ennemi grâce à une impulsion électromagnétique qui affaiblit son blindage et dévoile sa position."
+   },
+   "class_defaults": {
+    "OnTriggerSound": "BL_INTRFC_TECH_TREE.HARD_LOCK_INITIATED",
+    "CooldownCondition": "TransGame.Default__TnAbilityHardLock.CooldownCondition0",
+    "OnTriggerEffectSocket": "PositionSocket",
+    "CooldownReductionModifier": 0.75,
+    "bServerCanStartCooldown": true,
+    "ResourceAmountModifier": "TransGame.Default__TnAbility.ResourceAmountModifier0"
+   }
+  },
+  "Hover": {
+   "UniqueId": "Hover",
+   "SpecialtyRestriction": "Soldier",
+   "LevelRestriction": "0",
+   "ObjectPath": "TransGame.TnAbilityHover",
+   "name": {
+    "INT": "Hover",
+    "FRA": "Planeur"
+   },
+   "description": {
+    "INT": "Gives ability to hover in the air and increases weapon damage.",
+    "FRA": "Permet de planer et d'augmenter les dégâts des armes."
+   },
+   "class_defaults": {
+    "CooldownCondition": "TransGame.Default__TnAbilityHover.CooldownCondition0",
+    "AbilityStimulusType": "TransGame.TnStimulusType_Hover",
+    "OnTriggerEffectSocket": "PositionSocket",
+    "CooldownReductionModifier": 0.75,
+    "bServerCanStartCooldown": true,
+    "ResourceAmountModifier": "TransGame.Default__TnAbility.ResourceAmountModifier0"
+   }
+  },
+  "DecoyTrap": {
+   "UniqueId": "DecoyTrap",
+   "SpecialtyRestriction": "Scout",
+   "LevelRestriction": "2",
+   "ObjectPath": "TransGame.TnAbilityDecoyTrap",
+   "name": {
+    "INT": "Decoy Trap",
+    "FRA": "Leurre"
+   },
+   "description": {
+    "INT": "Spawns a decoy pickup which stuns enemies when touched.",
+    "FRA": "Génère un leurre étourdissant les ennemis qui le touchent."
+   },
+   "class_defaults": {
+    "InventoryTypeToSpawn": "TransGame.TnDecoyTrap",
+    "SpawnDelay": 0.5,
+    "OnTriggerSound": "BL_TRANS_POWER.DECOY_TRAP_DEPLOY",
+    "CooldownCondition": "TransGame.Default__TnAbilityDecoyTrap.CooldownCondition0",
+    "RequiresServerStartCooldown": true,
+    "OnTriggerEffectSocket": "PositionSocket",
+    "CooldownReductionModifier": 0.75,
+    "bServerCanStartCooldown": true,
+    "ResourceAmountModifier": "TransGame.Default__TnAbility.ResourceAmountModifier0"
+   }
+  },
+  "Dodge": {
+   "UniqueId": "Dodge",
+   "SpecialtyRestriction": "Scout",
+   "LevelRestriction": "0",
+   "ObjectPath": "TransGame.TnAbilityDodge",
+   "name": {
+    "INT": "Dash",
+    "FRA": "Accélération"
+   },
+   "description": {
+    "INT": "Quickly dash in any direction.",
+    "FRA": "Permet d'avancer rapidement dans n'importe quelle direction."
+   },
+   "class_defaults": {
+    "CooldownCondition": "TransGame.Default__TnAbilityDodge.CooldownCondition0",
+    "OnTriggerEffectSocket": "PositionSocket",
+    "CooldownReductionModifier": 0.75,
+    "bServerCanStartCooldown": true,
+    "ResourceAmountModifier": "TransGame.Default__TnAbility.ResourceAmountModifier0"
+   }
+  },
+  "SpawnAmmoCrate": {
+   "UniqueId": "SpawnAmmoCrate",
+   "SpecialtyRestriction": "Soldier",
+   "LevelRestriction": "2",
+   "ObjectPath": "TransGame.TnAbilitySpawnAmmoCrate",
+   "name": {
+    "INT": "Ammo Beacon",
+    "FRA": "Balise à munitions"
+   },
+   "description": {
+    "INT": "Deploys a beacon which refills teammate's ammo and increases weapon damage when near it.",
+    "FRA": "Ravitaille le coequipier et augmente les dégâts de son arme"
+   },
+   "class_defaults": {
+    "InventoryTypeToSpawn": "TransGame.TnAmmoBeacon",
+    "ShouldDestroyOnOwnerDeath": true,
+    "SpawnDelay": 0.5,
+    "OnTriggerSound": "BL_TRANS_POWER.AMMO_DEPLOY",
+    "CooldownCondition": "TransGame.Default__TnAbilitySpawnAmmoCrate.CooldownCondition0",
+    "RequiresServerStartCooldown": true,
+    "OnTriggerEffectSocket": "PositionSocket",
+    "CooldownReductionModifier": 0.75,
+    "bServerCanStartCooldown": true,
+    "ResourceAmountModifier": "TransGame.Default__TnAbility.ResourceAmountModifier0"
+   }
+  },
+  "Shockwave": {
+   "UniqueId": "Shockwave",
+   "SpecialtyRestriction": "Scientist",
+   "LevelRestriction": "0",
+   "ObjectPath": "TransGame.TnAbilityShockwave",
+   "name": {
+    "INT": "Shockwave",
+    "FRA": "Onde de choc"
+   },
+   "description": {
+    "INT": "Pushes enemies back and causes damage.",
+    "FRA": "Repousse les ennemis tout en leur infligeant des dégâts."
+   },
+   "class_defaults": {
+    "Delay": 0.25,
+    "SocketName": "PositionSocket",
+    "ResourceRequired": 100.0,
+    "CooldownCondition": "TransGame.Default__TnAbilityShockwave.CooldownCondition0",
+    "OnTriggerEffectSocket": "PositionSocket",
+    "CooldownReductionModifier": 0.75,
+    "bServerCanStartCooldown": true,
+    "ResourceAmountModifier": "TransGame.Default__TnAbility.ResourceAmountModifier0"
+   }
+  },
+  "Whirlwind": {
+   "UniqueId": "Whirlwind",
+   "SpecialtyRestriction": "Soldier",
+   "LevelRestriction": "0",
+   "ObjectPath": "TransGame.TnAbilityWhirlwind",
+   "name": {
+    "INT": "Whirlwind",
+    "FRA": "Tourbillon"
+   },
+   "description": {
+    "INT": "Gives ability to do a Whirlwind melee attack.",
+    "FRA": "Permet d'effectuer une attaque de mêlée tourbillonnante."
+   },
+   "class_defaults": {
+    "ResourceRequired": 100.0,
+    "CooldownCondition": "TransGame.Default__TnAbilityWhirlwind.CooldownCondition0",
+    "AbilityStimulusType": "TransGame.TnStimulusType_Whirlwind",
+    "OnTriggerEffectSocket": "PositionSocket",
+    "CooldownReductionModifier": 0.75,
+    "bServerCanStartCooldown": true,
+    "ResourceAmountModifier": "TransGame.Default__TnAbility.ResourceAmountModifier0"
+   }
+  },
+  "Drain": {
+   "UniqueId": "Drain",
+   "SpecialtyRestriction": "Scientist",
+   "LevelRestriction": "2",
+   "ObjectPath": "TransGame.TnAbilityDrain",
+   "name": {
+    "INT": "Drain",
+    "FRA": "Drain"
+   },
+   "description": {
+    "INT": "Siphons health from enemies.",
+    "FRA": "Permet de siphonner l'énergie des ennemis."
+   },
+   "class_defaults": {
+    "BuffToAdd": "TransGame.TnBuffDrainSource",
+    "OnTriggerEffect": "FX_Multiplayer_p.FX.Drain_Blast_FX",
+    "OnTriggerSound": "BL_TRANS_POWER.DRAIN_INITIATE",
+    "ResourceRequired": 100.0,
+    "CooldownCondition": "TransGame.Default__TnAbilityDrain.HadAndLostBuffCondition0",
+    "AbilityStimulusType": "TransGame.TnStimulusType_AoeDrain",
+    "OnTriggerEffectSocket": "PositionSocket",
+    "CooldownReductionModifier": 0.75,
+    "bServerCanStartCooldown": true,
+    "ResourceAmountModifier": "TransGame.Default__TnAbility.ResourceAmountModifier0"
+   }
+  },
+  "SpawnSentry": {
+   "UniqueId": "SpawnSentry",
+   "SpecialtyRestriction": "Scientist",
+   "LevelRestriction": "0",
+   "ObjectPath": "TransGame.TnAbilitySpawnSentry",
+   "name": {
+    "INT": "Spawn Sentry",
+    "FRA": "Génération de Gardien"
+   },
+   "description": {
+    "INT": "Spawns a sentry (sentries can see cloaked characters).",
+    "FRA": "Génère un Gardien capable de détecter les unités furtives."
+   },
+   "class_defaults": {
+    "SpawnHeight": 375.0,
+    "SpawnDelay": 0.20000000298023224,
+    "DefaultBlueprint": "WEP_SentryAbility_p.Default_TURRETDEF",
+    "RocketBlueprint": "WEP_SentryAbility_p.Rocket_TURRETDEF",
+    "RepairBlueprint": "WEP_SentryAbility_p.Repair_TURRETDEF",
+    "PawnFactory": "TransGame.Default__TnAbilitySpawnSentry.PawnFactory0",
+    "ResourceRequired": 100.0,
+    "CooldownCondition": "TransGame.Default__TnAbilitySpawnSentry.CooldownCondition0",
+    "RequiresServerStartCooldown": true,
+    "OnTriggerEffectSocket": "PositionSocket",
+    "CooldownReductionModifier": 0.75,
+    "bServerCanStartCooldown": true,
+    "ResourceAmountModifier": "TransGame.Default__TnAbility.ResourceAmountModifier0"
+   }
+  },
+  "AbilityJammer": {
+   "UniqueId": "AbilityJammer",
+   "SpecialtyRestriction": "Soldier",
+   "LevelRestriction": "5",
+   "ObjectPath": "TransGame.TnAbilityAbilityJammer",
+   "name": {
+    "INT": "Energon Sling",
+    "FRA": "Fronde à énergon"
+   },
+   "description": {
+    "INT": "Disables enemy Ability use for a brief time.",
+    "FRA": "Empêche l'ennemi d'utiliser ses compétences pendant un bref instant."
+   },
+   "class_defaults": {
+    "ProjectileType": "TransGame.TnProjectileAbilityJammer",
+    "OnTriggerSound": "BL_TRANS_POWER.ENERGON_SLING_FIRE",
+    "CooldownCondition": "TransGame.Default__TnAbilityAbilityJammer.CooldownCondition0",
+    "SpawnSocket": "SkillSocket_Primary",
+    "OnTriggerEffectSocket": "PositionSocket",
+    "CooldownReductionModifier": 0.75,
+    "bServerCanStartCooldown": true,
+    "ResourceAmountModifier": "TransGame.Default__TnAbility.ResourceAmountModifier0"
+   }
+  },
+  "Disguise": {
+   "UniqueId": "Disguise",
+   "SpecialtyRestriction": "Scientist",
+   "LevelRestriction": "5",
+   "ObjectPath": "TransGame.TnAbilityDisguise",
+   "name": {
+    "INT": "Disguise",
+    "FRA": "Déguisement"
+   },
+   "description": {
+    "INT": "Appear as an ally to the enemy.",
+    "FRA": "Permet de se faire passer pour un allié aux yeux de l'ennemi."
+   },
+   "class_defaults": {
+    "BuffToAdd": "TransGame.TnBuffDisguise",
+    "CanBeForceEnded": true,
+    "OnTriggerSound": "BL_TRANS_POWER.DISGUISE_INITIATE",
+    "CooldownCondition": "TransGame.Default__TnAbilityDisguise.HadAndLostBuffCondition0",
+    "OnTriggerEffectSocket": "PositionSocket",
+    "CooldownReductionModifier": 0.75,
+    "bServerCanStartCooldown": true,
+    "ResourceAmountModifier": "TransGame.Default__TnAbility.ResourceAmountModifier0"
+   }
+  },
+  "Poke": {
+   "UniqueId": "Poke",
+   "SpecialtyRestriction": "SinglePlayer",
+   "ObjectPath": "TransGame.TnAbilityPoke",
+   "name": {
+    "INT": "P.O.K.E. 2.0",
+    "FRA": "POING DESTRUCTEUR 2.0"
+   },
+   "description": {
+    "INT": "P.O.K.E. 2.0",
+    "FRA": "POING DESTRUCTEUR 2.0"
+   },
+   "class_defaults": {
+    "InventoryTypeAsString": "TransContent.TnWeaponPoke",
+    "CooldownCondition": "TransGame.Default__TnAbilityPoke.CooldownCondition0",
+    "OnTriggerEffectSocket": "PositionSocket",
+    "CooldownReductionModifier": 0.75,
+    "bServerCanStartCooldown": true,
+    "ResourceAmountModifier": "TransGame.Default__TnAbility.ResourceAmountModifier0"
+   }
+  },
+  "GuidedMissile": {
+   "UniqueId": "GuidedMissile",
+   "SpecialtyRestriction": "SinglePlayer",
+   "ObjectPath": "TransGame.TnAbilityGuidedMissile",
+   "name": {
+    "INT": "Guided Missile",
+    "FRA": "Missile téléguidé"
+   },
+   "description": {
+    "INT": "Remote controlled mini-nuke",
+    "FRA": "Petite bombe nucléaire contrôlée à distance."
+   },
+   "class_defaults": {
+    "SpawnSocket": "ReactionSocket_Chest",
+    "MinimumSpawnPitch": 700,
+    "MaximumSpawnPitch": 16384,
+    "Delay": 1.0,
+    "ResourceRequired": 100.0,
+    "CooldownCondition": "TransGame.Default__TnAbilityGuidedMissile.GuideMissileCooldownCondition0",
+    "AbilityStimulusType": "TransGame.TnStimulusType_GuidedMissile",
+    "OnTriggerEffectSocket": "PositionSocket",
+    "CooldownReductionModifier": 0.75,
+    "bServerCanStartCooldown": true,
+    "ResourceAmountModifier": "TransGame.Default__TnAbility.ResourceAmountModifier0"
+   }
+  },
+  "Warcry": {
+   "UniqueId": "Warcry",
+   "SpecialtyRestriction": "Leader",
+   "LevelRestriction": "0",
+   "ObjectPath": "TransGame.TnAbilityWarcry",
+   "name": {
+    "INT": "Warcry",
+    "FRA": "Cri de guerre"
+   },
+   "description": {
+    "INT": "Area of effect buffs armor and damage output.",
+    "FRA": "Procure un bonus de blindage et de dégâts dans une certaine zone."
+   },
+   "class_defaults": {
+    "AoeRange": 3000.0,
+    "AoeRangeModifier": "TransGame.Default__TnAbilityWarcry.AoeRangeModifier0",
+    "OnTriggerEffect": "FX_Multiplayer_p.FX.WarCry_AOE_FX",
+    "OnTriggerEffectSocket": "Chest_FX",
+    "ResourceRequired": 100.0,
+    "CooldownCondition": "TransGame.Default__TnAbilityWarcry.HadAndLostBuffCondition0",
+    "AbilityStimulusType": "TransGame.TnStimulusType_Warcry",
+    "CooldownReductionModifier": 0.75,
+    "bServerCanStartCooldown": true,
+    "ResourceAmountModifier": "TransGame.Default__TnAbility.ResourceAmountModifier0"
+   }
+  },
+  "TransformDisruptor": {
+   "UniqueId": "TransformDisruptor",
+   "SpecialtyRestriction": "Leader",
+   "LevelRestriction": "5",
+   "ObjectPath": "TransGame.TnAbilityTransformDisruptor",
+   "name": {
+    "INT": "Disruption",
+    "FRA": "Perturbation"
+   },
+   "description": {
+    "INT": "Forces victim to change form and locks them in that form for a brief time.",
+    "FRA": "Oblige la victime à changer de forme et la bloque sous cette forme pendant un court instant."
+   },
+   "class_defaults": {
+    "ProjectileType": "TransGame.TnProjectileTransformDisruptor",
+    "OnTriggerSound": "BL_TRANS_POWER.TRANSFORM_DISRUPTOR",
+    "CooldownCondition": "TransGame.Default__TnAbilityTransformDisruptor.CooldownCondition0",
+    "SpawnSocket": "SkillSocket_Primary",
+    "OnTriggerEffectSocket": "PositionSocket",
+    "CooldownReductionModifier": 0.75,
+    "bServerCanStartCooldown": true,
+    "ResourceAmountModifier": "TransGame.Default__TnAbility.ResourceAmountModifier0"
+   }
+  },
+  "RollerSphere": {
+   "UniqueId": "RollerSphere",
+   "SpecialtyRestriction": "Leader",
+   "LevelRestriction": "2",
+   "ObjectPath": "TransGame.TnAbilityRollerSphere",
+   "name": {
+    "INT": "Moleculon Bomb",
+    "FRA": "Bombe Moleculon"
+   },
+   "description": {
+    "INT": "Slows enemies who get near it and causes damage when it explodes.",
+    "FRA": "Ralentit les ennemis qui s'en approchent et leur inflige des dégâts quand elle explose."
+   },
+   "class_defaults": {
+    "SpawnDelay": 0.5,
+    "SpawnLocationValidator": "TransGame.Default__TnAbilityRollerSphere.SpawnLocationValidator0",
+    "ResourceRequired": 100.0,
+    "CooldownCondition": "TransGame.Default__TnAbilityRollerSphere.CooldownCondition0",
+    "RequiresServerStartCooldown": true,
+    "OnTriggerEffectSocket": "PositionSocket",
+    "CooldownReductionModifier": 0.75,
+    "bServerCanStartCooldown": true,
+    "ResourceAmountModifier": "TransGame.Default__TnAbility.ResourceAmountModifier0"
+   }
+  },
+  "Barrier": {
+   "UniqueId": "Barrier",
+   "SpecialtyRestriction": "Leader",
+   "LevelRestriction": "0",
+   "ObjectPath": "TransGame.TnAbilityBarrier",
+   "name": {
+    "INT": "Barrier",
+    "FRA": "Barrière"
+   },
+   "description": {
+    "INT": "Deploys an Energon Shield Barrier.",
+    "FRA": "Déploie une barrière protectrice à l'énergon."
+   },
+   "class_defaults": {
+    "SpawnDelay": 0.5,
+    "OnTriggerSound": "BL_TRANS_POWER.BARRIER_DEPLOY",
+    "CooldownCondition": "TransGame.Default__TnAbilityBarrier.CooldownCondition0",
+    "RequiresServerStartCooldown": true,
+    "OnTriggerEffectSocket": "PositionSocket",
+    "CooldownReductionModifier": 0.75,
+    "bServerCanStartCooldown": true,
+    "ResourceAmountModifier": "TransGame.Default__TnAbility.ResourceAmountModifier0"
+   }
+  }
+ },
+ "skills": {
+  "AbilityCooldown": {
+   "UniqueId": "AbilityCooldown",
+   "SpecialtyRestriction": "Scout,Soldier,Leader,Scientist",
+   "LevelRestriction": "25",
+   "ObjectPath": "TransGame.TnSkillAbilityCooldown",
+   "MaxSkillLevel": "1",
+   "SkillType": "2",
+   "name": {
+    "INT": "Rapid Recharge",
+    "FRA": "Rechargement rapide"
+   },
+   "description": {
+    "INT": "Reduces Ability recharge time.",
+    "FRA": "Réduit le temps de recharge des compétences."
+   },
+   "class_defaults": {
+    "BuffToApply": "TransGame.TnBuffAbilityCooldown"
+   }
+  },
+  "IncreaseAmmoFromClips": {
+   "UniqueId": "IncreaseAmmoFromClips",
+   "SpecialtyRestriction": "Scout,Soldier,Leader,Scientist",
+   "LevelRestriction": "9",
+   "ObjectPath": "TransGame.TnSkillIncreaseAmmoFromClips",
+   "MaxSkillLevel": "1",
+   "SkillType": "2",
+   "name": {
+    "INT": "Blaster Amplifier",
+    "FRA": "Amplificateur de blaster"
+   },
+   "description": {
+    "INT": "Carry two extra clips of ammo.",
+    "FRA": "Permet de transporter deux chargeurs de munitions supplémentaires."
+   },
+   "class_defaults": {}
+  },
+  "ExtraGrenade": {
+   "UniqueId": "ExtraGrenade",
+   "SpecialtyRestriction": "Scout,Soldier,Leader,Scientist",
+   "LevelRestriction": "21",
+   "ObjectPath": "TransGame.TnSkillExtraGrenade",
+   "MaxSkillLevel": "1",
+   "SkillType": "2",
+   "name": {
+    "INT": "Explosive Capacitor",
+    "FRA": "Condensateur explosif"
+   },
+   "description": {
+    "INT": "Carry an extra grenade.",
+    "FRA": "Permet de transporter une grenade supplémentaire."
+   },
+   "class_defaults": {}
+  },
+  "ReduceRecoil": {
+   "UniqueId": "ReduceRecoil",
+   "SpecialtyRestriction": "Scout,Soldier,Leader,Scientist",
+   "LevelRestriction": "6",
+   "ObjectPath": "TransGame.TnSkillReduceRecoil",
+   "MaxSkillLevel": "1",
+   "SkillType": "2",
+   "name": {
+    "INT": "Weapon Stabilizer",
+    "FRA": "Stabilisateur d'arme"
+   },
+   "description": {
+    "INT": "Reduces the kickback when firing weapons.",
+    "FRA": "Réduit le recul des armes lors des tirs."
+   },
+   "class_defaults": {
+    "BuffToApply": "TransGame.TnBuffReduceRecoil"
+   }
+  },
+  "DecreaseHealthRegenDelay": {
+   "UniqueId": "DecreaseHealthRegenDelay",
+   "SpecialtyRestriction": "Scout,Soldier,Leader,Scientist",
+   "LevelRestriction": "15",
+   "ObjectPath": "TransGame.TnSkillDecreaseHealthRegenDelay",
+   "MaxSkillLevel": "1",
+   "SkillType": "2",
+   "name": {
+    "INT": "First Aid",
+    "FRA": "Premiers secours"
+   },
+   "description": {
+    "INT": "Decreases health regeneration delay.",
+    "FRA": "Réduit le délai de régénération de l'énergie."
+   },
+   "class_defaults": {
+    "BuffToApply": "TransGame.TnBuffDecreaseHealthRegenDelay"
+   }
+  },
+  "Backstab": {
+   "UniqueId": "Backstab",
+   "SpecialtyRestriction": "Scout",
+   "LevelRestriction": "1",
+   "ObjectPath": "TransGame.TnSkillIncreaseMeleeDamageFromBehind",
+   "MaxSkillLevel": "1",
+   "SkillType": "0",
+   "name": {
+    "INT": "Backstab",
+    "FRA": "Attaque sournoise"
+   },
+   "description": {
+    "INT": "Gives Melee damage bonus when attacking from behind.",
+    "FRA": "Procure un bonus de dégâts de mêlée pour les attaques par derrière."
+   },
+   "class_defaults": {
+    "BuffToApply": "TransGame.TnBuffIncreaseMeleeDamageFromBehind"
+   }
+  },
+  "DisableCloakEffects": {
+   "UniqueId": "DisableCloakEffects",
+   "SpecialtyRestriction": "Scout",
+   "LevelRestriction": "13",
+   "ObjectPath": "TransGame.TnSkillDisableCloakEffects",
+   "MaxSkillLevel": "1",
+   "SkillType": "1",
+   "name": {
+    "INT": "Dimensional Step",
+    "FRA": "Marche dimensionnelle"
+   },
+   "description": {
+    "INT": "Adds armor when coming out of cloak and removes activation cloaking effects.",
+    "FRA": "Ajoute le blindage à la désactivation du camouflage et supprime les effets de l'activation du camouflage."
+   },
+   "class_defaults": {}
+  },
+  "IncreaseDamageAfterCloak": {
+   "UniqueId": "IncreaseDamageAfterCloak",
+   "SpecialtyRestriction": "Scout",
+   "LevelRestriction": "1",
+   "ObjectPath": "TransGame.TnSkillIncreaseDamageAfterCloak",
+   "MaxSkillLevel": "1",
+   "SkillType": "0",
+   "name": {
+    "INT": "Surprise Attack",
+    "FRA": "Attaque surprise"
+   },
+   "description": {
+    "INT": "Increases damage after decloaking.",
+    "FRA": "Augmente tes dégâts lorsque tu perds ton camouflage."
+   },
+   "class_defaults": {}
+  },
+  "IncreaseCloakTime": {
+   "UniqueId": "IncreaseCloakTime",
+   "SpecialtyRestriction": "Scout",
+   "LevelRestriction": "3",
+   "ObjectPath": "TransGame.TnSkillIncreaseCloakTime",
+   "MaxSkillLevel": "1",
+   "SkillType": "1",
+   "name": {
+    "INT": "Ghost",
+    "FRA": "Fantôme"
+   },
+   "description": {
+    "INT": "Cloaking generators resonate at a higher frequency providing increased cloaking time.",
+    "FRA": "Les générateurs de camouflage résonnent à une fréquence supérieure permettant de prolonger la durée du camouflage."
+   },
+   "class_defaults": {
+    "BuffToApply": "TransGame.TnBuffIncreaseCloakTime"
+   }
+  },
+  "ImprovedHardLock": {
+   "UniqueId": "ImprovedHardLock",
+   "SpecialtyRestriction": "Scout",
+   "LevelRestriction": "17",
+   "ObjectPath": "TransGame.TnSkillImprovedHardLock",
+   "MaxSkillLevel": "2",
+   "SkillType": "0",
+   "name": {
+    "INT": "Targeting Chip",
+    "FRA": "Puce de ciblage"
+   },
+   "description": {
+    "INT": "Marked targets take increased damage.",
+    "FRA": "Les cibles marquées subissent plus de dégâts."
+   },
+   "class_defaults": {
+    "BuffToApply": "TransGame.TnBuffImprovedHardLock"
+   }
+  },
+  "IncreasedHardLockDuration": {
+   "UniqueId": "IncreasedHardLockDuration",
+   "SpecialtyRestriction": "Scout",
+   "LevelRestriction": "7",
+   "ObjectPath": "TransGame.TnSkillIncreasedHardLockDuration",
+   "MaxSkillLevel": "2",
+   "SkillType": "0",
+   "name": {
+    "INT": "Vendetta",
+    "FRA": "Vendetta"
+   },
+   "description": {
+    "INT": "Mark Target lasts longer.",
+    "FRA": "Prolonge l'effet de la compétence Marquage de cible."
+   },
+   "class_defaults": {
+    "BuffToApply": "TransGame.TnBuffIncreasedHardLockDuration"
+   }
+  },
+  "ModifyHoverDamageIncrease": {
+   "UniqueId": "ModifyHoverDamageIncrease",
+   "SpecialtyRestriction": "Soldier",
+   "LevelRestriction": "7",
+   "ObjectPath": "TransGame.TnSkillModifyHoverDamageIncrease",
+   "MaxSkillLevel": "1",
+   "SkillType": "0",
+   "name": {
+    "INT": "Death from Above",
+    "FRA": "Destruction venue du ciel"
+   },
+   "description": {
+    "INT": "Increases damage bonus during hover.",
+    "FRA": "Augmente le bonus de dégâts lorsque tu planes."
+   },
+   "class_defaults": {
+    "BuffToApply": "TransGame.TnBuffModifyHoverDamageIncrease"
+   }
+  },
+  "IncreaseDecoyTrapTime": {
+   "UniqueId": "IncreaseDecoyTrapTime",
+   "SpecialtyRestriction": "Scout",
+   "LevelRestriction": "23",
+   "ObjectPath": "TransGame.TnSkillIncreaseDecoyTrapTime",
+   "MaxSkillLevel": "1",
+   "SkillType": "0",
+   "name": {
+    "INT": "Stinger",
+    "FRA": "Perforation"
+   },
+   "description": {
+    "INT": "Decoy trap stun effect lasts longer.",
+    "FRA": "Prolonge la durée de l'étourdissement infligé par le leurre."
+   },
+   "class_defaults": {
+    "BuffToApply": "TransGame.TnBuffIncreaseDecoyTrapTime"
+   }
+  },
+  "DecoyDot": {
+   "UniqueId": "DecoyDot",
+   "SpecialtyRestriction": "Scout",
+   "LevelRestriction": "10",
+   "ObjectPath": "TransGame.TnSkillDecoyDot",
+   "MaxSkillLevel": "1",
+   "SkillType": "0",
+   "name": {
+    "INT": "Shock Treatment",
+    "FRA": "Traitement de choc"
+   },
+   "description": {
+    "INT": "Infuses decoy with poisoned energon which causes residual damage to victim's circuitry.",
+    "FRA": "Imprègne le leurre d'énergon empoisonné, qui provoque des dégâts résiduels aux circuits de la victime."
+   },
+   "class_defaults": {}
+  },
+  "IncreaseKamikazeMineRange": {
+   "UniqueId": "IncreaseKamikazeMineRange",
+   "SpecialtyRestriction": "Leader",
+   "LevelRestriction": "6",
+   "ObjectPath": "TransGame.TnSkillIncreaseKamikazeMineRange",
+   "MaxSkillLevel": "1",
+   "SkillType": "2",
+   "name": {
+    "INT": "Seeker",
+    "FRA": "Pisteur"
+   },
+   "description": {
+    "INT": "Increases the search radius for Thermo Mines.",
+    "FRA": "Étend le rayon de détection des mines thermiques."
+   },
+   "class_defaults": {
+    "BuffToApply": "TransGame.TnBuffIncreaseKamikazeMineRange"
+   }
+  },
+  "IncreaseDefaultSpeed": {
+   "UniqueId": "IncreaseDefaultSpeed",
+   "SpecialtyRestriction": "Scout",
+   "LevelRestriction": "8",
+   "ObjectPath": "TransGame.TnSkillIncreaseDefaultSpeed",
+   "MaxSkillLevel": "1",
+   "SkillType": "1",
+   "name": {
+    "INT": "Leg Servos",
+    "FRA": "Jambes à servomoteur"
+   },
+   "description": {
+    "INT": "Grants faster footspeed",
+    "FRA": "Augmente la vitesse de déplacement à pied."
+   },
+   "class_defaults": {
+    "BuffToApply": "TransGame.TnBuffIncreaseDefaultSpeed"
+   }
+  },
+  "IncreaseDodgeSpeed": {
+   "UniqueId": "IncreaseDodgeSpeed",
+   "SpecialtyRestriction": "Scout",
+   "LevelRestriction": "19",
+   "ObjectPath": "TransGame.TnSkillIncreaseDodgeSpeed",
+   "MaxSkillLevel": "1",
+   "SkillType": "1",
+   "name": {
+    "INT": "Fuel Efficiency",
+    "FRA": "Haut rendement"
+   },
+   "description": {
+    "INT": "Energon fuel compressor increases dash distance.",
+    "FRA": "Le compresseur à énergon augmente la distance d'accélération."
+   },
+   "class_defaults": {
+    "BuffToApply": "TransGame.TnBuffIncreaseDodgeSpeed"
+   }
+  },
+  "AmmoBeaconGiveGrenade": {
+   "UniqueId": "AmmoBeaconGiveGrenade",
+   "SpecialtyRestriction": "Soldier",
+   "LevelRestriction": "10",
+   "ObjectPath": "TransGame.TnSkillAmmoBeaconGiveGrenade",
+   "MaxSkillLevel": "1",
+   "SkillType": "0",
+   "name": {
+    "INT": "Grenade Dispenser",
+    "FRA": "Distributeur de grenades"
+   },
+   "description": {
+    "INT": "Ammo beacon generates one grenade for each teammate.",
+    "FRA": "La balise à munitions génère une grenade pour chaque coéquipier."
+   },
+   "class_defaults": {}
+  },
+  "AmmoBeaconGiftDropper": {
+   "UniqueId": "AmmoBeaconGiftDropper",
+   "SpecialtyRestriction": "Soldier",
+   "LevelRestriction": "23",
+   "ObjectPath": "TransGame.TnSkillAmmoBeaconGiftDropper",
+   "MaxSkillLevel": "1",
+   "SkillType": "0",
+   "name": {
+    "INT": "Path Blaster",
+    "FRA": "Blaster"
+   },
+   "description": {
+    "INT": "Ammo Beacon spawns an Ion Displacer turret when user and teammates stand near it and its gauge is full.",
+    "FRA": "La balise à munitions génère un déplaceur à ions lorsque la jauge de l'utilisateur est remplie et que lui et ses coéquipiers se trouvent à proximité."
+   },
+   "class_defaults": {}
+  },
+  "IncreaseShockwaveDamage": {
+   "UniqueId": "IncreaseShockwaveDamage",
+   "SpecialtyRestriction": "Scientist",
+   "LevelRestriction": "1",
+   "ObjectPath": "TransGame.TnSkillIncreaseShockwaveDamage",
+   "MaxSkillLevel": "1",
+   "SkillType": "0",
+   "name": {
+    "INT": "Energon Storm",
+    "FRA": "Tempête d'énergon"
+   },
+   "description": {
+    "INT": "Increases damage Shockwave deals.",
+    "FRA": "Augmente les dégâts infligés par la compétence Onde de choc."
+   },
+   "class_defaults": {}
+  },
+  "IncreaseShockwaveRadius": {
+   "UniqueId": "IncreaseShockwaveRadius",
+   "SpecialtyRestriction": "Scientist",
+   "LevelRestriction": "23",
+   "ObjectPath": "TransGame.TnSkillIncreaseShockwaveRadius",
+   "MaxSkillLevel": "1",
+   "SkillType": "0",
+   "name": {
+    "INT": "Repulsion Amplifier",
+    "FRA": "Amplificateur répulsion"
+   },
+   "description": {
+    "INT": "Increases radius of Shockwave.",
+    "FRA": "Étend le rayon d'action de la compétence Onde de choc."
+   },
+   "class_defaults": {}
+  },
+  "IncreaseWhirlwindDamage": {
+   "UniqueId": "IncreaseWhirlwindDamage",
+   "SpecialtyRestriction": "Soldier",
+   "LevelRestriction": "1",
+   "ObjectPath": "TransGame.TnSkillIncreaseWhirlwindDamage",
+   "MaxSkillLevel": "1",
+   "SkillType": "0",
+   "name": {
+    "INT": "P.o.K.E. Alpha",
+    "FRA": "Poing destructeur Alpha"
+   },
+   "description": {
+    "INT": "Increases damage of Whirlwind ability.",
+    "FRA": "Augmente les dégâts de la compétence Tourbillon."
+   },
+   "class_defaults": {
+    "BuffToApply": "TransGame.TnBuffIncreaseWhirlwindDamage"
+   }
+  },
+  "DecreaseDamageTakenDuringWhirlwind": {
+   "UniqueId": "DecreaseDamageTakenDuringWhirlwind",
+   "SpecialtyRestriction": "Soldier",
+   "LevelRestriction": "19",
+   "ObjectPath": "TransGame.TnSkillDecreaseDamageTakenDuringWhirlwind",
+   "MaxSkillLevel": "1",
+   "SkillType": "1",
+   "name": {
+    "INT": "Energon Absorbers",
+    "FRA": "Absorbeurs d'énergon"
+   },
+   "description": {
+    "INT": "Decreases damage taken while Whirlwinding",
+    "FRA": "Réduit les dégâts subis durant l'utilisation de la compétence Tourbillon."
+   },
+   "class_defaults": {
+    "BuffToApply": "TransGame.TnBuffDecreaseDamageTakenDuringWhirlwind"
+   }
+  },
+  "IncreaseWhirlwindSpeed": {
+   "UniqueId": "IncreaseWhirlwindSpeed",
+   "SpecialtyRestriction": "Soldier",
+   "LevelRestriction": "3",
+   "ObjectPath": "TransGame.TnSkillIncreaseWhirlwindSpeed",
+   "MaxSkillLevel": "1",
+   "SkillType": "1",
+   "name": {
+    "INT": "Flurry of Blows",
+    "FRA": "Volée de coups"
+   },
+   "description": {
+    "INT": "Increases movement speed while using the Whirlwind ability.",
+    "FRA": "Augmente la vitesse de déplacement pendant l'utilisation de la compétence Tourbillon."
+   },
+   "class_defaults": {
+    "BuffToApply": "TransGame.TnBuffIncreaseWhirlwindSpeed"
+   }
+  },
+  "CanBeDowned": {
+   "UniqueId": "CanBeDowned",
+   "SpecialtyRestriction": "Leader",
+   "LevelRestriction": "24",
+   "ObjectPath": "TransGame.TnSkillCanBeDowned",
+   "MaxSkillLevel": "1",
+   "SkillType": "1",
+   "name": {
+    "INT": "Reserve Power Cells",
+    "FRA": "Batteries de secours"
+   },
+   "description": {
+    "INT": "Ability to shoot for a brief time after being downed.",
+    "FRA": "Permettent de tirer pendant un court instant après avoir été abattu."
+   },
+   "class_defaults": {}
+  },
+  "IncreaseFlashBangRadius": {
+   "UniqueId": "IncreaseFlashBangRadius",
+   "SpecialtyRestriction": "Scout",
+   "LevelRestriction": "6",
+   "ObjectPath": "TransGame.TnSkillIncreaseFlashBangRadius",
+   "MaxSkillLevel": "1",
+   "SkillType": "2",
+   "name": {
+    "INT": "EMP Intensifier",
+    "FRA": "Intensificateur d'IEM"
+   },
+   "description": {
+    "INT": "Increases EMP Flash Bang radius",
+    "FRA": "Étend le rayon d'action des grenades aveuglantes IEM."
+   },
+   "class_defaults": {
+    "BuffToApply": "TransGame.TnBuffIncreaseFlashBangRadius"
+   }
+  },
+  "FlashBangDoesntEffectSelf": {
+   "UniqueId": "FlashBangDoesntEffectSelf",
+   "SpecialtyRestriction": "Scout",
+   "LevelRestriction": "24",
+   "ObjectPath": "TransGame.TnSkillFlashBangDoesntEffectSelf",
+   "MaxSkillLevel": "1",
+   "SkillType": "1",
+   "name": {
+    "INT": "EMP Blinders",
+    "FRA": "Brouilleurs IEM"
+   },
+   "description": {
+    "INT": "EMP Flash Bang doesn't blind user",
+    "FRA": "Les grenades aveuglantes IEM n'aveuglent pas leur utilisateur."
+   },
+   "class_defaults": {}
+  },
+  "FastReload": {
+   "UniqueId": "FastReload",
+   "SpecialtyRestriction": "Soldier",
+   "LevelRestriction": "24",
+   "ObjectPath": "TransGame.TnSkillFastReload",
+   "MaxSkillLevel": "1",
+   "SkillType": "1",
+   "name": {
+    "INT": "Improved HeatSink",
+    "FRA": "Refroidisseur amélioré"
+   },
+   "description": {
+    "INT": "Reload time for all weapons decreased.",
+    "FRA": "Réduit le temps de rechargement de toutes les armes."
+   },
+   "class_defaults": {
+    "ReloadSpeed": 1.5
+   }
+  },
+  "DecreaseWeaponSpread": {
+   "UniqueId": "DecreaseWeaponSpread",
+   "SpecialtyRestriction": "Soldier",
+   "LevelRestriction": "1",
+   "ObjectPath": "TransGame.TnSkillDecreaseWeaponSpread",
+   "MaxSkillLevel": "1",
+   "SkillType": "0",
+   "name": {
+    "INT": "Sharp Shooter",
+    "FRA": "Tireur d'élite"
+   },
+   "description": {
+    "INT": "Reduces the spread for all weapons.",
+    "FRA": "Réduit la dispersion de toutes les armes."
+   },
+   "class_defaults": {
+    "BuffToApply": "TransGame.TnBuffDecreaseWeaponSpread"
+   }
+  },
+  "IncreaseDamageHeavyWeapons": {
+   "UniqueId": "IncreaseDamageHeavyWeapons",
+   "SpecialtyRestriction": "Soldier",
+   "LevelRestriction": "17",
+   "ObjectPath": "TransGame.TnSkillIncreaseDamageHeavyWeapons",
+   "MaxSkillLevel": "1",
+   "SkillType": "0",
+   "name": {
+    "INT": "Heavy Weapons",
+    "FRA": "Armes lourdes"
+   },
+   "description": {
+    "INT": "Increases damage for EMP Shotgun, X12 ScrapMaker, and the Thermo Rocket Launcher.",
+    "FRA": "Augmente les dégâts du fusil IEM, du Destructeur X12 et du lance-roquettes thermiques."
+   },
+   "class_defaults": {
+    "BuffToApply": "TransGame.TnBuffIncreaseDamageHeavyWeapons"
+   }
+  },
+  "IncreaseRepairRayHealing": {
+   "UniqueId": "IncreaseRepairRayHealing",
+   "SpecialtyRestriction": "Scientist",
+   "LevelRestriction": "13",
+   "ObjectPath": "TransGame.TnSkillIncreaseRepairRayHealing",
+   "MaxSkillLevel": "1",
+   "SkillType": "1",
+   "name": {
+    "INT": "Energon Optimization",
+    "FRA": "Optimisation de l'énergon"
+   },
+   "description": {
+    "INT": "Increases healing rate of Repair Ray.",
+    "FRA": "Améliore l'efficacité du rayon réparateur."
+   },
+   "class_defaults": {
+    "BuffToApply": "TransGame.TnBuffIncreaseRepairRayHealing"
+   }
+  },
+  "DecreaseDamageWhenRepairRayHealing": {
+   "UniqueId": "DecreaseDamageWhenRepairRayHealing",
+   "SpecialtyRestriction": "Scientist",
+   "LevelRestriction": "3",
+   "ObjectPath": "TransGame.TnSkillDecreaseDamageWhenRepairRayHealing",
+   "MaxSkillLevel": "1",
+   "SkillType": "1",
+   "name": {
+    "INT": "Battle Medic",
+    "FRA": "Médecine de guerre"
+   },
+   "description": {
+    "INT": "Take reduced damage when healing teammates with the Repair Ray.",
+    "FRA": "Réduit les dégâts subis en soignant des coéquipiers avec le rayon réparateur."
+   },
+   "class_defaults": {}
+  },
+  "IncreaseRepairRayRange": {
+   "UniqueId": "IncreaseRepairRayRange",
+   "SpecialtyRestriction": "Scientist",
+   "LevelRestriction": "1",
+   "ObjectPath": "TransGame.TnSkillIncreaseRepairRayRange",
+   "MaxSkillLevel": "1",
+   "SkillType": "0",
+   "name": {
+    "INT": "Range Finder",
+    "FRA": "Détecteur de portée"
+   },
+   "description": {
+    "INT": "Energy cell boosts Repair Ray output range.",
+    "FRA": "Une batterie permet d'augmenter la portée du rayon réparateur."
+   },
+   "class_defaults": {
+    "BuffToApply": "TransGame.TnBuffIncreaseRepairRayRange"
+   }
+  },
+  "IncreaseDrainRate": {
+   "UniqueId": "IncreaseDrainRate",
+   "SpecialtyRestriction": "Scientist",
+   "LevelRestriction": "19",
+   "ObjectPath": "TransGame.TnSkillIncreaseDrainRate",
+   "MaxSkillLevel": "1",
+   "SkillType": "1",
+   "name": {
+    "INT": "Leech",
+    "FRA": "Sangsue"
+   },
+   "description": {
+    "INT": "Increases heal rate of Drain Ability.",
+    "FRA": "Améliore l'efficacité de la compétence Drain."
+   },
+   "class_defaults": {}
+  },
+  "RocketSentry": {
+   "UniqueId": "RocketSentry",
+   "SpecialtyRestriction": "Scientist",
+   "LevelRestriction": "7",
+   "ObjectPath": "TransGame.TnSkillRocketSentry",
+   "MaxSkillLevel": "1",
+   "SkillType": "0",
+   "name": {
+    "INT": "Rocket Sentry",
+    "FRA": "Gardien lance-roquettes"
+   },
+   "description": {
+    "INT": "Spawns a Rocket Sentry (sentries can see cloaked characters).",
+    "FRA": "Génère un Gardien lance-roquettes capable de détecter les unités furtives."
+   },
+   "class_defaults": {}
+  },
+  "RepairSentry": {
+   "UniqueId": "RepairSentry",
+   "SpecialtyRestriction": "Scientist",
+   "LevelRestriction": "10",
+   "ObjectPath": "TransGame.TnSkillRepairSentry",
+   "MaxSkillLevel": "1",
+   "SkillType": "0",
+   "name": {
+    "INT": "Repair Sentry",
+    "FRA": "Robot réparateur"
+   },
+   "description": {
+    "INT": "Spawns a Repair Sentry.",
+    "FRA": "Génère un robot réparateur."
+   },
+   "class_defaults": {}
+  },
+  "IncreaseSentryPower": {
+   "UniqueId": "IncreaseSentryPower",
+   "SpecialtyRestriction": "Scientist",
+   "LevelRestriction": "24",
+   "ObjectPath": "TransGame.TnSkillIncreaseSentryPower",
+   "MaxSkillLevel": "1",
+   "SkillType": "1",
+   "name": {
+    "INT": "Sentry Power Core",
+    "FRA": "Noyau d'énergie Gardien"
+   },
+   "description": {
+    "INT": "Increases Sentry power.",
+    "FRA": "Augmente l'énergie du Gardien."
+   },
+   "class_defaults": {
+    "BuffToApply": "TransGame.TnBuffIncreaseSentryPower"
+   }
+  },
+  "DecreaseSentryDamageTaken": {
+   "UniqueId": "DecreaseSentryDamageTaken",
+   "SpecialtyRestriction": "Scientist",
+   "LevelRestriction": "3",
+   "ObjectPath": "TransGame.TnSkillDecreaseSentryDamageTaken",
+   "MaxSkillLevel": "1",
+   "SkillType": "1",
+   "name": {
+    "INT": "Sentry Armor",
+    "FRA": "Blindage de Gardien"
+   },
+   "description": {
+    "INT": "Increases Sentry armor.",
+    "FRA": "Améliore le blindage du Gardien."
+   },
+   "class_defaults": {
+    "BuffToApply": "TransGame.TnBuffDecreaseSentryDamageTaken"
+   }
+  },
+  "KeepDisguiseWhenDamaged": {
+   "UniqueId": "KeepDisguiseWhenDamaged",
+   "SpecialtyRestriction": "Scientist",
+   "LevelRestriction": "8",
+   "ObjectPath": "TransGame.TnSkillKeepDisguiseWhenDamaged",
+   "MaxSkillLevel": "1",
+   "SkillType": "1",
+   "name": {
+    "INT": "Master of Disguise",
+    "FRA": "Maître du déguisement"
+   },
+   "description": {
+    "INT": "Disguise remains active even when shot.",
+    "FRA": "Tu conserves ton déguisement même si tu te fais tirer dessus."
+   },
+   "class_defaults": {}
+  },
+  "IncreaseDamageAfterDisguise": {
+   "UniqueId": "IncreaseDamageAfterDisguise",
+   "SpecialtyRestriction": "Scientist",
+   "LevelRestriction": "17",
+   "ObjectPath": "TransGame.TnSkillIncreaseDamageAfterDisguise",
+   "MaxSkillLevel": "1",
+   "SkillType": "0",
+   "name": {
+    "INT": "Friendly Fire",
+    "FRA": "Tir allié"
+   },
+   "description": {
+    "INT": "Increases damage after losing your disguise.",
+    "FRA": "Augmente tes dégâts lorsque ton déguisement tombe."
+   },
+   "class_defaults": {}
+  },
+  "IncreaseAbilityJammedTime": {
+   "UniqueId": "IncreaseAbilityJammedTime",
+   "SpecialtyRestriction": "Soldier",
+   "LevelRestriction": "8",
+   "ObjectPath": "TransGame.TnSkillIncreaseAbilityJammedTime",
+   "MaxSkillLevel": "1",
+   "SkillType": "1",
+   "name": {
+    "INT": "Saboteur",
+    "FRA": "Saboteur"
+   },
+   "description": {
+    "INT": "Adds time to the Energon Sling effect.",
+    "FRA": "Prolonge l'effet de la fronde à énergon."
+   },
+   "class_defaults": {
+    "BuffToApply": "TransGame.TnBuffIncreaseAbilityJammedTime"
+   }
+  },
+  "IncreaseHoverDuration": {
+   "UniqueId": "IncreaseHoverDuration",
+   "SpecialtyRestriction": "Soldier",
+   "LevelRestriction": "13",
+   "ObjectPath": "TransGame.TnSkillIncreaseHoverDuration",
+   "MaxSkillLevel": "1",
+   "SkillType": "1",
+   "name": {
+    "INT": "Flight Pack",
+    "FRA": "Kit de vol"
+   },
+   "description": {
+    "INT": "Adds time to Hover duration.",
+    "FRA": "Augmente la durée de la compétence Planeur."
+   },
+   "class_defaults": {
+    "BuffToApply": "TransGame.TnBuffIncreaseHoverDuration"
+   }
+  },
+  "ReduceExplosionDamage": {
+   "UniqueId": "ReduceExplosionDamage",
+   "SpecialtyRestriction": "Soldier,Leader",
+   "LevelRestriction": "3",
+   "ObjectPath": "TransGame.TnSkillReduceExplosionDamage",
+   "MaxSkillLevel": "1",
+   "SkillType": "1",
+   "name": {
+    "INT": "Flak Armor",
+    "FRA": "Blindage anti-éclats"
+   },
+   "description": {
+    "INT": "Reduces explosion damage.",
+    "FRA": "Réduit les dégâts des explosions."
+   },
+   "class_defaults": {
+    "BuffToApply": "TransGame.TnBuffReduceExplosionDamage"
+   }
+  },
+  "IncreaseHealingGrenadeTime": {
+   "UniqueId": "IncreaseHealingGrenadeTime",
+   "SpecialtyRestriction": "Scientist",
+   "LevelRestriction": "6",
+   "ObjectPath": "TransGame.TnSkillIncreaseHealingGrenadeTime",
+   "MaxSkillLevel": "1",
+   "SkillType": "2",
+   "name": {
+    "INT": "Sanctuary",
+    "FRA": "Sanctuaire"
+   },
+   "description": {
+    "INT": "Increases duration of Healing Grenade.",
+    "FRA": "Augmente la durée d'effet des grenades régénérantes."
+   },
+   "class_defaults": {
+    "BuffToApply": "TransGame.TnBuffIncreaseHealingGrenadeTime"
+   }
+  },
+  "IncreaseRamDamage": {
+   "UniqueId": "IncreaseRamDamage",
+   "SpecialtyRestriction": "Leader",
+   "LevelRestriction": "1",
+   "ObjectPath": "TransGame.TnSkillIncreaseRamDamage",
+   "MaxSkillLevel": "1",
+   "name": {
+    "INT": "Roll Out",
+    "FRA": "Laminage"
+   },
+   "description": {
+    "INT": "Increases ram damage.",
+    "FRA": "Augmente les dégâts des charges."
+   },
+   "class_defaults": {
+    "BuffToApply": "TransGame.TnBuffIncreaseRamDamage"
+   }
+  },
+  "ExplodeOnDeath": {
+   "UniqueId": "ExplodeOnDeath",
+   "SpecialtyRestriction": "Leader",
+   "LevelRestriction": "8",
+   "ObjectPath": "TransGame.TnSkillExplodeOnDeath",
+   "MaxSkillLevel": "1",
+   "SkillType": "1",
+   "name": {
+    "INT": "Martyrdom",
+    "FRA": "Martyre"
+   },
+   "description": {
+    "INT": "Drop Thermo Mines in inventory when killed.",
+    "FRA": "Permet de lâcher des mines thermiques dans ton inventaire quand tu es désactivé."
+   },
+   "class_defaults": {
+    "BuffToApply": "TransGame.TnBuffExplodeOnDeath"
+   }
+  },
+  "IncreaseWarcryRange": {
+   "UniqueId": "IncreaseWarcryRange",
+   "SpecialtyRestriction": "Leader",
+   "LevelRestriction": "1",
+   "ObjectPath": "TransGame.TnSkillIncreaseWarcryRange",
+   "MaxSkillLevel": "1",
+   "SkillType": "0",
+   "name": {
+    "INT": "Rally",
+    "FRA": "Ralliement"
+   },
+   "description": {
+    "INT": "Increases Warcry's radius.",
+    "FRA": "Augmente le rayon d'action du cri de guerre."
+   },
+   "class_defaults": {
+    "BuffToApply": "TransGame.TnBuffIncreaseWarcryRange"
+   }
+  },
+  "ImprovedWarcry": {
+   "UniqueId": "ImprovedWarcry",
+   "SpecialtyRestriction": "Leader",
+   "LevelRestriction": "23",
+   "ObjectPath": "TransGame.TnSkillImprovedWarcry",
+   "MaxSkillLevel": "1",
+   "SkillType": "0",
+   "name": {
+    "INT": "Rage",
+    "FRA": "Rage"
+   },
+   "description": {
+    "INT": "Damage and Armor buff for Warcry increased.",
+    "FRA": "Augmente le bonus de dégâts et de blindage procuré par le cri de guerre."
+   },
+   "class_defaults": {}
+  },
+  "IncreaseWarcryTime": {
+   "UniqueId": "IncreaseWarcryTime",
+   "SpecialtyRestriction": "Leader",
+   "LevelRestriction": "10",
+   "ObjectPath": "TransGame.TnSkillIncreaseWarcryTime",
+   "MaxSkillLevel": "1",
+   "SkillType": "0",
+   "name": {
+    "INT": "No Surrender",
+    "FRA": "Aucune reddition"
+   },
+   "description": {
+    "INT": "Warcry effect lasts longer.",
+    "FRA": "Prolonge la durée d'effet du cri de guerre."
+   },
+   "class_defaults": {
+    "BuffToApply": "TransGame.TnBuffIncreaseWarcryTime"
+   }
+  },
+  "TransformDisruptorDot": {
+   "UniqueId": "TransformDisruptorDot",
+   "SpecialtyRestriction": "Leader",
+   "LevelRestriction": "17",
+   "ObjectPath": "TransGame.TnSkillTransformDisruptorDot",
+   "MaxSkillLevel": "1",
+   "SkillType": "0",
+   "name": {
+    "INT": "Corrode",
+    "FRA": "Corroder"
+   },
+   "description": {
+    "INT": "Adds damage over time to victims of the Disruption.",
+    "FRA": "Inflige des dégâts répétés supplémentaires aux cibles de la compétence Perturbateur."
+   },
+   "class_defaults": {}
+  },
+  "IncreaseTransformDisruptorTime": {
+   "UniqueId": "IncreaseTransformDisruptorTime",
+   "SpecialtyRestriction": "Leader",
+   "LevelRestriction": "13",
+   "ObjectPath": "TransGame.TnSkillIncreaseTransformDisruptorTime",
+   "MaxSkillLevel": "1",
+   "SkillType": "1",
+   "name": {
+    "INT": "Chaos Master",
+    "FRA": "Maître du chaos"
+   },
+   "description": {
+    "INT": "Disruption effect lasts longer",
+    "FRA": "Prolonge la durée d'effet de la compétence Perturbateur."
+   },
+   "class_defaults": {
+    "BuffToApply": "TransGame.TnBuffIncreaseAbilityJammedTime"
+   }
+  },
+  "RollerSphereIncreaseFriendlySpeed": {
+   "UniqueId": "RollerSphereIncreaseFriendlySpeed",
+   "SpecialtyRestriction": "Leader",
+   "LevelRestriction": "19",
+   "ObjectPath": "TransGame.TnSkillRollerSphereIncreaseFriendlySpeed",
+   "MaxSkillLevel": "1",
+   "SkillType": "1",
+   "name": {
+    "INT": "Ion Booster",
+    "FRA": "Booster à ions"
+   },
+   "description": {
+    "INT": "Gives speed boost to teammates near the Moleculon Bomb.",
+    "FRA": "Procure un bonus de vitesse aux coéquipiers près de la bombe Moleculon."
+   },
+   "class_defaults": {}
+  },
+  "RollerSphereDot": {
+   "UniqueId": "RollerSphereDot",
+   "SpecialtyRestriction": "Leader",
+   "LevelRestriction": "7",
+   "ObjectPath": "TransGame.TnSkillRollerSphereDot",
+   "MaxSkillLevel": "1",
+   "SkillType": "0",
+   "name": {
+    "INT": "Duck and Cover",
+    "FRA": "Tous aux abris"
+   },
+   "description": {
+    "INT": "Cause residual damage to enemies near Moleculon Bomb.",
+    "FRA": "Inflige des dégâts résiduels aux ennemis près de la bombe Moleculon."
+   },
+   "class_defaults": {}
+  },
+  "HealthForKill": {
+   "UniqueId": "HealthForKill",
+   "SpecialtyRestriction": "Scout",
+   "LevelRestriction": "3",
+   "ObjectPath": "TransGame.TnSkillHealthForKill",
+   "MaxSkillLevel": "1",
+   "SkillType": "1",
+   "name": {
+    "INT": "Health Matrix",
+    "FRA": "Matrice énergétique"
+   },
+   "description": {
+    "INT": "Gives health for every kill.",
+    "FRA": "Régénère de l'énergie à chaque élimination."
+   },
+   "class_defaults": {
+    "HealthToAdd": 75.0
+   }
+  },
+  "IncreaseGrenadeRadius": {
+   "UniqueId": "IncreaseGrenadeRadius",
+   "SpecialtyRestriction": "Soldier",
+   "LevelRestriction": "6",
+   "ObjectPath": "TransGame.TnSkillIncreaseGrenadeRadius",
+   "MaxSkillLevel": "1",
+   "SkillType": "2",
+   "name": {
+    "INT": "Nemesis Maker",
+    "FRA": "Créateur d'ennemi juré"
+   },
+   "description": {
+    "INT": "Adds explosive grenade molecules which increase Flak Grenade's damage radius.",
+    "FRA": "Ajoute des molécules explosives qui augmentent le rayon d'action des grenades antiaériennes."
+   },
+   "class_defaults": {
+    "BuffToApply": "TransGame.TnBuffIncreaseGrenadeRadius"
+   }
+  },
+  "IncreaseBarrierHealth": {
+   "UniqueId": "IncreaseBarrierHealth",
+   "SpecialtyRestriction": "Leader",
+   "LevelRestriction": "3",
+   "ObjectPath": "TransGame.TnSkillIncreaseBarrierHealth",
+   "MaxSkillLevel": "1",
+   "SkillType": "1",
+   "name": {
+    "INT": "Empowered Shields",
+    "FRA": "Boucliers optimisés"
+   },
+   "description": {
+    "INT": "Increases Health of Energon Shield Barrier.",
+    "FRA": "Augmente la résistance des barrières protectrices à l'énergon."
+   },
+   "class_defaults": {
+    "BuffToApply": "TransGame.TnBuffIncreaseBarrierHealth"
+   }
+  }
+ },
+ "killstreaks": {
+  "HealthRegenStreak": {
+   "UniqueId": "HealthRegenStreak",
+   "KillsRequired": "5",
+   "SpecialtyRestriction": "Scout",
+   "ObjectPath": "TransGame.TnKillStreakHealthRegen",
+   "name": {
+    "INT": "Energon Recharger",
+    "FRA": "Chargeur d'énergon"
+   },
+   "description": {
+    "INT": null,
+    "FRA": null
+   },
+   "class_defaults": {
+    "BuffToAdd": "TransGame.TnBuffHealthRegenKillStreak",
+    "CooldownCondition": "TransGame.Default__TnKillStreakHealthRegen.HadAndLostBuffCondition0",
+    "AnnouncementMessageType": "TransGame.TnKillstreakActivatedHealthRegen",
+    "OnTriggerEffectSocket": "PositionSocket",
+    "CooldownReductionModifier": 0.75,
+    "bServerCanStartCooldown": true,
+    "ResourceAmountModifier": "TransGame.Default__TnAbility.ResourceAmountModifier0"
+   }
+  },
+  "OrbitalReconStreak": {
+   "UniqueId": "OrbitalReconStreak",
+   "KillsRequired": "3",
+   "SpecialtyRestriction": "Scout",
+   "ObjectPath": "TransGame.TnKillStreakOrbitalRecon",
+   "name": {
+    "INT": "Orbital Beacon",
+    "FRA": "Balise orbitale"
+   },
+   "description": {
+    "INT": null,
+    "FRA": null
+   },
+   "class_defaults": {
+    "BuffTarget": "ABT_Team",
+    "BuffToAdd": "TransGame.TnBuffSeeEnemyObjectiveMarkers",
+    "CooldownCondition": "TransGame.Default__TnKillStreakOrbitalRecon.HadAndLostBuffCondition0",
+    "AnnouncementMessageType": "TransGame.TnKillstreakActivatedOrbitalRecon",
+    "OnTriggerEffectSocket": "PositionSocket",
+    "CooldownReductionModifier": 0.75,
+    "bServerCanStartCooldown": true,
+    "ResourceAmountModifier": "TransGame.Default__TnAbility.ResourceAmountModifier0"
+   }
+  },
+  "ImprovedOrbitalReconStreak": {
+   "UniqueId": "ImprovedOrbitalReconStreak",
+   "KillsRequired": "7",
+   "SpecialtyRestriction": "Scout",
+   "ObjectPath": "TransGame.TnKillStreakImprovedOrbitalRecon",
+   "name": {
+    "INT": "Orbital Beacon 2.0",
+    "FRA": "Balise orbitale 2.0"
+   },
+   "description": {
+    "INT": null,
+    "FRA": null
+   },
+   "class_defaults": {
+    "BuffTarget": "ABT_OtherTeam",
+    "BuffToAdd": "TransGame.TnBuffHardLocked",
+    "CooldownCondition": "TransGame.Default__TnKillStreakImprovedOrbitalRecon.HadAndLostBuffCondition0",
+    "AnnouncementMessageType": "TransGame.TnKillstreakActivatedImprovedOrbitalRecon",
+    "OnTriggerEffectSocket": "PositionSocket",
+    "CooldownReductionModifier": 0.75,
+    "bServerCanStartCooldown": true,
+    "ResourceAmountModifier": "TransGame.Default__TnAbility.ResourceAmountModifier0"
+   }
+  },
+  "MinePooperStreak": {
+   "UniqueId": "MinePooperStreak",
+   "KillsRequired": "7",
+   "SpecialtyRestriction": "Leader",
+   "ObjectPath": "TransGame.TnKillStreakMinePooper",
+   "name": {
+    "INT": "Thermo Mine Re-Spawner",
+    "FRA": "Générateur de mines thermiques"
+   },
+   "description": {
+    "INT": "Spawn a Trail of Thermo Mines",
+    "FRA": "Génère une série de mines thermiques."
+   },
+   "class_defaults": {
+    "BuffToAdd": "TransGame.TnBuffMinePooper",
+    "CooldownCondition": "TransGame.Default__TnKillstreakMinePooper.HadAndLostBuffCondition0",
+    "AnnouncementMessageType": "TransGame.TnKillstreakActivatedMinePooper",
+    "OnTriggerEffectSocket": "PositionSocket",
+    "CooldownReductionModifier": 0.75,
+    "bServerCanStartCooldown": true,
+    "ResourceAmountModifier": "TransGame.Default__TnAbility.ResourceAmountModifier0"
+   }
+  },
+  "SpawnRocketTurretStreak": {
+   "UniqueId": "SpawnRocketTurretStreak",
+   "KillsRequired": "7",
+   "SpecialtyRestriction": "Scientist",
+   "ObjectPath": "TransGame.TnKillStreakSpawnRocketTurret",
+   "name": {
+    "INT": "Nucleon Shock Cannon",
+    "FRA": "Canon à nucléons"
+   },
+   "description": {
+    "INT": "Spawns a useable Rocket Turret.",
+    "FRA": "Génère une tourelle à roquettes utilisable."
+   },
+   "class_defaults": {
+    "InventoryTypeAsString": "TransContent.TnWeaponRocketTurretKillStreak",
+    "CooldownCondition": "TransGame.Default__TnKillstreakSpawnRocketTurret.CooldownCondition0",
+    "AnnouncementMessageType": "TransGame.TnKillstreakActivatedSpawnRocketTurret",
+    "RequiresRobotForm": true,
+    "OnTriggerEffectSocket": "PositionSocket",
+    "CooldownReductionModifier": 0.75,
+    "bServerCanStartCooldown": true,
+    "ResourceAmountModifier": "TransGame.Default__TnAbility.ResourceAmountModifier0"
+   }
+  },
+  "FastAbilityCooldownStreak": {
+   "UniqueId": "FastAbilityCooldownStreak",
+   "KillsRequired": "3",
+   "SpecialtyRestriction": "Leader",
+   "ObjectPath": "TransGame.TnKillStreakFastAbilityCooldown",
+   "name": {
+    "INT": "Intercooler",
+    "FRA": "Dissipateur"
+   },
+   "description": {
+    "INT": "Greatly decreases the cooldown time for Ability use.",
+    "FRA": "Réduit considérablement le délai de refroidissement des compétences."
+   },
+   "class_defaults": {
+    "BuffTarget": "ABT_Team",
+    "BuffToAdd": "TransGame.TnBuffFastAbilityCooldown",
+    "CooldownCondition": "TransGame.Default__TnKillstreakFastAbilityCooldown.HadAndLostBuffCondition0",
+    "AnnouncementMessageType": "TransGame.TnKillstreakActivatedFastAbilityCooldown",
+    "OnTriggerEffectSocket": "PositionSocket",
+    "CooldownReductionModifier": 0.75,
+    "bServerCanStartCooldown": true,
+    "ResourceAmountModifier": "TransGame.Default__TnAbility.ResourceAmountModifier0"
+   }
+  },
+  "TeamAbilityJammerStreak": {
+   "UniqueId": "TeamAbilityJammerStreak",
+   "KillsRequired": "5",
+   "SpecialtyRestriction": "Soldier",
+   "ObjectPath": "TransGame.TnKillStreakTeamAbilityJammer",
+   "name": {
+    "INT": "Electromagnetic Pulse",
+    "FRA": "Impulsion électromagnétique"
+   },
+   "description": {
+    "INT": "Jams enemy team's ability use for a brief time.",
+    "FRA": "Bloque les compétences de l'équipe ennemie pendant un court instant."
+   },
+   "class_defaults": {
+    "BuffTarget": "ABT_OtherTeam",
+    "BuffToAdd": "TransGame.TnBuffAbilityJammedKillstreak",
+    "CooldownCondition": "TransGame.Default__TnKillstreakTeamAbilityJammer.HadAndLostBuffCondition0",
+    "AnnouncementMessageType": "TransGame.TnKillstreakActivatedTeamAbilityJammer",
+    "OnTriggerEffectSocket": "PositionSocket",
+    "CooldownReductionModifier": 0.75,
+    "bServerCanStartCooldown": true,
+    "ResourceAmountModifier": "TransGame.Default__TnAbility.ResourceAmountModifier0"
+   }
+  },
+  "RefillAmmoStreak": {
+   "UniqueId": "RefillAmmoStreak",
+   "KillsRequired": "3",
+   "SpecialtyRestriction": "Soldier",
+   "ObjectPath": "TransGame.TnKillStreakRefillAmmo",
+   "name": {
+    "INT": "Ammo Matrix",
+    "FRA": "Matrice de munitions"
+   },
+   "description": {
+    "INT": null,
+    "FRA": null
+   },
+   "class_defaults": {
+    "CooldownCondition": "TransGame.Default__TnKillStreakRefillAmmo.CooldownCondition0",
+    "AnnouncementMessageType": "TransGame.TnKillstreakActivatedRefillAmmo",
+    "OnTriggerEffectSocket": "PositionSocket",
+    "CooldownReductionModifier": 0.75,
+    "bServerCanStartCooldown": true,
+    "ResourceAmountModifier": "TransGame.Default__TnAbility.ResourceAmountModifier0"
+   }
+  },
+  "OverShieldStreak": {
+   "UniqueId": "OverShieldStreak",
+   "KillsRequired": "5",
+   "SpecialtyRestriction": "Scientist",
+   "ObjectPath": "TransGame.TnKillStreakOverShield",
+   "name": {
+    "INT": "Overshield Matrix",
+    "FRA": "Matrice de bouclier"
+   },
+   "description": {
+    "INT": null,
+    "FRA": null
+   },
+   "class_defaults": {
+    "CooldownCondition": "TransGame.Default__TnKillStreakOvershield.CooldownCondition0",
+    "AnnouncementMessageType": "TransGame.TnKillstreakActivatedOvershield",
+    "OnTriggerEffectSocket": "PositionSocket",
+    "CooldownReductionModifier": 0.75,
+    "bServerCanStartCooldown": true,
+    "ResourceAmountModifier": "TransGame.Default__TnAbility.ResourceAmountModifier0"
+   }
+  },
+  "FriendlyKillHealthBonusStreak": {
+   "UniqueId": "FriendlyKillHealthBonusStreak",
+   "KillsRequired": "3",
+   "SpecialtyRestriction": "Scientist",
+   "ObjectPath": "TransGame.TnKillstreakFriendlyKillHealthBonus",
+   "name": {
+    "INT": "Health Matrix 2.0",
+    "FRA": "Matrice énergétique 2.0"
+   },
+   "description": {
+    "INT": null,
+    "FRA": null
+   },
+   "class_defaults": {
+    "BuffTarget": "ABT_Team",
+    "BuffToAdd": "TransGame.TnBuffRefillHealthOnKill",
+    "CooldownCondition": "TransGame.Default__TnKillstreakFriendlyKillHealthBonus.HadAndLostBuffCondition0",
+    "AnnouncementMessageType": "TransGame.TnKillstreakActivatedFriendlyKillHealthBonus",
+    "OnTriggerEffectSocket": "PositionSocket",
+    "CooldownReductionModifier": 0.75,
+    "bServerCanStartCooldown": true,
+    "ResourceAmountModifier": "TransGame.Default__TnAbility.ResourceAmountModifier0"
+   }
+  },
+  "PokeStreak": {
+   "UniqueId": "PokeStreak",
+   "KillsRequired": "5",
+   "SpecialtyRestriction": "Leader",
+   "ObjectPath": "TransGame.TnKillStreakPoke",
+   "name": {
+    "INT": "P.O.K.E. 2.0",
+    "FRA": "POING DESTRUCTEUR 2.0"
+   },
+   "description": {
+    "INT": null,
+    "FRA": null
+   },
+   "class_defaults": {
+    "CooldownCondition": "TransGame.Default__TnKillStreakPoke.CooldownCondition0",
+    "AnnouncementMessageType": "TransGame.TnKillStreakActivatedPoke",
+    "RequiresRobotForm": true,
+    "InventoryTypeAsString": "TransContent.TnWeaponPoke",
+    "OnTriggerEffectSocket": "PositionSocket",
+    "CooldownReductionModifier": 0.75,
+    "bServerCanStartCooldown": true,
+    "ResourceAmountModifier": "TransGame.Default__TnAbility.ResourceAmountModifier0"
+   }
+  },
+  "GuidedMissileStreak": {
+   "UniqueId": "GuidedMissileStreak",
+   "KillsRequired": "7",
+   "SpecialtyRestriction": "Soldier",
+   "ObjectPath": "TransGame.TnKillstreakGuidedMissile",
+   "name": {
+    "INT": "Omega Missile",
+    "FRA": "Missile Omega"
+   },
+   "description": {
+    "INT": "Fires off a guided missile capable of mass destruction.",
+    "FRA": "Tire un missile téléguidé pouvant provoquer une destruction massive."
+   },
+   "class_defaults": {
+    "CooldownCondition": "TransGame.Default__TnKillstreakGuidedMissile.GuideMissileCooldownCondition0",
+    "AnnouncementMessageType": "TransGame.TnKillstreakActivatedGuidedMissile",
+    "RequiresRobotForm": true,
+    "SpawnSocket": "ReactionSocket_Chest",
+    "MinimumSpawnPitch": 700,
+    "MaximumSpawnPitch": 16384,
+    "Delay": 1.0,
+    "ResourceRequired": 100.0,
+    "AbilityStimulusType": "TransGame.TnStimulusType_GuidedMissile",
+    "OnTriggerEffectSocket": "PositionSocket",
+    "CooldownReductionModifier": 0.75,
+    "bServerCanStartCooldown": true,
+    "ResourceAmountModifier": "TransGame.Default__TnAbility.ResourceAmountModifier0"
+   }
+  }
+ },
+ "vehicle_form_by_class": "Scout = car, Scientist = jet, Soldier = tank, Leader = truck (DefaultSpecialty of every chassis of that vehicle family in TransCustomization.ini) - CONFIRMED",
+ "confidence": "CONFIRMED AUTHORED DATA"
+}
