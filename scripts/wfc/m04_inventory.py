@@ -28,7 +28,10 @@ MAP = sys.argv[1] if len(sys.argv) > 1 else 'MP_IAC_Streets'   # positional, sam
 def out_name(n):
     """Streets keeps its canonical manifest names; other maps write manifests/next_map/<MAP>_<name>."""
     return n if MAP == 'MP_IAC_Streets' else 'next_map/%s_%s' % (MAP, n.replace('streets_', ''))
-LEVELS = [MAP + '_BASE_m', MAP + '_ART_m', MAP + '_AUDIO_m']
+from m03_common import map_levels  # noqa: E402
+LEVELS = map_levels(MAP)['all']   # cooked level packages, case-resolved (Rust: _Art_m; Debris: BASE only)
+_mj = os.path.join(VS, 'Maps', MAP, 'map.json')   # + authored LevelStreaming sublevels exported by vs_map (Seed: MP_IAC_Global_Art_m)
+LEVELS += [l for l in ((json.load(open(_mj, encoding='utf-8')).get('sublevels') or []) if os.path.exists(_mj) else []) if l not in LEVELS]
 SLICE = os.path.join(VS, 'Maps', MAP)
 AUDIT = r'F:/Transformers Rebuild/Rebuild-Rendering/work/render/%s/map_audit.json' % MAP
 

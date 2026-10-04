@@ -36,6 +36,9 @@ def resolve_bp(o, depth=0):
             out[k] = x
     return {'object': o, 'class': (A.get(o) or {}).get('class'), 'values': out}
 
+def VEH_IDS(weapons):
+    return {pid for w in weapons.values() if w.get('weapon_type_code') == '3' for pid in w.get('provider_ids') or []}
+
 def main():
     re_r = json.load(open(RE_ROSTER, encoding='utf-8'))
     mine = {c['chassis_id']: c for c in J('mp_content/mp_characters.json')['characters']}
@@ -103,7 +106,14 @@ def main():
                        'vehicle_physics': {k: resolve_bp(x) for k, x in vdv.items() if k.endswith('Blueprint') and isinstance(x, str) and 'Physics' in x},
                        'class_speed_multiplier': (classes['specialties (classes)'].get((m or {}).get('default_class')) or {}).get('speed_multiplier')}),
             ('ui', {'portraits': sel.get(cid), 'class_icon': (classes['specialties (classes)'].get((m or {}).get('default_class')) or {}).get('ui_icons')}),
-            ('weapons', {'iconic_loadout': loadout, 'allowed_by_provider': (m or {}).get('weapons_allowed_by_provider'),
+            ('weapons', {'iconic_loadout': loadout,
+                         'allowed_on_foot_by_provider (TnDataProvider_Weapon FactionRestriction + ChassisRestriction; WeaponType != 3)':
+                             sorted(pid for w in weapons.values() if w.get('weapon_type_code') != '3' for pid, r in (w.get('restrictions') or {}).items()
+                                    if r.get('FactionRestriction') in ('Any', (m or {}).get('faction'))
+                                    and (not r.get('ChassisRestriction') or cid in r['ChassisRestriction'])),
+                         'vehicle_form_weapons (WeaponType 3)': {'from_iconic_preset': sorted(k for k in loadout if k in VEH_IDS(weapons)),
+                                                                 'note': 'vehicle-form weapon providers carry no chassis restriction; the weapon is fixed '
+                                                                         'by the preset VehicleWeapons, not chosen in a loadout'},
                          'class_default_secondary': (classes['specialties (classes)'].get((m or {}).get('default_class')) or {}).get('DefaultSecondaryWeapon')}),
             ('abilities', {'iconic': pre.get('Abilities'), 'skills': pre.get('Skills'),
                            'class_pool': sorted(k for k, a in classes['abilities'].items() if a.get('SpecialtyRestriction') == (m or {}).get('default_class'))}),

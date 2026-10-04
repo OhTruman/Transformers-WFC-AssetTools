@@ -38,8 +38,10 @@ def is_navpoint(cls_path):
 
 def loc(v): return np.array([float((v.get('Location') or {}).get(a, 0.0)) for a in 'XYZ'])
 
+from vs_common import map_sublevels  # noqa: E402
+
 def main():
-    subs = sorted({r['opath'].split('.')[0] for r in A.find(MAP + '_%.TheWorld', 'World')})
+    subs = map_sublevels(MAP, A)   # name prefix + streamed sublevels (map.json)
     nodes, edges = {}, []
     for sub in subs:
         lvl = sub + '.TheWorld.PersistentLevel'
@@ -87,7 +89,7 @@ def main():
         seen.add(n)
         while q:
             x = q.popleft(); comp.append(x)
-            for y in und[x]:
+            for y in sorted(und[x]):   # sorted: deterministic component member order (set iteration follows PYTHONHASHSEED)
                 if y not in seen: seen.add(y); q.append(y)
         comps.append(comp)
     comps.sort(key=len, reverse=True)
@@ -117,7 +119,7 @@ def main():
                                      'max': max(e['distance'] for e in edges)} if edges else None,
                 'distance_vs_euclidean_abs_err': {'max': round(max(dist_err), 3), 'median': round(float(np.median(dist_err)), 3)} if dist_err else None,
                 'edges_with_unresolved_end': len(bad_end), 'directed_pairs': len(pairs), 'bidirectional_pairs': sym,
-                'components': [len(c) for c in comps], 'largest_component_classes': dict(Counter(nodes[n]['class'] for n in big)),
+                'components': [len(c) for c in comps], 'largest_component_classes': dict(Counter(nodes[n]['class'] for n in comps[0])) if comps else {},
                 'isolated_nodes': [nodes[n]['node'] for c in comps if len(c) == 1 for n in c],
                 'starts_reaching_every_pickup_and_objective_factory': '%d/%d' % (reach_ok, len(starts))}
     out = {'map': MAP, 'source': 'manifests/authored.db (NavigationPoint.PathList -> TnReachSpec)',

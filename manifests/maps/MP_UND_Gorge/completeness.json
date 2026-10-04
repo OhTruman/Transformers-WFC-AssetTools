@@ -514,6 +514,343 @@
     "DOM"
    ]
   },
+  "sublevels": {
+   "status": "COMPLETE",
+   "evidence": {
+    "sublevels": [
+     "MP_UND_Gorge_ART_m",
+     "MP_UND_Gorge_AUDIO_m",
+     "MP_UND_Gorge_BASE_m"
+    ],
+    "source": "name prefix + authored LevelStreaming"
+   }
+  },
+  "bsp_alignment": {
+   "status": "COMPLETE",
+   "evidence": {
+    "authored_render_triangles": 1824,
+    "authored_polygon_node_triangles": 1824,
+    "world_glb_bsp_triangles": 1824,
+    "difference": 0,
+    "unaccounted_nodes": 0,
+    "verdict": "BSP COMPLETE: every polygon node is rendered by a cooked element or is invisible/portal; the exported triangle count equals the authored render triangles"
+   }
+  },
+  "bsp_default_material_faces": {
+   "status": "COMPLETE",
+   "evidence": {
+    "nodes": 209,
+    "surfaces": 146,
+    "brushes": 77,
+    "by_verdict": {
+     "exposed": 151,
+     "partial": 53,
+     "hidden": 5
+    },
+    "area_m2_by_verdict": {
+     "exposed": 199991.9,
+     "partial": 63640.89,
+     "hidden": 160.57
+    },
+    "visible_in_play": 0,
+    "visible_in_play_area_m2": 0
+   }
+  },
+  "negative_nonuniform_scales": {
+   "status": "COMPLETE",
+   "evidence": {
+    "mirrored": 390,
+    "non_uniform": 772,
+    "winding": "CONSISTENT"
+   }
+  },
+  "material_instances": {
+   "status": "COMPLETE",
+   "evidence": {
+    "by_class": {
+     "MaterialInstanceConstant": 122,
+     "Material": 27
+    },
+    "masters": 44
+   }
+  },
+  "textures": {
+   "status": "COMPLETE",
+   "evidence": {
+    "note": "material texture parameters resolve through materials_authored.json; lightmap atlases as PNG",
+    "lightmap_pngs": 36
+   }
+  },
+  "dynamic_lights": {
+   "status": "COMPLETE",
+   "evidence": {
+    "by_classification": {
+     "LAC_STATIC_AFFECTING": 410,
+     "LAC_USER_SELECTED": 1
+    },
+    "built_into_lightmap": 404,
+    "cast_dynamic_shadows": 0,
+    "disabled": 5
+   },
+   "owner": "RENDERING",
+   "blocker": "dynamic (non-lightmapped) lights: 7"
+  },
+  "particles": {
+   "status": "EXPORTED",
+   "evidence": {
+    "components": 31,
+    "emitter_actors": 5
+   },
+   "owner": "RENDERING",
+   "blocker": "runtime simulation"
+  },
+  "moving_scenery": {
+   "status": "AUTHORED",
+   "evidence": {
+    "movers": 13,
+    "in_world_glb_missing": []
+   },
+   "owner": "GAMEPLAY",
+   "blocker": "animate PHYS_Rotating / Matinee at runtime"
+  },
+  "blocking_volumes": {
+   "status": "COMPLETE",
+   "evidence": {
+    "BlockingVolume": 80,
+    "TnTransformerBlockingVolume": 28,
+    "TnForcedDirVolume": 3,
+    "PhysicsVolume": 1
+   }
+  },
+  "playable_space": {
+   "status": "COMPLETE",
+   "evidence": {
+    "player_starts": 115,
+    "starts_on_reachable_floor": 115,
+    "walk_graph_area_m2": 259430.0,
+    "bounds": {
+     "x_m": [
+      -233.0,
+      -11.0
+     ],
+     "z_m": [
+      -225.0,
+      221.0
+     ],
+     "floor_height_m": [
+      -27.83,
+      38.36
+     ]
+    },
+    "placement_checks": {
+     "pickups": {
+      "count": 15,
+      "on_walkable_reachable_floor": 15,
+      "not_on_walk_graph": []
+     },
+     "objectives": {
+      "count": 17,
+      "on_walkable_reachable_floor": 17,
+      "not_on_walk_graph": []
+     }
+    }
+   }
+  },
+  "collision_vs_visible": {
+   "status": "COMPLETE",
+   "evidence": {
+    "agreement_pct": 74.84,
+    "agreement_pct_excluding_volume_tops": 83.63,
+    "blocking_gaps_explained": [
+     {
+      "actor": "StaticMeshCollectionActor_247",
+      "component": "StaticMeshActor_4688_SMC",
+      "mesh": "ENV_IAC_Spacedome_p.BlueNebulae_Card_STAT",
+      "pawn_channel": "per_poly",
+      "gltf_translation_m": [
+       -242.0,
+       587.7,
+       100.3
+      ],
+      "reason": "per_poly collision expected but vs_physics wrote no node: physics.json pawn stats oversize_skipped=3 (>2 km shells), missing_geometry=0 (render mesh / hull not available)"
+     },
+     {
+      "actor": "StaticMeshCollectionActor_247",
+      "component": "StaticMeshActor_14663_SMC",
+      "mesh": "ENV_GLB_EnvEffects_p.StaticMesh.FogVolume_CUBE_STAT",
+      "pawn_channel": "per_poly",
+      "gltf_translation_m": [
+       -84.1,
+       601.2,
+       5.1
+      ],
+      "reason": "per_poly collision expected but vs_physics wrote no node: physics.json pawn stats oversize_skipped=3 (>2 km shells), missing_geometry=0 (render mesh / hull not available)"
+     },
+     {
+      "actor": "StaticMeshCollectionActor_4931",
+      "component": "StaticMeshActor_656_SMC",
+      "mesh": "ENV_IAC_Ground_p.EnergyFence.EngeryFence_04_STAT",
+      "pawn_channel": "none",
+      "gltf_translation_m": [
+       -30.9,
+       -7.8,
+       6.7
+      ],
+      "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+     },
+     {
+      "actor": "StaticMeshCollectionActor_4931",
+      "component": "StaticMeshActor_12098_SMC",
+      "mesh": "ENV_IAC_Ground_p.EnergyFence.EngeryFence_04_STAT",
+      "pawn_channel": "none",
+      "gltf_translation_m": [
+       -133.0,
+       -7.7,
+       -23.3
+      ],
+      "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+     },
+     {
+      "actor": "StaticMeshCollectionActor_727",
+      "component": "StaticMeshActor_6134_SMC",
+      "mesh": "ENV_ORB_D1_Debris_p.Meshes.TunnelPipeA_Debri_B_EdgeGlow_STAT",
+      "pawn_channel": "none",
+      "gltf_translation_m": [
+       -102.5,
+       13.1,
+       -25.3
+      ],
+      "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+     },
+     {
+      "actor": "StaticMeshCollectionActor_9051",
+      "component": "StaticMeshActor_329_SMC",
+      "mesh": "ENV_GLB_EnvEffects_p.StaticMesh.FogVolume_CUBE_STAT",
+      "pawn_channel": "per_poly",
+      "gltf_translation_m": [
+       -84.1,
+       -233.2,
+       5.1
+      ],
+      "reason": "per_poly collision expected but vs_physics wrote no node: physics.json pawn stats oversize_skipped=3 (>2 km shells), missing_geometry=0 (render mesh / hull not available)"
+     }
+    ]
+   }
+  },
+  "actor_visibility": {
+   "status": "COMPLETE",
+   "evidence": {
+    "world_glb_nodes_by_kind": {
+     "bsp": 1,
+     "InterpActor": 13,
+     "StaticMeshCollectionActor": 1752
+    },
+    "non_collection_actors": 13,
+    "non_collection_actors_missing_from_world_glb": [],
+    "mode_gated_targets": 8,
+    "mode_gated_missing_from_world_glb": []
+   }
+  },
+  "mode_specific_actors": {
+   "status": "COMPLETE",
+   "evidence": {
+    "TnDominationPoint": 3,
+    "TnKingOfTheHillZone": 7,
+    "TnGameObjectivePickupFactoryFlag": 2,
+    "TnGameObjectivePickupFactoryBomb": 1,
+    "TnFlagCapturePoint": 2,
+    "TnBombPlantPoint": 2,
+    "TnAmmoCratePickupFactory": 7,
+    "TnHealthPickupFactory": 7,
+    "TnOverShieldPickupFactory": 1,
+    "Kismet-hidden objective props": 4
+   }
+  },
+  "audio_emitters": {
+   "status": "COMPLETE",
+   "evidence": {
+    "point": 9,
+    "volume": 4,
+    "line": 2,
+    "cues": 13,
+    "waves_with_wav": 37
+   }
+  },
+  "zones_reverb": {
+   "status": "COMPLETE",
+   "evidence": {
+    "zones": 23,
+    "reverb_presets": 6
+   },
+   "owner": "SYSTEMS",
+   "blocker": "ambient zones / reverb presets applied at runtime (Kismet SeqAct_AmbientAudioZone / SeqAct_Reverb)"
+  },
+  "surface_audio": {
+   "status": "COMPLETE",
+   "evidence": "Every MP_UND_Gorge surface resolves to the SAME footstep events (FS_DEFAULT_*). WFC has no surface-specific robot footstep/landing audio on this map: the per-character HmSoundEventSet chooses the sound (Optimus -> BL_FS_LRG_BOT.*). The rebuild's \"generic/default\" footsteps are the authored behaviour, not a fallback."
+  },
+  "skyline_background_geometry": {
+   "status": "COMPLETE",
+   "evidence": {
+    "props_outside_playable_bounds_plus_50m": 67,
+    "by_mesh": {
+     "ENV_CORE_Wall_p.CanyonWalls.ENV_CORE_CliffWall_B_STAT": 11,
+     "ENV_CORE_Wall_p.WallSupport.ENV_CORE_CanyonTopPillar_B_STAT": 8,
+     "ENV_CORE_Wall_p.CanyonWalls.ENV_CORE_CanyonWall_C_STAT": 7,
+     "ENV_CORE_Wall_p.WallSupport.ENV_CORE_CanyonTopPillar_A_STAT": 6,
+     "ENV_CORE_Wall_p.CanyonWalls.ENV_CORE_CliffWall_A_STAT": 6,
+     "ENV_CORE_Wall_p.CanyonWalls.ENV_CORE_CanyonJunkWall_B_STAT": 6,
+     "ENV_CORE_Wall_p.CanyonWalls.ENV_CORE_CanyonJunkPillar_B_STAT": 5,
+     "ENV_CORE_Wall_p.CanyonWalls.ENV_CORE_CanyonJunkPillar_A_STAT": 5,
+     "ENV_CORE_SupportColumns_p.StaticMesh.TunnelPipeA_Straight_STAT": 3,
+     "ENV_GLB_EnvEffects_p.StaticMesh.LightBeam_Cone_STAT": 2,
+     "ENV_CORE_Wall_p.WallSupport.ENV_CORE_CanyonTopPillar_C_STAT": 2,
+     "ENV_IAC_Spacedome_p.BlueNebulae_Card_STAT": 2,
+     "ENV_GLB_EnvEffects_p.StaticMesh.FogVolume_CUBE_STAT": 2,
+     "ENV_CORE_Wall_p.CanyonWalls.ENV_CORE_CanyonWall_B_STAT": 1,
+     "ENV_CORE_Wall_p.CanyonWalls.ENV_CORE_CanyonJunkPillar_C_STAT": 1
+    },
+    "note": "exported in world.glb like any prop; oversized shells (>2 km) excluded from collision"
+   }
+  },
+  "kismet_references": {
+   "status": "COMPLETE",
+   "evidence": {
+    "summary": {
+     "startup_events": {
+      "SeqEvent_GameplayStarted": 1
+     },
+     "ops_with_actor_links (op class -> linked actor classes)": {
+      "SeqAct_ToggleHidden": {
+       "InterpActor": 4
+      }
+     },
+     "matinee_ops": 0,
+     "mode_conditions": 2,
+     "audio_ops": {
+      "SeqAct_AmbientAudioZone": 12,
+      "SeqAct_Reverb": 12,
+      "SeqAct_PlayPlayerPositionalSound": 13,
+      "SeqAct_PlaySound": 11
+     },
+     "note": "generated from the authored graph (m04_kismet.generated_summary); trigger chains per op in actor_relationships"
+    },
+    "relationships": 4
+   }
+  },
+  "destructibles": {
+   "status": "COMPLETE",
+   "evidence": {
+    "count": 0
+   }
+  },
+  "structure_audit": {
+   "status": "PASS",
+   "evidence": {
+    "status": "PASS",
+    "failures": []
+   }
+  },
   "vs_validate": {
    "status": "PASS",
    "evidence": {
@@ -523,15 +860,13 @@
   }
  },
  "blockers_by_owner": {
-  "ASSETTOOLS": [
-   "SkeletalMeshActor x1 not exported to world.glb (mesh + anim known in inventory)",
-   "map-specific render_index enrichments (pickup FX component matrices, destructible states) are Streets-only (m04_complete)"
-  ],
+  "ASSETTOOLS": [],
   "RE": [
    "TnRadialForceVolume runtime force (x9)",
    "LensFlareSource rendering semantics"
   ],
   "RENDERING": [
+   "skeletal actors (1) spawned from glTF (render_index_generic)",
    "particles (31 components)",
    "decals (20)",
    "height fog (4, lighting.json globals.height_fogs)",

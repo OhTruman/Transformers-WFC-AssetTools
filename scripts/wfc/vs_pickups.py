@@ -19,10 +19,11 @@ from collections import Counter
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 import authored as A, objtree, pstream as PS, particles, smsections  # noqa: E402
-from m03_common import field, lit, write, pkg_of, cls_of, CONF, HIGH, PART, UNK  # noqa: E402
+from m03_common import field, lit, write, pkg_of, cls_of, CONF, HIGH, PART, UNK, map_arg, map_out, map_levels# noqa: E402
 from vs_common import VS, ROOT  # noqa: E402
 
-MAP = 'MP_IAC_Streets'
+MAP = map_arg()                      # positional map name (default MP_IAC_Streets)
+LV_ = map_levels(MAP)
 SLICE = os.path.join(VS, 'Maps', MAP)
 FACTORY_CLASSES = ['TnAmmoCratePickupFactory', 'TnHealthPickupFactory', 'TnOverShieldPickupFactory',
                    'TnGameObjectivePickupFactoryFlag', 'TnGameObjectivePickupFactoryBomb']
@@ -241,12 +242,12 @@ def main():
                    'ammo crate: static mesh PROP_NEU_AmmoPickup_STAT (rotating Yaw 10000/65536 turn/s) plus the Pickup_FX '
                    'highlight beam, both shown while available',
                    'health/overshield Pickup_FX components: do not render (not attached)']}}
-    write('streets_pickup_factories.json', fac)
+    write(map_out(MAP, 'streets_pickup_factories.json'), fac)
     fx = {'generated_by': 'AssetTools/scripts/wfc/vs_pickups.py', 'package': FX_PACKAGE,
           'decoder': 'scripts/wfc/pstream.py (WFC compiled particle module stream), validated by pstream_validate.py',
           'usage': {ps: {'components': n, 'role': ROLE[ps]} for ps, n in tcount.items()},
           'systems': {ps: fx_rec(ps) for ps in EXPECTED}}
-    write('streets_pickup_fx.json', fx)
+    write(map_out(MAP, 'streets_pickup_fx.json'), fx)
     print(json.dumps(fac['counts'], indent=1))
     for ps, s in fx['systems'].items():
         print(ps, [(x['emitter'], x['lod'], x['assignment_complete']) for x in s['digest']])

@@ -32,3 +32,5 @@ Project root: F:\Transformers Rebuild\AssetTools. Start a fresh conversation her
   `run_bounded.py` (6 GB Job Object cap), one at a time, lock-guarded, and ends with `map_complete.py` ->
   `manifests/maps/<MAP>/{map_complete,render_index_generic,completeness}.json`. It refuses MP_IAC_Streets (use the order above).
 - Generic fixes must keep Streets outputs byte-identical (compare before/after) and pass `validate_m04.py`.
+- Stage list, structural audit and per-map status: `docs/MAP_PIPELINE.md`, `manifests/maps/pipeline_summary.json`
+  (`map_pipeline_summary.py`). Uncooked registry maps (Fortress, Havoc, Tranquillity) are refused.

@@ -12,10 +12,11 @@ import glob, json, os, sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 import authored as A, smsections, pstream as PS, objtree, vs_materials as VM  # noqa: E402
-from m03_common import field, lit, write, pkg_of, CONF, HIGH, PART, UNK  # noqa: E402
+from m03_common import field, lit, write, pkg_of, CONF, HIGH, PART, UNK, map_arg, map_out, map_levels# noqa: E402
 from vs_common import VS, ROOT  # noqa: E402
 
-MAP = 'MP_IAC_Streets'
+MAP = map_arg()                      # positional map name (default MP_IAC_Streets)
+LV_ = map_levels(MAP)
 SLICE = os.path.join(VS, 'Maps', MAP)
 DEST_CLASSES = ('TnStaticDestructibleActor', 'TnDestructibleActor', 'HmDestructibleActorBase', 'TnDynamicDestructibleActor')
 TRIGGER_MEANING = {
@@ -75,10 +76,12 @@ def kismet_links(actor):
 def build_actor(actor):
     d = A.con()
     r = A.get(actor); level_pkg = r['package']
-    pkgs = [level_pkg] + [p for p in (MAP + '_BASE_m', MAP + '_ART_m') if p != level_pkg]
+    pkgs = [level_pkg] + [p for p in (LV_['base'], LV_['art']) if p and p != level_pkg]
     own = r['props'] or {}
     comp = own.get('DestructibleComponent')
-    cv = A.get(comp)['props'] if comp else {}
+    cv = ((A.get(comp) or {}).get('props') or {}) if comp else {}
+    if comp and not cv.get('Blueprint'):   # prefab-instance destructibles (Escalation loot crates): Blueprint/Pieces on the archetype
+        cv = {**{k: v for k, v in A.values(comp).items() if k in ('Blueprint', 'Pieces', 'BlueprintVersion', 'CodeVersion')}, **cv}
     bp = cv.get('Blueprint')
     rec = {'actor': actor, 'class': r['class'], 'level_package': level_pkg,
            'class_chain': [c['opath'] for c in A.chain(actor)],
@@ -94,8 +97,8 @@ def build_actor(actor):
                          'CodeVersion': cv.get('CodeVersion'), 'Pieces': cv.get('Pieces')},
            'instance_tree': tree(actor)}
     # blueprint
-    bpv = A.get(bp)['props'] or {}
-    rec['blueprint'] = {'object': bp, 'class': A.get(bp)['class'], 'cooked_copy_in': pkg_of(bp),
+    bpv = ((A.get(bp) or {}).get('props') or {})
+    rec['blueprint'] = {'object': bp, 'class': (A.get(bp) or {}).get('class'), 'cooked_copy_in': pkg_of(bp),
                         'BlueprintVersion': bpv.get('BlueprintVersion'),
                         'blueprint_defaults (HM_Engine.Default__HmDestructibleBlueprint, inherited)':
                             {k: field(bp, k) for k in ('DamageAngle', 'AIDamageModifier', 'RadiusDamageModifier',
@@ -106,10 +109,10 @@ def build_actor(actor):
     meshes, mats, particles, cues = {}, set(), {}, {}
     pieces = []
     for pb in bpv.get('PieceBlueprints') or []:
-        pv = A.get(pb)['props'] or {}
+        pv = ((A.get(pb) or {}).get('props') or {})
         states = []
         for h, sb in enumerate(pv.get('StateBlueprints') or []):
-            sv = A.get(sb)['props'] or {}
+            sv = ((A.get(sb) or {}).get('props') or {})
             st = {'handle': h, 'object': sb, 'StateName': field(sb, 'StateName'),
                   'InitialHealth': field(sb, 'InitialHealth', default=0),
                   'AutomaticTransitionTime': field(sb, 'AutomaticTransitionTime', default=0.0),
@@ -157,10 +160,11 @@ def build_actor(actor):
     # cooked pre-instantiated mesh components on the placed piece (lightmapped state meshes)
     inst = []
     piece_objs = cv.get('Pieces') or []
+    P_ = lambda o: ((A.get(o) or {}).get('props') or {}) if o else {}
     for po in piece_objs:
-        for me in (A.get(po)['props'] or {}).get('MeshEffects') or []:
-            for mc in (A.get(me)['props'] or {}).get('MeshComponents') or []:
-                mv = A.get(mc)['props'] or {}
+        for me in P_(po).get('MeshEffects') or []:
+            for mc in P_(me).get('MeshComponents') or []:
+                mv = P_(mc)
                 inst.append({'effect': me, 'component': mc, 'StaticMesh': mv.get('StaticMesh'), 'Translation': mv.get('Translation'),
                              'bCastDynamicShadow': mv.get('bCastDynamicShadow'), 'LightingChannels': mv.get('LightingChannels'),
                              'bRequiresStaticLightingRebuild': mv.get('bRequiresStaticLightingRebuild'),
@@ -207,6 +211,13 @@ def build_actor(actor):
                     'confidence': CONF + ' (positions)',
                     'note': 'authored and cooked, so a 1:1 rebuild places it; players cannot reach or damage it in normal play '
                             '(HIGH CONFIDENCE)'}}
+    if MAP != 'MP_IAC_Streets':
+        # the interpretation / placement prose above was written for the one Streets destructible (WallPanelSign):
+        # other maps keep only computed facts
+        rec['state_graph'].pop('interpretation', None)
+        inside = bool(len(S)) and bool(np.all(P >= S.min(0) - 5000) and np.all(P <= S.max(0) + 5000))
+        rec['placement_context']['verdict'] = {'value': 'inside the player-start bounding box (+5000 UU)' if inside else
+                                               'outside the player-start bounding box (+5000 UU)', 'confidence': CONF + ' (positions)'}
     f = rec['slice_manifest_coverage']['found_in']
     rec['slice_manifest_coverage']['verdict'] = (
         'NOT RENDERED by the slice prop manifests (props.json/map.json do not contain the actor or its meshes); only '
@@ -222,7 +233,7 @@ def main():
            'source': 'manifests/authored.db (cooked tagged props) + cooked StaticMesh sections + compiled particle streams',
            'actors': [build_actor(a) for a in sorted(actors)]}
     out['count'] = len(out['actors'])
-    write('streets_destructibles.json', out)
+    write(map_out(MAP, 'streets_destructibles.json'), out)
     for a in out['actors']:
         print(a['actor'], a['blueprint']['object'], [(s['handle'], s['InitialHealth']['value'], s['AutomaticTransitionTime']['value'],
                                                        len(s['effects'])) for p in a['pieces'] for s in p['states']],

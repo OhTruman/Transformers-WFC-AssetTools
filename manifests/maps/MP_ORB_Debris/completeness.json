@@ -1,0 +1,696 @@
+{
+ "generated_by": "AssetTools/scripts/wfc/map_complete.py",
+ "map": "MP_ORB_Debris",
+ "status": "GEOMETRY + AUTHORED DATA COMPLETE (not a playability claim)",
+ "playable_claim": "NOT CLAIMED: runtime behaviour (modes, movers, pickups, FX, audio) belongs to Gameplay/Rendering/Systems",
+ "checks": {
+  "level_hierarchy": {
+   "status": "COMPLETE",
+   "evidence": {
+    "sublevels": [
+     "MP_ORB_Art_m",
+     "MP_ORB_Audio_m",
+     "MP_ORB_Debris_BASE_m"
+    ]
+   }
+  },
+  "bsp": {
+   "status": "COMPLETE",
+   "evidence": {
+    "MP_ORB_Art_m": {
+     "render_triangles": 304,
+     "skipped_polys": {},
+     "validation_issues": []
+    },
+    "MP_ORB_Audio_m": {
+     "render_triangles": null,
+     "skipped_polys": null,
+     "validation_issues": null
+    },
+    "MP_ORB_Debris_BASE_m": {
+     "render_triangles": null,
+     "skipped_polys": null,
+     "validation_issues": null
+    }
+   }
+  },
+  "placed_meshes": {
+   "status": "COMPLETE",
+   "evidence": {
+    "placed": 1689,
+    "unique": 209,
+    "missing_mesh": 0
+   }
+  },
+  "collection_actor_transforms": {
+   "status": "COMPLETE",
+   "evidence": {
+    "components_checked": 1667,
+    "exact_matches": 1667,
+    "mirrored_det_negative": 381,
+    "any_negative_axis": 407,
+    "non_uniform": 783,
+    "two_negative_axes_not_mirrored": 26
+   }
+  },
+  "collision": {
+   "status": "COMPLETE",
+   "evidence": {
+    "files": [
+     "collision.glb",
+     "collision_pawn.glb",
+     "collision_weapon.glb"
+    ],
+    "volumes": {
+     "BeastLightEnvironmentVolume": 2,
+     "BlockingVolume": 150,
+     "LightsVisibilitiesVolume": 1,
+     "TnForcedDirVolume": 22,
+     "TnTransformerBlockingVolume": 4,
+     "TriggerVolume": 56,
+     "PhysicsVolume": 6,
+     "TnRadialForceVolume": 1
+    }
+   }
+  },
+  "lightmaps": {
+   "status": "COMPLETE",
+   "evidence": {
+    "atlases_used": [
+     "LightMapTexture2D_7954"
+    ],
+    "without_png": [],
+    "world_glb_lightmapped_nodes": 13
+   }
+  },
+  "materials": {
+   "status": "COMPLETE",
+   "evidence": {
+    "count": 157,
+    "missing": null
+   }
+  },
+  "decals": {
+   "status": "NONE",
+   "evidence": {
+    "decals": 0
+   }
+  },
+  "fog": {
+   "status": "NONE",
+   "evidence": {
+    "HeightFog_actors": 0,
+    "height_fogs_in_lighting_json": 0,
+    "FogVolumeConstantDensityInfo": 0
+   }
+  },
+  "lights": {
+   "status": "COMPLETE",
+   "evidence": {
+    "lights": 121,
+    "validation": null
+   }
+  },
+  "postprocess": {
+   "status": "COMPLETE",
+   "evidence": {
+    "scene_chain": {
+     "chain": "EngineMaterials.DefaultScenePostProcess",
+     "package_owner": "Startup_FRA",
+     "effects": [
+      {
+       "effect": "MotionBlurEffect_1",
+       "object": "EngineMaterials.DefaultScenePostProcess.MotionBlurEffect_1",
+       "class": "MotionBlurEffect",
+       "authored": {},
+       "effective": {
+        "MaxVelocity": 1.0,
+        "MotionBlurAmount": 0.5,
+        "MotionBlurCurveExponent": 1.0,
+        "InnerRadius": 0.20000000298023224,
+        "OuterRadius": 1.0,
+        "RadialBlurExponent": 2.0,
+        "AccumulationBlurSoftness": 0.5,
+        "Technique": "MBT_CameraAndObjectMotion",
+        "bShowInEditor": false,
+        "bShowInGame": true,
+        "bUseWorldSettings": true,
+        "SceneDPG": "SDPG_PostProcess"
+       },
+       "effective_from": {
+        "MaxVelocity": "Engine.Default__MotionBlurEffect",
+        "MotionBlurAmount": "Engine.Default__MotionBlurEffect",
+        "MotionBlurCurveExponent": "Engine.Default__MotionBlurEffect",
+        "InnerRadius": "Engine.Default__MotionBlurEffect",
+        "OuterRadius": "Engine.Default__MotionBlurEffect",
+        "RadialBlurExponent": "Engine.Default__MotionBlurEffect",
+        "AccumulationBlurSoftness": "Engine.Default__MotionBlurEffect",
+        "Technique": "Engine.Default__MotionBlurEffect",
+        "bShowInEditor": "Engine.Default__MotionBlurEffect",
+        "bShowInGame": "Engine.Default__PostProcessEffect",
+        "bUseWorldSettings": "Engine.Default__PostProcessEffect",
+        "SceneDPG": "Engine.Default__PostProcessEffect"
+       }
+      },
+      {
+       "effect": "UberPostProcessEffect_0",
+       "object": "EngineMaterials.DefaultScenePostProcess.UberPostProcessEffect_0",
+       "class": "UberPostProcessEffect",
+       "authored": {
+        "FocusDistance": 0.0
+       },
+       "effective": {
+        "FocusDistance": 0.0,
+        "SceneShadows": {
+         "X": 0.0,
+         "Y": 0.0,
+         "Z": -0.003000000026077032
+        },
+        "SceneHighLights": {
+         "X": 0.800000011920929,
+         "Y": 0.800000011920929,
+         "Z": 0.800000011920929
+        },
+        "SceneMidTones": {
+         "X": 1.2999999523162842,
+         "Y": 1.2999999523162842,
+         "Z": 1.2999999523162842
+        },
+        "SceneDesaturation": 0.4000000059604645,
+        "BloomScale": 1.0,
+        "BloomThreshold": 1.0,
+        "DOFXScale": 1.0,
+        "DOFYScale": 1.0,
+        "DOFAndBloomXScale": 1.0,
+        "DOFAndBloomYScale": 1.0,
+        "BlurKernelSize": 16.0,
+        "FalloffExponent": 2.0,
+        "MaxNearBlurAmount": 1.0,
+        "MaxFarBlurAmount": 1.0,
+        "ModulateBlurColor": {
+         "B": 255,
+         "G": 255,
+         "R": 255,
+         "A": 255
+        },
+        "FocusNearFalloff": 400.0,
+        "FocusFarFalloff": 400.0,
+        "bShowInEditor": true,
+        "bShowInGame": true,
+        "bUseWorldSettings": true,
+        "SceneDPG": "SDPG_PostProcess"
+       },
+       "effective_from": {
+        "FocusDistance": "EngineMaterials.DefaultScenePostProcess.UberPostProcessEffect_0",
+        "SceneShadows": "Engine.Default__UberPostProcessEffect",
+        "SceneHighLights": "Engine.Default__UberPostProcessEffect",
+        "SceneMidTones": "Engine.Default__UberPostProcessEffect",
+        "SceneDesaturation": "Engine.Default__UberPostProcessEffect",
+        "BloomScale": "Engine.Default__DOFAndBloomEffect",
+        "BloomThreshold": "Engine.Default__DOFAndBloomEffect",
+        "DOFXScale": "Engine.Default__DOFAndBloomEffect",
+        "DOFYScale": "Engine.Default__DOFAndBloomEffect",
+        "DOFAndBloomXScale": "Engine.Default__DOFAndBloomEffect",
+        "DOFAndBloomYScale": "Engine.Default__DOFAndBloomEffect",
+        "BlurKernelSize": "Engine.Default__DOFAndBloomEffect",
+        "FalloffExponent": "Engine.Default__DOFEffect",
+        "MaxNearBlurAmount": "Engine.Default__DOFEffect",
+        "MaxFarBlurAmount": "Engine.Default__DOFEffect",
+        "ModulateBlurColor": "Engine.Default__DOFEffect",
+        "FocusNearFalloff": "Engine.Default__DOFEffect",
+        "FocusFarFalloff": "Engine.Default__DOFEffect",
+        "bShowInEditor": "Engine.Default__PostProcessEffect",
+        "bShowInGame": "Engine.Default__PostProcessEffect",
+        "bUseWorldSettings": "Engine.Default__PostProcessEffect",
+        "SceneDPG": "Engine.Default__PostProcessEffect"
+       }
+      }
+     ]
+    },
+    "governing": null,
+    "volumes": []
+   }
+  },
+  "map_fx": {
+   "status": "EXPORTED",
+   "evidence": {
+    "particle_components": 21,
+    "systems": 4
+   },
+   "owner": "RENDERING",
+   "blocker": "particle systems must be simulated by the renderer (decoded module streams via pstream.py)"
+  },
+  "movers": {
+   "status": "AUTHORED",
+   "evidence": {
+    "count": 18,
+    "physics": {
+     "PHYS_Interpolating": 18
+    },
+    "matinee": 14
+   },
+   "owner": "GAMEPLAY",
+   "blocker": "PHYS_Rotating / Interpolating movers must be animated at runtime"
+  },
+  "pickups": {
+   "status": "COMPLETE",
+   "evidence": {
+    "count": 11,
+    "by_class": {
+     "TnAmmoCratePickupFactory": 5,
+     "TnHealthPickupFactory": 5,
+     "TnOverShieldPickupFactory": 1
+    }
+   }
+  },
+  "player_starts": {
+   "status": "COMPLETE",
+   "evidence": {
+    "count": 50
+   }
+  },
+  "objectives": {
+   "status": "COMPLETE",
+   "evidence": {
+    "count": 6
+   }
+  },
+  "mode_hidden_state": {
+   "status": "COMPLETE",
+   "evidence": {
+    "classes": [
+     "TnDominationPoint",
+     "TnKingOfTheHillZone",
+     "TnGameObjectivePickupFactoryFlag",
+     "TnGameObjectivePickupFactoryBomb",
+     "TnFlagCapturePoint",
+     "TnBombPlantPoint",
+     "TnAmmoCratePickupFactory",
+     "TnHealthPickupFactory",
+     "TnOverShieldPickupFactory",
+     "Kismet-hidden objective props"
+    ],
+    "tdm_hidden": 19
+   }
+  },
+  "ambient_audio": {
+   "status": "COMPLETE",
+   "evidence": {
+    "point": 37,
+    "volume": 22,
+    "line": 8,
+    "zones": 45,
+    "reverb_presets": 0,
+    "cues": 20,
+    "waves": 45,
+    "waves_with_wav": 45,
+    "missing_cues": []
+   }
+  },
+  "navigation": {
+   "status": "COMPLETE",
+   "evidence": {
+    "nodes": 76,
+    "edges": 175
+   }
+  },
+  "loading_metadata": {
+   "status": "COMPLETE",
+   "evidence": {
+    "loading_screen": "shared: LoadScreen_GFX title = mode FriendlyName, text = UIText.LoadScreen.LoadingMap (\"in `m\") with `m = this display_name; no per-map loading art (loading_handoff.json)"
+   }
+  },
+  "thumbnail": {
+   "status": "COMPLETE",
+   "evidence": {
+    "ImagePath": "UI_LevelThumbnails_p.MP_Orbital",
+    "png": "content/UI_LevelThumbnails_p/MP_Orbital.png",
+    "inherited_default": false,
+    "unavailable_image": "UI_LevelThumbnails_p.LevelUnavailable"
+   }
+  },
+  "frontend_name": {
+   "status": "COMPLETE",
+   "evidence": {
+    "INT": "Orbital Debris",
+    "FRA": "Débris orbitaux"
+   }
+  },
+  "mode_compatibility": {
+   "status": "COMPLETE",
+   "evidence": [
+    "DM",
+    "TDM",
+    "CTF",
+    "KOTH",
+    "EXT",
+    "DOM"
+   ]
+  },
+  "sublevels": {
+   "status": "COMPLETE",
+   "evidence": {
+    "sublevels": [
+     "MP_ORB_Art_m",
+     "MP_ORB_Audio_m",
+     "MP_ORB_Debris_BASE_m"
+    ],
+    "source": "name prefix + authored LevelStreaming"
+   }
+  },
+  "bsp_alignment": {
+   "status": "COMPLETE",
+   "evidence": {
+    "authored_render_triangles": 304,
+    "authored_polygon_node_triangles": 304,
+    "world_glb_bsp_triangles": 304,
+    "difference": 0,
+    "unaccounted_nodes": 0,
+    "verdict": "BSP COMPLETE: every polygon node is rendered by a cooked element or is invisible/portal; the exported triangle count equals the authored render triangles"
+   }
+  },
+  "bsp_default_material_faces": {
+   "status": "COMPLETE",
+   "evidence": {
+    "nodes": 0,
+    "surfaces": 0,
+    "brushes": 0,
+    "by_verdict": {},
+    "area_m2_by_verdict": {},
+    "visible_in_play": 0,
+    "visible_in_play_area_m2": 0
+   }
+  },
+  "negative_nonuniform_scales": {
+   "status": "COMPLETE",
+   "evidence": {
+    "mirrored": 381,
+    "non_uniform": 783,
+    "winding": "CONSISTENT"
+   }
+  },
+  "material_instances": {
+   "status": "COMPLETE",
+   "evidence": {
+    "by_class": {
+     "MaterialInstanceConstant": 139,
+     "Material": 18
+    },
+    "masters": 38
+   }
+  },
+  "textures": {
+   "status": "COMPLETE",
+   "evidence": {
+    "note": "material texture parameters resolve through materials_authored.json; lightmap atlases as PNG",
+    "lightmap_pngs": 3
+   }
+  },
+  "dynamic_lights": {
+   "status": "COMPLETE",
+   "evidence": {
+    "by_classification": {
+     "LAC_STATIC_AFFECTING": 120,
+     "LAC_USER_SELECTED": 1
+    },
+    "built_into_lightmap": 120,
+    "cast_dynamic_shadows": 0,
+    "disabled": 0
+   },
+   "owner": "RENDERING",
+   "blocker": "dynamic (non-lightmapped) lights: 1"
+  },
+  "particles": {
+   "status": "EXPORTED",
+   "evidence": {
+    "components": 21,
+    "emitter_actors": 2
+   },
+   "owner": "RENDERING",
+   "blocker": "runtime simulation"
+  },
+  "moving_scenery": {
+   "status": "AUTHORED",
+   "evidence": {
+    "movers": 18,
+    "in_world_glb_missing": []
+   },
+   "owner": "GAMEPLAY",
+   "blocker": "animate PHYS_Rotating / Matinee at runtime"
+  },
+  "blocking_volumes": {
+   "status": "COMPLETE",
+   "evidence": {
+    "BlockingVolume": 150,
+    "TnTransformerBlockingVolume": 4,
+    "TnForcedDirVolume": 22,
+    "PhysicsVolume": 6
+   }
+  },
+  "playable_space": {
+   "status": "COMPLETE",
+   "evidence": {
+    "player_starts": 50,
+    "starts_on_reachable_floor": 50,
+    "walk_graph_area_m2": 445518.0,
+    "bounds": {
+     "x_m": [
+      -264.0,
+      277.0
+     ],
+     "z_m": [
+      -269.0,
+      195.0
+     ],
+     "floor_height_m": [
+      93.51,
+      189.29
+     ]
+    },
+    "placement_checks": {
+     "pickups": {
+      "count": 11,
+      "on_walkable_reachable_floor": 10,
+      "not_on_walk_graph": [
+       "TnHealthPickupFactory_7431"
+      ]
+     },
+     "objectives": {
+      "count": 15,
+      "on_walkable_reachable_floor": 7,
+      "not_on_walk_graph": [
+       "TnGameObjectivePickupFactoryFlag_2625",
+       "TnGameObjectivePickupFactoryFlag_3840",
+       "TnFlagCapturePoint_4134",
+       "TnFlagCapturePoint_8332",
+       "TnBombPlantPoint_6213",
+       "TnBombPlantPoint_9741",
+       "TnKingOfTheHillZone_10388",
+       "TnKingOfTheHillZone_10552"
+      ]
+     }
+    }
+   }
+  },
+  "collision_vs_visible": {
+   "status": "COMPLETE",
+   "evidence": {
+    "agreement_pct": 52.57,
+    "agreement_pct_excluding_volume_tops": 56.34,
+    "blocking_gaps_explained": [
+     {
+      "actor": "StaticInterpActor_7950",
+      "component": "",
+      "mesh": "ENV_ORB_CybertronPlanet_p.MATTE.Cybertron_MATTE_STAT",
+      "pawn_channel": "per_poly",
+      "gltf_translation_m": [
+       -1921.5,
+       450.7,
+       3261.8
+      ],
+      "reason": "per_poly collision expected but vs_physics wrote no node: physics.json pawn stats oversize_skipped=2 (>2 km shells), missing_geometry=0 (render mesh / hull not available)"
+     },
+     {
+      "actor": "StaticInterpActor_8389",
+      "component": "",
+      "mesh": "ENV_ORB_Spacedome_p.SpaceDome_STATMESH",
+      "pawn_channel": "per_poly",
+      "gltf_translation_m": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "reason": "per_poly collision expected but vs_physics wrote no node: physics.json pawn stats oversize_skipped=2 (>2 km shells), missing_geometry=0 (render mesh / hull not available)"
+     },
+     {
+      "actor": "StaticMeshCollectionActor_12343",
+      "component": "StaticMeshActor_6150_SMC",
+      "mesh": "ENV_ORB_D1_MegatronCruiser_p.Meshes.Ship_CockpitSeperator_STAT",
+      "pawn_channel": "none",
+      "gltf_translation_m": [
+       6.5,
+       127.5,
+       71.8
+      ],
+      "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+     }
+    ]
+   }
+  },
+  "actor_visibility": {
+   "status": "COMPLETE",
+   "evidence": {
+    "world_glb_nodes_by_kind": {
+     "bsp": 1,
+     "StaticInterpActor": 14,
+     "StaticMeshActor": 4,
+     "StaticMeshCollectionActor": 1667,
+     "InterpActor": 4
+    },
+    "non_collection_actors": 22,
+    "non_collection_actors_missing_from_world_glb": [],
+    "mode_gated_targets": 8,
+    "mode_gated_missing_from_world_glb": []
+   }
+  },
+  "mode_specific_actors": {
+   "status": "COMPLETE",
+   "evidence": {
+    "TnDominationPoint": 3,
+    "TnKingOfTheHillZone": 5,
+    "TnGameObjectivePickupFactoryFlag": 2,
+    "TnGameObjectivePickupFactoryBomb": 1,
+    "TnFlagCapturePoint": 2,
+    "TnBombPlantPoint": 2,
+    "TnAmmoCratePickupFactory": 5,
+    "TnHealthPickupFactory": 5,
+    "TnOverShieldPickupFactory": 1,
+    "Kismet-hidden objective props": 4
+   }
+  },
+  "audio_emitters": {
+   "status": "COMPLETE",
+   "evidence": {
+    "point": 37,
+    "volume": 22,
+    "line": 8,
+    "cues": 20,
+    "waves_with_wav": 45
+   }
+  },
+  "zones_reverb": {
+   "status": "COMPLETE",
+   "evidence": {
+    "zones": 45,
+    "reverb_presets": 0
+   },
+   "owner": "SYSTEMS",
+   "blocker": "ambient zones / reverb presets applied at runtime (Kismet SeqAct_AmbientAudioZone / SeqAct_Reverb)"
+  },
+  "surface_audio": {
+   "status": "COMPLETE",
+   "evidence": "Every MP_ORB_Debris surface resolves to the SAME footstep events (FS_DEFAULT_*). WFC has no surface-specific robot footstep/landing audio on this map: the per-character HmSoundEventSet chooses the sound (Optimus -> BL_FS_LRG_BOT.*). The rebuild's \"generic/default\" footsteps are the authored behaviour, not a fallback."
+  },
+  "skyline_background_geometry": {
+   "status": "COMPLETE",
+   "evidence": {
+    "props_outside_playable_bounds_plus_50m": 19,
+    "by_mesh": {
+     "DES_ORB_Asteroids_p.StaticMesh.SpaceDebris_Engine_STAT": 4,
+     "ENV_ORB_D1_Debris_p.Meshes.damageChunk_STAT": 2,
+     "ENV_ORB_Spacedome_p.Blockout.ENV_ORB_TurbineBlock_STAT": 2,
+     "ENV_ORB_CybertronPlanet_p.MATTE.Cybertron_MATTE_STAT": 1,
+     "ENV_ORB_D1_Deco_p.Meshes.GasChamber_Bottom_A_STAT": 1,
+     "ENV_ORB_D1_Debris_p.Meshes.TubeDebris_02_STAT": 1,
+     "ENV_ORB_D1_Debris_p.Meshes.FloatingDebri_Clump_B_STAT": 1,
+     "ENV_ORB_D1_Debris_p.Meshes.FloatingDebri_Lcorner_STAT": 1,
+     "ENV_ORB_D1_Debris_p.Meshes.FloatingDebri_3072x4096_STAT": 1,
+     "ENV_IAC_BLDS_1_p.StaticMesh.Arch_4096_STAT": 1,
+     "ENV_IAC_Ground_p.Debris.Scrappage3_STAT": 1,
+     "ENV_ORB_D1_Debris_p.Meshes.TunnelPipeA_Debri_B_STAT": 1,
+     "ENV_ORB_GalacticTransport_p.StaticMeshes.GalacticTransport_Debris_04_STAT": 1,
+     "DES_ORB_Asteroids_p.StaticMesh.BigAsteroid_STAT": 1
+    },
+    "note": "exported in world.glb like any prop; oversized shells (>2 km) excluded from collision"
+   }
+  },
+  "kismet_references": {
+   "status": "COMPLETE",
+   "evidence": {
+    "summary": {
+     "startup_events": {
+      "SeqEvent_SequenceActivated": 15,
+      "SeqEvent_GameplayStarted": 7
+     },
+     "ops_with_actor_links (op class -> linked actor classes)": {
+      "SeqAct_Interp": {
+       "StaticInterpActor": 13,
+       "AmbientSound": 8,
+       "HmAmbientSoundLineEmitter": 4
+      },
+      "SeqAct_Toggle": {
+       "PhysicsVolume": 12
+      },
+      "SeqAct_ToggleHidden": {
+       "InterpActor": 4
+      }
+     },
+     "matinee_ops": 15,
+     "mode_conditions": 2,
+     "audio_ops": {
+      "SeqAct_PlaySound": 1,
+      "SeqAct_AmbientAudioZone": 13,
+      "SeqAct_PlayPlayerPositionalSound": 11,
+      "SeqAct_Mixer": 5,
+      "SeqAct_Reverb": 7
+     },
+     "note": "generated from the authored graph (m04_kismet.generated_summary); trigger chains per op in actor_relationships"
+    },
+    "relationships": 41
+   }
+  },
+  "destructibles": {
+   "status": "COMPLETE",
+   "evidence": {
+    "count": 6
+   }
+  },
+  "structure_audit": {
+   "status": "PASS",
+   "evidence": {
+    "status": "PASS",
+    "failures": []
+   }
+  },
+  "vs_validate": {
+   "status": "PASS",
+   "evidence": {
+    "checks": 44,
+    "failures": 0
+   }
+  }
+ },
+ "blockers_by_owner": {
+  "ASSETTOOLS": [],
+  "RE": [
+   "TnRadialForceVolume runtime force (x1)",
+   "LensFlareSource rendering semantics"
+  ],
+  "RENDERING": [
+   "particles (21 components)",
+   "lens flares (1)"
+  ],
+  "GAMEPLAY": [
+   "movers runtime (18)",
+   "mode gating per mode_visual_state",
+   "pickup state machines (RE P2)"
+  ],
+  "SYSTEMS": [
+   "ambient audio zones / reverb from audio.json"
+  ],
+  "FRONTEND": [
+   "registry entry present"
+  ]
+ },
+ "cross_check_vs_validated_streets": null
+}

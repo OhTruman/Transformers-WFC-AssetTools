@@ -95,8 +95,10 @@ def phys_material(mat, depth=0):
     if v.get('PhysMaterial'): return v['PhysMaterial'], mat
     return phys_material(v.get('Parent'), depth + 1)
 
+from vs_common import map_sublevels  # noqa: E402
+
 def main():
-    subs = sorted({r['opath'].split('.')[0] for r in A.find(MAP + '_%.TheWorld', 'World')})
+    subs = map_sublevels(MAP, A)   # name prefix + streamed sublevels (map.json)
     props = json.load(open(os.path.join(OUT, 'props.json'), encoding='utf-8'))['props']
     out = {'map': MAP, 'source': 'manifests/authored.db + cooked FStaticMeshElement sections', 'meshes': {}, 'props': [],
            'volumes': [], 'physical_materials': {}, 'world': {}, 'movers': [], 'destructibles': [], 'characters': {}, 'notes': []}

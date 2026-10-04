@@ -187,3 +187,14 @@ extra melee).
   tag is a stale editor label.
 * **Correction:** MP maps carry only a ReachSpec graph (Streets 426, Gorge 738), with no PathNode or tactical data. Original-AI
   bots would need new navigation data. Agrees with RE §F.
+
+### Weapon links per chassis (fix, 2026-10-04)
+`roster_package.json` `weapons` now resolves two fields per chassis:
+* **`allowed_on_foot_by_provider`:** the TnDataProvider_Weapon providers whose FactionRestriction (`Any` or the chassis
+  faction) and ChassisRestriction (empty = any) admit the chassis, excluding vehicle-form weapons. Each of the 33 chassis has 6;
+  for example, Car (Bumblebee, Scout) gets HeavyPistol, KamikazeMines, PlasmaCannon, ShortSword, Shotgun and SniperRifle.
+* **`vehicle_form_weapons`:** WeaponType 3 providers carry no chassis restriction, so the vehicle weapon comes from the preset
+  `VehicleWeapons` (Jet / Starscream: HomingRocketVehicle + PlaneAssaultRifle).
+
+The previous `allowed_by_provider` field was null for every chassis because `mp_roster.py` did not link them. Locked portraits
+exist only for Arcee and Slipstream (`*Locked_Robot/_Vehicle`); every other chassis has none authored.

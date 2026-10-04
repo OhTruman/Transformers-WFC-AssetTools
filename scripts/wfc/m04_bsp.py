@@ -15,11 +15,12 @@ from collections import Counter, defaultdict
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 import objtree, bsp  # noqa: E402
-from m03_common import write, CONF, HIGH, PART, UNK  # noqa: E402
+from m03_common import write, CONF, HIGH, PART, UNK, map_arg, map_out, map_levels, bsp_level  # noqa: E402
 from vs_common import VS  # noqa: E402
 
-MAP = 'MP_IAC_Streets'
-LEVELS = [MAP + '_BASE_m', MAP + '_ART_m', MAP + '_AUDIO_m']
+MAP = map_arg()                      # positional map name (default MP_IAC_Streets)
+LV_ = map_levels(MAP)
+LEVELS = LV_['all']
 FLAG_NAMES = {0x1: 'Invisible', 0x2: 'Masked', 0x4: 'Translucent', 0x8: 'NotSolid', 0x10: 'Environment', 0x20: 'Semisolid',
               0x40: 'BeveledEdges', 0x80: 'Portal?0x80', 0x100: 'TwoSided', 0x200: 'UE3 flag 0x200 (name UNKNOWN; not UE2 Cutout)', 0x400: 'UE3 flag 0x400 (name UNKNOWN; not UE2 FakeBackdrop)',
               0x800: 'UE3 flag 0x800 (name UNKNOWN; not UE2 Mirror)', 0x1000: 'Unused1000', 0x2000: 'NoSmooth', 0x8000: 'NoBounce?', 0x10000: 'BrightCorners',
@@ -132,8 +133,16 @@ def main():
     out = {'map': MAP, 'generated_by': 'AssetTools/scripts/wfc/m04_bsp.py', 'levels': {lv: audit_level(lv) for lv in LEVELS}}
     mj = json.load(open(os.path.join(VS, 'Maps', MAP, 'map.json'), encoding='utf-8'))
     out['current_rebuild_export (map.json bsp)'] = mj.get('bsp')
-    a = out['levels'][MAP + '_ART_m']
-    exp_tris = (mj.get('bsp') or {}).get(MAP + '_ART_m', {}).get('render_triangles')
+    if MAP == 'MP_IAC_Streets':
+        BL = bsp_level(MAP, LV_)
+        a = out['levels'][BL]
+        exp_tris = (mj.get('bsp') or {}).get(BL, {}).get('render_triangles')
+    else:   # sum over every level carrying BSP (Seed: own ART + streamed MP_IAC_Global_Art_m; Debris: streamed MP_ORB_Art_m)
+        ls = [v for v in out['levels'].values() if isinstance(v, dict) and v.get('triangles_in_render_elements') is not None]
+        a = {'triangles_in_render_elements': sum(v['triangles_in_render_elements'] for v in ls),
+             'triangles_all_polygon_nodes': sum(v.get('triangles_all_polygon_nodes') or 0 for v in ls),
+             'unaccounted_nodes': [n for v in ls for n in v.get('unaccounted_nodes') or []]}
+        exp_tris = sum((v or {}).get('render_triangles') or 0 for v in (mj.get('bsp') or {}).values())
     out['comparison'] = {
         'authored_render_triangles': a['triangles_in_render_elements'], 'authored_polygon_node_triangles': a['triangles_all_polygon_nodes'],
         'world_glb_bsp_triangles': exp_tris,
@@ -144,7 +153,7 @@ def main():
     c['verdict'] = ('BSP COMPLETE: every polygon node is rendered by a cooked element or is invisible/portal; the exported '
                     'triangle count equals the authored render triangles' if c['unaccounted_nodes'] == 0 and c['difference'] == 0
                     else 'BSP DIFFERENCE - see unaccounted_nodes / difference')
-    write('streets_bsp_audit.json', out)
+    write(map_out(MAP, 'streets_bsp_audit.json'), out)
     print(json.dumps({k: (v if not isinstance(v, dict) else {kk: vv for kk, vv in v.items() if not isinstance(vv, (list, dict))})
                       for k, v in out['levels'].items()}, indent=0)[:2500])
     print(json.dumps(c, indent=0))

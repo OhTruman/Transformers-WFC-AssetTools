@@ -1,0 +1,996 @@
+{
+ "generated_by": "AssetTools/scripts/wfc/map_complete.py",
+ "map": "MP_IAC_Rust",
+ "status": "GEOMETRY + AUTHORED DATA COMPLETE (not a playability claim)",
+ "playable_claim": "NOT CLAIMED: runtime behaviour (modes, movers, pickups, FX, audio) belongs to Gameplay/Rendering/Systems",
+ "checks": {
+  "level_hierarchy": {
+   "status": "COMPLETE",
+   "evidence": {
+    "sublevels": [
+     "GLB_Audio_m",
+     "MP_IAC_Rust_AUDIO_m",
+     "MP_IAC_Rust_Art_m",
+     "MP_IAC_Rust_BASE_m"
+    ]
+   }
+  },
+  "bsp": {
+   "status": "COMPLETE",
+   "evidence": {
+    "GLB_Audio_m": {
+     "render_triangles": null,
+     "skipped_polys": null,
+     "validation_issues": null
+    },
+    "MP_IAC_Rust_AUDIO_m": {
+     "render_triangles": null,
+     "skipped_polys": null,
+     "validation_issues": null
+    },
+    "MP_IAC_Rust_Art_m": {
+     "render_triangles": 1267,
+     "skipped_polys": {},
+     "validation_issues": []
+    },
+    "MP_IAC_Rust_BASE_m": {
+     "render_triangles": null,
+     "skipped_polys": null,
+     "validation_issues": null
+    }
+   }
+  },
+  "placed_meshes": {
+   "status": "COMPLETE",
+   "evidence": {
+    "placed": 2215,
+    "unique": 318,
+    "missing_mesh": 0
+   }
+  },
+  "collection_actor_transforms": {
+   "status": "COMPLETE",
+   "evidence": {
+    "components_checked": 2205,
+    "exact_matches": 2205,
+    "mirrored_det_negative": 301,
+    "any_negative_axis": 333,
+    "non_uniform": 893,
+    "two_negative_axes_not_mirrored": 32
+   }
+  },
+  "collision": {
+   "status": "COMPLETE",
+   "evidence": {
+    "files": [
+     "collision.glb",
+     "collision_pawn.glb",
+     "collision_weapon.glb"
+    ],
+    "volumes": {
+     "TriggerVolume": 40,
+     "BlockingVolume": 133,
+     "LightsVisibilitiesVolume": 1,
+     "PostProcessVolume": 1,
+     "TnForcedDirVolume": 5
+    }
+   }
+  },
+  "lightmaps": {
+   "status": "COMPLETE",
+   "evidence": {
+    "atlases_used": [
+     "LightMapTexture2D_10228",
+     "LightMapTexture2D_10487",
+     "LightMapTexture2D_1061",
+     "LightMapTexture2D_10920",
+     "LightMapTexture2D_11184",
+     "LightMapTexture2D_11340",
+     "LightMapTexture2D_11412",
+     "LightMapTexture2D_11611",
+     "LightMapTexture2D_11760",
+     "LightMapTexture2D_12777",
+     "LightMapTexture2D_12895",
+     "LightMapTexture2D_12907",
+     "LightMapTexture2D_12956",
+     "LightMapTexture2D_13384",
+     "LightMapTexture2D_13964",
+     "LightMapTexture2D_14552",
+     "LightMapTexture2D_14578",
+     "LightMapTexture2D_15087",
+     "LightMapTexture2D_15550",
+     "LightMapTexture2D_15963",
+     "LightMapTexture2D_16171",
+     "LightMapTexture2D_1829",
+     "LightMapTexture2D_1837",
+     "LightMapTexture2D_1914",
+     "LightMapTexture2D_2051",
+     "LightMapTexture2D_235",
+     "LightMapTexture2D_2416",
+     "LightMapTexture2D_2676",
+     "LightMapTexture2D_2688",
+     "LightMapTexture2D_2960",
+     "LightMapTexture2D_3089",
+     "LightMapTexture2D_3532",
+     "LightMapTexture2D_3778",
+     "LightMapTexture2D_3916",
+     "LightMapTexture2D_4911",
+     "LightMapTexture2D_4945",
+     "LightMapTexture2D_511",
+     "LightMapTexture2D_524",
+     "LightMapTexture2D_536",
+     "LightMapTexture2D_5553",
+     "LightMapTexture2D_6408",
+     "LightMapTexture2D_6953",
+     "LightMapTexture2D_8243",
+     "LightMapTexture2D_8305",
+     "LightMapTexture2D_8829",
+     "LightMapTexture2D_9319",
+     "LightMapTexture2D_9934"
+    ],
+    "without_png": [],
+    "world_glb_lightmapped_nodes": 1412
+   }
+  },
+  "materials": {
+   "status": "COMPLETE",
+   "evidence": {
+    "count": 251,
+    "missing": null
+   }
+  },
+  "decals": {
+   "status": "EXPORTED",
+   "evidence": {
+    "decals": 17
+   },
+   "owner": "RENDERING",
+   "blocker": "decal projection is renderer work"
+  },
+  "fog": {
+   "status": "COMPLETE",
+   "evidence": {
+    "HeightFog_actors": 3,
+    "height_fogs_in_lighting_json": 3,
+    "FogVolumeConstantDensityInfo": 6
+   },
+   "owner": "RENDERING",
+   "blocker": "height fog rendering (3 components, lighting.json globals.height_fogs)"
+  },
+  "lights": {
+   "status": "COMPLETE",
+   "evidence": {
+    "lights": 348,
+    "validation": null
+   }
+  },
+  "postprocess": {
+   "status": "COMPLETE",
+   "evidence": {
+    "scene_chain": {
+     "chain": "EngineMaterials.DefaultScenePostProcess",
+     "package_owner": "Startup_FRA",
+     "effects": [
+      {
+       "effect": "MotionBlurEffect_1",
+       "object": "EngineMaterials.DefaultScenePostProcess.MotionBlurEffect_1",
+       "class": "MotionBlurEffect",
+       "authored": {},
+       "effective": {
+        "MaxVelocity": 1.0,
+        "MotionBlurAmount": 0.5,
+        "MotionBlurCurveExponent": 1.0,
+        "InnerRadius": 0.20000000298023224,
+        "OuterRadius": 1.0,
+        "RadialBlurExponent": 2.0,
+        "AccumulationBlurSoftness": 0.5,
+        "Technique": "MBT_CameraAndObjectMotion",
+        "bShowInEditor": false,
+        "bShowInGame": true,
+        "bUseWorldSettings": true,
+        "SceneDPG": "SDPG_PostProcess"
+       },
+       "effective_from": {
+        "MaxVelocity": "Engine.Default__MotionBlurEffect",
+        "MotionBlurAmount": "Engine.Default__MotionBlurEffect",
+        "MotionBlurCurveExponent": "Engine.Default__MotionBlurEffect",
+        "InnerRadius": "Engine.Default__MotionBlurEffect",
+        "OuterRadius": "Engine.Default__MotionBlurEffect",
+        "RadialBlurExponent": "Engine.Default__MotionBlurEffect",
+        "AccumulationBlurSoftness": "Engine.Default__MotionBlurEffect",
+        "Technique": "Engine.Default__MotionBlurEffect",
+        "bShowInEditor": "Engine.Default__MotionBlurEffect",
+        "bShowInGame": "Engine.Default__PostProcessEffect",
+        "bUseWorldSettings": "Engine.Default__PostProcessEffect",
+        "SceneDPG": "Engine.Default__PostProcessEffect"
+       }
+      },
+      {
+       "effect": "UberPostProcessEffect_0",
+       "object": "EngineMaterials.DefaultScenePostProcess.UberPostProcessEffect_0",
+       "class": "UberPostProcessEffect",
+       "authored": {
+        "FocusDistance": 0.0
+       },
+       "effective": {
+        "FocusDistance": 0.0,
+        "SceneShadows": {
+         "X": 0.0,
+         "Y": 0.0,
+         "Z": -0.003000000026077032
+        },
+        "SceneHighLights": {
+         "X": 0.800000011920929,
+         "Y": 0.800000011920929,
+         "Z": 0.800000011920929
+        },
+        "SceneMidTones": {
+         "X": 1.2999999523162842,
+         "Y": 1.2999999523162842,
+         "Z": 1.2999999523162842
+        },
+        "SceneDesaturation": 0.4000000059604645,
+        "BloomScale": 1.0,
+        "BloomThreshold": 1.0,
+        "DOFXScale": 1.0,
+        "DOFYScale": 1.0,
+        "DOFAndBloomXScale": 1.0,
+        "DOFAndBloomYScale": 1.0,
+        "BlurKernelSize": 16.0,
+        "FalloffExponent": 2.0,
+        "MaxNearBlurAmount": 1.0,
+        "MaxFarBlurAmount": 1.0,
+        "ModulateBlurColor": {
+         "B": 255,
+         "G": 255,
+         "R": 255,
+         "A": 255
+        },
+        "FocusNearFalloff": 400.0,
+        "FocusFarFalloff": 400.0,
+        "bShowInEditor": true,
+        "bShowInGame": true,
+        "bUseWorldSettings": true,
+        "SceneDPG": "SDPG_PostProcess"
+       },
+       "effective_from": {
+        "FocusDistance": "EngineMaterials.DefaultScenePostProcess.UberPostProcessEffect_0",
+        "SceneShadows": "Engine.Default__UberPostProcessEffect",
+        "SceneHighLights": "Engine.Default__UberPostProcessEffect",
+        "SceneMidTones": "Engine.Default__UberPostProcessEffect",
+        "SceneDesaturation": "Engine.Default__UberPostProcessEffect",
+        "BloomScale": "Engine.Default__DOFAndBloomEffect",
+        "BloomThreshold": "Engine.Default__DOFAndBloomEffect",
+        "DOFXScale": "Engine.Default__DOFAndBloomEffect",
+        "DOFYScale": "Engine.Default__DOFAndBloomEffect",
+        "DOFAndBloomXScale": "Engine.Default__DOFAndBloomEffect",
+        "DOFAndBloomYScale": "Engine.Default__DOFAndBloomEffect",
+        "BlurKernelSize": "Engine.Default__DOFAndBloomEffect",
+        "FalloffExponent": "Engine.Default__DOFEffect",
+        "MaxNearBlurAmount": "Engine.Default__DOFEffect",
+        "MaxFarBlurAmount": "Engine.Default__DOFEffect",
+        "ModulateBlurColor": "Engine.Default__DOFEffect",
+        "FocusNearFalloff": "Engine.Default__DOFEffect",
+        "FocusFarFalloff": "Engine.Default__DOFEffect",
+        "bShowInEditor": "Engine.Default__PostProcessEffect",
+        "bShowInGame": "Engine.Default__PostProcessEffect",
+        "bUseWorldSettings": "Engine.Default__PostProcessEffect",
+        "SceneDPG": "Engine.Default__PostProcessEffect"
+       }
+      }
+     ]
+    },
+    "governing": null,
+    "volumes": [
+     {
+      "volume": "MP_IAC_Rust_Art_m.TheWorld.PersistentLevel.PostProcessVolume_3052",
+      "props": {
+       "Settings": {
+        "bEnableBloom": true,
+        "bEnableDOF": true,
+        "bEnableMotionBlur": false,
+        "bEnableSceneEffect": true,
+        "bAllowAmbientOcclusion": false,
+        "Bloom_Scale": 0.10000000149011612,
+        "Bloom_Threshold": 1.0,
+        "DOFXScale": 1.0,
+        "DOFYScale": 1.0,
+        "DOFAndBloomXScale": 1.0,
+        "DOFAndBloomYScale": 1.0,
+        "Bloom_InterpolationDuration": 1.0,
+        "Bloom_InterpolationProgress": 0.0,
+        "DOF_FalloffExponent": 1.0,
+        "DOF_BlurKernelSize": 32.0,
+        "DOF_MaxNearBlurAmount": 0.0,
+        "DOF_MaxFarBlurAmount": 0.4000000059604645,
+        "DOF_ModulateBlurColor": {
+         "B": 255,
+         "G": 255,
+         "R": 255,
+         "A": 255
+        },
+        "DOF_FocusType": "FOCUS_Distance",
+        "DOF_FocusNearFalloff": 0.0,
+        "DOF_FocusFarFalloff": 2000.0,
+        "DOF_FocusDistance": 15000.0,
+        "DOF_FocusPosition": {
+         "X": 0.0,
+         "Y": 0.0,
+         "Z": 0.0
+        },
+        "DOF_InterpolationDuration": 1.0,
+        "DOF_InterpolationProgress": 0.0,
+        "MotionBlur_Technique": "MBT_CameraAndObjectMotion",
+        "MotionBlur_MaxVelocity": 1.0,
+        "MotionBlur_Amount": 0.5,
+        "MotionBlur_CurveExponent": 1.0,
+        "MotionBlur_InnerRadius": 0.20000000298023224,
+        "MotionBlur_OuterRadius": 1.0,
+        "MotionBlur_RadialBlurExponent": 2.0,
+        "MotionBlur_RadialStretch": 0.0,
+        "MotionBlur_AccumulationSoftness": 0.5,
+        "MotionBlur_NumSamples": "MBSC_5_Samples",
+        "MotionBlur_InterpolationDuration": 1.0,
+        "MotionBlur_InterpolationProgress": 0.0,
+        "Scene_Desaturation": 0.0,
+        "Scene_HighLights": {
+         "X": 1.5,
+         "Y": 1.5,
+         "Z": 1.5
+        },
+        "Scene_MidTones": {
+         "X": 0.8999999761581421,
+         "Y": 0.8999999761581421,
+         "Z": 0.8999999761581421
+        },
+        "Scene_Shadows": {
+         "X": -0.0010000000474974513,
+         "Y": -0.0010000000474974513,
+         "Z": -0.0010000000474974513
+        },
+        "Scene_InterpolationDuration": 1.0,
+        "Scene_InterpolationProgress": 0.0,
+        "ColorCorrectionTexture": "ENV_Cluts_p.clut_mp40",
+        "ColorCorrectionTextureLerpTarget": null,
+        "PostProcessVolumeHeightFog_InterpolationDuration": 1.0,
+        "PostProcessVolumeHeightFog": [],
+        "PostProcessVolumeHeightFog_InterpolateDensity": true,
+        "PostProcessVolumeHeightFog_InterpolateHeight": false,
+        "PostProcessVolumeHeightFog_InterpolateColor": false
+       },
+       "BRUSH": "MP_IAC_Rust_Art_m.TheWorld.PersistentLevel.PostProcessVolume_3052.Model_13446",
+       "BrushComponent": "MP_IAC_Rust_Art_m.TheWorld.PersistentLevel.PostProcessVolume_3052.BrushComponent_6274",
+       "Tag": "PostProcessVolume",
+       "Location": {
+        "X": -7402.3203125,
+        "Y": -10352.0,
+        "Z": 0.0
+       },
+       "CollisionComponent": "MP_IAC_Rust_Art_m.TheWorld.PersistentLevel.PostProcessVolume_3052.BrushComponent_6274",
+       "bEnabled": true,
+       "Components": [
+        "Engine.Default__PostProcessVolume.BrushComponent0"
+       ],
+       "bStatic": false,
+       "bStasis": true,
+       "bCollideActors": false,
+       "CollisionPreset": "COLLIDE_NoCollision",
+       "SupportedEvents": [
+        "Engine.SeqEvent_Touch"
+       ],
+       "bSkipActorPropertyReplication": true,
+       "bHidden": true,
+       "bNoDelete": true,
+       "CustomTimeDilation": 1.0,
+       "Role": "ROLE_Authority",
+       "bShouldTick": true,
+       "bPushedByEncroachers": true,
+       "bRouteBeginPlayEvenIfStatic": true,
+       "bReplicateMovement": true,
+       "bMovable": true,
+       "bNoCylinderCollision": true,
+       "bJustTeleported": true,
+       "bUpdatePhysicsWhenNotRendered": true,
+       "NetUpdateFrequency": 100.0,
+       "NetPriority": 1.0,
+       "DrawScale": 1.0,
+       "DrawScale3D": {
+        "X": 1.0,
+        "Y": 1.0,
+        "Z": 1.0
+       },
+       "ActorIndex": -1,
+       "ReplicatedCollisionPreset": "None",
+       "MessageClass": "Engine.LocalMessage"
+      }
+     }
+    ]
+   }
+  },
+  "map_fx": {
+   "status": "EXPORTED",
+   "evidence": {
+    "particle_components": 30,
+    "systems": 5
+   },
+   "owner": "RENDERING",
+   "blocker": "particle systems must be simulated by the renderer (decoded module streams via pstream.py)"
+  },
+  "movers": {
+   "status": "AUTHORED",
+   "evidence": {
+    "count": 8,
+    "physics": {
+     "PHYS_Interpolating": 8
+    },
+    "matinee": 0
+   },
+   "owner": "GAMEPLAY",
+   "blocker": "PHYS_Rotating / Interpolating movers must be animated at runtime"
+  },
+  "pickups": {
+   "status": "COMPLETE",
+   "evidence": {
+    "count": 14,
+    "by_class": {
+     "TnAmmoCratePickupFactory": 6,
+     "TnHealthPickupFactory": 6,
+     "TnOverShieldPickupFactory": 2
+    }
+   }
+  },
+  "player_starts": {
+   "status": "COMPLETE",
+   "evidence": {
+    "count": 109
+   }
+  },
+  "objectives": {
+   "status": "COMPLETE",
+   "evidence": {
+    "count": 6
+   }
+  },
+  "mode_hidden_state": {
+   "status": "COMPLETE",
+   "evidence": {
+    "classes": [
+     "TnDominationPoint",
+     "TnKingOfTheHillZone",
+     "TnGameObjectivePickupFactoryFlag",
+     "TnGameObjectivePickupFactoryBomb",
+     "TnFlagCapturePoint",
+     "TnBombPlantPoint",
+     "TnAmmoCratePickupFactory",
+     "TnHealthPickupFactory",
+     "TnOverShieldPickupFactory",
+     "Kismet-hidden objective props"
+    ],
+    "tdm_hidden": 17
+   }
+  },
+  "ambient_audio": {
+   "status": "COMPLETE",
+   "evidence": {
+    "point": 62,
+    "volume": 32,
+    "line": 12,
+    "zones": 30,
+    "reverb_presets": 7,
+    "cues": 43,
+    "waves": 104,
+    "waves_with_wav": 104,
+    "missing_cues": []
+   }
+  },
+  "navigation": {
+   "status": "COMPLETE",
+   "evidence": {
+    "nodes": 140,
+    "edges": 877
+   }
+  },
+  "loading_metadata": {
+   "status": "COMPLETE",
+   "evidence": {
+    "loading_screen": "shared: LoadScreen_GFX title = mode FriendlyName, text = UIText.LoadScreen.LoadingMap (\"in `m\") with `m = this display_name; no per-map loading art (loading_handoff.json)"
+   }
+  },
+  "thumbnail": {
+   "status": "COMPLETE",
+   "evidence": {
+    "ImagePath": "UI_LevelThumbnails_p.MP_Rust",
+    "png": "content/UI_LevelThumbnails_p/MP_Rust.png",
+    "inherited_default": false,
+    "unavailable_image": "UI_LevelThumbnails_p.LevelUnavailable"
+   }
+  },
+  "frontend_name": {
+   "status": "COMPLETE",
+   "evidence": {
+    "INT": "Rust",
+    "FRA": "Rouille"
+   }
+  },
+  "mode_compatibility": {
+   "status": "COMPLETE",
+   "evidence": [
+    "DM",
+    "TDM",
+    "CTF",
+    "KOTH",
+    "EXT",
+    "DOM"
+   ]
+  },
+  "sublevels": {
+   "status": "COMPLETE",
+   "evidence": {
+    "sublevels": [
+     "GLB_Audio_m",
+     "MP_IAC_Rust_AUDIO_m",
+     "MP_IAC_Rust_Art_m",
+     "MP_IAC_Rust_BASE_m"
+    ],
+    "source": "name prefix + authored LevelStreaming"
+   }
+  },
+  "bsp_alignment": {
+   "status": "COMPLETE",
+   "evidence": {
+    "authored_render_triangles": 1267,
+    "authored_polygon_node_triangles": 1267,
+    "world_glb_bsp_triangles": 1267,
+    "difference": 0,
+    "unaccounted_nodes": 0,
+    "verdict": "BSP COMPLETE: every polygon node is rendered by a cooked element or is invisible/portal; the exported triangle count equals the authored render triangles"
+   }
+  },
+  "bsp_default_material_faces": {
+   "status": "AUTHORED",
+   "evidence": {
+    "nodes": 211,
+    "surfaces": 147,
+    "brushes": 56,
+    "by_verdict": {
+     "partial": 26,
+     "exposed": 156,
+     "hidden": 29
+    },
+    "area_m2_by_verdict": {
+     "partial": 21468.96,
+     "exposed": 103227.07,
+     "hidden": 2131.12
+    },
+    "visible_in_play": 2,
+    "visible_in_play_area_m2": 0.01
+   },
+   "owner": "RENDERING",
+   "blocker": "faces authored with EngineMaterials.DefaultMaterial visible in play"
+  },
+  "negative_nonuniform_scales": {
+   "status": "COMPLETE",
+   "evidence": {
+    "mirrored": 301,
+    "non_uniform": 893,
+    "winding": "CONSISTENT"
+   }
+  },
+  "material_instances": {
+   "status": "COMPLETE",
+   "evidence": {
+    "by_class": {
+     "MaterialInstanceConstant": 198,
+     "Material": 53
+    },
+    "masters": 70
+   }
+  },
+  "textures": {
+   "status": "COMPLETE",
+   "evidence": {
+    "note": "material texture parameters resolve through materials_authored.json; lightmap atlases as PNG",
+    "lightmap_pngs": 141
+   }
+  },
+  "dynamic_lights": {
+   "status": "COMPLETE",
+   "evidence": {
+    "by_classification": {
+     "LAC_STATIC_AFFECTING": 346,
+     "LAC_USER_SELECTED": 2
+    },
+    "built_into_lightmap": 347,
+    "cast_dynamic_shadows": 0,
+    "disabled": 0
+   },
+   "owner": "RENDERING",
+   "blocker": "dynamic (non-lightmapped) lights: 1"
+  },
+  "particles": {
+   "status": "EXPORTED",
+   "evidence": {
+    "components": 30,
+    "emitter_actors": 5
+   },
+   "owner": "RENDERING",
+   "blocker": "runtime simulation"
+  },
+  "moving_scenery": {
+   "status": "AUTHORED",
+   "evidence": {
+    "movers": 8,
+    "in_world_glb_missing": []
+   },
+   "owner": "GAMEPLAY",
+   "blocker": "animate PHYS_Rotating / Matinee at runtime"
+  },
+  "blocking_volumes": {
+   "status": "COMPLETE",
+   "evidence": {
+    "BlockingVolume": 133,
+    "TnTransformerBlockingVolume": 0,
+    "TnForcedDirVolume": 5,
+    "PhysicsVolume": 0
+   }
+  },
+  "playable_space": {
+   "status": "COMPLETE",
+   "evidence": {
+    "player_starts": 109,
+    "starts_on_reachable_floor": 109,
+    "walk_graph_area_m2": 290330.0,
+    "bounds": {
+     "x_m": [
+      -448.0,
+      191.0
+     ],
+     "z_m": [
+      -264.0,
+      120.0
+     ],
+     "floor_height_m": [
+      -1.86,
+      38.47
+     ]
+    },
+    "placement_checks": {
+     "pickups": {
+      "count": 14,
+      "on_walkable_reachable_floor": 14,
+      "not_on_walk_graph": []
+     },
+     "objectives": {
+      "count": 15,
+      "on_walkable_reachable_floor": 13,
+      "not_on_walk_graph": [
+       "TnKingOfTheHillZone_3598",
+       "TnKingOfTheHillZone_8396"
+      ]
+     }
+    }
+   }
+  },
+  "collision_vs_visible": {
+   "status": "COMPLETE",
+   "evidence": {
+    "agreement_pct": 92.69,
+    "agreement_pct_excluding_volume_tops": 94.67,
+    "blocking_gaps_explained": [
+     {
+      "actor": "StaticMeshCollectionActor_11928",
+      "component": "StaticMeshActor_16081_SMC",
+      "mesh": "ENV_NEU_Variation_p.metalpuddle_02_STAT",
+      "pawn_channel": "per_poly",
+      "gltf_translation_m": [
+       1.5,
+       10.2,
+       -221.1
+      ],
+      "reason": "per-poly but every section has EnableCollision=false (authored) -> no collision geometry, as in UE3"
+     },
+     {
+      "actor": "StaticMeshCollectionActor_11928",
+      "component": "StaticMeshActor_719_SMC",
+      "mesh": "ENV_NEU_Variation_p.metalpuddle_02_STAT",
+      "pawn_channel": "per_poly",
+      "gltf_translation_m": [
+       -1.8,
+       10.2,
+       -209.4
+      ],
+      "reason": "per-poly but every section has EnableCollision=false (authored) -> no collision geometry, as in UE3"
+     },
+     {
+      "actor": "StaticMeshCollectionActor_11928",
+      "component": "StaticMeshActor_13300_SMC",
+      "mesh": "ENV_NEU_Variation_p.metalpuddle_04_STAT",
+      "pawn_channel": "per_poly",
+      "gltf_translation_m": [
+       0.8,
+       10.2,
+       -190.9
+      ],
+      "reason": "per-poly but every section has EnableCollision=false (authored) -> no collision geometry, as in UE3"
+     },
+     {
+      "actor": "StaticMeshCollectionActor_11928",
+      "component": "StaticMeshActor_10439_SMC",
+      "mesh": "ENV_NEU_Variation_p.metalpuddle_04_STAT",
+      "pawn_channel": "per_poly",
+      "gltf_translation_m": [
+       -95.8,
+       2.6,
+       -201.7
+      ],
+      "reason": "per-poly but every section has EnableCollision=false (authored) -> no collision geometry, as in UE3"
+     },
+     {
+      "actor": "StaticMeshCollectionActor_11928",
+      "component": "StaticMeshActor_4247_SMC",
+      "mesh": "ENV_NEU_Variation_p.metalpuddle_07_STAT",
+      "pawn_channel": "per_poly",
+      "gltf_translation_m": [
+       -103.0,
+       2.6,
+       -204.7
+      ],
+      "reason": "per-poly but every section has EnableCollision=false (authored) -> no collision geometry, as in UE3"
+     },
+     {
+      "actor": "StaticMeshCollectionActor_11928",
+      "component": "StaticMeshActor_1320_SMC",
+      "mesh": "ENV_NEU_Variation_p.metalpuddle_07_STAT",
+      "pawn_channel": "per_poly",
+      "gltf_translation_m": [
+       -96.5,
+       2.6,
+       -209.2
+      ],
+      "reason": "per-poly but every section has EnableCollision=false (authored) -> no collision geometry, as in UE3"
+     },
+     {
+      "actor": "StaticMeshCollectionActor_11928",
+      "component": "StaticMeshActor_9847_SMC",
+      "mesh": "ENV_NEU_Variation_p.metalpuddle_03_STAT",
+      "pawn_channel": "per_poly",
+      "gltf_translation_m": [
+       -95.4,
+       2.6,
+       -198.0
+      ],
+      "reason": "per-poly but every section has EnableCollision=false (authored) -> no collision geometry, as in UE3"
+     },
+     {
+      "actor": "StaticMeshCollectionActor_4472",
+      "component": "StaticMeshActor_11307_SMC",
+      "mesh": "ENV_IAC_Background_p.Vista_Buildings.CityBackdrop_STAT",
+      "pawn_channel": "per_poly",
+      "gltf_translation_m": [
+       339.3,
+       -37.3,
+       -1669.9
+      ],
+      "reason": "per_poly collision expected but vs_physics wrote no node: physics.json pawn stats oversize_skipped=3 (>2 km shells), missing_geometry=11 (render mesh / hull not available)"
+     },
+     {
+      "actor": "StaticMeshCollectionActor_4472",
+      "component": "StaticMeshActor_615_SMC",
+      "mesh": "ENV_IAC_Background_p.Vista_Buildings.CityBackdrop_STAT",
+      "pawn_channel": "per_poly",
+      "gltf_translation_m": [
+       1628.8,
+       -37.3,
+       -3140.1
+      ],
+      "reason": "per_poly collision expected but vs_physics wrote no node: physics.json pawn stats oversize_skipped=3 (>2 km shells), missing_geometry=11 (render mesh / hull not available)"
+     },
+     {
+      "actor": "StaticMeshCollectionActor_4472",
+      "component": "StaticMeshActor_1200_SMC",
+      "mesh": "ENV_IAC_Background_p.Vista_Buildings.CityBackdrop_STAT",
+      "pawn_channel": "per_poly",
+      "gltf_translation_m": [
+       3276.8,
+       -37.3,
+       -2322.5
+      ],
+      "reason": "per_poly collision expected but vs_physics wrote no node: physics.json pawn stats oversize_skipped=3 (>2 km shells), missing_geometry=11 (render mesh / hull not available)"
+     },
+     {
+      "actor": "StaticMeshCollectionActor_4905",
+      "component": "StaticMeshActor_9182_SMC",
+      "mesh": "ENV_NEU_Variation_p.metalpuddle_06_STAT",
+      "pawn_channel": "per_poly",
+      "gltf_translation_m": [
+       68.2,
+       10.2,
+       -157.1
+      ],
+      "reason": "per-poly but every section has EnableCollision=false (authored) -> no collision geometry, as in UE3"
+     },
+     {
+      "actor": "StaticMeshCollectionActor_4905",
+      "component": "StaticMeshActor_11522_SMC",
+      "mesh": "ENV_NEU_Variation_p.metalpuddle_03_STAT",
+      "pawn_channel": "per_poly",
+      "gltf_translation_m": [
+       71.3,
+       10.2,
+       -164.4
+      ],
+      "reason": "per-poly but every section has EnableCollision=false (authored) -> no collision geometry, as in UE3"
+     },
+     {
+      "actor": "StaticMeshCollectionActor_7684",
+      "component": "StaticMeshActor_15613_SMC",
+      "mesh": "ENV_NEU_Variation_p.metalpuddle_02_STAT",
+      "pawn_channel": "per_poly",
+      "gltf_translation_m": [
+       69.8,
+       10.2,
+       -146.9
+      ],
+      "reason": "per-poly but every section has EnableCollision=false (authored) -> no collision geometry, as in UE3"
+     },
+     {
+      "actor": "StaticMeshCollectionActor_7684",
+      "component": "StaticMeshActor_3737_SMC",
+      "mesh": "ENV_NEU_Variation_p.metalpuddle_04_STAT",
+      "pawn_channel": "per_poly",
+      "gltf_translation_m": [
+       78.9,
+       10.2,
+       -159.7
+      ],
+      "reason": "per-poly but every section has EnableCollision=false (authored) -> no collision geometry, as in UE3"
+     }
+    ]
+   }
+  },
+  "actor_visibility": {
+   "status": "COMPLETE",
+   "evidence": {
+    "world_glb_nodes_by_kind": {
+     "bsp": 1,
+     "StaticMeshActor": 2,
+     "StaticMeshCollectionActor": 2205,
+     "InterpActor": 8
+    },
+    "non_collection_actors": 10,
+    "non_collection_actors_missing_from_world_glb": [],
+    "mode_gated_targets": 8,
+    "mode_gated_missing_from_world_glb": []
+   }
+  },
+  "mode_specific_actors": {
+   "status": "COMPLETE",
+   "evidence": {
+    "TnDominationPoint": 3,
+    "TnKingOfTheHillZone": 5,
+    "TnGameObjectivePickupFactoryFlag": 2,
+    "TnGameObjectivePickupFactoryBomb": 1,
+    "TnFlagCapturePoint": 2,
+    "TnBombPlantPoint": 2,
+    "TnAmmoCratePickupFactory": 6,
+    "TnHealthPickupFactory": 6,
+    "TnOverShieldPickupFactory": 2,
+    "Kismet-hidden objective props": 2
+   }
+  },
+  "audio_emitters": {
+   "status": "COMPLETE",
+   "evidence": {
+    "point": 62,
+    "volume": 32,
+    "line": 12,
+    "cues": 43,
+    "waves_with_wav": 104
+   }
+  },
+  "zones_reverb": {
+   "status": "COMPLETE",
+   "evidence": {
+    "zones": 30,
+    "reverb_presets": 7
+   },
+   "owner": "SYSTEMS",
+   "blocker": "ambient zones / reverb presets applied at runtime (Kismet SeqAct_AmbientAudioZone / SeqAct_Reverb)"
+  },
+  "surface_audio": {
+   "status": "COMPLETE",
+   "evidence": "Every MP_IAC_Rust surface resolves to the SAME footstep events (FS_DEFAULT_*). WFC has no surface-specific robot footstep/landing audio on this map: the per-character HmSoundEventSet chooses the sound (Optimus -> BL_FS_LRG_BOT.*). The rebuild's \"generic/default\" footsteps are the authored behaviour, not a fallback."
+  },
+  "skyline_background_geometry": {
+   "status": "COMPLETE",
+   "evidence": {
+    "props_outside_playable_bounds_plus_50m": 46,
+    "by_mesh": {
+     "ENV_IAC_BLDS_1_p.StaticMesh.Spire_1536_STAT": 14,
+     "ENV_IAC_LightSources_p.LightPlanes.SquareLightPlane_STAT": 10,
+     "ENV_IAC_Background_p.Vista_Buildings.CityBackdrop_STAT": 9,
+     "ENV_IAC_BLDS_1_p.StaticMesh.CurveWall_7168_STAT": 4,
+     "ENV_IAC_Background_p.Vista_Buildings.Iacon_VistaBuildings_01_STAT": 3,
+     "ENV_IAC_Deco_1_p.StaticMesh.SmallSpire_512_STAT": 2,
+     "ENV_IAC_Background_p.Vista_Buildings.Iacon_VistaBuildings_02_STAT": 2,
+     "ENV_IAC_Spacedome_p.BlueNebulae_Card_STAT": 2
+    },
+    "note": "exported in world.glb like any prop; oversized shells (>2 km) excluded from collision"
+   }
+  },
+  "kismet_references": {
+   "status": "COMPLETE",
+   "evidence": {
+    "summary": {
+     "startup_events": {
+      "SeqEvent_SequenceActivated": 52,
+      "SeqEvent_GameplayStarted": 2
+     },
+     "ops_with_actor_links (op class -> linked actor classes)": {
+      "SeqAct_ToggleHidden": {
+       "InterpActor": 4
+      },
+      "TnSeqAct_TransformWorldProp": {
+       "TnTransformingWorldActor": 2
+      }
+     },
+     "matinee_ops": 0,
+     "mode_conditions": 5,
+     "audio_ops": {
+      "SeqAct_AmbientAudioZone": 25,
+      "SeqAct_Reverb": 35,
+      "SeqAct_PlayPlayerPositionalSound": 53,
+      "SeqAct_Mixer": 3
+     },
+     "note": "generated from the authored graph (m04_kismet.generated_summary); trigger chains per op in actor_relationships"
+    },
+    "relationships": 6
+   }
+  },
+  "destructibles": {
+   "status": "COMPLETE",
+   "evidence": {
+    "count": 0
+   }
+  },
+  "structure_audit": {
+   "status": "PASS",
+   "evidence": {
+    "status": "PASS",
+    "failures": []
+   }
+  },
+  "vs_validate": {
+   "status": "PASS",
+   "evidence": {
+    "checks": 44,
+    "failures": 0
+   }
+  }
+ },
+ "blockers_by_owner": {
+  "ASSETTOOLS": [],
+  "RE": [
+   "LensFlareSource rendering semantics"
+  ],
+  "RENDERING": [
+   "skeletal actors (2) spawned from glTF (render_index_generic)",
+   "particles (30 components)",
+   "decals (17)",
+   "height fog (3, lighting.json globals.height_fogs)",
+   "lens flares (1)"
+  ],
+  "GAMEPLAY": [
+   "movers runtime (8)",
+   "mode gating per mode_visual_state",
+   "pickup state machines (RE P2)"
+  ],
+  "SYSTEMS": [
+   "ambient audio zones / reverb from audio.json"
+  ],
+  "FRONTEND": [
+   "registry entry present"
+  ]
+ },
+ "cross_check_vs_validated_streets": null
+}

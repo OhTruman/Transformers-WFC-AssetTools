@@ -160,3 +160,16 @@ Each UI scene folder `ExtractedAssets/VerticalSlice/Maps/<scene>/` now has:
 **Verdict corrections**, agreeing with RE D:
 * The campaign/escalation lobby is the authored space-dome scene. **Black there is an omission.**
 * Pause is shown over the live match, and results over the frozen match world.
+
+### Matinee → actor bindings (runtime-ready, 2026-10-04)
+In `render_index.json`, every group under `matinee (groups carry bound_actors …)` lists `bound_actors`: the actor names its
+SeqAct_Interp VariableLinks bind, matching `actors_by_level` and the `world.glb` node names.
+* **Front-end level:** `SeqAct_Interp_2880` (393.6 s loop) drives the camera dummies and `CameraActor_6585`. `SeqAct_Interp_9395`
+  drives the rings: `OuterRingMESH` → `InterpActor_14597`, `InnerRingMESH` → `InterpActor_11976`, plus three
+  MaterialInstanceActor parameter tracks.
+* **Vignette:**
+  * ship fly-bys: `SeqAct_Interp_490`, for example `dec01` → `HmSkeletalMeshActor_7960` (Move tracks) and `thrust01` → three
+    emitters;
+  * explosions, AA fire, lasers and sparks: InterpTrackToggle on named Emitters.
+* **Ships:** 17 SoldierJet Aut/Dec fly-bys, each spawned from its glTF (`gltf`, `gltf_matrix`) and moved by Matinee. They have no
+  AnimSets: authored motion is Move tracks only.

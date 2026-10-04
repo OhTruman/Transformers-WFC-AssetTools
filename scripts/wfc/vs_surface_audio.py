@@ -16,10 +16,11 @@ from collections import Counter, defaultdict
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 import authored as A, objtree, typed_props as tp  # noqa: E402
-from m03_common import field, lit, write, pkg_of, CONF, HIGH, PART, UNK  # noqa: E402
+from m03_common import field, lit, write, pkg_of, CONF, HIGH, PART, UNK, map_arg, map_out, map_levels# noqa: E402
 from vs_common import VS  # noqa: E402
 
-MAP = 'MP_IAC_Streets'
+MAP = map_arg()                      # positional map name (default MP_IAC_Streets)
+LV_ = map_levels(MAP)
 SLICE = os.path.join(VS, 'Maps', MAP)
 SLOTS = ['FootstepWalk', 'FootstepJog', 'FootstepRun', 'FootstepCrouchWalk', 'FootstepCrouchJog', 'FootstepCrouchRun',
          'FootstepScuff', 'FootstepCrouchScuff', 'FootstepJump', 'FootstepLand', 'FootstepHardLand', 'FootstepDashLand']
@@ -32,7 +33,7 @@ NOTIFY = {'walk': 'FootstepWalk', 'run': 'FootstepRun', 'scuff': 'FootstepScuff'
 FOOTCOMP = 'TransGame.Default__TnPawn.FootstepComp0'
 EVENTSET = 'SoundEvents.CHR_OPTIMUS'
 
-def read_cooked(opath, prefer=(MAP + '_BASE_m', MAP + '_ART_m')):
+def read_cooked(opath, prefer=(LV_['base'], LV_['art'])):
     inv = objtree.inv()
     rows = [r[0] for r in inv.execute('SELECT package FROM exports WHERE opath=? ORDER BY serial_size DESC', (opath,)).fetchall()]
     pk = next((p for p in prefer if p in rows), rows[0] if rows else None)
@@ -133,10 +134,11 @@ def main():
     distinct = Counter(json.dumps({s: r['slots'][s]['event'] for s in SLOTS}, sort_keys=True) for r in physmats.values())
     out = {
         'map': MAP, 'generated_by': 'AssetTools/scripts/wfc/vs_surface_audio.py',
-        'headline': {'value': 'Every Streets surface resolves to the SAME footstep events (FS_DEFAULT_*). WFC has no '
+        'headline': {'value': ('Every %s surface resolves to the SAME footstep events (FS_DEFAULT_*). WFC has no '
                               'surface-specific robot footstep/landing audio on this map: the per-character HmSoundEventSet '
                               'chooses the sound (Optimus -> BL_FS_LRG_BOT.*). The rebuild\'s "generic/default" footsteps are '
-                              'the authored behaviour, not a fallback.',
+                              'the authored behaviour, not a fallback.') % ('Streets' if MAP == 'MP_IAC_Streets' else MAP) if len(distinct) == 1 else
+                              ('%s physical materials map to %d distinct footstep tables (see physical_materials)' % (MAP, len(distinct))),
                      'confidence': CONF,
                      'distinct_footstep_tables_across_streets_physmats': len(distinct)},
         'pawn_footstep_component': {'object': FOOTCOMP, 'defaults': {k: v for k, v in A.values(FOOTCOMP).items() if k.startswith('Default')},
@@ -166,7 +168,7 @@ def main():
             if e and e.get('Event') == 'SoundEvents_Footsteps.FS_DEFAULT_WALK':
                 c[(e.get('Sound') or 'None').split('.')[0]] += 1
     out['robot_size_distinction']['FS_DEFAULT_WALK bank usage across all event sets'] = dict(c)
-    write('streets_surface_audio.json', out)
+    write(map_out(MAP, 'streets_surface_audio.json'), out)
     print(out['headline']['distinct_footstep_tables_across_streets_physmats'], {k: len(v) for k, v in by_pm.items()},
           {e: v['cue'] for e, v in event_to_cue.items()})
 

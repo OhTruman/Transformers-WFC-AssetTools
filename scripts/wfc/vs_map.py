@@ -90,6 +90,18 @@ def actor_matrix(d):
     return ue_actor_matrix(d.get('Location', (0, 0, 0)), d.get('Rotation', (0, 0, 0)), d.get('DrawScale', 1.0),
                            d.get('DrawScale3D', (1, 1, 1)), d.get('PrePivot', (0, 0, 0)))
 
+def cooked_shape(v):
+    """effective authored values (authored.values) -> the cooked-property shapes vs_map reads (refs, xyz / pyr tuples)."""
+    out = {}
+    xyz = lambda d, ks: [d.get(k, 0) for k in ks] if isinstance(d, dict) else d
+    if isinstance(v.get('StaticMesh'), str): out['StaticMesh'] = {'ref': v['StaticMesh']}
+    if v.get('Scale') is not None: out['Scale'] = v['Scale']
+    if v.get('Scale3D') is not None: out['Scale3D'] = xyz(v['Scale3D'], 'XYZ')
+    if v.get('Translation') is not None: out['Translation'] = xyz(v['Translation'], 'XYZ')
+    if v.get('Rotation') is not None: out['Rotation'] = xyz(v['Rotation'], ('Pitch', 'Yaw', 'Roll'))
+    if isinstance(v.get('Materials'), list): out['Materials'] = [{'ref': m} if isinstance(m, str) else None for m in v['Materials']]
+    return out
+
 def component_matrix(c):
     s = c.get('Scale', 1.0); s3 = c.get('Scale3D', (1, 1, 1))
     return ue_scale([s * x for x in s3]) @ ue_rot(*c.get('Rotation', (0, 0, 0))) @ ue_trans(c.get('Translation', (0, 0, 0)))
@@ -210,6 +222,9 @@ def main():
     def mesh_node(mesh_op, overrides, ue_matrix, name, extras, pkg=None):
         a = A.get((mesh_op or '').lower())
         gl = next((o for o in (a or {}).get('extracted', []) if o.endswith('.gltf')), None) if a else None
+        if not gl and a and mesh_op:   # authored.db 'extracted' can be stale for meshes extracted later: use the content path
+            cand = os.path.join('content', *mesh_op.split('.')) + '.gltf'
+            if os.path.exists(os.path.join(ROOT, cand)): gl = cand.replace(os.sep, '/')
         if not gl: return None, 'mesh not extracted'
         key = (mesh_op, tuple(overrides), pkg)
         if key not in mesh_cache:
@@ -267,6 +282,13 @@ def main():
                 for k, cr in enumerate(comps):
                     ci = L.idx(cr)
                     cd = L.P(ci) if ci else {}
+                    if not cd.get('StaticMesh') and isinstance(cr, str):
+                        # component serialized without StaticMesh (Rust): mesh + Scale/Scale3D/Rotation/Translation live on the
+                        # archetype chain -> fill the missing keys from the effective authored values
+                        try:
+                            import authored as AU
+                            cd = {**cooked_shape(AU.values(cr) or {}), **cd}
+                        except Exception: pass
                     mop = ref(cd.get('StaticMesh'))
                     ov = [ref(x) for x in (cd.get('Materials') or [])]
                     if mats is None: other['smca_without_matrices'] += 1; continue

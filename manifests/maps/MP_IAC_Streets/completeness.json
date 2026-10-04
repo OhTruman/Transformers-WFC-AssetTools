@@ -368,6 +368,267 @@
     "DOM"
    ]
   },
+  "sublevels": {
+   "status": "COMPLETE",
+   "evidence": {
+    "sublevels": [
+     "MP_IAC_Streets_ART_m",
+     "MP_IAC_Streets_AUDIO_m",
+     "MP_IAC_Streets_BASE_m"
+    ],
+    "source": "name prefix + authored LevelStreaming"
+   }
+  },
+  "bsp_alignment": {
+   "status": "COMPLETE",
+   "evidence": {
+    "authored_render_triangles": 2460,
+    "authored_polygon_node_triangles": 2460,
+    "world_glb_bsp_triangles": 2460,
+    "difference": 0,
+    "unaccounted_nodes": 0,
+    "verdict": "BSP COMPLETE: every polygon node is rendered by a cooked element or is invisible/portal; the exported triangle count equals the authored render triangles"
+   }
+  },
+  "bsp_default_material_faces": {
+   "status": "AUTHORED",
+   "evidence": {
+    "nodes": 87,
+    "surfaces": 62,
+    "brushes": 46,
+    "by_verdict": {
+     "exposed": 61,
+     "partial": 23,
+     "hidden": 3
+    },
+    "area_m2_by_verdict": {
+     "exposed": 31191.61,
+     "partial": 16379.78,
+     "hidden": 95.44
+    },
+    "visible_in_play": 3,
+    "visible_in_play_area_m2": 2873.63
+   },
+   "owner": "RENDERING",
+   "blocker": "faces authored with EngineMaterials.DefaultMaterial visible in play"
+  },
+  "negative_nonuniform_scales": {
+   "status": "COMPLETE",
+   "evidence": {
+    "mirrored": 478,
+    "non_uniform": 1121,
+    "winding": "CONSISTENT"
+   }
+  },
+  "material_instances": {
+   "status": "COMPLETE",
+   "evidence": {
+    "by_class": {
+     "MaterialInstanceConstant": 148,
+     "Material": 28
+    },
+    "masters": 48
+   }
+  },
+  "textures": {
+   "status": "COMPLETE",
+   "evidence": {
+    "note": "material texture parameters resolve through materials_authored.json; lightmap atlases as PNG",
+    "lightmap_pngs": 81
+   }
+  },
+  "dynamic_lights": {
+   "status": "COMPLETE",
+   "evidence": {
+    "by_classification": {
+     "LAC_STATIC_AFFECTING": 266,
+     "null": 1,
+     "LAC_USER_SELECTED": 1
+    },
+    "built_into_lightmap": 266,
+    "cast_dynamic_shadows": 0,
+    "disabled": 0
+   },
+   "owner": "RENDERING",
+   "blocker": "dynamic (non-lightmapped) lights: 2"
+  },
+  "particles": {
+   "status": "EXPORTED",
+   "evidence": {
+    "components": 45,
+    "emitter_actors": 8
+   },
+   "owner": "RENDERING",
+   "blocker": "runtime simulation"
+  },
+  "moving_scenery": {
+   "status": "AUTHORED",
+   "evidence": {
+    "movers": 12,
+    "in_world_glb_missing": []
+   },
+   "owner": "GAMEPLAY",
+   "blocker": "animate PHYS_Rotating / Matinee at runtime"
+  },
+  "blocking_volumes": {
+   "status": "COMPLETE",
+   "evidence": {
+    "BlockingVolume": 71,
+    "TnTransformerBlockingVolume": 0,
+    "TnForcedDirVolume": 4,
+    "PhysicsVolume": 0
+   }
+  },
+  "playable_space": {
+   "status": "COMPLETE",
+   "evidence": {
+    "player_starts": 84,
+    "starts_on_reachable_floor": 84,
+    "walk_graph_area_m2": 717205.0,
+    "bounds": {
+     "x_m": [
+      -39.0,
+      576.0
+     ],
+     "z_m": [
+      -697.0,
+      -245.0
+     ],
+     "floor_height_m": [
+      -735.86,
+      -627.69
+     ]
+    },
+    "placement_checks": {
+     "pickups": {
+      "count": 24,
+      "on_walkable_reachable_floor": 24,
+      "not_on_walk_graph": []
+     },
+     "objectives": {
+      "count": 15,
+      "on_walkable_reachable_floor": 15,
+      "not_on_walk_graph": []
+     }
+    }
+   }
+  },
+  "collision_vs_visible": {
+   "status": "COMPLETE",
+   "evidence": {
+    "agreement_pct": 63.05,
+    "agreement_pct_excluding_volume_tops": 73.14,
+    "blocking_gaps_explained": [
+     {
+      "actor": "StaticMeshActor_11055",
+      "component": "",
+      "mesh": "ENV_IAC_Ground_p.Floor.GroundVent_STAT",
+      "pawn_channel": "none",
+      "gltf_translation_m": [
+       190.6,
+       -726.4,
+       -470.7
+      ],
+      "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+     }
+    ]
+   }
+  },
+  "actor_visibility": {
+   "status": "COMPLETE",
+   "evidence": {
+    "world_glb_nodes_by_kind": {
+     "bsp": 1,
+     "StaticInterpActor": 8,
+     "StaticMeshActor": 34,
+     "StaticMeshCollectionActor": 1906,
+     "InterpActor": 4
+    },
+    "non_collection_actors": 46,
+    "non_collection_actors_missing_from_world_glb": [],
+    "mode_gated_targets": 8,
+    "mode_gated_missing_from_world_glb": []
+   }
+  },
+  "mode_specific_actors": {
+   "status": "COMPLETE",
+   "evidence": {
+    "TnDominationPoint": 3,
+    "TnKingOfTheHillZone": 5,
+    "TnGameObjectivePickupFactoryFlag": 2,
+    "TnGameObjectivePickupFactoryBomb": 1,
+    "TnFlagCapturePoint": 2,
+    "TnBombPlantPoint": 2,
+    "TnAmmoCratePickupFactory": 14,
+    "TnHealthPickupFactory": 9,
+    "TnOverShieldPickupFactory": 1,
+    "Kismet-hidden objective props": 4
+   }
+  },
+  "audio_emitters": {
+   "status": "COMPLETE",
+   "evidence": {
+    "point": 40,
+    "volume": 17,
+    "line": 13,
+    "cues": 32,
+    "waves_with_wav": 54
+   }
+  },
+  "zones_reverb": {
+   "status": "COMPLETE",
+   "evidence": {
+    "zones": 9,
+    "reverb_presets": 10
+   },
+   "owner": "SYSTEMS",
+   "blocker": "ambient zones / reverb presets applied at runtime (Kismet SeqAct_AmbientAudioZone / SeqAct_Reverb)"
+  },
+  "surface_audio": {
+   "status": "COMPLETE",
+   "evidence": "Every Streets surface resolves to the SAME footstep events (FS_DEFAULT_*). WFC has no surface-specific robot footstep/landing audio on this map: the per-character HmSoundEventSet chooses the sound (Optimus -> BL_FS_LRG_BOT.*). The rebuild's \"generic/default\" footsteps are the authored behaviour, not a fallback."
+  },
+  "skyline_background_geometry": {
+   "status": "COMPLETE",
+   "evidence": {
+    "props_outside_playable_bounds_plus_50m": 22,
+    "by_mesh": {
+     "ENV_IAC_BLDS_2_p.Buildings_Square.Building_ONE_Middle_STAT": 10,
+     "ENV_ORB_D1_Debris_p.Meshes.Pillar01_Debri_STAT": 3,
+     "ENV_IAC_BLDS_2_p.Buildings_Square.Building_ONE_Middle_destroyed_STAT": 3,
+     "ENV_GLB_EnvEffects_p.StaticMesh.LightBeam_Cone_STAT": 2,
+     "ENV_ORB_Spacedome_p.SpaceDome_STATMESH": 1,
+     "ENV_IAC_Background_p.Vista_Buildings.CityBackdrop_STAT": 1,
+     "ENV_ORB_D1_Debris_p.Meshes.Cratestack_Debri_01_STAT": 1,
+     "ENV_IAC_LightSources_p.LightPlanes.SquareLightPlane_STAT": 1
+    },
+    "note": "exported in world.glb like any prop; oversized shells (>2 km) excluded from collision"
+   }
+  },
+  "kismet_references": {
+   "status": "COMPLETE",
+   "evidence": {
+    "summary": {
+     "map startup": "BASE SeqEvent_GameplayStarted -> SeqAct_ActivateRemoteEvent \"StartBeam\" -> SkyBeam subsequence SeqEvent_RemoteEvent \"StartBeam\" -> SeqAct_Interp (bLooping, InterpData 9.0 s) on the SkyBeam StaticInterpActors; same start -> SeqCond_GameRuleActive (EXT / CTF) -> SeqAct_ToggleHidden UnHide of the 4 objective-base InterpActors",
+     "audio": "AUDIO level: SeqEvent_Touch on TriggerVolumes -> SeqAct_AmbientAudioZone -> SeqAct_Reverb (mixer presets); AUTO_ROOM_* subsequences: SeqAct_PlayPlayerPositionalSound (random delay) - see audio_ops",
+     "not present": "no Kismet on movers other than SkyBeam, signs, doors, particles, destructibles or pickups"
+    },
+    "relationships": 7
+   }
+  },
+  "destructibles": {
+   "status": "COMPLETE",
+   "evidence": {
+    "count": 1
+   }
+  },
+  "structure_audit": {
+   "status": "PASS",
+   "evidence": {
+    "status": "PASS",
+    "failures": []
+   }
+  },
   "vs_validate": {
    "status": "PASS",
    "evidence": {

@@ -74,8 +74,10 @@ def collection_matrices(sub, op):
     raw = p.data[e['serial_offset'] + used:e['serial_offset'] + e['serial_size']]
     return np.frombuffer(raw, '>f4').reshape(-1, 4, 4).astype('f8')
 
+from vs_common import map_sublevels  # noqa: E402
+
 def main():
-    subs = sorted({r['opath'].split('.')[0] for r in A.find(MAP + '_%.TheWorld', 'World')})
+    subs = map_sublevels(MAP, A)   # name prefix + streamed sublevels (map.json)
     out = {'map': MAP, 'source': 'manifests/authored.db + StaticLightCollectionActor native matrices', 'sublevels': subs,
            'lights': [], 'globals': {}, 'world': {}, 'characters': {}, 'notes': []}
     val = {'cached_vs_native_max_abs': 0.0, 'compared': 0}

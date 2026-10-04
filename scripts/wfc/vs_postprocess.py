@@ -113,9 +113,11 @@ def clut_analysis(opath, pkg_name):
             'saturation_ratio_out_over_in': round(float((sat_out[mask] / sat_in[mask]).mean()), 4),
             'mean_luma_shift': round(float((outc @ np.array([0.299, 0.587, 0.114]) - lum_in).mean()), 4)}
 
+from vs_common import map_sublevels  # noqa: E402
+
 def main():
     eng = ini('Xe-TransEngine.ini'); lev = ini('Xe-TransLevels.ini') or ini('TransLevels.ini')
-    subs = sorted({r['opath'].split('.')[0] for r in A.find(MAP + '_%.TheWorld', 'World')})
+    subs = map_sublevels(MAP, A)   # name prefix + streamed sublevels (map.json)
     out = {'map': MAP, 'source': 'manifests/authored.db + Coalesced Xe-TransEngine.ini', 'notes': []}
     # ------------------------------------------------------------ scene chain
     dpn = first(eng, 'Engine.Engine', 'DefaultPostProcessName')

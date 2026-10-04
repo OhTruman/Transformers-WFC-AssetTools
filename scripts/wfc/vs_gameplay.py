@@ -53,8 +53,10 @@ def xf(v):
 
 def clean(v): return {k: x for k, x in v.items() if not NOISE.match(k)}
 
+from vs_common import map_sublevels  # noqa: E402
+
 def main():
-    subs = sorted({r['opath'].split('.')[0] for r in A.find(MAP + '_%.TheWorld', 'World')})
+    subs = map_sublevels(MAP, A)   # name prefix + streamed sublevels (map.json)
     base = next(s for s in subs if s.lower().endswith('_base_m'))
     lvl = base + '.TheWorld.PersistentLevel.'
     out = {'map': MAP, 'gameplay_level': base, 'source': 'manifests/authored.db + Coalesced TransLevels/Xe-TransGame/TransPlaylists.ini',
@@ -118,7 +120,7 @@ def main():
     team_of = {s['actor']: s['effective'].get('Team') for s in starts}
     for c in clusters:
         c['teams'] = dict(Counter(team_of.get(m) for m in c['members']))
-    orphans = [s for s in starts if s['class'] == 'TnTeamPlayerStart' and not s['clusters']]
+    orphans = [s for s in starts if s['class'] == 'TnTeamPlayerStart' and not s['clusters']] if clusters else []   # Escalation maps: no clusters
     for o in orphans:
         import numpy as np
         best = min(clusters, key=lambda c: float(np.linalg.norm(np.array(o['location_ue']) - np.array(c['center_ue'], float))))

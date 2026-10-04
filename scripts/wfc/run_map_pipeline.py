@@ -17,13 +17,22 @@ STAGES = [['vs_map.py', '{M}'], ['vs_lighting.py', '{M}'], ['vs_postprocess.py',
           ['vs_lightmap.py', '{M}'], ['m04_lightmap_atlases.py', '{M}'], ['vs_lightmap.py', '{M}'],
           ['vs_materials.py', '{M}'], ['vs_props.py', '{M}'],
           ['vs_collision.py', '{M}'], ['vs_physics.py', '{M}'], ['vs_gameplay.py', '{M}'], ['vs_audio.py', '{M}'], ['vs_mapfx.py', '{M}'],
-          ['m04_inventory.py', '{M}'], ['validate_smca_transforms.py', '--map', '{M}'], ['vs_validate.py', '{M}'], ['map_complete.py', '{M}']]
+          ['m04_inventory.py', '{M}'], ['validate_smca_transforms.py', '--map', '{M}'], ['vs_validate.py', '{M}'],
+          # map-agnostic M03-M05 manifests (Streets keeps its canonical names; other maps -> manifests/next_map/<MAP>_*.json)
+          ['m04_bsp.py', '{M}'], ['m05_bsp_default_faces.py', '{M}'], ['m04_kismet.py', '{M}'], ['vs_pickups.py', '{M}'],
+          ['vs_destructibles.py', '{M}'], ['vs_surface_audio.py', '{M}'],
+          ['map_structure_audit.py', '{M}'], ['map_complete.py', '{M}']]
 
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument('map'); ap.add_argument('--cap-gb', type=float, default=6.0)
     ap.add_argument('--allow-streets', action='store_true'); a = ap.parse_args()
     if a.map == 'MP_IAC_Streets' and not a.allow_streets:
         sys.exit('refusing MP_IAC_Streets: use the Streets regeneration order in CLAUDE.md (or --allow-streets)')
+    sys.path.insert(0, HERE)
+    from m03_common import map_levels
+    if not map_levels(a.map)['base']:
+        sys.exit('refusing %s: no cooked <MAP>_BASE_m package in the Game Dump (registry cooked=false maps: Fortress, Havoc, '
+                 'Tranquillity are not shipped in this dump)' % a.map)
     lock = os.path.join(AT, 'logs', 'map_pipeline.lock')
     os.makedirs(os.path.dirname(lock), exist_ok=True)
     if os.path.exists(lock):

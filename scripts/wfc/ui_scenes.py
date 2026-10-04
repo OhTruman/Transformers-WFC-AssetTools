@@ -59,6 +59,13 @@ def matinees(lv, nodes):
                     'outputs': n['outputs'], 'comment': n['authored'].get('ObjComment')})
     return out
 
+def bind_groups(m):
+    """copy of a Matinee record whose groups name the actors they drive (SeqAct_Interp VariableLinks, by group name)."""
+    m = dict(m); bv = m.get('bound_variables') or {}
+    m['groups'] = [dict(g, bound_actors=[{'actor': o.rsplit('.', 1)[-1], 'class': (A.get(o) or {}).get('class'), 'level': o.split('.', 1)[0]}
+                                          for o in bv.get(g['group']) or []]) for g in m.get('groups') or []]
+    return m
+
 def scene_render_index(fam, levels, d, per):
     """render_index.json for a UI scene (map contract): layers + every named actor a Matinee / Kismet can drive."""
     import glob as _g
@@ -104,7 +111,8 @@ def scene_render_index(fam, levels, d, per):
         ('fog', {'height_fogs': (lt.get('globals') or {}).get('height_fogs'), 'fog_volumes': {lv: per[lv]['fog'] for lv in per}}),
         ('postprocess', {k: pp.get(k) for k in ('scene_chain', 'volumes', 'resolved', 'world_settings', 'governing_world') if k in pp}),
         ('lights', {'count': len(lt.get('lights') or []), 'file': rel(os.path.join(d, 'lighting.json')) if lt else None}),
-        ('matinee', {lv: per[lv]['matinee'] for lv in per}), ('cameras', {lv: per[lv]['cameras'] for lv in per}),
+        ('matinee (groups carry bound_actors = actors_by_level names)', {lv: [bind_groups(m) for m in per[lv]['matinee']] for lv in per}),
+        ('cameras', {lv: per[lv]['cameras'] for lv in per}),
         ('confidence', CONF + ' (cooked levels via the generic map pipeline)')])
 
 def main():

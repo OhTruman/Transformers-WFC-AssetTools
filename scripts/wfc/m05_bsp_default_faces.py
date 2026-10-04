@@ -23,10 +23,11 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 import objtree, bsp  # noqa: E402
 from vs_common import VS, read_glb  # noqa: E402
-from m03_common import write, CONF, HIGH, PART  # noqa: E402
+from m03_common import write, CONF, HIGH, PART, map_arg, map_out, map_levels, bsp_level  # noqa: E402
 
-MAP = 'MP_IAC_Streets'
-LV = MAP + '_ART_m'
+MAP = map_arg()                      # positional map name (default MP_IAC_Streets)
+LV_ = map_levels(MAP)
+LV = bsp_level(MAP, LV_)
 GLB = os.path.join(VS, 'Maps', MAP, 'world.glb')
 COVER_M = 0.64          # 64 UU in front of the face
 EYE_UU = 200.0
@@ -210,7 +211,7 @@ def main():
                       'visible_in_play': len(vis), 'visible_in_play_area_m2': round(sum(x['area_m2'] for x in vis), 2)},
            'play_visibility_method': 'viewpoints: %d navigation nodes at +%d UU; front side; within %d m; occluders = meshes + BSP' % (len(V), EYE_UU, VIEW_M),
            'nodes': sorted(nodes, key=lambda x: (not x['visible_in_play'], -x['area_m2']))}
-    write('streets_bsp_default_faces.json', out)
+    write(map_out(MAP, 'streets_bsp_default_faces.json'), out)
     print(json.dumps(out['counts'], indent=1))
     for x in out['nodes'][:12]: print(x['visible_in_play'], x['verdict'], x['area_m2'], x['centroid_ue'], x['normal_ue'], x['samples_covered'], x['nearby_meshes'][:3])
 

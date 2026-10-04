@@ -52,8 +52,12 @@ def v3(x, d):
 
 def native_parents():
     out = {}
-    for lv in (MAP + '_BASE_m', MAP + '_ART_m', MAP + '_AUDIO_m'):
-        out.update(_native_parents(lv))
+    # every exported sublevel (map.json: name prefix + authored LevelStreaming, e.g. Seed streams MP_IAC_Global_Art_m)
+    mj = os.path.join(SLICE, 'map.json')
+    lvs = (json.load(open(mj, encoding='utf-8')).get('sublevels') if os.path.exists(mj) else None) or           [MAP + '_BASE_m', MAP + '_ART_m', MAP + '_AUDIO_m']
+    for lv in lvs:
+        try: out.update(_native_parents(lv))
+        except Exception as e: print('native parents unavailable for', lv, e)
     return out
 
 def _native_parents(LV):

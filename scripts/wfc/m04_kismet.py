@@ -14,11 +14,12 @@ from collections import Counter, defaultdict
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 import authored as A, objtree, gfxscan  # noqa: E402
-from m03_common import write, field, CONF, HIGH, PART, UNK  # noqa: E402
+from m03_common import write, field, CONF, HIGH, PART, UNK, map_arg, map_out, map_levels# noqa: E402
 from vs_common import ROOT  # noqa: E402
 
-MAP = 'MP_IAC_Streets'
-LEVELS = [MAP + '_BASE_m', MAP + '_ART_m', MAP + '_AUDIO_m']
+MAP = map_arg()                      # positional map name (default MP_IAC_Streets)
+LV_ = map_levels(MAP)
+LEVELS = LV_['all']
 SKIP = ('InputLinks', 'OutputLinks', 'VariableLinks', 'ParentSequence', 'ObjPosX', 'ObjPosY', 'DrawWidth', 'DrawHeight',
         'EventLinks', 'MaxWidth', 'ObjInstanceVersion', 'SequenceObjects', 'DefaultViewX', 'DefaultViewY', 'DefaultViewZoom')
 
@@ -43,6 +44,27 @@ def walk(seq, acc):
         n = node(o); acc.append(n)
         if n['class'] == 'Sequence': walk(o, acc)
     return acc
+
+# hand-written reading of the Streets graph (validated M04); every other map gets the generated summary below
+STREETS_SUMMARY = {
+    'map startup': 'BASE SeqEvent_GameplayStarted -> SeqAct_ActivateRemoteEvent "StartBeam" -> SkyBeam subsequence '
+                   'SeqEvent_RemoteEvent "StartBeam" -> SeqAct_Interp (bLooping, InterpData 9.0 s) on the SkyBeam '
+                   'StaticInterpActors; same start -> SeqCond_GameRuleActive (EXT / CTF) -> SeqAct_ToggleHidden UnHide '
+                   'of the 4 objective-base InterpActors',
+    'audio': 'AUDIO level: SeqEvent_Touch on TriggerVolumes -> SeqAct_AmbientAudioZone -> SeqAct_Reverb (mixer presets); '
+             'AUTO_ROOM_* subsequences: SeqAct_PlayPlayerPositionalSound (random delay) - see audio_ops',
+    'not present': 'no Kismet on movers other than SkyBeam, signs, doors, particles, destructibles or pickups'}
+
+def generated_summary(allnodes, rel, audio, startup):
+    """data-driven summary for any map: what starts at load, which actor classes Kismet drives, audio ops."""
+    drives = defaultdict(Counter)
+    for r in rel: drives[r['class']][r['linked_actor_class']] += 1
+    return {'startup_events': Counter(x['class'] for x in startup),
+            'ops_with_actor_links (op class -> linked actor classes)': {k: dict(v) for k, v in sorted(drives.items())},
+            'matinee_ops': sum(1 for n in allnodes.values() if n['class'] == 'SeqAct_Interp'),
+            'mode_conditions': sum(1 for n in allnodes.values() if n['class'] == 'SeqCond_GameRuleActive'),
+            'audio_ops': dict(Counter(x['class'] for x in audio)),
+            'note': 'generated from the authored graph (m04_kismet.generated_summary); trigger chains per op in actor_relationships'}
 
 def kismet():
     lv_nodes = {}
@@ -91,14 +113,7 @@ def kismet():
     return {'map': MAP, 'generated_by': 'AssetTools/scripts/wfc/m04_kismet.py',
             'counts': {lv: dict(Counter(n['class'] for n in v)) for lv, v in lv_nodes.items()},
             'startup_events': startup, 'actor_relationships': rel, 'audio_ops': audio,
-            'summary': {
-                'map startup': 'BASE SeqEvent_GameplayStarted -> SeqAct_ActivateRemoteEvent "StartBeam" -> SkyBeam subsequence '
-                               'SeqEvent_RemoteEvent "StartBeam" -> SeqAct_Interp (bLooping, InterpData 9.0 s) on the SkyBeam '
-                               'StaticInterpActors; same start -> SeqCond_GameRuleActive (EXT / CTF) -> SeqAct_ToggleHidden UnHide '
-                               'of the 4 objective-base InterpActors',
-                'audio': 'AUDIO level: SeqEvent_Touch on TriggerVolumes -> SeqAct_AmbientAudioZone -> SeqAct_Reverb (mixer presets); '
-                         'AUTO_ROOM_* subsequences: SeqAct_PlayPlayerPositionalSound (random delay) - see audio_ops',
-                'not present': 'no Kismet on movers other than SkyBeam, signs, doors, particles, destructibles or pickups'},
+            'summary': STREETS_SUMMARY if MAP == 'MP_IAC_Streets' else generated_summary(allnodes, rel, audio, startup),
             'levels': lv_nodes, 'confidence': CONF + ' (graph = authored links); runtime semantics of each SeqAct are engine/native'}
 
 def hud():
@@ -125,7 +140,8 @@ def hud():
     rx = re.compile(r'objective|flag|bomb|domin|hill|score|team|capture|marker|pickup|ammo|health|shield|radar|map|timer|announce|kill', re.I)
     sym = sorted(v for v in ex.values() if rx.search(v))
     radar = d.execute("SELECT opath, class FROM objects WHERE opath LIKE '%Radar%' OR opath LIKE '%Minimap%' OR opath LIKE '%MiniMap%' LIMIT 20").fetchall()
-    wi = MAP + '_BASE_m.TheWorld.PersistentLevel.TnWorldInfo_15559'
+    wi = next((o for (o,) in A.con().execute("SELECT opath FROM objects WHERE opath >= ? AND opath < ? AND class='TnWorldInfo'",
+               (LV_['base'] + '.TheWorld.PersistentLevel.', LV_['base'] + '.TheWorld.PersistentLevel/')).fetchall() if o.count('.') == 3), None)
     pick = {}
     for inv in ('TransGame.Default__TnAmmoCratePickup', 'TransGame.Default__TnHealthPickup', 'TransGame.Default__TnOverShieldPickup'):
         v = A.values(inv); pick[inv] = {k: v.get(k) for k in ('PickupSound', 'PickupObtainedDialog')}
@@ -142,8 +158,8 @@ def hud():
             'confidence': CONF}
 
 def main():
-    k = kismet(); write('streets_kismet.json', k)
-    h = hud(); write('future_hud_handoff.json', h)
+    k = kismet(); write(map_out(MAP, 'streets_kismet.json'), k)
+    h = hud(); write(map_out(MAP, 'future_hud_handoff.json'), h)
     print(k['counts'], len(k['actor_relationships']), len(k['audio_ops']))
     print({c: (v['instances_in_streets'], (v.get('MarkerType') or {}).get('value')) for c, v in h['objective_classes'].items()},
           len(h['hud_gfx_symbols_matching_objective_score_terms']), h['radar_minimap_assets'] if isinstance(h['radar_minimap_assets'], str) else len(h['radar_minimap_assets']))

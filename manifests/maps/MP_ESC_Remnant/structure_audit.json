@@ -1,0 +1,483 @@
+{
+ "map": "MP_ESC_Remnant",
+ "generated_by": "AssetTools/scripts/wfc/map_structure_audit.py",
+ "method": {
+  "cell_m": 1.0,
+  "walk_step_m": 1.25,
+  "walkable_normal_y": 0.7,
+  "huge_triangle_m2": 20000.0,
+  "note": "walk graph is conservative (no jumping / vehicle form / jump pads): unreachable != unplayable"
+ },
+ "transforms": {
+  "smca_nodes_checked": 4288,
+  "smca_world_glb_matrix_mismatch": 0,
+  "examples": [],
+  "rule": "world.glb node matrix == props.json gltf_matrix (component S*R*T x native CachedParentToWorld; Streets lesson)"
+ },
+ "mirrored_instances": {
+  "primitive_instances": {
+   "normal": 2874,
+   "det>0 tris normal-agree": 1684237,
+   "det>0 tris normal-oppose": 2734,
+   "mirrored": 1890,
+   "det<0 tris normal-agree": 415,
+   "det<0 tris normal-oppose": 1168590
+  },
+  "verdict": "CONSISTENT",
+  "rule": "for det<0 nodes the transformed winding opposes the transformed normals; a glTF renderer must flip the front face (glTF 2.0 spec 3.7.4). Exported data is consistent when det<0 tris mostly oppose and det>0 tris mostly agree."
+ },
+ "playable_space": {
+  "player_starts": 4,
+  "starts_on_reachable_floor": 4,
+  "starts_without_floor_below": [],
+  "starts_off_walk_graph_diagnosis": [],
+  "walk_graph_cells": 116472,
+  "walk_graph_layers": 457021,
+  "walk_graph_area_m2": 457021.0,
+  "connected_from_any_start": true,
+  "bounds": {
+   "x_m": [
+    -195.0,
+    287.0
+   ],
+   "z_m": [
+    -205.0,
+    176.0
+   ],
+   "floor_height_m": [
+    -0.81,
+    89.83
+   ]
+  },
+  "kill_z_ue": [
+   -262143.0,
+   -262143.0,
+   0.0
+  ],
+  "placement_checks": {
+   "pickups": {
+    "count": 12,
+    "on_walkable_reachable_floor": 12,
+    "not_on_walk_graph": []
+   },
+   "objectives": {
+    "count": 0,
+    "on_walkable_reachable_floor": 0,
+    "not_on_walk_graph": []
+   }
+  }
+ },
+ "collision_vs_visible": {
+  "reachable_floor_cells_with_visible_floor": 331198,
+  "reachable_floor_cells_without_visible_floor (invisible floor) by collision source": {
+   "BlockingVolume": 76921,
+   "StaticMeshCollectionActor": 48745,
+   "TnTeamBlockingVolume": 111,
+   "InterpActor": 46
+  },
+  "agreement_pct": 72.47,
+  "agreement_pct_excluding_volume_tops": 87.16,
+  "visible_floor_cells_next_to_walk_graph_without_collision (fall-through candidates)": 78238,
+  "fall_through_candidates_by_visible_source (top 25)": {
+   "ENV_ORB_D1_Architecture_p.Meshes.InroomCnrWall_B_STAT": 13045,
+   "ENV_IAC_Interior_1_p.Walls_Rooms.Wall_Middle_Flat_STAT": 10178,
+   "ENV_ORB_D1_Debris_p.Meshes.damageChunk_STAT": 6062,
+   "ENV_GLB_EnvEffects_p.StaticMesh.FogVolume_CUBE_STAT": 4243,
+   "ENV_CORE_Mechparts_p.StaticMesh.Tunnel_StraightTrack_STAT": 4098,
+   "ENV_IAC_Deco_1_p.Supports.PROP_IAC_SideSupp01_STAT": 3088,
+   "ENV_CORE_Wall_p.CanyonWalls.ENV_CORE_CanyonWall_A_STAT": 2687,
+   "ENV_CORE_Wall_p.WallSupport.ENV_CORE_CanyonTopPillar_D_STAT": 2554,
+   "ENV_ORB_D1_Architecture_p.Meshes.WallPanelWarningSign_STAT": 1961,
+   "ENV_CORE_Platform_p.Platform.ENV_CORE_GatePlatform_D_STAT": 1841,
+   "ENV_CORE_Mechparts_p.StaticMesh.Tunnel_LTrack_STAT": 1540,
+   "ENV_CORE_Wall_p.WallSupport.ENV_CORE_CanyonTopPillar_A_STAT": 1528,
+   "ENV_ORB_A1_LowRez_p.StaticMesh.RelayStationBlade_STAT": 1461,
+   "ENV_ORB_D1_Architecture_p.Meshes.Crate_STAT": 1343,
+   "ENV_IAC_Interior_1_p.Walls_Rooms.Interior_Corner_01_STAT": 1331,
+   "ENV_ORB_D1_Architecture_p.Meshes.ExteriorTrim_A_STAT": 1272,
+   "ENV_CORE_Wall_p.Inside_Walls.ENV_CORE_InroomWall_A_STAT": 1116,
+   "ENV_ORB_D1_Debris_p.Meshes.HalfMoonFloor_03_STAT": 922,
+   "ENV_ORB_DecoTrim_p.Structural_Trim.PROP_ORB_SideSupp01_STAT": 894,
+   "ENV_CORE_Platform_p.Platform.ENV_CORE_PlatformPillar_A_STAT": 843,
+   "ENV_ORB_DecoTrim_p.Structural_Trim.PROP_ORB_DoorTrim_STAT": 733,
+   "ENV_ORB_D1_Debris_p.Meshes.Tunnel_StraightTrack_Debri_01_STAT": 688,
+   "ENV_CORE_Wall_p.StaticMesh.Tunnel1CenterBody1_STAT": 686,
+   "ENV_ORB_D1_Architecture_p.Meshes.FloorTrim_Straight_01_STAT": 681,
+   "ENV_IAC_BLDS_1_p.StaticMesh.VentWall_SHORT_STAT": 668
+  },
+  "non_blocking_props_by_mesh (authored bCollideActors/bBlockActors false)": {
+   "ENV_ORB_D1_Architecture_p.Meshes.FloorTrim_Straight_01_STAT": 141,
+   "ENV_CORE_Mechparts_p.StaticMesh.Tunnel_StraightTrack_STAT": 102,
+   "ENV_CORE_Platform_p.Floors.ENV_CORE_CanyonFloor_A_STAT": 45,
+   "ENV_CORE_Wall_p.Inside_Walls.ENV_CORE_InroomWall_C_STAT": 44,
+   "PROP_FloorStains_p.stain_long_STAT": 43,
+   "ENV_ORB_D1_Debris_p.Meshes.damageChunk_STAT": 42,
+   "ENV_CORE_Platform_p.Floors.ENV_CORE_CanyonFloor_C_STAT": 39,
+   "ENV_IAC_Interior_1_p.Walls_Rooms.Interior_Corner_01_STAT": 38,
+   "ENV_ORB_D1_Architecture_p.Meshes.FloorTrim_Corner_01_STAT": 38,
+   "PROP_NEU_Debris_p.StaticMeshes.Debris_Scatter_STAT": 33,
+   "ENV_ORB_D1_Architecture_p.Meshes.Crate_STAT": 31,
+   "ENV_ORB_PowerCorridor_p.StaticMesh.Gantry_Straight_STAT": 30,
+   "PROP_FloorStains_p.stain_medium_STAT": 29,
+   "ENV_NEU_Variation_p.manhole_06_STAT": 24,
+   "ENV_IAC_LightSources_p.PinLights.PinLight_02_STAT": 23,
+   "ENV_CORE_Wall_p.Corner_Walls.ENV_CORE_InroomCnrWall_B_STAT": 21,
+   "ENV_ORB_D1_Debris_p.Meshes.TubeDebris_07_STAT": 20,
+   "PROP_FloorStains_p.stain_small_STAT": 20,
+   "ENV_CORE_Wall_p.CanyonWalls.ENV_CORE_CanyonWall_C_STAT": 18,
+   "ENV_CORE_SupportColumns_p.StaticMesh.TunnelPipeA_Straight_STAT": 18,
+   "ENV_NEU_Variation_p.EnergonBarrel_STAT": 13,
+   "ENV_CORE_Wall_p.WallSupport.ENV_CORE_CanyonTopPillar_D_STAT": 13,
+   "ENV_UND_Support_p.StaticMesh.Indust_Cratestack2_STATMESH": 12,
+   "ENV_ORB_D1_Debris_p.Meshes.Tunnel_StraightTrack_Debri_01_STAT": 12,
+   "ENV_IAC_Ground_p.Debris.Scrappage3_STAT": 11,
+   "PROP_EnergonSigns_p.EnergonSign_spinner": 10,
+   "ENV_CORE_Platform_p.Platform.ENV_CORE_PlatformPillar_A_STAT": 10,
+   "PROP_FloorStains_p.Drips_3_STAT": 10,
+   "ENV_IAC_Ground_p.Debris.craterDebris_EdgeGlow_STAT": 10,
+   "ENV_ORB_D1_Debris_p.Meshes.TubeDebris_03_STAT": 10,
+   "ENV_NEU_Variation_p.orr_cyb_STAT": 9,
+   "ENV_NEU_Variation_p.esign_d2_spinring_STAT": 9,
+   "PROP_EnergonSigns_p.EnergonSigns2.energonSign2b_STAT": 8,
+   "ENV_CORE_Deco_p.StaticMesh.ENV_CORE_CanyonDeco_B_STAT": 8,
+   "ENV_CORE_Wall_p.Inside_Walls.ENV_CORE_InroomWall_A_STAT": 8,
+   "ENV_CORE_Wall_p.Inside_Walls.ENV_CORE_InroomWall_B_STAT": 8,
+   "ENV_ORB_D1_Architecture_p.Meshes.InroomCnrWall_B_STAT": 8,
+   "ENV_NEU_Variation_p.esign_sinewave4_STAT": 8,
+   "ENV_ORB_Spacedome_p.Debris.DebrisPlane_01_STAT": 8,
+   "ENV_IAC_Spacedome_p.BlueNebulae_Card_STAT": 8,
+   "ENV_CORE_Mechparts_p.StaticMesh.Tunnel_STrack_STAT": 8,
+   "PROP_EnergonSigns_p.EnergonSign_4_STAT": 8,
+   "ENV_IAC_Interior_1_p.Walls_Rooms.Wall_Base_Door_01_STAT": 7,
+   "ENV_KON_PrisonBarge_p.Meshes.DomeDeco_01_B_STAT": 7,
+   "ENV_GLB_EnvEffects_p.StaticMesh.FogVolume_CUBE_STAT": 6,
+   "ENV_ORB_D1_Debris_p.Meshes.FloorTrim_Straight_Debri_01_STAT": 6,
+   "ENV_IAC_Ground_p.Floor.GroundVent_STAT": 6,
+   "ENV_IAC_Ground_p.Floor.Panel_02_2048_STAT": 6,
+   "ENV_CORE_SupportColumns_p.StaticMesh.GS_SupportA_STAT": 6,
+   "ENV_IAC_BLDS_1_p.StaticMesh.RibWall_4096_STAT": 5,
+   "ENV_GLB_EnvEffects_p.StaticMesh.GlowSphere_STAT": 5,
+   "ENV_ORB_D1_Debris_p.Meshes.MeltedMetalBlob_STAT": 5,
+   "TPRO_ORB_D1_Doors_p.Meshes.InteriorDoor_STAT": 5,
+   "ENV_ORB_D1_Debris_p.Meshes.InroomWall_D_Debri_01_STAT": 5,
+   "ENV_ORB_D1_Debris_p.Meshes.Tunnel_LTrack_Debri_01_STAT": 4,
+   "ENV_ORB_D1_Debris_p.Meshes.Tunnel_STrack_Debri_01_STAT": 4,
+   "ENV_ORB_D1_Debris_p.Meshes.SideSupport01_Debris_STAT": 4,
+   "ENV_GLB_EnvEffects_p.StaticMesh.LightBeam_Cone_STAT": 4,
+   "ENV_CORE_Mechparts_p.StaticMesh.Tunnel_YTrack_STAT": 4,
+   "TPRO_ORB_D1_Doors_p.Meshes.Lock_STAT": 4,
+   "ENV_IAC_Ground_p.Platform.modPlatform_Straight_2048_STAT": 4,
+   "ENV_ORB_D1_Debris_p.Meshes.FloatingDebri_Clump_B_STAT": 4,
+   "PROP_EnergonSigns_p.EnergonSigns2.energonSign2d_STAT": 4,
+   "ENV_CORE_Platform_p.Floors.ENV_CORE_CanyonFloor_D_STAT": 4,
+   "ENV_CORE_Wall_p.Inside_Walls.ENV_CORE_InroomWall_D_STAT": 4,
+   "ENV_IAC_Interior_1_p.Walls_Rooms.Wall_Middle_Straight_STAT": 4,
+   "ENV_CORE_Wall_p.WallSupport.ENV_CORE_CanyonTopPillar_C_STAT": 4,
+   "ENV_ORB_D1_Debris_p.Meshes.PistonSet_C_Debri_B_STAT": 4,
+   "ENV_IAC_Ground_p.Platform.modPlatform_Trim_1024_STAT": 4,
+   "ENV_IAC_Interior_1_p.Walls_Rooms.Wall_Top_Straight_STAT": 3,
+   "ENV_ORB_D1_Debris_p.Meshes.CanyonFloor_B_Destroy_STAT": 3,
+   "ENV_ORB_D1_Debris_p.Meshes.Wall_Side2_STAT": 3,
+   "ENV_ORB_D1_Debris_p.Meshes.Wall_Side1_STAT": 3,
+   "ENV_ORB_D1_Debris_p.Meshes.DamageChunk_GlowEdge_STAT": 3,
+   "ENV_ORB_D1_Debris_p.Meshes.DamageChunk_EdgeGlow_02_STAT": 3,
+   "ENV_NEU_Variation_p.esign_d2_spike_STAT": 3,
+   "ENV_NEU_Variation_p.esign_sinewave5_STAT": 3,
+   "ENV_ORB_D1_Debris_p.Meshes.Cratestack_Debri_01_STAT": 3,
+   "ENV_NEU_Variation_p.esign_d2_screen1_STAT": 3,
+   "PROP_EnergonSigns_p.EnergonSign_8_STAT": 3,
+   "PROP_UND_MechParts_p.StaticMesh.PROP_UND_PistonSet_C_STAT": 3,
+   "PROP_FloorStains_p.Drips_4_STAT": 3,
+   "ENV_IAC_Deco_1_p.Supports.PROP_IAC_SideSupp01_STAT": 3,
+   "ENV_CORE_SupportColumns_p.StaticMesh.TunnelLargePipeA_STAT": 3,
+   "ENV_CORE_Mechparts_p.StaticMesh.Tunnel_LTrack_STAT": 3,
+   "ENV_IAC_Ground_p.Debris.Scrappage1_STAT": 3,
+   "PROP_EnergonSigns_p.EnergonSign_7_STAT": 3,
+   "ENV_CORE_Deco_p.StaticMesh.ENV_CORE_SupportDeco_B_STATMESH": 2,
+   "ENV_NEU_Variation_p.esign_sinewave2_STAT": 2,
+   "ENV_CORE_Platform_p.Platform.ENV_CORE_GatePlatform_C_STAT": 2,
+   "ENV_ORB_A1_LowRez_p.StaticMesh.BeamReceptorCan_STAT": 2,
+   "PROP_FloorStains_p.Drips_2_STAT": 2,
+   "ENV_NEU_Variation_p.esign_sinewave6_STAT": 2,
+   "ENV_CORE_SupportColumns_p.StaticMesh.TunnelPipeA_Curve_STAT": 2,
+   "ENV_ORB_D1_Debris_p.Meshes.CanyonFloor_C_Destroy02_STAT": 2,
+   "ENV_CORE_SupportColumns_p.LaserShield.ENV_CORE_LaserShield_A_STAT": 2,
+   "ENV_IAC_Ground_p.Debris.Scrappage2_STAT": 2,
+   "ENV_ORB_D1_Architecture_p.Meshes.WallPanelWarningSign_STAT": 2,
+   "ENV_IAC_Interior_1_p.Walls_Rooms.Wall_Window_Large2048_STAT": 2,
+   "ENV_CORE_SupportColumns_p.StaticMesh.TunnelBundlePipesA_STAT": 2,
+   "ENV_IAC_Ground_p.Platform.modPlatform_Straight_NoLip_2048_STAT": 2,
+   "ENV_ORB_D1_Debris_p.Meshes.TunnelPipeA_Debri_B_STAT": 2,
+   "PROP_UND_MechParts_p.StaticMesh.PROP_UND_RepairNodeB_A_STAT": 2,
+   "ENV_CORE_Wall_p.WallSupport.ENV_CORE_CanyonTopPillar_A_STAT": 2,
+   "PROP_EnergonSigns_p.EnergonSign_3_STAT": 2,
+   "ENV_NEU_Variation_p.esign_d2_hex_STAT": 2,
+   "PROP_EnergonSigns_p.EnergonSign_spinner2": 1,
+   "ENV_IAC_Orrery_p.cards.OrreryRing_Main_STAT": 1,
+   "ENV_CORE_Platform_p.Platform.ENV_CORE_GatePlatform_B_STAT": 1,
+   "ENV_ORB_D1_Debris_p.Meshes.TubeDebris_01_STAT": 1,
+   "ENV_ORB_D1_Debris_p.Meshes.TubeDebris_04_STAT": 1,
+   "ENV_ORB_D1_Debris_p.Meshes.Pillar01_Debri_02_STAT": 1,
+   "ENV_CORE_Platform_p.Floors.CanyonFloor_A_Connector_STAT": 1,
+   "ENV_ORB_D1_Debris_p.Meshes.PistonSet_C_Debri_A_GLowEdge_STAT": 1,
+   "ENV_NEU_Variation_p.esign_sinewave_STAT": 1,
+   "ENV_CORE_Platform_p.Gate.DES_COR_ShaftWall_STAT": 1,
+   "ENV_ORB_D1_Debris_p.Meshes.HalfMoonFloor_05_STAT": 1,
+   "DES_ORB_Asteroids_p.StaticMesh.Asteroid_Debris_03_STAT": 1,
+   "ENV_ORB_D1_Debris_p.Meshes.HalfMoonFloor_03_STAT": 1,
+   "DES_ORB_WallSocket_01_p.Meshes.Wall_Socket_01_Fuse_STAT": 1,
+   "ENV_ORB_D1_Debris_p.Meshes.Wall_DebrisChunk2_STAT": 1,
+   "ENV_ORB_D1_Debris_p.Meshes.TubeDebris_02_STAT": 1,
+   "ENV_ORB_D1_Debris_p.Meshes.RibWall_Debri_STAT": 1,
+   "ENV_ORB_D1_Debris_p.Meshes.BrokenWall_STAT": 1,
+   "ENV_ORB_D1_Debris_p.Meshes.TunnelPipeA_Debri_B_EdgeGlow_02_STAT": 1,
+   "ENV_NEU_Variation_p.manhole_04_STAT": 1,
+   "ENV_NEU_Variation_p.esign_d2_circle_STAT": 1,
+   "ENV_NEU_Variation_p.metalpuddle_07_STAT": 1,
+   "ENV_NEU_Variation_p.metalpuddle_01_STAT": 1,
+   "ENV_CORE_SupportColumns_p.StaticMesh.TunnelCurvedWindow_STAT": 1,
+   "ENV_ORB_D1_Debris_p.Meshes.Wall_DebrisChunk3_STAT": 1,
+   "ENV_IAC_Ground_p.Floor.GlassFloor_A_STAT": 1,
+   "PROP_EnergonSigns_p.DecepticonSign_1_STAT": 1,
+   "ENV_NEU_Variation_p.esign_d2_readout_STAT": 1,
+   "ENV_ORB_D1_Debris_p.Meshes.PistonSet_C_Debri_A_STAT": 1,
+   "ENV_IAC_Interior_1_p.Walls_Rooms.Wall_Base_Straight_STAT": 1
+  },
+  "fall_through_examples_gltf": [
+   [
+    -175.5,
+    52.46,
+    -74.5
+   ],
+   [
+    -174.5,
+    52.01,
+    -74.5
+   ],
+   [
+    -174.5,
+    83.06,
+    -32.5
+   ],
+   [
+    -173.5,
+    51.74,
+    -74.5
+   ],
+   [
+    -173.5,
+    82.79,
+    -33.5
+   ],
+   [
+    -173.5,
+    84.13,
+    -32.5
+   ],
+   [
+    -173.5,
+    84.0,
+    -30.5
+   ],
+   [
+    -172.5,
+    49.45,
+    -71.5
+   ],
+   [
+    -172.5,
+    82.97,
+    -29.5
+   ],
+   [
+    -171.5,
+    50.7,
+    -86.5
+   ],
+   [
+    -171.5,
+    51.55,
+    -86.5
+   ],
+   [
+    -171.5,
+    51.39,
+    -85.5
+   ],
+   [
+    -171.5,
+    51.24,
+    -84.5
+   ],
+   [
+    -171.5,
+    52.31,
+    -84.5
+   ],
+   [
+    -171.5,
+    82.37,
+    -33.5
+   ],
+   [
+    -171.5,
+    82.68,
+    -33.5
+   ],
+   [
+    -171.5,
+    82.4,
+    -32.5
+   ],
+   [
+    -170.5,
+    51.25,
+    -86.5
+   ],
+   [
+    -170.5,
+    51.09,
+    -85.5
+   ],
+   [
+    -170.5,
+    50.93,
+    -84.5
+   ]
+  ],
+  "blocking_props_without_collision_node": {
+   "StaticMeshCollectionActor_1431": 1,
+   "StaticMeshCollectionActor_5949": 1,
+   "StaticMeshCollectionActor_7507": 1,
+   "StaticMeshCollectionActor_9573": 1
+  },
+  "blocking_gaps_explained": [
+   {
+    "actor": "StaticMeshCollectionActor_1431",
+    "component": "StaticMeshActor_12875_SMC",
+    "mesh": "ENV_IAC_Spacedome_p.BlueNebulae_Card_STAT",
+    "pawn_channel": "per_poly",
+    "gltf_translation_m": [
+     -378.3,
+     3276.8,
+     48.9
+    ],
+    "reason": "per_poly collision expected but vs_physics wrote no node: physics.json pawn stats oversize_skipped=2 (>2 km shells), missing_geometry=0 (render mesh / hull not available)"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_5949",
+    "component": "StaticMeshActor_12651_SMC",
+    "mesh": "ENV_ORB_Spacedome_p.SpaceDome_STATMESH",
+    "pawn_channel": "per_poly",
+    "gltf_translation_m": [
+     -571.6,
+     182.1,
+     -48.6
+    ],
+    "reason": "per_poly collision expected but vs_physics wrote no node: physics.json pawn stats oversize_skipped=2 (>2 km shells), missing_geometry=0 (render mesh / hull not available)"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_7507",
+    "component": "StaticMeshActor_3847_SMC",
+    "mesh": "ENV_ORB_D1_Deco_p.Meshes.GasChamber_Bottom_B_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     20.5,
+     41.0,
+     36.4
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_9573",
+    "component": "StaticMeshActor_8178_SMC",
+    "mesh": "ENV_ORB_D1_Deco_p.Meshes.GasChamber_Bottom_B_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     20.5,
+     41.0,
+     -34.6
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   }
+  ],
+  "collision_nodes_without_blocking_prop": {
+   "TnTeamBlockingVolume_10131": 1,
+   "TnTeamBlockingVolume_10185": 1,
+   "TnTeamBlockingVolume_10762": 1,
+   "TnTeamBlockingVolume_10868": 1,
+   "TnTeamBlockingVolume_10909": 1,
+   "TnTeamBlockingVolume_10919": 1,
+   "TnTeamBlockingVolume_11152": 1,
+   "TnTeamBlockingVolume_1136": 1,
+   "TnTeamBlockingVolume_11468": 1,
+   "TnTeamBlockingVolume_11790": 1,
+   "TnTeamBlockingVolume_13154": 1,
+   "TnTeamBlockingVolume_13168": 1,
+   "TnTeamBlockingVolume_13606": 1,
+   "TnTeamBlockingVolume_13968": 1,
+   "TnTeamBlockingVolume_14105": 1,
+   "TnTeamBlockingVolume_14292": 1,
+   "TnTeamBlockingVolume_16343": 1,
+   "TnTeamBlockingVolume_1738": 1,
+   "TnTeamBlockingVolume_2260": 1,
+   "TnTeamBlockingVolume_265": 1,
+   "TnTeamBlockingVolume_2954": 1,
+   "TnTeamBlockingVolume_4707": 1,
+   "TnTeamBlockingVolume_5499": 1,
+   "TnTeamBlockingVolume_6238": 1,
+   "TnTeamBlockingVolume_6560": 1,
+   "TnTeamBlockingVolume_6762": 1,
+   "TnTeamBlockingVolume_7116": 1,
+   "TnTeamBlockingVolume_735": 1,
+   "TnTeamBlockingVolume_8156": 1,
+   "TnTeamBlockingVolume_9577": 1,
+   "TnTeamBlockingVolume_9941": 1
+  },
+  "collision_node_kinds": {
+   "BSPCollision_MP_ESC_Remnant_ART": 1,
+   "BlockingVolume": 65,
+   "TnTeamBlockingVolume": 31,
+   "StaticInterpActor": 2,
+   "StaticMeshCollectionActor": 289,
+   "InterpActor": 5
+  },
+  "oversized_triangles_excluded": {
+   "world": 934,
+   "collision": 0
+  }
+ },
+ "materials": {
+  "default_material_triangles_by_kind": {
+   "bsp": 2089
+  },
+  "default_material_area_m2_by_kind": {
+   "bsp": 237055.9
+  },
+  "note": "BSP faces with DefaultMaterial and their in-play visibility: manifests/next_map/<MAP>_bsp_default_faces.json (Streets: streets_bsp_default_faces.json)"
+ },
+ "lightmaps": {
+  "lightmaps_json_props": 3971,
+  "world_glb_nodes_with_lm_atlas": 3971,
+  "of_which_have_TEXCOORD_1": 3971,
+  "atlases_used": 54,
+  "atlases_without_png": [],
+  "binding_ok": true
+ },
+ "actors": {
+  "world_glb_nodes_by_kind": {
+   "bsp": 1,
+   "InterpActor": 17,
+   "StaticInterpActor": 7,
+   "StaticMeshCollectionActor": 4288
+  },
+  "non_collection_actors": 24,
+  "non_collection_actors_missing_from_world_glb": [],
+  "mode_gated_targets": 0,
+  "mode_gated_missing_from_world_glb": []
+ },
+ "verdict": {
+  "status": "PASS",
+  "failures": []
+ }
+}

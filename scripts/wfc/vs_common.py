@@ -167,3 +167,13 @@ def bind_textures(glb, m):
 
 BLEND = {'BLEND_Opaque': 'OPAQUE', 'BLEND_Masked': 'MASK', 'BLEND_Translucent': 'BLEND',
          'BLEND_Additive': 'BLEND', 'BLEND_Modulate': 'BLEND'}
+
+
+def map_sublevels(map_name, A):
+    """every level of a map: name-prefix levels in authored.db + streamed sublevels vs_map exported (map.json; authored
+    LevelStreaming - Seed MP_IAC_Global_Art_m, Debris MP_ORB_Art_m / MP_ORB_Audio_m, GLB_Audio_m). Sorted."""
+    subs = {r['opath'].split('.')[0] for r in A.find(map_name + '_%.TheWorld', 'World')}
+    mj = os.path.join(VS, 'Maps', map_name, 'map.json')
+    if os.path.exists(mj):
+        subs |= set(json.load(open(mj, encoding='utf-8')).get('sublevels') or [])
+    return sorted(subs)

@@ -1,0 +1,7000 @@
+{
+ "generated_by": "AssetTools/scripts/wfc/map_complete.py",
+ "map": "MP_IAC_Rust",
+ "layers": {
+  "world.glb": "VerticalSlice/Maps/MP_IAC_Rust/world.glb",
+  "collision.glb": "VerticalSlice/Maps/MP_IAC_Rust/collision.glb",
+  "collision_pawn.glb": "VerticalSlice/Maps/MP_IAC_Rust/collision_pawn.glb",
+  "collision_weapon.glb": "VerticalSlice/Maps/MP_IAC_Rust/collision_weapon.glb",
+  "navigation.glb": "VerticalSlice/Maps/MP_IAC_Rust/navigation.glb",
+  "lightmaps": "VerticalSlice/Maps/MP_IAC_Rust/lightmaps.json",
+  "map_fx": "VerticalSlice/Maps/MP_IAC_Rust/map_fx.json",
+  "lighting": "VerticalSlice/Maps/MP_IAC_Rust/lighting.json",
+  "postprocess": "VerticalSlice/Maps/MP_IAC_Rust/postprocess.json",
+  "audio": "VerticalSlice/Maps/MP_IAC_Rust/audio.json"
+ },
+ "mode_visual_state": {
+  "TnDominationPoint": {
+   "visible_in": [
+    "DOM"
+   ],
+   "mechanism": "script PostBeginPlay hides outside DOM (totem anim still started)",
+   "collision_when_hidden": "n/a (cylinder touch only)",
+   "actors": [
+    "TnDominationPoint_1321",
+    "TnDominationPoint_3764",
+    "TnDominationPoint_8119"
+   ],
+   "count": 3,
+   "source": "class script semantics (RE MILESTONE04_STREETS_RUNTIME_SEMANTICS / decomp) - CONFIRMED AUTHORED DATA"
+  },
+  "TnKingOfTheHillZone": {
+   "visible_in": [
+    "KOTH"
+   ],
+   "mechanism": "active-zone ring (class template ActiveMeshComponent0 = pTorus1_STAT) shown only on the active zone in KOTH; zone DrawScale3D applies",
+   "actors": [
+    "TnKingOfTheHillZone_3054",
+    "TnKingOfTheHillZone_3598",
+    "TnKingOfTheHillZone_3880",
+    "TnKingOfTheHillZone_5609",
+    "TnKingOfTheHillZone_8396"
+   ],
+   "count": 5,
+   "source": "class script semantics (RE MILESTONE04_STREETS_RUNTIME_SEMANTICS / decomp) - CONFIRMED AUTHORED DATA"
+  },
+  "TnGameObjectivePickupFactoryFlag": {
+   "visible_in": [
+    "CTF"
+   ],
+   "mechanism": "PostBeginPlay: !HasRule(RequiredGameRuleClass) -> Disabled (hidden, no collision)",
+   "actors": [
+    "TnGameObjectivePickupFactoryFlag_13708",
+    "TnGameObjectivePickupFactoryFlag_247"
+   ],
+   "count": 2,
+   "source": "class script semantics (RE MILESTONE04_STREETS_RUNTIME_SEMANTICS / decomp) - CONFIRMED AUTHORED DATA"
+  },
+  "TnGameObjectivePickupFactoryBomb": {
+   "visible_in": [
+    "EXT"
+   ],
+   "mechanism": "as flag",
+   "actors": [
+    "TnGameObjectivePickupFactoryBomb_2206"
+   ],
+   "count": 1,
+   "source": "class script semantics (RE MILESTONE04_STREETS_RUNTIME_SEMANTICS / decomp) - CONFIRMED AUTHORED DATA"
+  },
+  "TnFlagCapturePoint": {
+   "visible_in": [
+    "CTF"
+   ],
+   "mechanism": "inert outside CTF (no mesh on the class default)",
+   "actors": [
+    "TnFlagCapturePoint_465",
+    "TnFlagCapturePoint_6526"
+   ],
+   "count": 2,
+   "source": "class script semantics (RE MILESTONE04_STREETS_RUNTIME_SEMANTICS / decomp) - CONFIRMED AUTHORED DATA"
+  },
+  "TnBombPlantPoint": {
+   "visible_in": [
+    "EXT"
+   ],
+   "mechanism": "inert outside EXT; PlantedBombMesh NEU_MPBombExplode_SKEL + DetonateEffect on the class default",
+   "actors": [
+    "TnBombPlantPoint_11299",
+    "TnBombPlantPoint_11306"
+   ],
+   "count": 2,
+   "source": "class script semantics (RE MILESTONE04_STREETS_RUNTIME_SEMANTICS / decomp) - CONFIRMED AUTHORED DATA"
+  },
+  "TnAmmoCratePickupFactory": {
+   "visible_in": [
+    "DM",
+    "TDM",
+    "CTF",
+    "EXT",
+    "DOM",
+    "KOTH"
+   ],
+   "mechanism": "available in every mode; beam + crate mesh while available",
+   "actors": [
+    "TnAmmoCratePickupFactory_10935",
+    "TnAmmoCratePickupFactory_11973",
+    "TnAmmoCratePickupFactory_7247",
+    "TnAmmoCratePickupFactory_8669",
+    "TnAmmoCratePickupFactory_8858",
+    "TnAmmoCratePickupFactory_9689"
+   ],
+   "count": 6,
+   "source": "class script semantics (RE MILESTONE04_STREETS_RUNTIME_SEMANTICS / decomp) - CONFIRMED AUTHORED DATA"
+  },
+  "TnHealthPickupFactory": {
+   "visible_in": [
+    "DM",
+    "TDM",
+    "CTF",
+    "EXT",
+    "DOM",
+    "KOTH"
+   ],
+   "mechanism": "available in every mode",
+   "actors": [
+    "TnHealthPickupFactory_11903",
+    "TnHealthPickupFactory_15236",
+    "TnHealthPickupFactory_2377",
+    "TnHealthPickupFactory_5194",
+    "TnHealthPickupFactory_5620",
+    "TnHealthPickupFactory_78"
+   ],
+   "count": 6,
+   "source": "class script semantics (RE MILESTONE04_STREETS_RUNTIME_SEMANTICS / decomp) - CONFIRMED AUTHORED DATA"
+  },
+  "TnOverShieldPickupFactory": {
+   "visible_in": [
+    "DM",
+    "TDM",
+    "CTF",
+    "EXT",
+    "DOM",
+    "KOTH"
+   ],
+   "mechanism": "available in every mode",
+   "actors": [
+    "TnOverShieldPickupFactory_10486",
+    "TnOverShieldPickupFactory_77"
+   ],
+   "count": 2,
+   "source": "class script semantics (RE MILESTONE04_STREETS_RUNTIME_SEMANTICS / decomp) - CONFIRMED AUTHORED DATA"
+  },
+  "Kismet-hidden objective props": {
+   "visible_in": [
+    "CTF",
+    "EXT"
+   ],
+   "actors": [
+    "InterpActor_11382",
+    "InterpActor_3732"
+   ],
+   "mechanism": "bHidden=true, SeqCond_GameRuleActive -> SeqAct_ToggleHidden UnHide; collision stays on while hidden",
+   "source": "gameplay.json (map Kismet) - CONFIRMED AUTHORED DATA"
+  }
+ },
+ "tdm_render_state": {
+  "hidden": [
+   "InterpActor_11382",
+   "InterpActor_3732",
+   "TnBombPlantPoint_11299",
+   "TnBombPlantPoint_11306",
+   "TnDominationPoint_1321",
+   "TnDominationPoint_3764",
+   "TnDominationPoint_8119",
+   "TnFlagCapturePoint_465",
+   "TnFlagCapturePoint_6526",
+   "TnGameObjectivePickupFactoryBomb_2206",
+   "TnGameObjectivePickupFactoryFlag_13708",
+   "TnGameObjectivePickupFactoryFlag_247",
+   "TnKingOfTheHillZone_3054",
+   "TnKingOfTheHillZone_3598",
+   "TnKingOfTheHillZone_3880",
+   "TnKingOfTheHillZone_5609",
+   "TnKingOfTheHillZone_8396"
+  ],
+  "count": 17
+ },
+ "kismet_mode_rules": [
+  {
+   "rule": "TransGame.TnGameRules_SingleFlagCTF",
+   "mode": "CTF",
+   "action": "UnHide",
+   "targets": [
+    {
+     "actor": "InterpActor_11382",
+     "mesh": "PROP_NEU_Pickups_p.ObjBases.Base_A",
+     "initially_hidden": true,
+     "gltf_matrix": [
+      0.75,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      4.592425496802574e-17,
+      -0.75,
+      0.0,
+      0.0,
+      0.75,
+      4.592425496802574e-17,
+      0.0,
+      -306.96,
+      25.92,
+      -92.16,
+      1.0
+     ]
+    },
+    {
+     "actor": "InterpActor_3732",
+     "mesh": "PROP_UND_MechParts_p.StaticMesh.PROP_UND_RepairNodeB_A_STAT",
+     "initially_hidden": true,
+     "gltf_matrix": [
+      4.898587342578689e-18,
+      0.08000000238418581,
+      0.0,
+      0.0,
+      -0.8000000119209291,
+      4.89858726958405e-17,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.8000000119209291,
+      0.0,
+      -306.96,
+      25.76,
+      -92.16,
+      1.0
+     ]
+    },
+    {
+     "actor": "InterpActor_10797",
+     "mesh": "PROP_NEU_Pickups_p.ObjBases.Base_D",
+     "initially_hidden": false,
+     "gltf_matrix": [
+      0.75,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      4.592425496802574e-17,
+      -0.75,
+      0.0,
+      0.0,
+      0.75,
+      4.592425496802574e-17,
+      0.0,
+      53.7599951171875,
+      10.56,
+      -163.84,
+      1.0
+     ]
+    },
+    {
+     "actor": "InterpActor_16269",
+     "mesh": "PROP_UND_MechParts_p.StaticMesh.PROP_UND_RepairNodeB_A_STAT",
+     "initially_hidden": false,
+     "gltf_matrix": [
+      4.898587342578689e-18,
+      0.08000000238418581,
+      0.0,
+      0.0,
+      -0.8000000119209291,
+      4.89858726958405e-17,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.8000000119209291,
+      0.0,
+      53.7599951171875,
+      10.4,
+      -163.84,
+      1.0
+     ]
+    }
+   ]
+  },
+  {
+   "rule": "TransGame.TnGameRules_ScoreBombingRun",
+   "mode": "EXT",
+   "action": "UnHide",
+   "targets": [
+    {
+     "actor": "InterpActor_11382",
+     "mesh": "PROP_NEU_Pickups_p.ObjBases.Base_A",
+     "initially_hidden": true,
+     "gltf_matrix": [
+      0.75,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      4.592425496802574e-17,
+      -0.75,
+      0.0,
+      0.0,
+      0.75,
+      4.592425496802574e-17,
+      0.0,
+      -306.96,
+      25.92,
+      -92.16,
+      1.0
+     ]
+    },
+    {
+     "actor": "InterpActor_3732",
+     "mesh": "PROP_UND_MechParts_p.StaticMesh.PROP_UND_RepairNodeB_A_STAT",
+     "initially_hidden": true,
+     "gltf_matrix": [
+      4.898587342578689e-18,
+      0.08000000238418581,
+      0.0,
+      0.0,
+      -0.8000000119209291,
+      4.89858726958405e-17,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.8000000119209291,
+      0.0,
+      -306.96,
+      25.76,
+      -92.16,
+      1.0
+     ]
+    },
+    {
+     "actor": "InterpActor_10797",
+     "mesh": "PROP_NEU_Pickups_p.ObjBases.Base_D",
+     "initially_hidden": false,
+     "gltf_matrix": [
+      0.75,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      4.592425496802574e-17,
+      -0.75,
+      0.0,
+      0.0,
+      0.75,
+      4.592425496802574e-17,
+      0.0,
+      53.7599951171875,
+      10.56,
+      -163.84,
+      1.0
+     ]
+    },
+    {
+     "actor": "InterpActor_16269",
+     "mesh": "PROP_UND_MechParts_p.StaticMesh.PROP_UND_RepairNodeB_A_STAT",
+     "initially_hidden": false,
+     "gltf_matrix": [
+      4.898587342578689e-18,
+      0.08000000238418581,
+      0.0,
+      0.0,
+      -0.8000000119209291,
+      4.89858726958405e-17,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.8000000119209291,
+      0.0,
+      53.7599951171875,
+      10.4,
+      -163.84,
+      1.0
+     ]
+    }
+   ]
+  }
+ ],
+ "pickup_factories": [
+  {
+   "actor": "TnAmmoCratePickupFactory_10935",
+   "class": "TnAmmoCratePickupFactory",
+   "gltf_matrix_factory": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    -44.873359375,
+    18.118050537109376,
+    -194.61029296875,
+    1.0
+   ],
+   "respawn": 30.0,
+   "visual": {
+    "mesh": "PROP_NEU_Pickups_p.AmmoPickup.PROP_NEU_AmmoPickup_STAT",
+    "at": "factory origin (CONFIRMED, docs/FORMAT_NOTES.md)",
+    "rotation": "yaw PickupRotationRate 10000 (54.93 deg/s) while available",
+    "beam": "FX_Pickups_p.FX.Pickup_FX"
+   }
+  },
+  {
+   "actor": "TnAmmoCratePickupFactory_11973",
+   "class": "TnAmmoCratePickupFactory",
+   "gltf_matrix_factory": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    -150.495,
+    17.96,
+    -27.7975,
+    1.0
+   ],
+   "respawn": 30.0,
+   "visual": {
+    "mesh": "PROP_NEU_Pickups_p.AmmoPickup.PROP_NEU_AmmoPickup_STAT",
+    "at": "factory origin (CONFIRMED, docs/FORMAT_NOTES.md)",
+    "rotation": "yaw PickupRotationRate 10000 (54.93 deg/s) while available",
+    "beam": "FX_Pickups_p.FX.Pickup_FX"
+   }
+  },
+  {
+   "actor": "TnAmmoCratePickupFactory_7247",
+   "class": "TnAmmoCratePickupFactory",
+   "gltf_matrix_factory": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    -21.76,
+    17.959765625,
+    -122.88,
+    1.0
+   ],
+   "respawn": 30.0,
+   "visual": {
+    "mesh": "PROP_NEU_Pickups_p.AmmoPickup.PROP_NEU_AmmoPickup_STAT",
+    "at": "factory origin (CONFIRMED, docs/FORMAT_NOTES.md)",
+    "rotation": "yaw PickupRotationRate 10000 (54.93 deg/s) while available",
+    "beam": "FX_Pickups_p.FX.Pickup_FX"
+   }
+  },
+  {
+   "actor": "TnAmmoCratePickupFactory_8669",
+   "class": "TnAmmoCratePickupFactory",
+   "gltf_matrix_factory": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    67.84,
+    17.96,
+    -98.56,
+    1.0
+   ],
+   "respawn": 30.0,
+   "visual": {
+    "mesh": "PROP_NEU_Pickups_p.AmmoPickup.PROP_NEU_AmmoPickup_STAT",
+    "at": "factory origin (CONFIRMED, docs/FORMAT_NOTES.md)",
+    "rotation": "yaw PickupRotationRate 10000 (54.93 deg/s) while available",
+    "beam": "FX_Pickups_p.FX.Pickup_FX"
+   }
+  },
+  {
+   "actor": "TnAmmoCratePickupFactory_8858",
+   "class": "TnAmmoCratePickupFactory",
+   "gltf_matrix_factory": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    -195.0819921875,
+    37.1133056640625,
+    -153.81400390625,
+    1.0
+   ],
+   "respawn": 30.0,
+   "visual": {
+    "mesh": "PROP_NEU_Pickups_p.AmmoPickup.PROP_NEU_AmmoPickup_STAT",
+    "at": "factory origin (CONFIRMED, docs/FORMAT_NOTES.md)",
+    "rotation": "yaw PickupRotationRate 10000 (54.93 deg/s) while available",
+    "beam": "FX_Pickups_p.FX.Pickup_FX"
+   }
+  },
+  {
+   "actor": "TnAmmoCratePickupFactory_9689",
+   "class": "TnAmmoCratePickupFactory",
+   "gltf_matrix_factory": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    -258.13099609375,
+    25.639997558593752,
+    -153.72099609375002,
+    1.0
+   ],
+   "respawn": 30.0,
+   "visual": {
+    "mesh": "PROP_NEU_Pickups_p.AmmoPickup.PROP_NEU_AmmoPickup_STAT",
+    "at": "factory origin (CONFIRMED, docs/FORMAT_NOTES.md)",
+    "rotation": "yaw PickupRotationRate 10000 (54.93 deg/s) while available",
+    "beam": "FX_Pickups_p.FX.Pickup_FX"
+   }
+  },
+  {
+   "actor": "TnHealthPickupFactory_11903",
+   "class": "TnHealthPickupFactory",
+   "gltf_matrix_factory": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    -1.950070037841797,
+    10.28,
+    -134.327001953125,
+    1.0
+   ],
+   "respawn": 60.0,
+   "visual": {
+    "particle": "FX_Pickups_p.FX.HealthPickup_FX",
+    "note": "mesh-emitter particle (cube / shield) in CustomPickupEffect; no factory mesh"
+   }
+  },
+  {
+   "actor": "TnHealthPickupFactory_15236",
+   "class": "TnHealthPickupFactory",
+   "gltf_matrix_factory": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    -17.76,
+    10.28,
+    -233.92000000000002,
+    1.0
+   ],
+   "respawn": 60.0,
+   "visual": {
+    "particle": "FX_Pickups_p.FX.HealthPickup_FX",
+    "note": "mesh-emitter particle (cube / shield) in CustomPickupEffect; no factory mesh"
+   }
+  },
+  {
+   "actor": "TnHealthPickupFactory_2377",
+   "class": "TnHealthPickupFactory",
+   "gltf_matrix_factory": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    -119.53599609375,
+    17.959997558593752,
+    -169.2730078125,
+    1.0
+   ],
+   "respawn": 60.0,
+   "visual": {
+    "particle": "FX_Pickups_p.FX.HealthPickup_FX",
+    "note": "mesh-emitter particle (cube / shield) in CustomPickupEffect; no factory mesh"
+   }
+  },
+  {
+   "actor": "TnHealthPickupFactory_5194",
+   "class": "TnHealthPickupFactory",
+   "gltf_matrix_factory": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    -93.45,
+    17.96,
+    8.96,
+    1.0
+   ],
+   "respawn": 60.0,
+   "visual": {
+    "particle": "FX_Pickups_p.FX.HealthPickup_FX",
+    "note": "mesh-emitter particle (cube / shield) in CustomPickupEffect; no factory mesh"
+   }
+  },
+  {
+   "actor": "TnHealthPickupFactory_5620",
+   "class": "TnHealthPickupFactory",
+   "gltf_matrix_factory": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    -273.545,
+    21.852155761718752,
+    -189.58599609375,
+    1.0
+   ],
+   "respawn": 60.0,
+   "visual": {
+    "particle": "FX_Pickups_p.FX.HealthPickup_FX",
+    "note": "mesh-emitter particle (cube / shield) in CustomPickupEffect; no factory mesh"
+   }
+  },
+  {
+   "actor": "TnHealthPickupFactory_78",
+   "class": "TnHealthPickupFactory",
+   "gltf_matrix_factory": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    -218.01451171875001,
+    22.3577685546875,
+    -91.501865234375,
+    1.0
+   ],
+   "respawn": 60.0,
+   "visual": {
+    "particle": "FX_Pickups_p.FX.HealthPickup_FX",
+    "note": "mesh-emitter particle (cube / shield) in CustomPickupEffect; no factory mesh"
+   }
+  },
+  {
+   "actor": "TnOverShieldPickupFactory_10486",
+   "class": "TnOverShieldPickupFactory",
+   "gltf_matrix_factory": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    -283.36400390625,
+    26.92,
+    79.2910986328125,
+    1.0
+   ],
+   "respawn": 120.0,
+   "visual": {
+    "particle": "FX_Pickups_p.FX.OvershieldPickup_FX",
+    "note": "mesh-emitter particle (cube / shield) in CustomPickupEffect; no factory mesh"
+   }
+  },
+  {
+   "actor": "TnOverShieldPickupFactory_77",
+   "class": "TnOverShieldPickupFactory",
+   "gltf_matrix_factory": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    -102.74000000000001,
+    2.5999984741210938,
+    -206.89000000000001,
+    1.0
+   ],
+   "respawn": 120.0,
+   "visual": {
+    "particle": "FX_Pickups_p.FX.OvershieldPickup_FX",
+    "note": "mesh-emitter particle (cube / shield) in CustomPickupEffect; no factory mesh"
+   }
+  }
+ ],
+ "objective_factory_resting_meshes": [
+  {
+   "actor": "TnGameObjectivePickupFactoryBomb_2206",
+   "class": "TnGameObjectivePickupFactoryBomb",
+   "resting_mesh": "PROP_NEU_Pickups_p.MPBomb.NEU_MPBomb_SKEL",
+   "component_translation": {
+    "X": 0.0,
+    "Y": 0.0,
+    "Z": 150.0
+   },
+   "transform": {
+    "Location": {
+     "X": -10722.7998046875,
+     "Y": -13352.7998046875,
+     "Z": 1795.999755859375
+    },
+    "Rotation": {
+     "Pitch": 0,
+     "Yaw": 0,
+     "Roll": 0
+    },
+    "DrawScale": 1.0,
+    "DrawScale3D": {
+     "X": 1.0,
+     "Y": 1.0,
+     "Z": 1.0
+    },
+    "origin": "effective (authored over archetype/CDO chain); unset Location/Rotation = 0"
+   },
+   "visible_in": [
+    "EXT"
+   ]
+  },
+  {
+   "actor": "TnGameObjectivePickupFactoryFlag_13708",
+   "class": "TnGameObjectivePickupFactoryFlag",
+   "resting_mesh": "WEP_CodeOfPower_p.WEP_CodeOfPower2H_SKEL",
+   "component_translation": {
+    "X": 0.0,
+    "Y": 0.0,
+    "Z": 150.0
+   },
+   "transform": {
+    "Location": {
+     "X": -30664.0,
+     "Y": -9216.0,
+     "Z": 2563.999755859375
+    },
+    "Rotation": {
+     "Pitch": 0,
+     "Yaw": 0,
+     "Roll": 0
+    },
+    "DrawScale": 1.0,
+    "DrawScale3D": {
+     "X": 1.0,
+     "Y": 1.0,
+     "Z": 1.0
+    },
+    "origin": "effective (authored over archetype/CDO chain); unset Location/Rotation = 0"
+   },
+   "visible_in": [
+    "CTF"
+   ]
+  },
+  {
+   "actor": "TnGameObjectivePickupFactoryFlag_247",
+   "class": "TnGameObjectivePickupFactoryFlag",
+   "resting_mesh": "WEP_CodeOfPower_p.WEP_CodeOfPower2H_SKEL",
+   "component_translation": {
+    "X": 0.0,
+    "Y": 0.0,
+    "Z": 150.0
+   },
+   "transform": {
+    "Location": {
+     "X": 5376.0,
+     "Y": -16384.0,
+     "Z": 1028.0
+    },
+    "Rotation": {
+     "Pitch": 0,
+     "Yaw": 0,
+     "Roll": 0
+    },
+    "DrawScale": 1.0,
+    "DrawScale3D": {
+     "X": 1.0,
+     "Y": 1.0,
+     "Z": 1.0
+    },
+    "origin": "effective (authored over archetype/CDO chain); unset Location/Rotation = 0"
+   },
+   "visible_in": [
+    "CTF"
+   ]
+  }
+ ],
+ "movers": [
+  {
+   "actor": "InterpActor_10797",
+   "class": "InterpActor",
+   "physics": "PHYS_Interpolating",
+   "hidden": false,
+   "rotation_rate": null
+  },
+  {
+   "actor": "InterpActor_11382",
+   "class": "InterpActor",
+   "physics": "PHYS_Interpolating",
+   "hidden": true,
+   "rotation_rate": null
+  },
+  {
+   "actor": "InterpActor_16127",
+   "class": "InterpActor",
+   "physics": "PHYS_Interpolating",
+   "hidden": false,
+   "rotation_rate": null
+  },
+  {
+   "actor": "InterpActor_16269",
+   "class": "InterpActor",
+   "physics": "PHYS_Interpolating",
+   "hidden": false,
+   "rotation_rate": null
+  },
+  {
+   "actor": "InterpActor_164",
+   "class": "InterpActor",
+   "physics": "PHYS_Interpolating",
+   "hidden": false,
+   "rotation_rate": null
+  },
+  {
+   "actor": "InterpActor_2236",
+   "class": "InterpActor",
+   "physics": "PHYS_Interpolating",
+   "hidden": false,
+   "rotation_rate": null
+  },
+  {
+   "actor": "InterpActor_3732",
+   "class": "InterpActor",
+   "physics": "PHYS_Interpolating",
+   "hidden": true,
+   "rotation_rate": null
+  },
+  {
+   "actor": "InterpActor_9726",
+   "class": "InterpActor",
+   "physics": "PHYS_Interpolating",
+   "hidden": false,
+   "rotation_rate": null
+  }
+ ],
+ "matinee": [],
+ "pickup_effects (component matrices + decoded emitters)": {
+  "instances": [
+   {
+    "actor": "TnAmmoCratePickupFactory_10935",
+    "class": "TnAmmoCratePickupFactory",
+    "effects": {
+     "PickupEffect": {
+      "component": "MP_IAC_Rust_BASE_m.TheWorld.PersistentLevel.TnAmmoCratePickupFactory_10935.ParticleSystemComponent_15706",
+      "archetype": "TransGame.Default__TnAmmoCratePickupFactory.PickupEffect0",
+      "Template": "FX_Pickups_p.FX.Pickup_FX",
+      "bAutoActivate": false,
+      "instance_overrides": {
+       "bJustAttached": true,
+       "CullDistance": 300000.0,
+       "CachedCullDistance": 300000.0,
+       "bAcceptsDynamicLights": false,
+       "LightingChannels": {
+        "bInitialized": true,
+        "Dynamic": true
+       }
+      },
+      "in_map_fx_json": true
+     }
+    },
+    "collision_cylinder": "MP_IAC_Rust_BASE_m.TheWorld.PersistentLevel.TnAmmoCratePickupFactory_10935.CylinderComponent_10441",
+    "respawn": {
+     "value": 30.0,
+     "source_package": "MP_IAC_Rust_BASE_m",
+     "object": "MP_IAC_Rust_BASE_m.TheWorld.PersistentLevel.TnAmmoCratePickupFactory_10935",
+     "class": "TnAmmoCratePickupFactory",
+     "property": "RespawnTime",
+     "origin": "authored on object",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    }
+   },
+   {
+    "actor": "TnAmmoCratePickupFactory_11973",
+    "class": "TnAmmoCratePickupFactory",
+    "effects": {
+     "PickupEffect": {
+      "component": "MP_IAC_Rust_BASE_m.TheWorld.PersistentLevel.TnAmmoCratePickupFactory_11973.ParticleSystemComponent_11460",
+      "archetype": "TransGame.Default__TnAmmoCratePickupFactory.PickupEffect0",
+      "Template": "FX_Pickups_p.FX.Pickup_FX",
+      "bAutoActivate": false,
+      "instance_overrides": {
+       "bJustAttached": true,
+       "CullDistance": 300000.0,
+       "CachedCullDistance": 300000.0,
+       "bAcceptsDynamicLights": false,
+       "LightingChannels": {
+        "bInitialized": true,
+        "Dynamic": true
+       }
+      },
+      "in_map_fx_json": true
+     }
+    },
+    "collision_cylinder": "MP_IAC_Rust_BASE_m.TheWorld.PersistentLevel.TnAmmoCratePickupFactory_11973.CylinderComponent_494",
+    "respawn": {
+     "value": 30.0,
+     "source_package": "MP_IAC_Rust_BASE_m",
+     "object": "MP_IAC_Rust_BASE_m.TheWorld.PersistentLevel.TnAmmoCratePickupFactory_11973",
+     "class": "TnAmmoCratePickupFactory",
+     "property": "RespawnTime",
+     "origin": "authored on object",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    }
+   },
+   {
+    "actor": "TnAmmoCratePickupFactory_7247",
+    "class": "TnAmmoCratePickupFactory",
+    "effects": {
+     "PickupEffect": {
+      "component": "MP_IAC_Rust_BASE_m.TheWorld.PersistentLevel.TnAmmoCratePickupFactory_7247.ParticleSystemComponent_3840",
+      "archetype": "TransGame.Default__TnAmmoCratePickupFactory.PickupEffect0",
+      "Template": "FX_Pickups_p.FX.Pickup_FX",
+      "bAutoActivate": false,
+      "instance_overrides": {
+       "bJustAttached": true,
+       "CullDistance": 300000.0,
+       "CachedCullDistance": 300000.0,
+       "bAcceptsDynamicLights": false,
+       "LightingChannels": {
+        "bInitialized": true,
+        "Dynamic": true
+       }
+      },
+      "in_map_fx_json": true
+     }
+    },
+    "collision_cylinder": "MP_IAC_Rust_BASE_m.TheWorld.PersistentLevel.TnAmmoCratePickupFactory_7247.CylinderComponent_12506",
+    "respawn": {
+     "value": 30.0,
+     "source_package": "MP_IAC_Rust_BASE_m",
+     "object": "MP_IAC_Rust_BASE_m.TheWorld.PersistentLevel.TnAmmoCratePickupFactory_7247",
+     "class": "TnAmmoCratePickupFactory",
+     "property": "RespawnTime",
+     "origin": "authored on object",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    }
+   },
+   {
+    "actor": "TnAmmoCratePickupFactory_8669",
+    "class": "TnAmmoCratePickupFactory",
+    "effects": {
+     "PickupEffect": {
+      "component": "MP_IAC_Rust_BASE_m.TheWorld.PersistentLevel.TnAmmoCratePickupFactory_8669.ParticleSystemComponent_11564",
+      "archetype": "TransGame.Default__TnAmmoCratePickupFactory.PickupEffect0",
+      "Template": "FX_Pickups_p.FX.Pickup_FX",
+      "bAutoActivate": false,
+      "instance_overrides": {
+       "bJustAttached": true,
+       "CullDistance": 300000.0,
+       "CachedCullDistance": 300000.0,
+       "bAcceptsDynamicLights": false,
+       "LightingChannels": {
+        "bInitialized": true,
+        "Dynamic": true
+       }
+      },
+      "in_map_fx_json": true
+     }
+    },
+    "collision_cylinder": "MP_IAC_Rust_BASE_m.TheWorld.PersistentLevel.TnAmmoCratePickupFactory_8669.CylinderComponent_10691",
+    "respawn": {
+     "value": 30.0,
+     "source_package": "MP_IAC_Rust_BASE_m",
+     "object": "MP_IAC_Rust_BASE_m.TheWorld.PersistentLevel.TnAmmoCratePickupFactory_8669",
+     "class": "TnAmmoCratePickupFactory",
+     "property": "RespawnTime",
+     "origin": "authored on object",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    }
+   },
+   {
+    "actor": "TnAmmoCratePickupFactory_8858",
+    "class": "TnAmmoCratePickupFactory",
+    "effects": {
+     "PickupEffect": {
+      "component": "MP_IAC_Rust_BASE_m.TheWorld.PersistentLevel.TnAmmoCratePickupFactory_8858.ParticleSystemComponent_3813",
+      "archetype": "TransGame.Default__TnAmmoCratePickupFactory.PickupEffect0",
+      "Template": "FX_Pickups_p.FX.Pickup_FX",
+      "bAutoActivate": false,
+      "instance_overrides": {
+       "bJustAttached": true,
+       "CullDistance": 300000.0,
+       "CachedCullDistance": 300000.0,
+       "bAcceptsDynamicLights": false,
+       "LightingChannels": {
+        "bInitialized": true,
+        "Dynamic": true
+       }
+      },
+      "in_map_fx_json": true
+     }
+    },
+    "collision_cylinder": "MP_IAC_Rust_BASE_m.TheWorld.PersistentLevel.TnAmmoCratePickupFactory_8858.CylinderComponent_2181",
+    "respawn": {
+     "value": 30.0,
+     "source_package": "MP_IAC_Rust_BASE_m",
+     "object": "MP_IAC_Rust_BASE_m.TheWorld.PersistentLevel.TnAmmoCratePickupFactory_8858",
+     "class": "TnAmmoCratePickupFactory",
+     "property": "RespawnTime",
+     "origin": "authored on object",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    }
+   },
+   {
+    "actor": "TnAmmoCratePickupFactory_9689",
+    "class": "TnAmmoCratePickupFactory",
+    "effects": {
+     "PickupEffect": {
+      "component": "MP_IAC_Rust_BASE_m.TheWorld.PersistentLevel.TnAmmoCratePickupFactory_9689.ParticleSystemComponent_7194",
+      "archetype": "TransGame.Default__TnAmmoCratePickupFactory.PickupEffect0",
+      "Template": "FX_Pickups_p.FX.Pickup_FX",
+      "bAutoActivate": false,
+      "instance_overrides": {
+       "bJustAttached": true,
+       "CullDistance": 300000.0,
+       "CachedCullDistance": 300000.0,
+       "bAcceptsDynamicLights": false,
+       "LightingChannels": {
+        "bInitialized": true,
+        "Dynamic": true
+       }
+      },
+      "in_map_fx_json": true
+     }
+    },
+    "collision_cylinder": "MP_IAC_Rust_BASE_m.TheWorld.PersistentLevel.TnAmmoCratePickupFactory_9689.CylinderComponent_181",
+    "respawn": {
+     "value": 30.0,
+     "source_package": "MP_IAC_Rust_BASE_m",
+     "object": "MP_IAC_Rust_BASE_m.TheWorld.PersistentLevel.TnAmmoCratePickupFactory_9689",
+     "class": "TnAmmoCratePickupFactory",
+     "property": "RespawnTime",
+     "origin": "authored on object",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    }
+   },
+   {
+    "actor": "TnHealthPickupFactory_11903",
+    "class": "TnHealthPickupFactory",
+    "effects": {
+     "PickupEffect": {
+      "component": "MP_IAC_Rust_BASE_m.TheWorld.PersistentLevel.TnHealthPickupFactory_11903.ParticleSystemComponent_5640",
+      "archetype": "TransGame.Default__TnHealthPickupFactory.PickupEffect0",
+      "Template": "FX_Pickups_p.FX.Pickup_FX",
+      "bAutoActivate": false,
+      "instance_overrides": {
+       "bJustAttached": true,
+       "bAcceptsDynamicLights": false,
+       "LightingChannels": {
+        "bInitialized": true,
+        "Dynamic": true
+       }
+      },
+      "in_map_fx_json": true
+     },
+     "CustomPickupEffect": {
+      "component": "MP_IAC_Rust_BASE_m.TheWorld.PersistentLevel.TnHealthPickupFactory_11903.ParticleSystemComponent_7451",
+      "archetype": "TransGame.Default__TnHealthPickupFactory.CustomPickupEffect0",
+      "Template": "FX_Pickups_p.FX.HealthPickup_FX",
+      "bAutoActivate": true,
+      "instance_overrides": {
+       "bJustAttached": true,
+       "OldPosition": {
+        "X": -195.0070037841797,
+        "Y": -13432.7001953125,
+        "Z": 1028.0
+       },
+       "CullDistance": 300000.0,
+       "CachedCullDistance": 300000.0,
+       "bAcceptsDynamicLights": false,
+       "LightingChannels": {
+        "bInitialized": true,
+        "Dynamic": true
+       }
+      },
+      "in_map_fx_json": true
+     }
+    },
+    "collision_cylinder": "MP_IAC_Rust_BASE_m.TheWorld.PersistentLevel.TnHealthPickupFactory_11903.CylinderComponent_13214",
+    "respawn": {
+     "value": 60.0,
+     "source_package": "MP_IAC_Rust_BASE_m",
+     "object": "MP_IAC_Rust_BASE_m.TheWorld.PersistentLevel.TnHealthPickupFactory_11903",
+     "class": "TnHealthPickupFactory",
+     "property": "RespawnTime",
+     "origin": "authored on object",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    }
+   },
+   {
+    "actor": "TnHealthPickupFactory_15236",
+    "class": "TnHealthPickupFactory",
+    "effects": {
+     "PickupEffect": {
+      "component": "MP_IAC_Rust_BASE_m.TheWorld.PersistentLevel.TnHealthPickupFactory_15236.ParticleSystemComponent_10966",
+      "archetype": "TransGame.Default__TnHealthPickupFactory.PickupEffect0",
+      "Template": "FX_Pickups_p.FX.Pickup_FX",
+      "bAutoActivate": false,
+      "instance_overrides": {
+       "bJustAttached": true,
+       "bAcceptsDynamicLights": false,
+       "LightingChannels": {
+        "bInitialized": true,
+        "Dynamic": true
+       }
+      },
+      "in_map_fx_json": true
+     },
+     "CustomPickupEffect": {
+      "component": "MP_IAC_Rust_BASE_m.TheWorld.PersistentLevel.TnHealthPickupFactory_15236.ParticleSystemComponent_16136",
+      "archetype": "TransGame.Default__TnHealthPickupFactory.CustomPickupEffect0",
+      "Template": "FX_Pickups_p.FX.HealthPickup_FX",
+      "bAutoActivate": true,
+      "instance_overrides": {
+       "bJustAttached": true,
+       "OldPosition": {
+        "X": -1776.0,
+        "Y": -23392.0,
+        "Z": 1027.999755859375
+       },
+       "CullDistance": 300000.0,
+       "CachedCullDistance": 300000.0,
+       "bAcceptsDynamicLights": false,
+       "LightingChannels": {
+        "bInitialized": true,
+        "Dynamic": true
+       }
+      },
+      "in_map_fx_json": true
+     }
+    },
+    "collision_cylinder": "MP_IAC_Rust_BASE_m.TheWorld.PersistentLevel.TnHealthPickupFactory_15236.CylinderComponent_11554",
+    "respawn": {
+     "value": 60.0,
+     "source_package": "MP_IAC_Rust_BASE_m",
+     "object": "MP_IAC_Rust_BASE_m.TheWorld.PersistentLevel.TnHealthPickupFactory_15236",
+     "class": "TnHealthPickupFactory",
+     "property": "RespawnTime",
+     "origin": "authored on object",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    }
+   },
+   {
+    "actor": "TnHealthPickupFactory_2377",
+    "class": "TnHealthPickupFactory",
+    "effects": {
+     "PickupEffect": {
+      "component": "MP_IAC_Rust_BASE_m.TheWorld.PersistentLevel.TnHealthPickupFactory_2377.ParticleSystemComponent_3606",
+      "archetype": "TransGame.Default__TnHealthPickupFactory.PickupEffect0",
+      "Template": "FX_Pickups_p.FX.Pickup_FX",
+      "bAutoActivate": false,
+      "instance_overrides": {
+       "bJustAttached": true,
+       "bAcceptsDynamicLights": false,
+       "LightingChannels": {
+        "bInitialized": true,
+        "Dynamic": true
+       }
+      },
+      "in_map_fx_json": true
+     },
+     "CustomPickupEffect": {
+      "component": "MP_IAC_Rust_BASE_m.TheWorld.PersistentLevel.TnHealthPickupFactory_2377.ParticleSystemComponent_9952",
+      "archetype": "TransGame.Default__TnHealthPickupFactory.CustomPickupEffect0",
+      "Template": "FX_Pickups_p.FX.HealthPickup_FX",
+      "bAutoActivate": true,
+      "instance_overrides": {
+       "bJustAttached": true,
+       "OldPosition": {
+        "X": -11953.599609375,
+        "Y": -16927.30078125,
+        "Z": 1795.9998779296875
+       },
+       "CullDistance": 300000.0,
+       "CachedCullDistance": 300000.0,
+       "bAcceptsDynamicLights": false,
+       "LightingChannels": {
+        "bInitialized": true,
+        "Dynamic": true
+       }
+      },
+      "in_map_fx_json": true
+     }
+    },
+    "collision_cylinder": "MP_IAC_Rust_BASE_m.TheWorld.PersistentLevel.TnHealthPickupFactory_2377.CylinderComponent_14473",
+    "respawn": {
+     "value": 60.0,
+     "source_package": "MP_IAC_Rust_BASE_m",
+     "object": "MP_IAC_Rust_BASE_m.TheWorld.PersistentLevel.TnHealthPickupFactory_2377",
+     "class": "TnHealthPickupFactory",
+     "property": "RespawnTime",
+     "origin": "authored on object",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    }
+   },
+   {
+    "actor": "TnHealthPickupFactory_5194",
+    "class": "TnHealthPickupFactory",
+    "effects": {
+     "PickupEffect": {
+      "component": "MP_IAC_Rust_BASE_m.TheWorld.PersistentLevel.TnHealthPickupFactory_5194.ParticleSystemComponent_3394",
+      "archetype": "TransGame.Default__TnHealthPickupFactory.PickupEffect0",
+      "Template": "FX_Pickups_p.FX.Pickup_FX",
+      "bAutoActivate": false,
+      "instance_overrides": {
+       "bJustAttached": true,
+       "bAcceptsDynamicLights": false,
+       "LightingChannels": {
+        "bInitialized": true,
+        "Dynamic": true
+       }
+      },
+      "in_map_fx_json": true
+     },
+     "CustomPickupEffect": {
+      "component": "MP_IAC_Rust_BASE_m.TheWorld.PersistentLevel.TnHealthPickupFactory_5194.ParticleSystemComponent_8680",
+      "archetype": "TransGame.Default__TnHealthPickupFactory.CustomPickupEffect0",
+      "Template": "FX_Pickups_p.FX.HealthPickup_FX",
+      "bAutoActivate": true,
+      "instance_overrides": {
+       "bJustAttached": true,
+       "OldPosition": {
+        "X": -9345.0,
+        "Y": 896.0,
+        "Z": 1796.0
+       },
+       "CullDistance": 300000.0,
+       "CachedCullDistance": 300000.0,
+       "bAcceptsDynamicLights": false,
+       "LightingChannels": {
+        "bInitialized": true,
+        "Dynamic": true
+       }
+      },
+      "in_map_fx_json": true
+     }
+    },
+    "collision_cylinder": "MP_IAC_Rust_BASE_m.TheWorld.PersistentLevel.TnHealthPickupFactory_5194.CylinderComponent_5725",
+    "respawn": {
+     "value": 60.0,
+     "source_package": "MP_IAC_Rust_BASE_m",
+     "object": "MP_IAC_Rust_BASE_m.TheWorld.PersistentLevel.TnHealthPickupFactory_5194",
+     "class": "TnHealthPickupFactory",
+     "property": "RespawnTime",
+     "origin": "authored on object",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    }
+   },
+   {
+    "actor": "TnHealthPickupFactory_5620",
+    "class": "TnHealthPickupFactory",
+    "effects": {
+     "PickupEffect": {
+      "component": "MP_IAC_Rust_BASE_m.TheWorld.PersistentLevel.TnHealthPickupFactory_5620.ParticleSystemComponent_7251",
+      "archetype": "TransGame.Default__TnHealthPickupFactory.PickupEffect0",
+      "Template": "FX_Pickups_p.FX.Pickup_FX",
+      "bAutoActivate": false,
+      "instance_overrides": {
+       "bJustAttached": true,
+       "bAcceptsDynamicLights": false,
+       "LightingChannels": {
+        "bInitialized": true,
+        "Dynamic": true
+       }
+      },
+      "in_map_fx_json": true
+     },
+     "CustomPickupEffect": {
+      "component": "MP_IAC_Rust_BASE_m.TheWorld.PersistentLevel.TnHealthPickupFactory_5620.ParticleSystemComponent_1848",
+      "archetype": "TransGame.Default__TnHealthPickupFactory.CustomPickupEffect0",
+      "Template": "FX_Pickups_p.FX.HealthPickup_FX",
+      "bAutoActivate": true,
+      "instance_overrides": {
+       "bJustAttached": true,
+       "OldPosition": {
+        "X": -27354.5,
+        "Y": -18958.599609375,
+        "Z": 2185.21533203125
+       },
+       "CullDistance": 300000.0,
+       "CachedCullDistance": 300000.0,
+       "bAcceptsDynamicLights": false,
+       "LightingChannels": {
+        "bInitialized": true,
+        "Dynamic": true
+       }
+      },
+      "in_map_fx_json": true
+     }
+    },
+    "collision_cylinder": "MP_IAC_Rust_BASE_m.TheWorld.PersistentLevel.TnHealthPickupFactory_5620.CylinderComponent_1034",
+    "respawn": {
+     "value": 60.0,
+     "source_package": "MP_IAC_Rust_BASE_m",
+     "object": "MP_IAC_Rust_BASE_m.TheWorld.PersistentLevel.TnHealthPickupFactory_5620",
+     "class": "TnHealthPickupFactory",
+     "property": "RespawnTime",
+     "origin": "authored on object",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    }
+   },
+   {
+    "actor": "TnHealthPickupFactory_78",
+    "class": "TnHealthPickupFactory",
+    "effects": {
+     "PickupEffect": {
+      "component": "MP_IAC_Rust_BASE_m.TheWorld.PersistentLevel.TnHealthPickupFactory_78.ParticleSystemComponent_14646",
+      "archetype": "TransGame.Default__TnHealthPickupFactory.PickupEffect0",
+      "Template": "FX_Pickups_p.FX.Pickup_FX",
+      "bAutoActivate": false,
+      "instance_overrides": {
+       "bJustAttached": true,
+       "bAcceptsDynamicLights": false,
+       "LightingChannels": {
+        "bInitialized": true,
+        "Dynamic": true
+       }
+      },
+      "in_map_fx_json": true
+     },
+     "CustomPickupEffect": {
+      "component": "MP_IAC_Rust_BASE_m.TheWorld.PersistentLevel.TnHealthPickupFactory_78.ParticleSystemComponent_6232",
+      "archetype": "TransGame.Default__TnHealthPickupFactory.CustomPickupEffect0",
+      "Template": "FX_Pickups_p.FX.HealthPickup_FX",
+      "bAutoActivate": true,
+      "instance_overrides": {
+       "bJustAttached": true,
+       "OldPosition": {
+        "X": -21801.451171875,
+        "Y": -9150.1865234375,
+        "Z": 2235.776123046875
+       },
+       "CullDistance": 300000.0,
+       "CachedCullDistance": 300000.0,
+       "bAcceptsDynamicLights": false,
+       "LightingChannels": {
+        "bInitialized": true,
+        "Dynamic": true
+       }
+      },
+      "in_map_fx_json": true
+     }
+    },
+    "collision_cylinder": "MP_IAC_Rust_BASE_m.TheWorld.PersistentLevel.TnHealthPickupFactory_78.CylinderComponent_11430",
+    "respawn": {
+     "value": 60.0,
+     "source_package": "MP_IAC_Rust_BASE_m",
+     "object": "MP_IAC_Rust_BASE_m.TheWorld.PersistentLevel.TnHealthPickupFactory_78",
+     "class": "TnHealthPickupFactory",
+     "property": "RespawnTime",
+     "origin": "authored on object",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    }
+   },
+   {
+    "actor": "TnOverShieldPickupFactory_10486",
+    "class": "TnOverShieldPickupFactory",
+    "effects": {
+     "PickupEffect": {
+      "component": "MP_IAC_Rust_BASE_m.TheWorld.PersistentLevel.TnOverShieldPickupFactory_10486.ParticleSystemComponent_4024",
+      "archetype": "TransGame.Default__TnOverShieldPickupFactory.PickupEffect0",
+      "Template": "FX_Pickups_p.FX.Pickup_FX",
+      "bAutoActivate": false,
+      "instance_overrides": {
+       "bJustAttached": true,
+       "bAcceptsDynamicLights": false,
+       "LightingChannels": {
+        "bInitialized": true,
+        "Dynamic": true
+       }
+      },
+      "in_map_fx_json": true
+     },
+     "CustomPickupEffect": {
+      "component": "MP_IAC_Rust_BASE_m.TheWorld.PersistentLevel.TnOverShieldPickupFactory_10486.ParticleSystemComponent_12116",
+      "archetype": "TransGame.Default__TnOverShieldPickupFactory.CustomPickupEffect0",
+      "Template": "FX_Pickups_p.FX.OvershieldPickup_FX",
+      "bAutoActivate": true,
+      "instance_overrides": {
+       "bJustAttached": true,
+       "OldPosition": {
+        "X": -28336.400390625,
+        "Y": 7929.10986328125,
+        "Z": 2692.0
+       },
+       "CullDistance": 300000.0,
+       "CachedCullDistance": 300000.0,
+       "bAcceptsDynamicLights": false,
+       "LightingChannels": {
+        "bInitialized": true,
+        "Dynamic": true
+       }
+      },
+      "in_map_fx_json": true
+     }
+    },
+    "collision_cylinder": "MP_IAC_Rust_BASE_m.TheWorld.PersistentLevel.TnOverShieldPickupFactory_10486.CylinderComponent_12012",
+    "respawn": {
+     "value": 120.0,
+     "source_package": "MP_IAC_Rust_BASE_m",
+     "object": "MP_IAC_Rust_BASE_m.TheWorld.PersistentLevel.TnOverShieldPickupFactory_10486",
+     "class": "TnOverShieldPickupFactory",
+     "property": "RespawnTime",
+     "origin": "authored on object",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    }
+   },
+   {
+    "actor": "TnOverShieldPickupFactory_77",
+    "class": "TnOverShieldPickupFactory",
+    "effects": {
+     "PickupEffect": {
+      "component": "MP_IAC_Rust_BASE_m.TheWorld.PersistentLevel.TnOverShieldPickupFactory_77.ParticleSystemComponent_2502",
+      "archetype": "TransGame.Default__TnOverShieldPickupFactory.PickupEffect0",
+      "Template": "FX_Pickups_p.FX.Pickup_FX",
+      "bAutoActivate": false,
+      "instance_overrides": {
+       "bJustAttached": true,
+       "bAcceptsDynamicLights": false,
+       "LightingChannels": {
+        "bInitialized": true,
+        "Dynamic": true
+       }
+      },
+      "in_map_fx_json": true
+     },
+     "CustomPickupEffect": {
+      "component": "MP_IAC_Rust_BASE_m.TheWorld.PersistentLevel.TnOverShieldPickupFactory_77.ParticleSystemComponent_15193",
+      "archetype": "TransGame.Default__TnOverShieldPickupFactory.CustomPickupEffect0",
+      "Template": "FX_Pickups_p.FX.OvershieldPickup_FX",
+      "bAutoActivate": true,
+      "instance_overrides": {
+       "bJustAttached": true,
+       "OldPosition": {
+        "X": -10274.0,
+        "Y": -20689.0,
+        "Z": 259.9998474121094
+       },
+       "CullDistance": 300000.0,
+       "CachedCullDistance": 300000.0,
+       "bAcceptsDynamicLights": false,
+       "LightingChannels": {
+        "bInitialized": true,
+        "Dynamic": true
+       }
+      },
+      "in_map_fx_json": true
+     }
+    },
+    "collision_cylinder": "MP_IAC_Rust_BASE_m.TheWorld.PersistentLevel.TnOverShieldPickupFactory_77.CylinderComponent_11716",
+    "respawn": {
+     "value": 120.0,
+     "source_package": "MP_IAC_Rust_BASE_m",
+     "object": "MP_IAC_Rust_BASE_m.TheWorld.PersistentLevel.TnOverShieldPickupFactory_77",
+     "class": "TnOverShieldPickupFactory",
+     "property": "RespawnTime",
+     "origin": "authored on object",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    }
+   },
+   {
+    "actor": "TnGameObjectivePickupFactoryFlag_13708",
+    "class": "TnGameObjectivePickupFactoryFlag",
+    "effects": {
+     "PickupEffect": {
+      "component": "MP_IAC_Rust_BASE_m.TheWorld.PersistentLevel.TnGameObjectivePickupFactoryFlag_13708.ParticleSystemComponent_748",
+      "archetype": "TransContent.Default__TnGameObjectivePickupFactoryFlag.PickupEffect0",
+      "Template": "FX_Pickups_p.FX.Pickup_FX",
+      "bAutoActivate": false,
+      "instance_overrides": {
+       "bJustAttached": true,
+       "CullDistance": 300000.0,
+       "CachedCullDistance": 300000.0,
+       "bAcceptsDynamicLights": false,
+       "LightingChannels": {
+        "bInitialized": true,
+        "Dynamic": true
+       }
+      },
+      "in_map_fx_json": true
+     }
+    },
+    "collision_cylinder": "MP_IAC_Rust_BASE_m.TheWorld.PersistentLevel.TnGameObjectivePickupFactoryFlag_13708.CylinderComponent_11968",
+    "respawn": {
+     "value": 9999999.0,
+     "source_package": "TransGame",
+     "object": "TransGame.Default__TnGameObjectiveWeaponPickupFactory",
+     "class": "TnGameObjectiveWeaponPickupFactory",
+     "property": "RespawnTime",
+     "origin": "inherited from TransGame.Default__TnGameObjectiveWeaponPickupFactory",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    }
+   },
+   {
+    "actor": "TnGameObjectivePickupFactoryFlag_247",
+    "class": "TnGameObjectivePickupFactoryFlag",
+    "effects": {
+     "PickupEffect": {
+      "component": "MP_IAC_Rust_BASE_m.TheWorld.PersistentLevel.TnGameObjectivePickupFactoryFlag_247.ParticleSystemComponent_11638",
+      "archetype": "TransContent.Default__TnGameObjectivePickupFactoryFlag.PickupEffect0",
+      "Template": "FX_Pickups_p.FX.Pickup_FX",
+      "bAutoActivate": false,
+      "instance_overrides": {
+       "bJustAttached": true,
+       "CullDistance": 300000.0,
+       "CachedCullDistance": 300000.0,
+       "bAcceptsDynamicLights": false,
+       "LightingChannels": {
+        "bInitialized": true,
+        "Dynamic": true
+       }
+      },
+      "in_map_fx_json": true
+     }
+    },
+    "collision_cylinder": "MP_IAC_Rust_BASE_m.TheWorld.PersistentLevel.TnGameObjectivePickupFactoryFlag_247.CylinderComponent_11968",
+    "respawn": {
+     "value": 9999999.0,
+     "source_package": "TransGame",
+     "object": "TransGame.Default__TnGameObjectiveWeaponPickupFactory",
+     "class": "TnGameObjectiveWeaponPickupFactory",
+     "property": "RespawnTime",
+     "origin": "inherited from TransGame.Default__TnGameObjectiveWeaponPickupFactory",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    }
+   },
+   {
+    "actor": "TnGameObjectivePickupFactoryBomb_2206",
+    "class": "TnGameObjectivePickupFactoryBomb",
+    "effects": {
+     "PickupEffect": {
+      "component": "MP_IAC_Rust_BASE_m.TheWorld.PersistentLevel.TnGameObjectivePickupFactoryBomb_2206.ParticleSystemComponent_12248",
+      "archetype": "TransContent.Default__TnGameObjectivePickupFactoryBomb.PickupEffect0",
+      "Template": "FX_Pickups_p.FX.Pickup_FX",
+      "bAutoActivate": false,
+      "instance_overrides": {
+       "bJustAttached": true,
+       "CullDistance": 300000.0,
+       "CachedCullDistance": 300000.0,
+       "bAcceptsDynamicLights": false,
+       "LightingChannels": {
+        "bInitialized": true,
+        "Dynamic": true
+       }
+      },
+      "in_map_fx_json": true
+     }
+    },
+    "collision_cylinder": "MP_IAC_Rust_BASE_m.TheWorld.PersistentLevel.TnGameObjectivePickupFactoryBomb_2206.CylinderComponent_10343",
+    "respawn": {
+     "value": 9999999.0,
+     "source_package": "TransGame",
+     "object": "TransGame.Default__TnGameObjectiveWeaponPickupFactory",
+     "class": "TnGameObjectiveWeaponPickupFactory",
+     "property": "RespawnTime",
+     "origin": "inherited from TransGame.Default__TnGameObjectiveWeaponPickupFactory",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    }
+   }
+  ],
+  "systems": {
+   "FX_Pickups_p.FX.Pickup_FX": {
+    "emitters": [
+     {
+      "emitter": "FX_Pickups_p.FX.Pickup_FX.ParticleSpriteEmitter_14185",
+      "class": "ParticleEmitter",
+      "name": "Particle Emitter_Dup_Dup",
+      "props": {},
+      "lods": [
+       {
+        "lod": "FX_Pickups_p.FX.Pickup_FX.ParticleSpriteEmitter_14185.ParticleLODLevel_2667",
+        "level": 0,
+        "props": {
+         "PeakActiveParticles": 1
+        },
+        "RequiredModule": {
+         "object": "FX_Pickups_p.FX.Pickup_FX.ParticleModuleRequired_13082",
+         "class": "ParticleModuleRequired",
+         "props": {
+          "Material": "FX_Materials_p.Materials.LightVolume_WepPickup_MAT",
+          "bUseLocalSpace": true,
+          "SpawnRate": {
+           "Distribution": null,
+           "LookupTable": [
+            2.0
+           ]
+          },
+          "RandomImageTime": 1.0
+         }
+        },
+        "TypeDataModule": {
+         "object": "FX_Pickups_p.FX.Pickup_FX.ParticleModuleTypeDataMesh_15699",
+         "class": "ParticleModuleTypeDataMesh",
+         "props": {
+          "Mesh": "FX_Pickups_p.Mesh.LightBeam_WepPickup_STAT"
+         }
+        },
+        "mesh": "FX_Pickups_p.Mesh.LightBeam_WepPickup_STAT",
+        "native_tail_bytes": 913,
+        "compiled_modules": [
+         {
+          "index": 0,
+          "module": "PMI_Lifetime",
+          "module_id": 1,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "Lifetime",
+            "property_candidates": null,
+            "kind": "float constant",
+            "op": 1,
+            "values": [
+             3.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 1,
+          "module": "PMI_Size",
+          "module_id": 6,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "StartSize",
+            "property_candidates": null,
+            "kind": "vector uniform",
+            "op": 2,
+            "values": [
+             1.5,
+             3.0,
+             1.5,
+             2.0,
+             5.0,
+             2.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 2,
+          "module": "PMI_Color",
+          "module_id": 2,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "StartAlpha",
+            "property_candidates": null,
+            "kind": "float constant",
+            "op": 1,
+            "values": [
+             0.5
+            ],
+            "confidence": "CONFIRMED"
+           },
+           {
+            "property": "StartColor",
+            "property_candidates": null,
+            "kind": "vector constant",
+            "op": 1,
+            "values": [
+             0.5,
+             0.4,
+             0.15
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 3,
+          "module": "PMI_LocationPrimitiveSphere",
+          "module_id": 22,
+          "in_list_after_records": false,
+          "raw_flags": [
+           0,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": false,
+          "payload_offset": 32,
+          "distributions": [
+           {
+            "property": "StartRadius",
+            "property_candidates": [
+             "StartRadius",
+             "VelocityScale"
+            ],
+            "kind": "float constant",
+            "op": 1,
+            "values": [
+             1.0
+            ],
+            "confidence": "CONFIRMED",
+            "note": "every candidate property holds this same value"
+           },
+           {
+            "property": "VelocityScale",
+            "property_candidates": [
+             "StartRadius",
+             "VelocityScale"
+            ],
+            "kind": "float constant",
+            "op": 1,
+            "values": [
+             1.0
+            ],
+            "confidence": "CONFIRMED",
+            "note": "every candidate property holds this same value"
+           },
+           {
+            "property": "StartLocation",
+            "property_candidates": [
+             "StartLocation"
+            ],
+            "kind": "vector constant",
+            "op": 1,
+            "values": [
+             0.0,
+             0.0,
+             -10.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 4,
+          "module": "PMI_ColorScaleOverLife",
+          "module_id": 5,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 36,
+          "distributions": [
+           {
+            "property": "AlphaScaleOverLife",
+            "property_candidates": null,
+            "kind": "float constant curve",
+            "op": 1,
+            "values": [
+             0.0,
+             1.0,
+             0.0,
+             20.0,
+             0.0,
+             0.2,
+             0.4,
+             0.6,
+             0.8,
+             1.0,
+             1.0,
+             1.0,
+             1.0,
+             1.0,
+             1.0,
+             1.0,
+             1.0,
+             1.0,
+             1.0,
+             1.0,
+             0.8,
+             0.6,
+             0.4,
+             0.2,
+             0.0
+            ],
+            "confidence": "CONFIRMED"
+           },
+           {
+            "property": "ColorScaleOverLife",
+            "property_candidates": null,
+            "kind": "vector constant curve",
+            "op": 1,
+            "values": [
+             1.0,
+             1.0,
+             0.0,
+             0.0,
+             1.0,
+             1.0,
+             1.0,
+             1.0,
+             1.0,
+             1.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 5,
+          "module": "PMI_SizeMultiplyLife",
+          "module_id": 8,
+          "in_list_after_records": false,
+          "raw_flags": [
+           0,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": false,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "LifeMultiplier",
+            "property_candidates": null,
+            "kind": "vector constant curve",
+            "op": 1,
+            "values": [
+             0.1,
+             2.0,
+             0.0,
+             20.0,
+             0.1,
+             1.0,
+             1.0,
+             0.10715,
+             1.028,
+             1.0,
+             0.1272,
+             1.104,
+             1.0,
+             0.15805,
+             1.216,
+             1.0,
+             0.1976,
+             1.352,
+             1.0,
+             0.24375,
+             1.5,
+             1.0,
+             0.2944,
+             1.648,
+             1.0,
+             0.34745,
+             1.784,
+             1.0,
+             0.4008,
+             1.896,
+             1.0,
+             0.45235,
+             1.972,
+             1.0,
+             0.5,
+             2.0,
+             1.0,
+             0.55045,
+             1.972,
+             1.0,
+             0.6096,
+             1.896,
+             1.0,
+             0.67415,
+             1.784,
+             1.0,
+             0.7408,
+             1.648,
+             1.0,
+             0.80625,
+             1.5,
+             1.0,
+             0.8672,
+             1.352,
+             1.0,
+             0.92035,
+             1.216,
+             1.0,
+             0.9624,
+             1.104,
+             1.0,
+             0.99005,
+             1.028,
+             1.0,
+             1.0,
+             1.0,
+             1.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 6,
+          "module": "PMI_Velocity",
+          "module_id": 23,
+          "in_list_after_records": false,
+          "raw_flags": [
+           0,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": false,
+          "payload_offset": 48,
+          "distributions": [
+           {
+            "property": "StartVelocityRadial",
+            "property_candidates": null,
+            "kind": "float constant",
+            "op": 1,
+            "values": [
+             0.0
+            ],
+            "confidence": "CONFIRMED"
+           },
+           {
+            "property": "StartVelocity",
+            "property_candidates": null,
+            "kind": "vector uniform",
+            "op": 2,
+            "values": [
+             5.0,
+             5.0,
+             5.0,
+             -5.0,
+             -5.0,
+             5.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 7,
+          "module": "PMI_MeshRotation",
+          "module_id": 10,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           0
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "StartRotation",
+            "property_candidates": null,
+            "kind": "vector constant",
+            "op": 1,
+            "values": [
+             -0.25,
+             0.0,
+             0.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 8,
+          "module": "PMI_Location",
+          "module_id": 17,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "StartLocation",
+            "property_candidates": null,
+            "kind": "vector constant",
+            "op": 1,
+            "values": [
+             0.0,
+             0.0,
+             0.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         }
+        ],
+        "assignment_complete": true,
+        "raw_unparsed_hex": {
+         "between_lists_and_groups": "00 00 00 01 04 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 34 00 00 00 01 00 00 00 01 00 00 00 01 00 00 00 01 00 00 00 01 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00 01 00 00 00 01 00 00 00 00 00 00 00 00",
+         "trailing": "00 b0 00 00"
+        },
+        "mesh_record": {
+         "mesh": "FX_Pickups_p.Mesh.LightBeam_WepPickup_STAT",
+         "gltf": "content/FX_Pickups_p/Mesh/LightBeam_WepPickup_STAT.gltf",
+         "cooked_in": "TransGame",
+         "section_materials": [
+          "FX_Materials_p.Materials.LightVolume_WepPickup_MAT"
+         ],
+         "TypeDataMesh_props": {
+          "Mesh": "FX_Pickups_p.Mesh.LightBeam_WepPickup_STAT"
+         },
+         "material_rule": "RequiredModule.Material is used when bOverrideMaterial is set; otherwise the mesh section materials render (UE3 mesh emitter)"
+        }
+       },
+       {
+        "lod": "FX_Pickups_p.FX.Pickup_FX.ParticleSpriteEmitter_14185.ParticleLODLevel_136",
+        "level": 1,
+        "props": {
+         "Level": 1,
+         "LevelSetting": 100,
+         "PeakActiveParticles": 1
+        },
+        "RequiredModule": {
+         "object": "FX_Pickups_p.FX.Pickup_FX.ParticleModuleRequired_1728",
+         "class": "ParticleModuleRequired",
+         "props": {
+          "Material": "FX_Materials_p.Materials.LightVolume_WepPickup_MAT",
+          "bUseLocalSpace": true,
+          "SpawnRate": {
+           "Distribution": null,
+           "LookupTable": [
+            0.4000000059604645
+           ]
+          },
+          "RandomImageTime": 1.0
+         }
+        },
+        "TypeDataModule": {
+         "object": "FX_Pickups_p.FX.Pickup_FX.ParticleModuleTypeDataMesh_10655",
+         "class": "ParticleModuleTypeDataMesh",
+         "props": {
+          "Mesh": "FX_Pickups_p.Mesh.LightBeam_WepPickup_STAT"
+         }
+        },
+        "mesh": "FX_Pickups_p.Mesh.LightBeam_WepPickup_STAT",
+        "native_tail_bytes": 913,
+        "compiled_modules": [
+         {
+          "index": 0,
+          "module": "PMI_Lifetime",
+          "module_id": 1,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "Lifetime",
+            "property_candidates": null,
+            "kind": "float constant",
+            "op": 1,
+            "values": [
+             0.6
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 1,
+          "module": "PMI_Size",
+          "module_id": 6,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "StartSize",
+            "property_candidates": null,
+            "kind": "vector uniform",
+            "op": 2,
+            "values": [
+             1.5,
+             3.0,
+             1.5,
+             2.0,
+             5.0,
+             2.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 2,
+          "module": "PMI_Color",
+          "module_id": 2,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "StartAlpha",
+            "property_candidates": null,
+            "kind": "float constant",
+            "op": 1,
+            "values": [
+             0.5
+            ],
+            "confidence": "CONFIRMED"
+           },
+           {
+            "property": "StartColor",
+            "property_candidates": null,
+            "kind": "vector constant",
+            "op": 1,
+            "values": [
+             0.5,
+             0.4,
+             0.15
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 3,
+          "module": "PMI_LocationPrimitiveSphere",
+          "module_id": 22,
+          "in_list_after_records": false,
+          "raw_flags": [
+           0,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": false,
+          "payload_offset": 32,
+          "distributions": [
+           {
+            "property": "StartRadius",
+            "property_candidates": [
+             "StartRadius",
+             "VelocityScale"
+            ],
+            "kind": "float constant",
+            "op": 1,
+            "values": [
+             1.0
+            ],
+            "confidence": "CONFIRMED",
+            "note": "every candidate property holds this same value"
+           },
+           {
+            "property": "VelocityScale",
+            "property_candidates": [
+             "StartRadius",
+             "VelocityScale"
+            ],
+            "kind": "float constant",
+            "op": 1,
+            "values": [
+             1.0
+            ],
+            "confidence": "CONFIRMED",
+            "note": "every candidate property holds this same value"
+           },
+           {
+            "property": "StartLocation",
+            "property_candidates": [
+             "StartLocation"
+            ],
+            "kind": "vector constant",
+            "op": 1,
+            "values": [
+             0.0,
+             0.0,
+             -10.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 4,
+          "module": "PMI_ColorScaleOverLife",
+          "module_id": 5,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 36,
+          "distributions": [
+           {
+            "property": "AlphaScaleOverLife",
+            "property_candidates": null,
+            "kind": "float constant curve",
+            "op": 1,
+            "values": [
+             0.0,
+             1.0,
+             0.0,
+             20.0,
+             0.0,
+             0.2,
+             0.4,
+             0.6,
+             0.8,
+             1.0,
+             1.0,
+             1.0,
+             1.0,
+             1.0,
+             1.0,
+             1.0,
+             1.0,
+             1.0,
+             1.0,
+             1.0,
+             0.8,
+             0.6,
+             0.4,
+             0.2,
+             0.0
+            ],
+            "confidence": "CONFIRMED"
+           },
+           {
+            "property": "ColorScaleOverLife",
+            "property_candidates": null,
+            "kind": "vector constant curve",
+            "op": 1,
+            "values": [
+             1.0,
+             1.0,
+             0.0,
+             0.0,
+             1.0,
+             1.0,
+             1.0,
+             1.0,
+             1.0,
+             1.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 5,
+          "module": "PMI_SizeMultiplyLife",
+          "module_id": 8,
+          "in_list_after_records": false,
+          "raw_flags": [
+           0,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": false,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "LifeMultiplier",
+            "property_candidates": null,
+            "kind": "vector constant curve",
+            "op": 1,
+            "values": [
+             0.1,
+             2.0,
+             0.0,
+             20.0,
+             0.1,
+             1.0,
+             1.0,
+             0.14,
+             1.1,
+             1.0,
+             0.18,
+             1.2,
+             1.0,
+             0.22,
+             1.3,
+             1.0,
+             0.26,
+             1.4,
+             1.0,
+             0.3,
+             1.5,
+             1.0,
+             0.34,
+             1.6,
+             1.0,
+             0.38,
+             1.7,
+             1.0,
+             0.42,
+             1.8,
+             1.0,
+             0.46,
+             1.9,
+             1.0,
+             0.5,
+             2.0,
+             1.0,
+             0.55,
+             1.9,
+             1.0,
+             0.6,
+             1.8,
+             1.0,
+             0.65,
+             1.7,
+             1.0,
+             0.7,
+             1.6,
+             1.0,
+             0.75,
+             1.5,
+             1.0,
+             0.8,
+             1.4,
+             1.0,
+             0.85,
+             1.3,
+             1.0,
+             0.9,
+             1.2,
+             1.0,
+             0.95,
+             1.1,
+             1.0,
+             1.0,
+             1.0,
+             1.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 6,
+          "module": "PMI_Velocity",
+          "module_id": 23,
+          "in_list_after_records": false,
+          "raw_flags": [
+           0,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": false,
+          "payload_offset": 48,
+          "distributions": [
+           {
+            "property": "StartVelocityRadial",
+            "property_candidates": null,
+            "kind": "float constant",
+            "op": 1,
+            "values": [
+             0.0
+            ],
+            "confidence": "CONFIRMED"
+           },
+           {
+            "property": "StartVelocity",
+            "property_candidates": null,
+            "kind": "vector uniform",
+            "op": 2,
+            "values": [
+             5.0,
+             5.0,
+             5.0,
+             -5.0,
+             -5.0,
+             5.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 7,
+          "module": "PMI_MeshRotation",
+          "module_id": 10,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           0
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "StartRotation",
+            "property_candidates": null,
+            "kind": "vector constant",
+            "op": 1,
+            "values": [
+             -0.25,
+             0.0,
+             0.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 8,
+          "module": "PMI_Location",
+          "module_id": 17,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "StartLocation",
+            "property_candidates": null,
+            "kind": "vector constant",
+            "op": 1,
+            "values": [
+             0.0,
+             0.0,
+             0.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         }
+        ],
+        "assignment_complete": true,
+        "raw_unparsed_hex": {
+         "between_lists_and_groups": "00 00 00 01 04 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 34 00 00 00 01 00 00 00 01 00 00 00 01 00 00 00 01 00 00 00 01 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00 01 00 00 00 01 00 00 00 00 00 00 00 00",
+         "trailing": "00 b0 00 00"
+        },
+        "mesh_record": {
+         "mesh": "FX_Pickups_p.Mesh.LightBeam_WepPickup_STAT",
+         "gltf": "content/FX_Pickups_p/Mesh/LightBeam_WepPickup_STAT.gltf",
+         "cooked_in": "TransGame",
+         "section_materials": [
+          "FX_Materials_p.Materials.LightVolume_WepPickup_MAT"
+         ],
+         "TypeDataMesh_props": {
+          "Mesh": "FX_Pickups_p.Mesh.LightBeam_WepPickup_STAT"
+         },
+         "material_rule": "RequiredModule.Material is used when bOverrideMaterial is set; otherwise the mesh section materials render (UE3 mesh emitter)"
+        }
+       }
+      ]
+     }
+    ],
+    "role": "weapon/generic pickup light beam (Experimental/Systems \"weapon pickup effect\")"
+   },
+   "FX_Pickups_p.FX.HealthPickup_FX": {
+    "emitters": [
+     {
+      "emitter": "FX_Pickups_p.FX.HealthPickup_FX.ParticleSpriteEmitter_10406",
+      "class": "ParticleEmitter",
+      "name": "GlowMut",
+      "props": {
+       "SpriteEmitterRenderMode": "SERM_BestFit",
+       "BestFitPolygons": [
+        {
+         "Time": 0.0,
+         "VertexCount": 8,
+         "Vertices": [
+          {
+           "X": 0.8595921397209167,
+           "Y": 0.302298903465271
+          },
+          {
+           "X": 0.6371918320655823,
+           "Y": 0.14137932658195496
+          },
+          {
+           "X": 0.32958200573921204,
+           "Y": 0.13793103396892548
+          },
+          {
+           "X": 0.14308682084083557,
+           "Y": 0.3103448152542114
+          },
+          {
+           "X": 0.1420150101184845,
+           "Y": 0.6931036114692688
+          },
+          {
+           "X": 0.3478028178215027,
+           "Y": 0.867816150188446
+          },
+          {
+           "X": 0.6350482106208801,
+           "Y": 0.8689655065536499
+          },
+          {
+           "X": 0.8590567111968994,
+           "Y": 0.6770115494728088
+          },
+          {
+           "X": 1.1210387714598537e-44,
+           "Y": 9.80908925027372e-45
+          },
+          {
+           "X": 92557279232.0,
+           "Y": 8.93936453165309e-29
+          },
+          {
+           "X": 92557279232.0,
+           "Y": NaN
+          },
+          {
+           "X": 1.41646128878605e-32,
+           "Y": 6.610300404208601e-39
+          }
+         ]
+        }
+       ],
+       "MaxPeakCount": 3
+      },
+      "lods": [
+       {
+        "lod": "FX_Pickups_p.FX.HealthPickup_FX.ParticleSpriteEmitter_10406.ParticleLODLevel_3460",
+        "level": 0,
+        "props": {
+         "PeakActiveParticles": 3
+        },
+        "RequiredModule": {
+         "object": "FX_Pickups_p.FX.HealthPickup_FX.ParticleModuleRequired_5794",
+         "class": "ParticleModuleRequired",
+         "props": {
+          "Material": "FX_Materials_p.Materials.Glow_Mod_Depth_MAT",
+          "ScreenAlignment": "PSA_Rectangle",
+          "bUseLocalSpace": true,
+          "SpawnRate": {
+           "Distribution": null,
+           "Type": 3,
+           "Op": 2,
+           "LookupTableNumElements": 2,
+           "LookupTableChunkSize": 2,
+           "LookupTable": [
+            1.0,
+            2.0
+           ]
+          },
+          "RandomImageTime": 1.0
+         }
+        },
+        "native_tail_bytes": 757,
+        "compiled_modules": [
+         {
+          "index": 0,
+          "module": "PMI_Lifetime",
+          "module_id": 1,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "Lifetime",
+            "property_candidates": null,
+            "kind": "float uniform",
+            "op": 2,
+            "values": [
+             1.0,
+             0.75
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 1,
+          "module": "PMI_Size",
+          "module_id": 6,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "StartSize",
+            "property_candidates": null,
+            "kind": "vector uniform",
+            "op": 2,
+            "values": [
+             300.0,
+             300.0,
+             300.0,
+             200.0,
+             500.0,
+             500.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 2,
+          "module": "PMI_Color",
+          "module_id": 2,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "StartAlpha",
+            "property_candidates": null,
+            "kind": "float constant",
+            "op": 1,
+            "values": [
+             1.0
+            ],
+            "confidence": "CONFIRMED"
+           },
+           {
+            "property": "StartColor",
+            "property_candidates": null,
+            "kind": "vector constant",
+            "op": 1,
+            "values": [
+             0.0,
+             0.5,
+             1.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 3,
+          "module": "PMI_SizeMultiplyLife",
+          "module_id": 8,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "LifeMultiplier",
+            "property_candidates": null,
+            "kind": "vector constant curve",
+            "op": 1,
+            "values": [
+             1.0,
+             2.022473,
+             0.0,
+             20.0,
+             1.0,
+             1.0,
+             1.0,
+             1.02395,
+             1.028,
+             1.0,
+             1.0896,
+             1.104,
+             1.0,
+             1.18765,
+             1.216,
+             1.0,
+             1.3088,
+             1.352,
+             1.0,
+             1.44375,
+             1.5,
+             1.0,
+             1.5832,
+             1.648,
+             1.0,
+             1.71785,
+             1.784,
+             1.0,
+             1.8384,
+             1.896,
+             1.0,
+             1.93555,
+             1.972,
+             1.0,
+             2.0,
+             2.0,
+             1.0,
+             2.02245,
+             1.986,
+             1.0,
+             2.0056,
+             1.948,
+             1.0,
+             1.95815,
+             1.892,
+             1.0,
+             1.8888,
+             1.824,
+             1.0,
+             1.80625,
+             1.75,
+             1.0,
+             1.7192,
+             1.676,
+             1.0,
+             1.63635,
+             1.608,
+             1.0,
+             1.5664,
+             1.552,
+             1.0,
+             1.51805,
+             1.514,
+             1.0,
+             1.5,
+             1.5,
+             1.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 4,
+          "module": "PMI_Location",
+          "module_id": 17,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "StartLocation",
+            "property_candidates": null,
+            "kind": "vector constant",
+            "op": 1,
+            "values": [
+             0.0,
+             0.0,
+             200.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 5,
+          "module": "PMI_Rotation",
+          "module_id": 13,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 12,
+          "distributions": [
+           {
+            "property": "StartRotation",
+            "property_candidates": null,
+            "kind": "float uniform",
+            "op": 2,
+            "values": [
+             0.0,
+             1.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 6,
+          "module": "PMI_ColorScaleOverLife",
+          "module_id": 5,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "AlphaScaleOverLife",
+            "property_candidates": null,
+            "kind": "float constant curve",
+            "op": 1,
+            "values": [
+             0.0,
+             1.0,
+             0.0,
+             20.0,
+             0.0,
+             0.1,
+             0.2,
+             0.3,
+             0.4,
+             0.5,
+             0.6,
+             0.7,
+             0.8,
+             0.9,
+             1.0,
+             0.9,
+             0.8,
+             0.7,
+             0.6,
+             0.5,
+             0.4,
+             0.3,
+             0.2,
+             0.1,
+             0.0
+            ],
+            "confidence": "CONFIRMED"
+           },
+           {
+            "property": "ColorScaleOverLife",
+            "property_candidates": null,
+            "kind": "vector constant curve",
+            "op": 1,
+            "values": [
+             0.0,
+             25.0,
+             0.0,
+             1.0,
+             25.0,
+             25.0,
+             25.0,
+             0.0,
+             0.0,
+             0.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         }
+        ],
+        "assignment_complete": true,
+        "raw_unparsed_hex": {
+         "between_lists_and_groups": "00 00 00 02 03 06 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 10 00 00 00 01 00 00 00 01 00 00 00 01 00 00 00 00 00 00 00 00",
+         "trailing": "00 80 00 00"
+        }
+       },
+       {
+        "lod": "FX_Pickups_p.FX.HealthPickup_FX.ParticleSpriteEmitter_10406.ParticleLODLevel_10362",
+        "level": 1,
+        "props": {
+         "Level": 1,
+         "LevelSetting": 100,
+         "PeakActiveParticles": 2
+        },
+        "RequiredModule": {
+         "object": "FX_Pickups_p.FX.HealthPickup_FX.ParticleModuleRequired_12297",
+         "class": "ParticleModuleRequired",
+         "props": {
+          "Material": "FX_Materials_p.Materials.Glow_Mod_Depth_MAT",
+          "ScreenAlignment": "PSA_Rectangle",
+          "bUseLocalSpace": true,
+          "SpawnRate": {
+           "Distribution": null,
+           "Type": 3,
+           "Op": 2,
+           "LookupTableNumElements": 2,
+           "LookupTableChunkSize": 2,
+           "LookupTable": [
+            0.20000000298023224,
+            0.4000000059604645
+           ]
+          },
+          "RandomImageTime": 1.0
+         }
+        },
+        "native_tail_bytes": 753,
+        "compiled_modules": [
+         {
+          "index": 0,
+          "module": "PMI_Lifetime",
+          "module_id": 1,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "Lifetime",
+            "property_candidates": null,
+            "kind": "float constant",
+            "op": 1,
+            "values": [
+             0.36
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 1,
+          "module": "PMI_Size",
+          "module_id": 6,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "StartSize",
+            "property_candidates": null,
+            "kind": "vector uniform",
+            "op": 2,
+            "values": [
+             300.0,
+             300.0,
+             300.0,
+             200.0,
+             500.0,
+             500.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 2,
+          "module": "PMI_Color",
+          "module_id": 2,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "StartAlpha",
+            "property_candidates": null,
+            "kind": "float constant",
+            "op": 1,
+            "values": [
+             1.0
+            ],
+            "confidence": "CONFIRMED"
+           },
+           {
+            "property": "StartColor",
+            "property_candidates": null,
+            "kind": "vector constant",
+            "op": 1,
+            "values": [
+             1.0,
+             0.3,
+             1.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 3,
+          "module": "PMI_SizeMultiplyLife",
+          "module_id": 8,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "LifeMultiplier",
+            "property_candidates": null,
+            "kind": "vector constant curve",
+            "op": 1,
+            "values": [
+             1.0,
+             2.022473,
+             0.0,
+             20.0,
+             1.0,
+             1.0,
+             1.0,
+             1.02395,
+             1.028,
+             1.0,
+             1.0896,
+             1.104,
+             1.0,
+             1.18765,
+             1.216,
+             1.0,
+             1.3088,
+             1.352,
+             1.0,
+             1.44375,
+             1.5,
+             1.0,
+             1.5832,
+             1.648,
+             1.0,
+             1.71785,
+             1.784,
+             1.0,
+             1.8384,
+             1.896,
+             1.0,
+             1.93555,
+             1.972,
+             1.0,
+             2.0,
+             2.0,
+             1.0,
+             2.02245,
+             1.986,
+             1.0,
+             2.0056,
+             1.948,
+             1.0,
+             1.95815,
+             1.892,
+             1.0,
+             1.8888,
+             1.824,
+             1.0,
+             1.80625,
+             1.75,
+             1.0,
+             1.7192,
+             1.676,
+             1.0,
+             1.63635,
+             1.608,
+             1.0,
+             1.5664,
+             1.552,
+             1.0,
+             1.51805,
+             1.514,
+             1.0,
+             1.5,
+             1.5,
+             1.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 4,
+          "module": "PMI_Location",
+          "module_id": 17,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "StartLocation",
+            "property_candidates": null,
+            "kind": "vector constant",
+            "op": 1,
+            "values": [
+             0.0,
+             0.0,
+             200.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 5,
+          "module": "PMI_Rotation",
+          "module_id": 13,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 12,
+          "distributions": [
+           {
+            "property": "StartRotation",
+            "property_candidates": null,
+            "kind": "float uniform",
+            "op": 2,
+            "values": [
+             0.0,
+             1.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 6,
+          "module": "PMI_ColorScaleOverLife",
+          "module_id": 5,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "AlphaScaleOverLife",
+            "property_candidates": null,
+            "kind": "float constant curve",
+            "op": 1,
+            "values": [
+             0.0,
+             1.0,
+             0.0,
+             20.0,
+             0.0,
+             0.1,
+             0.2,
+             0.3,
+             0.4,
+             0.5,
+             0.6,
+             0.7,
+             0.8,
+             0.9,
+             1.0,
+             0.9,
+             0.8,
+             0.7,
+             0.6,
+             0.5,
+             0.4,
+             0.3,
+             0.2,
+             0.1,
+             0.0
+            ],
+            "confidence": "CONFIRMED"
+           },
+           {
+            "property": "ColorScaleOverLife",
+            "property_candidates": null,
+            "kind": "vector constant curve",
+            "op": 1,
+            "values": [
+             0.0,
+             25.0,
+             0.0,
+             1.0,
+             25.0,
+             25.0,
+             25.0,
+             0.0,
+             0.0,
+             0.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         }
+        ],
+        "assignment_complete": true,
+        "raw_unparsed_hex": {
+         "between_lists_and_groups": "00 00 00 02 03 06 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 10 00 00 00 01 00 00 00 01 00 00 00 01 00 00 00 00 00 00 00 00",
+         "trailing": "00 80 00 00"
+        }
+       }
+      ]
+     },
+     {
+      "emitter": "FX_Pickups_p.FX.HealthPickup_FX.ParticleSpriteEmitter_8423",
+      "class": "ParticleEmitter",
+      "name": "GlowADD",
+      "props": {
+       "SpriteEmitterRenderMode": "SERM_BestFit",
+       "BestFitPolygons": [
+        {
+         "Time": 0.0,
+         "VertexCount": 8,
+         "Vertices": [
+          {
+           "X": 0.9410915970802307,
+           "Y": 0.24688756465911865
+          },
+          {
+           "X": 0.6632712483406067,
+           "Y": 0.05306760221719742
+          },
+          {
+           "X": 0.259491890668869,
+           "Y": 0.05135088041424751
+          },
+          {
+           "X": 0.038767337799072266,
+           "Y": 0.2843707501888275
+          },
+          {
+           "X": 0.03932547569274902,
+           "Y": 0.7086877822875977
+          },
+          {
+           "X": 0.29564255475997925,
+           "Y": 0.9301534295082092
+          },
+          {
+           "X": 0.6904669404029846,
+           "Y": 0.9295710921287537
+          },
+          {
+           "X": 0.930776834487915,
+           "Y": 0.6995220184326172
+          },
+          {
+           "X": 1.1210387714598537e-44,
+           "Y": 9.80908925027372e-45
+          },
+          {
+           "X": 429477402247168.0,
+           "Y": 8.93911416076032e-29
+          },
+          {
+           "X": 429477402247168.0,
+           "Y": NaN
+          },
+          {
+           "X": 2.814886101987213e-08,
+           "Y": 6.610300404208601e-39
+          }
+         ]
+        }
+       ],
+       "MaxPeakCount": 3
+      },
+      "lods": [
+       {
+        "lod": "FX_Pickups_p.FX.HealthPickup_FX.ParticleSpriteEmitter_8423.ParticleLODLevel_11035",
+        "level": 0,
+        "props": {
+         "PeakActiveParticles": 3
+        },
+        "RequiredModule": {
+         "object": "FX_Pickups_p.FX.HealthPickup_FX.ParticleModuleRequired_337",
+         "class": "ParticleModuleRequired",
+         "props": {
+          "Material": "FX_Materials_p.Materials.ParticleBase_BW_MAT",
+          "bUseLocalSpace": true,
+          "SpawnRate": {
+           "Distribution": null
+          },
+          "BurstList": [
+           {
+            "Count": 1,
+            "CountLow": 0,
+            "Time": 0.0
+           }
+          ],
+          "RandomImageTime": 1.0
+         }
+        },
+        "native_tail_bytes": 799,
+        "compiled_modules": [
+         {
+          "index": 0,
+          "module": "PMI_Lifetime",
+          "module_id": 1,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "Lifetime",
+            "property_candidates": null,
+            "kind": "float constant",
+            "op": 1,
+            "values": [
+             0.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 1,
+          "module": "PMI_Size",
+          "module_id": 6,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "StartSize",
+            "property_candidates": null,
+            "kind": "vector uniform",
+            "op": 2,
+            "values": [
+             160.0,
+             300.0,
+             300.0,
+             160.0,
+             500.0,
+             500.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 2,
+          "module": "PMI_Color",
+          "module_id": 2,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "StartAlpha",
+            "property_candidates": null,
+            "kind": "float constant",
+            "op": 1,
+            "values": [
+             1.0
+            ],
+            "confidence": "CONFIRMED"
+           },
+           {
+            "property": "StartColor",
+            "property_candidates": null,
+            "kind": "vector constant",
+            "op": 1,
+            "values": [
+             0.0,
+             0.5,
+             1.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 3,
+          "module": "PMI_Color",
+          "module_id": 2,
+          "in_list_after_records": false,
+          "raw_flags": [
+           0,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": false,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "StartAlpha",
+            "property_candidates": null,
+            "kind": "float constant",
+            "op": 1,
+            "values": [
+             1.0
+            ],
+            "confidence": "CONFIRMED"
+           },
+           {
+            "property": "StartColor",
+            "property_candidates": null,
+            "kind": "vector constant",
+            "op": 1,
+            "values": [
+             0.0,
+             0.3,
+             1.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 4,
+          "module": "PMI_SizeMultiplyLife",
+          "module_id": 8,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "LifeMultiplier",
+            "property_candidates": null,
+            "kind": "vector constant curve",
+            "op": 1,
+            "values": [
+             1.0,
+             2.022473,
+             0.0,
+             20.0,
+             1.0,
+             1.0,
+             1.0,
+             1.02395,
+             1.028,
+             1.0,
+             1.0896,
+             1.104,
+             1.0,
+             1.18765,
+             1.216,
+             1.0,
+             1.3088,
+             1.352,
+             1.0,
+             1.44375,
+             1.5,
+             1.0,
+             1.5832,
+             1.648,
+             1.0,
+             1.71785,
+             1.784,
+             1.0,
+             1.8384,
+             1.896,
+             1.0,
+             1.93555,
+             1.972,
+             1.0,
+             2.0,
+             2.0,
+             1.0,
+             2.02245,
+             1.986,
+             1.0,
+             2.0056,
+             1.948,
+             1.0,
+             1.95815,
+             1.892,
+             1.0,
+             1.8888,
+             1.824,
+             1.0,
+             1.80625,
+             1.75,
+             1.0,
+             1.7192,
+             1.676,
+             1.0,
+             1.63635,
+             1.608,
+             1.0,
+             1.5664,
+             1.552,
+             1.0,
+             1.51805,
+             1.514,
+             1.0,
+             1.5,
+             1.5,
+             1.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 5,
+          "module": "PMI_Location",
+          "module_id": 17,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "StartLocation",
+            "property_candidates": null,
+            "kind": "vector constant",
+            "op": 1,
+            "values": [
+             0.0,
+             0.0,
+             200.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 6,
+          "module": "PMI_Rotation",
+          "module_id": 13,
+          "in_list_after_records": false,
+          "raw_flags": [
+           0,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": false,
+          "payload_offset": 12,
+          "distributions": [
+           {
+            "property": "StartRotation",
+            "property_candidates": null,
+            "kind": "float uniform",
+            "op": 2,
+            "values": [
+             0.0,
+             1.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 7,
+          "module": "PMI_ColorScaleOverLife",
+          "module_id": 5,
+          "in_list_after_records": false,
+          "raw_flags": [
+           0,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": false,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "AlphaScaleOverLife",
+            "property_candidates": null,
+            "kind": "float constant curve",
+            "op": 1,
+            "values": [
+             0.0,
+             1.0,
+             0.0,
+             20.0,
+             0.0,
+             0.1,
+             0.2,
+             0.3,
+             0.4,
+             0.5,
+             0.6,
+             0.7,
+             0.8,
+             0.9,
+             1.0,
+             0.9,
+             0.8,
+             0.7,
+             0.6,
+             0.5,
+             0.4,
+             0.3,
+             0.2,
+             0.1,
+             0.0
+            ],
+            "confidence": "CONFIRMED"
+           },
+           {
+            "property": "ColorScaleOverLife",
+            "property_candidates": null,
+            "kind": "vector constant curve",
+            "op": 1,
+            "values": [
+             0.0,
+             50.0,
+             0.0,
+             1.0,
+             50.0,
+             50.0,
+             50.0,
+             0.0,
+             0.0,
+             0.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         }
+        ],
+        "assignment_complete": true,
+        "raw_unparsed_hex": {
+         "between_lists_and_groups": "00 00 00 01 04 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 10 00 00 00 01 00 00 00 01 00 00 00 01 00 00 00 00 00 00 00 00",
+         "trailing": "00 80 00 00"
+        }
+       },
+       {
+        "lod": "FX_Pickups_p.FX.HealthPickup_FX.ParticleSpriteEmitter_8423.ParticleLODLevel_6514",
+        "level": 1,
+        "props": {
+         "Level": 1,
+         "LevelSetting": 100,
+         "PeakActiveParticles": 3
+        },
+        "RequiredModule": {
+         "object": "FX_Pickups_p.FX.HealthPickup_FX.ParticleModuleRequired_380",
+         "class": "ParticleModuleRequired",
+         "props": {
+          "Material": "FX_Materials_p.Materials.ParticleBase_BW_MAT",
+          "bUseLocalSpace": true,
+          "SpawnRate": {
+           "Distribution": null
+          },
+          "BurstList": [
+           {
+            "Count": 1,
+            "CountLow": 0,
+            "Time": 0.0
+           }
+          ],
+          "RandomImageTime": 1.0
+         }
+        },
+        "native_tail_bytes": 799,
+        "compiled_modules": [
+         {
+          "index": 0,
+          "module": "PMI_Lifetime",
+          "module_id": 1,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "Lifetime",
+            "property_candidates": null,
+            "kind": "float constant",
+            "op": 1,
+            "values": [
+             0.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 1,
+          "module": "PMI_Size",
+          "module_id": 6,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "StartSize",
+            "property_candidates": null,
+            "kind": "vector uniform",
+            "op": 2,
+            "values": [
+             160.0,
+             300.0,
+             300.0,
+             160.0,
+             500.0,
+             500.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 2,
+          "module": "PMI_Color",
+          "module_id": 2,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "StartAlpha",
+            "property_candidates": null,
+            "kind": "float constant",
+            "op": 1,
+            "values": [
+             1.0
+            ],
+            "confidence": "CONFIRMED"
+           },
+           {
+            "property": "StartColor",
+            "property_candidates": null,
+            "kind": "vector constant",
+            "op": 1,
+            "values": [
+             1.0,
+             0.3,
+             1.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 3,
+          "module": "PMI_Color",
+          "module_id": 2,
+          "in_list_after_records": false,
+          "raw_flags": [
+           0,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": false,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "StartAlpha",
+            "property_candidates": null,
+            "kind": "float constant",
+            "op": 1,
+            "values": [
+             1.0
+            ],
+            "confidence": "CONFIRMED"
+           },
+           {
+            "property": "StartColor",
+            "property_candidates": null,
+            "kind": "vector constant",
+            "op": 1,
+            "values": [
+             0.0,
+             0.3,
+             1.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 4,
+          "module": "PMI_SizeMultiplyLife",
+          "module_id": 8,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "LifeMultiplier",
+            "property_candidates": null,
+            "kind": "vector constant curve",
+            "op": 1,
+            "values": [
+             1.0,
+             2.022473,
+             0.0,
+             20.0,
+             1.0,
+             1.0,
+             1.0,
+             1.02395,
+             1.028,
+             1.0,
+             1.0896,
+             1.104,
+             1.0,
+             1.18765,
+             1.216,
+             1.0,
+             1.3088,
+             1.352,
+             1.0,
+             1.44375,
+             1.5,
+             1.0,
+             1.5832,
+             1.648,
+             1.0,
+             1.71785,
+             1.784,
+             1.0,
+             1.8384,
+             1.896,
+             1.0,
+             1.93555,
+             1.972,
+             1.0,
+             2.0,
+             2.0,
+             1.0,
+             2.02245,
+             1.986,
+             1.0,
+             2.0056,
+             1.948,
+             1.0,
+             1.95815,
+             1.892,
+             1.0,
+             1.8888,
+             1.824,
+             1.0,
+             1.80625,
+             1.75,
+             1.0,
+             1.7192,
+             1.676,
+             1.0,
+             1.63635,
+             1.608,
+             1.0,
+             1.5664,
+             1.552,
+             1.0,
+             1.51805,
+             1.514,
+             1.0,
+             1.5,
+             1.5,
+             1.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 5,
+          "module": "PMI_Location",
+          "module_id": 17,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "StartLocation",
+            "property_candidates": null,
+            "kind": "vector constant",
+            "op": 1,
+            "values": [
+             0.0,
+             0.0,
+             200.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 6,
+          "module": "PMI_Rotation",
+          "module_id": 13,
+          "in_list_after_records": false,
+          "raw_flags": [
+           0,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": false,
+          "payload_offset": 12,
+          "distributions": [
+           {
+            "property": "StartRotation",
+            "property_candidates": null,
+            "kind": "float uniform",
+            "op": 2,
+            "values": [
+             0.0,
+             1.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 7,
+          "module": "PMI_ColorScaleOverLife",
+          "module_id": 5,
+          "in_list_after_records": false,
+          "raw_flags": [
+           0,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": false,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "AlphaScaleOverLife",
+            "property_candidates": null,
+            "kind": "float constant curve",
+            "op": 1,
+            "values": [
+             0.0,
+             1.0,
+             0.0,
+             20.0,
+             0.0,
+             0.1,
+             0.2,
+             0.3,
+             0.4,
+             0.5,
+             0.6,
+             0.7,
+             0.8,
+             0.9,
+             1.0,
+             0.9,
+             0.8,
+             0.7,
+             0.6,
+             0.5,
+             0.4,
+             0.3,
+             0.2,
+             0.1,
+             0.0
+            ],
+            "confidence": "CONFIRMED"
+           },
+           {
+            "property": "ColorScaleOverLife",
+            "property_candidates": null,
+            "kind": "vector constant curve",
+            "op": 1,
+            "values": [
+             0.0,
+             50.0,
+             0.0,
+             1.0,
+             50.0,
+             50.0,
+             50.0,
+             0.0,
+             0.0,
+             0.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         }
+        ],
+        "assignment_complete": true,
+        "raw_unparsed_hex": {
+         "between_lists_and_groups": "00 00 00 01 04 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 10 00 00 00 01 00 00 00 01 00 00 00 01 00 00 00 00 00 00 00 00",
+         "trailing": "00 80 00 00"
+        }
+       }
+      ]
+     },
+     {
+      "emitter": "FX_Pickups_p.FX.HealthPickup_FX.ParticleSpriteEmitter_14185",
+      "class": "ParticleEmitter",
+      "name": "Particle Emitter_Dup_Dup",
+      "props": {},
+      "lods": [
+       {
+        "lod": "FX_Pickups_p.FX.HealthPickup_FX.ParticleSpriteEmitter_14185.ParticleLODLevel_2667",
+        "level": 0,
+        "props": {
+         "PeakActiveParticles": 1
+        },
+        "RequiredModule": {
+         "object": "FX_Pickups_p.FX.HealthPickup_FX.ParticleModuleRequired_13082",
+         "class": "ParticleModuleRequired",
+         "props": {
+          "bUseLocalSpace": true,
+          "SpawnRate": {
+           "Distribution": null
+          },
+          "BurstList": [
+           {
+            "Count": 1,
+            "CountLow": 0,
+            "Time": 0.0
+           }
+          ],
+          "RandomImageTime": 1.0
+         }
+        },
+        "TypeDataModule": {
+         "object": "FX_Pickups_p.FX.HealthPickup_FX.ParticleModuleTypeDataMesh_15699",
+         "class": "ParticleModuleTypeDataMesh",
+         "props": {
+          "Mesh": "PROP_NEU_EnergonCube_p.PROP_NEU_EnergonCube_STAT",
+          "bOverrideMaterial": true
+         }
+        },
+        "mesh": "PROP_NEU_EnergonCube_p.PROP_NEU_EnergonCube_STAT",
+        "native_tail_bytes": 618,
+        "compiled_modules": [
+         {
+          "index": 0,
+          "module": "PMI_Lifetime",
+          "module_id": 1,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "Lifetime",
+            "property_candidates": null,
+            "kind": "float constant",
+            "op": 1,
+            "values": [
+             0.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 1,
+          "module": "PMI_Size",
+          "module_id": 6,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "StartSize",
+            "property_candidates": null,
+            "kind": "vector constant",
+            "op": 1,
+            "values": [
+             0.85,
+             0.85,
+             0.85
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 2,
+          "module": "PMI_Color",
+          "module_id": 2,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "StartAlpha",
+            "property_candidates": null,
+            "kind": "float constant",
+            "op": 1,
+            "values": [
+             1.0
+            ],
+            "confidence": "CONFIRMED"
+           },
+           {
+            "property": "StartColor",
+            "property_candidates": null,
+            "kind": "vector constant",
+            "op": 1,
+            "values": [
+             1.0,
+             1.0,
+             1.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 3,
+          "module": "PMI_SizeMultiplyLife",
+          "module_id": 8,
+          "in_list_after_records": false,
+          "raw_flags": [
+           0,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": false,
+          "payload_offset": 12,
+          "distributions": [
+           {
+            "property": "LifeMultiplier",
+            "property_candidates": null,
+            "kind": "vector constant curve",
+            "op": 1,
+            "values": [
+             0.477527,
+             2.0,
+             0.0,
+             20.0,
+             1.0,
+             1.0,
+             1.0,
+             0.98195,
+             1.028,
+             1.0,
+             0.9336,
+             1.104,
+             1.0,
+             0.86365,
+             1.216,
+             1.0,
+             0.7808,
+             1.352,
+             1.0,
+             0.69375,
+             1.5,
+             1.0,
+             0.6112,
+             1.648,
+             1.0,
+             0.54185,
+             1.784,
+             1.0,
+             0.4944,
+             1.896,
+             1.0,
+             0.47755,
+             1.972,
+             1.0,
+             0.5,
+             2.0,
+             1.0,
+             0.55045,
+             1.972,
+             1.0,
+             0.6096,
+             1.896,
+             1.0,
+             0.67415,
+             1.784,
+             1.0,
+             0.7408,
+             1.648,
+             1.0,
+             0.80625,
+             1.5,
+             1.0,
+             0.8672,
+             1.352,
+             1.0,
+             0.92035,
+             1.216,
+             1.0,
+             0.9624,
+             1.104,
+             1.0,
+             0.99005,
+             1.028,
+             1.0,
+             1.0,
+             1.0,
+             1.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 4,
+          "module": "PMI_MeshRotation",
+          "module_id": 10,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           0
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "StartRotation",
+            "property_candidates": null,
+            "kind": "vector constant",
+            "op": 1,
+            "values": [
+             0.1,
+             0.0,
+             -0.1
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 5,
+          "module": "PMI_Location",
+          "module_id": 17,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "StartLocation",
+            "property_candidates": null,
+            "kind": "vector constant",
+            "op": 1,
+            "values": [
+             0.0,
+             0.0,
+             200.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 6,
+          "module": "PMI_MeshRotationRate",
+          "module_id": 11,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           0
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "StartRotationRate",
+            "property_candidates": null,
+            "kind": "vector uniform",
+            "op": 2,
+            "values": [
+             0.0,
+             0.0,
+             0.0,
+             0.1,
+             0.1,
+             0.1
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         }
+        ],
+        "assignment_complete": true,
+        "raw_unparsed_hex": {
+         "between_lists_and_groups": "00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 10 00 00 00 01 00 00 00 01 00 00 00 01 00 00 00 00 00 00 00 00",
+         "trailing": "00 b0 00 00"
+        },
+        "mesh_record": {
+         "mesh": "PROP_NEU_EnergonCube_p.PROP_NEU_EnergonCube_STAT",
+         "gltf": "content/PROP_NEU_EnergonCube_p/PROP_NEU_EnergonCube_STAT.gltf",
+         "cooked_in": "TransGame",
+         "section_materials": [
+          "PROP_NEU_EnergonCube_p.PROP_NEU_EnergonCube_Circuits_MATINST"
+         ],
+         "TypeDataMesh_props": {
+          "Mesh": "PROP_NEU_EnergonCube_p.PROP_NEU_EnergonCube_STAT",
+          "bOverrideMaterial": true
+         },
+         "material_rule": "RequiredModule.Material is used when bOverrideMaterial is set; otherwise the mesh section materials render (UE3 mesh emitter)",
+         "material_resolution": {
+          "confidence": "PARTIAL",
+          "value": [
+           "PROP_NEU_EnergonCube_p.PROP_NEU_EnergonCube_Circuits_MATINST"
+          ],
+          "note": "bOverrideMaterial=true but RequiredModule.Material is unset and no MeshMaterial module is compiled: the only authored material reference is the mesh section material; what the native renderer substitutes for a null override is UNKNOWN (native RE)"
+         }
+        }
+       },
+       {
+        "lod": "FX_Pickups_p.FX.HealthPickup_FX.ParticleSpriteEmitter_14185.ParticleLODLevel_14055",
+        "level": 1,
+        "props": {
+         "Level": 1,
+         "LevelSetting": 100,
+         "PeakActiveParticles": 1
+        },
+        "RequiredModule": {
+         "object": "FX_Pickups_p.FX.HealthPickup_FX.ParticleModuleRequired_10536",
+         "class": "ParticleModuleRequired",
+         "props": {
+          "bUseLocalSpace": true,
+          "SpawnRate": {
+           "Distribution": null
+          },
+          "BurstList": [
+           {
+            "Count": 1,
+            "CountLow": 0,
+            "Time": 0.0
+           }
+          ],
+          "RandomImageTime": 1.0
+         }
+        },
+        "TypeDataModule": {
+         "object": "FX_Pickups_p.FX.HealthPickup_FX.ParticleModuleTypeDataMesh_1019",
+         "class": "ParticleModuleTypeDataMesh",
+         "props": {
+          "Mesh": "PROP_NEU_EnergonCube_p.PROP_NEU_EnergonCube_STAT",
+          "bOverrideMaterial": true
+         }
+        },
+        "mesh": "PROP_NEU_EnergonCube_p.PROP_NEU_EnergonCube_STAT",
+        "native_tail_bytes": 618,
+        "compiled_modules": [
+         {
+          "index": 0,
+          "module": "PMI_Lifetime",
+          "module_id": 1,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "Lifetime",
+            "property_candidates": null,
+            "kind": "float constant",
+            "op": 1,
+            "values": [
+             0.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 1,
+          "module": "PMI_Size",
+          "module_id": 6,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "StartSize",
+            "property_candidates": null,
+            "kind": "vector constant",
+            "op": 1,
+            "values": [
+             0.85,
+             0.85,
+             0.85
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 2,
+          "module": "PMI_Color",
+          "module_id": 2,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "StartAlpha",
+            "property_candidates": null,
+            "kind": "float constant",
+            "op": 1,
+            "values": [
+             1.0
+            ],
+            "confidence": "CONFIRMED"
+           },
+           {
+            "property": "StartColor",
+            "property_candidates": null,
+            "kind": "vector constant",
+            "op": 1,
+            "values": [
+             1.0,
+             1.0,
+             1.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 3,
+          "module": "PMI_SizeMultiplyLife",
+          "module_id": 8,
+          "in_list_after_records": false,
+          "raw_flags": [
+           0,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": false,
+          "payload_offset": 12,
+          "distributions": [
+           {
+            "property": "LifeMultiplier",
+            "property_candidates": null,
+            "kind": "vector constant curve",
+            "op": 1,
+            "values": [
+             0.477527,
+             2.0,
+             0.0,
+             20.0,
+             1.0,
+             1.0,
+             1.0,
+             0.98195,
+             1.028,
+             1.0,
+             0.9336,
+             1.104,
+             1.0,
+             0.86365,
+             1.216,
+             1.0,
+             0.7808,
+             1.352,
+             1.0,
+             0.69375,
+             1.5,
+             1.0,
+             0.6112,
+             1.648,
+             1.0,
+             0.54185,
+             1.784,
+             1.0,
+             0.4944,
+             1.896,
+             1.0,
+             0.47755,
+             1.972,
+             1.0,
+             0.5,
+             2.0,
+             1.0,
+             0.55045,
+             1.972,
+             1.0,
+             0.6096,
+             1.896,
+             1.0,
+             0.67415,
+             1.784,
+             1.0,
+             0.7408,
+             1.648,
+             1.0,
+             0.80625,
+             1.5,
+             1.0,
+             0.8672,
+             1.352,
+             1.0,
+             0.92035,
+             1.216,
+             1.0,
+             0.9624,
+             1.104,
+             1.0,
+             0.99005,
+             1.028,
+             1.0,
+             1.0,
+             1.0,
+             1.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 4,
+          "module": "PMI_MeshRotation",
+          "module_id": 10,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           0
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "StartRotation",
+            "property_candidates": null,
+            "kind": "vector constant",
+            "op": 1,
+            "values": [
+             0.1,
+             0.0,
+             -0.1
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 5,
+          "module": "PMI_Location",
+          "module_id": 17,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "StartLocation",
+            "property_candidates": null,
+            "kind": "vector constant",
+            "op": 1,
+            "values": [
+             0.0,
+             0.0,
+             200.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 6,
+          "module": "PMI_MeshRotationRate",
+          "module_id": 11,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           0
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "StartRotationRate",
+            "property_candidates": null,
+            "kind": "vector uniform",
+            "op": 2,
+            "values": [
+             0.0,
+             0.0,
+             0.0,
+             0.1,
+             0.1,
+             0.1
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         }
+        ],
+        "assignment_complete": true,
+        "raw_unparsed_hex": {
+         "between_lists_and_groups": "00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 10 00 00 00 01 00 00 00 01 00 00 00 01 00 00 00 00 00 00 00 00",
+         "trailing": "00 b0 00 00"
+        },
+        "mesh_record": {
+         "mesh": "PROP_NEU_EnergonCube_p.PROP_NEU_EnergonCube_STAT",
+         "gltf": "content/PROP_NEU_EnergonCube_p/PROP_NEU_EnergonCube_STAT.gltf",
+         "cooked_in": "TransGame",
+         "section_materials": [
+          "PROP_NEU_EnergonCube_p.PROP_NEU_EnergonCube_Circuits_MATINST"
+         ],
+         "TypeDataMesh_props": {
+          "Mesh": "PROP_NEU_EnergonCube_p.PROP_NEU_EnergonCube_STAT",
+          "bOverrideMaterial": true
+         },
+         "material_rule": "RequiredModule.Material is used when bOverrideMaterial is set; otherwise the mesh section materials render (UE3 mesh emitter)",
+         "material_resolution": {
+          "confidence": "PARTIAL",
+          "value": [
+           "PROP_NEU_EnergonCube_p.PROP_NEU_EnergonCube_Circuits_MATINST"
+          ],
+          "note": "bOverrideMaterial=true but RequiredModule.Material is unset and no MeshMaterial module is compiled: the only authored material reference is the mesh section material; what the native renderer substitutes for a null override is UNKNOWN (native RE)"
+         }
+        }
+       }
+      ]
+     }
+    ],
+    "role": "health pickup (energon cube + glows)"
+   },
+   "FX_Pickups_p.FX.OvershieldPickup_FX": {
+    "emitters": [
+     {
+      "emitter": "FX_Pickups_p.FX.OvershieldPickup_FX.ParticleSpriteEmitter_10406",
+      "class": "ParticleEmitter",
+      "name": "GlowMut",
+      "props": {
+       "SpriteEmitterRenderMode": "SERM_BestFit",
+       "BestFitPolygons": [
+        {
+         "Time": 0.0,
+         "VertexCount": 8,
+         "Vertices": [
+          {
+           "X": 0.8595921397209167,
+           "Y": 0.302298903465271
+          },
+          {
+           "X": 0.6371918320655823,
+           "Y": 0.14137932658195496
+          },
+          {
+           "X": 0.32958200573921204,
+           "Y": 0.13793103396892548
+          },
+          {
+           "X": 0.14308682084083557,
+           "Y": 0.3103448152542114
+          },
+          {
+           "X": 0.1420150101184845,
+           "Y": 0.6931036114692688
+          },
+          {
+           "X": 0.3478028178215027,
+           "Y": 0.867816150188446
+          },
+          {
+           "X": 0.6350482106208801,
+           "Y": 0.8689655065536499
+          },
+          {
+           "X": 0.8590567111968994,
+           "Y": 0.6770115494728088
+          },
+          {
+           "X": 1.1210387714598537e-44,
+           "Y": 9.80908925027372e-45
+          },
+          {
+           "X": 92557279232.0,
+           "Y": 8.93936453165309e-29
+          },
+          {
+           "X": 92557279232.0,
+           "Y": NaN
+          },
+          {
+           "X": 1.41646128878605e-32,
+           "Y": 6.610300404208601e-39
+          }
+         ]
+        }
+       ],
+       "MaxPeakCount": 3
+      },
+      "lods": [
+       {
+        "lod": "FX_Pickups_p.FX.OvershieldPickup_FX.ParticleSpriteEmitter_10406.ParticleLODLevel_3460",
+        "level": 0,
+        "props": {
+         "PeakActiveParticles": 3
+        },
+        "RequiredModule": {
+         "object": "FX_Pickups_p.FX.OvershieldPickup_FX.ParticleModuleRequired_5794",
+         "class": "ParticleModuleRequired",
+         "props": {
+          "Material": "FX_Materials_p.Materials.Glow_Mod_Depth_MAT",
+          "ScreenAlignment": "PSA_Rectangle",
+          "bUseLocalSpace": true,
+          "SpawnRate": {
+           "Distribution": null,
+           "Type": 3,
+           "Op": 2,
+           "LookupTableNumElements": 2,
+           "LookupTableChunkSize": 2,
+           "LookupTable": [
+            1.0,
+            2.0
+           ]
+          },
+          "RandomImageTime": 1.0
+         }
+        },
+        "native_tail_bytes": 757,
+        "compiled_modules": [
+         {
+          "index": 0,
+          "module": "PMI_Lifetime",
+          "module_id": 1,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "Lifetime",
+            "property_candidates": null,
+            "kind": "float uniform",
+            "op": 2,
+            "values": [
+             1.0,
+             0.75
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 1,
+          "module": "PMI_Size",
+          "module_id": 6,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "StartSize",
+            "property_candidates": null,
+            "kind": "vector uniform",
+            "op": 2,
+            "values": [
+             300.0,
+             300.0,
+             300.0,
+             500.0,
+             500.0,
+             500.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 2,
+          "module": "PMI_Color",
+          "module_id": 2,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "StartAlpha",
+            "property_candidates": null,
+            "kind": "float constant",
+            "op": 1,
+            "values": [
+             0.7
+            ],
+            "confidence": "CONFIRMED"
+           },
+           {
+            "property": "StartColor",
+            "property_candidates": null,
+            "kind": "vector constant",
+            "op": 1,
+            "values": [
+             0.0,
+             0.3,
+             1.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 3,
+          "module": "PMI_SizeMultiplyLife",
+          "module_id": 8,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "LifeMultiplier",
+            "property_candidates": null,
+            "kind": "vector constant curve",
+            "op": 1,
+            "values": [
+             1.0,
+             2.022473,
+             0.0,
+             20.0,
+             1.0,
+             1.0,
+             1.0,
+             1.02395,
+             1.028,
+             1.0,
+             1.0896,
+             1.104,
+             1.0,
+             1.18765,
+             1.216,
+             1.0,
+             1.3088,
+             1.352,
+             1.0,
+             1.44375,
+             1.5,
+             1.0,
+             1.5832,
+             1.648,
+             1.0,
+             1.71785,
+             1.784,
+             1.0,
+             1.8384,
+             1.896,
+             1.0,
+             1.93555,
+             1.972,
+             1.0,
+             2.0,
+             2.0,
+             1.0,
+             2.02245,
+             1.986,
+             1.0,
+             2.0056,
+             1.948,
+             1.0,
+             1.95815,
+             1.892,
+             1.0,
+             1.8888,
+             1.824,
+             1.0,
+             1.80625,
+             1.75,
+             1.0,
+             1.7192,
+             1.676,
+             1.0,
+             1.63635,
+             1.608,
+             1.0,
+             1.5664,
+             1.552,
+             1.0,
+             1.51805,
+             1.514,
+             1.0,
+             1.5,
+             1.5,
+             1.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 4,
+          "module": "PMI_Location",
+          "module_id": 17,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "StartLocation",
+            "property_candidates": null,
+            "kind": "vector constant",
+            "op": 1,
+            "values": [
+             0.0,
+             0.0,
+             200.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 5,
+          "module": "PMI_Rotation",
+          "module_id": 13,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 12,
+          "distributions": [
+           {
+            "property": "StartRotation",
+            "property_candidates": null,
+            "kind": "float uniform",
+            "op": 2,
+            "values": [
+             0.0,
+             1.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 6,
+          "module": "PMI_ColorScaleOverLife",
+          "module_id": 5,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "AlphaScaleOverLife",
+            "property_candidates": null,
+            "kind": "float constant curve",
+            "op": 1,
+            "values": [
+             0.0,
+             1.0,
+             0.0,
+             20.0,
+             0.0,
+             0.1,
+             0.2,
+             0.3,
+             0.4,
+             0.5,
+             0.6,
+             0.7,
+             0.8,
+             0.9,
+             1.0,
+             0.9,
+             0.8,
+             0.7,
+             0.6,
+             0.5,
+             0.4,
+             0.3,
+             0.2,
+             0.1,
+             0.0
+            ],
+            "confidence": "CONFIRMED"
+           },
+           {
+            "property": "ColorScaleOverLife",
+            "property_candidates": null,
+            "kind": "vector constant curve",
+            "op": 1,
+            "values": [
+             0.0,
+             25.0,
+             0.0,
+             1.0,
+             25.0,
+             25.0,
+             25.0,
+             0.0,
+             0.0,
+             0.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         }
+        ],
+        "assignment_complete": true,
+        "raw_unparsed_hex": {
+         "between_lists_and_groups": "00 00 00 02 03 06 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 10 00 00 00 01 00 00 00 01 00 00 00 01 00 00 00 00 00 00 00 00",
+         "trailing": "00 80 00 00"
+        }
+       },
+       {
+        "lod": "FX_Pickups_p.FX.OvershieldPickup_FX.ParticleSpriteEmitter_10406.ParticleLODLevel_3789",
+        "level": 1,
+        "props": {
+         "Level": 1,
+         "LevelSetting": 100,
+         "PeakActiveParticles": 2
+        },
+        "RequiredModule": {
+         "object": "FX_Pickups_p.FX.OvershieldPickup_FX.ParticleModuleRequired_2835",
+         "class": "ParticleModuleRequired",
+         "props": {
+          "Material": "FX_Materials_p.Materials.Glow_Mod_Depth_MAT",
+          "ScreenAlignment": "PSA_Rectangle",
+          "bUseLocalSpace": true,
+          "SpawnRate": {
+           "Distribution": null,
+           "Type": 3,
+           "Op": 2,
+           "LookupTableNumElements": 2,
+           "LookupTableChunkSize": 2,
+           "LookupTable": [
+            0.20000000298023224,
+            0.4000000059604645
+           ]
+          },
+          "RandomImageTime": 1.0
+         }
+        },
+        "native_tail_bytes": 753,
+        "compiled_modules": [
+         {
+          "index": 0,
+          "module": "PMI_Lifetime",
+          "module_id": 1,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "Lifetime",
+            "property_candidates": null,
+            "kind": "float constant",
+            "op": 1,
+            "values": [
+             0.36
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 1,
+          "module": "PMI_Size",
+          "module_id": 6,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "StartSize",
+            "property_candidates": null,
+            "kind": "vector uniform",
+            "op": 2,
+            "values": [
+             300.0,
+             300.0,
+             300.0,
+             500.0,
+             500.0,
+             500.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 2,
+          "module": "PMI_Color",
+          "module_id": 2,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "StartAlpha",
+            "property_candidates": null,
+            "kind": "float constant",
+            "op": 1,
+            "values": [
+             0.7
+            ],
+            "confidence": "CONFIRMED"
+           },
+           {
+            "property": "StartColor",
+            "property_candidates": null,
+            "kind": "vector constant",
+            "op": 1,
+            "values": [
+             0.0,
+             0.3,
+             1.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 3,
+          "module": "PMI_SizeMultiplyLife",
+          "module_id": 8,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "LifeMultiplier",
+            "property_candidates": null,
+            "kind": "vector constant curve",
+            "op": 1,
+            "values": [
+             1.0,
+             2.022473,
+             0.0,
+             20.0,
+             1.0,
+             1.0,
+             1.0,
+             1.02395,
+             1.028,
+             1.0,
+             1.0896,
+             1.104,
+             1.0,
+             1.18765,
+             1.216,
+             1.0,
+             1.3088,
+             1.352,
+             1.0,
+             1.44375,
+             1.5,
+             1.0,
+             1.5832,
+             1.648,
+             1.0,
+             1.71785,
+             1.784,
+             1.0,
+             1.8384,
+             1.896,
+             1.0,
+             1.93555,
+             1.972,
+             1.0,
+             2.0,
+             2.0,
+             1.0,
+             2.02245,
+             1.986,
+             1.0,
+             2.0056,
+             1.948,
+             1.0,
+             1.95815,
+             1.892,
+             1.0,
+             1.8888,
+             1.824,
+             1.0,
+             1.80625,
+             1.75,
+             1.0,
+             1.7192,
+             1.676,
+             1.0,
+             1.63635,
+             1.608,
+             1.0,
+             1.5664,
+             1.552,
+             1.0,
+             1.51805,
+             1.514,
+             1.0,
+             1.5,
+             1.5,
+             1.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 4,
+          "module": "PMI_Location",
+          "module_id": 17,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "StartLocation",
+            "property_candidates": null,
+            "kind": "vector constant",
+            "op": 1,
+            "values": [
+             0.0,
+             0.0,
+             200.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 5,
+          "module": "PMI_Rotation",
+          "module_id": 13,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 12,
+          "distributions": [
+           {
+            "property": "StartRotation",
+            "property_candidates": null,
+            "kind": "float uniform",
+            "op": 2,
+            "values": [
+             0.0,
+             1.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 6,
+          "module": "PMI_ColorScaleOverLife",
+          "module_id": 5,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "AlphaScaleOverLife",
+            "property_candidates": null,
+            "kind": "float constant curve",
+            "op": 1,
+            "values": [
+             0.0,
+             1.0,
+             0.0,
+             20.0,
+             0.0,
+             0.1,
+             0.2,
+             0.3,
+             0.4,
+             0.5,
+             0.6,
+             0.7,
+             0.8,
+             0.9,
+             1.0,
+             0.9,
+             0.8,
+             0.7,
+             0.6,
+             0.5,
+             0.4,
+             0.3,
+             0.2,
+             0.1,
+             0.0
+            ],
+            "confidence": "CONFIRMED"
+           },
+           {
+            "property": "ColorScaleOverLife",
+            "property_candidates": null,
+            "kind": "vector constant curve",
+            "op": 1,
+            "values": [
+             0.0,
+             25.0,
+             0.0,
+             1.0,
+             25.0,
+             25.0,
+             25.0,
+             0.0,
+             0.0,
+             0.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         }
+        ],
+        "assignment_complete": true,
+        "raw_unparsed_hex": {
+         "between_lists_and_groups": "00 00 00 02 03 06 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 10 00 00 00 01 00 00 00 01 00 00 00 01 00 00 00 00 00 00 00 00",
+         "trailing": "00 80 00 00"
+        }
+       }
+      ]
+     },
+     {
+      "emitter": "FX_Pickups_p.FX.OvershieldPickup_FX.ParticleSpriteEmitter_8423",
+      "class": "ParticleEmitter",
+      "name": "GlowADD",
+      "props": {
+       "SpriteEmitterRenderMode": "SERM_BestFit",
+       "BestFitPolygons": [
+        {
+         "Time": 0.0,
+         "VertexCount": 8,
+         "Vertices": [
+          {
+           "X": 0.9410915970802307,
+           "Y": 0.24688756465911865
+          },
+          {
+           "X": 0.6632712483406067,
+           "Y": 0.05306760221719742
+          },
+          {
+           "X": 0.259491890668869,
+           "Y": 0.05135088041424751
+          },
+          {
+           "X": 0.038767337799072266,
+           "Y": 0.2843707501888275
+          },
+          {
+           "X": 0.03932547569274902,
+           "Y": 0.7086877822875977
+          },
+          {
+           "X": 0.29564255475997925,
+           "Y": 0.9301534295082092
+          },
+          {
+           "X": 0.6904669404029846,
+           "Y": 0.9295710921287537
+          },
+          {
+           "X": 0.930776834487915,
+           "Y": 0.6995220184326172
+          },
+          {
+           "X": 1.1210387714598537e-44,
+           "Y": 9.80908925027372e-45
+          },
+          {
+           "X": 429477402247168.0,
+           "Y": 8.93911416076032e-29
+          },
+          {
+           "X": 429477402247168.0,
+           "Y": NaN
+          },
+          {
+           "X": 2.814886101987213e-08,
+           "Y": 6.610300404208601e-39
+          }
+         ]
+        }
+       ],
+       "MaxPeakCount": 3
+      },
+      "lods": [
+       {
+        "lod": "FX_Pickups_p.FX.OvershieldPickup_FX.ParticleSpriteEmitter_8423.ParticleLODLevel_11035",
+        "level": 0,
+        "props": {
+         "PeakActiveParticles": 3
+        },
+        "RequiredModule": {
+         "object": "FX_Pickups_p.FX.OvershieldPickup_FX.ParticleModuleRequired_337",
+         "class": "ParticleModuleRequired",
+         "props": {
+          "Material": "FX_Materials_p.Materials.Basic_Particle_Add_MAT",
+          "bUseLocalSpace": true,
+          "SpawnRate": {
+           "Distribution": null,
+           "Type": 3,
+           "Op": 2,
+           "LookupTableNumElements": 2,
+           "LookupTableChunkSize": 2,
+           "LookupTable": [
+            1.0,
+            2.0
+           ]
+          },
+          "RandomImageTime": 1.0
+         }
+        },
+        "native_tail_bytes": 755,
+        "compiled_modules": [
+         {
+          "index": 0,
+          "module": "PMI_Lifetime",
+          "module_id": 1,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "Lifetime",
+            "property_candidates": null,
+            "kind": "float uniform",
+            "op": 2,
+            "values": [
+             0.7,
+             1.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 1,
+          "module": "PMI_Size",
+          "module_id": 6,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "StartSize",
+            "property_candidates": null,
+            "kind": "vector uniform",
+            "op": 2,
+            "values": [
+             200.0,
+             300.0,
+             300.0,
+             250.0,
+             500.0,
+             500.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 2,
+          "module": "PMI_Color",
+          "module_id": 2,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "StartAlpha",
+            "property_candidates": null,
+            "kind": "float constant",
+            "op": 1,
+            "values": [
+             0.05
+            ],
+            "confidence": "CONFIRMED"
+           },
+           {
+            "property": "StartColor",
+            "property_candidates": null,
+            "kind": "vector constant",
+            "op": 1,
+            "values": [
+             0.0,
+             0.3,
+             1.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 3,
+          "module": "PMI_SizeMultiplyLife",
+          "module_id": 8,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "LifeMultiplier",
+            "property_candidates": null,
+            "kind": "vector constant curve",
+            "op": 1,
+            "values": [
+             1.0,
+             2.022473,
+             0.0,
+             20.0,
+             1.0,
+             1.0,
+             1.0,
+             1.02395,
+             1.028,
+             1.0,
+             1.0896,
+             1.104,
+             1.0,
+             1.18765,
+             1.216,
+             1.0,
+             1.3088,
+             1.352,
+             1.0,
+             1.44375,
+             1.5,
+             1.0,
+             1.5832,
+             1.648,
+             1.0,
+             1.71785,
+             1.784,
+             1.0,
+             1.8384,
+             1.896,
+             1.0,
+             1.93555,
+             1.972,
+             1.0,
+             2.0,
+             2.0,
+             1.0,
+             2.02245,
+             1.986,
+             1.0,
+             2.0056,
+             1.948,
+             1.0,
+             1.95815,
+             1.892,
+             1.0,
+             1.8888,
+             1.824,
+             1.0,
+             1.80625,
+             1.75,
+             1.0,
+             1.7192,
+             1.676,
+             1.0,
+             1.63635,
+             1.608,
+             1.0,
+             1.5664,
+             1.552,
+             1.0,
+             1.51805,
+             1.514,
+             1.0,
+             1.5,
+             1.5,
+             1.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 4,
+          "module": "PMI_Location",
+          "module_id": 17,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "StartLocation",
+            "property_candidates": null,
+            "kind": "vector constant",
+            "op": 1,
+            "values": [
+             0.0,
+             0.0,
+             190.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 5,
+          "module": "PMI_Rotation",
+          "module_id": 13,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 12,
+          "distributions": [
+           {
+            "property": "StartRotation",
+            "property_candidates": null,
+            "kind": "float uniform",
+            "op": 2,
+            "values": [
+             0.0,
+             1.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 6,
+          "module": "PMI_ColorScaleOverLife",
+          "module_id": 5,
+          "in_list_after_records": false,
+          "raw_flags": [
+           0,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": false,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "AlphaScaleOverLife",
+            "property_candidates": null,
+            "kind": "float constant curve",
+            "op": 1,
+            "values": [
+             0.0,
+             1.0,
+             0.0,
+             20.0,
+             0.0,
+             0.1,
+             0.2,
+             0.3,
+             0.4,
+             0.5,
+             0.6,
+             0.7,
+             0.8,
+             0.9,
+             1.0,
+             0.9,
+             0.8,
+             0.7,
+             0.6,
+             0.5,
+             0.4,
+             0.3,
+             0.2,
+             0.1,
+             0.0
+            ],
+            "confidence": "CONFIRMED"
+           },
+           {
+            "property": "ColorScaleOverLife",
+            "property_candidates": null,
+            "kind": "vector constant curve",
+            "op": 1,
+            "values": [
+             0.0,
+             25.0,
+             0.0,
+             1.0,
+             25.0,
+             25.0,
+             25.0,
+             0.0,
+             0.0,
+             0.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         }
+        ],
+        "assignment_complete": true,
+        "raw_unparsed_hex": {
+         "between_lists_and_groups": "00 00 00 01 03 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 10 00 00 00 01 00 00 00 01 00 00 00 01 00 00 00 00 00 00 00 00",
+         "trailing": "00 80 00 00"
+        }
+       },
+       {
+        "lod": "FX_Pickups_p.FX.OvershieldPickup_FX.ParticleSpriteEmitter_8423.ParticleLODLevel_15089",
+        "level": 1,
+        "props": {
+         "Level": 1,
+         "LevelSetting": 100,
+         "PeakActiveParticles": 2
+        },
+        "RequiredModule": {
+         "object": "FX_Pickups_p.FX.OvershieldPickup_FX.ParticleModuleRequired_10527",
+         "class": "ParticleModuleRequired",
+         "props": {
+          "Material": "FX_Materials_p.Materials.Basic_Particle_Add_MAT",
+          "bUseLocalSpace": true,
+          "SpawnRate": {
+           "Distribution": null,
+           "Type": 3,
+           "Op": 2,
+           "LookupTableNumElements": 2,
+           "LookupTableChunkSize": 2,
+           "LookupTable": [
+            0.20000000298023224,
+            0.4000000059604645
+           ]
+          },
+          "RandomImageTime": 1.0
+         }
+        },
+        "native_tail_bytes": 755,
+        "compiled_modules": [
+         {
+          "index": 0,
+          "module": "PMI_Lifetime",
+          "module_id": 1,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "Lifetime",
+            "property_candidates": null,
+            "kind": "float uniform",
+            "op": 2,
+            "values": [
+             0.252,
+             0.36
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 1,
+          "module": "PMI_Size",
+          "module_id": 6,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "StartSize",
+            "property_candidates": null,
+            "kind": "vector uniform",
+            "op": 2,
+            "values": [
+             200.0,
+             300.0,
+             300.0,
+             250.0,
+             500.0,
+             500.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 2,
+          "module": "PMI_Color",
+          "module_id": 2,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "StartAlpha",
+            "property_candidates": null,
+            "kind": "float constant",
+            "op": 1,
+            "values": [
+             0.05
+            ],
+            "confidence": "CONFIRMED"
+           },
+           {
+            "property": "StartColor",
+            "property_candidates": null,
+            "kind": "vector constant",
+            "op": 1,
+            "values": [
+             0.0,
+             0.3,
+             1.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 3,
+          "module": "PMI_SizeMultiplyLife",
+          "module_id": 8,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "LifeMultiplier",
+            "property_candidates": null,
+            "kind": "vector constant curve",
+            "op": 1,
+            "values": [
+             1.0,
+             2.022473,
+             0.0,
+             20.0,
+             1.0,
+             1.0,
+             1.0,
+             1.02395,
+             1.028,
+             1.0,
+             1.0896,
+             1.104,
+             1.0,
+             1.18765,
+             1.216,
+             1.0,
+             1.3088,
+             1.352,
+             1.0,
+             1.44375,
+             1.5,
+             1.0,
+             1.5832,
+             1.648,
+             1.0,
+             1.71785,
+             1.784,
+             1.0,
+             1.8384,
+             1.896,
+             1.0,
+             1.93555,
+             1.972,
+             1.0,
+             2.0,
+             2.0,
+             1.0,
+             2.02245,
+             1.986,
+             1.0,
+             2.0056,
+             1.948,
+             1.0,
+             1.95815,
+             1.892,
+             1.0,
+             1.8888,
+             1.824,
+             1.0,
+             1.80625,
+             1.75,
+             1.0,
+             1.7192,
+             1.676,
+             1.0,
+             1.63635,
+             1.608,
+             1.0,
+             1.5664,
+             1.552,
+             1.0,
+             1.51805,
+             1.514,
+             1.0,
+             1.5,
+             1.5,
+             1.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 4,
+          "module": "PMI_Location",
+          "module_id": 17,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "StartLocation",
+            "property_candidates": null,
+            "kind": "vector constant",
+            "op": 1,
+            "values": [
+             0.0,
+             0.0,
+             190.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 5,
+          "module": "PMI_Rotation",
+          "module_id": 13,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 12,
+          "distributions": [
+           {
+            "property": "StartRotation",
+            "property_candidates": null,
+            "kind": "float uniform",
+            "op": 2,
+            "values": [
+             0.0,
+             1.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 6,
+          "module": "PMI_ColorScaleOverLife",
+          "module_id": 5,
+          "in_list_after_records": false,
+          "raw_flags": [
+           0,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": false,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "AlphaScaleOverLife",
+            "property_candidates": null,
+            "kind": "float constant curve",
+            "op": 1,
+            "values": [
+             0.0,
+             1.0,
+             0.0,
+             20.0,
+             0.0,
+             0.1,
+             0.2,
+             0.3,
+             0.4,
+             0.5,
+             0.6,
+             0.7,
+             0.8,
+             0.9,
+             1.0,
+             0.9,
+             0.8,
+             0.7,
+             0.6,
+             0.5,
+             0.4,
+             0.3,
+             0.2,
+             0.1,
+             0.0
+            ],
+            "confidence": "CONFIRMED"
+           },
+           {
+            "property": "ColorScaleOverLife",
+            "property_candidates": null,
+            "kind": "vector constant curve",
+            "op": 1,
+            "values": [
+             0.0,
+             25.0,
+             0.0,
+             1.0,
+             25.0,
+             25.0,
+             25.0,
+             0.0,
+             0.0,
+             0.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         }
+        ],
+        "assignment_complete": true,
+        "raw_unparsed_hex": {
+         "between_lists_and_groups": "00 00 00 01 03 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 10 00 00 00 01 00 00 00 01 00 00 00 01 00 00 00 00 00 00 00 00",
+         "trailing": "00 80 00 00"
+        }
+       }
+      ]
+     },
+     {
+      "emitter": "FX_Pickups_p.FX.OvershieldPickup_FX.ParticleSpriteEmitter_14185",
+      "class": "ParticleEmitter",
+      "name": "Particle Emitter_Dup_Dup",
+      "props": {},
+      "lods": [
+       {
+        "lod": "FX_Pickups_p.FX.OvershieldPickup_FX.ParticleSpriteEmitter_14185.ParticleLODLevel_2667",
+        "level": 0,
+        "props": {
+         "PeakActiveParticles": 1
+        },
+        "RequiredModule": {
+         "object": "FX_Pickups_p.FX.OvershieldPickup_FX.ParticleModuleRequired_13082",
+         "class": "ParticleModuleRequired",
+         "props": {
+          "bUseLocalSpace": true,
+          "SpawnRate": {
+           "Distribution": null,
+           "Type": 3,
+           "Op": 2,
+           "LookupTableNumElements": 2,
+           "LookupTableChunkSize": 2,
+           "LookupTable": [
+            1.0,
+            2.0
+           ]
+          },
+          "RandomImageTime": 1.0
+         }
+        },
+        "TypeDataModule": {
+         "object": "FX_Pickups_p.FX.OvershieldPickup_FX.ParticleModuleTypeDataMesh_15699",
+         "class": "ParticleModuleTypeDataMesh",
+         "props": {
+          "Mesh": "PROP_NEU_Pickups_p.OvershieldPickup.PROP_NEU_Overshield_STAT",
+          "bOverrideMaterial": true
+         }
+        },
+        "mesh": "PROP_NEU_Pickups_p.OvershieldPickup.PROP_NEU_Overshield_STAT",
+        "native_tail_bytes": 606,
+        "compiled_modules": [
+         {
+          "index": 0,
+          "module": "PMI_Lifetime",
+          "module_id": 1,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "Lifetime",
+            "property_candidates": null,
+            "kind": "float constant",
+            "op": 1,
+            "values": [
+             0.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 1,
+          "module": "PMI_Size",
+          "module_id": 6,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "StartSize",
+            "property_candidates": null,
+            "kind": "vector constant",
+            "op": 1,
+            "values": [
+             0.7,
+             0.7,
+             0.7
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 2,
+          "module": "PMI_Color",
+          "module_id": 2,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "StartAlpha",
+            "property_candidates": null,
+            "kind": "float constant",
+            "op": 1,
+            "values": [
+             1.0
+            ],
+            "confidence": "CONFIRMED"
+           },
+           {
+            "property": "StartColor",
+            "property_candidates": null,
+            "kind": "vector constant",
+            "op": 1,
+            "values": [
+             1.0,
+             1.0,
+             1.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 3,
+          "module": "PMI_SizeMultiplyLife",
+          "module_id": 8,
+          "in_list_after_records": false,
+          "raw_flags": [
+           0,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": false,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "LifeMultiplier",
+            "property_candidates": null,
+            "kind": "vector constant curve",
+            "op": 1,
+            "values": [
+             0.1,
+             2.0,
+             0.0,
+             20.0,
+             0.1,
+             1.0,
+             1.0,
+             0.10715,
+             1.028,
+             1.0,
+             0.1272,
+             1.104,
+             1.0,
+             0.15805,
+             1.216,
+             1.0,
+             0.1976,
+             1.352,
+             1.0,
+             0.24375,
+             1.5,
+             1.0,
+             0.2944,
+             1.648,
+             1.0,
+             0.34745,
+             1.784,
+             1.0,
+             0.4008,
+             1.896,
+             1.0,
+             0.45235,
+             1.972,
+             1.0,
+             0.5,
+             2.0,
+             1.0,
+             0.55045,
+             1.972,
+             1.0,
+             0.6096,
+             1.896,
+             1.0,
+             0.67415,
+             1.784,
+             1.0,
+             0.7408,
+             1.648,
+             1.0,
+             0.80625,
+             1.5,
+             1.0,
+             0.8672,
+             1.352,
+             1.0,
+             0.92035,
+             1.216,
+             1.0,
+             0.9624,
+             1.104,
+             1.0,
+             0.99005,
+             1.028,
+             1.0,
+             1.0,
+             1.0,
+             1.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 4,
+          "module": "PMI_Location",
+          "module_id": 17,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 12,
+          "distributions": [
+           {
+            "property": "StartLocation",
+            "property_candidates": null,
+            "kind": "vector constant",
+            "op": 1,
+            "values": [
+             0.0,
+             0.0,
+             190.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 5,
+          "module": "PMI_MeshRotation",
+          "module_id": 10,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           0
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "StartRotation",
+            "property_candidates": null,
+            "kind": "vector constant",
+            "op": 1,
+            "values": [
+             0.0,
+             0.0,
+             0.25
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 6,
+          "module": "PMI_MeshRotationRate",
+          "module_id": 11,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           0
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "StartRotationRate",
+            "property_candidates": null,
+            "kind": "vector constant",
+            "op": 1,
+            "values": [
+             0.0,
+             0.0,
+             0.1
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         }
+        ],
+        "assignment_complete": true,
+        "raw_unparsed_hex": {
+         "between_lists_and_groups": "00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 10 00 00 00 01 00 00 00 01 00 00 00 01 00 00 00 00 00 00 00 00",
+         "trailing": "00 b0 00 00"
+        },
+        "mesh_record": {
+         "mesh": "PROP_NEU_Pickups_p.OvershieldPickup.PROP_NEU_Overshield_STAT",
+         "gltf": "content/PROP_NEU_Pickups_p/OvershieldPickup/PROP_NEU_Overshield_STAT.gltf",
+         "cooked_in": "TransGame",
+         "section_materials": [
+          "PROP_NEU_Pickups_p.OvershieldPickup.PROP_NEU_Overshield_MATINST"
+         ],
+         "TypeDataMesh_props": {
+          "Mesh": "PROP_NEU_Pickups_p.OvershieldPickup.PROP_NEU_Overshield_STAT",
+          "bOverrideMaterial": true
+         },
+         "material_rule": "RequiredModule.Material is used when bOverrideMaterial is set; otherwise the mesh section materials render (UE3 mesh emitter)",
+         "material_resolution": {
+          "confidence": "PARTIAL",
+          "value": [
+           "PROP_NEU_Pickups_p.OvershieldPickup.PROP_NEU_Overshield_MATINST"
+          ],
+          "note": "bOverrideMaterial=true but RequiredModule.Material is unset and no MeshMaterial module is compiled: the only authored material reference is the mesh section material; what the native renderer substitutes for a null override is UNKNOWN (native RE)"
+         }
+        }
+       },
+       {
+        "lod": "FX_Pickups_p.FX.OvershieldPickup_FX.ParticleSpriteEmitter_14185.ParticleLODLevel_10769",
+        "level": 1,
+        "props": {
+         "Level": 1,
+         "LevelSetting": 100,
+         "PeakActiveParticles": 1
+        },
+        "RequiredModule": {
+         "object": "FX_Pickups_p.FX.OvershieldPickup_FX.ParticleModuleRequired_5776",
+         "class": "ParticleModuleRequired",
+         "props": {
+          "bUseLocalSpace": true,
+          "SpawnRate": {
+           "Distribution": null,
+           "Type": 3,
+           "Op": 2,
+           "LookupTableNumElements": 2,
+           "LookupTableChunkSize": 2,
+           "LookupTable": [
+            0.20000000298023224,
+            0.4000000059604645
+           ]
+          },
+          "RandomImageTime": 1.0
+         }
+        },
+        "TypeDataModule": {
+         "object": "FX_Pickups_p.FX.OvershieldPickup_FX.ParticleModuleTypeDataMesh_1469",
+         "class": "ParticleModuleTypeDataMesh",
+         "props": {
+          "Mesh": "PROP_NEU_Pickups_p.OvershieldPickup.PROP_NEU_Overshield_STAT",
+          "bOverrideMaterial": true
+         }
+        },
+        "mesh": "PROP_NEU_Pickups_p.OvershieldPickup.PROP_NEU_Overshield_STAT",
+        "native_tail_bytes": 606,
+        "compiled_modules": [
+         {
+          "index": 0,
+          "module": "PMI_Lifetime",
+          "module_id": 1,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "Lifetime",
+            "property_candidates": null,
+            "kind": "float constant",
+            "op": 1,
+            "values": [
+             0.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 1,
+          "module": "PMI_Size",
+          "module_id": 6,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "StartSize",
+            "property_candidates": null,
+            "kind": "vector constant",
+            "op": 1,
+            "values": [
+             0.7,
+             0.7,
+             0.7
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 2,
+          "module": "PMI_Color",
+          "module_id": 2,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "StartAlpha",
+            "property_candidates": null,
+            "kind": "float constant",
+            "op": 1,
+            "values": [
+             1.0
+            ],
+            "confidence": "CONFIRMED"
+           },
+           {
+            "property": "StartColor",
+            "property_candidates": null,
+            "kind": "vector constant",
+            "op": 1,
+            "values": [
+             1.0,
+             1.0,
+             1.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 3,
+          "module": "PMI_SizeMultiplyLife",
+          "module_id": 8,
+          "in_list_after_records": false,
+          "raw_flags": [
+           0,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": false,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "LifeMultiplier",
+            "property_candidates": null,
+            "kind": "vector constant curve",
+            "op": 1,
+            "values": [
+             0.1,
+             2.0,
+             0.0,
+             20.0,
+             0.1,
+             1.0,
+             1.0,
+             0.10715,
+             1.028,
+             1.0,
+             0.1272,
+             1.104,
+             1.0,
+             0.15805,
+             1.216,
+             1.0,
+             0.1976,
+             1.352,
+             1.0,
+             0.24375,
+             1.5,
+             1.0,
+             0.2944,
+             1.648,
+             1.0,
+             0.34745,
+             1.784,
+             1.0,
+             0.4008,
+             1.896,
+             1.0,
+             0.45235,
+             1.972,
+             1.0,
+             0.5,
+             2.0,
+             1.0,
+             0.55045,
+             1.972,
+             1.0,
+             0.6096,
+             1.896,
+             1.0,
+             0.67415,
+             1.784,
+             1.0,
+             0.7408,
+             1.648,
+             1.0,
+             0.80625,
+             1.5,
+             1.0,
+             0.8672,
+             1.352,
+             1.0,
+             0.92035,
+             1.216,
+             1.0,
+             0.9624,
+             1.104,
+             1.0,
+             0.99005,
+             1.028,
+             1.0,
+             1.0,
+             1.0,
+             1.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 4,
+          "module": "PMI_Location",
+          "module_id": 17,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           1
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 12,
+          "distributions": [
+           {
+            "property": "StartLocation",
+            "property_candidates": null,
+            "kind": "vector constant",
+            "op": 1,
+            "values": [
+             0.0,
+             0.0,
+             190.0
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 5,
+          "module": "PMI_MeshRotation",
+          "module_id": 10,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           0
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "StartRotation",
+            "property_candidates": null,
+            "kind": "vector constant",
+            "op": 1,
+            "values": [
+             0.0,
+             0.0,
+             0.25
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         },
+         {
+          "index": 6,
+          "module": "PMI_MeshRotationRate",
+          "module_id": 11,
+          "in_list_after_records": true,
+          "raw_flags": [
+           1,
+           0
+          ],
+          "enabled (flagA; HIGH - particle_flag_census.json)": true,
+          "payload_offset": 0,
+          "distributions": [
+           {
+            "property": "StartRotationRate",
+            "property_candidates": null,
+            "kind": "vector constant",
+            "op": 1,
+            "values": [
+             0.0,
+             0.0,
+             0.1
+            ],
+            "confidence": "CONFIRMED"
+           }
+          ]
+         }
+        ],
+        "assignment_complete": true,
+        "raw_unparsed_hex": {
+         "between_lists_and_groups": "00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 10 00 00 00 01 00 00 00 01 00 00 00 01 00 00 00 00 00 00 00 00",
+         "trailing": "00 b0 00 00"
+        },
+        "mesh_record": {
+         "mesh": "PROP_NEU_Pickups_p.OvershieldPickup.PROP_NEU_Overshield_STAT",
+         "gltf": "content/PROP_NEU_Pickups_p/OvershieldPickup/PROP_NEU_Overshield_STAT.gltf",
+         "cooked_in": "TransGame",
+         "section_materials": [
+          "PROP_NEU_Pickups_p.OvershieldPickup.PROP_NEU_Overshield_MATINST"
+         ],
+         "TypeDataMesh_props": {
+          "Mesh": "PROP_NEU_Pickups_p.OvershieldPickup.PROP_NEU_Overshield_STAT",
+          "bOverrideMaterial": true
+         },
+         "material_rule": "RequiredModule.Material is used when bOverrideMaterial is set; otherwise the mesh section materials render (UE3 mesh emitter)",
+         "material_resolution": {
+          "confidence": "PARTIAL",
+          "value": [
+           "PROP_NEU_Pickups_p.OvershieldPickup.PROP_NEU_Overshield_MATINST"
+          ],
+          "note": "bOverrideMaterial=true but RequiredModule.Material is unset and no MeshMaterial module is compiled: the only authored material reference is the mesh section material; what the native renderer substitutes for a null override is UNKNOWN (native RE)"
+         }
+        }
+       }
+      ]
+     }
+    ],
+    "role": "overshield pickup (overshield mesh + glows)"
+   }
+  },
+  "source": "manifests next_map/MP_IAC_Rust_pickup_*.json"
+ },
+ "destructibles": {
+  "count": 0,
+  "actors": [],
+  "composition": "state static meshes = piece translation x actor matrix (UE row vectors); CONFIRMED for Streets (cooked per-state StaticMeshComponents carry exactly the piece Translation), applied generically",
+  "initial_state": "handle 0 (engine convention, HIGH; Streets M03)",
+  "source": "destructibles manifest (full state machines, particles, sounds, links)"
+ },
+ "skeletal_actors (not in world.glb: spawn from gltf)": [
+  {
+   "actor": "TnTransformingWorldActor_6492",
+   "class": "TnTransformingWorldActor",
+   "level": "MP_IAC_Rust_BASE_m",
+   "mesh": "TPRO_IAC_Doors_p.IAC_TubeDoor_SKEL",
+   "gltf": "content/TPRO_IAC_Doors_p/IAC_TubeDoor_SKEL.gltf",
+   "anim_sets": null,
+   "gltf_matrix": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    -182.56,
+    26.88,
+    60.800000000000004,
+    1.0
+   ],
+   "transform_ue": {
+    "Location": {
+     "X": -18256.0,
+     "Y": 6080.0,
+     "Z": 2688.0
+    },
+    "Rotation": {
+     "Pitch": 0,
+     "Yaw": 0,
+     "Roll": 0
+    },
+    "DrawScale": 1.0,
+    "DrawScale3D": {
+     "X": 1.0,
+     "Y": 1.0,
+     "Z": 1.0
+    },
+    "origin": "effective (authored over archetype/CDO chain); unset Location/Rotation = 0"
+   },
+   "tag": "IAC_TubeDoor_SKEL",
+   "hidden": false
+  },
+  {
+   "actor": "TnTransformingWorldActor_6764",
+   "class": "TnTransformingWorldActor",
+   "level": "MP_IAC_Rust_BASE_m",
+   "mesh": "TPRO_IAC_Doors_p.IAC_InteriorDoor_SKEL",
+   "gltf": "content/TPRO_IAC_Doors_p/IAC_InteriorDoor_SKEL.gltf",
+   "anim_sets": null,
+   "gltf_matrix": [
+    6.123233995736766e-17,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    -1.0,
+    0.0,
+    6.123233995736766e-17,
+    0.0,
+    -331.04,
+    33.32,
+    17.92,
+    1.0
+   ],
+   "transform_ue": {
+    "Location": {
+     "X": -33104.0,
+     "Y": 1792.0,
+     "Z": 3332.0
+    },
+    "Rotation": {
+     "Pitch": 0,
+     "Yaw": 16384,
+     "Roll": 0
+    },
+    "DrawScale": 1.0,
+    "DrawScale3D": {
+     "X": 1.0,
+     "Y": 1.0,
+     "Z": 1.0
+    },
+    "origin": "effective (authored over archetype/CDO chain); unset Location/Rotation = 0"
+   },
+   "tag": "IAC_InteriorDoor_SKEL",
+   "hidden": false
+  }
+ ],
+ "not_in_world_glb": {
+  "classes": {
+   "BRUSH (builder brushes; geometry lives in level BSP)": 80,
+   "Model": 4,
+   "Sequence": 4,
+   "TnWorldInfo": 4,
+   "AmbientSound": 62,
+   "HmAmbientSoundLineEmitter": 12,
+   "HmAmbientSoundVolumeEmitter": 32,
+   "BeastSettingsReferer": 2,
+   "FogVolumeConstantDensityInfo": 6,
+   "HeightFog": 3,
+   "LensFlareSource": 1,
+   "PrefabInstance": 1,
+   "CameraActor": 1,
+   "TnAssetReferencesMultiplayer": 1,
+   "TnTransformingWorldActor": 2
+  },
+  "note": "actor classes vs_map does not export as geometry (skeletal actors, lens flares, fog, sounds, Kismet containers)"
+ }
+}

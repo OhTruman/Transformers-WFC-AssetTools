@@ -61,8 +61,10 @@ def point_in_volume(T, o):
         votes += c % 2
     return votes >= 2
 
+from vs_common import map_sublevels  # noqa: E402
+
 def main():
-    subs = sorted({r['opath'].split('.')[0] for r in A.find(MAP + '_%.TheWorld', 'World')})
+    subs = map_sublevels(MAP, A)   # name prefix + streamed sublevels (map.json)
     out = {'map': MAP, 'source': 'manifests/authored.db', 'sublevels': subs, 'emitters': {'point': [], 'volume': [], 'line': []},
            'zones': [], 'reverb_presets': {}, 'categories': {}, 'cues': {}, 'music': {}, 'notes': []}
     cues = set()

@@ -44,6 +44,9 @@ def J(p, default=None):
     return json.load(open(p, encoding='utf-8')) if os.path.exists(p) else default
 def rel(p): return os.path.relpath(p, ROOT).replace(os.sep, '/')
 def slice_(n): return J(os.path.join(SLICE, n), {})
+def mani(name):
+    """per-map manifest written by a map-agnostic script (m03_common.map_out naming)."""
+    return J(os.path.join(MANI, name if MAP == 'MP_IAC_Streets' else 'next_map/%s_%s' % (MAP, name.replace('streets_', ''))), {})
 
 def main():
     os.makedirs(OUT, exist_ok=True)
@@ -100,6 +103,55 @@ def main():
                     'component_translation': (flag_mesh if 'Flag' in a['class'] else bomb_mesh).get('Translation'),
                     'transform': a.get('transform'), 'visible_in': CLASS_RULES[a['class']]['visible_in']}
                    for a in actors if a['class'] in ('TnGameObjectivePickupFactoryFlag', 'TnGameObjectivePickupFactoryBomb')]
+    # ---------------- generic enrichments (formerly Streets-only in m04_complete)
+    pf = mani('streets_pickup_factories.json'); pfx = mani('streets_pickup_fx.json')
+    pickup_fx_index = [{'actor': i['actor'].rsplit('.', 1)[-1], 'class': i['class'], 'effects': i.get('effects'),
+                        'collision_cylinder': i.get('collision_cylinder'), 'respawn': i.get('RespawnTime')} for i in pf.get('instances') or []]
+    if pfx: pickup_fx_index = {'instances': pickup_fx_index, 'systems': {k: {x: v.get(x) for x in ('emitters', 'role', 'usage') if x in v}
+                                                                        for k, v in (pfx.get('systems') or {}).items()},
+                               'source': 'manifests %s' % ('streets_pickup_*.json' if streets else 'next_map/%s_pickup_*.json' % MAP)}
+    dd = mani('streets_destructibles.json')
+    from vs_common import ue_actor_matrix, ue_to_gltf_matrix, ue_trans
+    import glob as _g
+    v3 = lambda x, ks, d: [x.get(k, d) for k in ks] if isinstance(x, dict) else [d] * 3
+    val = lambda f: f.get('value') if isinstance(f, dict) and 'value' in f else f
+    def gltf_of(mesh):
+        g = _g.glob(os.path.join(ROOT, 'content', *mesh.split('.')) + '.gltf') if mesh else []
+        return rel(g[0]) if g else None
+    destr_actors = []
+    for a in dd.get('actors') or []:
+        t = a.get('transform') or {}
+        A_ = ue_actor_matrix(v3(val(t.get('Location')), 'XYZ', 0.0), v3(val(t.get('Rotation')), ('Pitch', 'Yaw', 'Roll'), 0),
+                             val(t.get('DrawScale')) or 1.0, v3(val(t.get('DrawScale3D')), 'XYZ', 1.0))
+        states = []
+        for pc in a.get('pieces') or []:
+            ppos = (val(pc.get('Transform')) or {}).get('Position') or {}
+            PT = ue_trans([ppos.get('X', 0), ppos.get('Y', 0), ppos.get('Z', 0)])
+            for st in pc.get('states') or []:
+                sm = [e['authored'].get('Mesh') for e in st.get('effects') or [] if e['class'] == 'HmStaticMeshDestructionEffectFactory' and e['authored'].get('Mesh')]
+                sk = [e['authored'].get('ComponentTemplate') for e in st.get('effects') or [] if e['class'] == 'HmAnimatedMeshDestructionEffectFactory']
+                Ms = PT @ A_
+                states.append({'piece': pc.get('PieceName'), 'handle': st.get('handle'),
+                               'static_meshes': [{'mesh': m_, 'gltf': gltf_of(m_), 'gltf_matrix': ue_to_gltf_matrix(Ms)} for m_ in sm],
+                               'animated_mesh_templates': sk or None,
+                               'effects': dict(Counter(e['class'] for e in st.get('effects') or []))})
+        destr_actors.append({'actor': (a.get('actor') or '').rsplit('.', 1)[-1], 'class': a.get('class'), 'blueprint': (a.get('blueprint') or {}).get('object'),
+                             'actor_gltf_matrix': ue_to_gltf_matrix(A_), 'states': states})
+    destr_index = {'count': dd.get('count', 0), 'actors': destr_actors,
+                   'composition': 'state static meshes = piece translation x actor matrix (UE row vectors); CONFIRMED for Streets '
+                                  '(cooked per-state StaticMeshComponents carry exactly the piece Translation), applied generically',
+                   'initial_state': 'handle 0 (engine convention, HIGH; Streets M03)',
+                   'source': 'destructibles manifest (full state machines, particles, sounds, links)'}
+    skel = []
+    for a in [x for x in actors if x['class'] in ('SkeletalMeshActor', 'HmSkeletalMeshActor', 'TnTransformingWorldActor')]:
+        comp = next((c for c in a.get('components') or [] if 'SkeletalMeshComponent' in (c.get('class') or '')), {})
+        mesh = comp.get('SkeletalMesh') or (A.values(comp['component']).get('SkeletalMesh') if comp.get('component') else None)
+        t = a.get('transform') or {}
+        gm = ue_to_gltf_matrix(ue_actor_matrix(v3(t.get('Location'), 'XYZ', 0.0), v3(t.get('Rotation'), ('Pitch', 'Yaw', 'Roll'), 0),
+                                               t.get('DrawScale') or 1.0, v3(t.get('DrawScale3D'), 'XYZ', 1.0)))
+        skel.append({'actor': a['actor'].rsplit('.', 1)[-1], 'class': a['class'], 'level': a['actor'].split('.', 1)[0], 'mesh': mesh,
+                     'gltf': gltf_of(mesh), 'anim_sets': comp.get('AnimSets'), 'gltf_matrix': gm,
+                     'transform_ue': t, 'tag': a.get('Tag'), 'hidden': a.get('bHidden')})
     # ---------------- render index (generic)
     files = {f: rel(os.path.join(SLICE, f)) for f in ('world.glb', 'collision.glb', 'collision_pawn.glb', 'collision_weapon.glb', 'navigation.glb')
              if os.path.exists(os.path.join(SLICE, f))}
@@ -113,6 +165,9 @@ def main():
         ('kismet_mode_rules', kismet_rules),
         ('pickup_factories', picks), ('objective_factory_resting_meshes', obj_visuals),
         ('movers', movers), ('matinee', gp.get('matinee')),
+        ('pickup_effects (component matrices + decoded emitters)', pickup_fx_index),
+        ('destructibles', destr_index),
+        ('skeletal_actors (not in world.glb: spawn from gltf)', skel),
         ('not_in_world_glb', {'classes': (m.get('unhandled_actor_classes') or {}),
                               'note': 'actor classes vs_map does not export as geometry (skeletal actors, lens flares, fog, sounds, Kismet containers)'})])
     json.dump(ri, open(os.path.join(OUT, 'render_index_generic.json'), 'w', encoding='utf-8'), indent=1, ensure_ascii=False, default=str)
@@ -161,22 +216,69 @@ def main():
     c('thumbnail', 'COMPLETE' if (regmap or {}).get('preview', {}).get('png') else 'MISSING', (regmap or {}).get('preview'))
     c('frontend_name', 'COMPLETE' if (regmap or {}).get('display_name', {}).get('INT') else 'MISSING', (regmap or {}).get('display_name'))
     c('mode_compatibility', 'COMPLETE' if (regmap or {}).get('supported_modes') else 'MISSING', (regmap or {}).get('supported_modes'))
+    sa = J(os.path.join(OUT, 'structure_audit.json'), {})
+    ba = mani('streets_bsp_audit.json'); bdf = mani('streets_bsp_default_faces.json'); ki = mani('streets_kismet.json'); sau = mani('streets_surface_audio.json')
+    cnt = inv.get('actor_counts_by_class') or {}
+    c('sublevels', 'COMPLETE' if m.get('sublevels') else 'MISSING', {'sublevels': m.get('sublevels'), 'source': 'name prefix + authored LevelStreaming'})
+    c('bsp_alignment', 'COMPLETE' if (ba.get('comparison') or {}).get('difference') == 0 else 'UNVALIDATED', ba.get('comparison'))
+    c('bsp_default_material_faces', 'COMPLETE' if bdf.get('counts', {}).get('visible_in_play') == 0 else 'AUTHORED',   # authored DefaultMaterial faces seen in play (Streets: 3, M05)
+      bdf.get('counts'), 'RENDERING' if bdf.get('counts', {}).get('visible_in_play') else None,
+      'faces authored with EngineMaterials.DefaultMaterial visible in play' if bdf.get('counts', {}).get('visible_in_play') else None)
+    c('negative_nonuniform_scales', 'COMPLETE' if st.get('exact_matches') == st.get('components_checked') and (sa.get('mirrored_instances') or {}).get('verdict') == 'CONSISTENT'
+      else 'UNVALIDATED', {'mirrored': st.get('mirrored_det_negative'), 'non_uniform': st.get('non_uniform'),
+                           'winding': (sa.get('mirrored_instances') or {}).get('verdict')})
+    ms = (mats or {}).get('stats') or {}
+    c('material_instances', 'COMPLETE' if ms and not ms.get('missing') else 'PARTIAL', {'by_class': ms.get('by_class'), 'masters': ms.get('masters')})
+    c('textures', 'COMPLETE' if (lm or {}).get('atlases_without_png') == [] and ms and not ms.get('missing') else 'PARTIAL',
+      {'note': 'material texture parameters resolve through materials_authored.json; lightmap atlases as PNG', 'lightmap_pngs':
+       len(os.listdir(os.path.join(SLICE, 'lightmaps'))) if os.path.isdir(os.path.join(SLICE, 'lightmaps')) else 0})
+    lst = (lt or {}).get('stats') or {}
+    c('dynamic_lights', 'COMPLETE', {'by_classification': lst.get('by_classification'), 'built_into_lightmap': lst.get('built_into_lightmap'),
+                                     'cast_dynamic_shadows': lst.get('cast_dynamic_shadows'), 'disabled': lst.get('disabled')},
+      'RENDERING', 'dynamic (non-lightmapped) lights: %s' % ((lst.get('lights') or 0) - (lst.get('built_into_lightmap') or 0)))
+    c('particles', 'EXPORTED' if nfx else 'NONE', {'components': nfx, 'emitter_actors': cnt.get('Emitter', 0)}, 'RENDERING', 'runtime simulation' if nfx else None)
+    c('moving_scenery', 'AUTHORED' if movers else 'NONE', {'movers': len(movers), 'in_world_glb_missing': (sa.get('actors') or {}).get('non_collection_actors_missing_from_world_glb')},
+      'GAMEPLAY' if movers else None, 'animate PHYS_Rotating / Matinee at runtime' if movers else None)
+    c('blocking_volumes', 'COMPLETE', {k: cnt.get(k, 0) for k in ('BlockingVolume', 'TnTransformerBlockingVolume', 'TnForcedDirVolume', 'PhysicsVolume')})
+    c('playable_space', 'COMPLETE' if (sa.get('verdict') or {}).get('status') == 'PASS' else 'ATTENTION',
+      {k: (sa.get('playable_space') or {}).get(k) for k in ('player_starts', 'starts_on_reachable_floor', 'walk_graph_area_m2', 'bounds', 'placement_checks')})
+    c('collision_vs_visible', 'COMPLETE' if (sa.get('verdict') or {}).get('status') == 'PASS' else 'ATTENTION',
+      {k: (sa.get('collision_vs_visible') or {}).get(k) for k in ('agreement_pct', 'agreement_pct_excluding_volume_tops', 'blocking_gaps_explained')})
+    c('actor_visibility', 'COMPLETE' if not (sa.get('actors') or {}).get('mode_gated_missing_from_world_glb') else 'PARTIAL', sa.get('actors'))
+    c('mode_specific_actors', 'COMPLETE', {k: v['count'] if 'count' in v else len(v.get('actors', [])) for k, v in mode_state.items()})
+    c('audio_emitters', 'COMPLETE' if au and not au.get('missing_cues') else 'PARTIAL', {k: (au.get('counts') or {}).get(k) for k in ('point', 'volume', 'line', 'cues', 'waves_with_wav')})
+    c('zones_reverb', 'COMPLETE' if (au.get('counts') or {}).get('zones') is not None else 'MISSING', {k: (au.get('counts') or {}).get(k) for k in ('zones', 'reverb_presets')},
+      'SYSTEMS', 'ambient zones / reverb presets applied at runtime (Kismet SeqAct_AmbientAudioZone / SeqAct_Reverb)')
+    c('surface_audio', 'COMPLETE' if sau else 'MISSING', (sau.get('headline') or {}).get('value'))
+    out_of_play = []
+    bb = (sa.get('playable_space') or {}).get('bounds')
+    if bb:
+        for p in props.get('props', []):
+            x, y, z = p['gltf_matrix'][12:15]
+            if not (bb['x_m'][0] - 50 <= x <= bb['x_m'][1] + 50 and bb['z_m'][0] - 50 <= z <= bb['z_m'][1] + 50) or y > bb['floor_height_m'][1] + 150 or y < bb['floor_height_m'][0] - 150:
+                out_of_play.append(p['mesh'])
+    c('skyline_background_geometry', 'COMPLETE', {'props_outside_playable_bounds_plus_50m': len(out_of_play), 'by_mesh': dict(Counter(out_of_play).most_common(15)),
+                                                  'note': 'exported in world.glb like any prop; oversized shells (>2 km) excluded from collision'})
+    c('kismet_references', 'COMPLETE' if ki else 'MISSING', {'summary': ki.get('summary'), 'relationships': len(ki.get('actor_relationships') or [])})
+    c('destructibles', 'COMPLETE', {'count': dd.get('count', 0)})
+    c('structure_audit', (sa.get('verdict') or {}).get('status', 'NOT RUN'), sa.get('verdict'))
     c('vs_validate', 'PASS' if vv and not vv.get('failures') else 'NOT RUN / FAIL', {'checks': len(vv.get('checks', [])) if vv else 0, 'failures': vv.get('failures') if vv else None})
     special = {k: v for k, v in (m.get('unhandled_actor_classes') or {}).items() if k in ('SkeletalMeshActor', 'LensFlareSource', 'HeightFog', 'PrefabInstance')}
     blockers = OrderedDict([
         ('ASSETTOOLS', [x for x in [
-            'SkeletalMeshActor x%d not exported to world.glb (mesh + anim known in inventory)' % special['SkeletalMeshActor'] if special.get('SkeletalMeshActor') else None,
+            'SkeletalMeshActor x%d without a resolved glTF' % sum(1 for x in skel if not x['gltf']) if any(not x['gltf'] for x in skel) else None,
             'height fog not fully exported' if checks['fog'].get('owner') == 'ASSETTOOLS' else None,
-            'map-specific render_index enrichments (pickup FX component matrices, destructible states) are Streets-only (m04_complete)' if not streets else None] if x]),
+            'structure audit attention: %s' % (sa.get('verdict') or {}).get('failures') if (sa.get('verdict') or {}).get('status') == 'ATTENTION' else None] if x]),
         ('RE', [x for x in [
             'TnRadialForceVolume runtime force (x%d)' % (inv.get('actor_counts_by_class') or {}).get('TnRadialForceVolume', 0) if (inv.get('actor_counts_by_class') or {}).get('TnRadialForceVolume') else None,
             'LensFlareSource rendering semantics' if special.get('LensFlareSource') else None] if x]),
-        ('RENDERING', [x for x in ['particles (%d components)' % nfx if nfx else None, 'decals (%d)' % ndec if ndec else None,
+        ('RENDERING', [x for x in ['skeletal actors (%d) spawned from glTF (render_index_generic)' % len(skel) if skel else None,
+                                   'particles (%d components)' % nfx if nfx else None, 'decals (%d)' % ndec if ndec else None,
                                    'height fog (%d, lighting.json globals.height_fogs)' % hf if hf else None, 'lens flares (%d)' % special.get('LensFlareSource', 0) if special.get('LensFlareSource') else None] if x]),
         ('GAMEPLAY', [x for x in ['movers runtime (%d)' % len(movers) if movers else None, 'mode gating per mode_visual_state', 'pickup state machines (RE P2)'] if x]),
         ('SYSTEMS', ['ambient audio zones / reverb from audio.json']),
         ('FRONTEND', ['registry entry present' if regmap else 'map missing from mp_registry'])])
-    status = 'GEOMETRY + AUTHORED DATA COMPLETE (not a playability claim)' if all(v['status'] in ('COMPLETE', 'EXPORTED', 'AUTHORED', 'PASS', 'NONE') for v in checks.values()) else 'INCOMPLETE'
+    status = 'GEOMETRY + AUTHORED DATA COMPLETE (not a playability claim)' if all(v['status'] in ('COMPLETE', 'EXPORTED', 'AUTHORED', 'PASS', 'NONE') for v in checks.values()) else 'INCOMPLETE'   # ATTENTION / PARTIAL / MISSING -> INCOMPLETE
     xcheck = None
     if streets:   # cross-check against the validated Streets render_index (m04_complete.py)
         canon = J(os.path.join(SLICE, 'render_index.json'), {}).get('tdm_render_state') or {}

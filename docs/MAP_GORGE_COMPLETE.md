@@ -1,6 +1,6 @@
 # MP_UND_Gorge: second map through the generic pipeline (2026-10-04)
 
-**How to regenerate.** One command: `python scripts/wfc/run_map_pipeline.py MP_UND_Gorge`. It runs 17 stages, each under the
+**How to regenerate.** One command: `python scripts/wfc/run_map_pipeline.py MP_UND_Gorge`. It now runs 25 stages (see `docs/MAP_PIPELINE.md`), each under the
 6 GB Job Object cap, one at a time and lock-guarded. The peak was 4.54 GB (`vs_map`).
 
 **Determinism.** Regeneration is deterministic: `world.glb`, `collision.glb`, `props.json`, `gameplay.json` and `lightmaps.json`
@@ -40,11 +40,58 @@ belong to Gameplay, Rendering and Systems.
 **Cross-check.** The same generic generator run on Streets reproduces the validated Streets `render_index` TDM state exactly:
 19 = 19 actors, identical names.
 
+## Handoff package classification (all 45 categories, `completeness.json`, 2026-10-04 pass)
+Every category the Streets handoff covers is classified. All are COMPLETE, EXPORTED (the renderer simulates them) or AUTHORED
+(runtime behaviour):
+* level hierarchy and sublevels;
+* BSP (1,824 triangles; alignment audit difference 0, 0 unaccounted nodes);
+* placed meshes (1,765);
+* collection-actor transforms (1,752 / 1,752);
+* negative / non-uniform scales: 390 mirrored, 772 non-uniform, winding CONSISTENT;
+* materials (149, 0 missing) and material instances (122 MIC + 27 Material, 44 masters);
+* textures and lightmaps (12 atlases, 1,137 / 1,137 bound with TEXCOORD_1);
+* lights (411; 404 baked, 7 dynamic), fog (4 HeightFog), post-process;
+* decals (20), particles (31 components);
+* moving scenery (13: 9 rotating vent fans + 4 Kismet-shown objective props);
+* collision, blocking volumes (80 + 28 transformer);
+* player starts (115), navigation (148 nodes / 738 reach specs, no tactical data);
+* pickups (15, with decoded FX), objectives, mode-specific actors (21 hidden in TDM);
+* audio emitters (15), zones / reverb (23 / 6), surface audio (all FS_DEFAULT);
+* skyline / background geometry (67 props outside the playable bounds + 50 m);
+* Kismet references (generated summary: GameplayStarted → 2 GameRuleActive → ToggleHidden ×4 objective props; 48 audio ops);
+* destructibles (none on Gorge);
+* frontend loading, thumbnail and name.
+
+## Structural audit (`manifests/maps/MP_UND_Gorge/structure_audit.json`): PASS
+* **Transforms.** 0 of 1,752 collection nodes differ from the S·R·T × CachedParentToWorld matrix.
+* **Mirrored.** det < 0 triangles oppose their normals 286,931 to 82, as glTF requires.
+* **Playable space.**
+  * The 1 m walk graph from the starts covers 259,430 m² of floor layers. Bounds: x −233…−11 m, z −225…221 m, floor
+    −27.8…38.4 m.
+  * All 115 starts, 15 / 15 pickups and 17 / 17 objectives are on reachable floor. KillZ (−7,500 UU) is authored on the
+    AUDIO WorldInfo.
+* **Collision vs visible.**
+  * 83.6 % of reachable collision floor has render floor, excluding volume tops. Simple hulls are coarser than render meshes.
+  * All 7 blocking components without a collision node are explained: 3 meshes with no collision (EnergyFence_04 ×2,
+    TunnelPipe edge glow) and 4 per-poly shells larger than 2 km (BlueNebulae cards, FogVolume cubes at Y +601 m / −233 m,
+    out of play).
+* **DefaultMaterial BSP faces.** 560 triangles, **0 visible in play**. Streets has 3.
+* **Actors.** 13 / 13 movers and 8 / 8 mode-gated targets are in `world.glb`. The one SkeletalMeshActor (a WEP_ShortSword
+  prop) is spawned from glTF via `render_index_generic`.
+
+## What differs from Streets
+* **Larger and more vertical.** 411 vs 268 lights, 115 vs 84 starts, two-storey gate shafts, a canyon layout with 4 HeightFogs.
+* **No destructibles** (Streets has one, out of play) and **no Matinee**. Movers are 9 rotating fans (PHYS_Rotating) plus the 4
+  objective bases.
+* **9 TnRadialForceVolumes** (jump / force pads). Their runtime force is RE-owned.
+* **0 DefaultMaterial faces visible in play** (Streets: 3).
+* **Same pipeline, no custom code.** Streets keeps its own hand-validated order and render index (`m04_complete`). Gorge's
+  render index is `render_index_generic.json`. It now also carries pickup FX component data, destructible state meshes and
+  skeletal / transforming actors. The generic destructible matrices reproduce Streets' validated ones exactly.
+
 ## Blockers by owner
-* **ASSETTOOLS:**
-  * one SkeletalMeshActor is not exported to `world.glb` (its mesh and anim are listed in the inventory);
-  * the Streets-only render_index enrichments are not generic yet: pickup FX component matrices and destructible states
-    (Gorge has none) come from `m04_complete.py`.
+* **ASSETTOOLS:** none. The skeletal actor is spawnable from `render_index_generic`, and pickup FX and destructible
+  enrichments are generic now.
 * **RE:**
   * TnRadialForceVolume runtime force (×9; per-instance ForceStrength and ArrowDirection are authored);
   * LensFlareSource semantics.
