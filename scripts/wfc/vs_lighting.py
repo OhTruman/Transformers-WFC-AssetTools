@@ -114,8 +114,10 @@ def main():
     for sub in subs:
         for r in A.find(sub + '.TheWorld.PersistentLevel.%', 'HeightFogComponent'):
             v = A.values(r['opath']); act = A.values(r['outer'])
-            out['globals']['height_fog'] = {'component': r['opath'], 'props': norm(v), 'color': color(v.get('LightColor'), v.get('LightBrightness')),
-                                            'actor_location_ue': act.get('Location'), 'actor_draw_scale': act.get('DrawScale')}
+            hf = {'component': r['opath'], 'props': norm(v), 'color': color(v.get('LightColor'), v.get('LightBrightness')),
+                  'actor_location_ue': act.get('Location'), 'actor_draw_scale': act.get('DrawScale')}
+            out['globals'].setdefault('height_fogs', []).append(hf)          # every HeightFog (Gorge places 4)
+            out['globals'].setdefault('height_fog', hf)                      # first one, kept for existing consumers
         for r in A.find(sub + '.TheWorld.PersistentLevel.%', 'LightsVisibilitiesVolume'):
             p = objtree.package(sub); i = p._idx.get(r['opath'].lower()); e = p.exports[i - 1]
             out['globals']['lights_visibilities_volume'] = {'actor': r['opath'], 'props': norm(A.values(r['opath'])),

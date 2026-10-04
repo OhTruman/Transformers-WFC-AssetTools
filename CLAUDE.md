@@ -26,3 +26,9 @@ Project root: F:\Transformers Rebuild\AssetTools. Start a fresh conversation her
   `validate_frontend_package.py`. Edit generators, never the JSON.
 - Script-side relationships (loading screen, lobby map selection, travel URLs) come from RE's read-only decompilation in
   `RE-Workspace/work/script/decomp`; cite the class/function.
+
+## Other multiplayer maps (generic pipeline)
+- Any map other than Streets: `python scripts/wfc/run_map_pipeline.py <MAP>` (e.g. MP_UND_Gorge). It runs every stage through
+  `run_bounded.py` (6 GB Job Object cap), one at a time, lock-guarded, and ends with `map_complete.py` ->
+  `manifests/maps/<MAP>/{map_complete,render_index_generic,completeness}.json`. It refuses MP_IAC_Streets (use the order above).
+- Generic fixes must keep Streets outputs byte-identical (compare before/after) and pass `validate_m04.py`.

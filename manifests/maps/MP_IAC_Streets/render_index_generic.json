@@ -1,0 +1,1610 @@
+{
+ "generated_by": "AssetTools/scripts/wfc/map_complete.py",
+ "map": "MP_IAC_Streets",
+ "layers": {
+  "world.glb": "VerticalSlice/Maps/MP_IAC_Streets/world.glb",
+  "collision.glb": "VerticalSlice/Maps/MP_IAC_Streets/collision.glb",
+  "collision_pawn.glb": "VerticalSlice/Maps/MP_IAC_Streets/collision_pawn.glb",
+  "collision_weapon.glb": "VerticalSlice/Maps/MP_IAC_Streets/collision_weapon.glb",
+  "navigation.glb": "VerticalSlice/Maps/MP_IAC_Streets/navigation.glb",
+  "lightmaps": "VerticalSlice/Maps/MP_IAC_Streets/lightmaps.json",
+  "map_fx": "VerticalSlice/Maps/MP_IAC_Streets/map_fx.json",
+  "lighting": "VerticalSlice/Maps/MP_IAC_Streets/lighting.json",
+  "postprocess": "VerticalSlice/Maps/MP_IAC_Streets/postprocess.json",
+  "audio": "VerticalSlice/Maps/MP_IAC_Streets/audio.json"
+ },
+ "mode_visual_state": {
+  "TnDominationPoint": {
+   "visible_in": [
+    "DOM"
+   ],
+   "mechanism": "script PostBeginPlay hides outside DOM (totem anim still started)",
+   "collision_when_hidden": "n/a (cylinder touch only)",
+   "actors": [
+    "TnDominationPoint_15247",
+    "TnDominationPoint_6703",
+    "TnDominationPoint_678"
+   ],
+   "count": 3,
+   "source": "class script semantics (RE MILESTONE04_STREETS_RUNTIME_SEMANTICS / decomp) - CONFIRMED AUTHORED DATA"
+  },
+  "TnKingOfTheHillZone": {
+   "visible_in": [
+    "KOTH"
+   ],
+   "mechanism": "active-zone ring (class template ActiveMeshComponent0 = pTorus1_STAT) shown only on the active zone in KOTH; zone DrawScale3D applies",
+   "actors": [
+    "TnKingOfTheHillZone_11438",
+    "TnKingOfTheHillZone_12369",
+    "TnKingOfTheHillZone_14223",
+    "TnKingOfTheHillZone_14647",
+    "TnKingOfTheHillZone_15196"
+   ],
+   "count": 5,
+   "source": "class script semantics (RE MILESTONE04_STREETS_RUNTIME_SEMANTICS / decomp) - CONFIRMED AUTHORED DATA"
+  },
+  "TnGameObjectivePickupFactoryFlag": {
+   "visible_in": [
+    "CTF"
+   ],
+   "mechanism": "PostBeginPlay: !HasRule(RequiredGameRuleClass) -> Disabled (hidden, no collision)",
+   "actors": [
+    "TnGameObjectivePickupFactoryFlag_3951",
+    "TnGameObjectivePickupFactoryFlag_9703"
+   ],
+   "count": 2,
+   "source": "class script semantics (RE MILESTONE04_STREETS_RUNTIME_SEMANTICS / decomp) - CONFIRMED AUTHORED DATA"
+  },
+  "TnGameObjectivePickupFactoryBomb": {
+   "visible_in": [
+    "EXT"
+   ],
+   "mechanism": "as flag",
+   "actors": [
+    "TnGameObjectivePickupFactoryBomb_7067"
+   ],
+   "count": 1,
+   "source": "class script semantics (RE MILESTONE04_STREETS_RUNTIME_SEMANTICS / decomp) - CONFIRMED AUTHORED DATA"
+  },
+  "TnFlagCapturePoint": {
+   "visible_in": [
+    "CTF"
+   ],
+   "mechanism": "inert outside CTF (no mesh on the class default)",
+   "actors": [
+    "TnFlagCapturePoint_10016",
+    "TnFlagCapturePoint_5353"
+   ],
+   "count": 2,
+   "source": "class script semantics (RE MILESTONE04_STREETS_RUNTIME_SEMANTICS / decomp) - CONFIRMED AUTHORED DATA"
+  },
+  "TnBombPlantPoint": {
+   "visible_in": [
+    "EXT"
+   ],
+   "mechanism": "inert outside EXT; PlantedBombMesh NEU_MPBombExplode_SKEL + DetonateEffect on the class default",
+   "actors": [
+    "TnBombPlantPoint_15814",
+    "TnBombPlantPoint_4337"
+   ],
+   "count": 2,
+   "source": "class script semantics (RE MILESTONE04_STREETS_RUNTIME_SEMANTICS / decomp) - CONFIRMED AUTHORED DATA"
+  },
+  "TnAmmoCratePickupFactory": {
+   "visible_in": [
+    "DM",
+    "TDM",
+    "CTF",
+    "EXT",
+    "DOM",
+    "KOTH"
+   ],
+   "mechanism": "available in every mode; beam + crate mesh while available",
+   "actors": [
+    "TnAmmoCratePickupFactory_10561",
+    "TnAmmoCratePickupFactory_12059",
+    "TnAmmoCratePickupFactory_12443",
+    "TnAmmoCratePickupFactory_13936",
+    "TnAmmoCratePickupFactory_14098",
+    "TnAmmoCratePickupFactory_15331",
+    "TnAmmoCratePickupFactory_1548",
+    "TnAmmoCratePickupFactory_15955",
+    "TnAmmoCratePickupFactory_2496",
+    "TnAmmoCratePickupFactory_3869",
+    "TnAmmoCratePickupFactory_4174",
+    "TnAmmoCratePickupFactory_5364",
+    "TnAmmoCratePickupFactory_6211",
+    "TnAmmoCratePickupFactory_7063"
+   ],
+   "count": 14,
+   "source": "class script semantics (RE MILESTONE04_STREETS_RUNTIME_SEMANTICS / decomp) - CONFIRMED AUTHORED DATA"
+  },
+  "TnHealthPickupFactory": {
+   "visible_in": [
+    "DM",
+    "TDM",
+    "CTF",
+    "EXT",
+    "DOM",
+    "KOTH"
+   ],
+   "mechanism": "available in every mode",
+   "actors": [
+    "TnHealthPickupFactory_13806",
+    "TnHealthPickupFactory_1394",
+    "TnHealthPickupFactory_203",
+    "TnHealthPickupFactory_3460",
+    "TnHealthPickupFactory_4550",
+    "TnHealthPickupFactory_5657",
+    "TnHealthPickupFactory_7385",
+    "TnHealthPickupFactory_794",
+    "TnHealthPickupFactory_8854"
+   ],
+   "count": 9,
+   "source": "class script semantics (RE MILESTONE04_STREETS_RUNTIME_SEMANTICS / decomp) - CONFIRMED AUTHORED DATA"
+  },
+  "TnOverShieldPickupFactory": {
+   "visible_in": [
+    "DM",
+    "TDM",
+    "CTF",
+    "EXT",
+    "DOM",
+    "KOTH"
+   ],
+   "mechanism": "available in every mode",
+   "actors": [
+    "TnOverShieldPickupFactory_6009"
+   ],
+   "count": 1,
+   "source": "class script semantics (RE MILESTONE04_STREETS_RUNTIME_SEMANTICS / decomp) - CONFIRMED AUTHORED DATA"
+  },
+  "Kismet-hidden objective props": {
+   "visible_in": [
+    "CTF",
+    "EXT"
+   ],
+   "actors": [
+    "InterpActor_15874",
+    "InterpActor_3855",
+    "InterpActor_6165",
+    "InterpActor_7378"
+   ],
+   "mechanism": "bHidden=true, SeqCond_GameRuleActive -> SeqAct_ToggleHidden UnHide; collision stays on while hidden",
+   "source": "gameplay.json (map Kismet) - CONFIRMED AUTHORED DATA"
+  }
+ },
+ "tdm_render_state": {
+  "hidden": [
+   "InterpActor_15874",
+   "InterpActor_3855",
+   "InterpActor_6165",
+   "InterpActor_7378",
+   "TnBombPlantPoint_15814",
+   "TnBombPlantPoint_4337",
+   "TnDominationPoint_15247",
+   "TnDominationPoint_6703",
+   "TnDominationPoint_678",
+   "TnFlagCapturePoint_10016",
+   "TnFlagCapturePoint_5353",
+   "TnGameObjectivePickupFactoryBomb_7067",
+   "TnGameObjectivePickupFactoryFlag_3951",
+   "TnGameObjectivePickupFactoryFlag_9703",
+   "TnKingOfTheHillZone_11438",
+   "TnKingOfTheHillZone_12369",
+   "TnKingOfTheHillZone_14223",
+   "TnKingOfTheHillZone_14647",
+   "TnKingOfTheHillZone_15196"
+  ],
+  "count": 19
+ },
+ "kismet_mode_rules": [
+  {
+   "rule": "TransGame.TnGameRules_ScoreBombingRun",
+   "mode": "EXT",
+   "action": "UnHide",
+   "targets": [
+    {
+     "actor": "InterpActor_6165",
+     "mesh": "PROP_NEU_Pickups_p.ObjBases.Base_A",
+     "initially_hidden": true,
+     "gltf_matrix": [
+      0.75,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      4.592425496802574e-17,
+      -0.75,
+      0.0,
+      0.0,
+      0.75,
+      4.592425496802574e-17,
+      0.0,
+      125.12,
+      -716.46,
+      -561.92,
+      1.0
+     ]
+    },
+    {
+     "actor": "InterpActor_15874",
+     "mesh": "PROP_UND_MechParts_p.StaticMesh.PROP_UND_RepairNodeB_A_STAT",
+     "initially_hidden": true,
+     "gltf_matrix": [
+      2.8283210398499815e-18,
+      0.08000000238418581,
+      -3.999594735521846e-18,
+      0.0,
+      -0.8000000119209291,
+      2.828320997704714e-17,
+      0.0,
+      0.0,
+      0.0,
+      3.9995946759232406e-17,
+      0.8000000119209291,
+      0.0,
+      124.96000000000001,
+      -716.661953125,
+      -561.92,
+      1.0
+     ]
+    },
+    {
+     "actor": "InterpActor_3855",
+     "mesh": "PROP_NEU_Pickups_p.ObjBases.Base_D",
+     "initially_hidden": true,
+     "gltf_matrix": [
+      0.75,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      4.592425496802574e-17,
+      -0.75,
+      0.0,
+      0.0,
+      0.75,
+      4.592425496802574e-17,
+      0.0,
+      320.0,
+      -724.16,
+      -398.08,
+      1.0
+     ]
+    },
+    {
+     "actor": "InterpActor_7378",
+     "mesh": "PROP_UND_MechParts_p.StaticMesh.PROP_UND_RepairNodeB_A_STAT",
+     "initially_hidden": true,
+     "gltf_matrix": [
+      2.8283210398499815e-18,
+      0.08000000238418581,
+      -3.999594735521846e-18,
+      0.0,
+      -0.8000000119209291,
+      2.828320997704714e-17,
+      0.0,
+      0.0,
+      0.0,
+      3.9995946759232406e-17,
+      0.8000000119209291,
+      0.0,
+      320.0,
+      -724.32,
+      -398.08,
+      1.0
+     ]
+    }
+   ]
+  },
+  {
+   "rule": "TransGame.TnGameRules_SingleFlagCTF",
+   "mode": "CTF",
+   "action": "UnHide",
+   "targets": [
+    {
+     "actor": "InterpActor_6165",
+     "mesh": "PROP_NEU_Pickups_p.ObjBases.Base_A",
+     "initially_hidden": true,
+     "gltf_matrix": [
+      0.75,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      4.592425496802574e-17,
+      -0.75,
+      0.0,
+      0.0,
+      0.75,
+      4.592425496802574e-17,
+      0.0,
+      125.12,
+      -716.46,
+      -561.92,
+      1.0
+     ]
+    },
+    {
+     "actor": "InterpActor_15874",
+     "mesh": "PROP_UND_MechParts_p.StaticMesh.PROP_UND_RepairNodeB_A_STAT",
+     "initially_hidden": true,
+     "gltf_matrix": [
+      2.8283210398499815e-18,
+      0.08000000238418581,
+      -3.999594735521846e-18,
+      0.0,
+      -0.8000000119209291,
+      2.828320997704714e-17,
+      0.0,
+      0.0,
+      0.0,
+      3.9995946759232406e-17,
+      0.8000000119209291,
+      0.0,
+      124.96000000000001,
+      -716.661953125,
+      -561.92,
+      1.0
+     ]
+    },
+    {
+     "actor": "InterpActor_3855",
+     "mesh": "PROP_NEU_Pickups_p.ObjBases.Base_D",
+     "initially_hidden": true,
+     "gltf_matrix": [
+      0.75,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      4.592425496802574e-17,
+      -0.75,
+      0.0,
+      0.0,
+      0.75,
+      4.592425496802574e-17,
+      0.0,
+      320.0,
+      -724.16,
+      -398.08,
+      1.0
+     ]
+    },
+    {
+     "actor": "InterpActor_7378",
+     "mesh": "PROP_UND_MechParts_p.StaticMesh.PROP_UND_RepairNodeB_A_STAT",
+     "initially_hidden": true,
+     "gltf_matrix": [
+      2.8283210398499815e-18,
+      0.08000000238418581,
+      -3.999594735521846e-18,
+      0.0,
+      -0.8000000119209291,
+      2.828320997704714e-17,
+      0.0,
+      0.0,
+      0.0,
+      3.9995946759232406e-17,
+      0.8000000119209291,
+      0.0,
+      320.0,
+      -724.32,
+      -398.08,
+      1.0
+     ]
+    }
+   ]
+  }
+ ],
+ "pickup_factories": [
+  {
+   "actor": "TnAmmoCratePickupFactory_10561",
+   "class": "TnAmmoCratePickupFactory",
+   "gltf_matrix_factory": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    322.52638671875,
+    -724.439921875,
+    -331.41125,
+    1.0
+   ],
+   "respawn": 30.0,
+   "visual": {
+    "mesh": "PROP_NEU_Pickups_p.AmmoPickup.PROP_NEU_AmmoPickup_STAT",
+    "at": "factory origin (CONFIRMED, docs/FORMAT_NOTES.md)",
+    "rotation": "yaw PickupRotationRate 10000 (54.93 deg/s) while available",
+    "beam": "FX_Pickups_p.FX.Pickup_FX"
+   }
+  },
+  {
+   "actor": "TnAmmoCratePickupFactory_12059",
+   "class": "TnAmmoCratePickupFactory",
+   "gltf_matrix_factory": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    164.0,
+    -724.40796875,
+    -431.36,
+    1.0
+   ],
+   "respawn": 30.0,
+   "visual": {
+    "mesh": "PROP_NEU_Pickups_p.AmmoPickup.PROP_NEU_AmmoPickup_STAT",
+    "at": "factory origin (CONFIRMED, docs/FORMAT_NOTES.md)",
+    "rotation": "yaw PickupRotationRate 10000 (54.93 deg/s) while available",
+    "beam": "FX_Pickups_p.FX.Pickup_FX"
+   }
+  },
+  {
+   "actor": "TnAmmoCratePickupFactory_12443",
+   "class": "TnAmmoCratePickupFactory",
+   "gltf_matrix_factory": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    127.31123046875,
+    -726.36,
+    -455.65152343750003,
+    1.0
+   ],
+   "respawn": 30.0,
+   "visual": {
+    "mesh": "PROP_NEU_Pickups_p.AmmoPickup.PROP_NEU_AmmoPickup_STAT",
+    "at": "factory origin (CONFIRMED, docs/FORMAT_NOTES.md)",
+    "rotation": "yaw PickupRotationRate 10000 (54.93 deg/s) while available",
+    "beam": "FX_Pickups_p.FX.Pickup_FX"
+   }
+  },
+  {
+   "actor": "TnAmmoCratePickupFactory_13936",
+   "class": "TnAmmoCratePickupFactory",
+   "gltf_matrix_factory": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    110.56,
+    -716.76,
+    -612.0,
+    1.0
+   ],
+   "respawn": 30.0,
+   "visual": {
+    "mesh": "PROP_NEU_Pickups_p.AmmoPickup.PROP_NEU_AmmoPickup_STAT",
+    "at": "factory origin (CONFIRMED, docs/FORMAT_NOTES.md)",
+    "rotation": "yaw PickupRotationRate 10000 (54.93 deg/s) while available",
+    "beam": "FX_Pickups_p.FX.Pickup_FX"
+   }
+  },
+  {
+   "actor": "TnAmmoCratePickupFactory_14098",
+   "class": "TnAmmoCratePickupFactory",
+   "gltf_matrix_factory": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    74.08,
+    -721.66,
+    -554.4,
+    1.0
+   ],
+   "respawn": 30.0,
+   "visual": {
+    "mesh": "PROP_NEU_Pickups_p.AmmoPickup.PROP_NEU_AmmoPickup_STAT",
+    "at": "factory origin (CONFIRMED, docs/FORMAT_NOTES.md)",
+    "rotation": "yaw PickupRotationRate 10000 (54.93 deg/s) while available",
+    "beam": "FX_Pickups_p.FX.Pickup_FX"
+   }
+  },
+  {
+   "actor": "TnAmmoCratePickupFactory_15331",
+   "class": "TnAmmoCratePickupFactory",
+   "gltf_matrix_factory": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    115.84,
+    -727.0,
+    -410.56,
+    1.0
+   ],
+   "respawn": 30.0,
+   "visual": {
+    "mesh": "PROP_NEU_Pickups_p.AmmoPickup.PROP_NEU_AmmoPickup_STAT",
+    "at": "factory origin (CONFIRMED, docs/FORMAT_NOTES.md)",
+    "rotation": "yaw PickupRotationRate 10000 (54.93 deg/s) while available",
+    "beam": "FX_Pickups_p.FX.Pickup_FX"
+   }
+  },
+  {
+   "actor": "TnAmmoCratePickupFactory_1548",
+   "class": "TnAmmoCratePickupFactory",
+   "gltf_matrix_factory": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    189.92000000000002,
+    -716.76,
+    -609.12,
+    1.0
+   ],
+   "respawn": 30.0,
+   "visual": {
+    "mesh": "PROP_NEU_Pickups_p.AmmoPickup.PROP_NEU_AmmoPickup_STAT",
+    "at": "factory origin (CONFIRMED, docs/FORMAT_NOTES.md)",
+    "rotation": "yaw PickupRotationRate 10000 (54.93 deg/s) while available",
+    "beam": "FX_Pickups_p.FX.Pickup_FX"
+   }
+  },
+  {
+   "actor": "TnAmmoCratePickupFactory_15955",
+   "class": "TnAmmoCratePickupFactory",
+   "gltf_matrix_factory": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    96.64,
+    -714.2,
+    -284.16,
+    1.0
+   ],
+   "respawn": 30.0,
+   "visual": {
+    "mesh": "PROP_NEU_Pickups_p.AmmoPickup.PROP_NEU_AmmoPickup_STAT",
+    "at": "factory origin (CONFIRMED, docs/FORMAT_NOTES.md)",
+    "rotation": "yaw PickupRotationRate 10000 (54.93 deg/s) while available",
+    "beam": "FX_Pickups_p.FX.Pickup_FX"
+   }
+  },
+  {
+   "actor": "TnAmmoCratePickupFactory_2496",
+   "class": "TnAmmoCratePickupFactory",
+   "gltf_matrix_factory": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    249.44,
+    -724.44,
+    -495.04,
+    1.0
+   ],
+   "respawn": 30.0,
+   "visual": {
+    "mesh": "PROP_NEU_Pickups_p.AmmoPickup.PROP_NEU_AmmoPickup_STAT",
+    "at": "factory origin (CONFIRMED, docs/FORMAT_NOTES.md)",
+    "rotation": "yaw PickupRotationRate 10000 (54.93 deg/s) while available",
+    "beam": "FX_Pickups_p.FX.Pickup_FX"
+   }
+  },
+  {
+   "actor": "TnAmmoCratePickupFactory_3869",
+   "class": "TnAmmoCratePickupFactory",
+   "gltf_matrix_factory": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    242.56,
+    -724.439921875,
+    -383.04,
+    1.0
+   ],
+   "respawn": 30.0,
+   "visual": {
+    "mesh": "PROP_NEU_Pickups_p.AmmoPickup.PROP_NEU_AmmoPickup_STAT",
+    "at": "factory origin (CONFIRMED, docs/FORMAT_NOTES.md)",
+    "rotation": "yaw PickupRotationRate 10000 (54.93 deg/s) while available",
+    "beam": "FX_Pickups_p.FX.Pickup_FX"
+   }
+  },
+  {
+   "actor": "TnAmmoCratePickupFactory_4174",
+   "class": "TnAmmoCratePickupFactory",
+   "gltf_matrix_factory": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    94.4,
+    -706.520234375,
+    -425.44,
+    1.0
+   ],
+   "respawn": 30.0,
+   "visual": {
+    "mesh": "PROP_NEU_Pickups_p.AmmoPickup.PROP_NEU_AmmoPickup_STAT",
+    "at": "factory origin (CONFIRMED, docs/FORMAT_NOTES.md)",
+    "rotation": "yaw PickupRotationRate 10000 (54.93 deg/s) while available",
+    "beam": "FX_Pickups_p.FX.Pickup_FX"
+   }
+  },
+  {
+   "actor": "TnAmmoCratePickupFactory_5364",
+   "class": "TnAmmoCratePickupFactory",
+   "gltf_matrix_factory": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    166.08,
+    -722.294921875,
+    -526.5600000000001,
+    1.0
+   ],
+   "respawn": 30.0,
+   "visual": {
+    "mesh": "PROP_NEU_Pickups_p.AmmoPickup.PROP_NEU_AmmoPickup_STAT",
+    "at": "factory origin (CONFIRMED, docs/FORMAT_NOTES.md)",
+    "rotation": "yaw PickupRotationRate 10000 (54.93 deg/s) while available",
+    "beam": "FX_Pickups_p.FX.Pickup_FX"
+   }
+  },
+  {
+   "actor": "TnAmmoCratePickupFactory_6211",
+   "class": "TnAmmoCratePickupFactory",
+   "gltf_matrix_factory": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    327.68,
+    -706.520234375,
+    -440.96000000000004,
+    1.0
+   ],
+   "respawn": 30.0,
+   "visual": {
+    "mesh": "PROP_NEU_Pickups_p.AmmoPickup.PROP_NEU_AmmoPickup_STAT",
+    "at": "factory origin (CONFIRMED, docs/FORMAT_NOTES.md)",
+    "rotation": "yaw PickupRotationRate 10000 (54.93 deg/s) while available",
+    "beam": "FX_Pickups_p.FX.Pickup_FX"
+   }
+  },
+  {
+   "actor": "TnAmmoCratePickupFactory_7063",
+   "class": "TnAmmoCratePickupFactory",
+   "gltf_matrix_factory": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    222.72,
+    -706.683359375,
+    -347.14,
+    1.0
+   ],
+   "respawn": 30.0,
+   "visual": {
+    "mesh": "PROP_NEU_Pickups_p.AmmoPickup.PROP_NEU_AmmoPickup_STAT",
+    "at": "factory origin (CONFIRMED, docs/FORMAT_NOTES.md)",
+    "rotation": "yaw PickupRotationRate 10000 (54.93 deg/s) while available",
+    "beam": "FX_Pickups_p.FX.Pickup_FX"
+   }
+  },
+  {
+   "actor": "TnHealthPickupFactory_13806",
+   "class": "TnHealthPickupFactory",
+   "gltf_matrix_factory": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    87.52,
+    -727.0,
+    -415.84000000000003,
+    1.0
+   ],
+   "respawn": 60.0,
+   "visual": {
+    "particle": "FX_Pickups_p.FX.HealthPickup_FX",
+    "note": "mesh-emitter particle (cube / shield) in CustomPickupEffect; no factory mesh"
+   }
+  },
+  {
+   "actor": "TnHealthPickupFactory_1394",
+   "class": "TnHealthPickupFactory",
+   "gltf_matrix_factory": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    241.6,
+    -724.439921875,
+    -428.16,
+    1.0
+   ],
+   "respawn": 60.0,
+   "visual": {
+    "particle": "FX_Pickups_p.FX.HealthPickup_FX",
+    "note": "mesh-emitter particle (cube / shield) in CustomPickupEffect; no factory mesh"
+   }
+  },
+  {
+   "actor": "TnHealthPickupFactory_203",
+   "class": "TnHealthPickupFactory",
+   "gltf_matrix_factory": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    39.04,
+    -721.66,
+    -555.6800000000001,
+    1.0
+   ],
+   "respawn": 60.0,
+   "visual": {
+    "particle": "FX_Pickups_p.FX.HealthPickup_FX",
+    "note": "mesh-emitter particle (cube / shield) in CustomPickupEffect; no factory mesh"
+   }
+  },
+  {
+   "actor": "TnHealthPickupFactory_3460",
+   "class": "TnHealthPickupFactory",
+   "gltf_matrix_factory": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    164.16,
+    -724.44,
+    -353.12,
+    1.0
+   ],
+   "respawn": 60.0,
+   "visual": {
+    "particle": "FX_Pickups_p.FX.HealthPickup_FX",
+    "note": "mesh-emitter particle (cube / shield) in CustomPickupEffect; no factory mesh"
+   }
+  },
+  {
+   "actor": "TnHealthPickupFactory_4550",
+   "class": "TnHealthPickupFactory",
+   "gltf_matrix_factory": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    174.56,
+    -716.76,
+    -609.76,
+    1.0
+   ],
+   "respawn": 60.0,
+   "visual": {
+    "particle": "FX_Pickups_p.FX.HealthPickup_FX",
+    "note": "mesh-emitter particle (cube / shield) in CustomPickupEffect; no factory mesh"
+   }
+  },
+  {
+   "actor": "TnHealthPickupFactory_5657",
+   "class": "TnHealthPickupFactory",
+   "gltf_matrix_factory": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    355.421015625,
+    -724.44,
+    -367.471875,
+    1.0
+   ],
+   "respawn": 60.0,
+   "visual": {
+    "particle": "FX_Pickups_p.FX.HealthPickup_FX",
+    "note": "mesh-emitter particle (cube / shield) in CustomPickupEffect; no factory mesh"
+   }
+  },
+  {
+   "actor": "TnHealthPickupFactory_7385",
+   "class": "TnHealthPickupFactory",
+   "gltf_matrix_factory": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    332.48,
+    -706.520234375,
+    -370.24,
+    1.0
+   ],
+   "respawn": 60.0,
+   "visual": {
+    "particle": "FX_Pickups_p.FX.HealthPickup_FX",
+    "note": "mesh-emitter particle (cube / shield) in CustomPickupEffect; no factory mesh"
+   }
+  },
+  {
+   "actor": "TnHealthPickupFactory_794",
+   "class": "TnHealthPickupFactory",
+   "gltf_matrix_factory": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    107.84,
+    -726.36,
+    -484.0,
+    1.0
+   ],
+   "respawn": 60.0,
+   "visual": {
+    "particle": "FX_Pickups_p.FX.HealthPickup_FX",
+    "note": "mesh-emitter particle (cube / shield) in CustomPickupEffect; no factory mesh"
+   }
+  },
+  {
+   "actor": "TnHealthPickupFactory_8854",
+   "class": "TnHealthPickupFactory",
+   "gltf_matrix_factory": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    108.64,
+    -706.520234375,
+    -365.44,
+    1.0
+   ],
+   "respawn": 60.0,
+   "visual": {
+    "particle": "FX_Pickups_p.FX.HealthPickup_FX",
+    "note": "mesh-emitter particle (cube / shield) in CustomPickupEffect; no factory mesh"
+   }
+  },
+  {
+   "actor": "TnOverShieldPickupFactory_6009",
+   "class": "TnOverShieldPickupFactory",
+   "gltf_matrix_factory": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    203.08,
+    -706.497890625,
+    -456.8,
+    1.0
+   ],
+   "respawn": 120.0,
+   "visual": {
+    "particle": "FX_Pickups_p.FX.OvershieldPickup_FX",
+    "note": "mesh-emitter particle (cube / shield) in CustomPickupEffect; no factory mesh"
+   }
+  }
+ ],
+ "objective_factory_resting_meshes": [
+  {
+   "actor": "TnGameObjectivePickupFactoryBomb_7067",
+   "class": "TnGameObjectivePickupFactoryBomb",
+   "resting_mesh": "PROP_NEU_Pickups_p.MPBomb.NEU_MPBomb_SKEL",
+   "component_translation": {
+    "X": 0.0,
+    "Y": 0.0,
+    "Z": 150.0
+   },
+   "transform": {
+    "Location": {
+     "X": 20480.0,
+     "Y": -40385.0,
+     "Z": -72425.3984375
+    },
+    "Rotation": {
+     "Pitch": 0,
+     "Yaw": 0,
+     "Roll": 0
+    },
+    "DrawScale": 1.0,
+    "DrawScale3D": {
+     "X": 1.0,
+     "Y": 1.0,
+     "Z": 1.0
+    },
+    "origin": "effective (authored over archetype/CDO chain); unset Location/Rotation = 0"
+   },
+   "visible_in": [
+    "EXT"
+   ]
+  },
+  {
+   "actor": "TnGameObjectivePickupFactoryFlag_3951",
+   "class": "TnGameObjectivePickupFactoryFlag",
+   "resting_mesh": "WEP_CodeOfPower_p.WEP_CodeOfPower2H_SKEL",
+   "component_translation": {
+    "X": 0.0,
+    "Y": 0.0,
+    "Z": 150.0
+   },
+   "transform": {
+    "Location": {
+     "X": 31938.154296875,
+     "Y": -39809.43359375,
+     "Z": -72443.9921875
+    },
+    "Rotation": {
+     "Pitch": 0,
+     "Yaw": 0,
+     "Roll": 0
+    },
+    "DrawScale": 1.0,
+    "DrawScale3D": {
+     "X": 1.0,
+     "Y": 1.0,
+     "Z": 1.0
+    },
+    "origin": "effective (authored over archetype/CDO chain); unset Location/Rotation = 0"
+   },
+   "visible_in": [
+    "CTF"
+   ]
+  },
+  {
+   "actor": "TnGameObjectivePickupFactoryFlag_9703",
+   "class": "TnGameObjectivePickupFactoryFlag",
+   "resting_mesh": "WEP_CodeOfPower_p.WEP_CodeOfPower2H_SKEL",
+   "component_translation": {
+    "X": 0.0,
+    "Y": 0.0,
+    "Z": 150.0
+   },
+   "transform": {
+    "Location": {
+     "X": 12514.5146484375,
+     "Y": -56191.1015625,
+     "Z": -71676.0
+    },
+    "Rotation": {
+     "Pitch": 0,
+     "Yaw": 0,
+     "Roll": 0
+    },
+    "DrawScale": 1.0,
+    "DrawScale3D": {
+     "X": 1.0,
+     "Y": 1.0,
+     "Z": 1.0
+    },
+    "origin": "effective (authored over archetype/CDO chain); unset Location/Rotation = 0"
+   },
+   "visible_in": [
+    "CTF"
+   ]
+  }
+ ],
+ "movers": [
+  {
+   "actor": "InterpActor_15874",
+   "class": "InterpActor",
+   "physics": "PHYS_Interpolating",
+   "hidden": true,
+   "rotation_rate": null
+  },
+  {
+   "actor": "InterpActor_3855",
+   "class": "InterpActor",
+   "physics": "PHYS_Interpolating",
+   "hidden": true,
+   "rotation_rate": null
+  },
+  {
+   "actor": "InterpActor_6165",
+   "class": "InterpActor",
+   "physics": "PHYS_Interpolating",
+   "hidden": true,
+   "rotation_rate": null
+  },
+  {
+   "actor": "InterpActor_7378",
+   "class": "InterpActor",
+   "physics": "PHYS_Interpolating",
+   "hidden": true,
+   "rotation_rate": null
+  },
+  {
+   "actor": "StaticInterpActor_10471",
+   "class": "StaticInterpActor",
+   "physics": "PHYS_Interpolating",
+   "hidden": false,
+   "rotation_rate": null
+  },
+  {
+   "actor": "StaticInterpActor_12825",
+   "class": "StaticInterpActor",
+   "physics": "PHYS_Interpolating",
+   "hidden": false,
+   "rotation_rate": null
+  },
+  {
+   "actor": "StaticInterpActor_13497",
+   "class": "StaticInterpActor",
+   "physics": "PHYS_Interpolating",
+   "hidden": false,
+   "rotation_rate": null
+  },
+  {
+   "actor": "StaticInterpActor_5249",
+   "class": "StaticInterpActor",
+   "physics": "PHYS_Interpolating",
+   "hidden": false,
+   "rotation_rate": null
+  },
+  {
+   "actor": "StaticInterpActor_8037",
+   "class": "StaticInterpActor",
+   "physics": "PHYS_Interpolating",
+   "hidden": false,
+   "rotation_rate": null
+  },
+  {
+   "actor": "StaticInterpActor_15810",
+   "class": "StaticInterpActor",
+   "physics": "PHYS_Rotating",
+   "hidden": false,
+   "rotation_rate": {
+    "Pitch": 0,
+    "Yaw": 2730,
+    "Roll": 0
+   }
+  },
+  {
+   "actor": "StaticInterpActor_7381",
+   "class": "StaticInterpActor",
+   "physics": "PHYS_Rotating",
+   "hidden": false,
+   "rotation_rate": {
+    "Pitch": 0,
+    "Yaw": 2730,
+    "Roll": 0
+   }
+  },
+  {
+   "actor": "StaticInterpActor_8114",
+   "class": "StaticInterpActor",
+   "physics": "PHYS_Rotating",
+   "hidden": false,
+   "rotation_rate": {
+    "Pitch": 0,
+    "Yaw": 2730,
+    "Roll": 0
+   }
+  }
+ ],
+ "matinee": [
+  {
+   "action": "SeqAct_Interp_3464",
+   "looping": true,
+   "length_s": 9.002202033996582,
+   "groups": [
+    {
+     "group": "SkyBeam",
+     "tracks": [
+      {
+       "class": "InterpTrackMove",
+       "props": {
+        "PosTrack": {
+         "Points": [
+          {
+           "InVal": 0.0,
+           "OutVal": {
+            "X": 0.0,
+            "Y": 0.0,
+            "Z": 0.0
+           },
+           "ArriveTangent": {
+            "X": 0.0,
+            "Y": 0.0,
+            "Z": 0.0
+           },
+           "LeaveTangent": {
+            "X": 0.0,
+            "Y": 0.0,
+            "Z": 0.0
+           },
+           "InterpMode": "CIM_CurveAuto"
+          },
+          {
+           "InVal": 0.0,
+           "OutVal": {
+            "X": 0.0,
+            "Y": 0.0,
+            "Z": 0.0
+           },
+           "ArriveTangent": {
+            "X": -0.00390625,
+            "Y": -0.00390625,
+            "Z": 0.00390625
+           },
+           "LeaveTangent": {
+            "X": -0.00390625,
+            "Y": -0.00390625,
+            "Z": 0.00390625
+           },
+           "InterpMode": "CIM_CurveAuto"
+          },
+          {
+           "InVal": 4.5,
+           "OutVal": {
+            "X": -0.0078125,
+            "Y": -0.0078125,
+            "Z": 0.0078125
+           },
+           "ArriveTangent": {
+            "X": 0.0,
+            "Y": 0.0,
+            "Z": 0.0
+           },
+           "LeaveTangent": {
+            "X": 0.0,
+            "Y": 0.0,
+            "Z": 0.0
+           },
+           "InterpMode": "CIM_CurveAuto"
+          },
+          {
+           "InVal": 9.0,
+           "OutVal": {
+            "X": 0.0,
+            "Y": 0.0,
+            "Z": 0.0
+           },
+           "ArriveTangent": {
+            "X": 0.0,
+            "Y": 0.0,
+            "Z": 0.0
+           },
+           "LeaveTangent": {
+            "X": -0.00390625,
+            "Y": -0.00390625,
+            "Z": 0.00390625
+           },
+           "InterpMode": "CIM_CurveAuto"
+          }
+         ]
+        },
+        "EulerTrack": {
+         "Points": [
+          {
+           "InVal": 0.0,
+           "OutVal": {
+            "X": 0.0,
+            "Y": 0.0,
+            "Z": 0.0
+           },
+           "ArriveTangent": {
+            "X": 0.0,
+            "Y": 0.0,
+            "Z": 0.0
+           },
+           "LeaveTangent": {
+            "X": 0.0,
+            "Y": 0.0,
+            "Z": 0.0
+           },
+           "InterpMode": "CIM_CurveAuto"
+          },
+          {
+           "InVal": 0.0,
+           "OutVal": {
+            "X": 0.0,
+            "Y": 0.0,
+            "Z": 0.0
+           },
+           "ArriveTangent": {
+            "X": 9.69818115234375,
+            "Y": 1.89239501953125,
+            "Z": -5.29815673828125
+           },
+           "LeaveTangent": {
+            "X": 9.69818115234375,
+            "Y": 1.89239501953125,
+            "Z": -5.29815673828125
+           },
+           "InterpMode": "CIM_CurveAuto"
+          },
+          {
+           "InVal": 4.5,
+           "OutVal": {
+            "X": 19.3963623046875,
+            "Y": 3.7847900390625,
+            "Z": -10.5963134765625
+           },
+           "ArriveTangent": {
+            "X": 0.0,
+            "Y": 0.0,
+            "Z": 0.0
+           },
+           "LeaveTangent": {
+            "X": 0.0,
+            "Y": 0.0,
+            "Z": 0.0
+           },
+           "InterpMode": "CIM_CurveAuto"
+          },
+          {
+           "InVal": 9.0,
+           "OutVal": {
+            "X": 0.0,
+            "Y": 0.0,
+            "Z": 0.0
+           },
+           "ArriveTangent": {
+            "X": 0.0,
+            "Y": 0.0,
+            "Z": 0.0
+           },
+           "LeaveTangent": {
+            "X": 9.69818115234375,
+            "Y": 1.89239501953125,
+            "Z": -5.29815673828125
+           },
+           "InterpMode": "CIM_CurveAuto"
+          }
+         ]
+        },
+        "LookupTrack": {
+         "Points": [
+          {
+           "GroupName": "None",
+           "Time": 0.0
+          },
+          {
+           "GroupName": "None",
+           "Time": 0.0
+          },
+          {
+           "GroupName": "None",
+           "Time": 4.5
+          },
+          {
+           "GroupName": "None",
+           "Time": 9.0
+          }
+         ]
+        },
+        "bUseQuatInterpolation": true,
+        "MoveFrame": "IMF_RelativeToInitial"
+       }
+      }
+     ]
+    }
+   ],
+   "actors": [
+    {
+     "actor": "StaticInterpActor_5249",
+     "mesh": "ENV_IAC_Deco_1_p.StaticMesh.DecoSphereHalf01_STAT",
+     "location_ue": [
+      9011.1298828125,
+      -42093.5,
+      -66667.296875
+     ],
+     "rotation_ue": [
+      -10240,
+      62464,
+      16384
+     ],
+     "yaw_deg": 343.125,
+     "location_gltf": [
+      90.1113,
+      -666.673,
+      -420.935
+     ],
+     "gltf_matrix": [
+      1.3121114803999556,
+      -2.0520752752297473,
+      -0.3980246661024472,
+      0.0,
+      0.7164254714280269,
+      8.395889819853773e-17,
+      2.3617382689285664,
+      0.0,
+      -1.6759130937607274,
+      -1.1701976460249555,
+      0.5083826790064381,
+      0.0,
+      90.111298828125,
+      -666.67296875,
+      -420.935,
+      1.0
+     ]
+    },
+    {
+     "actor": "StaticInterpActor_13497",
+     "mesh": "ENV_GLB_EnvEffects_p.StaticMesh.LightBeam_Cone_STAT",
+     "location_ue": [
+      13248.1298828125,
+      -83609.5,
+      -60123.296875
+     ],
+     "rotation_ue": [
+      -11012,
+      -9263,
+      71831
+     ],
+     "yaw_deg": -50.883,
+     "location_gltf": [
+      132.4813,
+      -601.233,
+      -836.095
+     ],
+     "gltf_matrix": [
+      32.323709020997626,
+      -90.52156662315944,
+      -39.75046501975544,
+      0.0,
+      12.217531356585404,
+      5.552199104308216,
+      -2.708844602119425,
+      0.0,
+      4.479280036652843,
+      -3.8272697980552848,
+      12.358029076984616,
+      0.0,
+      132.481298828125,
+      -601.23296875,
+      -836.095,
+      1.0
+     ]
+    },
+    {
+     "actor": "StaticInterpActor_10471",
+     "mesh": "ENV_GLB_EnvEffects_p.StaticMesh.LightBeam_Cone_STAT",
+     "location_ue": [
+      -13760.869140625,
+      -28160.5,
+      -65168.296875
+     ],
+     "rotation_ue": [
+      -12129,
+      -52279,
+      68538
+     ],
+     "yaw_deg": -287.177,
+     "location_gltf": [
+      -137.6087,
+      -651.683,
+      -281.605
+     ],
+     "gltf_matrix": [
+      12.186638858857522,
+      -95.47920919779264,
+      39.424384616122424,
+      0.0,
+      -0.1540749601819043,
+      5.207957472113353,
+      12.660421252737356,
+      0.0,
+      -13.595447198636275,
+      -1.5417259278683346,
+      0.4687462574694814,
+      0.0,
+      -137.60869140625002,
+      -651.68296875,
+      -281.605,
+      1.0
+     ]
+    }
+   ]
+  }
+ ],
+ "not_in_world_glb": {
+  "classes": {
+   "BRUSH (builder brushes; geometry lives in level BSP)": 109,
+   "HeightFog": 1,
+   "Model": 3,
+   "PrefabInstance": 16,
+   "Sequence": 3,
+   "TnStaticDestructibleActor": 1,
+   "TnWorldInfo": 3,
+   "AmbientSound": 40,
+   "HmAmbientSoundLineEmitter": 13,
+   "HmAmbientSoundVolumeEmitter": 17,
+   "BeastSettingsReferer": 1,
+   "CameraActor": 1,
+   "TnAssetReferencesMultiplayer": 1
+  },
+  "note": "actor classes vs_map does not export as geometry (skeletal actors, lens flares, fog, sounds, Kismet containers)"
+ }
+}

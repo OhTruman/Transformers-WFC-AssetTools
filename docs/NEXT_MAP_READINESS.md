@@ -99,3 +99,6 @@ The Streets regression after these edits: `vs_validate` 44/44, `validate_m04` 15
 * **CONFIRMED:** counts and set differences from cooked data; probe results (stage logs and validator reports).
 * **HIGH:** the comparative judgment.
 * **UNKNOWN:** the runtime semantics of the Gorge-only classes (RE).
+
+## Update 2026-10-04
+Gorge now runs end to end through `run_map_pipeline.py`. All completeness checks pass; see `docs/MAP_GORGE_COMPLETE.md`.

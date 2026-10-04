@@ -26,8 +26,22 @@ GAMEPLAY = re.compile(r'(PlayerStart|PickupFactory|CapturePoint|DominationPoint|
 VOLUME = re.compile(r'(Volume|KingOfTheHillZone)$')
 
 def sublevels():
+    """Levels of MAP: every cooked <MAP>_*_m package, plus every package named by a LevelStreaming* object of those levels
+    (authored.db) - catches shared streamed levels such as MP_IAC_Global_Art_m / GLB_Audio_m that do not carry the map prefix."""
     names = [os.path.splitext(n)[0] for n in os.listdir(extract.COOKED)]
-    return sorted(n for n in names if n.lower().startswith(MAP.lower() + '_') and n.lower().endswith('_m'))
+    lv = {n for n in names if n.lower().startswith(MAP.lower() + '_') and n.lower().endswith('_m')}
+    try:
+        import authored as _A
+        cooked = {n.lower(): n for n in names}
+        for p in list(lv):
+            for (o,) in _A.con().execute("SELECT opath FROM objects WHERE opath >= ? AND opath < ? AND class LIKE 'LevelStreaming%'",
+                                         (p + '.', p + '/')).fetchall():
+                v = _A.values(o)
+                pk = [v.get('PackageName')] + [x.get('LevelName') for x in v.get('Levels') or [] if isinstance(x, dict)]
+                lv |= {cooked[x.lower()] for x in pk if x and x.lower() in cooked}
+    except Exception:
+        pass
+    return sorted(lv)
 
 class Level:
     def __init__(self, name):
