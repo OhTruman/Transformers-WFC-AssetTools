@@ -86,3 +86,13 @@ Grouping is name-based (HIGH); the existence of each item is CONFIRMED.
 * **Enemy awareness in MP** is the canvas marker system: Orbital Recon killstreaks apply the team buff
   `TnBuffSeeEnemyObjectiveMarkers`.
 * **`[TnRadarTargetTracker] _MaxDistance=20000`** configures a class with no cooked export; it is UNKNOWN and not a radar widget.
+
+## RE OVERNIGHT_2026-10-04 incorporated
+* **Element map.** `element_map (RE A1 …)` holds 23 elements with controller clip, anchor, offset and absolute position. Every
+  RE anchor agrees with this movie's layout, and the computed absolutes reproduce RE's: health (104, 64), ammo (1016, 64),
+  kill feed (84, 626), score (560, 59), clock (560, 104), announcements (560, 166), popups (560, 229). The wave indicator, left
+  blank by RE, sits in bottomRight here.
+* **Spatial cues.** Damage-direction arrows, missile-lock warnings, canvas off-screen objective arrows, ally name tags (an ally
+  health bar for Scientist viewers only), and enemy tags only through buffs.
+* **Minimap / radar:** closed as **NONE** (CONFIRMED by AssetTools' search and by RE A9, including `default.xex` strings). Do not
+  add one as "original".

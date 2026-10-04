@@ -21,6 +21,20 @@ HUD = 'content/UI_GFxHud_p/Hud_GFX.gfx'
 
 def J(p): return json.load(open(os.path.join(MANI, p), encoding='utf-8'))
 
+RE_NOTE = 'RE-Workspace/notes/OVERNIGHT_2026-10-04_HUD_VEHICLE_FRONTEND_ROSTER_AI.md section A'
+# RE A1 element map (CONFIRMED by RE with gfxplace.py): element, controller char, anchor, offset from anchor
+RE_ELEMENTS = [
+    ('health_overshield_bar', 572, 'topLeft_mc', (20, 10)), ('team_chat', 573, 'topLeft_mc', (15, 130)), ('ability_1', 588, 'topLeft_mc', (24, 70)),
+    ('kill_feed_game_messages', 591, 'bottomLeft_mc', (0, -40)), ('ammo_pickup_notify', 593, 'topRight_mc', (-115, 65)),
+    ('ammo', 600, 'topRight_mc', (-20, 10)), ('grenades', 601, 'topRight_mc', (10, 46)), ('ability_0', 603, 'topRight_mc', (-24, 70)),
+    ('vehicle_ability_2', 605, 'topRight_mc', (-24, 70)), ('objective_list', 607, 'bottomRight_mc', (-340, -124)),
+    ('killstreak', 608, 'bottomRight_mc', (-100, -27)), ('killstreak_buff', 609, 'bottomRight_mc', (-50, -97)), ('wave_indicator', 610, None, None),
+    ('crosshair_hit_markers', 621, 'midCenter_mc', (0, 0)), ('damage_direction_arrows', 622, 'midCenter_mc', (0, 0)),
+    ('score_widget', 633, 'topCenter_mc', (0, 5)), ('match_round_clock (countdown_mc)', 632, 'topCenter_mc', (0, 50)),
+    ('game_reward_announcements', 638, 'topCenter_mc', (0, 112)), ('score_xp_popups', 640, 'topCenter_mc', (0, 175)),
+    ('level_up', 643, 'midRight_mc', (-80, 0)), ('bad_connection', 644, 'midRight_mc', (-30, -90)),
+    ('contextual_prompt (notifyManager_mc)', 646, 'bottomCenter_mc', (0, -30)), ('ctf_flag_return_progress', 652, 'bottomCenter_mc', (0, -100))]
+
 def layout(sc, sid, depth=0, seen=None):
     """named-instance tree of a sprite: instance -> {char, export, kind, x_px, y_px, children}."""
     seen = seen or set()
@@ -173,7 +187,24 @@ def main():
         ('runtime_attachments (attachMovie calls, bytecode; symbol/target from the preceding pushes - HIGH)', [
             dict(a, anchor_region=next((p.split('/')[1] for p, v in allpaths if v.get('char') == a['owner_sprite'] and p.count('/') >= 1), None))
             for a in attachments(os.path.join(ROOT, HUD), sc)]),
-        ('elements', elements),
+        ('element_map (RE A1, CONFIRMED; cross-checked against this movie)', [
+            dict(element=e, controller_char=ch, anchor=an, offset=off,
+                 absolute_px=(lambda a: [a['x_px'] + off[0], a['y_px'] + off[1]] if a and off else None)((root.get('hud_mc') or {}).get('children', {}).get(an)) if an else None,
+                 assettools_anchor=next((p.split('/')[1] for p, v in allpaths if v.get('char') == ch and p.count('/') >= 1), None),
+                 char_exists=ch in sc['sprites'])
+            for e, ch, an, off in RE_ELEMENTS]),
+        ('element_behaviour_reference', RE_NOTE + ' (A1-A8: health segments 38 px / skew -8 deg / low health <= 0.9; ammo skew +8 deg, '
+                                          'ClipSegmentCap 60, low clip 25 %; kill feed 5 rows, 5.0 s + 1.0 s fade, 22 px step; '
+                                          'announcements 4.5 s / reward 4.8 s; XP popups 2.0 s / 4.0 s killstreak) - behaviour is RE/Frontend-owned'),
+        ('spatial_cues (the only directional HUD elements, RE A9 CONFIRMED)', {
+            'damage_direction_arrows': {'symbol': 'mc_damageArrow', 'controller': 622, 'inputs': ['NotifyDamageIndicatorAdded', 'NotifyPlayerRotationChanged']},
+            'missile_lock_warnings': {'symbols': ['mc_missileWarningVictim', 'mc_missileWarningVictimBrackets', 'mc_missileWarningVictimInbound',
+                                                 'mc_missileWarningVictimLocked'], 'strings': ['$UIText.Hud.LockDetected', '$UIText.Hud.MissileInbound']},
+            'offscreen_objective_arrows': {'owner': 'canvas TnObjectiveMarkerType* (OffscreenMarkerSize 0.0625, RotationParam ArrowAngle, DrawWhenOffscreen per type)',
+                                           'materials': 'UI_HudMarkers_p (MarkerAlly / MarkerEnemy / MPMarkerDominationNode / TargetHealthBar)'},
+            'ally_name_tags': {'owner': 'canvas TnObjectiveMarkerTypeTransformerVersus (AllyMarkerSetup DrawLabelWhenUnfocused, LabelFont MarkerFont)',
+                               'class_specific': 'ally health bar on name tags only for Scientist viewers (RE E)'},
+            'enemy_tags': 'only via buffs: OrbitalReconStreak (TnBuffSeeEnemyObjectiveMarkers) or HardLock'}),
         ('icon_sets', icon_sets),
         ('crosshair', crosshair),
         ('scoreboard', {**mrec('UI_GFxInGameStats_p/InGameStats_GFX'), 'player_list': mrec('UI_GFxPlayerList_p/PlayerList_GFX'),
@@ -206,7 +237,9 @@ def main():
         ('fonts', {'embedded': h['fonts'], 'aliases': h.get('font_aliases'), 'fontlib': 'UI_GFxFonts_p.Fonts_EFIGS', 'canvas': 'UI_TransEngineFonts_p.MarkerFont'}),
         ('strings (UIText)', {s: loc.get(s) for s in ('Hud', 'EndGameStats', 'Respawn', 'PauseMenu', 'Downed', 'PlayerList')}),
         ('unresolved_for_RE', hud['unresolved_callbacks (no movie in this set defines it)']),
-        ('minimap_radar', 'NONE in shipped content - see manifests/hud/minimap_radar_search.json'),
+        ('minimap_radar', {'verdict': 'NONE - shipped WFC multiplayer has no minimap, radar or compass (CONFIRMED, closed; do not add one as "original")',
+                           'evidence': ['AssetTools manifests/hud/minimap_radar_search.json (cooked objects, every GFx, localization, ini, filenames, decomp)',
+                                        RE_NOTE + ' A9 (decompiled script, GFx constant pools, authored.db, default.xex strings Radar/MiniMap/Compass/Blip: 0 hits)']}),
         ('confidence', CONF + ' (cooked movie + class defaults + bytecode); element grouping HIGH')])
     json.dump(pkg, open(os.path.join(OUT, 'hud_package.json'), 'w', encoding='utf-8'), indent=1, ensure_ascii=False, default=str)
     print('->', os.path.join(OUT, 'hud_package.json'), 'layout instances', len(allpaths), {k: len(v['layout_instances']) for k, v in elements.items()})

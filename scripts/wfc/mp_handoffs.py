@@ -92,7 +92,9 @@ def select_ui(chars, pkg, rehand):
                                                % (len(cams), flow.get('kismet_class_counts', {}).get('SeqAct_Interp', 0)),
                            'pawn_factories': [n['object'] for n in pawnf],
                            'fscommands': sorted({n['authored'].get('FsCommand') for n in nodes if n['class'] == 'GFxEvent_FsCommand'}),
-                           'placeholders': 'two SkeletalMeshActors tagged RB_Ratchet_SKEL (editor stand-ins)',
+                           'preview_actors': 'SkeletalMeshActor_1636 = TR_Sideswipe_ROBO_p.RB_SideswipeWeaponArm_SKEL, SkeletalMeshActor_8156 = '
+                                             'TR_Barricade_ROBO_p.RB_BarricadeWeaponArm_SKEL (Scout defaults per faction; Tag RB_Ratchet_SKEL is a stale '
+                                             'editor label) - CONFIRMED, agrees with RE OVERNIGHT D',
                            'customize_bridge': 'Customize.UpdatePreviewCharacter / TransformPreviewCharacter / TransformPreviewCharacterToRobot'}),
         ('confidence', CONF + ' (movie structure, config, script); placeholders / role descriptions HIGH')]))
 
@@ -134,8 +136,13 @@ def ai_evidence(chars):
             'ai_config_sections': ai_cfg,
             'ai_character_names (TransGame.int [AICharacterNames])': names,
             'ai_transformer_archetypes': [o for o in J('mp_content/mp_characters.json')['other_transformer_archetypes (not chassis)']],
-            'navigation': 'every versus map has a NavigationPoint / ReachSpec network (vs_navigation.py; Streets 123 nodes, Gorge 148) - '
-                          'authored for AI pathing; usable by future bots',
+            'navigation (corrected 2026-10-04, agrees with RE OVERNIGHT F)': 'versus maps carry only the ReachSpec graph between player '
+                          'starts / pickups / objectives (Streets 123 NavigationPoints, 426 TnReachSpec; Gorge 148 / 738) and NO PathNode / '
+                          'TnTactical / TnTacticalPathNode / TnTacticalVolume data. The shipped GOAP + tactical AI would need new navigation and '
+                          'tactical data authored for MP maps - a reconstruction addition, not original content',
+            'strongest_reusable_ai_base (RE F)': 'campaign buddy definitions for player chassis TR_AiCharacterDefinition_p.*_Buddy_AICD '
+                                                  '(Optimus, Bumblebee, Sideswipe, Ironhide, Ratchet, Warpath, AirRaid, Silverbolt, Jetfire, Megatron, '
+                                                  'Barricade, Brawl, Starscream, Skywarp, Thundercracker)',
             'escalation_spawn_lists (sample)': sl}),
         ('owner', 'Gameplay/RE own AI behaviour; this is content evidence only')]))
 

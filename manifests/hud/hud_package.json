@@ -1887,1389 +1887,378 @@
    "anchor_region": "bottomCenter_mc"
   }
  ],
- "elements": {
-  "match_clock": {
-   "scaleform_owner": "UI_GFxHud_p/Hud_GFX",
-   "layout_instances": {
-    "hud_mc/topCenter_mc/countdown_mc": {
-     "char": 632,
-     "export": null,
-     "kind": "sprite",
-     "x_px": 0.0,
-     "y_px": 50.0,
-     "frames": 1,
-     "labels": []
-    },
-    "hud_mc/topCenter_mc/countdown_mc/objectiveTime_mc": {
-     "char": 628,
-     "export": null,
-     "kind": "sprite",
-     "x_px": 0.0,
-     "y_px": 0.0,
-     "frames": 1,
-     "labels": []
-    },
-    "hud_mc/topCenter_mc/countdown_mc/objectiveTime_mc/time_txt": {
-     "char": 627,
-     "export": null,
-     "kind": "text",
-     "x_px": -63.3,
-     "y_px": -16.0,
-     "text": {
-      "font": 263,
-      "height_twips": 520,
-      "color_rgba": [
-       255,
-       255,
-       255,
-       255
-      ],
-      "align": 2,
-      "initial_text": "0:00",
-      "variable": ""
-     }
-    },
-    "hud_mc/topCenter_mc/countdown_mc/roundTime_mc": {
-     "char": 630,
-     "export": null,
-     "kind": "sprite",
-     "x_px": 0.0,
-     "y_px": 0.0,
-     "frames": 1,
-     "labels": []
-    },
-    "hud_mc/topCenter_mc/countdown_mc/roundTime_mc/time_txt": {
-     "char": 629,
-     "export": null,
-     "kind": "text",
-     "x_px": -63.3,
-     "y_px": -9.0,
-     "text": {
-      "font": 263,
-      "height_twips": 300,
-      "color_rgba": [
-       255,
-       255,
-       255,
-       255
-      ],
-      "align": 2,
-      "initial_text": "0:00",
-      "variable": ""
-     }
-    },
-    "hud_mc/bottomCenter_mc/returnFlagNotifyTime_mc": {
-     "char": 652,
-     "export": null,
-     "kind": "sprite",
-     "x_px": 0.0,
-     "y_px": -100.0,
-     "frames": 1,
-     "labels": []
-    }
-   },
-   "exported_symbols": {
-    "mc_nextWaveTimer": []
-   },
-   "observers": [
-    {
-     "class": "TnHudDataObserverBombDefuseTimer",
-     "callback": "_global.NotifyProgressBarChanged",
-     "props": {
-      "label": "Defusing the Bomb"
-     }
-    }
+ "element_map (RE A1, CONFIRMED; cross-checked against this movie)": [
+  {
+   "element": "health_overshield_bar",
+   "controller_char": 572,
+   "anchor": "topLeft_mc",
+   "offset": [
+    20,
+    10
    ],
-   "tnhud_callbacks": {},
-   "strings (UIText [Hud])": {},
-   "grouping": "HIGH CONFIDENCE (name match); symbol / observer / string existence CONFIRMED AUTHORED DATA"
-  },
-  "team_score": {
-   "scaleform_owner": "UI_GFxHud_p/Hud_GFX",
-   "layout_instances": {},
-   "exported_symbols": {
-    "mc_roundSegment": [
-     "content/UI_GFxHud_p/Hud_GFX_I16E.png"
-    ],
-    "mc_scoreLogoAutobot": [
-     "content/UI_GFxHud_p/Hud_GFX_I1F4.png"
-    ],
-    "mc_scoreLogoDecepticon": [
-     "content/UI_GFxHud_p/Hud_GFX_I1F9.png"
-    ],
-    "mc_scoreTeam": []
-   },
-   "observers": [],
-   "tnhud_callbacks": {},
-   "strings (UIText [Hud])": {},
-   "grouping": "HIGH CONFIDENCE (name match); symbol / observer / string existence CONFIRMED AUTHORED DATA"
-  },
-  "local_score": {
-   "scaleform_owner": "UI_GFxHud_p/Hud_GFX",
-   "layout_instances": {},
-   "exported_symbols": {
-    "mc_pointMultiplier": [],
-    "mc_pointTransaction": [],
-    "mc_pointTransactionKillstreakLabel": [],
-    "mc_pointTransactionLabel": [],
-    "mc_scoreFreeForAll": []
-   },
-   "observers": [],
-   "tnhud_callbacks": {},
-   "strings (UIText [Hud])": {},
-   "grouping": "HIGH CONFIDENCE (name match); symbol / observer / string existence CONFIRMED AUTHORED DATA"
-  },
-  "health": {
-   "scaleform_owner": "UI_GFxHud_p/Hud_GFX",
-   "layout_instances": {
-    "incapacitated_mc": {
-     "char": 559,
-     "export": null
-    },
-    "hud_mc/topLeft_mc/#572/healthBarAnchor_mc": {
-     "char": 566,
-     "export": null,
-     "kind": "sprite",
-     "x_px": 0.0,
-     "y_px": 0.0,
-     "frames": 1,
-     "labels": []
-    },
-    "hud_mc/topLeft_mc/#572/lowHealthFlash_mc": {
-     "char": 567,
-     "export": null,
-     "kind": "sprite",
-     "x_px": -7.0,
-     "y_px": 0.0,
-     "frames": 12,
-     "labels": [
-      "loop"
-     ]
-    },
-    "hud_mc/topLeft_mc/#572/healthNumber_txt": {
-     "char": 571,
-     "export": null,
-     "kind": "text",
-     "x_px": 2.0,
-     "y_px": 10.0,
-     "text": {
-      "font": 263,
-      "height_twips": 320,
-      "color_rgba": [
-       255,
-       255,
-       255,
-       255
-      ],
-      "align": 0,
-      "initial_text": "<p align=\"left\"></p>",
-      "variable": ""
-     }
-    }
-   },
-   "exported_symbols": {
-    "FriendlyKillHealthBonusStreak": [
-     "content/UI_GFxHud_p/FriendlyKillHealthBonusStreak.png"
-    ],
-    "HealthRegenStreak": [
-     "content/UI_GFxHud_p/HealthRegenStreak.png"
-    ],
-    "mc_hurt": [
-     "content/UI_GFxHud_p/Hud_GFX_IA3.png",
-     "content/UI_GFxHud_p/Hud_GFX_IA6.png",
-     "content/UI_GFxHud_p/Hud_GFX_IAA.png",
-     "content/UI_GFxHud_p/Hud_GFX_IAD.png",
-     "content/UI_GFxHud_p/Hud_GFX_IB0.png",
-     "content/UI_GFxHud_p/Hud_GFX_IB6.png",
-     "content/UI_GFxHud_p/Hud_GFX_IBA.png",
-     "content/UI_GFxHud_p/Hud_GFX_IBE.png",
-     "content/UI_GFxHud_p/Hud_GFX_IC2.png",
-     "content/UI_GFxHud_p/Hud_GFX_IC5.png",
-     "content/UI_GFxHud_p/Hud_GFX_IC9.png"
-    ],
-    "mc_incapFraming": [],
-    "mc_incapWidgets": [
-     "content/UI_GFxHud_p/Hud_GFX_I149.png",
-     "content/UI_GFxHud_p/Hud_GFX_I14D.png"
-    ],
-    "mc_incapacitatedOfflineSystem": [],
-    "mc_incapacitatedScreen": [
-     "content/UI_GFxHud_p/Hud_GFX_I149.png",
-     "content/UI_GFxHud_p/Hud_GFX_I14D.png"
-    ],
-    "mc_roundSegment": [
-     "content/UI_GFxHud_p/Hud_GFX_I16E.png"
-    ],
-    "mc_targetHealthMeter": [],
-    "mc_vitalBarActiveBarDrained": [],
-    "mc_vitalBarAmmoSegment": [
-     "content/UI_GFxHud_p/Hud_GFX_I16E.png"
-    ],
-    "mc_vitalBarHealthSegment": [
-     "content/UI_GFxHud_p/Hud_GFX_I16E.png"
-    ],
-    "mc_vitalBarHealthSegmentEmpty": [
-     "content/UI_GFxHud_p/Hud_GFX_I16E.png"
-    ]
-   },
-   "observers": [
-    {
-     "class": "TnHudDataObserverSegmentedHealth",
-     "callback": "_global.NotifySegmentedHealthChanged",
-     "props": {
-      "SavedActiveSegment": -1,
-      "SavedNormalizedSegmentHealth": -1.0
-     }
-    },
-    {
-     "class": "TnHudDataObserverNormalizedDownedHealth",
-     "callback": "_global.NotifyNormalizedDownedHealthChanged",
-     "props": {}
-    }
+   "absolute_px": [
+    104.0,
+    64.0
    ],
-   "tnhud_callbacks": {},
-   "strings (UIText [Hud])": {
-    "DownedSuicide": {
-     "INT": "Self Destruct <font color='#FF3333'>Hold G</font>",
-     "FRA": "Auto-destruction <font color='#FF3333'>Maintiens G</font>"
-    }
-   },
-   "grouping": "HIGH CONFIDENCE (name match); symbol / observer / string existence CONFIRMED AUTHORED DATA"
+   "assettools_anchor": "topLeft_mc",
+   "char_exists": true
   },
-  "overshield": {
-   "scaleform_owner": "UI_GFxHud_p/Hud_GFX",
-   "layout_instances": {
-    "hud_mc/topLeft_mc/#572/overshieldBar_mc": {
-     "char": 568,
-     "export": null,
-     "kind": "sprite",
-     "x_px": 0.0,
-     "y_px": 0.0,
-     "frames": 1,
-     "labels": []
-    }
-   },
-   "exported_symbols": {
-    "OverShieldStreak": [
-     "content/UI_GFxHud_p/OverShieldStreak.png"
-    ],
-    "TnAbilityShield": [
-     "content/UI_GFxHud_p/TnAbilityShield.png"
-    ]
-   },
-   "observers": [
-    {
-     "class": "TnHudDataObserverNormalizedOverShield",
-     "callback": "_global.NotifyOverShieldChanged",
-     "props": {}
-    }
+  {
+   "element": "team_chat",
+   "controller_char": 573,
+   "anchor": "topLeft_mc",
+   "offset": [
+    15,
+    130
    ],
-   "tnhud_callbacks": {},
-   "strings (UIText [Hud])": {},
-   "grouping": "HIGH CONFIDENCE (name match); symbol / observer / string existence CONFIRMED AUTHORED DATA"
-  },
-  "ammo": {
-   "scaleform_owner": "UI_GFxHud_p/Hud_GFX",
-   "layout_instances": {
-    "hud_mc/topRight_mc/#600/ammoBarAnchor_mc": {
-     "char": 594,
-     "export": null,
-     "kind": "sprite",
-     "x_px": 0.0,
-     "y_px": 0.0,
-     "frames": 1,
-     "labels": []
-    },
-    "hud_mc/topRight_mc/#600/ammoNumber_txt": {
-     "char": 597,
-     "export": null,
-     "kind": "text",
-     "x_px": -38.0,
-     "y_px": 10.0,
-     "text": {
-      "font": 263,
-      "height_twips": 320,
-      "color_rgba": [
-       255,
-       255,
-       255,
-       255
-      ],
-      "align": 1,
-      "initial_text": "<p align=\"right\"></p>",
-      "variable": ""
-     }
-    }
-   },
-   "exported_symbols": {
-    "GrenadeIconFlashbang": [
-     "content/UI_GFxHud_p/GrenadeIconFlashbang.png"
-    ],
-    "GrenadeIconFrag": [
-     "content/UI_GFxHud_p/GrenadeIconFrag.png"
-    ],
-    "GrenadeIconHeal": [
-     "content/UI_GFxHud_p/GrenadeIconHeal.png"
-    ],
-    "GrenadeIconKMine": [
-     "content/UI_GFxHud_p/GrenadeIconKMine.png"
-    ],
-    "Infinity": [
-     "content/UI_GFxHud_p/Infinity.png"
-    ],
-    "RefillAmmoStreak": [
-     "content/UI_GFxHud_p/RefillAmmoStreak.png"
-    ],
-    "TnAbilityGrenade": [
-     "content/UI_GFxHud_p/TnAbilityGrenade.png"
-    ],
-    "TnAbilitySpawnAmmoCrate": [
-     "content/UI_GFxHud_p/TnAbilitySpawnAmmoCrate.png"
-    ],
-    "TnWeaponGrenadeLauncher": [
-     "content/UI_GFxHud_p/TnWeaponGrenadeLauncher.png"
-    ],
-    "death_GrenadeLauncher": [
-     "content/UI_GFxHud_p/death_GrenadeLauncher.png"
-    ],
-    "mc_activeGrenadePromptText": [],
-    "mc_ammoBar": [
-     "content/UI_GFxHud_p/Hud_GFX_ID3.png"
-    ],
-    "mc_ammoPickupNotification": [],
-    "mc_ammoWarningReload": [],
-    "mc_ammoWarningTextEmpty": [],
-    "mc_ammoWarningTextLow": [],
-    "mc_grenadeIcon": [],
-    "mc_vitalBarAmmoSegment": [
-     "content/UI_GFxHud_p/Hud_GFX_I16E.png"
-    ]
-   },
-   "observers": [
-    {
-     "class": "TnHudDataObserverWeaponClipAmmo",
-     "callback": "_global.NotifyWeaponClipAmmoChanged",
-     "props": {}
-    },
-    {
-     "class": "TnHudDataObserverWeaponReserveAmmo",
-     "callback": "_global.NotifyWeaponReserveAmmoChanged",
-     "props": {}
-    },
-    {
-     "class": "TnHudDataObserverGrenadeAmmo",
-     "callback": "_global.NotifyGrenadeAmmoChanged",
-     "props": {}
-    },
-    {
-     "class": "TnHudDataObserverActiveGrenadeCount",
-     "callback": "_global.NotifyActiveGrenadeCount",
-     "props": {}
-    }
+   "absolute_px": [
+    99.0,
+    184.0
    ],
-   "tnhud_callbacks": {
-    "NotifyAmmoAddedCallback": "_global.NotifyAmmoAdded"
-   },
-   "strings (UIText [Hud])": {
-    "DetonateGrenade": {
-     "INT": "Detonate <font color='#FF9333'>RMB</font>",
-     "FRA": "Détonation <font color='#FF9333'>RMB</font>"
-    },
-    "LowAmmo": {
-     "INT": "Low Ammo",
-     "FRA": "Peu de munitions restantes"
-    },
-    "OutOfAmmo": {
-     "INT": "Out of Ammo",
-     "FRA": "Plus de munitions"
-    },
-    "Reload": {
-     "INT": "<font color='#FF9333'>R</font> Reload",
-     "FRA": "<font color='#FF9333'>R</font> Recharger"
-    }
-   },
-   "grouping": "HIGH CONFIDENCE (name match); symbol / observer / string existence CONFIRMED AUTHORED DATA"
+   "assettools_anchor": "topLeft_mc",
+   "char_exists": true
   },
-  "crosshair": {
-   "scaleform_owner": "UI_GFxHud_p/Hud_GFX",
-   "layout_instances": {
-    "hud_mc/zoomScopeAttachPoint_mc": {
-     "char": 560,
-     "export": null,
-     "kind": "sprite",
-     "x_px": 560.0,
-     "y_px": 360.0,
-     "frames": 1,
-     "labels": []
-    },
-    "hud_mc/midCenter_mc/#621/crosshairAnchor_mc": {
-     "char": 619,
-     "export": null,
-     "kind": "sprite",
-     "x_px": 0.0,
-     "y_px": 0.0,
-     "frames": 1,
-     "labels": []
-    }
-   },
-   "exported_symbols": {
-    "mc_crosshairBazooka": [
-     "content/UI_GFxHud_p/Hud_GFX_I195.png"
-    ],
-    "mc_crosshairGeneric": [
-     "content/UI_GFxHud_p/Hud_GFX_I19F.png"
-    ],
-    "mc_crosshairIncreaseDamage": [
-     "content/UI_GFxHud_p/Hud_GFX_I135.png",
-     "content/UI_GFxHud_p/Hud_GFX_I138.png"
-    ],
-    "mc_crosshairIonBlaster": [
-     "content/UI_GFxHud_p/Hud_GFX_I190.png"
-    ],
-    "mc_crosshairShotgun": [
-     "content/UI_GFxHud_p/Hud_GFX_I19A.png"
-    ],
-    "mc_longScope": [
-     "content/UI_GFxHud_p/Hud_GFX_IF1.png"
-    ],
-    "mc_markerLockOn": [
-     "content/UI_GFxHud_p/Hud_GFX_I123.png"
-    ],
-    "mc_markerLockOnTriangleLocked": [
-     "content/UI_GFxHud_p/Hud_GFX_I1CC.png"
-    ],
-    "mc_mediumScope": [
-     "content/UI_GFxHud_p/Hud_GFX_IF1.png"
-    ],
-    "mc_rangeFinderCrosshair": [
-     "content/UI_GFxHud_p/Hud_GFX_I220.png",
-     "content/UI_GFxHud_p/Hud_GFX_I222.png"
-    ],
-    "mc_shortScope": [],
-    "mc_turretReticule": [],
-    "mc_zoomScope": [
-     "content/UI_GFxHud_p/Hud_GFX_I100.png",
-     "content/UI_GFxHud_p/Hud_GFX_I103.png"
-    ]
-   },
-   "observers": [
-    {
-     "class": "TnHudDataObserverWeaponSpread",
-     "callback": "_global.NotifyWeaponSpreadChanged",
-     "props": {
-      "ConversionFactor": 1.0
-     }
-    },
-    {
-     "class": "TnHudDataObserverWeaponReticule",
-     "callback": "_global.NotifyWeaponReticuleTypeChanged",
-     "props": {}
-    },
-    {
-     "class": "TnHudDataObserverLockOnState",
-     "callback": "_global.NotifyLockOnStateChanged",
-     "props": {}
-    }
+  {
+   "element": "ability_1",
+   "controller_char": 588,
+   "anchor": "topLeft_mc",
+   "offset": [
+    24,
+    70
    ],
-   "tnhud_callbacks": {},
-   "strings (UIText [Hud])": {},
-   "grouping": "HIGH CONFIDENCE (name match); symbol / observer / string existence CONFIRMED AUTHORED DATA"
-  },
-  "kill_feed": {
-   "scaleform_owner": "UI_GFxHud_p/Hud_GFX",
-   "layout_instances": {},
-   "exported_symbols": {
-    "death_AssaultRifle": [
-     "content/UI_GFxHud_p/death_AssaultRifle.png"
-    ],
-    "death_AssaultRifleVehicle": [
-     "content/UI_GFxHud_p/death_AssaultRifleVehicle.png"
-    ],
-    "death_Bazooka": [
-     "content/UI_GFxHud_p/death_Bazooka.png"
-    ],
-    "death_BurstRifle": [
-     "content/UI_GFxHud_p/death_BurstRifle.png"
-    ],
-    "death_Car": [
-     "content/UI_GFxHud_p/death_Car.png"
-    ],
-    "death_Decoy": [
-     "content/UI_GFxHud_p/death_Decoy.png"
-    ],
-    "death_Drain": [
-     "content/UI_GFxHud_p/death_Drain.png"
-    ],
-    "death_EMPShotgun": [
-     "content/UI_GFxHud_p/death_EMPShotgun.png"
-    ],
-    "death_GrenadeLauncher": [
-     "content/UI_GFxHud_p/death_GrenadeLauncher.png"
-    ],
-    "death_HeavyMG": [
-     "content/UI_GFxHud_p/death_HeavyMG.png"
-    ],
-    "death_HeavyPistol": [
-     "content/UI_GFxHud_p/death_HeavyPistol.png"
-    ],
-    "death_HeavyTurret": [
-     "content/UI_GFxHud_p/death_HeavyTurret.png"
-    ],
-    "death_HomingRocket": [
-     "content/UI_GFxHud_p/death_HomingRocket.png"
-    ],
-    "death_HomingRocketVehicle": [
-     "content/UI_GFxHud_p/death_HomingRocketVehicle.png"
-    ],
-    "death_IonBlaster": [
-     "content/UI_GFxHud_p/death_IonBlaster.png"
-    ],
-    "death_Jet": [
-     "content/UI_GFxHud_p/death_Jet.png"
-    ],
-    "death_Melee": [
-     "content/UI_GFxHud_p/death_Melee.png"
-    ],
-    "death_PlasmaCannon": [
-     "content/UI_GFxHud_p/death_PlasmaCannon.png"
-    ],
-    "death_RepairRay": [
-     "content/UI_GFxHud_p/death_RepairRay.png"
-    ],
-    "death_Rocket": [
-     "content/UI_GFxHud_p/death_Rocket.png"
-    ],
-    "death_RocketVehicle": [
-     "content/UI_GFxHud_p/death_RocketVehicle.png"
-    ],
-    "death_RollerSphere": [
-     "content/UI_GFxHud_p/death_RollerSphere.png"
-    ],
-    "death_SentryTurret": [
-     "content/UI_GFxHud_p/death_SentryTurret.png"
-    ],
-    "death_Shockwave": [
-     "content/UI_GFxHud_p/death_Shockwave.png"
-    ],
-    "death_Shotgun": [
-     "content/UI_GFxHud_p/death_Shotgun.png"
-    ],
-    "death_SniperRifle": [
-     "content/UI_GFxHud_p/death_SniperRifle.png"
-    ],
-    "death_Suicide": [
-     "content/UI_GFxHud_p/death_Suicide.png"
-    ],
-    "death_Tank": [
-     "content/UI_GFxHud_p/death_Tank.png"
-    ],
-    "death_TankCannon": [
-     "content/UI_GFxHud_p/death_TankCannon.png"
-    ],
-    "death_TransformDisruptor": [
-     "content/UI_GFxHud_p/death_TransformDisruptor.png"
-    ],
-    "death_Truck": [
-     "content/UI_GFxHud_p/death_Truck.png"
-    ],
-    "mc_gameMessage_default": [],
-    "mc_levelUpNotify": [],
-    "mc_notify": []
-   },
-   "observers": [],
-   "tnhud_callbacks": {
-    "GameMessageCallBack": "_global.GameMessage"
-   },
-   "strings (UIText [Hud])": {},
-   "grouping": "HIGH CONFIDENCE (name match); symbol / observer / string existence CONFIRMED AUTHORED DATA"
-  },
-  "kills_deaths": {
-   "scaleform_owner": "UI_GFxHud_p/Hud_GFX",
-   "layout_instances": {},
-   "exported_symbols": {
-    "FastAbilityCooldownStreak": [
-     "content/UI_GFxHud_p/FastAbilityCooldownStreak.png"
-    ],
-    "FriendlyKillHealthBonusStreak": [
-     "content/UI_GFxHud_p/FriendlyKillHealthBonusStreak.png"
-    ],
-    "GuidedMissileStreak": [
-     "content/UI_GFxHud_p/GuidedMissileStreak.png"
-    ],
-    "HealthRegenStreak": [
-     "content/UI_GFxHud_p/HealthRegenStreak.png"
-    ],
-    "ImprovedOrbitalReconStreak": [
-     "content/UI_GFxHud_p/ImprovedOrbitalReconStreak.png"
-    ],
-    "MinePooperStreak": [
-     "content/UI_GFxHud_p/MinePooperStreak.png"
-    ],
-    "OrbitalReconStreak": [
-     "content/UI_GFxHud_p/OrbitalReconStreak.png"
-    ],
-    "OverShieldStreak": [
-     "content/UI_GFxHud_p/OverShieldStreak.png"
-    ],
-    "PokeStreak": [
-     "content/UI_GFxHud_p/PokeStreak.png"
-    ],
-    "RefillAmmoStreak": [
-     "content/UI_GFxHud_p/RefillAmmoStreak.png"
-    ],
-    "SpawnRocketTurretStreak": [
-     "content/UI_GFxHud_p/SpawnRocketTurretStreak.png"
-    ],
-    "TeamAbilityJammerStreak": [
-     "content/UI_GFxHud_p/TeamAbilityJammerStreak.png"
-    ],
-    "death_AssaultRifle": [
-     "content/UI_GFxHud_p/death_AssaultRifle.png"
-    ],
-    "death_AssaultRifleVehicle": [
-     "content/UI_GFxHud_p/death_AssaultRifleVehicle.png"
-    ],
-    "death_Bazooka": [
-     "content/UI_GFxHud_p/death_Bazooka.png"
-    ],
-    "death_BurstRifle": [
-     "content/UI_GFxHud_p/death_BurstRifle.png"
-    ],
-    "death_Car": [
-     "content/UI_GFxHud_p/death_Car.png"
-    ],
-    "death_Decoy": [
-     "content/UI_GFxHud_p/death_Decoy.png"
-    ],
-    "death_Drain": [
-     "content/UI_GFxHud_p/death_Drain.png"
-    ],
-    "death_EMPShotgun": [
-     "content/UI_GFxHud_p/death_EMPShotgun.png"
-    ],
-    "death_GrenadeLauncher": [
-     "content/UI_GFxHud_p/death_GrenadeLauncher.png"
-    ],
-    "death_HeavyMG": [
-     "content/UI_GFxHud_p/death_HeavyMG.png"
-    ],
-    "death_HeavyPistol": [
-     "content/UI_GFxHud_p/death_HeavyPistol.png"
-    ],
-    "death_HeavyTurret": [
-     "content/UI_GFxHud_p/death_HeavyTurret.png"
-    ],
-    "death_HomingRocket": [
-     "content/UI_GFxHud_p/death_HomingRocket.png"
-    ],
-    "death_HomingRocketVehicle": [
-     "content/UI_GFxHud_p/death_HomingRocketVehicle.png"
-    ],
-    "death_IonBlaster": [
-     "content/UI_GFxHud_p/death_IonBlaster.png"
-    ],
-    "death_Jet": [
-     "content/UI_GFxHud_p/death_Jet.png"
-    ],
-    "death_Melee": [
-     "content/UI_GFxHud_p/death_Melee.png"
-    ],
-    "death_PlasmaCannon": [
-     "content/UI_GFxHud_p/death_PlasmaCannon.png"
-    ],
-    "death_RepairRay": [
-     "content/UI_GFxHud_p/death_RepairRay.png"
-    ],
-    "death_Rocket": [
-     "content/UI_GFxHud_p/death_Rocket.png"
-    ],
-    "death_RocketVehicle": [
-     "content/UI_GFxHud_p/death_RocketVehicle.png"
-    ],
-    "death_RollerSphere": [
-     "content/UI_GFxHud_p/death_RollerSphere.png"
-    ],
-    "death_SentryTurret": [
-     "content/UI_GFxHud_p/death_SentryTurret.png"
-    ],
-    "death_Shockwave": [
-     "content/UI_GFxHud_p/death_Shockwave.png"
-    ],
-    "death_Shotgun": [
-     "content/UI_GFxHud_p/death_Shotgun.png"
-    ],
-    "death_SniperRifle": [
-     "content/UI_GFxHud_p/death_SniperRifle.png"
-    ],
-    "death_Suicide": [
-     "content/UI_GFxHud_p/death_Suicide.png"
-    ],
-    "death_Tank": [
-     "content/UI_GFxHud_p/death_Tank.png"
-    ],
-    "death_TankCannon": [
-     "content/UI_GFxHud_p/death_TankCannon.png"
-    ],
-    "death_TransformDisruptor": [
-     "content/UI_GFxHud_p/death_TransformDisruptor.png"
-    ],
-    "death_Truck": [
-     "content/UI_GFxHud_p/death_Truck.png"
-    ],
-    "mc_killstreakBuffIcon": [],
-    "mc_killstreakDpadPS3": [],
-    "mc_killstreakDpadXbox360": [],
-    "mc_killstreakIcon": [],
-    "mc_pointTransactionKillstreakLabel": []
-   },
-   "observers": [
-    {
-     "class": "TnHudDataObserverKillstreak",
-     "callback": "_global.NotifyKillstreakChanged",
-     "props": {}
-    }
+   "absolute_px": [
+    108.0,
+    124.0
    ],
-   "tnhud_callbacks": {},
-   "strings (UIText [Hud])": {},
-   "grouping": "HIGH CONFIDENCE (name match); symbol / observer / string existence CONFIRMED AUTHORED DATA"
+   "assettools_anchor": "topLeft_mc",
+   "char_exists": true
   },
-  "objective_markers": {
-   "scaleform_owner": "UI_GFxHud_p/Hud_GFX",
-   "layout_instances": {
-    "hud_mc/topCenter_mc/countdown_mc/objectiveTime_mc": {
-     "char": 628,
-     "export": null,
-     "kind": "sprite",
-     "x_px": 0.0,
-     "y_px": 0.0,
-     "frames": 1,
-     "labels": []
-    }
-   },
-   "exported_symbols": {
-    "mc_markerDebug": [],
-    "mc_markerDebugArrow": [],
-    "mc_markerLockOn": [
-     "content/UI_GFxHud_p/Hud_GFX_I123.png"
-    ],
-    "mc_markerLockOnTriangleLocked": [
-     "content/UI_GFxHud_p/Hud_GFX_I1CC.png"
-    ],
-    "mc_objectiveLineGlyph": [],
-    "mc_objectiveLineGlyphMask": [],
-    "mc_objectiveLineObjective": [],
-    "mc_objectiveNew": []
-   },
-   "observers": [],
-   "tnhud_callbacks": {
-    "UpdateObjectiveMarkerCallback": "_global.UpdateMarker",
-    "AddObjectiveCallback": "_global.AddObjective",
-    "CompleteObjectiveCallback": "_global.CompleteObjective",
-    "StartMarkerUpdateCallBack": "_global.StartMarkerUpdate",
-    "FinishMarkerUpdateCallBack": "_global.FinishMarkerUpdate"
-   },
-   "strings (UIText [Hud])": {
-    "NewObjective": {
-     "INT": "New Objective",
-     "FRA": "Nouvel objectif"
-    }
-   },
-   "grouping": "HIGH CONFIDENCE (name match); symbol / observer / string existence CONFIRMED AUTHORED DATA"
-  },
-  "weapon": {
-   "scaleform_owner": "UI_GFxHud_p/Hud_GFX",
-   "layout_instances": {
-    "hud_mc/topRight_mc/#600/currentWeapon_mc": {
-     "char": 599,
-     "export": null,
-     "kind": "sprite",
-     "x_px": 0.0,
-     "y_px": 0.0,
-     "frames": 1,
-     "labels": []
-    }
-   },
-   "exported_symbols": {
-    "TnWeaponAssaultRifle": [
-     "content/UI_GFxHud_p/TnWeaponAssaultRifle.png"
-    ],
-    "TnWeaponAssaultRifleVehicle": [
-     "content/UI_GFxHud_p/TnWeaponAssaultRifleVehicle.png"
-    ],
-    "TnWeaponBazooka": [
-     "content/UI_GFxHud_p/TnWeaponBazooka.png"
-    ],
-    "TnWeaponBurstRifle": [
-     "content/UI_GFxHud_p/TnWeaponBurstRifle.png"
-    ],
-    "TnWeaponEmpShotgun": [
-     "content/UI_GFxHud_p/TnWeaponEmpShotgun.png"
-    ],
-    "TnWeaponGrenadeLauncher": [
-     "content/UI_GFxHud_p/TnWeaponGrenadeLauncher.png"
-    ],
-    "TnWeaponHeavyMG": [
-     "content/UI_GFxHud_p/TnWeaponHeavyMG.png"
-    ],
-    "TnWeaponHeavyPistol": [
-     "content/UI_GFxHud_p/TnWeaponHeavyPistol.png"
-    ],
-    "TnWeaponHeavyRocketTurret": [
-     "content/UI_GFxHud_p/TnWeaponHeavyRocketTurret.png"
-    ],
-    "TnWeaponHomingRocketVehicle": [
-     "content/UI_GFxHud_p/TnWeaponHomingRocketVehicle.png"
-    ],
-    "TnWeaponIonBlaster": [
-     "content/UI_GFxHud_p/TnWeaponIonBlaster.png"
-    ],
-    "TnWeaponPlasmaCannon": [
-     "content/UI_GFxHud_p/TnWeaponPlasmaCannon.png"
-    ],
-    "TnWeaponRepairRay": [
-     "content/UI_GFxHud_p/TnWeaponRepairRay.png"
-    ],
-    "TnWeaponRocketLauncher": [
-     "content/UI_GFxHud_p/TnWeaponRocketLauncher.png"
-    ],
-    "TnWeaponRocketVehicle": [
-     "content/UI_GFxHud_p/TnWeaponRocketVehicle.png"
-    ],
-    "TnWeaponShotgun": [
-     "content/UI_GFxHud_p/TnWeaponShotgun.png"
-    ],
-    "TnWeaponSniperRifle": [
-     "content/UI_GFxHud_p/TnWeaponSniperRifle.png"
-    ],
-    "TnWeaponTankCannon": [
-     "content/UI_GFxHud_p/TnWeaponTankCannon.png"
-    ],
-    "mc_chargingIndicator": [
-     "content/UI_GFxHud_p/Hud_GFX_I1FF.png"
-    ],
-    "mc_currentWeaponIcon": [],
-    "mc_currentWeaponText": []
-   },
-   "observers": [
-    {
-     "class": "TnHudDataObserverCurrentWeaponAndAim",
-     "callback": null,
-     "props": {}
-    }
+  {
+   "element": "kill_feed_game_messages",
+   "controller_char": 591,
+   "anchor": "bottomLeft_mc",
+   "offset": [
+    0,
+    -40
    ],
-   "tnhud_callbacks": {},
-   "strings (UIText [Hud])": {},
-   "grouping": "HIGH CONFIDENCE (name match); symbol / observer / string existence CONFIRMED AUTHORED DATA"
-  },
-  "abilities_class": {
-   "scaleform_owner": "UI_GFxHud_p/Hud_GFX",
-   "layout_instances": {
-    "hud_mc/topLeft_mc/#588/ability_mc": {
-     "char": 583,
-     "export": null,
-     "kind": "sprite",
-     "x_px": 0.0,
-     "y_px": 0.0,
-     "frames": 1,
-     "labels": []
-    },
-    "hud_mc/topRight_mc/#603/ability_mc": {
-     "char": 583,
-     "export": null,
-     "kind": "sprite",
-     "x_px": 0.0,
-     "y_px": 0.0,
-     "frames": 1,
-     "labels": []
-    },
-    "hud_mc/topRight_mc/#605/ability_mc": {
-     "char": 583,
-     "export": null,
-     "kind": "sprite",
-     "x_px": 0.0,
-     "y_px": 0.0,
-     "frames": 1,
-     "labels": []
-    }
-   },
-   "exported_symbols": {
-    "FastAbilityCooldownStreak": [
-     "content/UI_GFxHud_p/FastAbilityCooldownStreak.png"
-    ],
-    "TeamAbilityJammerStreak": [
-     "content/UI_GFxHud_p/TeamAbilityJammerStreak.png"
-    ],
-    "TnAbilityAbilityJammer": [
-     "content/UI_GFxHud_p/TnAbilityAbilityJammer.png"
-    ],
-    "TnAbilityAoeHeal": [
-     "content/UI_GFxHud_p/TnAbilityAoeHeal.png"
-    ],
-    "TnAbilityBarrier": [
-     null
-    ],
-    "TnAbilityCloaking": [
-     "content/UI_GFxHud_p/TnAbilityCloaking.png"
-    ],
-    "TnAbilityDecoyTrap": [
-     "content/UI_GFxHud_p/TnAbilityDecoyTrap.png"
-    ],
-    "TnAbilityDisguise": [
-     "content/UI_GFxHud_p/TnAbilityDisguise.png"
-    ],
-    "TnAbilityDodge": [
-     "content/UI_GFxHud_p/TnAbilityDodge.png"
-    ],
-    "TnAbilityDrain": [
-     "content/UI_GFxHud_p/TnAbilityDrain.png"
-    ],
-    "TnAbilityGrenade": [
-     "content/UI_GFxHud_p/TnAbilityGrenade.png"
-    ],
-    "TnAbilityGuidedMissile": [
-     null
-    ],
-    "TnAbilityHardLock": [
-     "content/UI_GFxHud_p/TnAbilityHardLock.png"
-    ],
-    "TnAbilityHover": [
-     "content/UI_GFxHud_p/TnAbilityHover.png"
-    ],
-    "TnAbilityKamikazeMine": [
-     "content/UI_GFxHud_p/TnAbilityKamikazeMine.png"
-    ],
-    "TnAbilityRollerSphere": [
-     "content/UI_GFxHud_p/TnAbilityRollerSphere.png"
-    ],
-    "TnAbilityScrambleHud": [
-     null
-    ],
-    "TnAbilityShield": [
-     "content/UI_GFxHud_p/TnAbilityShield.png"
-    ],
-    "TnAbilityShockwave": [
-     "content/UI_GFxHud_p/TnAbilityShockwave.png"
-    ],
-    "TnAbilitySpawnAmmoCrate": [
-     "content/UI_GFxHud_p/TnAbilitySpawnAmmoCrate.png"
-    ],
-    "TnAbilitySpawnSentry": [
-     "content/UI_GFxHud_p/TnAbilitySpawnSentry.png"
-    ],
-    "TnAbilityTransformDisruptor": [
-     "content/UI_GFxHud_p/TnAbilityTransformDisruptor.png"
-    ],
-    "TnAbilityWarcry": [
-     "content/UI_GFxHud_p/TnAbilityWarcry.png"
-    ],
-    "TnAbilityWhirlwind": [
-     "content/UI_GFxHud_p/TnAbilityWhirlwind.png"
-    ],
-    "mc_specialtyIconReference": []
-   },
-   "observers": [
-    {
-     "class": "TnHudDataObserverAbilityType",
-     "callback": "_global.NotifyAbilityType0Changed",
-     "props": {}
-    },
-    {
-     "class": "TnHudDataObserverAbilityType",
-     "callback": "_global.NotifyAbilityType1Changed",
-     "props": {
-      "AbilityNumber": 1
-     }
-    },
-    {
-     "class": "TnHudDataObserverVehicleAbilityType",
-     "callback": "_global.NotifyAbilityType2Changed",
-     "props": {}
-    }
+   "absolute_px": [
+    84.0,
+    626.0
    ],
-   "tnhud_callbacks": {
-    "UpdateAbilityCooldownCallBack": "_global.UpdateAbilityCooldown",
-    "SetAbilityCallBack": "_global.SetAbility"
-   },
-   "strings (UIText [Hud])": {},
-   "grouping": "HIGH CONFIDENCE (name match); symbol / observer / string existence CONFIRMED AUTHORED DATA"
+   "assettools_anchor": "bottomLeft_mc",
+   "char_exists": true
   },
-  "damage": {
-   "scaleform_owner": "UI_GFxHud_p/Hud_GFX",
-   "layout_instances": {
-    "hud_mc/midCenter_mc/#621/increaseDamageAnchor_mc": {
-     "char": 612,
-     "export": null,
-     "kind": "sprite",
-     "x_px": 0.0,
-     "y_px": 0.0,
-     "frames": 1,
-     "labels": []
-    }
-   },
-   "exported_symbols": {
-    "mc_causeDamage": [
-     "content/UI_GFxHud_p/Hud_GFX_I1A4.png"
-    ],
-    "mc_crosshairIncreaseDamage": [
-     "content/UI_GFxHud_p/Hud_GFX_I135.png",
-     "content/UI_GFxHud_p/Hud_GFX_I138.png"
-    ],
-    "mc_damageArrow": [
-     "content/UI_GFxHud_p/Hud_GFX_I114.png",
-     "content/UI_GFxHud_p/Hud_GFX_I117.png"
-    ],
-    "mc_hurt": [
-     "content/UI_GFxHud_p/Hud_GFX_IA3.png",
-     "content/UI_GFxHud_p/Hud_GFX_IA6.png",
-     "content/UI_GFxHud_p/Hud_GFX_IAA.png",
-     "content/UI_GFxHud_p/Hud_GFX_IAD.png",
-     "content/UI_GFxHud_p/Hud_GFX_IB0.png",
-     "content/UI_GFxHud_p/Hud_GFX_IB6.png",
-     "content/UI_GFxHud_p/Hud_GFX_IBA.png",
-     "content/UI_GFxHud_p/Hud_GFX_IBE.png",
-     "content/UI_GFxHud_p/Hud_GFX_IC2.png",
-     "content/UI_GFxHud_p/Hud_GFX_IC5.png",
-     "content/UI_GFxHud_p/Hud_GFX_IC9.png"
-    ],
-    "mc_missileWarningVictimBrackets": [],
-    "mc_missileWarningVictimInbound": [],
-    "mc_missileWarningVictimLocked": []
-   },
-   "observers": [
-    {
-     "class": "TnHudDataObserverDamageIndicators",
-     "callback": "_global.NotifyPlayerRotationChanged",
-     "props": {
-      "AddDamageIndicatorBindingName": "_global.NotifyDamageIndicatorAdded"
-     }
-    },
-    {
-     "class": "TnHudDataObserverIncreaseDamage",
-     "callback": "_global.NotifyDamageIncrease",
-     "props": {
-      "IncreaseDamageBuffs": [
-       "TransGame.TnBuffIncreaseDamageAfterCloak",
-       "TransGame.TnBuffIncreaseDamageAfterDisguise",
-       "TransGame.TnBuffIncreaseDamageDuringHover",
-       "TransGame.TnBuffWarcryIncreaseDamage",
-       "TransGame.TnBuffIncreaseDamageKillstreak",
-       "TransGame.TnBuffAmmoBeaconIncreaseDamage"
-      ]
-     }
-    }
+  {
+   "element": "ammo_pickup_notify",
+   "controller_char": 593,
+   "anchor": "topRight_mc",
+   "offset": [
+    -115,
+    65
    ],
-   "tnhud_callbacks": {
-    "CausedDamageScaleformCallback": "_global.CausedDamage"
-   },
-   "strings (UIText [Hud])": {},
-   "grouping": "HIGH CONFIDENCE (name match); symbol / observer / string existence CONFIRMED AUTHORED DATA"
-  },
-  "notifications": {
-   "scaleform_owner": "UI_GFxHud_p/Hud_GFX",
-   "layout_instances": {
-    "hud_mc/bottomCenter_mc/notifyManager_mc": {
-     "char": 646,
-     "export": null,
-     "kind": "sprite",
-     "x_px": 0.0,
-     "y_px": -30.0,
-     "frames": 1,
-     "labels": []
-    },
-    "hud_mc/bottomCenter_mc/returnFlagNotifyTime_mc": {
-     "char": 652,
-     "export": null,
-     "kind": "sprite",
-     "x_px": 0.0,
-     "y_px": -100.0,
-     "frames": 1,
-     "labels": []
-    }
-   },
-   "exported_symbols": {
-    "TnAbilityTransformDisruptor": [
-     "content/UI_GFxHud_p/TnAbilityTransformDisruptor.png"
-    ],
-    "death_TransformDisruptor": [
-     "content/UI_GFxHud_p/death_TransformDisruptor.png"
-    ],
-    "mc_ammoPickupNotification": [],
-    "mc_debugMessageTextLine": [],
-    "mc_gameMessage_default": [],
-    "mc_levelUpNotify": [],
-    "mc_notify": [],
-    "mc_transformDisrupt": [],
-    "mc_tutorialMessage": [],
-    "mc_tutorialMessageTextTutorialPause": []
-   },
-   "observers": [
-    {
-     "class": "TnHudDataObserverSegmentedHealth",
-     "callback": "_global.NotifySegmentedHealthChanged",
-     "props": {
-      "SavedActiveSegment": -1,
-      "SavedNormalizedSegmentHealth": -1.0
-     }
-    },
-    {
-     "class": "TnHudDataObserverNormalizedOverShield",
-     "callback": "_global.NotifyOverShieldChanged",
-     "props": {}
-    },
-    {
-     "class": "TnHudDataObserverNormalizedHeat",
-     "callback": "_global.NotifyNormalizedHeatChanged",
-     "props": {}
-    },
-    {
-     "class": "TnHudDataObserverHeat",
-     "callback": "_global.NotifyHeatChanged",
-     "props": {}
-    },
-    {
-     "class": "TnHudDataObserverWeaponMessage",
-     "callback": "_global.NotifyWeaponMessageChanged",
-     "props": {}
-    },
-    {
-     "class": "TnHudDataObserverHudScrambled",
-     "callback": "_global.NotifyHudScrambledChanged",
-     "props": {
-      "ScrambleHudBuffs": [
-       "TransGame.TnBuffScrambleHud",
-       "TransGame.TnBuffFlashBang",
-       "TransGame.TnBuffDecoyTrap"
-      ]
-     }
-    },
-    {
-     "class": "TnHudDataObserverDamageIndicators",
-     "callback": "_global.NotifyPlayerRotationChanged",
-     "props": {
-      "AddDamageIndicatorBindingName": "_global.NotifyDamageIndicatorAdded"
-     }
-    },
-    {
-     "class": "TnHudDataObserverWeaponSpread",
-     "callback": "_global.NotifyWeaponSpreadChanged",
-     "props": {
-      "ConversionFactor": 1.0
-     }
-    },
-    {
-     "class": "TnHudDataObserverIncreaseDamage",
-     "callback": "_global.NotifyDamageIncrease",
-     "props": {
-      "IncreaseDamageBuffs": [
-       "TransGame.TnBuffIncreaseDamageAfterCloak",
-       "TransGame.TnBuffIncreaseDamageAfterDisguise",
-       "TransGame.TnBuffIncreaseDamageDuringHover",
-       "TransGame.TnBuffWarcryIncreaseDamage",
-       "TransGame.TnBuffIncreaseDamageKillstreak",
-       "TransGame.TnBuffAmmoBeaconIncreaseDamage"
-      ]
-     }
-    },
-    {
-     "class": "TnHudDataObserverContextualCommands",
-     "callback": "_global.NotifyContextualCommand",
-     "props": {}
-    },
-    {
-     "class": "TnHudDataObserverWeaponReticule",
-     "callback": "_global.NotifyWeaponReticuleTypeChanged",
-     "props": {}
-    },
-    {
-     "class": "TnHudDataObserverIsSpectating",
-     "callback": "_global.NotifySpectating",
-     "props": {}
-    },
-    {
-     "class": "TnHudDataObserverAbilityType",
-     "callback": "_global.NotifyAbilityType0Changed",
-     "props": {}
-    },
-    {
-     "class": "TnHudDataObserverAbilityType",
-     "callback": "_global.NotifyAbilityType1Changed",
-     "props": {
-      "AbilityNumber": 1
-     }
-    },
-    {
-     "class": "TnHudDataObserverVehicleAbilityType",
-     "callback": "_global.NotifyAbilityType2Changed",
-     "props": {}
-    },
-    {
-     "class": "TnHudDataObserverWeaponClipAmmo",
-     "callback": "_global.NotifyWeaponClipAmmoChanged",
-     "props": {}
-    },
-    {
-     "class": "TnHudDataObserverWeaponReserveAmmo",
-     "callback": "_global.NotifyWeaponReserveAmmoChanged",
-     "props": {}
-    },
-    {
-     "class": "TnHudDataObserverWeapon",
-     "callback": "_global.NotifyPrimaryWeaponChanged",
-     "props": {
-      "WeaponType": "WT_Primary"
-     }
-    },
-    {
-     "class": "TnHudDataObserverWeapon",
-     "callback": "_global.NotifySecondaryWeaponChanged",
-     "props": {
-      "WeaponType": "WT_Secondary"
-     }
-    },
-    {
-     "class": "TnHudDataObserverWeapon",
-     "callback": "_global.NotifyMeleeWeaponChanged",
-     "props": {
-      "WeaponType": "WT_Melee"
-     }
-    },
-    {
-     "class": "TnHudDataObserverNormalizedDownedHealth",
-     "callback": "_global.NotifyNormalizedDownedHealthChanged",
-     "props": {}
-    },
-    {
-     "class": "TnHudDataObserverLockOnState",
-     "callback": "_global.NotifyLockOnStateChanged",
-     "props": {}
-    },
-    {
-     "class": "TnHudDataObserverTargetType",
-     "callback": "_global.NotifyTargetTypeChanged",
-     "props": {
-      "SavedValue": -1.0
-     }
-    },
-    {
-     "class": "TnHudDataObserverGrenadeAmmo",
-     "callback": "_global.NotifyGrenadeAmmoChanged",
-     "props": {}
-    },
-    {
-     "class": "TnHudDataObserverWeaponJammed",
-     "callback": "_global.NotifyWeaponJammedChanged",
-     "props": {}
-    },
-    {
-     "class": "TnHudDataObserverKillstreak",
-     "callback": "_global.NotifyKillstreakChanged",
-     "props": {}
-    },
-    {
-     "class": "TnHudDataObserverCurrentForm",
-     "callback": "_global.NotifyCurrentFormChanged",
-     "props": {}
-    },
-    {
-     "class": "TnHudDataObserverReviveBuddy",
-     "callback": "_global.NotifyProgressBarChanged",
-     "props": {
-      "RevivingAiLabel": "Reviving",
-      "label": "Reviving `p"
-     }
-    },
-    {
-     "class": "TnHudDataObserverFirstSpawn",
-     "callback": "_global.NotifyFirstSpawn",
-     "props": {}
-    },
-    {
-     "class": "TnHudDataObserverActiveGrenadeCount",
-     "callback": "_global.NotifyActiveGrenadeCount",
-     "props": {}
-    },
-    {
-     "class": "TnHudDataObserverDominationCapture",
-     "callback": "_global.NotifyProgressBarChanged",
-     "props": {
-      "label": "Capturing Node"
-     }
-    },
-    {
-     "class": "TnHudDataObserverBombDefuseTimer",
-     "callback": "_global.NotifyProgressBarChanged",
-     "props": {
-      "label": "Defusing the Bomb"
-     }
-    }
+   "absolute_px": [
+    921.0,
+    119.0
    ],
-   "tnhud_callbacks": {
-    "GameMessageCallBack": "_global.GameMessage",
-    "NotifyLevelUpCallBack": "_global.NotifyLevelUp",
-    "NotifyAmmoAddedCallback": "_global.NotifyAmmoAdded",
-    "NotifyBadConnectionCallback": "_global.NotifyBadConnection",
-    "NotifyCantTransformCallback": "_global.NotifyCantTransform"
-   },
-   "strings (UIText [Hud])": {
-    "TutorialAvailable": {
-     "INT": "Tutorial Online",
-     "FRA": "Initiation en ligne"
-    },
-    "TutorialPause": {
-     "INT": "View in Pause Menu",
-     "FRA": "Afficher le menu Pause"
-    }
-   },
-   "grouping": "HIGH CONFIDENCE (name match); symbol / observer / string existence CONFIRMED AUTHORED DATA"
+   "assettools_anchor": "topRight_mc",
+   "char_exists": true
   },
-  "waves_escalation": {
-   "scaleform_owner": "UI_GFxHud_p/Hud_GFX",
-   "layout_instances": {},
-   "exported_symbols": {
-    "Shockwave": [
-     "content/UI_GFxHud_p/Shockwave.png"
-    ],
-    "Soundwave": [
-     "content/UI_GFxHud_p/Soundwave.png"
-    ],
-    "TnAbilityShockwave": [
-     "content/UI_GFxHud_p/TnAbilityShockwave.png"
-    ],
-    "death_Shockwave": [
-     "content/UI_GFxHud_p/death_Shockwave.png"
-    ],
-    "mc_nextWaveTimer": [],
-    "mc_scoreCoop": [],
-    "mc_scoreCoopPlayerPanel": [
-     "content/UI_GFxHud_p/Hud_GFX_I184.png"
-    ],
-    "mc_scoreSurvival": [],
-    "mc_scoreSurvivalPlayerPanel": [
-     "content/UI_GFxHud_p/Hud_GFX_I180.png",
-     "content/UI_GFxHud_p/death_Shockwave.png"
-    ],
-    "mc_waveIndicator": []
-   },
-   "observers": [],
-   "tnhud_callbacks": {
-    "WaveformDataCallBack": "_global.WaveformData"
-   },
-   "strings (UIText [Hud])": {
-    "NewWaveIn": {
-     "INT": "New Wave In",
-     "FRA": "Nouvelle vague dans"
-    },
-    "Wave": {
-     "INT": "Wave",
-     "FRA": "Vague"
-    },
-    "WaveComplete": {
-     "INT": "Wave Complete",
-     "FRA": "Vague terminée"
-    }
-   },
-   "grouping": "HIGH CONFIDENCE (name match); symbol / observer / string existence CONFIRMED AUTHORED DATA"
+  {
+   "element": "ammo",
+   "controller_char": 600,
+   "anchor": "topRight_mc",
+   "offset": [
+    -20,
+    10
+   ],
+   "absolute_px": [
+    1016.0,
+    64.0
+   ],
+   "assettools_anchor": "topRight_mc",
+   "char_exists": true
+  },
+  {
+   "element": "grenades",
+   "controller_char": 601,
+   "anchor": "topRight_mc",
+   "offset": [
+    10,
+    46
+   ],
+   "absolute_px": [
+    1046.0,
+    100.0
+   ],
+   "assettools_anchor": "topRight_mc",
+   "char_exists": true
+  },
+  {
+   "element": "ability_0",
+   "controller_char": 603,
+   "anchor": "topRight_mc",
+   "offset": [
+    -24,
+    70
+   ],
+   "absolute_px": [
+    1012.0,
+    124.0
+   ],
+   "assettools_anchor": "topRight_mc",
+   "char_exists": true
+  },
+  {
+   "element": "vehicle_ability_2",
+   "controller_char": 605,
+   "anchor": "topRight_mc",
+   "offset": [
+    -24,
+    70
+   ],
+   "absolute_px": [
+    1012.0,
+    124.0
+   ],
+   "assettools_anchor": "topRight_mc",
+   "char_exists": true
+  },
+  {
+   "element": "objective_list",
+   "controller_char": 607,
+   "anchor": "bottomRight_mc",
+   "offset": [
+    -340,
+    -124
+   ],
+   "absolute_px": [
+    696.0,
+    542.0
+   ],
+   "assettools_anchor": "bottomRight_mc",
+   "char_exists": true
+  },
+  {
+   "element": "killstreak",
+   "controller_char": 608,
+   "anchor": "bottomRight_mc",
+   "offset": [
+    -100,
+    -27
+   ],
+   "absolute_px": [
+    936.0,
+    639.0
+   ],
+   "assettools_anchor": "bottomRight_mc",
+   "char_exists": true
+  },
+  {
+   "element": "killstreak_buff",
+   "controller_char": 609,
+   "anchor": "bottomRight_mc",
+   "offset": [
+    -50,
+    -97
+   ],
+   "absolute_px": [
+    986.0,
+    569.0
+   ],
+   "assettools_anchor": "bottomRight_mc",
+   "char_exists": true
+  },
+  {
+   "element": "wave_indicator",
+   "controller_char": 610,
+   "anchor": null,
+   "offset": null,
+   "absolute_px": null,
+   "assettools_anchor": "bottomRight_mc",
+   "char_exists": true
+  },
+  {
+   "element": "crosshair_hit_markers",
+   "controller_char": 621,
+   "anchor": "midCenter_mc",
+   "offset": [
+    0,
+    0
+   ],
+   "absolute_px": [
+    560.0,
+    360.0
+   ],
+   "assettools_anchor": "midCenter_mc",
+   "char_exists": true
+  },
+  {
+   "element": "damage_direction_arrows",
+   "controller_char": 622,
+   "anchor": "midCenter_mc",
+   "offset": [
+    0,
+    0
+   ],
+   "absolute_px": [
+    560.0,
+    360.0
+   ],
+   "assettools_anchor": "midCenter_mc",
+   "char_exists": true
+  },
+  {
+   "element": "score_widget",
+   "controller_char": 633,
+   "anchor": "topCenter_mc",
+   "offset": [
+    0,
+    5
+   ],
+   "absolute_px": [
+    560.0,
+    59.0
+   ],
+   "assettools_anchor": "topCenter_mc",
+   "char_exists": true
+  },
+  {
+   "element": "match_round_clock (countdown_mc)",
+   "controller_char": 632,
+   "anchor": "topCenter_mc",
+   "offset": [
+    0,
+    50
+   ],
+   "absolute_px": [
+    560.0,
+    104.0
+   ],
+   "assettools_anchor": "topCenter_mc",
+   "char_exists": true
+  },
+  {
+   "element": "game_reward_announcements",
+   "controller_char": 638,
+   "anchor": "topCenter_mc",
+   "offset": [
+    0,
+    112
+   ],
+   "absolute_px": [
+    560.0,
+    166.0
+   ],
+   "assettools_anchor": "topCenter_mc",
+   "char_exists": true
+  },
+  {
+   "element": "score_xp_popups",
+   "controller_char": 640,
+   "anchor": "topCenter_mc",
+   "offset": [
+    0,
+    175
+   ],
+   "absolute_px": [
+    560.0,
+    229.0
+   ],
+   "assettools_anchor": "topCenter_mc",
+   "char_exists": true
+  },
+  {
+   "element": "level_up",
+   "controller_char": 643,
+   "anchor": "midRight_mc",
+   "offset": [
+    -80,
+    0
+   ],
+   "absolute_px": [
+    956.0,
+    360.0
+   ],
+   "assettools_anchor": "midRight_mc",
+   "char_exists": true
+  },
+  {
+   "element": "bad_connection",
+   "controller_char": 644,
+   "anchor": "midRight_mc",
+   "offset": [
+    -30,
+    -90
+   ],
+   "absolute_px": [
+    1006.0,
+    270.0
+   ],
+   "assettools_anchor": "midRight_mc",
+   "char_exists": true
+  },
+  {
+   "element": "contextual_prompt (notifyManager_mc)",
+   "controller_char": 646,
+   "anchor": "bottomCenter_mc",
+   "offset": [
+    0,
+    -30
+   ],
+   "absolute_px": [
+    560.0,
+    636.0
+   ],
+   "assettools_anchor": "bottomCenter_mc",
+   "char_exists": true
+  },
+  {
+   "element": "ctf_flag_return_progress",
+   "controller_char": 652,
+   "anchor": "bottomCenter_mc",
+   "offset": [
+    0,
+    -100
+   ],
+   "absolute_px": [
+    560.0,
+    566.0
+   ],
+   "assettools_anchor": "bottomCenter_mc",
+   "char_exists": true
   }
+ ],
+ "element_behaviour_reference": "RE-Workspace/notes/OVERNIGHT_2026-10-04_HUD_VEHICLE_FRONTEND_ROSTER_AI.md section A (A1-A8: health segments 38 px / skew -8 deg / low health <= 0.9; ammo skew +8 deg, ClipSegmentCap 60, low clip 25 %; kill feed 5 rows, 5.0 s + 1.0 s fade, 22 px step; announcements 4.5 s / reward 4.8 s; XP popups 2.0 s / 4.0 s killstreak) - behaviour is RE/Frontend-owned",
+ "spatial_cues (the only directional HUD elements, RE A9 CONFIRMED)": {
+  "damage_direction_arrows": {
+   "symbol": "mc_damageArrow",
+   "controller": 622,
+   "inputs": [
+    "NotifyDamageIndicatorAdded",
+    "NotifyPlayerRotationChanged"
+   ]
+  },
+  "missile_lock_warnings": {
+   "symbols": [
+    "mc_missileWarningVictim",
+    "mc_missileWarningVictimBrackets",
+    "mc_missileWarningVictimInbound",
+    "mc_missileWarningVictimLocked"
+   ],
+   "strings": [
+    "$UIText.Hud.LockDetected",
+    "$UIText.Hud.MissileInbound"
+   ]
+  },
+  "offscreen_objective_arrows": {
+   "owner": "canvas TnObjectiveMarkerType* (OffscreenMarkerSize 0.0625, RotationParam ArrowAngle, DrawWhenOffscreen per type)",
+   "materials": "UI_HudMarkers_p (MarkerAlly / MarkerEnemy / MPMarkerDominationNode / TargetHealthBar)"
+  },
+  "ally_name_tags": {
+   "owner": "canvas TnObjectiveMarkerTypeTransformerVersus (AllyMarkerSetup DrawLabelWhenUnfocused, LabelFont MarkerFont)",
+   "class_specific": "ally health bar on name tags only for Scientist viewers (RE E)"
+  },
+  "enemy_tags": "only via buffs: OrbitalReconStreak (TnBuffSeeEnemyObjectiveMarkers) or HardLock"
  },
  "icon_sets": {
   "characters (export = PCD CharacterName / FriendlyIconicName)": {
@@ -5536,6 +4525,12 @@
    "status": "no shipped movie defines it: the script invoke has no AS target (no-op at runtime unless native handles it) - RE"
   }
  },
- "minimap_radar": "NONE in shipped content - see manifests/hud/minimap_radar_search.json",
+ "minimap_radar": {
+  "verdict": "NONE - shipped WFC multiplayer has no minimap, radar or compass (CONFIRMED, closed; do not add one as \"original\")",
+  "evidence": [
+   "AssetTools manifests/hud/minimap_radar_search.json (cooked objects, every GFx, localization, ini, filenames, decomp)",
+   "RE-Workspace/notes/OVERNIGHT_2026-10-04_HUD_VEHICLE_FRONTEND_ROSTER_AI.md section A A9 (decompiled script, GFx constant pools, authored.db, default.xex strings Radar/MiniMap/Compass/Blip: 0 hits)"
+  ]
+ },
  "confidence": "CONFIRMED AUTHORED DATA (cooked movie + class defaults + bytecode); element grouping HIGH"
 }

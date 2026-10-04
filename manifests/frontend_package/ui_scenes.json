@@ -10450,6 +10450,19 @@
       "SeqEvent_SequenceActivated": 1
      }
     }
+   },
+   "render_index": "VerticalSlice/Maps/UI_FrontEnd/render_index.json",
+   "actor_counts": {
+    "UI_FrontEnd_capture_VIG_m": {
+     "InterpActor": 6,
+     "HmSkeletalMeshActor": 17,
+     "Emitter": 321
+    },
+    "UI_FrontEnd_m": {
+     "InterpActor": 48,
+     "Emitter": 5,
+     "LensFlareSource": 3
+    }
    }
   },
   "UI_PartyLobby": {
@@ -10478,20 +10491,25 @@
    },
    "geometry": {
     "world_glb": "VerticalSlice/Maps/UI_PartyLobby/world.glb",
-    "world_glb_bytes": 172,
-    "placed_props": 0,
-    "unique_meshes": 0,
+    "world_glb_bytes": 19244,
+    "placed_props": 5,
+    "unique_meshes": 5,
     "bsp_render_triangles": {
+     "UI_CharacterCustomization_m": 12,
      "UI_PartyLobby_m": null
     },
     "not_exported_by_vs_map": {
-     "AmbientSound": 1,
-     "BRUSH (builder brushes; geometry lives in level BSP)": 1,
-     "CameraActor": 1,
-     "Model": 1,
-     "Sequence": 1,
-     "TnAssetReferencesMultiplayer": 1,
-     "TnWorldInfo": 1
+     "AmbientSound": 2,
+     "BRUSH (builder brushes; geometry lives in level BSP)": 3,
+     "CameraActor": 2,
+     "FogVolumeConstantDensityInfo": 1,
+     "MaterialInstanceActor": 4,
+     "Model": 2,
+     "PathNode": 2,
+     "Sequence": 2,
+     "SkeletalMeshActor": 2,
+     "TnWorldInfo": 2,
+     "TnAssetReferencesMultiplayer": 1
     }
    },
    "fx": {
@@ -10755,7 +10773,9 @@
       "SeqEvent_RemoteEvent": 1
      }
     }
-   }
+   },
+   "render_index": "VerticalSlice/Maps/UI_PartyLobby/render_index.json",
+   "actor_counts": {}
   },
   "UI_Lobby": {
    "levels": [
@@ -10783,20 +10803,25 @@
    },
    "geometry": {
     "world_glb": "VerticalSlice/Maps/UI_Lobby/world.glb",
-    "world_glb_bytes": 168,
-    "placed_props": 0,
-    "unique_meshes": 0,
+    "world_glb_bytes": 19240,
+    "placed_props": 5,
+    "unique_meshes": 5,
     "bsp_render_triangles": {
+     "UI_CharacterCustomization_m": 12,
      "UI_Lobby_m": null
     },
     "not_exported_by_vs_map": {
-     "AmbientSound": 1,
-     "BRUSH (builder brushes; geometry lives in level BSP)": 1,
-     "CameraActor": 1,
-     "Model": 1,
-     "Sequence": 1,
-     "TnAssetReferencesMultiplayer": 1,
-     "TnWorldInfo": 1
+     "AmbientSound": 2,
+     "BRUSH (builder brushes; geometry lives in level BSP)": 3,
+     "CameraActor": 2,
+     "FogVolumeConstantDensityInfo": 1,
+     "MaterialInstanceActor": 4,
+     "Model": 2,
+     "PathNode": 2,
+     "Sequence": 2,
+     "SkeletalMeshActor": 2,
+     "TnWorldInfo": 2,
+     "TnAssetReferencesMultiplayer": 1
     }
    },
    "fx": {
@@ -11059,7 +11084,9 @@
       "SeqEvent_RemoteEvent": 1
      }
     }
-   }
+   },
+   "render_index": "VerticalSlice/Maps/UI_Lobby/render_index.json",
+   "actor_counts": {}
   },
   "UI_CampaignLobby": {
    "levels": [
@@ -11350,7 +11377,9 @@
       "SeqAct_PlayMusic": 1
      }
     }
-   }
+   },
+   "render_index": "VerticalSlice/Maps/UI_CampaignLobby/render_index.json",
+   "actor_counts": {}
   },
   "UI_CharacterCustomization": {
    "levels": [
@@ -12749,6 +12778,12 @@
       "SeqVar_External": 4
      }
     }
+   },
+   "render_index": "VerticalSlice/Maps/UI_CharacterCustomization/render_index.json",
+   "actor_counts": {
+    "UI_CharacterCustomization_m": {
+     "SkeletalMeshActor": 2
+    }
    }
   }
  },
@@ -12775,10 +12810,10 @@
    "background": "same customization room; GameLobby_GFX map display uses MapInfo.ImagePath thumbnails",
    "black_is": "as party lobby"
   },
-  "campaign lobby": {
-   "scene": "UI_CampaignLobby_m (12 BSP triangles + 1 prop; its LevelStreamingState lists no level)",
-   "background": "essentially empty 3D scene: the screen is carried by the GFx movie (CampaignSelect / GameLobby art)",
-   "black_is": "largely authored - verify against footage (UNKNOWN)"
+  "campaign / escalation lobby": {
+   "scene": "UI_CampaignLobby_m: SpaceDome static mesh (UI_LobbyMaterials_p.SpaceDome_STAT) + BSP; no streaming",
+   "background": "authored space-dome scene (agrees with RE OVERNIGHT_2026-10-04 D)",
+   "black_is": "an omission"
   },
   "loading": {
    "scene": null,
@@ -12787,7 +12822,7 @@
   },
   "pause / match end / respawn": {
    "scene": "the gameplay map",
-   "background": "PauseMenu / EndGameStats / MultiplayerRespawn GFx over the live map",
+   "background": "PauseMenu over the live match (no world pause in MP); EndGameStats over the frozen match world (RoundEnded, death camera); MultiplayerRespawn over the spectated world",
    "black_is": "an omission (map not rendered behind)"
   }
  },

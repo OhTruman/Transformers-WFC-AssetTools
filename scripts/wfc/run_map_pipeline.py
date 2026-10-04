@@ -13,7 +13,9 @@ import argparse, os, subprocess, sys, time
 HERE = os.path.dirname(os.path.abspath(__file__))
 AT = os.path.normpath(os.path.join(HERE, '..', '..'))
 STAGES = [['vs_map.py', '{M}'], ['vs_lighting.py', '{M}'], ['vs_postprocess.py', '{M}'], ['vs_navigation.py', '{M}'],
-          ['m04_lightmap_atlases.py', '{M}'], ['vs_lightmap.py', '{M}'], ['vs_materials.py', '{M}'], ['vs_props.py', '{M}'],
+          # lightmaps.json -> atlas PNGs -> rebind (atlas export needs lightmaps.json first)
+          ['vs_lightmap.py', '{M}'], ['m04_lightmap_atlases.py', '{M}'], ['vs_lightmap.py', '{M}'],
+          ['vs_materials.py', '{M}'], ['vs_props.py', '{M}'],
           ['vs_collision.py', '{M}'], ['vs_physics.py', '{M}'], ['vs_gameplay.py', '{M}'], ['vs_audio.py', '{M}'], ['vs_mapfx.py', '{M}'],
           ['m04_inventory.py', '{M}'], ['validate_smca_transforms.py', '--map', '{M}'], ['vs_validate.py', '{M}'], ['map_complete.py', '{M}']]
 

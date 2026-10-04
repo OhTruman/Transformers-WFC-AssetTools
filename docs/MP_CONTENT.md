@@ -158,3 +158,32 @@ extra melee).
   * the iconic loadout with weapon glTFs;
   * sockets, voice set, cameras, stats.
 * **Validation:** all bundle files exist. Tank and Truck carry the known ankle-bone partial in the shared death set.
+
+## Canonical roster package (`roster_package.json`, `scripts/wfc/mp_roster_package.py`, 2026-10-04)
+* **Keyed by RE chassis ids** from `RE-Workspace/notes/data/mp_chassis_roster.json` (read-only), with RE
+  `OVERNIGHT_2026-10-04` §E as the identity evidence.
+* **Cross-check against RE.** Every RE field is compared with the AssetTools extraction: 33 chassis, **0 mismatches**. The 21
+  fields RE leaves `null` (size, vehicle damage multiplier) are values inherited from the class default (`Default__TnTransformer`);
+  they are labelled as such.
+* **Default four classes** (`TR_MPPlayerCharacterData_p`), identical to RE:
+
+| class | Autobot | Decepticon |
+|---|---|---|
+| Leader | Truck3 Ironhide | Truck4 Soundwave |
+| Scientist | Jet4 Air Raid | Jet Starscream |
+| Scout | Car2 Sideswipe | Car4 Barricade |
+| Soldier | Tank3 Warpath | Tank2 Brawl |
+
+* **What each chassis carries:**
+  * robot and vehicle meshes, glTFs, skeleton signatures, physics, anim tree, anim sets, material slots, extra materials;
+  * **transform clips**: `Transform_ToVehicle/ToRobot_ROBO` on the robot mesh, `_VEH` on the vehicle mesh, plus ability-form
+    clips (Hover, Whirlwind, ShieldPush …);
+  * clip counts by category and bone-level animation compatibility;
+  * **resolved stats**: ROBODEF / VEHDEF scalars, `SharedHealth` (segments 175/125/125/125, overshield 550), momentum,
+    acrobatics, hover/car physics, class speed multiplier;
+  * portraits, class icon, iconic loadout, provider-allowed weapons, abilities and audio.
+* **Locks / unlocks:** native unlock rules are not guessed. Only the two script-proven unlocks (Arcee, Slipstream) are recorded.
+* **Correction:** the customization preview actors are Sideswipe and Barricade (`RB_*WeaponArm_SKEL`). Their `RB_Ratchet_SKEL`
+  tag is a stale editor label.
+* **Correction:** MP maps carry only a ReachSpec graph (Streets 426, Gorge 738), with no PathNode or tactical data. Original-AI
+  bots would need new navigation data. Agrees with RE §F.

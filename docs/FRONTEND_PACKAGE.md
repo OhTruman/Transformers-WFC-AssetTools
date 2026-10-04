@@ -138,3 +138,25 @@ to open packages or scan the asset tree. The shipped game is the specification; 
 * `create_character`: CustomTransformers plus the customization scene.
 
 Each lists the movies that load it. Backgrounds per screen are in `ui_scenes.json`.
+
+## Runtime-ready UI scenes (map contract, 2026-10-04)
+Each UI scene folder `ExtractedAssets/VerticalSlice/Maps/<scene>/` now has:
+* `world.glb`, collision, `lightmaps.json` plus atlas PNGs, `materials*.json`, `map_fx.json`, `lighting.json`,
+  `postprocess.json`, `props*.json`;
+* **`render_index.json`**, which lists every actor a Matinee or Kismet sequence drives, by name:
+  * InterpActors, whose `world_glb_node` is the node name in `world.glb`;
+  * skeletal actors as glTF plus anim sets plus matrix (they are not in `world.glb`);
+  * emitters with template and matrix;
+  * lens flares;
+  * fog, post-process, cameras and Matinee tracks.
+
+| scene | levels | actors |
+|---|---|---|
+| `UI_FrontEnd` | `UI_FrontEnd_m` + streamed `UI_FrontEnd_capture_VIG_m` | front end: 48 InterpActors, 5 emitters, 3 lens flares; vignette: 6 InterpActors, 17 HmSkeletalMeshActors (SoldierJet fly-bys), 321 emitters; 8 lightmapped props |
+| `UI_CharacterCustomization` | `UI_CharacterCustomization_m` | SpaceDome, CybertronCards, 2 preview SkeletalMeshActors (Sideswipe, Barricade) |
+| `UI_PartyLobby`, `UI_Lobby` | lobby level + streamed `UI_CharacterCustomization_m` (via authored LevelStreaming) | as customization |
+| `UI_CampaignLobby` | `UI_CampaignLobby_m` | SpaceDome + BSP (authored space-dome scene) |
+
+**Verdict corrections**, agreeing with RE D:
+* The campaign/escalation lobby is the authored space-dome scene. **Black there is an omission.**
+* Pause is shown over the live match, and results over the frozen match world.
