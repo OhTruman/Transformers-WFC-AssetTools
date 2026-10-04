@@ -1,0 +1,254 @@
+{
+ "generated_by": "AssetTools/scripts/wfc/hud_radar_search.py",
+ "pattern": "radar|minimap|mini_map|compass|blip|scanner|overhead|tacticalmap|tactical_map|mapdisplay|map_display|mapicon|worldmap",
+ "conclusion": "NO multiplayer minimap / radar / compass / blip content exists in the shipped data. Hits are unrelated: ambient sound cues and waves (scanner probes, ships overhead), campaign props (hospital scanner, ENV_IAC_HoloMap mapOverhead_STAT), a laser-scanner FX, engine Volume.Encompasses* functions, and GameLobby_GFX mc_mapDisplay (the lobby map preview). Enemy awareness in MP is the canvas objective-marker system: Orbital Recon killstreaks add TnBuffSeeEnemyObjectiveMarkers (team buff). [TransGame.TnRadarTargetTracker] _MaxDistance=20000 is a config section for a class with no cooked export (no script, no data) - UNKNOWN, not a radar widget. CONFIRMED negative for RE / Rendering / Frontend.",
+ "hit_counts": {
+  "cooked_objects": 46,
+  "gfx_exports": 1,
+  "gfx_strings": 2,
+  "config_and_localization": 1,
+  "extracted_files": 20,
+  "script_functions": 6
+ },
+ "hits": {
+  "cooked_objects": [
+   {
+    "object": "A1_IAC_Strts1_Vig_m.TheWorld.PersistentLevel.Main_Sequence.Destroy_JetsOverhead",
+    "class": "Sequence"
+   },
+   {
+    "object": "BL_LVL_COR_D2_AMB.EMIT_SCANNER_PROBE_ARM_01",
+    "class": "SoundCue"
+   },
+   {
+    "object": "BL_LVL_COR_D2_AMB.EMIT_SCANNER_PROBE_ARM_02",
+    "class": "SoundCue"
+   },
+   {
+    "object": "BL_LVL_COR_D2_AMB.EMIT_SCANNER_PROBE_ARM_03",
+    "class": "SoundCue"
+   },
+   {
+    "object": "BL_LVL_COR_D2_AMB.EMIT_SCANNER_PROBE_ARM_04",
+    "class": "SoundCue"
+   },
+   {
+    "object": "BL_LVL_COR_D2_AMB.EMIT_SCANNER_PROBE_ARM_05",
+    "class": "SoundCue"
+   },
+   {
+    "object": "BL_LVL_COR_D2_AMB.EMIT_SCANNER_PROBE_ARM_06",
+    "class": "SoundCue"
+   },
+   {
+    "object": "BL_LVL_COR_D2_AMB.EMIT_SCANNER_PROBE_ARM_IN",
+    "class": "SoundCue"
+   },
+   {
+    "object": "BL_LVL_COR_D2_AMB.EMIT_SCANNER_PROBE_ARM_OUT",
+    "class": "SoundCue"
+   },
+   {
+    "object": "BL_LVL_COR_D2_AMB.EMIT_SCANNER_PROBE_BOOST_LP",
+    "class": "SoundCue"
+   },
+   {
+    "object": "BL_LVL_COR_D2_AMB.EMIT_SCANNER_PROBE_LP",
+    "class": "SoundCue"
+   },
+   {
+    "object": "BL_LVL_COR_D2_AMB.EMIT_SCANNER_PROBE_VOX",
+    "class": "SoundCue"
+   },
+   {
+    "object": "BL_LVL_COR_D2_AMB.EMIT_SCANNER_PROBE_VOX_ALERT",
+    "class": "SoundCue"
+   },
+   {
+    "object": "BL_LVL_IAC_A1_EVENT.ALLEY_MEDIUM_SHIPS_OVERHEAD",
+    "class": "SoundCue"
+   },
+   {
+    "object": "BL_LVL_IAC_A1_EVENT.STREETS_01_DROPSHIP_OVERHEAD",
+    "class": "SoundCue"
+   },
+   {
+    "object": "BL_LVL_IAC_A1_EVENT.STREETS_01_MEDIUM_SHIPS_OVERHEAD",
+    "class": "SoundCue"
+   },
+   {
+    "object": "BL_LVL_MP_IAC_RUST.EMIT_COMPUTER_HOSPITAL_SCANNER",
+    "class": "SoundCue"
+   },
+   {
+    "object": "BL_LVL_ORB_A4_EVENT.EVENT_ORB_TRANSPORT_OVERHEAD",
+    "class": "SoundCue"
+   },
+   {
+    "object": "BL_LVL_TRY_A5_EVENT.INTRO_CINE_TRYP_PLUMMET_OVERHEAD",
+    "class": "SoundCue"
+   },
+   {
+    "object": "ENV_IAC_HoloMap_p.StaticMesh.mapOverhead_STAT",
+    "class": "StaticMesh"
+   },
+   {
+    "object": "Engine.Volume.EncompassesActorLocation",
+    "class": "Function"
+   },
+   {
+    "object": "Engine.Volume.EncompassesAxisAlignedBox",
+    "class": "Function"
+   },
+   {
+    "object": "Engine.Volume.EncompassesPoint",
+    "class": "Function"
+   },
+   {
+    "object": "FX_Materials_p.Materials.LaserScanner_MAT",
+    "class": "Material"
+   },
+   {
+    "object": "FX_Mesh_p.LaserScanner_STATMESH",
+    "class": "StaticMesh"
+   },
+   {
+    "object": "FX_Transformers_p.FX.LaserScanner_FX",
+    "class": "ParticleSystem"
+   },
+   {
+    "object": "HM_Engine.HmStatisticsNetworkPerformanceTable.HmNetworkPerformanceSample.PercentInOverhead",
+    "class": "IntProperty"
+   },
+   {
+    "object": "HM_Engine.HmStatisticsNetworkPerformanceTable.HmNetworkPerformanceSample.PercentOutOverhead",
+    "class": "IntProperty"
+   },
+   {
+    "object": "PROP_IAC_HospitalProps_p.Scanner",
+    "class": "Package"
+   },
+   {
+    "object": "PROP_IAC_HospitalProps_p.Scanner.PROP_HospitalScanner_MATINST",
+    "class": "MaterialInstanceConstant"
+   },
+   {
+    "object": "PROP_IAC_HospitalProps_p.Scanner.PROP_HospitalScanner_Off_MATINST",
+    "class": "MaterialInstanceConstant"
+   },
+   {
+    "object": "PROP_IAC_HospitalProps_p.Scanner.PROP_IAC_HospitalScanner_CLR",
+    "class": "Texture2D"
+   },
+   {
+    "object": "PROP_IAC_HospitalProps_p.Scanner.PROP_IAC_HospitalScanner_CLR_TEXSET",
+    "class": "TextureSet"
+   },
+   {
+    "object": "PROP_IAC_HospitalProps_p.Scanner.PROP_IAC_HospitalScanner_CLR_TEXSET.PROP_IAC_HospitalScanner_CLR_TEXSET_Color_NormX",
+    "class": "Texture2D"
+   },
+   {
+    "object": "PROP_IAC_HospitalProps_p.Scanner.PROP_IAC_HospitalScanner_CLR_TEXSET.PROP_IAC_HospitalScanner_CLR_TEXSET_Masks_NormY",
+    "class": "Texture2D"
+   },
+   {
+    "object": "PROP_IAC_HospitalProps_p.Scanner.PROP_IAC_HospitalScanner_MASK",
+    "class": "Texture2D"
+   },
+   {
+    "object": "PROP_IAC_HospitalProps_p.Scanner.PROP_IAC_HospitalScanner_NORM",
+    "class": "Texture2D"
+   },
+   {
+    "object": "PROP_IAC_HospitalProps_p.Scanner.PROP_IAC_HospitalScanner_STAT",
+    "class": "StaticMesh"
+   },
+   {
+    "object": "TransGame.TnHotSpotVolume.VolumeEncompassesLocation",
+    "class": "Function"
+   },
+   {
+    "object": "TransGame.TnTacticalVolume.VolumeEncompassesLocation",
+    "class": "Function"
+   },
+   {
+    "object": "TransGame.TnVehicleForm._EncompassCylinderRadius",
+    "class": "FloatProperty"
+   },
+   {
+    "object": "TransGame.TnVehicleForm.get_EncompassCylinderRadius",
+    "class": "Function"
+   },
+   {
+    "object": "WL_AMB_SYNTH.AMB_SYNTH_SCANNER_BEAM",
+    "class": "SoundNodeWaveEx"
+   },
+   {
+    "object": "WL_ELEC.ELEC_SCANNER_BEAM_LP",
+    "class": "SoundNodeWaveEx"
+   },
+   {
+    "object": "WL_PLANE.PLANE_JET_ENGINE_OVERHEAD",
+    "class": "SoundNodeWaveEx"
+   },
+   {
+    "object": "WL_PLANE.PLANE_JET_WASH_OVERHEAD_FLANGE_01",
+    "class": "SoundNodeWaveEx"
+   }
+  ],
+  "gfx_exports": [
+   {
+    "movie": "content/UI_GFxLobbies_p/GameLobby_GFX.gfx",
+    "export": "mc_mapDisplay"
+   }
+  ],
+  "gfx_strings": [
+   {
+    "movie": "content/UI_GFxLobbies_p/GameLobby_GFX.gfx",
+    "string": "mapDisplay_mc"
+   },
+   {
+    "movie": "content/UI_GFxLobbies_p/GameLobby_GFX.gfx",
+    "string": "mc_mapDisplay"
+   }
+  ],
+  "config_and_localization": [
+   {
+    "file": "config/Coalesced_ini/TransGame/Config/Xenon/Cooked/Xe-TransGame.ini",
+    "line": 525,
+    "text": "[TransGame.TnRadarTargetTracker]"
+   }
+  ],
+  "extracted_files": [
+   "content/ENV_IAC_HoloMap_p/StaticMesh/mapOverhead_STAT.bin",
+   "content/ENV_IAC_HoloMap_p/StaticMesh/mapOverhead_STAT.gltf",
+   "content/FX_Mesh_p/LaserScanner_STATMESH.bin",
+   "content/FX_Mesh_p/LaserScanner_STATMESH.gltf",
+   "content/PROP_IAC_HospitalProps_p/Scanner/PROP_HospitalScanner_MATINST.mat",
+   "content/PROP_IAC_HospitalProps_p/Scanner/PROP_HospitalScanner_MATINST.props.txt",
+   "content/PROP_IAC_HospitalProps_p/Scanner/PROP_HospitalScanner_Off_MATINST.mat",
+   "content/PROP_IAC_HospitalProps_p/Scanner/PROP_HospitalScanner_Off_MATINST.props.txt",
+   "content/PROP_IAC_HospitalProps_p/Scanner/PROP_IAC_HospitalScanner_STAT.bin",
+   "content/PROP_IAC_HospitalProps_p/Scanner/PROP_IAC_HospitalScanner_STAT.gltf",
+   "content/PROP_IAC_HospitalProps_p/Scanner/PROP_IAC_HospitalScanner_CLR_TEXSET/PROP_IAC_HospitalScanner_CLR_TEXSET_Color_NormX.png",
+   "content/PROP_IAC_HospitalProps_p/Scanner/PROP_IAC_HospitalScanner_CLR_TEXSET/PROP_IAC_HospitalScanner_CLR_TEXSET_Masks_NormY.png",
+   "content/WL_AMB_SYNTH/AMB_SYNTH_SCANNER_BEAM.fsb",
+   "content/WL_AMB_SYNTH/AMB_SYNTH_SCANNER_BEAM.wav",
+   "content/WL_ELEC/ELEC_SCANNER_BEAM_LP.fsb",
+   "content/WL_ELEC/ELEC_SCANNER_BEAM_LP.wav",
+   "content/WL_PLANE/PLANE_JET_ENGINE_OVERHEAD.fsb",
+   "content/WL_PLANE/PLANE_JET_ENGINE_OVERHEAD.wav",
+   "content/WL_PLANE/PLANE_JET_WASH_OVERHEAD_FLANGE_01.fsb",
+   "content/WL_PLANE/PLANE_JET_WASH_OVERHEAD_FLANGE_01.wav"
+  ],
+  "script_functions": [
+   "function Volume.EncompassesActorLocation  (script 7 bytes)",
+   "function Volume.EncompassesPoint  (script 7 bytes)",
+   "function Volume.EncompassesAxisAlignedBox  (script 12 bytes)",
+   "function TnHotSpotVolume.VolumeEncompassesLocation  (script 32 bytes)",
+   "function TnTacticalVolume.VolumeEncompassesLocation  (script 32 bytes)",
+   "function TnVehicleForm.get_EncompassCylinderRadius  (script 13 bytes)"
+  ]
+ }
+}

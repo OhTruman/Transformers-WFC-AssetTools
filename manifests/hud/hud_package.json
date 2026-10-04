@@ -1,0 +1,5541 @@
+{
+ "generated_by": "AssetTools/scripts/wfc/hud_package.py",
+ "ownership": {
+  "scaleform": "UI_GFxHud_p.Hud_GFX_1 (TnHUD.HudMovie) - all HUD widgets except world markers",
+  "canvas": "objective / player markers: TnObjectiveMarkerTypeTransformerVersus / TnObjectiveMarkerTypeDomination (materials in UI_HudMarkers_p, font UI_TransEngineFonts_p.MarkerFont); TnHUD console messages (ConsoleFontSize, ConsoleMessagePosY, HudCanvasScale)",
+  "other_movies": {
+   "HudMovie": "UI_GFxHud_p.Hud_GFX_1",
+   "ScoreboardMovie": "UI_GFxInGameStats_p.InGameStats_GFX_1",
+   "InGameLobbyUI": "UI_GFxCustomize_p.CustomTransformers_GFX_1",
+   "GameStartUI": "UI_GFxPreGameCountdown_p.PreGameCountdown_GFX_1",
+   "PauseUI": "UI_GFxPause_p.PauseMenu_GFX_1",
+   "SpectatingUI": "UI_GFxRespawn_p.MultiplayerRespawn_GFX_1",
+   "EndGameUI": "UI_GFxEndGameStats_p.EndGameStats_GFX_1",
+   "MessageBoxUI": "UI_GFxShared_p.MessagePrompt_GFX_1",
+   "NotificationPopupUI": "UI_GFxOnlineNotifies_p.OnlineNotify_GFX_1",
+   "MouseCursorUI": "UI_GFxMouseCursor_p.Cursor_GFX_1",
+   "TextPopupUI": "UI_GFxShared_p.TextPrompt_GFX_1"
+  }
+ },
+ "stage": {
+  "width_px": 1120.0,
+  "height_px": 720.0
+ },
+ "layout (Hud_GFX named-instance tree, px = twips/20)": {
+  "incapacitated_mc": {
+   "char": 559,
+   "export": null,
+   "children": {}
+  },
+  "hud_mc": {
+   "char": 654,
+   "export": null,
+   "children": {
+    "zoomScopeAttachPoint_mc": {
+     "char": 560,
+     "export": null,
+     "kind": "sprite",
+     "frame": 0,
+     "x_px": 560.0,
+     "y_px": 360.0,
+     "frames": 1,
+     "labels": []
+    },
+    "topLeft_mc": {
+     "char": 590,
+     "export": null,
+     "kind": "sprite",
+     "frame": 0,
+     "x_px": 84.0,
+     "y_px": 54.0,
+     "frames": 1,
+     "labels": [],
+     "children": {
+      "#572": {
+       "char": 572,
+       "export": null,
+       "kind": "sprite",
+       "frame": 0,
+       "x_px": 20.0,
+       "y_px": 10.0,
+       "frames": 1,
+       "labels": [],
+       "children": {
+        "background_mc": {
+         "char": 565,
+         "export": null,
+         "kind": "sprite",
+         "frame": 0,
+         "x_px": 0.0,
+         "y_px": 0.0,
+         "frames": 1,
+         "labels": [],
+         "children": {
+          "lower_mc": {
+           "char": 562,
+           "export": null,
+           "kind": "sprite",
+           "frame": 0,
+           "x_px": -22.0,
+           "y_px": 11.0,
+           "frames": 1,
+           "labels": []
+          },
+          "upper_mc": {
+           "char": 564,
+           "export": null,
+           "kind": "sprite",
+           "frame": 0,
+           "x_px": -22.0,
+           "y_px": 0.0,
+           "frames": 1,
+           "labels": []
+          }
+         }
+        },
+        "healthBarAnchor_mc": {
+         "char": 566,
+         "export": null,
+         "kind": "sprite",
+         "frame": 0,
+         "x_px": 0.0,
+         "y_px": 0.0,
+         "frames": 1,
+         "labels": []
+        },
+        "lowHealthFlash_mc": {
+         "char": 567,
+         "export": null,
+         "kind": "sprite",
+         "frame": 0,
+         "x_px": -7.0,
+         "y_px": 0.0,
+         "frames": 12,
+         "labels": [
+          "loop"
+         ],
+         "children": {
+          "#368": {
+           "char": 368,
+           "export": null,
+           "kind": "sprite",
+           "frame": 0,
+           "x_px": 0.0,
+           "y_px": 0.0,
+           "frames": 1,
+           "labels": []
+          }
+         }
+        },
+        "overshieldBar_mc": {
+         "char": 568,
+         "export": null,
+         "kind": "sprite",
+         "frame": 0,
+         "x_px": 0.0,
+         "y_px": 0.0,
+         "frames": 1,
+         "labels": [],
+         "children": {
+          "background_mc": {
+           "char": 210,
+           "export": null,
+           "kind": "sprite",
+           "frame": 0,
+           "x_px": 0.0,
+           "y_px": 0.0,
+           "frames": 1,
+           "labels": []
+          },
+          "bar_mc": {
+           "char": 210,
+           "export": null,
+           "kind": "sprite",
+           "frame": 0,
+           "x_px": 0.0,
+           "y_px": 0.0,
+           "frames": 1,
+           "labels": []
+          },
+          "highlight_mc": {
+           "char": 213,
+           "export": null,
+           "kind": "sprite",
+           "frame": 0,
+           "x_px": -7.0,
+           "y_px": 0.0,
+           "frames": 1,
+           "labels": []
+          }
+         }
+        },
+        "icon_mc": {
+         "char": 570,
+         "export": null,
+         "kind": "sprite",
+         "frame": 0,
+         "x_px": -11.0,
+         "y_px": 0.0,
+         "frames": 12,
+         "labels": [
+          "loop"
+         ]
+        },
+        "healthNumber_txt": {
+         "char": 571,
+         "export": null,
+         "kind": "text",
+         "frame": 0,
+         "x_px": 2.0,
+         "y_px": 10.0,
+         "text": {
+          "font": 263,
+          "height_twips": 320,
+          "color_rgba": [
+           255,
+           255,
+           255,
+           255
+          ],
+          "align": 0,
+          "initial_text": "<p align=\"left\"></p>",
+          "variable": ""
+         }
+        }
+       }
+      },
+      "#573": {
+       "char": 573,
+       "export": null,
+       "kind": "sprite",
+       "frame": 0,
+       "x_px": 15.0,
+       "y_px": 130.0,
+       "frames": 1,
+       "labels": []
+      },
+      "#588": {
+       "char": 588,
+       "export": null,
+       "kind": "sprite",
+       "frame": 0,
+       "x_px": 24.0,
+       "y_px": 70.0,
+       "frames": 1,
+       "labels": [],
+       "children": {
+        "ability_mc": {
+         "char": 583,
+         "export": null,
+         "kind": "sprite",
+         "frame": 0,
+         "x_px": 0.0,
+         "y_px": 0.0,
+         "frames": 1,
+         "labels": [],
+         "children": {
+          "background_mc": {
+           "char": 577,
+           "export": null,
+           "kind": "sprite",
+           "frame": 0,
+           "x_px": 0.0,
+           "y_px": 0.0,
+           "frames": 1,
+           "labels": []
+          },
+          "cooldownMask_mc": {
+           "char": 578,
+           "export": null,
+           "kind": "sprite",
+           "frame": 0,
+           "x_px": 0.0,
+           "y_px": 32.0,
+           "frames": 1,
+           "labels": []
+          },
+          "cooldown_mc": {
+           "char": 579,
+           "export": null,
+           "kind": "sprite",
+           "frame": 0,
+           "x_px": 0.0,
+           "y_px": 0.0,
+           "frames": 20,
+           "labels": [
+            "loop"
+           ]
+          },
+          "jammed_mc": {
+           "char": 582,
+           "export": null,
+           "kind": "sprite",
+           "frame": 0,
+           "x_px": 0.0,
+           "y_px": 0.0,
+           "frames": 9,
+           "labels": [],
+           "children": {
+            "#581": {
+             "char": 581,
+             "export": null,
+             "kind": "sprite",
+             "frame": 0,
+             "x_px": 0.0,
+             "y_px": 0.0,
+             "frames": 1,
+             "labels": []
+            }
+           }
+          }
+         }
+        },
+        "highlight_mc": {
+         "char": 586,
+         "export": null,
+         "kind": "sprite",
+         "frame": 0,
+         "x_px": 0.0,
+         "y_px": 0.0,
+         "frames": 20,
+         "labels": [],
+         "children": {
+          "#213": {
+           "char": 213,
+           "export": null,
+           "kind": "sprite",
+           "frame": 1,
+           "x_px": 0.0,
+           "y_px": 30.0,
+           "frames": 1,
+           "labels": []
+          }
+         }
+        },
+        "label_txt": {
+         "char": 587,
+         "export": null,
+         "kind": "text",
+         "frame": 0,
+         "x_px": -24.0,
+         "y_px": -28.0,
+         "text": {
+          "font": 263,
+          "height_twips": 280,
+          "color_rgba": [
+           255,
+           255,
+           255,
+           255
+          ],
+          "align": 0,
+          "initial_text": "<p align=\"left\"></p>",
+          "variable": ""
+         }
+        }
+       }
+      },
+      "#589": {
+       "char": 589,
+       "export": null,
+       "kind": "sprite",
+       "frame": 0,
+       "x_px": 20.0,
+       "y_px": 20.0,
+       "frames": 1,
+       "labels": []
+      }
+     }
+    },
+    "bottomLeft_mc": {
+     "char": 592,
+     "export": null,
+     "kind": "sprite",
+     "frame": 0,
+     "x_px": 84.0,
+     "y_px": 666.0,
+     "frames": 1,
+     "labels": [],
+     "children": {
+      "#591": {
+       "char": 591,
+       "export": null,
+       "kind": "sprite",
+       "frame": 0,
+       "x_px": 0.0,
+       "y_px": -40.0,
+       "frames": 1,
+       "labels": []
+      },
+      "#589": {
+       "char": 589,
+       "export": null,
+       "kind": "sprite",
+       "frame": 0,
+       "x_px": 20.0,
+       "y_px": -20.0,
+       "frames": 1,
+       "labels": []
+      }
+     }
+    },
+    "topRight_mc": {
+     "char": 606,
+     "export": null,
+     "kind": "sprite",
+     "frame": 0,
+     "x_px": 1036.0,
+     "y_px": 54.0,
+     "frames": 1,
+     "labels": [],
+     "children": {
+      "#593": {
+       "char": 593,
+       "export": null,
+       "kind": "sprite",
+       "frame": 0,
+       "x_px": -115.0,
+       "y_px": 65.0,
+       "frames": 1,
+       "labels": []
+      },
+      "#600": {
+       "char": 600,
+       "export": null,
+       "kind": "sprite",
+       "frame": 0,
+       "x_px": -20.0,
+       "y_px": 10.0,
+       "frames": 1,
+       "labels": [],
+       "children": {
+        "background_mc": {
+         "char": 565,
+         "export": null,
+         "kind": "sprite",
+         "frame": 0,
+         "x_px": 0.0,
+         "y_px": 0.0,
+         "frames": 1,
+         "labels": [],
+         "children": {
+          "lower_mc": {
+           "char": 562,
+           "export": null,
+           "kind": "sprite",
+           "frame": 0,
+           "x_px": -22.0,
+           "y_px": 11.0,
+           "frames": 1,
+           "labels": []
+          },
+          "upper_mc": {
+           "char": 564,
+           "export": null,
+           "kind": "sprite",
+           "frame": 0,
+           "x_px": -22.0,
+           "y_px": 0.0,
+           "frames": 1,
+           "labels": []
+          }
+         }
+        },
+        "ammoBarAnchor_mc": {
+         "char": 594,
+         "export": null,
+         "kind": "sprite",
+         "frame": 0,
+         "x_px": 0.0,
+         "y_px": 0.0,
+         "frames": 1,
+         "labels": []
+        },
+        "icon_mc": {
+         "char": 596,
+         "export": null,
+         "kind": "sprite",
+         "frame": 0,
+         "x_px": 11.0,
+         "y_px": 0.0,
+         "frames": 12,
+         "labels": [
+          "loop"
+         ]
+        },
+        "ammoNumber_txt": {
+         "char": 597,
+         "export": null,
+         "kind": "text",
+         "frame": 0,
+         "x_px": -38.0,
+         "y_px": 10.0,
+         "text": {
+          "font": 263,
+          "height_twips": 320,
+          "color_rgba": [
+           255,
+           255,
+           255,
+           255
+          ],
+          "align": 1,
+          "initial_text": "<p align=\"right\"></p>",
+          "variable": ""
+         }
+        },
+        "currentWeapon_mc": {
+         "char": 599,
+         "export": null,
+         "kind": "sprite",
+         "frame": 0,
+         "x_px": 0.0,
+         "y_px": 0.0,
+         "frames": 1,
+         "labels": [],
+         "children": {
+          "iconAnchor_mc": {
+           "char": 598,
+           "export": null,
+           "kind": "sprite",
+           "frame": 0,
+           "x_px": -115.0,
+           "y_px": 30.0,
+           "frames": 1,
+           "labels": []
+          },
+          "textAnchor_mc": {
+           "char": 598,
+           "export": null,
+           "kind": "sprite",
+           "frame": 0,
+           "x_px": -2.0,
+           "y_px": -30.0,
+           "frames": 1,
+           "labels": []
+          }
+         }
+        }
+       }
+      },
+      "#601": {
+       "char": 601,
+       "export": null,
+       "kind": "sprite",
+       "frame": 0,
+       "x_px": 10.0,
+       "y_px": 46.0,
+       "frames": 1,
+       "labels": []
+      },
+      "#603": {
+       "char": 603,
+       "export": null,
+       "kind": "sprite",
+       "frame": 0,
+       "x_px": -24.0,
+       "y_px": 70.0,
+       "frames": 1,
+       "labels": [],
+       "children": {
+        "ability_mc": {
+         "char": 583,
+         "export": null,
+         "kind": "sprite",
+         "frame": 0,
+         "x_px": 0.0,
+         "y_px": 0.0,
+         "frames": 1,
+         "labels": [],
+         "children": {
+          "background_mc": {
+           "char": 577,
+           "export": null,
+           "kind": "sprite",
+           "frame": 0,
+           "x_px": 0.0,
+           "y_px": 0.0,
+           "frames": 1,
+           "labels": []
+          },
+          "cooldownMask_mc": {
+           "char": 578,
+           "export": null,
+           "kind": "sprite",
+           "frame": 0,
+           "x_px": 0.0,
+           "y_px": 32.0,
+           "frames": 1,
+           "labels": []
+          },
+          "cooldown_mc": {
+           "char": 579,
+           "export": null,
+           "kind": "sprite",
+           "frame": 0,
+           "x_px": 0.0,
+           "y_px": 0.0,
+           "frames": 20,
+           "labels": [
+            "loop"
+           ]
+          },
+          "jammed_mc": {
+           "char": 582,
+           "export": null,
+           "kind": "sprite",
+           "frame": 0,
+           "x_px": 0.0,
+           "y_px": 0.0,
+           "frames": 9,
+           "labels": [],
+           "children": {
+            "#581": {
+             "char": 581,
+             "export": null,
+             "kind": "sprite",
+             "frame": 0,
+             "x_px": 0.0,
+             "y_px": 0.0,
+             "frames": 1,
+             "labels": []
+            }
+           }
+          }
+         }
+        },
+        "highlight_mc": {
+         "char": 586,
+         "export": null,
+         "kind": "sprite",
+         "frame": 0,
+         "x_px": 0.0,
+         "y_px": 0.0,
+         "frames": 20,
+         "labels": [],
+         "children": {
+          "#213": {
+           "char": 213,
+           "export": null,
+           "kind": "sprite",
+           "frame": 1,
+           "x_px": 0.0,
+           "y_px": 30.0,
+           "frames": 1,
+           "labels": []
+          }
+         }
+        },
+        "label_txt": {
+         "char": 602,
+         "export": null,
+         "kind": "text",
+         "frame": 0,
+         "x_px": -2.0,
+         "y_px": -28.0,
+         "text": {
+          "font": 263,
+          "height_twips": 280,
+          "color_rgba": [
+           255,
+           255,
+           255,
+           255
+          ],
+          "align": 1,
+          "initial_text": "<p align=\"right\"></p>",
+          "variable": ""
+         }
+        }
+       }
+      },
+      "#605": {
+       "char": 605,
+       "export": null,
+       "kind": "sprite",
+       "frame": 0,
+       "x_px": -24.0,
+       "y_px": 70.0,
+       "frames": 1,
+       "labels": [],
+       "children": {
+        "ability_mc": {
+         "char": 583,
+         "export": null,
+         "kind": "sprite",
+         "frame": 0,
+         "x_px": 0.0,
+         "y_px": 0.0,
+         "frames": 1,
+         "labels": [],
+         "children": {
+          "background_mc": {
+           "char": 577,
+           "export": null,
+           "kind": "sprite",
+           "frame": 0,
+           "x_px": 0.0,
+           "y_px": 0.0,
+           "frames": 1,
+           "labels": []
+          },
+          "cooldownMask_mc": {
+           "char": 578,
+           "export": null,
+           "kind": "sprite",
+           "frame": 0,
+           "x_px": 0.0,
+           "y_px": 32.0,
+           "frames": 1,
+           "labels": []
+          },
+          "cooldown_mc": {
+           "char": 579,
+           "export": null,
+           "kind": "sprite",
+           "frame": 0,
+           "x_px": 0.0,
+           "y_px": 0.0,
+           "frames": 20,
+           "labels": [
+            "loop"
+           ]
+          },
+          "jammed_mc": {
+           "char": 582,
+           "export": null,
+           "kind": "sprite",
+           "frame": 0,
+           "x_px": 0.0,
+           "y_px": 0.0,
+           "frames": 9,
+           "labels": [],
+           "children": {
+            "#581": {
+             "char": 581,
+             "export": null,
+             "kind": "sprite",
+             "frame": 0,
+             "x_px": 0.0,
+             "y_px": 0.0,
+             "frames": 1,
+             "labels": []
+            }
+           }
+          }
+         }
+        },
+        "highlight_mc": {
+         "char": 586,
+         "export": null,
+         "kind": "sprite",
+         "frame": 0,
+         "x_px": 0.0,
+         "y_px": 0.0,
+         "frames": 20,
+         "labels": [],
+         "children": {
+          "#213": {
+           "char": 213,
+           "export": null,
+           "kind": "sprite",
+           "frame": 1,
+           "x_px": 0.0,
+           "y_px": 30.0,
+           "frames": 1,
+           "labels": []
+          }
+         }
+        },
+        "label_txt": {
+         "char": 604,
+         "export": null,
+         "kind": "text",
+         "frame": 0,
+         "x_px": -2.0,
+         "y_px": -28.0,
+         "text": {
+          "font": 263,
+          "height_twips": 280,
+          "color_rgba": [
+           255,
+           255,
+           255,
+           255
+          ],
+          "align": 1,
+          "initial_text": "<p align=\"right\"></p>",
+          "variable": ""
+         }
+        }
+       }
+      },
+      "#589": {
+       "char": 589,
+       "export": null,
+       "kind": "sprite",
+       "frame": 0,
+       "x_px": -20.0,
+       "y_px": 20.0,
+       "frames": 1,
+       "labels": []
+      }
+     }
+    },
+    "bottomRight_mc": {
+     "char": 611,
+     "export": null,
+     "kind": "sprite",
+     "frame": 0,
+     "x_px": 1036.0,
+     "y_px": 666.0,
+     "frames": 1,
+     "labels": [],
+     "children": {
+      "#607": {
+       "char": 607,
+       "export": null,
+       "kind": "sprite",
+       "frame": 0,
+       "x_px": -340.0,
+       "y_px": -124.0,
+       "frames": 1,
+       "labels": []
+      },
+      "#608": {
+       "char": 608,
+       "export": null,
+       "kind": "sprite",
+       "frame": 0,
+       "x_px": -100.0,
+       "y_px": -27.0,
+       "frames": 1,
+       "labels": []
+      },
+      "#609": {
+       "char": 609,
+       "export": null,
+       "kind": "sprite",
+       "frame": 0,
+       "x_px": -50.0,
+       "y_px": -97.0,
+       "frames": 1,
+       "labels": []
+      },
+      "#610": {
+       "char": 610,
+       "export": null,
+       "kind": "sprite",
+       "frame": 0,
+       "x_px": -40.0,
+       "y_px": -50.0,
+       "frames": 1,
+       "labels": []
+      },
+      "#589": {
+       "char": 589,
+       "export": null,
+       "kind": "sprite",
+       "frame": 0,
+       "x_px": -20.0,
+       "y_px": -20.0,
+       "frames": 1,
+       "labels": []
+      }
+     }
+    },
+    "midCenter_mc": {
+     "char": 623,
+     "export": null,
+     "kind": "sprite",
+     "frame": 0,
+     "x_px": 560.0,
+     "y_px": 360.0,
+     "frames": 1,
+     "labels": [],
+     "children": {
+      "#621": {
+       "char": 621,
+       "export": null,
+       "kind": "sprite",
+       "frame": 0,
+       "x_px": 0.2,
+       "y_px": 0.2,
+       "frames": 1,
+       "labels": [],
+       "children": {
+        "increaseDamageAnchor_mc": {
+         "char": 612,
+         "export": null,
+         "kind": "sprite",
+         "frame": 0,
+         "x_px": 0.0,
+         "y_px": 0.0,
+         "frames": 1,
+         "labels": []
+        },
+        "#613": {
+         "char": 613,
+         "export": null,
+         "kind": "sprite",
+         "frame": 0,
+         "x_px": 0.0,
+         "y_px": 140.0,
+         "frames": 1,
+         "labels": []
+        },
+        "#614": {
+         "char": 614,
+         "export": null,
+         "kind": "sprite",
+         "frame": 0,
+         "x_px": 0.0,
+         "y_px": 150.0,
+         "frames": 1,
+         "labels": []
+        },
+        "#615": {
+         "char": 615,
+         "export": null,
+         "kind": "sprite",
+         "frame": 0,
+         "x_px": 0.0,
+         "y_px": 100.0,
+         "frames": 1,
+         "labels": []
+        },
+        "weaponFeedback_mc": {
+         "char": 616,
+         "export": null,
+         "kind": "sprite",
+         "frame": 0,
+         "x_px": 0.0,
+         "y_px": 0.0,
+         "frames": 1,
+         "labels": []
+        },
+        "#617": {
+         "char": 617,
+         "export": null,
+         "kind": "sprite",
+         "frame": 0,
+         "x_px": 40.0,
+         "y_px": -10.0,
+         "frames": 1,
+         "labels": []
+        },
+        "#618": {
+         "char": 618,
+         "export": null,
+         "kind": "sprite",
+         "frame": 0,
+         "x_px": -40.0,
+         "y_px": -10.0,
+         "frames": 1,
+         "labels": []
+        },
+        "crosshairAnchor_mc": {
+         "char": 619,
+         "export": null,
+         "kind": "sprite",
+         "frame": 0,
+         "x_px": 0.0,
+         "y_px": 0.0,
+         "frames": 1,
+         "labels": []
+        },
+        "#620": {
+         "char": 620,
+         "export": null,
+         "kind": "sprite",
+         "frame": 0,
+         "x_px": 0.0,
+         "y_px": -120.0,
+         "frames": 1,
+         "labels": []
+        }
+       }
+      },
+      "#622": {
+       "char": 622,
+       "export": null,
+       "kind": "sprite",
+       "frame": 0,
+       "x_px": 0.0,
+       "y_px": 0.0,
+       "frames": 1,
+       "labels": []
+      },
+      "#589": {
+       "char": 589,
+       "export": null,
+       "kind": "sprite",
+       "frame": 0,
+       "x_px": 0.0,
+       "y_px": 0.0,
+       "frames": 1,
+       "labels": []
+      }
+     }
+    },
+    "topCenter_mc": {
+     "char": 641,
+     "export": null,
+     "kind": "sprite",
+     "frame": 0,
+     "x_px": 560.0,
+     "y_px": 54.0,
+     "frames": 1,
+     "labels": [],
+     "children": {
+      "countdown_mc": {
+       "char": 632,
+       "export": null,
+       "kind": "sprite",
+       "frame": 0,
+       "x_px": 0.0,
+       "y_px": 50.0,
+       "frames": 1,
+       "labels": [],
+       "children": {
+        "background_mc": {
+         "char": 626,
+         "export": null,
+         "kind": "sprite",
+         "frame": 0,
+         "x_px": 0.0,
+         "y_px": -32.0,
+         "frames": 1,
+         "labels": []
+        },
+        "objectiveTime_mc": {
+         "char": 628,
+         "export": null,
+         "kind": "sprite",
+         "frame": 0,
+         "x_px": 0.0,
+         "y_px": 0.0,
+         "frames": 1,
+         "labels": [],
+         "children": {
+          "time_txt": {
+           "char": 627,
+           "export": null,
+           "kind": "text",
+           "frame": 0,
+           "x_px": -63.3,
+           "y_px": -16.0,
+           "text": {
+            "font": 263,
+            "height_twips": 520,
+            "color_rgba": [
+             255,
+             255,
+             255,
+             255
+            ],
+            "align": 2,
+            "initial_text": "0:00",
+            "variable": ""
+           }
+          }
+         }
+        },
+        "roundTime_mc": {
+         "char": 630,
+         "export": null,
+         "kind": "sprite",
+         "frame": 0,
+         "x_px": 0.0,
+         "y_px": 0.0,
+         "frames": 1,
+         "labels": [],
+         "children": {
+          "time_txt": {
+           "char": 629,
+           "export": null,
+           "kind": "text",
+           "frame": 0,
+           "x_px": -63.3,
+           "y_px": -9.0,
+           "text": {
+            "font": 263,
+            "height_twips": 300,
+            "color_rgba": [
+             255,
+             255,
+             255,
+             255
+            ],
+            "align": 2,
+            "initial_text": "0:00",
+            "variable": ""
+           }
+          }
+         }
+        },
+        "#631": {
+         "char": 631,
+         "export": null,
+         "kind": "sprite",
+         "frame": 0,
+         "x_px": -38.0,
+         "y_px": 17.0,
+         "frames": 1,
+         "labels": []
+        }
+       }
+      },
+      "#633": {
+       "char": 633,
+       "export": null,
+       "kind": "sprite",
+       "frame": 0,
+       "x_px": 0.0,
+       "y_px": 5.0,
+       "frames": 1,
+       "labels": []
+      },
+      "#638": {
+       "char": 638,
+       "export": null,
+       "kind": "sprite",
+       "frame": 0,
+       "x_px": 0.0,
+       "y_px": 111.7,
+       "frames": 1,
+       "labels": [],
+       "children": {
+        "announcement_mc": {
+         "char": 635,
+         "export": null,
+         "kind": "sprite",
+         "frame": 0,
+         "x_px": 0.0,
+         "y_px": 9.0,
+         "frames": 1,
+         "labels": [],
+         "children": {
+          "text_txt": {
+           "char": 634,
+           "export": null,
+           "kind": "text",
+           "frame": 0,
+           "x_px": -198.0,
+           "y_px": -33.0,
+           "text": {
+            "font": 516,
+            "height_twips": 840,
+            "color_rgba": [
+             0,
+             204,
+             255,
+             255
+            ],
+            "align": 2,
+            "initial_text": "<p align=\"center\"></p>",
+            "variable": ""
+           }
+          }
+         }
+        },
+        "reward_mc": {
+         "char": 637,
+         "export": null,
+         "kind": "sprite",
+         "frame": 0,
+         "x_px": 0.0,
+         "y_px": 18.0,
+         "frames": 1,
+         "labels": [],
+         "children": {
+          "text_txt": {
+           "char": 636,
+           "export": null,
+           "kind": "text",
+           "frame": 0,
+           "x_px": -198.0,
+           "y_px": -6.0,
+           "text": {
+            "font": 263,
+            "height_twips": 360,
+            "color_rgba": [
+             255,
+             225,
+             50,
+             255
+            ],
+            "align": 2,
+            "initial_text": "<p align=\"center\"></p>",
+            "variable": ""
+           }
+          }
+         }
+        }
+       }
+      },
+      "#639": {
+       "char": 639,
+       "export": null,
+       "kind": "sprite",
+       "frame": 0,
+       "x_px": 0.0,
+       "y_px": 140.0,
+       "frames": 1,
+       "labels": []
+      },
+      "#640": {
+       "char": 640,
+       "export": null,
+       "kind": "sprite",
+       "frame": 0,
+       "x_px": 0.0,
+       "y_px": 175.0,
+       "frames": 1,
+       "labels": []
+      },
+      "#589": {
+       "char": 589,
+       "export": null,
+       "kind": "sprite",
+       "frame": 0,
+       "x_px": 0.0,
+       "y_px": 20.0,
+       "frames": 1,
+       "labels": []
+      }
+     }
+    },
+    "midLeft_mc": {
+     "char": 642,
+     "export": null,
+     "kind": "sprite",
+     "frame": 0,
+     "x_px": 84.0,
+     "y_px": 360.0,
+     "frames": 1,
+     "labels": [],
+     "children": {
+      "#589": {
+       "char": 589,
+       "export": null,
+       "kind": "sprite",
+       "frame": 0,
+       "x_px": 20.0,
+       "y_px": 0.0,
+       "frames": 1,
+       "labels": []
+      }
+     }
+    },
+    "midRight_mc": {
+     "char": 645,
+     "export": null,
+     "kind": "sprite",
+     "frame": 0,
+     "x_px": 1036.0,
+     "y_px": 360.0,
+     "frames": 1,
+     "labels": [],
+     "children": {
+      "#643": {
+       "char": 643,
+       "export": null,
+       "kind": "sprite",
+       "frame": 0,
+       "x_px": -80.0,
+       "y_px": 0.0,
+       "frames": 1,
+       "labels": []
+      },
+      "#644": {
+       "char": 644,
+       "export": null,
+       "kind": "sprite",
+       "frame": 0,
+       "x_px": -30.0,
+       "y_px": -90.0,
+       "frames": 1,
+       "labels": []
+      },
+      "#589": {
+       "char": 589,
+       "export": null,
+       "kind": "sprite",
+       "frame": 0,
+       "x_px": -20.0,
+       "y_px": 0.0,
+       "frames": 1,
+       "labels": []
+      }
+     }
+    },
+    "bottomCenter_mc": {
+     "char": 653,
+     "export": null,
+     "kind": "sprite",
+     "frame": 0,
+     "x_px": 560.0,
+     "y_px": 666.0,
+     "frames": 1,
+     "labels": [],
+     "children": {
+      "notifyManager_mc": {
+       "char": 646,
+       "export": null,
+       "kind": "sprite",
+       "frame": 0,
+       "x_px": 0.0,
+       "y_px": -30.0,
+       "frames": 1,
+       "labels": []
+      },
+      "returnFlagNotifyTime_mc": {
+       "char": 652,
+       "export": null,
+       "kind": "sprite",
+       "frame": 0,
+       "x_px": 0.0,
+       "y_px": -100.0,
+       "frames": 1,
+       "labels": [],
+       "children": {
+        "background_mc": {
+         "char": 648,
+         "export": null,
+         "kind": "sprite",
+         "frame": 0,
+         "x_px": -100.0,
+         "y_px": 0.0,
+         "frames": 1,
+         "labels": []
+        },
+        "barBG_mc": {
+         "char": 650,
+         "export": null,
+         "kind": "sprite",
+         "frame": 0,
+         "x_px": -100.0,
+         "y_px": 0.0,
+         "frames": 1,
+         "labels": []
+        },
+        "bar_mc": {
+         "char": 650,
+         "export": null,
+         "kind": "sprite",
+         "frame": 0,
+         "x_px": -100.0,
+         "y_px": 0.0,
+         "frames": 1,
+         "labels": []
+        },
+        "description_txt": {
+         "char": 651,
+         "export": null,
+         "kind": "text",
+         "frame": 0,
+         "x_px": -98.0,
+         "y_px": -20.0,
+         "text": {
+          "font": 263,
+          "height_twips": 240,
+          "color_rgba": [
+           255,
+           255,
+           255,
+           255
+          ],
+          "align": 0,
+          "initial_text": null,
+          "variable": ""
+         }
+        }
+       }
+      },
+      "#589": {
+       "char": 589,
+       "export": null,
+       "kind": "sprite",
+       "frame": 0,
+       "x_px": 0.0,
+       "y_px": -20.0,
+       "frames": 1,
+       "labels": []
+      }
+     }
+    }
+   }
+  }
+ },
+ "layout_note": "hud_mc holds 9 placement anchors (top/mid/bottom x left/center/right) + zoomScopeAttachPoint_mc; widgets are attached at runtime with attachMovie (see runtime_attachments) - placement = anchor position + widget symbol",
+ "runtime_attachments (attachMovie calls, bytecode; symbol/target from the preceding pushes - HIGH)": [
+  {
+   "owner_sprite": 266,
+   "owner_export": "mc_pointTransaction",
+   "symbol": "(dynamic)",
+   "target_or_instance": [
+    "_mc"
+   ],
+   "anchor_region": null
+  },
+  {
+   "owner_sprite": 296,
+   "owner_export": "mc_markerLockOn",
+   "symbol": "mc_markerLockOnTriangleLocked",
+   "target_or_instance": [
+    "lockTriangle_mc"
+   ],
+   "anchor_region": null
+  },
+  {
+   "owner_sprite": 302,
+   "owner_export": "mc_objectiveNew",
+   "symbol": "mc_objectiveLineObjective",
+   "target_or_instance": [
+    "_mc"
+   ],
+   "anchor_region": null
+  },
+  {
+   "owner_sprite": 302,
+   "owner_export": "mc_objectiveNew",
+   "symbol": "mc_objectiveLineGlyph",
+   "target_or_instance": [
+    "_mc"
+   ],
+   "anchor_region": null
+  },
+  {
+   "owner_sprite": 302,
+   "owner_export": "mc_objectiveNew",
+   "symbol": "mc_objectiveLineGlyphMask",
+   "target_or_instance": [
+    "_mc"
+   ],
+   "anchor_region": null
+  },
+  {
+   "owner_sprite": 373,
+   "owner_export": "mc_vitalBarHealthSegment",
+   "symbol": "(dynamic)",
+   "target_or_instance": [
+    "_mc"
+   ],
+   "anchor_region": null
+  },
+  {
+   "owner_sprite": 395,
+   "owner_export": "mc_scoreCoopPlayerPanel",
+   "symbol": "(dynamic)",
+   "target_or_instance": null,
+   "anchor_region": null
+  },
+  {
+   "owner_sprite": 396,
+   "owner_export": "mc_scoreSurvival",
+   "symbol": "(dynamic)",
+   "target_or_instance": [
+    "_mc"
+   ],
+   "anchor_region": null
+  },
+  {
+   "owner_sprite": 397,
+   "owner_export": "mc_scoreCoop",
+   "symbol": "(dynamic)",
+   "target_or_instance": [
+    "_mc"
+   ],
+   "anchor_region": null
+  },
+  {
+   "owner_sprite": 444,
+   "owner_export": null,
+   "symbol": "mc_killstreakDpadPS3",
+   "target_or_instance": [
+    "dpad_mc"
+   ],
+   "anchor_region": null
+  },
+  {
+   "owner_sprite": 444,
+   "owner_export": null,
+   "symbol": "mc_killstreakDpadXbox360",
+   "target_or_instance": [
+    "dpad_mc"
+   ],
+   "anchor_region": null
+  },
+  {
+   "owner_sprite": 457,
+   "owner_export": "mc_levelUpNotify",
+   "symbol": "(dynamic)",
+   "target_or_instance": [
+    "icon_mc",
+    "icon_mc"
+   ],
+   "anchor_region": null
+  },
+  {
+   "owner_sprite": 484,
+   "owner_export": "mc_tutorialMessage",
+   "symbol": "(dynamic)",
+   "target_or_instance": null,
+   "anchor_region": null
+  },
+  {
+   "owner_sprite": 499,
+   "owner_export": "mc_scoreTeam",
+   "symbol": "(dynamic)",
+   "target_or_instance": [
+    "logo_mc",
+    "logoAnchor_mc"
+   ],
+   "anchor_region": null
+  },
+  {
+   "owner_sprite": 558,
+   "owner_export": null,
+   "symbol": "(dynamic)",
+   "target_or_instance": [
+    "_mc"
+   ],
+   "anchor_region": null
+  },
+  {
+   "owner_sprite": 558,
+   "owner_export": null,
+   "symbol": "(dynamic)",
+   "target_or_instance": null,
+   "anchor_region": null
+  },
+  {
+   "owner_sprite": 559,
+   "owner_export": null,
+   "symbol": "mc_hurt",
+   "target_or_instance": [
+    "_mc"
+   ],
+   "anchor_region": null
+  },
+  {
+   "owner_sprite": 559,
+   "owner_export": null,
+   "symbol": "mc_incapacitatedScreen",
+   "target_or_instance": [
+    "_mc"
+   ],
+   "anchor_region": null
+  },
+  {
+   "owner_sprite": 560,
+   "owner_export": null,
+   "symbol": "mc_zoomScope",
+   "target_or_instance": [
+    "zoomScope_mc"
+   ],
+   "anchor_region": "zoomScopeAttachPoint_mc"
+  },
+  {
+   "owner_sprite": 560,
+   "owner_export": null,
+   "symbol": "mc_",
+   "target_or_instance": [
+    "scopeType_mc",
+    "zoomScope_mc"
+   ],
+   "anchor_region": "zoomScopeAttachPoint_mc"
+  },
+  {
+   "owner_sprite": 572,
+   "owner_export": null,
+   "symbol": "mc_vitalBarHealthSegment",
+   "target_or_instance": [
+    "_mc",
+    "healthBarAnchor_mc"
+   ],
+   "anchor_region": "topLeft_mc"
+  },
+  {
+   "owner_sprite": 572,
+   "owner_export": null,
+   "symbol": "mc_vitalBarActiveBarDrained",
+   "target_or_instance": [
+    "_mc"
+   ],
+   "anchor_region": "topLeft_mc"
+  },
+  {
+   "owner_sprite": 573,
+   "owner_export": null,
+   "symbol": "mc_teamchatPlayer",
+   "target_or_instance": [
+    "_mc"
+   ],
+   "anchor_region": "topLeft_mc"
+  },
+  {
+   "owner_sprite": 591,
+   "owner_export": null,
+   "symbol": "mc_gameMessage_default",
+   "target_or_instance": [
+    "_mc"
+   ],
+   "anchor_region": "bottomLeft_mc"
+  },
+  {
+   "owner_sprite": 593,
+   "owner_export": null,
+   "symbol": "mc_ammoPickupNotification",
+   "target_or_instance": [
+    "_mc"
+   ],
+   "anchor_region": "topRight_mc"
+  },
+  {
+   "owner_sprite": 599,
+   "owner_export": null,
+   "symbol": "mc_currentWeaponIcon",
+   "target_or_instance": [
+    "_mc",
+    "iconAnchor_mc"
+   ],
+   "anchor_region": "topRight_mc"
+  },
+  {
+   "owner_sprite": 599,
+   "owner_export": null,
+   "symbol": "mc_currentWeaponText",
+   "target_or_instance": [
+    "_mc",
+    "textAnchor_mc"
+   ],
+   "anchor_region": "topRight_mc"
+  },
+  {
+   "owner_sprite": 600,
+   "owner_export": null,
+   "symbol": "mc_ammoBar",
+   "target_or_instance": [
+    "ammoBar_mc",
+    "ammoBarAnchor_mc"
+   ],
+   "anchor_region": "topRight_mc"
+  },
+  {
+   "owner_sprite": 600,
+   "owner_export": null,
+   "symbol": "mc_vitalBarAmmoSegment",
+   "target_or_instance": [
+    "_mc"
+   ],
+   "anchor_region": "topRight_mc"
+  },
+  {
+   "owner_sprite": 601,
+   "owner_export": null,
+   "symbol": "mc_grenadeIcon",
+   "target_or_instance": [
+    "_mc"
+   ],
+   "anchor_region": "topRight_mc"
+  },
+  {
+   "owner_sprite": 607,
+   "owner_export": null,
+   "symbol": "mc_objectiveNew",
+   "target_or_instance": [
+    "_mc"
+   ],
+   "anchor_region": "bottomRight_mc"
+  },
+  {
+   "owner_sprite": 608,
+   "owner_export": null,
+   "symbol": "mc_killstreakIcon",
+   "target_or_instance": [
+    "_mc"
+   ],
+   "anchor_region": "bottomRight_mc"
+  },
+  {
+   "owner_sprite": 609,
+   "owner_export": null,
+   "symbol": "mc_killstreakBuffIcon",
+   "target_or_instance": [
+    "_mc"
+   ],
+   "anchor_region": "bottomRight_mc"
+  },
+  {
+   "owner_sprite": 610,
+   "owner_export": null,
+   "symbol": "mc_waveIndicator",
+   "target_or_instance": [
+    "waveIndicator_mc"
+   ],
+   "anchor_region": "bottomRight_mc"
+  },
+  {
+   "owner_sprite": 613,
+   "owner_export": null,
+   "symbol": "mc_cantTransform",
+   "target_or_instance": [
+    "_mc"
+   ],
+   "anchor_region": "midCenter_mc"
+  },
+  {
+   "owner_sprite": 614,
+   "owner_export": null,
+   "symbol": "mc_transformDisrupt",
+   "target_or_instance": [
+    "transformDisrupt_mc"
+   ],
+   "anchor_region": "midCenter_mc"
+  },
+  {
+   "owner_sprite": 615,
+   "owner_export": null,
+   "symbol": "mc_tutorialMessage",
+   "target_or_instance": [
+    "_mc"
+   ],
+   "anchor_region": "midCenter_mc"
+  },
+  {
+   "owner_sprite": 616,
+   "owner_export": null,
+   "symbol": "mc_chargingIndicator",
+   "target_or_instance": [
+    "charging_mc"
+   ],
+   "anchor_region": "midCenter_mc"
+  },
+  {
+   "owner_sprite": 616,
+   "owner_export": null,
+   "symbol": "mc_chargingIndicator",
+   "target_or_instance": [
+    "charging_mc"
+   ],
+   "anchor_region": "midCenter_mc"
+  },
+  {
+   "owner_sprite": 617,
+   "owner_export": null,
+   "symbol": "(dynamic)",
+   "target_or_instance": [
+    "ammoStatus_mc"
+   ],
+   "anchor_region": "midCenter_mc"
+  },
+  {
+   "owner_sprite": 617,
+   "owner_export": null,
+   "symbol": "mc_ammoWarningReload",
+   "target_or_instance": [
+    "ammoReload_mc"
+   ],
+   "anchor_region": "midCenter_mc"
+  },
+  {
+   "owner_sprite": 618,
+   "owner_export": null,
+   "symbol": "mc_activeGrenadePromptText",
+   "target_or_instance": [
+    "_mc"
+   ],
+   "anchor_region": "midCenter_mc"
+  },
+  {
+   "owner_sprite": 620,
+   "owner_export": null,
+   "symbol": "mc_missileWarningVictim",
+   "target_or_instance": [
+    "lockWarning_mc"
+   ],
+   "anchor_region": "midCenter_mc"
+  },
+  {
+   "owner_sprite": 620,
+   "owner_export": null,
+   "symbol": "mc_missileWarningVictimBrackets",
+   "target_or_instance": [
+    "lockBrackets_mc"
+   ],
+   "anchor_region": "midCenter_mc"
+  },
+  {
+   "owner_sprite": 621,
+   "owner_export": null,
+   "symbol": "(dynamic)",
+   "target_or_instance": [
+    "_mc",
+    "crosshairAnchor_mc"
+   ],
+   "anchor_region": "midCenter_mc"
+  },
+  {
+   "owner_sprite": 621,
+   "owner_export": null,
+   "symbol": "mc_turretReticule",
+   "target_or_instance": [
+    "_mc"
+   ],
+   "anchor_region": "midCenter_mc"
+  },
+  {
+   "owner_sprite": 621,
+   "owner_export": null,
+   "symbol": "mc_crosshairIncreaseDamage",
+   "target_or_instance": [
+    "increaseDamage_mc",
+    "increaseDamageAnchor_mc"
+   ],
+   "anchor_region": "midCenter_mc"
+  },
+  {
+   "owner_sprite": 621,
+   "owner_export": null,
+   "symbol": "mc_causeDamage",
+   "target_or_instance": [
+    "_mc"
+   ],
+   "anchor_region": "midCenter_mc"
+  },
+  {
+   "owner_sprite": 621,
+   "owner_export": null,
+   "symbol": "mc_rangeFinderCrosshair",
+   "target_or_instance": [
+    "_mc"
+   ],
+   "anchor_region": "midCenter_mc"
+  },
+  {
+   "owner_sprite": 622,
+   "owner_export": null,
+   "symbol": "mc_damageArrow",
+   "target_or_instance": [
+    "_mc"
+   ],
+   "anchor_region": "midCenter_mc"
+  },
+  {
+   "owner_sprite": 631,
+   "owner_export": null,
+   "symbol": "mc_roundSegment",
+   "target_or_instance": [
+    "_mc"
+   ],
+   "anchor_region": "topCenter_mc"
+  },
+  {
+   "owner_sprite": 633,
+   "owner_export": null,
+   "symbol": "(dynamic)",
+   "target_or_instance": [
+    "scoreboard_mc"
+   ],
+   "anchor_region": "topCenter_mc"
+  },
+  {
+   "owner_sprite": 639,
+   "owner_export": null,
+   "symbol": "mc_nextWaveTimer",
+   "target_or_instance": [
+    "nextWaveTimer_mc"
+   ],
+   "anchor_region": "topCenter_mc"
+  },
+  {
+   "owner_sprite": 640,
+   "owner_export": null,
+   "symbol": "mc_pointTransaction",
+   "target_or_instance": [
+    "_mc"
+   ],
+   "anchor_region": "topCenter_mc"
+  },
+  {
+   "owner_sprite": 643,
+   "owner_export": null,
+   "symbol": "mc_levelUpNotify",
+   "target_or_instance": [
+    "_mc"
+   ],
+   "anchor_region": "midRight_mc"
+  },
+  {
+   "owner_sprite": 644,
+   "owner_export": null,
+   "symbol": "mc_networkConnectivityAlert",
+   "target_or_instance": [
+    "alert_mc"
+   ],
+   "anchor_region": "midRight_mc"
+  },
+  {
+   "owner_sprite": 646,
+   "owner_export": null,
+   "symbol": "mc_notify",
+   "target_or_instance": [
+    "_mc"
+   ],
+   "anchor_region": "bottomCenter_mc"
+  }
+ ],
+ "elements": {
+  "match_clock": {
+   "scaleform_owner": "UI_GFxHud_p/Hud_GFX",
+   "layout_instances": {
+    "hud_mc/topCenter_mc/countdown_mc": {
+     "char": 632,
+     "export": null,
+     "kind": "sprite",
+     "x_px": 0.0,
+     "y_px": 50.0,
+     "frames": 1,
+     "labels": []
+    },
+    "hud_mc/topCenter_mc/countdown_mc/objectiveTime_mc": {
+     "char": 628,
+     "export": null,
+     "kind": "sprite",
+     "x_px": 0.0,
+     "y_px": 0.0,
+     "frames": 1,
+     "labels": []
+    },
+    "hud_mc/topCenter_mc/countdown_mc/objectiveTime_mc/time_txt": {
+     "char": 627,
+     "export": null,
+     "kind": "text",
+     "x_px": -63.3,
+     "y_px": -16.0,
+     "text": {
+      "font": 263,
+      "height_twips": 520,
+      "color_rgba": [
+       255,
+       255,
+       255,
+       255
+      ],
+      "align": 2,
+      "initial_text": "0:00",
+      "variable": ""
+     }
+    },
+    "hud_mc/topCenter_mc/countdown_mc/roundTime_mc": {
+     "char": 630,
+     "export": null,
+     "kind": "sprite",
+     "x_px": 0.0,
+     "y_px": 0.0,
+     "frames": 1,
+     "labels": []
+    },
+    "hud_mc/topCenter_mc/countdown_mc/roundTime_mc/time_txt": {
+     "char": 629,
+     "export": null,
+     "kind": "text",
+     "x_px": -63.3,
+     "y_px": -9.0,
+     "text": {
+      "font": 263,
+      "height_twips": 300,
+      "color_rgba": [
+       255,
+       255,
+       255,
+       255
+      ],
+      "align": 2,
+      "initial_text": "0:00",
+      "variable": ""
+     }
+    },
+    "hud_mc/bottomCenter_mc/returnFlagNotifyTime_mc": {
+     "char": 652,
+     "export": null,
+     "kind": "sprite",
+     "x_px": 0.0,
+     "y_px": -100.0,
+     "frames": 1,
+     "labels": []
+    }
+   },
+   "exported_symbols": {
+    "mc_nextWaveTimer": []
+   },
+   "observers": [
+    {
+     "class": "TnHudDataObserverBombDefuseTimer",
+     "callback": "_global.NotifyProgressBarChanged",
+     "props": {
+      "label": "Defusing the Bomb"
+     }
+    }
+   ],
+   "tnhud_callbacks": {},
+   "strings (UIText [Hud])": {},
+   "grouping": "HIGH CONFIDENCE (name match); symbol / observer / string existence CONFIRMED AUTHORED DATA"
+  },
+  "team_score": {
+   "scaleform_owner": "UI_GFxHud_p/Hud_GFX",
+   "layout_instances": {},
+   "exported_symbols": {
+    "mc_roundSegment": [
+     "content/UI_GFxHud_p/Hud_GFX_I16E.png"
+    ],
+    "mc_scoreLogoAutobot": [
+     "content/UI_GFxHud_p/Hud_GFX_I1F4.png"
+    ],
+    "mc_scoreLogoDecepticon": [
+     "content/UI_GFxHud_p/Hud_GFX_I1F9.png"
+    ],
+    "mc_scoreTeam": []
+   },
+   "observers": [],
+   "tnhud_callbacks": {},
+   "strings (UIText [Hud])": {},
+   "grouping": "HIGH CONFIDENCE (name match); symbol / observer / string existence CONFIRMED AUTHORED DATA"
+  },
+  "local_score": {
+   "scaleform_owner": "UI_GFxHud_p/Hud_GFX",
+   "layout_instances": {},
+   "exported_symbols": {
+    "mc_pointMultiplier": [],
+    "mc_pointTransaction": [],
+    "mc_pointTransactionKillstreakLabel": [],
+    "mc_pointTransactionLabel": [],
+    "mc_scoreFreeForAll": []
+   },
+   "observers": [],
+   "tnhud_callbacks": {},
+   "strings (UIText [Hud])": {},
+   "grouping": "HIGH CONFIDENCE (name match); symbol / observer / string existence CONFIRMED AUTHORED DATA"
+  },
+  "health": {
+   "scaleform_owner": "UI_GFxHud_p/Hud_GFX",
+   "layout_instances": {
+    "incapacitated_mc": {
+     "char": 559,
+     "export": null
+    },
+    "hud_mc/topLeft_mc/#572/healthBarAnchor_mc": {
+     "char": 566,
+     "export": null,
+     "kind": "sprite",
+     "x_px": 0.0,
+     "y_px": 0.0,
+     "frames": 1,
+     "labels": []
+    },
+    "hud_mc/topLeft_mc/#572/lowHealthFlash_mc": {
+     "char": 567,
+     "export": null,
+     "kind": "sprite",
+     "x_px": -7.0,
+     "y_px": 0.0,
+     "frames": 12,
+     "labels": [
+      "loop"
+     ]
+    },
+    "hud_mc/topLeft_mc/#572/healthNumber_txt": {
+     "char": 571,
+     "export": null,
+     "kind": "text",
+     "x_px": 2.0,
+     "y_px": 10.0,
+     "text": {
+      "font": 263,
+      "height_twips": 320,
+      "color_rgba": [
+       255,
+       255,
+       255,
+       255
+      ],
+      "align": 0,
+      "initial_text": "<p align=\"left\"></p>",
+      "variable": ""
+     }
+    }
+   },
+   "exported_symbols": {
+    "FriendlyKillHealthBonusStreak": [
+     "content/UI_GFxHud_p/FriendlyKillHealthBonusStreak.png"
+    ],
+    "HealthRegenStreak": [
+     "content/UI_GFxHud_p/HealthRegenStreak.png"
+    ],
+    "mc_hurt": [
+     "content/UI_GFxHud_p/Hud_GFX_IA3.png",
+     "content/UI_GFxHud_p/Hud_GFX_IA6.png",
+     "content/UI_GFxHud_p/Hud_GFX_IAA.png",
+     "content/UI_GFxHud_p/Hud_GFX_IAD.png",
+     "content/UI_GFxHud_p/Hud_GFX_IB0.png",
+     "content/UI_GFxHud_p/Hud_GFX_IB6.png",
+     "content/UI_GFxHud_p/Hud_GFX_IBA.png",
+     "content/UI_GFxHud_p/Hud_GFX_IBE.png",
+     "content/UI_GFxHud_p/Hud_GFX_IC2.png",
+     "content/UI_GFxHud_p/Hud_GFX_IC5.png",
+     "content/UI_GFxHud_p/Hud_GFX_IC9.png"
+    ],
+    "mc_incapFraming": [],
+    "mc_incapWidgets": [
+     "content/UI_GFxHud_p/Hud_GFX_I149.png",
+     "content/UI_GFxHud_p/Hud_GFX_I14D.png"
+    ],
+    "mc_incapacitatedOfflineSystem": [],
+    "mc_incapacitatedScreen": [
+     "content/UI_GFxHud_p/Hud_GFX_I149.png",
+     "content/UI_GFxHud_p/Hud_GFX_I14D.png"
+    ],
+    "mc_roundSegment": [
+     "content/UI_GFxHud_p/Hud_GFX_I16E.png"
+    ],
+    "mc_targetHealthMeter": [],
+    "mc_vitalBarActiveBarDrained": [],
+    "mc_vitalBarAmmoSegment": [
+     "content/UI_GFxHud_p/Hud_GFX_I16E.png"
+    ],
+    "mc_vitalBarHealthSegment": [
+     "content/UI_GFxHud_p/Hud_GFX_I16E.png"
+    ],
+    "mc_vitalBarHealthSegmentEmpty": [
+     "content/UI_GFxHud_p/Hud_GFX_I16E.png"
+    ]
+   },
+   "observers": [
+    {
+     "class": "TnHudDataObserverSegmentedHealth",
+     "callback": "_global.NotifySegmentedHealthChanged",
+     "props": {
+      "SavedActiveSegment": -1,
+      "SavedNormalizedSegmentHealth": -1.0
+     }
+    },
+    {
+     "class": "TnHudDataObserverNormalizedDownedHealth",
+     "callback": "_global.NotifyNormalizedDownedHealthChanged",
+     "props": {}
+    }
+   ],
+   "tnhud_callbacks": {},
+   "strings (UIText [Hud])": {
+    "DownedSuicide": {
+     "INT": "Self Destruct <font color='#FF3333'>Hold G</font>",
+     "FRA": "Auto-destruction <font color='#FF3333'>Maintiens G</font>"
+    }
+   },
+   "grouping": "HIGH CONFIDENCE (name match); symbol / observer / string existence CONFIRMED AUTHORED DATA"
+  },
+  "overshield": {
+   "scaleform_owner": "UI_GFxHud_p/Hud_GFX",
+   "layout_instances": {
+    "hud_mc/topLeft_mc/#572/overshieldBar_mc": {
+     "char": 568,
+     "export": null,
+     "kind": "sprite",
+     "x_px": 0.0,
+     "y_px": 0.0,
+     "frames": 1,
+     "labels": []
+    }
+   },
+   "exported_symbols": {
+    "OverShieldStreak": [
+     "content/UI_GFxHud_p/OverShieldStreak.png"
+    ],
+    "TnAbilityShield": [
+     "content/UI_GFxHud_p/TnAbilityShield.png"
+    ]
+   },
+   "observers": [
+    {
+     "class": "TnHudDataObserverNormalizedOverShield",
+     "callback": "_global.NotifyOverShieldChanged",
+     "props": {}
+    }
+   ],
+   "tnhud_callbacks": {},
+   "strings (UIText [Hud])": {},
+   "grouping": "HIGH CONFIDENCE (name match); symbol / observer / string existence CONFIRMED AUTHORED DATA"
+  },
+  "ammo": {
+   "scaleform_owner": "UI_GFxHud_p/Hud_GFX",
+   "layout_instances": {
+    "hud_mc/topRight_mc/#600/ammoBarAnchor_mc": {
+     "char": 594,
+     "export": null,
+     "kind": "sprite",
+     "x_px": 0.0,
+     "y_px": 0.0,
+     "frames": 1,
+     "labels": []
+    },
+    "hud_mc/topRight_mc/#600/ammoNumber_txt": {
+     "char": 597,
+     "export": null,
+     "kind": "text",
+     "x_px": -38.0,
+     "y_px": 10.0,
+     "text": {
+      "font": 263,
+      "height_twips": 320,
+      "color_rgba": [
+       255,
+       255,
+       255,
+       255
+      ],
+      "align": 1,
+      "initial_text": "<p align=\"right\"></p>",
+      "variable": ""
+     }
+    }
+   },
+   "exported_symbols": {
+    "GrenadeIconFlashbang": [
+     "content/UI_GFxHud_p/GrenadeIconFlashbang.png"
+    ],
+    "GrenadeIconFrag": [
+     "content/UI_GFxHud_p/GrenadeIconFrag.png"
+    ],
+    "GrenadeIconHeal": [
+     "content/UI_GFxHud_p/GrenadeIconHeal.png"
+    ],
+    "GrenadeIconKMine": [
+     "content/UI_GFxHud_p/GrenadeIconKMine.png"
+    ],
+    "Infinity": [
+     "content/UI_GFxHud_p/Infinity.png"
+    ],
+    "RefillAmmoStreak": [
+     "content/UI_GFxHud_p/RefillAmmoStreak.png"
+    ],
+    "TnAbilityGrenade": [
+     "content/UI_GFxHud_p/TnAbilityGrenade.png"
+    ],
+    "TnAbilitySpawnAmmoCrate": [
+     "content/UI_GFxHud_p/TnAbilitySpawnAmmoCrate.png"
+    ],
+    "TnWeaponGrenadeLauncher": [
+     "content/UI_GFxHud_p/TnWeaponGrenadeLauncher.png"
+    ],
+    "death_GrenadeLauncher": [
+     "content/UI_GFxHud_p/death_GrenadeLauncher.png"
+    ],
+    "mc_activeGrenadePromptText": [],
+    "mc_ammoBar": [
+     "content/UI_GFxHud_p/Hud_GFX_ID3.png"
+    ],
+    "mc_ammoPickupNotification": [],
+    "mc_ammoWarningReload": [],
+    "mc_ammoWarningTextEmpty": [],
+    "mc_ammoWarningTextLow": [],
+    "mc_grenadeIcon": [],
+    "mc_vitalBarAmmoSegment": [
+     "content/UI_GFxHud_p/Hud_GFX_I16E.png"
+    ]
+   },
+   "observers": [
+    {
+     "class": "TnHudDataObserverWeaponClipAmmo",
+     "callback": "_global.NotifyWeaponClipAmmoChanged",
+     "props": {}
+    },
+    {
+     "class": "TnHudDataObserverWeaponReserveAmmo",
+     "callback": "_global.NotifyWeaponReserveAmmoChanged",
+     "props": {}
+    },
+    {
+     "class": "TnHudDataObserverGrenadeAmmo",
+     "callback": "_global.NotifyGrenadeAmmoChanged",
+     "props": {}
+    },
+    {
+     "class": "TnHudDataObserverActiveGrenadeCount",
+     "callback": "_global.NotifyActiveGrenadeCount",
+     "props": {}
+    }
+   ],
+   "tnhud_callbacks": {
+    "NotifyAmmoAddedCallback": "_global.NotifyAmmoAdded"
+   },
+   "strings (UIText [Hud])": {
+    "DetonateGrenade": {
+     "INT": "Detonate <font color='#FF9333'>RMB</font>",
+     "FRA": "Détonation <font color='#FF9333'>RMB</font>"
+    },
+    "LowAmmo": {
+     "INT": "Low Ammo",
+     "FRA": "Peu de munitions restantes"
+    },
+    "OutOfAmmo": {
+     "INT": "Out of Ammo",
+     "FRA": "Plus de munitions"
+    },
+    "Reload": {
+     "INT": "<font color='#FF9333'>R</font> Reload",
+     "FRA": "<font color='#FF9333'>R</font> Recharger"
+    }
+   },
+   "grouping": "HIGH CONFIDENCE (name match); symbol / observer / string existence CONFIRMED AUTHORED DATA"
+  },
+  "crosshair": {
+   "scaleform_owner": "UI_GFxHud_p/Hud_GFX",
+   "layout_instances": {
+    "hud_mc/zoomScopeAttachPoint_mc": {
+     "char": 560,
+     "export": null,
+     "kind": "sprite",
+     "x_px": 560.0,
+     "y_px": 360.0,
+     "frames": 1,
+     "labels": []
+    },
+    "hud_mc/midCenter_mc/#621/crosshairAnchor_mc": {
+     "char": 619,
+     "export": null,
+     "kind": "sprite",
+     "x_px": 0.0,
+     "y_px": 0.0,
+     "frames": 1,
+     "labels": []
+    }
+   },
+   "exported_symbols": {
+    "mc_crosshairBazooka": [
+     "content/UI_GFxHud_p/Hud_GFX_I195.png"
+    ],
+    "mc_crosshairGeneric": [
+     "content/UI_GFxHud_p/Hud_GFX_I19F.png"
+    ],
+    "mc_crosshairIncreaseDamage": [
+     "content/UI_GFxHud_p/Hud_GFX_I135.png",
+     "content/UI_GFxHud_p/Hud_GFX_I138.png"
+    ],
+    "mc_crosshairIonBlaster": [
+     "content/UI_GFxHud_p/Hud_GFX_I190.png"
+    ],
+    "mc_crosshairShotgun": [
+     "content/UI_GFxHud_p/Hud_GFX_I19A.png"
+    ],
+    "mc_longScope": [
+     "content/UI_GFxHud_p/Hud_GFX_IF1.png"
+    ],
+    "mc_markerLockOn": [
+     "content/UI_GFxHud_p/Hud_GFX_I123.png"
+    ],
+    "mc_markerLockOnTriangleLocked": [
+     "content/UI_GFxHud_p/Hud_GFX_I1CC.png"
+    ],
+    "mc_mediumScope": [
+     "content/UI_GFxHud_p/Hud_GFX_IF1.png"
+    ],
+    "mc_rangeFinderCrosshair": [
+     "content/UI_GFxHud_p/Hud_GFX_I220.png",
+     "content/UI_GFxHud_p/Hud_GFX_I222.png"
+    ],
+    "mc_shortScope": [],
+    "mc_turretReticule": [],
+    "mc_zoomScope": [
+     "content/UI_GFxHud_p/Hud_GFX_I100.png",
+     "content/UI_GFxHud_p/Hud_GFX_I103.png"
+    ]
+   },
+   "observers": [
+    {
+     "class": "TnHudDataObserverWeaponSpread",
+     "callback": "_global.NotifyWeaponSpreadChanged",
+     "props": {
+      "ConversionFactor": 1.0
+     }
+    },
+    {
+     "class": "TnHudDataObserverWeaponReticule",
+     "callback": "_global.NotifyWeaponReticuleTypeChanged",
+     "props": {}
+    },
+    {
+     "class": "TnHudDataObserverLockOnState",
+     "callback": "_global.NotifyLockOnStateChanged",
+     "props": {}
+    }
+   ],
+   "tnhud_callbacks": {},
+   "strings (UIText [Hud])": {},
+   "grouping": "HIGH CONFIDENCE (name match); symbol / observer / string existence CONFIRMED AUTHORED DATA"
+  },
+  "kill_feed": {
+   "scaleform_owner": "UI_GFxHud_p/Hud_GFX",
+   "layout_instances": {},
+   "exported_symbols": {
+    "death_AssaultRifle": [
+     "content/UI_GFxHud_p/death_AssaultRifle.png"
+    ],
+    "death_AssaultRifleVehicle": [
+     "content/UI_GFxHud_p/death_AssaultRifleVehicle.png"
+    ],
+    "death_Bazooka": [
+     "content/UI_GFxHud_p/death_Bazooka.png"
+    ],
+    "death_BurstRifle": [
+     "content/UI_GFxHud_p/death_BurstRifle.png"
+    ],
+    "death_Car": [
+     "content/UI_GFxHud_p/death_Car.png"
+    ],
+    "death_Decoy": [
+     "content/UI_GFxHud_p/death_Decoy.png"
+    ],
+    "death_Drain": [
+     "content/UI_GFxHud_p/death_Drain.png"
+    ],
+    "death_EMPShotgun": [
+     "content/UI_GFxHud_p/death_EMPShotgun.png"
+    ],
+    "death_GrenadeLauncher": [
+     "content/UI_GFxHud_p/death_GrenadeLauncher.png"
+    ],
+    "death_HeavyMG": [
+     "content/UI_GFxHud_p/death_HeavyMG.png"
+    ],
+    "death_HeavyPistol": [
+     "content/UI_GFxHud_p/death_HeavyPistol.png"
+    ],
+    "death_HeavyTurret": [
+     "content/UI_GFxHud_p/death_HeavyTurret.png"
+    ],
+    "death_HomingRocket": [
+     "content/UI_GFxHud_p/death_HomingRocket.png"
+    ],
+    "death_HomingRocketVehicle": [
+     "content/UI_GFxHud_p/death_HomingRocketVehicle.png"
+    ],
+    "death_IonBlaster": [
+     "content/UI_GFxHud_p/death_IonBlaster.png"
+    ],
+    "death_Jet": [
+     "content/UI_GFxHud_p/death_Jet.png"
+    ],
+    "death_Melee": [
+     "content/UI_GFxHud_p/death_Melee.png"
+    ],
+    "death_PlasmaCannon": [
+     "content/UI_GFxHud_p/death_PlasmaCannon.png"
+    ],
+    "death_RepairRay": [
+     "content/UI_GFxHud_p/death_RepairRay.png"
+    ],
+    "death_Rocket": [
+     "content/UI_GFxHud_p/death_Rocket.png"
+    ],
+    "death_RocketVehicle": [
+     "content/UI_GFxHud_p/death_RocketVehicle.png"
+    ],
+    "death_RollerSphere": [
+     "content/UI_GFxHud_p/death_RollerSphere.png"
+    ],
+    "death_SentryTurret": [
+     "content/UI_GFxHud_p/death_SentryTurret.png"
+    ],
+    "death_Shockwave": [
+     "content/UI_GFxHud_p/death_Shockwave.png"
+    ],
+    "death_Shotgun": [
+     "content/UI_GFxHud_p/death_Shotgun.png"
+    ],
+    "death_SniperRifle": [
+     "content/UI_GFxHud_p/death_SniperRifle.png"
+    ],
+    "death_Suicide": [
+     "content/UI_GFxHud_p/death_Suicide.png"
+    ],
+    "death_Tank": [
+     "content/UI_GFxHud_p/death_Tank.png"
+    ],
+    "death_TankCannon": [
+     "content/UI_GFxHud_p/death_TankCannon.png"
+    ],
+    "death_TransformDisruptor": [
+     "content/UI_GFxHud_p/death_TransformDisruptor.png"
+    ],
+    "death_Truck": [
+     "content/UI_GFxHud_p/death_Truck.png"
+    ],
+    "mc_gameMessage_default": [],
+    "mc_levelUpNotify": [],
+    "mc_notify": []
+   },
+   "observers": [],
+   "tnhud_callbacks": {
+    "GameMessageCallBack": "_global.GameMessage"
+   },
+   "strings (UIText [Hud])": {},
+   "grouping": "HIGH CONFIDENCE (name match); symbol / observer / string existence CONFIRMED AUTHORED DATA"
+  },
+  "kills_deaths": {
+   "scaleform_owner": "UI_GFxHud_p/Hud_GFX",
+   "layout_instances": {},
+   "exported_symbols": {
+    "FastAbilityCooldownStreak": [
+     "content/UI_GFxHud_p/FastAbilityCooldownStreak.png"
+    ],
+    "FriendlyKillHealthBonusStreak": [
+     "content/UI_GFxHud_p/FriendlyKillHealthBonusStreak.png"
+    ],
+    "GuidedMissileStreak": [
+     "content/UI_GFxHud_p/GuidedMissileStreak.png"
+    ],
+    "HealthRegenStreak": [
+     "content/UI_GFxHud_p/HealthRegenStreak.png"
+    ],
+    "ImprovedOrbitalReconStreak": [
+     "content/UI_GFxHud_p/ImprovedOrbitalReconStreak.png"
+    ],
+    "MinePooperStreak": [
+     "content/UI_GFxHud_p/MinePooperStreak.png"
+    ],
+    "OrbitalReconStreak": [
+     "content/UI_GFxHud_p/OrbitalReconStreak.png"
+    ],
+    "OverShieldStreak": [
+     "content/UI_GFxHud_p/OverShieldStreak.png"
+    ],
+    "PokeStreak": [
+     "content/UI_GFxHud_p/PokeStreak.png"
+    ],
+    "RefillAmmoStreak": [
+     "content/UI_GFxHud_p/RefillAmmoStreak.png"
+    ],
+    "SpawnRocketTurretStreak": [
+     "content/UI_GFxHud_p/SpawnRocketTurretStreak.png"
+    ],
+    "TeamAbilityJammerStreak": [
+     "content/UI_GFxHud_p/TeamAbilityJammerStreak.png"
+    ],
+    "death_AssaultRifle": [
+     "content/UI_GFxHud_p/death_AssaultRifle.png"
+    ],
+    "death_AssaultRifleVehicle": [
+     "content/UI_GFxHud_p/death_AssaultRifleVehicle.png"
+    ],
+    "death_Bazooka": [
+     "content/UI_GFxHud_p/death_Bazooka.png"
+    ],
+    "death_BurstRifle": [
+     "content/UI_GFxHud_p/death_BurstRifle.png"
+    ],
+    "death_Car": [
+     "content/UI_GFxHud_p/death_Car.png"
+    ],
+    "death_Decoy": [
+     "content/UI_GFxHud_p/death_Decoy.png"
+    ],
+    "death_Drain": [
+     "content/UI_GFxHud_p/death_Drain.png"
+    ],
+    "death_EMPShotgun": [
+     "content/UI_GFxHud_p/death_EMPShotgun.png"
+    ],
+    "death_GrenadeLauncher": [
+     "content/UI_GFxHud_p/death_GrenadeLauncher.png"
+    ],
+    "death_HeavyMG": [
+     "content/UI_GFxHud_p/death_HeavyMG.png"
+    ],
+    "death_HeavyPistol": [
+     "content/UI_GFxHud_p/death_HeavyPistol.png"
+    ],
+    "death_HeavyTurret": [
+     "content/UI_GFxHud_p/death_HeavyTurret.png"
+    ],
+    "death_HomingRocket": [
+     "content/UI_GFxHud_p/death_HomingRocket.png"
+    ],
+    "death_HomingRocketVehicle": [
+     "content/UI_GFxHud_p/death_HomingRocketVehicle.png"
+    ],
+    "death_IonBlaster": [
+     "content/UI_GFxHud_p/death_IonBlaster.png"
+    ],
+    "death_Jet": [
+     "content/UI_GFxHud_p/death_Jet.png"
+    ],
+    "death_Melee": [
+     "content/UI_GFxHud_p/death_Melee.png"
+    ],
+    "death_PlasmaCannon": [
+     "content/UI_GFxHud_p/death_PlasmaCannon.png"
+    ],
+    "death_RepairRay": [
+     "content/UI_GFxHud_p/death_RepairRay.png"
+    ],
+    "death_Rocket": [
+     "content/UI_GFxHud_p/death_Rocket.png"
+    ],
+    "death_RocketVehicle": [
+     "content/UI_GFxHud_p/death_RocketVehicle.png"
+    ],
+    "death_RollerSphere": [
+     "content/UI_GFxHud_p/death_RollerSphere.png"
+    ],
+    "death_SentryTurret": [
+     "content/UI_GFxHud_p/death_SentryTurret.png"
+    ],
+    "death_Shockwave": [
+     "content/UI_GFxHud_p/death_Shockwave.png"
+    ],
+    "death_Shotgun": [
+     "content/UI_GFxHud_p/death_Shotgun.png"
+    ],
+    "death_SniperRifle": [
+     "content/UI_GFxHud_p/death_SniperRifle.png"
+    ],
+    "death_Suicide": [
+     "content/UI_GFxHud_p/death_Suicide.png"
+    ],
+    "death_Tank": [
+     "content/UI_GFxHud_p/death_Tank.png"
+    ],
+    "death_TankCannon": [
+     "content/UI_GFxHud_p/death_TankCannon.png"
+    ],
+    "death_TransformDisruptor": [
+     "content/UI_GFxHud_p/death_TransformDisruptor.png"
+    ],
+    "death_Truck": [
+     "content/UI_GFxHud_p/death_Truck.png"
+    ],
+    "mc_killstreakBuffIcon": [],
+    "mc_killstreakDpadPS3": [],
+    "mc_killstreakDpadXbox360": [],
+    "mc_killstreakIcon": [],
+    "mc_pointTransactionKillstreakLabel": []
+   },
+   "observers": [
+    {
+     "class": "TnHudDataObserverKillstreak",
+     "callback": "_global.NotifyKillstreakChanged",
+     "props": {}
+    }
+   ],
+   "tnhud_callbacks": {},
+   "strings (UIText [Hud])": {},
+   "grouping": "HIGH CONFIDENCE (name match); symbol / observer / string existence CONFIRMED AUTHORED DATA"
+  },
+  "objective_markers": {
+   "scaleform_owner": "UI_GFxHud_p/Hud_GFX",
+   "layout_instances": {
+    "hud_mc/topCenter_mc/countdown_mc/objectiveTime_mc": {
+     "char": 628,
+     "export": null,
+     "kind": "sprite",
+     "x_px": 0.0,
+     "y_px": 0.0,
+     "frames": 1,
+     "labels": []
+    }
+   },
+   "exported_symbols": {
+    "mc_markerDebug": [],
+    "mc_markerDebugArrow": [],
+    "mc_markerLockOn": [
+     "content/UI_GFxHud_p/Hud_GFX_I123.png"
+    ],
+    "mc_markerLockOnTriangleLocked": [
+     "content/UI_GFxHud_p/Hud_GFX_I1CC.png"
+    ],
+    "mc_objectiveLineGlyph": [],
+    "mc_objectiveLineGlyphMask": [],
+    "mc_objectiveLineObjective": [],
+    "mc_objectiveNew": []
+   },
+   "observers": [],
+   "tnhud_callbacks": {
+    "UpdateObjectiveMarkerCallback": "_global.UpdateMarker",
+    "AddObjectiveCallback": "_global.AddObjective",
+    "CompleteObjectiveCallback": "_global.CompleteObjective",
+    "StartMarkerUpdateCallBack": "_global.StartMarkerUpdate",
+    "FinishMarkerUpdateCallBack": "_global.FinishMarkerUpdate"
+   },
+   "strings (UIText [Hud])": {
+    "NewObjective": {
+     "INT": "New Objective",
+     "FRA": "Nouvel objectif"
+    }
+   },
+   "grouping": "HIGH CONFIDENCE (name match); symbol / observer / string existence CONFIRMED AUTHORED DATA"
+  },
+  "weapon": {
+   "scaleform_owner": "UI_GFxHud_p/Hud_GFX",
+   "layout_instances": {
+    "hud_mc/topRight_mc/#600/currentWeapon_mc": {
+     "char": 599,
+     "export": null,
+     "kind": "sprite",
+     "x_px": 0.0,
+     "y_px": 0.0,
+     "frames": 1,
+     "labels": []
+    }
+   },
+   "exported_symbols": {
+    "TnWeaponAssaultRifle": [
+     "content/UI_GFxHud_p/TnWeaponAssaultRifle.png"
+    ],
+    "TnWeaponAssaultRifleVehicle": [
+     "content/UI_GFxHud_p/TnWeaponAssaultRifleVehicle.png"
+    ],
+    "TnWeaponBazooka": [
+     "content/UI_GFxHud_p/TnWeaponBazooka.png"
+    ],
+    "TnWeaponBurstRifle": [
+     "content/UI_GFxHud_p/TnWeaponBurstRifle.png"
+    ],
+    "TnWeaponEmpShotgun": [
+     "content/UI_GFxHud_p/TnWeaponEmpShotgun.png"
+    ],
+    "TnWeaponGrenadeLauncher": [
+     "content/UI_GFxHud_p/TnWeaponGrenadeLauncher.png"
+    ],
+    "TnWeaponHeavyMG": [
+     "content/UI_GFxHud_p/TnWeaponHeavyMG.png"
+    ],
+    "TnWeaponHeavyPistol": [
+     "content/UI_GFxHud_p/TnWeaponHeavyPistol.png"
+    ],
+    "TnWeaponHeavyRocketTurret": [
+     "content/UI_GFxHud_p/TnWeaponHeavyRocketTurret.png"
+    ],
+    "TnWeaponHomingRocketVehicle": [
+     "content/UI_GFxHud_p/TnWeaponHomingRocketVehicle.png"
+    ],
+    "TnWeaponIonBlaster": [
+     "content/UI_GFxHud_p/TnWeaponIonBlaster.png"
+    ],
+    "TnWeaponPlasmaCannon": [
+     "content/UI_GFxHud_p/TnWeaponPlasmaCannon.png"
+    ],
+    "TnWeaponRepairRay": [
+     "content/UI_GFxHud_p/TnWeaponRepairRay.png"
+    ],
+    "TnWeaponRocketLauncher": [
+     "content/UI_GFxHud_p/TnWeaponRocketLauncher.png"
+    ],
+    "TnWeaponRocketVehicle": [
+     "content/UI_GFxHud_p/TnWeaponRocketVehicle.png"
+    ],
+    "TnWeaponShotgun": [
+     "content/UI_GFxHud_p/TnWeaponShotgun.png"
+    ],
+    "TnWeaponSniperRifle": [
+     "content/UI_GFxHud_p/TnWeaponSniperRifle.png"
+    ],
+    "TnWeaponTankCannon": [
+     "content/UI_GFxHud_p/TnWeaponTankCannon.png"
+    ],
+    "mc_chargingIndicator": [
+     "content/UI_GFxHud_p/Hud_GFX_I1FF.png"
+    ],
+    "mc_currentWeaponIcon": [],
+    "mc_currentWeaponText": []
+   },
+   "observers": [
+    {
+     "class": "TnHudDataObserverCurrentWeaponAndAim",
+     "callback": null,
+     "props": {}
+    }
+   ],
+   "tnhud_callbacks": {},
+   "strings (UIText [Hud])": {},
+   "grouping": "HIGH CONFIDENCE (name match); symbol / observer / string existence CONFIRMED AUTHORED DATA"
+  },
+  "abilities_class": {
+   "scaleform_owner": "UI_GFxHud_p/Hud_GFX",
+   "layout_instances": {
+    "hud_mc/topLeft_mc/#588/ability_mc": {
+     "char": 583,
+     "export": null,
+     "kind": "sprite",
+     "x_px": 0.0,
+     "y_px": 0.0,
+     "frames": 1,
+     "labels": []
+    },
+    "hud_mc/topRight_mc/#603/ability_mc": {
+     "char": 583,
+     "export": null,
+     "kind": "sprite",
+     "x_px": 0.0,
+     "y_px": 0.0,
+     "frames": 1,
+     "labels": []
+    },
+    "hud_mc/topRight_mc/#605/ability_mc": {
+     "char": 583,
+     "export": null,
+     "kind": "sprite",
+     "x_px": 0.0,
+     "y_px": 0.0,
+     "frames": 1,
+     "labels": []
+    }
+   },
+   "exported_symbols": {
+    "FastAbilityCooldownStreak": [
+     "content/UI_GFxHud_p/FastAbilityCooldownStreak.png"
+    ],
+    "TeamAbilityJammerStreak": [
+     "content/UI_GFxHud_p/TeamAbilityJammerStreak.png"
+    ],
+    "TnAbilityAbilityJammer": [
+     "content/UI_GFxHud_p/TnAbilityAbilityJammer.png"
+    ],
+    "TnAbilityAoeHeal": [
+     "content/UI_GFxHud_p/TnAbilityAoeHeal.png"
+    ],
+    "TnAbilityBarrier": [
+     null
+    ],
+    "TnAbilityCloaking": [
+     "content/UI_GFxHud_p/TnAbilityCloaking.png"
+    ],
+    "TnAbilityDecoyTrap": [
+     "content/UI_GFxHud_p/TnAbilityDecoyTrap.png"
+    ],
+    "TnAbilityDisguise": [
+     "content/UI_GFxHud_p/TnAbilityDisguise.png"
+    ],
+    "TnAbilityDodge": [
+     "content/UI_GFxHud_p/TnAbilityDodge.png"
+    ],
+    "TnAbilityDrain": [
+     "content/UI_GFxHud_p/TnAbilityDrain.png"
+    ],
+    "TnAbilityGrenade": [
+     "content/UI_GFxHud_p/TnAbilityGrenade.png"
+    ],
+    "TnAbilityGuidedMissile": [
+     null
+    ],
+    "TnAbilityHardLock": [
+     "content/UI_GFxHud_p/TnAbilityHardLock.png"
+    ],
+    "TnAbilityHover": [
+     "content/UI_GFxHud_p/TnAbilityHover.png"
+    ],
+    "TnAbilityKamikazeMine": [
+     "content/UI_GFxHud_p/TnAbilityKamikazeMine.png"
+    ],
+    "TnAbilityRollerSphere": [
+     "content/UI_GFxHud_p/TnAbilityRollerSphere.png"
+    ],
+    "TnAbilityScrambleHud": [
+     null
+    ],
+    "TnAbilityShield": [
+     "content/UI_GFxHud_p/TnAbilityShield.png"
+    ],
+    "TnAbilityShockwave": [
+     "content/UI_GFxHud_p/TnAbilityShockwave.png"
+    ],
+    "TnAbilitySpawnAmmoCrate": [
+     "content/UI_GFxHud_p/TnAbilitySpawnAmmoCrate.png"
+    ],
+    "TnAbilitySpawnSentry": [
+     "content/UI_GFxHud_p/TnAbilitySpawnSentry.png"
+    ],
+    "TnAbilityTransformDisruptor": [
+     "content/UI_GFxHud_p/TnAbilityTransformDisruptor.png"
+    ],
+    "TnAbilityWarcry": [
+     "content/UI_GFxHud_p/TnAbilityWarcry.png"
+    ],
+    "TnAbilityWhirlwind": [
+     "content/UI_GFxHud_p/TnAbilityWhirlwind.png"
+    ],
+    "mc_specialtyIconReference": []
+   },
+   "observers": [
+    {
+     "class": "TnHudDataObserverAbilityType",
+     "callback": "_global.NotifyAbilityType0Changed",
+     "props": {}
+    },
+    {
+     "class": "TnHudDataObserverAbilityType",
+     "callback": "_global.NotifyAbilityType1Changed",
+     "props": {
+      "AbilityNumber": 1
+     }
+    },
+    {
+     "class": "TnHudDataObserverVehicleAbilityType",
+     "callback": "_global.NotifyAbilityType2Changed",
+     "props": {}
+    }
+   ],
+   "tnhud_callbacks": {
+    "UpdateAbilityCooldownCallBack": "_global.UpdateAbilityCooldown",
+    "SetAbilityCallBack": "_global.SetAbility"
+   },
+   "strings (UIText [Hud])": {},
+   "grouping": "HIGH CONFIDENCE (name match); symbol / observer / string existence CONFIRMED AUTHORED DATA"
+  },
+  "damage": {
+   "scaleform_owner": "UI_GFxHud_p/Hud_GFX",
+   "layout_instances": {
+    "hud_mc/midCenter_mc/#621/increaseDamageAnchor_mc": {
+     "char": 612,
+     "export": null,
+     "kind": "sprite",
+     "x_px": 0.0,
+     "y_px": 0.0,
+     "frames": 1,
+     "labels": []
+    }
+   },
+   "exported_symbols": {
+    "mc_causeDamage": [
+     "content/UI_GFxHud_p/Hud_GFX_I1A4.png"
+    ],
+    "mc_crosshairIncreaseDamage": [
+     "content/UI_GFxHud_p/Hud_GFX_I135.png",
+     "content/UI_GFxHud_p/Hud_GFX_I138.png"
+    ],
+    "mc_damageArrow": [
+     "content/UI_GFxHud_p/Hud_GFX_I114.png",
+     "content/UI_GFxHud_p/Hud_GFX_I117.png"
+    ],
+    "mc_hurt": [
+     "content/UI_GFxHud_p/Hud_GFX_IA3.png",
+     "content/UI_GFxHud_p/Hud_GFX_IA6.png",
+     "content/UI_GFxHud_p/Hud_GFX_IAA.png",
+     "content/UI_GFxHud_p/Hud_GFX_IAD.png",
+     "content/UI_GFxHud_p/Hud_GFX_IB0.png",
+     "content/UI_GFxHud_p/Hud_GFX_IB6.png",
+     "content/UI_GFxHud_p/Hud_GFX_IBA.png",
+     "content/UI_GFxHud_p/Hud_GFX_IBE.png",
+     "content/UI_GFxHud_p/Hud_GFX_IC2.png",
+     "content/UI_GFxHud_p/Hud_GFX_IC5.png",
+     "content/UI_GFxHud_p/Hud_GFX_IC9.png"
+    ],
+    "mc_missileWarningVictimBrackets": [],
+    "mc_missileWarningVictimInbound": [],
+    "mc_missileWarningVictimLocked": []
+   },
+   "observers": [
+    {
+     "class": "TnHudDataObserverDamageIndicators",
+     "callback": "_global.NotifyPlayerRotationChanged",
+     "props": {
+      "AddDamageIndicatorBindingName": "_global.NotifyDamageIndicatorAdded"
+     }
+    },
+    {
+     "class": "TnHudDataObserverIncreaseDamage",
+     "callback": "_global.NotifyDamageIncrease",
+     "props": {
+      "IncreaseDamageBuffs": [
+       "TransGame.TnBuffIncreaseDamageAfterCloak",
+       "TransGame.TnBuffIncreaseDamageAfterDisguise",
+       "TransGame.TnBuffIncreaseDamageDuringHover",
+       "TransGame.TnBuffWarcryIncreaseDamage",
+       "TransGame.TnBuffIncreaseDamageKillstreak",
+       "TransGame.TnBuffAmmoBeaconIncreaseDamage"
+      ]
+     }
+    }
+   ],
+   "tnhud_callbacks": {
+    "CausedDamageScaleformCallback": "_global.CausedDamage"
+   },
+   "strings (UIText [Hud])": {},
+   "grouping": "HIGH CONFIDENCE (name match); symbol / observer / string existence CONFIRMED AUTHORED DATA"
+  },
+  "notifications": {
+   "scaleform_owner": "UI_GFxHud_p/Hud_GFX",
+   "layout_instances": {
+    "hud_mc/bottomCenter_mc/notifyManager_mc": {
+     "char": 646,
+     "export": null,
+     "kind": "sprite",
+     "x_px": 0.0,
+     "y_px": -30.0,
+     "frames": 1,
+     "labels": []
+    },
+    "hud_mc/bottomCenter_mc/returnFlagNotifyTime_mc": {
+     "char": 652,
+     "export": null,
+     "kind": "sprite",
+     "x_px": 0.0,
+     "y_px": -100.0,
+     "frames": 1,
+     "labels": []
+    }
+   },
+   "exported_symbols": {
+    "TnAbilityTransformDisruptor": [
+     "content/UI_GFxHud_p/TnAbilityTransformDisruptor.png"
+    ],
+    "death_TransformDisruptor": [
+     "content/UI_GFxHud_p/death_TransformDisruptor.png"
+    ],
+    "mc_ammoPickupNotification": [],
+    "mc_debugMessageTextLine": [],
+    "mc_gameMessage_default": [],
+    "mc_levelUpNotify": [],
+    "mc_notify": [],
+    "mc_transformDisrupt": [],
+    "mc_tutorialMessage": [],
+    "mc_tutorialMessageTextTutorialPause": []
+   },
+   "observers": [
+    {
+     "class": "TnHudDataObserverSegmentedHealth",
+     "callback": "_global.NotifySegmentedHealthChanged",
+     "props": {
+      "SavedActiveSegment": -1,
+      "SavedNormalizedSegmentHealth": -1.0
+     }
+    },
+    {
+     "class": "TnHudDataObserverNormalizedOverShield",
+     "callback": "_global.NotifyOverShieldChanged",
+     "props": {}
+    },
+    {
+     "class": "TnHudDataObserverNormalizedHeat",
+     "callback": "_global.NotifyNormalizedHeatChanged",
+     "props": {}
+    },
+    {
+     "class": "TnHudDataObserverHeat",
+     "callback": "_global.NotifyHeatChanged",
+     "props": {}
+    },
+    {
+     "class": "TnHudDataObserverWeaponMessage",
+     "callback": "_global.NotifyWeaponMessageChanged",
+     "props": {}
+    },
+    {
+     "class": "TnHudDataObserverHudScrambled",
+     "callback": "_global.NotifyHudScrambledChanged",
+     "props": {
+      "ScrambleHudBuffs": [
+       "TransGame.TnBuffScrambleHud",
+       "TransGame.TnBuffFlashBang",
+       "TransGame.TnBuffDecoyTrap"
+      ]
+     }
+    },
+    {
+     "class": "TnHudDataObserverDamageIndicators",
+     "callback": "_global.NotifyPlayerRotationChanged",
+     "props": {
+      "AddDamageIndicatorBindingName": "_global.NotifyDamageIndicatorAdded"
+     }
+    },
+    {
+     "class": "TnHudDataObserverWeaponSpread",
+     "callback": "_global.NotifyWeaponSpreadChanged",
+     "props": {
+      "ConversionFactor": 1.0
+     }
+    },
+    {
+     "class": "TnHudDataObserverIncreaseDamage",
+     "callback": "_global.NotifyDamageIncrease",
+     "props": {
+      "IncreaseDamageBuffs": [
+       "TransGame.TnBuffIncreaseDamageAfterCloak",
+       "TransGame.TnBuffIncreaseDamageAfterDisguise",
+       "TransGame.TnBuffIncreaseDamageDuringHover",
+       "TransGame.TnBuffWarcryIncreaseDamage",
+       "TransGame.TnBuffIncreaseDamageKillstreak",
+       "TransGame.TnBuffAmmoBeaconIncreaseDamage"
+      ]
+     }
+    },
+    {
+     "class": "TnHudDataObserverContextualCommands",
+     "callback": "_global.NotifyContextualCommand",
+     "props": {}
+    },
+    {
+     "class": "TnHudDataObserverWeaponReticule",
+     "callback": "_global.NotifyWeaponReticuleTypeChanged",
+     "props": {}
+    },
+    {
+     "class": "TnHudDataObserverIsSpectating",
+     "callback": "_global.NotifySpectating",
+     "props": {}
+    },
+    {
+     "class": "TnHudDataObserverAbilityType",
+     "callback": "_global.NotifyAbilityType0Changed",
+     "props": {}
+    },
+    {
+     "class": "TnHudDataObserverAbilityType",
+     "callback": "_global.NotifyAbilityType1Changed",
+     "props": {
+      "AbilityNumber": 1
+     }
+    },
+    {
+     "class": "TnHudDataObserverVehicleAbilityType",
+     "callback": "_global.NotifyAbilityType2Changed",
+     "props": {}
+    },
+    {
+     "class": "TnHudDataObserverWeaponClipAmmo",
+     "callback": "_global.NotifyWeaponClipAmmoChanged",
+     "props": {}
+    },
+    {
+     "class": "TnHudDataObserverWeaponReserveAmmo",
+     "callback": "_global.NotifyWeaponReserveAmmoChanged",
+     "props": {}
+    },
+    {
+     "class": "TnHudDataObserverWeapon",
+     "callback": "_global.NotifyPrimaryWeaponChanged",
+     "props": {
+      "WeaponType": "WT_Primary"
+     }
+    },
+    {
+     "class": "TnHudDataObserverWeapon",
+     "callback": "_global.NotifySecondaryWeaponChanged",
+     "props": {
+      "WeaponType": "WT_Secondary"
+     }
+    },
+    {
+     "class": "TnHudDataObserverWeapon",
+     "callback": "_global.NotifyMeleeWeaponChanged",
+     "props": {
+      "WeaponType": "WT_Melee"
+     }
+    },
+    {
+     "class": "TnHudDataObserverNormalizedDownedHealth",
+     "callback": "_global.NotifyNormalizedDownedHealthChanged",
+     "props": {}
+    },
+    {
+     "class": "TnHudDataObserverLockOnState",
+     "callback": "_global.NotifyLockOnStateChanged",
+     "props": {}
+    },
+    {
+     "class": "TnHudDataObserverTargetType",
+     "callback": "_global.NotifyTargetTypeChanged",
+     "props": {
+      "SavedValue": -1.0
+     }
+    },
+    {
+     "class": "TnHudDataObserverGrenadeAmmo",
+     "callback": "_global.NotifyGrenadeAmmoChanged",
+     "props": {}
+    },
+    {
+     "class": "TnHudDataObserverWeaponJammed",
+     "callback": "_global.NotifyWeaponJammedChanged",
+     "props": {}
+    },
+    {
+     "class": "TnHudDataObserverKillstreak",
+     "callback": "_global.NotifyKillstreakChanged",
+     "props": {}
+    },
+    {
+     "class": "TnHudDataObserverCurrentForm",
+     "callback": "_global.NotifyCurrentFormChanged",
+     "props": {}
+    },
+    {
+     "class": "TnHudDataObserverReviveBuddy",
+     "callback": "_global.NotifyProgressBarChanged",
+     "props": {
+      "RevivingAiLabel": "Reviving",
+      "label": "Reviving `p"
+     }
+    },
+    {
+     "class": "TnHudDataObserverFirstSpawn",
+     "callback": "_global.NotifyFirstSpawn",
+     "props": {}
+    },
+    {
+     "class": "TnHudDataObserverActiveGrenadeCount",
+     "callback": "_global.NotifyActiveGrenadeCount",
+     "props": {}
+    },
+    {
+     "class": "TnHudDataObserverDominationCapture",
+     "callback": "_global.NotifyProgressBarChanged",
+     "props": {
+      "label": "Capturing Node"
+     }
+    },
+    {
+     "class": "TnHudDataObserverBombDefuseTimer",
+     "callback": "_global.NotifyProgressBarChanged",
+     "props": {
+      "label": "Defusing the Bomb"
+     }
+    }
+   ],
+   "tnhud_callbacks": {
+    "GameMessageCallBack": "_global.GameMessage",
+    "NotifyLevelUpCallBack": "_global.NotifyLevelUp",
+    "NotifyAmmoAddedCallback": "_global.NotifyAmmoAdded",
+    "NotifyBadConnectionCallback": "_global.NotifyBadConnection",
+    "NotifyCantTransformCallback": "_global.NotifyCantTransform"
+   },
+   "strings (UIText [Hud])": {
+    "TutorialAvailable": {
+     "INT": "Tutorial Online",
+     "FRA": "Initiation en ligne"
+    },
+    "TutorialPause": {
+     "INT": "View in Pause Menu",
+     "FRA": "Afficher le menu Pause"
+    }
+   },
+   "grouping": "HIGH CONFIDENCE (name match); symbol / observer / string existence CONFIRMED AUTHORED DATA"
+  },
+  "waves_escalation": {
+   "scaleform_owner": "UI_GFxHud_p/Hud_GFX",
+   "layout_instances": {},
+   "exported_symbols": {
+    "Shockwave": [
+     "content/UI_GFxHud_p/Shockwave.png"
+    ],
+    "Soundwave": [
+     "content/UI_GFxHud_p/Soundwave.png"
+    ],
+    "TnAbilityShockwave": [
+     "content/UI_GFxHud_p/TnAbilityShockwave.png"
+    ],
+    "death_Shockwave": [
+     "content/UI_GFxHud_p/death_Shockwave.png"
+    ],
+    "mc_nextWaveTimer": [],
+    "mc_scoreCoop": [],
+    "mc_scoreCoopPlayerPanel": [
+     "content/UI_GFxHud_p/Hud_GFX_I184.png"
+    ],
+    "mc_scoreSurvival": [],
+    "mc_scoreSurvivalPlayerPanel": [
+     "content/UI_GFxHud_p/Hud_GFX_I180.png",
+     "content/UI_GFxHud_p/death_Shockwave.png"
+    ],
+    "mc_waveIndicator": []
+   },
+   "observers": [],
+   "tnhud_callbacks": {
+    "WaveformDataCallBack": "_global.WaveformData"
+   },
+   "strings (UIText [Hud])": {
+    "NewWaveIn": {
+     "INT": "New Wave In",
+     "FRA": "Nouvelle vague dans"
+    },
+    "Wave": {
+     "INT": "Wave",
+     "FRA": "Vague"
+    },
+    "WaveComplete": {
+     "INT": "Wave Complete",
+     "FRA": "Vague terminée"
+    }
+   },
+   "grouping": "HIGH CONFIDENCE (name match); symbol / observer / string existence CONFIRMED AUTHORED DATA"
+  }
+ },
+ "icon_sets": {
+  "characters (export = PCD CharacterName / FriendlyIconicName)": {
+   "AirRaid": {
+    "chassis": "Jet4",
+    "png": [
+     "content/UI_GFxHud_p/AirRaid.png"
+    ]
+   },
+   "Arcee": {
+    "chassis": "Car5",
+    "png": [
+     "content/UI_GFxHud_p/Arcee.png"
+    ]
+   },
+   "Barricade": {
+    "chassis": "Car4",
+    "png": [
+     "content/UI_GFxHud_p/Barricade.png"
+    ]
+   },
+   "Brawl": {
+    "chassis": "Tank2",
+    "png": [
+     "content/UI_GFxHud_p/Brawl.png"
+    ]
+   },
+   "Breakdown": {
+    "chassis": "Car3",
+    "png": [
+     "content/UI_GFxHud_p/Breakdown.png"
+    ]
+   },
+   "Bumblebee": {
+    "chassis": "Car",
+    "png": [
+     "content/UI_GFxHud_p/Bumblebee.png"
+    ]
+   },
+   "Deadend": {
+    "chassis": "Car7",
+    "png": [
+     "content/UI_GFxHud_p/Deadend.png"
+    ]
+   },
+   "Demolishor": {
+    "chassis": "Tank5",
+    "png": [
+     "content/UI_GFxHud_p/Demolishor.png"
+    ]
+   },
+   "Ironhide": {
+    "chassis": "Truck3",
+    "png": [
+     "content/UI_GFxHud_p/Ironhide.png"
+    ]
+   },
+   "Jazz": {
+    "chassis": "Car6",
+    "png": [
+     "content/UI_GFxHud_p/Jazz.png"
+    ]
+   },
+   "Jetfire": {
+    "chassis": "Jet5",
+    "png": [
+     "content/UI_GFxHud_p/Jetfire.png"
+    ]
+   },
+   "Megatron": {
+    "chassis": "Tank",
+    "png": [
+     "content/UI_GFxHud_p/Megatron.png"
+    ]
+   },
+   "Onslaught": {
+    "chassis": "Truck6",
+    "png": [
+     "content/UI_GFxHud_p/Onslaught.png"
+    ]
+   },
+   "Optimus": {
+    "chassis": "Truck7",
+    "png": [
+     null
+    ]
+   },
+   "Optimus Prime": {
+    "chassis": "Truck",
+    "png": [
+     "content/UI_GFxHud_p/Optimus Prime.png"
+    ]
+   },
+   "Ratchet": {
+    "chassis": "Truck2",
+    "png": [
+     "content/UI_GFxHud_p/Ratchet.png"
+    ]
+   },
+   "Scattershot": {
+    "chassis": "Tank4",
+    "png": [
+     "content/UI_GFxHud_p/Scattershot.png"
+    ]
+   },
+   "Shockwave": {
+    "chassis": "Jet7",
+    "png": [
+     "content/UI_GFxHud_p/Shockwave.png"
+    ]
+   },
+   "Sideswipe": {
+    "chassis": "Car2",
+    "png": [
+     "content/UI_GFxHud_p/Sideswipe.png"
+    ]
+   },
+   "Silverbolt": {
+    "chassis": "Jet6",
+    "png": [
+     "content/UI_GFxHud_p/Silverbolt.png"
+    ]
+   },
+   "Skywarp": {
+    "chassis": "Jet3",
+    "png": [
+     "content/UI_GFxHud_p/Skywarp.png"
+    ]
+   },
+   "Slipstream": {
+    "chassis": "Jet8",
+    "png": [
+     "content/UI_GFxHud_p/Slipstream.png"
+    ]
+   },
+   "Soundwave": {
+    "chassis": "Truck4",
+    "png": [
+     "content/UI_GFxHud_p/Soundwave.png"
+    ]
+   },
+   "Starscream": {
+    "chassis": "Jet",
+    "png": [
+     "content/UI_GFxHud_p/Starscream.png"
+    ]
+   },
+   "Thundercracker": {
+    "chassis": "Jet2",
+    "png": [
+     "content/UI_GFxHud_p/Thundercracker.png"
+    ]
+   },
+   "Warpath": {
+    "chassis": "Tank3",
+    "png": [
+     "content/UI_GFxHud_p/Warpath.png"
+    ]
+   },
+   "Zeta Prime": {
+    "chassis": "Truck5",
+    "png": [
+     "content/UI_GFxHud_p/Zeta Prime.png"
+    ]
+   }
+  },
+  "vehicle_forms": {
+   "Car": [
+    null
+   ],
+   "Jet": [
+    "content/UI_GFxHud_p/Jet.png"
+   ],
+   "Tank": [
+    "content/UI_GFxHud_p/Tank.png"
+   ],
+   "Truck": [
+    "content/UI_GFxHud_p/Truck.png"
+   ]
+  },
+  "abilities (export = ability class name)": {
+   "TnAbilityAbilityJammer": [
+    "content/UI_GFxHud_p/TnAbilityAbilityJammer.png"
+   ],
+   "TnAbilityAoeHeal": [
+    "content/UI_GFxHud_p/TnAbilityAoeHeal.png"
+   ],
+   "TnAbilityBarrier": [
+    null
+   ],
+   "TnAbilityCloaking": [
+    "content/UI_GFxHud_p/TnAbilityCloaking.png"
+   ],
+   "TnAbilityDecoyTrap": [
+    "content/UI_GFxHud_p/TnAbilityDecoyTrap.png"
+   ],
+   "TnAbilityDisguise": [
+    "content/UI_GFxHud_p/TnAbilityDisguise.png"
+   ],
+   "TnAbilityDodge": [
+    "content/UI_GFxHud_p/TnAbilityDodge.png"
+   ],
+   "TnAbilityDrain": [
+    "content/UI_GFxHud_p/TnAbilityDrain.png"
+   ],
+   "TnAbilityGrenade": [
+    "content/UI_GFxHud_p/TnAbilityGrenade.png"
+   ],
+   "TnAbilityGuidedMissile": [
+    null
+   ],
+   "TnAbilityHardLock": [
+    "content/UI_GFxHud_p/TnAbilityHardLock.png"
+   ],
+   "TnAbilityHover": [
+    "content/UI_GFxHud_p/TnAbilityHover.png"
+   ],
+   "TnAbilityKamikazeMine": [
+    "content/UI_GFxHud_p/TnAbilityKamikazeMine.png"
+   ],
+   "TnAbilityRollerSphere": [
+    "content/UI_GFxHud_p/TnAbilityRollerSphere.png"
+   ],
+   "TnAbilityScrambleHud": [
+    null
+   ],
+   "TnAbilityShield": [
+    "content/UI_GFxHud_p/TnAbilityShield.png"
+   ],
+   "TnAbilityShockwave": [
+    "content/UI_GFxHud_p/TnAbilityShockwave.png"
+   ],
+   "TnAbilitySpawnAmmoCrate": [
+    "content/UI_GFxHud_p/TnAbilitySpawnAmmoCrate.png"
+   ],
+   "TnAbilitySpawnSentry": [
+    "content/UI_GFxHud_p/TnAbilitySpawnSentry.png"
+   ],
+   "TnAbilityTransformDisruptor": [
+    "content/UI_GFxHud_p/TnAbilityTransformDisruptor.png"
+   ],
+   "TnAbilityWarcry": [
+    "content/UI_GFxHud_p/TnAbilityWarcry.png"
+   ],
+   "TnAbilityWhirlwind": [
+    "content/UI_GFxHud_p/TnAbilityWhirlwind.png"
+   ]
+  },
+  "weapons (export = weapon class name)": {
+   "TnWeaponAssaultRifle": [
+    "content/UI_GFxHud_p/TnWeaponAssaultRifle.png"
+   ],
+   "TnWeaponAssaultRifleVehicle": [
+    "content/UI_GFxHud_p/TnWeaponAssaultRifleVehicle.png"
+   ],
+   "TnWeaponBazooka": [
+    "content/UI_GFxHud_p/TnWeaponBazooka.png"
+   ],
+   "TnWeaponBurstRifle": [
+    "content/UI_GFxHud_p/TnWeaponBurstRifle.png"
+   ],
+   "TnWeaponEmpShotgun": [
+    "content/UI_GFxHud_p/TnWeaponEmpShotgun.png"
+   ],
+   "TnWeaponGrenadeLauncher": [
+    "content/UI_GFxHud_p/TnWeaponGrenadeLauncher.png"
+   ],
+   "TnWeaponHeavyMG": [
+    "content/UI_GFxHud_p/TnWeaponHeavyMG.png"
+   ],
+   "TnWeaponHeavyPistol": [
+    "content/UI_GFxHud_p/TnWeaponHeavyPistol.png"
+   ],
+   "TnWeaponHeavyRocketTurret": [
+    "content/UI_GFxHud_p/TnWeaponHeavyRocketTurret.png"
+   ],
+   "TnWeaponHomingRocketVehicle": [
+    "content/UI_GFxHud_p/TnWeaponHomingRocketVehicle.png"
+   ],
+   "TnWeaponIonBlaster": [
+    "content/UI_GFxHud_p/TnWeaponIonBlaster.png"
+   ],
+   "TnWeaponPlasmaCannon": [
+    "content/UI_GFxHud_p/TnWeaponPlasmaCannon.png"
+   ],
+   "TnWeaponRepairRay": [
+    "content/UI_GFxHud_p/TnWeaponRepairRay.png"
+   ],
+   "TnWeaponRocketLauncher": [
+    "content/UI_GFxHud_p/TnWeaponRocketLauncher.png"
+   ],
+   "TnWeaponRocketVehicle": [
+    "content/UI_GFxHud_p/TnWeaponRocketVehicle.png"
+   ],
+   "TnWeaponShotgun": [
+    "content/UI_GFxHud_p/TnWeaponShotgun.png"
+   ],
+   "TnWeaponSniperRifle": [
+    "content/UI_GFxHud_p/TnWeaponSniperRifle.png"
+   ],
+   "TnWeaponTankCannon": [
+    "content/UI_GFxHud_p/TnWeaponTankCannon.png"
+   ]
+  },
+  "killstreaks (export = killstreak UniqueId)": {
+   "FastAbilityCooldownStreak": [
+    "content/UI_GFxHud_p/FastAbilityCooldownStreak.png"
+   ],
+   "FriendlyKillHealthBonusStreak": [
+    "content/UI_GFxHud_p/FriendlyKillHealthBonusStreak.png"
+   ],
+   "GuidedMissileStreak": [
+    "content/UI_GFxHud_p/GuidedMissileStreak.png"
+   ],
+   "HealthRegenStreak": [
+    "content/UI_GFxHud_p/HealthRegenStreak.png"
+   ],
+   "ImprovedOrbitalReconStreak": [
+    "content/UI_GFxHud_p/ImprovedOrbitalReconStreak.png"
+   ],
+   "MinePooperStreak": [
+    "content/UI_GFxHud_p/MinePooperStreak.png"
+   ],
+   "OrbitalReconStreak": [
+    "content/UI_GFxHud_p/OrbitalReconStreak.png"
+   ],
+   "OverShieldStreak": [
+    "content/UI_GFxHud_p/OverShieldStreak.png"
+   ],
+   "PokeStreak": [
+    "content/UI_GFxHud_p/PokeStreak.png"
+   ],
+   "RefillAmmoStreak": [
+    "content/UI_GFxHud_p/RefillAmmoStreak.png"
+   ],
+   "SpawnRocketTurretStreak": [
+    "content/UI_GFxHud_p/SpawnRocketTurretStreak.png"
+   ],
+   "TeamAbilityJammerStreak": [
+    "content/UI_GFxHud_p/TeamAbilityJammerStreak.png"
+   ]
+  },
+  "grenades": {
+   "GrenadeIconFlashbang": [
+    "content/UI_GFxHud_p/GrenadeIconFlashbang.png"
+   ],
+   "GrenadeIconFrag": [
+    "content/UI_GFxHud_p/GrenadeIconFrag.png"
+   ],
+   "GrenadeIconHeal": [
+    "content/UI_GFxHud_p/GrenadeIconHeal.png"
+   ],
+   "GrenadeIconKMine": [
+    "content/UI_GFxHud_p/GrenadeIconKMine.png"
+   ]
+  },
+  "kill_feed (death_<DamageType>)": {
+   "death_AssaultRifle": [
+    "content/UI_GFxHud_p/death_AssaultRifle.png"
+   ],
+   "death_AssaultRifleVehicle": [
+    "content/UI_GFxHud_p/death_AssaultRifleVehicle.png"
+   ],
+   "death_Bazooka": [
+    "content/UI_GFxHud_p/death_Bazooka.png"
+   ],
+   "death_BurstRifle": [
+    "content/UI_GFxHud_p/death_BurstRifle.png"
+   ],
+   "death_Car": [
+    "content/UI_GFxHud_p/death_Car.png"
+   ],
+   "death_Decoy": [
+    "content/UI_GFxHud_p/death_Decoy.png"
+   ],
+   "death_Drain": [
+    "content/UI_GFxHud_p/death_Drain.png"
+   ],
+   "death_EMPShotgun": [
+    "content/UI_GFxHud_p/death_EMPShotgun.png"
+   ],
+   "death_GrenadeLauncher": [
+    "content/UI_GFxHud_p/death_GrenadeLauncher.png"
+   ],
+   "death_HeavyMG": [
+    "content/UI_GFxHud_p/death_HeavyMG.png"
+   ],
+   "death_HeavyPistol": [
+    "content/UI_GFxHud_p/death_HeavyPistol.png"
+   ],
+   "death_HeavyTurret": [
+    "content/UI_GFxHud_p/death_HeavyTurret.png"
+   ],
+   "death_HomingRocket": [
+    "content/UI_GFxHud_p/death_HomingRocket.png"
+   ],
+   "death_HomingRocketVehicle": [
+    "content/UI_GFxHud_p/death_HomingRocketVehicle.png"
+   ],
+   "death_IonBlaster": [
+    "content/UI_GFxHud_p/death_IonBlaster.png"
+   ],
+   "death_Jet": [
+    "content/UI_GFxHud_p/death_Jet.png"
+   ],
+   "death_Melee": [
+    "content/UI_GFxHud_p/death_Melee.png"
+   ],
+   "death_PlasmaCannon": [
+    "content/UI_GFxHud_p/death_PlasmaCannon.png"
+   ],
+   "death_RepairRay": [
+    "content/UI_GFxHud_p/death_RepairRay.png"
+   ],
+   "death_Rocket": [
+    "content/UI_GFxHud_p/death_Rocket.png"
+   ],
+   "death_RocketVehicle": [
+    "content/UI_GFxHud_p/death_RocketVehicle.png"
+   ],
+   "death_RollerSphere": [
+    "content/UI_GFxHud_p/death_RollerSphere.png"
+   ],
+   "death_SentryTurret": [
+    "content/UI_GFxHud_p/death_SentryTurret.png"
+   ],
+   "death_Shockwave": [
+    "content/UI_GFxHud_p/death_Shockwave.png"
+   ],
+   "death_Shotgun": [
+    "content/UI_GFxHud_p/death_Shotgun.png"
+   ],
+   "death_SniperRifle": [
+    "content/UI_GFxHud_p/death_SniperRifle.png"
+   ],
+   "death_Suicide": [
+    "content/UI_GFxHud_p/death_Suicide.png"
+   ],
+   "death_Tank": [
+    "content/UI_GFxHud_p/death_Tank.png"
+   ],
+   "death_TankCannon": [
+    "content/UI_GFxHud_p/death_TankCannon.png"
+   ],
+   "death_TransformDisruptor": [
+    "content/UI_GFxHud_p/death_TransformDisruptor.png"
+   ],
+   "death_Truck": [
+    "content/UI_GFxHud_p/death_Truck.png"
+   ]
+  },
+  "misc": {
+   "IconUnknown": [
+    "content/UI_GFxHud_p/IconUnknown.png"
+   ],
+   "Infinity": [
+    "content/UI_GFxHud_p/Infinity.png"
+   ],
+   "PowerIcon": [
+    "content/UI_GFxHud_p/PowerIcon.png"
+   ],
+   "Unknown": [
+    "content/UI_GFxHud_p/Unknown.png"
+   ]
+  }
+ },
+ "crosshair": {
+  "SetWeaponCrosshair (Hud_GFX _global, bytecode)": {
+   "0": "mc_crosshairGeneric",
+   "1": "mc_crosshairShotgun",
+   "2": "mc_crosshairIonBlaster",
+   "3": "mc_crosshairBazooka",
+   "animation": "attachMovie into crosshairAnchor_mc, rotate in from 60 deg (interp easeout 0.3 s)"
+  },
+  "NotifyTargetTypeChanged colours (bytecode)": {
+   "0": "#50B5D5",
+   "1": "#FF3333",
+   "other": "#FFFFFF",
+   "animation": "colour interp easeout 0.2 s"
+  },
+  "who_selects_crosshair_type": "no script caller of SetWeaponCrosshair - native (RE). Name-based expectation (PROVISIONAL): Shotgun/EMPShotgun -> 1, IonBlaster -> 2, Bazooka/RocketLauncher -> 3, others -> 0",
+  "reticule_type (script)": "TnWeapon.GetReticuleType: WeaponType WT_Mounted -> WRT_Turret (1) else ReticuleType; no weapon authors ReticuleType (enum EWeaponReticuleType {WRT_Default, WRT_Turret}) -> turret reticule only for mounted turrets; Hud DisplayTurretReticule / mc_turretReticule",
+  "scopes": {
+   "symbols": [
+    "mc_longScope",
+    "mc_mediumScope",
+    "mc_shortScope",
+    "mc_zoomScope"
+   ],
+   "weapons_with_fine_aim_scope (HasFineAimScope)": [
+    "TnWeaponHeavyPistol",
+    "TnWeaponSniperRifle"
+   ]
+  },
+  "other": {
+   "increase_damage": "mc_crosshairIncreaseDamage",
+   "range_finder": "mc_rangeFinderCrosshair",
+   "lock_on": [
+    "mc_markerLockOn",
+    "mc_markerLockOnTriangleLocked"
+   ]
+  },
+  "confidence": "CONFIRMED AUTHORED DATA for symbols / mappings in bytecode; per-weapon crosshair type UNKNOWN (native)"
+ },
+ "scoreboard": {
+  "movie": "UI_GFxInGameStats_p/InGameStats_GFX",
+  "file": "content/UI_GFxInGameStats_p/InGameStats_GFX.gfx",
+  "exports": [],
+  "text_fields": {
+   "5": {
+    "flags": {
+     "html": true,
+     "multiline": false,
+     "readonly": true,
+     "autosize": false,
+     "wordwrap": false,
+     "noselect": true
+    },
+    "font": 4,
+    "height_twips": 320,
+    "color_rgba": [
+     255,
+     147,
+     50,
+     255
+    ],
+    "align": 2,
+    "variable": "",
+    "initial_text": "<p align=\"center\"></p>"
+   },
+   "6": {
+    "flags": {
+     "html": true,
+     "multiline": false,
+     "readonly": true,
+     "autosize": false,
+     "wordwrap": false,
+     "noselect": true
+    },
+    "font": 4,
+    "height_twips": 320,
+    "color_rgba": [
+     80,
+     181,
+     213,
+     255
+    ],
+    "align": 2,
+    "variable": "",
+    "initial_text": "<p align=\"center\"></p>"
+   }
+  },
+  "localization_keys": [
+   "$UIText.ButtonHints.CloseMenu",
+   "$UIText.PlayerList.GamerCard",
+   "$UIText.Shared.GameModeOnMap"
+  ],
+  "callbacks_defined": [
+   "addInterp",
+   "createInterpController",
+   "findInterpValue",
+   "removeInterpController",
+   "updateInterpObjects"
+  ],
+  "fonts": {},
+  "images": [
+   "content/UI_GFxInGameStats_p/InGameStats_GFX_G0.png"
+  ],
+  "player_list": {
+   "movie": "UI_GFxPlayerList_p/PlayerList_GFX",
+   "file": "content/UI_GFxPlayerList_p/PlayerList_GFX.gfx",
+   "exports": [
+    "AirRaid",
+    "Arcee",
+    "Barricade",
+    "Brawl",
+    "Breakdown",
+    "Bumblebee",
+    "Deadend",
+    "Demolishor",
+    "Ironhide",
+    "Jazz",
+    "Jetfire",
+    "Megatron",
+    "Onslaught",
+    "Optimus",
+    "Optimus Prime",
+    "Ratchet",
+    "Scattershot",
+    "Shockwave",
+    "Sideswipe",
+    "Silverbolt",
+    "Skywarp",
+    "Slipstream",
+    "Soundwave",
+    "Starscream",
+    "Thundercracker",
+    "Unknown",
+    "Warpath",
+    "Zeta Prime",
+    "mc_awardPlace1st",
+    "mc_awardPlace2nd",
+    "mc_awardPlace3rd",
+    "mc_awardPrimeMode",
+    "mc_columnHeader",
+    "mc_columnHeaderCell",
+    "mc_iconicEntry",
+    "mc_playerAwardsAnchor",
+    "mc_playerConnectingAnchor",
+    "mc_playerConnectingIcon",
+    "mc_playerEntry",
+    "mc_playerEntryCell",
+    "mc_playerListContainer",
+    "mc_playerSpecialtyLevelAnchor",
+    "mc_playerSpecialtyLevelText",
+    "mc_sharedIconReference",
+    "mc_speakingStatus",
+    "mc_teamHeader",
+    "mc_teamHeaderCell"
+   ],
+   "text_fields": {
+    "52": {
+     "flags": {
+      "html": true,
+      "multiline": false,
+      "readonly": true,
+      "autosize": false,
+      "wordwrap": false,
+      "noselect": true
+     },
+     "font": 51,
+     "height_twips": 560,
+     "color_rgba": [
+      139,
+      240,
+      255,
+      255
+     ],
+     "align": 0,
+     "variable": "",
+     "initial_text": "<p align=\"left\"></p>"
+    },
+    "87": {
+     "flags": {
+      "html": false,
+      "multiline": false,
+      "readonly": true,
+      "autosize": false,
+      "wordwrap": false,
+      "noselect": true
+     },
+     "font": 86,
+     "height_twips": 440,
+     "color_rgba": [
+      255,
+      255,
+      255,
+      255
+     ],
+     "align": 0,
+     "variable": ""
+    },
+    "89": {
+     "flags": {
+      "html": true,
+      "multiline": false,
+      "readonly": true,
+      "autosize": false,
+      "wordwrap": false,
+      "noselect": true
+     },
+     "font": 86,
+     "height_twips": 440,
+     "color_rgba": [
+      255,
+      255,
+      255,
+      255
+     ],
+     "align": 0,
+     "variable": "",
+     "initial_text": "<p align=\"left\"></p>"
+    },
+    "92": {
+     "flags": {
+      "html": true,
+      "multiline": false,
+      "readonly": true,
+      "autosize": false,
+      "wordwrap": false,
+      "noselect": true
+     },
+     "font": 91,
+     "height_twips": 240,
+     "color_rgba": [
+      80,
+      181,
+      213,
+      255
+     ],
+     "align": 0,
+     "variable": "",
+     "initial_text": "<p align=\"left\"></p>"
+    },
+    "94": {
+     "flags": {
+      "html": true,
+      "multiline": false,
+      "readonly": true,
+      "autosize": false,
+      "wordwrap": false,
+      "noselect": true
+     },
+     "font": 86,
+     "height_twips": 600,
+     "color_rgba": [
+      255,
+      255,
+      255,
+      255
+     ],
+     "align": 0,
+     "variable": "",
+     "initial_text": "<p align=\"left\"></p>"
+    }
+   },
+   "localization_keys": [
+    "$UIText.PlayerList.Gamercard",
+    "$UIText.Shared.AttackingTeam",
+    "$UIText.Shared.DefendingTeam"
+   ],
+   "callbacks_defined": [
+    "GivePlayerListInput",
+    "UpdatePlayerListData",
+    "addInterp",
+    "createInterpController",
+    "findInterpValue",
+    "removeInterpController",
+    "updateInterpObjects"
+   ],
+   "fonts": {},
+   "images": [
+    "content/UI_GFxPlayerList_p/PlayerList_GFX_G0.png",
+    "content/UI_GFxPlayerList_p/PlayerList_GFX_G1.png",
+    "content/UI_GFxPlayerList_p/PlayerList_GFX_G2.png",
+    "content/UI_GFxPlayerList_p/PlayerList_GFX_I1D.png",
+    "content/UI_GFxPlayerList_p/PlayerList_GFX_I43.png",
+    "content/UI_GFxPlayerList_p/PlayerList_GFX_I47.png",
+    "content/UI_GFxPlayerList_p/PlayerList_GFX_I4C.png",
+    "content/UI_GFxPlayerList_p/PlayerList_GFX_I4F.png",
+    "content/UI_GFxPlayerList_p/PlayerList_GFX_I52.png"
+   ]
+  },
+  "strings": {
+   "Gamercard": "View Gamercard",
+   "Mute": "Mute",
+   "UnMute": "Unmute"
+  }
+ },
+ "respawn": {
+  "movie": "UI_GFxRespawn_p/MultiplayerRespawn_GFX",
+  "file": "content/UI_GFxRespawn_p/MultiplayerRespawn_GFX.gfx",
+  "exports": [
+   "mc_buttonIconLoadReference"
+  ],
+  "text_fields": {
+   "8": {
+    "flags": {
+     "html": true,
+     "multiline": false,
+     "readonly": true,
+     "autosize": false,
+     "wordwrap": false,
+     "noselect": true
+    },
+    "font": 7,
+    "height_twips": 400,
+    "color_rgba": [
+     255,
+     255,
+     255,
+     255
+    ],
+    "align": 2,
+    "variable": "",
+    "initial_text": "<p align=\"center\"></p>"
+   },
+   "10": {
+    "flags": {
+     "html": false,
+     "multiline": false,
+     "readonly": true,
+     "autosize": false,
+     "wordwrap": false,
+     "noselect": true
+    },
+    "font": 9,
+    "height_twips": 280,
+    "color_rgba": [
+     255,
+     147,
+     50,
+     255
+    ],
+    "align": 2,
+    "variable": "",
+    "initial_text": "CURRENTLY SPECTATING"
+   },
+   "11": {
+    "flags": {
+     "html": false,
+     "multiline": false,
+     "readonly": true,
+     "autosize": false,
+     "wordwrap": false,
+     "noselect": true
+    },
+    "font": 7,
+    "height_twips": 640,
+    "color_rgba": [
+     255,
+     255,
+     255,
+     255
+    ],
+    "align": 2,
+    "variable": ""
+   },
+   "14": {
+    "flags": {
+     "html": false,
+     "multiline": false,
+     "readonly": true,
+     "autosize": false,
+     "wordwrap": false,
+     "noselect": true
+    },
+    "font": 9,
+    "height_twips": 640,
+    "color_rgba": [
+     255,
+     255,
+     255,
+     255
+    ],
+    "align": 2,
+    "variable": "",
+    "initial_text": "0:00"
+   },
+   "15": {
+    "flags": {
+     "html": false,
+     "multiline": false,
+     "readonly": true,
+     "autosize": false,
+     "wordwrap": false,
+     "noselect": true
+    },
+    "font": 9,
+    "height_twips": 280,
+    "color_rgba": [
+     139,
+     240,
+     255,
+     255
+    ],
+    "align": 2,
+    "variable": "",
+    "initial_text": "WAITING TO RESPAWN"
+   }
+  },
+  "localization_keys": [
+   "$UIText.Respawn.CurrentlySpectating",
+   "$UIText.Respawn.CyclePlayers",
+   "$UIText.Respawn.RespawnNextWave",
+   "$UIText.Respawn.WaitingToRespawn",
+   "$UIText.Respawn.WaitingToSpawn"
+  ],
+  "callbacks_defined": [
+   "SetSpectateTarget",
+   "addInterp",
+   "createInterpController",
+   "findInterpValue",
+   "removeInterpController",
+   "updateInterpObjects"
+  ],
+  "fonts": {},
+  "images": [
+   "content/UI_GFxRespawn_p/MultiplayerRespawn_GFX_I4.png"
+  ],
+  "strings": {
+   "CurrentlySpectating": "Currently Spectating",
+   "CyclePlayers": "Cycle Players",
+   "RespawnNextWave": "Waiting for Next Wave to Respawn",
+   "WaitingToRespawn": "Waiting to Respawn",
+   "WaitingToSpawn": "Waiting to Spawn"
+  }
+ },
+ "pregame_countdown": {
+  "movie": "UI_GFxPreGameCountdown_p/PreGameCountdown_GFX",
+  "file": "content/UI_GFxPreGameCountdown_p/PreGameCountdown_GFX.gfx",
+  "exports": [
+   "mc_sharedIconReference"
+  ],
+  "text_fields": {
+   "16": {
+    "flags": {
+     "html": true,
+     "multiline": false,
+     "readonly": true,
+     "autosize": false,
+     "wordwrap": false,
+     "noselect": true
+    },
+    "font": 15,
+    "height_twips": 280,
+    "color_rgba": [
+     255,
+     255,
+     255,
+     255
+    ],
+    "align": 1,
+    "variable": "",
+    "initial_text": "<p align=\"right\"></p>"
+   },
+   "18": {
+    "flags": {
+     "html": true,
+     "multiline": false,
+     "readonly": true,
+     "autosize": false,
+     "wordwrap": false,
+     "noselect": true
+    },
+    "font": 15,
+    "height_twips": 280,
+    "color_rgba": [
+     80,
+     181,
+     213,
+     255
+    ],
+    "align": 1,
+    "variable": "",
+    "initial_text": "<p align=\"right\"><font face=\"$NormalFont\" size=\"14\" color=\"#50b5d5\" letterSpacing=\"0.000000\" kerning=\"1\"><b>MATCH STARTS IN</b></font></p>"
+   },
+   "21": {
+    "flags": {
+     "html": true,
+     "multiline": false,
+     "readonly": true,
+     "autosize": false,
+     "wordwrap": false,
+     "noselect": true
+    },
+    "font": 15,
+    "height_twips": 280,
+    "color_rgba": [
+     255,
+     147,
+     50,
+     255
+    ],
+    "align": 1,
+    "variable": "",
+    "initial_text": "<p align=\"right\"><font face=\"$NormalFont\" size=\"14\" color=\"#ff9332\" letterSpacing=\"0.000000\" kerning=\"0\"><b>ROUND 0 OF 0</b></font></p>"
+   },
+   "26": {
+    "flags": {
+     "html": false,
+     "multiline": false,
+     "readonly": true,
+     "autosize": false,
+     "wordwrap": false,
+     "noselect": true
+    },
+    "font": 25,
+    "height_twips": 800,
+    "color_rgba": [
+     255,
+     255,
+     255,
+     255
+    ],
+    "align": 0,
+    "variable": ""
+   }
+  },
+  "localization_keys": [
+   "$UIText.Lobby.CampaignCountdownLabel",
+   "$UIText.Lobby.MultiplayerCountdownLabel",
+   "$UIText.Lobby.RoundCountdownLabel",
+   "$UIText.Shared.Round"
+  ],
+  "callbacks_defined": [
+   "addInterp",
+   "createInterpController",
+   "findInterpValue",
+   "removeInterpController",
+   "updateInterpObjects"
+  ],
+  "fonts": {},
+  "images": [
+   "content/UI_GFxPreGameCountdown_p/PreGameCountdown_GFX_G0.png"
+  ],
+  "TnVersusGame": {
+   "MatchAutoStartCountdown": 10,
+   "MatchOverCountdown": 15
+  }
+ },
+ "match_result": {
+  "movie": "UI_GFxEndGameStats_p/EndGameStats_GFX",
+  "file": "content/UI_GFxEndGameStats_p/EndGameStats_GFX.gfx",
+  "exports": [
+   "mc_iconLoadReference",
+   "mc_scoreboard",
+   "mc_sharedIconReference",
+   "mc_unlockedItem"
+  ],
+  "text_fields": {
+   "2": {
+    "flags": {
+     "html": true,
+     "multiline": true,
+     "readonly": true,
+     "autosize": false,
+     "wordwrap": true,
+     "noselect": true
+    },
+    "font": 1,
+    "height_twips": 240,
+    "color_rgba": [
+     255,
+     225,
+     50,
+     255
+    ],
+    "align": 1,
+    "variable": "",
+    "initial_text": "<p align=\"right\"></p>"
+   },
+   "27": {
+    "flags": {
+     "html": true,
+     "multiline": false,
+     "readonly": true,
+     "autosize": false,
+     "wordwrap": false,
+     "noselect": true
+    },
+    "font": 26,
+    "height_twips": 800,
+    "color_rgba": [
+     255,
+     255,
+     255,
+     255
+    ],
+    "align": 0,
+    "variable": "",
+    "initial_text": "<p align=\"left\"></p>"
+   },
+   "31": {
+    "flags": {
+     "html": true,
+     "multiline": false,
+     "readonly": true,
+     "autosize": false,
+     "wordwrap": false,
+     "noselect": true
+    },
+    "font": 1,
+    "height_twips": 360,
+    "color_rgba": [
+     255,
+     255,
+     255,
+     255
+    ],
+    "align": 0,
+    "variable": "",
+    "initial_text": "<p align=\"left\"><font face=\"$NormalFont\" size=\"18\" color=\"#ffffff\" letterSpacing=\"0.000000\" kerning=\"1\"><b>LEVEL UP!</b></font></p>"
+   },
+   "34": {
+    "flags": {
+     "html": true,
+     "multiline": false,
+     "readonly": true,
+     "autosize": false,
+     "wordwrap": false,
+     "noselect": true
+    },
+    "font": 1,
+    "height_twips": 360,
+    "color_rgba": [
+     255,
+     255,
+     255,
+     255
+    ],
+    "align": 1,
+    "variable": "",
+    "initial_text": "<p align=\"right\"></p>"
+   },
+   "41": {
+    "flags": {
+     "html": true,
+     "multiline": false,
+     "readonly": true,
+     "autosize": false,
+     "wordwrap": false,
+     "noselect": true
+    },
+    "font": 1,
+    "height_twips": 360,
+    "color_rgba": [
+     255,
+     255,
+     255,
+     255
+    ],
+    "align": 1,
+    "variable": "",
+    "initial_text": "<p align=\"right\"></p>"
+   },
+   "43": {
+    "flags": {
+     "html": true,
+     "multiline": false,
+     "readonly": true,
+     "autosize": false,
+     "wordwrap": false,
+     "noselect": true
+    },
+    "font": 1,
+    "height_twips": 360,
+    "color_rgba": [
+     255,
+     225,
+     50,
+     255
+    ],
+    "align": 1,
+    "variable": "",
+    "initial_text": "<p align=\"right\"></p>"
+   },
+   "47": {
+    "flags": {
+     "html": true,
+     "multiline": false,
+     "readonly": true,
+     "autosize": false,
+     "wordwrap": false,
+     "noselect": true
+    },
+    "font": 46,
+    "height_twips": 600,
+    "color_rgba": [
+     255,
+     255,
+     255,
+     255
+    ],
+    "align": 0,
+    "variable": "",
+    "initial_text": "<p align=\"left\"><font face=\"$TitleFont\" size=\"30\" color=\"#ffffff\" letterSpacing=\"0.000000\" kerning=\"1\">SPECIALTY</font></p>"
+   },
+   "49": {
+    "flags": {
+     "html": true,
+     "multiline": false,
+     "readonly": true,
+     "autosize": false,
+     "wordwrap": false,
+     "noselect": true
+    },
+    "font": 1,
+    "height_twips": 400,
+    "color_rgba": [
+     255,
+     255,
+     255,
+     255
+    ],
+    "align": 1,
+    "variable": "",
+    "initial_text": "<p align=\"right\"><font face=\"$NormalFont\" size=\"20\" color=\"#ffffff\" letterSpacing=\"0.000000\" kerning=\"1\"><b>0</b></font></p>"
+   },
+   "51": {
+    "flags": {
+     "html": true,
+     "multiline": false,
+     "readonly": true,
+     "autosize": false,
+     "wordwrap": false,
+     "noselect": true
+    },
+    "font": 1,
+    "height_twips": 280,
+    "color_rgba": [
+     255,
+     255,
+     255,
+     255
+    ],
+    "align": 1,
+    "variable": "",
+    "initial_text": "<p align=\"right\"><font face=\"$NormalFont\" size=\"14\" color=\"#ffffff\" letterSpacing=\"0.000000\" kerning=\"1\"><b>LEVEL</b></font></p>"
+   }
+  },
+  "localization_keys": [
+   "$UIText.ButtonHints.Back",
+   "$UIText.ButtonHints.ViewScores",
+   "$UIText.ButtonHints.ViewXp",
+   "$UIText.EndGameStats.Earned",
+   "$UIText.EndGameStats.FinalScores",
+   "$UIText.EndGameStats.Level",
+   "$UIText.EndGameStats.LevelMax",
+   "$UIText.EndGameStats.LevelUp",
+   "$UIText.EndGameStats.ToNextLevel",
+   "$UIText.EndGameStats.XpEarned"
+  ],
+  "callbacks_defined": [
+   "addInterp",
+   "createInterpController",
+   "findInterpValue",
+   "removeInterpController",
+   "updateInterpObjects"
+  ],
+  "fonts": {},
+  "images": [
+   "content/UI_GFxEndGameStats_p/EndGameStats_GFX_G0.png",
+   "content/UI_GFxEndGameStats_p/EndGameStats_GFX_G1.png",
+   "content/UI_GFxEndGameStats_p/EndGameStats_GFX_I26.png"
+  ],
+  "strings": {
+   "Earned": "`n earned",
+   "FinalScores": "Final Scores",
+   "Level": "Level",
+   "LevelMax": "Max",
+   "LevelUp": "Level Up!",
+   "NewAbilities": "New Abilities Unlocked",
+   "NewUpgrades": "New Upgrades Unlocked",
+   "ToNextLevel": "`n to next level",
+   "XpEarned": "Experience Earned"
+  },
+  "game_over_message": {
+   "AutobotWinSound": "SoundEvents_Dialog.Announcer.MP_GameAutobotWin",
+   "DecepticonWinSound": "SoundEvents_Dialog.Announcer.MP_GameDecepticonWin",
+   "YouWinMessage": "Your team won",
+   "YouLoseMessage": "Your team lost",
+   "ForfeitMessage": "Enemy team forfeits",
+   "TieMessage": "Tie game",
+   "bIsSpecial": true,
+   "bIsConsoleMessage": true,
+   "Lifetime": 3.0,
+   "DrawColor": {
+    "B": 255,
+    "G": 255,
+    "R": 255,
+    "A": 255
+   },
+   "PosY": 0.8299999833106995,
+   "dialog_resolved": {
+    "AutobotWinSound": {
+     "event": "SoundEvents_Dialog.Announcer.MP_GameAutobotWin",
+     "cue": "BL_DX_SWITCHBOARD.SC002491",
+     "wavs": [
+      "content/WL_DX_OPRIME/DX_OPRIME_LK002491.wav",
+      "content/WL_DX_MGTRON/DX_MGTRON_LK009276.wav"
+     ],
+     "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "DecepticonWinSound": {
+     "event": "SoundEvents_Dialog.Announcer.MP_GameDecepticonWin",
+     "cue": "BL_DX_SWITCHBOARD.SC002481",
+     "wavs": [
+      "content/WL_DX_MGTRON/DX_MGTRON_LK002481.wav",
+      "content/WL_DX_OPRIME/DX_OPRIME_LK009274.wav"
+     ],
+     "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    }
+   }
+  },
+  "music": {
+   "DM": {
+    "GameTypeMusic": {
+     "cue": "BL_LVL_MP_MX.DM_START",
+     "missing": false,
+     "category": "MUSIC_DRY",
+     "wavs": [
+      "content/WL_MX_05/STNG_OMEGA_LIVES_DM_START_01.wav",
+      "content/WL_MX_04/STNG_PRISON_BREAK_DM_START_01.wav",
+      "content/WL_MX_02/STNG_ENTER_THE_CORE_DM_START_01.wav",
+      "content/WL_MX_06/STNG_MEGATRONS_POWER_DM_START_01.wav"
+     ]
+    },
+    "GameNearlyCompleteMusic": {
+     "cue": "BL_LVL_MP_MX.DM_FINALSTRETCH_LP",
+     "missing": false,
+     "category": "MUSIC_DRY",
+     "wavs": [
+      "content/WL_MX_05/MX_OMEGA_LIVES_PERC_LP_01.wav",
+      "content/WL_MX_04/MX_PRISON_BREAK_PERC_BASS_LP_01.wav",
+      "content/WL_MX_02/MX_ENTER_THE_CORE_COMPLETE_01_LP.wav",
+      "content/WL_MX_02/MX_ENTER_THE_CORE_NO_BRASS_STRINGS_LP.wav",
+      "content/WL_MX_06/MX_MEGATRONS_POWER_FULL_03_LP.wav",
+      "content/WL_MX_06/MX_MEGATRONS_POWER_FULL_03_LP_PERC.wav"
+     ]
+    },
+    "AutobotsWinMusic": {
+     "cue": "BL_LVL_MP_MX.DM_END_AUTOBOTS_WIN",
+     "missing": false,
+     "category": "MUSIC_DRY",
+     "wavs": [
+      "content/WL_MX_05/STNG_OMEGA_LIVES_GTR.wav",
+      "content/WL_MX_04/L2_STINGER_TURRET_WAVE_DESTROYED.wav",
+      "content/WL_MX_04/STNG_PRISON_BREAK_HORN_PERC.wav",
+      "content/WL_MX_02/STNG_ENTER_CORE_STRING_SWELL.wav",
+      "content/WL_MX_06/STNG_MEGATRONS_POWER_SWELL_HIT.wav",
+      "content/WL_MX_06/STNG_SYBERTRONS_FATE_CYMBAL_ROLL_HIT.wav",
+      "content/WL_MX_06/STNG_MEGATRONS_POWER_STRING_PITCH_DROP.wav"
+     ]
+    },
+    "DecepticonsWinMusic": {
+     "cue": "BL_LVL_MP_MX.DM_END_DECEPTICONS_WIN",
+     "missing": false,
+     "category": "MUSIC_DRY",
+     "wavs": [
+      "content/WL_MX_05/STNG_OMEGA_LIVES_FULL_02.wav",
+      "content/WL_MX_05/STNG_OMEGA_LIVES_PLAYER_DEATH.wav",
+      "content/WL_MX_04/L2_SENTINELS_DEAD_STRING_FLUTTER_HEAVY.wav",
+      "content/WL_MX_04/STNG_PRISON_BREAK_HORN_PERC.wav",
+      "content/WL_MX_06/STNG_MEGATRONS_POWER_DRUM_FILL_HIT_BREATH_01.wav",
+      "content/WL_MX_06/STNG_MEGATRONS_POWER_GTR_DRUM_HIT_01.wav",
+      "content/WL_MX_02/STNG_ENTERING_THE_CORE_PERC_LONG.wav",
+      "content/WL_MX_02/STNG_ENTER_THE_CORE_A5_BOTTOM_FLR_TRANS.wav"
+     ]
+    },
+    "TieMusic": {
+     "cue": "BL_LVL_MP_MX.DM_END_TIE",
+     "missing": false,
+     "category": "MUSIC_DRY",
+     "wavs": [
+      "content/WL_MX_05/STNG_OMEGA_LIVES_FULL_02.wav",
+      "content/WL_MX_05/STNG_OMEGA_LIVES_PLAYER_DEATH.wav",
+      "content/WL_MX_04/L2_SENTINELS_DEAD_STRING_FLUTTER_HEAVY.wav",
+      "content/WL_MX_04/STNG_PRISON_BREAK_HORN_PERC.wav",
+      "content/WL_MX_02/STNG_ENTER_CORE_STRING_SWELL.wav",
+      "content/WL_MX_06/STNG_MEGATRONS_POWER_SWELL_HIT.wav",
+      "content/WL_MX_06/STNG_SYBERTRONS_FATE_CYMBAL_ROLL_HIT.wav",
+      "content/WL_MX_06/STNG_MEGATRONS_POWER_STRING_PITCH_DROP.wav"
+     ]
+    }
+   },
+   "TDM": {
+    "GameTypeMusic": {
+     "cue": "BL_LVL_MP_MX.DM_START",
+     "missing": false,
+     "category": "MUSIC_DRY",
+     "wavs": [
+      "content/WL_MX_05/STNG_OMEGA_LIVES_DM_START_01.wav",
+      "content/WL_MX_04/STNG_PRISON_BREAK_DM_START_01.wav",
+      "content/WL_MX_02/STNG_ENTER_THE_CORE_DM_START_01.wav",
+      "content/WL_MX_06/STNG_MEGATRONS_POWER_DM_START_01.wav"
+     ]
+    },
+    "GameNearlyCompleteMusic": {
+     "cue": "BL_LVL_MP_MX.DM_FINALSTRETCH_LP",
+     "missing": false,
+     "category": "MUSIC_DRY",
+     "wavs": [
+      "content/WL_MX_05/MX_OMEGA_LIVES_PERC_LP_01.wav",
+      "content/WL_MX_04/MX_PRISON_BREAK_PERC_BASS_LP_01.wav",
+      "content/WL_MX_02/MX_ENTER_THE_CORE_COMPLETE_01_LP.wav",
+      "content/WL_MX_02/MX_ENTER_THE_CORE_NO_BRASS_STRINGS_LP.wav",
+      "content/WL_MX_06/MX_MEGATRONS_POWER_FULL_03_LP.wav",
+      "content/WL_MX_06/MX_MEGATRONS_POWER_FULL_03_LP_PERC.wav"
+     ]
+    },
+    "AutobotsWinMusic": {
+     "cue": "BL_LVL_MP_MX.DM_END_AUTOBOTS_WIN",
+     "missing": false,
+     "category": "MUSIC_DRY",
+     "wavs": [
+      "content/WL_MX_05/STNG_OMEGA_LIVES_GTR.wav",
+      "content/WL_MX_04/L2_STINGER_TURRET_WAVE_DESTROYED.wav",
+      "content/WL_MX_04/STNG_PRISON_BREAK_HORN_PERC.wav",
+      "content/WL_MX_02/STNG_ENTER_CORE_STRING_SWELL.wav",
+      "content/WL_MX_06/STNG_MEGATRONS_POWER_SWELL_HIT.wav",
+      "content/WL_MX_06/STNG_SYBERTRONS_FATE_CYMBAL_ROLL_HIT.wav",
+      "content/WL_MX_06/STNG_MEGATRONS_POWER_STRING_PITCH_DROP.wav"
+     ]
+    },
+    "DecepticonsWinMusic": {
+     "cue": "BL_LVL_MP_MX.DM_END_DECEPTICONS_WIN",
+     "missing": false,
+     "category": "MUSIC_DRY",
+     "wavs": [
+      "content/WL_MX_05/STNG_OMEGA_LIVES_FULL_02.wav",
+      "content/WL_MX_05/STNG_OMEGA_LIVES_PLAYER_DEATH.wav",
+      "content/WL_MX_04/L2_SENTINELS_DEAD_STRING_FLUTTER_HEAVY.wav",
+      "content/WL_MX_04/STNG_PRISON_BREAK_HORN_PERC.wav",
+      "content/WL_MX_06/STNG_MEGATRONS_POWER_DRUM_FILL_HIT_BREATH_01.wav",
+      "content/WL_MX_06/STNG_MEGATRONS_POWER_GTR_DRUM_HIT_01.wav",
+      "content/WL_MX_02/STNG_ENTERING_THE_CORE_PERC_LONG.wav",
+      "content/WL_MX_02/STNG_ENTER_THE_CORE_A5_BOTTOM_FLR_TRANS.wav"
+     ]
+    },
+    "TieMusic": {
+     "cue": "BL_LVL_MP_MX.DM_END_TIE",
+     "missing": false,
+     "category": "MUSIC_DRY",
+     "wavs": [
+      "content/WL_MX_05/STNG_OMEGA_LIVES_FULL_02.wav",
+      "content/WL_MX_05/STNG_OMEGA_LIVES_PLAYER_DEATH.wav",
+      "content/WL_MX_04/L2_SENTINELS_DEAD_STRING_FLUTTER_HEAVY.wav",
+      "content/WL_MX_04/STNG_PRISON_BREAK_HORN_PERC.wav",
+      "content/WL_MX_02/STNG_ENTER_CORE_STRING_SWELL.wav",
+      "content/WL_MX_06/STNG_MEGATRONS_POWER_SWELL_HIT.wav",
+      "content/WL_MX_06/STNG_SYBERTRONS_FATE_CYMBAL_ROLL_HIT.wav",
+      "content/WL_MX_06/STNG_MEGATRONS_POWER_STRING_PITCH_DROP.wav"
+     ]
+    }
+   },
+   "CTF": {
+    "GameTypeMusic": {
+     "cue": "BL_LVL_MP_MX.COP_START",
+     "missing": false,
+     "category": "MUSIC_DRY",
+     "wavs": [
+      "content/WL_MX_04/STNG_THE_DECAGON_COP_START.wav",
+      "content/WL_MX_05/STNG_MATRIX_OF_LEADERSHIP_COP_START.wav",
+      "content/WL_MX_03/STNG_MEGATRONS_QUEST_COP_START.wav",
+      "content/WL_MX_01/STNG_TRYP_STATION_COP_START.wav"
+     ]
+    },
+    "GameNearlyCompleteMusic": {
+     "cue": "BL_LVL_MP_MX.COP_FINALSTRETCH_LP",
+     "missing": false,
+     "category": "MUSIC_DRY",
+     "wavs": [
+      "content/WL_MX_04/MX_THE_DECAGON_FULL_02_LP.wav",
+      "content/WL_MX_04/MX_THE_DECAGON_PERC_LP_03.wav",
+      "content/WL_MX_01/MX_DARK_ENERGIES_FULL_LP_01.wav",
+      "content/WL_MX_02/MX_ACTIVATING_TRYP_FULL_LP_02.wav"
+     ]
+    },
+    "AutobotsWinMusic": {
+     "cue": "BL_LVL_MP_MX.COP_END_AUTOBOTS_WIN",
+     "missing": false,
+     "category": "MUSIC_DRY",
+     "wavs": [
+      "content/WL_MX_05/STNG_MATRIX_OF_LEADERSHIP_ROLL_TO_HORNS_01.wav",
+      "content/WL_MX_04/STNG_THE_DECAGON_PERC_02.wav",
+      "content/WL_MX_01/STNG_TRYP_STATION_SWELL_LONG.wav",
+      "content/WL_MX_03/STNG_L7_REVERSE_WHSH_VERB.wav"
+     ]
+    },
+    "DecepticonsWinMusic": {
+     "cue": "BL_LVL_MP_MX.COP_END_DECEPTICONS_WIN",
+     "missing": false,
+     "category": "MUSIC_DRY",
+     "wavs": [
+      "content/WL_MX_05/STNG_A3_MATRIX_OF_LEADERSHIP_HERO_FULL.wav",
+      "content/WL_MX_04/STNG_THE_DECAGON_PERC_02.wav",
+      "content/WL_MX_01/STNG_TRYP_STATION_END_PERC.wav",
+      "content/WL_MX_03/STNG_MEGATRONS_QUEST_FULL_01.wav"
+     ]
+    },
+    "TieMusic": {
+     "cue": "BL_LVL_MP_MX.COP_END_TIE",
+     "missing": false,
+     "category": "MUSIC_DRY",
+     "wavs": [
+      "content/WL_MX_05/STNG_OMEGA_LIVES_FULL_02.wav",
+      "content/WL_MX_05/STNG_OMEGA_LIVES_PLAYER_DEATH.wav",
+      "content/WL_MX_04/L2_SENTINELS_DEAD_STRING_FLUTTER_HEAVY.wav",
+      "content/WL_MX_04/STNG_PRISON_BREAK_HORN_PERC.wav",
+      "content/WL_MX_02/STNG_ENTER_CORE_STRING_SWELL.wav",
+      "content/WL_MX_06/STNG_MEGATRONS_POWER_SWELL_HIT.wav",
+      "content/WL_MX_06/STNG_SYBERTRONS_FATE_CYMBAL_ROLL_HIT.wav",
+      "content/WL_MX_06/STNG_MEGATRONS_POWER_STRING_PITCH_DROP.wav"
+     ]
+    }
+   },
+   "KOTH": {
+    "GameTypeMusic": {
+     "cue": "BL_LVL_MP_MX.POWER_STRUGGLE_START",
+     "missing": false,
+     "category": "MUSIC_DRY",
+     "wavs": [
+      "content/WL_MX_05/STNG_OMEGA_LIVES_DM_START_01.wav",
+      "content/WL_MX_04/STNG_PRISON_BREAK_DM_START_01.wav",
+      "content/WL_MX_02/STNG_ENTER_THE_CORE_DM_START_01.wav",
+      "content/WL_MX_06/STNG_MEGATRONS_POWER_DM_START_01.wav"
+     ]
+    },
+    "GameNearlyCompleteMusic": {
+     "cue": "BL_LVL_MP_MX.POWER_STRUGGLE_FINALSTRETCH_LP",
+     "missing": false,
+     "category": "MUSIC_DRY",
+     "wavs": [
+      "content/WL_MX_05/MX_OMEGA_LIVES_PERC_LP_01.wav",
+      "content/WL_MX_04/MX_PRISON_BREAK_PERC_BASS_LP_01.wav",
+      "content/WL_MX_02/MX_ENTER_THE_CORE_COMPLETE_01_LP.wav",
+      "content/WL_MX_02/MX_ENTER_THE_CORE_NO_BRASS_STRINGS_LP.wav",
+      "content/WL_MX_06/MX_MEGATRONS_POWER_FULL_03_LP.wav",
+      "content/WL_MX_06/MX_MEGATRONS_POWER_FULL_03_LP_PERC.wav"
+     ]
+    },
+    "AutobotsWinMusic": {
+     "cue": "BL_LVL_MP_MX.POWER_STRUGGLE_END_AUTOBOTS_WIN",
+     "missing": false,
+     "category": "MUSIC_DRY",
+     "wavs": [
+      "content/WL_MX_05/STNG_OMEGA_LIVES_GTR.wav",
+      "content/WL_MX_04/L2_STINGER_TURRET_WAVE_DESTROYED.wav",
+      "content/WL_MX_04/STNG_PRISON_BREAK_HORN_PERC.wav",
+      "content/WL_MX_02/STNG_ENTER_CORE_STRING_SWELL.wav",
+      "content/WL_MX_06/STNG_MEGATRONS_POWER_SWELL_HIT.wav",
+      "content/WL_MX_06/STNG_SYBERTRONS_FATE_CYMBAL_ROLL_HIT.wav",
+      "content/WL_MX_06/STNG_MEGATRONS_POWER_STRING_PITCH_DROP.wav"
+     ]
+    },
+    "DecepticonsWinMusic": {
+     "cue": "BL_LVL_MP_MX.POWER_STRUGGLE_END_DECEPTICONS_WIN",
+     "missing": false,
+     "category": "MUSIC_DRY",
+     "wavs": [
+      "content/WL_MX_05/STNG_OMEGA_LIVES_FULL_02.wav",
+      "content/WL_MX_05/STNG_OMEGA_LIVES_PLAYER_DEATH.wav",
+      "content/WL_MX_04/L2_SENTINELS_DEAD_STRING_FLUTTER_HEAVY.wav",
+      "content/WL_MX_04/STNG_PRISON_BREAK_HORN_PERC.wav",
+      "content/WL_MX_06/STNG_MEGATRONS_POWER_DRUM_FILL_HIT_BREATH_01.wav",
+      "content/WL_MX_06/STNG_MEGATRONS_POWER_GTR_DRUM_HIT_01.wav",
+      "content/WL_MX_02/STNG_ENTERING_THE_CORE_PERC_LONG.wav",
+      "content/WL_MX_02/STNG_ENTER_THE_CORE_A5_BOTTOM_FLR_TRANS.wav"
+     ]
+    },
+    "TieMusic": {
+     "cue": "BL_LVL_MP_MX.POWER_STRUGGLE_END_TIE",
+     "missing": false,
+     "category": "MUSIC_DRY",
+     "wavs": [
+      "content/WL_MX_05/STNG_OMEGA_LIVES_FULL_02.wav",
+      "content/WL_MX_05/STNG_OMEGA_LIVES_PLAYER_DEATH.wav",
+      "content/WL_MX_04/L2_SENTINELS_DEAD_STRING_FLUTTER_HEAVY.wav",
+      "content/WL_MX_04/STNG_PRISON_BREAK_HORN_PERC.wav",
+      "content/WL_MX_02/STNG_ENTER_CORE_STRING_SWELL.wav",
+      "content/WL_MX_06/STNG_MEGATRONS_POWER_SWELL_HIT.wav",
+      "content/WL_MX_06/STNG_SYBERTRONS_FATE_CYMBAL_ROLL_HIT.wav",
+      "content/WL_MX_06/STNG_MEGATRONS_POWER_STRING_PITCH_DROP.wav"
+     ]
+    }
+   },
+   "DOM": {
+    "GameTypeMusic": {
+     "cue": "BL_LVL_MP_MX.CONQUEST_START",
+     "missing": false,
+     "category": "MUSIC_DRY",
+     "wavs": [
+      "content/WL_MX_04/MX_IACON_IN_RUINS_FULLBAND_INTRO_LP_01.wav",
+      "content/WL_MX_03/MX_ZETAS_STAND_PERC_01_LP.wav",
+      "content/WL_MX_03/MX_MEGATRONS_QUEST_PERC_01_LP.wav",
+      "content/WL_MX_02/MX_ACTIVATING_TRYP_PERC_LP_01.wav"
+     ]
+    },
+    "GameNearlyCompleteMusic": {
+     "cue": "BL_LVL_MP_MX.CONQUEST_FINALSTRETCH_LP",
+     "missing": false,
+     "category": "MUSIC_DRY",
+     "wavs": [
+      "content/WL_MX_03/MX_ZETAS_LAST_STAND_FULLTHEME_LP_01.wav",
+      "content/WL_MX_03/MX_ZETAS_LAST_STAND_DRUMS_GTR_LP_01.wav",
+      "content/WL_MX_04/MX_IACON_IN_RUINS_FULLBAND_LONG_LP_01.wav",
+      "content/WL_MX_03/MX_MEGATRONS_QUEST_SYNTH_PERC_03_LP_LONG.wav",
+      "content/WL_MX_02/MX_ACTIVATE_TRYP_RHYTHMSEC_LP_01.wav",
+      "content/WL_MX_02/MX_ACTIVATING_TRYP_FULL_NO_GTR_LP_01.wav"
+     ]
+    },
+    "AutobotsWinMusic": {
+     "cue": "BL_LVL_MP_MX.CONQUEST_END_AUTOBOTS_WIN",
+     "missing": false,
+     "category": "MUSIC_DRY",
+     "wavs": [
+      "content/WL_MX_04/STNG_L11_DEC_MARCH.wav",
+      "content/WL_MX_03/STNG_ZETAS_LAST_STAND_GTR_END.wav",
+      "content/WL_MX_03/STNG_MEGATRONS_QUEST_PERC_03.wav",
+      "content/WL_MX_03/STNG_ZETAS_LAST_STAND_CLUST_02.wav"
+     ]
+    },
+    "DecepticonsWinMusic": {
+     "cue": "BL_LVL_MP_MX.CONQUEST_END_DECEPTICONS_WIN",
+     "missing": false,
+     "category": "MUSIC_DRY",
+     "wavs": [
+      "content/WL_MX_04/STNG_IACON_RUINS_DRUM_HIT_FADE.wav",
+      "content/WL_MX_03/STNG_ZETAS_STAND_WHSH_SOFT_W_GTR_01.wav",
+      "content/WL_MX_03/STNG_MEGATRONS_QUEST_FULL_01.wav",
+      "content/WL_MX_02/STNG_ACTIVATE_TRYP_ORCH_TAG.wav"
+     ]
+    },
+    "TieMusic": {
+     "cue": "BL_LVL_MP_MX.CONQUEST_END_TIE",
+     "missing": false,
+     "category": "MUSIC_DRY",
+     "wavs": [
+      "content/WL_MX_05/STNG_OMEGA_LIVES_FULL_02.wav",
+      "content/WL_MX_05/STNG_OMEGA_LIVES_PLAYER_DEATH.wav",
+      "content/WL_MX_04/L2_SENTINELS_DEAD_STRING_FLUTTER_HEAVY.wav",
+      "content/WL_MX_04/STNG_PRISON_BREAK_HORN_PERC.wav",
+      "content/WL_MX_02/STNG_ENTER_CORE_STRING_SWELL.wav",
+      "content/WL_MX_06/STNG_MEGATRONS_POWER_SWELL_HIT.wav",
+      "content/WL_MX_06/STNG_SYBERTRONS_FATE_CYMBAL_ROLL_HIT.wav",
+      "content/WL_MX_06/STNG_MEGATRONS_POWER_STRING_PITCH_DROP.wav"
+     ]
+    }
+   },
+   "EXT": {
+    "GameTypeMusic": {
+     "cue": "BL_LVL_MP_MX.BOMB_START",
+     "missing": false,
+     "category": "MUSIC_DRY",
+     "wavs": [
+      "content/WL_MX_06/MX_ASSAULT_TRYP_SYNTH_END_LP.wav",
+      "content/WL_MX_04/MX_RESCUE_ZETA_BEAT_LP_01.wav",
+      "content/WL_MX_01/MX_DARK_ENERGIES_FULL_SHORT_01_LP.wav",
+      "content/WL_MX_03/MX_IACON_INVASION_BASS_TO_FULL_ORCH_01_LP.wav"
+     ]
+    },
+    "GameNearlyCompleteMusic": {
+     "cue": "BL_LVL_MP_MX.BOMB_FINALSTRETCH_LP",
+     "missing": false,
+     "category": "MUSIC_DRY",
+     "wavs": [
+      "content/WL_MX_06/MX_ASSAULT_TRYPTICON_FULL.wav",
+      "content/WL_MX_04/MX_RESCUE_ZETA_BIGBEAT_LP_01.wav",
+      "content/WL_MX_01/MX_DARK_ENERGIES_DRUMS_GTR_LP.wav",
+      "content/WL_MX_03/MX_IACON_INVASION_GTR_01.wav"
+     ]
+    },
+    "AutobotsWinMusic": {
+     "cue": "BL_LVL_MP_MX.BOMB_END_AUTOBOTS_WIN",
+     "missing": false,
+     "category": "MUSIC_DRY",
+     "wavs": [
+      "content/WL_MX_04/STNG_RESCUE_ZETA_DRUMS_SYNTH_END_01.wav",
+      "content/WL_MX_03/STNG_IACON_INVASION_FULL_01.wav",
+      "content/WL_MX_01/STNG_D1_ANCIENT_SECRETS_HORNS_01.wav"
+     ]
+    },
+    "DecepticonsWinMusic": {
+     "cue": "BL_LVL_MP_MX.BOMB_END_DECEPTICONS_WIN",
+     "missing": false,
+     "category": "MUSIC_DRY",
+     "wavs": [
+      "content/WL_MX_04/STNG_RESCUE_ZETA_GTR_CYMBAL_01.wav",
+      "content/WL_MX_06/STNG_A4_ASSAULT_TRYPTICON_QUICK.wav",
+      "content/WL_MX_03/STNG_IACON_INVASION_GTR_HIT_01.wav"
+     ]
+    },
+    "TieMusic": {
+     "cue": "BL_LVL_MP_MX.BOMB_END_TIE",
+     "missing": false,
+     "category": "MUSIC_DRY",
+     "wavs": [
+      "content/WL_MX_05/STNG_OMEGA_LIVES_FULL_02.wav",
+      "content/WL_MX_05/STNG_OMEGA_LIVES_PLAYER_DEATH.wav",
+      "content/WL_MX_04/L2_SENTINELS_DEAD_STRING_FLUTTER_HEAVY.wav",
+      "content/WL_MX_04/STNG_PRISON_BREAK_HORN_PERC.wav",
+      "content/WL_MX_02/STNG_ENTER_CORE_STRING_SWELL.wav",
+      "content/WL_MX_06/STNG_MEGATRONS_POWER_SWELL_HIT.wav",
+      "content/WL_MX_06/STNG_SYBERTRONS_FATE_CYMBAL_ROLL_HIT.wav",
+      "content/WL_MX_06/STNG_MEGATRONS_POWER_STRING_PITCH_DROP.wav"
+     ]
+    }
+   }
+  }
+ },
+ "notifications": {
+  "score / point events": {
+   "callback": "_global.PointEvent",
+   "symbols": [
+    "mc_pointTransaction",
+    "mc_pointTransactionLabel",
+    "mc_pointTransactionKillstreakLabel",
+    "mc_pointMultiplier"
+   ]
+  },
+  "game messages": {
+   "callback": "_global.GameMessage",
+   "class_strings": {
+    "TnGameMessage": {
+     "LeftGameString": "`k has left the game",
+     "JoinedGameString": "`k has joined the game",
+     "SwitchLevelMessage": "Switching Levels",
+     "LeftMessage": "left the game.",
+     "FailedTeamMessage": "Could not find team for player",
+     "FailedPlaceMessage": "Could not find a starting spot",
+     "FailedSpawnMessage": "Could not spawn player",
+     "EnteredMessage": "entered the game.",
+     "MaxedOutMessage": "Server is already at capacity.",
+     "ArbitrationMessage": "The session has already started.",
+     "OvertimeMessage": "Score tied at the end of regulation. Sudden Death Overtime!!!",
+     "GlobalNameChange": "changed name to",
+     "NewTeamMessage": "is now on",
+     "NoNameChange": "Name is already in use.",
+     "VoteStarted": "started a vote.",
+     "VotePassed": "Vote passed.",
+     "MustHaveStats": "Must have stats enabled to join this server.",
+     "CantBeSpectator": "Sorry, you cannot become a spectator at this time.",
+     "CantBePlayer": "Sorry, you cannot become an active player at this time.",
+     "BecameSpectator": "became a spectator.",
+     "NewPlayerMessage": "A new player entered the game.",
+     "KickWarning": "You are about to be kicked for idling!",
+     "NewSpecMessage": "A spectator entered the game/",
+     "SpecEnteredMessage": "joined as a spectator."
+    },
+    "TnKillStreakMessage": {
+     "LocalStreakerMessage": "`n Kill Streak!",
+     "RemoteStreakerMessage": "`k is on a `n Kill Streak!"
+    },
+    "TnKillStreakEndedMessage": {
+     "KillStreakEnded": "`k ended `o kill streak"
+    },
+    "TnKillstreakActivatedMessage": {}
+   }
+  },
+  "announcements (announcer-linked visuals)": {
+   "callback": "_global.GameAnnouncement",
+   "reward": "_global.RewardAnnouncement",
+   "game_type_message": {
+    "DM": {
+     "class": "TransGame.Default__TnGameTypeMessageDM",
+     "GameTypeMessage": "Deathmatch",
+     "Lifetime": 3.0,
+     "PosY": 0.8299999833106995
+    },
+    "TDM": {
+     "class": "TransGame.Default__TnGameTypeMessageTDM",
+     "GameTypeMessage": "Team Deathmatch",
+     "Lifetime": 3.0,
+     "PosY": 0.8299999833106995
+    },
+    "CTF": {
+     "class": "TransGame.Default__TnGameTypeMessageCTF",
+     "GameTypeMessage": "Code of Power",
+     "Lifetime": 3.0,
+     "PosY": 0.8299999833106995
+    },
+    "KOTH": {
+     "class": "TransGame.Default__TnGameTypeMessageKOTH",
+     "GameTypeMessage": "Power Struggle",
+     "Lifetime": 3.0,
+     "PosY": 0.8299999833106995
+    },
+    "DOM": {
+     "class": "TransGame.Default__TnGameTypeMessageDOM",
+     "GameTypeMessage": "Conquest",
+     "Lifetime": 3.0,
+     "PosY": 0.8299999833106995
+    },
+    "SV": {
+     "class": "TransGame.Default__TnGameTypeMessageSV",
+     "GameTypeMessage": null,
+     "Lifetime": 3.0,
+     "PosY": 0.8299999833106995
+    },
+    "EXT": {
+     "class": "TransGame.Default__TnGameTypeMessageEXT",
+     "GameTypeMessage": "Countdown to Extinction",
+     "Lifetime": 3.0,
+     "PosY": 0.8299999833106995
+    },
+    "CP": {
+     "class": null,
+     "GameTypeMessage": null,
+     "Lifetime": null,
+     "PosY": null
+    },
+    "CCP": {
+     "class": null,
+     "GameTypeMessage": null,
+     "Lifetime": null,
+     "PosY": null
+    }
+   },
+   "progress_announcements": {
+    "Sounds": [
+     "SoundEvents_Dialog.Announcer.MP_30SecondsLeftDialog",
+     "SoundEvents_Dialog.Announcer.MP_1MinuteLeftDialog",
+     "SoundEvents_Dialog.Announcer.MP_2MinutesLeftDialog",
+     "SoundEvents_Dialog.Announcer.MP_25PointsRemaining",
+     "SoundEvents_Dialog.Announcer.MP_50PointsRemainingDialog",
+     "SoundEvents_Dialog.Announcer.MP_1KillRemainingDialog",
+     "SoundEvents_Dialog.Announcer.MP_3KillsRemainingDialog",
+     "SoundEvents_Dialog.Announcer.MP_5KillsRemainingDialog"
+    ],
+    "Lifetime": 3.0,
+    "DrawColor": {
+     "B": 255,
+     "G": 255,
+     "R": 255,
+     "A": 255
+    },
+    "PosY": 0.8299999833106995,
+    "dialog_resolved": {
+     "SoundEvents_Dialog.Announcer.MP_1KillRemainingDialog": {
+      "event": "SoundEvents_Dialog.Announcer.MP_1KillRemainingDialog",
+      "cue": "BL_DX_SWITCHBOARD.SC010609",
+      "wavs": [
+       "content/WL_DX_OPRIME/DX_OPRIME_LK010609.wav",
+       "content/WL_DX_MGTRON/DX_MGTRON_LK010610.wav"
+      ],
+      "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+      "confidence": "CONFIRMED AUTHORED DATA"
+     },
+     "SoundEvents_Dialog.Announcer.MP_1MinuteLeftDialog": {
+      "event": "SoundEvents_Dialog.Announcer.MP_1MinuteLeftDialog",
+      "cue": "BL_DX_SWITCHBOARD.SC008962",
+      "wavs": [
+       "content/WL_DX_OPRIME/DX_OPRIME_LK008962.wav",
+       "content/WL_DX_MGTRON/DX_MGTRON_LK008963.wav"
+      ],
+      "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+      "confidence": "CONFIRMED AUTHORED DATA"
+     },
+     "SoundEvents_Dialog.Announcer.MP_25PointsRemaining": {
+      "event": "SoundEvents_Dialog.Announcer.MP_25PointsRemaining",
+      "cue": "BL_DX_SWITCHBOARD.SC009009",
+      "wavs": [
+       "content/WL_DX_OPRIME/DX_OPRIME_LK009009.wav",
+       "content/WL_DX_MGTRON/DX_MGTRON_LK009010.wav"
+      ],
+      "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+      "confidence": "CONFIRMED AUTHORED DATA"
+     },
+     "SoundEvents_Dialog.Announcer.MP_2MinutesLeftDialog": {
+      "event": "SoundEvents_Dialog.Announcer.MP_2MinutesLeftDialog",
+      "cue": "BL_DX_SWITCHBOARD.SC008961",
+      "wavs": [
+       "content/WL_DX_OPRIME/DX_OPRIME_LK008960.wav",
+       "content/WL_DX_MGTRON/DX_MGTRON_LK008961.wav"
+      ],
+      "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+      "confidence": "CONFIRMED AUTHORED DATA"
+     },
+     "SoundEvents_Dialog.Announcer.MP_30SecondsLeftDialog": {
+      "event": "SoundEvents_Dialog.Announcer.MP_30SecondsLeftDialog",
+      "cue": "BL_DX_SWITCHBOARD.SC008964",
+      "wavs": [
+       "content/WL_DX_OPRIME/DX_OPRIME_LK008964.wav",
+       "content/WL_DX_MGTRON/DX_MGTRON_LK009049.wav"
+      ],
+      "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+      "confidence": "CONFIRMED AUTHORED DATA"
+     },
+     "SoundEvents_Dialog.Announcer.MP_3KillsRemainingDialog": {
+      "event": "SoundEvents_Dialog.Announcer.MP_3KillsRemainingDialog",
+      "cue": "BL_DX_SWITCHBOARD.SC010611",
+      "wavs": [
+       "content/WL_DX_OPRIME/DX_OPRIME_LK010611.wav",
+       "content/WL_DX_MGTRON/DX_MGTRON_LK010612.wav"
+      ],
+      "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+      "confidence": "CONFIRMED AUTHORED DATA"
+     },
+     "SoundEvents_Dialog.Announcer.MP_50PointsRemainingDialog": {
+      "event": "SoundEvents_Dialog.Announcer.MP_50PointsRemainingDialog",
+      "cue": "BL_DX_SWITCHBOARD.SC009007",
+      "wavs": [
+       "content/WL_DX_OPRIME/DX_OPRIME_LK009007.wav",
+       "content/WL_DX_MGTRON/DX_MGTRON_LK009008.wav"
+      ],
+      "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+      "confidence": "CONFIRMED AUTHORED DATA"
+     },
+     "SoundEvents_Dialog.Announcer.MP_5KillsRemainingDialog": {
+      "event": "SoundEvents_Dialog.Announcer.MP_5KillsRemainingDialog",
+      "cue": "BL_DX_SWITCHBOARD.SC010613",
+      "wavs": [
+       "content/WL_DX_OPRIME/DX_OPRIME_LK010613.wav",
+       "content/WL_DX_MGTRON/DX_MGTRON_LK010614.wav"
+      ],
+      "resolved_via": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+      "confidence": "CONFIRMED AUTHORED DATA"
+     }
+    }
+   },
+   "killstreak_announcer": {
+    "AnnouncementsForStreakLengths": [
+     3,
+     5,
+     7,
+     10
+    ],
+    "dialog_resolved": {}
+   }
+  },
+  "level_up": {
+   "callback": "_global.NotifyLevelUp",
+   "symbol": "mc_levelUpNotify"
+  },
+  "ammo_pickup": {
+   "callback": "_global.NotifyAmmoAdded",
+   "symbol": "mc_ammoPickupNotification"
+  },
+  "message_colors": {
+   "PlayerColor": {
+    "B": 255,
+    "G": 255,
+    "R": 255,
+    "A": 255
+   },
+   "FriendlyColor": {
+    "B": 213,
+    "G": 181,
+    "R": 80,
+    "A": 255
+   },
+   "EnemyColor": {
+    "B": 60,
+    "G": 60,
+    "R": 240,
+    "A": 255
+   },
+   "NeutralColor": {
+    "B": 51,
+    "G": 147,
+    "R": 255,
+    "A": 255
+   }
+  }
+ },
+ "class_specific": {
+  "Scout": {
+   "abilities": [
+    "Cloaking",
+    "DecoyTrap",
+    "Dodge",
+    "HardLock"
+   ],
+   "ability_icons": {
+    "TnAbilityCloaking": [
+     "content/UI_GFxHud_p/TnAbilityCloaking.png"
+    ],
+    "TnAbilityHardLock": [
+     "content/UI_GFxHud_p/TnAbilityHardLock.png"
+    ],
+    "TnAbilityDecoyTrap": [
+     "content/UI_GFxHud_p/TnAbilityDecoyTrap.png"
+    ],
+    "TnAbilityDodge": [
+     "content/UI_GFxHud_p/TnAbilityDodge.png"
+    ]
+   },
+   "killstreaks": [
+    "HealthRegenStreak",
+    "ImprovedOrbitalReconStreak",
+    "OrbitalReconStreak"
+   ]
+  },
+  "Scientist": {
+   "abilities": [
+    "Disguise",
+    "Drain",
+    "Shockwave",
+    "SpawnSentry"
+   ],
+   "ability_icons": {
+    "TnAbilityShockwave": [
+     "content/UI_GFxHud_p/TnAbilityShockwave.png"
+    ],
+    "TnAbilityDrain": [
+     "content/UI_GFxHud_p/TnAbilityDrain.png"
+    ],
+    "TnAbilitySpawnSentry": [
+     "content/UI_GFxHud_p/TnAbilitySpawnSentry.png"
+    ],
+    "TnAbilityDisguise": [
+     "content/UI_GFxHud_p/TnAbilityDisguise.png"
+    ]
+   },
+   "killstreaks": [
+    "FriendlyKillHealthBonusStreak",
+    "OverShieldStreak",
+    "SpawnRocketTurretStreak"
+   ]
+  },
+  "Soldier": {
+   "abilities": [
+    "AbilityJammer",
+    "Hover",
+    "SpawnAmmoCrate",
+    "Whirlwind"
+   ],
+   "ability_icons": {
+    "TnAbilityHover": [
+     "content/UI_GFxHud_p/TnAbilityHover.png"
+    ],
+    "TnAbilitySpawnAmmoCrate": [
+     "content/UI_GFxHud_p/TnAbilitySpawnAmmoCrate.png"
+    ],
+    "TnAbilityWhirlwind": [
+     "content/UI_GFxHud_p/TnAbilityWhirlwind.png"
+    ],
+    "TnAbilityAbilityJammer": [
+     "content/UI_GFxHud_p/TnAbilityAbilityJammer.png"
+    ]
+   },
+   "killstreaks": [
+    "GuidedMissileStreak",
+    "RefillAmmoStreak",
+    "TeamAbilityJammerStreak"
+   ]
+  },
+  "Leader": {
+   "abilities": [
+    "Barrier",
+    "RollerSphere",
+    "TransformDisruptor",
+    "Warcry"
+   ],
+   "ability_icons": {
+    "TnAbilityWarcry": [
+     "content/UI_GFxHud_p/TnAbilityWarcry.png"
+    ],
+    "TnAbilityTransformDisruptor": [
+     "content/UI_GFxHud_p/TnAbilityTransformDisruptor.png"
+    ],
+    "TnAbilityRollerSphere": [
+     "content/UI_GFxHud_p/TnAbilityRollerSphere.png"
+    ],
+    "TnAbilityBarrier": [
+     null
+    ]
+   },
+   "killstreaks": [
+    "FastAbilityCooldownStreak",
+    "MinePooperStreak",
+    "PokeStreak"
+   ]
+  }
+ },
+ "weapon_specific": {
+  "weapon_icons": {
+   "TnWeaponAssaultRifle": [
+    "content/UI_GFxHud_p/TnWeaponAssaultRifle.png"
+   ],
+   "TnWeaponAssaultRifleVehicle": [
+    "content/UI_GFxHud_p/TnWeaponAssaultRifleVehicle.png"
+   ],
+   "TnWeaponBazooka": [
+    "content/UI_GFxHud_p/TnWeaponBazooka.png"
+   ],
+   "TnWeaponBurstRifle": [
+    "content/UI_GFxHud_p/TnWeaponBurstRifle.png"
+   ],
+   "TnWeaponEmpShotgun": [
+    "content/UI_GFxHud_p/TnWeaponEmpShotgun.png"
+   ],
+   "TnWeaponGrenadeLauncher": [
+    "content/UI_GFxHud_p/TnWeaponGrenadeLauncher.png"
+   ],
+   "TnWeaponHeavyMG": [
+    "content/UI_GFxHud_p/TnWeaponHeavyMG.png"
+   ],
+   "TnWeaponHeavyPistol": [
+    "content/UI_GFxHud_p/TnWeaponHeavyPistol.png"
+   ],
+   "TnWeaponHeavyRocketTurret": [
+    "content/UI_GFxHud_p/TnWeaponHeavyRocketTurret.png"
+   ],
+   "TnWeaponHomingRocketVehicle": [
+    "content/UI_GFxHud_p/TnWeaponHomingRocketVehicle.png"
+   ],
+   "TnWeaponIonBlaster": [
+    "content/UI_GFxHud_p/TnWeaponIonBlaster.png"
+   ],
+   "TnWeaponPlasmaCannon": [
+    "content/UI_GFxHud_p/TnWeaponPlasmaCannon.png"
+   ],
+   "TnWeaponRepairRay": [
+    "content/UI_GFxHud_p/TnWeaponRepairRay.png"
+   ],
+   "TnWeaponRocketLauncher": [
+    "content/UI_GFxHud_p/TnWeaponRocketLauncher.png"
+   ],
+   "TnWeaponRocketVehicle": [
+    "content/UI_GFxHud_p/TnWeaponRocketVehicle.png"
+   ],
+   "TnWeaponShotgun": [
+    "content/UI_GFxHud_p/TnWeaponShotgun.png"
+   ],
+   "TnWeaponSniperRifle": [
+    "content/UI_GFxHud_p/TnWeaponSniperRifle.png"
+   ],
+   "TnWeaponTankCannon": [
+    "content/UI_GFxHud_p/TnWeaponTankCannon.png"
+   ]
+  },
+  "scopes": {
+   "symbols": [
+    "mc_longScope",
+    "mc_mediumScope",
+    "mc_shortScope",
+    "mc_zoomScope"
+   ],
+   "weapons_with_fine_aim_scope (HasFineAimScope)": [
+    "TnWeaponHeavyPistol",
+    "TnWeaponSniperRifle"
+   ]
+  },
+  "heat": "NormalizedHeat / Heat observers (NotifyNormalizedHeatChanged / NotifyHeatChanged: no movie defines them)",
+  "charging": "mc_chargingIndicator (charge weapons, e.g. PlasmaCannon)"
+ },
+ "fonts": {
+  "embedded": {
+   "123": "Cybertron Glyphs"
+  },
+  "aliases": [
+   "$version"
+  ],
+  "fontlib": "UI_GFxFonts_p.Fonts_EFIGS",
+  "canvas": "UI_TransEngineFonts_p.MarkerFont"
+ },
+ "strings (UIText)": {
+  "Hud": {
+   "CantTransform": "Can't Change Form Here",
+   "DetonateGrenade": "Detonate <font color='#FF9333'>RMB</font>",
+   "DownedSuicide": "Self Destruct <font color='#FF3333'>Hold G</font>",
+   "Heat": "Heat",
+   "Jammed": "Jammed",
+   "LockDetected": "Lock Detected",
+   "LowAmmo": "Low Ammo",
+   "MissileInbound": "Missile Inbound",
+   "NewObjective": "New Objective",
+   "NewWaveIn": "New Wave In",
+   "OutOfAmmo": "Out of Ammo",
+   "Reload": "<font color='#FF9333'>R</font> Reload",
+   "TeamAttacking": "You are Attacking",
+   "TeamDefending": "You are Defending",
+   "TransformJammed": "Jammed",
+   "TutorialAvailable": "Tutorial Online",
+   "TutorialPause": "View in Pause Menu",
+   "Wave": "Wave",
+   "WaveComplete": "Wave Complete",
+   "Warning": "Warning",
+   "WeaponTurretGatlingGun": "Ion Displacer",
+   "WeaponTurretHeavyRocket": "Nucleon Shock Cannon"
+  },
+  "EndGameStats": {
+   "Earned": "`n earned",
+   "FinalScores": "Final Scores",
+   "Level": "Level",
+   "LevelMax": "Max",
+   "LevelUp": "Level Up!",
+   "NewAbilities": "New Abilities Unlocked",
+   "NewUpgrades": "New Upgrades Unlocked",
+   "ToNextLevel": "`n to next level",
+   "XpEarned": "Experience Earned"
+  },
+  "Respawn": {
+   "CurrentlySpectating": "Currently Spectating",
+   "CyclePlayers": "Cycle Players",
+   "RespawnNextWave": "Waiting for Next Wave to Respawn",
+   "WaitingToRespawn": "Waiting to Respawn",
+   "WaitingToSpawn": "Waiting to Spawn"
+  },
+  "PauseMenu": {
+   "PausedByHost": "Game Paused by Host",
+   "CurrentObjective": "Current Objective",
+   "Cheats": "Cheats",
+   "PlayerLoc": "Player Location",
+   "Mission": "Chapter",
+   "Checkpoints": "Checkpoints",
+   "Checkpoint": "Checkpoint",
+   "Paused": "Paused",
+   "QuitGame": "Quit Game",
+   "RestartCheckpoint": "Restart from Last Checkpoint",
+   "ResumeGame": "Resume Game",
+   "Tutorials": "Tutorials",
+   "TutHealth": "Health",
+   "TutPickups": "Pickups",
+   "TutAbilitiesEnergon": "Abilities - Energon",
+   "TutAbilitiesCooldown": "Abilities - Cooldown",
+   "TutBasicNav": "Basic Controls",
+   "TutVehicle": "Vehicles",
+   "TutVehicleSpecs1": "Vehicles - Cars and Trucks",
+   "TutVehicleSpecs2": "Vehicles - Jets and Tanks",
+   "TutCombat": "Combat",
+   "TutWeapons1": "Weapons - Page 1",
+   "TutWeapons2": "Weapons - Page 2",
+   "TutEscalation": "Escalation"
+  },
+  "Downed": {
+   "Emergency": "EMERGENCY",
+   "Critical": "CRITICAL",
+   "Tminus": "T-MINUS",
+   "Offline": "OFFLINE",
+   "Transcog": "TRANSCOG",
+   "Navsys": "NAVSYS",
+   "Comlink": "COMLINK",
+   "Energon": "ENERGON",
+   "DistressBeacon": "DISTRESS BEACON",
+   "Activated": "ACTIVATED",
+   "Stabilized": "STABILIZED"
+  },
+  "PlayerList": {
+   "Gamercard": "View Gamercard",
+   "Mute": "Mute",
+   "UnMute": "Unmute"
+  }
+ },
+ "unresolved_for_RE": {
+  "_global.CompleteObjective": {
+   "name_string_in_any_movie": [],
+   "status": "no shipped movie defines it: the script invoke has no AS target (no-op at runtime unless native handles it) - RE"
+  },
+  "_global.NotifyFirstSpawn": {
+   "name_string_in_any_movie": [],
+   "status": "no shipped movie defines it: the script invoke has no AS target (no-op at runtime unless native handles it) - RE"
+  },
+  "_global.NotifyHeatChanged": {
+   "name_string_in_any_movie": [],
+   "status": "no shipped movie defines it: the script invoke has no AS target (no-op at runtime unless native handles it) - RE"
+  },
+  "_global.NotifyMeleeWeaponChanged": {
+   "name_string_in_any_movie": [],
+   "status": "no shipped movie defines it: the script invoke has no AS target (no-op at runtime unless native handles it) - RE"
+  },
+  "_global.NotifyNormalizedHeatChanged": {
+   "name_string_in_any_movie": [],
+   "status": "no shipped movie defines it: the script invoke has no AS target (no-op at runtime unless native handles it) - RE"
+  },
+  "_global.NotifyPrimaryWeaponChanged": {
+   "name_string_in_any_movie": [],
+   "status": "no shipped movie defines it: the script invoke has no AS target (no-op at runtime unless native handles it) - RE"
+  },
+  "_global.NotifySecondaryWeaponChanged": {
+   "name_string_in_any_movie": [],
+   "status": "no shipped movie defines it: the script invoke has no AS target (no-op at runtime unless native handles it) - RE"
+  },
+  "_global.NotifyWeaponReticuleTypeChanged": {
+   "name_string_in_any_movie": [],
+   "status": "no shipped movie defines it: the script invoke has no AS target (no-op at runtime unless native handles it) - RE"
+  },
+  "_global.SetAbility": {
+   "name_string_in_any_movie": [],
+   "status": "no shipped movie defines it: the script invoke has no AS target (no-op at runtime unless native handles it) - RE"
+  },
+  "_global.UpdatePlayerListData": {
+   "name_string_in_any_movie": [
+    "UI_GFxPlayerList_p/PlayerList_GFX"
+   ],
+   "status": "no shipped movie defines it: the script invoke has no AS target (no-op at runtime unless native handles it) - RE"
+  },
+  "_global.WaveformData": {
+   "name_string_in_any_movie": [],
+   "status": "no shipped movie defines it: the script invoke has no AS target (no-op at runtime unless native handles it) - RE"
+  }
+ },
+ "minimap_radar": "NONE in shipped content - see manifests/hud/minimap_radar_search.json",
+ "confidence": "CONFIRMED AUTHORED DATA (cooked movie + class defaults + bytecode); element grouping HIGH"
+}
