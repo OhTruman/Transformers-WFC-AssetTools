@@ -33,6 +33,21 @@ unlock rules come from script (RE decompilation, read-only).
   default chassis per faction.
 
 ## Roster (`mp_characters.json`)
+Every chassis and archetype carries an `availability` label, decided by where its ROBODEF is cooked:
+
+| label | count |
+|---|---|
+| **MULTIPLAYER CONFIRMED** | 9: in every MP map, not cooked into campaign |
+| **SHARED (MULTIPLAYER CONFIRMED + campaign)** | 18: e.g. Optimus, Bumblebee, Megatron, Starscream (also cooked into campaign maps) |
+| **CAMPAIGN ONLY** | 6 chassis entries (car soldiers, minions) + all 33 non-chassis TnTransformer archetypes |
+| **UNKNOWN** | none |
+
+**Class icons.**
+* `mc_specialtyIcon<Class>` in SharedIcons_GFX and CharacterSelect_GFX.
+* `mc_classInfo<Class>` / `mc_classInfoHealth<Class>` in CustomTransformers_GFX.
+* The Hud's `mc_specialtyIconReference`.
+* All are listed in `mp_classes.json` under `ui_icons`.
+
 | status | chassis (iconic character) |
 |---|---|
 | **MP, available by default (15)** | Car (Bumblebee), Car2 (Sideswipe), Car3 (Breakdown), Car4 (Barricade), Jet (Starscream), Jet4 (Air Raid), Jet5 (Jetfire), Jet6 (Silverbolt), Tank (Megatron), Tank2 (Brawl), Tank3 (Warpath), Truck (Optimus Prime), Truck2 (Ratchet), Truck3 (Ironhide), Truck4 (Soundwave) |

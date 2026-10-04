@@ -126,3 +126,15 @@ to open packages or scan the asset tree. The shipped game is the specification; 
 | campaign lobby | `UI_CampaignLobby_m`: 12 BSP triangles + 1 prop; its streaming state lists no level | carried by GFx art. UNKNOWN; verify against footage |
 | loading | LoadScreen_GFX ring motif over black | authored black |
 | pause / match end / respawn | the live gameplay map | omission if the map is not rendered behind |
+
+## Additional screens (2026-10-04)
+`frontend_package.json` → `screens` adds:
+* `campaign`: CampaignSelect / DifficultySelect, `UI_CampaignLobby_m`, checkpoint art;
+* `escalation`: PartyLobby `mc_menuEscalation*`, the survival lobby classes, ESC maps, HUD wave widgets;
+* `private_match`: host and game-mode-settings menus, the Online.* bridge calls, private settings classes;
+* `friends`: OnlineFriendsMenu;
+* `leaderboards`: LeaderboardMenu;
+* `challenges_teletraan`: ChallengeMenu / ChallengeNotify plus `TransChallenges.ini`;
+* `create_character`: CustomTransformers plus the customization scene.
+
+Each lists the movies that load it. Backgrounds per screen are in `ui_scenes.json`.

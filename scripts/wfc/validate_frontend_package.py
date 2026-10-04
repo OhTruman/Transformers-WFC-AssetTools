@@ -58,7 +58,8 @@ def main():
         for key in ('movie',):
             if sc.get(key): mkey(sc[key])
         for s in sc.get('submovies') or []: mkey(s)
-        for v in (sc.get('movies') or {}).values(): mkey(v)
+        mv_ = sc.get('movies') or {}
+        for v in (mv_.values() if isinstance(mv_, dict) else mv_): mkey(v)
     R = F['mp_registry.json']
     for m in R['maps']:
         if not m.get('cooked'): continue

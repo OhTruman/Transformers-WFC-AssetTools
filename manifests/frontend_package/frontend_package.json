@@ -18,7 +18,15 @@
   "match",
   "post_match",
   "quit_to_front_end",
-  "pause"
+  "pause",
+  "campaign",
+  "escalation",
+  "private_match",
+  "friends",
+  "leaderboards",
+  "challenges_teletraan",
+  "create_character",
+  "_background_scenes"
  ],
  "screens": {
   "boot_legal": {
@@ -275,7 +283,87 @@
   },
   "pause": {
    "movie": "UI_GFxPause_p/PauseMenu_GFX",
+   "background": "live gameplay map",
    "confidence": "CONFIRMED AUTHORED DATA"
+  },
+  "campaign": {
+   "movies": [
+    "UI_GFxCampaignSelect_p/CampaignSelect_GFX",
+    "UI_GFxDifficultySelect_p/DifficultySelect_GFX"
+   ],
+   "lobby_level": "UI_CampaignLobby_m (TnOnlineGameSettingsCP/CPSolo LobbyMapName), TnGameLobbyGameCoop / Solo",
+   "art": "CampaignSelect_GFX checkpoint images (UI_CheckpointThumbnails_p, 84 PNGs)",
+   "background": "see ui_scenes.json (campaign lobby)",
+   "confidence": "CONFIRMED AUTHORED DATA"
+  },
+  "escalation": {
+   "menu_symbols": [
+    "mc_menuEscalation",
+    "mc_menuEscalation360",
+    "mc_menuEscalationHostGame",
+    "mc_menuEscalationPC",
+    "mc_menuEscalationPS3",
+    "mc_tutEscalation"
+   ],
+   "lobby": "UI_Lobby_m with TnGameLobbyGameSurvival / TnGameReplicationInfoGameLobbySurvival",
+   "playlist": "SurvivalPlaylistData (VisibleInMenu false)",
+   "maps": "MP_ESC_BrokenHope / MP_ESC_Remnant",
+   "hud": "Hud_GFX mc_scoreSurvival / mc_waveIndicator / mc_nextWaveTimer",
+   "confidence": "CONFIRMED AUTHORED DATA"
+  },
+  "private_match": {
+   "menu_symbols": [
+    "mc_menuCampaignHostGame",
+    "mc_menuEscalationHostGame",
+    "mc_menuMultiplayerGameModeSettings"
+   ],
+   "bridge": [
+    "Online.HostOnlineGame",
+    "Online.EditGameMode",
+    "Online.SetSelectedMapID",
+    "Online.SetSelectedGoalScore"
+   ],
+   "settings": "mp_registry.json modes[*].settings (TnOnlineGameSettings<TAG>Private classes)",
+   "confidence": "CONFIRMED AUTHORED DATA"
+  },
+  "friends": {
+   "movie": "UI_GFxOnlineFriends_p/OnlineFriendsMenu_GFX",
+   "loaded_from": [
+    "UI_GFxFrontEnd_p/FrontEnd_GFX",
+    "UI_GFxLobbies_p/GameLobby_GFX",
+    "UI_GFxLobbies_p/PartyLobby_GFX",
+    "UI_GFxPause_p/PauseMenu_GFX"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA"
+  },
+  "leaderboards": {
+   "movie": "UI_GFxLeaderboards_p/LeaderboardMenu_GFX",
+   "loaded_from": [
+    "UI_GFxLobbies_p/GameLobby_GFX",
+    "UI_GFxLobbies_p/PartyLobby_GFX"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA"
+  },
+  "challenges_teletraan": {
+   "movies": [
+    "UI_GFxChallenges_p/ChallengeMenu_GFX",
+    "UI_GFxChallengeNotifies_p/ChallengeNotify_GFX"
+   ],
+   "data": "TransChallenges.ini TnDataProvider_Challenge",
+   "loaded_from": [
+    "UI_GFxLobbies_p/GameLobby_GFX",
+    "UI_GFxLobbies_p/PartyLobby_GFX"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA"
+  },
+  "create_character": {
+   "movie": "UI_GFxCustomize_p/CustomTransformers_GFX",
+   "scene": "UI_CharacterCustomization_m (streamed by the lobbies)",
+   "see": "../mp_content/character_select_ui.json",
+   "confidence": "CONFIRMED AUTHORED DATA"
+  },
+  "_background_scenes": {
+   "see": "ui_scenes.json (3D scene behind each screen + black-background verdicts)"
   }
  },
  "movies": {

@@ -220,6 +220,9 @@ def main():
                        'unlock_source': unlock,
                        'developer_unlock_path': cid in DEV_UNLOCK and 'TnPlayerReplicationInfoSurvival.CheckForUpdate (guarded by a '
                                                                        'specific generator, character Barricade and an AcceptableNames list)' or None}),
+            ('availability', ('SHARED (MULTIPLAYER CONFIRMED + campaign)' if in_mp and any(p[:1] in 'AD' and p[1:2].isdigit() for p in pk) else
+                              'MULTIPLAYER CONFIRMED' if in_mp else
+                              'CAMPAIGN ONLY' if any(p[:1] in 'AD' and p[1:2].isdigit() for p in pk) else 'UNKNOWN')),
             ('mp_status', status), ('in_all_mp_maps', in_mp), ('in_any_mp_map', robodef in mp_tf_any),
             ('customization_camera_id', v.get('CustomizationCameraId')),
             ('iconic_preset', preset(sp) if sp else None),
@@ -242,7 +245,9 @@ def main():
         kind = ('MP-referenced' if o in mp_tf_any else
                 'campaign / escalation (cooked into campaign or ESC maps only)' if any(p[:1] in 'AD' and p[1:2].isdigit() or 'ESC' in p for p in pk)
                 else 'other (own package / frontend only)')
-        others.append({'definition': o, 'skeletal_mesh': V(o).get('SkelMesh'), 'cooked_in': pk[:12], 'cooked_in_count': len(pk), 'category': kind})
+        others.append({'definition': o, 'skeletal_mesh': V(o).get('SkelMesh'), 'cooked_in': pk[:12], 'cooked_in_count': len(pk), 'category': kind,
+                       'availability': 'SHARED' if o in mp_tf_any and kind.startswith('campaign') else
+                                       'CAMPAIGN ONLY' if kind.startswith('campaign') else 'MULTIPLAYER CONFIRMED' if o in mp_tf_any else 'UNKNOWN'})
     write('mp_characters.json', OrderedDict([
         ('generated_by', GEN),
         ('sources', ['TransCustomization.ini TnDataProvider_Chassis + TransGame.int/.FRA', 'TnAssetReferencesMultiplayer in %d MP maps' % len(mp_maps),
@@ -292,6 +297,9 @@ def classes(ini, INT, FRA):
     spec = prov('TnDataProvider_Specialty')
     for k, s in spec.items():
         s['speed_multiplier'] = (ini.get('TransGame.TnSpecialty' + k) or {}).get('SpeedMultiplier')
+        s['ui_icons'] = {'class_icon': 'mc_specialtyIcon%s (UI_GFxShared_p/SharedIcons_GFX and CharacterSelect_GFX)' % k,
+                         'class_info_panels': ['mc_classInfo%s' % k, 'mc_classInfoHealth%s' % k] , 'class_info_movie': 'UI_GFxCustomize_p/CustomTransformers_GFX',
+                         'hud': 'Hud_GFX mc_specialtyIconReference (loads the class icon)', 'confidence': CONF + ' (exported symbols)'}
     write('mp_classes.json', OrderedDict([
         ('generated_by', GEN), ('source', 'TransCustomization.ini providers + TransGame.int/.FRA + class CDOs'),
         ('specialties (classes)', spec), ('abilities', prov('TnDataProvider_Ability')), ('skills', prov('TnDataProvider_Skill')),

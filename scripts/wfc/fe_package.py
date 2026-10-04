@@ -209,7 +209,26 @@ def screens(flow, mv, hud):
         'confidence': CONF + ' (script)'}
     S['quit_to_front_end'] = {'via': 'Game.QuitToMainMenu (bridge) / TnGame.OpenFrontEndMap -> "disconnect local" + '
                                      'ClientTravel UI_FrontEnd_m', 'confidence': CONF + ' (script)'}
-    S['pause'] = {'movie': mk(ui.get('PauseUI')), 'confidence': CONF}
+    S['pause'] = {'movie': mk(ui.get('PauseUI')), 'background': 'live gameplay map', 'confidence': CONF}
+    pl_ex = mv['UI_GFxLobbies_p/PartyLobby_GFX']['exports']
+    S['campaign'] = {'movies': ['UI_GFxCampaignSelect_p/CampaignSelect_GFX', 'UI_GFxDifficultySelect_p/DifficultySelect_GFX'],
+                     'lobby_level': 'UI_CampaignLobby_m (TnOnlineGameSettingsCP/CPSolo LobbyMapName), TnGameLobbyGameCoop / Solo',
+                     'art': 'CampaignSelect_GFX checkpoint images (UI_CheckpointThumbnails_p, 84 PNGs)', 'background': 'see ui_scenes.json (campaign lobby)',
+                     'confidence': CONF}
+    S['escalation'] = {'menu_symbols': [e for e in pl_ex if 'Escalation' in e], 'lobby': 'UI_Lobby_m with TnGameLobbyGameSurvival / '
+                       'TnGameReplicationInfoGameLobbySurvival', 'playlist': 'SurvivalPlaylistData (VisibleInMenu false)', 'maps': 'MP_ESC_BrokenHope / MP_ESC_Remnant',
+                       'hud': 'Hud_GFX mc_scoreSurvival / mc_waveIndicator / mc_nextWaveTimer', 'confidence': CONF}
+    S['private_match'] = {'menu_symbols': [e for e in pl_ex if 'HostGame' in e or 'GameModeSettings' in e or 'Private' in e],
+                          'bridge': ['Online.HostOnlineGame', 'Online.EditGameMode', 'Online.SetSelectedMapID', 'Online.SetSelectedGoalScore'],
+                          'settings': 'mp_registry.json modes[*].settings (TnOnlineGameSettings<TAG>Private classes)', 'confidence': CONF}
+    S['friends'] = {'movie': 'UI_GFxOnlineFriends_p/OnlineFriendsMenu_GFX', 'loaded_from': [k for k, v in mv.items() if any(s_['movie'] == 'UI_GFxOnlineFriends_p/OnlineFriendsMenu_GFX' for s_ in v['submovies (loaded at runtime)'])], 'confidence': CONF}
+    S['leaderboards'] = {'movie': 'UI_GFxLeaderboards_p/LeaderboardMenu_GFX', 'loaded_from': [k for k, v in mv.items() if any(s_['movie'] == 'UI_GFxLeaderboards_p/LeaderboardMenu_GFX' for s_ in v['submovies (loaded at runtime)'])], 'confidence': CONF}
+    S['challenges_teletraan'] = {'movies': ['UI_GFxChallenges_p/ChallengeMenu_GFX', 'UI_GFxChallengeNotifies_p/ChallengeNotify_GFX'],
+                                 'data': 'TransChallenges.ini TnDataProvider_Challenge', 'loaded_from': [k for k, v in mv.items() if any(s_['movie'] == 'UI_GFxChallenges_p/ChallengeMenu_GFX' for s_ in v['submovies (loaded at runtime)'])],
+                                 'confidence': CONF}
+    S['create_character'] = {'movie': 'UI_GFxCustomize_p/CustomTransformers_GFX', 'scene': 'UI_CharacterCustomization_m (streamed by the lobbies)',
+                             'see': '../mp_content/character_select_ui.json', 'confidence': CONF}
+    S['_background_scenes'] = {'see': 'ui_scenes.json (3D scene behind each screen + black-background verdicts)'}
     return S
 
 # ------------------------------------------------------------------ registry
