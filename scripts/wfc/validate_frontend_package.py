@@ -20,7 +20,7 @@ from vs_common import ROOT  # noqa: E402
 PKG = os.path.normpath(os.path.join(HERE, '..', '..', 'manifests', 'frontend_package'))
 LOGS = os.path.normpath(os.path.join(HERE, '..', '..', 'logs'))
 OBJ_RX = re.compile(r'^[A-Za-z][A-Za-z0-9_]*(\.[A-Za-z0-9_]+)+$')
-PATH_RX = re.compile(r'^(content|movies|config)/[^\s"<>|]+\.(png|gfx|mkv|wav|gltf|int|ini|bin|json|txt)$')
+PATH_RX = re.compile(r'^(content|movies|config|VerticalSlice)/[^\s"<>|]+\.(png|gfx|mkv|wav|gltf|glb|int|ini|bin|json|txt)$')
 
 def strings(o):
     if isinstance(o, str): yield o
@@ -35,7 +35,7 @@ def main():
         res.setdefault(n, [0, 0]); res[n][0] += 1
         if not c: res[n][1] += 1; fails.append('%s: %s' % (n, m))
     F = {n: json.load(open(os.path.join(PKG, n), encoding='utf-8'))
-         for n in ('frontend_package.json', 'mp_registry.json', 'loading_handoff.json', 'hud_handoff.json')}
+         for n in ('frontend_package.json', 'mp_registry.json', 'loading_handoff.json', 'hud_handoff.json', 'ui_scenes.json')}
     inv = objtree.inv()
     pk = {r[0].lower() for r in inv.execute('SELECT package FROM packages')}
     srcpk = pk | {'transgame', 'transcontent', 'engine', 'core', 'gfxui', 'hm_engine', 'engineMaterials'.lower()}

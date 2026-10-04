@@ -105,3 +105,24 @@ to open packages or scan the asset tree. The shipped game is the specification; 
   * that uncooked maps are excluded by the native `HasRequiredAssets`;
   * the native loading-movie composition order.
 * **UNKNOWN:** listed per item in `frontend_re_handoff.json` and `hud_handoff.json` → `unresolved_callbacks`.
+
+## Frontend backgrounds: what is behind each screen (`ui_scenes.json`, `scripts/wfc/ui_scenes.py`)
+* **How it was built.** The UI levels were run through the generalized map pipeline (`vs_map`, `vs_mapfx`, `vs_lighting`,
+  `vs_postprocess`, all under the 6 GB cap). Outputs are in `ExtractedAssets/VerticalSlice/Maps/UI_*`.
+* **What `ui_scenes.py` adds:**
+  * level streaming;
+  * cameras;
+  * Matinee camera and actor tracks with keys;
+  * skeletal actors not in `world.glb` (mesh plus anim sets);
+  * ambient sounds and music;
+  * a per-screen verdict on whether a black background is authored or an omission.
+
+| screens | 3D scene | verdict |
+|---|---|---|
+| boot / logos / opening movie | full-screen Bink movies | black only between movies (authored) |
+| title, main menu, settings, extras, friends, leaderboards, campaign select | **UI_FrontEnd_m + streamed UI_FrontEnd_capture_VIG_m**: orbit battle with 105 props, 326 particle components (explosions, anti-air and laser fire, dropship boosters), 17 Matinee-animated skeletal ships, lens flares, fog | **black is an omission**. The camera is a looping 393.6 s Matinee (`SeqAct_Interp_2880`, 34 move keys) plus the `startMainMenuCamera` move |
+| party lobby, multiplayer, private match, create character | `UI_PartyLobby_m` has no scenery; it **streams UI_CharacterCustomization_m** (LevelStreamingState "Customize", visible) | omission unless the customization room is streamed and the preview pawn (`SeqAct_TnPawnFactory`) spawned; 15 camera Matinees chosen by CustomizationCameraId |
+| game lobby | `UI_Lobby_m` (no scenery) + the same customization room | as party lobby |
+| campaign lobby | `UI_CampaignLobby_m`: 12 BSP triangles + 1 prop; its streaming state lists no level | carried by GFx art. UNKNOWN; verify against footage |
+| loading | LoadScreen_GFX ring motif over black | authored black |
+| pause / match end / respawn | the live gameplay map | omission if the map is not rendered behind |
