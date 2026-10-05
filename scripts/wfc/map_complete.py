@@ -199,7 +199,33 @@ def main():
       'ASSETTOOLS' if nfog != hf else ('RENDERING' if hf else None),
       'height fog not exported' if nfog != hf else ('height fog rendering (%d components, lighting.json globals.height_fogs)' % hf if hf else None))
     c('lights', 'COMPLETE' if lt.get('lights') else 'MISSING', {'lights': len(lt.get('lights') or []), 'validation': lt.get('validation')})
-    c('postprocess', 'COMPLETE' if pp else 'MISSING', {k: pp.get(k) for k in ('scene_chain', 'governing', 'volumes')} if pp else None)
+    # post-process volumes: CLUT / scene tone per volume and how much of the play space they cover (player starts inside the brush)
+    import numpy as _np
+    starts_g = [_np.array(x['location_gltf']) for x in gp.get('player_starts') or [] if x.get('location_gltf')]
+    def inside(polys, q):
+        for poly in polys:
+            P = _np.array(poly, float)
+            if len(P) < 3: continue
+            n = _np.cross(P[1] - P[0], P[2] - P[0]); ln = _np.linalg.norm(n)
+            if ln < 1e-9: continue
+            c_ = P.mean(0); n = n / ln
+            # orient outward: hull centroid is the mean of all vertices
+            if _np.dot(n, c_ - hull_c) < 0: n = -n
+            if _np.dot(q - P[0], n) > 1e-3: return False
+        return True
+    ppv = []
+    for v in (col.get('volumes') or []):
+        if v['class'] != 'PostProcessVolume': continue
+        hull_c = _np.array([pt for poly in v['polygons_gltf'] for pt in poly], float).mean(0)
+        n_in = sum(1 for q in starts_g if inside(v['polygons_gltf'], q))
+        pv = next((x for x in (pp.get('volumes') or []) if x['volume'].endswith(v['actor'])), {})
+        ppv.append({'volume': v['actor'], 'player_starts_inside': '%d/%d' % (n_in, len(starts_g)), 'clut': (pv.get('clut') or {}).get('object'),
+                    'clut_png': (pv.get('clut') or {}).get('png'), 'scene_tone': pv.get('scene_tone'), 'priority_enabled': pv.get('priority_enabled')})
+    c('postprocess', 'COMPLETE' if pp else 'MISSING', dict(({k: pp.get(k) for k in ('scene_chain', 'governing')} if pp else {}),
+                                                         world_clut=(pp.get('clut') or {}).get('object') if pp else None, volumes=ppv),
+      'RENDERING' if any(x['clut'] for x in ppv) else None,
+      'colour grade authored on a PostProcessVolume (CLUT + scene tone): apply volume settings, not only the world CLUT'
+      if any(x['clut'] for x in ppv) else None)
     c('map_fx', 'EXPORTED' if nfx else 'NONE', {'particle_components': nfx, 'systems': len(fx.get('particle_systems') or {})},
       'RENDERING', 'particle systems must be simulated by the renderer (decoded module streams via pstream.py)' if nfx else None)
     c('movers', 'AUTHORED', {'count': len(movers), 'physics': Counter(str(x['physics']) for x in movers), 'matinee': len(gp.get('matinee') or [])},
@@ -261,6 +287,25 @@ def main():
                                                   'note': 'exported in world.glb like any prop; oversized shells (>2 km) excluded from collision'})
     c('kismet_references', 'COMPLETE' if ki else 'MISSING', {'summary': ki.get('summary'), 'relationships': len(ki.get('actor_relationships') or [])})
     c('destructibles', 'COMPLETE', {'count': dd.get('count', 0)})
+    # hazard / kill volumes (PhysicsVolume / DynamicPhysicsVolume with bPainCausing, effective values over the class chain)
+    hz = []
+    for v in (col.get('volumes') or []):
+        if 'PhysicsVolume' not in v['class']: continue
+        o = next((o_ for lv in (m.get('sublevels') or []) for o_ in [lv + '.TheWorld.PersistentLevel.' + v['actor']] if A.get(o_)), None)
+        ev_ = A.values(o) if o else {}
+        if not ev_.get('bPainCausing'): continue
+        hz.append({'actor': v['actor'], 'class': v['class'], 'object': o, 'polygons_gltf': v['polygons_gltf'],
+                   'DamagePerSec': ev_.get('DamagePerSec'), 'DamageType': ev_.get('DamageType'), 'PainInterval': ev_.get('PainInterval'),
+                   'bAIShouldIgnorePain': ev_.get('bAIShouldIgnorePain'), 'bEntryPain': ev_.get('bEntryPain'),
+                   'bPhysicsOnContact': ev_.get('bPhysicsOnContact'), 'GroundFriction': ev_.get('GroundFriction'),
+                   'kind': 'instant kill' if (ev_.get('DamagePerSec') or 0) >= 1e6 or 'InstantKill' in str(ev_.get('DamageType')) else 'damage over time'})
+    json.dump({'generated_by': GEN, 'map': MAP, 'kill_z': [ (phy.get('world') or {}).get(lv, {}).get('KillZ') for lv in (phy.get('world') or {})],
+               'hazard_volumes': hz, 'note': 'damage applied by PhysicsVolume.PainTimer (stock UE3: DamagePerSec * PainInterval while touching); '
+                                             'GAMEPLAY must simulate'}, open(os.path.join(OUT, 'hazard_volumes.json'), 'w', encoding='utf-8'), indent=1, default=str)
+    c('kill_volumes', 'COMPLETE', {'hazard_volumes': len(hz), 'by_kind': dict(Counter(h['kind'] for h in hz)),
+                                   'kill_z_ue': [(phy.get('world') or {}).get(lv, {}).get('KillZ') for lv in (phy.get('world') or {})],
+                                   'file': 'manifests/maps/%s/hazard_volumes.json' % MAP},
+      'GAMEPLAY' if hz else None, 'pain / kill volumes and KillZ must be applied at runtime' if hz else None)
     c('structure_audit', (sa.get('verdict') or {}).get('status', 'NOT RUN'), sa.get('verdict'))
     c('vs_validate', 'PASS' if vv and not vv.get('failures') else 'NOT RUN / FAIL', {'checks': len(vv.get('checks', [])) if vv else 0, 'failures': vv.get('failures') if vv else None})
     special = {k: v for k, v in (m.get('unhandled_actor_classes') or {}).items() if k in ('SkeletalMeshActor', 'LensFlareSource', 'HeightFog', 'PrefabInstance')}

@@ -72,7 +72,7 @@ def mat_rec(m):
                     for pin, v in (g.get('roots') or {}).items()}
     return out
 
-def clut_analysis(opath, pkg_name):
+def clut_analysis(opath, pkg_name, png_name='postprocess_clut.png'):
     p = objtree.package(pkg_name)
     vol, info = texture3d.decode_texture3d(p, opath)
     v = vol[..., :3].astype(float)
@@ -88,7 +88,7 @@ def clut_analysis(opath, pkg_name):
     lum_in = inp @ np.array([0.299, 0.587, 0.114]); sat_in = inp.max(1) - inp.min(1); sat_out = outc.max(1) - outc.min(1)
     mask = sat_in > 0.2
     strip = vol.transpose(1, 0, 2, 3).reshape(sy, sz * sx, 4)
-    png = os.path.join(OUT, 'postprocess_clut.png')
+    png = os.path.join(OUT, png_name)
     try:
         from PIL import Image
         Image.fromarray(strip).save(png)
@@ -167,6 +167,25 @@ def main():
     out['clut'] = clut_analysis(clut, persistent) if clut else None
     # ------------------------------------------------------------ volumes, other chains, camera
     out['volumes'] = [{'volume': r['opath'], 'props': A.values(r['opath'])} for s in subs for r in A.find(s + '.TheWorld.PersistentLevel.%', 'PostProcessVolume')]
+    # volume colour grading: on several maps (Gorge, Molten, Seed, ...) the CLUT and scene tone are authored on a PostProcessVolume
+    # Settings, not on the WorldInfo; decode each volume CLUT next to the world one (postprocess_clut_<volume>.png)
+    for v in out['volumes']:
+        st = (v['props'] or {}).get('Settings') or {}
+        vc = st.get('ColorCorrectionTexture') if isinstance(st, dict) else None
+        if not vc: continue
+        name = v['volume'].rsplit('.', 1)[-1]
+        for pk in (v['volume'].split('.')[0], vc.split('.')[0]):
+            try:
+                v['clut'] = clut_analysis(vc, pk, 'postprocess_clut_%s.png' % name); break
+            except Exception as e:
+                v['clut'] = {'object': vc, 'error': repr(e)[:200]}
+        v['scene_tone'] = {k: st.get(k) for k in ('bEnableSceneEffect', 'Scene_Desaturation', 'Scene_HighLights', 'Scene_MidTones', 'Scene_Shadows')}
+        v['priority_enabled'] = {k: (v['props'] or {}).get(k) for k in ('Priority', 'bEnabled', 'bUnbound')}
+    vol_cluts = [v for v in out['volumes'] if (v.get('clut') or {}).get('png')]
+    if vol_cluts and not out['clut']:
+        out['notes'].append('No WorldInfo ColorCorrectionTexture: the colour grade is authored on %d PostProcessVolume(s) (%s); a '
+                            'renderer that only applies the world CLUT draws this map ungraded inside those volumes.' %
+                            (len(vol_cluts), ', '.join(v['volume'].rsplit('.', 1)[-1] + ' -> ' + v['clut']['object'] for v in vol_cluts)))
     stp = (A.values(out['world_settings'][persistent]['world_info']) or {}).get('SemiTransparentPostProcess')
     out['semi_transparent_chain'] = chain_rec(stp) if stp else None
     if out['semi_transparent_chain']:

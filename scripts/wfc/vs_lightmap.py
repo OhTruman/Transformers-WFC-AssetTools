@@ -89,7 +89,17 @@ def main():
     """All lightmapped level packages of the map (ART + BASE); props joined by component path, actor-placed props
     (StaticMeshActor / StaticInterpActor / InterpActor rows without a component key) through their cooked
     StaticMeshComponent (the only one under the actor)."""
+    cooked = {n[:-4].lower(): n[:-4] for n in os.listdir(CK) if n.endswith('.xxx')}
     levels = [n[:-4] for n in os.listdir(CK) if n.lower().startswith(MAP.lower() + '_') and n.lower().endswith('_m.xxx')]
+    # + streamed sublevels exported by vs_map (authored LevelStreaming: Debris art lives in MP_ORB_Art_m, Seed in MP_IAC_Global_Art_m)
+    mj = os.path.join(OUT, 'map.json')
+    if os.path.exists(mj):
+        levels += [l for l in json.load(open(mj, encoding='utf-8')).get('sublevels') or [] if l.lower() in cooked and l not in levels]
+    def lm_package(lv):
+        # ART-level atlases live in <ART>_LM (matched case-insensitively: Rust / ORB cook _Art_m); other levels keep the original
+        # rule (atlas cooked inline in the level package - Streets BASE validated)
+        if lv.lower().endswith('_art_m') and (lv + '_LM').lower() in cooked: return cooked[(lv + '_LM').lower()]
+        return lv + ('_LM' if lv.endswith('_ART_m') else '').replace('_BASE_m', '_Base_m_LM')
     by_path, comp_of_actor = {}, {}
     for lv in sorted(levels):
         p = ue3pkg.Package(os.path.join(CK, lv + '.xxx'))
@@ -110,7 +120,7 @@ def main():
             nat = p.data[e['serial_offset'] + used:e['serial_offset'] + e['serial_size']]
             rec = parse_generic(p, nat)
             if rec:
-                rec['atlas_package'] = lv + ('_LM' if lv.endswith('_ART_m') else '').replace('_BASE_m', '_Base_m_LM')
+                rec['atlas_package'] = lm_package(lv)
                 by_path[op.lower()] = rec; n += 1
         print('%s: lightmapped components %d' % (lv, n))
     pj = json.load(open(os.path.join(OUT, 'props.json'), encoding='utf-8'))

@@ -1,0 +1,2168 @@
+{
+ "generated_by": "AssetTools/scripts/wfc/map_readiness_matrix.py",
+ "generated": "2026-10-05 01:10",
+ "vocabulary": [
+  "COMPLETE AUTHORED DATA EXTRACTED",
+  "EXTRACTION DEFECT",
+  "RENDERER MUST SIMULATE",
+  "GAMEPLAY MUST SIMULATE",
+  "UNKNOWN"
+ ],
+ "data_root": "ExtractedAssets/VerticalSlice/Maps/<MAP>/ (local, not pushed); manifests/maps/<MAP>/ and manifests/next_map/<MAP>_*",
+ "columns": [
+  "GEOMETRY",
+  "COLLISION",
+  "LIGHTING",
+  "MATERIALS",
+  "FX",
+  "MOVERS",
+  "PICKUPS",
+  "MODE_ACTORS",
+  "AUDIO",
+  "NAVIGATION",
+  "READY_FOR_RUNTIME"
+ ],
+ "maps": {
+  "MP_IAC_Seed": {
+   "GEOMETRY": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "bsp": "BSP COMPLETE: every polygon node is rendered by a cooked element or is invisible/portal; the exported triangle count equals the authored render triangles",
+     "placed": {
+      "placed": 2630,
+      "unique": 266,
+      "missing_mesh": 0
+     },
+     "smca_mismatch": 0,
+     "mirrored_winding": "CONSISTENT",
+     "skyline_props_outside_play": 99
+    }
+   },
+   "COLLISION": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "starts_on_walk_graph": "102/102",
+     "pickups_objectives_on_floor": {
+      "pickups": {
+       "count": 21,
+       "on_walkable_reachable_floor": 19,
+       "not_on_walk_graph": [
+        "TnOverShieldPickupFactory_5191",
+        "TnOverShieldPickupFactory_6509"
+       ]
+      },
+      "objectives": {
+       "count": 14,
+       "on_walkable_reachable_floor": 13,
+       "not_on_walk_graph": [
+        "TnKingOfTheHillZone_14054"
+       ]
+      }
+     },
+     "floor_agreement_pct": 89.84,
+     "unexplained_gaps": 0,
+     "kill_z_ue": [
+      -262143.0,
+      -262143.0,
+      -262143.0,
+      -262143.0,
+      -1500.0
+     ],
+     "hazard_volumes": {
+      "hazard_volumes": 2,
+      "by_kind": {
+       "damage over time": 2
+      },
+      "kill_z_ue": [
+       -262143.0,
+       -262143.0,
+       -262143.0,
+       -262143.0,
+       -1500.0
+      ],
+      "file": "manifests/maps/MP_IAC_Seed/hazard_volumes.json"
+     }
+    },
+    "consumer_action": "GAMEPLAY MUST SIMULATE: apply KillZ + pain / kill volumes (manifests/maps/MP_IAC_Seed/hazard_volumes.json)"
+   },
+   "LIGHTING": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "texture_lightmaps": 2288,
+     "lightmap_binding_ok": true,
+     "vertex_lightmaps": 257,
+     "vertex_count_check": {
+      "match": 257
+     },
+     "lights": 317,
+     "fog": {
+      "HeightFog_actors": 2,
+      "height_fogs_in_lighting_json": 2,
+      "FogVolumeConstantDensityInfo": 0
+     },
+     "world_clut": null,
+     "volume_grades": [
+      {
+       "volume": "PostProcessVolume_13331",
+       "clut": "ENV_Cluts_p.desaturation40_CLR",
+       "player_starts_inside": "102/102",
+       "scene_tone": {
+        "bEnableSceneEffect": true,
+        "Scene_Desaturation": 0.20000000298023224,
+        "Scene_HighLights": {
+         "X": 1.0,
+         "Y": 1.0,
+         "Z": 1.0
+        },
+        "Scene_MidTones": {
+         "X": 0.8999999761581421,
+         "Y": 0.8999999761581421,
+         "Z": 0.8999999761581421
+        },
+        "Scene_Shadows": {
+         "X": 0.0,
+         "Y": 0.0,
+         "Z": 0.0
+        }
+       }
+      }
+     ]
+    },
+    "consumer_action": "RENDERER MUST SIMULATE: apply per-vertex baked light from vertex_lightmaps.json (257 LMT_1D components; sample 4th byte {'00': 257}); apply the PostProcessVolume colour grade (ENV_Cluts_p.desaturation40_CLR; covers 102/102 player starts) - no WorldInfo CLUT"
+   },
+   "MATERIALS": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "materials": 216,
+     "missing": null,
+     "mic": {
+      "MaterialInstanceConstant": 170,
+      "Material": 46
+     },
+     "default_material_faces_visible_in_play": 1
+    },
+    "consumer_action": "RENDERER MUST SIMULATE: 1 authored DefaultMaterial BSP faces visible in play (authored, not a defect)"
+   },
+   "FX": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "particles": 39,
+     "decals": 25,
+     "pickup_fx": 36
+    },
+    "consumer_action": "RENDERER MUST SIMULATE: simulate particle systems (decoded module streams), project decals"
+   },
+   "MOVERS": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "movers": 16,
+     "physics": {
+      "PHYS_Interpolating": 8,
+      "PHYS_Rotating": 8
+     },
+     "matinee": 1,
+     "missing_from_world_glb": []
+    },
+    "consumer_action": "GAMEPLAY MUST SIMULATE: PHYS_Rotating / Matinee runtime"
+   },
+   "PICKUPS": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "factories": {
+      "TnAmmoCratePickupFactory": 9,
+      "TnHealthPickupFactory": 10,
+      "TnOverShieldPickupFactory": 2
+     },
+     "render_index_pickup_visuals": 24,
+     "render_index_present": true
+    },
+    "consumer_action": "GAMEPLAY MUST SIMULATE: pickup state machines (respawn, availability)"
+   },
+   "MODE_ACTORS": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "classes": [
+      "TnDominationPoint",
+      "TnKingOfTheHillZone",
+      "TnGameObjectivePickupFactoryFlag",
+      "TnGameObjectivePickupFactoryBomb",
+      "TnFlagCapturePoint",
+      "TnBombPlantPoint",
+      "TnAmmoCratePickupFactory",
+      "TnHealthPickupFactory",
+      "TnOverShieldPickupFactory",
+      "Kismet-hidden objective props"
+     ],
+     "tdm_hidden": 17,
+     "renderables": {
+      "domination energon totem": 3,
+      "KOTH active-zone ring": 4,
+      "destructible": 3
+     }
+    },
+    "consumer_action": "GAMEPLAY MUST SIMULATE: mode gating per mode_visual_state"
+   },
+   "AUDIO": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "emitters": {
+      "point": 56,
+      "volume": 67,
+      "line": 15,
+      "cues": 56,
+      "waves_with_wav": 132
+     },
+     "zones_reverb": {
+      "zones": 72,
+      "reverb_presets": 8
+     }
+    },
+    "consumer_action": "GAMEPLAY MUST SIMULATE (Systems): ambient zones / reverb via Kismet SeqAct_AmbientAudioZone / SeqAct_Reverb"
+   },
+   "NAVIGATION": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "nodes": 137,
+     "edges": 486
+    },
+    "consumer_action": "UNKNOWN: original-AI bots need tactical data the MP maps do not author (ReachSpec graph only)"
+   },
+   "READY_FOR_RUNTIME": {
+    "verdict": "DATA COMPLETE",
+    "evidence": {
+     "extraction_defects": [],
+     "consumer_actions": {
+      "COLLISION": "GAMEPLAY MUST SIMULATE: apply KillZ + pain / kill volumes (manifests/maps/MP_IAC_Seed/hazard_volumes.json)",
+      "LIGHTING": "RENDERER MUST SIMULATE: apply per-vertex baked light from vertex_lightmaps.json (257 LMT_1D components; sample 4th byte {'00': 257}); apply the PostProcessVolume colour grade (ENV_Cluts_p.desaturation40_CLR; covers 102/102 player starts) - no WorldInfo CLUT",
+      "MATERIALS": "RENDERER MUST SIMULATE: 1 authored DefaultMaterial BSP faces visible in play (authored, not a defect)",
+      "FX": "RENDERER MUST SIMULATE: simulate particle systems (decoded module streams), project decals",
+      "MOVERS": "GAMEPLAY MUST SIMULATE: PHYS_Rotating / Matinee runtime",
+      "PICKUPS": "GAMEPLAY MUST SIMULATE: pickup state machines (respawn, availability)",
+      "MODE_ACTORS": "GAMEPLAY MUST SIMULATE: mode gating per mode_visual_state",
+      "AUDIO": "GAMEPLAY MUST SIMULATE (Systems): ambient zones / reverb via Kismet SeqAct_AmbientAudioZone / SeqAct_Reverb",
+      "NAVIGATION": "UNKNOWN: original-AI bots need tactical data the MP maps do not author (ReachSpec graph only)"
+     }
+    }
+   }
+  },
+  "MP_IAC_Berth": {
+   "GEOMETRY": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "bsp": "BSP COMPLETE: every polygon node is rendered by a cooked element or is invisible/portal; the exported triangle count equals the authored render triangles",
+     "placed": {
+      "placed": 1490,
+      "unique": 168,
+      "missing_mesh": 0
+     },
+     "smca_mismatch": 0,
+     "mirrored_winding": "CONSISTENT",
+     "skyline_props_outside_play": 75
+    }
+   },
+   "COLLISION": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "starts_on_walk_graph": "120/120",
+     "pickups_objectives_on_floor": {
+      "pickups": {
+       "count": 10,
+       "on_walkable_reachable_floor": 10,
+       "not_on_walk_graph": []
+      },
+      "objectives": {
+       "count": 14,
+       "on_walkable_reachable_floor": 10,
+       "not_on_walk_graph": [
+        "TnDominationPoint_3149",
+        "TnDominationPoint_8739",
+        "TnKingOfTheHillZone_15958",
+        "TnKingOfTheHillZone_6772"
+       ]
+      }
+     },
+     "floor_agreement_pct": 88.83,
+     "unexplained_gaps": 0,
+     "kill_z_ue": [
+      -262143.0,
+      -262143.0,
+      -262143.0,
+      -3500.0
+     ],
+     "hazard_volumes": {
+      "hazard_volumes": 0,
+      "by_kind": {},
+      "kill_z_ue": [
+       -262143.0,
+       -262143.0,
+       -262143.0,
+       -3500.0
+      ],
+      "file": "manifests/maps/MP_IAC_Berth/hazard_volumes.json"
+     }
+    }
+   },
+   "LIGHTING": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "texture_lightmaps": 1292,
+     "lightmap_binding_ok": true,
+     "vertex_lightmaps": 113,
+     "vertex_count_check": {
+      "match": 113
+     },
+     "lights": 297,
+     "fog": {
+      "HeightFog_actors": 2,
+      "height_fogs_in_lighting_json": 2,
+      "FogVolumeConstantDensityInfo": 1
+     },
+     "world_clut": "PROP_EnergonSigns_p.clutshot1",
+     "volume_grades": [
+      {
+       "volume": "PostProcessVolume_3052",
+       "clut": "ENV_Cluts_p.clut_mp40",
+       "player_starts_inside": "120/120",
+       "scene_tone": {
+        "bEnableSceneEffect": true,
+        "Scene_Desaturation": 0.20000000298023224,
+        "Scene_HighLights": {
+         "X": 1.5,
+         "Y": 1.5,
+         "Z": 1.5
+        },
+        "Scene_MidTones": {
+         "X": 0.949999988079071,
+         "Y": 0.949999988079071,
+         "Z": 0.949999988079071
+        },
+        "Scene_Shadows": {
+         "X": 0.0,
+         "Y": 0.0,
+         "Z": 0.0
+        }
+       }
+      }
+     ]
+    },
+    "consumer_action": "RENDERER MUST SIMULATE: apply per-vertex baked light from vertex_lightmaps.json (113 LMT_1D components; sample 4th byte {'00': 113}); world CLUT PROP_EnergonSigns_p.clutshot1 plus volume grade ENV_Cluts_p.clut_mp40"
+   },
+   "MATERIALS": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "materials": 161,
+     "missing": null,
+     "mic": {
+      "MaterialInstanceConstant": 138,
+      "Material": 23
+     },
+     "default_material_faces_visible_in_play": 0
+    }
+   },
+   "FX": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "particles": 23,
+     "decals": 14,
+     "pickup_fx": 20
+    },
+    "consumer_action": "RENDERER MUST SIMULATE: simulate particle systems (decoded module streams), project decals"
+   },
+   "MOVERS": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "movers": 4,
+     "physics": {
+      "PHYS_Interpolating": 4
+     },
+     "matinee": 0,
+     "missing_from_world_glb": []
+    },
+    "consumer_action": "GAMEPLAY MUST SIMULATE: PHYS_Rotating / Matinee runtime"
+   },
+   "PICKUPS": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "factories": {
+      "TnAmmoCratePickupFactory": 5,
+      "TnHealthPickupFactory": 4,
+      "TnOverShieldPickupFactory": 1
+     },
+     "render_index_pickup_visuals": 15,
+     "render_index_present": true
+    },
+    "consumer_action": "GAMEPLAY MUST SIMULATE: pickup state machines (respawn, availability)"
+   },
+   "MODE_ACTORS": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "classes": [
+      "TnDominationPoint",
+      "TnKingOfTheHillZone",
+      "TnGameObjectivePickupFactoryFlag",
+      "TnGameObjectivePickupFactoryBomb",
+      "TnFlagCapturePoint",
+      "TnBombPlantPoint",
+      "TnAmmoCratePickupFactory",
+      "TnHealthPickupFactory",
+      "TnOverShieldPickupFactory",
+      "Kismet-hidden objective props"
+     ],
+     "tdm_hidden": 18,
+     "renderables": {
+      "domination energon totem": 3,
+      "KOTH active-zone ring": 4,
+      "destructible": 9
+     }
+    },
+    "consumer_action": "GAMEPLAY MUST SIMULATE: mode gating per mode_visual_state"
+   },
+   "AUDIO": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "emitters": {
+      "point": 39,
+      "volume": 16,
+      "line": 2,
+      "cues": 25,
+      "waves_with_wav": 60
+     },
+     "zones_reverb": {
+      "zones": 20,
+      "reverb_presets": 5
+     }
+    },
+    "consumer_action": "GAMEPLAY MUST SIMULATE (Systems): ambient zones / reverb via Kismet SeqAct_AmbientAudioZone / SeqAct_Reverb"
+   },
+   "NAVIGATION": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "nodes": 144,
+     "edges": 651
+    },
+    "consumer_action": "UNKNOWN: original-AI bots need tactical data the MP maps do not author (ReachSpec graph only)"
+   },
+   "READY_FOR_RUNTIME": {
+    "verdict": "DATA COMPLETE",
+    "evidence": {
+     "extraction_defects": [],
+     "consumer_actions": {
+      "LIGHTING": "RENDERER MUST SIMULATE: apply per-vertex baked light from vertex_lightmaps.json (113 LMT_1D components; sample 4th byte {'00': 113}); world CLUT PROP_EnergonSigns_p.clutshot1 plus volume grade ENV_Cluts_p.clut_mp40",
+      "FX": "RENDERER MUST SIMULATE: simulate particle systems (decoded module streams), project decals",
+      "MOVERS": "GAMEPLAY MUST SIMULATE: PHYS_Rotating / Matinee runtime",
+      "PICKUPS": "GAMEPLAY MUST SIMULATE: pickup state machines (respawn, availability)",
+      "MODE_ACTORS": "GAMEPLAY MUST SIMULATE: mode gating per mode_visual_state",
+      "AUDIO": "GAMEPLAY MUST SIMULATE (Systems): ambient zones / reverb via Kismet SeqAct_AmbientAudioZone / SeqAct_Reverb",
+      "NAVIGATION": "UNKNOWN: original-AI bots need tactical data the MP maps do not author (ReachSpec graph only)"
+     }
+    }
+   }
+  },
+  "MP_UND_Complex": {
+   "GEOMETRY": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "bsp": "BSP COMPLETE: every polygon node is rendered by a cooked element or is invisible/portal; the exported triangle count equals the authored render triangles",
+     "placed": {
+      "placed": 1909,
+      "unique": 150,
+      "missing_mesh": 0
+     },
+     "smca_mismatch": 0,
+     "mirrored_winding": "CONSISTENT",
+     "skyline_props_outside_play": 191
+    }
+   },
+   "COLLISION": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "starts_on_walk_graph": "96/96",
+     "pickups_objectives_on_floor": {
+      "pickups": {
+       "count": 20,
+       "on_walkable_reachable_floor": 20,
+       "not_on_walk_graph": []
+      },
+      "objectives": {
+       "count": 15,
+       "on_walkable_reachable_floor": 15,
+       "not_on_walk_graph": []
+      }
+     },
+     "floor_agreement_pct": 62.0,
+     "unexplained_gaps": 0,
+     "kill_z_ue": [
+      -262143.0,
+      -262143.0,
+      -2500.0
+     ],
+     "hazard_volumes": {
+      "hazard_volumes": 2,
+      "by_kind": {
+       "damage over time": 2
+      },
+      "kill_z_ue": [
+       -262143.0,
+       -262143.0,
+       -2500.0
+      ],
+      "file": "manifests/maps/MP_UND_Complex/hazard_volumes.json"
+     }
+    },
+    "consumer_action": "GAMEPLAY MUST SIMULATE: apply KillZ + pain / kill volumes (manifests/maps/MP_UND_Complex/hazard_volumes.json)"
+   },
+   "LIGHTING": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "texture_lightmaps": 1782,
+     "lightmap_binding_ok": true,
+     "vertex_lightmaps": 50,
+     "vertex_count_check": {
+      "match": 50
+     },
+     "lights": 152,
+     "fog": {
+      "HeightFog_actors": 2,
+      "height_fogs_in_lighting_json": 2,
+      "FogVolumeConstantDensityInfo": 0
+     },
+     "world_clut": null,
+     "volume_grades": [
+      {
+       "volume": "PostProcessVolume_15305",
+       "clut": "ENV_Cluts_p.clut_mp40",
+       "player_starts_inside": "96/96",
+       "scene_tone": {
+        "bEnableSceneEffect": true,
+        "Scene_Desaturation": 0.10000000149011612,
+        "Scene_HighLights": {
+         "X": 1.2000000476837158,
+         "Y": 1.2000000476837158,
+         "Z": 1.2000000476837158
+        },
+        "Scene_MidTones": {
+         "X": 0.8700000047683716,
+         "Y": 0.8999999761581421,
+         "Z": 0.9200000166893005
+        },
+        "Scene_Shadows": {
+         "X": 0.0,
+         "Y": 0.0,
+         "Z": 0.0
+        }
+       }
+      }
+     ]
+    },
+    "consumer_action": "RENDERER MUST SIMULATE: apply per-vertex baked light from vertex_lightmaps.json (50 LMT_1D components; sample 4th byte {'00': 50}); apply the PostProcessVolume colour grade (ENV_Cluts_p.clut_mp40; covers 96/96 player starts) - no WorldInfo CLUT"
+   },
+   "MATERIALS": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "materials": 150,
+     "missing": null,
+     "mic": {
+      "MaterialInstanceConstant": 126,
+      "Material": 24
+     },
+     "default_material_faces_visible_in_play": 1
+    },
+    "consumer_action": "RENDERER MUST SIMULATE: 1 authored DefaultMaterial BSP faces visible in play (authored, not a defect)"
+   },
+   "FX": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "particles": 42,
+     "decals": 30,
+     "pickup_fx": 31
+    },
+    "consumer_action": "RENDERER MUST SIMULATE: simulate particle systems (decoded module streams), project decals"
+   },
+   "MOVERS": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "movers": 7,
+     "physics": {
+      "PHYS_Interpolating": 7
+     },
+     "matinee": 0,
+     "missing_from_world_glb": []
+    },
+    "consumer_action": "GAMEPLAY MUST SIMULATE: PHYS_Rotating / Matinee runtime"
+   },
+   "PICKUPS": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "factories": {
+      "TnAmmoCratePickupFactory": 10,
+      "TnHealthPickupFactory": 8,
+      "TnOverShieldPickupFactory": 2
+     },
+     "render_index_pickup_visuals": 23,
+     "render_index_present": true
+    },
+    "consumer_action": "GAMEPLAY MUST SIMULATE: pickup state machines (respawn, availability)"
+   },
+   "MODE_ACTORS": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "classes": [
+      "TnDominationPoint",
+      "TnKingOfTheHillZone",
+      "TnGameObjectivePickupFactoryFlag",
+      "TnGameObjectivePickupFactoryBomb",
+      "TnFlagCapturePoint",
+      "TnBombPlantPoint",
+      "TnAmmoCratePickupFactory",
+      "TnHealthPickupFactory",
+      "TnOverShieldPickupFactory",
+      "Kismet-hidden objective props"
+     ],
+     "tdm_hidden": 19,
+     "renderables": {
+      "domination energon totem": 3,
+      "KOTH active-zone ring": 5
+     }
+    },
+    "consumer_action": "GAMEPLAY MUST SIMULATE: mode gating per mode_visual_state"
+   },
+   "AUDIO": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "emitters": {
+      "point": 20,
+      "volume": 29,
+      "line": 4,
+      "cues": 25,
+      "waves_with_wav": 53
+     },
+     "zones_reverb": {
+      "zones": 34,
+      "reverb_presets": 1
+     }
+    },
+    "consumer_action": "GAMEPLAY MUST SIMULATE (Systems): ambient zones / reverb via Kismet SeqAct_AmbientAudioZone / SeqAct_Reverb"
+   },
+   "NAVIGATION": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "nodes": 131,
+     "edges": 661
+    },
+    "consumer_action": "UNKNOWN: original-AI bots need tactical data the MP maps do not author (ReachSpec graph only)"
+   },
+   "READY_FOR_RUNTIME": {
+    "verdict": "DATA COMPLETE",
+    "evidence": {
+     "extraction_defects": [],
+     "consumer_actions": {
+      "COLLISION": "GAMEPLAY MUST SIMULATE: apply KillZ + pain / kill volumes (manifests/maps/MP_UND_Complex/hazard_volumes.json)",
+      "LIGHTING": "RENDERER MUST SIMULATE: apply per-vertex baked light from vertex_lightmaps.json (50 LMT_1D components; sample 4th byte {'00': 50}); apply the PostProcessVolume colour grade (ENV_Cluts_p.clut_mp40; covers 96/96 player starts) - no WorldInfo CLUT",
+      "MATERIALS": "RENDERER MUST SIMULATE: 1 authored DefaultMaterial BSP faces visible in play (authored, not a defect)",
+      "FX": "RENDERER MUST SIMULATE: simulate particle systems (decoded module streams), project decals",
+      "MOVERS": "GAMEPLAY MUST SIMULATE: PHYS_Rotating / Matinee runtime",
+      "PICKUPS": "GAMEPLAY MUST SIMULATE: pickup state machines (respawn, availability)",
+      "MODE_ACTORS": "GAMEPLAY MUST SIMULATE: mode gating per mode_visual_state",
+      "AUDIO": "GAMEPLAY MUST SIMULATE (Systems): ambient zones / reverb via Kismet SeqAct_AmbientAudioZone / SeqAct_Reverb",
+      "NAVIGATION": "UNKNOWN: original-AI bots need tactical data the MP maps do not author (ReachSpec graph only)"
+     }
+    }
+   }
+  },
+  "MP_IAC_Rust": {
+   "GEOMETRY": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "bsp": "BSP COMPLETE: every polygon node is rendered by a cooked element or is invisible/portal; the exported triangle count equals the authored render triangles",
+     "placed": {
+      "placed": 2215,
+      "unique": 318,
+      "missing_mesh": 0
+     },
+     "smca_mismatch": 0,
+     "mirrored_winding": "CONSISTENT",
+     "skyline_props_outside_play": 46
+    }
+   },
+   "COLLISION": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "starts_on_walk_graph": "109/109",
+     "pickups_objectives_on_floor": {
+      "pickups": {
+       "count": 14,
+       "on_walkable_reachable_floor": 14,
+       "not_on_walk_graph": []
+      },
+      "objectives": {
+       "count": 15,
+       "on_walkable_reachable_floor": 13,
+       "not_on_walk_graph": [
+        "TnKingOfTheHillZone_3598",
+        "TnKingOfTheHillZone_8396"
+       ]
+      }
+     },
+     "floor_agreement_pct": 94.67,
+     "unexplained_gaps": 0,
+     "kill_z_ue": [
+      -262143.0,
+      -262143.0,
+      -262143.0,
+      -512.0
+     ],
+     "hazard_volumes": {
+      "hazard_volumes": 0,
+      "by_kind": {},
+      "kill_z_ue": [
+       -262143.0,
+       -262143.0,
+       -262143.0,
+       -512.0
+      ],
+      "file": "manifests/maps/MP_IAC_Rust/hazard_volumes.json"
+     }
+    }
+   },
+   "LIGHTING": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "texture_lightmaps": 1412,
+     "lightmap_binding_ok": true,
+     "vertex_lightmaps": 635,
+     "vertex_count_check": {
+      "match": 635
+     },
+     "lights": 348,
+     "fog": {
+      "HeightFog_actors": 3,
+      "height_fogs_in_lighting_json": 3,
+      "FogVolumeConstantDensityInfo": 6
+     },
+     "world_clut": null,
+     "volume_grades": [
+      {
+       "volume": "PostProcessVolume_3052",
+       "clut": "ENV_Cluts_p.clut_mp40",
+       "player_starts_inside": "109/109",
+       "scene_tone": {
+        "bEnableSceneEffect": true,
+        "Scene_Desaturation": 0.0,
+        "Scene_HighLights": {
+         "X": 1.5,
+         "Y": 1.5,
+         "Z": 1.5
+        },
+        "Scene_MidTones": {
+         "X": 0.8999999761581421,
+         "Y": 0.8999999761581421,
+         "Z": 0.8999999761581421
+        },
+        "Scene_Shadows": {
+         "X": -0.0010000000474974513,
+         "Y": -0.0010000000474974513,
+         "Z": -0.0010000000474974513
+        }
+       }
+      }
+     ]
+    },
+    "consumer_action": "RENDERER MUST SIMULATE: apply per-vertex baked light from vertex_lightmaps.json (635 LMT_1D components; sample 4th byte {'00': 635}); apply the PostProcessVolume colour grade (ENV_Cluts_p.clut_mp40; covers 109/109 player starts) - no WorldInfo CLUT"
+   },
+   "MATERIALS": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "materials": 251,
+     "missing": null,
+     "mic": {
+      "MaterialInstanceConstant": 198,
+      "Material": 53
+     },
+     "default_material_faces_visible_in_play": 2
+    },
+    "consumer_action": "RENDERER MUST SIMULATE: 2 authored DefaultMaterial BSP faces visible in play (authored, not a defect)"
+   },
+   "FX": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "particles": 30,
+     "decals": 17,
+     "pickup_fx": 25
+    },
+    "consumer_action": "RENDERER MUST SIMULATE: simulate particle systems (decoded module streams), project decals"
+   },
+   "MOVERS": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "movers": 8,
+     "physics": {
+      "PHYS_Interpolating": 8
+     },
+     "matinee": 0,
+     "missing_from_world_glb": []
+    },
+    "consumer_action": "GAMEPLAY MUST SIMULATE: PHYS_Rotating / Matinee runtime"
+   },
+   "PICKUPS": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "factories": {
+      "TnAmmoCratePickupFactory": 6,
+      "TnHealthPickupFactory": 6,
+      "TnOverShieldPickupFactory": 2
+     },
+     "render_index_pickup_visuals": 17,
+     "render_index_present": true
+    },
+    "consumer_action": "GAMEPLAY MUST SIMULATE: pickup state machines (respawn, availability)"
+   },
+   "MODE_ACTORS": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "classes": [
+      "TnDominationPoint",
+      "TnKingOfTheHillZone",
+      "TnGameObjectivePickupFactoryFlag",
+      "TnGameObjectivePickupFactoryBomb",
+      "TnFlagCapturePoint",
+      "TnBombPlantPoint",
+      "TnAmmoCratePickupFactory",
+      "TnHealthPickupFactory",
+      "TnOverShieldPickupFactory",
+      "Kismet-hidden objective props"
+     ],
+     "tdm_hidden": 17,
+     "renderables": {
+      "domination energon totem": 3,
+      "KOTH active-zone ring": 5
+     }
+    },
+    "consumer_action": "GAMEPLAY MUST SIMULATE: mode gating per mode_visual_state"
+   },
+   "AUDIO": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "emitters": {
+      "point": 62,
+      "volume": 32,
+      "line": 12,
+      "cues": 43,
+      "waves_with_wav": 104
+     },
+     "zones_reverb": {
+      "zones": 30,
+      "reverb_presets": 7
+     }
+    },
+    "consumer_action": "GAMEPLAY MUST SIMULATE (Systems): ambient zones / reverb via Kismet SeqAct_AmbientAudioZone / SeqAct_Reverb"
+   },
+   "NAVIGATION": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "nodes": 140,
+     "edges": 877
+    },
+    "consumer_action": "UNKNOWN: original-AI bots need tactical data the MP maps do not author (ReachSpec graph only)"
+   },
+   "READY_FOR_RUNTIME": {
+    "verdict": "DATA COMPLETE",
+    "evidence": {
+     "extraction_defects": [],
+     "consumer_actions": {
+      "LIGHTING": "RENDERER MUST SIMULATE: apply per-vertex baked light from vertex_lightmaps.json (635 LMT_1D components; sample 4th byte {'00': 635}); apply the PostProcessVolume colour grade (ENV_Cluts_p.clut_mp40; covers 109/109 player starts) - no WorldInfo CLUT",
+      "MATERIALS": "RENDERER MUST SIMULATE: 2 authored DefaultMaterial BSP faces visible in play (authored, not a defect)",
+      "FX": "RENDERER MUST SIMULATE: simulate particle systems (decoded module streams), project decals",
+      "MOVERS": "GAMEPLAY MUST SIMULATE: PHYS_Rotating / Matinee runtime",
+      "PICKUPS": "GAMEPLAY MUST SIMULATE: pickup state machines (respawn, availability)",
+      "MODE_ACTORS": "GAMEPLAY MUST SIMULATE: mode gating per mode_visual_state",
+      "AUDIO": "GAMEPLAY MUST SIMULATE (Systems): ambient zones / reverb via Kismet SeqAct_AmbientAudioZone / SeqAct_Reverb",
+      "NAVIGATION": "UNKNOWN: original-AI bots need tactical data the MP maps do not author (ReachSpec graph only)"
+     }
+    }
+   }
+  },
+  "MP_ESC_BrokenHope": {
+   "GEOMETRY": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "bsp": "BSP COMPLETE: every polygon node is rendered by a cooked element or is invisible/portal; the exported triangle count equals the authored render triangles",
+     "placed": {
+      "placed": 2430,
+      "unique": 237,
+      "missing_mesh": 0
+     },
+     "smca_mismatch": 0,
+     "mirrored_winding": "CONSISTENT",
+     "skyline_props_outside_play": 12
+    }
+   },
+   "COLLISION": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "starts_on_walk_graph": "4/4",
+     "pickups_objectives_on_floor": {
+      "pickups": {
+       "count": 6,
+       "on_walkable_reachable_floor": 6,
+       "not_on_walk_graph": []
+      },
+      "objectives": {
+       "count": 0,
+       "on_walkable_reachable_floor": 0,
+       "not_on_walk_graph": []
+      }
+     },
+     "floor_agreement_pct": 96.97,
+     "unexplained_gaps": 0,
+     "kill_z_ue": [
+      -262143.0,
+      -262143.0,
+      -5000.0
+     ],
+     "hazard_volumes": {
+      "hazard_volumes": 0,
+      "by_kind": {},
+      "kill_z_ue": [
+       -262143.0,
+       -262143.0,
+       -5000.0
+      ],
+      "file": "manifests/maps/MP_ESC_BrokenHope/hazard_volumes.json"
+     }
+    }
+   },
+   "LIGHTING": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "texture_lightmaps": 2297,
+     "lightmap_binding_ok": true,
+     "vertex_lightmaps": 116,
+     "vertex_count_check": {
+      "match": 112,
+      "mesh not in props": 4
+     },
+     "lights": 303,
+     "fog": {
+      "HeightFog_actors": 1,
+      "height_fogs_in_lighting_json": 1,
+      "FogVolumeConstantDensityInfo": 0
+     },
+     "world_clut": null,
+     "volume_grades": [
+      {
+       "volume": "PostProcessVolume_13331",
+       "clut": "ENV_Cluts_p.clut_mp40",
+       "player_starts_inside": "4/4",
+       "scene_tone": {
+        "bEnableSceneEffect": true,
+        "Scene_Desaturation": 0.20000000298023224,
+        "Scene_HighLights": {
+         "X": 1.5,
+         "Y": 1.5,
+         "Z": 1.5
+        },
+        "Scene_MidTones": {
+         "X": 1.0,
+         "Y": 1.0,
+         "Z": 1.0
+        },
+        "Scene_Shadows": {
+         "X": -0.0010000000474974513,
+         "Y": -0.0010000000474974513,
+         "Z": -0.0010000000474974513
+        }
+       }
+      }
+     ]
+    },
+    "consumer_action": "RENDERER MUST SIMULATE: apply per-vertex baked light from vertex_lightmaps.json (116 LMT_1D components; sample 4th byte {'00': 116}); apply the PostProcessVolume colour grade (ENV_Cluts_p.clut_mp40; covers 4/4 player starts) - no WorldInfo CLUT"
+   },
+   "MATERIALS": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "materials": 200,
+     "missing": null,
+     "mic": {
+      "MaterialInstanceConstant": 170,
+      "Material": 30
+     },
+     "default_material_faces_visible_in_play": 67
+    },
+    "consumer_action": "RENDERER MUST SIMULATE: 67 authored DefaultMaterial BSP faces visible in play (authored, not a defect)"
+   },
+   "FX": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "particles": 42,
+     "decals": 22,
+     "pickup_fx": 9
+    },
+    "consumer_action": "RENDERER MUST SIMULATE: simulate particle systems (decoded module streams), project decals"
+   },
+   "MOVERS": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "movers": 2,
+     "physics": {
+      "PHYS_Interpolating": 2
+     },
+     "matinee": 1,
+     "missing_from_world_glb": []
+    },
+    "consumer_action": "GAMEPLAY MUST SIMULATE: PHYS_Rotating / Matinee runtime"
+   },
+   "PICKUPS": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "factories": {
+      "TnAmmoCratePickupFactory": 3,
+      "TnHealthPickupFactory": 2,
+      "TnOverShieldPickupFactory": 1
+     },
+     "render_index_pickup_visuals": 6,
+     "render_index_present": true
+    },
+    "consumer_action": "GAMEPLAY MUST SIMULATE: pickup state machines (respawn, availability)"
+   },
+   "MODE_ACTORS": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "classes": [
+      "TnAmmoCratePickupFactory",
+      "TnHealthPickupFactory",
+      "TnOverShieldPickupFactory"
+     ],
+     "tdm_hidden": 0,
+     "renderables": {
+      "destructible": 50
+     }
+    },
+    "consumer_action": "GAMEPLAY MUST SIMULATE: mode gating per mode_visual_state"
+   },
+   "AUDIO": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "emitters": {
+      "point": 69,
+      "volume": 3,
+      "line": 0,
+      "cues": 26,
+      "waves_with_wav": 46
+     },
+     "zones_reverb": {
+      "zones": 60,
+      "reverb_presets": 7
+     }
+    },
+    "consumer_action": "GAMEPLAY MUST SIMULATE (Systems): ambient zones / reverb via Kismet SeqAct_AmbientAudioZone / SeqAct_Reverb"
+   },
+   "NAVIGATION": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "nodes": 1197,
+     "edges": 3037
+    },
+    "consumer_action": "UNKNOWN: original-AI bots need tactical data the MP maps do not author (ReachSpec graph only)"
+   },
+   "READY_FOR_RUNTIME": {
+    "verdict": "DATA COMPLETE",
+    "evidence": {
+     "extraction_defects": [],
+     "consumer_actions": {
+      "LIGHTING": "RENDERER MUST SIMULATE: apply per-vertex baked light from vertex_lightmaps.json (116 LMT_1D components; sample 4th byte {'00': 116}); apply the PostProcessVolume colour grade (ENV_Cluts_p.clut_mp40; covers 4/4 player starts) - no WorldInfo CLUT",
+      "MATERIALS": "RENDERER MUST SIMULATE: 67 authored DefaultMaterial BSP faces visible in play (authored, not a defect)",
+      "FX": "RENDERER MUST SIMULATE: simulate particle systems (decoded module streams), project decals",
+      "MOVERS": "GAMEPLAY MUST SIMULATE: PHYS_Rotating / Matinee runtime",
+      "PICKUPS": "GAMEPLAY MUST SIMULATE: pickup state machines (respawn, availability)",
+      "MODE_ACTORS": "GAMEPLAY MUST SIMULATE: mode gating per mode_visual_state",
+      "AUDIO": "GAMEPLAY MUST SIMULATE (Systems): ambient zones / reverb via Kismet SeqAct_AmbientAudioZone / SeqAct_Reverb",
+      "NAVIGATION": "UNKNOWN: original-AI bots need tactical data the MP maps do not author (ReachSpec graph only)"
+     }
+    }
+   }
+  },
+  "MP_ESC_Remnant": {
+   "GEOMETRY": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "bsp": "BSP COMPLETE: every polygon node is rendered by a cooked element or is invisible/portal; the exported triangle count equals the authored render triangles",
+     "placed": {
+      "placed": 4312,
+      "unique": 280,
+      "missing_mesh": 0
+     },
+     "smca_mismatch": 0,
+     "mirrored_winding": "CONSISTENT",
+     "skyline_props_outside_play": 156
+    }
+   },
+   "COLLISION": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "starts_on_walk_graph": "4/4",
+     "pickups_objectives_on_floor": {
+      "pickups": {
+       "count": 12,
+       "on_walkable_reachable_floor": 12,
+       "not_on_walk_graph": []
+      },
+      "objectives": {
+       "count": 0,
+       "on_walkable_reachable_floor": 0,
+       "not_on_walk_graph": []
+      }
+     },
+     "floor_agreement_pct": 87.16,
+     "unexplained_gaps": 0,
+     "kill_z_ue": [
+      -262143.0,
+      -262143.0,
+      0.0
+     ],
+     "hazard_volumes": {
+      "hazard_volumes": 27,
+      "by_kind": {
+       "instant kill": 26,
+       "damage over time": 1
+      },
+      "kill_z_ue": [
+       -262143.0,
+       -262143.0,
+       0.0
+      ],
+      "file": "manifests/maps/MP_ESC_Remnant/hazard_volumes.json"
+     }
+    },
+    "consumer_action": "GAMEPLAY MUST SIMULATE: apply KillZ + pain / kill volumes (manifests/maps/MP_ESC_Remnant/hazard_volumes.json)"
+   },
+   "LIGHTING": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "texture_lightmaps": 3971,
+     "lightmap_binding_ok": true,
+     "vertex_lightmaps": 58,
+     "vertex_count_check": {
+      "match": 58
+     },
+     "lights": 172,
+     "fog": {
+      "HeightFog_actors": 0,
+      "height_fogs_in_lighting_json": 0,
+      "FogVolumeConstantDensityInfo": 0
+     },
+     "world_clut": null,
+     "volume_grades": [
+      {
+       "volume": "PostProcessVolume_10624",
+       "clut": "ENV_Cluts_p.desaturation40_CLR",
+       "player_starts_inside": "4/4",
+       "scene_tone": {
+        "bEnableSceneEffect": true,
+        "Scene_Desaturation": 0.0,
+        "Scene_HighLights": {
+         "X": 0.949999988079071,
+         "Y": 0.949999988079071,
+         "Z": 1.350000023841858
+        },
+        "Scene_MidTones": {
+         "X": 0.75,
+         "Y": 1.0,
+         "Z": 1.100000023841858
+        },
+        "Scene_Shadows": {
+         "X": 0.0,
+         "Y": 0.0,
+         "Z": 0.004999999888241291
+        }
+       }
+      }
+     ]
+    },
+    "consumer_action": "RENDERER MUST SIMULATE: apply per-vertex baked light from vertex_lightmaps.json (58 LMT_1D components; sample 4th byte {'00': 58}); apply the PostProcessVolume colour grade (ENV_Cluts_p.desaturation40_CLR; covers 4/4 player starts) - no WorldInfo CLUT"
+   },
+   "MATERIALS": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "materials": 222,
+     "missing": null,
+     "mic": {
+      "MaterialInstanceConstant": 165,
+      "Material": 57
+     },
+     "default_material_faces_visible_in_play": 12
+    },
+    "consumer_action": "RENDERER MUST SIMULATE: 12 authored DefaultMaterial BSP faces visible in play (authored, not a defect)"
+   },
+   "FX": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "particles": 77,
+     "decals": 18,
+     "pickup_fx": 18
+    },
+    "consumer_action": "RENDERER MUST SIMULATE: simulate particle systems (decoded module streams), project decals"
+   },
+   "MOVERS": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "movers": 24,
+     "physics": {
+      "PHYS_Interpolating": 7,
+      "PHYS_Rotating": 17
+     },
+     "matinee": 4,
+     "missing_from_world_glb": []
+    },
+    "consumer_action": "GAMEPLAY MUST SIMULATE: PHYS_Rotating / Matinee runtime"
+   },
+   "PICKUPS": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "factories": {
+      "TnAmmoCratePickupFactory": 6,
+      "TnHealthPickupFactory": 4,
+      "TnOverShieldPickupFactory": 2
+     },
+     "render_index_pickup_visuals": 12,
+     "render_index_present": true
+    },
+    "consumer_action": "GAMEPLAY MUST SIMULATE: pickup state machines (respawn, availability)"
+   },
+   "MODE_ACTORS": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "classes": [
+      "TnAmmoCratePickupFactory",
+      "TnHealthPickupFactory",
+      "TnOverShieldPickupFactory"
+     ],
+     "tdm_hidden": 0,
+     "renderables": {
+      "destructible": 47
+     }
+    },
+    "consumer_action": "GAMEPLAY MUST SIMULATE: mode gating per mode_visual_state"
+   },
+   "AUDIO": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "emitters": {
+      "point": 44,
+      "volume": 19,
+      "line": 17,
+      "cues": 18,
+      "waves_with_wav": 32
+     },
+     "zones_reverb": {
+      "zones": 82,
+      "reverb_presets": 0
+     }
+    },
+    "consumer_action": "GAMEPLAY MUST SIMULATE (Systems): ambient zones / reverb via Kismet SeqAct_AmbientAudioZone / SeqAct_Reverb"
+   },
+   "NAVIGATION": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "nodes": 1364,
+     "edges": 2958
+    },
+    "consumer_action": "UNKNOWN: original-AI bots need tactical data the MP maps do not author (ReachSpec graph only)"
+   },
+   "READY_FOR_RUNTIME": {
+    "verdict": "DATA COMPLETE",
+    "evidence": {
+     "extraction_defects": [],
+     "consumer_actions": {
+      "COLLISION": "GAMEPLAY MUST SIMULATE: apply KillZ + pain / kill volumes (manifests/maps/MP_ESC_Remnant/hazard_volumes.json)",
+      "LIGHTING": "RENDERER MUST SIMULATE: apply per-vertex baked light from vertex_lightmaps.json (58 LMT_1D components; sample 4th byte {'00': 58}); apply the PostProcessVolume colour grade (ENV_Cluts_p.desaturation40_CLR; covers 4/4 player starts) - no WorldInfo CLUT",
+      "MATERIALS": "RENDERER MUST SIMULATE: 12 authored DefaultMaterial BSP faces visible in play (authored, not a defect)",
+      "FX": "RENDERER MUST SIMULATE: simulate particle systems (decoded module streams), project decals",
+      "MOVERS": "GAMEPLAY MUST SIMULATE: PHYS_Rotating / Matinee runtime",
+      "PICKUPS": "GAMEPLAY MUST SIMULATE: pickup state machines (respawn, availability)",
+      "MODE_ACTORS": "GAMEPLAY MUST SIMULATE: mode gating per mode_visual_state",
+      "AUDIO": "GAMEPLAY MUST SIMULATE (Systems): ambient zones / reverb via Kismet SeqAct_AmbientAudioZone / SeqAct_Reverb",
+      "NAVIGATION": "UNKNOWN: original-AI bots need tactical data the MP maps do not author (ReachSpec graph only)"
+     }
+    }
+   }
+  },
+  "MP_ORB_Debris": {
+   "GEOMETRY": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "bsp": "BSP COMPLETE: every polygon node is rendered by a cooked element or is invisible/portal; the exported triangle count equals the authored render triangles",
+     "placed": {
+      "placed": 1689,
+      "unique": 209,
+      "missing_mesh": 0
+     },
+     "smca_mismatch": 0,
+     "mirrored_winding": "CONSISTENT",
+     "skyline_props_outside_play": 19
+    }
+   },
+   "COLLISION": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "starts_on_walk_graph": "50/50",
+     "pickups_objectives_on_floor": {
+      "pickups": {
+       "count": 11,
+       "on_walkable_reachable_floor": 10,
+       "not_on_walk_graph": [
+        "TnHealthPickupFactory_7431"
+       ]
+      },
+      "objectives": {
+       "count": 15,
+       "on_walkable_reachable_floor": 7,
+       "not_on_walk_graph": [
+        "TnGameObjectivePickupFactoryFlag_2625",
+        "TnGameObjectivePickupFactoryFlag_3840",
+        "TnFlagCapturePoint_4134",
+        "TnFlagCapturePoint_8332",
+        "TnBombPlantPoint_6213",
+        "TnBombPlantPoint_9741",
+        "TnKingOfTheHillZone_10388",
+        "TnKingOfTheHillZone_10552"
+       ]
+      }
+     },
+     "floor_agreement_pct": 56.34,
+     "unexplained_gaps": 0,
+     "kill_z_ue": [
+      -262143.0,
+      -262143.0,
+      10000.0
+     ],
+     "hazard_volumes": {
+      "hazard_volumes": 6,
+      "by_kind": {
+       "damage over time": 6
+      },
+      "kill_z_ue": [
+       -262143.0,
+       -262143.0,
+       10000.0
+      ],
+      "file": "manifests/maps/MP_ORB_Debris/hazard_volumes.json"
+     }
+    },
+    "consumer_action": "GAMEPLAY MUST SIMULATE: apply KillZ + pain / kill volumes (manifests/maps/MP_ORB_Debris/hazard_volumes.json)"
+   },
+   "LIGHTING": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "texture_lightmaps": 1561,
+     "lightmap_binding_ok": true,
+     "vertex_lightmaps": 61,
+     "vertex_count_check": {
+      "match": 61
+     },
+     "lights": 121,
+     "fog": {
+      "HeightFog_actors": 0,
+      "height_fogs_in_lighting_json": 0,
+      "FogVolumeConstantDensityInfo": 0
+     },
+     "world_clut": "ENV_MPCLUT_p.MP_OrbitalDebris_CLUT",
+     "volume_grades": []
+    },
+    "consumer_action": "RENDERER MUST SIMULATE: apply per-vertex baked light from vertex_lightmaps.json (61 LMT_1D components; sample 4th byte {'ff/fe': 61})"
+   },
+   "MATERIALS": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "materials": 157,
+     "missing": null,
+     "mic": {
+      "MaterialInstanceConstant": 139,
+      "Material": 18
+     },
+     "default_material_faces_visible_in_play": 0
+    }
+   },
+   "FX": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "particles": 21,
+     "decals": 0,
+     "pickup_fx": 19
+    },
+    "consumer_action": "RENDERER MUST SIMULATE: simulate particle systems (decoded module streams), project decals"
+   },
+   "MOVERS": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "movers": 18,
+     "physics": {
+      "PHYS_Interpolating": 18
+     },
+     "matinee": 14,
+     "missing_from_world_glb": []
+    },
+    "consumer_action": "GAMEPLAY MUST SIMULATE: PHYS_Rotating / Matinee runtime"
+   },
+   "PICKUPS": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "factories": {
+      "TnAmmoCratePickupFactory": 5,
+      "TnHealthPickupFactory": 5,
+      "TnOverShieldPickupFactory": 1
+     },
+     "render_index_pickup_visuals": 14,
+     "render_index_present": true
+    },
+    "consumer_action": "GAMEPLAY MUST SIMULATE: pickup state machines (respawn, availability)"
+   },
+   "MODE_ACTORS": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "classes": [
+      "TnDominationPoint",
+      "TnKingOfTheHillZone",
+      "TnGameObjectivePickupFactoryFlag",
+      "TnGameObjectivePickupFactoryBomb",
+      "TnFlagCapturePoint",
+      "TnBombPlantPoint",
+      "TnAmmoCratePickupFactory",
+      "TnHealthPickupFactory",
+      "TnOverShieldPickupFactory",
+      "Kismet-hidden objective props"
+     ],
+     "tdm_hidden": 19,
+     "renderables": {
+      "domination energon totem": 3,
+      "KOTH active-zone ring": 5,
+      "destructible": 6
+     }
+    },
+    "consumer_action": "GAMEPLAY MUST SIMULATE: mode gating per mode_visual_state"
+   },
+   "AUDIO": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "emitters": {
+      "point": 37,
+      "volume": 22,
+      "line": 8,
+      "cues": 20,
+      "waves_with_wav": 45
+     },
+     "zones_reverb": {
+      "zones": 45,
+      "reverb_presets": 0
+     }
+    },
+    "consumer_action": "GAMEPLAY MUST SIMULATE (Systems): ambient zones / reverb via Kismet SeqAct_AmbientAudioZone / SeqAct_Reverb"
+   },
+   "NAVIGATION": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "nodes": 76,
+     "edges": 175
+    },
+    "consumer_action": "UNKNOWN: original-AI bots need tactical data the MP maps do not author (ReachSpec graph only)"
+   },
+   "READY_FOR_RUNTIME": {
+    "verdict": "DATA COMPLETE",
+    "evidence": {
+     "extraction_defects": [],
+     "consumer_actions": {
+      "COLLISION": "GAMEPLAY MUST SIMULATE: apply KillZ + pain / kill volumes (manifests/maps/MP_ORB_Debris/hazard_volumes.json)",
+      "LIGHTING": "RENDERER MUST SIMULATE: apply per-vertex baked light from vertex_lightmaps.json (61 LMT_1D components; sample 4th byte {'ff/fe': 61})",
+      "FX": "RENDERER MUST SIMULATE: simulate particle systems (decoded module streams), project decals",
+      "MOVERS": "GAMEPLAY MUST SIMULATE: PHYS_Rotating / Matinee runtime",
+      "PICKUPS": "GAMEPLAY MUST SIMULATE: pickup state machines (respawn, availability)",
+      "MODE_ACTORS": "GAMEPLAY MUST SIMULATE: mode gating per mode_visual_state",
+      "AUDIO": "GAMEPLAY MUST SIMULATE (Systems): ambient zones / reverb via Kismet SeqAct_AmbientAudioZone / SeqAct_Reverb",
+      "NAVIGATION": "UNKNOWN: original-AI bots need tactical data the MP maps do not author (ReachSpec graph only)"
+     }
+    }
+   }
+  },
+  "MP_IAC_Streets": {
+   "GEOMETRY": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "bsp": "BSP COMPLETE: every polygon node is rendered by a cooked element or is invisible/portal; the exported triangle count equals the authored render triangles",
+     "placed": {
+      "placed": 1952,
+      "unique": 216,
+      "missing_mesh": 0
+     },
+     "smca_mismatch": 0,
+     "mirrored_winding": "CONSISTENT",
+     "skyline_props_outside_play": 22
+    }
+   },
+   "COLLISION": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "starts_on_walk_graph": "84/84",
+     "pickups_objectives_on_floor": {
+      "pickups": {
+       "count": 24,
+       "on_walkable_reachable_floor": 24,
+       "not_on_walk_graph": []
+      },
+      "objectives": {
+       "count": 15,
+       "on_walkable_reachable_floor": 15,
+       "not_on_walk_graph": []
+      }
+     },
+     "floor_agreement_pct": 73.14,
+     "unexplained_gaps": 0,
+     "kill_z_ue": [
+      -262143.0,
+      -262143.0,
+      -75000.0
+     ],
+     "hazard_volumes": {
+      "hazard_volumes": 0,
+      "by_kind": {},
+      "kill_z_ue": [
+       -262143.0,
+       -262143.0,
+       -75000.0
+      ],
+      "file": "manifests/maps/MP_IAC_Streets/hazard_volumes.json"
+     }
+    }
+   },
+   "LIGHTING": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "texture_lightmaps": 1794,
+     "lightmap_binding_ok": true,
+     "vertex_lightmaps": 28,
+     "vertex_count_check": {
+      "match": 28
+     },
+     "lights": 268,
+     "fog": {
+      "HeightFog_actors": 1,
+      "height_fogs_in_lighting_json": 1,
+      "FogVolumeConstantDensityInfo": 0
+     },
+     "world_clut": "ENV_MPCLUT_p.MP_Streets_CLUT",
+     "volume_grades": []
+    },
+    "consumer_action": "RENDERER MUST SIMULATE: apply per-vertex baked light from vertex_lightmaps.json (28 LMT_1D components; sample 4th byte {'ff/fe': 28})"
+   },
+   "MATERIALS": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "materials": 176,
+     "missing": null,
+     "mic": {
+      "MaterialInstanceConstant": 148,
+      "Material": 28
+     },
+     "default_material_faces_visible_in_play": 3
+    },
+    "consumer_action": "RENDERER MUST SIMULATE: 3 authored DefaultMaterial BSP faces visible in play (authored, not a defect)"
+   },
+   "FX": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "particles": 45,
+     "decals": 25,
+     "pickup_fx": 37
+    },
+    "consumer_action": "RENDERER MUST SIMULATE: simulate particle systems (decoded module streams), project decals"
+   },
+   "MOVERS": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "movers": 12,
+     "physics": {
+      "PHYS_Interpolating": 9,
+      "PHYS_Rotating": 3
+     },
+     "matinee": 1,
+     "missing_from_world_glb": []
+    },
+    "consumer_action": "GAMEPLAY MUST SIMULATE: PHYS_Rotating / Matinee runtime"
+   },
+   "PICKUPS": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "factories": {
+      "TnAmmoCratePickupFactory": 14,
+      "TnHealthPickupFactory": 9,
+      "TnOverShieldPickupFactory": 1
+     },
+     "render_index_pickup_visuals": null,
+     "render_index_present": true
+    },
+    "consumer_action": "GAMEPLAY MUST SIMULATE: pickup state machines (respawn, availability)"
+   },
+   "MODE_ACTORS": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "classes": [
+      "modes",
+      "rule_match",
+      "by_class"
+     ],
+     "tdm_hidden": null,
+     "renderables": null
+    },
+    "consumer_action": "GAMEPLAY MUST SIMULATE: mode gating per mode_visual_state"
+   },
+   "AUDIO": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "emitters": {
+      "point": 40,
+      "volume": 17,
+      "line": 13,
+      "cues": 32,
+      "waves_with_wav": 54
+     },
+     "zones_reverb": {
+      "zones": 9,
+      "reverb_presets": 10
+     }
+    },
+    "consumer_action": "GAMEPLAY MUST SIMULATE (Systems): ambient zones / reverb via Kismet SeqAct_AmbientAudioZone / SeqAct_Reverb"
+   },
+   "NAVIGATION": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "nodes": 123,
+     "edges": 426
+    },
+    "consumer_action": "UNKNOWN: original-AI bots need tactical data the MP maps do not author (ReachSpec graph only)"
+   },
+   "READY_FOR_RUNTIME": {
+    "verdict": "DATA COMPLETE",
+    "evidence": {
+     "extraction_defects": [],
+     "consumer_actions": {
+      "LIGHTING": "RENDERER MUST SIMULATE: apply per-vertex baked light from vertex_lightmaps.json (28 LMT_1D components; sample 4th byte {'ff/fe': 28})",
+      "MATERIALS": "RENDERER MUST SIMULATE: 3 authored DefaultMaterial BSP faces visible in play (authored, not a defect)",
+      "FX": "RENDERER MUST SIMULATE: simulate particle systems (decoded module streams), project decals",
+      "MOVERS": "GAMEPLAY MUST SIMULATE: PHYS_Rotating / Matinee runtime",
+      "PICKUPS": "GAMEPLAY MUST SIMULATE: pickup state machines (respawn, availability)",
+      "MODE_ACTORS": "GAMEPLAY MUST SIMULATE: mode gating per mode_visual_state",
+      "AUDIO": "GAMEPLAY MUST SIMULATE (Systems): ambient zones / reverb via Kismet SeqAct_AmbientAudioZone / SeqAct_Reverb",
+      "NAVIGATION": "UNKNOWN: original-AI bots need tactical data the MP maps do not author (ReachSpec graph only)"
+     }
+    }
+   }
+  },
+  "MP_KON_Molten": {
+   "GEOMETRY": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "bsp": "BSP COMPLETE: every polygon node is rendered by a cooked element or is invisible/portal; the exported triangle count equals the authored render triangles",
+     "placed": {
+      "placed": 2159,
+      "unique": 202,
+      "missing_mesh": 0
+     },
+     "smca_mismatch": 0,
+     "mirrored_winding": "CONSISTENT",
+     "skyline_props_outside_play": 22
+    }
+   },
+   "COLLISION": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "starts_on_walk_graph": "76/76",
+     "pickups_objectives_on_floor": {
+      "pickups": {
+       "count": 29,
+       "on_walkable_reachable_floor": 29,
+       "not_on_walk_graph": []
+      },
+      "objectives": {
+       "count": 15,
+       "on_walkable_reachable_floor": 15,
+       "not_on_walk_graph": []
+      }
+     },
+     "floor_agreement_pct": 72.87,
+     "unexplained_gaps": 0,
+     "kill_z_ue": [
+      -262143.0,
+      -262143.0,
+      -1500.0
+     ],
+     "hazard_volumes": {
+      "hazard_volumes": 0,
+      "by_kind": {},
+      "kill_z_ue": [
+       -262143.0,
+       -262143.0,
+       -1500.0
+      ],
+      "file": "manifests/maps/MP_KON_Molten/hazard_volumes.json"
+     }
+    }
+   },
+   "LIGHTING": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "texture_lightmaps": 1965,
+     "lightmap_binding_ok": true,
+     "vertex_lightmaps": 51,
+     "vertex_count_check": {
+      "match": 51
+     },
+     "lights": 302,
+     "fog": {
+      "HeightFog_actors": 1,
+      "height_fogs_in_lighting_json": 1,
+      "FogVolumeConstantDensityInfo": 0
+     },
+     "world_clut": null,
+     "volume_grades": [
+      {
+       "volume": "PostProcessVolume_12250",
+       "clut": "ENV_Cluts_p.clut_mp40",
+       "player_starts_inside": "76/76",
+       "scene_tone": {
+        "bEnableSceneEffect": true,
+        "Scene_Desaturation": 0.10000000149011612,
+        "Scene_HighLights": {
+         "X": 1.2000000476837158,
+         "Y": 1.2000000476837158,
+         "Z": 1.2000000476837158
+        },
+        "Scene_MidTones": {
+         "X": 0.949999988079071,
+         "Y": 0.8999999761581421,
+         "Z": 0.8500000238418579
+        },
+        "Scene_Shadows": {
+         "X": 0.0,
+         "Y": 0.0,
+         "Z": 0.0
+        }
+       }
+      }
+     ]
+    },
+    "consumer_action": "RENDERER MUST SIMULATE: apply per-vertex baked light from vertex_lightmaps.json (51 LMT_1D components; sample 4th byte {'00': 51}); apply the PostProcessVolume colour grade (ENV_Cluts_p.clut_mp40; covers 76/76 player starts) - no WorldInfo CLUT"
+   },
+   "MATERIALS": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "materials": 185,
+     "missing": null,
+     "mic": {
+      "MaterialInstanceConstant": 156,
+      "Material": 29
+     },
+     "default_material_faces_visible_in_play": 9
+    },
+    "consumer_action": "RENDERER MUST SIMULATE: 9 authored DefaultMaterial BSP faces visible in play (authored, not a defect)"
+   },
+   "FX": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "particles": 75,
+     "decals": 24,
+     "pickup_fx": 45
+    },
+    "consumer_action": "RENDERER MUST SIMULATE: simulate particle systems (decoded module streams), project decals"
+   },
+   "MOVERS": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "movers": 4,
+     "physics": {
+      "PHYS_Interpolating": 4
+     },
+     "matinee": 0,
+     "missing_from_world_glb": []
+    },
+    "consumer_action": "GAMEPLAY MUST SIMULATE: PHYS_Rotating / Matinee runtime"
+   },
+   "PICKUPS": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "factories": {
+      "TnAmmoCratePickupFactory": 16,
+      "TnHealthPickupFactory": 12,
+      "TnOverShieldPickupFactory": 1
+     },
+     "render_index_pickup_visuals": 32,
+     "render_index_present": true
+    },
+    "consumer_action": "GAMEPLAY MUST SIMULATE: pickup state machines (respawn, availability)"
+   },
+   "MODE_ACTORS": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "classes": [
+      "TnDominationPoint",
+      "TnKingOfTheHillZone",
+      "TnGameObjectivePickupFactoryFlag",
+      "TnGameObjectivePickupFactoryBomb",
+      "TnFlagCapturePoint",
+      "TnBombPlantPoint",
+      "TnAmmoCratePickupFactory",
+      "TnHealthPickupFactory",
+      "TnOverShieldPickupFactory",
+      "Kismet-hidden objective props"
+     ],
+     "tdm_hidden": 19,
+     "renderables": {
+      "domination energon totem": 3,
+      "KOTH active-zone ring": 5
+     }
+    },
+    "consumer_action": "GAMEPLAY MUST SIMULATE: mode gating per mode_visual_state"
+   },
+   "AUDIO": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "emitters": {
+      "point": 20,
+      "volume": 11,
+      "line": 1,
+      "cues": 11,
+      "waves_with_wav": 32
+     },
+     "zones_reverb": {
+      "zones": 149,
+      "reverb_presets": 0
+     }
+    },
+    "consumer_action": "GAMEPLAY MUST SIMULATE (Systems): ambient zones / reverb via Kismet SeqAct_AmbientAudioZone / SeqAct_Reverb"
+   },
+   "NAVIGATION": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "nodes": 120,
+     "edges": 457
+    },
+    "consumer_action": "UNKNOWN: original-AI bots need tactical data the MP maps do not author (ReachSpec graph only)"
+   },
+   "READY_FOR_RUNTIME": {
+    "verdict": "DATA COMPLETE",
+    "evidence": {
+     "extraction_defects": [],
+     "consumer_actions": {
+      "LIGHTING": "RENDERER MUST SIMULATE: apply per-vertex baked light from vertex_lightmaps.json (51 LMT_1D components; sample 4th byte {'00': 51}); apply the PostProcessVolume colour grade (ENV_Cluts_p.clut_mp40; covers 76/76 player starts) - no WorldInfo CLUT",
+      "MATERIALS": "RENDERER MUST SIMULATE: 9 authored DefaultMaterial BSP faces visible in play (authored, not a defect)",
+      "FX": "RENDERER MUST SIMULATE: simulate particle systems (decoded module streams), project decals",
+      "MOVERS": "GAMEPLAY MUST SIMULATE: PHYS_Rotating / Matinee runtime",
+      "PICKUPS": "GAMEPLAY MUST SIMULATE: pickup state machines (respawn, availability)",
+      "MODE_ACTORS": "GAMEPLAY MUST SIMULATE: mode gating per mode_visual_state",
+      "AUDIO": "GAMEPLAY MUST SIMULATE (Systems): ambient zones / reverb via Kismet SeqAct_AmbientAudioZone / SeqAct_Reverb",
+      "NAVIGATION": "UNKNOWN: original-AI bots need tactical data the MP maps do not author (ReachSpec graph only)"
+     }
+    }
+   }
+  },
+  "MP_UND_Gorge": {
+   "GEOMETRY": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "bsp": "BSP COMPLETE: every polygon node is rendered by a cooked element or is invisible/portal; the exported triangle count equals the authored render triangles",
+     "placed": {
+      "placed": 1765,
+      "unique": 166,
+      "missing_mesh": 0
+     },
+     "smca_mismatch": 0,
+     "mirrored_winding": "CONSISTENT",
+     "skyline_props_outside_play": 67
+    }
+   },
+   "COLLISION": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "starts_on_walk_graph": "115/115",
+     "pickups_objectives_on_floor": {
+      "pickups": {
+       "count": 15,
+       "on_walkable_reachable_floor": 15,
+       "not_on_walk_graph": []
+      },
+      "objectives": {
+       "count": 17,
+       "on_walkable_reachable_floor": 17,
+       "not_on_walk_graph": []
+      }
+     },
+     "floor_agreement_pct": 83.63,
+     "unexplained_gaps": 0,
+     "kill_z_ue": [
+      -262143.0,
+      -262143.0,
+      -7500.0
+     ],
+     "hazard_volumes": {
+      "hazard_volumes": 1,
+      "by_kind": {
+       "instant kill": 1
+      },
+      "kill_z_ue": [
+       -262143.0,
+       -262143.0,
+       -7500.0
+      ],
+      "file": "manifests/maps/MP_UND_Gorge/hazard_volumes.json"
+     }
+    },
+    "consumer_action": "GAMEPLAY MUST SIMULATE: apply KillZ + pain / kill volumes (manifests/maps/MP_UND_Gorge/hazard_volumes.json)"
+   },
+   "LIGHTING": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "texture_lightmaps": 1137,
+     "lightmap_binding_ok": true,
+     "vertex_lightmaps": 561,
+     "vertex_count_check": {
+      "match": 559,
+      "mismatch": 2
+     },
+     "lights": 411,
+     "fog": {
+      "HeightFog_actors": 4,
+      "height_fogs_in_lighting_json": 4,
+      "FogVolumeConstantDensityInfo": 0
+     },
+     "world_clut": null,
+     "volume_grades": [
+      {
+       "volume": "PostProcessVolume_13331",
+       "clut": "ENV_Cluts_p.clut_mp40",
+       "player_starts_inside": "115/115",
+       "scene_tone": {
+        "bEnableSceneEffect": true,
+        "Scene_Desaturation": 0.0,
+        "Scene_HighLights": {
+         "X": 1.5,
+         "Y": 1.5,
+         "Z": 1.5
+        },
+        "Scene_MidTones": {
+         "X": 0.8600000143051147,
+         "Y": 0.9700000286102295,
+         "Z": 0.9700000286102295
+        },
+        "Scene_Shadows": {
+         "X": -0.0010000000474974513,
+         "Y": -0.0010000000474974513,
+         "Z": -0.0010000000474974513
+        }
+       }
+      }
+     ]
+    },
+    "consumer_action": "RENDERER MUST SIMULATE: apply per-vertex baked light from vertex_lightmaps.json (561 LMT_1D components; sample 4th byte {'00': 561}); apply the PostProcessVolume colour grade (ENV_Cluts_p.clut_mp40; covers 115/115 player starts) - no WorldInfo CLUT"
+   },
+   "MATERIALS": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "materials": 149,
+     "missing": null,
+     "mic": {
+      "MaterialInstanceConstant": 122,
+      "Material": 27
+     },
+     "default_material_faces_visible_in_play": 0
+    }
+   },
+   "FX": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "particles": 31,
+     "decals": 20,
+     "pickup_fx": 26
+    },
+    "consumer_action": "RENDERER MUST SIMULATE: simulate particle systems (decoded module streams), project decals"
+   },
+   "MOVERS": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "movers": 13,
+     "physics": {
+      "PHYS_Interpolating": 4,
+      "PHYS_Rotating": 9
+     },
+     "matinee": 0,
+     "missing_from_world_glb": []
+    },
+    "consumer_action": "GAMEPLAY MUST SIMULATE: PHYS_Rotating / Matinee runtime"
+   },
+   "PICKUPS": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "factories": {
+      "TnAmmoCratePickupFactory": 7,
+      "TnHealthPickupFactory": 7,
+      "TnOverShieldPickupFactory": 1
+     },
+     "render_index_pickup_visuals": 18,
+     "render_index_present": true
+    },
+    "consumer_action": "GAMEPLAY MUST SIMULATE: pickup state machines (respawn, availability)"
+   },
+   "MODE_ACTORS": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "classes": [
+      "TnDominationPoint",
+      "TnKingOfTheHillZone",
+      "TnGameObjectivePickupFactoryFlag",
+      "TnGameObjectivePickupFactoryBomb",
+      "TnFlagCapturePoint",
+      "TnBombPlantPoint",
+      "TnAmmoCratePickupFactory",
+      "TnHealthPickupFactory",
+      "TnOverShieldPickupFactory",
+      "Kismet-hidden objective props"
+     ],
+     "tdm_hidden": 21,
+     "renderables": {
+      "domination energon totem": 3,
+      "KOTH active-zone ring": 7
+     }
+    },
+    "consumer_action": "GAMEPLAY MUST SIMULATE: mode gating per mode_visual_state"
+   },
+   "AUDIO": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "emitters": {
+      "point": 9,
+      "volume": 4,
+      "line": 2,
+      "cues": 13,
+      "waves_with_wav": 37
+     },
+     "zones_reverb": {
+      "zones": 23,
+      "reverb_presets": 6
+     }
+    },
+    "consumer_action": "GAMEPLAY MUST SIMULATE (Systems): ambient zones / reverb via Kismet SeqAct_AmbientAudioZone / SeqAct_Reverb"
+   },
+   "NAVIGATION": {
+    "verdict": "COMPLETE AUTHORED DATA EXTRACTED",
+    "evidence": {
+     "nodes": 148,
+     "edges": 738
+    },
+    "consumer_action": "UNKNOWN: original-AI bots need tactical data the MP maps do not author (ReachSpec graph only)"
+   },
+   "READY_FOR_RUNTIME": {
+    "verdict": "DATA COMPLETE",
+    "evidence": {
+     "extraction_defects": [],
+     "consumer_actions": {
+      "COLLISION": "GAMEPLAY MUST SIMULATE: apply KillZ + pain / kill volumes (manifests/maps/MP_UND_Gorge/hazard_volumes.json)",
+      "LIGHTING": "RENDERER MUST SIMULATE: apply per-vertex baked light from vertex_lightmaps.json (561 LMT_1D components; sample 4th byte {'00': 561}); apply the PostProcessVolume colour grade (ENV_Cluts_p.clut_mp40; covers 115/115 player starts) - no WorldInfo CLUT",
+      "FX": "RENDERER MUST SIMULATE: simulate particle systems (decoded module streams), project decals",
+      "MOVERS": "GAMEPLAY MUST SIMULATE: PHYS_Rotating / Matinee runtime",
+      "PICKUPS": "GAMEPLAY MUST SIMULATE: pickup state machines (respawn, availability)",
+      "MODE_ACTORS": "GAMEPLAY MUST SIMULATE: mode gating per mode_visual_state",
+      "AUDIO": "GAMEPLAY MUST SIMULATE (Systems): ambient zones / reverb via Kismet SeqAct_AmbientAudioZone / SeqAct_Reverb",
+      "NAVIGATION": "UNKNOWN: original-AI bots need tactical data the MP maps do not author (ReachSpec graph only)"
+     }
+    }
+   }
+  }
+ },
+ "consumer_observations (read-only, not used for verdicts)": {
+  "MP_IAC_Seed": {
+   "source": "Rebuild-Rendering/work/render/MP_IAC_Seed/lighting.json (read-only, 2026-10-05 01:10)",
+   "vertex_components": 257,
+   "vertex_samples_loaded": 257,
+   "clut_loaded": false,
+   "gaps": [
+    "colour grade: no CLUT loaded although the map authors ENV_Cluts_p.desaturation40_CLR"
+   ]
+  },
+  "MP_IAC_Berth": {
+   "source": "Rebuild-Rendering/work/render/MP_IAC_Berth/lighting.json (read-only, 2026-10-05 01:10)",
+   "vertex_components": 113,
+   "vertex_samples_loaded": 113,
+   "clut_loaded": true,
+   "gaps": []
+  },
+  "MP_UND_Complex": {
+   "source": "Rebuild-Rendering/work/render/MP_UND_Complex/lighting.json (read-only, 2026-10-05 01:10)",
+   "vertex_components": 50,
+   "vertex_samples_loaded": 50,
+   "clut_loaded": false,
+   "gaps": [
+    "colour grade: no CLUT loaded although the map authors ENV_Cluts_p.clut_mp40"
+   ]
+  },
+  "MP_IAC_Rust": {
+   "source": "Rebuild-Rendering/work/render/MP_IAC_Rust/lighting.json (read-only, 2026-10-05 01:10)",
+   "vertex_components": 635,
+   "vertex_samples_loaded": 635,
+   "clut_loaded": false,
+   "gaps": [
+    "colour grade: no CLUT loaded although the map authors ENV_Cluts_p.clut_mp40"
+   ]
+  },
+  "MP_ESC_BrokenHope": {
+   "source": "Rebuild-Rendering/work/render/MP_ESC_BrokenHope/lighting.json (read-only, 2026-10-05 01:10)",
+   "vertex_components": 116,
+   "vertex_samples_loaded": 116,
+   "clut_loaded": false,
+   "gaps": [
+    "colour grade: no CLUT loaded although the map authors ENV_Cluts_p.clut_mp40"
+   ]
+  },
+  "MP_ESC_Remnant": {
+   "source": "Rebuild-Rendering/work/render/MP_ESC_Remnant/lighting.json (read-only, 2026-10-05 01:10)",
+   "vertex_components": 58,
+   "vertex_samples_loaded": 58,
+   "clut_loaded": false,
+   "gaps": [
+    "colour grade: no CLUT loaded although the map authors ENV_Cluts_p.desaturation40_CLR"
+   ]
+  },
+  "MP_ORB_Debris": {
+   "source": "Rebuild-Rendering/work/render/MP_ORB_Debris/lighting.json (read-only, 2026-10-05 01:10)",
+   "vertex_components": 61,
+   "vertex_samples_loaded": 61,
+   "clut_loaded": true,
+   "gaps": []
+  },
+  "MP_IAC_Streets": {
+   "source": "Rebuild-Rendering/work/render/MP_IAC_Streets/lighting.json (read-only, 2026-10-05 01:10)",
+   "vertex_components": 28,
+   "vertex_samples_loaded": 28,
+   "clut_loaded": true,
+   "gaps": []
+  },
+  "MP_KON_Molten": {
+   "source": "Rebuild-Rendering/work/render/MP_KON_Molten/lighting.json (read-only, 2026-10-05 01:10)",
+   "vertex_components": 51,
+   "vertex_samples_loaded": 51,
+   "clut_loaded": false,
+   "gaps": [
+    "colour grade: no CLUT loaded although the map authors ENV_Cluts_p.clut_mp40"
+   ]
+  },
+  "MP_UND_Gorge": {
+   "source": "Rebuild-Rendering/work/render/MP_UND_Gorge/lighting.json (read-only, 2026-10-05 01:10)",
+   "vertex_components": 561,
+   "vertex_samples_loaded": 561,
+   "clut_loaded": false,
+   "gaps": [
+    "colour grade: no CLUT loaded although the map authors ENV_Cluts_p.clut_mp40"
+   ]
+  }
+ },
+ "not_cooked": [
+  "MP_KON_Fortress",
+  "MP_ORB_Havoc",
+  "MP_ESC_Tranquillity"
+ ]
+}

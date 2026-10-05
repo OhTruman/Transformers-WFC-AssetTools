@@ -15,13 +15,14 @@ AT = os.path.normpath(os.path.join(HERE, '..', '..'))
 STAGES = [['vs_map.py', '{M}'], ['vs_lighting.py', '{M}'], ['vs_postprocess.py', '{M}'], ['vs_navigation.py', '{M}'],
           # lightmaps.json -> atlas PNGs -> rebind (atlas export needs lightmaps.json first)
           ['vs_lightmap.py', '{M}'], ['m04_lightmap_atlases.py', '{M}'], ['vs_lightmap.py', '{M}'],
+          ['vs_vertex_lightmaps.py', '{M}'],   # LMT_1D per-vertex baked light (all maps; 4th sample byte varies)
           ['vs_materials.py', '{M}'], ['vs_props.py', '{M}'],
           ['vs_collision.py', '{M}'], ['vs_physics.py', '{M}'], ['vs_gameplay.py', '{M}'], ['vs_audio.py', '{M}'], ['vs_mapfx.py', '{M}'],
           ['m04_inventory.py', '{M}'], ['validate_smca_transforms.py', '--map', '{M}'], ['vs_validate.py', '{M}'],
           # map-agnostic M03-M05 manifests (Streets keeps its canonical names; other maps -> manifests/next_map/<MAP>_*.json)
           ['m04_bsp.py', '{M}'], ['m05_bsp_default_faces.py', '{M}'], ['m04_kismet.py', '{M}'], ['vs_pickups.py', '{M}'],
           ['vs_destructibles.py', '{M}'], ['vs_surface_audio.py', '{M}'],
-          ['map_structure_audit.py', '{M}'], ['map_complete.py', '{M}']]
+          ['map_structure_audit.py', '{M}'], ['map_complete.py', '{M}'], ['map_render_index.py', '{M}']]
 
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument('map'); ap.add_argument('--cap-gb', type=float, default=6.0)
