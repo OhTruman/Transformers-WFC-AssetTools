@@ -324,7 +324,10 @@ def weapons(wini, INT, FRA, mp_wp, mp_wp_any, chars):
         cdo = '%s.Default__%s' % (pk, c)
         e = A.effective(cdo) if A.get(cdo) else {}
         g = lambda k: (e.get(k) or {}).get('value')
-        wm, wd, ad = g('WeaponMeshTemplate'), g('PlayerData'), g('AiData')
+        # versus reads MultiplayerData (TnMultiplayerGame.DesiredWeaponDataType = 3, CONFIRMED by RE
+        # work/q/streets_base_gameclasses.txt:450); PlayerData (*_SP_WEPDATA) is TnGame's default 1 = campaign / SP only
+        wm, wd, ad = g('WeaponMeshTemplate'), (g('MultiplayerData') or g('PlayerData')), g('AiData')
+        wd_sp, wd_sv = g('PlayerData'), g('SurvivalData')
         m = A.effective(wm) if wm and A.get(wm) else {}
         mg = lambda k: (m.get(k) or {}).get('value')
         anim_mesh = V(mg('AnimatedMesh')) if mg('AnimatedMesh') else {}
@@ -334,6 +337,8 @@ def weapons(wini, INT, FRA, mp_wp, mp_wp_any, chars):
         pmc = V(mg('PickupMesh')) if mg('PickupMesh') else {}
         d = A.effective(wd) if wd and A.get(wd) else {}
         dg = lambda k: (d.get(k) or {}).get('value')
+        dsp = A.effective(wd_sp) if wd_sp and A.get(wd_sp) else {}
+        spv = lambda k: (dsp.get(k) or {}).get('value')
         dmg_types = dg('InstantHitDamageTypes') or []
         icon_keys = [k for k in hud_bm if k.lower() in ('death_' + c.replace('TnWeapon', '').lower(),)]
         pids = by_class.get(cls, [])
@@ -361,12 +366,21 @@ def weapons(wini, INT, FRA, mp_wp, mp_wp_any, chars):
             ('effects', {'muzzle_flashes': mg('MuzzleFlashes'), 'tracers': mg('TracerTemplates'), 'default_squib': mg('DefaultSquib'),
                          'effects_type': mg('WeaponEffectsType')}),
             ('sounds', {'events': mg('WeaponEventSounds'), 'pickup': mg('PickupSound'), 'impact': mg('DefaultImpactSound'), 'bullet_by': mg('BulletBySound')}),
-            ('gameplay (player WEPDATA)', {k: dg(k) for k in ('MaxAmmoCount', 'MaxAmmoClipCount', 'InitialReserveAmmoCount', 'DefaultPickupAmount',
+            ('gameplay (versus WEPDATA = MultiplayerData, CONFIRMED)', {k: dg(k) for k in ('MaxAmmoCount', 'MaxAmmoClipCount', 'InitialReserveAmmoCount', 'DefaultPickupAmount',
                                                               'ShotCost', 'InstantHitDamage', 'InstantHitDamageTypes', 'NumShotsToFire',
                                                               'FireIntervalModifier', 'FireInterval', 'WeaponFireTypes', 'WeaponProjectiles',
                                                               'WeaponRange', 'RangeDamageModifiers', 'PerShotSpreadModifier', 'FineAimSpreadModifier',
                                                               'WeaponReloadAnimTime', 'EquipTime', 'PutDownTime', 'bAutoFire', 'bAutoReload',
                                                               'GroundSpeedMultiplier', 'HeatProperties', 'OwnerAnimations') if dg(k) is not None}),
+            ('wepdata_objects', {'MultiplayerData (versus)': wd, 'PlayerData (campaign / SP)': wd_sp, 'SurvivalData (Escalation)': wd_sv, 'AiData': ad}),
+            ('gameplay (player WEPDATA)', dict({'superseded': 'this block is PlayerData = campaign / SP values; versus uses the MultiplayerData '
+                                              'block above (RE 2026-10-05)', 'object': wd_sp},
+                                             **{k: spv(k) for k in ('MaxAmmoCount', 'MaxAmmoClipCount', 'InitialReserveAmmoCount', 'DefaultPickupAmount',
+                                                              'ShotCost', 'InstantHitDamage', 'InstantHitDamageTypes', 'NumShotsToFire',
+                                                              'FireIntervalModifier', 'FireInterval', 'WeaponFireTypes', 'WeaponProjectiles',
+                                                              'WeaponRange', 'RangeDamageModifiers', 'PerShotSpreadModifier', 'FineAimSpreadModifier',
+                                                              'WeaponReloadAnimTime', 'EquipTime', 'PutDownTime', 'bAutoFire', 'bAutoReload',
+                                                              'GroundSpeedMultiplier', 'HeatProperties', 'OwnerAnimations') if spv(k) is not None})),
             ('ai_data', {'object': ad, 'same_as_player_data': ad == wd,
                          'DesiredFiringRange': (A.effective(ad).get('DesiredFiringRange') or {}).get('value') if ad and A.get(ad) else None}),
             ('damage_types', {t: {k: x for k, x in V('%s.Default__%s' % tuple(t.split('.', 1))).items() if not isinstance(x, (dict, list))}

@@ -35,7 +35,7 @@ def main():
         res.setdefault(n, [0, 0]); res[n][0] += 1
         if not c: res[n][1] += 1; fails.append('%s: %s' % (n, m))
     F = {n: json.load(open(os.path.join(PKG, n), encoding='utf-8'))
-         for n in ('frontend_package.json', 'mp_registry.json', 'loading_handoff.json', 'hud_handoff.json', 'ui_scenes.json')}
+         for n in ('frontend_package.json', 'mp_registry.json', 'loading_handoff.json', 'hud_handoff.json', 'ui_scenes.json', 'extras.json')}
     inv = objtree.inv()
     pk = {r[0].lower() for r in inv.execute('SELECT package FROM packages')}
     srcpk = pk | {'transgame', 'transcontent', 'engine', 'core', 'gfxui', 'hm_engine', 'engineMaterials'.lower()}
@@ -98,6 +98,22 @@ def main():
         chk('loading', bool(v['tips_unique']) or t in ('SV',), t + ' tips')
     for sid, v in L['loadscreen_gfx_layout']['spinner_motif (sprite timelines + ring textures)'].items():
         for b in v['bitmaps']: chk('loading', os.path.exists(os.path.join(ROOT, b['png'])), b['png'])
+    # menu-scene render indexes: every Matinee group binding resolves to a scene actor, a camera or a MaterialInstanceActor
+    for fam, rec in (F['ui_scenes.json'].get('families') or {}).items():
+        rp = os.path.join(ROOT, rec.get('render_index') or '')
+        if not rec.get('render_index') or not os.path.exists(rp):
+            chk('scenes', False, fam + ' render_index missing'); continue
+        ri = json.load(open(rp, encoding='utf-8'))
+        AL = next((v for k, v in ri.items() if k.startswith('actors_by_level')), {})
+        names = {a['actor'] for xs in AL.values() for a in xs}
+        names |= {c['actor'] for xs in (ri.get('cameras') or {}).values() for c in xs}
+        MT = next((v for k, v in ri.items() if k.startswith('matinee')), {})
+        for lv, ms in MT.items():
+            for m in ms:
+                for g in m.get('groups') or []:
+                    for b in g.get('bound_actors') or []:
+                        ok = b['actor'] in names or b.get('class') in ('MaterialInstanceActor', 'CameraActor')
+                        chk('scenes', ok, '%s %s %s -> %s' % (fam, m['action'], g['group'], b['actor']))
     os.makedirs(LOGS, exist_ok=True)
     json.dump({'checks': res, 'failures': fails}, open(os.path.join(LOGS, 'validate_frontend_package.json'), 'w'), indent=1)
     for k, v in res.items(): print('%-12s %6d checks %4d failed' % (k, v[0], v[1]))

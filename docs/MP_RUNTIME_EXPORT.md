@@ -81,3 +81,7 @@ loadout icon.
 
 **Validation:** `validate_mp_content.py` opens every character and weapon glb and checks skins, clip counts, transform clips,
 identity and every recorded path. Result: 3,122 checks, 0 failures.
+
+**Correction (2026-10-05, RE).** `weapon.json` gameplay values are the versus **MultiplayerData** block
+(`gameplay (versus WEPDATA = MultiplayerData, CONFIRMED)`). The campaign `PlayerData` block is kept as
+`gameplay (campaign / SP PlayerData)`. `character.json` `stats` carries `versus_health` (specialty blueprint).

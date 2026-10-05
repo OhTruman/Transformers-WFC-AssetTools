@@ -81,7 +81,7 @@ def export(pid, w, A, hud_icons, chassis_by_weapon, owner_socket):
         if e.get('WeaponSound'): sounds.append(dict(event=e.get('WeaponEventType'), **VC.cue(e['WeaponSound'], A)))
     for k in ('PickupSound', 'DefaultImpactSound', 'BulletBySound'):
         if wmv.get(k): sounds.append(dict(event=k, **VC.cue(wmv[k], A)))
-    wd = w.get('gameplay (player WEPDATA)') or {}
+    wd = w.get('gameplay (versus WEPDATA = MultiplayerData, CONFIRMED)') or {}   # versus data (RE 2026-10-05)
     projs = [projectile(c, A) for c in dict.fromkeys(x for x in (wd.get('WeaponProjectiles') or []) if x)]
     cls_short = w['class'].rsplit('.', 1)[-1]
     man = OrderedDict([
@@ -110,7 +110,8 @@ def export(pid, w, A, hud_icons, chassis_by_weapon, owner_socket):
                                  ('impact_squib', {k: wmv.get(k) for k in ('ImpactSquibPercentage', 'ImpactSquibMaxCount', 'MaxImpactEffectDistance')})])),
         ('projectiles', projs or None),
         ('sounds', sounds),
-        ('gameplay (player WEPDATA)', wd), ('ai_data', w.get('ai_data')), ('damage_types', w.get('damage_types')),
+        ('gameplay (versus WEPDATA = MultiplayerData, CONFIRMED)', wd), ('wepdata_objects', w.get('wepdata_objects')),
+        ('gameplay (campaign / SP PlayerData)', w.get('gameplay (player WEPDATA)')), ('ai_data', w.get('ai_data')), ('damage_types', w.get('damage_types')),
         ('restrictions', w.get('restrictions')), ('usable_by_chassis', chassis_by_weapon.get(pid)),
         ('ui', OrderedDict([('ratings', w.get('ui_ratings')), ('kill_feed_icon', w.get('kill_feed_icon')),
                             ('hud_weapon_icon', hud_icons.get(cls_short)),

@@ -198,3 +198,23 @@ extra melee).
 
 The previous `allowed_by_provider` field was null for every chassis because `mp_roster.py` did not link them. Locked portraits
 exist only for Arcee and Slipstream (`*Locked_Robot/_Vehicle`); every other chassis has none authored.
+
+### Versus data corrections (RE TARGETED_PASS3 2026-10-05, applied in the generators)
+* **Weapons:** versus reads each weapon's **MultiplayerData** WEPDATA (`TnMultiplayerGame.DesiredWeaponDataType = 3`).
+  `PlayerData` (`*_SP_WEPDATA`) is used by campaign only.
+  * `mp_weapons.json` now carries `gameplay (versus WEPDATA = MultiplayerData, CONFIRMED)` (e.g. IonBlaster: 15 damage, 150
+    reserve) and `wepdata_objects`.
+  * The old `gameplay (player WEPDATA)` block is kept and marked superseded; it holds the SP values.
+* **Health:** versus health is the specialty blueprint applied by `TnSpecialty.Apply`, not ROBODEF SharedHealth:
+
+  | specialty | segments | health | speed multiplier |
+  |---|---|---|---|
+  | Leader | 5×60 | 300 | 0.95 |
+  | Scientist | 3×60 | 180 | 0.90 |
+  | Scout | 4×50 | 200 | 1.00 |
+  | Soldier | 6×55 | 330 | 0.90 |
+
+  * Overshield is 200 for every specialty. Values are verified in authored data.
+  * `roster_package.json` `stats.versus_health …`: select by the **character data Specialty**, never the chassis.
+    Custom MP characters use `by_specialty[<slot class>]`; iconic presets use `by_iconic_preset_specialty`. The chassis
+    DefaultSpecialty is a UI default only (RE). Example: Sideswipe is Scout by chassis UI default and Soldier by preset.

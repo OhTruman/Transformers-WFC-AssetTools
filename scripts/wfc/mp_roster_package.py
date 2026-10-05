@@ -24,6 +24,15 @@ def V(o): return A.values(o) if o and A.get(o) else {}
 def scalars(o):
     return {k: v for k, v in V(o).items() if isinstance(v, (int, float, str, bool)) and not (isinstance(v, str) and '.' in v and v.split('.')[0].endswith('_p'))}
 
+def specialty_health(cls):
+    """versus health / speed of a specialty: TransGame.Default__TnSpecialty<Class>.HealthBlueprint + SpeedMultiplier."""
+    if not cls: return None
+    v = V('TransGame.Default__TnSpecialty' + cls)
+    hb = v.get('HealthBlueprint'); h = V(hb) if hb else {}
+    seg = h.get('Segments') or []
+    return {'specialty': cls, 'health_blueprint': hb, 'segments': seg, 'health_max': sum(seg) if seg else None,
+            'overshield': h.get('Overshield'), 'speed_multiplier': v.get('SpeedMultiplier')}
+
 def resolve_bp(o, depth=0):
     """blueprint object -> its authored values (one level of sub-objects resolved)."""
     v = V(o)
@@ -104,7 +113,16 @@ def main():
                        'segmented_health': resolve_bp(rdv.get('SegmentedHealth')), 'momentum': resolve_bp(rdv.get('MomentumBlueprint')),
                        'acrobatics': resolve_bp(rdv.get('AcrobaticsManagerBlueprint')),
                        'vehicle_physics': {k: resolve_bp(x) for k, x in vdv.items() if k.endswith('Blueprint') and isinstance(x, str) and 'Physics' in x},
-                       'class_speed_multiplier': (classes['specialties (classes)'].get((m or {}).get('default_class')) or {}).get('speed_multiplier')}),
+                       'class_speed_multiplier': (classes['specialties (classes)'].get((m or {}).get('default_class')) or {}).get('speed_multiplier'),
+                       'versus_health (TnSpecialty.Apply -> InitializeSegmentedHealth(HealthBlueprint); RE TARGETED_PASS3 A4, CONFIRMED)': {
+                           'rule': 'every versus mode applies the specialty buffs (TnGame.ApplySpecialtyBuffs=True; False only for campaign, '
+                                   'Escalation, campaign lobby): health = specialty blueprint, replacing the ROBODEF SharedHealth above',
+                           'select_by': 'the selected character data Specialty (CharacterData.Specialty via TnPlayerPawn.ApplySpecialty), never '
+                                        'the chassis. MP custom characters: Specialty = the slot preset class -> use by_specialty[<class>]. '
+                                        'Iconic / SP presets: use by_iconic_preset_specialty. (RE 2026-10-05)',
+                           'by_iconic_preset_specialty': specialty_health(pre.get('Specialty')),
+                           'by_specialty': {c: specialty_health(c) for c in ('Leader', 'Scientist', 'Scout', 'Soldier')},
+                           'chassis_default_class_ui_only (TnDataProvider_Chassis.DefaultSpecialty - NOT what Apply reads)': (m or {}).get('default_class')}}),
             ('ui', {'portraits': sel.get(cid), 'class_icon': (classes['specialties (classes)'].get((m or {}).get('default_class')) or {}).get('ui_icons')}),
             ('weapons', {'iconic_loadout': loadout,
                          'allowed_on_foot_by_provider (TnDataProvider_Weapon FactionRestriction + ChassisRestriction; WeaponType != 3)':
@@ -130,8 +148,10 @@ def main():
         ('generated_by', GEN), ('re_evidence', [RE_ROSTER.replace('F:/Transformers Rebuild/', ''), RE_NOTE]),
         ('default_four_classes (MP presets)', defaults),
         ('re_cross_check_summary', {'chassis': len(out), 'field_mismatches_total': mism_total}),
-        ('shared_health_note', 'all player chassis reference TR_Health_p.SharedHealth (RE: segments 175/125/125/125, overshield 550) - '
-                               'resolved values under stats.segmented_health'),
+        ('shared_health_note', 'ROBODEF SegmentedHealth = TR_Health_p.SharedHealth (175/125/125/125, overshield 550) is the value '
+                               'ApplyTransformer sets; in VERSUS the specialty blueprint replaces it (Leader 300 / Scientist 180 / Scout 200 / '
+                               'Soldier 330, overshield 200: stats.versus_health). SharedHealth stands in campaign / Escalation / campaign lobby '
+                               '(RE TARGETED_PASS3_2026-10-05 A4).'),
         ('chassis', out)]), open(os.path.join(MANI, 'mp_content', 'roster_package.json'), 'w', encoding='utf-8'), indent=1, ensure_ascii=False, default=str)
     print('chassis', len(out), 'mismatches', mism_total, {k: v['re_cross_check']['mismatches'] for k, v in out.items() if v['re_cross_check']['mismatches']})
     print({k: (v['Autobot'], v['Decepticon'], v['names']) for k, v in defaults.items()})

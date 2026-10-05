@@ -110,7 +110,7 @@
   "chassis": 33,
   "field_mismatches_total": 0
  },
- "shared_health_note": "all player chassis reference TR_Health_p.SharedHealth (RE: segments 175/125/125/125, overshield 550) - resolved values under stats.segmented_health",
+ "shared_health_note": "ROBODEF SegmentedHealth = TR_Health_p.SharedHealth (175/125/125/125, overshield 550) is the value ApplyTransformer sets; in VERSUS the specialty blueprint replaces it (Leader 300 / Scientist 180 / Scout 200 / Soldier 330, overshield 200: stats.versus_health). SharedHealth stands in campaign / Escalation / campaign lobby (RE TARGETED_PASS3_2026-10-05 A4).",
  "chassis": {
   "Car": {
    "re_identity": {
@@ -629,7 +629,81 @@
       }
      }
     },
-    "class_speed_multiplier": "1.0"
+    "class_speed_multiplier": "1.0",
+    "versus_health (TnSpecialty.Apply -> InitializeSegmentedHealth(HealthBlueprint); RE TARGETED_PASS3 A4, CONFIRMED)": {
+     "rule": "every versus mode applies the specialty buffs (TnGame.ApplySpecialtyBuffs=True; False only for campaign, Escalation, campaign lobby): health = specialty blueprint, replacing the ROBODEF SharedHealth above",
+     "select_by": "the selected character data Specialty (CharacterData.Specialty via TnPlayerPawn.ApplySpecialty), never the chassis. MP custom characters: Specialty = the slot preset class -> use by_specialty[<class>]. Iconic / SP presets: use by_iconic_preset_specialty. (RE 2026-10-05)",
+     "by_iconic_preset_specialty": {
+      "specialty": "Scout",
+      "health_blueprint": "TR_Health_p.Health_Scout",
+      "segments": [
+       50.0,
+       50.0,
+       50.0,
+       50.0
+      ],
+      "health_max": 200.0,
+      "overshield": 200.0,
+      "speed_multiplier": 1.0
+     },
+     "by_specialty": {
+      "Leader": {
+       "specialty": "Leader",
+       "health_blueprint": "TR_Health_p.Health_Leader",
+       "segments": [
+        60.0,
+        60.0,
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 300.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.949999988079071
+      },
+      "Scientist": {
+       "specialty": "Scientist",
+       "health_blueprint": "TR_Health_p.Health_Scientist",
+       "segments": [
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 180.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      },
+      "Scout": {
+       "specialty": "Scout",
+       "health_blueprint": "TR_Health_p.Health_Scout",
+       "segments": [
+        50.0,
+        50.0,
+        50.0,
+        50.0
+       ],
+       "health_max": 200.0,
+       "overshield": 200.0,
+       "speed_multiplier": 1.0
+      },
+      "Soldier": {
+       "specialty": "Soldier",
+       "health_blueprint": "TR_Health_p.Health_Soldier",
+       "segments": [
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0
+       ],
+       "health_max": 330.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      }
+     },
+     "chassis_default_class_ui_only (TnDataProvider_Chassis.DefaultSpecialty - NOT what Apply reads)": "Scout"
+    }
    },
    "ui": {
     "portraits": {
@@ -1371,7 +1445,83 @@
       }
      }
     },
-    "class_speed_multiplier": "0.9"
+    "class_speed_multiplier": "0.9",
+    "versus_health (TnSpecialty.Apply -> InitializeSegmentedHealth(HealthBlueprint); RE TARGETED_PASS3 A4, CONFIRMED)": {
+     "rule": "every versus mode applies the specialty buffs (TnGame.ApplySpecialtyBuffs=True; False only for campaign, Escalation, campaign lobby): health = specialty blueprint, replacing the ROBODEF SharedHealth above",
+     "select_by": "the selected character data Specialty (CharacterData.Specialty via TnPlayerPawn.ApplySpecialty), never the chassis. MP custom characters: Specialty = the slot preset class -> use by_specialty[<class>]. Iconic / SP presets: use by_iconic_preset_specialty. (RE 2026-10-05)",
+     "by_iconic_preset_specialty": {
+      "specialty": "Soldier",
+      "health_blueprint": "TR_Health_p.Health_Soldier",
+      "segments": [
+       55.0,
+       55.0,
+       55.0,
+       55.0,
+       55.0,
+       55.0
+      ],
+      "health_max": 330.0,
+      "overshield": 200.0,
+      "speed_multiplier": 0.8999999761581421
+     },
+     "by_specialty": {
+      "Leader": {
+       "specialty": "Leader",
+       "health_blueprint": "TR_Health_p.Health_Leader",
+       "segments": [
+        60.0,
+        60.0,
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 300.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.949999988079071
+      },
+      "Scientist": {
+       "specialty": "Scientist",
+       "health_blueprint": "TR_Health_p.Health_Scientist",
+       "segments": [
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 180.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      },
+      "Scout": {
+       "specialty": "Scout",
+       "health_blueprint": "TR_Health_p.Health_Scout",
+       "segments": [
+        50.0,
+        50.0,
+        50.0,
+        50.0
+       ],
+       "health_max": 200.0,
+       "overshield": 200.0,
+       "speed_multiplier": 1.0
+      },
+      "Soldier": {
+       "specialty": "Soldier",
+       "health_blueprint": "TR_Health_p.Health_Soldier",
+       "segments": [
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0
+       ],
+       "health_max": 330.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      }
+     },
+     "chassis_default_class_ui_only (TnDataProvider_Chassis.DefaultSpecialty - NOT what Apply reads)": "Scientist"
+    }
    },
    "ui": {
     "portraits": {
@@ -2054,7 +2204,82 @@
       }
      }
     },
-    "class_speed_multiplier": "0.9"
+    "class_speed_multiplier": "0.9",
+    "versus_health (TnSpecialty.Apply -> InitializeSegmentedHealth(HealthBlueprint); RE TARGETED_PASS3 A4, CONFIRMED)": {
+     "rule": "every versus mode applies the specialty buffs (TnGame.ApplySpecialtyBuffs=True; False only for campaign, Escalation, campaign lobby): health = specialty blueprint, replacing the ROBODEF SharedHealth above",
+     "select_by": "the selected character data Specialty (CharacterData.Specialty via TnPlayerPawn.ApplySpecialty), never the chassis. MP custom characters: Specialty = the slot preset class -> use by_specialty[<class>]. Iconic / SP presets: use by_iconic_preset_specialty. (RE 2026-10-05)",
+     "by_iconic_preset_specialty": {
+      "specialty": "Leader",
+      "health_blueprint": "TR_Health_p.Health_Leader",
+      "segments": [
+       60.0,
+       60.0,
+       60.0,
+       60.0,
+       60.0
+      ],
+      "health_max": 300.0,
+      "overshield": 200.0,
+      "speed_multiplier": 0.949999988079071
+     },
+     "by_specialty": {
+      "Leader": {
+       "specialty": "Leader",
+       "health_blueprint": "TR_Health_p.Health_Leader",
+       "segments": [
+        60.0,
+        60.0,
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 300.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.949999988079071
+      },
+      "Scientist": {
+       "specialty": "Scientist",
+       "health_blueprint": "TR_Health_p.Health_Scientist",
+       "segments": [
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 180.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      },
+      "Scout": {
+       "specialty": "Scout",
+       "health_blueprint": "TR_Health_p.Health_Scout",
+       "segments": [
+        50.0,
+        50.0,
+        50.0,
+        50.0
+       ],
+       "health_max": 200.0,
+       "overshield": 200.0,
+       "speed_multiplier": 1.0
+      },
+      "Soldier": {
+       "specialty": "Soldier",
+       "health_blueprint": "TR_Health_p.Health_Soldier",
+       "segments": [
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0
+       ],
+       "health_max": 330.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      }
+     },
+     "chassis_default_class_ui_only (TnDataProvider_Chassis.DefaultSpecialty - NOT what Apply reads)": "Soldier"
+    }
    },
    "ui": {
     "portraits": {
@@ -2796,7 +3021,82 @@
       }
      }
     },
-    "class_speed_multiplier": "0.95"
+    "class_speed_multiplier": "0.95",
+    "versus_health (TnSpecialty.Apply -> InitializeSegmentedHealth(HealthBlueprint); RE TARGETED_PASS3 A4, CONFIRMED)": {
+     "rule": "every versus mode applies the specialty buffs (TnGame.ApplySpecialtyBuffs=True; False only for campaign, Escalation, campaign lobby): health = specialty blueprint, replacing the ROBODEF SharedHealth above",
+     "select_by": "the selected character data Specialty (CharacterData.Specialty via TnPlayerPawn.ApplySpecialty), never the chassis. MP custom characters: Specialty = the slot preset class -> use by_specialty[<class>]. Iconic / SP presets: use by_iconic_preset_specialty. (RE 2026-10-05)",
+     "by_iconic_preset_specialty": {
+      "specialty": "Leader",
+      "health_blueprint": "TR_Health_p.Health_Leader",
+      "segments": [
+       60.0,
+       60.0,
+       60.0,
+       60.0,
+       60.0
+      ],
+      "health_max": 300.0,
+      "overshield": 200.0,
+      "speed_multiplier": 0.949999988079071
+     },
+     "by_specialty": {
+      "Leader": {
+       "specialty": "Leader",
+       "health_blueprint": "TR_Health_p.Health_Leader",
+       "segments": [
+        60.0,
+        60.0,
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 300.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.949999988079071
+      },
+      "Scientist": {
+       "specialty": "Scientist",
+       "health_blueprint": "TR_Health_p.Health_Scientist",
+       "segments": [
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 180.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      },
+      "Scout": {
+       "specialty": "Scout",
+       "health_blueprint": "TR_Health_p.Health_Scout",
+       "segments": [
+        50.0,
+        50.0,
+        50.0,
+        50.0
+       ],
+       "health_max": 200.0,
+       "overshield": 200.0,
+       "speed_multiplier": 1.0
+      },
+      "Soldier": {
+       "specialty": "Soldier",
+       "health_blueprint": "TR_Health_p.Health_Soldier",
+       "segments": [
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0
+       ],
+       "health_max": 330.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      }
+     },
+     "chassis_default_class_ui_only (TnDataProvider_Chassis.DefaultSpecialty - NOT what Apply reads)": "Leader"
+    }
    },
    "ui": {
     "portraits": {
@@ -3538,7 +3838,82 @@
       }
      }
     },
-    "class_speed_multiplier": "0.95"
+    "class_speed_multiplier": "0.95",
+    "versus_health (TnSpecialty.Apply -> InitializeSegmentedHealth(HealthBlueprint); RE TARGETED_PASS3 A4, CONFIRMED)": {
+     "rule": "every versus mode applies the specialty buffs (TnGame.ApplySpecialtyBuffs=True; False only for campaign, Escalation, campaign lobby): health = specialty blueprint, replacing the ROBODEF SharedHealth above",
+     "select_by": "the selected character data Specialty (CharacterData.Specialty via TnPlayerPawn.ApplySpecialty), never the chassis. MP custom characters: Specialty = the slot preset class -> use by_specialty[<class>]. Iconic / SP presets: use by_iconic_preset_specialty. (RE 2026-10-05)",
+     "by_iconic_preset_specialty": {
+      "specialty": "Leader",
+      "health_blueprint": "TR_Health_p.Health_Leader",
+      "segments": [
+       60.0,
+       60.0,
+       60.0,
+       60.0,
+       60.0
+      ],
+      "health_max": 300.0,
+      "overshield": 200.0,
+      "speed_multiplier": 0.949999988079071
+     },
+     "by_specialty": {
+      "Leader": {
+       "specialty": "Leader",
+       "health_blueprint": "TR_Health_p.Health_Leader",
+       "segments": [
+        60.0,
+        60.0,
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 300.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.949999988079071
+      },
+      "Scientist": {
+       "specialty": "Scientist",
+       "health_blueprint": "TR_Health_p.Health_Scientist",
+       "segments": [
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 180.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      },
+      "Scout": {
+       "specialty": "Scout",
+       "health_blueprint": "TR_Health_p.Health_Scout",
+       "segments": [
+        50.0,
+        50.0,
+        50.0,
+        50.0
+       ],
+       "health_max": 200.0,
+       "overshield": 200.0,
+       "speed_multiplier": 1.0
+      },
+      "Soldier": {
+       "specialty": "Soldier",
+       "health_blueprint": "TR_Health_p.Health_Soldier",
+       "segments": [
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0
+       ],
+       "health_max": 330.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      }
+     },
+     "chassis_default_class_ui_only (TnDataProvider_Chassis.DefaultSpecialty - NOT what Apply reads)": "Leader"
+    }
    },
    "ui": {
     "portraits": {
@@ -4244,7 +4619,83 @@
       }
      }
     },
-    "class_speed_multiplier": "1.0"
+    "class_speed_multiplier": "1.0",
+    "versus_health (TnSpecialty.Apply -> InitializeSegmentedHealth(HealthBlueprint); RE TARGETED_PASS3 A4, CONFIRMED)": {
+     "rule": "every versus mode applies the specialty buffs (TnGame.ApplySpecialtyBuffs=True; False only for campaign, Escalation, campaign lobby): health = specialty blueprint, replacing the ROBODEF SharedHealth above",
+     "select_by": "the selected character data Specialty (CharacterData.Specialty via TnPlayerPawn.ApplySpecialty), never the chassis. MP custom characters: Specialty = the slot preset class -> use by_specialty[<class>]. Iconic / SP presets: use by_iconic_preset_specialty. (RE 2026-10-05)",
+     "by_iconic_preset_specialty": {
+      "specialty": "Soldier",
+      "health_blueprint": "TR_Health_p.Health_Soldier",
+      "segments": [
+       55.0,
+       55.0,
+       55.0,
+       55.0,
+       55.0,
+       55.0
+      ],
+      "health_max": 330.0,
+      "overshield": 200.0,
+      "speed_multiplier": 0.8999999761581421
+     },
+     "by_specialty": {
+      "Leader": {
+       "specialty": "Leader",
+       "health_blueprint": "TR_Health_p.Health_Leader",
+       "segments": [
+        60.0,
+        60.0,
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 300.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.949999988079071
+      },
+      "Scientist": {
+       "specialty": "Scientist",
+       "health_blueprint": "TR_Health_p.Health_Scientist",
+       "segments": [
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 180.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      },
+      "Scout": {
+       "specialty": "Scout",
+       "health_blueprint": "TR_Health_p.Health_Scout",
+       "segments": [
+        50.0,
+        50.0,
+        50.0,
+        50.0
+       ],
+       "health_max": 200.0,
+       "overshield": 200.0,
+       "speed_multiplier": 1.0
+      },
+      "Soldier": {
+       "specialty": "Soldier",
+       "health_blueprint": "TR_Health_p.Health_Soldier",
+       "segments": [
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0
+       ],
+       "health_max": 330.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      }
+     },
+     "chassis_default_class_ui_only (TnDataProvider_Chassis.DefaultSpecialty - NOT what Apply reads)": "Scout"
+    }
    },
    "ui": {
     "portraits": {
@@ -4961,7 +5412,81 @@
       }
      }
     },
-    "class_speed_multiplier": "1.0"
+    "class_speed_multiplier": "1.0",
+    "versus_health (TnSpecialty.Apply -> InitializeSegmentedHealth(HealthBlueprint); RE TARGETED_PASS3 A4, CONFIRMED)": {
+     "rule": "every versus mode applies the specialty buffs (TnGame.ApplySpecialtyBuffs=True; False only for campaign, Escalation, campaign lobby): health = specialty blueprint, replacing the ROBODEF SharedHealth above",
+     "select_by": "the selected character data Specialty (CharacterData.Specialty via TnPlayerPawn.ApplySpecialty), never the chassis. MP custom characters: Specialty = the slot preset class -> use by_specialty[<class>]. Iconic / SP presets: use by_iconic_preset_specialty. (RE 2026-10-05)",
+     "by_iconic_preset_specialty": {
+      "specialty": "Scout",
+      "health_blueprint": "TR_Health_p.Health_Scout",
+      "segments": [
+       50.0,
+       50.0,
+       50.0,
+       50.0
+      ],
+      "health_max": 200.0,
+      "overshield": 200.0,
+      "speed_multiplier": 1.0
+     },
+     "by_specialty": {
+      "Leader": {
+       "specialty": "Leader",
+       "health_blueprint": "TR_Health_p.Health_Leader",
+       "segments": [
+        60.0,
+        60.0,
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 300.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.949999988079071
+      },
+      "Scientist": {
+       "specialty": "Scientist",
+       "health_blueprint": "TR_Health_p.Health_Scientist",
+       "segments": [
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 180.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      },
+      "Scout": {
+       "specialty": "Scout",
+       "health_blueprint": "TR_Health_p.Health_Scout",
+       "segments": [
+        50.0,
+        50.0,
+        50.0,
+        50.0
+       ],
+       "health_max": 200.0,
+       "overshield": 200.0,
+       "speed_multiplier": 1.0
+      },
+      "Soldier": {
+       "specialty": "Soldier",
+       "health_blueprint": "TR_Health_p.Health_Soldier",
+       "segments": [
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0
+       ],
+       "health_max": 330.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      }
+     },
+     "chassis_default_class_ui_only (TnDataProvider_Chassis.DefaultSpecialty - NOT what Apply reads)": "Scout"
+    }
    },
    "ui": {
     "portraits": {
@@ -5641,7 +6166,81 @@
       }
      }
     },
-    "class_speed_multiplier": "1.0"
+    "class_speed_multiplier": "1.0",
+    "versus_health (TnSpecialty.Apply -> InitializeSegmentedHealth(HealthBlueprint); RE TARGETED_PASS3 A4, CONFIRMED)": {
+     "rule": "every versus mode applies the specialty buffs (TnGame.ApplySpecialtyBuffs=True; False only for campaign, Escalation, campaign lobby): health = specialty blueprint, replacing the ROBODEF SharedHealth above",
+     "select_by": "the selected character data Specialty (CharacterData.Specialty via TnPlayerPawn.ApplySpecialty), never the chassis. MP custom characters: Specialty = the slot preset class -> use by_specialty[<class>]. Iconic / SP presets: use by_iconic_preset_specialty. (RE 2026-10-05)",
+     "by_iconic_preset_specialty": {
+      "specialty": "Scout",
+      "health_blueprint": "TR_Health_p.Health_Scout",
+      "segments": [
+       50.0,
+       50.0,
+       50.0,
+       50.0
+      ],
+      "health_max": 200.0,
+      "overshield": 200.0,
+      "speed_multiplier": 1.0
+     },
+     "by_specialty": {
+      "Leader": {
+       "specialty": "Leader",
+       "health_blueprint": "TR_Health_p.Health_Leader",
+       "segments": [
+        60.0,
+        60.0,
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 300.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.949999988079071
+      },
+      "Scientist": {
+       "specialty": "Scientist",
+       "health_blueprint": "TR_Health_p.Health_Scientist",
+       "segments": [
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 180.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      },
+      "Scout": {
+       "specialty": "Scout",
+       "health_blueprint": "TR_Health_p.Health_Scout",
+       "segments": [
+        50.0,
+        50.0,
+        50.0,
+        50.0
+       ],
+       "health_max": 200.0,
+       "overshield": 200.0,
+       "speed_multiplier": 1.0
+      },
+      "Soldier": {
+       "specialty": "Soldier",
+       "health_blueprint": "TR_Health_p.Health_Soldier",
+       "segments": [
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0
+       ],
+       "health_max": 330.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      }
+     },
+     "chassis_default_class_ui_only (TnDataProvider_Chassis.DefaultSpecialty - NOT what Apply reads)": "Scout"
+    }
    },
    "ui": {
     "portraits": {
@@ -6326,7 +6925,83 @@
       }
      }
     },
-    "class_speed_multiplier": "1.0"
+    "class_speed_multiplier": "1.0",
+    "versus_health (TnSpecialty.Apply -> InitializeSegmentedHealth(HealthBlueprint); RE TARGETED_PASS3 A4, CONFIRMED)": {
+     "rule": "every versus mode applies the specialty buffs (TnGame.ApplySpecialtyBuffs=True; False only for campaign, Escalation, campaign lobby): health = specialty blueprint, replacing the ROBODEF SharedHealth above",
+     "select_by": "the selected character data Specialty (CharacterData.Specialty via TnPlayerPawn.ApplySpecialty), never the chassis. MP custom characters: Specialty = the slot preset class -> use by_specialty[<class>]. Iconic / SP presets: use by_iconic_preset_specialty. (RE 2026-10-05)",
+     "by_iconic_preset_specialty": {
+      "specialty": "Soldier",
+      "health_blueprint": "TR_Health_p.Health_Soldier",
+      "segments": [
+       55.0,
+       55.0,
+       55.0,
+       55.0,
+       55.0,
+       55.0
+      ],
+      "health_max": 330.0,
+      "overshield": 200.0,
+      "speed_multiplier": 0.8999999761581421
+     },
+     "by_specialty": {
+      "Leader": {
+       "specialty": "Leader",
+       "health_blueprint": "TR_Health_p.Health_Leader",
+       "segments": [
+        60.0,
+        60.0,
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 300.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.949999988079071
+      },
+      "Scientist": {
+       "specialty": "Scientist",
+       "health_blueprint": "TR_Health_p.Health_Scientist",
+       "segments": [
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 180.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      },
+      "Scout": {
+       "specialty": "Scout",
+       "health_blueprint": "TR_Health_p.Health_Scout",
+       "segments": [
+        50.0,
+        50.0,
+        50.0,
+        50.0
+       ],
+       "health_max": 200.0,
+       "overshield": 200.0,
+       "speed_multiplier": 1.0
+      },
+      "Soldier": {
+       "specialty": "Soldier",
+       "health_blueprint": "TR_Health_p.Health_Soldier",
+       "segments": [
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0
+       ],
+       "health_max": 330.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      }
+     },
+     "chassis_default_class_ui_only (TnDataProvider_Chassis.DefaultSpecialty - NOT what Apply reads)": "Scout"
+    }
    },
    "ui": {
     "portraits": {
@@ -7009,7 +7684,81 @@
       }
      }
     },
-    "class_speed_multiplier": "1.0"
+    "class_speed_multiplier": "1.0",
+    "versus_health (TnSpecialty.Apply -> InitializeSegmentedHealth(HealthBlueprint); RE TARGETED_PASS3 A4, CONFIRMED)": {
+     "rule": "every versus mode applies the specialty buffs (TnGame.ApplySpecialtyBuffs=True; False only for campaign, Escalation, campaign lobby): health = specialty blueprint, replacing the ROBODEF SharedHealth above",
+     "select_by": "the selected character data Specialty (CharacterData.Specialty via TnPlayerPawn.ApplySpecialty), never the chassis. MP custom characters: Specialty = the slot preset class -> use by_specialty[<class>]. Iconic / SP presets: use by_iconic_preset_specialty. (RE 2026-10-05)",
+     "by_iconic_preset_specialty": {
+      "specialty": "Scout",
+      "health_blueprint": "TR_Health_p.Health_Scout",
+      "segments": [
+       50.0,
+       50.0,
+       50.0,
+       50.0
+      ],
+      "health_max": 200.0,
+      "overshield": 200.0,
+      "speed_multiplier": 1.0
+     },
+     "by_specialty": {
+      "Leader": {
+       "specialty": "Leader",
+       "health_blueprint": "TR_Health_p.Health_Leader",
+       "segments": [
+        60.0,
+        60.0,
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 300.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.949999988079071
+      },
+      "Scientist": {
+       "specialty": "Scientist",
+       "health_blueprint": "TR_Health_p.Health_Scientist",
+       "segments": [
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 180.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      },
+      "Scout": {
+       "specialty": "Scout",
+       "health_blueprint": "TR_Health_p.Health_Scout",
+       "segments": [
+        50.0,
+        50.0,
+        50.0,
+        50.0
+       ],
+       "health_max": 200.0,
+       "overshield": 200.0,
+       "speed_multiplier": 1.0
+      },
+      "Soldier": {
+       "specialty": "Soldier",
+       "health_blueprint": "TR_Health_p.Health_Soldier",
+       "segments": [
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0
+       ],
+       "health_max": 330.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      }
+     },
+     "chassis_default_class_ui_only (TnDataProvider_Chassis.DefaultSpecialty - NOT what Apply reads)": "Scout"
+    }
    },
    "ui": {
     "portraits": {
@@ -7684,7 +8433,81 @@
       }
      }
     },
-    "class_speed_multiplier": "1.0"
+    "class_speed_multiplier": "1.0",
+    "versus_health (TnSpecialty.Apply -> InitializeSegmentedHealth(HealthBlueprint); RE TARGETED_PASS3 A4, CONFIRMED)": {
+     "rule": "every versus mode applies the specialty buffs (TnGame.ApplySpecialtyBuffs=True; False only for campaign, Escalation, campaign lobby): health = specialty blueprint, replacing the ROBODEF SharedHealth above",
+     "select_by": "the selected character data Specialty (CharacterData.Specialty via TnPlayerPawn.ApplySpecialty), never the chassis. MP custom characters: Specialty = the slot preset class -> use by_specialty[<class>]. Iconic / SP presets: use by_iconic_preset_specialty. (RE 2026-10-05)",
+     "by_iconic_preset_specialty": {
+      "specialty": "Scout",
+      "health_blueprint": "TR_Health_p.Health_Scout",
+      "segments": [
+       50.0,
+       50.0,
+       50.0,
+       50.0
+      ],
+      "health_max": 200.0,
+      "overshield": 200.0,
+      "speed_multiplier": 1.0
+     },
+     "by_specialty": {
+      "Leader": {
+       "specialty": "Leader",
+       "health_blueprint": "TR_Health_p.Health_Leader",
+       "segments": [
+        60.0,
+        60.0,
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 300.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.949999988079071
+      },
+      "Scientist": {
+       "specialty": "Scientist",
+       "health_blueprint": "TR_Health_p.Health_Scientist",
+       "segments": [
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 180.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      },
+      "Scout": {
+       "specialty": "Scout",
+       "health_blueprint": "TR_Health_p.Health_Scout",
+       "segments": [
+        50.0,
+        50.0,
+        50.0,
+        50.0
+       ],
+       "health_max": 200.0,
+       "overshield": 200.0,
+       "speed_multiplier": 1.0
+      },
+      "Soldier": {
+       "specialty": "Soldier",
+       "health_blueprint": "TR_Health_p.Health_Soldier",
+       "segments": [
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0
+       ],
+       "health_max": 330.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      }
+     },
+     "chassis_default_class_ui_only (TnDataProvider_Chassis.DefaultSpecialty - NOT what Apply reads)": "Scout"
+    }
    },
    "ui": {
     "portraits": {
@@ -8406,7 +9229,81 @@
       }
      }
     },
-    "class_speed_multiplier": "1.0"
+    "class_speed_multiplier": "1.0",
+    "versus_health (TnSpecialty.Apply -> InitializeSegmentedHealth(HealthBlueprint); RE TARGETED_PASS3 A4, CONFIRMED)": {
+     "rule": "every versus mode applies the specialty buffs (TnGame.ApplySpecialtyBuffs=True; False only for campaign, Escalation, campaign lobby): health = specialty blueprint, replacing the ROBODEF SharedHealth above",
+     "select_by": "the selected character data Specialty (CharacterData.Specialty via TnPlayerPawn.ApplySpecialty), never the chassis. MP custom characters: Specialty = the slot preset class -> use by_specialty[<class>]. Iconic / SP presets: use by_iconic_preset_specialty. (RE 2026-10-05)",
+     "by_iconic_preset_specialty": {
+      "specialty": "Scout",
+      "health_blueprint": "TR_Health_p.Health_Scout",
+      "segments": [
+       50.0,
+       50.0,
+       50.0,
+       50.0
+      ],
+      "health_max": 200.0,
+      "overshield": 200.0,
+      "speed_multiplier": 1.0
+     },
+     "by_specialty": {
+      "Leader": {
+       "specialty": "Leader",
+       "health_blueprint": "TR_Health_p.Health_Leader",
+       "segments": [
+        60.0,
+        60.0,
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 300.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.949999988079071
+      },
+      "Scientist": {
+       "specialty": "Scientist",
+       "health_blueprint": "TR_Health_p.Health_Scientist",
+       "segments": [
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 180.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      },
+      "Scout": {
+       "specialty": "Scout",
+       "health_blueprint": "TR_Health_p.Health_Scout",
+       "segments": [
+        50.0,
+        50.0,
+        50.0,
+        50.0
+       ],
+       "health_max": 200.0,
+       "overshield": 200.0,
+       "speed_multiplier": 1.0
+      },
+      "Soldier": {
+       "specialty": "Soldier",
+       "health_blueprint": "TR_Health_p.Health_Soldier",
+       "segments": [
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0
+       ],
+       "health_max": 330.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      }
+     },
+     "chassis_default_class_ui_only (TnDataProvider_Chassis.DefaultSpecialty - NOT what Apply reads)": "Scout"
+    }
    },
    "ui": {
     "portraits": {
@@ -9135,7 +10032,81 @@
       }
      }
     },
-    "class_speed_multiplier": "1.0"
+    "class_speed_multiplier": "1.0",
+    "versus_health (TnSpecialty.Apply -> InitializeSegmentedHealth(HealthBlueprint); RE TARGETED_PASS3 A4, CONFIRMED)": {
+     "rule": "every versus mode applies the specialty buffs (TnGame.ApplySpecialtyBuffs=True; False only for campaign, Escalation, campaign lobby): health = specialty blueprint, replacing the ROBODEF SharedHealth above",
+     "select_by": "the selected character data Specialty (CharacterData.Specialty via TnPlayerPawn.ApplySpecialty), never the chassis. MP custom characters: Specialty = the slot preset class -> use by_specialty[<class>]. Iconic / SP presets: use by_iconic_preset_specialty. (RE 2026-10-05)",
+     "by_iconic_preset_specialty": {
+      "specialty": "Scout",
+      "health_blueprint": "TR_Health_p.Health_Scout",
+      "segments": [
+       50.0,
+       50.0,
+       50.0,
+       50.0
+      ],
+      "health_max": 200.0,
+      "overshield": 200.0,
+      "speed_multiplier": 1.0
+     },
+     "by_specialty": {
+      "Leader": {
+       "specialty": "Leader",
+       "health_blueprint": "TR_Health_p.Health_Leader",
+       "segments": [
+        60.0,
+        60.0,
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 300.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.949999988079071
+      },
+      "Scientist": {
+       "specialty": "Scientist",
+       "health_blueprint": "TR_Health_p.Health_Scientist",
+       "segments": [
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 180.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      },
+      "Scout": {
+       "specialty": "Scout",
+       "health_blueprint": "TR_Health_p.Health_Scout",
+       "segments": [
+        50.0,
+        50.0,
+        50.0,
+        50.0
+       ],
+       "health_max": 200.0,
+       "overshield": 200.0,
+       "speed_multiplier": 1.0
+      },
+      "Soldier": {
+       "specialty": "Soldier",
+       "health_blueprint": "TR_Health_p.Health_Soldier",
+       "segments": [
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0
+       ],
+       "health_max": 330.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      }
+     },
+     "chassis_default_class_ui_only (TnDataProvider_Chassis.DefaultSpecialty - NOT what Apply reads)": "Scout"
+    }
    },
    "ui": {
     "portraits": {
@@ -9782,7 +10753,81 @@
       }
      }
     },
-    "class_speed_multiplier": "1.0"
+    "class_speed_multiplier": "1.0",
+    "versus_health (TnSpecialty.Apply -> InitializeSegmentedHealth(HealthBlueprint); RE TARGETED_PASS3 A4, CONFIRMED)": {
+     "rule": "every versus mode applies the specialty buffs (TnGame.ApplySpecialtyBuffs=True; False only for campaign, Escalation, campaign lobby): health = specialty blueprint, replacing the ROBODEF SharedHealth above",
+     "select_by": "the selected character data Specialty (CharacterData.Specialty via TnPlayerPawn.ApplySpecialty), never the chassis. MP custom characters: Specialty = the slot preset class -> use by_specialty[<class>]. Iconic / SP presets: use by_iconic_preset_specialty. (RE 2026-10-05)",
+     "by_iconic_preset_specialty": {
+      "specialty": "Scout",
+      "health_blueprint": "TR_Health_p.Health_Scout",
+      "segments": [
+       50.0,
+       50.0,
+       50.0,
+       50.0
+      ],
+      "health_max": 200.0,
+      "overshield": 200.0,
+      "speed_multiplier": 1.0
+     },
+     "by_specialty": {
+      "Leader": {
+       "specialty": "Leader",
+       "health_blueprint": "TR_Health_p.Health_Leader",
+       "segments": [
+        60.0,
+        60.0,
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 300.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.949999988079071
+      },
+      "Scientist": {
+       "specialty": "Scientist",
+       "health_blueprint": "TR_Health_p.Health_Scientist",
+       "segments": [
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 180.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      },
+      "Scout": {
+       "specialty": "Scout",
+       "health_blueprint": "TR_Health_p.Health_Scout",
+       "segments": [
+        50.0,
+        50.0,
+        50.0,
+        50.0
+       ],
+       "health_max": 200.0,
+       "overshield": 200.0,
+       "speed_multiplier": 1.0
+      },
+      "Soldier": {
+       "specialty": "Soldier",
+       "health_blueprint": "TR_Health_p.Health_Soldier",
+       "segments": [
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0
+       ],
+       "health_max": 330.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      }
+     },
+     "chassis_default_class_ui_only (TnDataProvider_Chassis.DefaultSpecialty - NOT what Apply reads)": "Scout"
+    }
    },
    "ui": {
     "portraits": {
@@ -10521,7 +11566,80 @@
       }
      }
     },
-    "class_speed_multiplier": "0.9"
+    "class_speed_multiplier": "0.9",
+    "versus_health (TnSpecialty.Apply -> InitializeSegmentedHealth(HealthBlueprint); RE TARGETED_PASS3 A4, CONFIRMED)": {
+     "rule": "every versus mode applies the specialty buffs (TnGame.ApplySpecialtyBuffs=True; False only for campaign, Escalation, campaign lobby): health = specialty blueprint, replacing the ROBODEF SharedHealth above",
+     "select_by": "the selected character data Specialty (CharacterData.Specialty via TnPlayerPawn.ApplySpecialty), never the chassis. MP custom characters: Specialty = the slot preset class -> use by_specialty[<class>]. Iconic / SP presets: use by_iconic_preset_specialty. (RE 2026-10-05)",
+     "by_iconic_preset_specialty": {
+      "specialty": "Scientist",
+      "health_blueprint": "TR_Health_p.Health_Scientist",
+      "segments": [
+       60.0,
+       60.0,
+       60.0
+      ],
+      "health_max": 180.0,
+      "overshield": 200.0,
+      "speed_multiplier": 0.8999999761581421
+     },
+     "by_specialty": {
+      "Leader": {
+       "specialty": "Leader",
+       "health_blueprint": "TR_Health_p.Health_Leader",
+       "segments": [
+        60.0,
+        60.0,
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 300.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.949999988079071
+      },
+      "Scientist": {
+       "specialty": "Scientist",
+       "health_blueprint": "TR_Health_p.Health_Scientist",
+       "segments": [
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 180.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      },
+      "Scout": {
+       "specialty": "Scout",
+       "health_blueprint": "TR_Health_p.Health_Scout",
+       "segments": [
+        50.0,
+        50.0,
+        50.0,
+        50.0
+       ],
+       "health_max": 200.0,
+       "overshield": 200.0,
+       "speed_multiplier": 1.0
+      },
+      "Soldier": {
+       "specialty": "Soldier",
+       "health_blueprint": "TR_Health_p.Health_Soldier",
+       "segments": [
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0
+       ],
+       "health_max": 330.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      }
+     },
+     "chassis_default_class_ui_only (TnDataProvider_Chassis.DefaultSpecialty - NOT what Apply reads)": "Scientist"
+    }
    },
    "ui": {
     "portraits": {
@@ -11273,7 +12391,81 @@
       }
      }
     },
-    "class_speed_multiplier": "0.9"
+    "class_speed_multiplier": "0.9",
+    "versus_health (TnSpecialty.Apply -> InitializeSegmentedHealth(HealthBlueprint); RE TARGETED_PASS3 A4, CONFIRMED)": {
+     "rule": "every versus mode applies the specialty buffs (TnGame.ApplySpecialtyBuffs=True; False only for campaign, Escalation, campaign lobby): health = specialty blueprint, replacing the ROBODEF SharedHealth above",
+     "select_by": "the selected character data Specialty (CharacterData.Specialty via TnPlayerPawn.ApplySpecialty), never the chassis. MP custom characters: Specialty = the slot preset class -> use by_specialty[<class>]. Iconic / SP presets: use by_iconic_preset_specialty. (RE 2026-10-05)",
+     "by_iconic_preset_specialty": {
+      "specialty": "Scout",
+      "health_blueprint": "TR_Health_p.Health_Scout",
+      "segments": [
+       50.0,
+       50.0,
+       50.0,
+       50.0
+      ],
+      "health_max": 200.0,
+      "overshield": 200.0,
+      "speed_multiplier": 1.0
+     },
+     "by_specialty": {
+      "Leader": {
+       "specialty": "Leader",
+       "health_blueprint": "TR_Health_p.Health_Leader",
+       "segments": [
+        60.0,
+        60.0,
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 300.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.949999988079071
+      },
+      "Scientist": {
+       "specialty": "Scientist",
+       "health_blueprint": "TR_Health_p.Health_Scientist",
+       "segments": [
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 180.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      },
+      "Scout": {
+       "specialty": "Scout",
+       "health_blueprint": "TR_Health_p.Health_Scout",
+       "segments": [
+        50.0,
+        50.0,
+        50.0,
+        50.0
+       ],
+       "health_max": 200.0,
+       "overshield": 200.0,
+       "speed_multiplier": 1.0
+      },
+      "Soldier": {
+       "specialty": "Soldier",
+       "health_blueprint": "TR_Health_p.Health_Soldier",
+       "segments": [
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0
+       ],
+       "health_max": 330.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      }
+     },
+     "chassis_default_class_ui_only (TnDataProvider_Chassis.DefaultSpecialty - NOT what Apply reads)": "Scientist"
+    }
    },
    "ui": {
     "portraits": {
@@ -11965,7 +13157,81 @@
       }
      }
     },
-    "class_speed_multiplier": "0.9"
+    "class_speed_multiplier": "0.9",
+    "versus_health (TnSpecialty.Apply -> InitializeSegmentedHealth(HealthBlueprint); RE TARGETED_PASS3 A4, CONFIRMED)": {
+     "rule": "every versus mode applies the specialty buffs (TnGame.ApplySpecialtyBuffs=True; False only for campaign, Escalation, campaign lobby): health = specialty blueprint, replacing the ROBODEF SharedHealth above",
+     "select_by": "the selected character data Specialty (CharacterData.Specialty via TnPlayerPawn.ApplySpecialty), never the chassis. MP custom characters: Specialty = the slot preset class -> use by_specialty[<class>]. Iconic / SP presets: use by_iconic_preset_specialty. (RE 2026-10-05)",
+     "by_iconic_preset_specialty": {
+      "specialty": "Scout",
+      "health_blueprint": "TR_Health_p.Health_Scout",
+      "segments": [
+       50.0,
+       50.0,
+       50.0,
+       50.0
+      ],
+      "health_max": 200.0,
+      "overshield": 200.0,
+      "speed_multiplier": 1.0
+     },
+     "by_specialty": {
+      "Leader": {
+       "specialty": "Leader",
+       "health_blueprint": "TR_Health_p.Health_Leader",
+       "segments": [
+        60.0,
+        60.0,
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 300.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.949999988079071
+      },
+      "Scientist": {
+       "specialty": "Scientist",
+       "health_blueprint": "TR_Health_p.Health_Scientist",
+       "segments": [
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 180.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      },
+      "Scout": {
+       "specialty": "Scout",
+       "health_blueprint": "TR_Health_p.Health_Scout",
+       "segments": [
+        50.0,
+        50.0,
+        50.0,
+        50.0
+       ],
+       "health_max": 200.0,
+       "overshield": 200.0,
+       "speed_multiplier": 1.0
+      },
+      "Soldier": {
+       "specialty": "Soldier",
+       "health_blueprint": "TR_Health_p.Health_Soldier",
+       "segments": [
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0
+       ],
+       "health_max": 330.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      }
+     },
+     "chassis_default_class_ui_only (TnDataProvider_Chassis.DefaultSpecialty - NOT what Apply reads)": "Scientist"
+    }
    },
    "ui": {
     "portraits": {
@@ -12667,7 +13933,80 @@
       }
      }
     },
-    "class_speed_multiplier": "0.9"
+    "class_speed_multiplier": "0.9",
+    "versus_health (TnSpecialty.Apply -> InitializeSegmentedHealth(HealthBlueprint); RE TARGETED_PASS3 A4, CONFIRMED)": {
+     "rule": "every versus mode applies the specialty buffs (TnGame.ApplySpecialtyBuffs=True; False only for campaign, Escalation, campaign lobby): health = specialty blueprint, replacing the ROBODEF SharedHealth above",
+     "select_by": "the selected character data Specialty (CharacterData.Specialty via TnPlayerPawn.ApplySpecialty), never the chassis. MP custom characters: Specialty = the slot preset class -> use by_specialty[<class>]. Iconic / SP presets: use by_iconic_preset_specialty. (RE 2026-10-05)",
+     "by_iconic_preset_specialty": {
+      "specialty": "Scientist",
+      "health_blueprint": "TR_Health_p.Health_Scientist",
+      "segments": [
+       60.0,
+       60.0,
+       60.0
+      ],
+      "health_max": 180.0,
+      "overshield": 200.0,
+      "speed_multiplier": 0.8999999761581421
+     },
+     "by_specialty": {
+      "Leader": {
+       "specialty": "Leader",
+       "health_blueprint": "TR_Health_p.Health_Leader",
+       "segments": [
+        60.0,
+        60.0,
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 300.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.949999988079071
+      },
+      "Scientist": {
+       "specialty": "Scientist",
+       "health_blueprint": "TR_Health_p.Health_Scientist",
+       "segments": [
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 180.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      },
+      "Scout": {
+       "specialty": "Scout",
+       "health_blueprint": "TR_Health_p.Health_Scout",
+       "segments": [
+        50.0,
+        50.0,
+        50.0,
+        50.0
+       ],
+       "health_max": 200.0,
+       "overshield": 200.0,
+       "speed_multiplier": 1.0
+      },
+      "Soldier": {
+       "specialty": "Soldier",
+       "health_blueprint": "TR_Health_p.Health_Soldier",
+       "segments": [
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0
+       ],
+       "health_max": 330.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      }
+     },
+     "chassis_default_class_ui_only (TnDataProvider_Chassis.DefaultSpecialty - NOT what Apply reads)": "Scientist"
+    }
    },
    "ui": {
     "portraits": {
@@ -13362,7 +14701,81 @@
       }
      }
     },
-    "class_speed_multiplier": "0.9"
+    "class_speed_multiplier": "0.9",
+    "versus_health (TnSpecialty.Apply -> InitializeSegmentedHealth(HealthBlueprint); RE TARGETED_PASS3 A4, CONFIRMED)": {
+     "rule": "every versus mode applies the specialty buffs (TnGame.ApplySpecialtyBuffs=True; False only for campaign, Escalation, campaign lobby): health = specialty blueprint, replacing the ROBODEF SharedHealth above",
+     "select_by": "the selected character data Specialty (CharacterData.Specialty via TnPlayerPawn.ApplySpecialty), never the chassis. MP custom characters: Specialty = the slot preset class -> use by_specialty[<class>]. Iconic / SP presets: use by_iconic_preset_specialty. (RE 2026-10-05)",
+     "by_iconic_preset_specialty": {
+      "specialty": "Scout",
+      "health_blueprint": "TR_Health_p.Health_Scout",
+      "segments": [
+       50.0,
+       50.0,
+       50.0,
+       50.0
+      ],
+      "health_max": 200.0,
+      "overshield": 200.0,
+      "speed_multiplier": 1.0
+     },
+     "by_specialty": {
+      "Leader": {
+       "specialty": "Leader",
+       "health_blueprint": "TR_Health_p.Health_Leader",
+       "segments": [
+        60.0,
+        60.0,
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 300.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.949999988079071
+      },
+      "Scientist": {
+       "specialty": "Scientist",
+       "health_blueprint": "TR_Health_p.Health_Scientist",
+       "segments": [
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 180.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      },
+      "Scout": {
+       "specialty": "Scout",
+       "health_blueprint": "TR_Health_p.Health_Scout",
+       "segments": [
+        50.0,
+        50.0,
+        50.0,
+        50.0
+       ],
+       "health_max": 200.0,
+       "overshield": 200.0,
+       "speed_multiplier": 1.0
+      },
+      "Soldier": {
+       "specialty": "Soldier",
+       "health_blueprint": "TR_Health_p.Health_Soldier",
+       "segments": [
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0
+       ],
+       "health_max": 330.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      }
+     },
+     "chassis_default_class_ui_only (TnDataProvider_Chassis.DefaultSpecialty - NOT what Apply reads)": "Scientist"
+    }
    },
    "ui": {
     "portraits": {
@@ -14040,7 +15453,80 @@
       }
      }
     },
-    "class_speed_multiplier": "0.9"
+    "class_speed_multiplier": "0.9",
+    "versus_health (TnSpecialty.Apply -> InitializeSegmentedHealth(HealthBlueprint); RE TARGETED_PASS3 A4, CONFIRMED)": {
+     "rule": "every versus mode applies the specialty buffs (TnGame.ApplySpecialtyBuffs=True; False only for campaign, Escalation, campaign lobby): health = specialty blueprint, replacing the ROBODEF SharedHealth above",
+     "select_by": "the selected character data Specialty (CharacterData.Specialty via TnPlayerPawn.ApplySpecialty), never the chassis. MP custom characters: Specialty = the slot preset class -> use by_specialty[<class>]. Iconic / SP presets: use by_iconic_preset_specialty. (RE 2026-10-05)",
+     "by_iconic_preset_specialty": {
+      "specialty": "Scientist",
+      "health_blueprint": "TR_Health_p.Health_Scientist",
+      "segments": [
+       60.0,
+       60.0,
+       60.0
+      ],
+      "health_max": 180.0,
+      "overshield": 200.0,
+      "speed_multiplier": 0.8999999761581421
+     },
+     "by_specialty": {
+      "Leader": {
+       "specialty": "Leader",
+       "health_blueprint": "TR_Health_p.Health_Leader",
+       "segments": [
+        60.0,
+        60.0,
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 300.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.949999988079071
+      },
+      "Scientist": {
+       "specialty": "Scientist",
+       "health_blueprint": "TR_Health_p.Health_Scientist",
+       "segments": [
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 180.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      },
+      "Scout": {
+       "specialty": "Scout",
+       "health_blueprint": "TR_Health_p.Health_Scout",
+       "segments": [
+        50.0,
+        50.0,
+        50.0,
+        50.0
+       ],
+       "health_max": 200.0,
+       "overshield": 200.0,
+       "speed_multiplier": 1.0
+      },
+      "Soldier": {
+       "specialty": "Soldier",
+       "health_blueprint": "TR_Health_p.Health_Soldier",
+       "segments": [
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0
+       ],
+       "health_max": 330.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      }
+     },
+     "chassis_default_class_ui_only (TnDataProvider_Chassis.DefaultSpecialty - NOT what Apply reads)": "Scientist"
+    }
    },
    "ui": {
     "portraits": {
@@ -14733,7 +16219,80 @@
       }
      }
     },
-    "class_speed_multiplier": "0.9"
+    "class_speed_multiplier": "0.9",
+    "versus_health (TnSpecialty.Apply -> InitializeSegmentedHealth(HealthBlueprint); RE TARGETED_PASS3 A4, CONFIRMED)": {
+     "rule": "every versus mode applies the specialty buffs (TnGame.ApplySpecialtyBuffs=True; False only for campaign, Escalation, campaign lobby): health = specialty blueprint, replacing the ROBODEF SharedHealth above",
+     "select_by": "the selected character data Specialty (CharacterData.Specialty via TnPlayerPawn.ApplySpecialty), never the chassis. MP custom characters: Specialty = the slot preset class -> use by_specialty[<class>]. Iconic / SP presets: use by_iconic_preset_specialty. (RE 2026-10-05)",
+     "by_iconic_preset_specialty": {
+      "specialty": "Scientist",
+      "health_blueprint": "TR_Health_p.Health_Scientist",
+      "segments": [
+       60.0,
+       60.0,
+       60.0
+      ],
+      "health_max": 180.0,
+      "overshield": 200.0,
+      "speed_multiplier": 0.8999999761581421
+     },
+     "by_specialty": {
+      "Leader": {
+       "specialty": "Leader",
+       "health_blueprint": "TR_Health_p.Health_Leader",
+       "segments": [
+        60.0,
+        60.0,
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 300.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.949999988079071
+      },
+      "Scientist": {
+       "specialty": "Scientist",
+       "health_blueprint": "TR_Health_p.Health_Scientist",
+       "segments": [
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 180.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      },
+      "Scout": {
+       "specialty": "Scout",
+       "health_blueprint": "TR_Health_p.Health_Scout",
+       "segments": [
+        50.0,
+        50.0,
+        50.0,
+        50.0
+       ],
+       "health_max": 200.0,
+       "overshield": 200.0,
+       "speed_multiplier": 1.0
+      },
+      "Soldier": {
+       "specialty": "Soldier",
+       "health_blueprint": "TR_Health_p.Health_Soldier",
+       "segments": [
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0
+       ],
+       "health_max": 330.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      }
+     },
+     "chassis_default_class_ui_only (TnDataProvider_Chassis.DefaultSpecialty - NOT what Apply reads)": "Scientist"
+    }
    },
    "ui": {
     "portraits": {
@@ -15427,7 +16986,83 @@
       }
      }
     },
-    "class_speed_multiplier": "0.9"
+    "class_speed_multiplier": "0.9",
+    "versus_health (TnSpecialty.Apply -> InitializeSegmentedHealth(HealthBlueprint); RE TARGETED_PASS3 A4, CONFIRMED)": {
+     "rule": "every versus mode applies the specialty buffs (TnGame.ApplySpecialtyBuffs=True; False only for campaign, Escalation, campaign lobby): health = specialty blueprint, replacing the ROBODEF SharedHealth above",
+     "select_by": "the selected character data Specialty (CharacterData.Specialty via TnPlayerPawn.ApplySpecialty), never the chassis. MP custom characters: Specialty = the slot preset class -> use by_specialty[<class>]. Iconic / SP presets: use by_iconic_preset_specialty. (RE 2026-10-05)",
+     "by_iconic_preset_specialty": {
+      "specialty": "Soldier",
+      "health_blueprint": "TR_Health_p.Health_Soldier",
+      "segments": [
+       55.0,
+       55.0,
+       55.0,
+       55.0,
+       55.0,
+       55.0
+      ],
+      "health_max": 330.0,
+      "overshield": 200.0,
+      "speed_multiplier": 0.8999999761581421
+     },
+     "by_specialty": {
+      "Leader": {
+       "specialty": "Leader",
+       "health_blueprint": "TR_Health_p.Health_Leader",
+       "segments": [
+        60.0,
+        60.0,
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 300.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.949999988079071
+      },
+      "Scientist": {
+       "specialty": "Scientist",
+       "health_blueprint": "TR_Health_p.Health_Scientist",
+       "segments": [
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 180.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      },
+      "Scout": {
+       "specialty": "Scout",
+       "health_blueprint": "TR_Health_p.Health_Scout",
+       "segments": [
+        50.0,
+        50.0,
+        50.0,
+        50.0
+       ],
+       "health_max": 200.0,
+       "overshield": 200.0,
+       "speed_multiplier": 1.0
+      },
+      "Soldier": {
+       "specialty": "Soldier",
+       "health_blueprint": "TR_Health_p.Health_Soldier",
+       "segments": [
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0
+       ],
+       "health_max": 330.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      }
+     },
+     "chassis_default_class_ui_only (TnDataProvider_Chassis.DefaultSpecialty - NOT what Apply reads)": "Soldier"
+    }
    },
    "ui": {
     "portraits": {
@@ -16094,7 +17729,83 @@
       }
      }
     },
-    "class_speed_multiplier": "0.9"
+    "class_speed_multiplier": "0.9",
+    "versus_health (TnSpecialty.Apply -> InitializeSegmentedHealth(HealthBlueprint); RE TARGETED_PASS3 A4, CONFIRMED)": {
+     "rule": "every versus mode applies the specialty buffs (TnGame.ApplySpecialtyBuffs=True; False only for campaign, Escalation, campaign lobby): health = specialty blueprint, replacing the ROBODEF SharedHealth above",
+     "select_by": "the selected character data Specialty (CharacterData.Specialty via TnPlayerPawn.ApplySpecialty), never the chassis. MP custom characters: Specialty = the slot preset class -> use by_specialty[<class>]. Iconic / SP presets: use by_iconic_preset_specialty. (RE 2026-10-05)",
+     "by_iconic_preset_specialty": {
+      "specialty": "Soldier",
+      "health_blueprint": "TR_Health_p.Health_Soldier",
+      "segments": [
+       55.0,
+       55.0,
+       55.0,
+       55.0,
+       55.0,
+       55.0
+      ],
+      "health_max": 330.0,
+      "overshield": 200.0,
+      "speed_multiplier": 0.8999999761581421
+     },
+     "by_specialty": {
+      "Leader": {
+       "specialty": "Leader",
+       "health_blueprint": "TR_Health_p.Health_Leader",
+       "segments": [
+        60.0,
+        60.0,
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 300.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.949999988079071
+      },
+      "Scientist": {
+       "specialty": "Scientist",
+       "health_blueprint": "TR_Health_p.Health_Scientist",
+       "segments": [
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 180.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      },
+      "Scout": {
+       "specialty": "Scout",
+       "health_blueprint": "TR_Health_p.Health_Scout",
+       "segments": [
+        50.0,
+        50.0,
+        50.0,
+        50.0
+       ],
+       "health_max": 200.0,
+       "overshield": 200.0,
+       "speed_multiplier": 1.0
+      },
+      "Soldier": {
+       "specialty": "Soldier",
+       "health_blueprint": "TR_Health_p.Health_Soldier",
+       "segments": [
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0
+       ],
+       "health_max": 330.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      }
+     },
+     "chassis_default_class_ui_only (TnDataProvider_Chassis.DefaultSpecialty - NOT what Apply reads)": "Soldier"
+    }
    },
    "ui": {
     "portraits": {
@@ -16754,7 +18465,83 @@
       }
      }
     },
-    "class_speed_multiplier": "0.9"
+    "class_speed_multiplier": "0.9",
+    "versus_health (TnSpecialty.Apply -> InitializeSegmentedHealth(HealthBlueprint); RE TARGETED_PASS3 A4, CONFIRMED)": {
+     "rule": "every versus mode applies the specialty buffs (TnGame.ApplySpecialtyBuffs=True; False only for campaign, Escalation, campaign lobby): health = specialty blueprint, replacing the ROBODEF SharedHealth above",
+     "select_by": "the selected character data Specialty (CharacterData.Specialty via TnPlayerPawn.ApplySpecialty), never the chassis. MP custom characters: Specialty = the slot preset class -> use by_specialty[<class>]. Iconic / SP presets: use by_iconic_preset_specialty. (RE 2026-10-05)",
+     "by_iconic_preset_specialty": {
+      "specialty": "Soldier",
+      "health_blueprint": "TR_Health_p.Health_Soldier",
+      "segments": [
+       55.0,
+       55.0,
+       55.0,
+       55.0,
+       55.0,
+       55.0
+      ],
+      "health_max": 330.0,
+      "overshield": 200.0,
+      "speed_multiplier": 0.8999999761581421
+     },
+     "by_specialty": {
+      "Leader": {
+       "specialty": "Leader",
+       "health_blueprint": "TR_Health_p.Health_Leader",
+       "segments": [
+        60.0,
+        60.0,
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 300.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.949999988079071
+      },
+      "Scientist": {
+       "specialty": "Scientist",
+       "health_blueprint": "TR_Health_p.Health_Scientist",
+       "segments": [
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 180.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      },
+      "Scout": {
+       "specialty": "Scout",
+       "health_blueprint": "TR_Health_p.Health_Scout",
+       "segments": [
+        50.0,
+        50.0,
+        50.0,
+        50.0
+       ],
+       "health_max": 200.0,
+       "overshield": 200.0,
+       "speed_multiplier": 1.0
+      },
+      "Soldier": {
+       "specialty": "Soldier",
+       "health_blueprint": "TR_Health_p.Health_Soldier",
+       "segments": [
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0
+       ],
+       "health_max": 330.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      }
+     },
+     "chassis_default_class_ui_only (TnDataProvider_Chassis.DefaultSpecialty - NOT what Apply reads)": "Soldier"
+    }
    },
    "ui": {
     "portraits": {
@@ -17410,7 +19197,83 @@
       }
      }
     },
-    "class_speed_multiplier": "0.9"
+    "class_speed_multiplier": "0.9",
+    "versus_health (TnSpecialty.Apply -> InitializeSegmentedHealth(HealthBlueprint); RE TARGETED_PASS3 A4, CONFIRMED)": {
+     "rule": "every versus mode applies the specialty buffs (TnGame.ApplySpecialtyBuffs=True; False only for campaign, Escalation, campaign lobby): health = specialty blueprint, replacing the ROBODEF SharedHealth above",
+     "select_by": "the selected character data Specialty (CharacterData.Specialty via TnPlayerPawn.ApplySpecialty), never the chassis. MP custom characters: Specialty = the slot preset class -> use by_specialty[<class>]. Iconic / SP presets: use by_iconic_preset_specialty. (RE 2026-10-05)",
+     "by_iconic_preset_specialty": {
+      "specialty": "Soldier",
+      "health_blueprint": "TR_Health_p.Health_Soldier",
+      "segments": [
+       55.0,
+       55.0,
+       55.0,
+       55.0,
+       55.0,
+       55.0
+      ],
+      "health_max": 330.0,
+      "overshield": 200.0,
+      "speed_multiplier": 0.8999999761581421
+     },
+     "by_specialty": {
+      "Leader": {
+       "specialty": "Leader",
+       "health_blueprint": "TR_Health_p.Health_Leader",
+       "segments": [
+        60.0,
+        60.0,
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 300.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.949999988079071
+      },
+      "Scientist": {
+       "specialty": "Scientist",
+       "health_blueprint": "TR_Health_p.Health_Scientist",
+       "segments": [
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 180.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      },
+      "Scout": {
+       "specialty": "Scout",
+       "health_blueprint": "TR_Health_p.Health_Scout",
+       "segments": [
+        50.0,
+        50.0,
+        50.0,
+        50.0
+       ],
+       "health_max": 200.0,
+       "overshield": 200.0,
+       "speed_multiplier": 1.0
+      },
+      "Soldier": {
+       "specialty": "Soldier",
+       "health_blueprint": "TR_Health_p.Health_Soldier",
+       "segments": [
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0
+       ],
+       "health_max": 330.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      }
+     },
+     "chassis_default_class_ui_only (TnDataProvider_Chassis.DefaultSpecialty - NOT what Apply reads)": "Soldier"
+    }
    },
    "ui": {
     "portraits": {
@@ -18133,7 +19996,80 @@
       }
      }
     },
-    "class_speed_multiplier": "0.95"
+    "class_speed_multiplier": "0.95",
+    "versus_health (TnSpecialty.Apply -> InitializeSegmentedHealth(HealthBlueprint); RE TARGETED_PASS3 A4, CONFIRMED)": {
+     "rule": "every versus mode applies the specialty buffs (TnGame.ApplySpecialtyBuffs=True; False only for campaign, Escalation, campaign lobby): health = specialty blueprint, replacing the ROBODEF SharedHealth above",
+     "select_by": "the selected character data Specialty (CharacterData.Specialty via TnPlayerPawn.ApplySpecialty), never the chassis. MP custom characters: Specialty = the slot preset class -> use by_specialty[<class>]. Iconic / SP presets: use by_iconic_preset_specialty. (RE 2026-10-05)",
+     "by_iconic_preset_specialty": {
+      "specialty": "Scientist",
+      "health_blueprint": "TR_Health_p.Health_Scientist",
+      "segments": [
+       60.0,
+       60.0,
+       60.0
+      ],
+      "health_max": 180.0,
+      "overshield": 200.0,
+      "speed_multiplier": 0.8999999761581421
+     },
+     "by_specialty": {
+      "Leader": {
+       "specialty": "Leader",
+       "health_blueprint": "TR_Health_p.Health_Leader",
+       "segments": [
+        60.0,
+        60.0,
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 300.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.949999988079071
+      },
+      "Scientist": {
+       "specialty": "Scientist",
+       "health_blueprint": "TR_Health_p.Health_Scientist",
+       "segments": [
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 180.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      },
+      "Scout": {
+       "specialty": "Scout",
+       "health_blueprint": "TR_Health_p.Health_Scout",
+       "segments": [
+        50.0,
+        50.0,
+        50.0,
+        50.0
+       ],
+       "health_max": 200.0,
+       "overshield": 200.0,
+       "speed_multiplier": 1.0
+      },
+      "Soldier": {
+       "specialty": "Soldier",
+       "health_blueprint": "TR_Health_p.Health_Soldier",
+       "segments": [
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0
+       ],
+       "health_max": 330.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      }
+     },
+     "chassis_default_class_ui_only (TnDataProvider_Chassis.DefaultSpecialty - NOT what Apply reads)": "Leader"
+    }
    },
    "ui": {
     "portraits": {
@@ -18842,7 +20778,83 @@
       }
      }
     },
-    "class_speed_multiplier": "0.95"
+    "class_speed_multiplier": "0.95",
+    "versus_health (TnSpecialty.Apply -> InitializeSegmentedHealth(HealthBlueprint); RE TARGETED_PASS3 A4, CONFIRMED)": {
+     "rule": "every versus mode applies the specialty buffs (TnGame.ApplySpecialtyBuffs=True; False only for campaign, Escalation, campaign lobby): health = specialty blueprint, replacing the ROBODEF SharedHealth above",
+     "select_by": "the selected character data Specialty (CharacterData.Specialty via TnPlayerPawn.ApplySpecialty), never the chassis. MP custom characters: Specialty = the slot preset class -> use by_specialty[<class>]. Iconic / SP presets: use by_iconic_preset_specialty. (RE 2026-10-05)",
+     "by_iconic_preset_specialty": {
+      "specialty": "Soldier",
+      "health_blueprint": "TR_Health_p.Health_Soldier",
+      "segments": [
+       55.0,
+       55.0,
+       55.0,
+       55.0,
+       55.0,
+       55.0
+      ],
+      "health_max": 330.0,
+      "overshield": 200.0,
+      "speed_multiplier": 0.8999999761581421
+     },
+     "by_specialty": {
+      "Leader": {
+       "specialty": "Leader",
+       "health_blueprint": "TR_Health_p.Health_Leader",
+       "segments": [
+        60.0,
+        60.0,
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 300.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.949999988079071
+      },
+      "Scientist": {
+       "specialty": "Scientist",
+       "health_blueprint": "TR_Health_p.Health_Scientist",
+       "segments": [
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 180.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      },
+      "Scout": {
+       "specialty": "Scout",
+       "health_blueprint": "TR_Health_p.Health_Scout",
+       "segments": [
+        50.0,
+        50.0,
+        50.0,
+        50.0
+       ],
+       "health_max": 200.0,
+       "overshield": 200.0,
+       "speed_multiplier": 1.0
+      },
+      "Soldier": {
+       "specialty": "Soldier",
+       "health_blueprint": "TR_Health_p.Health_Soldier",
+       "segments": [
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0
+       ],
+       "health_max": 330.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      }
+     },
+     "chassis_default_class_ui_only (TnDataProvider_Chassis.DefaultSpecialty - NOT what Apply reads)": "Leader"
+    }
    },
    "ui": {
     "portraits": {
@@ -19578,7 +21590,80 @@
       }
      }
     },
-    "class_speed_multiplier": "0.95"
+    "class_speed_multiplier": "0.95",
+    "versus_health (TnSpecialty.Apply -> InitializeSegmentedHealth(HealthBlueprint); RE TARGETED_PASS3 A4, CONFIRMED)": {
+     "rule": "every versus mode applies the specialty buffs (TnGame.ApplySpecialtyBuffs=True; False only for campaign, Escalation, campaign lobby): health = specialty blueprint, replacing the ROBODEF SharedHealth above",
+     "select_by": "the selected character data Specialty (CharacterData.Specialty via TnPlayerPawn.ApplySpecialty), never the chassis. MP custom characters: Specialty = the slot preset class -> use by_specialty[<class>]. Iconic / SP presets: use by_iconic_preset_specialty. (RE 2026-10-05)",
+     "by_iconic_preset_specialty": {
+      "specialty": "Scientist",
+      "health_blueprint": "TR_Health_p.Health_Scientist",
+      "segments": [
+       60.0,
+       60.0,
+       60.0
+      ],
+      "health_max": 180.0,
+      "overshield": 200.0,
+      "speed_multiplier": 0.8999999761581421
+     },
+     "by_specialty": {
+      "Leader": {
+       "specialty": "Leader",
+       "health_blueprint": "TR_Health_p.Health_Leader",
+       "segments": [
+        60.0,
+        60.0,
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 300.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.949999988079071
+      },
+      "Scientist": {
+       "specialty": "Scientist",
+       "health_blueprint": "TR_Health_p.Health_Scientist",
+       "segments": [
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 180.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      },
+      "Scout": {
+       "specialty": "Scout",
+       "health_blueprint": "TR_Health_p.Health_Scout",
+       "segments": [
+        50.0,
+        50.0,
+        50.0,
+        50.0
+       ],
+       "health_max": 200.0,
+       "overshield": 200.0,
+       "speed_multiplier": 1.0
+      },
+      "Soldier": {
+       "specialty": "Soldier",
+       "health_blueprint": "TR_Health_p.Health_Soldier",
+       "segments": [
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0
+       ],
+       "health_max": 330.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      }
+     },
+     "chassis_default_class_ui_only (TnDataProvider_Chassis.DefaultSpecialty - NOT what Apply reads)": "Leader"
+    }
    },
    "ui": {
     "portraits": {
@@ -20282,7 +22367,82 @@
       }
      }
     },
-    "class_speed_multiplier": "0.95"
+    "class_speed_multiplier": "0.95",
+    "versus_health (TnSpecialty.Apply -> InitializeSegmentedHealth(HealthBlueprint); RE TARGETED_PASS3 A4, CONFIRMED)": {
+     "rule": "every versus mode applies the specialty buffs (TnGame.ApplySpecialtyBuffs=True; False only for campaign, Escalation, campaign lobby): health = specialty blueprint, replacing the ROBODEF SharedHealth above",
+     "select_by": "the selected character data Specialty (CharacterData.Specialty via TnPlayerPawn.ApplySpecialty), never the chassis. MP custom characters: Specialty = the slot preset class -> use by_specialty[<class>]. Iconic / SP presets: use by_iconic_preset_specialty. (RE 2026-10-05)",
+     "by_iconic_preset_specialty": {
+      "specialty": "Leader",
+      "health_blueprint": "TR_Health_p.Health_Leader",
+      "segments": [
+       60.0,
+       60.0,
+       60.0,
+       60.0,
+       60.0
+      ],
+      "health_max": 300.0,
+      "overshield": 200.0,
+      "speed_multiplier": 0.949999988079071
+     },
+     "by_specialty": {
+      "Leader": {
+       "specialty": "Leader",
+       "health_blueprint": "TR_Health_p.Health_Leader",
+       "segments": [
+        60.0,
+        60.0,
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 300.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.949999988079071
+      },
+      "Scientist": {
+       "specialty": "Scientist",
+       "health_blueprint": "TR_Health_p.Health_Scientist",
+       "segments": [
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 180.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      },
+      "Scout": {
+       "specialty": "Scout",
+       "health_blueprint": "TR_Health_p.Health_Scout",
+       "segments": [
+        50.0,
+        50.0,
+        50.0,
+        50.0
+       ],
+       "health_max": 200.0,
+       "overshield": 200.0,
+       "speed_multiplier": 1.0
+      },
+      "Soldier": {
+       "specialty": "Soldier",
+       "health_blueprint": "TR_Health_p.Health_Soldier",
+       "segments": [
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0
+       ],
+       "health_max": 330.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      }
+     },
+     "chassis_default_class_ui_only (TnDataProvider_Chassis.DefaultSpecialty - NOT what Apply reads)": "Leader"
+    }
    },
    "ui": {
     "portraits": {
@@ -20966,7 +23126,82 @@
       }
      }
     },
-    "class_speed_multiplier": "0.95"
+    "class_speed_multiplier": "0.95",
+    "versus_health (TnSpecialty.Apply -> InitializeSegmentedHealth(HealthBlueprint); RE TARGETED_PASS3 A4, CONFIRMED)": {
+     "rule": "every versus mode applies the specialty buffs (TnGame.ApplySpecialtyBuffs=True; False only for campaign, Escalation, campaign lobby): health = specialty blueprint, replacing the ROBODEF SharedHealth above",
+     "select_by": "the selected character data Specialty (CharacterData.Specialty via TnPlayerPawn.ApplySpecialty), never the chassis. MP custom characters: Specialty = the slot preset class -> use by_specialty[<class>]. Iconic / SP presets: use by_iconic_preset_specialty. (RE 2026-10-05)",
+     "by_iconic_preset_specialty": {
+      "specialty": "Leader",
+      "health_blueprint": "TR_Health_p.Health_Leader",
+      "segments": [
+       60.0,
+       60.0,
+       60.0,
+       60.0,
+       60.0
+      ],
+      "health_max": 300.0,
+      "overshield": 200.0,
+      "speed_multiplier": 0.949999988079071
+     },
+     "by_specialty": {
+      "Leader": {
+       "specialty": "Leader",
+       "health_blueprint": "TR_Health_p.Health_Leader",
+       "segments": [
+        60.0,
+        60.0,
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 300.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.949999988079071
+      },
+      "Scientist": {
+       "specialty": "Scientist",
+       "health_blueprint": "TR_Health_p.Health_Scientist",
+       "segments": [
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 180.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      },
+      "Scout": {
+       "specialty": "Scout",
+       "health_blueprint": "TR_Health_p.Health_Scout",
+       "segments": [
+        50.0,
+        50.0,
+        50.0,
+        50.0
+       ],
+       "health_max": 200.0,
+       "overshield": 200.0,
+       "speed_multiplier": 1.0
+      },
+      "Soldier": {
+       "specialty": "Soldier",
+       "health_blueprint": "TR_Health_p.Health_Soldier",
+       "segments": [
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0
+       ],
+       "health_max": 330.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      }
+     },
+     "chassis_default_class_ui_only (TnDataProvider_Chassis.DefaultSpecialty - NOT what Apply reads)": "Leader"
+    }
    },
    "ui": {
     "portraits": {
@@ -21600,7 +23835,69 @@
       }
      }
     },
-    "class_speed_multiplier": "1.0"
+    "class_speed_multiplier": "1.0",
+    "versus_health (TnSpecialty.Apply -> InitializeSegmentedHealth(HealthBlueprint); RE TARGETED_PASS3 A4, CONFIRMED)": {
+     "rule": "every versus mode applies the specialty buffs (TnGame.ApplySpecialtyBuffs=True; False only for campaign, Escalation, campaign lobby): health = specialty blueprint, replacing the ROBODEF SharedHealth above",
+     "select_by": "the selected character data Specialty (CharacterData.Specialty via TnPlayerPawn.ApplySpecialty), never the chassis. MP custom characters: Specialty = the slot preset class -> use by_specialty[<class>]. Iconic / SP presets: use by_iconic_preset_specialty. (RE 2026-10-05)",
+     "by_iconic_preset_specialty": null,
+     "by_specialty": {
+      "Leader": {
+       "specialty": "Leader",
+       "health_blueprint": "TR_Health_p.Health_Leader",
+       "segments": [
+        60.0,
+        60.0,
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 300.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.949999988079071
+      },
+      "Scientist": {
+       "specialty": "Scientist",
+       "health_blueprint": "TR_Health_p.Health_Scientist",
+       "segments": [
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 180.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      },
+      "Scout": {
+       "specialty": "Scout",
+       "health_blueprint": "TR_Health_p.Health_Scout",
+       "segments": [
+        50.0,
+        50.0,
+        50.0,
+        50.0
+       ],
+       "health_max": 200.0,
+       "overshield": 200.0,
+       "speed_multiplier": 1.0
+      },
+      "Soldier": {
+       "specialty": "Soldier",
+       "health_blueprint": "TR_Health_p.Health_Soldier",
+       "segments": [
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0
+       ],
+       "health_max": 330.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      }
+     },
+     "chassis_default_class_ui_only (TnDataProvider_Chassis.DefaultSpecialty - NOT what Apply reads)": "Scout"
+    }
    },
    "ui": {
     "portraits": {
@@ -22189,7 +24486,69 @@
       }
      }
     },
-    "class_speed_multiplier": "1.0"
+    "class_speed_multiplier": "1.0",
+    "versus_health (TnSpecialty.Apply -> InitializeSegmentedHealth(HealthBlueprint); RE TARGETED_PASS3 A4, CONFIRMED)": {
+     "rule": "every versus mode applies the specialty buffs (TnGame.ApplySpecialtyBuffs=True; False only for campaign, Escalation, campaign lobby): health = specialty blueprint, replacing the ROBODEF SharedHealth above",
+     "select_by": "the selected character data Specialty (CharacterData.Specialty via TnPlayerPawn.ApplySpecialty), never the chassis. MP custom characters: Specialty = the slot preset class -> use by_specialty[<class>]. Iconic / SP presets: use by_iconic_preset_specialty. (RE 2026-10-05)",
+     "by_iconic_preset_specialty": null,
+     "by_specialty": {
+      "Leader": {
+       "specialty": "Leader",
+       "health_blueprint": "TR_Health_p.Health_Leader",
+       "segments": [
+        60.0,
+        60.0,
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 300.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.949999988079071
+      },
+      "Scientist": {
+       "specialty": "Scientist",
+       "health_blueprint": "TR_Health_p.Health_Scientist",
+       "segments": [
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 180.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      },
+      "Scout": {
+       "specialty": "Scout",
+       "health_blueprint": "TR_Health_p.Health_Scout",
+       "segments": [
+        50.0,
+        50.0,
+        50.0,
+        50.0
+       ],
+       "health_max": 200.0,
+       "overshield": 200.0,
+       "speed_multiplier": 1.0
+      },
+      "Soldier": {
+       "specialty": "Soldier",
+       "health_blueprint": "TR_Health_p.Health_Soldier",
+       "segments": [
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0
+       ],
+       "health_max": 330.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      }
+     },
+     "chassis_default_class_ui_only (TnDataProvider_Chassis.DefaultSpecialty - NOT what Apply reads)": "Scout"
+    }
    },
    "ui": {
     "portraits": {
@@ -22725,7 +25084,69 @@
      }
     },
     "vehicle_physics": {},
-    "class_speed_multiplier": "1.0"
+    "class_speed_multiplier": "1.0",
+    "versus_health (TnSpecialty.Apply -> InitializeSegmentedHealth(HealthBlueprint); RE TARGETED_PASS3 A4, CONFIRMED)": {
+     "rule": "every versus mode applies the specialty buffs (TnGame.ApplySpecialtyBuffs=True; False only for campaign, Escalation, campaign lobby): health = specialty blueprint, replacing the ROBODEF SharedHealth above",
+     "select_by": "the selected character data Specialty (CharacterData.Specialty via TnPlayerPawn.ApplySpecialty), never the chassis. MP custom characters: Specialty = the slot preset class -> use by_specialty[<class>]. Iconic / SP presets: use by_iconic_preset_specialty. (RE 2026-10-05)",
+     "by_iconic_preset_specialty": null,
+     "by_specialty": {
+      "Leader": {
+       "specialty": "Leader",
+       "health_blueprint": "TR_Health_p.Health_Leader",
+       "segments": [
+        60.0,
+        60.0,
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 300.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.949999988079071
+      },
+      "Scientist": {
+       "specialty": "Scientist",
+       "health_blueprint": "TR_Health_p.Health_Scientist",
+       "segments": [
+        60.0,
+        60.0,
+        60.0
+       ],
+       "health_max": 180.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      },
+      "Scout": {
+       "specialty": "Scout",
+       "health_blueprint": "TR_Health_p.Health_Scout",
+       "segments": [
+        50.0,
+        50.0,
+        50.0,
+        50.0
+       ],
+       "health_max": 200.0,
+       "overshield": 200.0,
+       "speed_multiplier": 1.0
+      },
+      "Soldier": {
+       "specialty": "Soldier",
+       "health_blueprint": "TR_Health_p.Health_Soldier",
+       "segments": [
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0,
+        55.0
+       ],
+       "health_max": 330.0,
+       "overshield": 200.0,
+       "speed_multiplier": 0.8999999761581421
+      }
+     },
+     "chassis_default_class_ui_only (TnDataProvider_Chassis.DefaultSpecialty - NOT what Apply reads)": "Scout"
+    }
    },
    "ui": {
     "portraits": {
