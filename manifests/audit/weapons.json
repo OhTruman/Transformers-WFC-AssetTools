@@ -1,0 +1,6580 @@
+{
+ "generated_by": "AssetTools/scripts/wfc/asset_integrity_audit.py",
+ "generated": "2026-10-05 14:01",
+ "vocabulary": [
+  "COMPLETE",
+  "PARTIAL",
+  "MISSING",
+  "FALLBACK",
+  "UNKNOWN"
+ ],
+ "note": "extraction-level audit; no runtime-correctness claim",
+ "rows": {
+  "AssaultRifle": {
+   "class": "TransContent.TnWeaponAssaultRifle",
+   "cells": {
+    "mesh": {
+     "status": "COMPLETE",
+     "glb": "VerticalSlice/Weapons/AssaultRifle/weapon.glb",
+     "note": null
+    },
+    "materials_textures": {
+     "status": "PARTIAL",
+     "slots": 1,
+     "untextured_slots": [],
+     "slot_detail": [
+      {
+       "status": "PARTIAL",
+       "material": "WEP_AssaultRifle_p.WEP_AssaultRifle_MATINST",
+       "parent_chain": [
+        "WEP_Shared_p.WEP_BASE_MATINST",
+        "WEP_Shared_p.WEP_PhongMain_MAT"
+       ],
+       "textures": 7,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      }
+     ]
+    },
+    "muzzle_socket": {
+     "status": "COMPLETE",
+     "muzzle": [
+      "MuzzleFlash"
+     ],
+     "mesh_sockets": [
+      "ClipSocket",
+      "ShellEject",
+      "MuzzleFlash"
+     ]
+    },
+    "muzzle_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_AssaultRifle_p.FX.MuzzleFlash_AssaultRifle_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_AssaultRifle_p.FX.MuzzleFlash_AssaultRifle_FX",
+       "status": "COMPLETE",
+       "emitters": 8,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "tracer_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_AssaultRifle_p.FX.Tracer_AssaultRifle_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_AssaultRifle_p.FX.Tracer_AssaultRifle_FX",
+       "status": "COMPLETE",
+       "emitters": 2,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "impact_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_AssaultRifle_p.FX.Impact_AssaultRifle_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_AssaultRifle_p.FX.Impact_AssaultRifle_FX",
+       "status": "COMPLETE",
+       "emitters": 6,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "projectile": {
+     "status": "UNKNOWN",
+     "classes": []
+    },
+    "animations": {
+     "status": "COMPLETE",
+     "event_anims": [
+      "AssaultRifle_Equip",
+      "AssaultRifle_Drop",
+      "AssaultRifle_Fire",
+      "AssaultRifle_Reload"
+     ],
+     "missing": [],
+     "clips": 7
+    },
+    "sounds": {
+     "status": "COMPLETE",
+     "total": 9,
+     "with_wav": 9,
+     "unresolved": [],
+     "cue_without_tagged_waves": [],
+     "note": null
+    },
+    "hud_icon": {
+     "status": "COMPLETE",
+     "icons": [
+      "content/UI_GFxHud_p/TnWeaponAssaultRifle.png",
+      "content/UI_GFxCharacterSelect_p/AssaultRifle.png",
+      "content/UI_GFxCustomize_p/AssaultRifle.png"
+     ]
+    },
+    "ammo_damage": {
+     "status": "COMPLETE",
+     "MaxAmmoCount": 192,
+     "InstantHitDamage": [
+      18.0
+     ]
+    },
+    "restrictions": {
+     "status": "COMPLETE",
+     "restrictions": {
+      "AssaultRifle": {
+       "FactionRestriction": "Any",
+       "ChassisRestriction": [
+        "Jet",
+        "Jet2",
+        "Jet3",
+        "Jet4",
+        "Jet5",
+        "Jet6",
+        "Jet7",
+        "Jet8",
+        "Tank",
+        "Tank2",
+        "Tank3",
+        "Tank4",
+        "Tank5"
+       ]
+      }
+     },
+     "note": null
+    }
+   },
+   "untextured_but_has_geometry": false,
+   "overall": "PARTIAL"
+  },
+  "PlaneAssaultRifle": {
+   "class": "TransContent.TnWeaponAssaultRiflePlane",
+   "cells": {
+    "mesh": {
+     "status": "COMPLETE",
+     "glb": null,
+     "note": "the weapon mesh component authors no SkeletalMesh: nothing is drawn for the held weapon (vehicle-form weapons fire from the vehicle WeaponSocket; grenades show only the thrown projectile / pickup mesh) - CONFIRMED absence"
+    },
+    "materials_textures": {
+     "status": "UNKNOWN",
+     "slots": 0,
+     "untextured_slots": [],
+     "slot_detail": []
+    },
+    "muzzle_socket": {
+     "status": "UNKNOWN",
+     "muzzle": [
+      "WeaponSocket_Primary",
+      "WeaponSocket_Primary2"
+     ],
+     "mesh_sockets": []
+    },
+    "muzzle_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_AssaultRifle_p.FX.MuzzleFlash_AssaultRifle_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_AssaultRifle_p.FX.MuzzleFlash_AssaultRifle_FX",
+       "status": "COMPLETE",
+       "emitters": 8,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "tracer_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_AssaultRifle_p.FX.Tracer_AssaultRifle_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_AssaultRifle_p.FX.Tracer_AssaultRifle_FX",
+       "status": "COMPLETE",
+       "emitters": 2,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "impact_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_AssaultRifle_p.FX.Impact_AssaultRifle_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_AssaultRifle_p.FX.Impact_AssaultRifle_FX",
+       "status": "COMPLETE",
+       "emitters": 6,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "projectile": {
+     "status": "UNKNOWN",
+     "classes": []
+    },
+    "animations": {
+     "status": "UNKNOWN",
+     "event_anims": [],
+     "missing": [],
+     "clips": 0
+    },
+    "sounds": {
+     "status": "UNKNOWN",
+     "total": 8,
+     "with_wav": 7,
+     "unresolved": [],
+     "cue_without_tagged_waves": [
+      "WP_Overheat"
+     ],
+     "note": "cue_without_tagged_waves: SoundNodeWaveEvent with no tagged ChildNodes - silent or native wave refs (UNKNOWN)"
+    },
+    "hud_icon": {
+     "status": "MISSING",
+     "icons": []
+    },
+    "ammo_damage": {
+     "status": "COMPLETE",
+     "MaxAmmoCount": 300,
+     "InstantHitDamage": [
+      9.0
+     ]
+    },
+    "restrictions": {
+     "status": "COMPLETE",
+     "restrictions": {
+      "PlaneAssaultRifle": {
+       "FactionRestriction": "Any",
+       "ChassisRestriction": []
+      }
+     },
+     "note": null
+    }
+   },
+   "untextured_but_has_geometry": false,
+   "overall": "PARTIAL"
+  },
+  "AssaultRifleVehicle": {
+   "class": "TransContent.TnWeaponAssaultRifleVehicle",
+   "cells": {
+    "mesh": {
+     "status": "COMPLETE",
+     "glb": null,
+     "note": "the weapon mesh component authors no SkeletalMesh: nothing is drawn for the held weapon (vehicle-form weapons fire from the vehicle WeaponSocket; grenades show only the thrown projectile / pickup mesh) - CONFIRMED absence"
+    },
+    "materials_textures": {
+     "status": "UNKNOWN",
+     "slots": 0,
+     "untextured_slots": [],
+     "slot_detail": []
+    },
+    "muzzle_socket": {
+     "status": "UNKNOWN",
+     "muzzle": [
+      "WeaponSocket_Primary",
+      "WeaponSocket_Primary2"
+     ],
+     "mesh_sockets": []
+    },
+    "muzzle_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_AssaultRifle_p.FX.MuzzleFlash_AssaultRifle_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_AssaultRifle_p.FX.MuzzleFlash_AssaultRifle_FX",
+       "status": "COMPLETE",
+       "emitters": 8,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "tracer_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_AssaultRifle_p.FX.Tracer_AssaultRifle_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_AssaultRifle_p.FX.Tracer_AssaultRifle_FX",
+       "status": "COMPLETE",
+       "emitters": 2,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "impact_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_AssaultRifle_p.FX.Impact_AssaultRifle_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_AssaultRifle_p.FX.Impact_AssaultRifle_FX",
+       "status": "COMPLETE",
+       "emitters": 6,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "projectile": {
+     "status": "UNKNOWN",
+     "classes": []
+    },
+    "animations": {
+     "status": "UNKNOWN",
+     "event_anims": [],
+     "missing": [],
+     "clips": 0
+    },
+    "sounds": {
+     "status": "UNKNOWN",
+     "total": 8,
+     "with_wav": 7,
+     "unresolved": [],
+     "cue_without_tagged_waves": [
+      "WP_Overheat"
+     ],
+     "note": "cue_without_tagged_waves: SoundNodeWaveEvent with no tagged ChildNodes - silent or native wave refs (UNKNOWN)"
+    },
+    "hud_icon": {
+     "status": "COMPLETE",
+     "icons": [
+      "content/UI_GFxHud_p/TnWeaponAssaultRifleVehicle.png"
+     ]
+    },
+    "ammo_damage": {
+     "status": "COMPLETE",
+     "MaxAmmoCount": 300,
+     "InstantHitDamage": [
+      12.0
+     ]
+    },
+    "restrictions": {
+     "status": "COMPLETE",
+     "restrictions": {
+      "AssaultRifleVehicle": {
+       "FactionRestriction": "Any",
+       "ChassisRestriction": []
+      }
+     },
+     "note": null
+    }
+   },
+   "untextured_but_has_geometry": false,
+   "overall": "COMPLETE"
+  },
+  "Axe": {
+   "class": "TransContent.TnWeaponAxe",
+   "cells": {
+    "mesh": {
+     "status": "COMPLETE",
+     "glb": "VerticalSlice/Weapons/Axe/weapon.glb",
+     "note": null
+    },
+    "materials_textures": {
+     "status": "PARTIAL",
+     "slots": 2,
+     "untextured_slots": [],
+     "slot_detail": [
+      {
+       "status": "PARTIAL",
+       "material": "WEP_Axe_p.Autobot.WEP_Axe_Energon_MATINST",
+       "parent_chain": [
+        "WEP_Shared_p.Electric_Lava_Tech_B_Mat"
+       ],
+       "textures": 5,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      },
+      {
+       "status": "PARTIAL",
+       "material": "WEP_Axe_p.Autobot.WEP_Axe_A_WIP_MATINST",
+       "parent_chain": [
+        "ENV_AllShader_p.Release.ENV_PhongMain_NS_Mat"
+       ],
+       "textures": 6,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      }
+     ]
+    },
+    "muzzle_socket": {
+     "status": "COMPLETE",
+     "muzzle": [
+      "MuzzleFlash"
+     ],
+     "mesh_sockets": [
+      "MuzzleFlash"
+     ]
+    },
+    "muzzle_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_Sword_p.FX.SwordEquip_Red_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_Sword_p.FX.SwordEquip_Red_FX",
+       "status": "COMPLETE",
+       "emitters": 3,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "tracer_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "impact_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "projectile": {
+     "status": "UNKNOWN",
+     "classes": []
+    },
+    "animations": {
+     "status": "COMPLETE",
+     "event_anims": [
+      "Axe_Equip",
+      "Axe_Drop"
+     ],
+     "missing": [],
+     "clips": 2
+    },
+    "sounds": {
+     "status": "UNKNOWN",
+     "total": 4,
+     "with_wav": 2,
+     "unresolved": [],
+     "cue_without_tagged_waves": [
+      "WP_Looping",
+      "WP_Special"
+     ],
+     "note": "cue_without_tagged_waves: SoundNodeWaveEvent with no tagged ChildNodes - silent or native wave refs (UNKNOWN)"
+    },
+    "hud_icon": {
+     "status": "COMPLETE",
+     "icons": [
+      "content/UI_GFxCharacterSelect_p/Axe.png",
+      "content/UI_GFxCustomize_p/Axe.png"
+     ]
+    },
+    "ammo_damage": {
+     "status": "COMPLETE",
+     "MaxAmmoCount": 9999,
+     "InstantHitDamage": [
+      0.0,
+      0.0
+     ]
+    },
+    "restrictions": {
+     "status": "COMPLETE",
+     "restrictions": {
+      "Axe": {
+       "FactionRestriction": "Autobot",
+       "ChassisRestriction": [
+        "Truck2",
+        "Truck3"
+       ]
+      }
+     },
+     "note": null
+    }
+   },
+   "untextured_but_has_geometry": false,
+   "overall": "PARTIAL"
+  },
+  "Bazooka": {
+   "class": "TransContent.TnWeaponBazooka",
+   "cells": {
+    "mesh": {
+     "status": "COMPLETE",
+     "glb": "VerticalSlice/Weapons/Bazooka/weapon.glb",
+     "note": null
+    },
+    "materials_textures": {
+     "status": "PARTIAL",
+     "slots": 1,
+     "untextured_slots": [],
+     "slot_detail": [
+      {
+       "status": "PARTIAL",
+       "material": "WEP_BazookaTemp1_p.WEP_Bazooka_MATINST",
+       "parent_chain": [
+        "WEP_Shared_p.WEP_BASE_MATINST",
+        "WEP_Shared_p.WEP_PhongMain_MAT"
+       ],
+       "textures": 7,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      }
+     ]
+    },
+    "muzzle_socket": {
+     "status": "COMPLETE",
+     "muzzle": [
+      "MuzzleFlash"
+     ],
+     "mesh_sockets": [
+      "MuzzleFlash"
+     ]
+    },
+    "muzzle_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_FusionCannon_p.FX.Muzzleflash_FusionCannon_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_FusionCannon_p.FX.Muzzleflash_FusionCannon_FX",
+       "status": "COMPLETE",
+       "emitters": 5,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "tracer_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "impact_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "projectile": {
+     "status": "PARTIAL",
+     "classes": [
+      "TransContent.TnProjectileBazooka"
+     ]
+    },
+    "animations": {
+     "status": "COMPLETE",
+     "event_anims": [
+      "Bazooka_TransOut",
+      "Bazooka_TransIn",
+      "Bazooka_FireBigOne",
+      "Bazooka_CoolDown"
+     ],
+     "missing": [],
+     "clips": 12
+    },
+    "sounds": {
+     "status": "UNKNOWN",
+     "total": 8,
+     "with_wav": 7,
+     "unresolved": [],
+     "cue_without_tagged_waves": [
+      "WP_Overheat"
+     ],
+     "note": "cue_without_tagged_waves: SoundNodeWaveEvent with no tagged ChildNodes - silent or native wave refs (UNKNOWN)"
+    },
+    "hud_icon": {
+     "status": "MISSING",
+     "icons": [
+      "content/UI_GFxHud_p/TnWeaponBazooka.png",
+      "content/UI_GFxCharacterSelect_p/Bazooka.png",
+      "content/UI_GFxCustomize_p/Bazooka.png"
+     ]
+    },
+    "ammo_damage": {
+     "status": "COMPLETE",
+     "MaxAmmoCount": 10,
+     "InstantHitDamage": [
+      70.0
+     ]
+    },
+    "restrictions": {
+     "status": "COMPLETE",
+     "restrictions": {
+      "Bazooka": {
+       "FactionRestriction": "Any",
+       "ChassisRestriction": [
+        "Truck",
+        "Truck2",
+        "Truck3",
+        "Truck4",
+        "Truck5",
+        "Truck6"
+       ]
+      }
+     },
+     "note": null
+    }
+   },
+   "untextured_but_has_geometry": false,
+   "overall": "PARTIAL"
+  },
+  "BeatDownClub": {
+   "class": "TransContent.TnWeaponBeatDownClub",
+   "cells": {
+    "mesh": {
+     "status": "COMPLETE",
+     "glb": "VerticalSlice/Weapons/BeatDownClub/weapon.glb",
+     "note": null
+    },
+    "materials_textures": {
+     "status": "PARTIAL",
+     "slots": 1,
+     "untextured_slots": [],
+     "slot_detail": [
+      {
+       "status": "PARTIAL",
+       "material": "WEP_BeatDownClub_p.WEP_BeatDownClub_MATINST",
+       "parent_chain": [
+        "WEP_Shared_p.WEP_MeleeBase_MATINST",
+        "WEP_Shared_p.WEP_PhongMain_MAT"
+       ],
+       "textures": 7,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      }
+     ]
+    },
+    "muzzle_socket": {
+     "status": "COMPLETE",
+     "muzzle": [
+      "MuzzleFlash"
+     ],
+     "mesh_sockets": [
+      "MuzzleFlash"
+     ]
+    },
+    "muzzle_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_Sword_p.FX.SwordEquip_Red_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_Sword_p.FX.SwordEquip_Red_FX",
+       "status": "COMPLETE",
+       "emitters": 3,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "tracer_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "impact_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "projectile": {
+     "status": "UNKNOWN",
+     "classes": []
+    },
+    "animations": {
+     "status": "COMPLETE",
+     "event_anims": [
+      "BeatDownClub_Equip",
+      "BeatDownClub_Drop"
+     ],
+     "missing": [],
+     "clips": 2
+    },
+    "sounds": {
+     "status": "UNKNOWN",
+     "total": 4,
+     "with_wav": 2,
+     "unresolved": [],
+     "cue_without_tagged_waves": [
+      "WP_Looping",
+      "WP_Special"
+     ],
+     "note": "cue_without_tagged_waves: SoundNodeWaveEvent with no tagged ChildNodes - silent or native wave refs (UNKNOWN)"
+    },
+    "hud_icon": {
+     "status": "MISSING",
+     "icons": []
+    },
+    "ammo_damage": {
+     "status": "COMPLETE",
+     "MaxAmmoCount": 9999,
+     "InstantHitDamage": [
+      0.0,
+      0.0
+     ]
+    },
+    "restrictions": {
+     "status": "COMPLETE",
+     "restrictions": {
+      "BeatDownClub": {
+       "FactionRestriction": "Autobot",
+       "ChassisRestriction": [
+        "Jet4",
+        "Jet5",
+        "Jet6"
+       ]
+      }
+     },
+     "note": null
+    }
+   },
+   "untextured_but_has_geometry": false,
+   "overall": "PARTIAL"
+  },
+  "BroadSword": {
+   "class": "TransContent.TnWeaponBroadSword",
+   "cells": {
+    "mesh": {
+     "status": "COMPLETE",
+     "glb": "VerticalSlice/Weapons/BroadSword/weapon.glb",
+     "note": null
+    },
+    "materials_textures": {
+     "status": "PARTIAL",
+     "slots": 2,
+     "untextured_slots": [],
+     "slot_detail": [
+      {
+       "status": "PARTIAL",
+       "material": "WEP_BroadSword_p.WEP_BroadSword_MATINST",
+       "parent_chain": [
+        "WEP_Shared_p.WEP_MeleeBase_MATINST",
+        "WEP_Shared_p.WEP_PhongMain_MAT"
+       ],
+       "textures": 7,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      },
+      {
+       "status": "PARTIAL",
+       "material": "WEP_BroadSword_p.WEP_BroadSword_EnergonTech_MATINST",
+       "parent_chain": [
+        "WEP_Shared_p.Electric_Lava_Tech_B_Mat"
+       ],
+       "textures": 5,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      }
+     ]
+    },
+    "muzzle_socket": {
+     "status": "COMPLETE",
+     "muzzle": [
+      "MuzzleFlash"
+     ],
+     "mesh_sockets": [
+      "MuzzleFlash"
+     ]
+    },
+    "muzzle_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_Sword_p.FX.SwordEquip_Red_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_Sword_p.FX.SwordEquip_Red_FX",
+       "status": "COMPLETE",
+       "emitters": 3,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "tracer_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "impact_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "projectile": {
+     "status": "UNKNOWN",
+     "classes": []
+    },
+    "animations": {
+     "status": "COMPLETE",
+     "event_anims": [
+      "BroadSword_Equip",
+      "BroadSword_Drop"
+     ],
+     "missing": [],
+     "clips": 2
+    },
+    "sounds": {
+     "status": "UNKNOWN",
+     "total": 4,
+     "with_wav": 2,
+     "unresolved": [],
+     "cue_without_tagged_waves": [
+      "WP_Looping",
+      "WP_Special"
+     ],
+     "note": "cue_without_tagged_waves: SoundNodeWaveEvent with no tagged ChildNodes - silent or native wave refs (UNKNOWN)"
+    },
+    "hud_icon": {
+     "status": "UNKNOWN",
+     "icons": []
+    },
+    "ammo_damage": {
+     "status": "COMPLETE",
+     "MaxAmmoCount": 9999,
+     "InstantHitDamage": [
+      0.0,
+      0.0
+     ]
+    },
+    "restrictions": {
+     "status": "UNKNOWN",
+     "restrictions": {},
+     "note": "no TnDataProvider_Weapon entry: not loadout-selectable"
+    }
+   },
+   "untextured_but_has_geometry": false,
+   "overall": "PARTIAL"
+  },
+  "BurstRifle": {
+   "class": "TransContent.TnWeaponBurstRifle",
+   "cells": {
+    "mesh": {
+     "status": "COMPLETE",
+     "glb": "VerticalSlice/Weapons/BurstRifle/weapon.glb",
+     "note": null
+    },
+    "materials_textures": {
+     "status": "PARTIAL",
+     "slots": 1,
+     "untextured_slots": [],
+     "slot_detail": [
+      {
+       "status": "PARTIAL",
+       "material": "WEP_BurstRifle_p.Materials.WEP_BurstRifle_MATINST",
+       "parent_chain": [
+        "WEP_Shared_p.WEP_BASE_MATINST",
+        "WEP_Shared_p.WEP_PhongMain_MAT"
+       ],
+       "textures": 7,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      }
+     ]
+    },
+    "muzzle_socket": {
+     "status": "COMPLETE",
+     "muzzle": [
+      "MuzzleFlash"
+     ],
+     "mesh_sockets": [
+      "MuzzleFlash",
+      "ClipSocket",
+      "ShellEject"
+     ]
+    },
+    "muzzle_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_BurstRifle_p.FX.MuzzleFlash_BurstRifle_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_BurstRifle_p.FX.MuzzleFlash_BurstRifle_FX",
+       "status": "COMPLETE",
+       "emitters": 6,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "tracer_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_AssaultRifle_p.FX.Tracer_AssaultRifle_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_AssaultRifle_p.FX.Tracer_AssaultRifle_FX",
+       "status": "COMPLETE",
+       "emitters": 2,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "impact_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_AssaultRifle_p.FX.Impact_AssaultRifle_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_AssaultRifle_p.FX.Impact_AssaultRifle_FX",
+       "status": "COMPLETE",
+       "emitters": 6,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "projectile": {
+     "status": "UNKNOWN",
+     "classes": []
+    },
+    "animations": {
+     "status": "COMPLETE",
+     "event_anims": [
+      "BurstRifle_Equip",
+      "BurstRifle_Drop",
+      "BurstRifle_Fire",
+      "BurstRifle_Reload"
+     ],
+     "missing": [],
+     "clips": 7
+    },
+    "sounds": {
+     "status": "COMPLETE",
+     "total": 9,
+     "with_wav": 9,
+     "unresolved": [],
+     "cue_without_tagged_waves": [],
+     "note": null
+    },
+    "hud_icon": {
+     "status": "MISSING",
+     "icons": [
+      "content/UI_GFxHud_p/TnWeaponBurstRifle.png",
+      "content/UI_GFxCharacterSelect_p/BurstRifle.png",
+      "content/UI_GFxCustomize_p/BurstRifle.png"
+     ]
+    },
+    "ammo_damage": {
+     "status": "COMPLETE",
+     "MaxAmmoCount": 120,
+     "InstantHitDamage": [
+      29.0
+     ]
+    },
+    "restrictions": {
+     "status": "COMPLETE",
+     "restrictions": {
+      "BurstRifle": {
+       "FactionRestriction": "Any",
+       "ChassisRestriction": [
+        "Jet",
+        "Jet2",
+        "Jet3",
+        "Jet4",
+        "Jet5",
+        "Jet6",
+        "Jet7",
+        "Jet8"
+       ]
+      }
+     },
+     "note": null
+    }
+   },
+   "untextured_but_has_geometry": false,
+   "overall": "PARTIAL"
+  },
+  "ButterflyAxe": {
+   "class": "TransContent.TnWeaponButterflyAxe",
+   "cells": {
+    "mesh": {
+     "status": "COMPLETE",
+     "glb": "VerticalSlice/Weapons/ButterflyAxe/weapon.glb",
+     "note": null
+    },
+    "materials_textures": {
+     "status": "PARTIAL",
+     "slots": 2,
+     "untextured_slots": [],
+     "slot_detail": [
+      {
+       "status": "PARTIAL",
+       "material": "WEP_ButterflyAxe_p.WEP_ButterflyAxeEnergon_Tech_MATINST",
+       "parent_chain": [
+        "WEP_Shared_p.Electric_Lava_Tech_B_Mat"
+       ],
+       "textures": 5,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      },
+      {
+       "status": "PARTIAL",
+       "material": "WEP_ButterflyAxe_p.WEP_ButterflyAxe_MATINST",
+       "parent_chain": [
+        "WEP_Shared_p.WEP_MeleeBase_MATINST",
+        "WEP_Shared_p.WEP_PhongMain_MAT"
+       ],
+       "textures": 8,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      }
+     ]
+    },
+    "muzzle_socket": {
+     "status": "COMPLETE",
+     "muzzle": [
+      "MuzzleFlash"
+     ],
+     "mesh_sockets": [
+      "MuzzleFlash"
+     ]
+    },
+    "muzzle_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_Sword_p.FX.SwordEquip_Red_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_Sword_p.FX.SwordEquip_Red_FX",
+       "status": "COMPLETE",
+       "emitters": 3,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "tracer_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "impact_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "projectile": {
+     "status": "UNKNOWN",
+     "classes": []
+    },
+    "animations": {
+     "status": "COMPLETE",
+     "event_anims": [
+      "ButterflyAxe_Equip",
+      "ButterflyAxe_Drop"
+     ],
+     "missing": [],
+     "clips": 2
+    },
+    "sounds": {
+     "status": "UNKNOWN",
+     "total": 4,
+     "with_wav": 2,
+     "unresolved": [],
+     "cue_without_tagged_waves": [
+      "WP_Looping",
+      "WP_Special"
+     ],
+     "note": "cue_without_tagged_waves: SoundNodeWaveEvent with no tagged ChildNodes - silent or native wave refs (UNKNOWN)"
+    },
+    "hud_icon": {
+     "status": "MISSING",
+     "icons": []
+    },
+    "ammo_damage": {
+     "status": "COMPLETE",
+     "MaxAmmoCount": 9999,
+     "InstantHitDamage": [
+      0.0,
+      0.0
+     ]
+    },
+    "restrictions": {
+     "status": "COMPLETE",
+     "restrictions": {
+      "ButterflyAxe": {
+       "FactionRestriction": "Autobot",
+       "ChassisRestriction": [
+        "Truck"
+       ]
+      }
+     },
+     "note": null
+    }
+   },
+   "untextured_but_has_geometry": false,
+   "overall": "PARTIAL"
+  },
+  "CeremonialStaff": {
+   "class": "TransContent.TnWeaponCeremonialStaff",
+   "cells": {
+    "mesh": {
+     "status": "COMPLETE",
+     "glb": "VerticalSlice/Weapons/CeremonialStaff/weapon.glb",
+     "note": null
+    },
+    "materials_textures": {
+     "status": "PARTIAL",
+     "slots": 2,
+     "untextured_slots": [],
+     "slot_detail": [
+      {
+       "status": "COMPLETE",
+       "material": "WEP_ProngDagger_p.WEP_Energon_A_MATINST",
+       "parent_chain": [
+        "FX_Materials_p.Materials.Energon_Base_01_MAT"
+       ],
+       "textures": 6,
+       "unexported": [],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      },
+      {
+       "status": "PARTIAL",
+       "material": "WEP_CeremonialStaff_p.WEP_CeremonialStaff_MATINST",
+       "parent_chain": [
+        "WEP_Shared_p.WEP_MeleeBase_MATINST",
+        "WEP_Shared_p.WEP_PhongMain_MAT"
+       ],
+       "textures": 7,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      }
+     ]
+    },
+    "muzzle_socket": {
+     "status": "COMPLETE",
+     "muzzle": [
+      "MuzzleFlash"
+     ],
+     "mesh_sockets": [
+      "MuzzleFlash"
+     ]
+    },
+    "muzzle_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_Sword_p.FX.SwordEquip_Red_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_Sword_p.FX.SwordEquip_Red_FX",
+       "status": "COMPLETE",
+       "emitters": 3,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "tracer_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "impact_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "projectile": {
+     "status": "UNKNOWN",
+     "classes": []
+    },
+    "animations": {
+     "status": "COMPLETE",
+     "event_anims": [
+      "CeremonialStaff_Equip",
+      "CeremonialStaff_Drop"
+     ],
+     "missing": [],
+     "clips": 2
+    },
+    "sounds": {
+     "status": "UNKNOWN",
+     "total": 4,
+     "with_wav": 2,
+     "unresolved": [],
+     "cue_without_tagged_waves": [
+      "WP_Looping",
+      "WP_Special"
+     ],
+     "note": "cue_without_tagged_waves: SoundNodeWaveEvent with no tagged ChildNodes - silent or native wave refs (UNKNOWN)"
+    },
+    "hud_icon": {
+     "status": "UNKNOWN",
+     "icons": []
+    },
+    "ammo_damage": {
+     "status": "COMPLETE",
+     "MaxAmmoCount": 9999,
+     "InstantHitDamage": [
+      0.0,
+      0.0
+     ]
+    },
+    "restrictions": {
+     "status": "UNKNOWN",
+     "restrictions": {},
+     "note": "no TnDataProvider_Weapon entry: not loadout-selectable"
+    }
+   },
+   "untextured_but_has_geometry": false,
+   "overall": "PARTIAL"
+  },
+  "EMPShotgun": {
+   "class": "TransContent.TnWeaponEmpShotgun",
+   "cells": {
+    "mesh": {
+     "status": "COMPLETE",
+     "glb": "VerticalSlice/Weapons/EMPShotgun/weapon.glb",
+     "note": null
+    },
+    "materials_textures": {
+     "status": "PARTIAL",
+     "slots": 1,
+     "untextured_slots": [],
+     "slot_detail": [
+      {
+       "status": "PARTIAL",
+       "material": "WEP_EMPShotgun_p.WEP_EMPShotgun_MATINST",
+       "parent_chain": [
+        "WEP_Shared_p.WEP_BASE_MATINST",
+        "WEP_Shared_p.WEP_PhongMain_MAT"
+       ],
+       "textures": 7,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      }
+     ]
+    },
+    "muzzle_socket": {
+     "status": "COMPLETE",
+     "muzzle": [
+      "MuzzleFlash"
+     ],
+     "mesh_sockets": [
+      "MuzzleFlash",
+      "MagazineSocket",
+      "ShellSocket"
+     ]
+    },
+    "muzzle_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_EMPShotgun_p.FX.MuzzleFlash_EMPShotgun_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_EMPShotgun_p.FX.MuzzleFlash_EMPShotgun_FX",
+       "status": "COMPLETE",
+       "emitters": 6,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "tracer_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_EMPShotgun_p.FX.Trail_EMPShotgun_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_EMPShotgun_p.FX.Trail_EMPShotgun_FX",
+       "status": "COMPLETE",
+       "emitters": 7,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "impact_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_EMPShotgun_p.FX.Squib_EMPShotgun_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_EMPShotgun_p.FX.Squib_EMPShotgun_FX",
+       "status": "COMPLETE",
+       "emitters": 7,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "projectile": {
+     "status": "UNKNOWN",
+     "classes": []
+    },
+    "animations": {
+     "status": "COMPLETE",
+     "event_anims": [
+      "Shotgun_Equip",
+      "Shotgun_Drop",
+      "Shotgun_Fire",
+      "Shotgun_Reload"
+     ],
+     "missing": [],
+     "clips": 6
+    },
+    "sounds": {
+     "status": "COMPLETE",
+     "total": 8,
+     "with_wav": 8,
+     "unresolved": [],
+     "cue_without_tagged_waves": [],
+     "note": null
+    },
+    "hud_icon": {
+     "status": "MISSING",
+     "icons": [
+      "content/UI_GFxHud_p/TnWeaponEmpShotgun.png",
+      "content/UI_GFxCharacterSelect_p/EMPShotgun.png",
+      "content/UI_GFxCustomize_p/EMPShotgun.png"
+     ]
+    },
+    "ammo_damage": {
+     "status": "COMPLETE",
+     "MaxAmmoCount": 18,
+     "InstantHitDamage": [
+      13.0
+     ]
+    },
+    "restrictions": {
+     "status": "COMPLETE",
+     "restrictions": {
+      "EMPShotgun": {
+       "FactionRestriction": "Any",
+       "ChassisRestriction": [
+        "Jet",
+        "Jet2",
+        "Jet3",
+        "Jet4",
+        "Jet5",
+        "Jet6",
+        "Jet7",
+        "Jet8",
+        "Tank",
+        "Tank2",
+        "Tank3",
+        "Tank4",
+        "Tank5"
+       ]
+      }
+     },
+     "note": null
+    }
+   },
+   "untextured_but_has_geometry": false,
+   "overall": "PARTIAL"
+  },
+  "FightingStaff": {
+   "class": "TransContent.TnWeaponFightingStaff",
+   "cells": {
+    "mesh": {
+     "status": "COMPLETE",
+     "glb": "VerticalSlice/Weapons/FightingStaff/weapon.glb",
+     "note": null
+    },
+    "materials_textures": {
+     "status": "PARTIAL",
+     "slots": 2,
+     "untextured_slots": [],
+     "slot_detail": [
+      {
+       "status": "PARTIAL",
+       "material": "WEP_FightingStaff_p.WEP_FightingStaff_MATINST",
+       "parent_chain": [
+        "WEP_Shared_p.WEP_MeleeBase_MATINST",
+        "WEP_Shared_p.WEP_PhongMain_MAT"
+       ],
+       "textures": 7,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      },
+      {
+       "status": "COMPLETE",
+       "material": "WEP_ProngDagger_p.WEP_Energon_A_MATINST",
+       "parent_chain": [
+        "FX_Materials_p.Materials.Energon_Base_01_MAT"
+       ],
+       "textures": 6,
+       "unexported": [],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      }
+     ]
+    },
+    "muzzle_socket": {
+     "status": "COMPLETE",
+     "muzzle": [
+      "MuzzleFlash"
+     ],
+     "mesh_sockets": [
+      "MuzzleFlash"
+     ]
+    },
+    "muzzle_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_Sword_p.FX.SwordEquip_Red_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_Sword_p.FX.SwordEquip_Red_FX",
+       "status": "COMPLETE",
+       "emitters": 3,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "tracer_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "impact_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "projectile": {
+     "status": "UNKNOWN",
+     "classes": []
+    },
+    "animations": {
+     "status": "COMPLETE",
+     "event_anims": [
+      "FightingStaff_Equip",
+      "FightingStaff_Drop"
+     ],
+     "missing": [],
+     "clips": 2
+    },
+    "sounds": {
+     "status": "UNKNOWN",
+     "total": 4,
+     "with_wav": 2,
+     "unresolved": [],
+     "cue_without_tagged_waves": [
+      "WP_Looping",
+      "WP_Special"
+     ],
+     "note": "cue_without_tagged_waves: SoundNodeWaveEvent with no tagged ChildNodes - silent or native wave refs (UNKNOWN)"
+    },
+    "hud_icon": {
+     "status": "UNKNOWN",
+     "icons": []
+    },
+    "ammo_damage": {
+     "status": "COMPLETE",
+     "MaxAmmoCount": 9999,
+     "InstantHitDamage": [
+      0.0,
+      0.0
+     ]
+    },
+    "restrictions": {
+     "status": "UNKNOWN",
+     "restrictions": {},
+     "note": "no TnDataProvider_Weapon entry: not loadout-selectable"
+    }
+   },
+   "untextured_but_has_geometry": false,
+   "overall": "PARTIAL"
+  },
+  "FlakGrenades": {
+   "class": "TransContent.TnWeaponFlakGrenades",
+   "cells": {
+    "mesh": {
+     "status": "COMPLETE",
+     "glb": null,
+     "note": "the weapon mesh component authors no SkeletalMesh: nothing is drawn for the held weapon (vehicle-form weapons fire from the vehicle WeaponSocket; grenades show only the thrown projectile / pickup mesh) - CONFIRMED absence"
+    },
+    "materials_textures": {
+     "status": "UNKNOWN",
+     "slots": 0,
+     "untextured_slots": [],
+     "slot_detail": []
+    },
+    "muzzle_socket": {
+     "status": "UNKNOWN",
+     "muzzle": [
+      "MuzzleFlash_R",
+      "MuzzleFlash_L"
+     ],
+     "mesh_sockets": []
+    },
+    "muzzle_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "tracer_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "impact_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "projectile": {
+     "status": "COMPLETE",
+     "classes": [
+      "TransGame.TnProjectileGrenade"
+     ]
+    },
+    "animations": {
+     "status": "UNKNOWN",
+     "event_anims": [
+      "GrenadeLauncher_Equip",
+      "GrenadeLauncher_Drop",
+      "GrenadeLauncher_Fire"
+     ],
+     "missing": [
+      "GrenadeLauncher_Equip",
+      "GrenadeLauncher_Drop",
+      "GrenadeLauncher_Fire"
+     ],
+     "clips": 0
+    },
+    "sounds": {
+     "status": "COMPLETE",
+     "total": 4,
+     "with_wav": 4,
+     "unresolved": [],
+     "cue_without_tagged_waves": [],
+     "note": null
+    },
+    "hud_icon": {
+     "status": "COMPLETE",
+     "icons": [
+      "content/UI_GFxCharacterSelect_p/FlakGrenades.png",
+      "content/UI_GFxCustomize_p/FlakGrenades.png"
+     ]
+    },
+    "ammo_damage": {
+     "status": "COMPLETE",
+     "MaxAmmoCount": 1,
+     "InstantHitDamage": [
+      0.0,
+      0.0
+     ]
+    },
+    "restrictions": {
+     "status": "COMPLETE",
+     "restrictions": {
+      "FlakGrenades": {
+       "FactionRestriction": "Any",
+       "ChassisRestriction": [
+        "Truck",
+        "Truck2",
+        "Truck3",
+        "Truck4",
+        "Truck5",
+        "Truck6"
+       ]
+      }
+     },
+     "note": null
+    }
+   },
+   "untextured_but_has_geometry": false,
+   "overall": "COMPLETE"
+  },
+  "FlashBangs": {
+   "class": "TransContent.TnWeaponFlashBangs",
+   "cells": {
+    "mesh": {
+     "status": "COMPLETE",
+     "glb": "VerticalSlice/Weapons/FlashBangs/weapon.glb",
+     "note": null
+    },
+    "materials_textures": {
+     "status": "PARTIAL",
+     "slots": 1,
+     "untextured_slots": [],
+     "slot_detail": [
+      {
+       "status": "PARTIAL",
+       "material": "WEP_GrenadeLauncher_p.WEP_GrenadeLauncher_MATINST",
+       "parent_chain": [
+        "WEP_Shared_p.WEP_BASE_MATINST",
+        "WEP_Shared_p.WEP_PhongMain_MAT"
+       ],
+       "textures": 7,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      }
+     ]
+    },
+    "muzzle_socket": {
+     "status": "MISSING",
+     "muzzle": [
+      "MuzzleFlash_R",
+      "MuzzleFlash_L"
+     ],
+     "mesh_sockets": [
+      "AmmoShell",
+      "MuzzleFlash"
+     ]
+    },
+    "muzzle_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "tracer_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "impact_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "projectile": {
+     "status": "COMPLETE",
+     "classes": [
+      "TransContent.TnProjectileFlashBang"
+     ]
+    },
+    "animations": {
+     "status": "COMPLETE",
+     "event_anims": [
+      "GrenadeLauncher_Equip",
+      "GrenadeLauncher_Drop",
+      "GrenadeLauncher_Fire"
+     ],
+     "missing": [],
+     "clips": 6
+    },
+    "sounds": {
+     "status": "COMPLETE",
+     "total": 4,
+     "with_wav": 4,
+     "unresolved": [],
+     "cue_without_tagged_waves": [],
+     "note": null
+    },
+    "hud_icon": {
+     "status": "COMPLETE",
+     "icons": [
+      "content/UI_GFxCharacterSelect_p/FlashBangs.png",
+      "content/UI_GFxCustomize_p/FlashBangs.png"
+     ]
+    },
+    "ammo_damage": {
+     "status": "COMPLETE",
+     "MaxAmmoCount": 2,
+     "InstantHitDamage": [
+      0.0,
+      0.0
+     ]
+    },
+    "restrictions": {
+     "status": "COMPLETE",
+     "restrictions": {
+      "FlashBangs": {
+       "FactionRestriction": "Any",
+       "ChassisRestriction": [
+        "Tank",
+        "Tank2",
+        "Tank3",
+        "Tank4",
+        "Tank5"
+       ]
+      }
+     },
+     "note": null
+    }
+   },
+   "untextured_but_has_geometry": false,
+   "overall": "PARTIAL"
+  },
+  "GatlingGun": {
+   "class": "TransContent.TnWeaponGatlingGun",
+   "cells": {
+    "mesh": {
+     "status": "COMPLETE",
+     "glb": "VerticalSlice/Weapons/GatlingGun/weapon.glb",
+     "note": null
+    },
+    "materials_textures": {
+     "status": "PARTIAL",
+     "slots": 1,
+     "untextured_slots": [],
+     "slot_detail": [
+      {
+       "status": "PARTIAL",
+       "material": "WEP_TurretIonGun_p.WEP_TurretIonGun_MATINST",
+       "parent_chain": [
+        "WEP_Shared_p.WEP_BASE_MATINST",
+        "WEP_Shared_p.WEP_PhongMain_MAT"
+       ],
+       "textures": 7,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      }
+     ]
+    },
+    "muzzle_socket": {
+     "status": "COMPLETE",
+     "muzzle": [
+      "MuzzleFlash"
+     ],
+     "mesh_sockets": [
+      "MuzzleFlash"
+     ]
+    },
+    "muzzle_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_TurretIonBlaster_p.FX.MuzzleFlash_TurretIon_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_TurretIonBlaster_p.FX.MuzzleFlash_TurretIon_FX",
+       "status": "COMPLETE",
+       "emitters": 5,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "tracer_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_TurretIonBlaster_p.FX.Tracer_TurretIon_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_TurretIonBlaster_p.FX.Tracer_TurretIon_FX",
+       "status": "COMPLETE",
+       "emitters": 2,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "impact_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_TurretIonBlaster_p.FX.Impact_IonTurret_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_TurretIonBlaster_p.FX.Impact_IonTurret_FX",
+       "status": "COMPLETE",
+       "emitters": 6,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "projectile": {
+     "status": "UNKNOWN",
+     "classes": []
+    },
+    "animations": {
+     "status": "COMPLETE",
+     "event_anims": [
+      "WEP_Turret_Pickup",
+      "WEP_Turret_Fire",
+      "WEP_Turret_Unequip"
+     ],
+     "missing": [],
+     "clips": 7
+    },
+    "sounds": {
+     "status": "UNKNOWN",
+     "total": 9,
+     "with_wav": 8,
+     "unresolved": [],
+     "cue_without_tagged_waves": [
+      "PickupSound"
+     ],
+     "note": "cue_without_tagged_waves: SoundNodeWaveEvent with no tagged ChildNodes - silent or native wave refs (UNKNOWN)"
+    },
+    "hud_icon": {
+     "status": "UNKNOWN",
+     "icons": []
+    },
+    "ammo_damage": {
+     "status": "PARTIAL",
+     "MaxAmmoCount": null,
+     "InstantHitDamage": [
+      25.0
+     ]
+    },
+    "restrictions": {
+     "status": "UNKNOWN",
+     "restrictions": {},
+     "note": "no TnDataProvider_Weapon entry: not loadout-selectable"
+    }
+   },
+   "untextured_but_has_geometry": false,
+   "overall": "PARTIAL"
+  },
+  "GrenadeLauncher": {
+   "class": "TransContent.TnWeaponGrenadeLauncher",
+   "cells": {
+    "mesh": {
+     "status": "COMPLETE",
+     "glb": "VerticalSlice/Weapons/GrenadeLauncher/weapon.glb",
+     "note": null
+    },
+    "materials_textures": {
+     "status": "PARTIAL",
+     "slots": 1,
+     "untextured_slots": [],
+     "slot_detail": [
+      {
+       "status": "PARTIAL",
+       "material": "WEP_GrenadeLauncher_p.WEP_GrenadeLauncher_MATINST",
+       "parent_chain": [
+        "WEP_Shared_p.WEP_BASE_MATINST",
+        "WEP_Shared_p.WEP_PhongMain_MAT"
+       ],
+       "textures": 7,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      }
+     ]
+    },
+    "muzzle_socket": {
+     "status": "COMPLETE",
+     "muzzle": [
+      "MuzzleFlash"
+     ],
+     "mesh_sockets": [
+      "AmmoShell",
+      "MuzzleFlash"
+     ]
+    },
+    "muzzle_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_GrenadeLauncher_p.FX.MuzzleFlash_GrenadeLauncher_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_GrenadeLauncher_p.FX.MuzzleFlash_GrenadeLauncher_FX",
+       "status": "COMPLETE",
+       "emitters": 5,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "tracer_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "impact_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "projectile": {
+     "status": "PARTIAL",
+     "classes": [
+      "TransContent.TnProjectileGrenadeLauncher"
+     ]
+    },
+    "animations": {
+     "status": "COMPLETE",
+     "event_anims": [
+      "GrenadeLauncher_Equip",
+      "GrenadeLauncher_Drop",
+      "GrenadeLauncher_Fire",
+      "GrenadeLauncher_Reload"
+     ],
+     "missing": [],
+     "clips": 6
+    },
+    "sounds": {
+     "status": "UNKNOWN",
+     "total": 10,
+     "with_wav": 9,
+     "unresolved": [],
+     "cue_without_tagged_waves": [
+      "WP_Overheat"
+     ],
+     "note": "cue_without_tagged_waves: SoundNodeWaveEvent with no tagged ChildNodes - silent or native wave refs (UNKNOWN)"
+    },
+    "hud_icon": {
+     "status": "COMPLETE",
+     "icons": [
+      "content/UI_GFxHud_p/TnWeaponGrenadeLauncher.png",
+      "content/UI_GFxCharacterSelect_p/GrenadeLauncher.png",
+      "content/UI_GFxCustomize_p/GrenadeLauncher.png"
+     ]
+    },
+    "ammo_damage": {
+     "status": "COMPLETE",
+     "MaxAmmoCount": 9,
+     "InstantHitDamage": [
+      0.0,
+      0.0
+     ]
+    },
+    "restrictions": {
+     "status": "COMPLETE",
+     "restrictions": {
+      "GrenadeLauncher": {
+       "FactionRestriction": "Any",
+       "ChassisRestriction": [
+        "Truck",
+        "Truck2",
+        "Truck3",
+        "Truck4",
+        "Truck5",
+        "Truck6"
+       ]
+      }
+     },
+     "note": null
+    }
+   },
+   "untextured_but_has_geometry": false,
+   "overall": "PARTIAL"
+  },
+  "HalberdAxe": {
+   "class": "TransContent.TnWeaponHalberdAxe",
+   "cells": {
+    "mesh": {
+     "status": "COMPLETE",
+     "glb": "VerticalSlice/Weapons/HalberdAxe/weapon.glb",
+     "note": null
+    },
+    "materials_textures": {
+     "status": "PARTIAL",
+     "slots": 2,
+     "untextured_slots": [],
+     "slot_detail": [
+      {
+       "status": "PARTIAL",
+       "material": "WEP_HalberdAxe_p.WEP_HalberdAxe_MATINST",
+       "parent_chain": [
+        "WEP_Shared_p.WEP_MeleeBase_MATINST",
+        "WEP_Shared_p.WEP_PhongMain_MAT"
+       ],
+       "textures": 7,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      },
+      {
+       "status": "PARTIAL",
+       "material": "WEP_HalberdAxe_p.WEP_HalberdAxe_EnergonTech_MATINST",
+       "parent_chain": [
+        "WEP_Shared_p.Electric_Lava_Tech_B_Mat"
+       ],
+       "textures": 5,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      }
+     ]
+    },
+    "muzzle_socket": {
+     "status": "COMPLETE",
+     "muzzle": [
+      "MuzzleFlash"
+     ],
+     "mesh_sockets": [
+      "MuzzleFlash"
+     ]
+    },
+    "muzzle_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_Sword_p.FX.MeleeEquip_Purple_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_Sword_p.FX.MeleeEquip_Purple_FX",
+       "status": "COMPLETE",
+       "emitters": 3,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "tracer_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "impact_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "projectile": {
+     "status": "UNKNOWN",
+     "classes": []
+    },
+    "animations": {
+     "status": "COMPLETE",
+     "event_anims": [
+      "HalberdAxe_Equip",
+      "HalberdAxe_Drop"
+     ],
+     "missing": [],
+     "clips": 2
+    },
+    "sounds": {
+     "status": "UNKNOWN",
+     "total": 4,
+     "with_wav": 2,
+     "unresolved": [],
+     "cue_without_tagged_waves": [
+      "WP_Looping",
+      "WP_Special"
+     ],
+     "note": "cue_without_tagged_waves: SoundNodeWaveEvent with no tagged ChildNodes - silent or native wave refs (UNKNOWN)"
+    },
+    "hud_icon": {
+     "status": "UNKNOWN",
+     "icons": []
+    },
+    "ammo_damage": {
+     "status": "COMPLETE",
+     "MaxAmmoCount": 9999,
+     "InstantHitDamage": [
+      0.0,
+      0.0
+     ]
+    },
+    "restrictions": {
+     "status": "UNKNOWN",
+     "restrictions": {},
+     "note": "no TnDataProvider_Weapon entry: not loadout-selectable"
+    }
+   },
+   "untextured_but_has_geometry": false,
+   "overall": "PARTIAL"
+  },
+  "Hammer": {
+   "class": "TransContent.TnWeaponHammer",
+   "cells": {
+    "mesh": {
+     "status": "COMPLETE",
+     "glb": "VerticalSlice/Weapons/Hammer/weapon.glb",
+     "note": null
+    },
+    "materials_textures": {
+     "status": "PARTIAL",
+     "slots": 2,
+     "untextured_slots": [],
+     "slot_detail": [
+      {
+       "status": "PARTIAL",
+       "material": "WEP_Hammer_p.WEP_Hammer_D_MATINST",
+       "parent_chain": [
+        "WEP_Shared_p.WEP_MeleeBase_MATINST",
+        "WEP_Shared_p.WEP_PhongMain_MAT"
+       ],
+       "textures": 8,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      },
+      {
+       "status": "PARTIAL",
+       "material": "WEP_Hammer_p.WEP_Hammer_Spikes_MATINST",
+       "parent_chain": [
+        "WEP_Shared_p.Electric_Lava_Tech_B_Mat"
+       ],
+       "textures": 5,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      }
+     ]
+    },
+    "muzzle_socket": {
+     "status": "COMPLETE",
+     "muzzle": [
+      "MuzzleFlash"
+     ],
+     "mesh_sockets": [
+      "MuzzleFlash"
+     ]
+    },
+    "muzzle_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_Sword_p.FX.MeleeEquip_Purple_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_Sword_p.FX.MeleeEquip_Purple_FX",
+       "status": "COMPLETE",
+       "emitters": 3,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "tracer_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "impact_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "projectile": {
+     "status": "UNKNOWN",
+     "classes": []
+    },
+    "animations": {
+     "status": "COMPLETE",
+     "event_anims": [
+      "Hammer_Equip",
+      "Hammer_Drop"
+     ],
+     "missing": [],
+     "clips": 2
+    },
+    "sounds": {
+     "status": "UNKNOWN",
+     "total": 4,
+     "with_wav": 2,
+     "unresolved": [],
+     "cue_without_tagged_waves": [
+      "WP_Looping",
+      "WP_Special"
+     ],
+     "note": "cue_without_tagged_waves: SoundNodeWaveEvent with no tagged ChildNodes - silent or native wave refs (UNKNOWN)"
+    },
+    "hud_icon": {
+     "status": "COMPLETE",
+     "icons": [
+      "content/UI_GFxCharacterSelect_p/Hammer.png",
+      "content/UI_GFxCustomize_p/Hammer.png"
+     ]
+    },
+    "ammo_damage": {
+     "status": "COMPLETE",
+     "MaxAmmoCount": 9999,
+     "InstantHitDamage": [
+      0.0,
+      0.0
+     ]
+    },
+    "restrictions": {
+     "status": "COMPLETE",
+     "restrictions": {
+      "Hammer": {
+       "FactionRestriction": "Decepticon",
+       "ChassisRestriction": [
+        "Tank2"
+       ]
+      }
+     },
+     "note": null
+    }
+   },
+   "untextured_but_has_geometry": false,
+   "overall": "PARTIAL"
+  },
+  "HealGrenades": {
+   "class": "TransContent.TnWeaponHealGrenades",
+   "cells": {
+    "mesh": {
+     "status": "COMPLETE",
+     "glb": "VerticalSlice/Weapons/HealGrenades/weapon.glb",
+     "note": null
+    },
+    "materials_textures": {
+     "status": "PARTIAL",
+     "slots": 1,
+     "untextured_slots": [],
+     "slot_detail": [
+      {
+       "status": "PARTIAL",
+       "material": "WEP_GrenadeLauncher_p.WEP_GrenadeLauncher_MATINST",
+       "parent_chain": [
+        "WEP_Shared_p.WEP_BASE_MATINST",
+        "WEP_Shared_p.WEP_PhongMain_MAT"
+       ],
+       "textures": 7,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      }
+     ]
+    },
+    "muzzle_socket": {
+     "status": "MISSING",
+     "muzzle": [
+      "MuzzleFlash_R",
+      "MuzzleFlash_L"
+     ],
+     "mesh_sockets": [
+      "AmmoShell",
+      "MuzzleFlash"
+     ]
+    },
+    "muzzle_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "tracer_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "impact_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "projectile": {
+     "status": "COMPLETE",
+     "classes": [
+      "TransContent.TnProjectileHealGrenade"
+     ]
+    },
+    "animations": {
+     "status": "COMPLETE",
+     "event_anims": [
+      "GrenadeLauncher_Equip",
+      "GrenadeLauncher_Drop",
+      "GrenadeLauncher_Fire"
+     ],
+     "missing": [],
+     "clips": 6
+    },
+    "sounds": {
+     "status": "COMPLETE",
+     "total": 4,
+     "with_wav": 4,
+     "unresolved": [],
+     "cue_without_tagged_waves": [],
+     "note": null
+    },
+    "hud_icon": {
+     "status": "COMPLETE",
+     "icons": [
+      "content/UI_GFxCharacterSelect_p/HealGrenades.png",
+      "content/UI_GFxCustomize_p/HealGrenades.png"
+     ]
+    },
+    "ammo_damage": {
+     "status": "COMPLETE",
+     "MaxAmmoCount": 1,
+     "InstantHitDamage": [
+      0.0,
+      0.0
+     ]
+    },
+    "restrictions": {
+     "status": "COMPLETE",
+     "restrictions": {
+      "HealGrenades": {
+       "FactionRestriction": "Any",
+       "ChassisRestriction": [
+        "Jet",
+        "Jet2",
+        "Jet3",
+        "Jet4",
+        "Jet5",
+        "Jet6",
+        "Jet7",
+        "Jet8"
+       ]
+      }
+     },
+     "note": null
+    }
+   },
+   "untextured_but_has_geometry": false,
+   "overall": "PARTIAL"
+  },
+  "HeavyMG": {
+   "class": "TransContent.TnWeaponHeavyMG",
+   "cells": {
+    "mesh": {
+     "status": "COMPLETE",
+     "glb": "VerticalSlice/Weapons/HeavyMG/weapon.glb",
+     "note": null
+    },
+    "materials_textures": {
+     "status": "PARTIAL",
+     "slots": 1,
+     "untextured_slots": [],
+     "slot_detail": [
+      {
+       "status": "PARTIAL",
+       "material": "WEP_HeavyMG_p.WEP_HeavyMG_MATINST",
+       "parent_chain": [
+        "WEP_Shared_p.WEP_BASE_MATINST",
+        "WEP_Shared_p.WEP_PhongMain_MAT"
+       ],
+       "textures": 7,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      }
+     ]
+    },
+    "muzzle_socket": {
+     "status": "COMPLETE",
+     "muzzle": [
+      "MuzzleFlash_1",
+      "MuzzleFlash_2",
+      "MuzzleFlash_3"
+     ],
+     "mesh_sockets": [
+      "ShellSocket",
+      "MuzzleFlash_1",
+      "MuzzleFlash_3",
+      "MagazineSocket",
+      "MuzzleFlash_2"
+     ]
+    },
+    "muzzle_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_AssaultRifle_p.FX.MuzzleFlash_HeavyMG_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_AssaultRifle_p.FX.MuzzleFlash_HeavyMG_FX",
+       "status": "COMPLETE",
+       "emitters": 5,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "tracer_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_AssaultRifle_p.FX.Tracer_AssaultRifle_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_AssaultRifle_p.FX.Tracer_AssaultRifle_FX",
+       "status": "COMPLETE",
+       "emitters": 2,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "impact_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_AssaultRifle_p.FX.Impact_HeavyMG_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_AssaultRifle_p.FX.Impact_HeavyMG_FX",
+       "status": "COMPLETE",
+       "emitters": 10,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "projectile": {
+     "status": "UNKNOWN",
+     "classes": []
+    },
+    "animations": {
+     "status": "PARTIAL",
+     "event_anims": [
+      "heavymg_equip",
+      "HeavyMG_Drop",
+      "HeavyMG_FireSeq",
+      "HeavyMG_Reload"
+     ],
+     "missing": [
+      "HeavyMG_FireSeq"
+     ],
+     "clips": 9
+    },
+    "sounds": {
+     "status": "UNKNOWN",
+     "total": 9,
+     "with_wav": 8,
+     "unresolved": [],
+     "cue_without_tagged_waves": [
+      "WP_Overheat"
+     ],
+     "note": "cue_without_tagged_waves: SoundNodeWaveEvent with no tagged ChildNodes - silent or native wave refs (UNKNOWN)"
+    },
+    "hud_icon": {
+     "status": "MISSING",
+     "icons": [
+      "content/UI_GFxHud_p/TnWeaponHeavyMG.png",
+      "content/UI_GFxCharacterSelect_p/HeavyMG.png",
+      "content/UI_GFxCustomize_p/HeavyMG.png"
+     ]
+    },
+    "ammo_damage": {
+     "status": "COMPLETE",
+     "MaxAmmoCount": 240,
+     "InstantHitDamage": [
+      32.0
+     ]
+    },
+    "restrictions": {
+     "status": "COMPLETE",
+     "restrictions": {
+      "HeavyMG": {
+       "FactionRestriction": "Any",
+       "ChassisRestriction": [
+        "Tank",
+        "Tank2",
+        "Tank3",
+        "Tank4",
+        "Tank5"
+       ]
+      }
+     },
+     "note": null
+    }
+   },
+   "untextured_but_has_geometry": false,
+   "overall": "PARTIAL"
+  },
+  "HeavyPistol": {
+   "class": "TransContent.TnWeaponHeavyPistol",
+   "cells": {
+    "mesh": {
+     "status": "COMPLETE",
+     "glb": "VerticalSlice/Weapons/HeavyPistol/weapon.glb",
+     "note": null
+    },
+    "materials_textures": {
+     "status": "PARTIAL",
+     "slots": 1,
+     "untextured_slots": [],
+     "slot_detail": [
+      {
+       "status": "PARTIAL",
+       "material": "WEP_HeavyPistol_p.WEP_HeavyPistol_MATINST",
+       "parent_chain": [
+        "WEP_Shared_p.WEP_BASE_MATINST",
+        "WEP_Shared_p.WEP_PhongMain_MAT"
+       ],
+       "textures": 7,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      }
+     ]
+    },
+    "muzzle_socket": {
+     "status": "COMPLETE",
+     "muzzle": [
+      "MuzzleFlash"
+     ],
+     "mesh_sockets": [
+      "MuzzleFlash",
+      "ShellEject"
+     ]
+    },
+    "muzzle_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_AssaultRifle_p.FX.MuzzleFlash_AssaultRifle_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_AssaultRifle_p.FX.MuzzleFlash_AssaultRifle_FX",
+       "status": "COMPLETE",
+       "emitters": 8,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "tracer_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_AssaultRifle_p.FX.Tracer_AssaultRifle_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_AssaultRifle_p.FX.Tracer_AssaultRifle_FX",
+       "status": "COMPLETE",
+       "emitters": 2,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "impact_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_HeavyPistol_p.FX.Squib_HeavyPistol_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_HeavyPistol_p.FX.Squib_HeavyPistol_FX",
+       "status": "COMPLETE",
+       "emitters": 9,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "projectile": {
+     "status": "UNKNOWN",
+     "classes": []
+    },
+    "animations": {
+     "status": "COMPLETE",
+     "event_anims": [
+      "HeavyPistol_Equip",
+      "HeavyPistol_Fire",
+      "HeavyPistol_Drop",
+      "heavypistol_reload"
+     ],
+     "missing": [],
+     "clips": 6
+    },
+    "sounds": {
+     "status": "UNKNOWN",
+     "total": 10,
+     "with_wav": 9,
+     "unresolved": [],
+     "cue_without_tagged_waves": [
+      "WP_Overheat"
+     ],
+     "note": "cue_without_tagged_waves: SoundNodeWaveEvent with no tagged ChildNodes - silent or native wave refs (UNKNOWN)"
+    },
+    "hud_icon": {
+     "status": "MISSING",
+     "icons": [
+      "content/UI_GFxHud_p/TnWeaponHeavyPistol.png",
+      "content/UI_GFxCharacterSelect_p/HeavyPistol.png",
+      "content/UI_GFxCustomize_p/HeavyPistol.png"
+     ]
+    },
+    "ammo_damage": {
+     "status": "COMPLETE",
+     "MaxAmmoCount": 16,
+     "InstantHitDamage": [
+      80.0
+     ]
+    },
+    "restrictions": {
+     "status": "COMPLETE",
+     "restrictions": {
+      "HeavyPistol": {
+       "FactionRestriction": "Any",
+       "ChassisRestriction": [
+        "Truck",
+        "Truck2",
+        "Truck3",
+        "Truck4",
+        "Truck5",
+        "Truck6",
+        "Car",
+        "Car2",
+        "Car3",
+        "Car4",
+        "Car5",
+        "Car6",
+        "Car7"
+       ]
+      }
+     },
+     "note": null
+    }
+   },
+   "untextured_but_has_geometry": false,
+   "overall": "PARTIAL"
+  },
+  "HeavyRepairRay": {
+   "class": "TransContent.TnWeaponHeavyRepairRay",
+   "cells": {
+    "mesh": {
+     "status": "COMPLETE",
+     "glb": "VerticalSlice/Weapons/HeavyRepairRay/weapon.glb",
+     "note": null
+    },
+    "materials_textures": {
+     "status": "PARTIAL",
+     "slots": 2,
+     "untextured_slots": [],
+     "slot_detail": [
+      {
+       "status": "COMPLETE",
+       "material": "WEP_TurretRepairRay_p.WEP_TurretRepairRay_MATINST",
+       "parent_chain": [
+        "WEP_TurretIonGun_p.WEP_TurretIonGun_MAT"
+       ],
+       "textures": 1,
+       "unexported": [],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      },
+      {
+       "status": "PARTIAL",
+       "material": "WEP_TurretIonGun_p.WEP_TurretIonGun01_MATINST",
+       "parent_chain": [
+        "WEP_TurretIonGun_p.WEP_TurretIonGun_MATINST",
+        "WEP_Shared_p.WEP_BASE_MATINST",
+        "WEP_Shared_p.WEP_PhongMain_MAT"
+       ],
+       "textures": 7,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      }
+     ]
+    },
+    "muzzle_socket": {
+     "status": "COMPLETE",
+     "muzzle": [
+      "MuzzleFlash"
+     ],
+     "mesh_sockets": [
+      "MuzzleFlash"
+     ]
+    },
+    "muzzle_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "tracer_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_RepairBeam_p.FX.Tracer_TurretRepairRay_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_RepairBeam_p.FX.Tracer_TurretRepairRay_FX",
+       "status": "COMPLETE",
+       "emitters": 5,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "impact_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_RepairBeam_p.FX.Squib_TurretRepairEnemy_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_RepairBeam_p.FX.Squib_TurretRepairEnemy_FX",
+       "status": "COMPLETE",
+       "emitters": 9,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "projectile": {
+     "status": "UNKNOWN",
+     "classes": []
+    },
+    "animations": {
+     "status": "MISSING",
+     "event_anims": [],
+     "missing": [],
+     "clips": 0
+    },
+    "sounds": {
+     "status": "UNKNOWN",
+     "total": 8,
+     "with_wav": 6,
+     "unresolved": [],
+     "cue_without_tagged_waves": [
+      "WP_Overheat",
+      "PickupSound"
+     ],
+     "note": "cue_without_tagged_waves: SoundNodeWaveEvent with no tagged ChildNodes - silent or native wave refs (UNKNOWN)"
+    },
+    "hud_icon": {
+     "status": "UNKNOWN",
+     "icons": []
+    },
+    "ammo_damage": {
+     "status": "COMPLETE",
+     "MaxAmmoCount": 999,
+     "InstantHitDamage": [
+      100.0,
+      0.0
+     ]
+    },
+    "restrictions": {
+     "status": "UNKNOWN",
+     "restrictions": {},
+     "note": "no TnDataProvider_Weapon entry: not loadout-selectable"
+    }
+   },
+   "untextured_but_has_geometry": false,
+   "overall": "PARTIAL"
+  },
+  "HeavyRocketTurret": {
+   "class": "TransContent.TnWeaponHeavyRocketTurret",
+   "cells": {
+    "mesh": {
+     "status": "COMPLETE",
+     "glb": "VerticalSlice/Weapons/HeavyRocketTurret/weapon.glb",
+     "note": null
+    },
+    "materials_textures": {
+     "status": "PARTIAL",
+     "slots": 2,
+     "untextured_slots": [],
+     "slot_detail": [
+      {
+       "status": "PARTIAL",
+       "material": "WEP_TurretRocket_p.WEP_TurretRocket_MATINST",
+       "parent_chain": [
+        "WEP_Shared_p.WEP_BASE_MATINST",
+        "WEP_Shared_p.WEP_PhongMain_MAT"
+       ],
+       "textures": 7,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      },
+      {
+       "status": "PARTIAL",
+       "material": "WEP_TurretRocket_p.WEP_TurretRocket_MATINST",
+       "parent_chain": [
+        "WEP_Shared_p.WEP_BASE_MATINST",
+        "WEP_Shared_p.WEP_PhongMain_MAT"
+       ],
+       "textures": 7,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      }
+     ]
+    },
+    "muzzle_socket": {
+     "status": "COMPLETE",
+     "muzzle": [
+      "MuzzleFlash"
+     ],
+     "mesh_sockets": [
+      "MuzzleFlash_back",
+      "MuzzleFlash"
+     ]
+    },
+    "muzzle_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_TurretIonBlaster_p.FX.MuzzleFlash_TurretIon_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_TurretIonBlaster_p.FX.MuzzleFlash_TurretIon_FX",
+       "status": "COMPLETE",
+       "emitters": 5,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "tracer_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "impact_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_TurretIonBlaster_p.FX.Impact_TurretIon_OLD"
+     ],
+     "detail": [
+      {
+       "template": "FX_TurretIonBlaster_p.FX.Impact_TurretIon_OLD",
+       "status": "COMPLETE",
+       "emitters": 8,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "projectile": {
+     "status": "PARTIAL",
+     "classes": [
+      "TransContent.TnProjectileMangaRocketTurret"
+     ]
+    },
+    "animations": {
+     "status": "COMPLETE",
+     "event_anims": [
+      "WEP_TurretRocket_Fire",
+      "WEP_TurretRocket_Pickup",
+      "WEP_TurretRocket_Unequip"
+     ],
+     "missing": [],
+     "clips": 7
+    },
+    "sounds": {
+     "status": "UNKNOWN",
+     "total": 7,
+     "with_wav": 6,
+     "unresolved": [],
+     "cue_without_tagged_waves": [
+      "PickupSound"
+     ],
+     "note": "cue_without_tagged_waves: SoundNodeWaveEvent with no tagged ChildNodes - silent or native wave refs (UNKNOWN)"
+    },
+    "hud_icon": {
+     "status": "COMPLETE",
+     "icons": [
+      "content/UI_GFxHud_p/TnWeaponHeavyRocketTurret.png"
+     ]
+    },
+    "ammo_damage": {
+     "status": "PARTIAL",
+     "MaxAmmoCount": null,
+     "InstantHitDamage": [
+      10.0
+     ]
+    },
+    "restrictions": {
+     "status": "UNKNOWN",
+     "restrictions": {},
+     "note": "no TnDataProvider_Weapon entry: not loadout-selectable"
+    }
+   },
+   "untextured_but_has_geometry": false,
+   "overall": "PARTIAL"
+  },
+  "HomingRocketVehicle": {
+   "class": "TransContent.TnWeaponHomingRocketVehicle",
+   "cells": {
+    "mesh": {
+     "status": "COMPLETE",
+     "glb": null,
+     "note": "the weapon mesh component authors no SkeletalMesh: nothing is drawn for the held weapon (vehicle-form weapons fire from the vehicle WeaponSocket; grenades show only the thrown projectile / pickup mesh) - CONFIRMED absence"
+    },
+    "materials_textures": {
+     "status": "UNKNOWN",
+     "slots": 0,
+     "untextured_slots": [],
+     "slot_detail": []
+    },
+    "muzzle_socket": {
+     "status": "UNKNOWN",
+     "muzzle": [
+      "WeaponSocket_Primary",
+      "WeaponSocket_Primary2"
+     ],
+     "mesh_sockets": []
+    },
+    "muzzle_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_HomingRocket_p.FX.MuzzleFlash_HomRocket_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_HomingRocket_p.FX.MuzzleFlash_HomRocket_FX",
+       "status": "COMPLETE",
+       "emitters": 3,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "tracer_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "impact_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "projectile": {
+     "status": "PARTIAL",
+     "classes": [
+      "TransContent.TnProjectileHomingRocketVehicle"
+     ]
+    },
+    "animations": {
+     "status": "UNKNOWN",
+     "event_anims": [],
+     "missing": [],
+     "clips": 0
+    },
+    "sounds": {
+     "status": "UNKNOWN",
+     "total": 8,
+     "with_wav": 7,
+     "unresolved": [],
+     "cue_without_tagged_waves": [
+      "WP_Overheat"
+     ],
+     "note": "cue_without_tagged_waves: SoundNodeWaveEvent with no tagged ChildNodes - silent or native wave refs (UNKNOWN)"
+    },
+    "hud_icon": {
+     "status": "COMPLETE",
+     "icons": [
+      "content/UI_GFxHud_p/TnWeaponHomingRocketVehicle.png"
+     ]
+    },
+    "ammo_damage": {
+     "status": "COMPLETE",
+     "MaxAmmoCount": 10,
+     "InstantHitDamage": [
+      0.0,
+      0.0
+     ]
+    },
+    "restrictions": {
+     "status": "COMPLETE",
+     "restrictions": {
+      "HomingRocketVehicle": {
+       "FactionRestriction": "Any",
+       "ChassisRestriction": []
+      }
+     },
+     "note": null
+    }
+   },
+   "untextured_but_has_geometry": false,
+   "overall": "PARTIAL"
+  },
+  "HuntingDagger": {
+   "class": "TransContent.TnWeaponHuntingDagger",
+   "cells": {
+    "mesh": {
+     "status": "COMPLETE",
+     "glb": "VerticalSlice/Weapons/HuntingDagger/weapon.glb",
+     "note": null
+    },
+    "materials_textures": {
+     "status": "PARTIAL",
+     "slots": 2,
+     "untextured_slots": [],
+     "slot_detail": [
+      {
+       "status": "COMPLETE",
+       "material": "WEP_Shared_p.WEP_Energon_D_MATINST",
+       "parent_chain": [
+        "FX_Materials_p.Materials.Energon_Base_01_MAT"
+       ],
+       "textures": 6,
+       "unexported": [],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      },
+      {
+       "status": "PARTIAL",
+       "material": "WEP_HuntingDagger_p.WEP_HuntingDagger_MATINST",
+       "parent_chain": [
+        "WEP_Shared_p.WEP_MeleeBase_MATINST",
+        "WEP_Shared_p.WEP_PhongMain_MAT"
+       ],
+       "textures": 7,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      }
+     ]
+    },
+    "muzzle_socket": {
+     "status": "COMPLETE",
+     "muzzle": [
+      "MuzzleFlash"
+     ],
+     "mesh_sockets": [
+      "MuzzleFlash"
+     ]
+    },
+    "muzzle_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_Sword_p.FX.MeleeEquip_Purple_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_Sword_p.FX.MeleeEquip_Purple_FX",
+       "status": "COMPLETE",
+       "emitters": 3,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "tracer_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "impact_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "projectile": {
+     "status": "UNKNOWN",
+     "classes": []
+    },
+    "animations": {
+     "status": "COMPLETE",
+     "event_anims": [
+      "HuntingDagger_Equip",
+      "HuntingDagger_Drop"
+     ],
+     "missing": [],
+     "clips": 2
+    },
+    "sounds": {
+     "status": "UNKNOWN",
+     "total": 4,
+     "with_wav": 2,
+     "unresolved": [],
+     "cue_without_tagged_waves": [
+      "WP_Looping",
+      "WP_Special"
+     ],
+     "note": "cue_without_tagged_waves: SoundNodeWaveEvent with no tagged ChildNodes - silent or native wave refs (UNKNOWN)"
+    },
+    "hud_icon": {
+     "status": "UNKNOWN",
+     "icons": []
+    },
+    "ammo_damage": {
+     "status": "COMPLETE",
+     "MaxAmmoCount": 9999,
+     "InstantHitDamage": [
+      0.0,
+      0.0
+     ]
+    },
+    "restrictions": {
+     "status": "UNKNOWN",
+     "restrictions": {},
+     "note": "no TnDataProvider_Weapon entry: not loadout-selectable"
+    }
+   },
+   "untextured_but_has_geometry": false,
+   "overall": "PARTIAL"
+  },
+  "IonBlaster": {
+   "class": "TransContent.TnWeaponIonBlaster",
+   "cells": {
+    "mesh": {
+     "status": "COMPLETE",
+     "glb": "VerticalSlice/Weapons/IonBlaster/weapon_mp.glb",
+     "note": null
+    },
+    "materials_textures": {
+     "status": "PARTIAL",
+     "slots": 1,
+     "untextured_slots": [],
+     "slot_detail": [
+      {
+       "status": "PARTIAL",
+       "material": "WEP_IonBlaster_p.WEP_IonBlaster_MATINST",
+       "parent_chain": [
+        "WEP_Shared_p.WEP_BASE_MATINST",
+        "WEP_Shared_p.WEP_PhongMain_MAT"
+       ],
+       "textures": 7,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      }
+     ]
+    },
+    "muzzle_socket": {
+     "status": "COMPLETE",
+     "muzzle": [
+      "MuzzleFlash"
+     ],
+     "mesh_sockets": [
+      "ShellSocket",
+      "MagSocket",
+      "MuzzleFlash"
+     ]
+    },
+    "muzzle_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_AssaultRifle_p.FX.MuzzleFlash_AssaultRifle_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_AssaultRifle_p.FX.MuzzleFlash_AssaultRifle_FX",
+       "status": "COMPLETE",
+       "emitters": 8,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "tracer_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_AssaultRifle_p.FX.Tracer_AssaultRifle_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_AssaultRifle_p.FX.Tracer_AssaultRifle_FX",
+       "status": "COMPLETE",
+       "emitters": 2,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "impact_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_IonBlaster_p.FX.Impact_IonBlaster_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_IonBlaster_p.FX.Impact_IonBlaster_FX",
+       "status": "COMPLETE",
+       "emitters": 6,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "projectile": {
+     "status": "UNKNOWN",
+     "classes": []
+    },
+    "animations": {
+     "status": "COMPLETE",
+     "event_anims": [
+      "IonBlaster_Equip",
+      "IonBlaster_Drop",
+      "IonBlaster_Fire",
+      "Shooting_Reload_IonBlaster_AP"
+     ],
+     "missing": [],
+     "clips": 8
+    },
+    "sounds": {
+     "status": "COMPLETE",
+     "total": 9,
+     "with_wav": 9,
+     "unresolved": [],
+     "cue_without_tagged_waves": [],
+     "note": null
+    },
+    "hud_icon": {
+     "status": "COMPLETE",
+     "icons": [
+      "content/UI_GFxHud_p/TnWeaponIonBlaster.png",
+      "content/UI_GFxCharacterSelect_p/IonBlaster.png",
+      "content/UI_GFxCustomize_p/IonBlaster.png"
+     ]
+    },
+    "ammo_damage": {
+     "status": "COMPLETE",
+     "MaxAmmoCount": 250,
+     "InstantHitDamage": [
+      15.0
+     ]
+    },
+    "restrictions": {
+     "status": "COMPLETE",
+     "restrictions": {
+      "IonBlaster": {
+       "FactionRestriction": "Any",
+       "ChassisRestriction": [
+        "Truck",
+        "Truck2",
+        "Truck3",
+        "Truck4",
+        "Truck5",
+        "Truck6"
+       ]
+      }
+     },
+     "note": null
+    }
+   },
+   "untextured_but_has_geometry": false,
+   "overall": "PARTIAL"
+  },
+  "KamikazeMines": {
+   "class": "TransContent.TnWeaponKamikazeMines",
+   "cells": {
+    "mesh": {
+     "status": "COMPLETE",
+     "glb": "VerticalSlice/Weapons/KamikazeMines/weapon.glb",
+     "note": null
+    },
+    "materials_textures": {
+     "status": "PARTIAL",
+     "slots": 1,
+     "untextured_slots": [],
+     "slot_detail": [
+      {
+       "status": "PARTIAL",
+       "material": "WEP_GrenadeLauncher_p.WEP_GrenadeLauncher_MATINST",
+       "parent_chain": [
+        "WEP_Shared_p.WEP_BASE_MATINST",
+        "WEP_Shared_p.WEP_PhongMain_MAT"
+       ],
+       "textures": 7,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      }
+     ]
+    },
+    "muzzle_socket": {
+     "status": "MISSING",
+     "muzzle": [
+      "MuzzleFlash_R",
+      "MuzzleFlash_L"
+     ],
+     "mesh_sockets": [
+      "AmmoShell",
+      "MuzzleFlash"
+     ]
+    },
+    "muzzle_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "tracer_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "impact_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "projectile": {
+     "status": "PARTIAL",
+     "classes": [
+      "TransGame.TnProjectileKamikazeMine"
+     ]
+    },
+    "animations": {
+     "status": "COMPLETE",
+     "event_anims": [
+      "GrenadeLauncher_Equip",
+      "GrenadeLauncher_Drop",
+      "GrenadeLauncher_Fire"
+     ],
+     "missing": [],
+     "clips": 6
+    },
+    "sounds": {
+     "status": "COMPLETE",
+     "total": 4,
+     "with_wav": 4,
+     "unresolved": [],
+     "cue_without_tagged_waves": [],
+     "note": null
+    },
+    "hud_icon": {
+     "status": "COMPLETE",
+     "icons": [
+      "content/UI_GFxCharacterSelect_p/KamikazeMines.png",
+      "content/UI_GFxCustomize_p/KamikazeMines.png"
+     ]
+    },
+    "ammo_damage": {
+     "status": "COMPLETE",
+     "MaxAmmoCount": 1,
+     "InstantHitDamage": [
+      0.0,
+      0.0
+     ]
+    },
+    "restrictions": {
+     "status": "COMPLETE",
+     "restrictions": {
+      "KamikazeMines": {
+       "FactionRestriction": "Any",
+       "ChassisRestriction": [
+        "Car",
+        "Car2",
+        "Car3",
+        "Car4",
+        "Car5",
+        "Car6",
+        "Car7"
+       ]
+      }
+     },
+     "note": null
+    }
+   },
+   "untextured_but_has_geometry": false,
+   "overall": "PARTIAL"
+  },
+  "LancingSpear": {
+   "class": "TransContent.TnWeaponLancingSpear",
+   "cells": {
+    "mesh": {
+     "status": "COMPLETE",
+     "glb": "VerticalSlice/Weapons/LancingSpear/weapon.glb",
+     "note": null
+    },
+    "materials_textures": {
+     "status": "PARTIAL",
+     "slots": 2,
+     "untextured_slots": [],
+     "slot_detail": [
+      {
+       "status": "PARTIAL",
+       "material": "WEP_LancingSpear_p.WEP_LancingSpear_MATINST",
+       "parent_chain": [
+        "WEP_Shared_p.WEP_MeleeBase_MATINST",
+        "WEP_Shared_p.WEP_PhongMain_MAT"
+       ],
+       "textures": 7,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      },
+      {
+       "status": "COMPLETE",
+       "material": "WEP_ProngDagger_p.WEP_Energon_A_MATINST",
+       "parent_chain": [
+        "FX_Materials_p.Materials.Energon_Base_01_MAT"
+       ],
+       "textures": 6,
+       "unexported": [],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      }
+     ]
+    },
+    "muzzle_socket": {
+     "status": "COMPLETE",
+     "muzzle": [
+      "MuzzleFlash"
+     ],
+     "mesh_sockets": [
+      "MuzzleFlash"
+     ]
+    },
+    "muzzle_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_Sword_p.FX.SwordEquip_Red_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_Sword_p.FX.SwordEquip_Red_FX",
+       "status": "COMPLETE",
+       "emitters": 3,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "tracer_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "impact_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "projectile": {
+     "status": "UNKNOWN",
+     "classes": []
+    },
+    "animations": {
+     "status": "COMPLETE",
+     "event_anims": [
+      "LancingSpear_Equip",
+      "LancingSpear_Drop"
+     ],
+     "missing": [],
+     "clips": 2
+    },
+    "sounds": {
+     "status": "UNKNOWN",
+     "total": 4,
+     "with_wav": 2,
+     "unresolved": [],
+     "cue_without_tagged_waves": [
+      "WP_Looping",
+      "WP_Special"
+     ],
+     "note": "cue_without_tagged_waves: SoundNodeWaveEvent with no tagged ChildNodes - silent or native wave refs (UNKNOWN)"
+    },
+    "hud_icon": {
+     "status": "UNKNOWN",
+     "icons": []
+    },
+    "ammo_damage": {
+     "status": "COMPLETE",
+     "MaxAmmoCount": 9999,
+     "InstantHitDamage": [
+      0.0,
+      0.0
+     ]
+    },
+    "restrictions": {
+     "status": "UNKNOWN",
+     "restrictions": {},
+     "note": "no TnDataProvider_Weapon entry: not loadout-selectable"
+    }
+   },
+   "untextured_but_has_geometry": false,
+   "overall": "PARTIAL"
+  },
+  "LongSword": {
+   "class": "TransContent.TnWeaponLongSword",
+   "cells": {
+    "mesh": {
+     "status": "COMPLETE",
+     "glb": "VerticalSlice/Weapons/LongSword/weapon.glb",
+     "note": null
+    },
+    "materials_textures": {
+     "status": "PARTIAL",
+     "slots": 2,
+     "untextured_slots": [],
+     "slot_detail": [
+      {
+       "status": "PARTIAL",
+       "material": "WEP_LongSword_p.WEP_LongSword_MATINST",
+       "parent_chain": [
+        "WEP_Shared_p.WEP_MeleeBase_MATINST",
+        "WEP_Shared_p.WEP_PhongMain_MAT"
+       ],
+       "textures": 7,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      },
+      {
+       "status": "PARTIAL",
+       "material": "WEP_LongSword_p.WEP_LongSword_EnergonTech_MATINST",
+       "parent_chain": [
+        "WEP_Shared_p.Electric_Lava_Tech_B_Mat"
+       ],
+       "textures": 5,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      }
+     ]
+    },
+    "muzzle_socket": {
+     "status": "COMPLETE",
+     "muzzle": [
+      "MuzzleFlash"
+     ],
+     "mesh_sockets": [
+      "MuzzleFlash"
+     ]
+    },
+    "muzzle_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_Sword_p.FX.MeleeEquip_Purple_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_Sword_p.FX.MeleeEquip_Purple_FX",
+       "status": "COMPLETE",
+       "emitters": 3,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "tracer_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "impact_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "projectile": {
+     "status": "UNKNOWN",
+     "classes": []
+    },
+    "animations": {
+     "status": "COMPLETE",
+     "event_anims": [
+      "LongSword_Equip",
+      "LongSword_Drop"
+     ],
+     "missing": [],
+     "clips": 2
+    },
+    "sounds": {
+     "status": "UNKNOWN",
+     "total": 4,
+     "with_wav": 2,
+     "unresolved": [],
+     "cue_without_tagged_waves": [
+      "WP_Looping",
+      "WP_Special"
+     ],
+     "note": "cue_without_tagged_waves: SoundNodeWaveEvent with no tagged ChildNodes - silent or native wave refs (UNKNOWN)"
+    },
+    "hud_icon": {
+     "status": "UNKNOWN",
+     "icons": []
+    },
+    "ammo_damage": {
+     "status": "COMPLETE",
+     "MaxAmmoCount": 9999,
+     "InstantHitDamage": [
+      0.0,
+      0.0
+     ]
+    },
+    "restrictions": {
+     "status": "UNKNOWN",
+     "restrictions": {},
+     "note": "no TnDataProvider_Weapon entry: not loadout-selectable"
+    }
+   },
+   "untextured_but_has_geometry": false,
+   "overall": "PARTIAL"
+  },
+  "Maul": {
+   "class": "TransContent.TnWeaponMaul",
+   "cells": {
+    "mesh": {
+     "status": "COMPLETE",
+     "glb": "VerticalSlice/Weapons/Maul/weapon.glb",
+     "note": null
+    },
+    "materials_textures": {
+     "status": "PARTIAL",
+     "slots": 2,
+     "untextured_slots": [],
+     "slot_detail": [
+      {
+       "status": "PARTIAL",
+       "material": "WEP_Maul_p.WEP_Maul_EnergonTech_MATINST",
+       "parent_chain": [
+        "WEP_Shared_p.Electric_Lava_Tech_B_Mat"
+       ],
+       "textures": 5,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      },
+      {
+       "status": "PARTIAL",
+       "material": "WEP_Maul_p.WEP_Maul_MATINST",
+       "parent_chain": [
+        "WEP_Shared_p.WEP_MeleeBase_MATINST",
+        "WEP_Shared_p.WEP_PhongMain_MAT"
+       ],
+       "textures": 7,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      }
+     ]
+    },
+    "muzzle_socket": {
+     "status": "COMPLETE",
+     "muzzle": [
+      "MuzzleFlash"
+     ],
+     "mesh_sockets": [
+      "MuzzleFlash"
+     ]
+    },
+    "muzzle_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_Sword_p.FX.MeleeEquip_Purple_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_Sword_p.FX.MeleeEquip_Purple_FX",
+       "status": "COMPLETE",
+       "emitters": 3,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "tracer_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "impact_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "projectile": {
+     "status": "UNKNOWN",
+     "classes": []
+    },
+    "animations": {
+     "status": "COMPLETE",
+     "event_anims": [
+      "Maul_Equip",
+      "Maul_Drop"
+     ],
+     "missing": [],
+     "clips": 2
+    },
+    "sounds": {
+     "status": "UNKNOWN",
+     "total": 4,
+     "with_wav": 2,
+     "unresolved": [],
+     "cue_without_tagged_waves": [
+      "WP_Looping",
+      "WP_Special"
+     ],
+     "note": "cue_without_tagged_waves: SoundNodeWaveEvent with no tagged ChildNodes - silent or native wave refs (UNKNOWN)"
+    },
+    "hud_icon": {
+     "status": "MISSING",
+     "icons": []
+    },
+    "ammo_damage": {
+     "status": "COMPLETE",
+     "MaxAmmoCount": 9999,
+     "InstantHitDamage": [
+      0.0,
+      0.0
+     ]
+    },
+    "restrictions": {
+     "status": "COMPLETE",
+     "restrictions": {
+      "Maul": {
+       "FactionRestriction": "Autobot",
+       "ChassisRestriction": [
+        "Tank3"
+       ]
+      }
+     },
+     "note": null
+    }
+   },
+   "untextured_but_has_geometry": false,
+   "overall": "PARTIAL"
+  },
+  "MountedHeavyIonBlaster": {
+   "class": "TransContent.TnWeaponMountedHeavyIonBlaster",
+   "cells": {
+    "mesh": {
+     "status": "COMPLETE",
+     "glb": "VerticalSlice/Weapons/MountedHeavyIonBlaster/weapon.glb",
+     "note": null
+    },
+    "materials_textures": {
+     "status": "PARTIAL",
+     "slots": 1,
+     "untextured_slots": [],
+     "slot_detail": [
+      {
+       "status": "PARTIAL",
+       "material": "WEP_TurretIonGun_p.WEP_TurretIonGun_MATINST",
+       "parent_chain": [
+        "WEP_Shared_p.WEP_BASE_MATINST",
+        "WEP_Shared_p.WEP_PhongMain_MAT"
+       ],
+       "textures": 7,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      }
+     ]
+    },
+    "muzzle_socket": {
+     "status": "COMPLETE",
+     "muzzle": [
+      "MuzzleFlash"
+     ],
+     "mesh_sockets": [
+      "MuzzleFlash"
+     ]
+    },
+    "muzzle_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_TurretIonBlaster_p.FX.MuzzleFlash_TurretIon_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_TurretIonBlaster_p.FX.MuzzleFlash_TurretIon_FX",
+       "status": "COMPLETE",
+       "emitters": 5,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "tracer_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_TurretIonBlaster_p.FX.Tracer_TurretIon_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_TurretIonBlaster_p.FX.Tracer_TurretIon_FX",
+       "status": "COMPLETE",
+       "emitters": 2,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "impact_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_TurretIonBlaster_p.FX.Impact_IonTurret_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_TurretIonBlaster_p.FX.Impact_IonTurret_FX",
+       "status": "COMPLETE",
+       "emitters": 6,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "projectile": {
+     "status": "UNKNOWN",
+     "classes": []
+    },
+    "animations": {
+     "status": "COMPLETE",
+     "event_anims": [
+      "WEP_Turret_Pickup",
+      "WEP_Turret_Fire",
+      "WEP_Turret_Unequip"
+     ],
+     "missing": [],
+     "clips": 7
+    },
+    "sounds": {
+     "status": "UNKNOWN",
+     "total": 7,
+     "with_wav": 6,
+     "unresolved": [],
+     "cue_without_tagged_waves": [
+      "PickupSound"
+     ],
+     "note": "cue_without_tagged_waves: SoundNodeWaveEvent with no tagged ChildNodes - silent or native wave refs (UNKNOWN)"
+    },
+    "hud_icon": {
+     "status": "UNKNOWN",
+     "icons": []
+    },
+    "ammo_damage": {
+     "status": "COMPLETE",
+     "MaxAmmoCount": 999,
+     "InstantHitDamage": [
+      25.0
+     ]
+    },
+    "restrictions": {
+     "status": "UNKNOWN",
+     "restrictions": {},
+     "note": "no TnDataProvider_Weapon entry: not loadout-selectable"
+    }
+   },
+   "untextured_but_has_geometry": false,
+   "overall": "PARTIAL"
+  },
+  "MountedRepairRay": {
+   "class": "TransContent.TnWeaponMountedRepairRay",
+   "cells": {
+    "mesh": {
+     "status": "COMPLETE",
+     "glb": "VerticalSlice/Weapons/MountedRepairRay/weapon.glb",
+     "note": null
+    },
+    "materials_textures": {
+     "status": "PARTIAL",
+     "slots": 2,
+     "untextured_slots": [],
+     "slot_detail": [
+      {
+       "status": "COMPLETE",
+       "material": "WEP_TurretRepairRay_p.WEP_TurretRepairRay_MATINST",
+       "parent_chain": [
+        "WEP_TurretIonGun_p.WEP_TurretIonGun_MAT"
+       ],
+       "textures": 1,
+       "unexported": [],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      },
+      {
+       "status": "PARTIAL",
+       "material": "WEP_TurretIonGun_p.WEP_TurretIonGun01_MATINST",
+       "parent_chain": [
+        "WEP_TurretIonGun_p.WEP_TurretIonGun_MATINST",
+        "WEP_Shared_p.WEP_BASE_MATINST",
+        "WEP_Shared_p.WEP_PhongMain_MAT"
+       ],
+       "textures": 7,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      }
+     ]
+    },
+    "muzzle_socket": {
+     "status": "COMPLETE",
+     "muzzle": [
+      "MuzzleFlash"
+     ],
+     "mesh_sockets": [
+      "MuzzleFlash"
+     ]
+    },
+    "muzzle_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "tracer_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_RepairBeam_p.FX.Tracer_TurretRepairRay_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_RepairBeam_p.FX.Tracer_TurretRepairRay_FX",
+       "status": "COMPLETE",
+       "emitters": 5,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "impact_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_RepairBeam_p.FX.Squib_TurretRepairEnemy_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_RepairBeam_p.FX.Squib_TurretRepairEnemy_FX",
+       "status": "COMPLETE",
+       "emitters": 9,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "projectile": {
+     "status": "UNKNOWN",
+     "classes": []
+    },
+    "animations": {
+     "status": "MISSING",
+     "event_anims": [],
+     "missing": [],
+     "clips": 0
+    },
+    "sounds": {
+     "status": "UNKNOWN",
+     "total": 8,
+     "with_wav": 6,
+     "unresolved": [],
+     "cue_without_tagged_waves": [
+      "WP_Overheat",
+      "PickupSound"
+     ],
+     "note": "cue_without_tagged_waves: SoundNodeWaveEvent with no tagged ChildNodes - silent or native wave refs (UNKNOWN)"
+    },
+    "hud_icon": {
+     "status": "UNKNOWN",
+     "icons": []
+    },
+    "ammo_damage": {
+     "status": "COMPLETE",
+     "MaxAmmoCount": 999,
+     "InstantHitDamage": [
+      100.0,
+      0.0
+     ]
+    },
+    "restrictions": {
+     "status": "UNKNOWN",
+     "restrictions": {},
+     "note": "no TnDataProvider_Weapon entry: not loadout-selectable"
+    }
+   },
+   "untextured_but_has_geometry": false,
+   "overall": "PARTIAL"
+  },
+  "MountedRocketTurret": {
+   "class": "TransContent.TnWeaponMountedRocketTurret",
+   "cells": {
+    "mesh": {
+     "status": "COMPLETE",
+     "glb": "VerticalSlice/Weapons/MountedRocketTurret/weapon.glb",
+     "note": null
+    },
+    "materials_textures": {
+     "status": "PARTIAL",
+     "slots": 2,
+     "untextured_slots": [],
+     "slot_detail": [
+      {
+       "status": "PARTIAL",
+       "material": "WEP_TurretRocket_p.WEP_TurretRocket_MATINST",
+       "parent_chain": [
+        "WEP_Shared_p.WEP_BASE_MATINST",
+        "WEP_Shared_p.WEP_PhongMain_MAT"
+       ],
+       "textures": 7,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      },
+      {
+       "status": "PARTIAL",
+       "material": "WEP_TurretRocket_p.WEP_TurretRocket_MATINST",
+       "parent_chain": [
+        "WEP_Shared_p.WEP_BASE_MATINST",
+        "WEP_Shared_p.WEP_PhongMain_MAT"
+       ],
+       "textures": 7,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      }
+     ]
+    },
+    "muzzle_socket": {
+     "status": "COMPLETE",
+     "muzzle": [
+      "MuzzleFlash"
+     ],
+     "mesh_sockets": [
+      "MuzzleFlash_back",
+      "MuzzleFlash"
+     ]
+    },
+    "muzzle_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_TurretIonBlaster_p.FX.MuzzleFlash_TurretIon_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_TurretIonBlaster_p.FX.MuzzleFlash_TurretIon_FX",
+       "status": "COMPLETE",
+       "emitters": 5,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "tracer_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "impact_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_TurretIonBlaster_p.FX.Impact_TurretIon_OLD"
+     ],
+     "detail": [
+      {
+       "template": "FX_TurretIonBlaster_p.FX.Impact_TurretIon_OLD",
+       "status": "COMPLETE",
+       "emitters": 8,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "projectile": {
+     "status": "PARTIAL",
+     "classes": [
+      "TransContent.TnProjectileMangaRocketTurret"
+     ]
+    },
+    "animations": {
+     "status": "COMPLETE",
+     "event_anims": [
+      "WEP_TurretRocket_BaseFire",
+      "WEP_TurretRocket_Pickup",
+      "WEP_TurretRocket_Pickup"
+     ],
+     "missing": [],
+     "clips": 7
+    },
+    "sounds": {
+     "status": "UNKNOWN",
+     "total": 7,
+     "with_wav": 6,
+     "unresolved": [],
+     "cue_without_tagged_waves": [
+      "PickupSound"
+     ],
+     "note": "cue_without_tagged_waves: SoundNodeWaveEvent with no tagged ChildNodes - silent or native wave refs (UNKNOWN)"
+    },
+    "hud_icon": {
+     "status": "UNKNOWN",
+     "icons": []
+    },
+    "ammo_damage": {
+     "status": "COMPLETE",
+     "MaxAmmoCount": 999,
+     "InstantHitDamage": [
+      25.0
+     ]
+    },
+    "restrictions": {
+     "status": "UNKNOWN",
+     "restrictions": {},
+     "note": "no TnDataProvider_Weapon entry: not loadout-selectable"
+    }
+   },
+   "untextured_but_has_geometry": false,
+   "overall": "PARTIAL"
+  },
+  "PlaneMachineGun": {
+   "class": "TransContent.TnWeaponPlaneMachineGun",
+   "cells": {
+    "mesh": {
+     "status": "COMPLETE",
+     "glb": null,
+     "note": "the weapon mesh component authors no SkeletalMesh: nothing is drawn for the held weapon (vehicle-form weapons fire from the vehicle WeaponSocket; grenades show only the thrown projectile / pickup mesh) - CONFIRMED absence"
+    },
+    "materials_textures": {
+     "status": "UNKNOWN",
+     "slots": 0,
+     "untextured_slots": [],
+     "slot_detail": []
+    },
+    "muzzle_socket": {
+     "status": "UNKNOWN",
+     "muzzle": [
+      "WeaponSocket_Primary",
+      "WeaponSocket_Primary2"
+     ],
+     "mesh_sockets": []
+    },
+    "muzzle_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_AssaultRifle_p.FX.MuzzleFlash_AssaultRifle_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_AssaultRifle_p.FX.MuzzleFlash_AssaultRifle_FX",
+       "status": "COMPLETE",
+       "emitters": 8,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "tracer_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_AssaultRifle_p.FX.Tracer_AssaultRifle_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_AssaultRifle_p.FX.Tracer_AssaultRifle_FX",
+       "status": "COMPLETE",
+       "emitters": 2,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "impact_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_AssaultRifle_p.FX.Impact_AssaultRifle_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_AssaultRifle_p.FX.Impact_AssaultRifle_FX",
+       "status": "COMPLETE",
+       "emitters": 6,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "projectile": {
+     "status": "UNKNOWN",
+     "classes": []
+    },
+    "animations": {
+     "status": "UNKNOWN",
+     "event_anims": [
+      "JetMgVH_Equip",
+      "JetMgVH_Fire",
+      "JetMgVH_Drop"
+     ],
+     "missing": [
+      "JetMgVH_Equip",
+      "JetMgVH_Fire",
+      "JetMgVH_Drop"
+     ],
+     "clips": 0
+    },
+    "sounds": {
+     "status": "COMPLETE",
+     "total": 7,
+     "with_wav": 7,
+     "unresolved": [],
+     "cue_without_tagged_waves": [],
+     "note": null
+    },
+    "hud_icon": {
+     "status": "MISSING",
+     "icons": []
+    },
+    "ammo_damage": {
+     "status": "COMPLETE",
+     "MaxAmmoCount": 400,
+     "InstantHitDamage": [
+      10.0
+     ]
+    },
+    "restrictions": {
+     "status": "COMPLETE",
+     "restrictions": {
+      "PlaneMachineGun": {
+       "FactionRestriction": "Any",
+       "ChassisRestriction": []
+      }
+     },
+     "note": null
+    }
+   },
+   "untextured_but_has_geometry": false,
+   "overall": "PARTIAL"
+  },
+  "PlasmaCannon": {
+   "class": "TransContent.TnWeaponPlasmaCannon",
+   "cells": {
+    "mesh": {
+     "status": "COMPLETE",
+     "glb": "VerticalSlice/Weapons/PlasmaCannon/weapon.glb",
+     "note": null
+    },
+    "materials_textures": {
+     "status": "PARTIAL",
+     "slots": 1,
+     "untextured_slots": [],
+     "slot_detail": [
+      {
+       "status": "PARTIAL",
+       "material": "WEP_PlasmaCannon_p.WEP_PlasmaCannon_A_MATINST",
+       "parent_chain": [
+        "WEP_Shared_p.WEP_BASE_MATINST",
+        "WEP_Shared_p.WEP_PhongMain_MAT"
+       ],
+       "textures": 7,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      }
+     ]
+    },
+    "muzzle_socket": {
+     "status": "COMPLETE",
+     "muzzle": [
+      "MuzzleFlash"
+     ],
+     "mesh_sockets": [
+      "MuzzleFlash"
+     ]
+    },
+    "muzzle_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_PlasmaCannon_p.FX.PowerUp_PlasmaCannon_FX",
+      "FX_PlasmaCannon_p.FX.MuzzleFlash_PlasmaCannon_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_PlasmaCannon_p.FX.PowerUp_PlasmaCannon_FX",
+       "status": "COMPLETE",
+       "emitters": 9,
+       "emitter_errors": []
+      },
+      {
+       "template": "FX_PlasmaCannon_p.FX.MuzzleFlash_PlasmaCannon_FX",
+       "status": "COMPLETE",
+       "emitters": 5,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "tracer_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "impact_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "projectile": {
+     "status": "PARTIAL",
+     "classes": [
+      "TransContent.TnProjectilePlasmaCannonCharge1",
+      "TransContent.TnProjectilePlasmaCannonCharge2",
+      "TransContent.TnProjectilePlasmaCannonCharge3"
+     ]
+    },
+    "animations": {
+     "status": "COMPLETE",
+     "event_anims": [
+      "PlasmaCannon_Equip",
+      "PlasmaCannon_Drop",
+      "PlasmaCannon_Fire",
+      "PlasmaCannon_Charge",
+      "PlasmaCannon_Fire",
+      "PlasmaCannon_Reload"
+     ],
+     "missing": [],
+     "clips": 7
+    },
+    "sounds": {
+     "status": "COMPLETE",
+     "total": 15,
+     "with_wav": 15,
+     "unresolved": [],
+     "cue_without_tagged_waves": [],
+     "note": null
+    },
+    "hud_icon": {
+     "status": "MISSING",
+     "icons": [
+      "content/UI_GFxHud_p/TnWeaponPlasmaCannon.png",
+      "content/UI_GFxCharacterSelect_p/PlasmaCannon.png",
+      "content/UI_GFxCustomize_p/PlasmaCannon.png"
+     ]
+    },
+    "ammo_damage": {
+     "status": "COMPLETE",
+     "MaxAmmoCount": 400,
+     "InstantHitDamage": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "restrictions": {
+     "status": "COMPLETE",
+     "restrictions": {
+      "PlasmaCannon": {
+       "FactionRestriction": "Any",
+       "ChassisRestriction": [
+        "Car",
+        "Car2",
+        "Car3",
+        "Car4",
+        "Car5",
+        "Car6",
+        "Car7"
+       ]
+      }
+     },
+     "note": null
+    }
+   },
+   "untextured_but_has_geometry": false,
+   "overall": "PARTIAL"
+  },
+  "Poke": {
+   "class": "TransContent.TnWeaponPoke",
+   "cells": {
+    "mesh": {
+     "status": "COMPLETE",
+     "glb": "VerticalSlice/Weapons/Poke/weapon.glb",
+     "note": null
+    },
+    "materials_textures": {
+     "status": "PARTIAL",
+     "slots": 2,
+     "untextured_slots": [],
+     "slot_detail": [
+      {
+       "status": "PARTIAL",
+       "material": "WEP_BroadSword_p.WEP_BroadSword_MATINST",
+       "parent_chain": [
+        "WEP_Shared_p.WEP_MeleeBase_MATINST",
+        "WEP_Shared_p.WEP_PhongMain_MAT"
+       ],
+       "textures": 7,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      },
+      {
+       "status": "PARTIAL",
+       "material": "WEP_BroadSword_p.WEP_BroadSword_EnergonTech_MATINST",
+       "parent_chain": [
+        "WEP_Shared_p.Electric_Lava_Tech_B_Mat"
+       ],
+       "textures": 5,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      }
+     ]
+    },
+    "muzzle_socket": {
+     "status": "COMPLETE",
+     "muzzle": [
+      "MuzzleFlash"
+     ],
+     "mesh_sockets": [
+      "MuzzleFlash"
+     ]
+    },
+    "muzzle_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_Sword_p.FX.SwordEquip_Red_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_Sword_p.FX.SwordEquip_Red_FX",
+       "status": "COMPLETE",
+       "emitters": 3,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "tracer_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "impact_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "projectile": {
+     "status": "UNKNOWN",
+     "classes": []
+    },
+    "animations": {
+     "status": "COMPLETE",
+     "event_anims": [
+      "BroadSword_Equip",
+      "BroadSword_Drop"
+     ],
+     "missing": [],
+     "clips": 2
+    },
+    "sounds": {
+     "status": "UNKNOWN",
+     "total": 4,
+     "with_wav": 2,
+     "unresolved": [],
+     "cue_without_tagged_waves": [
+      "WP_Looping",
+      "WP_Special"
+     ],
+     "note": "cue_without_tagged_waves: SoundNodeWaveEvent with no tagged ChildNodes - silent or native wave refs (UNKNOWN)"
+    },
+    "hud_icon": {
+     "status": "UNKNOWN",
+     "icons": []
+    },
+    "ammo_damage": {
+     "status": "COMPLETE",
+     "MaxAmmoCount": 9999,
+     "InstantHitDamage": [
+      0.0,
+      0.0
+     ]
+    },
+    "restrictions": {
+     "status": "UNKNOWN",
+     "restrictions": {},
+     "note": "no TnDataProvider_Weapon entry: not loadout-selectable"
+    }
+   },
+   "untextured_but_has_geometry": false,
+   "overall": "PARTIAL"
+  },
+  "ProngDagger": {
+   "class": "TransContent.TnWeaponProngDagger",
+   "cells": {
+    "mesh": {
+     "status": "COMPLETE",
+     "glb": "VerticalSlice/Weapons/ProngDagger/weapon.glb",
+     "note": null
+    },
+    "materials_textures": {
+     "status": "PARTIAL",
+     "slots": 2,
+     "untextured_slots": [],
+     "slot_detail": [
+      {
+       "status": "COMPLETE",
+       "material": "WEP_ProngDagger_p.WEP_Energon_A_MATINST",
+       "parent_chain": [
+        "FX_Materials_p.Materials.Energon_Base_01_MAT"
+       ],
+       "textures": 6,
+       "unexported": [],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      },
+      {
+       "status": "PARTIAL",
+       "material": "WEP_ProngDagger_p.WEP_ProngDagger_MATINST",
+       "parent_chain": [
+        "WEP_Shared_p.WEP_MeleeBase_MATINST",
+        "WEP_Shared_p.WEP_PhongMain_MAT"
+       ],
+       "textures": 7,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      }
+     ]
+    },
+    "muzzle_socket": {
+     "status": "COMPLETE",
+     "muzzle": [
+      "MuzzleFlash"
+     ],
+     "mesh_sockets": [
+      "MuzzleFlash"
+     ]
+    },
+    "muzzle_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_Sword_p.FX.SwordEquip_Red_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_Sword_p.FX.SwordEquip_Red_FX",
+       "status": "COMPLETE",
+       "emitters": 3,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "tracer_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "impact_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "projectile": {
+     "status": "UNKNOWN",
+     "classes": []
+    },
+    "animations": {
+     "status": "COMPLETE",
+     "event_anims": [
+      "ProngDagger_Equip",
+      "ProngDagger_Drop"
+     ],
+     "missing": [],
+     "clips": 2
+    },
+    "sounds": {
+     "status": "UNKNOWN",
+     "total": 4,
+     "with_wav": 2,
+     "unresolved": [],
+     "cue_without_tagged_waves": [
+      "WP_Looping",
+      "WP_Special"
+     ],
+     "note": "cue_without_tagged_waves: SoundNodeWaveEvent with no tagged ChildNodes - silent or native wave refs (UNKNOWN)"
+    },
+    "hud_icon": {
+     "status": "UNKNOWN",
+     "icons": []
+    },
+    "ammo_damage": {
+     "status": "COMPLETE",
+     "MaxAmmoCount": 9999,
+     "InstantHitDamage": [
+      0.0,
+      0.0
+     ]
+    },
+    "restrictions": {
+     "status": "UNKNOWN",
+     "restrictions": {},
+     "note": "no TnDataProvider_Weapon entry: not loadout-selectable"
+    }
+   },
+   "untextured_but_has_geometry": false,
+   "overall": "PARTIAL"
+  },
+  "RepairRay": {
+   "class": "TransContent.TnWeaponRepairRay",
+   "cells": {
+    "mesh": {
+     "status": "COMPLETE",
+     "glb": "VerticalSlice/Weapons/RepairRay/weapon.glb",
+     "note": null
+    },
+    "materials_textures": {
+     "status": "PARTIAL",
+     "slots": 1,
+     "untextured_slots": [],
+     "slot_detail": [
+      {
+       "status": "PARTIAL",
+       "material": "WEP_RepairBeam_p.WEP_RepairBeam_MATINST",
+       "parent_chain": [
+        "WEP_Shared_p.WEP_BASE_MATINST",
+        "WEP_Shared_p.WEP_PhongMain_MAT"
+       ],
+       "textures": 7,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      }
+     ]
+    },
+    "muzzle_socket": {
+     "status": "COMPLETE",
+     "muzzle": [
+      "MuzzleFlash"
+     ],
+     "mesh_sockets": [
+      "MuzzleFlash"
+     ]
+    },
+    "muzzle_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "tracer_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_RepairBeam_p.FX.Tracer_RepairBeam_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_RepairBeam_p.FX.Tracer_RepairBeam_FX",
+       "status": "COMPLETE",
+       "emitters": 8,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "impact_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_RepairBeam_p.FX.Squib_RepairEnemy_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_RepairBeam_p.FX.Squib_RepairEnemy_FX",
+       "status": "COMPLETE",
+       "emitters": 9,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "projectile": {
+     "status": "UNKNOWN",
+     "classes": []
+    },
+    "animations": {
+     "status": "COMPLETE",
+     "event_anims": [
+      "RepairBeam_Equip",
+      "RepairBeam_Drop",
+      "RepairBeam_Fire",
+      "RepairBeam_Fire",
+      "RepairBeam_Reload",
+      "RepairBeam_Reload"
+     ],
+     "missing": [],
+     "clips": 6
+    },
+    "sounds": {
+     "status": "UNKNOWN",
+     "total": 10,
+     "with_wav": 9,
+     "unresolved": [],
+     "cue_without_tagged_waves": [
+      "WP_Overheat"
+     ],
+     "note": "cue_without_tagged_waves: SoundNodeWaveEvent with no tagged ChildNodes - silent or native wave refs (UNKNOWN)"
+    },
+    "hud_icon": {
+     "status": "COMPLETE",
+     "icons": [
+      "content/UI_GFxHud_p/TnWeaponRepairRay.png",
+      "content/UI_GFxCharacterSelect_p/RepairRay.png",
+      "content/UI_GFxCustomize_p/RepairRay.png"
+     ]
+    },
+    "ammo_damage": {
+     "status": "COMPLETE",
+     "MaxAmmoCount": 300,
+     "InstantHitDamage": [
+      100.0,
+      0.0
+     ]
+    },
+    "restrictions": {
+     "status": "COMPLETE",
+     "restrictions": {
+      "RepairRay": {
+       "FactionRestriction": "Any",
+       "ChassisRestriction": [
+        "Jet",
+        "Jet2",
+        "Jet3",
+        "Jet4",
+        "Jet5",
+        "Jet6",
+        "Jet7",
+        "Jet8"
+       ]
+      }
+     },
+     "note": null
+    }
+   },
+   "untextured_but_has_geometry": false,
+   "overall": "PARTIAL"
+  },
+  "HomingRocket": {
+   "class": "TransContent.TnWeaponRocketLauncher",
+   "cells": {
+    "mesh": {
+     "status": "COMPLETE",
+     "glb": "VerticalSlice/Weapons/HomingRocket/weapon.glb",
+     "note": null
+    },
+    "materials_textures": {
+     "status": "PARTIAL",
+     "slots": 1,
+     "untextured_slots": [],
+     "slot_detail": [
+      {
+       "status": "PARTIAL",
+       "material": "WEP_RocketLauncher_p.WEP_RocketLauncher_MATINST",
+       "parent_chain": [
+        "WEP_Shared_p.WEP_BASE_MATINST",
+        "WEP_Shared_p.WEP_PhongMain_MAT"
+       ],
+       "textures": 7,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      }
+     ]
+    },
+    "muzzle_socket": {
+     "status": "COMPLETE",
+     "muzzle": [
+      "MuzzleFlash"
+     ],
+     "mesh_sockets": [
+      "Exhaust",
+      "MuzzleFlash_back",
+      "MuzzleFlash"
+     ]
+    },
+    "muzzle_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_HomingRocket_p.FX.MuzzleFlash_HomRocket_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_HomingRocket_p.FX.MuzzleFlash_HomRocket_FX",
+       "status": "COMPLETE",
+       "emitters": 3,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "tracer_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "impact_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "projectile": {
+     "status": "PARTIAL",
+     "classes": [
+      "TransContent.TnProjectileHomingRocket"
+     ]
+    },
+    "animations": {
+     "status": "COMPLETE",
+     "event_anims": [
+      "RocketLauncher_Equip",
+      "RocketLauncher_Drop",
+      "RocketLauncher_Fire",
+      "RocketLauncher_Reload"
+     ],
+     "missing": [],
+     "clips": 6
+    },
+    "sounds": {
+     "status": "UNKNOWN",
+     "total": 9,
+     "with_wav": 8,
+     "unresolved": [],
+     "cue_without_tagged_waves": [
+      "WP_Overheat"
+     ],
+     "note": "cue_without_tagged_waves: SoundNodeWaveEvent with no tagged ChildNodes - silent or native wave refs (UNKNOWN)"
+    },
+    "hud_icon": {
+     "status": "MISSING",
+     "icons": [
+      "content/UI_GFxHud_p/TnWeaponRocketLauncher.png",
+      "content/UI_GFxCharacterSelect_p/HomingRocket.png",
+      "content/UI_GFxCustomize_p/HomingRocket.png"
+     ]
+    },
+    "ammo_damage": {
+     "status": "COMPLETE",
+     "MaxAmmoCount": 8,
+     "InstantHitDamage": [
+      0.0,
+      0.0
+     ]
+    },
+    "restrictions": {
+     "status": "COMPLETE",
+     "restrictions": {
+      "HomingRocket": {
+       "FactionRestriction": "Any",
+       "ChassisRestriction": [
+        "Tank",
+        "Tank2",
+        "Tank3",
+        "Tank4",
+        "Tank5"
+       ]
+      }
+     },
+     "note": null
+    }
+   },
+   "untextured_but_has_geometry": false,
+   "overall": "PARTIAL"
+  },
+  "PlaneRocket": {
+   "class": "TransContent.TnWeaponRocketPlane",
+   "cells": {
+    "mesh": {
+     "status": "COMPLETE",
+     "glb": null,
+     "note": "the weapon mesh component authors no SkeletalMesh: nothing is drawn for the held weapon (vehicle-form weapons fire from the vehicle WeaponSocket; grenades show only the thrown projectile / pickup mesh) - CONFIRMED absence"
+    },
+    "materials_textures": {
+     "status": "UNKNOWN",
+     "slots": 0,
+     "untextured_slots": [],
+     "slot_detail": []
+    },
+    "muzzle_socket": {
+     "status": "UNKNOWN",
+     "muzzle": [
+      "WeaponSocket_Primary",
+      "WeaponSocket_Primary2"
+     ],
+     "mesh_sockets": []
+    },
+    "muzzle_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_Weapons_p.Blaster.MuzzleFlash_Blaster_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_Weapons_p.Blaster.MuzzleFlash_Blaster_FX",
+       "status": "COMPLETE",
+       "emitters": 5,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "tracer_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "impact_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "projectile": {
+     "status": "PARTIAL",
+     "classes": [
+      "TransContent.TnProjectilePlaneRocketTemp"
+     ]
+    },
+    "animations": {
+     "status": "UNKNOWN",
+     "event_anims": [],
+     "missing": [],
+     "clips": 0
+    },
+    "sounds": {
+     "status": "UNKNOWN",
+     "total": 7,
+     "with_wav": 6,
+     "unresolved": [],
+     "cue_without_tagged_waves": [
+      "WP_Overheat"
+     ],
+     "note": "cue_without_tagged_waves: SoundNodeWaveEvent with no tagged ChildNodes - silent or native wave refs (UNKNOWN)"
+    },
+    "hud_icon": {
+     "status": "MISSING",
+     "icons": []
+    },
+    "ammo_damage": {
+     "status": "COMPLETE",
+     "MaxAmmoCount": 80,
+     "InstantHitDamage": [
+      0.0,
+      0.0
+     ]
+    },
+    "restrictions": {
+     "status": "COMPLETE",
+     "restrictions": {
+      "PlaneRocket": {
+       "FactionRestriction": "Any",
+       "ChassisRestriction": []
+      }
+     },
+     "note": null
+    }
+   },
+   "untextured_but_has_geometry": false,
+   "overall": "PARTIAL"
+  },
+  "RocketTemp": {
+   "class": "TransContent.TnWeaponRocketTemp",
+   "cells": {
+    "mesh": {
+     "status": "COMPLETE",
+     "glb": "VerticalSlice/Weapons/RocketTemp/weapon.glb",
+     "note": null
+    },
+    "materials_textures": {
+     "status": "MISSING",
+     "slots": 1,
+     "untextured_slots": [
+      "WEP_Rocket_p.WEP_Rocket_Temp_MAT"
+     ],
+     "slot_detail": [
+      {
+       "status": "MISSING",
+       "material": "WEP_Rocket_p.WEP_Rocket_Temp_MAT",
+       "parent_chain": [],
+       "textures": 0,
+       "unexported": [],
+       "explicit_none_overrides": [],
+       "has_base_colour": false
+      }
+     ]
+    },
+    "muzzle_socket": {
+     "status": "COMPLETE",
+     "muzzle": [
+      "MuzzleFlash"
+     ],
+     "mesh_sockets": [
+      "MuzzleFlash"
+     ]
+    },
+    "muzzle_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_Weapons_p.Blaster.MuzzleFlash_Blaster_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_Weapons_p.Blaster.MuzzleFlash_Blaster_FX",
+       "status": "COMPLETE",
+       "emitters": 5,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "tracer_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "impact_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "projectile": {
+     "status": "PARTIAL",
+     "classes": [
+      "TransContent.TnProjectileRocketTemp"
+     ]
+    },
+    "animations": {
+     "status": "MISSING",
+     "event_anims": [],
+     "missing": [],
+     "clips": 0
+    },
+    "sounds": {
+     "status": "COMPLETE",
+     "total": 7,
+     "with_wav": 7,
+     "unresolved": [],
+     "cue_without_tagged_waves": [],
+     "note": null
+    },
+    "hud_icon": {
+     "status": "UNKNOWN",
+     "icons": []
+    },
+    "ammo_damage": {
+     "status": "COMPLETE",
+     "MaxAmmoCount": 999,
+     "InstantHitDamage": [
+      0.0,
+      0.0
+     ]
+    },
+    "restrictions": {
+     "status": "UNKNOWN",
+     "restrictions": {},
+     "note": "no TnDataProvider_Weapon entry: not loadout-selectable"
+    }
+   },
+   "untextured_but_has_geometry": true,
+   "overall": "PARTIAL"
+  },
+  "RocketTurretKillStreak": {
+   "class": "TransContent.TnWeaponRocketTurretKillStreak",
+   "cells": {
+    "mesh": {
+     "status": "COMPLETE",
+     "glb": "VerticalSlice/Weapons/RocketTurretKillStreak/weapon.glb",
+     "note": null
+    },
+    "materials_textures": {
+     "status": "PARTIAL",
+     "slots": 2,
+     "untextured_slots": [],
+     "slot_detail": [
+      {
+       "status": "PARTIAL",
+       "material": "WEP_TurretRocket_p.WEP_TurretRocket_MATINST",
+       "parent_chain": [
+        "WEP_Shared_p.WEP_BASE_MATINST",
+        "WEP_Shared_p.WEP_PhongMain_MAT"
+       ],
+       "textures": 7,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      },
+      {
+       "status": "PARTIAL",
+       "material": "WEP_TurretRocket_p.WEP_TurretRocket_MATINST",
+       "parent_chain": [
+        "WEP_Shared_p.WEP_BASE_MATINST",
+        "WEP_Shared_p.WEP_PhongMain_MAT"
+       ],
+       "textures": 7,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      }
+     ]
+    },
+    "muzzle_socket": {
+     "status": "COMPLETE",
+     "muzzle": [
+      "MuzzleFlash"
+     ],
+     "mesh_sockets": [
+      "MuzzleFlash_back",
+      "MuzzleFlash"
+     ]
+    },
+    "muzzle_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_TurretIonBlaster_p.FX.MuzzleFlash_TurretIon_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_TurretIonBlaster_p.FX.MuzzleFlash_TurretIon_FX",
+       "status": "COMPLETE",
+       "emitters": 5,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "tracer_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "impact_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_TurretIonBlaster_p.FX.Impact_TurretIon_OLD"
+     ],
+     "detail": [
+      {
+       "template": "FX_TurretIonBlaster_p.FX.Impact_TurretIon_OLD",
+       "status": "COMPLETE",
+       "emitters": 8,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "projectile": {
+     "status": "PARTIAL",
+     "classes": [
+      "TransContent.TnProjectileMangaRocketTurret"
+     ]
+    },
+    "animations": {
+     "status": "COMPLETE",
+     "event_anims": [
+      "WEP_TurretRocket_Fire",
+      "WEP_TurretRocket_Pickup",
+      "WEP_TurretRocket_Unequip"
+     ],
+     "missing": [],
+     "clips": 7
+    },
+    "sounds": {
+     "status": "UNKNOWN",
+     "total": 7,
+     "with_wav": 6,
+     "unresolved": [],
+     "cue_without_tagged_waves": [
+      "PickupSound"
+     ],
+     "note": "cue_without_tagged_waves: SoundNodeWaveEvent with no tagged ChildNodes - silent or native wave refs (UNKNOWN)"
+    },
+    "hud_icon": {
+     "status": "UNKNOWN",
+     "icons": []
+    },
+    "ammo_damage": {
+     "status": "PARTIAL",
+     "MaxAmmoCount": null,
+     "InstantHitDamage": [
+      10.0
+     ]
+    },
+    "restrictions": {
+     "status": "UNKNOWN",
+     "restrictions": {},
+     "note": "no TnDataProvider_Weapon entry: not loadout-selectable"
+    }
+   },
+   "untextured_but_has_geometry": false,
+   "overall": "PARTIAL"
+  },
+  "RocketVehicle": {
+   "class": "TransContent.TnWeaponRocketVehicle",
+   "cells": {
+    "mesh": {
+     "status": "COMPLETE",
+     "glb": null,
+     "note": "the weapon mesh component authors no SkeletalMesh: nothing is drawn for the held weapon (vehicle-form weapons fire from the vehicle WeaponSocket; grenades show only the thrown projectile / pickup mesh) - CONFIRMED absence"
+    },
+    "materials_textures": {
+     "status": "UNKNOWN",
+     "slots": 0,
+     "untextured_slots": [],
+     "slot_detail": []
+    },
+    "muzzle_socket": {
+     "status": "UNKNOWN",
+     "muzzle": [
+      "WeaponSocket_Primary",
+      "WeaponSocket_Primary2"
+     ],
+     "mesh_sockets": []
+    },
+    "muzzle_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_Weapons_p.Blaster.MuzzleFlash_Blaster_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_Weapons_p.Blaster.MuzzleFlash_Blaster_FX",
+       "status": "COMPLETE",
+       "emitters": 5,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "tracer_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "impact_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "projectile": {
+     "status": "PARTIAL",
+     "classes": [
+      "TransContent.TnProjectilePlaneRocketTemp"
+     ]
+    },
+    "animations": {
+     "status": "UNKNOWN",
+     "event_anims": [],
+     "missing": [],
+     "clips": 0
+    },
+    "sounds": {
+     "status": "UNKNOWN",
+     "total": 7,
+     "with_wav": 6,
+     "unresolved": [],
+     "cue_without_tagged_waves": [
+      "WP_Overheat"
+     ],
+     "note": "cue_without_tagged_waves: SoundNodeWaveEvent with no tagged ChildNodes - silent or native wave refs (UNKNOWN)"
+    },
+    "hud_icon": {
+     "status": "COMPLETE",
+     "icons": [
+      "content/UI_GFxHud_p/TnWeaponRocketVehicle.png"
+     ]
+    },
+    "ammo_damage": {
+     "status": "COMPLETE",
+     "MaxAmmoCount": 20,
+     "InstantHitDamage": [
+      0.0,
+      0.0
+     ]
+    },
+    "restrictions": {
+     "status": "COMPLETE",
+     "restrictions": {
+      "RocketVehicle": {
+       "FactionRestriction": "Any",
+       "ChassisRestriction": []
+      }
+     },
+     "note": null
+    }
+   },
+   "untextured_but_has_geometry": false,
+   "overall": "PARTIAL"
+  },
+  "SerratedBlade": {
+   "class": "TransContent.TnWeaponSerratedBlade",
+   "cells": {
+    "mesh": {
+     "status": "COMPLETE",
+     "glb": "VerticalSlice/Weapons/SerratedBlade/weapon.glb",
+     "note": null
+    },
+    "materials_textures": {
+     "status": "PARTIAL",
+     "slots": 2,
+     "untextured_slots": [],
+     "slot_detail": [
+      {
+       "status": "PARTIAL",
+       "material": "WEP_SerratedBlade_p.WEP_SerratedBlade_MATINST",
+       "parent_chain": [
+        "WEP_Shared_p.WEP_MeleeBase_MATINST",
+        "WEP_Shared_p.WEP_PhongMain_MAT"
+       ],
+       "textures": 7,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      },
+      {
+       "status": "PARTIAL",
+       "material": "WEP_SerratedBlade_p.WEP_SerratedBlade_Energon_Tech_MATINST",
+       "parent_chain": [
+        "WEP_Shared_p.Electric_Lava_Tech_B_Mat"
+       ],
+       "textures": 5,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      }
+     ]
+    },
+    "muzzle_socket": {
+     "status": "COMPLETE",
+     "muzzle": [
+      "MuzzleFlash"
+     ],
+     "mesh_sockets": [
+      "MuzzleFlash"
+     ]
+    },
+    "muzzle_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_Sword_p.FX.SwordEquip_Red_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_Sword_p.FX.SwordEquip_Red_FX",
+       "status": "COMPLETE",
+       "emitters": 3,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "tracer_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "impact_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "projectile": {
+     "status": "UNKNOWN",
+     "classes": []
+    },
+    "animations": {
+     "status": "COMPLETE",
+     "event_anims": [
+      "SerratedBlade_Equip",
+      "SerratedBlade_Drop"
+     ],
+     "missing": [],
+     "clips": 2
+    },
+    "sounds": {
+     "status": "UNKNOWN",
+     "total": 4,
+     "with_wav": 2,
+     "unresolved": [],
+     "cue_without_tagged_waves": [
+      "WP_Looping",
+      "WP_Special"
+     ],
+     "note": "cue_without_tagged_waves: SoundNodeWaveEvent with no tagged ChildNodes - silent or native wave refs (UNKNOWN)"
+    },
+    "hud_icon": {
+     "status": "UNKNOWN",
+     "icons": []
+    },
+    "ammo_damage": {
+     "status": "COMPLETE",
+     "MaxAmmoCount": 9999,
+     "InstantHitDamage": [
+      0.0,
+      0.0
+     ]
+    },
+    "restrictions": {
+     "status": "UNKNOWN",
+     "restrictions": {},
+     "note": "no TnDataProvider_Weapon entry: not loadout-selectable"
+    }
+   },
+   "untextured_but_has_geometry": false,
+   "overall": "PARTIAL"
+  },
+  "ShortSword": {
+   "class": "TransContent.TnWeaponShortSword",
+   "cells": {
+    "mesh": {
+     "status": "COMPLETE",
+     "glb": "VerticalSlice/Weapons/ShortSword/weapon.glb",
+     "note": null
+    },
+    "materials_textures": {
+     "status": "PARTIAL",
+     "slots": 2,
+     "untextured_slots": [],
+     "slot_detail": [
+      {
+       "status": "PARTIAL",
+       "material": "WEP_ShortSword_p.WEP_ShortSword_Energon_Tech_MATINST",
+       "parent_chain": [
+        "WEP_Shared_p.Electric_Lava_Tech_B_Mat"
+       ],
+       "textures": 5,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      },
+      {
+       "status": "PARTIAL",
+       "material": "WEP_ShortSword_p.WEP_ShortSword_MATINST",
+       "parent_chain": [
+        "WEP_Shared_p.WEP_MeleeBase_MATINST",
+        "WEP_Shared_p.WEP_PhongMain_MAT"
+       ],
+       "textures": 8,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      }
+     ]
+    },
+    "muzzle_socket": {
+     "status": "COMPLETE",
+     "muzzle": [
+      "MuzzleFlash"
+     ],
+     "mesh_sockets": [
+      "MuzzleFlash"
+     ]
+    },
+    "muzzle_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_Sword_p.FX.SwordEquip_Red_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_Sword_p.FX.SwordEquip_Red_FX",
+       "status": "COMPLETE",
+       "emitters": 3,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "tracer_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "impact_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "projectile": {
+     "status": "UNKNOWN",
+     "classes": []
+    },
+    "animations": {
+     "status": "COMPLETE",
+     "event_anims": [
+      "ShortSword_Equip",
+      "ShortSword_Drop"
+     ],
+     "missing": [],
+     "clips": 2
+    },
+    "sounds": {
+     "status": "UNKNOWN",
+     "total": 4,
+     "with_wav": 2,
+     "unresolved": [],
+     "cue_without_tagged_waves": [
+      "WP_Looping",
+      "WP_Special"
+     ],
+     "note": "cue_without_tagged_waves: SoundNodeWaveEvent with no tagged ChildNodes - silent or native wave refs (UNKNOWN)"
+    },
+    "hud_icon": {
+     "status": "MISSING",
+     "icons": []
+    },
+    "ammo_damage": {
+     "status": "COMPLETE",
+     "MaxAmmoCount": 9999,
+     "InstantHitDamage": [
+      0.0,
+      0.0
+     ]
+    },
+    "restrictions": {
+     "status": "COMPLETE",
+     "restrictions": {
+      "ShortSword": {
+       "FactionRestriction": "Autobot",
+       "ChassisRestriction": [
+        "Car",
+        "Car2",
+        "Car5",
+        "Car6"
+       ]
+      }
+     },
+     "note": null
+    }
+   },
+   "untextured_but_has_geometry": false,
+   "overall": "PARTIAL"
+  },
+  "Shotgun": {
+   "class": "TransContent.TnWeaponShotgun",
+   "cells": {
+    "mesh": {
+     "status": "COMPLETE",
+     "glb": "VerticalSlice/Weapons/Shotgun/weapon.glb",
+     "note": null
+    },
+    "materials_textures": {
+     "status": "PARTIAL",
+     "slots": 1,
+     "untextured_slots": [],
+     "slot_detail": [
+      {
+       "status": "PARTIAL",
+       "material": "WEP_Shotgun_p.WEP_Shotgun_MATINST",
+       "parent_chain": [
+        "WEP_Shared_p.WEP_BASE_MATINST",
+        "WEP_Shared_p.WEP_PhongMain_MAT"
+       ],
+       "textures": 7,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      }
+     ]
+    },
+    "muzzle_socket": {
+     "status": "COMPLETE",
+     "muzzle": [
+      "MuzzleFlash"
+     ],
+     "mesh_sockets": [
+      "MuzzleFlash",
+      "MagazineSocket",
+      "ShellSocket"
+     ]
+    },
+    "muzzle_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_EMPShotgun_p.FX.MuzzleFlash_EMPShotgun_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_EMPShotgun_p.FX.MuzzleFlash_EMPShotgun_FX",
+       "status": "COMPLETE",
+       "emitters": 6,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "tracer_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_EMPShotgun_p.FX.Trail_EMPShotgun_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_EMPShotgun_p.FX.Trail_EMPShotgun_FX",
+       "status": "COMPLETE",
+       "emitters": 7,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "impact_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_EMPShotgun_p.FX.Squib_EMPShotgun_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_EMPShotgun_p.FX.Squib_EMPShotgun_FX",
+       "status": "COMPLETE",
+       "emitters": 7,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "projectile": {
+     "status": "UNKNOWN",
+     "classes": []
+    },
+    "animations": {
+     "status": "COMPLETE",
+     "event_anims": [
+      "Shotgun_Equip",
+      "Shotgun_Drop",
+      "Shotgun_Fire",
+      "Shooting_Reload_Shotgun"
+     ],
+     "missing": [],
+     "clips": 7
+    },
+    "sounds": {
+     "status": "COMPLETE",
+     "total": 8,
+     "with_wav": 8,
+     "unresolved": [],
+     "cue_without_tagged_waves": [],
+     "note": null
+    },
+    "hud_icon": {
+     "status": "COMPLETE",
+     "icons": [
+      "content/UI_GFxHud_p/TnWeaponShotgun.png",
+      "content/UI_GFxCharacterSelect_p/Shotgun.png",
+      "content/UI_GFxCustomize_p/Shotgun.png"
+     ]
+    },
+    "ammo_damage": {
+     "status": "COMPLETE",
+     "MaxAmmoCount": 30,
+     "InstantHitDamage": [
+      13.0
+     ]
+    },
+    "restrictions": {
+     "status": "COMPLETE",
+     "restrictions": {
+      "Shotgun": {
+       "FactionRestriction": "Any",
+       "ChassisRestriction": [
+        "Car",
+        "Car2",
+        "Car3",
+        "Car4",
+        "Car5",
+        "Car6",
+        "Car7"
+       ]
+      }
+     },
+     "note": null
+    }
+   },
+   "untextured_but_has_geometry": false,
+   "overall": "PARTIAL"
+  },
+  "SniperRifle": {
+   "class": "TransContent.TnWeaponSniperRifle",
+   "cells": {
+    "mesh": {
+     "status": "COMPLETE",
+     "glb": "VerticalSlice/Weapons/SniperRifle/weapon.glb",
+     "note": null
+    },
+    "materials_textures": {
+     "status": "PARTIAL",
+     "slots": 1,
+     "untextured_slots": [],
+     "slot_detail": [
+      {
+       "status": "PARTIAL",
+       "material": "WEP_SniperRifle_p.WEP_SniperRifle_MAT",
+       "parent_chain": [
+        "WEP_Shared_p.WEP_BASE_MATINST",
+        "WEP_Shared_p.WEP_PhongMain_MAT"
+       ],
+       "textures": 7,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      }
+     ]
+    },
+    "muzzle_socket": {
+     "status": "COMPLETE",
+     "muzzle": [
+      "MuzzleFlash"
+     ],
+     "mesh_sockets": [
+      "ShellEject",
+      "LaserSight",
+      "MuzzleFlash"
+     ]
+    },
+    "muzzle_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_Sniper_p.FX.MuzzleFlash_Sniper_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_Sniper_p.FX.MuzzleFlash_Sniper_FX",
+       "status": "COMPLETE",
+       "emitters": 8,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "tracer_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_Sniper_p.FX.Tracer_SniperRifle_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_Sniper_p.FX.Tracer_SniperRifle_FX",
+       "status": "COMPLETE",
+       "emitters": 2,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "impact_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_AssaultRifle_p.FX.Impact_AssaultRifle_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_AssaultRifle_p.FX.Impact_AssaultRifle_FX",
+       "status": "COMPLETE",
+       "emitters": 6,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "projectile": {
+     "status": "UNKNOWN",
+     "classes": []
+    },
+    "animations": {
+     "status": "COMPLETE",
+     "event_anims": [
+      "SniperRifle_Fire",
+      "SniperRifle_Equip",
+      "SniperRifle_Drop",
+      "SniperRifle_Reload"
+     ],
+     "missing": [],
+     "clips": 6
+    },
+    "sounds": {
+     "status": "UNKNOWN",
+     "total": 9,
+     "with_wav": 8,
+     "unresolved": [],
+     "cue_without_tagged_waves": [
+      "WP_Overheat"
+     ],
+     "note": "cue_without_tagged_waves: SoundNodeWaveEvent with no tagged ChildNodes - silent or native wave refs (UNKNOWN)"
+    },
+    "hud_icon": {
+     "status": "COMPLETE",
+     "icons": [
+      "content/UI_GFxHud_p/TnWeaponSniperRifle.png",
+      "content/UI_GFxCharacterSelect_p/SniperRifle.png",
+      "content/UI_GFxCustomize_p/SniperRifle.png"
+     ]
+    },
+    "ammo_damage": {
+     "status": "COMPLETE",
+     "MaxAmmoCount": 12,
+     "InstantHitDamage": [
+      162.0
+     ]
+    },
+    "restrictions": {
+     "status": "COMPLETE",
+     "restrictions": {
+      "SniperRifle": {
+       "FactionRestriction": "Any",
+       "ChassisRestriction": [
+        "Car",
+        "Car2",
+        "Car3",
+        "Car4",
+        "Car5",
+        "Car6",
+        "Car7"
+       ]
+      }
+     },
+     "note": null
+    }
+   },
+   "untextured_but_has_geometry": false,
+   "overall": "PARTIAL"
+  },
+  "SpikedBat": {
+   "class": "TransContent.TnWeaponSpikedBat",
+   "cells": {
+    "mesh": {
+     "status": "COMPLETE",
+     "glb": "VerticalSlice/Weapons/SpikedBat/weapon.glb",
+     "note": null
+    },
+    "materials_textures": {
+     "status": "PARTIAL",
+     "slots": 2,
+     "untextured_slots": [],
+     "slot_detail": [
+      {
+       "status": "PARTIAL",
+       "material": "WEP_SpikedBat_p.WEP_SpikedBat_EnergonTech_MATINST",
+       "parent_chain": [
+        "WEP_Shared_p.Electric_Lava_Tech_B_Mat"
+       ],
+       "textures": 5,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      },
+      {
+       "status": "PARTIAL",
+       "material": "WEP_SpikedBat_p.WEP_SpikedBat_MATINST",
+       "parent_chain": [
+        "WEP_Shared_p.WEP_MeleeBase_MATINST",
+        "WEP_Shared_p.WEP_PhongMain_MAT"
+       ],
+       "textures": 7,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      }
+     ]
+    },
+    "muzzle_socket": {
+     "status": "COMPLETE",
+     "muzzle": [
+      "MuzzleFlash"
+     ],
+     "mesh_sockets": [
+      "MuzzleFlash"
+     ]
+    },
+    "muzzle_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_Sword_p.FX.MeleeEquip_Purple_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_Sword_p.FX.MeleeEquip_Purple_FX",
+       "status": "COMPLETE",
+       "emitters": 3,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "tracer_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "impact_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "projectile": {
+     "status": "UNKNOWN",
+     "classes": []
+    },
+    "animations": {
+     "status": "COMPLETE",
+     "event_anims": [
+      "SpikeBat_Equip",
+      "SpikeBat_Drop"
+     ],
+     "missing": [],
+     "clips": 2
+    },
+    "sounds": {
+     "status": "UNKNOWN",
+     "total": 4,
+     "with_wav": 2,
+     "unresolved": [],
+     "cue_without_tagged_waves": [
+      "WP_Looping",
+      "WP_Special"
+     ],
+     "note": "cue_without_tagged_waves: SoundNodeWaveEvent with no tagged ChildNodes - silent or native wave refs (UNKNOWN)"
+    },
+    "hud_icon": {
+     "status": "MISSING",
+     "icons": []
+    },
+    "ammo_damage": {
+     "status": "COMPLETE",
+     "MaxAmmoCount": 9999,
+     "InstantHitDamage": [
+      0.0,
+      0.0
+     ]
+    },
+    "restrictions": {
+     "status": "COMPLETE",
+     "restrictions": {
+      "SpikedBat": {
+       "FactionRestriction": "Decepticon",
+       "ChassisRestriction": [
+        "Jet",
+        "Jet2",
+        "Jet3",
+        "Jet7",
+        "Jet8"
+       ]
+      }
+     },
+     "note": null
+    }
+   },
+   "untextured_but_has_geometry": false,
+   "overall": "PARTIAL"
+  },
+  "SpikedMace": {
+   "class": "TransContent.TnWeaponSpikedMace",
+   "cells": {
+    "mesh": {
+     "status": "COMPLETE",
+     "glb": "VerticalSlice/Weapons/SpikedMace/weapon.glb",
+     "note": null
+    },
+    "materials_textures": {
+     "status": "PARTIAL",
+     "slots": 2,
+     "untextured_slots": [],
+     "slot_detail": [
+      {
+       "status": "PARTIAL",
+       "material": "WEP_SpikedMace_p.WEP_SpikedMace_EnergonTech_MATINST",
+       "parent_chain": [
+        "WEP_Shared_p.Electric_Lava_Tech_B_Mat"
+       ],
+       "textures": 5,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      },
+      {
+       "status": "PARTIAL",
+       "material": "WEP_SpikedMace_p.WEP_SpikedMace_MATINST",
+       "parent_chain": [
+        "WEP_Shared_p.WEP_MeleeBase_MATINST",
+        "WEP_Shared_p.WEP_PhongMain_MAT"
+       ],
+       "textures": 8,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      }
+     ]
+    },
+    "muzzle_socket": {
+     "status": "COMPLETE",
+     "muzzle": [
+      "MuzzleFlash"
+     ],
+     "mesh_sockets": [
+      "MuzzleFlash"
+     ]
+    },
+    "muzzle_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_Sword_p.FX.MeleeEquip_Purple_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_Sword_p.FX.MeleeEquip_Purple_FX",
+       "status": "COMPLETE",
+       "emitters": 3,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "tracer_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "impact_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "projectile": {
+     "status": "UNKNOWN",
+     "classes": []
+    },
+    "animations": {
+     "status": "COMPLETE",
+     "event_anims": [
+      "SpikedMace_Equip",
+      "SpikedMace_Drop"
+     ],
+     "missing": [],
+     "clips": 2
+    },
+    "sounds": {
+     "status": "UNKNOWN",
+     "total": 4,
+     "with_wav": 2,
+     "unresolved": [],
+     "cue_without_tagged_waves": [
+      "WP_Looping",
+      "WP_Special"
+     ],
+     "note": "cue_without_tagged_waves: SoundNodeWaveEvent with no tagged ChildNodes - silent or native wave refs (UNKNOWN)"
+    },
+    "hud_icon": {
+     "status": "MISSING",
+     "icons": []
+    },
+    "ammo_damage": {
+     "status": "COMPLETE",
+     "MaxAmmoCount": 9999,
+     "InstantHitDamage": [
+      0.0,
+      0.0
+     ]
+    },
+    "restrictions": {
+     "status": "COMPLETE",
+     "restrictions": {
+      "SpikedMace": {
+       "FactionRestriction": "Decepticon",
+       "ChassisRestriction": [
+        "Tank"
+       ]
+      }
+     },
+     "note": null
+    }
+   },
+   "untextured_but_has_geometry": false,
+   "overall": "PARTIAL"
+  },
+  "TankCannon": {
+   "class": "TransContent.TnWeaponTankCannon",
+   "cells": {
+    "mesh": {
+     "status": "COMPLETE",
+     "glb": null,
+     "note": "the weapon mesh component authors no SkeletalMesh: nothing is drawn for the held weapon (vehicle-form weapons fire from the vehicle WeaponSocket; grenades show only the thrown projectile / pickup mesh) - CONFIRMED absence"
+    },
+    "materials_textures": {
+     "status": "UNKNOWN",
+     "slots": 0,
+     "untextured_slots": [],
+     "slot_detail": []
+    },
+    "muzzle_socket": {
+     "status": "UNKNOWN",
+     "muzzle": [
+      "WeaponSocket_Primary"
+     ],
+     "mesh_sockets": []
+    },
+    "muzzle_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_TankCannon_p.FX.D_MuzzleFlash_TankCannon_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_TankCannon_p.FX.D_MuzzleFlash_TankCannon_FX",
+       "status": "COMPLETE",
+       "emitters": 7,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "tracer_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_TankCannon_p.FX.Trail_TankCannon_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_TankCannon_p.FX.Trail_TankCannon_FX",
+       "status": "COMPLETE",
+       "emitters": 3,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "impact_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "projectile": {
+     "status": "PARTIAL",
+     "classes": [
+      "TransContent.TnProjectileTankShell"
+     ]
+    },
+    "animations": {
+     "status": "UNKNOWN",
+     "event_anims": [],
+     "missing": [],
+     "clips": 0
+    },
+    "sounds": {
+     "status": "COMPLETE",
+     "total": 6,
+     "with_wav": 6,
+     "unresolved": [],
+     "cue_without_tagged_waves": [],
+     "note": null
+    },
+    "hud_icon": {
+     "status": "COMPLETE",
+     "icons": [
+      "content/UI_GFxHud_p/TnWeaponTankCannon.png"
+     ]
+    },
+    "ammo_damage": {
+     "status": "COMPLETE",
+     "MaxAmmoCount": 9,
+     "InstantHitDamage": [
+      0.0,
+      0.0
+     ]
+    },
+    "restrictions": {
+     "status": "COMPLETE",
+     "restrictions": {
+      "TankCannon": {
+       "FactionRestriction": "Any",
+       "ChassisRestriction": []
+      }
+     },
+     "note": null
+    }
+   },
+   "untextured_but_has_geometry": false,
+   "overall": "PARTIAL"
+  },
+  "TortureSword": {
+   "class": "TransContent.TnWeaponTortureSword",
+   "cells": {
+    "mesh": {
+     "status": "COMPLETE",
+     "glb": "VerticalSlice/Weapons/TortureSword/weapon.glb",
+     "note": null
+    },
+    "materials_textures": {
+     "status": "PARTIAL",
+     "slots": 2,
+     "untextured_slots": [],
+     "slot_detail": [
+      {
+       "status": "PARTIAL",
+       "material": "WEP_TortureSword_p.WEP_TortureSword_EnergonTech_MATINST",
+       "parent_chain": [
+        "WEP_Shared_p.Electric_Lava_Tech_B_Mat"
+       ],
+       "textures": 5,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      },
+      {
+       "status": "PARTIAL",
+       "material": "WEP_TortureSword_p.WEP_TortureSword_MATINST",
+       "parent_chain": [
+        "WEP_Shared_p.WEP_MeleeBase_MATINST",
+        "WEP_Shared_p.WEP_PhongMain_MAT"
+       ],
+       "textures": 8,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      }
+     ]
+    },
+    "muzzle_socket": {
+     "status": "COMPLETE",
+     "muzzle": [
+      "MuzzleFlash"
+     ],
+     "mesh_sockets": [
+      "MuzzleFlash"
+     ]
+    },
+    "muzzle_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_Sword_p.FX.MeleeEquip_Purple_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_Sword_p.FX.MeleeEquip_Purple_FX",
+       "status": "COMPLETE",
+       "emitters": 3,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "tracer_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "impact_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "projectile": {
+     "status": "UNKNOWN",
+     "classes": []
+    },
+    "animations": {
+     "status": "COMPLETE",
+     "event_anims": [
+      "TotureSword_Equip",
+      "TotureSword_Drop"
+     ],
+     "missing": [],
+     "clips": 2
+    },
+    "sounds": {
+     "status": "UNKNOWN",
+     "total": 4,
+     "with_wav": 2,
+     "unresolved": [],
+     "cue_without_tagged_waves": [
+      "WP_Looping",
+      "WP_Special"
+     ],
+     "note": "cue_without_tagged_waves: SoundNodeWaveEvent with no tagged ChildNodes - silent or native wave refs (UNKNOWN)"
+    },
+    "hud_icon": {
+     "status": "MISSING",
+     "icons": []
+    },
+    "ammo_damage": {
+     "status": "COMPLETE",
+     "MaxAmmoCount": 9999,
+     "InstantHitDamage": [
+      0.0,
+      0.0
+     ]
+    },
+    "restrictions": {
+     "status": "COMPLETE",
+     "restrictions": {
+      "TortureSword": {
+       "FactionRestriction": "Decepticon",
+       "ChassisRestriction": [
+        "Car3",
+        "Car4"
+       ]
+      }
+     },
+     "note": null
+    }
+   },
+   "untextured_but_has_geometry": false,
+   "overall": "PARTIAL"
+  },
+  "ViciousAxe": {
+   "class": "TransContent.TnWeaponViciousAxe",
+   "cells": {
+    "mesh": {
+     "status": "COMPLETE",
+     "glb": "VerticalSlice/Weapons/ViciousAxe/weapon.glb",
+     "note": null
+    },
+    "materials_textures": {
+     "status": "PARTIAL",
+     "slots": 2,
+     "untextured_slots": [],
+     "slot_detail": [
+      {
+       "status": "PARTIAL",
+       "material": "WEP_ViciousAxe_p.WEP_ViciousAxe_EnergonTech_MATINST",
+       "parent_chain": [
+        "WEP_Shared_p.Electric_Lava_Tech_B_Mat"
+       ],
+       "textures": 5,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      },
+      {
+       "status": "PARTIAL",
+       "material": "WEP_ViciousAxe_p.WEP_ViciousAxe_MATINST",
+       "parent_chain": [
+        "WEP_Shared_p.WEP_MeleeBase_MATINST",
+        "WEP_Shared_p.WEP_PhongMain_MAT"
+       ],
+       "textures": 8,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      }
+     ]
+    },
+    "muzzle_socket": {
+     "status": "COMPLETE",
+     "muzzle": [
+      "MuzzleFlash"
+     ],
+     "mesh_sockets": [
+      "MuzzleFlash"
+     ]
+    },
+    "muzzle_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_Sword_p.FX.MeleeEquip_Purple_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_Sword_p.FX.MeleeEquip_Purple_FX",
+       "status": "COMPLETE",
+       "emitters": 3,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "tracer_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "impact_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "projectile": {
+     "status": "UNKNOWN",
+     "classes": []
+    },
+    "animations": {
+     "status": "COMPLETE",
+     "event_anims": [
+      "ViciousAxe_Equip",
+      "ViciousAxe_Drop"
+     ],
+     "missing": [],
+     "clips": 2
+    },
+    "sounds": {
+     "status": "UNKNOWN",
+     "total": 4,
+     "with_wav": 2,
+     "unresolved": [],
+     "cue_without_tagged_waves": [
+      "WP_Looping",
+      "WP_Special"
+     ],
+     "note": "cue_without_tagged_waves: SoundNodeWaveEvent with no tagged ChildNodes - silent or native wave refs (UNKNOWN)"
+    },
+    "hud_icon": {
+     "status": "MISSING",
+     "icons": []
+    },
+    "ammo_damage": {
+     "status": "COMPLETE",
+     "MaxAmmoCount": 9999,
+     "InstantHitDamage": [
+      0.0,
+      0.0
+     ]
+    },
+    "restrictions": {
+     "status": "COMPLETE",
+     "restrictions": {
+      "ViciousAxe": {
+       "FactionRestriction": "Decepticon",
+       "ChassisRestriction": [
+        "Truck4"
+       ]
+      }
+     },
+     "note": null
+    }
+   },
+   "untextured_but_has_geometry": false,
+   "overall": "PARTIAL"
+  },
+  "WarHammer": {
+   "class": "TransContent.TnWeaponWarHammer",
+   "cells": {
+    "mesh": {
+     "status": "COMPLETE",
+     "glb": "VerticalSlice/Weapons/WarHammer/weapon.glb",
+     "note": null
+    },
+    "materials_textures": {
+     "status": "PARTIAL",
+     "slots": 2,
+     "untextured_slots": [],
+     "slot_detail": [
+      {
+       "status": "PARTIAL",
+       "material": "WEP_WarHammer_p.WEP_WarHammer_MATINST",
+       "parent_chain": [
+        "WEP_Shared_p.WEP_MeleeBase_MATINST",
+        "WEP_Shared_p.WEP_PhongMain_MAT"
+       ],
+       "textures": 7,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      },
+      {
+       "status": "PARTIAL",
+       "material": "WEP_WarHammer_p.WEP_WarHammer_EnergonTech_MATINST",
+       "parent_chain": [
+        "WEP_Shared_p.Electric_Lava_Tech_B_Mat"
+       ],
+       "textures": 5,
+       "unexported": [
+        "Reflection_Map"
+       ],
+       "explicit_none_overrides": [],
+       "has_base_colour": true
+      }
+     ]
+    },
+    "muzzle_socket": {
+     "status": "COMPLETE",
+     "muzzle": [
+      "MuzzleFlash"
+     ],
+     "mesh_sockets": [
+      "MuzzleFlash"
+     ]
+    },
+    "muzzle_fx": {
+     "status": "COMPLETE",
+     "templates": [
+      "FX_Sword_p.FX.SwordEquip_Red_FX"
+     ],
+     "detail": [
+      {
+       "template": "FX_Sword_p.FX.SwordEquip_Red_FX",
+       "status": "COMPLETE",
+       "emitters": 3,
+       "emitter_errors": []
+      }
+     ]
+    },
+    "tracer_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "impact_fx": {
+     "status": "UNKNOWN",
+     "templates": [],
+     "detail": []
+    },
+    "projectile": {
+     "status": "UNKNOWN",
+     "classes": []
+    },
+    "animations": {
+     "status": "COMPLETE",
+     "event_anims": [
+      "Warhammer_Equip",
+      "Warhammer_Drop"
+     ],
+     "missing": [],
+     "clips": 3
+    },
+    "sounds": {
+     "status": "UNKNOWN",
+     "total": 4,
+     "with_wav": 2,
+     "unresolved": [],
+     "cue_without_tagged_waves": [
+      "WP_Looping",
+      "WP_Special"
+     ],
+     "note": "cue_without_tagged_waves: SoundNodeWaveEvent with no tagged ChildNodes - silent or native wave refs (UNKNOWN)"
+    },
+    "hud_icon": {
+     "status": "UNKNOWN",
+     "icons": []
+    },
+    "ammo_damage": {
+     "status": "COMPLETE",
+     "MaxAmmoCount": 9999,
+     "InstantHitDamage": [
+      0.0,
+      0.0
+     ]
+    },
+    "restrictions": {
+     "status": "UNKNOWN",
+     "restrictions": {},
+     "note": "no TnDataProvider_Weapon entry: not loadout-selectable"
+    }
+   },
+   "untextured_but_has_geometry": false,
+   "overall": "PARTIAL"
+  }
+ }
+}

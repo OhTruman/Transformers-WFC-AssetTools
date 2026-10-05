@@ -1,0 +1,1416 @@
+{
+ "generated_by": "AssetTools/scripts/wfc/asset_integrity_audit.py",
+ "generated": "2026-10-05 14:01",
+ "vocabulary": [
+  "COMPLETE",
+  "PARTIAL",
+  "MISSING",
+  "FALLBACK",
+  "UNKNOWN"
+ ],
+ "note": "extraction-level audit; no runtime-correctness claim",
+ "rows": {
+  "MP_IAC_Seed": {
+   "cells": {
+    "sublevels": {
+     "status": "COMPLETE",
+     "sublevels": [
+      "GLB_Audio_m",
+      "MP_IAC_Global_Art_m",
+      "MP_IAC_Seed_ART_m",
+      "MP_IAC_Seed_AUDIO_m",
+      "MP_IAC_Seed_BASE_m"
+     ]
+    },
+    "static_meshes": {
+     "status": "COMPLETE",
+     "placed": 2630,
+     "errors": {}
+    },
+    "bsp": {
+     "status": "COMPLETE",
+     "audit": {
+      "authored_render_triangles": 5368,
+      "authored_polygon_node_triangles": 5368,
+      "world_glb_bsp_triangles": 5368,
+      "difference": 0,
+      "unaccounted_nodes": 0,
+      "verdict": "BSP COMPLETE: every polygon node is rendered by a cooked element or is invisible/portal; the exported triangle count equals the authored render triangles"
+     }
+    },
+    "materials": {
+     "status": "COMPLETE",
+     "materials": 216,
+     "missing": []
+    },
+    "textures": {
+     "status": "PARTIAL",
+     "referenced": 850,
+     "unexported_unique": 10,
+     "examples": [
+      "ENV_AllShader_p.Textures.Pixel_4_NORM",
+      "ENV_IAC_Shader_p.Material.IaconCity_Cubemap",
+      "ENV_AllShader_p.CubeMaps.Iacon_Streets_CubeMap",
+      "ENV_AllShader_p.Textures.Pixel_4_Mask",
+      "ENV_AllShader_p.Textures.Pixel_4_NORM_DXT1",
+      "ENV_AllShader_p.CubeMaps.CHR_Metals_CUBEMAP_Metals_A_Center",
+      "ENV_AllShader_p.CubeMaps.ENV_WarmStreaks_CUBEMAP",
+      "ENV_AllShader_p.CubeMaps.Iacon_Halls_CubeMap"
+     ]
+    },
+    "lightmaps": {
+     "status": "COMPLETE",
+     "bound": 2288
+    },
+    "vertex_lighting": {
+     "status": "COMPLETE",
+     "components": 257,
+     "vertex_count_check": {
+      "match": 257
+     }
+    },
+    "decals": {
+     "status": "COMPLETE",
+     "decals": 25,
+     "incomplete": []
+    },
+    "particles": {
+     "status": "COMPLETE",
+     "templates": 6,
+     "not_complete": []
+    },
+    "movers": {
+     "status": "COMPLETE",
+     "movers": 16
+    },
+    "destructibles": {
+     "status": "PARTIAL",
+     "count": 3,
+     "without_static_state_mesh": 3,
+     "note": "destructibles whose states are animated-mesh only (HmAnimatedMeshDestructionEffect) have no static state mesh in render_index; the renderer draws nothing for them"
+    },
+    "pickups": {
+     "status": "COMPLETE",
+     "visuals": 24
+    },
+    "audio": {
+     "status": "COMPLETE",
+     "counts": {
+      "point": 56,
+      "volume": 67,
+      "line": 15,
+      "zones": 72,
+      "reverb_presets": 8,
+      "cues": 56,
+      "waves": 132,
+      "waves_with_wav": 132,
+      "missing_cues": []
+     },
+     "missing_cues": null
+    },
+    "colour_grading": {
+     "status": "COMPLETE",
+     "world_clut": null,
+     "volume_cluts": [
+      "ENV_Cluts_p.desaturation40_CLR"
+     ]
+    },
+    "fog": {
+     "status": "COMPLETE",
+     "fog": {
+      "HeightFog_actors": 2,
+      "height_fogs_in_lighting_json": 2,
+      "FogVolumeConstantDensityInfo": 0
+     }
+    },
+    "spawn_points": {
+     "status": "COMPLETE",
+     "starts": 102
+    },
+    "mode_actors": {
+     "status": "COMPLETE",
+     "tdm_hidden": 17
+    },
+    "hazards_kill_volumes": {
+     "status": "COMPLETE",
+     "hazard_volumes": 2,
+     "kill_z": [
+      -262143.0,
+      -262143.0,
+      -262143.0,
+      -262143.0,
+      -1500.0
+     ]
+    },
+    "skeletal_world_actors": {
+     "status": "MISSING",
+     "count": 1,
+     "classes": {
+      "SkeletalMeshActor": 1
+     },
+     "note": "listed in manifests/maps/<MAP>/render_index_generic.json only; Maps/<MAP>/render_index.json (read by the renderer) has no section for them"
+    }
+   },
+   "overall": "PARTIAL"
+  },
+  "MP_IAC_Berth": {
+   "cells": {
+    "sublevels": {
+     "status": "COMPLETE",
+     "sublevels": [
+      "GLB_Audio_m",
+      "MP_IAC_Berth_ART_m",
+      "MP_IAC_Berth_AUDIO_m",
+      "MP_IAC_Berth_BASE_m"
+     ]
+    },
+    "static_meshes": {
+     "status": "COMPLETE",
+     "placed": 1490,
+     "errors": {}
+    },
+    "bsp": {
+     "status": "COMPLETE",
+     "audit": {
+      "authored_render_triangles": 1580,
+      "authored_polygon_node_triangles": 1580,
+      "world_glb_bsp_triangles": 1580,
+      "difference": 0,
+      "unaccounted_nodes": 0,
+      "verdict": "BSP COMPLETE: every polygon node is rendered by a cooked element or is invisible/portal; the exported triangle count equals the authored render triangles"
+     }
+    },
+    "materials": {
+     "status": "COMPLETE",
+     "materials": 161,
+     "missing": []
+    },
+    "textures": {
+     "status": "PARTIAL",
+     "referenced": 774,
+     "unexported_unique": 11,
+     "examples": [
+      "ENV_AllShader_p.Textures.Pixel_4_NORM",
+      "ENV_IAC_Shader_p.Material.IaconCity_Cubemap",
+      "ENV_AllShader_p.CubeMaps.Iacon_Streets_CubeMap",
+      "ENV_AllShader_p.Textures.Pixel_4_Mask",
+      "ENV_AllShader_p.CubeMaps.CHR_Metals_CUBEMAP_Metals_A_Center",
+      "ENV_AllShader_p.Textures.Crackle_1_NORMCrackle_1_NORM",
+      "ENV_AllShader_p.CubeMaps.ENV_Metals_CUBEMAP",
+      "ENV_AllShader_p.CubeMaps.Iacon_Halls_CubeMap"
+     ]
+    },
+    "lightmaps": {
+     "status": "COMPLETE",
+     "bound": 1292
+    },
+    "vertex_lighting": {
+     "status": "COMPLETE",
+     "components": 113,
+     "vertex_count_check": {
+      "match": 113
+     }
+    },
+    "decals": {
+     "status": "COMPLETE",
+     "decals": 14,
+     "incomplete": []
+    },
+    "particles": {
+     "status": "COMPLETE",
+     "templates": 6,
+     "not_complete": []
+    },
+    "movers": {
+     "status": "COMPLETE",
+     "movers": 4
+    },
+    "destructibles": {
+     "status": "PARTIAL",
+     "count": 9,
+     "without_static_state_mesh": 9,
+     "note": "destructibles whose states are animated-mesh only (HmAnimatedMeshDestructionEffect) have no static state mesh in render_index; the renderer draws nothing for them"
+    },
+    "pickups": {
+     "status": "COMPLETE",
+     "visuals": 15
+    },
+    "audio": {
+     "status": "COMPLETE",
+     "counts": {
+      "point": 39,
+      "volume": 16,
+      "line": 2,
+      "zones": 20,
+      "reverb_presets": 5,
+      "cues": 25,
+      "waves": 60,
+      "waves_with_wav": 60,
+      "missing_cues": []
+     },
+     "missing_cues": null
+    },
+    "colour_grading": {
+     "status": "COMPLETE",
+     "world_clut": "PROP_EnergonSigns_p.clutshot1",
+     "volume_cluts": [
+      "ENV_Cluts_p.clut_mp40"
+     ]
+    },
+    "fog": {
+     "status": "COMPLETE",
+     "fog": {
+      "HeightFog_actors": 2,
+      "height_fogs_in_lighting_json": 2,
+      "FogVolumeConstantDensityInfo": 1
+     }
+    },
+    "spawn_points": {
+     "status": "COMPLETE",
+     "starts": 120
+    },
+    "mode_actors": {
+     "status": "COMPLETE",
+     "tdm_hidden": 18
+    },
+    "hazards_kill_volumes": {
+     "status": "COMPLETE",
+     "hazard_volumes": 0,
+     "kill_z": [
+      -262143.0,
+      -262143.0,
+      -262143.0,
+      -3500.0
+     ]
+    },
+    "skeletal_world_actors": {
+     "status": "MISSING",
+     "count": 4,
+     "classes": {
+      "SkeletalMeshActor": 4
+     },
+     "note": "listed in manifests/maps/<MAP>/render_index_generic.json only; Maps/<MAP>/render_index.json (read by the renderer) has no section for them"
+    }
+   },
+   "overall": "PARTIAL"
+  },
+  "MP_UND_Complex": {
+   "cells": {
+    "sublevels": {
+     "status": "COMPLETE",
+     "sublevels": [
+      "MP_UND_Complex_ART_m",
+      "MP_UND_Complex_AUDIO_m",
+      "MP_UND_Complex_BASE_m"
+     ]
+    },
+    "static_meshes": {
+     "status": "COMPLETE",
+     "placed": 1909,
+     "errors": {}
+    },
+    "bsp": {
+     "status": "COMPLETE",
+     "audit": {
+      "authored_render_triangles": 5189,
+      "authored_polygon_node_triangles": 5189,
+      "world_glb_bsp_triangles": 5189,
+      "difference": 0,
+      "unaccounted_nodes": 0,
+      "verdict": "BSP COMPLETE: every polygon node is rendered by a cooked element or is invisible/portal; the exported triangle count equals the authored render triangles"
+     }
+    },
+    "materials": {
+     "status": "COMPLETE",
+     "materials": 150,
+     "missing": []
+    },
+    "textures": {
+     "status": "PARTIAL",
+     "referenced": 586,
+     "unexported_unique": 8,
+     "examples": [
+      "ENV_AllShader_p.CubeMaps.Iacon_Streets_CubeMap",
+      "ENV_AllShader_p.Textures.Pixel_4_NORM",
+      "ENV_AllShader_p.Textures.Pixel_4_Mask",
+      "ENV_IAC_Shader_p.Material.IaconCity_Cubemap",
+      "ENV_AllShader_p.CubeMaps.CHR_Metals_CUBEMAP_Metals_A_Center",
+      "ENV_AllShader_p.CubeMaps.ENV_WarmStreaks_CUBEMAP",
+      "ENV_AllShader_p.CubeMaps.ENV_Metals_CUBEMAP",
+      "ENV_AllShader_p.Textures.Pixel_4_NORM_DXT1"
+     ]
+    },
+    "lightmaps": {
+     "status": "COMPLETE",
+     "bound": 1782
+    },
+    "vertex_lighting": {
+     "status": "COMPLETE",
+     "components": 50,
+     "vertex_count_check": {
+      "match": 50
+     }
+    },
+    "decals": {
+     "status": "COMPLETE",
+     "decals": 30,
+     "incomplete": []
+    },
+    "particles": {
+     "status": "COMPLETE",
+     "templates": 7,
+     "not_complete": []
+    },
+    "movers": {
+     "status": "COMPLETE",
+     "movers": 7
+    },
+    "destructibles": {
+     "status": "COMPLETE",
+     "count": 0,
+     "without_static_state_mesh": 0,
+     "note": null
+    },
+    "pickups": {
+     "status": "COMPLETE",
+     "visuals": 23
+    },
+    "audio": {
+     "status": "COMPLETE",
+     "counts": {
+      "point": 20,
+      "volume": 29,
+      "line": 4,
+      "zones": 34,
+      "reverb_presets": 1,
+      "cues": 25,
+      "waves": 53,
+      "waves_with_wav": 53,
+      "missing_cues": []
+     },
+     "missing_cues": null
+    },
+    "colour_grading": {
+     "status": "COMPLETE",
+     "world_clut": null,
+     "volume_cluts": [
+      "ENV_Cluts_p.clut_mp40"
+     ]
+    },
+    "fog": {
+     "status": "COMPLETE",
+     "fog": {
+      "HeightFog_actors": 2,
+      "height_fogs_in_lighting_json": 2,
+      "FogVolumeConstantDensityInfo": 0
+     }
+    },
+    "spawn_points": {
+     "status": "COMPLETE",
+     "starts": 96
+    },
+    "mode_actors": {
+     "status": "COMPLETE",
+     "tdm_hidden": 19
+    },
+    "hazards_kill_volumes": {
+     "status": "COMPLETE",
+     "hazard_volumes": 2,
+     "kill_z": [
+      -262143.0,
+      -262143.0,
+      -2500.0
+     ]
+    },
+    "skeletal_world_actors": {
+     "status": "COMPLETE",
+     "count": 0,
+     "classes": {},
+     "note": null
+    }
+   },
+   "overall": "PARTIAL"
+  },
+  "MP_IAC_Rust": {
+   "cells": {
+    "sublevels": {
+     "status": "COMPLETE",
+     "sublevels": [
+      "GLB_Audio_m",
+      "MP_IAC_Rust_AUDIO_m",
+      "MP_IAC_Rust_Art_m",
+      "MP_IAC_Rust_BASE_m"
+     ]
+    },
+    "static_meshes": {
+     "status": "COMPLETE",
+     "placed": 2215,
+     "errors": {}
+    },
+    "bsp": {
+     "status": "COMPLETE",
+     "audit": {
+      "authored_render_triangles": 1267,
+      "authored_polygon_node_triangles": 1267,
+      "world_glb_bsp_triangles": 1267,
+      "difference": 0,
+      "unaccounted_nodes": 0,
+      "verdict": "BSP COMPLETE: every polygon node is rendered by a cooked element or is invisible/portal; the exported triangle count equals the authored render triangles"
+     }
+    },
+    "materials": {
+     "status": "COMPLETE",
+     "materials": 251,
+     "missing": []
+    },
+    "textures": {
+     "status": "PARTIAL",
+     "referenced": 1074,
+     "unexported_unique": 12,
+     "examples": [
+      "ENV_AllShader_p.Textures.Pixel_4_NORM",
+      "ENV_IAC_Shader_p.Material.IaconCity_Cubemap",
+      "ENV_AllShader_p.CubeMaps.Iacon_Streets_CubeMap",
+      "ENV_AllShader_p.Textures.Pixel_4_Mask",
+      "ENV_AllShader_p.CubeMaps.CHR_Metals_CUBEMAP_Metals_A_Center",
+      "ENV_AllShader_p.Textures.Pixel_4_NORM_DXT1",
+      "ENV_AllShader_p.CubeMaps.ENV_Desaturated_Glass_CUBEMAP",
+      "ENV_AllShader_p.CubeMaps.ENV_Metals_CUBEMAP"
+     ]
+    },
+    "lightmaps": {
+     "status": "COMPLETE",
+     "bound": 1412
+    },
+    "vertex_lighting": {
+     "status": "COMPLETE",
+     "components": 635,
+     "vertex_count_check": {
+      "match": 635
+     }
+    },
+    "decals": {
+     "status": "COMPLETE",
+     "decals": 17,
+     "incomplete": []
+    },
+    "particles": {
+     "status": "COMPLETE",
+     "templates": 5,
+     "not_complete": []
+    },
+    "movers": {
+     "status": "COMPLETE",
+     "movers": 8
+    },
+    "destructibles": {
+     "status": "COMPLETE",
+     "count": 0,
+     "without_static_state_mesh": 0,
+     "note": null
+    },
+    "pickups": {
+     "status": "COMPLETE",
+     "visuals": 17
+    },
+    "audio": {
+     "status": "COMPLETE",
+     "counts": {
+      "point": 62,
+      "volume": 32,
+      "line": 12,
+      "zones": 30,
+      "reverb_presets": 7,
+      "cues": 43,
+      "waves": 104,
+      "waves_with_wav": 104,
+      "missing_cues": []
+     },
+     "missing_cues": null
+    },
+    "colour_grading": {
+     "status": "COMPLETE",
+     "world_clut": null,
+     "volume_cluts": [
+      "ENV_Cluts_p.clut_mp40"
+     ]
+    },
+    "fog": {
+     "status": "COMPLETE",
+     "fog": {
+      "HeightFog_actors": 3,
+      "height_fogs_in_lighting_json": 3,
+      "FogVolumeConstantDensityInfo": 6
+     }
+    },
+    "spawn_points": {
+     "status": "COMPLETE",
+     "starts": 109
+    },
+    "mode_actors": {
+     "status": "COMPLETE",
+     "tdm_hidden": 17
+    },
+    "hazards_kill_volumes": {
+     "status": "COMPLETE",
+     "hazard_volumes": 0,
+     "kill_z": [
+      -262143.0,
+      -262143.0,
+      -262143.0,
+      -512.0
+     ]
+    },
+    "skeletal_world_actors": {
+     "status": "MISSING",
+     "count": 2,
+     "classes": {
+      "TnTransformingWorldActor": 2
+     },
+     "note": "listed in manifests/maps/<MAP>/render_index_generic.json only; Maps/<MAP>/render_index.json (read by the renderer) has no section for them"
+    }
+   },
+   "overall": "PARTIAL"
+  },
+  "MP_ESC_BrokenHope": {
+   "cells": {
+    "sublevels": {
+     "status": "COMPLETE",
+     "sublevels": [
+      "MP_ESC_BrokenHope_ART_m",
+      "MP_ESC_BrokenHope_Audio_m",
+      "MP_ESC_BrokenHope_Base_m"
+     ]
+    },
+    "static_meshes": {
+     "status": "COMPLETE",
+     "placed": 2430,
+     "errors": {}
+    },
+    "bsp": {
+     "status": "COMPLETE",
+     "audit": {
+      "authored_render_triangles": 4040,
+      "authored_polygon_node_triangles": 4040,
+      "world_glb_bsp_triangles": 4040,
+      "difference": 0,
+      "unaccounted_nodes": 0,
+      "verdict": "BSP COMPLETE: every polygon node is rendered by a cooked element or is invisible/portal; the exported triangle count equals the authored render triangles"
+     }
+    },
+    "materials": {
+     "status": "COMPLETE",
+     "materials": 200,
+     "missing": []
+    },
+    "textures": {
+     "status": "PARTIAL",
+     "referenced": 867,
+     "unexported_unique": 10,
+     "examples": [
+      "ENV_AllShader_p.CubeMaps.Iacon_Streets_CubeMap",
+      "ENV_AllShader_p.Textures.Pixel_4_NORM",
+      "ENV_AllShader_p.Textures.Pixel_4_Mask",
+      "ENV_IAC_Shader_p.Material.IaconCity_Cubemap",
+      "ENV_AllShader_p.CubeMaps.CHR_Metals_CUBEMAP_Metals_A_Center",
+      "ENV_AllShader_p.Textures.Pixel_4_NORM_DXT1",
+      "ENV_AllShader_p.CubeMaps.ENV_WarmStreaks_CUBEMAP",
+      "ENV_AllShader_p.CubeMaps.ENV_Desaturated_Glass_CUBEMAP"
+     ]
+    },
+    "lightmaps": {
+     "status": "COMPLETE",
+     "bound": 2297
+    },
+    "vertex_lighting": {
+     "status": "COMPLETE",
+     "components": 116,
+     "vertex_count_check": {
+      "match": 112,
+      "mesh not in props": 4
+     }
+    },
+    "decals": {
+     "status": "COMPLETE",
+     "decals": 22,
+     "incomplete": []
+    },
+    "particles": {
+     "status": "COMPLETE",
+     "templates": 7,
+     "not_complete": []
+    },
+    "movers": {
+     "status": "COMPLETE",
+     "movers": 2
+    },
+    "destructibles": {
+     "status": "COMPLETE",
+     "count": 50,
+     "without_static_state_mesh": 0,
+     "note": null
+    },
+    "pickups": {
+     "status": "COMPLETE",
+     "visuals": 6
+    },
+    "audio": {
+     "status": "COMPLETE",
+     "counts": {
+      "point": 69,
+      "volume": 3,
+      "line": 0,
+      "zones": 60,
+      "reverb_presets": 7,
+      "cues": 26,
+      "waves": 46,
+      "waves_with_wav": 46,
+      "missing_cues": []
+     },
+     "missing_cues": null
+    },
+    "colour_grading": {
+     "status": "COMPLETE",
+     "world_clut": null,
+     "volume_cluts": [
+      "ENV_Cluts_p.clut_mp40"
+     ]
+    },
+    "fog": {
+     "status": "COMPLETE",
+     "fog": {
+      "HeightFog_actors": 1,
+      "height_fogs_in_lighting_json": 1,
+      "FogVolumeConstantDensityInfo": 0
+     }
+    },
+    "spawn_points": {
+     "status": "COMPLETE",
+     "starts": 4
+    },
+    "mode_actors": {
+     "status": "COMPLETE",
+     "tdm_hidden": 0
+    },
+    "hazards_kill_volumes": {
+     "status": "COMPLETE",
+     "hazard_volumes": 0,
+     "kill_z": [
+      -262143.0,
+      -262143.0,
+      -5000.0
+     ]
+    },
+    "skeletal_world_actors": {
+     "status": "MISSING",
+     "count": 19,
+     "classes": {
+      "HmSkeletalMeshActor": 1,
+      "TnTransformingWorldActor": 18
+     },
+     "note": "listed in manifests/maps/<MAP>/render_index_generic.json only; Maps/<MAP>/render_index.json (read by the renderer) has no section for them"
+    }
+   },
+   "overall": "PARTIAL"
+  },
+  "MP_ESC_Remnant": {
+   "cells": {
+    "sublevels": {
+     "status": "COMPLETE",
+     "sublevels": [
+      "MP_ESC_Remnant_ART_m",
+      "MP_ESC_Remnant_AUDIO_m",
+      "MP_ESC_Remnant_BASE_m"
+     ]
+    },
+    "static_meshes": {
+     "status": "COMPLETE",
+     "placed": 4312,
+     "errors": {}
+    },
+    "bsp": {
+     "status": "COMPLETE",
+     "audit": {
+      "authored_render_triangles": 10712,
+      "authored_polygon_node_triangles": 10712,
+      "world_glb_bsp_triangles": 10712,
+      "difference": 0,
+      "unaccounted_nodes": 0,
+      "verdict": "BSP COMPLETE: every polygon node is rendered by a cooked element or is invisible/portal; the exported triangle count equals the authored render triangles"
+     }
+    },
+    "materials": {
+     "status": "COMPLETE",
+     "materials": 222,
+     "missing": []
+    },
+    "textures": {
+     "status": "PARTIAL",
+     "referenced": 798,
+     "unexported_unique": 10,
+     "examples": [
+      "ENV_AllShader_p.Textures.Pixel_4_NORM",
+      "ENV_IAC_Shader_p.Material.IaconCity_Cubemap",
+      "ENV_AllShader_p.CubeMaps.Iacon_Streets_CubeMap",
+      "ENV_AllShader_p.Textures.Pixel_4_Mask",
+      "ENV_AllShader_p.Textures.Pixel_4_NORM_DXT1",
+      "ENV_AllShader_p.CubeMaps.CHR_Metals_CUBEMAP_Metals_A_Center",
+      "ENV_AllShader_p.CubeMaps.ENV_Desaturated_Glass_CUBEMAP",
+      "ENV_AllShader_p.CubeMaps.ENV_WarmStreaks_CUBEMAP"
+     ]
+    },
+    "lightmaps": {
+     "status": "COMPLETE",
+     "bound": 3971
+    },
+    "vertex_lighting": {
+     "status": "COMPLETE",
+     "components": 58,
+     "vertex_count_check": {
+      "match": 58
+     }
+    },
+    "decals": {
+     "status": "COMPLETE",
+     "decals": 18,
+     "incomplete": []
+    },
+    "particles": {
+     "status": "COMPLETE",
+     "templates": 13,
+     "not_complete": []
+    },
+    "movers": {
+     "status": "COMPLETE",
+     "movers": 24
+    },
+    "destructibles": {
+     "status": "COMPLETE",
+     "count": 47,
+     "without_static_state_mesh": 0,
+     "note": null
+    },
+    "pickups": {
+     "status": "COMPLETE",
+     "visuals": 12
+    },
+    "audio": {
+     "status": "COMPLETE",
+     "counts": {
+      "point": 44,
+      "volume": 19,
+      "line": 17,
+      "zones": 82,
+      "reverb_presets": 0,
+      "cues": 18,
+      "waves": 32,
+      "waves_with_wav": 32,
+      "missing_cues": []
+     },
+     "missing_cues": null
+    },
+    "colour_grading": {
+     "status": "COMPLETE",
+     "world_clut": null,
+     "volume_cluts": [
+      "ENV_Cluts_p.desaturation40_CLR"
+     ]
+    },
+    "fog": {
+     "status": "COMPLETE",
+     "fog": {
+      "HeightFog_actors": 0,
+      "height_fogs_in_lighting_json": 0,
+      "FogVolumeConstantDensityInfo": 0
+     }
+    },
+    "spawn_points": {
+     "status": "COMPLETE",
+     "starts": 4
+    },
+    "mode_actors": {
+     "status": "COMPLETE",
+     "tdm_hidden": 0
+    },
+    "hazards_kill_volumes": {
+     "status": "COMPLETE",
+     "hazard_volumes": 27,
+     "kill_z": [
+      -262143.0,
+      -262143.0,
+      0.0
+     ]
+    },
+    "skeletal_world_actors": {
+     "status": "MISSING",
+     "count": 15,
+     "classes": {
+      "SkeletalMeshActor": 3,
+      "TnTransformingWorldActor": 12
+     },
+     "note": "listed in manifests/maps/<MAP>/render_index_generic.json only; Maps/<MAP>/render_index.json (read by the renderer) has no section for them"
+    }
+   },
+   "overall": "PARTIAL"
+  },
+  "MP_ORB_Debris": {
+   "cells": {
+    "sublevels": {
+     "status": "COMPLETE",
+     "sublevels": [
+      "MP_ORB_Art_m",
+      "MP_ORB_Audio_m",
+      "MP_ORB_Debris_BASE_m"
+     ]
+    },
+    "static_meshes": {
+     "status": "COMPLETE",
+     "placed": 1689,
+     "errors": {}
+    },
+    "bsp": {
+     "status": "COMPLETE",
+     "audit": {
+      "authored_render_triangles": 304,
+      "authored_polygon_node_triangles": 304,
+      "world_glb_bsp_triangles": 304,
+      "difference": 0,
+      "unaccounted_nodes": 0,
+      "verdict": "BSP COMPLETE: every polygon node is rendered by a cooked element or is invisible/portal; the exported triangle count equals the authored render triangles"
+     }
+    },
+    "materials": {
+     "status": "COMPLETE",
+     "materials": 157,
+     "missing": []
+    },
+    "textures": {
+     "status": "PARTIAL",
+     "referenced": 777,
+     "unexported_unique": 10,
+     "examples": [
+      "ENV_AllShader_p.Textures.Pixel_4_NORM",
+      "ENV_AllShader_p.CubeMaps.Iacon_Streets_CubeMap",
+      "ENV_AllShader_p.Textures.Pixel_4_Mask",
+      "ENV_IAC_Shader_p.Material.IaconCity_Cubemap",
+      "ENV_AllShader_p.CubeMaps.CHR_Metals_CUBEMAP_Metals_A_Center",
+      "ENV_AllShader_p.CubeMaps.Iacon_Halls_CubeMap",
+      "ENV_AllShader_p.Textures.Pixel_4_NORM_DXT1",
+      "ENV_AllShader_p.Textures.Crackle_1_NORMCrackle_1_NORM"
+     ]
+    },
+    "lightmaps": {
+     "status": "COMPLETE",
+     "bound": 1561
+    },
+    "vertex_lighting": {
+     "status": "COMPLETE",
+     "components": 61,
+     "vertex_count_check": {
+      "match": 61
+     }
+    },
+    "decals": {
+     "status": "COMPLETE",
+     "decals": 0,
+     "incomplete": []
+    },
+    "particles": {
+     "status": "COMPLETE",
+     "templates": 4,
+     "not_complete": []
+    },
+    "movers": {
+     "status": "COMPLETE",
+     "movers": 18
+    },
+    "destructibles": {
+     "status": "COMPLETE",
+     "count": 6,
+     "without_static_state_mesh": 0,
+     "note": null
+    },
+    "pickups": {
+     "status": "COMPLETE",
+     "visuals": 14
+    },
+    "audio": {
+     "status": "COMPLETE",
+     "counts": {
+      "point": 37,
+      "volume": 22,
+      "line": 8,
+      "zones": 45,
+      "reverb_presets": 0,
+      "cues": 20,
+      "waves": 45,
+      "waves_with_wav": 45,
+      "missing_cues": []
+     },
+     "missing_cues": null
+    },
+    "colour_grading": {
+     "status": "COMPLETE",
+     "world_clut": "ENV_MPCLUT_p.MP_OrbitalDebris_CLUT",
+     "volume_cluts": []
+    },
+    "fog": {
+     "status": "COMPLETE",
+     "fog": {
+      "HeightFog_actors": 0,
+      "height_fogs_in_lighting_json": 0,
+      "FogVolumeConstantDensityInfo": 0
+     }
+    },
+    "spawn_points": {
+     "status": "COMPLETE",
+     "starts": 50
+    },
+    "mode_actors": {
+     "status": "COMPLETE",
+     "tdm_hidden": 19
+    },
+    "hazards_kill_volumes": {
+     "status": "COMPLETE",
+     "hazard_volumes": 6,
+     "kill_z": [
+      -262143.0,
+      -262143.0,
+      10000.0
+     ]
+    },
+    "skeletal_world_actors": {
+     "status": "COMPLETE",
+     "count": 0,
+     "classes": {},
+     "note": null
+    }
+   },
+   "overall": "PARTIAL"
+  },
+  "MP_IAC_Streets": {
+   "cells": {
+    "sublevels": {
+     "status": "COMPLETE",
+     "sublevels": [
+      "MP_IAC_Streets_ART_m",
+      "MP_IAC_Streets_AUDIO_m",
+      "MP_IAC_Streets_BASE_m"
+     ]
+    },
+    "static_meshes": {
+     "status": "COMPLETE",
+     "placed": 1952,
+     "errors": {}
+    },
+    "bsp": {
+     "status": "COMPLETE",
+     "audit": {
+      "authored_render_triangles": 2460,
+      "authored_polygon_node_triangles": 2460,
+      "world_glb_bsp_triangles": 2460,
+      "difference": 0,
+      "unaccounted_nodes": 0,
+      "verdict": "BSP COMPLETE: every polygon node is rendered by a cooked element or is invisible/portal; the exported triangle count equals the authored render triangles"
+     }
+    },
+    "materials": {
+     "status": "COMPLETE",
+     "materials": 176,
+     "missing": []
+    },
+    "textures": {
+     "status": "PARTIAL",
+     "referenced": 765,
+     "unexported_unique": 9,
+     "examples": [
+      "ENV_AllShader_p.Textures.Pixel_4_NORM",
+      "ENV_IAC_Shader_p.Material.IaconCity_Cubemap",
+      "ENV_AllShader_p.CubeMaps.Iacon_Streets_CubeMap",
+      "ENV_AllShader_p.Textures.Pixel_4_Mask",
+      "ENV_AllShader_p.CubeMaps.CHR_Metals_CUBEMAP_Metals_A_Center",
+      "ENV_AllShader_p.Textures.Pixel_4_NORM_DXT1",
+      "ENV_AllShader_p.CubeMaps.ENV_Desaturated_Glass_CUBEMAP",
+      "ENV_AllShader_p.Textures.Crackle_1_NORMCrackle_1_NORM"
+     ]
+    },
+    "lightmaps": {
+     "status": "COMPLETE",
+     "bound": 1794
+    },
+    "vertex_lighting": {
+     "status": "COMPLETE",
+     "components": 28,
+     "vertex_count_check": {
+      "match": 28
+     }
+    },
+    "decals": {
+     "status": "COMPLETE",
+     "decals": 25,
+     "incomplete": []
+    },
+    "particles": {
+     "status": "COMPLETE",
+     "templates": 4,
+     "not_complete": []
+    },
+    "movers": {
+     "status": "COMPLETE",
+     "movers": 12
+    },
+    "destructibles": {
+     "status": "COMPLETE",
+     "count": 1,
+     "without_static_state_mesh": 0,
+     "note": null
+    },
+    "pickups": {
+     "status": "COMPLETE",
+     "visuals": 27
+    },
+    "audio": {
+     "status": "COMPLETE",
+     "counts": {
+      "point": 40,
+      "volume": 17,
+      "line": 13,
+      "zones": 9,
+      "reverb_presets": 10,
+      "cues": 32,
+      "waves": 54,
+      "waves_with_wav": 54,
+      "missing_cues": []
+     },
+     "missing_cues": null
+    },
+    "colour_grading": {
+     "status": "COMPLETE",
+     "world_clut": "ENV_MPCLUT_p.MP_Streets_CLUT",
+     "volume_cluts": []
+    },
+    "fog": {
+     "status": "COMPLETE",
+     "fog": {
+      "HeightFog_actors": 1,
+      "height_fogs_in_lighting_json": 1,
+      "FogVolumeConstantDensityInfo": 0
+     }
+    },
+    "spawn_points": {
+     "status": "COMPLETE",
+     "starts": 84
+    },
+    "mode_actors": {
+     "status": "COMPLETE",
+     "tdm_hidden": null
+    },
+    "hazards_kill_volumes": {
+     "status": "COMPLETE",
+     "hazard_volumes": 0,
+     "kill_z": [
+      -262143.0,
+      -262143.0,
+      -75000.0
+     ]
+    },
+    "skeletal_world_actors": {
+     "status": "COMPLETE",
+     "count": 0,
+     "classes": {},
+     "note": null
+    }
+   },
+   "overall": "PARTIAL"
+  },
+  "MP_KON_Molten": {
+   "cells": {
+    "sublevels": {
+     "status": "COMPLETE",
+     "sublevels": [
+      "MP_KON_Molten_ART_m",
+      "MP_KON_Molten_AUDIO_m",
+      "MP_KON_Molten_BASE_m"
+     ]
+    },
+    "static_meshes": {
+     "status": "COMPLETE",
+     "placed": 2159,
+     "errors": {}
+    },
+    "bsp": {
+     "status": "COMPLETE",
+     "audit": {
+      "authored_render_triangles": 10834,
+      "authored_polygon_node_triangles": 10834,
+      "world_glb_bsp_triangles": 10834,
+      "difference": 0,
+      "unaccounted_nodes": 0,
+      "verdict": "BSP COMPLETE: every polygon node is rendered by a cooked element or is invisible/portal; the exported triangle count equals the authored render triangles"
+     }
+    },
+    "materials": {
+     "status": "COMPLETE",
+     "materials": 185,
+     "missing": []
+    },
+    "textures": {
+     "status": "PARTIAL",
+     "referenced": 858,
+     "unexported_unique": 11,
+     "examples": [
+      "ENV_AllShader_p.CubeMaps.Iacon_Streets_CubeMap",
+      "ENV_AllShader_p.Textures.Pixel_4_NORM",
+      "ENV_AllShader_p.Textures.Pixel_4_Mask",
+      "ENV_IAC_Shader_p.Material.IaconCity_Cubemap",
+      "ENV_AllShader_p.CubeMaps.CHR_Metals_CUBEMAP_Metals_A_Center",
+      "ENV_AllShader_p.CubeMaps.ENV_Desaturated_Glass_CUBEMAP",
+      "ENV_AllShader_p.CubeMaps.ENV_Metals_CUBEMAP",
+      "ENV_AllShader_p.Textures.Pixel_4_NORM_DXT1"
+     ]
+    },
+    "lightmaps": {
+     "status": "COMPLETE",
+     "bound": 1965
+    },
+    "vertex_lighting": {
+     "status": "COMPLETE",
+     "components": 51,
+     "vertex_count_check": {
+      "match": 51
+     }
+    },
+    "decals": {
+     "status": "COMPLETE",
+     "decals": 24,
+     "incomplete": []
+    },
+    "particles": {
+     "status": "COMPLETE",
+     "templates": 5,
+     "not_complete": []
+    },
+    "movers": {
+     "status": "COMPLETE",
+     "movers": 4
+    },
+    "destructibles": {
+     "status": "COMPLETE",
+     "count": 0,
+     "without_static_state_mesh": 0,
+     "note": null
+    },
+    "pickups": {
+     "status": "COMPLETE",
+     "visuals": 32
+    },
+    "audio": {
+     "status": "COMPLETE",
+     "counts": {
+      "point": 20,
+      "volume": 11,
+      "line": 1,
+      "zones": 149,
+      "reverb_presets": 0,
+      "cues": 11,
+      "waves": 32,
+      "waves_with_wav": 32,
+      "missing_cues": []
+     },
+     "missing_cues": null
+    },
+    "colour_grading": {
+     "status": "COMPLETE",
+     "world_clut": null,
+     "volume_cluts": [
+      "ENV_Cluts_p.clut_mp40"
+     ]
+    },
+    "fog": {
+     "status": "COMPLETE",
+     "fog": {
+      "HeightFog_actors": 1,
+      "height_fogs_in_lighting_json": 1,
+      "FogVolumeConstantDensityInfo": 0
+     }
+    },
+    "spawn_points": {
+     "status": "COMPLETE",
+     "starts": 76
+    },
+    "mode_actors": {
+     "status": "COMPLETE",
+     "tdm_hidden": 19
+    },
+    "hazards_kill_volumes": {
+     "status": "COMPLETE",
+     "hazard_volumes": 0,
+     "kill_z": [
+      -262143.0,
+      -262143.0,
+      -1500.0
+     ]
+    },
+    "skeletal_world_actors": {
+     "status": "COMPLETE",
+     "count": 0,
+     "classes": {},
+     "note": null
+    }
+   },
+   "overall": "PARTIAL"
+  },
+  "MP_UND_Gorge": {
+   "cells": {
+    "sublevels": {
+     "status": "COMPLETE",
+     "sublevels": [
+      "MP_UND_Gorge_ART_m",
+      "MP_UND_Gorge_AUDIO_m",
+      "MP_UND_Gorge_BASE_m"
+     ]
+    },
+    "static_meshes": {
+     "status": "COMPLETE",
+     "placed": 1765,
+     "errors": {}
+    },
+    "bsp": {
+     "status": "COMPLETE",
+     "audit": {
+      "authored_render_triangles": 1824,
+      "authored_polygon_node_triangles": 1824,
+      "world_glb_bsp_triangles": 1824,
+      "difference": 0,
+      "unaccounted_nodes": 0,
+      "verdict": "BSP COMPLETE: every polygon node is rendered by a cooked element or is invisible/portal; the exported triangle count equals the authored render triangles"
+     }
+    },
+    "materials": {
+     "status": "COMPLETE",
+     "materials": 149,
+     "missing": []
+    },
+    "textures": {
+     "status": "PARTIAL",
+     "referenced": 595,
+     "unexported_unique": 10,
+     "examples": [
+      "ENV_AllShader_p.CubeMaps.Iacon_Streets_CubeMap",
+      "ENV_AllShader_p.Textures.Pixel_4_NORM",
+      "ENV_AllShader_p.Textures.Pixel_4_Mask",
+      "ENV_IAC_Shader_p.Material.IaconCity_Cubemap",
+      "ENV_AllShader_p.CubeMaps.CHR_Metals_CUBEMAP_Metals_A_Center",
+      "ENV_AllShader_p.CubeMaps.ENV_Desaturated_Glass_CUBEMAP",
+      "ENV_AllShader_p.CubeMaps.ENV_WarmStreaks_CUBEMAP",
+      "ENV_AllShader_p.CubeMaps.ENV_Glass_CUBEMAP"
+     ]
+    },
+    "lightmaps": {
+     "status": "COMPLETE",
+     "bound": 1137
+    },
+    "vertex_lighting": {
+     "status": "PARTIAL",
+     "components": 561,
+     "vertex_count_check": {
+      "match": 559,
+      "mismatch": 2
+     }
+    },
+    "decals": {
+     "status": "COMPLETE",
+     "decals": 20,
+     "incomplete": []
+    },
+    "particles": {
+     "status": "COMPLETE",
+     "templates": 5,
+     "not_complete": []
+    },
+    "movers": {
+     "status": "COMPLETE",
+     "movers": 13
+    },
+    "destructibles": {
+     "status": "COMPLETE",
+     "count": 0,
+     "without_static_state_mesh": 0,
+     "note": null
+    },
+    "pickups": {
+     "status": "COMPLETE",
+     "visuals": 18
+    },
+    "audio": {
+     "status": "COMPLETE",
+     "counts": {
+      "point": 9,
+      "volume": 4,
+      "line": 2,
+      "zones": 23,
+      "reverb_presets": 6,
+      "cues": 13,
+      "waves": 37,
+      "waves_with_wav": 37,
+      "missing_cues": []
+     },
+     "missing_cues": null
+    },
+    "colour_grading": {
+     "status": "COMPLETE",
+     "world_clut": null,
+     "volume_cluts": [
+      "ENV_Cluts_p.clut_mp40"
+     ]
+    },
+    "fog": {
+     "status": "COMPLETE",
+     "fog": {
+      "HeightFog_actors": 4,
+      "height_fogs_in_lighting_json": 4,
+      "FogVolumeConstantDensityInfo": 0
+     }
+    },
+    "spawn_points": {
+     "status": "COMPLETE",
+     "starts": 115
+    },
+    "mode_actors": {
+     "status": "COMPLETE",
+     "tdm_hidden": 21
+    },
+    "hazards_kill_volumes": {
+     "status": "COMPLETE",
+     "hazard_volumes": 1,
+     "kill_z": [
+      -262143.0,
+      -262143.0,
+      -7500.0
+     ]
+    },
+    "skeletal_world_actors": {
+     "status": "MISSING",
+     "count": 1,
+     "classes": {
+      "SkeletalMeshActor": 1
+     },
+     "note": "listed in manifests/maps/<MAP>/render_index_generic.json only; Maps/<MAP>/render_index.json (read by the renderer) has no section for them"
+    }
+   },
+   "overall": "PARTIAL"
+  },
+  "MP_KON_Fortress": {
+   "overall": "MISSING",
+   "note": "not cooked in this dump"
+  },
+  "MP_ORB_Havoc": {
+   "overall": "MISSING",
+   "note": "not cooked in this dump"
+  },
+  "MP_ESC_Tranquillity": {
+   "overall": "MISSING",
+   "note": "not cooked in this dump"
+  }
+ }
+}

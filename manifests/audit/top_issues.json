@@ -1,0 +1,154 @@
+{
+ "generated_by": "AssetTools/scripts/wfc/asset_integrity_audit.py",
+ "generated": "2026-10-05 14:01",
+ "vocabulary": [
+  "COMPLETE",
+  "PARTIAL",
+  "MISSING",
+  "FALLBACK",
+  "UNKNOWN"
+ ],
+ "note": "extraction-level audit; no runtime-correctness claim",
+ "rows": [
+  {
+   "rank": 1,
+   "issue": "Localized dialog / announcer waves resolved to the French twin",
+   "owner": "SYSTEMS, ASSETTOOLS",
+   "evidence": "666 of 2538 extracted localized WAVs came from _LOC_FRA (authored.db keeps one twin per path); the TDM match-start announcer is French",
+   "matrix": "reference_integrity.localized_twin_collision"
+  },
+  {
+   "rank": 2,
+   "issue": "Reflection cubemaps never exported",
+   "owner": "ASSETTOOLS -> RENDERING",
+   "evidence": "8 TextureCube objects referenced by character / weapon / map materials have no exported file (CHR_Metals_CUBEMAP3D: 50 refs)",
+   "matrix": "reference_integrity.textures_referenced_not_exported"
+  },
+  {
+   "rank": 3,
+   "issue": "Skeletal / transforming world actors absent from the renderer-facing render_index.json",
+   "owner": "ASSETTOOLS -> RENDERING",
+   "evidence": "{'MP_IAC_Seed': 1, 'MP_IAC_Berth': 4, 'MP_IAC_Rust': 2, 'MP_ESC_BrokenHope': 19, 'MP_ESC_Remnant': 15, 'MP_UND_Gorge': 1} (only in manifests/maps/<MAP>/render_index_generic.json)",
+   "matrix": "maps.skeletal_world_actors"
+  },
+  {
+   "rank": 4,
+   "issue": "Destructibles with animated-mesh-only states have no drawable state mesh",
+   "owner": "ASSETTOOLS -> RENDERING",
+   "evidence": "{'MP_IAC_Seed': 3, 'MP_IAC_Berth': 9}",
+   "matrix": "maps.destructibles"
+  },
+  {
+   "rank": 5,
+   "issue": "Character base colour only through the customization bake (grey outside Cust masks)",
+   "owner": "RENDERING",
+   "evidence": "66 chassis-form baked texture sets are approximations; 32 of 93 baked slots measure near-grey, mostly Decepticon",
+   "matrix": "characters.*_baked_textures"
+  },
+  {
+   "rank": 6,
+   "issue": "Small 2D map textures never extracted (owner recorded as a campaign package)",
+   "owner": "ASSETTOOLS",
+   "evidence": "ENV_AllShader_p.Textures.Crackle_1_NORMCrackle_1_NORM, ENV_AllShader_p.Textures.Pixel_4_Mask, ENV_AllShader_p.Textures.Pixel_4_NORM, ENV_AllShader_p.Textures.Pixel_4_NORM_DXT1 ... referenced by every MP map",
+   "matrix": "maps.textures"
+  },
+  {
+   "rank": 7,
+   "issue": "Explicit Normal_Map=None overrides on customization MICs",
+   "owner": "RE -> RENDERING",
+   "evidence": "12 MICs under CHR_Transformer_NormSpec_Cust_E_Mat; fall-through to the parent default (VH_Bumblebee_Norm) vs no normal is native",
+   "matrix": "characters.*_materials.explicit_none_overrides"
+  },
+  {
+   "rank": 8,
+   "issue": "Vehicle FX / audio not in any runtime manifest",
+   "owner": "ASSETTOOLS -> GAMEPLAY / RENDERING",
+   "evidence": "1053 authored hover / jump / boost / engine particle + sound refs across 33 chassis exist only in manifests/audit/vehicle_fx_audio.json",
+   "matrix": "vehicle_fx_audio.in_runtime_manifest"
+  },
+  {
+   "rank": 9,
+   "issue": "Vehicle sound events with no cue in the chassis event sets",
+   "owner": "SYSTEMS / RE",
+   "evidence": "117 events (Auto_Tire_Tread_Default, Auto_180_Turn, ...)",
+   "matrix": "vehicle_fx_audio"
+  },
+  {
+   "rank": 10,
+   "issue": "Weapon cues whose wave events carry no tagged waves",
+   "owner": "RE / SYSTEMS",
+   "evidence": "events ['PickupSound', 'WP_Looping', 'WP_Overheat', 'WP_Special'] (silent or native wave refs)",
+   "matrix": "weapons.sounds"
+  },
+  {
+   "rank": 11,
+   "issue": "Grenade / mine muzzle sockets not on the weapon mesh",
+   "owner": "GAMEPLAY / RE",
+   "evidence": "['FlashBangs', 'HealGrenades', 'KamikazeMines'] author MuzzleFlash_R/_L; the mesh has MuzzleFlash only",
+   "matrix": "weapons.muzzle_socket"
+  },
+  {
+   "rank": 12,
+   "issue": "Weapon event animations missing from the weapon AnimSet",
+   "owner": "ASSETTOOLS / RE",
+   "evidence": "['HeavyMG', 'HeavyRepairRay', 'MountedRepairRay', 'RocketTemp']",
+   "matrix": "weapons.animations"
+  },
+  {
+   "rank": 13,
+   "issue": "Weapon geometry exported untextured",
+   "owner": "AUTHORED",
+   "evidence": "['RocketTemp']: WEP_Rocket_Temp_MAT is a vector-parameter-only placeholder material",
+   "matrix": "weapons.materials_textures"
+  },
+  {
+   "rank": 14,
+   "issue": "Soldier / minion chassis without portraits",
+   "owner": "FRONTEND",
+   "evidence": "['Car8', 'Car9', 'Car10', 'Minion1', 'Minion2', 'Minion3'] (not player-selectable)",
+   "matrix": "characters.portrait_icon"
+  },
+  {
+   "rank": 15,
+   "issue": "Shared AnimSets incompatible with soldier / minion skeletons",
+   "owner": "GAMEPLAY",
+   "evidence": "13 set assignments (24-bone soldier skeleton misses 60 of 84 tracks)",
+   "matrix": "reference_integrity.anim_sets_on_incompatible_skeletons"
+  },
+  {
+   "rank": 16,
+   "issue": "Vertex-lightmap sample count differs from mesh vertex count",
+   "owner": "ASSETTOOLS",
+   "evidence": "['MP_UND_Gorge'] (umodel split vertices on 2 components)",
+   "matrix": "maps.vertex_lighting"
+  },
+  {
+   "rank": 17,
+   "issue": "Case-only path mismatches (break on case-sensitive file systems)",
+   "owner": "ASSETTOOLS",
+   "evidence": "7 loadout icon paths (e.g. content/UI_GFxCharacterSelect_p/Bazooka.png)",
+   "matrix": "reference_integrity.case_path_mismatches"
+  },
+  {
+   "rank": 18,
+   "issue": "Material short-name resolution outside the mesh package",
+   "owner": "ASSETTOOLS",
+   "evidence": "2 slots (InteriorAlt_Energon_MAT_INST has 29 same-name copies)",
+   "matrix": "reference_integrity.duplicate_short_name_material_resolution"
+  },
+  {
+   "rank": 19,
+   "issue": "Customization preview pawns spawned natively",
+   "owner": "RE / FRONTEND",
+   "evidence": "per-chassis preview swap (TnCustomizationPawn) is native: UNKNOWN",
+   "matrix": "characters.preview_spawn"
+  },
+  {
+   "rank": 20,
+   "issue": "Uncooked registry maps",
+   "owner": "NONE (dump)",
+   "evidence": "Fortress, Havoc, Tranquillity have no cooked packages",
+   "matrix": "maps"
+  }
+ ]
+}
