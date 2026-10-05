@@ -10,7 +10,7 @@ Systems (agents/systems 2a7bdda, SoundCues::localizedWave): <twin> = the cooked 
 Extraction: ue3pkg + sounds.locate_fsb -> FSB -> vgmstream WAV (same tools as the merged extraction). Each path is written once
 per twin (first package in sorted order); copies of the same path in other packages are hashed and any differing copy is reported.
 """
-import hashlib, json, os, subprocess, sys, time
+import hashlib, json, os, re, subprocess, sys, time
 from collections import Counter, OrderedDict
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -28,7 +28,9 @@ def md5(b): return hashlib.md5(b).hexdigest()[:12]
 def main():
     limit = int(sys.argv[sys.argv.index('--limit') + 1]) if '--limit' in sys.argv else None
     pk = sorted(n[:-4] for n in os.listdir(extract.COOKED) if n.endswith('.xxx') and
-                (n.lower().endswith('_loc_int.xxx') or n.lower().endswith('_loc_fra.xxx') or n.lower() in ('startup_int.xxx', 'startup_fra.xxx')))
+                (n.lower().endswith('_int.xxx') or n.lower().endswith('_fra.xxx')))
+    # *_LOC_int / *_LOC_FRA level twins, Startup_int / _FRA, and the per-language seek-free wave banks WL_DX_<char>_INT / _FRA
+    # (the level twins often hold 278-byte bulk stubs whose audio lives in the WL_*_INT / _FRA bank)
     rec = OrderedDict(); diff = []; stats = Counter(); t0 = time.time()
     for name in pk:
         twin = 'FRA' if name.lower().endswith('fra') else 'int'
@@ -36,6 +38,9 @@ def main():
         for i, e in enumerate(p.exports):
             if p.class_name(e) not in ('SoundNodeWave', 'SoundNodeWaveEx'): continue
             op = p.object_path(i + 1)
+            # seek-free wave banks export as <Group>_INT.<Name> / <Group>_FRA.<Name>: canonical path drops the language suffix
+            g0, n0 = op.split('.', 1)
+            op = re.sub(r'_(INT|FRA)$', '', g0, flags=re.I) + '.' + n0
             try:
                 blob, how = sounds.locate_fsb(p, e)
             except Exception as ex:
