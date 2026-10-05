@@ -62,6 +62,39 @@ def main():
     for f in os.listdir(os.path.join(D, 'bundles')):
         b = json.load(open(os.path.join(D, 'bundles', f), encoding='utf-8'))
         chk('bundles', not b['validation']['missing_files'], f)
+    # product-ready exports (vs_roster_export.py / vs_weapon_export.py): open every glb, check the recorded validation
+    from vs_common import read_glb
+    def glb_ok(rel_path, want_skin):
+        j, _ = read_glb(os.path.join(ROOT, rel_path))
+        return bool(j.get('meshes')) and (not want_skin or bool(j.get('skins'))), len(j.get('animations') or [])
+    ci = os.path.join(D, 'character_export_index.json')
+    if os.path.exists(ci):
+        for cid, e in json.load(open(ci, encoding='utf-8'))['chassis'].items():
+            chk('char_export', 'error' not in e, cid + ' exported')
+            if 'error' in e: continue
+            v = e['validation']
+            chk('char_export', not v['missing'], cid + ' paths')
+            for form in ('robot', 'vehicle'):
+                g = e.get(form + '_glb')
+                if not g: continue
+                ok, n = glb_ok(g, True)
+                chk('char_export', ok and n == e[form + '_clips'], '%s %s glb skin/clips %d' % (cid, form, n))
+            m = json.load(open(os.path.join(ROOT, e['dir'], 'character.json'), encoding='utf-8'))
+            # transform clips: every authored Transform_* clip on each form must be in that glb (Laserbeak: one bird mesh, no VEH set)
+            single_mesh = (m.get('robot') or {}).get('mesh_object') == (m.get('vehicle') or {}).get('mesh_object')
+            chk('char_export', v['transform_clips_present'] or single_mesh, cid + ' transform clips')
+            chk('char_export', m['chassis_id'] == cid and bool(m.get('faction')) and bool(m.get('class (chassis DefaultSpecialty)')), cid + ' identity')
+    wi = os.path.join(D, 'weapon_export_index.json')
+    if os.path.exists(wi):
+        for pid, e in json.load(open(wi, encoding='utf-8'))['weapons'].items():
+            chk('wpn_export', 'error' not in e, pid + ' exported')
+            if 'error' in e: continue
+            chk('wpn_export', not e['validation']['missing'], pid + ' paths')
+            if e.get('glb'):
+                ok, n = glb_ok(e['glb'], False)
+                chk('wpn_export', ok and n == e['validation']['clips'], '%s glb clips %d' % (pid, n))
+            else:
+                chk('wpn_export', bool(e.get('mesh_note')), pid + ' no mesh: CONFIRMED absence note')
     os.makedirs(LOGS, exist_ok=True)
     json.dump({'checks': res, 'failures': fails}, open(os.path.join(LOGS, 'validate_mp_content.json'), 'w'), indent=1)
     for k, v in res.items(): print('%-11s %6d checks %4d failed' % (k, v[0], v[1]))
