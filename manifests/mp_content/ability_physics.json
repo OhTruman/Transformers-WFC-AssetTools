@@ -1,0 +1,235 @@
+{
+ "generated_by": "AssetTools/scripts/wfc/mp_ability_physics.py",
+ "RollerSphere": {
+  "ability": {
+   "SpawnDelay": {
+    "value": 0.5,
+    "from": "TransGame.Default__TnAbilityRollerSphere"
+   },
+   "SpawnOffset": {
+    "value": {
+     "X": 500.0,
+     "Y": 0.0,
+     "Z": 100.0
+    },
+    "from": "TransGame.Default__TnAbilityRollerSphere"
+   },
+   "InitialVelocity": {
+    "value": {
+     "X": 2750.0,
+     "Y": 0.0,
+     "Z": 0.0
+    },
+    "from": "TransGame.Default__TnAbilityRollerSphere"
+   },
+   "ResourceRequired": {
+    "value": 100.0,
+    "from": "TransGame.Default__TnAbilityRollerSphere"
+   },
+   "CooldownReductionModifier": {
+    "value": 0.75,
+    "from": "TransGame.Default__TnAbility"
+   }
+  },
+  "spawn_rule": "SpawnLoc = Owner.Location + SpawnOffset rotated by Owner.Rotation; safe-location test radius = mesh Bounds.SphereRadius * Scale * 1.1; Spawn(TnRollerMineAbility, SpawnLoc, Owner.Rotation); SetLocalLinearVelocity(InitialVelocity) (local space: 2750 UU/s forward). Retry after 1 s if unsafe. RE decomp TransGame.TnAbilityRollerSphere.SpawnMine (CONFIRMED)",
+  "actor": {
+   "Physics": {
+    "value": "PHYS_RigidBody",
+    "from": "Engine.Default__KActor"
+   },
+   "BuffRadius": {
+    "value": 1500.0,
+    "from": "TransGame.Default__TnRollerMineAbility"
+   },
+   "ArmTime": {
+    "value": 3.0,
+    "from": "TransGame.Default__TnRollerMineAbility"
+   },
+   "MeleeImpulse": {
+    "value": 5000.0,
+    "from": "TransGame.Default__TnRollerMineAbility"
+   },
+   "_Fuse": {
+    "value": 10.0,
+    "from": "TransGame.Default__TnRollerMine"
+   },
+   "_DamageRadius": {
+    "value": 1500.0,
+    "from": "TransGame.Default__TnRollerMineAbility"
+   },
+   "_DamageAmount": {
+    "value": 135.0,
+    "from": "TransGame.Default__TnRollerMineAbility"
+   },
+   "_DamageMomentum": {
+    "value": 0.0,
+    "from": "TransGame.Default__TnRollerMineAbility"
+   },
+   "_Health": {
+    "value": 200.0,
+    "from": "TransGame.Default__TnRollerMineAbility"
+   },
+   "MaxProjectileSpeed": {
+    "value": 5000.0,
+    "from": "Engine.Default__KActor"
+   },
+   "bDamageAppliesImpulse": {
+    "value": true,
+    "from": "Engine.Default__KActor"
+   },
+   "BlockRigidBody": {
+    "value": false,
+    "from": "TransGame.Default__TnRollerMineAbility"
+   },
+   "CollisionPreset": {
+    "value": "COLLIDE_CustomDefault",
+    "from": "TransGame.Default__TnRollerMineAbility"
+   }
+  },
+  "melee_push": "TakeDamage from a friendly melee hit: CollisionComponent.AddLinearVelocity(Normal(XY dir from attacker) * MeleeImpulse) (RE decomp TransGame.TnRollerMineAbility.TakeDamage, CONFIRMED)",
+  "component": {
+   "StaticMesh": {
+    "value": "FX_RollerMine_p.Mesh.RollerMineAbility_STAT",
+    "from": "TransGame.Default__TnRollerMineAbility.StaticMeshComponent0"
+   },
+   "Scale": {
+    "value": 0.5,
+    "from": "TransGame.Default__TnRollerMineAbility.StaticMeshComponent0"
+   },
+   "Scale3D": {
+    "value": {
+     "X": 1.0,
+     "Y": 1.0,
+     "Z": 1.0
+    },
+    "from": "Engine.Default__PrimitiveComponent"
+   },
+   "RBChannel": {
+    "value": "RBCC_GameplayPhysics",
+    "from": "Engine.Default__KActor.StaticMeshComponent0"
+   },
+   "RBCollideWithChannels": {
+    "value": {
+     "Regular": true,
+     "Nothing": false,
+     "Pawn": false,
+     "Vehicle": false,
+     "Water": false,
+     "GameplayPhysics": true,
+     "EffectPhysics": false,
+     "Untitled1": false,
+     "Untitled2": false,
+     "Untitled3": false,
+     "Untitled4": false,
+     "SoftBody": false,
+     "FracturedMeshPart": false,
+     "BlockingVolume": false,
+     "DeadPawn": false,
+     "PlayerOnlyBlockingVolume": false,
+     "Team0BlockingVolume": false,
+     "Team1BlockingVolume": false,
+     "Team2BlockingVolume": false,
+     "Team3BlockingVolume": false,
+     "Team4BlockingVolume": false
+    },
+    "from": "TransGame.Default__TnRollerMine.StaticMeshComponent0"
+   },
+   "RBDominanceGroup": {
+    "value": 15,
+    "from": "Engine.Default__PrimitiveComponent"
+   },
+   "BlockRigidBody": {
+    "value": true,
+    "from": "Engine.Default__KActor.StaticMeshComponent0"
+   },
+   "bNotifyRigidBodyCollision": {
+    "value": true,
+    "from": "TransGame.Default__TnRollerMine.StaticMeshComponent0"
+   },
+   "ScriptRigidBodyCollisionThreshold": {
+    "value": 50.0,
+    "from": "TransGame.Default__TnRollerMine.StaticMeshComponent0"
+   },
+   "RBPositionCorrectionAmount": {
+    "value": 0.10000000149011612,
+    "from": "Engine.Default__PrimitiveComponent"
+   },
+   "RBLinearVelocityCorrectionAmount": {
+    "value": 0.30000001192092896,
+    "from": "Engine.Default__PrimitiveComponent"
+   },
+   "RBRotationCorrectionAmount": {
+    "value": 0.10000000149011612,
+    "from": "Engine.Default__PrimitiveComponent"
+   },
+   "RBAngularVelocityCorrectionAmount": {
+    "value": 0.699999988079071,
+    "from": "Engine.Default__PrimitiveComponent"
+   }
+  },
+  "collision_shape": {
+   "mesh": "FX_RollerMine_p.Mesh.RollerMineAbility_STAT",
+   "body_setup": "FX_RollerMine_p.Mesh.RollerMineAbility_STAT.RB_BodySetup_8371",
+   "sphere_radius_ue (mesh space)": [
+    241.5449981689453
+   ],
+   "effective_radius_ue (x component Scale 0.5)": [
+    120.77249908447266
+   ],
+   "effective_radius_m": [
+    1.2077
+   ],
+   "other_elements": {}
+  },
+  "body_setup": {
+   "PhysMaterial": {
+    "value": "FX_RollerMine_p.RollerMineAbility_PHYSMAT",
+    "from": "FX_RollerMine_p.Mesh.RollerMineAbility_STAT.RB_BodySetup_8371"
+   },
+   "Mass": {
+    "value": 1.0,
+    "from": "Engine.Default__RB_BodySetup"
+   },
+   "bEnableSleeping": {
+    "value": true,
+    "from": "Engine.Default__RB_BodySetup"
+   },
+   "bBlockZeroExtent": {
+    "value": true,
+    "from": "Engine.Default__RB_BodySetup"
+   },
+   "bBlockNonZeroExtent": {
+    "value": true,
+    "from": "Engine.Default__RB_BodySetup"
+   }
+  },
+  "body_setup_mass_note": "RB_BodySetup.Mass = 1.0 is the engine class default (not authored on this body). Whether the WFC engine treats it as absolute mass or a scale on density x volume is native: UNKNOWN",
+  "physical_material": {
+   "Friction": {
+    "value": 0.699999988079071,
+    "from": "Engine.Default__PhysicalMaterial"
+   },
+   "Restitution": {
+    "value": 0.30000001192092896,
+    "from": "Engine.Default__PhysicalMaterial"
+   },
+   "LinearDamping": {
+    "value": 0.6000000238418579,
+    "from": "FX_RollerMine_p.RollerMineAbility_PHYSMAT"
+   },
+   "AngularDamping": {
+    "value": null,
+    "status": "UNKNOWN: not present on the object or its cooked class chain"
+   },
+   "Density": {
+    "value": null,
+    "status": "UNKNOWN: not present on the object or its cooked class chain"
+   },
+   "SleepEnergyThreshold": {
+    "value": 0.5,
+    "from": "Engine.Default__PhysicalMaterial"
+   }
+  },
+  "physical_material_note": "LinearDamping 0.6 is authored on the material; Friction 0.7 / Restitution 0.3 come from Engine.Default__PhysicalMaterial. AngularDamping and Density are not in any cooked object (stock UE3 source defaults are 0.0 and 1.0 - not evidence for this build: UNKNOWN)"
+ }
+}

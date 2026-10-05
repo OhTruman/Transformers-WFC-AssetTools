@@ -42,6 +42,15 @@ def set_gltf(set_op):
     p = os.path.join('content', pkg, name.replace('.', '/') + '.anim.gltf').replace(os.sep, '/')
     return p if os.path.exists(os.path.join(ROOT, p)) else None
 
+# MP-only clip categories (not in the Optimus slice list): objective-carrier melee (TnMeleeSet MWT_Flag / MWT_Bomb -> Melee_Mace),
+# class abilities (Skill_*), grenade / detpack throws, the shared Whirlwind form clip (Gameplay request 2026-10-05)
+EXTRA_CATEGORIES = [
+    ('melee_objective_carrier', r'^Melee_Mace_0\d$', 'robot'),
+    ('ability', r'^(ADD_)?Skill_\w+$', 'robot'),
+    ('grenade_throw', r'^(ADD_)?Grenade_?Throw$|^ADD_Detpack_Release$', 'robot'),
+    ('ability_form_robot', r'^Transform_(Whirlwind|Hover|ShieldPush)_ROBO$', 'robot'),
+]
+
 def select_clips(form, sets, specific_key):
     """[(set_op, set_gltf, {sequence: category})] - chassis-specific sets first (all clips), then shared (categorised only)."""
     spec = [s for s in sets if specific_key and specific_key.lower() in s.lower()]
@@ -53,7 +62,7 @@ def select_clips(form, sets, specific_key):
         wanted = {}
         for n in anim_names(g):
             if n in seen: continue
-            cat = next((c for c, rx, f in VC.CATEGORIES if f == form and re.search(rx, n)), None)
+            cat = next((c for c, rx, f in VC.CATEGORIES + EXTRA_CATEGORIES if f == form and re.search(rx, n)), None)
             if cat is None and s in spec:
                 cat = ('ability_form_' if n.startswith('Transform_') else 'chassis_specific_') + form
             if cat is None and form == 'vehicle':
