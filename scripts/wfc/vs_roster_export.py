@@ -45,6 +45,7 @@ def set_gltf(set_op):
 # MP-only clip categories (not in the Optimus slice list): objective-carrier melee (TnMeleeSet MWT_Flag / MWT_Bomb -> Melee_Mace),
 # class abilities (Skill_*), grenade / detpack throws, the shared Whirlwind form clip (Gameplay request 2026-10-05)
 EXTRA_CATEGORIES = [
+    ('reload_per_weapon', r'^(ADD_)?Shooting_Reload_\w+_ROBO$', 'robot'),
     ('melee_objective_carrier', r'^Melee_Mace_0\d$', 'robot'),
     ('ability', r'^(ADD_)?Skill_\w+$', 'robot'),
     ('grenade_throw', r'^(ADD_)?Grenade_?Throw$|^ADD_Detpack_Release$', 'robot'),
@@ -67,6 +68,8 @@ def select_clips(form, sets, specific_key):
                 cat = ('ability_form_' if n.startswith('Transform_') else 'chassis_specific_') + form
             if cat is None and form == 'vehicle':
                 cat = 'vehicle_other'
+            if cat is None:   # every clip of a bone-verified compatible set is exported (per-weapon reloads, melee variants, turret
+                cat = 'ai_' + form if n.startswith('AI_') else 'other_' + form   # carry, reactions ...); uncategorised -> other_*
             if cat: wanted[n] = cat; seen.add(n)
         if wanted: chosen.append((s, g, wanted))
     return chosen
