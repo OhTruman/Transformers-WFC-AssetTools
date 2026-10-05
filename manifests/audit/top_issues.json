@@ -1,6 +1,6 @@
 {
  "generated_by": "AssetTools/scripts/wfc/asset_integrity_audit.py",
- "generated": "2026-10-05 14:05",
+ "generated": "2026-10-05 14:15",
  "vocabulary": [
   "COMPLETE",
   "PARTIAL",
@@ -13,8 +13,8 @@
   {
    "rank": 1,
    "issue": "Localized dialog / announcer waves resolved to the French twin",
-   "owner": "SYSTEMS, ASSETTOOLS",
-   "evidence": "666 of 2538 extracted localized WAVs came from _LOC_FRA (authored.db keeps one twin per path); the TDM match-start announcer is French",
+   "owner": "SYSTEMS (data now available)",
+   "evidence": "666 of 2538 merged localized WAVs came from _LOC_FRA; both twins now extracted to content/_LOC/{int,FRA}/<group>/<name>.wav (manifests/audio/loc_twins.json: 2610 paths, merged copy language {'int': 1892, 'FRA': 718})",
    "matrix": "reference_integrity.localized_twin_collision"
   },
   {
@@ -54,9 +54,9 @@
   },
   {
    "rank": 7,
-   "issue": "Explicit Normal_Map=None overrides on customization MICs",
-   "owner": "RE -> RENDERING",
-   "evidence": "12 MICs under CHR_Transformer_NormSpec_Cust_E_Mat; fall-through to the parent default (VH_Bumblebee_Norm) vs no normal is native",
+   "issue": "AssetTools material resolver drops inherited textures on explicit None overrides",
+   "owner": "ASSETTOOLS (decision pending)",
+   "evidence": "12 character MICs (Normal_Map) + 2 Streets map materials: a TextureParameterValues entry set to None means \"inherit the parent\" (stock UE3, RE 2026-10-05 HIGH) but materials.resolve stores None. Fix is one line in materials.py; it changes Streets world.glb / materials.json (Panel_02_MATINST, DeadBodies_Mat_INST), so it waits for an explicit go + the Streets regeneration chain",
    "matrix": "characters.*_materials.explicit_none_overrides"
   },
   {
@@ -70,15 +70,15 @@
    "rank": 9,
    "issue": "Vehicle sound events with no cue in the chassis event sets",
    "owner": "SYSTEMS / RE",
-   "evidence": "117 events (Auto_Tire_Tread_Default, Auto_180_Turn, ...)",
+   "evidence": "113 events (Auto_Tire_Tread_Default, Auto_180_Turn, ...)",
    "matrix": "vehicle_fx_audio"
   },
   {
    "rank": 10,
-   "issue": "Weapon cues whose wave events carry no tagged waves",
-   "owner": "RE / SYSTEMS",
-   "evidence": "events ['PickupSound', 'WP_Looping', 'WP_Overheat', 'WP_Special'] (silent or native wave refs)",
-   "matrix": "weapons.sounds"
+   "issue": "Weapon / vehicle cues that are authored silent",
+   "owner": "INFO (SYSTEMS)",
+   "evidence": "events ['WP_Looping', 'WP_Overheat', 'WP_Special']: the MP package copies carry no wave children, so no wave plays (HIGH, RE); not an extraction gap",
+   "matrix": "weapons.sounds.authored_silent_cues"
   },
   {
    "rank": 11,

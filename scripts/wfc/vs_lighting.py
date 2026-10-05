@@ -120,6 +120,14 @@ def main():
                   'actor_location_ue': act.get('Location'), 'actor_draw_scale': act.get('DrawScale')}
             out['globals'].setdefault('height_fogs', []).append(hf)          # every HeightFog (Gorge places 4)
             out['globals'].setdefault('height_fog', hf)                      # first one, kept for existing consumers
+        # volume-linked height fog (PostProcessVolumeHeightFog: AddVolumeLink / RemoveVolumeLink are native; Remnant places one)
+        for r in A.find(sub + '.TheWorld.PersistentLevel.%', 'PostProcessVolumeHeightFogComponent'):
+            v = A.values(r['opath']); act = A.values(r['outer'])
+            out['globals'].setdefault('postprocess_volume_height_fogs', []).append({
+                'component': r['opath'], 'props': norm(v), 'color': color(v.get('LightColor'), v.get('LightBrightness')),
+                'actor_location_ue': act.get('Location'), 'actor_draw_scale': act.get('DrawScale'), 'actor_hidden': act.get('bHidden'),
+                'semantics': 'PROVISIONAL: height fog applied through PostProcessVolume links (AddVolumeLink native); same component '
+                             'fields as HeightFogComponent'})
         for r in A.find(sub + '.TheWorld.PersistentLevel.%', 'LightsVisibilitiesVolume'):
             p = objtree.package(sub); i = p._idx.get(r['opath'].lower()); e = p.exports[i - 1]
             out['globals']['lights_visibilities_volume'] = {'actor': r['opath'], 'props': norm(A.values(r['opath'])),
