@@ -1,6 +1,6 @@
 {
  "generated_by": "AssetTools/scripts/wfc/asset_integrity_audit.py",
- "generated": "2026-10-05 14:01",
+ "generated": "2026-10-05 14:05",
  "vocabulary": [
   "COMPLETE",
   "PARTIAL",
@@ -46,12 +46,32 @@
      "note": null
     },
     "audio": {
-     "status": "UNKNOWN",
-     "cues": 0,
-     "incomplete": []
+     "status": "PARTIAL",
+     "kismet_play_sound_cues": [
+      "BL_LVL_HUD_INTERFACE.EMIT_SURFACE_MECHANICAL",
+      "BL_LVL_HUD_INTERFACE.EMIT_SURFACE_REACTOR",
+      "BL_LVL_HUD_INTERFACE.EMIT_SURFACE_TRANSMISSION",
+      "BL_LVL_HUD_INTERFACE.EMIT_SURFACE_VENTILATOR",
+      "BL_LVL_HUD_INTERFACE.FRONTEND_AMB_ORBIT_01_BED_LP",
+      "BL_LVL_HUD_INTERFACE.FRONTEND_AMB_ORBIT_02_BED_LP",
+      "BL_LVL_HUD_INTERFACE.FRONTEND_WHSH_DEBRIS_BY_01",
+      "BL_LVL_HUD_INTERFACE.FRONTEND_WHSH_DEBRIS_BY_02",
+      "BL_LVL_HUD_INTERFACE.FRONTEND_WHSH_DEBRIS_BY_03",
+      "BL_LVL_HUD_INTERFACE.FRONTEND_WHSH_DEBRIS_BY_04",
+      "BL_LVL_HUD_INTERFACE.FRONTEND_WHSH_DEBRIS_BY_05",
+      "BL_LVL_HUD_INTERFACE.FRONTEND_WHSH_DEBRIS_BY_06",
+      "BL_LVL_HUD_INTERFACE.FRONTEND_WHSH_DEBRIS_BY_07",
+      "BL_LVL_HUD_INTERFACE.FRONTEND_WHSH_REVEAL"
+     ],
+     "incomplete": [
+      "BL_LVL_HUD_INTERFACE.FRONTEND_WHSH_REVEAL"
+     ],
+     "ambient_sound_actors": 12,
+     "ambient_actors_with_cue": 0,
+     "note": "AmbientSound actors in the UI levels author no SoundCue (actor props: Tag + Location only; CONFIRMED absence); scene audio is played by Kismet SeqAct_PlaySound (+ SeqAct_Mixer / SeqAct_Reverb), owner Systems"
     }
    },
-   "overall": "COMPLETE"
+   "overall": "PARTIAL"
   },
   "UI_PartyLobby": {
    "cells": {
@@ -88,9 +108,14 @@
      "note": "camera bound without move keys: static authored camera"
     },
     "audio": {
-     "status": "UNKNOWN",
-     "cues": 0,
-     "incomplete": []
+     "status": "COMPLETE",
+     "kismet_play_sound_cues": [
+      "BL_LVL_HUD_INTERFACE.MP_PARTY_LOBBY_AMB_BED_CUST_MENU"
+     ],
+     "incomplete": [],
+     "ambient_sound_actors": 1,
+     "ambient_actors_with_cue": 0,
+     "note": "AmbientSound actors in the UI levels author no SoundCue (actor props: Tag + Location only; CONFIRMED absence); scene audio is played by Kismet SeqAct_PlaySound (+ SeqAct_Mixer / SeqAct_Reverb), owner Systems"
     }
    },
    "overall": "COMPLETE"
@@ -130,9 +155,14 @@
      "note": "camera bound without move keys: static authored camera"
     },
     "audio": {
-     "status": "UNKNOWN",
-     "cues": 0,
-     "incomplete": []
+     "status": "COMPLETE",
+     "kismet_play_sound_cues": [
+      "BL_LVL_HUD_INTERFACE.MP_LOBBY_AMB_BED"
+     ],
+     "incomplete": [],
+     "ambient_sound_actors": 1,
+     "ambient_actors_with_cue": 0,
+     "note": "AmbientSound actors in the UI levels author no SoundCue (actor props: Tag + Location only; CONFIRMED absence); scene audio is played by Kismet SeqAct_PlaySound (+ SeqAct_Mixer / SeqAct_Reverb), owner Systems"
     }
    },
    "overall": "COMPLETE"
@@ -172,9 +202,14 @@
      "note": "camera bound without move keys: static authored camera"
     },
     "audio": {
-     "status": "UNKNOWN",
-     "cues": 0,
-     "incomplete": []
+     "status": "COMPLETE",
+     "kismet_play_sound_cues": [
+      "BL_LVL_HUD_INTERFACE.MP_LOBBY_AMB_BED"
+     ],
+     "incomplete": [],
+     "ambient_sound_actors": 1,
+     "ambient_actors_with_cue": 0,
+     "note": "AmbientSound actors in the UI levels author no SoundCue (actor props: Tag + Location only; CONFIRMED absence); scene audio is played by Kismet SeqAct_PlaySound (+ SeqAct_Mixer / SeqAct_Reverb), owner Systems"
     }
    },
    "overall": "COMPLETE"
@@ -214,7 +249,7 @@
        "TR_Barricade_ROBO_p.RB_BarricadeWeaponArm_SKEL"
       ]
      ],
-     "note": "runtime preview pawns are spawned by Kismet (TnCustomizationPawn); placed actors are the authored stand-ins"
+     "note": "placed actors are authored-hidden stand-ins; runtime preview = TnCustomizationPawn swapped per chassis by TnCharacterScriptBinding.UpdateSinglePreviewCharacter (CONFIRMED) using Characters/<ChassisId>/ glTFs"
     },
     "camera_tracks": {
      "status": "COMPLETE",
@@ -224,8 +259,11 @@
     },
     "audio": {
      "status": "UNKNOWN",
-     "cues": 0,
-     "incomplete": []
+     "kismet_play_sound_cues": [],
+     "incomplete": [],
+     "ambient_sound_actors": 1,
+     "ambient_actors_with_cue": 0,
+     "note": "AmbientSound actors in the UI levels author no SoundCue (actor props: Tag + Location only; CONFIRMED absence); scene audio is played by Kismet SeqAct_PlaySound (+ SeqAct_Mixer / SeqAct_Reverb), owner Systems"
     }
    },
    "overall": "COMPLETE"
