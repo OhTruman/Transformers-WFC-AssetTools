@@ -145,7 +145,9 @@ def resolve(opath, _depth=0):
         base = json.loads(json.dumps(base, default=list))
         base['parent_chain'] = [parent] + base.get('parent_chain', []) if parent else []
         tp = {k: (v or {}).get('ref') if isinstance(v, dict) else v for k, v in _param_list(d, 'TextureParameterValues', 'ParameterValue').items()}
-        base['texture_params'].update({k: v for k, v in tp.items() if k})
+        # a TextureParameterValues entry whose value is None is 'not set': inherit the parent's texture (stock UE3
+        # UMaterialInstanceConstant::GetTextureParameterValue; RE 2026-10-05, HIGH)
+        base['texture_params'].update({k: v for k, v in tp.items() if k and v})
         base['scalars'].update(_param_list(d, 'ScalarParameterValues', 'ParameterValue'))
         base['vectors'].update({k: v for k, v in _param_list(d, 'VectorParameterValues', 'ParameterValue').items()})
         base['material'] = opath; base['class'] = a['class']

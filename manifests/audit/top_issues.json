@@ -1,6 +1,6 @@
 {
  "generated_by": "AssetTools/scripts/wfc/asset_integrity_audit.py",
- "generated": "2026-10-05 14:15",
+ "generated": "2026-10-05 20:18",
  "vocabulary": [
   "COMPLETE",
   "PARTIAL",
@@ -14,7 +14,7 @@
    "rank": 1,
    "issue": "Localized dialog / announcer waves resolved to the French twin",
    "owner": "SYSTEMS (data now available)",
-   "evidence": "666 of 2538 merged localized WAVs came from _LOC_FRA; both twins now extracted to content/_LOC/{int,FRA}/<group>/<name>.wav (manifests/audio/loc_twins.json: 2610 paths, merged copy language {'int': 1892, 'FRA': 718})",
+   "evidence": "666 of 2538 merged localized WAVs came from _LOC_FRA; both twins now extracted to content/_LOC/{int,FRA}/<group>/<name>.wav (manifests/audio/loc_twins.json: 6684 paths, merged copy language {'int': 1892, 'FRA': 718, 'none/unknown': 4074})",
    "matrix": "reference_integrity.localized_twin_collision"
   },
   {
@@ -49,14 +49,14 @@
    "rank": 6,
    "issue": "Small 2D map textures never extracted (owner recorded as a campaign package)",
    "owner": "ASSETTOOLS",
-   "evidence": "ENV_AllShader_p.Textures.Crackle_1_NORMCrackle_1_NORM, ENV_AllShader_p.Textures.Pixel_4_Mask, ENV_AllShader_p.Textures.Pixel_4_NORM, ENV_AllShader_p.Textures.Pixel_4_NORM_DXT1 ... referenced by every MP map",
+   "evidence": " ... referenced by every MP map",
    "matrix": "maps.textures"
   },
   {
    "rank": 7,
    "issue": "AssetTools material resolver drops inherited textures on explicit None overrides",
    "owner": "ASSETTOOLS (decision pending)",
-   "evidence": "12 character MICs (Normal_Map) + 2 Streets map materials: a TextureParameterValues entry set to None means \"inherit the parent\" (stock UE3, RE 2026-10-05 HIGH) but materials.resolve stores None. Fix is one line in materials.py; it changes Streets world.glb / materials.json (Panel_02_MATINST, DeadBodies_Mat_INST), so it waits for an explicit go + the Streets regeneration chain",
+   "evidence": "0 character MICs (Normal_Map) + 2 Streets map materials: a TextureParameterValues entry set to None means \"inherit the parent\" (stock UE3, RE 2026-10-05 HIGH) but materials.resolve stores None. Fix is one line in materials.py; it changes Streets world.glb / materials.json (Panel_02_MATINST, DeadBodies_Mat_INST), so it waits for an explicit go + the Streets regeneration chain",
    "matrix": "characters.*_materials.explicit_none_overrides"
   },
   {
