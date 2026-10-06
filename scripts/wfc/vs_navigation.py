@@ -43,12 +43,14 @@ from vs_common import map_sublevels  # noqa: E402
 def main():
     subs = map_sublevels(MAP, A)   # name prefix + streamed sublevels (map.json)
     nodes, edges = {}, []
+    guid_of, pending_guid = {}, []
     for sub in subs:
         lvl = sub + '.TheWorld.PersistentLevel'
         for r in A.children(lvl):
             if not is_navpoint(r['class_path']): continue
             v = A.values(r['opath'])
             L = loc(v)
+            if v.get('NavGuid'): guid_of[tuple(v['NavGuid'][k] for k in 'ABCD')] = r['opath']
             nodes[r['opath']] = {'node': r['opath'].rsplit('.', 1)[-1], 'class': r['class'], 'sublevel': sub,
                                  'location_ue': L.round(3).tolist(), 'location_gltf': ue_points_to_gltf([L])[0].round(4).tolist(),
                                  'max_path_size': v.get('MaxPathSize'), 'path_list': len(v.get('PathList') or []),
@@ -62,14 +64,20 @@ def main():
             for rs in v.get('PathList') or []:
                 if not rs: continue
                 o = A.get(rs); sv = A.values(rs)
-                end = sv.get('End') or {}
-                end = end.get('Nav') if isinstance(end, dict) else end
+                end_ref = sv.get('End') or {}
+                end = end_ref.get('Nav') if isinstance(end_ref, dict) else end_ref
+                if not end and isinstance(end_ref, dict) and end_ref.get('Guid'):
+                    pending_guid.append((len(edges), end_ref['Guid']))   # cross-level FActorReference: Guid only
                 edges.append({'spec': rs.rsplit('.', 1)[-1], 'class': o['class'] if o else None, 'start': r['opath'], 'end': end,
                               'distance': sv.get('Distance'), 'reach_flags': sv.get('reachFlags', 0), 'flags': flags(int(sv.get('reachFlags', 0))),
                               'collision_radius': sv.get('CollisionRadius'), 'collision_height': sv.get('CollisionHeight'),
                               'max_collision_radius': sv.get('MaxCollisionRadius'), 'forced_path_size': sv.get('ForcedPathSizeName'),
                               'other': {k: x for k, x in (o['props'] or {}).items()
                                         if k not in ('Start', 'End', 'Distance', 'reachFlags', 'CollisionRadius', 'CollisionHeight', 'MaxCollisionRadius')}})
+    # cross-level reach specs store End as {Guid} only (UE3 FActorReference across levels): resolve through NavigationPoint.NavGuid
+    for i, g in pending_guid:
+        tgt = guid_of.get(tuple(g.get(k) for k in 'ABCD'))
+        if tgt: edges[i]['end'] = tgt; edges[i]['end_resolved_by'] = 'NavGuid (cross-level reference)'
     # ------------------------------------------------------------------ analysis
     adj = defaultdict(set); und = defaultdict(set)
     bad_end, dist_err = [], []
