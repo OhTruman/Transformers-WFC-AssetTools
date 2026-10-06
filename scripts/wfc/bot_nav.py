@@ -388,7 +388,10 @@ def main():
             L = a['location_gltf']; best = None
             for c in mains:
                 cx, cy, cz = c['centroid_gltf']; d = math.hypot(cx - L[0], cz - L[2])
-                if d <= 20.0 and abs(cy - L[1]) <= 2.0 and (best is None or d < best[0]): best = (d, c['id'])
+                # objective points are volume centres and can float above the floor (KOTH zones 2.9-7.7 m): accept floor up to
+                # 8 m below an objective point, 2 m otherwise
+                below = 8.0 if a['kind'].startswith('objective') else 2.0
+                if d <= 20.0 and -below <= cy - L[1] <= 2.0 and (best is None or d < best[0]): best = (d, c['id'])
             if best: a['approach_cell'] = best[1]; a['approach_note'] = 'cell not two-way reachable from the main area; nearest core cell %.1f m' % best[0]
     anch_main = sum(1 for a in anchors if a['cell'] is not None and comp.get(a['cell']) == main_comp)
     anch_appr = sum(1 for a in anchors if a.get('approach_cell') is not None)
