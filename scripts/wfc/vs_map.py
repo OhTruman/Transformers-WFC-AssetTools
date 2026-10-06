@@ -17,6 +17,7 @@ import numpy as np
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 import ue3pkg, props, extract, bsp, materials, smsections  # noqa: E402
+import authored as AUTH  # noqa: E402
 from vs_common import *  # noqa: E402,F401
 
 MAP = sys.argv[1] if len(sys.argv) > 1 else 'MP_IAC_Streets'
@@ -125,6 +126,10 @@ def main():
             extras['lm_scale'] = r['coordScale']
             extras['lm_bias'] = r['coordBias']
             extras['lm_scalevec'] = r.get('scaleVec', [1.0, 1.0, 1.0])   # HDR coeff-0 scale
+        # PrimitiveComponent.HiddenGame (editor-only helpers such as Seed's tubelight): exported for completeness / Kismet
+        # ToggleHidden, but marked so renderers skip them by default (same component values as props_authored 'render')
+        if comp_ref and (AUTH.values(comp_ref) or {}).get('HiddenGame'):
+            extras['hidden_game'] = True
         return extras
     os.makedirs(OUT, exist_ok=True)
     glb = GLB('AssetTools vs_map (WFC %s)' % MAP)
