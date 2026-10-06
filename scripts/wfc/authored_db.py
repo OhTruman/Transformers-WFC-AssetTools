@@ -20,6 +20,15 @@ sys.path.insert(0, HERE)
 import ue3pkg, typed_props as tp, extract  # noqa: E402
 
 SKIP = {'Class', 'Function', 'State', 'ScriptStruct', 'Enum', 'Const', 'Package'}
+# UProperty field types (script metadata, not authored objects). Exact names: a suffix test ('...Property') also dropped real
+# objects - TnPhysicalMaterialProperty / HmPhysicalMaterialProperty (surface decals, impact FX, footsteps), SeqAct_GetProperty,
+# InterpTrackInstProperty, HmGoapReadableWorldStateProperty (RE 2026-10-06).
+UPROPERTY = {'ObjectProperty', 'StructProperty', 'FloatProperty', 'BoolProperty', 'IntProperty', 'ByteProperty', 'StrProperty',
+             'ArrayProperty', 'NameProperty', 'ClassProperty', 'DelegateProperty', 'ComponentProperty', 'InterfaceProperty',
+             'ScriptMapProperty', 'MapProperty'}
+
+def skipped(c):
+    return c in SKIP or c in UPROPERTY
 DB = os.path.join(extract.MANI, 'authored.db')
 
 def walk_refs(v, prop, out):
@@ -48,7 +57,7 @@ def do_pkg(name):
     rows, errs = [], 0
     for i, e in enumerate(p.exports):
         c = p.class_name(e)
-        if c in SKIP or c.endswith('Property'): continue
+        if skipped(c): continue
         if c + '|' + p.object_path(i + 1) not in keys: continue
         try:
             tags, used = r.read_object(i + 1)
@@ -77,7 +86,7 @@ def build_owner():
     o = sqlite3.connect(path); o.execute('CREATE TABLE owner(key TEXT PRIMARY KEY, package TEXT, size INT)')
     best = {}
     for pkg, cls, op, sz in inv.execute('SELECT package, class, opath, serial_size FROM exports'):
-        if cls in SKIP or cls.endswith('Property'): continue
+        if skipped(cls): continue
         k = cls + '|' + op
         b = best.get(k)
         if b is None or sz > b[1] or (sz == b[1] and pkg < b[0]): best[k] = (pkg, sz)
@@ -125,7 +134,37 @@ def merge():
     bad = db.execute('SELECT COUNT(*) FROM objects WHERE props IS NULL').fetchone()[0]
     print('MERGED unique objects %d, unparsed %d, refs %d, %.0fs' % (n, bad, nr, time.time() - t0), flush=True)
 
+def add_missing():
+    """Insert objects the old suffix filter dropped (class ends with 'Property' but is not a UProperty) into the existing
+    authored.db, same row format and owner rule (largest serialized copy); existing rows untouched (INSERT OR IGNORE)."""
+    inv = sqlite3.connect(os.path.join(extract.MANI, 'inventory.db'))
+    best = {}
+    for pkg, cls, op, sz in inv.execute("SELECT package, class, opath, serial_size FROM exports WHERE class LIKE '%Property'"):
+        if skipped(cls): continue
+        k = cls + '|' + op; b = best.get(k)
+        if b is None or sz > b[1] or (sz == b[1] and pkg < b[0]): best[k] = (pkg, sz)
+    by_pkg = {}
+    for k, (pkg, _) in best.items(): by_pkg.setdefault(pkg, set()).add(k)
+    db = sqlite3.connect(DB); n = nr = errs = 0
+    for pkg, keys in sorted(by_pkg.items()):
+        global owned_keys
+        _ok = owned_keys
+        owned_keys = lambda name, keys=keys: keys
+        try:
+            _, rows, e = do_pkg(pkg)
+        finally:
+            owned_keys = _ok
+        errs += e
+        for r in rows:
+            c = db.execute('INSERT OR IGNORE INTO objects VALUES(?,?,?,?,?,?,?,?,?,?,?)', r[:11]).rowcount
+            if c:
+                n += 1; db.executemany('INSERT INTO refs VALUES(?,?,?,?)', [(r[1], a, b, cl) for a, b, cl in r[11]]); nr += len(r[11])
+    db.commit()
+    print('add_missing: %d objects inserted (%d candidates), %d refs, %d parse errors' % (n, len(best), nr, errs))
+
 def main():
+    if '--add-missing' in sys.argv:
+        add_missing(); return
     t0 = time.time()
     os.makedirs(SHARDS, exist_ok=True)
     own = os.path.join(extract.MANI, '_owner.db')
