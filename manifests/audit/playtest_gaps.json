@@ -1,6 +1,6 @@
 {
  "generated_by": "AssetTools/scripts/wfc/playtest_gap_audit.py",
- "generated": "2026-10-05 19:03",
+ "generated": "2026-10-05 19:07",
  "vocabulary": [
   "EXTRACTED AND VALID",
   "EXTRACTED BUT NOT CONSUMED",
@@ -1057,8 +1057,8 @@
      "undecoded_modules": 1
     }
    ],
-   "action": "TypeDataBeam2 / Trail2 tagged settings (TaperMethod, InterpolationPoints, TaperScale, ...) are extracted per template; Rendering M44 draws Beam2 / Trail2 but does not apply taper / interpolation / noise yet. Compiled modules with module_id 0 (PMI_Unknown, no payload) are beam source / target / noise style modules the stream decoder cannot name: UNKNOWN for RE",
-   "fixed_in_this_pass": null
+   "action": "TypeDataBeam2 / Trail2 tagged settings (TaperMethod, InterpolationPoints, TaperScale, ...) are extracted per template; Rendering M44 draws Beam2 / Trail2 but does not apply taper / interpolation / noise yet. The module_id 0 (PMI_Unknown) entries are ParticleModuleBeamSource / BeamTarget (TargetName \"TargetLocation\", user-set) / the WFC-specific BeamSineWave (SineWaves amplitude / period / speed / direction): all listed with values in weapon.json effects.decode_status \"beam_modules (template sub-objects)\" (RE TARGETED_PASS5 binding, HIGH)",
+   "fixed_in_this_pass": "beam modules identified and exported"
   },
   {
    "area": "Molten lava material (animated)",
@@ -1187,19 +1187,62 @@
    "fixed_in_this_pass": null
   },
   {
-   "area": "Sniper / fine-aim reticle and scope",
-   "verdict": "UNKNOWN",
-   "owner": "RE (FOV source) + FRONTEND (scope symbol choice)",
+   "area": "Sniper / fine-aim FOV and camera",
+   "verdict": "EXTRACTED BUT NOT CONSUMED",
+   "owner": "GAMEPLAY (camera states) + FRONTEND (scope)",
    "evidence": {
-    "scope_symbols (Hud_GFX, attachMovie into zoomScopeAttachPoint_mc)": [
+    "fov_by_weapon": {
+     "SniperRifle": {
+      "weapon_pcs": "TransGame.TnPCS_SniperRifle",
+      "fine_aim": {
+       "Fov": 20.0,
+       "SmoothTime": 0.10000000149011612
+      },
+      "default": {
+       "Fov": 80.0,
+       "SmoothTime": 0.4000000059604645
+      }
+     },
+     "HeavyPistol": {
+      "weapon_pcs": "TransGame.TnPCS_HeavyPistol",
+      "fine_aim": {
+       "Fov": 30.0,
+       "SmoothTime": 0.10000000149011612
+      },
+      "default": {
+       "Fov": 80.0,
+       "SmoothTime": 0.4000000059604645
+      }
+     },
+     "BurstRifle": {
+      "weapon_pcs": "TransGame.TnPCS_BurstRifle",
+      "fine_aim": {
+       "Fov": 30.0,
+       "SmoothTime": 0.10000000149011612
+      },
+      "default": {
+       "Fov": 80.0,
+       "SmoothTime": 0.4000000059604645
+      }
+     },
+     "AssaultRifle": {
+      "weapon_pcs": null,
+      "fine_aim": {
+       "Fov": 45.0,
+       "SmoothTime": 0.10000000149011612
+      },
+      "default": {
+       "Fov": 80.0,
+       "SmoothTime": 0.4000000059604645
+      }
+     }
+    },
+    "source": "CAM_Strategies_p.OverTheShoulder_STRATEGY TnFovCameraBehavior.FOVsByPCS (RE TARGETED_PASS5 s3, CONFIRMED data)",
+    "scope_symbols": [
      "mc_longScope",
      "mc_mediumScope",
      "mc_shortScope",
      "mc_zoomScope"
-    ],
-    "weapons_with_fine_aim_scope": [
-     "TnWeaponHeavyPistol",
-     "TnWeaponSniperRifle"
     ],
     "sniper_fine_aim_data (MultiplayerData)": {
      "FineAimTargetFocusParams": null,
@@ -1212,10 +1255,24 @@
       "ModifierChangePerShot": 0.10000000149011612,
       "Cooldown": 4.0
      }
-    },
-    "camera": "TnCameraStrategyManager.StartFineAim adds TnPCS_FineAim (class default authors nothing): zoom FOV not in authored data"
+    }
    },
-   "action": "scope symbols + fine-aim DOF / spread are extracted; which scope symbol a weapon selects and the fine-aim FOV are native / AS: UNKNOWN",
+   "action": "fine-aim FOV now in weapon.json \"fine_aim_camera (...)\" (Sniper 20, HeavyPistol / BurstRifle 30, other weapons 45, default 80); the scope symbol a weapon selects remains UNKNOWN (native / ActionScript)",
+   "fixed_in_this_pass": "fine_aim_camera added to weapon.json"
+  },
+  {
+   "area": "Sniper scope symbol selection",
+   "verdict": "UNKNOWN",
+   "owner": "FRONTEND / RE",
+   "evidence": {
+    "symbols": [
+     "mc_longScope",
+     "mc_mediumScope",
+     "mc_shortScope",
+     "mc_zoomScope"
+    ]
+   },
+   "action": "not in authored data",
    "fixed_in_this_pass": null
   }
  ]

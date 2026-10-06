@@ -135,8 +135,10 @@ def main():
                                'type_data_props': e.get('type_data_props'), 'undecoded_modules': e['undecoded_modules (PMI_Unknown)']})
     out.append(item('Beam / trail / ribbon modules for missing FX', NC, 'RENDERING (fidelity) + RE (undecoded module ids)', bt,
                     'TypeDataBeam2 / Trail2 tagged settings (TaperMethod, InterpolationPoints, TaperScale, ...) are extracted per template; '
-                    'Rendering M44 draws Beam2 / Trail2 but does not apply taper / interpolation / noise yet. Compiled modules with module_id 0 '
-                    '(PMI_Unknown, no payload) are beam source / target / noise style modules the stream decoder cannot name: UNKNOWN for RE'))
+                    'Rendering M44 draws Beam2 / Trail2 but does not apply taper / interpolation / noise yet. The module_id 0 (PMI_Unknown) '
+                    'entries are ParticleModuleBeamSource / BeamTarget (TargetName "TargetLocation", user-set) / the WFC-specific '
+                    'BeamSineWave (SineWaves amplitude / period / speed / direction): all listed with values in weapon.json effects.decode_status '
+                    '"beam_modules (template sub-objects)" (RE TARGETED_PASS5 binding, HIGH)', 'beam modules identified and exported'))
     # ---- Molten lava / floors
     ma = (J(os.path.join(VS, 'Maps', 'MP_KON_Molten', 'materials_authored.json'), {}) or {}).get('materials') or {}
     lava = [k for k in ma if 'Energon' in k and ('Plasma' in k or 'River' in k or 'Lava' in k)]
@@ -197,13 +199,17 @@ def main():
     # ---- sniper / fine-aim UI
     hp = (J(os.path.join(AT, 'manifests', 'hud', 'hud_package.json'), {}) or {}).get('crosshair') or {}
     sn = wpn('SniperRifle')
-    out.append(item('Sniper / fine-aim reticle and scope', UNK, 'RE (FOV source) + FRONTEND (scope symbol choice)', {
-        'scope_symbols (Hud_GFX, attachMovie into zoomScopeAttachPoint_mc)': (hp.get('scopes') or {}).get('symbols'),
-        'weapons_with_fine_aim_scope': (hp.get('scopes') or {}).get('weapons_with_fine_aim_scope (HasFineAimScope)'),
+    fa = {pid: (wpn(pid).get('fine_aim_camera (OverTheShoulder strategy FOV)') or {}) for pid in ('SniperRifle', 'HeavyPistol', 'BurstRifle', 'AssaultRifle')}
+    out.append(item('Sniper / fine-aim FOV and camera', NC, 'GAMEPLAY (camera states) + FRONTEND (scope)', {
+        'fov_by_weapon': {k: {'weapon_pcs': v.get('weapon_pcs'), 'fine_aim': v.get('fov_fine_aim'), 'default': v.get('fov_default')} for k, v in fa.items()},
+        'source': 'CAM_Strategies_p.OverTheShoulder_STRATEGY TnFovCameraBehavior.FOVsByPCS (RE TARGETED_PASS5 s3, CONFIRMED data)',
+        'scope_symbols': (hp.get('scopes') or {}).get('symbols'),
         'sniper_fine_aim_data (MultiplayerData)': {k: (sn.get('gameplay (versus WEPDATA = MultiplayerData, CONFIRMED)') or {}).get(k)
-                                                   for k in ('FineAimTargetFocusParams', 'FineAimSpreadModifier', 'PerShotSpreadModifier')},
-        'camera': 'TnCameraStrategyManager.StartFineAim adds TnPCS_FineAim (class default authors nothing): zoom FOV not in authored data'},
-        'scope symbols + fine-aim DOF / spread are extracted; which scope symbol a weapon selects and the fine-aim FOV are native / AS: UNKNOWN'))
+                                                   for k in ('FineAimTargetFocusParams', 'FineAimSpreadModifier', 'PerShotSpreadModifier')}},
+        'fine-aim FOV now in weapon.json "fine_aim_camera (...)" (Sniper 20, HeavyPistol / BurstRifle 30, other weapons 45, default 80); '
+        'the scope symbol a weapon selects remains UNKNOWN (native / ActionScript)', 'fine_aim_camera added to weapon.json'))
+    out.append(item('Sniper scope symbol selection', UNK, 'FRONTEND / RE', {'symbols': (hp.get('scopes') or {}).get('symbols')},
+                    'not in authored data'))
     res = OrderedDict([('generated_by', 'AssetTools/scripts/wfc/playtest_gap_audit.py'), ('generated', time.strftime('%Y-%m-%d %H:%M')),
                        ('vocabulary', [EV, NC, BAD, REF, NP, UNK]), ('default_four_classes', CLASSES), ('items', out)])
     json.dump(res, open(os.path.join(AT, 'manifests', 'audit', 'playtest_gaps.json'), 'w', encoding='utf-8'), indent=1, ensure_ascii=False, default=str)

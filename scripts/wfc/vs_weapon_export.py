@@ -56,10 +56,36 @@ def fx_status(t):
                        'type_data_props': td.get('props'), 'material': ((L.get('RequiredModule') or {}).get('props') or {}).get('Material'),
                        'undecoded_modules (PMI_Unknown)': sum(1 for m in L.get('compiled_modules') or [] if m.get('module') == 'PMI_Unknown'),
                        'assignment_complete': L.get('assignment_complete')})
-        _fx[t] = {'template': t, 'in_dump': True, 'emitters': em}
+        bm = [{'object': o_, 'class': c_, 'values': AU.values(o_)} for (o_, c_) in AU.con().execute(
+            "SELECT opath, class FROM objects WHERE opath LIKE ? AND class LIKE 'ParticleModuleBeam%'", (t + '.%',)).fetchall()]
+        _fx[t] = {'template': t, 'in_dump': True, 'emitters': em,
+                  'beam_modules (template sub-objects)': bm or None,
+                  'beam_modules_note': ('PMI_Unknown / module_id 0 entries in beam LODs are these modules: ParticleModuleBeamSource, '
+                                        'ParticleModuleBeamTarget (TargetMethod PEB2STM_UserSet, TargetName "TargetLocation"), and the WFC-specific '
+                                        'ParticleModuleBeamSineWave. Emitter / LOD binding comes from the native LOD module list (RE '
+                                        'TARGETED_PASS5 raw scan, HIGH)') if bm else None}
     except Exception as ex:
         _fx[t] = {'template': t, 'in_dump': True, 'decode_error': repr(ex)[:150]}
     return _fx[t]
+
+_fov = None
+def fine_aim_camera(weapon_pcs):
+    """FOV for this weapon's camera state from CAM_Strategies_p.OverTheShoulder_STRATEGY TnFovCameraBehavior (robot form, every MP
+    CAMSET; first FOVsByPCS entry whose PlayerCameraStates are all active wins - RE TARGETED_PASS5 section 3, CONFIRMED data)."""
+    global _fov
+    if _fov is None:
+        r = AU.con().execute("SELECT opath FROM objects WHERE opath LIKE 'CAM_Strategies_p.OverTheShoulder_STRATEGY.%' "
+                             "AND class='TnFovCameraBehavior'").fetchone()
+        _fov = AU.values(r[0]) if r else {}
+        _fov['_object'] = r[0] if r else None
+    rows = _fov.get('FOVsByPCS') or []
+    def pick(states):
+        return next(((e.get('Settings') or {}) for e in rows if set(e.get('PlayerCameraStates') or []) <= set(states)), _fov.get('DefaultFOV'))
+    return OrderedDict([('weapon_pcs', weapon_pcs), ('source', _fov.get('_object')),
+                        ('fov_default', _fov.get('DefaultFOV')),
+                        ('fov_fine_aim', pick([x for x in (weapon_pcs, 'TransGame.TnPCS_FineAim') if x])),
+                        ('fov_fine_aim_hovering', pick([x for x in (weapon_pcs, 'TransGame.TnPCS_FineAim', 'TransGame.TnPCS_Hovering') if x])),
+                        ('rule', 'first FOVsByPCS entry whose PlayerCameraStates are all active; weapon adds WeaponPCS, fine aim adds TnPCS_FineAim')])
 
 def projectile(cls, A):
     if not cls: return None
@@ -171,6 +197,7 @@ def export(pid, w, A, hud_icons, chassis_by_weapon, owner_socket):
         ('sounds', sounds),
         ('gameplay (versus WEPDATA = MultiplayerData, CONFIRMED)', wd), ('wepdata_objects', w.get('wepdata_objects')),
         ('class_defaults (weapon CDO, sub-objects resolved)', class_defaults),
+        ('fine_aim_camera (OverTheShoulder strategy FOV)', fine_aim_camera((AU.values(cdo) or {}).get('WeaponPCS'))),
         ('gameplay (campaign / SP PlayerData)', w.get('gameplay (player WEPDATA)')), ('ai_data', w.get('ai_data')), ('damage_types', w.get('damage_types')),
         ('restrictions', w.get('restrictions')), ('usable_by_chassis', chassis_by_weapon.get(pid)),
         ('ui', OrderedDict([('ratings', w.get('ui_ratings')), ('kill_feed_icon', w.get('kill_feed_icon')),
