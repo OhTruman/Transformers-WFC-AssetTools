@@ -16,6 +16,8 @@ STAGES = [['vs_map.py', '{M}'], ['vs_lighting.py', '{M}'], ['vs_postprocess.py',
           # lightmaps.json -> atlas PNGs -> rebind (atlas export needs lightmaps.json first)
           ['vs_lightmap.py', '{M}'], ['m04_lightmap_atlases.py', '{M}'], ['vs_lightmap.py', '{M}'],
           ['vs_vertex_lightmaps.py', '{M}'],   # LMT_1D per-vertex baked light (all maps; 4th sample byte varies)
+          # cooked vertex index for meshes whose glTF splits shared section vertices -> world.glb _WFC_SRCVERT (vs_map re-run)
+          ['vs_vertex_remap.py', '{M}'], ['vs_map.py', '{M}'],
           ['vs_materials.py', '{M}'], ['vs_props.py', '{M}'],
           ['vs_collision.py', '{M}'], ['vs_physics.py', '{M}'], ['vs_gameplay.py', '{M}'], ['vs_audio.py', '{M}'], ['vs_mapfx.py', '{M}'],
           ['m04_inventory.py', '{M}'], ['validate_smca_transforms.py', '--map', '{M}'], ['vs_validate.py', '{M}'],

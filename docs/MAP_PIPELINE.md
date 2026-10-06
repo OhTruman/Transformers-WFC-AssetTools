@@ -164,6 +164,21 @@ problems trace to four data or consumption gaps. Three of them are now closed on
   * Streets: 1 component, its atlas already present.
 * `lightmaps.json` is byte-identical on all 10 maps.
 
+**6. Vertex-lightmap samples unbindable where sections share vertices (AssetTools: FIXED, 2026-10-05, Rendering request).**
+* umodel's glTF writes each section with only the vertices it references, re-indexed. When sections share cooked vertices,
+  the glTF holds more vertices than the cooked LOD0, and the FLightMap1D samples (cooked order) cannot be indexed.
+  Example: Gorge `TunnelPipeA_Debri_B_EdgeGlow_STAT`, 1616 glTF vertices vs 1576 cooked, 40 shared.
+* New stage `vs_vertex_remap.py` (after `vs_vertex_lightmaps`, then a second `vs_map` pass) derives the cooked vertex index per
+  glTF vertex exactly:
+  * umodel's `.pskx` export of the same mesh keeps the cooked vertex order and the per-section face order;
+  * triangle k of glTF primitive p pairs with pskx face k of material p, corner permutation (1,0,2);
+  * the result must be conflict-free, with identical UVs.
+* Output:
+  * `Maps/<MAP>/vertex_remap.json`;
+  * `world.glb` primitives of those meshes carry `_WFC_SRCVERT` (UNSIGNED_INT SCALAR). The renderer indexes the samples through it.
+* Coverage: only Gorge is affected (1 mesh, 2 placements, 4 primitives). All other maps write an empty file, and their
+  `world.glb` is byte-identical, Streets included.
+
 **Also added:** per-map `hazard_volumes.json` (pain and kill PhysicsVolumes plus KillZ), which Gameplay must apply:
 * Gorge: 1 instant-kill volume;
 * Remnant: 26 AI-kill DynamicPhysicsVolumes plus 1 suicide volume;

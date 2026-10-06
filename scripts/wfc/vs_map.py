@@ -107,6 +107,8 @@ def component_matrix(c):
     return ue_scale([s * x for x in s3]) @ ue_rot(*c.get('Rotation', (0, 0, 0))) @ ue_trans(c.get('Translation', (0, 0, 0)))
 
 # --------------------------------------------------------------------------------- main
+VREMAP = {}
+
 def main():
     A = materials.assets()
     # Baked-lightmap bindings (from vs_lightmap.py), keyed by component object path.
@@ -158,6 +160,9 @@ def main():
         return cache[key]
 
     levels = [Level(n) for n in sublevels()]
+    global VREMAP
+    _vr = os.path.join(OUT, 'vertex_remap.json')            # written by vs_vertex_remap.py (absent / empty on most maps)
+    VREMAP = (json.load(open(_vr, encoding='utf-8')).get('meshes') or {}) if os.path.exists(_vr) else {}
     summary = {'map': MAP, 'sublevels': [], 'coordinate_system': 'glTF Y-up metres; v_gltf = 0.01*(x,z,y)_UE (umodel convention)'}
     props_out, spawns, lights, vols, decals, emitters, other = [], [], [], [], [], [], Counter()
     bsp_stats = {}
@@ -243,7 +248,8 @@ def main():
                     slot_refs.append(m.get('ref') if isinstance(m, dict) else None)
                 slot_source_by_key[key] = 'assets.json short-name resolution (fallback)'
             prims = []
-            for pr in g['meshes'][0]['primitives']:
+            vrm = (VREMAP.get(mesh_op) or {}).get('primitives')
+            for pi_, pr in enumerate(g['meshes'][0]['primitives']):
                 at = pr['attributes']; attrs = {}
                 if g['accessors'][at['POSITION']]['count'] == 0 or g['accessors'][pr['indices']]['count'] == 0:
                     continue                       # empty LOD section
@@ -251,6 +257,9 @@ def main():
                 if 'NORMAL' in at: attrs['NORMAL'] = glb.acc(accessor(g, bins, at['NORMAL']).astype('f4'), 'VEC3', target=34962)
                 if 'TEXCOORD_0' in at: attrs['TEXCOORD_0'] = glb.acc(accessor(g, bins, at['TEXCOORD_0']).astype('f4'), 'VEC2', target=34962)
                 if 'TEXCOORD_1' in at: attrs['TEXCOORD_1'] = glb.acc(accessor(g, bins, at['TEXCOORD_1']).astype('f4'), 'VEC2', target=34962)  # lightmap UV
+                if vrm and pi_ < len(vrm) and len(vrm[pi_]) == g['accessors'][at['POSITION']]['count']:
+                    # cooked LOD0 vertex index per vertex (vertex_remap.json): only meshes whose glTF splits shared vertices
+                    attrs['_WFC_SRCVERT'] = glb.acc(np.array(vrm[pi_], dtype='u4'), 'SCALAR', target=34962)
                 ind = accessor(g, bins, pr['indices']).astype('u4')
                 slot = pr.get('material', 0)
                 mop = overrides[slot] if slot < len(overrides) and overrides[slot] else (slot_refs[slot] if slot < len(slot_refs) else None)
