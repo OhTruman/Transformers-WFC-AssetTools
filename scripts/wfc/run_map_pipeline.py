@@ -12,7 +12,7 @@ import argparse, os, subprocess, sys, time
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 AT = os.path.normpath(os.path.join(HERE, '..', '..'))
-STAGES = [['vs_map.py', '{M}'], ['vs_lighting.py', '{M}'], ['vs_postprocess.py', '{M}'], ['vs_navigation.py', '{M}'],
+STAGES = [['vs_map.py', '{M}'], ['vs_lighting.py', '{M}'], ['vs_light_probes.py', '{M}'], ['vs_postprocess.py', '{M}'], ['vs_navigation.py', '{M}'],
           # lightmaps.json -> atlas PNGs -> rebind (atlas export needs lightmaps.json first)
           ['vs_lightmap.py', '{M}'], ['m04_lightmap_atlases.py', '{M}'], ['vs_lightmap.py', '{M}'],
           ['vs_vertex_lightmaps.py', '{M}'],   # LMT_1D per-vertex baked light (all maps; 4th sample byte varies)
