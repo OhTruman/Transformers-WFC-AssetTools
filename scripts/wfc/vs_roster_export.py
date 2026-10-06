@@ -117,11 +117,22 @@ def vehicle_fx(vehdef):
             fx[k] = rows
     return fx
 
+def energon_default(robot):
+    """robot mesh material EnergonColor default (first slot whose MIC chain defines it; RE b0d9b22) - energon_defaults.py rule"""
+    import energon_defaults as ED
+    f = ED.form(robot or {})
+    if not f.get('EnergonColor'): return None
+    d = OrderedDict((k, f['EnergonColor'].get(k)) for k in ('R', 'G', 'B', 'A'))
+    d['source'] = '%s (slot %s)' % ((f.get('defined_at') or '').split('.MaterialExpressionTree')[0], f.get('from_slot'))
+    d['note'] = ('robot mesh material EnergonColor default (RE b0d9b22): used for uncustomised characters on robot + vehicle meshes, '
+                 'vehicle FX, boost and faction notifies; never team-tinted')
+    return d
+
 def runtime_colors_common():
     ap = AU.values('TransGame.Default__TnCharacterApplier')
     return {'applier_parameter_bindings (TransGame.Default__TnCharacterApplier, CONFIRMED)': {
                 k: ap.get(k) for k in ('PrimaryColorMaterialParamName', 'SecondaryColorMaterialParamName', 'EnergonColorMaterialParamName')},
-            'team_energon_colors (class defaults; used ONLY by kamikaze-mine fallbacks, never for bodies - RE b0d9b22)': {
+            'team_energon_colors (class defaults, CONFIRMED)': {
                 'neutral (TnTeamInfo)': AU.values('TransGame.Default__TnTeamInfo').get('EnergonColor'),
                 'Autobots (TnFactionTeamAutobots)': AU.values('TransGame.Default__TnFactionTeamAutobots').get('EnergonColor'),
                 'Decepticons (TnFactionTeamDecepticons)': AU.values('TransGame.Default__TnFactionTeamDecepticons').get('EnergonColor')},
@@ -130,6 +141,9 @@ def runtime_colors_common():
                          'slot / MIC chain defining EnergonColor) -> manifests/mp_content/energon_defaults.json; ApplyColorsToMesh writes '
                          'it to robot + vehicle meshes. Cust_Color_A / Cust_COLOR_B: CD colours when not (0,0,0,255), else the mesh '
                          'material values (RE (a)).',
+            'team_energon_colors_usage': 'class defaults read ONLY by kamikaze-mine fallbacks (TnProjectileKamikazeMine / '
+                                         'TnParticleSystemParameterEnergonColor), never for bodies or vehicle FX (RE b0d9b22); body '
+                                         'energon = top-level energon_default',
             'energon_defaults': 'manifests/mp_content/energon_defaults.json (energon_defaults.py)'}
 
 def export(cid, ch, preset, A, common):
@@ -201,6 +215,7 @@ def export(cid, ch, preset, A, common):
                                     'skeletons, the game swaps meshes during the overlap (EVIDENCE_PASS2 section 3)'}),
         ('stats', ch.get('stats')), ('weapons', ch.get('weapons')), ('abilities', ch.get('abilities')),
         ('ui', ch.get('ui')), ('audio', ch.get('audio')),
+        ('energon_default', energon_default(res.get('robot'))),
         ('team_colour', common),
         ('vehicle_fx (VEHDEF particle structs; sockets on vehicle.glb)', vehicle_fx((ch.get('vehicle') or {}).get('definition'))
                                                                           if (ch.get('vehicle') or {}).get('definition') else None),
