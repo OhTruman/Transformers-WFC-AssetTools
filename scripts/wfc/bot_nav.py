@@ -86,6 +86,8 @@ def params():
     P['double_jump_note'] = ('DoubleJumpHeight per chassis in chassis_jump; links record rise so the runtime can choose', '')
     P['max_drop_m'] = (34.0, 'CONFIRMED (RE): robot MovementCapabilities.MaxFallHeight 3400 UU (AI / pathing limit)')
     P['merge_dh_m'] = (0.35, 'tool parameter: max height spread inside one polygon')
+    P['region_margin_xz_m'] = (100.0, 'working-set guard: geometry farther than this outside the anchors XZ bounds is not rasterised')
+    P['region_margin_y_m'] = (60.0, 'working-set guard: vertical margin around the anchors height range')
     P['cover_low_m'] = (1.0, 'PROVISIONAL cover hint thresholds (no cover system in WFC versus data)')
     P['cover_full_m'] = (2.5, 'PROVISIONAL')
     P['gravity_z_cm_s2'] = (wi.get('DefaultGravityZ'), 'CONFIRMED: Engine.Default__WorldInfo.DefaultGravityZ (= Xe-TransGame.ini)')
@@ -93,10 +95,12 @@ def params():
     P['pawn_GroundSpeed'] = (pawn.get('GroundSpeed'), 'CONFIRMED: TnPlayerPawn.GroundSpeed')
     return P, jumps
 
-def obstruction(path, layers):
+def obstruction(path, layers, crop=lambda T: T):
     """per cell: sorted array of occupied heights (non-walkable triangle samples + walkable surfaces)"""
     occ = defaultdict(list); dropped = 0
     for j, n, mat, T, agree, det in MSA.node_tris(path):
+        if not len(T): continue
+        T = crop(T)
         if not len(T): continue
         e1 = T[:, 1] - T[:, 0]; e2 = T[:, 2] - T[:, 0]
         nrm = np.cross(e1, e2); ln = np.linalg.norm(nrm, axis=1); area = ln / 2
@@ -117,10 +121,22 @@ def main():
     t0 = time.time()
     P, jumps = params(); p = {k: v[0] for k, v in P.items()}
     pawn_glb = os.path.join(OUT, 'collision_pawn.glb')
-    col = SlopeLayers()
+    # working-set guard: only geometry within the anchors' region (+ margin) is rasterised; the playable set is anchor-reachable
+    # anyway, so this only drops far-away shells (sky / backdrop / under-map) that otherwise blow the memory cap (Seed > 6 GB)
+    g0 = json.load(open(os.path.join(OUT, 'gameplay.json'), encoding='utf-8'))
+    pts = [e.get('location_gltf') for e in (g0.get('player_starts') or []) + (g0.get('pickups') or [])
+           + [x for L in (g0.get('objectives') or {}).values() for x in (L or [])] if e.get('location_gltf')]
+    P0 = np.array(pts); lo = P0.min(0) - [p['region_margin_xz_m'], p['region_margin_y_m'], p['region_margin_xz_m']]
+    hi = P0.max(0) + [p['region_margin_xz_m'], p['region_margin_y_m'], p['region_margin_xz_m']]
+    def crop(T):
+        mn = T.min(1); mx = T.max(1)
+        return T[(mx >= lo).all(1) & (mn <= hi).all(1)]
+    col = SlopeLayers(); cropped = 0
     for j, n, mat, T, agree, det in MSA.node_tris(pawn_glb):
-        if len(T): col.add_tris(T, 'collision')
-    occ, dropped = obstruction(pawn_glb, col)
+        if len(T):
+            C = crop(T); cropped += len(T) - len(C)
+            if len(C): col.add_tris(C, 'collision')
+    occ, dropped = obstruction(pawn_glb, col, crop)
     STEP, H = p['step_m'], p['agent_height_m']
     # open floor samples
     nodes = {}
@@ -345,7 +361,7 @@ def main():
                       ('links', dict(Counter(l['kind'] for l in links))), ('cover_hints', dict(Counter(c['type'] for c in cover))),
                       ('components', len(sizes)), ('largest_component_cells', sizes[main_comp] if sizes else 0),
                       ('anchors', len(anchors)), ('anchors_on_nav', sum(1 for a in anchors if a['cell'] is not None)),
-                      ('anchors_in_largest_component', anch_main), ('oversized_triangles_excluded', dropped),
+                      ('anchors_in_largest_component', anch_main), ('oversized_triangles_excluded', dropped), ('triangles_outside_region', cropped),
                       ('seconds', round(time.time() - t0, 1))])),
         ('cells', cells_out), ('links', links), ('cover', cover), ('anchors', anchors),
         ('waypoints', {'nodes': wp_nodes, 'edges': wp_edges})])
