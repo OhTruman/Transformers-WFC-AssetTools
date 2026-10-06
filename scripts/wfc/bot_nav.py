@@ -77,7 +77,9 @@ def params():
                          'additionally rise by CELL * tan(slope) on walkable ramps')
     P['agent_radius_default_m'] = (cyl.get('CollisionRadius', 175.0) / 100, 'CONFIRMED: TnPlayerPawn CollisionCylinder.CollisionRadius (cm)')
     P['agent_height_m'] = (2 * cyl.get('CollisionHeight', 200.0) / 100, 'CONFIRMED: 2 x TnPlayerPawn CollisionCylinder.CollisionHeight (half-height, cm)')
-    P['min_radius_m'] = (1.0, 'polygons keep cells whose clearance >= this; per-chassis filtering uses polygon clearance_m (Rebuild robot radii 1.40-2.00 m)')
+    P['min_radius_m'] = (1.0, 'polygons keep cells whose clearance >= this (Rebuild robot radii 1.40-2.00 m)')
+    P['clearance_bands_m'] = ([1.5, 2.5, 4.5], 'cells merge only within one band [<1.5, 1.5-2.5, 2.5-4.5, >=4.5 m] so clearance_m / '
+                                              'clearance_max_m filter chassis radii and the 4.4 m vehicle radius')
     P['vehicle_radius_m'] = (4.40, 'CONFIRMED: versus TnReachSpec CollisionRadius 440 cm (RE mp_navigation_audit). Vehicles move by RB hover '
                                    'physics, not walker rules (RE, HIGH): vehicle_capable is a clearance flag only, a separate vehicle layer')
     P['vehicle_height_m'] = (4.00, 'CONFIRMED: versus TnReachSpec CollisionHeight 400 cm')
@@ -175,26 +177,28 @@ def main():
     cell_poly = {}
     by_k = defaultdict(list)
     for (k, h) in good: by_k[k].append(h)
-    def at(k, h0):
+    def band(key): return sum(1 for t in p['clearance_bands_m'] if nodes[key]['clear'] >= t)
+    def at(k, h0, b0):
         for q in by_k.get(k, ()):
-            if abs(q - h0) <= p['merge_dh_m'] and (k, q) not in used: return q
+            if abs(q - h0) <= p['merge_dh_m'] and (k, q) not in used and band((k, q)) == b0: return q
         return None
     for (k, h) in sorted(good, key=lambda x: (x[0][1], x[0][0], x[1])):
         if (k, h) in used: continue
-        x0, z0 = k; w = 1
-        while at((x0 + w, z0), h) is not None and w < 64: w += 1
+        x0, z0 = k; w = 1; b0 = band((k, h))
+        while at((x0 + w, z0), h, b0) is not None and w < 64: w += 1
         d = 1
-        while d < 64 and all(at((x0 + i, z0 + d), h) is not None for i in range(w)): d += 1
+        while d < 64 and all(at((x0 + i, z0 + d), h, b0) is not None for i in range(w)): d += 1
         cells = []
         for dz in range(d):
             for i in range(w):
-                kk = (x0 + i, z0 + dz); q = at(kk, h); used.add((kk, q)); cells.append((kk, q))
+                kk = (x0 + i, z0 + dz); q = at(kk, h, b0); used.add((kk, q)); cells.append((kk, q))
         pid = len(polys)
         for c in cells: cell_poly[c] = pid
         hs = np.array([c[1] for c in cells])
         polys.append({'id': pid, 'x0': x0, 'z0': z0, 'w': w, 'd': d, 'cells': cells, 'h': float(hs.mean()),
                       'hmin': float(hs.min()), 'hmax': float(hs.max()),
                       'clearance_m': float(min(nodes[c]['clear'] for c in cells)),
+                      'clearance_max_m': float(max(nodes[c]['clear'] for c in cells)),
                       'headroom_m': float(min(nodes[c]['headroom'] for c in cells))})
     # polygon adjacency (portals along shared sides)
     adj = defaultdict(lambda: defaultdict(list))
@@ -229,27 +233,37 @@ def main():
                              ('vertices_ue', [g2ue(v) for v in V]),
                              ('centroid_gltf', [round((x0 + w / 2) * CELL, 3), round(pl['h'], 3), round((z0 + d / 2) * CELL, 3)]),
                              ('area_m2', w * d * CELL * CELL), ('height_range_m', [round(pl['hmin'], 3), round(pl['hmax'], 3)]),
-                             ('clearance_m', round(pl['clearance_m'], 2)), ('headroom_m', round(pl['headroom_m'], 2)),
+                             ('clearance_m', round(pl['clearance_m'], 2)), ('clearance_max_m', round(pl['clearance_max_m'], 2)),
+                             ('headroom_m', round(pl['headroom_m'], 2)),
                              ('flags', {'vehicle_capable': vehicle}), ('edges', edges)]))
-    # off-mesh links: adjacent cells on different, non-connected layers
+    # off-mesh links: cells on different, non-connected layers up to LINK_REACH cells apart (ledge edges are eroded by min_radius)
+    LINK_REACH = 3
     links = []; seen = set()
     for (k, h), pid in cell_poly.items():
         x, z = k
         for dx, dz in ((1, 0), (-1, 0), (0, 1), (0, -1)):
-            kk = (x + dx, z + dz)
+          for r in range(1, LINK_REACH + 1):
+            kk = (x + dx * r, z + dz * r)
+            # cells between source and target must be free at the source level (ledge edges eroded by min_radius)
+            if r > 1:
+                mid = (x + dx * (r - 1), z + dz * (r - 1)); oc = occ.get(mid, np.array([]))
+                if ((oc > h + STEP) & (oc <= h + H)).any(): break
+            hit = False
             for q in by_k.get(kk, ()):
                 pq = cell_poly.get((kk, q))
                 if pq is None or pq == pid or rise_ok((k, h), (kk, q)): continue
+                hit = True
                 rise = q - h
                 kind = 'jump_up' if 0 < rise <= p['jump_up_max_m'] else 'drop_down' if -p['max_drop_m'] <= rise < 0 else None
                 if not kind or (pid, pq, kind) in seen: continue
                 # landing headroom / no obstruction in the jump column of the source
                 if kind == 'jump_up' and nodes[(k, h)]['headroom'] < rise + H: continue
                 seen.add((pid, pq, kind))
-                links.append({'kind': kind, 'from_cell': pid, 'to_cell': pq, 'rise_m': round(rise, 2),
+                links.append({'kind': kind, 'from_cell': pid, 'to_cell': pq, 'rise_m': round(rise, 2), 'span_m': r * CELL,
                               'from_gltf': [(x + 0.5) * CELL, round(h, 3), (z + 0.5) * CELL],
                               'to_gltf': [(kk[0] + 0.5) * CELL, round(q, 3), (kk[1] + 0.5) * CELL],
                               'forms': ['robot'] if kind == 'jump_up' else ['robot', 'vehicle']})
+            if hit or any(abs(q - h) <= STEP for q in by_k.get(kk, ())): break
     # cover hints: open cells next to a tall obstruction
     cover = []
     for (k, h), pid in cell_poly.items():
@@ -347,7 +361,37 @@ def main():
         ci += 1
     sizes = Counter(comp.values())
     main_comp = sizes.most_common(1)[0][0] if sizes else None
+    # approach cell: objectives can sit inside a collision hull (Streets TnKingOfTheHillZone_14223's actor point is inside the
+    # GiantPillar hull; its capture TriggerVolume surrounds the pillar) -> bots path to the nearest main-component cell instead
+    # core = cells two-way reachable from the largest component through neighbour edges AND jump / drop links
+    fwd_adj = defaultdict(set); bwd_adj = defaultdict(set)
+    for c in cells_out:
+        for e in c['edges']:
+            for nb in e['neighbors']: fwd_adj[c['id']].add(nb['cell']); bwd_adj[nb['cell']].add(c['id'])
+    for l in links: fwd_adj[l['from_cell']].add(l['to_cell']); bwd_adj[l['to_cell']].add(l['from_cell'])
+    def bfs(start, A_):
+        seen = set(start); dq = deque(start)
+        while dq:
+            u = dq.popleft()
+            for v in A_[u]:
+                if v not in seen: seen.add(v); dq.append(v)
+        return seen
+    seed = [c['id'] for c in cells_out if comp.get(c['id']) == main_comp]
+    core = bfs(seed, fwd_adj) & bfs(seed, bwd_adj)
+    mains = [c for c in cells_out if c['id'] in core]
+    for a in anchors:
+        a['approach_cell'] = a['cell'] if a['cell'] is not None and a['cell'] in core else None
+        if a['approach_cell'] is None and a['cell'] is not None and bfs([a['cell']], fwd_adj) & core:
+            # one-way start areas (spawn ledges / drop-in platforms): leave by drop links, never re-entered
+            a['approach_cell'] = a['cell']; a['one_way_into_core'] = True
+        if a['approach_cell'] is None and a.get('location_gltf'):
+            L = a['location_gltf']; best = None
+            for c in mains:
+                cx, cy, cz = c['centroid_gltf']; d = math.hypot(cx - L[0], cz - L[2])
+                if d <= 20.0 and abs(cy - L[1]) <= 2.0 and (best is None or d < best[0]): best = (d, c['id'])
+            if best: a['approach_cell'] = best[1]; a['approach_note'] = 'cell not two-way reachable from the main area; nearest core cell %.1f m' % best[0]
     anch_main = sum(1 for a in anchors if a['cell'] is not None and comp.get(a['cell']) == main_comp)
+    anch_appr = sum(1 for a in anchors if a.get('approach_cell') is not None)
     out = OD([
         ('map', MAP), ('generated_by', 'AssetTools/scripts/wfc/bot_nav.py'), ('generated', time.strftime('%Y-%m-%d %H:%M')),
         ('status', 'PC ADAPTATION (WFC versus maps ship no bot nav; reconstructed from collision_pawn.glb)'),
@@ -361,7 +405,7 @@ def main():
                       ('links', dict(Counter(l['kind'] for l in links))), ('cover_hints', dict(Counter(c['type'] for c in cover))),
                       ('components', len(sizes)), ('largest_component_cells', sizes[main_comp] if sizes else 0),
                       ('anchors', len(anchors)), ('anchors_on_nav', sum(1 for a in anchors if a['cell'] is not None)),
-                      ('anchors_in_largest_component', anch_main), ('oversized_triangles_excluded', dropped), ('triangles_outside_region', cropped),
+                      ('anchors_in_largest_component', anch_main), ('anchors_with_main_approach_cell', anch_appr), ('core_cells (two-way reachable incl. links)', len(core)), ('oversized_triangles_excluded', dropped), ('triangles_outside_region', cropped),
                       ('seconds', round(time.time() - t0, 1))])),
         ('cells', cells_out), ('links', links), ('cover', cover), ('anchors', anchors),
         ('waypoints', {'nodes': wp_nodes, 'edges': wp_edges})])
