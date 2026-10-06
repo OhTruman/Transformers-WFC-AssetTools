@@ -150,6 +150,20 @@ problems trace to four data or consumption gaps. Three of them are now closed on
 * `vs_lightmap` now adds the `map.json` sublevels and resolves `_Art_m` lightmap packages case-insensitively. Streets'
   `lightmaps.json` is byte-identical.
 
+**5. Destructible state meshes had no lightmap atlases (AssetTools: FIXED, 2026-10-05, reported by Experimental).**
+* `vs_lightmap` joined only `props.json` components. Lightmapped StaticMeshComponents nested under destructible actors
+  (`HmDestructiblePiece_*.HmStaticMeshDestructionEffect_*.StaticMeshComponent_*`) were parsed but never written. Their
+  coefficient atlases were therefore never exported (Debris `LightMapTexture2D_4181 / _5690 / _587`, which failed to decode
+  in the renderer).
+* `vs_lightmap` now writes them to `Maps/<MAP>/lightmaps_destructibles.json`, with the same fields keyed by full component
+  path. `m04_lightmap_atlases` exports their atlases.
+* Coverage:
+  * Debris: 12 components, +3 PNGs;
+  * Remnant: 47 components, +3 PNGs;
+  * BrokenHope: 75 components;
+  * Streets: 1 component, its atlas already present.
+* `lightmaps.json` is byte-identical on all 10 maps.
+
 **Also added:** per-map `hazard_volumes.json` (pain and kill PhysicsVolumes plus KillZ), which Gameplay must apply:
 * Gorge: 1 instant-kill volume;
 * Remnant: 26 AI-kill DynamicPhysicsVolumes plus 1 suicide volume;

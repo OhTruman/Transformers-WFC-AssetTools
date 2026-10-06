@@ -20,7 +20,9 @@ os.makedirs(OUT, exist_ok=True)
 def main():
     lm = json.load(open(os.path.join(VS, 'Maps', MAP, 'lightmaps.json'), encoding='utf-8'))
     want = {}
-    for x in lm['props']:
+    xj = os.path.join(VS, 'Maps', MAP, 'lightmaps_destructibles.json')   # destructible state meshes (vs_lightmap)
+    extra = json.load(open(xj, encoding='utf-8'))['components'] if os.path.exists(xj) else []
+    for x in lm['props'] + extra:
         for c in x.get('coeffs') or [x['atlas']]:        # all three directional coefficient atlases
             if not os.path.exists(os.path.join(OUT, c + '.png')):
                 want[c] = x['atlas_package']

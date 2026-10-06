@@ -100,7 +100,7 @@ def main():
         # rule (atlas cooked inline in the level package - Streets BASE validated)
         if lv.lower().endswith('_art_m') and (lv + '_LM').lower() in cooked: return cooked[(lv + '_LM').lower()]
         return lv + ('_LM' if lv.endswith('_ART_m') else '').replace('_BASE_m', '_Base_m_LM')
-    by_path, comp_of_actor = {}, {}
+    by_path, comp_of_actor, rec_path = {}, {}, {}
     for lv in sorted(levels):
         p = ue3pkg.Package(os.path.join(CK, lv + '.xxx'))
         pr = propsmod.PropReader(p)
@@ -121,7 +121,7 @@ def main():
             rec = parse_generic(p, nat)
             if rec:
                 rec['atlas_package'] = lm_package(lv)
-                by_path[op.lower()] = rec; n += 1
+                by_path[op.lower()] = rec; rec_path[op.lower()] = op; n += 1
         print('%s: lightmapped components %d' % (lv, n))
     pj = json.load(open(os.path.join(OUT, 'props.json'), encoding='utf-8'))
     pngdir = os.path.join(OUT, 'lightmaps')
@@ -149,6 +149,25 @@ def main():
                'note': 'atlas = _LM LightMapTexture2D (coeff0). lightmap UV = TEXCOORD_1*coordScale+coordBias. '
                        'Covers every level package; actor-placed props joined through their StaticMeshComponent.',
                'props': out}, open(os.path.join(OUT, 'lightmaps.json'), 'w'), indent=0)
+    # lightmapped components that props.json does not place: destructible state meshes
+    # (<Actor>.HmDestructibleComponent_*.HmDestructiblePiece_*.HmStaticMeshDestructionEffect_*.StaticMeshComponent_*) and other
+    # nested StaticMeshComponents. Written separately so lightmaps.json (Streets-validated) is unchanged.
+    joined = {(x['component'] or '').lower() for x in out}
+    extra = []
+    for k, rec in sorted(by_path.items()):
+        if k in joined or k.count('.') == 4:
+            continue
+        png = os.path.join(pngdir, rec['atlas'] + '.png')
+        extra.append({'component': rec_path.get(k, k), 'actor': rec_path.get(k, k).split('.')[3], 'sublevel': rec_path.get(k, k).split('.')[0],
+                      'kind': 'destructible_state_mesh' if '.hmdestructiblecomponent' in k else 'nested_component',
+                      'atlas': rec['atlas'], 'coeffs': rec['coeffs'], 'atlas_package': rec['atlas_package'],
+                      'atlas_png': ('lightmaps/' + rec['atlas'] + '.png') if os.path.exists(png) else None,
+                      'coordScale': rec['coordScale'], 'coordBias': rec['coordBias'], 'scaleVec': rec['scaleVec']})
+    json.dump({'map': MAP, 'count': len(extra),
+               'note': 'lightmap bindings of cooked StaticMeshComponents not placed by props.json (destructible state meshes, nested '
+                       'components); same fields as lightmaps.json, keyed by full component path. Atlas PNGs exported by m04_lightmap_atlases.',
+               'components': extra}, open(os.path.join(OUT, 'lightmaps_destructibles.json'), 'w'), indent=0)
+    print('non-prop lightmapped components: %d' % len(extra))
     print('props with lightmap: %d   without: %d   unique atlases used: %d'
           % (hit, miss, len(atlases)))
     print('wrote', os.path.join(OUT, 'lightmaps.json'))
