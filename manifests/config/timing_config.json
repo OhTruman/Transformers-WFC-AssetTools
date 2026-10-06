@@ -1,0 +1,110 @@
+{
+ "generated_by": "AssetTools/scripts/wfc/timing_config.py",
+ "generated": "2026-10-06 13:34",
+ "source": "Game Dump/TransGame/Config/Xenon/Cooked/Coalesced.ini (Xbox 360 cooked config, decoded)",
+ "stock_ue3_semantics (not WFC-proven)": {
+  "bSmoothFrameRate": "UEngine: clamp/smooth the game frame rate between Min/MaxSmoothedFrameRate (UGameEngine::GetMaxTickRate)",
+  "MinSmoothedFrameRate": "UEngine: lower bound of the smoothed tick rate (Hz)",
+  "MaxSmoothedFrameRate": "UEngine: upper bound of the smoothed tick rate (Hz) - effectively the frame cap when smoothing is on",
+  "MinDesiredFrameRate": "UEngine: target used by detail/LOD scaling (e.g. particle / distance scaling), not a cap",
+  "OneFrameThreadLag": "render thread may lag the game thread by one frame",
+  "NetServerMaxTickRate": "UNetDriver: server tick cap (Hz)",
+  "MaxClientRate": "UNetDriver: max bytes/sec per client",
+  "MaximumPIEFrameRate": "editor Play-In-Editor cap (not used by the game)"
+ },
+ "files": {
+  "Xe-TransEngine.ini": {
+   "Engine.GameEngine": {
+    "bSmoothFrameRate": "TRUE",
+    "MinSmoothedFrameRate": "15",
+    "MaxSmoothedFrameRate": "30"
+   },
+   "Engine.Client": {
+    "MinDesiredFrameRate": "35.000000"
+   },
+   "IpDrv.TcpNetDriver": {
+    "MaxClientRate": "15000",
+    "MaxInternetClientRate": "10000",
+    "NetServerMaxTickRate": "30",
+    "LanServerMaxTickRate": "35"
+   },
+   "SystemSettings": {
+    "OneFrameThreadLag": "True",
+    "UseVsync": "False"
+   },
+   "TransEd.TransEdEngine": {
+    "MaximumPIEFrameRate": "30"
+   },
+   "IpDrv.TDwNetDriver": {
+    "MaxClientRate": "15000",
+    "MaxInternetClientRate": "10000",
+    "NetServerMaxTickRate": "30",
+    "LanServerMaxTickRate": "35"
+   },
+   "Engine.PCSettingManager": {
+    "WindowsRegistryVSyncEntry": "VSync"
+   }
+  },
+  "Xe-TransGame.ini": {},
+  "Xe-TransUI.ini": {},
+  "TransEngineUnitTesting.ini": {
+   "Engine.GameEngine": {
+    "bSmoothFrameRate": "TRUE",
+    "MinSmoothedFrameRate": "15",
+    "MaxSmoothedFrameRate": "30"
+   },
+   "Engine.Client": {
+    "MinDesiredFrameRate": "35.000000"
+   },
+   "IpDrv.TcpNetDriver": {
+    "MaxClientRate": "15000",
+    "MaxInternetClientRate": "10000",
+    "NetServerMaxTickRate": "30",
+    "LanServerMaxTickRate": "35"
+   },
+   "SystemSettings": {
+    "OneFrameThreadLag": "True",
+    "UseVsync": "False"
+   },
+   "TransEd.TransEdEngine": {
+    "MaximumPIEFrameRate": "30"
+   },
+   "IpDrv.TDwNetDriver": {
+    "MaxClientRate": "15000",
+    "MaxInternetClientRate": "10000",
+    "NetServerMaxTickRate": "30",
+    "LanServerMaxTickRate": "35"
+   },
+   "Engine.PCSettingManager": {
+    "WindowsRegistryVSyncEntry": "VSync"
+   }
+  }
+ },
+ "summary (shipping Xe-TransEngine.ini)": {
+  "bSmoothFrameRate": {
+   "section": "Engine.GameEngine",
+   "value": "TRUE"
+  },
+  "MinSmoothedFrameRate": {
+   "section": "Engine.GameEngine",
+   "value": "15"
+  },
+  "MaxSmoothedFrameRate": {
+   "section": "Engine.GameEngine",
+   "value": "30"
+  },
+  "MinDesiredFrameRate": {
+   "section": "Engine.Client",
+   "value": "35.000000"
+  },
+  "OneFrameThreadLag": {
+   "section": "SystemSettings",
+   "value": "True"
+  },
+  "NetServerMaxTickRate": {
+   "section": "IpDrv.TcpNetDriver",
+   "value": "30"
+  }
+ },
+ "pc_adaptation_note": "Original Xbox 360 game: smoothed tick between 15 and 30 Hz (30 fps target). Any PC frame limiter above 30 fps (e.g. 60 / 120 / 144 / uncapped) is a PC ADAPTATION; gameplay code that assumed <= 30 Hz ticks (fixed-step physics, animation, timers) should be checked under higher rates."
+}
