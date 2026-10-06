@@ -198,6 +198,8 @@ def export(pid, w, A, hud_icons, chassis_by_weapon, owner_socket):
         ('gameplay (versus WEPDATA = MultiplayerData, CONFIRMED)', wd), ('wepdata_objects', w.get('wepdata_objects')),
         ('class_defaults (weapon CDO, sub-objects resolved)', class_defaults),
         ('fine_aim_camera (OverTheShoulder strategy FOV)', fine_aim_camera((AU.values(cdo) or {}).get('WeaponPCS'))),
+        ('hud_scope (Hud_GFX ActionScript on NotifyFineAimChanged(1), by weapon class; RE TARGETED_PASS5 CONFIRMED)',
+         {'TnWeaponSniperRifle': 'mc_longScope', 'TnWeaponBurstRifle': 'mc_mediumScope', 'TnWeaponHeavyPistol': 'mc_shortScope'}.get(cn_)),
         ('gameplay (campaign / SP PlayerData)', w.get('gameplay (player WEPDATA)')), ('ai_data', w.get('ai_data')), ('damage_types', w.get('damage_types')),
         ('restrictions', w.get('restrictions')), ('usable_by_chassis', chassis_by_weapon.get(pid)),
         ('ui', OrderedDict([('ratings', w.get('ui_ratings')), ('kill_feed_icon', w.get('kill_feed_icon')),

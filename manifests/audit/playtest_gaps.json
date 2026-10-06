@@ -1,6 +1,6 @@
 {
  "generated_by": "AssetTools/scripts/wfc/playtest_gap_audit.py",
- "generated": "2026-10-05 19:07",
+ "generated": "2026-10-05 19:19",
  "vocabulary": [
   "EXTRACTED AND VALID",
   "EXTRACTED BUT NOT CONSUMED",
@@ -1257,22 +1257,21 @@
      }
     }
    },
-   "action": "fine-aim FOV now in weapon.json \"fine_aim_camera (...)\" (Sniper 20, HeavyPistol / BurstRifle 30, other weapons 45, default 80); the scope symbol a weapon selects remains UNKNOWN (native / ActionScript)",
+   "action": "fine-aim FOV now in weapon.json \"fine_aim_camera (...)\" (Sniper 20, HeavyPistol / BurstRifle 30, other weapons 45, default 80); scope symbol: see the next row",
    "fixed_in_this_pass": "fine_aim_camera added to weapon.json"
   },
   {
    "area": "Sniper scope symbol selection",
-   "verdict": "UNKNOWN",
-   "owner": "FRONTEND / RE",
+   "verdict": "EXTRACTED AND VALID",
+   "owner": "FRONTEND (done, agents/frontend 3e7ce28)",
    "evidence": {
-    "symbols": [
-     "mc_longScope",
-     "mc_mediumScope",
-     "mc_shortScope",
-     "mc_zoomScope"
-    ]
+    "by_weapon": {
+     "SniperRifle": "mc_longScope",
+     "BurstRifle": "mc_mediumScope",
+     "HeavyPistol": "mc_shortScope"
+    }
    },
-   "action": "not in authored data",
+   "action": "Hud_GFX ActionScript picks the scope from the class sent by NotifyCurrentWeaponChanged (Sniper long, BurstRifle medium, HeavyPistol short); recorded in weapon.json hud_scope",
    "fixed_in_this_pass": null
   }
  ]

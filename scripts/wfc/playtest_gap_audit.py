@@ -207,9 +207,12 @@ def main():
         'sniper_fine_aim_data (MultiplayerData)': {k: (sn.get('gameplay (versus WEPDATA = MultiplayerData, CONFIRMED)') or {}).get(k)
                                                    for k in ('FineAimTargetFocusParams', 'FineAimSpreadModifier', 'PerShotSpreadModifier')}},
         'fine-aim FOV now in weapon.json "fine_aim_camera (...)" (Sniper 20, HeavyPistol / BurstRifle 30, other weapons 45, default 80); '
-        'the scope symbol a weapon selects remains UNKNOWN (native / ActionScript)', 'fine_aim_camera added to weapon.json'))
-    out.append(item('Sniper scope symbol selection', UNK, 'FRONTEND / RE', {'symbols': (hp.get('scopes') or {}).get('symbols')},
-                    'not in authored data'))
+        'scope symbol: see the next row', 'fine_aim_camera added to weapon.json'))
+    out.append(item('Sniper scope symbol selection', EV, 'FRONTEND (done, agents/frontend 3e7ce28)', {
+        'by_weapon': {pid: wpn(pid).get('hud_scope (Hud_GFX ActionScript on NotifyFineAimChanged(1), by weapon class; RE TARGETED_PASS5 CONFIRMED)')
+                      for pid in ('SniperRifle', 'BurstRifle', 'HeavyPistol')}},
+        'Hud_GFX ActionScript picks the scope from the class sent by NotifyCurrentWeaponChanged (Sniper long, BurstRifle medium, '
+        'HeavyPistol short); recorded in weapon.json hud_scope'))
     res = OrderedDict([('generated_by', 'AssetTools/scripts/wfc/playtest_gap_audit.py'), ('generated', time.strftime('%Y-%m-%d %H:%M')),
                        ('vocabulary', [EV, NC, BAD, REF, NP, UNK]), ('default_four_classes', CLASSES), ('items', out)])
     json.dump(res, open(os.path.join(AT, 'manifests', 'audit', 'playtest_gaps.json'), 'w', encoding='utf-8'), indent=1, ensure_ascii=False, default=str)
