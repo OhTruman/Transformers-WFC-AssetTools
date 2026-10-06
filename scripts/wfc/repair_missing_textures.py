@@ -70,5 +70,27 @@ def main():
     json.dump(out, open(os.path.join(MANI, 'audit', 'repaired_textures.json'), 'w', encoding='utf-8'), indent=1)
     for t, x in results.items(): print(t, x)
 
+def register_existing():
+    """assets.json entries with no 'extracted' output whose canonical file already exists on disk (umodel wrote it but the
+    index missed it, e.g. object names with spaces: UI_GFxPlayerList_p 'Optimus Prime') -> add the file. Never exports."""
+    aj = os.path.join(MANI, 'assets.json')
+    A = json.load(open(aj, encoding='utf-8'))
+    added = []
+    ext = {'Texture2D': ('.png', '.tga', '.dds'), 'StaticMesh': ('.gltf',), 'SkeletalMesh': ('.gltf',), 'SoundNodeWave': ('.wav', '.ogg'),
+           'SwfMovie': ('.gfx', '.swf'), 'GFxMovieInfo': ('.gfx', '.swf')}
+    for a in A['assets']:
+        if a.get('extracted') or a.get('class') not in ext: continue
+        parts = a['object_path'].split('.')
+        cands = ['content/' + '/'.join(parts) + e for e in ext[a['class']]]
+        cands += ['content/%s/%s%s' % (parts[0], parts[-1], e) for e in ext[a['class']]]
+        hit = next((c for c in cands if os.path.exists(os.path.join(ROOT, c))), None)
+        if hit: a['extracted'] = [hit]; added.append((a['object_path'], hit))
+    if added: json.dump(A, open(aj, 'w', encoding='utf-8'))
+    out = os.path.join(MANI, 'audit', 'registered_existing.json')
+    json.dump({'generated_by': 'repair_missing_textures.py --register-existing', 'generated': time.strftime('%Y-%m-%d %H:%M'),
+               'registered': [{'object': o, 'file': f} for o, f in added]}, open(out, 'w', encoding='utf-8'), indent=1)
+    print('registered', len(added), added[:10])
+
 if __name__ == '__main__':
-    main()
+    if '--register-existing' in sys.argv: register_existing()
+    else: main()
