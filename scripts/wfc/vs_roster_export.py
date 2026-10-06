@@ -121,13 +121,16 @@ def runtime_colors_common():
     ap = AU.values('TransGame.Default__TnCharacterApplier')
     return {'applier_parameter_bindings (TransGame.Default__TnCharacterApplier, CONFIRMED)': {
                 k: ap.get(k) for k in ('PrimaryColorMaterialParamName', 'SecondaryColorMaterialParamName', 'EnergonColorMaterialParamName')},
-            'team_energon_colors (class defaults, CONFIRMED)': {
+            'team_energon_colors (class defaults; used ONLY by kamikaze-mine fallbacks, never for bodies - RE b0d9b22)': {
                 'neutral (TnTeamInfo)': AU.values('TransGame.Default__TnTeamInfo').get('EnergonColor'),
                 'Autobots (TnFactionTeamAutobots)': AU.values('TransGame.Default__TnFactionTeamAutobots').get('EnergonColor'),
                 'Decepticons (TnFactionTeamDecepticons)': AU.values('TransGame.Default__TnFactionTeamDecepticons').get('EnergonColor')},
-            'behaviour': 'EnergonColor = team colour pushed by TnCharacterApplier at runtime (HIGH; application timing native). '
-                         'Cust_Color_A / Cust_COLOR_B: preset PrimaryColors / SecondaryColors when authored non-blank, else the MIC '
-                         'values stand (INFERRED from Optimus; see per-slot customization_parameters).'}
+            'behaviour': 'EnergonColor is NOT team-tinted (RE b0d9b22 TARGETED_PASS5_2026-10-06_energon, CONFIRMED script path): '
+                         'TnCharacterApplier.ExtractColors uses CD.EnergonColor when set, else the robot mesh material default (first '
+                         'slot / MIC chain defining EnergonColor) -> manifests/mp_content/energon_defaults.json; ApplyColorsToMesh writes '
+                         'it to robot + vehicle meshes. Cust_Color_A / Cust_COLOR_B: CD colours when not (0,0,0,255), else the mesh '
+                         'material values (RE (a)).',
+            'energon_defaults': 'manifests/mp_content/energon_defaults.json (energon_defaults.py)'}
 
 def export(cid, ch, preset, A, common):
     t0 = time.time()
