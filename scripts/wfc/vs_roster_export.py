@@ -74,6 +74,49 @@ def select_clips(form, sets, specific_key):
         if wanted: chosen.append((s, g, wanted))
     return chosen
 
+
+# ------------------------------------------------------------------ clip notifies + vehicle FX / audio (playtest gap audit 2026-10-05)
+_seq_cache = {}
+VFA = {}
+NOTIFY_SKIP = ('ObjectArchetype', 'NotifyInEditor')
+def set_notifies(set_op):
+    """{SequenceName: [notify records]} for an AnimSet: every AnimSequence's Notifies (time, class, effective authored params,
+    sub-object parameter collections resolved one level)."""
+    if set_op in _seq_cache: return _seq_cache[set_op]
+    out = {}
+    for r in AU.find(set_op + '.%', 'AnimSequence'):
+        v = AU.values(r['opath']) or {}
+        nm = v.get('SequenceName')
+        if not nm: continue
+        recs = []
+        for x in v.get('Notifies') or []:
+            no = (x or {}).get('Notify')
+            g = AU.get(no) if no else None
+            nv = {k: y for k, y in (AU.values(no) or {}).items() if k not in NOTIFY_SKIP} if no else {}
+            for k, y in list(nv.items()):
+                if isinstance(y, str) and no and y.startswith(no + '.') and AU.get(y):
+                    nv[k] = {'object': y, 'class': AU.get(y)['class'], 'values': AU.values(y)}
+            recs.append(OrderedDict([('time_s', x.get('Time')), ('duration_s', x.get('Duration')), ('class', g['class'] if g else None),
+                                     ('comment', x.get('Comment')), ('params', nv)]))
+        out[nm] = recs
+    _seq_cache[set_op] = out
+    return out
+
+def vehicle_fx(vehdef):
+    """authored vehicle-form particle structs on the VEHDEF (HoverFX / BoostFx / JumpFX / RamFX / ...): template, socket, params."""
+    v = AU.values(vehdef) or {}
+    fx = OrderedDict()
+    for k, x in v.items():
+        if isinstance(x, list) and x and isinstance(x[0], dict) and any(('Template' in kk) for kk in x[0]):
+            rows = []
+            for e in x:
+                t = e.get('ParticleSystemTemplate') or e.get('Template')
+                rows.append(OrderedDict([('template', t), ('socket', e.get('Socket') or e.get('SocketName')),
+                                         ('other', {kk: yy for kk, yy in e.items() if kk not in ('ParticleSystemTemplate', 'Template', 'Socket', 'SocketName')}),
+                                         ('template_in_dump', bool(AU.get(t)) if t else None)]))
+            fx[k] = rows
+    return fx
+
 def runtime_colors_common():
     ap = AU.values('TransGame.Default__TnCharacterApplier')
     return {'applier_parameter_bindings (TransGame.Default__TnCharacterApplier, CONFIRMED)': {
@@ -115,6 +158,8 @@ def export(cid, ch, preset, A, common):
             glb, mats, clips, src = VC.build_form(form, mop, sel, A)
         finally:
             a['materials'] = saved
+        for c_ in clips:
+            c_['notifies'] = set_notifies(c_['source_animset']).get(c_['sequence'], [])
         cats = Counter(c['category'] for c in clips)
         res[form] = OrderedDict([
             ('mesh_object', mop), ('definition', f.get('definition')), ('glb', rel(glb)), ('source_gltf', src),
@@ -154,6 +199,14 @@ def export(cid, ch, preset, A, common):
         ('stats', ch.get('stats')), ('weapons', ch.get('weapons')), ('abilities', ch.get('abilities')),
         ('ui', ch.get('ui')), ('audio', ch.get('audio')),
         ('team_colour', common),
+        ('vehicle_fx (VEHDEF particle structs; sockets on vehicle.glb)', vehicle_fx((ch.get('vehicle') or {}).get('definition'))
+                                                                          if (ch.get('vehicle') or {}).get('definition') else None),
+        ('vehicle_audio (VEHDEF AudioComp events -> chassis event set -> cue -> WAV)', VFA.get(cid)),
+        ('notify_semantics', {'TnAnimNotify_ToggleHidden': 'robot / vehicle mesh swap points: params.Option when authored (e.g. Toggle_Hide), '
+                                                            'otherwise the class default; which mesh it targets is script / native (UNKNOWN)',
+                              'TnAnimNotify_ToggleVehicleFx': 'params.Option (Toggle_EnableFx / Toggle_DisableFx): vehicle_fx on / off',
+                              'HmAnimNotify_PlayEffect': 'params.ParticleSystemTemplate at params.SocketName (Parameters = colour / size params)',
+                              'HmAnimNotify_Sound': 'params.SoundCue (FireWhenForwards / FireWhenBackwards)'}),
         ('menu', {'customization_camera_id': (ch.get('ui') or {}).get('customization_camera_id') or (ch.get('re_identity') or {}).get('CustomizationCameraId'),
                   'portraits': ((ch.get('ui') or {}).get('portraits')), 'class_icon': (ch.get('ui') or {}).get('class_icon')}),
         ('roster_package_entry', 'manifests/mp_content/roster_package.json chassis["%s"]' % cid)])
@@ -179,6 +232,10 @@ def main():
     ids = list(roster) if '--all' in sys.argv else args
     A = materials.assets()
     common = runtime_colors_common()
+    va = json.load(open(os.path.join(MANI, 'audit', 'vehicle_fx_audio.json'), encoding='utf-8')).get('rows') or {} \
+        if os.path.exists(os.path.join(MANI, 'audit', 'vehicle_fx_audio.json')) else {}
+    VFA.update({cid: [{k: r.get(k) for k in ('form', 'property', 'category', 'object', 'cue', 'waves', 'wavs_exported', 'export', 'why')}
+                      for r in v.get('records') or [] if r.get('kind') == 'sound'] for cid, v in va.items()})
     index = OrderedDict()
     for cid in ids:
         try:

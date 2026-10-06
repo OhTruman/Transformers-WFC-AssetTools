@@ -32,6 +32,35 @@ def anim_gltf(set_op):
     p = os.path.join('content', pkg, name.replace('.', '/') + '.anim.gltf').replace(os.sep, '/')
     return p if os.path.exists(os.path.join(ROOT, p)) else None
 
+def resolve_subobjects(x, owners, depth=0):
+    """replace references to sub-objects of the given owner objects by {object, class, values} (one level)."""
+    if isinstance(x, dict): return {k: resolve_subobjects(v, owners, depth) for k, v in x.items()}
+    if isinstance(x, list): return [resolve_subobjects(v, owners, depth) for v in x]
+    if isinstance(x, str) and depth < 2 and any(x.startswith(o + '.') for o in owners if o) and AU.get(x):
+        return {'object': x, 'class': AU.get(x)['class'], 'values': resolve_subobjects(AU.values(x) or {}, owners, depth + 1)}
+    return x
+
+_fx = {}
+def fx_status(t):
+    """decode status of a particle template: emitters, TypeData class per emitter (Sprite / Mesh / Beam2 / Trail2 ...), undecoded modules."""
+    if not t: return None
+    if t in _fx: return _fx[t]
+    import pstream
+    if not AU.get(t): _fx[t] = {'template': t, 'in_dump': False}; return _fx[t]
+    try:
+        r = pstream.system(t); em = []
+        for e in r.get('emitters') or []:
+            L = (e.get('lods') or [{}])[0]
+            td = (L.get('TypeDataModule') or {})
+            em.append({'emitter': e.get('name'), 'type_data': td.get('class') or 'Sprite (no TypeData)',
+                       'type_data_props': td.get('props'), 'material': ((L.get('RequiredModule') or {}).get('props') or {}).get('Material'),
+                       'undecoded_modules (PMI_Unknown)': sum(1 for m in L.get('compiled_modules') or [] if m.get('module') == 'PMI_Unknown'),
+                       'assignment_complete': L.get('assignment_complete')})
+        _fx[t] = {'template': t, 'in_dump': True, 'emitters': em}
+    except Exception as ex:
+        _fx[t] = {'template': t, 'in_dump': True, 'decode_error': repr(ex)[:150]}
+    return _fx[t]
+
 def projectile(cls, A):
     if not cls: return None
     pkg, name = cls.split('.', 1)
@@ -39,8 +68,27 @@ def projectile(cls, A):
     rec = OrderedDict([('class', cls), ('LifeSpan', d.get('LifeSpan')), ('Speed', d.get('Speed')), ('MaxSpeed', d.get('MaxSpeed')),
                        ('Damage', d.get('Damage')), ('DamageRadius', d.get('DamageRadius')), ('MomentumTransfer', d.get('MomentumTransfer'))])
     pm = d.get('Mesh')
+    # the visible body: the projectile class default's mesh component (MeshComp -> StaticMesh), if any (RE projectile_effect_bindings)
+    mc = d.get('MeshComp'); mcv = AU.values(mc) if mc and AU.get(mc) else {}
+    body = mcv.get('StaticMesh') or mcv.get('SkeletalMesh')
+    if body:
+        a_ = A.get(body.lower()) or {}
+        rec['body_mesh'] = {'component': mc, 'mesh': body, 'gltf': next((o for o in a_.get('extracted') or [] if o.endswith('.gltf')), None),
+                            'scale': mcv.get('Scale'), 'scale3d': mcv.get('Scale3D'), 'translation': mcv.get('Translation'),
+                            'rotation': mcv.get('Rotation'), 'materials': mcv.get('Materials')}
+    if pm and not body and (AU.values(pm) or {}).get('StaticMesh'):   # grenades: StaticMesh + DrawScale authored on the PROJMESH itself
+        pv_ = AU.values(pm); body = pv_['StaticMesh']; a_ = A.get(body.lower()) or {}
+        rec['body_mesh'] = {'source': pm + '.StaticMesh', 'mesh': body, 'draw_scale': pv_.get('DrawScale'),
+                            'gltf': next((o for o in a_.get('extracted') or [] if o.endswith('.gltf')), None)}
     if pm:
         v = AU.values(pm) or {}
+        rec['projectile_visual'] = OrderedDict([
+            ('kind', ('mesh body %s (class-default mesh component) + flight particle' % body) if body else
+                     'particle-only: no mesh on the projectile class default mesh component; the FlightEffect is the visible body (CONFIRMED)'),
+            ('flight_effect', fx_status(v.get('FlightEffect'))), ('explosion_effect', fx_status(v.get('ExplosionEffect'))),
+            ('flight_sound', v.get('FlightSound')), ('explosion_sound', v.get('ExplosionSound')), ('bounce_sound', v.get('BounceSound')),
+            ('decal_applicator', resolve_subobjects(v.get('DecalApplicator'), [pm])),
+            ('particle_parameters (team colour / index)', resolve_subobjects(v.get('Parameters'), [pm]))])
         keep = {k: x for k, x in v.items() if isinstance(x, (str, int, float, bool)) and
                 re.search(r'Mesh|Template|Sound|Light|Explosion|Flight|Trail|Decal|Speed|Damage|Radius|Accel|Homing|Gravity', k)}
         rec['projectile_mesh'] = {'object': pm, 'properties': keep}
@@ -82,6 +130,12 @@ def export(pid, w, A, hud_icons, chassis_by_weapon, owner_socket):
     for k in ('PickupSound', 'DefaultImpactSound', 'BulletBySound'):
         if wmv.get(k): sounds.append(dict(event=k, **VC.cue(wmv[k], A)))
     wd = w.get('gameplay (versus WEPDATA = MultiplayerData, CONFIRMED)') or {}   # versus data (RE 2026-10-05)
+    wdo = (w.get('wepdata_objects') or {}).get('MultiplayerData (versus)')
+    wd = resolve_subobjects(wd, [wdo])
+    pk_, cn_ = w['class'].split('.', 1)
+    cdo = '%s.Default__%s' % (pk_, cn_)
+    class_defaults = resolve_subobjects({k: v for k, v in (AU.values(cdo) or {}).items()
+                                         if not k.startswith(('b', 'Net', 'Role', 'Remote', 'Tick')) and k not in ('Components', 'SupportedEvents')}, [cdo])
     projs = [projectile(c, A) for c in dict.fromkeys(x for x in (wd.get('WeaponProjectiles') or []) if x)]
     cls_short = w['class'].rsplit('.', 1)[-1]
     man = OrderedDict([
@@ -105,12 +159,18 @@ def export(pid, w, A, hud_icons, chassis_by_weapon, owner_socket):
                                 'Characters/<ChassisId>/character.json robot.sockets); vehicle-form weapons fire from the vehicle sockets'}),
         ('recoil (procedural, WEPMESH)', {k: wmv.get(k) for k in ('SpineRecoil', 'RightHandRecoil') if wmv.get(k)}),
         ('heat', {k: wmv.get(k) for k in ('HeatPerShot', 'HeatCooldownTime', 'LowAmmoThreshold') if wmv.get(k) is not None}),
-        ('effects', OrderedDict([('authored', w.get('effects')), ('default_decal', wmv.get('DefaultDecal')),
+        ('effects', OrderedDict([('authored', w.get('effects')),
+                                 ('decode_status', {t: fx_status(t) for t in sorted({x for x in
+                                     [m.get('PSTemplate') for m in (w.get('effects') or {}).get('muzzle_flashes') or []] +
+                                     [m.get('TracerTemplate') for m in (w.get('effects') or {}).get('tracers') or []] +
+                                     [(w.get('effects') or {}).get('default_squib')] if x})}),
+                                 ('default_decal', wmv.get('DefaultDecal')),
                                  ('muzzle_light', wmv.get('MuzzleFlashLight')), ('muzzle_flash_duration', wmv.get('MuzzleFlashDuration')),
                                  ('impact_squib', {k: wmv.get(k) for k in ('ImpactSquibPercentage', 'ImpactSquibMaxCount', 'MaxImpactEffectDistance')})])),
         ('projectiles', projs or None),
         ('sounds', sounds),
         ('gameplay (versus WEPDATA = MultiplayerData, CONFIRMED)', wd), ('wepdata_objects', w.get('wepdata_objects')),
+        ('class_defaults (weapon CDO, sub-objects resolved)', class_defaults),
         ('gameplay (campaign / SP PlayerData)', w.get('gameplay (player WEPDATA)')), ('ai_data', w.get('ai_data')), ('damage_types', w.get('damage_types')),
         ('restrictions', w.get('restrictions')), ('usable_by_chassis', chassis_by_weapon.get(pid)),
         ('ui', OrderedDict([('ratings', w.get('ui_ratings')), ('kill_feed_icon', w.get('kill_feed_icon')),

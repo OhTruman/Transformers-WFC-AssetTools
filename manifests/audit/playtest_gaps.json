@@ -1,0 +1,1222 @@
+{
+ "generated_by": "AssetTools/scripts/wfc/playtest_gap_audit.py",
+ "generated": "2026-10-05 19:03",
+ "vocabulary": [
+  "EXTRACTED AND VALID",
+  "EXTRACTED BUT NOT CONSUMED",
+  "BAD/INCOMPLETE EXPORT",
+  "REFERENCE ISSUE",
+  "NOT PRESENT IN DUMP",
+  "UNKNOWN"
+ ],
+ "default_four_classes": {
+  "Scout": [
+   "Car2",
+   "Car4"
+  ],
+  "Scientist": [
+   "Jet4",
+   "Jet"
+  ],
+  "Leader": [
+   "Truck3",
+   "Truck4"
+  ],
+  "Soldier": [
+   "Tank3",
+   "Tank2"
+  ]
+ },
+ "items": [
+  {
+   "area": "Scout vehicle propulsion / hover / boost / jump FX",
+   "verdict": "EXTRACTED BUT NOT CONSUMED",
+   "owner": "SYSTEMS (wiring) + RENDERING (Size/Color params)",
+   "evidence": {
+    "Car2": {
+     "JumpFX": {
+      "count": 3,
+      "templates": [
+       "FX_Navigation_p.CarJump_Small_FX"
+      ],
+      "sockets_missing_on_vehicle_glb": [],
+      "templates_in_dump": true
+     },
+     "HoverFX": {
+      "count": 4,
+      "templates": [
+       "FX_Navigation_p.CarHover_A_01_FX"
+      ],
+      "sockets_missing_on_vehicle_glb": [],
+      "templates_in_dump": true
+     },
+     "BoostFx": {
+      "count": 3,
+      "templates": [
+       "FX_Navigation_p.Booster_1_FX"
+      ],
+      "sockets_missing_on_vehicle_glb": [],
+      "templates_in_dump": true
+     }
+    },
+    "Car4": {
+     "JumpFX": {
+      "count": 3,
+      "templates": [
+       "FX_Navigation_p.CarJump_01_FX"
+      ],
+      "sockets_missing_on_vehicle_glb": [],
+      "templates_in_dump": true
+     },
+     "HoverFX": {
+      "count": 4,
+      "templates": [
+       "FX_Navigation_p.CarHover_D_01_FX"
+      ],
+      "sockets_missing_on_vehicle_glb": [],
+      "templates_in_dump": true
+     },
+     "BoostFx": {
+      "count": 1,
+      "templates": [
+       "FX_Navigation_p.Afterburner_D_FX"
+      ],
+      "sockets_missing_on_vehicle_glb": [],
+      "templates_in_dump": true
+     }
+    }
+   },
+   "action": "templates + sockets now in Characters/<id>/character.json \"vehicle_fx (VEHDEF particle structs ...)\"; every socket exists on vehicle.glb, every template decodes. Spawn at the sockets per form, toggled by the clip notifies TnAnimNotify_ToggleVehicleFx",
+   "fixed_in_this_pass": "vehicle_fx added to character.json (was only in manifests/audit/vehicle_fx_audio.json)"
+  },
+  {
+   "area": "Scientist vehicle propulsion / hover / boost / jump FX",
+   "verdict": "EXTRACTED BUT NOT CONSUMED",
+   "owner": "SYSTEMS (wiring) + RENDERING (Size/Color params)",
+   "evidence": {
+    "Jet4": {
+     "HoverFX": {
+      "count": 5,
+      "templates": [
+       "FX_Navigation_p.hover_plane_FX"
+      ],
+      "sockets_missing_on_vehicle_glb": [],
+      "templates_in_dump": true
+     },
+     "BoostFx": {
+      "count": 6,
+      "templates": [
+       "FX_Navigation_p.Afterburner_A_FX",
+       "FX_Navigation_p.FX.Trails_Jet_A_FX"
+      ],
+      "sockets_missing_on_vehicle_glb": [],
+      "templates_in_dump": true
+     }
+    },
+    "Jet": {
+     "HoverFX": {
+      "count": 6,
+      "templates": [
+       "FX_Navigation_p.hover_plane_FX"
+      ],
+      "sockets_missing_on_vehicle_glb": [],
+      "templates_in_dump": true
+     },
+     "BoostFx": {
+      "count": 6,
+      "templates": [
+       "FX_Navigation_p.Afterburner_D_FX",
+       "FX_Navigation_p.FX.Trails_Jet_D_FX"
+      ],
+      "sockets_missing_on_vehicle_glb": [],
+      "templates_in_dump": true
+     }
+    }
+   },
+   "action": "templates + sockets now in Characters/<id>/character.json \"vehicle_fx (VEHDEF particle structs ...)\"; every socket exists on vehicle.glb, every template decodes. Spawn at the sockets per form, toggled by the clip notifies TnAnimNotify_ToggleVehicleFx",
+   "fixed_in_this_pass": "vehicle_fx added to character.json (was only in manifests/audit/vehicle_fx_audio.json)"
+  },
+  {
+   "area": "Leader vehicle propulsion / hover / boost / jump FX",
+   "verdict": "EXTRACTED BUT NOT CONSUMED",
+   "owner": "SYSTEMS (wiring) + RENDERING (Size/Color params)",
+   "evidence": {
+    "Truck3": {
+     "RamFX": {
+      "count": 1,
+      "templates": [
+       "FX_Navigation_p.FX.Truck_ram_FX"
+      ],
+      "sockets_missing_on_vehicle_glb": [],
+      "templates_in_dump": true
+     },
+     "JumpFX": {
+      "count": 3,
+      "templates": [
+       "FX_Navigation_p.CarJump_01_FX"
+      ],
+      "sockets_missing_on_vehicle_glb": [],
+      "templates_in_dump": true
+     },
+     "HoverFX": {
+      "count": 4,
+      "templates": [
+       "FX_Navigation_p.CarHover_A_01_FX"
+      ],
+      "sockets_missing_on_vehicle_glb": [],
+      "templates_in_dump": true
+     },
+     "BoostFx": {
+      "count": 2,
+      "templates": [
+       "FX_Navigation_p.Afterburner_A_FX"
+      ],
+      "sockets_missing_on_vehicle_glb": [],
+      "templates_in_dump": true
+     }
+    },
+    "Truck4": {
+     "RamFX": {
+      "count": 1,
+      "templates": [
+       "FX_Navigation_p.FX.Truck_ram_FX"
+      ],
+      "sockets_missing_on_vehicle_glb": [],
+      "templates_in_dump": true
+     },
+     "JumpFX": {
+      "count": 3,
+      "templates": [
+       "FX_Navigation_p.CarJump_01_FX"
+      ],
+      "sockets_missing_on_vehicle_glb": [],
+      "templates_in_dump": true
+     },
+     "HoverFX": {
+      "count": 4,
+      "templates": [
+       "FX_Navigation_p.CarHover_D_01_FX"
+      ],
+      "sockets_missing_on_vehicle_glb": [],
+      "templates_in_dump": true
+     },
+     "BoostFx": {
+      "count": 2,
+      "templates": [
+       "FX_Navigation_p.Afterburner_D_FX"
+      ],
+      "sockets_missing_on_vehicle_glb": [],
+      "templates_in_dump": true
+     }
+    }
+   },
+   "action": "templates + sockets now in Characters/<id>/character.json \"vehicle_fx (VEHDEF particle structs ...)\"; every socket exists on vehicle.glb, every template decodes. Spawn at the sockets per form, toggled by the clip notifies TnAnimNotify_ToggleVehicleFx",
+   "fixed_in_this_pass": "vehicle_fx added to character.json (was only in manifests/audit/vehicle_fx_audio.json)"
+  },
+  {
+   "area": "Soldier vehicle propulsion / hover / boost / jump FX",
+   "verdict": "EXTRACTED BUT NOT CONSUMED",
+   "owner": "SYSTEMS (wiring) + RENDERING (Size/Color params)",
+   "evidence": {
+    "Tank3": {
+     "HoverFX": {
+      "count": 5,
+      "templates": [
+       "FX_Navigation_p.hover_tank01_FX",
+       "FX_Navigation_p.hover_tank_02_FX"
+      ],
+      "sockets_missing_on_vehicle_glb": [],
+      "templates_in_dump": true
+     },
+     "JumpFX": {
+      "count": 4,
+      "templates": [
+       "FX_Navigation_p.Jump_tank01_FX"
+      ],
+      "sockets_missing_on_vehicle_glb": [],
+      "templates_in_dump": true
+     },
+     "BoostFx": {
+      "count": 2,
+      "templates": [
+       "FX_Navigation_p.Afterburner_A_FX"
+      ],
+      "sockets_missing_on_vehicle_glb": [],
+      "templates_in_dump": true
+     }
+    },
+    "Tank2": {
+     "HoverFX": {
+      "count": 4,
+      "templates": [
+       "FX_Navigation_p.hover_tank01_FX",
+       "FX_Navigation_p.hover_tank_02_FX"
+      ],
+      "sockets_missing_on_vehicle_glb": [],
+      "templates_in_dump": true
+     },
+     "JumpFX": {
+      "count": 3,
+      "templates": [
+       "FX_Navigation_p.Jump_tank01_FX"
+      ],
+      "sockets_missing_on_vehicle_glb": [],
+      "templates_in_dump": true
+     },
+     "BoostFx": {
+      "count": 3,
+      "templates": [
+       "FX_Navigation_p.Afterburner_D_FX"
+      ],
+      "sockets_missing_on_vehicle_glb": [],
+      "templates_in_dump": true
+     }
+    }
+   },
+   "action": "templates + sockets now in Characters/<id>/character.json \"vehicle_fx (VEHDEF particle structs ...)\"; every socket exists on vehicle.glb, every template decodes. Spawn at the sockets per form, toggled by the clip notifies TnAnimNotify_ToggleVehicleFx",
+   "fixed_in_this_pass": "vehicle_fx added to character.json (was only in manifests/audit/vehicle_fx_audio.json)"
+  },
+  {
+   "area": "Scout vehicle weapon projectiles / tracers / muzzle sockets",
+   "verdict": "EXTRACTED BUT NOT CONSUMED",
+   "owner": "GAMEPLAY / RENDERING",
+   "evidence": {
+    "Car2/AssaultRifleVehicle": {
+     "fire_types": [
+      "EWFT_InstantHit",
+      "EWFT_InstantHit"
+     ],
+     "muzzle_sockets": [
+      "WeaponSocket_Primary",
+      "WeaponSocket_Primary2"
+     ],
+     "muzzle_sockets_missing_on_vehicle": [],
+     "projectile_visuals": [],
+     "tracer_muzzle_impact": [
+      "FX_AssaultRifle_p.FX.Impact_AssaultRifle_FX",
+      "FX_AssaultRifle_p.FX.MuzzleFlash_AssaultRifle_FX",
+      "FX_AssaultRifle_p.FX.Tracer_AssaultRifle_FX"
+     ]
+    },
+    "Car4/AssaultRifleVehicle": {
+     "fire_types": [
+      "EWFT_InstantHit",
+      "EWFT_InstantHit"
+     ],
+     "muzzle_sockets": [
+      "WeaponSocket_Primary",
+      "WeaponSocket_Primary2"
+     ],
+     "muzzle_sockets_missing_on_vehicle": [],
+     "projectile_visuals": [],
+     "tracer_muzzle_impact": [
+      "FX_AssaultRifle_p.FX.Impact_AssaultRifle_FX",
+      "FX_AssaultRifle_p.FX.MuzzleFlash_AssaultRifle_FX",
+      "FX_AssaultRifle_p.FX.Tracer_AssaultRifle_FX"
+     ]
+    }
+   },
+   "action": "projectiles are particle-only (TnProjectileMesh authors no mesh component, CONFIRMED): draw FlightEffect at the projectile, ExplosionEffect + decal on impact; instant-hit vehicle guns use the tracer + muzzle flash at WeaponSocket_Primary/2. Muzzle sockets missing on the vehicle: none",
+   "fixed_in_this_pass": "weapon.json projectile_visual + effect decode status (was \"projectile mesh gltf: None\")"
+  },
+  {
+   "area": "Scientist vehicle weapon projectiles / tracers / muzzle sockets",
+   "verdict": "EXTRACTED BUT NOT CONSUMED",
+   "owner": "GAMEPLAY / RENDERING",
+   "evidence": {
+    "Jet4/HomingRocketVehicle": {
+     "fire_types": [
+      "EWFT_Projectile",
+      "EWFT_Projectile"
+     ],
+     "muzzle_sockets": [
+      "WeaponSocket_Primary",
+      "WeaponSocket_Primary2"
+     ],
+     "muzzle_sockets_missing_on_vehicle": [],
+     "projectile_visuals": [
+      {
+       "class": "TransContent.TnProjectileHomingRocketVehicle",
+       "kind": "particle-only: no mesh on the projectile class default mesh ",
+       "flight_effect": "FX_HomingRocket_p.FX.Tracer_HomRocket_FX",
+       "explosion_effect": "FX_HomingRocket_p.FX.Squib_HomRocket_01_FX"
+      }
+     ],
+     "tracer_muzzle_impact": [
+      "FX_HomingRocket_p.FX.MuzzleFlash_HomRocket_FX"
+     ]
+    },
+    "Jet4/PlaneAssaultRifle": {
+     "fire_types": [
+      "EWFT_InstantHit",
+      "EWFT_InstantHit"
+     ],
+     "muzzle_sockets": [
+      "WeaponSocket_Primary",
+      "WeaponSocket_Primary2"
+     ],
+     "muzzle_sockets_missing_on_vehicle": [],
+     "projectile_visuals": [],
+     "tracer_muzzle_impact": [
+      "FX_AssaultRifle_p.FX.Impact_AssaultRifle_FX",
+      "FX_AssaultRifle_p.FX.MuzzleFlash_AssaultRifle_FX",
+      "FX_AssaultRifle_p.FX.Tracer_AssaultRifle_FX"
+     ]
+    },
+    "Jet/HomingRocketVehicle": {
+     "fire_types": [
+      "EWFT_Projectile",
+      "EWFT_Projectile"
+     ],
+     "muzzle_sockets": [
+      "WeaponSocket_Primary",
+      "WeaponSocket_Primary2"
+     ],
+     "muzzle_sockets_missing_on_vehicle": [],
+     "projectile_visuals": [
+      {
+       "class": "TransContent.TnProjectileHomingRocketVehicle",
+       "kind": "particle-only: no mesh on the projectile class default mesh ",
+       "flight_effect": "FX_HomingRocket_p.FX.Tracer_HomRocket_FX",
+       "explosion_effect": "FX_HomingRocket_p.FX.Squib_HomRocket_01_FX"
+      }
+     ],
+     "tracer_muzzle_impact": [
+      "FX_HomingRocket_p.FX.MuzzleFlash_HomRocket_FX"
+     ]
+    },
+    "Jet/PlaneAssaultRifle": {
+     "fire_types": [
+      "EWFT_InstantHit",
+      "EWFT_InstantHit"
+     ],
+     "muzzle_sockets": [
+      "WeaponSocket_Primary",
+      "WeaponSocket_Primary2"
+     ],
+     "muzzle_sockets_missing_on_vehicle": [],
+     "projectile_visuals": [],
+     "tracer_muzzle_impact": [
+      "FX_AssaultRifle_p.FX.Impact_AssaultRifle_FX",
+      "FX_AssaultRifle_p.FX.MuzzleFlash_AssaultRifle_FX",
+      "FX_AssaultRifle_p.FX.Tracer_AssaultRifle_FX"
+     ]
+    }
+   },
+   "action": "projectiles are particle-only (TnProjectileMesh authors no mesh component, CONFIRMED): draw FlightEffect at the projectile, ExplosionEffect + decal on impact; instant-hit vehicle guns use the tracer + muzzle flash at WeaponSocket_Primary/2. Muzzle sockets missing on the vehicle: none",
+   "fixed_in_this_pass": "weapon.json projectile_visual + effect decode status (was \"projectile mesh gltf: None\")"
+  },
+  {
+   "area": "Leader vehicle weapon projectiles / tracers / muzzle sockets",
+   "verdict": "EXTRACTED BUT NOT CONSUMED",
+   "owner": "GAMEPLAY / RENDERING",
+   "evidence": {
+    "Truck3/RocketVehicle": {
+     "fire_types": [
+      "EWFT_Projectile"
+     ],
+     "muzzle_sockets": [
+      "WeaponSocket_Primary",
+      "WeaponSocket_Primary2"
+     ],
+     "muzzle_sockets_missing_on_vehicle": [],
+     "projectile_visuals": [
+      {
+       "class": "TransContent.TnProjectilePlaneRocketTemp",
+       "kind": "particle-only: no mesh on the projectile class default mesh ",
+       "flight_effect": "FX_HomingRocket_p.FX.Tracer_HomRocket_FX",
+       "explosion_effect": "FX_HomingRocket_p.FX.Squib_HomRocket_01_FX"
+      }
+     ],
+     "tracer_muzzle_impact": [
+      "FX_Weapons_p.Blaster.MuzzleFlash_Blaster_FX"
+     ]
+    },
+    "Truck4/RocketVehicle": {
+     "fire_types": [
+      "EWFT_Projectile"
+     ],
+     "muzzle_sockets": [
+      "WeaponSocket_Primary",
+      "WeaponSocket_Primary2"
+     ],
+     "muzzle_sockets_missing_on_vehicle": [],
+     "projectile_visuals": [
+      {
+       "class": "TransContent.TnProjectilePlaneRocketTemp",
+       "kind": "particle-only: no mesh on the projectile class default mesh ",
+       "flight_effect": "FX_HomingRocket_p.FX.Tracer_HomRocket_FX",
+       "explosion_effect": "FX_HomingRocket_p.FX.Squib_HomRocket_01_FX"
+      }
+     ],
+     "tracer_muzzle_impact": [
+      "FX_Weapons_p.Blaster.MuzzleFlash_Blaster_FX"
+     ]
+    }
+   },
+   "action": "projectiles are particle-only (TnProjectileMesh authors no mesh component, CONFIRMED): draw FlightEffect at the projectile, ExplosionEffect + decal on impact; instant-hit vehicle guns use the tracer + muzzle flash at WeaponSocket_Primary/2. Muzzle sockets missing on the vehicle: none",
+   "fixed_in_this_pass": "weapon.json projectile_visual + effect decode status (was \"projectile mesh gltf: None\")"
+  },
+  {
+   "area": "Soldier vehicle weapon projectiles / tracers / muzzle sockets",
+   "verdict": "EXTRACTED BUT NOT CONSUMED",
+   "owner": "GAMEPLAY / RENDERING",
+   "evidence": {
+    "Tank3/TankCannon": {
+     "fire_types": [
+      "EWFT_Projectile"
+     ],
+     "muzzle_sockets": [
+      "WeaponSocket_Primary"
+     ],
+     "muzzle_sockets_missing_on_vehicle": [],
+     "projectile_visuals": [
+      {
+       "class": "TransContent.TnProjectileTankShell",
+       "kind": "particle-only: no mesh on the projectile class default mesh ",
+       "flight_effect": "FX_TankCannon_p.FX.Trail_TankCannon_FX",
+       "explosion_effect": "FX_Explosives_p.FX.Martyrdom_Grenade_FX"
+      }
+     ],
+     "tracer_muzzle_impact": [
+      "FX_TankCannon_p.FX.D_MuzzleFlash_TankCannon_FX",
+      "FX_TankCannon_p.FX.Trail_TankCannon_FX"
+     ]
+    },
+    "Tank2/TankCannon": {
+     "fire_types": [
+      "EWFT_Projectile"
+     ],
+     "muzzle_sockets": [
+      "WeaponSocket_Primary"
+     ],
+     "muzzle_sockets_missing_on_vehicle": [],
+     "projectile_visuals": [
+      {
+       "class": "TransContent.TnProjectileTankShell",
+       "kind": "particle-only: no mesh on the projectile class default mesh ",
+       "flight_effect": "FX_TankCannon_p.FX.Trail_TankCannon_FX",
+       "explosion_effect": "FX_Explosives_p.FX.Martyrdom_Grenade_FX"
+      }
+     ],
+     "tracer_muzzle_impact": [
+      "FX_TankCannon_p.FX.D_MuzzleFlash_TankCannon_FX",
+      "FX_TankCannon_p.FX.Trail_TankCannon_FX"
+     ]
+    }
+   },
+   "action": "projectiles are particle-only (TnProjectileMesh authors no mesh component, CONFIRMED): draw FlightEffect at the projectile, ExplosionEffect + decal on impact; instant-hit vehicle guns use the tracer + muzzle flash at WeaponSocket_Primary/2. Muzzle sockets missing on the vehicle: none",
+   "fixed_in_this_pass": "weapon.json projectile_visual + effect decode status (was \"projectile mesh gltf: None\")"
+  },
+  {
+   "area": "Per-chassis vehicle audio (engine / boost / jump / land / speed)",
+   "verdict": "EXTRACTED BUT NOT CONSUMED",
+   "owner": "SYSTEMS",
+   "evidence": {
+    "Car2": {
+     "COMPLETE": 22,
+     "UNKNOWN": 2
+    },
+    "Car4": {
+     "COMPLETE": 21,
+     "UNKNOWN": 4
+    },
+    "Jet4": {
+     "COMPLETE": 16,
+     "UNKNOWN": 3
+    },
+    "Jet": {
+     "COMPLETE": 17,
+     "UNKNOWN": 3
+    },
+    "Truck3": {
+     "COMPLETE": 24,
+     "UNKNOWN": 2
+    },
+    "Truck4": {
+     "COMPLETE": 23,
+     "UNKNOWN": 3
+    },
+    "Tank3": {
+     "COMPLETE": 18,
+     "UNKNOWN": 4
+    },
+    "Tank2": {
+     "COMPLETE": 18,
+     "UNKNOWN": 4
+    }
+   },
+   "action": "per-event cue + WAV resolution now in character.json \"vehicle_audio (...)\"; UNKNOWN entries are events absent from the chassis event set (engine default / silent)",
+   "fixed_in_this_pass": "vehicle_audio added to character.json"
+  },
+  {
+   "area": "Transformation effects (Scout and other chassis)",
+   "verdict": "EXTRACTED BUT NOT CONSUMED",
+   "owner": "GAMEPLAY (notify dispatch) + RENDERING / SYSTEMS",
+   "evidence": {
+    "Car2": {
+     "play_effect": [],
+     "sounds": [
+      "BL_TRANSFORM.SIDESWIPE_BOT2VEH",
+      "BL_TRANSFORM.SIDESWIPE_VEH2BOT",
+      "BL_VEH_SIDESWIPE.VEH_SIDESWIPE_WHEELS_LAND_HEAVY"
+     ],
+     "mesh_swap_notifies": 7,
+     "vehicle_fx_toggles": 2
+    },
+    "Car4": {
+     "play_effect": [],
+     "sounds": [
+      "BL_TRANSFORM.BARRICADE_BOT2VEH",
+      "BL_TRANSFORM.BARRICADE_VEH2BOT"
+     ],
+     "mesh_swap_notifies": 4,
+     "vehicle_fx_toggles": 2
+    },
+    "Jet4": {
+     "play_effect": [],
+     "sounds": [
+      "BL_TRANSFORM.AIRRAID_BOT2VEH",
+      "BL_TRANSFORM.AIRRAID_VEH2BOT"
+     ],
+     "mesh_swap_notifies": 4,
+     "vehicle_fx_toggles": 2
+    },
+    "Jet": {
+     "play_effect": [
+      "FX_Transformers_p.FX.Trails_Bumblebee_FX"
+     ],
+     "sounds": [
+      "BL_TRANSFORM.STARSCREAM_BOT2JET_FULL",
+      "BL_TRANSFORM.STARSCREAM_JET2BOT_FULL",
+      "BL_TRANSFORM.STARSCREAM_JET2BOT_START",
+      "BL_TRANSFORM.VEH_SUPER_BOOST_CAR"
+     ],
+     "mesh_swap_notifies": 6,
+     "vehicle_fx_toggles": 2
+    },
+    "Truck3": {
+     "play_effect": [],
+     "sounds": [
+      "BL_TRANSFORM.IRONHIDE_BOT2VEH",
+      "BL_TRANSFORM.IRONHIDE_VEH2BOT"
+     ],
+     "mesh_swap_notifies": 4,
+     "vehicle_fx_toggles": 2
+    },
+    "Truck4": {
+     "play_effect": [],
+     "sounds": [
+      "BL_TRANSFORM.SOUNDWAVE_BOT2VEH",
+      "BL_TRANSFORM.SOUNDWAVE_VEH2BOT"
+     ],
+     "mesh_swap_notifies": 4,
+     "vehicle_fx_toggles": 2
+    },
+    "Tank3": {
+     "play_effect": [],
+     "sounds": [
+      "BL_TRANSFORM.WARPATH_BOT2VEH",
+      "BL_TRANSFORM.WARPATH_VEH2BOT"
+     ],
+     "mesh_swap_notifies": 4,
+     "vehicle_fx_toggles": 2
+    },
+    "Tank2": {
+     "play_effect": [],
+     "sounds": [
+      "BL_TRANSFORM.BRAWL_BOT2VEH",
+      "BL_TRANSFORM.BRAWL_VEH2BOT"
+     ],
+     "mesh_swap_notifies": 5,
+     "vehicle_fx_toggles": 2
+    }
+   },
+   "action": "transform clips now carry their notifies in character.json (animations[].notifies): sounds, mesh hide/show timings, vehicle-FX toggles and any PlayEffect. Particle effects on transformation are authored ONLY where listed (Starscream: Trails_Bumblebee_FX at knee / wing sockets); the Scout chassis author none (NOT PRESENT IN DUMP for Scout particles). Spark_Transformer_FX is a vehicle rigid-body impact effect (TnVehicleForm.RigidBodyCollisionOccurred, contact speed >= 1200), not a transform effect",
+   "fixed_in_this_pass": "clip notifies added to character.json"
+  },
+  {
+   "area": "Scout transformation particles",
+   "verdict": "NOT PRESENT IN DUMP",
+   "owner": "NONE",
+   "evidence": {
+    "Car2": [],
+    "Car4": []
+   },
+   "action": "the original Scout transform is mesh swap + transform sound; do not invent sparks",
+   "fixed_in_this_pass": null
+  },
+  {
+   "area": "Scientist Repair Ray visuals / data",
+   "verdict": "EXTRACTED BUT NOT CONSUMED",
+   "owner": "GAMEPLAY (simulation: HUD weaponSimulated false) + RENDERING (beam fidelity)",
+   "evidence": {
+    "mesh": "VerticalSlice/Weapons/RepairRay/weapon.glb",
+    "clips": 6,
+    "beam": {
+     "template": "FX_RepairBeam_p.FX.Tracer_RepairBeam_FX",
+     "emitters": [
+      [
+       "TestBeam_Dup_Dup_Dup_Dup",
+       "ParticleModuleTypeDataBeam2",
+       "FX_Materials_p.Materials.HealBeam_MAT",
+       3
+      ],
+      [
+       "TestBeam_Dup_Dup_Dup_Dup",
+       "ParticleModuleTypeDataBeam2",
+       "FX_Materials_p.Materials.Ring_DistortTrail_Add_MAT",
+       3
+      ],
+      [
+       "TestBeam_Dup_Dup_Dup_Dup_Dup",
+       "ParticleModuleTypeDataBeam2",
+       "FX_Materials_p.MatInst.Blaster_Trail_MAT_INST",
+       2
+      ],
+      [
+       "SouceBoltsDown_Dup_Dup",
+       "Sprite (no TypeData)",
+       "FX_Materials_p.Materials.Lightning_Anim_02_MAT",
+       0
+      ],
+      [
+       "SouceBoltsOut_Dup_Dup",
+       "Sprite (no TypeData)",
+       "FX_Materials_p.Materials.Lightning_Anim_02_MAT",
+       0
+      ],
+      [
+       "SourceGlow_Dup_Dup_Dup",
+       "Sprite (no TypeData)",
+       "FX_Materials_p.Materials.Ring_Distort_Add_MAT",
+       0
+      ],
+      [
+       "SourceGlow_Dup_Dup_Dup",
+       "Sprite (no TypeData)",
+       "FX_Materials_p.Materials.Embers_Blue_MAT_INST",
+       0
+      ],
+      [
+       "SourceGlow_Dup_Dup_Dup_Dup",
+       "Sprite (no TypeData)",
+       "FX_Materials_p.Materials.Fire_Ring01_Mat",
+       0
+      ]
+     ],
+     "beam2_type_data": [
+      {
+       "TaperMethod": "PEBTM_Full",
+       "MaxBeamCount": 1,
+       "Speed": 0.0,
+       "InterpolationPoints": 50,
+       "TaperScale": {
+        "Distribution": null,
+        "Type": 2,
+        "LookupTable": [
+         0.0,
+         1.0,
+         0.0,
+         20.0,
+         0.0,
+         0.10000000149011612,
+         0.20000000298023224,
+         0.30000001192092896,
+         0.4000000059604645,
+         0.5,
+         0.6000000238418579,
+         0.699999988079071,
+         0.800000011920929,
+         0.9000000357627869,
+         1.0,
+         0.949999988079071,
+         0.8999999761581421,
+         0.8499999642372131,
+         0.800000011920929,
+         0.75,
+         0.699999988079071,
+         0.6499999761581421,
+         0.5999999642372131,
+         0.550000011920929,
+         0.5
+        ]
+       }
+      }
+     ]
+    },
+    "gameplay": {
+     "WeaponFireTypes": [
+      "EWFT_InstantHit",
+      "EWFT_InstantHit"
+     ],
+     "InstantHitDamage": [
+      100.0,
+      0.0
+     ],
+     "InstantHitDamageTypes": [
+      "TransGame.TnDamageTypeRepairEnemy",
+      null
+     ],
+     "WeaponRange": 3500.0,
+     "MaxAmmoCount": 300,
+     "HeatProperties": {
+      "HeatMax": 0.0,
+      "Modifiers": [
+       {
+        "object": "WEP_RepairBeam_p.RepairBeam_WEPDATA.TnOverheatHeatModifier_15183",
+        "class": "TnOverheatHeatModifier",
+        "values": {
+         "OverheatDelay": 3.5
+        }
+       },
+       {
+        "object": "WEP_RepairBeam_p.RepairBeam_WEPDATA.TnHoldHeatModifier_3721",
+        "class": "TnHoldHeatModifier",
+        "values": {
+         "GainRate": 20.0
+        }
+       },
+       {
+        "object": "WEP_RepairBeam_p.RepairBeam_WEPDATA.TnLoseHeatModifier_14772",
+        "class": "TnLoseHeatModifier",
+        "values": {
+         "LossRate": 20.0,
+         "LossDelay": 3.0
+        }
+       }
+      ]
+     }
+    },
+    "repair_rate": {
+     "object": "TransContent.Default__TnWeaponRepairRay.RepairRateModifier0",
+     "class": "TnValueTimesProductBuffModifier",
+     "values": {
+      "BuffsWhichModifyProperty": [
+       "TransGame.TnBuffIncreaseRepairRayHealing"
+      ]
+     }
+    },
+    "can_target_teammates": true
+   },
+   "action": "all authored data exported: Beam2 tracer on WP_Looping (TaperMethod / InterpolationPoints / TaperScale in beam2_type_data), heal damage type, range 3500, heat modifiers (overheat 3.5 s, gain 20 / s, loss 20 / s after 3 s), buff-scaled repair rate",
+   "fixed_in_this_pass": "heat modifiers + RepairRateModifier resolved inline in weapon.json (were bare object paths)"
+  },
+  {
+   "area": "Beam / trail / ribbon modules for missing FX",
+   "verdict": "EXTRACTED BUT NOT CONSUMED",
+   "owner": "RENDERING (fidelity) + RE (undecoded module ids)",
+   "evidence": [
+    {
+     "weapon": "RepairRay",
+     "template": "FX_RepairBeam_p.FX.Squib_RepairEnemy_FX",
+     "emitter": "BeamThick",
+     "type_data": "ParticleModuleTypeDataBeam2",
+     "type_data_props": {
+      "TaperMethod": "PEBTM_Full",
+      "MaxBeamCount": 1,
+      "Speed": 1000.0,
+      "InterpolationPoints": 50,
+      "Distance": {
+       "Distribution": null,
+       "LookupTable": [
+        100.0
+       ]
+      },
+      "TaperFactor": {
+       "Distribution": null,
+       "Type": 2,
+       "LookupTable": [
+        0.0,
+        1.0,
+        0.0,
+        1.0,
+        0.0,
+        1.0
+       ]
+      }
+     },
+     "undecoded_modules": 3
+    },
+    {
+     "weapon": "RepairRay",
+     "template": "FX_RepairBeam_p.FX.Squib_RepairEnemy_FX",
+     "emitter": "BeamThick_Dup",
+     "type_data": "ParticleModuleTypeDataBeam2",
+     "type_data_props": {
+      "TaperMethod": "PEBTM_Full",
+      "MaxBeamCount": 1,
+      "Speed": 1000.0,
+      "InterpolationPoints": 50,
+      "Distance": {
+       "Distribution": null,
+       "LookupTable": [
+        100.0
+       ]
+      },
+      "TaperFactor": {
+       "Distribution": null,
+       "Type": 2,
+       "LookupTable": [
+        0.0,
+        1.0,
+        0.0,
+        1.0,
+        0.0,
+        1.0
+       ]
+      }
+     },
+     "undecoded_modules": 3
+    },
+    {
+     "weapon": "RepairRay",
+     "template": "FX_RepairBeam_p.FX.Tracer_RepairBeam_FX",
+     "emitter": "TestBeam_Dup_Dup_Dup_Dup",
+     "type_data": "ParticleModuleTypeDataBeam2",
+     "type_data_props": {
+      "TaperMethod": "PEBTM_Full",
+      "MaxBeamCount": 1,
+      "Speed": 0.0,
+      "InterpolationPoints": 50,
+      "TaperScale": {
+       "Distribution": null,
+       "Type": 2,
+       "LookupTable": [
+        0.0,
+        1.0,
+        0.0,
+        20.0,
+        0.0,
+        0.10000000149011612,
+        0.20000000298023224,
+        0.30000001192092896,
+        0.4000000059604645,
+        0.5,
+        0.6000000238418579,
+        0.699999988079071,
+        0.800000011920929,
+        0.9000000357627869,
+        1.0,
+        0.949999988079071,
+        0.8999999761581421,
+        0.8499999642372131,
+        0.800000011920929,
+        0.75,
+        0.699999988079071,
+        0.6499999761581421,
+        0.5999999642372131,
+        0.550000011920929,
+        0.5
+       ]
+      }
+     },
+     "undecoded_modules": 3
+    },
+    {
+     "weapon": "RepairRay",
+     "template": "FX_RepairBeam_p.FX.Tracer_RepairBeam_FX",
+     "emitter": "TestBeam_Dup_Dup_Dup_Dup",
+     "type_data": "ParticleModuleTypeDataBeam2",
+     "type_data_props": {
+      "TaperMethod": "PEBTM_Full",
+      "MaxBeamCount": 1,
+      "Speed": 0.0,
+      "InterpolationPoints": 50,
+      "TaperScale": {
+       "Distribution": null,
+       "Type": 2,
+       "LookupTable": [
+        0.0,
+        1.0,
+        0.0,
+        20.0,
+        0.0,
+        0.10000000149011612,
+        0.20000000298023224,
+        0.30000001192092896,
+        0.4000000059604645,
+        0.5,
+        0.6000000238418579,
+        0.699999988079071,
+        0.800000011920929,
+        0.9000000357627869,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+       ]
+      }
+     },
+     "undecoded_modules": 3
+    },
+    {
+     "weapon": "RepairRay",
+     "template": "FX_RepairBeam_p.FX.Tracer_RepairBeam_FX",
+     "emitter": "TestBeam_Dup_Dup_Dup_Dup_Dup",
+     "type_data": "ParticleModuleTypeDataBeam2",
+     "type_data_props": {
+      "TaperMethod": "PEBTM_Full",
+      "MaxBeamCount": 1,
+      "Speed": 0.0,
+      "InterpolationPoints": 50,
+      "TaperFactor": {
+       "Distribution": null,
+       "LookupTable": [
+        10.0
+       ]
+      },
+      "TaperScale": {
+       "Distribution": null,
+       "Type": 2,
+       "LookupTable": [
+        0.0,
+        1.100000023841858,
+        0.0,
+        20.0,
+        0.02500000037252903,
+        0.07874999940395355,
+        0.13250000774860382,
+        0.1862500160932541,
+        0.24000000953674316,
+        0.29375001788139343,
+        0.3475000262260437,
+        0.4012500047683716,
+        0.45500001311302185,
+        0.5087500214576721,
+        0.5625,
+        0.6162500381469727,
+        0.6700000166893005,
+        0.7237500548362732,
+        0.7775000333786011,
+        0.831250011920929,
+        0.8850000500679016,
+        0.9387500286102295,
+        0.9925000667572021,
+        1.0462499856948853,
+        0.0
+       ]
+      }
+     },
+     "undecoded_modules": 2
+    },
+    {
+     "weapon": "AssaultRifle",
+     "template": "FX_AssaultRifle_p.FX.Tracer_AssaultRifle_FX",
+     "emitter": "Trail_Smoke_Dup_Dup",
+     "type_data": "ParticleModuleTypeDataTrail2",
+     "type_data_props": {
+      "TessellationFactor": 5,
+      "bEmitOnlyWhenMoving": false,
+      "bConnectToSource": false,
+      "MaxParticleInTrailCount": 100
+     },
+     "undecoded_modules": 0
+    },
+    {
+     "weapon": "SniperRifle",
+     "template": "FX_Sniper_p.FX.Tracer_SniperRifle_FX",
+     "emitter": "Trail_Smoke",
+     "type_data": "ParticleModuleTypeDataTrail2",
+     "type_data_props": {
+      "TessellationFactor": 10,
+      "bConnectToSource": false,
+      "MaxParticleInTrailCount": 100
+     },
+     "undecoded_modules": 1
+    },
+    {
+     "weapon": "AssaultRifleVehicle",
+     "template": "FX_AssaultRifle_p.FX.Tracer_AssaultRifle_FX",
+     "emitter": "Trail_Smoke_Dup_Dup",
+     "type_data": "ParticleModuleTypeDataTrail2",
+     "type_data_props": {
+      "TessellationFactor": 5,
+      "bEmitOnlyWhenMoving": false,
+      "bConnectToSource": false,
+      "MaxParticleInTrailCount": 100
+     },
+     "undecoded_modules": 0
+    },
+    {
+     "weapon": "TankCannon",
+     "template": "FX_TankCannon_p.FX.Trail_TankCannon_FX",
+     "emitter": "Trail1_Dup",
+     "type_data": "ParticleModuleTypeDataTrail2",
+     "type_data_props": {
+      "bEmitOnlyWhenMoving": false,
+      "MaxParticleInTrailCount": 100
+     },
+     "undecoded_modules": 1
+    }
+   ],
+   "action": "TypeDataBeam2 / Trail2 tagged settings (TaperMethod, InterpolationPoints, TaperScale, ...) are extracted per template; Rendering M44 draws Beam2 / Trail2 but does not apply taper / interpolation / noise yet. Compiled modules with module_id 0 (PMI_Unknown, no payload) are beam source / target / noise style modules the stream decoder cannot name: UNKNOWN for RE",
+   "fixed_in_this_pass": null
+  },
+  {
+   "area": "Molten lava material (animated)",
+   "verdict": "EXTRACTED AND VALID",
+   "owner": "RENDERING",
+   "evidence": {
+    "lava_materials": [
+     "ENV_CORE_Floors_p.Materials.ENV_CORE_EnergonPlasmaOrange_INST"
+    ],
+    "master": "ENV_AllShader_p.Energon_River.Energon_River_Mat (5 Panners, 9 ShaderCode, DepthBiasedAlpha)",
+    "textures_exported": "all 6 (ElectricArcs, DiffClouds, Water_NORMENV_EnergonRiver)",
+    "compiled_by_rendering (read-only)": {
+     "ENV_CORE_Floors_p.Materials.ENV_CORE_EnergonPlasmaOrange_INST": true
+    }
+   },
+   "action": "extracted; Rendering compiles it with time-driven panners",
+   "fixed_in_this_pass": null
+  },
+  {
+   "area": "Molten (and every MP map) floor normal / mask textures",
+   "verdict": "BAD/INCOMPLETE EXPORT",
+   "owner": "ASSETTOOLS (repaired) -> RENDERING (rebuild render data)",
+   "evidence": {
+    "molten_materials_with_an_unexported_Texture2D_before_repair": 0,
+    "of_materials": 185,
+    "repaired_textures": {
+     "ENV_AllShader_p.Textures.Pixel_4_NORM": {
+      "references": 862,
+      "output": "content/ENV_AllShader_p/Textures/Pixel_4_NORM.png"
+     },
+     "ENV_AllShader_p.Textures.Pixel_4_NORM_DXT1": {
+      "references": 36,
+      "output": "content/ENV_AllShader_p/Textures/Pixel_4_NORM_DXT1.png"
+     },
+     "ENV_AllShader_p.Textures.Pixel_4_Mask": {
+      "references": 350,
+      "output": "content/ENV_AllShader_p/Textures/Pixel_4_Mask.png"
+     },
+     "ENV_AllShader_p.Textures.Crackle_1_NORMCrackle_1_NORM": {
+      "references": 11,
+      "output": "content/ENV_AllShader_p/Textures/Crackle_1_NORMCrackle_1_NORM.png"
+     },
+     "ENV_AllShader_p.Textures.sheild": {
+      "references": 1,
+      "output": "content/ENV_AllShader_p/Textures/sheild.png"
+     },
+     "ENV_AllShader_p.Textures.Pixel_4_WHT": {
+      "references": 1,
+      "output": "content/ENV_AllShader_p/Textures/Pixel_4_WHT.png"
+     }
+    },
+    "content_note": "Pixel_4_NORM is a flat placeholder normal (mean RGB 126,126,255): no visual change; Pixel_4_Mask carries mask channels (R/G); Pixel_4_WHT decodes black (4x4, 1 reference) - suspicious, UNKNOWN",
+    "materials_still_unbound_after_refresh": {
+     "MP_IAC_Streets": 135,
+     "UI_FrontEnd": 11
+    },
+    "rendering_render_data (read-only)": "Rebuild-Rendering/work/render/MP_KON_Molten/tex lacks Pixel_4_NORM (has Pixel_4_Mask, Crackle_1_NORM)"
+   },
+   "action": "Rendering: rebuild render data (build_materials.py reads ExtractedAssets/content first). Streets materials_authored not refreshed (held: Streets regeneration needs explicit approval)",
+   "fixed_in_this_pass": "repair_missing_textures.py: 6 cooked Texture2D exported to content/ENV_AllShader_p/Textures and registered; materials_authored refreshed for the 9 non-Streets maps"
+  },
+  {
+   "area": "Orbital Debris sky / background / streamed sublevels",
+   "verdict": "EXTRACTED AND VALID",
+   "owner": "RENDERING",
+   "evidence": {
+    "sublevels_exported": [
+     "MP_ORB_Art_m",
+     "MP_ORB_Audio_m",
+     "MP_ORB_Debris_BASE_m"
+    ],
+    "authored_streaming": [
+     "MP_ORB_Art_m",
+     "MP_ORB_Audio_m"
+    ],
+    "background_meshes": [
+     "ENV_ORB_Spacedome_p.SpaceDome_STATMESH (override Spacedome_Nebula_MAT)",
+     "ENV_ORB_CybertronPlanet_p.MATTE.Cybertron_MATTE_STAT (override Cybertron_2D_Planet_MAT)",
+     "DES_ORB_Asteroids_p SpaceDebris / BigAsteroid / Asteroid_Debris"
+    ],
+    "override_materials_compiled (read-only)": {
+     "ENV_ORB_Spacedome_p.Spacedome_Nebula_MAT": true,
+     "ENV_NEU_CybertronOrbit_P.2D_Planet_Card.Cybertron_2D_Planet_MAT": true
+    },
+    "note": "Spacedome_MAT / CybertronMATTE_MAT are not compiled because the placed actors override them (correct)"
+   },
+   "action": "extracted, streamed levels complete; only the shared reflection cubemaps are missing (separate gap)",
+   "fixed_in_this_pass": null
+  },
+  {
+   "area": "Grenade projectile bodies",
+   "verdict": "REFERENCE ISSUE",
+   "owner": "GAMEPLAY / RENDERING",
+   "evidence": {
+    "FlashBangs/TnProjectileFlashBang": {
+     "source": "WEP_FlashBangs_p.FlashBang_PROJMESH.StaticMesh",
+     "mesh": "WEP_Grenade_p.WEP_Grenade_Flashbang_STAT",
+     "draw_scale": 1.0,
+     "gltf": "content/WEP_Grenade_p/WEP_Grenade_Flashbang_STAT.gltf"
+    },
+    "HealGrenades/TnProjectileHealGrenade": {
+     "source": "WEP_HealGrenades_p.HealGrenade_PROJMESH.StaticMesh",
+     "mesh": "WEP_Grenade_p.WEP_Grenade_Heal_STAT",
+     "draw_scale": 1.0,
+     "gltf": "content/WEP_Grenade_p/WEP_Grenade_Heal_STAT.gltf"
+    },
+    "FlakGrenades/TnProjectileGrenade": {
+     "source": "WEP_Grenade_p.GrenadeSkill_PROJMESH.StaticMesh",
+     "mesh": "WEP_Grenade_p.WEP_Grenade_Flak_STAT",
+     "draw_scale": 1.0,
+     "gltf": "content/WEP_Grenade_p/WEP_Grenade_Flak_STAT.gltf"
+    }
+   },
+   "action": "mesh body = PROJMESH.StaticMesh (+ DrawScale); agrees with RE notes/data/projectile_effect_bindings.json for all 15 MP projectile classes (vehicle projectiles have no mesh: the FlightEffect is the body)",
+   "fixed_in_this_pass": "weapon.json projectiles[].body_mesh (was reported as particle-only)"
+  },
+  {
+   "area": "Title planet surface material override (UI_FrontEnd)",
+   "verdict": "EXTRACTED AND VALID",
+   "owner": "RENDERING",
+   "evidence": {
+    "SurfaceA_STAT / SurfaceB_STAT": "world.glb binds ENV_NEU_CybertronLowShell_Mat (component override), not the mesh default LowSurface",
+    "lightmaps": "UI_FrontEnd lightmaps.json (UI_FrontEnd_m_LM atlases)"
+   },
+   "action": "RE TARGETED_PASS5 confirms; no AssetTools change needed",
+   "fixed_in_this_pass": null
+  },
+  {
+   "area": "Sniper / fine-aim reticle and scope",
+   "verdict": "UNKNOWN",
+   "owner": "RE (FOV source) + FRONTEND (scope symbol choice)",
+   "evidence": {
+    "scope_symbols (Hud_GFX, attachMovie into zoomScopeAttachPoint_mc)": [
+     "mc_longScope",
+     "mc_mediumScope",
+     "mc_shortScope",
+     "mc_zoomScope"
+    ],
+    "weapons_with_fine_aim_scope": [
+     "TnWeaponHeavyPistol",
+     "TnWeaponSniperRifle"
+    ],
+    "sniper_fine_aim_data (MultiplayerData)": {
+     "FineAimTargetFocusParams": null,
+     "FineAimSpreadModifier": null,
+     "PerShotSpreadModifier": {
+      "Modifier": {
+       "Min": 0.20000000298023224,
+       "Max": 0.4000000059604645
+      },
+      "ModifierChangePerShot": 0.10000000149011612,
+      "Cooldown": 4.0
+     }
+    },
+    "camera": "TnCameraStrategyManager.StartFineAim adds TnPCS_FineAim (class default authors nothing): zoom FOV not in authored data"
+   },
+   "action": "scope symbols + fine-aim DOF / spread are extracted; which scope symbol a weapon selects and the fine-aim FOV are native / AS: UNKNOWN",
+   "fixed_in_this_pass": null
+  }
+ ]
+}
