@@ -1,0 +1,174 @@
+{
+ "generated_by": "AssetTools/scripts/wfc/recommended_players.py",
+ "generated": "2026-10-07 04:18",
+ "status": "PC ADAPTATION (user decision 2026-10-07: map-aware Extended match size; original MaxPlayers=10)",
+ "schema": {
+  "key": "MapId (string; gameplay.json map_info.MapId)",
+  "map": "MapFilename",
+  "mapName": "AssetTools map folder",
+  "perSide": "recommended players per side incl. the human (team modes)",
+  "ffa": "recommended FFA total incl. the human",
+  "modes": "{ModeTag: {perSide?, ffa?}} per-mode overrides; empty = same for every mode (no authored per-mode sizes)"
+ },
+ "parameters": {
+  "busy_factor": 2.5,
+  "zone_weight": 0.75,
+  "d_ref_players_per_m2": 0.0001227811150366962,
+  "d_ref_basis": "10 players / mean largest-piece area of the larger half of the versus maps"
+ },
+ "formula": "perSide = clamp(round((busy*d_ref*A/2 + zone_weight*Z)/2), 5, min(32, floor(S_team/2))); ffa = clamp(round(1.5*perSide), 8, min(64, round(1.5*S_ffa)))",
+ "maps": {
+  "502": {
+   "map": "MP_IAC_Berth_Base_m",
+   "mapName": "MP_IAC_Berth",
+   "perSide": 14,
+   "ffa": 21,
+   "modes": {},
+   "inputs": {
+    "walkable_area_m2_largest_piece": 96388,
+    "spawn_clusters": 18,
+    "team_starts_min_side": 46,
+    "ffa_starts": 27
+   },
+   "terms": {
+    "area_term": 14.79,
+    "zone_term": 13.5,
+    "cap_per_side": 23,
+    "cap_ffa": 40
+   }
+  },
+  "504": {
+   "map": "MP_IAC_Rust_BASE_m",
+   "mapName": "MP_IAC_Rust",
+   "perSide": 12,
+   "ffa": 18,
+   "modes": {},
+   "inputs": {
+    "walkable_area_m2_largest_piece": 59923,
+    "spawn_clusters": 19,
+    "team_starts_min_side": 45,
+    "ffa_starts": 14
+   },
+   "terms": {
+    "area_term": 9.2,
+    "zone_term": 14.25,
+    "cap_per_side": 22,
+    "cap_ffa": 21
+   }
+  },
+  "501": {
+   "map": "MP_IAC_Seed_Base_m",
+   "mapName": "MP_IAC_Seed",
+   "perSide": 11,
+   "ffa": 16,
+   "modes": {},
+   "inputs": {
+    "walkable_area_m2_largest_piece": 67880,
+    "spawn_clusters": 16,
+    "team_starts_min_side": 40,
+    "ffa_starts": 22
+   },
+   "terms": {
+    "area_term": 10.42,
+    "zone_term": 12.0,
+    "cap_per_side": 20,
+    "cap_ffa": 33
+   }
+  },
+  "508": {
+   "map": "MP_IAC_Streets_Base_m",
+   "mapName": "MP_IAC_Streets",
+   "perSide": 10,
+   "ffa": 15,
+   "modes": {},
+   "inputs": {
+    "walkable_area_m2_largest_piece": 72267,
+    "spawn_clusters": 12,
+    "team_starts_min_side": 29,
+    "ffa_starts": 24
+   },
+   "terms": {
+    "area_term": 11.09,
+    "zone_term": 9.0,
+    "cap_per_side": 14,
+    "cap_ffa": 36
+   }
+  },
+  "509": {
+   "map": "MP_KON_Molten_Base_m",
+   "mapName": "MP_KON_Molten",
+   "perSide": 9,
+   "ffa": 14,
+   "modes": {},
+   "inputs": {
+    "walkable_area_m2_largest_piece": 62844,
+    "spawn_clusters": 12,
+    "team_starts_min_side": 29,
+    "ffa_starts": 16
+   },
+   "terms": {
+    "area_term": 9.65,
+    "zone_term": 9.0,
+    "cap_per_side": 14,
+    "cap_ffa": 24
+   }
+  },
+  "507": {
+   "map": "MP_ORB_Debris_BASE_m",
+   "mapName": "MP_ORB_Debris",
+   "perSide": 10,
+   "ffa": 15,
+   "modes": {},
+   "inputs": {
+    "walkable_area_m2_largest_piece": 89248,
+    "spawn_clusters": 9,
+    "team_starts_min_side": 20,
+    "ffa_starts": 10
+   },
+   "terms": {
+    "area_term": 13.7,
+    "zone_term": 6.75,
+    "cap_per_side": 10,
+    "cap_ffa": 15
+   }
+  },
+  "503": {
+   "map": "MP_UND_Complex_BASE_m",
+   "mapName": "MP_UND_Complex",
+   "perSide": 9,
+   "ffa": 14,
+   "modes": {},
+   "inputs": {
+    "walkable_area_m2_largest_piece": 50887,
+    "spawn_clusters": 14,
+    "team_starts_min_side": 35,
+    "ffa_starts": 26
+   },
+   "terms": {
+    "area_term": 7.81,
+    "zone_term": 10.5,
+    "cap_per_side": 17,
+    "cap_ffa": 39
+   }
+  },
+  "510": {
+   "map": "MP_UND_Gorge_BASE_m",
+   "mapName": "MP_UND_Gorge",
+   "perSide": 11,
+   "ffa": 16,
+   "modes": {},
+   "inputs": {
+    "walkable_area_m2_largest_piece": 56051,
+    "spawn_clusters": 19,
+    "team_starts_min_side": 46,
+    "ffa_starts": 18
+   },
+   "terms": {
+    "area_term": 8.6,
+    "zone_term": 14.25,
+    "cap_per_side": 23,
+    "cap_ffa": 27
+   }
+  }
+ }
+}
