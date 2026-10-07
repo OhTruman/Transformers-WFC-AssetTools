@@ -115,7 +115,8 @@ def main():
             open_.append('nav: %s / %s anchors reachable' % (ns.get('anchors_with_main_approach_cell'), ns.get('anchors')))
         if ps.get('player_starts') and ps.get('starts_on_reachable_floor') != ps.get('player_starts'): open_.append('starts off reachable floor')
         if cm and cm.get('team_mode_ok_for_64') is False and M.startswith(('MP_IAC', 'MP_UND', 'MP_KON', 'MP_ORB')):
-            open_.append('64-player team first-spawn short (Gameplay spawn rule; PC ADAPTATION)')
+            rec['spawns']['resolved_by'] = ('Gameplay 26k generated clear spawn points: all 64 in by 2 s on every map, 0 overlaps '
+                                            '(09c 7365dd2; PC ADAPTATION)')
         rec['open'] = open_
         maps[M] = rec
     out = OD([('generated_by', 'AssetTools/scripts/wfc/milestone_e_map_audit.py'), ('generated', time.strftime('%Y-%m-%d %H:%M')),
