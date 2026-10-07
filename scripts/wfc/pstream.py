@@ -120,7 +120,10 @@ def parse(t):
     for m in range(n):
         b = t[i:i + 10]
         recs.append({'index': m, 'module_id': b[0], 'module': ids[b[0]] if b[0] < len(ids) else 'PMI_?%d' % b[0],
-                     'flagA': b[1], 'flagB': b[2], 'payload_offset': b[8] | (b[9] << 8)})
+                     'flagA': b[1], 'flagB': b[2], 'payload_offset': b[8] | (b[9] << 8),
+                     # bytes 3..6 of the record: BE export index of the module object (non-zero on module classes without a
+                     # compiled ModuleId, e.g. ParticleModuleCollision / ParticleModuleSwitchableColorScaleOverLife)
+                     'object_ref': struct.unpack_from('>i', b, 3)[0]})
         i += 10 + (7 if m < n - 1 else 0)
     cnt = t[i]; lst = list(t[i + 1:i + 1 + cnt]); i += 1 + cnt
     for j in range(i, len(t) - 8):
@@ -190,7 +193,19 @@ def system(ps, pkg=None):
             a = assign(pr)
             mods = []
             for r in pr['records']:
-                mods.append({'index': r['index'], 'module': r['module'], 'module_id': r['module_id'],
+                obj = cls = None; props = None; name = r['module']
+                ref = r.get('object_ref') or 0
+                if 0 < ref <= len(p.exports) and p.class_name(p.exports[ref - 1]).startswith('ParticleModule'):
+                    obj = p.object_path(ref); cls = p.class_name(p.exports[ref - 1])
+                    if r['module_id'] == 0:   # PMI_Unknown: name the slot by its object class, carry its authored properties
+                        import authored as _A
+                        name = 'PMI_' + cls[len('ParticleModule'):]
+                        props = dict(_A.values(obj) or {})
+                        if cls == 'ParticleModuleCollision': props.setdefault('CollisionCompletionOption', 'EPCC_Kill (default, enum 0)')
+                        if cls == 'ParticleModuleSwitchableColorScaleOverLife': props.setdefault('ChannelSwitch', 'PMC_A (default)')
+                mods.append({'index': r['index'], 'module': name, 'module_id': r['module_id'],
+                             **({'module_enum': r['module'], 'module_object': obj, 'module_class': cls,
+                                 'module_properties (authored, defaults filled)': props} if props is not None else {}),
                              'in_list_after_records': r['index'] in pr['list_after_records'],
                              'raw_flags': [r['flagA'], r['flagB']],
                              'enabled (flagA; HIGH - particle_flag_census.json)': r['flagA'] == 1,
