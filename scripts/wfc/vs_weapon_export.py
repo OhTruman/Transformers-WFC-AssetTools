@@ -195,7 +195,14 @@ def export(pid, w, A, hud_icons, chassis_by_weapon, owner_socket):
                                  ('impact_squib', {k: wmv.get(k) for k in ('ImpactSquibPercentage', 'ImpactSquibMaxCount', 'MaxImpactEffectDistance')})])),
         ('projectiles', projs or None),
         ('sounds', sounds),
-        ('gameplay (versus WEPDATA = MultiplayerData, CONFIRMED)', wd), ('wepdata_objects', w.get('wepdata_objects')),
+        ('gameplay (versus WEPDATA = MultiplayerData, CONFIRMED)', wd),
+        ('versus_data_source', OrderedDict([
+            ('object', wdo),
+            ('selected_by', 'MultiplayerData' if (AU.values(cdo) or {}).get('MultiplayerData') else
+                            'PlayerData (fallback: MultiplayerData unset on the class chain)'),
+            ('rule', 'TnWeapon.GivenTo: TnMultiplayerGame.DesiredWeaponDataType = 3 (Multiplayer); GetWeaponDataByType(3) == none -> '
+                     'WDT 1 PlayerData; no fallback to DefaultTnWeaponData; AI holders use AiData (RE 2026-10-07, CONFIRMED from script)')])),
+        ('wepdata_objects', w.get('wepdata_objects')),
         ('class_defaults (weapon CDO, sub-objects resolved)', class_defaults),
         ('fine_aim_camera (OverTheShoulder strategy FOV)', fine_aim_camera((AU.values(cdo) or {}).get('WeaponPCS'))),
         ('hud_scope (Hud_GFX ActionScript on NotifyFineAimChanged(1), by weapon class; RE TARGETED_PASS5 CONFIRMED)',
