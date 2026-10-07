@@ -128,6 +128,31 @@ def energon_default(robot):
                  'vehicle FX, boost and faction notifies; never team-tinted')
     return d
 
+CLOAK_CLIPS = (('Nav_CloakActivate', ('TR_LightMedium_ANM_p.AI_CQC_ROBO_ANIM_2', 'TR_LightMedium_ANM_p.AI_CQC_ROBO_ANIM_3')),
+               ('Nav_CloakDeactivate', ('TR_LightMedium_ANM_p.AI_CQC_ROBO_ANIM',)))
+
+def notify_only_clips(abilities):
+    """cloak activate / deactivate clips (notifies only; no glb track): authored only in the campaign / Escalation CQC cloaker
+    AnimSets (AI_CQC_ROBO_ANIM*, cooked into campaign levels + MP_ESC_BrokenHope / Remnant, never a versus map)."""
+    if 'loak' not in json.dumps(abilities or ''): return None
+    out = []
+    for seq, sets in CLOAK_CLIPS:
+        for st in sets:
+            n = set_notifies(st).get(seq)
+            if n is None: continue
+            row = AU.find(st + '.%', 'AnimSequence')
+            ln = next(((AU.values(r['opath']) or {}).get('SequenceLength') for r in row
+                       if (AU.values(r['opath']) or {}).get('SequenceName') == seq), None)
+            out.append(OrderedDict([('name', seq), ('sequence', seq), ('category', 'ability_cloak'), ('source_animset', st),
+                                    ('duration_s', ln), ('glb_track', False), ('notifies', n)]))
+            break
+    return OrderedDict([('clips', out),
+                        ('provenance', 'notify-only clips from the CQC cloaker AnimSets (TR_LightMedium_ANM_p.AI_CQC_ROBO_ANIM / _2): '
+                                       'sound CQC_TRANSFORM_CLOAK_ACTIVATE / _DEACTIVATE -> WL_CHR_CQC.CLOAKER_TRANSFORM_IN / _OUT'),
+                        ('authenticity', 'these AnimSets and BL_CHR_CQC cues are cooked only into campaign levels and the Escalation maps '
+                                         '(MP_ESC_BrokenHope / Remnant), never a versus map: playing them in versus is a PC ADAPTATION; '
+                                         'the clip skeleton is the CQC cloaker (no glb track exported, notifies only)')])
+
 def runtime_colors_common():
     ap = AU.values('TransGame.Default__TnCharacterApplier')
     return {'applier_parameter_bindings (TransGame.Default__TnCharacterApplier, CONFIRMED)': {
@@ -216,6 +241,7 @@ def export(cid, ch, preset, A, common):
         ('stats', ch.get('stats')), ('weapons', ch.get('weapons')), ('abilities', ch.get('abilities')),
         ('ui', ch.get('ui')), ('audio', ch.get('audio')),
         ('energon_default', energon_default(res.get('robot'))),
+        ('notify_only_clips (ability clips without glb track)', notify_only_clips(ch.get('abilities'))),
         ('team_colour', common),
         ('vehicle_fx (VEHDEF particle structs; sockets on vehicle.glb)', vehicle_fx((ch.get('vehicle') or {}).get('definition'))
                                                                           if (ch.get('vehicle') or {}).get('definition') else None),
