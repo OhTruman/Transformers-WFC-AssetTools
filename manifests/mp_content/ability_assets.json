@@ -1,0 +1,1398 @@
+{
+ "generated_by": "AssetTools/scripts/wfc/ability_assets.py",
+ "generated": "2026-10-06 20:26",
+ "method": "reference closure from the ability / killstreak CDOs (TransCustomization.ini ObjectPath) through authored.db values, sub-objects, archetypes and class refs (-> CDO), depth 6",
+ "abilities": {
+  "Barrier": {
+   "roots": [
+    "TransGame.Default__TnAbilityBarrier",
+    "TransGame.Default__TnBarrierSpawnable",
+    "TransGame.Default__TnBarrierSpawnableNative"
+   ],
+   "script_spawned_roots (name-matched, PROVISIONAL)": [
+    "TransGame.Default__TnBarrierSpawnable",
+    "TransGame.Default__TnBarrierSpawnableNative"
+   ],
+   "ini": {
+    "type": "TnDataProvider_Ability",
+    "UniqueId": "Barrier",
+    "SpecialtyRestriction": "Leader",
+    "LevelRestriction": "0",
+    "ObjectPath": "TransGame.TnAbilityBarrier",
+    "Cooldown": "20",
+    "BarrierBP": "(BarrierHealth=1000, DegenRate=15, FadeoutTime=3)",
+    "BarrierRotation": "(Pitch=0,Yaw=0,Roll=0)",
+    "BarrierOffset": "(X=1000,Y=0,Z=-200)",
+    "SpawnDelay": "0.5",
+    "OnTriggerAnimParams": "(AnimName=Skill_Barrier,Looping=false,BlendOutTime=0.3,MaskType=CAMT_FullBody,Override=CAPO_PlayIfHigherOrEqualPriority,Priority=CAPR_LowPriority,RootMotionMode=RMM_Ignore)"
+   },
+   "objects_walked": 32,
+   "summary": {
+    "AnimSet": 1,
+    "PhysicsAsset": 1,
+    "SkeletalMesh": 1,
+    "SoundCue": 3
+   },
+   "missing_exports": [],
+   "assets": {
+    "AnimSet": [
+     {
+      "class": "AnimSet",
+      "file": "content/WEP_Shield_p/Barrier/WEP_Barrier_ANIM.anim.bin",
+      "object": "WEP_Shield_p.Barrier.WEP_Barrier_ANIM"
+     }
+    ],
+    "PhysicsAsset": [
+     {
+      "class": "PhysicsAsset",
+      "file": null,
+      "object": "WEP_Shield_p.Barrier.WEP_Barrier_PHYSSYS"
+     }
+    ],
+    "SkeletalMesh": [
+     {
+      "class": "SkeletalMesh",
+      "gltf": "content/WEP_Shield_p/Barrier/WEP_Barrier_SKEL.gltf",
+      "object": "WEP_Shield_p.Barrier.WEP_Barrier_SKEL"
+     }
+    ],
+    "SoundCue": [
+     {
+      "class": "SoundCue",
+      "waves": [
+       "WL_TRANS_GENERIC.SYNTH_SHIELD_AUTOBOT_POWERUP",
+       "WL_TRANS_POWER.SHIELD_ZONE_04_LR"
+      ],
+      "wav_on_disk": 2,
+      "silent_cue": false,
+      "object": "BL_TRANS_POWER.BARRIER_DEPLOY"
+     },
+     {
+      "class": "SoundCue",
+      "waves": [
+       "WL_TRANS_GENERIC.SYNTH_SHIELD_AUTOBOT_ON_LOOP"
+      ],
+      "wav_on_disk": 1,
+      "silent_cue": false,
+      "object": "BL_TRANS_POWER.BARRIER_LP"
+     },
+     {
+      "class": "SoundCue",
+      "waves": [
+       "WL_TRANS_GENERIC.SYNTH_SHIELD_AUTOBOT_POWERDOWN"
+      ],
+      "wav_on_disk": 1,
+      "silent_cue": false,
+      "object": "BL_TRANS_POWER.BARRIER_RETRACT"
+     }
+    ]
+   }
+  },
+  "SpawnSentry": {
+   "roots": [
+    "TransGame.Default__TnAbilitySpawnSentry"
+   ],
+   "script_spawned_roots (name-matched, PROVISIONAL)": null,
+   "ini": {
+    "type": "TnDataProvider_Ability",
+    "UniqueId": "SpawnSentry",
+    "SpecialtyRestriction": "Scientist",
+    "LevelRestriction": "0",
+    "ObjectPath": "TransGame.TnAbilitySpawnSentry",
+    "Cooldown": "60",
+    "ResourceRequired": "100",
+    "SpawnHeight": "375",
+    "OnTriggerAnimParams": "(AnimName=ADD_Grenade_Throw,Priority=CAPR_LowPriority,RootMotionMode=RMM_Ignore)",
+    "SpawnDelay": "0.2",
+    "Lifetime": "30",
+    "HealedMultiplier": "0.3",
+    "PitchConstraintsInDegrees": "(Min=-45, Max=45)"
+   },
+   "objects_walked": 572,
+   "summary": {
+    "AnimSet": 1,
+    "Material": 22,
+    "MaterialInstanceConstant": 3,
+    "ParticleSystem": 15,
+    "SoundCue": 15,
+    "StaticMesh": 5,
+    "Texture2D": 10
+   },
+   "missing_exports": [],
+   "assets": {
+    "AnimSet": [
+     {
+      "class": "AnimSet",
+      "file": "content/WEP_RocketLauncher_p/WEP_RocketLauncher_ANIMSET.anim.bin",
+      "object": "WEP_RocketLauncher_p.WEP_RocketLauncher_ANIMSET"
+     }
+    ],
+    "Material": [
+     {
+      "class": "Material",
+      "file": null,
+      "object": "UI_HudMarkers_p.TargetHealthBar_MAT"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "WEP_Shared_p.WEP_PickupTarget_MAT"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Materials_p.Materials.SparksSheet1_MAT"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Materials_p.Materials.arcball01_MAT"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Materials_p.Materials.MuzzleFlash_White_Mat"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Materials_p.Materials.MFlash_Side_Desat_MAT"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Materials_p.Materials.Bolt_ADD_MAT"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Materials_p.Materials.Spark_Tail_MAT"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Materials_p.Materials.Distortion_Cloud_01_MAT"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Materials_p.Materials.Glow_Mod_MAT"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Materials_p.Materials.SmokeCoolDepth_Mat"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Materials_p.Materials.SmokeThick_Mat"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Weapons_p.Materials.MuzzleFlash_Side_MAT"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Materials_p.Materials.MuzzleFlash_X_Mat"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Materials_p.Materials.ElectroRing01_Mat"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Materials_p.Materials.Tracer_MAT"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Materials_p.Materials.ParticleBase_BW_MAT"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Materials_p.Materials.HealBeam_MAT"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Materials_p.Materials.Lightning_Anim_02_MAT"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Materials_p.Materials.Fire_Ring01_Mat"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Materials_p.Materials.Ring_DistortTrail_Add_MAT"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Materials_p.Materials.Ring_Distort_Add_MAT"
+     }
+    ],
+    "MaterialInstanceConstant": [
+     {
+      "class": "MaterialInstanceConstant",
+      "file": null,
+      "object": "FX_Materials_p.MatInst.Trail_Smoke_10_MAT_INST"
+     },
+     {
+      "class": "MaterialInstanceConstant",
+      "file": null,
+      "object": "FX_Materials_p.MatInst.Blaster_Trail_MAT_INST"
+     },
+     {
+      "class": "MaterialInstanceConstant",
+      "file": null,
+      "object": "FX_Materials_p.Materials.Embers_Blue_MAT_INST"
+     }
+    ],
+    "ParticleSystem": [
+     {
+      "class": "ParticleSystem",
+      "in_authored_db": true,
+      "mesh_emitters": [
+       {
+        "mesh": "FX_IonBlaster_p.StaticMesh.SideMuzzle_STAT",
+        "gltf": true
+       },
+       {
+        "mesh": "FX_IonBlaster_p.StaticMesh.SideMuzzle_STAT",
+        "gltf": true
+       }
+      ],
+      "object": "FX_OS_Turret_p.FX.MuzzleFlash_Turret_A_FX"
+     },
+     {
+      "class": "ParticleSystem",
+      "in_authored_db": true,
+      "mesh_emitters": null,
+      "object": "FX_AssaultRifle_p.FX.Tracer_AssaultRifle_FX"
+     },
+     {
+      "class": "ParticleSystem",
+      "in_authored_db": true,
+      "mesh_emitters": null,
+      "object": "FX_OS_Turret_p.FX.Impact_OS_Turret_A_FX"
+     },
+     {
+      "class": "ParticleSystem",
+      "in_authored_db": true,
+      "mesh_emitters": [
+       {
+        "mesh": "FX_Mesh_p.Mesh.Bell_STAT",
+        "gltf": true
+       },
+       {
+        "mesh": "FX_Mesh_p.Mesh.Bell_STAT",
+        "gltf": true
+       },
+       {
+        "mesh": "FX_Weapons_p.StaticMesh.CrossPlanes_STATMESH",
+        "gltf": true
+       },
+       {
+        "mesh": "FX_Weapons_p.StaticMesh.CrossPlanes_STATMESH",
+        "gltf": true
+       }
+      ],
+      "object": "FX_HomingRocket_p.FX.MuzzleFlash_HomRocket_FX"
+     },
+     {
+      "class": "ParticleSystem",
+      "in_authored_db": true,
+      "mesh_emitters": null,
+      "object": "FX_RepairBeam_p.FX.Squib_RepairEnemy_FX"
+     },
+     {
+      "class": "ParticleSystem",
+      "in_authored_db": true,
+      "mesh_emitters": null,
+      "object": "FX_RepairBeam_p.FX.Tracer_RepairBeam_FX"
+     },
+     {
+      "class": "ParticleSystem",
+      "in_authored_db": true,
+      "mesh_emitters": null,
+      "object": "FX_Screen_p.FX.Screen_EnergonBloodsplatter_FX"
+     },
+     {
+      "class": "ParticleSystem",
+      "in_authored_db": true,
+      "mesh_emitters": null,
+      "object": "FX_Screen_p.FlashBang_FX"
+     },
+     {
+      "class": "ParticleSystem",
+      "in_authored_db": true,
+      "mesh_emitters": [
+       {
+        "mesh": "FX_Pickups_p.Mesh.LightBeam_WepPickup_STAT",
+        "gltf": true
+       },
+       {
+        "mesh": "FX_Pickups_p.Mesh.LightBeam_WepPickup_STAT",
+        "gltf": true
+       }
+      ],
+      "object": "FX_Pickups_p.FX.Pickup_FX"
+     },
+     {
+      "class": "ParticleSystem",
+      "in_authored_db": true,
+      "mesh_emitters": null,
+      "object": "FX_OmegaSupremeAE_p.FX.OS_Death_LRG_FX"
+     },
+     {
+      "class": "ParticleSystem",
+      "in_authored_db": true,
+      "mesh_emitters": null,
+      "object": "WEP_SentryAbility_p.FX.SentryAbility_NoUpgrade_FX"
+     },
+     {
+      "class": "ParticleSystem",
+      "in_authored_db": true,
+      "mesh_emitters": null,
+      "object": "FX_Weapons_p.RocketLauncher.Rocket_Trail_FX"
+     },
+     {
+      "class": "ParticleSystem",
+      "in_authored_db": true,
+      "mesh_emitters": null,
+      "object": "FX_HomingRocket_p.FX.Squib_HomRocket_01_FX"
+     },
+     {
+      "class": "ParticleSystem",
+      "in_authored_db": true,
+      "mesh_emitters": null,
+      "object": "WEP_SentryAbility_p.FX.SentryAbility_UpgradeRocekts_FX"
+     },
+     {
+      "class": "ParticleSystem",
+      "in_authored_db": true,
+      "mesh_emitters": null,
+      "object": "WEP_SentryAbility_p.FX.SentryAbility_UpgradeHeal_FX"
+     }
+    ],
+    "SoundCue": [
+     {
+      "class": "SoundCue",
+      "waves": [
+       "WL_WHSH_BULLET.WHSH_BLLT_BY_PELLET_AIRY_01",
+       "WL_WHSH_BULLET.WHSH_BLLT_BY_PELLET_AIRY_02",
+       "WL_WHSH_BULLET.WHSH_BLLT_BY_PELLET_AIRY_03",
+       "WL_WHSH_BULLET.WHSH_BLLT_BY_PELLET_AIRY_04",
+       "WL_WHSH_BULLET.WHSH_BLLT_BY_PELLET_AIRY_05"
+      ],
+      "wav_on_disk": 5,
+      "silent_cue": false,
+      "object": "BL_TRANS_POWER.SENTRY_BY"
+     },
+     {
+      "class": "SoundCue",
+      "waves": [
+       "WL_GUN_PLASMA.GUN_PLASMA_CANNON_SQUIB_01",
+       "WL_GUN_PLASMA.GUN_PLASMA_CANNON_SQUIB_02",
+       "WL_GUN_PLASMA.GUN_PLASMA_CANNON_SQUIB_03"
+      ],
+      "wav_on_disk": 3,
+      "silent_cue": false,
+      "object": "BL_TRANS_POWER.SENTRY_IMPT"
+     },
+     {
+      "class": "SoundCue",
+      "waves": [
+       "WL_GUN_TURRET.GUN_TURRET_SHOOT_01"
+      ],
+      "wav_on_disk": 1,
+      "silent_cue": false,
+      "object": "BL_TRANS_POWER.SENTRY_SHOOT"
+     },
+     {
+      "class": "SoundCue",
+      "waves": [
+       "WL_GUN_FOLEY.GUN_RIFLE_BOLT_IN",
+       "WL_GUN_FOLEY.RELOAD_AIR_RELEASE_THUMP",
+       "WL_GUN_ROCKET.GUN_ROCKET_LAUNCH_SHOOT_LR_01",
+       "WL_GUN_ROCKET.GUN_ROCKET_LAUNCH_SHOOT_LR_02",
+       "WL_GUN_ROCKET.GUN_ROCKET_LAUNCH_SHOOT_LR_03",
+       "WL_GUN_ROCKET.GUN_ROCKET_LAUNCH_SHOOT_LR_04",
+       "WL_GUN_ROCKET.GUN_ROCKET_SHOOT_WHISTLE_01",
+       "WL_GUN_ROCKET.GUN_ROCKET_SHOOT_WHISTLE_02",
+       "WL_GUN_ROCKET.GUN_ROCKET_SHOOT_WHISTLE_03"
+      ],
+      "wav_on_disk": 9,
+      "silent_cue": false,
+      "object": "BL_WPN_GUN_ROCKET.SHOOT"
+     },
+     {
+      "class": "SoundCue",
+      "waves": [
+       "WL_EXPLOSIONS.EXPL_AMB_DIST_01",
+       "WL_EXPLOSIONS.EXPL_AMB_DIST_02",
+       "WL_EXPLOSIONS.EXPL_AMB_DIST_03",
+       "WL_EXPLOSIONS.EXPL_AMB_DIST_04",
+       "WL_EXPLOSIONS.EXPL_AMB_DIST_05",
+       "WL_EXPLOSIONS.EXPL_AMB_DIST_06",
+       "WL_EXPLOSIONS.EXPL_AMB_DIST_07",
+       "WL_EXPLOSIONS.EXPL_AMB_DIST_08",
+       "WL_EXPLOSIONS.EXPL_AMB_DIST_09",
+       "WL_EXPLOSIONS.EXPL_AMB_DIST_10",
+       "WL_EXPLOSIONS.EXPL_AMB_DIST_11",
+       "WL_EXPLOSIONS.EXPL_CANNON_01",
+       "WL_EXPLOSIONS.EXPL_CANNON_02",
+       "WL_EXPLOSIONS.EXPL_CANNON_04",
+       "WL_EXPLOSIONS.EXPL_CANNON_05",
+       "WL_EXPLOSIONS.EXPL_CANNON_07",
+       "WL_EXPLOSIONS.EXPL_ROCKET_WHSH_01",
+       "WL_EXPLOSIONS.EXPL_ROCKET_WHSH_02",
+       "WL_EXPLOSIONS.EXPL_ROCKET_WHSH_03",
+       "WL_EXPLOSIONS.EXPL_ROCKET_WHSH_04",
+       "WL_EXPLOSIONS.EXPL_ROCKET_WHSH_05"
+      ],
+      "wav_on_disk": 21,
+      "silent_cue": false,
+      "object": "BL_WPN_GUN_ROCKET.EXPL_IMPT_WORLD"
+     },
+     {
+      "class": "SoundCue",
+      "waves": [],
+      "wav_on_disk": 0,
+      "silent_cue": true,
+      "object": "BL_WPN_GUN_ROCKET.Overheat"
+     },
+     {
+      "class": "SoundCue",
+      "waves": [
+       "WL_GUN_ROCKET.BEEP_LOCK_INDICATOR_FLATLINE",
+       "WL_HUD_INTERFACE.HUD_TARGET_LOCK_BEEP_01"
+      ],
+      "wav_on_disk": 2,
+      "silent_cue": false,
+      "object": "BL_HUD_INTERFACE.HUD_TARGET_LOCK"
+     },
+     {
+      "class": "SoundCue",
+      "waves": [
+       "WL_GUN_REPAIR_WPN.GUN_REPAIR_WPN_SQUIB_01",
+       "WL_GUN_REPAIR_WPN.GUN_REPAIR_WPN_SQUIB_02",
+       "WL_GUN_REPAIR_WPN.GUN_REPAIR_WPN_SQUIB_03",
+       "WL_GUN_REPAIR_WPN.GUN_REPAIR_WPN_SQUIB_04"
+      ],
+      "wav_on_disk": 4,
+      "silent_cue": false,
+      "object": "BL_WPN_GUN_REPAIR_WPN.IMPT_WORLD"
+     },
+     {
+      "class": "SoundCue",
+      "waves": [],
+      "wav_on_disk": 0,
+      "silent_cue": true,
+      "object": "BL_WPN_GUN_REPAIR_WPN.Overheat"
+     },
+     {
+      "class": "SoundCue",
+      "waves": [
+       "WL_GUN_REPAIR_WPN.GUN_REPAIR_WPN_FIRE_DAMAGE_LP_01"
+      ],
+      "wav_on_disk": 1,
+      "silent_cue": false,
+      "object": "BL_WPN_GUN_REPAIR_WPN.SHOOT_DMG_LP"
+     },
+     {
+      "class": "SoundCue",
+      "waves": [
+       "WL_GUN_REPAIR_WPN.GUN_REPAIR_WPN_FIRE_LAST_SHOT_01_LR"
+      ],
+      "wav_on_disk": 1,
+      "silent_cue": false,
+      "object": "BL_WPN_GUN_REPAIR_WPN.SHOOT_LAST_SHOT"
+     },
+     {
+      "class": "SoundCue",
+      "waves": [
+       "WL_GUN_REPAIR_WPN.GUN_REPAIR_WPN_FIRE_LP_01",
+       "WL_GUN_REPAIR_WPN.GUN_REPAIR_WPN_FIRE_START_01_LR"
+      ],
+      "wav_on_disk": 2,
+      "silent_cue": false,
+      "object": "BL_WPN_GUN_REPAIR_WPN.SHOOT_LP"
+     },
+     {
+      "class": "SoundCue",
+      "waves": [
+       "WL_GUN_REPAIR_WPN.GUN_REPAIR_WPN_FIRE_HEAL_LP_01"
+      ],
+      "wav_on_disk": 1,
+      "silent_cue": false,
+      "object": "BL_WPN_GUN_REPAIR_WPN.SHOOT_HEAL_LP"
+     },
+     {
+      "class": "SoundCue",
+      "waves": [
+       "WL_EXPLOSIONS.EXPL_GRENADE_SHRAPNEL_01",
+       "WL_EXPLOSIONS.EXPL_GRENADE_SHRAPNEL_02",
+       "WL_EXPLOSIONS.EXPL_GRENADE_SHRAPNEL_03",
+       "WL_EXPLOSIONS.EXPL_GRENADE_SHRAPNEL_04",
+       "WL_TRANS_POWER.SENTRY_DEPLOY"
+      ],
+      "wav_on_disk": 5,
+      "silent_cue": false,
+      "object": "BL_TRANS_POWER.SENTRY_EXPL"
+     },
+     {
+      "class": "SoundCue",
+      "waves": [
+       "WL_GUN_ROCKET.GUN_JET_ROCKET_TAIL",
+       "WL_GUN_SIDEWINDER.GUN_JET_ROCKET_WHISTLE_CHITTER_01",
+       "WL_GUN_SIDEWINDER.GUN_JET_ROCKET_WHISTLE_CHITTER_02",
+       "WL_GUN_SIDEWINDER.GUN_JET_ROCKET_WHISTLE_CHITTER_03",
+       "WL_GUN_SIDEWINDER.GUN_JET_ROCKET_WHISTLE_CHITTER_04"
+      ],
+      "wav_on_disk": 5,
+      "silent_cue": false,
+      "object": "BL_WPN_GUN_ROCKET.TRAIL_LP"
+     }
+    ],
+    "StaticMesh": [
+     {
+      "class": "StaticMesh",
+      "gltf": "content/FX_Mesh_p/Mesh/Plane_STAT.gltf",
+      "object": "FX_Mesh_p.Mesh.Plane_STAT"
+     },
+     {
+      "class": "StaticMesh",
+      "gltf": "content/FX_IonBlaster_p/StaticMesh/SideMuzzle_STAT.gltf",
+      "object": "FX_IonBlaster_p.StaticMesh.SideMuzzle_STAT"
+     },
+     {
+      "class": "StaticMesh",
+      "gltf": "content/WEP_Rocket_p/WEP_StandardRocket_STAT.gltf",
+      "object": "WEP_Rocket_p.WEP_StandardRocket_STAT"
+     },
+     {
+      "class": "StaticMesh",
+      "gltf": "content/FX_Mesh_p/Mesh/Bell_STAT.gltf",
+      "object": "FX_Mesh_p.Mesh.Bell_STAT"
+     },
+     {
+      "class": "StaticMesh",
+      "gltf": "content/FX_Weapons_p/StaticMesh/CrossPlanes_STATMESH.gltf",
+      "object": "FX_Weapons_p.StaticMesh.CrossPlanes_STATMESH"
+     }
+    ],
+    "Texture2D": [
+     {
+      "class": "Texture2D",
+      "file": "content/UI_TransEngineFonts_p/MarkerFont/Texture2D_9520.png",
+      "object": "UI_TransEngineFonts_p.MarkerFont.Texture2D_9520"
+     },
+     {
+      "class": "Texture2D",
+      "file": "content/FX_OS_Turret_p/FX/MuzzleFlash_Turret_A_FX/ThumbnailTexture.png",
+      "object": "FX_OS_Turret_p.FX.MuzzleFlash_Turret_A_FX.ThumbnailTexture"
+     },
+     {
+      "class": "Texture2D",
+      "file": "content/FX_AssaultRifle_p/FX/Tracer_AssaultRifle_FX/ThumbnailTexture.png",
+      "object": "FX_AssaultRifle_p.FX.Tracer_AssaultRifle_FX.ThumbnailTexture"
+     },
+     {
+      "class": "Texture2D",
+      "file": "content/FX_OS_Turret_p/FX/Impact_OS_Turret_A_FX/ThumbnailTexture.png",
+      "object": "FX_OS_Turret_p.FX.Impact_OS_Turret_A_FX.ThumbnailTexture"
+     },
+     {
+      "class": "Texture2D",
+      "file": "content/FX_HomingRocket_p/FX/MuzzleFlash_HomRocket_FX/ThumbnailTexture.png",
+      "object": "FX_HomingRocket_p.FX.MuzzleFlash_HomRocket_FX.ThumbnailTexture"
+     },
+     {
+      "class": "Texture2D",
+      "file": "content/FX_RepairBeam_p/FX/Squib_RepairEnemy_FX/ThumbnailTexture.png",
+      "object": "FX_RepairBeam_p.FX.Squib_RepairEnemy_FX.ThumbnailTexture"
+     },
+     {
+      "class": "Texture2D",
+      "file": "content/FX_RepairBeam_p/FX/Tracer_RepairBeam_FX/ThumbnailTexture.png",
+      "object": "FX_RepairBeam_p.FX.Tracer_RepairBeam_FX.ThumbnailTexture"
+     },
+     {
+      "class": "Texture2D",
+      "file": "content/FX_Screen_p/FX/Screen_EnergonBloodsplatter_FX/ThumbnailTexture.png",
+      "object": "FX_Screen_p.FX.Screen_EnergonBloodsplatter_FX.ThumbnailTexture"
+     },
+     {
+      "class": "Texture2D",
+      "file": "content/FX_Screen_p/FlashBang_FX/ThumbnailTexture.png",
+      "object": "FX_Screen_p.FlashBang_FX.ThumbnailTexture"
+     },
+     {
+      "class": "Texture2D",
+      "file": "content/FX_Pickups_p/FX/Pickup_FX/ThumbnailTexture.png",
+      "object": "FX_Pickups_p.FX.Pickup_FX.ThumbnailTexture"
+     }
+    ]
+   }
+  },
+  "SpawnAmmoCrate": {
+   "roots": [
+    "TransGame.Default__TnAbilitySpawnAmmoCrate"
+   ],
+   "script_spawned_roots (name-matched, PROVISIONAL)": null,
+   "ini": {
+    "type": "TnDataProvider_Ability",
+    "UniqueId": "SpawnAmmoCrate",
+    "SpecialtyRestriction": "Soldier",
+    "LevelRestriction": "2",
+    "ObjectPath": "TransGame.TnAbilitySpawnAmmoCrate",
+    "Cooldown": "60",
+    "TossVelocity": "(X=2000,Y=1200,Z=0)",
+    "SpawnDelay": "0.5",
+    "OnTriggerAnimParams": "(AnimName=Skill_Barrier,Looping=false,BlendOutTime=0.3,MaskType=CAMT_FullBody,Override=CAPO_PlayIfHigherOrEqualPriority,Priority=CAPR_LowPriority,RootMotionMode=RMM_Ignore)",
+    "Radius": "1500",
+    "DefragPulseTime": "1.5",
+    "DefragPulseEnabled": "true",
+    "Health": "100",
+    "BeaconLifespan": "60",
+    "GiftTossVelocity": "(X=1000,Y=0,Z=0)",
+    "GiftTossOffset": "(X=0,Y=0,Z=500)",
+    "GiftProgressRate": "1",
+    "GiftProgressMax": "35",
+    ";UniqueId": "AmmoBeaconIncreaseDamage",
+    ";SpecialtyRestriction": "Soldier",
+    ";LevelRestriction": "3",
+    ";ObjectPath": "TransGame.TnSkillAmmoBeaconIncreaseDamage",
+    ";MaxSkillLevel": "1",
+    ";SkillType": "1"
+   },
+   "objects_walked": 269,
+   "summary": {
+    "AnimSet": 1,
+    "AnimTree": 1,
+    "Material": 6,
+    "MaterialInstanceConstant": 3,
+    "ParticleSystem": 6,
+    "SkeletalMesh": 1,
+    "SoundCue": 12,
+    "StaticMesh": 2,
+    "Texture2D": 6
+   },
+   "missing_exports": [],
+   "assets": {
+    "AnimSet": [
+     {
+      "class": "AnimSet",
+      "file": "content/WEP_TurretIonGun_p/WEP_TurretIonGun_ANIM.anim.bin",
+      "object": "WEP_TurretIonGun_p.WEP_TurretIonGun_ANIM"
+     }
+    ],
+    "AnimTree": [
+     {
+      "class": "AnimTree",
+      "file": null,
+      "object": "WEP_Shared_p.WEP_Shared_ANIMTREE"
+     }
+    ],
+    "Material": [
+     {
+      "class": "Material",
+      "file": null,
+      "object": "WEP_Shared_p.WEP_PickupTarget_MAT"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Materials_p.Materials.ScreenSplatter_01_MAT"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Screen_p.Materials.FlashBang_MAT"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Screen_p.FlashBang_Glyphs_MAT"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Screen_p.Materials.FlashBang_Phrases_MAT"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Screen_p.Materials.Static_MAT"
+     }
+    ],
+    "MaterialInstanceConstant": [
+     {
+      "class": "MaterialInstanceConstant",
+      "file": "content/WEP_TurretIonGun_p/WEP_TurretIonGun_Overshield_MATINST.mat",
+      "object": "WEP_TurretIonGun_p.WEP_TurretIonGun_Overshield_MATINST"
+     },
+     {
+      "class": "MaterialInstanceConstant",
+      "file": "content/FX_Materials_p/MatInst/EnergonSplatter_03_MAT_INST.mat",
+      "object": "FX_Materials_p.MatInst.EnergonSplatter_03_MAT_INST"
+     },
+     {
+      "class": "MaterialInstanceConstant",
+      "file": "content/FX_Materials_p/MatInst/Drip_MAT_INST.mat",
+      "object": "FX_Materials_p.MatInst.Drip_MAT_INST"
+     }
+    ],
+    "ParticleSystem": [
+     {
+      "class": "ParticleSystem",
+      "in_authored_db": true,
+      "mesh_emitters": null,
+      "object": "FX_Screen_p.FX.Screen_EnergonBloodsplatter_FX"
+     },
+     {
+      "class": "ParticleSystem",
+      "in_authored_db": true,
+      "mesh_emitters": null,
+      "object": "FX_Screen_p.FlashBang_FX"
+     },
+     {
+      "class": "ParticleSystem",
+      "in_authored_db": true,
+      "mesh_emitters": [
+       {
+        "mesh": "FX_Pickups_p.Mesh.LightBeam_WepPickup_STAT",
+        "gltf": true
+       },
+       {
+        "mesh": "FX_Pickups_p.Mesh.LightBeam_WepPickup_STAT",
+        "gltf": true
+       }
+      ],
+      "object": "FX_Pickups_p.FX.Pickup_FX"
+     },
+     {
+      "class": "ParticleSystem",
+      "in_authored_db": true,
+      "mesh_emitters": null,
+      "object": "FX_TurretIonBlaster_p.FX.Impact_IonTurret_FX"
+     },
+     {
+      "class": "ParticleSystem",
+      "in_authored_db": true,
+      "mesh_emitters": null,
+      "object": "FX_TurretIonBlaster_p.FX.Tracer_TurretIon_FX"
+     },
+     {
+      "class": "ParticleSystem",
+      "in_authored_db": true,
+      "mesh_emitters": [
+       {
+        "mesh": "FX_Weapons_p.StaticMesh.CrossPlanes_STATMESH",
+        "gltf": true
+       },
+       {
+        "mesh": "FX_Weapons_p.StaticMesh.CrossPlanes_STATMESH",
+        "gltf": true
+       }
+      ],
+      "object": "FX_TurretIonBlaster_p.FX.MuzzleFlash_TurretIon_FX"
+     }
+    ],
+    "SkeletalMesh": [
+     {
+      "class": "SkeletalMesh",
+      "gltf": "content/WEP_TurretIonGun_p/WEP_TurretIonGun_SKEL.gltf",
+      "object": "WEP_TurretIonGun_p.WEP_TurretIonGun_SKEL"
+     }
+    ],
+    "SoundCue": [
+     {
+      "class": "SoundCue",
+      "waves": [
+       "WL_TRANS_POWER.TRANS_POWER_AMMO_DEPLOY"
+      ],
+      "wav_on_disk": 1,
+      "silent_cue": false,
+      "object": "BL_TRANS_POWER.AMMO_DEPLOY"
+     },
+     {
+      "class": "SoundCue",
+      "waves": [
+       "WL_FS_BOT.MTL_FOLY_FS_BOT_MVMNT_01",
+       "WL_FS_BOT.MTL_FOLY_FS_BOT_MVMNT_02",
+       "WL_FS_BOT.MTL_FOLY_FS_BOT_MVMNT_03",
+       "WL_FS_BOT.MTL_FOLY_FS_BOT_MVMNT_04",
+       "WL_GUN_FOLEY.GUNf_MVMNT_03",
+       "WL_GUN_FOLEY.GUNf_MVMNT_04"
+      ],
+      "wav_on_disk": 6,
+      "silent_cue": false,
+      "object": "BL_WPN_TURRET_HVY_ION_BLASTER.FINE_AIM_END"
+     },
+     {
+      "class": "SoundCue",
+      "waves": [
+       "WL_GUN_ION_BLASTER_HVY.GUN_ION_BLASTER_HVY_FIRE_02_LR",
+       "WL_GUN_ION_BLASTER_HVY.GUN_ION_BLASTER_HVY_SHOOT_middist"
+      ],
+      "wav_on_disk": 2,
+      "silent_cue": false,
+      "object": "BL_WPN_TURRET_HVY_ION_BLASTER.SHOOT"
+     },
+     {
+      "class": "SoundCue",
+      "waves": [
+       "WL_ELEC.ELEC_SPARKBLAST_FLANGE_01",
+       "WL_ELEC.ELEC_SPARKBLAST_FLANGE_02",
+       "WL_ELEC.ELEC_SPARKBLAST_FLANGE_03",
+       "WL_ELEC.ELEC_SPARKBLAST_FLANGE_04"
+      ],
+      "wav_on_disk": 4,
+      "silent_cue": false,
+      "object": "BL_WPN_TURRET_HVY_ION_BLASTER.IMPT_WORLD"
+     },
+     {
+      "class": "SoundCue",
+      "waves": [
+       "WL_WHSH_BULLET.WHSH_BULLET_BY_LASER_ION_01",
+       "WL_WHSH_BULLET.WHSH_BULLET_BY_LASER_ION_02",
+       "WL_WHSH_BULLET.WHSH_BULLET_BY_LASER_ION_03",
+       "WL_WHSH_BULLET.WHSH_BULLET_BY_LASER_ION_04"
+      ],
+      "wav_on_disk": 4,
+      "silent_cue": false,
+      "object": "BL_WPN_TURRET_HVY_ION_BLASTER.BY"
+     },
+     {
+      "class": "SoundCue",
+      "waves": [],
+      "wav_on_disk": 0,
+      "silent_cue": true,
+      "object": "BL_WPN_TURRET_HVY_ION_BLASTER.PICK_UP"
+     },
+     {
+      "class": "SoundCue",
+      "waves": [
+       "WL_GUN_ION_BLASTER_HVY.GUN_ION_BLASTER_HVY_SHOOT_TAIL"
+      ],
+      "wav_on_disk": 1,
+      "silent_cue": false,
+      "object": "BL_WPN_TURRET_HVY_ION_BLASTER.SHOOT_TAIL"
+     },
+     {
+      "class": "SoundCue",
+      "waves": [
+       "WL_GUN_FOLEY.LOW_AMMO_WARNING_01",
+       "WL_GUN_ION_BLASTER_HVY.GUN_ION_BLASTER_HVY_FIRE_02_LR",
+       "WL_GUN_ION_BLASTER_HVY.GUN_ION_BLASTER_HVY_SHOOT_middist"
+      ],
+      "wav_on_disk": 3,
+      "silent_cue": false,
+      "object": "BL_WPN_TURRET_HVY_ION_BLASTER.SHOOT_LOW_AMMO"
+     },
+     {
+      "class": "SoundCue",
+      "waves": [
+       "WL_FS_BOT.MTL_FOLY_FS_BOT_MVMNT_01",
+       "WL_FS_BOT.MTL_FOLY_FS_BOT_MVMNT_02",
+       "WL_FS_BOT.MTL_FOLY_FS_BOT_MVMNT_03",
+       "WL_FS_BOT.MTL_FOLY_FS_BOT_MVMNT_04",
+       "WL_GUN_FOLEY.GUNf_MVMNT_01",
+       "WL_GUN_FOLEY.GUNf_MVMNT_02"
+      ],
+      "wav_on_disk": 6,
+      "silent_cue": false,
+      "object": "BL_WPN_TURRET_HVY_ION_BLASTER.FINE_AIM_START"
+     },
+     {
+      "class": "SoundCue",
+      "waves": [
+       "WL_GUN_FOLEY.RELOAD_BOLT_07",
+       "WL_GUN_PLASMA.GUN_DRYFIRE_GENERICPOWERDOWN"
+      ],
+      "wav_on_disk": 2,
+      "silent_cue": false,
+      "object": "BL_WPN_FOLEY.SHOOT_DRY_FIRE_PLASMA_01"
+     },
+     {
+      "class": "SoundCue",
+      "waves": [
+       "WL_ELEC.ELEC_EMP_INTERFERENCE_01",
+       "WL_ELEC.ELEC_EMP_INTERFERENCE_02",
+       "WL_ELEC.ELEC_EMP_INTERFERENCE_03",
+       "WL_ELEC.ELEC_EMP_INTERFERENCE_04",
+       "WL_ELEC.ELEC_EMP_INTERFERENCE_05",
+       "WL_ELEC.ELEC_STATICDISCHARGE_DMG_START",
+       "WL_ELEC.ELEC_STATICDISCHARGE_LP",
+       "WL_WPN_GRENADE.EMP_GRENADE_EXPL_DETONATE"
+      ],
+      "wav_on_disk": 8,
+      "silent_cue": false,
+      "object": "BL_WPN_GRENADE.EMP_STATIC_DISCHARGE_VICTIM_LP"
+     },
+     {
+      "class": "SoundCue",
+      "waves": [
+       "WL_ELEC.ELEC_EMP_INTERFERENCE_01",
+       "WL_ELEC.ELEC_STATICDISCHARGE_LP"
+      ],
+      "wav_on_disk": 2,
+      "silent_cue": false,
+      "object": "BL_WPN_GRENADE.EMP_STATIC_DISCHARGE_VICTIM_STOP"
+     }
+    ],
+    "StaticMesh": [
+     {
+      "class": "StaticMesh",
+      "gltf": "content/PROP_NEU_Pickups_p/AmmoPickup/PROP_NEU_AmmoPickup_STAT.gltf",
+      "object": "PROP_NEU_Pickups_p.AmmoPickup.PROP_NEU_AmmoPickup_STAT"
+     },
+     {
+      "class": "StaticMesh",
+      "gltf": "content/FX_Mesh_p/Mesh/Plane_STAT.gltf",
+      "object": "FX_Mesh_p.Mesh.Plane_STAT"
+     }
+    ],
+    "Texture2D": [
+     {
+      "class": "Texture2D",
+      "file": "content/FX_Screen_p/FX/Screen_EnergonBloodsplatter_FX/ThumbnailTexture.png",
+      "object": "FX_Screen_p.FX.Screen_EnergonBloodsplatter_FX.ThumbnailTexture"
+     },
+     {
+      "class": "Texture2D",
+      "file": "content/FX_Screen_p/FlashBang_FX/ThumbnailTexture.png",
+      "object": "FX_Screen_p.FlashBang_FX.ThumbnailTexture"
+     },
+     {
+      "class": "Texture2D",
+      "file": "content/FX_Pickups_p/FX/Pickup_FX/ThumbnailTexture.png",
+      "object": "FX_Pickups_p.FX.Pickup_FX.ThumbnailTexture"
+     },
+     {
+      "class": "Texture2D",
+      "file": "content/FX_TurretIonBlaster_p/FX/Impact_IonTurret_FX/ThumbnailTexture.png",
+      "object": "FX_TurretIonBlaster_p.FX.Impact_IonTurret_FX.ThumbnailTexture"
+     },
+     {
+      "class": "Texture2D",
+      "file": "content/FX_TurretIonBlaster_p/FX/Tracer_TurretIon_FX/ThumbnailTexture.png",
+      "object": "FX_TurretIonBlaster_p.FX.Tracer_TurretIon_FX.ThumbnailTexture"
+     },
+     {
+      "class": "Texture2D",
+      "file": "content/FX_TurretIonBlaster_p/FX/MuzzleFlash_TurretIon_FX/ThumbnailTexture.png",
+      "object": "FX_TurretIonBlaster_p.FX.MuzzleFlash_TurretIon_FX.ThumbnailTexture"
+     }
+    ]
+   }
+  },
+  "RollerSphere": {
+   "roots": [
+    "TransGame.Default__TnAbilityRollerSphere",
+    "TransGame.Default__TnBuffRollerSphere",
+    "TransGame.Default__TnBuffDotRollerSphere",
+    "TransGame.Default__TnActorFactoryRollerMine"
+   ],
+   "script_spawned_roots (name-matched, PROVISIONAL)": [
+    "TransGame.Default__TnBuffRollerSphere",
+    "TransGame.Default__TnBuffDotRollerSphere",
+    "TransGame.Default__TnActorFactoryRollerMine"
+   ],
+   "ini": {
+    "type": "TnDataProvider_Ability",
+    "UniqueId": "RollerSphere",
+    "SpecialtyRestriction": "Leader",
+    "LevelRestriction": "2",
+    "ObjectPath": "TransGame.TnAbilityRollerSphere",
+    "Cooldown": "60",
+    "ResourceRequired": "100",
+    "SpawnDelay": "0.5",
+    "SpawnOffset": "(X=500,Y=0,Z=100)",
+    "InitialVelocity": "(X=2750,Y=0,Z=0)",
+    "OnTriggerAnimParams": "(AnimName=Skill_AbilityJammer,Looping=false,BlendOutTime=0.3,MaskType=CAMT_FullBody,Override=CAPO_PlayIfHigherOrEqualPriority,Priority=CAPR_LowPriority,RootMotionMode=RMM_Ignore)",
+    "BuffTime": "1",
+    "SpeedMultiplier": "0.75",
+    "FloatModifier": "0.75"
+   },
+   "objects_walked": 49,
+   "summary": {
+    "SoundCue": 3,
+    "StaticMesh": 1
+   },
+   "missing_exports": [],
+   "assets": {
+    "SoundCue": [
+     {
+      "class": "SoundCue",
+      "waves": [
+       "WL_WPN_GRENADE.KAMIKAZE_EXPL_01",
+       "WL_WPN_GRENADE.KAMIKAZE_EXPL_02",
+       "WL_WPN_GRENADE.KAMIKAZE_EXPL_03",
+       "WL_WPN_MINE.ROLLER_MINE_EXPLO_SWEETENER"
+      ],
+      "wav_on_disk": 4,
+      "silent_cue": false,
+      "object": "BL_WPN_MINE.ROLLER_MINE_EXPL"
+     },
+     {
+      "class": "SoundCue",
+      "waves": [
+       "WL_WPN_MINE.ROLLER_MINE_FUSE_BUILD"
+      ],
+      "wav_on_disk": 1,
+      "silent_cue": false,
+      "object": "BL_WPN_MINE.ROLLER_MINE_FUSE_BUILD"
+     },
+     {
+      "class": "SoundCue",
+      "waves": [
+       "WL_WPN_MINE.ROLLER_MINE_LP"
+      ],
+      "wav_on_disk": 1,
+      "silent_cue": false,
+      "object": "BL_WPN_MINE.ROLLER_MINE_LP"
+     }
+    ],
+    "StaticMesh": [
+     {
+      "class": "StaticMesh",
+      "gltf": "content/FX_RollerMine_p/Mesh/RollerMine_STAT.gltf",
+      "object": "FX_RollerMine_p.Mesh.RollerMine_STAT"
+     }
+    ]
+   }
+  },
+  "GuidedMissile": {
+   "roots": [
+    "TransGame.Default__TnAbilityGuidedMissile",
+    "TransGame.Default__TnGuidedMissile",
+    "TransGame.Default__TnGuidedMissileData"
+   ],
+   "script_spawned_roots (name-matched, PROVISIONAL)": [
+    "TransGame.Default__TnGuidedMissile",
+    "TransGame.Default__TnGuidedMissileData"
+   ],
+   "ini": {
+    "type": "TnDataProvider_Ability",
+    "UniqueId": "GuidedMissile",
+    "SpecialtyRestriction": "SinglePlayer",
+    "ObjectPath": "TransGame.TnAbilityGuidedMissile",
+    "Cooldown": "45",
+    "ResourceRequired": "100",
+    "SpawnSocket": "ReactionSocket_Chest",
+    "SpawnOffset": "(X=200)",
+    "MinimumSpawnPitch": "700",
+    "MaximumSpawnPitch": "16384",
+    "Delay": "1",
+    "OnTriggerAnimParams": "(AnimName=Skill_GuidedMissile,Looping=true,BlendOutTime=0.3,BlendOutTime=0.3,MaskType=CAMT_FullBody,Override=CAPO_PlayIfHigherOrEqualPriority,Priority=CAPR_LowPriority,RootMotionMode=RMM_Accel)",
+    ";UniqueId": "IncreaseGuidedMissileControl",
+    ";SpecialtyRestriction": "Leader",
+    ";LevelRestriction": "7",
+    ";ObjectPath": "TransGame.TnSkillIncreaseGuidedMissileControl",
+    ";MaxSkillLevel": "1",
+    ";SkillType": "0",
+    ";BuffTime": "-1",
+    ";FloatModifier": "1.5"
+   },
+   "objects_walked": 201,
+   "summary": {
+    "Material": 11,
+    "MaterialInstanceConstant": 2,
+    "ParticleSystem": 2,
+    "SoundCue": 2,
+    "StaticMesh": 1,
+    "Texture2D": 2
+   },
+   "missing_exports": [],
+   "assets": {
+    "Material": [
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Materials_p.Materials.Ring_Distort_Add_MAT"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Materials_p.Materials.Sparks_01_MAT"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Materials_p.Materials.Metal_Debris_Mat"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Materials_p.Materials.Steam_Shade_Mat"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Materials_p.Materials.Embers_Anim_MAT"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Materials_p.Materials.Basic_Particle_Add_MAT"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Materials_p.Materials.Explosion_MAT"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Materials_p.Materials.Glow_Mod_MAT"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Materials_p.Materials.Explosion_Anim_02_MAT"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Materials_p.Materials.Steam_Mat"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Materials_p.Materials.Lightning_Anim_03_MAT"
+     }
+    ],
+    "MaterialInstanceConstant": [
+     {
+      "class": "MaterialInstanceConstant",
+      "file": null,
+      "object": "FX_Materials_p.MatInst.Sparks_02_DB_MAT_INST"
+     },
+     {
+      "class": "MaterialInstanceConstant",
+      "file": null,
+      "object": "FX_Materials_p.MatInst.Lightning_Anim_03_UP_MAT_INST"
+     }
+    ],
+    "ParticleSystem": [
+     {
+      "class": "ParticleSystem",
+      "in_authored_db": true,
+      "mesh_emitters": null,
+      "object": "FX_Explosives_p.FX.Exp_GenericLvl_LRG_FX"
+     },
+     {
+      "class": "ParticleSystem",
+      "in_authored_db": true,
+      "mesh_emitters": null,
+      "object": "FX_FusionCannon_p.FX.Trail_FusionCannon_FX"
+     }
+    ],
+    "SoundCue": [
+     {
+      "class": "SoundCue",
+      "waves": [
+       "WL_GUN_GUIDED_MISSILE.BEEP_GUIDED_MISSILE_TRACKING",
+       "WL_GUN_GUIDED_MISSILE.GUN_GUIDED_MISSILE_FLIGHT",
+       "WL_GUN_GUIDED_MISSILE.GUN_GUIDED_MISSILE_SHOOT"
+      ],
+      "wav_on_disk": 3,
+      "silent_cue": false,
+      "object": "BL_WPN_GUN_GUIDED_MISSILE.SHOOT_TRAIL"
+     },
+     {
+      "class": "SoundCue",
+      "waves": [
+       "WL_EXPLOSIONS.EXPL_AMB_02",
+       "WL_EXPLOSIONS.EXPL_MTL_DESTRUCT_01",
+       "WL_EXPLOSIONS.EXPL_MTL_DESTRUCT_02"
+      ],
+      "wav_on_disk": 3,
+      "silent_cue": false,
+      "object": "BL_WPN_GUN_GUIDED_MISSILE.EXPL_IMPT_WORLD"
+     }
+    ],
+    "StaticMesh": [
+     {
+      "class": "StaticMesh",
+      "gltf": "content/WEP_Rocket_p/WEP_OmegaRocket_STAT.gltf",
+      "object": "WEP_Rocket_p.WEP_OmegaRocket_STAT"
+     }
+    ],
+    "Texture2D": [
+     {
+      "class": "Texture2D",
+      "file": "content/FX_Explosives_p/FX/Exp_GenericLvl_LRG_FX/ThumbnailTexture.png",
+      "object": "FX_Explosives_p.FX.Exp_GenericLvl_LRG_FX.ThumbnailTexture"
+     },
+     {
+      "class": "Texture2D",
+      "file": "content/FX_FusionCannon_p/FX/Trail_FusionCannon_FX/ThumbnailTexture.png",
+      "object": "FX_FusionCannon_p.FX.Trail_FusionCannon_FX.ThumbnailTexture"
+     }
+    ]
+   }
+  },
+  "Killstreak_GuidedMissileStreak": {
+   "roots": [
+    "TransGame.Default__TnKillstreakGuidedMissile",
+    "TransGame.Default__TnGuidedMissile",
+    "TransGame.Default__TnGuidedMissileData"
+   ],
+   "script_spawned_roots (name-matched, PROVISIONAL)": [
+    "TransGame.Default__TnGuidedMissile",
+    "TransGame.Default__TnGuidedMissileData"
+   ],
+   "ini": null,
+   "objects_walked": 210,
+   "summary": {
+    "Material": 11,
+    "MaterialInstanceConstant": 2,
+    "ParticleSystem": 2,
+    "SoundCue": 2,
+    "StaticMesh": 1,
+    "Texture2D": 2
+   },
+   "missing_exports": [],
+   "assets": {
+    "Material": [
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Materials_p.Materials.Ring_Distort_Add_MAT"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Materials_p.Materials.Sparks_01_MAT"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Materials_p.Materials.Metal_Debris_Mat"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Materials_p.Materials.Steam_Shade_Mat"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Materials_p.Materials.Embers_Anim_MAT"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Materials_p.Materials.Basic_Particle_Add_MAT"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Materials_p.Materials.Explosion_MAT"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Materials_p.Materials.Glow_Mod_MAT"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Materials_p.Materials.Explosion_Anim_02_MAT"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Materials_p.Materials.Steam_Mat"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Materials_p.Materials.Lightning_Anim_03_MAT"
+     }
+    ],
+    "MaterialInstanceConstant": [
+     {
+      "class": "MaterialInstanceConstant",
+      "file": null,
+      "object": "FX_Materials_p.MatInst.Sparks_02_DB_MAT_INST"
+     },
+     {
+      "class": "MaterialInstanceConstant",
+      "file": null,
+      "object": "FX_Materials_p.MatInst.Lightning_Anim_03_UP_MAT_INST"
+     }
+    ],
+    "ParticleSystem": [
+     {
+      "class": "ParticleSystem",
+      "in_authored_db": true,
+      "mesh_emitters": null,
+      "object": "FX_Explosives_p.FX.Exp_GenericLvl_LRG_FX"
+     },
+     {
+      "class": "ParticleSystem",
+      "in_authored_db": true,
+      "mesh_emitters": null,
+      "object": "FX_FusionCannon_p.FX.Trail_FusionCannon_FX"
+     }
+    ],
+    "SoundCue": [
+     {
+      "class": "SoundCue",
+      "waves": [
+       "WL_GUN_GUIDED_MISSILE.BEEP_GUIDED_MISSILE_TRACKING",
+       "WL_GUN_GUIDED_MISSILE.GUN_GUIDED_MISSILE_FLIGHT",
+       "WL_GUN_GUIDED_MISSILE.GUN_GUIDED_MISSILE_SHOOT"
+      ],
+      "wav_on_disk": 3,
+      "silent_cue": false,
+      "object": "BL_WPN_GUN_GUIDED_MISSILE.SHOOT_TRAIL"
+     },
+     {
+      "class": "SoundCue",
+      "waves": [
+       "WL_EXPLOSIONS.EXPL_AMB_02",
+       "WL_EXPLOSIONS.EXPL_MTL_DESTRUCT_01",
+       "WL_EXPLOSIONS.EXPL_MTL_DESTRUCT_02"
+      ],
+      "wav_on_disk": 3,
+      "silent_cue": false,
+      "object": "BL_WPN_GUN_GUIDED_MISSILE.EXPL_IMPT_WORLD"
+     }
+    ],
+    "StaticMesh": [
+     {
+      "class": "StaticMesh",
+      "gltf": "content/WEP_Rocket_p/WEP_OmegaRocket_STAT.gltf",
+      "object": "WEP_Rocket_p.WEP_OmegaRocket_STAT"
+     }
+    ],
+    "Texture2D": [
+     {
+      "class": "Texture2D",
+      "file": "content/FX_Explosives_p/FX/Exp_GenericLvl_LRG_FX/ThumbnailTexture.png",
+      "object": "FX_Explosives_p.FX.Exp_GenericLvl_LRG_FX.ThumbnailTexture"
+     },
+     {
+      "class": "Texture2D",
+      "file": "content/FX_FusionCannon_p/FX/Trail_FusionCannon_FX/ThumbnailTexture.png",
+      "object": "FX_FusionCannon_p.FX.Trail_FusionCannon_FX.ThumbnailTexture"
+     }
+    ]
+   }
+  }
+ }
+}
