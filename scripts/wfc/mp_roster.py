@@ -122,6 +122,20 @@ def compat(animset_rec, joints):
             'track_bones': len(tb), 'missing_on_mesh': miss[:20], 'missing_count': len(miss)}
 
 # ------------------------------------------------------------------ characters
+def asset_copies(robot, veh):
+    """packages that carry the actual robot / vehicle skeletal-mesh data (largest serialized copy), as opposed to cooked_copies
+    (packages holding the ROBODEF definition): for the locked bodies these differ (Laserbeak's definition is in
+    A2_KON_Soundwave_Design_m, its mesh / material / textures in A2_KON_BASE_m - Rendering report 2026-10-06)."""
+    out = {}
+    for form, f in (('robot', robot), ('vehicle', veh)):
+        m = (f or {}).get('skeletal_mesh')
+        if not m: continue
+        rows = objtree.inv().execute('SELECT package, serial_size FROM exports WHERE opath=? AND class=?', (m, 'SkeletalMesh')).fetchall()
+        if not rows: continue
+        mx = max(r[1] for r in rows)
+        out[form] = sorted(r[0] for r in rows if r[1] == mx)
+    return out
+
 def form_record(defn, mesh_key, kind):
     d = V(defn)
     mesh = d.get(mesh_key)
@@ -230,6 +244,7 @@ def main():
             ('voice_sound_event_set', soundset(rd.get('SoundEventSet'))),
             ('vehicle_sound_event_set', soundset(V(vehdef).get('SoundEventSet')) if vehdef else None),
             ('cooked_copies', {'packages': pk, 'serial_sizes': dict(sizes), 'consistent': len(sizes) == 1}),
+            ('asset_cooked_copies (packages holding the full robot / vehicle mesh exports)', asset_copies(robot, veh)),
             ('extracted_package_dirs', sorted({rel(os.path.join(ROOT, 'content', p)) for p in
                                                [(robot or {}).get('skeletal_mesh', '') .split('.')[0], (veh or {}).get('skeletal_mesh', '').split('.')[0]]
                                                if p and os.path.isdir(os.path.join(ROOT, 'content', p))})),
