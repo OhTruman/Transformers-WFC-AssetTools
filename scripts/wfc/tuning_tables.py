@@ -36,8 +36,22 @@ def flat(prefix, v, out):
     elif isinstance(v, (int, float)) and not isinstance(v, bool):
         out[prefix] = v
 
+# RE ce24514, TARGETED_PASS4 A4 addendum 3 (CONFIRMED from script): verdict per property name
+RE_VERDICT = {
+    'Stiffness': ('dt_correct', 'TnSpring semi-implicit solve v'=(v+dt(K(L0-L)+g))/(1+B dt+K dt^2), K=Stiffness/m, m=mass/4 per probe'),
+    'Damping': ('dt_correct', 'TnSpring semi-implicit solve, B=Damping/m'),
+    'AngularDamping': ('dt_correct', 'PhysX rigid-body damping (set_AngularDamping), continuous; car x5(1-|steer|)^2'),
+    'TireFrictionCoefficient': ('dt_correct', 'force law F=clamp(-v_lat mu LateralForceScale Load, +-MaxForce)'),
+    'DriftFrictionScale': ('dt_correct', 'LateralForceScale (x0.8 front / x0.5 rear while drifting), force scale only'),
+    'ExtraRotationLerpValue': ('per_tick_30hz', 'TnPlaneSimulation.CalculateFinalRotationToMatch RLerp(prev, delta, f) once per player '
+                                                'update: f_dt = 1-(1-f)^(30 dt)'),
+    'AiLinearDamping': ('unused', 'no script reader (AI planes use HoverPhysics.MoveToTargetLocation / RotateToTargetOrientation)'),
+    'AiLinearStiffness': ('unused', 'no script reader'),
+}
+
 def classify(name):
     leaf = name.split('.')[-1]
+    if leaf in RE_VERDICT: return RE_VERDICT[leaf][0]
     if DURATION.search(leaf): return 'duration'      # time constants (SmoothTime, BlendInTime) are seconds: frame-rate independent
     if PER_TICK.search(leaf): return 'per_tick?'
     if RATE.search(leaf): return 'rate'
@@ -81,9 +95,16 @@ def main():
               ('original_tick', 'smoothed 15-30 Hz (Xe-TransEngine.ini [Engine.GameEngine] bSmoothFrameRate=TRUE, MaxSmoothedFrameRate=30)'),
               ('classification', {'rate': 'per-second, DeltaTime-integrated -> frame-rate independent',
                                   'duration': 'seconds -> frame-rate independent',
-                                  'per_tick?': 'unitless smoothing / damping factor: frame-rate dependent IF applied once per tick natively '
-                                               '(PROVISIONAL; RE to confirm). At 30 Hz reference: f_dt = 1 - (1 - f)^(30 * dt)'}),
+                                  'per_tick?': 'unitless smoothing / damping factor without an RE verdict yet (PROVISIONAL)',
+                                  'dt_correct': 'RE CONFIRMED: integrated with dt / continuous physics -> no conversion',
+                                  'per_tick_30hz': 'RE CONFIRMED: applied once per 30 Hz tick -> f_dt = 1 - (1 - f)^(30 * dt)',
+                                  'unused': 'RE CONFIRMED: no script reader'}),
               ('per_tick_candidate_property_names (for RE)', pt),
+              ('re_verdicts (RE ce24514 TARGETED_PASS4 A4 addendum 3, CONFIRMED)', OD((k, {'verdict': v[0], 'native': v[1]}) for k, v in RE_VERDICT.items())),
+              ('re_extra_per_tick', 'hover-car airborne / inverted upright pull: 5% of the angle error per tick (30 Hz) - not an authored '
+                                    'property; convert as per_tick_30hz'),
+              ('re_time_constants', '*SmoothTime / AimSmoothTime are seconds: HmC2Smoother w=4/SmoothTime, x=w dt, '
+                                    'decay ~ 1/(1+x+0.48x^2+0.235x^3) - frame-independent'),
               ('weapons', weapons), ('vehicles', vehicles),
               ('summary', {'weapons': len(weapons), 'vehicles': len(vehicles), 'per_tick_candidate_names': len(pt)})])
     json.dump(out, open(os.path.join(AT, 'manifests', 'mp_content', 'tuning_tables.json'), 'w', encoding='utf-8'), indent=1, default=str)
