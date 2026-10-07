@@ -38,7 +38,7 @@ def flat(prefix, v, out):
 
 # RE ce24514, TARGETED_PASS4 A4 addendum 3 (CONFIRMED from script): verdict per property name
 RE_VERDICT = {
-    'Stiffness': ('dt_correct', 'TnSpring semi-implicit solve v'=(v+dt(K(L0-L)+g))/(1+B dt+K dt^2), K=Stiffness/m, m=mass/4 per probe'),
+    'Stiffness': ('dt_correct', 'TnSpring semi-implicit solve v_new=(v+dt(K(L0-L)+g))/(1+B dt+K dt^2), K=Stiffness/m, m=mass/4 per probe'),
     'Damping': ('dt_correct', 'TnSpring semi-implicit solve, B=Damping/m'),
     'AngularDamping': ('dt_correct', 'PhysX rigid-body damping (set_AngularDamping), continuous; car x5(1-|steer|)^2'),
     'TireFrictionCoefficient': ('dt_correct', 'force law F=clamp(-v_lat mu LateralForceScale Load, +-MaxForce)'),
