@@ -85,7 +85,10 @@ def params():
     P['vehicle_height_m'] = (4.00, 'CONFIRMED: versus TnReachSpec CollisionHeight 400 cm')
     P['jump_up_max_m'] = ((max(jh) / 100) if jh else 5.0, 'CONFIRMED: jump apex = acrobatics JumpHeight (max over chassis, cm; RE: MaxJumpHeight = '
                                                           'JumpHeight, frame-rate independent); per-chassis values in chassis_jump')
-    P['double_jump_note'] = ('DoubleJumpHeight per chassis in chassis_jump; links record rise so the runtime can choose', '')
+    dj = [v['DoubleJumpHeight_cm'] for v in jumps.values() if v.get('DoubleJumpHeight_cm')]
+    P['double_jump_up_max_m'] = (((max(jh) + max(dj)) / 100) if jh and dj else 9.5,
+                                 'CONFIRMED authored: JumpHeight + DoubleJumpHeight (max over chassis, cm); per-chassis values in chassis_jump. '
+                                 'Links with jump_up_max < rise <= this are kind double_jump_up')
     P['max_drop_m'] = (34.0, 'CONFIRMED (RE): robot MovementCapabilities.MaxFallHeight 3400 UU (AI / pathing limit)')
     P['merge_dh_m'] = (0.35, 'tool parameter: max height spread inside one polygon')
     P['region_margin_xz_m'] = (100.0, 'working-set guard: geometry farther than this outside the anchors XZ bounds is not rasterised')
@@ -237,7 +240,7 @@ def main():
                              ('headroom_m', round(pl['headroom_m'], 2)),
                              ('flags', {'vehicle_capable': vehicle}), ('edges', edges)]))
     # off-mesh links: cells on different, non-connected layers up to LINK_REACH cells apart (ledge edges are eroded by min_radius)
-    LINK_REACH = 3
+    LINK_REACH = 6   # cells (m): gaps up to ~6 m are crossed by a running jump / drop (robot GroundSpeed 1400 cm/s, airtime ~1 s)
     links = []; seen = set()
     for (k, h), pid in cell_poly.items():
         x, z = k
@@ -254,15 +257,16 @@ def main():
                 if pq is None or pq == pid or rise_ok((k, h), (kk, q)): continue
                 hit = True
                 rise = q - h
-                kind = 'jump_up' if 0 < rise <= p['jump_up_max_m'] else 'drop_down' if -p['max_drop_m'] <= rise < 0 else None
+                kind = ('jump_up' if 0 < rise <= p['jump_up_max_m'] else 'double_jump_up' if 0 < rise <= p['double_jump_up_max_m']
+                        else 'drop_down' if -p['max_drop_m'] <= rise < 0 else None)
                 if not kind or (pid, pq, kind) in seen: continue
                 # landing headroom / no obstruction in the jump column of the source
-                if kind == 'jump_up' and nodes[(k, h)]['headroom'] < rise + H: continue
+                if kind in ('jump_up', 'double_jump_up') and nodes[(k, h)]['headroom'] < rise + H: continue
                 seen.add((pid, pq, kind))
                 links.append({'kind': kind, 'from_cell': pid, 'to_cell': pq, 'rise_m': round(rise, 2), 'span_m': r * CELL,
                               'from_gltf': [(x + 0.5) * CELL, round(h, 3), (z + 0.5) * CELL],
                               'to_gltf': [(kk[0] + 0.5) * CELL, round(q, 3), (kk[1] + 0.5) * CELL],
-                              'forms': ['robot'] if kind == 'jump_up' else ['robot', 'vehicle']})
+                              'forms': ['robot'] if kind in ('jump_up', 'double_jump_up') else ['robot', 'vehicle']})
             if hit or any(abs(q - h) <= STEP for q in by_k.get(kk, ())): break
     # cover hints: open cells next to a tall obstruction
     cover = []
