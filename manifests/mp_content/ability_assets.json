@@ -1,6 +1,6 @@
 {
  "generated_by": "AssetTools/scripts/wfc/ability_assets.py",
- "generated": "2026-10-06 20:26",
+ "generated": "2026-10-06 20:37",
  "method": "reference closure from the ability / killstreak CDOs (TransCustomization.ini ObjectPath) through authored.db values, sub-objects, archetypes and class refs (-> CDO), depth 6",
  "abilities": {
   "Barrier": {
@@ -26,12 +26,15 @@
     "SpawnDelay": "0.5",
     "OnTriggerAnimParams": "(AnimName=Skill_Barrier,Looping=false,BlendOutTime=0.3,MaskType=CAMT_FullBody,Override=CAPO_PlayIfHigherOrEqualPriority,Priority=CAPR_LowPriority,RootMotionMode=RMM_Ignore)"
    },
-   "objects_walked": 32,
+   "objects_walked": 205,
    "summary": {
     "AnimSet": 1,
+    "Material": 1,
+    "MaterialInstanceConstant": 1,
+    "ParticleSystem": 1,
     "PhysicsAsset": 1,
     "SkeletalMesh": 1,
-    "SoundCue": 3
+    "SoundCue": 4
    },
    "missing_exports": [],
    "assets": {
@@ -40,6 +43,28 @@
       "class": "AnimSet",
       "file": "content/WEP_Shield_p/Barrier/WEP_Barrier_ANIM.anim.bin",
       "object": "WEP_Shield_p.Barrier.WEP_Barrier_ANIM"
+     }
+    ],
+    "Material": [
+     {
+      "class": "Material",
+      "file": null,
+      "object": "WEP_Shield_p.Barrier.ENV_ForceField_Defrag_MAT"
+     }
+    ],
+    "MaterialInstanceConstant": [
+     {
+      "class": "MaterialInstanceConstant",
+      "file": null,
+      "object": "WEP_Shield_p.Barrier.WEP_Barrier_Defrag_MATINST"
+     }
+    ],
+    "ParticleSystem": [
+     {
+      "class": "ParticleSystem",
+      "in_authored_db": true,
+      "mesh_emitters": null,
+      "object": "FX_Hologram_p.FX.ForceField_Squib_FX"
      }
     ],
     "PhysicsAsset": [
@@ -84,6 +109,24 @@
       "wav_on_disk": 1,
       "silent_cue": false,
       "object": "BL_TRANS_POWER.BARRIER_RETRACT"
+     },
+     {
+      "class": "SoundCue",
+      "waves": [
+       "WL_ELEC.ELEC_SPARKBURST_FLANGE_01",
+       "WL_ELEC.ELEC_SPARKBURST_FLANGE_02",
+       "WL_ELEC.ELEC_SPARKBURST_FLANGE_03",
+       "WL_ELEC.ELEC_SPARKBURST_FLANGE_04",
+       "WL_SQUIBS.SHIELD_IMPT_SQUIB_01",
+       "WL_SQUIBS.SHIELD_IMPT_SQUIB_02",
+       "WL_SQUIBS.SHIELD_IMPT_SQUIB_03",
+       "WL_SQUIBS.SHIELD_IMPT_SQUIB_04",
+       "WL_SQUIBS.SHIELD_IMPT_SQUIB_05",
+       "WL_SQUIBS.SHIELD_IMPT_SQUIB_06"
+      ],
+      "wav_on_disk": 10,
+      "silent_cue": false,
+      "object": "BL_SHIELD.FORCE_FIELD_IMPT"
      }
     ]
    }
@@ -108,15 +151,15 @@
     "HealedMultiplier": "0.3",
     "PitchConstraintsInDegrees": "(Min=-45, Max=45)"
    },
-   "objects_walked": 572,
+   "objects_walked": 643,
    "summary": {
     "AnimSet": 1,
     "Material": 22,
-    "MaterialInstanceConstant": 3,
+    "MaterialInstanceConstant": 4,
     "ParticleSystem": 15,
     "SoundCue": 15,
     "StaticMesh": 5,
-    "Texture2D": 10
+    "Texture2D": 12
    },
    "missing_exports": [],
    "assets": {
@@ -141,47 +184,7 @@
      {
       "class": "Material",
       "file": null,
-      "object": "FX_Materials_p.Materials.SparksSheet1_MAT"
-     },
-     {
-      "class": "Material",
-      "file": null,
-      "object": "FX_Materials_p.Materials.arcball01_MAT"
-     },
-     {
-      "class": "Material",
-      "file": null,
-      "object": "FX_Materials_p.Materials.MuzzleFlash_White_Mat"
-     },
-     {
-      "class": "Material",
-      "file": null,
-      "object": "FX_Materials_p.Materials.MFlash_Side_Desat_MAT"
-     },
-     {
-      "class": "Material",
-      "file": null,
-      "object": "FX_Materials_p.Materials.Bolt_ADD_MAT"
-     },
-     {
-      "class": "Material",
-      "file": null,
-      "object": "FX_Materials_p.Materials.Spark_Tail_MAT"
-     },
-     {
-      "class": "Material",
-      "file": null,
-      "object": "FX_Materials_p.Materials.Distortion_Cloud_01_MAT"
-     },
-     {
-      "class": "Material",
-      "file": null,
-      "object": "FX_Materials_p.Materials.Glow_Mod_MAT"
-     },
-     {
-      "class": "Material",
-      "file": null,
-      "object": "FX_Materials_p.Materials.SmokeCoolDepth_Mat"
+      "object": "FX_Weapons_p.Materials.MuzzleFlash_Side_MAT"
      },
      {
       "class": "Material",
@@ -191,17 +194,77 @@
      {
       "class": "Material",
       "file": null,
-      "object": "FX_Weapons_p.Materials.MuzzleFlash_Side_MAT"
-     },
-     {
-      "class": "Material",
-      "file": null,
       "object": "FX_Materials_p.Materials.MuzzleFlash_X_Mat"
      },
      {
       "class": "Material",
       "file": null,
-      "object": "FX_Materials_p.Materials.ElectroRing01_Mat"
+      "object": "FX_Materials_p.Materials.MFlash_Side_Desat_MAT"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Materials_p.Materials.arcball01_MAT"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Materials_p.Materials.SparksSheet1_MAT"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Materials_p.Materials.MuzzleFlash_White_Mat"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Materials_p.Materials.Distortion_Cloud_01_MAT"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Materials_p.Materials.SmokeCoolDepth_Mat"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Materials_p.Materials.Spark_Tail_MAT"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Materials_p.Materials.Glow_Mod_MAT"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Materials_p.Materials.Bolt_ADD_MAT"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Materials_p.Materials.HealBeam_MAT"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Materials_p.Materials.Ring_Distort_Add_MAT"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Materials_p.Materials.Lightning_Anim_02_MAT"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Materials_p.Materials.Ring_DistortTrail_Add_MAT"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Materials_p.Materials.Fire_Ring01_Mat"
      },
      {
       "class": "Material",
@@ -216,27 +279,7 @@
      {
       "class": "Material",
       "file": null,
-      "object": "FX_Materials_p.Materials.HealBeam_MAT"
-     },
-     {
-      "class": "Material",
-      "file": null,
-      "object": "FX_Materials_p.Materials.Lightning_Anim_02_MAT"
-     },
-     {
-      "class": "Material",
-      "file": null,
-      "object": "FX_Materials_p.Materials.Fire_Ring01_Mat"
-     },
-     {
-      "class": "Material",
-      "file": null,
-      "object": "FX_Materials_p.Materials.Ring_DistortTrail_Add_MAT"
-     },
-     {
-      "class": "Material",
-      "file": null,
-      "object": "FX_Materials_p.Materials.Ring_Distort_Add_MAT"
+      "object": "FX_Materials_p.Materials.ElectroRing01_Mat"
      }
     ],
     "MaterialInstanceConstant": [
@@ -254,36 +297,14 @@
       "class": "MaterialInstanceConstant",
       "file": null,
       "object": "FX_Materials_p.Materials.Embers_Blue_MAT_INST"
+     },
+     {
+      "class": "MaterialInstanceConstant",
+      "file": null,
+      "object": "WEP_Rocket_p.WEP_StandardRocket_MATINST"
      }
     ],
     "ParticleSystem": [
-     {
-      "class": "ParticleSystem",
-      "in_authored_db": true,
-      "mesh_emitters": [
-       {
-        "mesh": "FX_IonBlaster_p.StaticMesh.SideMuzzle_STAT",
-        "gltf": true
-       },
-       {
-        "mesh": "FX_IonBlaster_p.StaticMesh.SideMuzzle_STAT",
-        "gltf": true
-       }
-      ],
-      "object": "FX_OS_Turret_p.FX.MuzzleFlash_Turret_A_FX"
-     },
-     {
-      "class": "ParticleSystem",
-      "in_authored_db": true,
-      "mesh_emitters": null,
-      "object": "FX_AssaultRifle_p.FX.Tracer_AssaultRifle_FX"
-     },
-     {
-      "class": "ParticleSystem",
-      "in_authored_db": true,
-      "mesh_emitters": null,
-      "object": "FX_OS_Turret_p.FX.Impact_OS_Turret_A_FX"
-     },
      {
       "class": "ParticleSystem",
       "in_authored_db": true,
@@ -310,8 +331,29 @@
      {
       "class": "ParticleSystem",
       "in_authored_db": true,
+      "mesh_emitters": [
+       {
+        "mesh": "FX_IonBlaster_p.StaticMesh.SideMuzzle_STAT",
+        "gltf": true
+       },
+       {
+        "mesh": "FX_IonBlaster_p.StaticMesh.SideMuzzle_STAT",
+        "gltf": true
+       }
+      ],
+      "object": "FX_OS_Turret_p.FX.MuzzleFlash_Turret_A_FX"
+     },
+     {
+      "class": "ParticleSystem",
+      "in_authored_db": true,
       "mesh_emitters": null,
-      "object": "FX_RepairBeam_p.FX.Squib_RepairEnemy_FX"
+      "object": "FX_OS_Turret_p.FX.Impact_OS_Turret_A_FX"
+     },
+     {
+      "class": "ParticleSystem",
+      "in_authored_db": true,
+      "mesh_emitters": null,
+      "object": "FX_AssaultRifle_p.FX.Tracer_AssaultRifle_FX"
      },
      {
       "class": "ParticleSystem",
@@ -323,13 +365,19 @@
       "class": "ParticleSystem",
       "in_authored_db": true,
       "mesh_emitters": null,
-      "object": "FX_Screen_p.FX.Screen_EnergonBloodsplatter_FX"
+      "object": "FX_RepairBeam_p.FX.Squib_RepairEnemy_FX"
      },
      {
       "class": "ParticleSystem",
       "in_authored_db": true,
       "mesh_emitters": null,
       "object": "FX_Screen_p.FlashBang_FX"
+     },
+     {
+      "class": "ParticleSystem",
+      "in_authored_db": true,
+      "mesh_emitters": null,
+      "object": "FX_Screen_p.FX.Screen_EnergonBloodsplatter_FX"
      },
      {
       "class": "ParticleSystem",
@@ -350,13 +398,7 @@
       "class": "ParticleSystem",
       "in_authored_db": true,
       "mesh_emitters": null,
-      "object": "FX_OmegaSupremeAE_p.FX.OS_Death_LRG_FX"
-     },
-     {
-      "class": "ParticleSystem",
-      "in_authored_db": true,
-      "mesh_emitters": null,
-      "object": "WEP_SentryAbility_p.FX.SentryAbility_NoUpgrade_FX"
+      "object": "FX_HomingRocket_p.FX.Squib_HomRocket_01_FX"
      },
      {
       "class": "ParticleSystem",
@@ -368,7 +410,7 @@
       "class": "ParticleSystem",
       "in_authored_db": true,
       "mesh_emitters": null,
-      "object": "FX_HomingRocket_p.FX.Squib_HomRocket_01_FX"
+      "object": "FX_OmegaSupremeAE_p.FX.OS_Death_LRG_FX"
      },
      {
       "class": "ParticleSystem",
@@ -380,43 +422,16 @@
       "class": "ParticleSystem",
       "in_authored_db": true,
       "mesh_emitters": null,
+      "object": "WEP_SentryAbility_p.FX.SentryAbility_NoUpgrade_FX"
+     },
+     {
+      "class": "ParticleSystem",
+      "in_authored_db": true,
+      "mesh_emitters": null,
       "object": "WEP_SentryAbility_p.FX.SentryAbility_UpgradeHeal_FX"
      }
     ],
     "SoundCue": [
-     {
-      "class": "SoundCue",
-      "waves": [
-       "WL_WHSH_BULLET.WHSH_BLLT_BY_PELLET_AIRY_01",
-       "WL_WHSH_BULLET.WHSH_BLLT_BY_PELLET_AIRY_02",
-       "WL_WHSH_BULLET.WHSH_BLLT_BY_PELLET_AIRY_03",
-       "WL_WHSH_BULLET.WHSH_BLLT_BY_PELLET_AIRY_04",
-       "WL_WHSH_BULLET.WHSH_BLLT_BY_PELLET_AIRY_05"
-      ],
-      "wav_on_disk": 5,
-      "silent_cue": false,
-      "object": "BL_TRANS_POWER.SENTRY_BY"
-     },
-     {
-      "class": "SoundCue",
-      "waves": [
-       "WL_GUN_PLASMA.GUN_PLASMA_CANNON_SQUIB_01",
-       "WL_GUN_PLASMA.GUN_PLASMA_CANNON_SQUIB_02",
-       "WL_GUN_PLASMA.GUN_PLASMA_CANNON_SQUIB_03"
-      ],
-      "wav_on_disk": 3,
-      "silent_cue": false,
-      "object": "BL_TRANS_POWER.SENTRY_IMPT"
-     },
-     {
-      "class": "SoundCue",
-      "waves": [
-       "WL_GUN_TURRET.GUN_TURRET_SHOOT_01"
-      ],
-      "wav_on_disk": 1,
-      "silent_cue": false,
-      "object": "BL_TRANS_POWER.SENTRY_SHOOT"
-     },
      {
       "class": "SoundCue",
       "waves": [
@@ -483,6 +498,39 @@
      {
       "class": "SoundCue",
       "waves": [
+       "WL_GUN_TURRET.GUN_TURRET_SHOOT_01"
+      ],
+      "wav_on_disk": 1,
+      "silent_cue": false,
+      "object": "BL_TRANS_POWER.SENTRY_SHOOT"
+     },
+     {
+      "class": "SoundCue",
+      "waves": [
+       "WL_WHSH_BULLET.WHSH_BLLT_BY_PELLET_AIRY_01",
+       "WL_WHSH_BULLET.WHSH_BLLT_BY_PELLET_AIRY_02",
+       "WL_WHSH_BULLET.WHSH_BLLT_BY_PELLET_AIRY_03",
+       "WL_WHSH_BULLET.WHSH_BLLT_BY_PELLET_AIRY_04",
+       "WL_WHSH_BULLET.WHSH_BLLT_BY_PELLET_AIRY_05"
+      ],
+      "wav_on_disk": 5,
+      "silent_cue": false,
+      "object": "BL_TRANS_POWER.SENTRY_BY"
+     },
+     {
+      "class": "SoundCue",
+      "waves": [
+       "WL_GUN_PLASMA.GUN_PLASMA_CANNON_SQUIB_01",
+       "WL_GUN_PLASMA.GUN_PLASMA_CANNON_SQUIB_02",
+       "WL_GUN_PLASMA.GUN_PLASMA_CANNON_SQUIB_03"
+      ],
+      "wav_on_disk": 3,
+      "silent_cue": false,
+      "object": "BL_TRANS_POWER.SENTRY_IMPT"
+     },
+     {
+      "class": "SoundCue",
+      "waves": [
        "WL_GUN_REPAIR_WPN.GUN_REPAIR_WPN_SQUIB_01",
        "WL_GUN_REPAIR_WPN.GUN_REPAIR_WPN_SQUIB_02",
        "WL_GUN_REPAIR_WPN.GUN_REPAIR_WPN_SQUIB_03",
@@ -494,28 +542,19 @@
      },
      {
       "class": "SoundCue",
-      "waves": [],
-      "wav_on_disk": 0,
-      "silent_cue": true,
-      "object": "BL_WPN_GUN_REPAIR_WPN.Overheat"
-     },
-     {
-      "class": "SoundCue",
-      "waves": [
-       "WL_GUN_REPAIR_WPN.GUN_REPAIR_WPN_FIRE_DAMAGE_LP_01"
-      ],
-      "wav_on_disk": 1,
-      "silent_cue": false,
-      "object": "BL_WPN_GUN_REPAIR_WPN.SHOOT_DMG_LP"
-     },
-     {
-      "class": "SoundCue",
       "waves": [
        "WL_GUN_REPAIR_WPN.GUN_REPAIR_WPN_FIRE_LAST_SHOT_01_LR"
       ],
       "wav_on_disk": 1,
       "silent_cue": false,
       "object": "BL_WPN_GUN_REPAIR_WPN.SHOOT_LAST_SHOT"
+     },
+     {
+      "class": "SoundCue",
+      "waves": [],
+      "wav_on_disk": 0,
+      "silent_cue": true,
+      "object": "BL_WPN_GUN_REPAIR_WPN.Overheat"
      },
      {
       "class": "SoundCue",
@@ -530,24 +569,20 @@
      {
       "class": "SoundCue",
       "waves": [
+       "WL_GUN_REPAIR_WPN.GUN_REPAIR_WPN_FIRE_DAMAGE_LP_01"
+      ],
+      "wav_on_disk": 1,
+      "silent_cue": false,
+      "object": "BL_WPN_GUN_REPAIR_WPN.SHOOT_DMG_LP"
+     },
+     {
+      "class": "SoundCue",
+      "waves": [
        "WL_GUN_REPAIR_WPN.GUN_REPAIR_WPN_FIRE_HEAL_LP_01"
       ],
       "wav_on_disk": 1,
       "silent_cue": false,
       "object": "BL_WPN_GUN_REPAIR_WPN.SHOOT_HEAL_LP"
-     },
-     {
-      "class": "SoundCue",
-      "waves": [
-       "WL_EXPLOSIONS.EXPL_GRENADE_SHRAPNEL_01",
-       "WL_EXPLOSIONS.EXPL_GRENADE_SHRAPNEL_02",
-       "WL_EXPLOSIONS.EXPL_GRENADE_SHRAPNEL_03",
-       "WL_EXPLOSIONS.EXPL_GRENADE_SHRAPNEL_04",
-       "WL_TRANS_POWER.SENTRY_DEPLOY"
-      ],
-      "wav_on_disk": 5,
-      "silent_cue": false,
-      "object": "BL_TRANS_POWER.SENTRY_EXPL"
      },
      {
       "class": "SoundCue",
@@ -561,6 +596,19 @@
       "wav_on_disk": 5,
       "silent_cue": false,
       "object": "BL_WPN_GUN_ROCKET.TRAIL_LP"
+     },
+     {
+      "class": "SoundCue",
+      "waves": [
+       "WL_EXPLOSIONS.EXPL_GRENADE_SHRAPNEL_01",
+       "WL_EXPLOSIONS.EXPL_GRENADE_SHRAPNEL_02",
+       "WL_EXPLOSIONS.EXPL_GRENADE_SHRAPNEL_03",
+       "WL_EXPLOSIONS.EXPL_GRENADE_SHRAPNEL_04",
+       "WL_TRANS_POWER.SENTRY_DEPLOY"
+      ],
+      "wav_on_disk": 5,
+      "silent_cue": false,
+      "object": "BL_TRANS_POWER.SENTRY_EXPL"
      }
     ],
     "StaticMesh": [
@@ -571,8 +619,13 @@
      },
      {
       "class": "StaticMesh",
-      "gltf": "content/FX_IonBlaster_p/StaticMesh/SideMuzzle_STAT.gltf",
-      "object": "FX_IonBlaster_p.StaticMesh.SideMuzzle_STAT"
+      "gltf": "content/FX_Mesh_p/Mesh/Bell_STAT.gltf",
+      "object": "FX_Mesh_p.Mesh.Bell_STAT"
+     },
+     {
+      "class": "StaticMesh",
+      "gltf": "content/FX_Weapons_p/StaticMesh/CrossPlanes_STATMESH.gltf",
+      "object": "FX_Weapons_p.StaticMesh.CrossPlanes_STATMESH"
      },
      {
       "class": "StaticMesh",
@@ -581,13 +634,8 @@
      },
      {
       "class": "StaticMesh",
-      "gltf": "content/FX_Mesh_p/Mesh/Bell_STAT.gltf",
-      "object": "FX_Mesh_p.Mesh.Bell_STAT"
-     },
-     {
-      "class": "StaticMesh",
-      "gltf": "content/FX_Weapons_p/StaticMesh/CrossPlanes_STATMESH.gltf",
-      "object": "FX_Weapons_p.StaticMesh.CrossPlanes_STATMESH"
+      "gltf": "content/FX_IonBlaster_p/StaticMesh/SideMuzzle_STAT.gltf",
+      "object": "FX_IonBlaster_p.StaticMesh.SideMuzzle_STAT"
      }
     ],
     "Texture2D": [
@@ -598,13 +646,13 @@
      },
      {
       "class": "Texture2D",
-      "file": "content/FX_OS_Turret_p/FX/MuzzleFlash_Turret_A_FX/ThumbnailTexture.png",
-      "object": "FX_OS_Turret_p.FX.MuzzleFlash_Turret_A_FX.ThumbnailTexture"
+      "file": "content/FX_HomingRocket_p/FX/MuzzleFlash_HomRocket_FX/ThumbnailTexture.png",
+      "object": "FX_HomingRocket_p.FX.MuzzleFlash_HomRocket_FX.ThumbnailTexture"
      },
      {
       "class": "Texture2D",
-      "file": "content/FX_AssaultRifle_p/FX/Tracer_AssaultRifle_FX/ThumbnailTexture.png",
-      "object": "FX_AssaultRifle_p.FX.Tracer_AssaultRifle_FX.ThumbnailTexture"
+      "file": "content/FX_OS_Turret_p/FX/MuzzleFlash_Turret_A_FX/ThumbnailTexture.png",
+      "object": "FX_OS_Turret_p.FX.MuzzleFlash_Turret_A_FX.ThumbnailTexture"
      },
      {
       "class": "Texture2D",
@@ -613,13 +661,8 @@
      },
      {
       "class": "Texture2D",
-      "file": "content/FX_HomingRocket_p/FX/MuzzleFlash_HomRocket_FX/ThumbnailTexture.png",
-      "object": "FX_HomingRocket_p.FX.MuzzleFlash_HomRocket_FX.ThumbnailTexture"
-     },
-     {
-      "class": "Texture2D",
-      "file": "content/FX_RepairBeam_p/FX/Squib_RepairEnemy_FX/ThumbnailTexture.png",
-      "object": "FX_RepairBeam_p.FX.Squib_RepairEnemy_FX.ThumbnailTexture"
+      "file": "content/FX_AssaultRifle_p/FX/Tracer_AssaultRifle_FX/ThumbnailTexture.png",
+      "object": "FX_AssaultRifle_p.FX.Tracer_AssaultRifle_FX.ThumbnailTexture"
      },
      {
       "class": "Texture2D",
@@ -628,8 +671,8 @@
      },
      {
       "class": "Texture2D",
-      "file": "content/FX_Screen_p/FX/Screen_EnergonBloodsplatter_FX/ThumbnailTexture.png",
-      "object": "FX_Screen_p.FX.Screen_EnergonBloodsplatter_FX.ThumbnailTexture"
+      "file": "content/FX_RepairBeam_p/FX/Squib_RepairEnemy_FX/ThumbnailTexture.png",
+      "object": "FX_RepairBeam_p.FX.Squib_RepairEnemy_FX.ThumbnailTexture"
      },
      {
       "class": "Texture2D",
@@ -638,8 +681,23 @@
      },
      {
       "class": "Texture2D",
+      "file": "content/FX_Screen_p/FX/Screen_EnergonBloodsplatter_FX/ThumbnailTexture.png",
+      "object": "FX_Screen_p.FX.Screen_EnergonBloodsplatter_FX.ThumbnailTexture"
+     },
+     {
+      "class": "Texture2D",
       "file": "content/FX_Pickups_p/FX/Pickup_FX/ThumbnailTexture.png",
       "object": "FX_Pickups_p.FX.Pickup_FX.ThumbnailTexture"
+     },
+     {
+      "class": "Texture2D",
+      "file": "content/UI_HudMarkers_p/TargetHealthBarFill_CLR.png",
+      "object": "UI_HudMarkers_p.TargetHealthBarFill_CLR"
+     },
+     {
+      "class": "Texture2D",
+      "file": "content/UI_HudMarkers_p/TargetHealthBarOutline_CLR.png",
+      "object": "UI_HudMarkers_p.TargetHealthBarOutline_CLR"
      }
     ]
    }
@@ -675,17 +733,18 @@
     ";MaxSkillLevel": "1",
     ";SkillType": "1"
    },
-   "objects_walked": 269,
+   "objects_walked": 336,
    "summary": {
     "AnimSet": 1,
     "AnimTree": 1,
-    "Material": 6,
-    "MaterialInstanceConstant": 3,
+    "Material": 7,
+    "MaterialInstanceConstant": 5,
     "ParticleSystem": 6,
     "SkeletalMesh": 1,
     "SoundCue": 12,
     "StaticMesh": 2,
-    "Texture2D": 6
+    "Texture2D": 14,
+    "TextureCube": 1
    },
    "missing_exports": [],
    "assets": {
@@ -712,7 +771,17 @@
      {
       "class": "Material",
       "file": null,
-      "object": "FX_Materials_p.Materials.ScreenSplatter_01_MAT"
+      "object": "WEP_Shared_p.WEP_PhongMain_MAT"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Screen_p.Materials.Static_MAT"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Screen_p.Materials.FlashBang_Phrases_MAT"
      },
      {
       "class": "Material",
@@ -727,15 +796,15 @@
      {
       "class": "Material",
       "file": null,
-      "object": "FX_Screen_p.Materials.FlashBang_Phrases_MAT"
-     },
-     {
-      "class": "Material",
-      "file": null,
-      "object": "FX_Screen_p.Materials.Static_MAT"
+      "object": "FX_Materials_p.Materials.ScreenSplatter_01_MAT"
      }
     ],
     "MaterialInstanceConstant": [
+     {
+      "class": "MaterialInstanceConstant",
+      "file": "content/PROP_NEU_Pickups_p/AmmoPickup/PROP_NEU_AmmoPickup_MATINST.mat",
+      "object": "PROP_NEU_Pickups_p.AmmoPickup.PROP_NEU_AmmoPickup_MATINST"
+     },
      {
       "class": "MaterialInstanceConstant",
       "file": "content/WEP_TurretIonGun_p/WEP_TurretIonGun_Overshield_MATINST.mat",
@@ -750,6 +819,11 @@
       "class": "MaterialInstanceConstant",
       "file": "content/FX_Materials_p/MatInst/Drip_MAT_INST.mat",
       "object": "FX_Materials_p.MatInst.Drip_MAT_INST"
+     },
+     {
+      "class": "MaterialInstanceConstant",
+      "file": "content/WEP_TurretIonGun_p/WEP_TurretIonGun_MATINST.mat",
+      "object": "WEP_TurretIonGun_p.WEP_TurretIonGun_MATINST"
      }
     ],
     "ParticleSystem": [
@@ -757,13 +831,13 @@
       "class": "ParticleSystem",
       "in_authored_db": true,
       "mesh_emitters": null,
-      "object": "FX_Screen_p.FX.Screen_EnergonBloodsplatter_FX"
+      "object": "FX_Screen_p.FlashBang_FX"
      },
      {
       "class": "ParticleSystem",
       "in_authored_db": true,
       "mesh_emitters": null,
-      "object": "FX_Screen_p.FlashBang_FX"
+      "object": "FX_Screen_p.FX.Screen_EnergonBloodsplatter_FX"
      },
      {
       "class": "ParticleSystem",
@@ -827,6 +901,13 @@
      },
      {
       "class": "SoundCue",
+      "waves": [],
+      "wav_on_disk": 0,
+      "silent_cue": true,
+      "object": "BL_WPN_TURRET_HVY_ION_BLASTER.PICK_UP"
+     },
+     {
+      "class": "SoundCue",
       "waves": [
        "WL_FS_BOT.MTL_FOLY_FS_BOT_MVMNT_01",
        "WL_FS_BOT.MTL_FOLY_FS_BOT_MVMNT_02",
@@ -852,18 +933,6 @@
      {
       "class": "SoundCue",
       "waves": [
-       "WL_ELEC.ELEC_SPARKBLAST_FLANGE_01",
-       "WL_ELEC.ELEC_SPARKBLAST_FLANGE_02",
-       "WL_ELEC.ELEC_SPARKBLAST_FLANGE_03",
-       "WL_ELEC.ELEC_SPARKBLAST_FLANGE_04"
-      ],
-      "wav_on_disk": 4,
-      "silent_cue": false,
-      "object": "BL_WPN_TURRET_HVY_ION_BLASTER.IMPT_WORLD"
-     },
-     {
-      "class": "SoundCue",
-      "waves": [
        "WL_WHSH_BULLET.WHSH_BULLET_BY_LASER_ION_01",
        "WL_WHSH_BULLET.WHSH_BULLET_BY_LASER_ION_02",
        "WL_WHSH_BULLET.WHSH_BULLET_BY_LASER_ION_03",
@@ -875,19 +944,15 @@
      },
      {
       "class": "SoundCue",
-      "waves": [],
-      "wav_on_disk": 0,
-      "silent_cue": true,
-      "object": "BL_WPN_TURRET_HVY_ION_BLASTER.PICK_UP"
-     },
-     {
-      "class": "SoundCue",
       "waves": [
-       "WL_GUN_ION_BLASTER_HVY.GUN_ION_BLASTER_HVY_SHOOT_TAIL"
+       "WL_ELEC.ELEC_SPARKBLAST_FLANGE_01",
+       "WL_ELEC.ELEC_SPARKBLAST_FLANGE_02",
+       "WL_ELEC.ELEC_SPARKBLAST_FLANGE_03",
+       "WL_ELEC.ELEC_SPARKBLAST_FLANGE_04"
       ],
-      "wav_on_disk": 1,
+      "wav_on_disk": 4,
       "silent_cue": false,
-      "object": "BL_WPN_TURRET_HVY_ION_BLASTER.SHOOT_TAIL"
+      "object": "BL_WPN_TURRET_HVY_ION_BLASTER.IMPT_WORLD"
      },
      {
       "class": "SoundCue",
@@ -903,6 +968,25 @@
      {
       "class": "SoundCue",
       "waves": [
+       "WL_GUN_FOLEY.RELOAD_BOLT_07",
+       "WL_GUN_PLASMA.GUN_DRYFIRE_GENERICPOWERDOWN"
+      ],
+      "wav_on_disk": 2,
+      "silent_cue": false,
+      "object": "BL_WPN_FOLEY.SHOOT_DRY_FIRE_PLASMA_01"
+     },
+     {
+      "class": "SoundCue",
+      "waves": [
+       "WL_GUN_ION_BLASTER_HVY.GUN_ION_BLASTER_HVY_SHOOT_TAIL"
+      ],
+      "wav_on_disk": 1,
+      "silent_cue": false,
+      "object": "BL_WPN_TURRET_HVY_ION_BLASTER.SHOOT_TAIL"
+     },
+     {
+      "class": "SoundCue",
+      "waves": [
        "WL_FS_BOT.MTL_FOLY_FS_BOT_MVMNT_01",
        "WL_FS_BOT.MTL_FOLY_FS_BOT_MVMNT_02",
        "WL_FS_BOT.MTL_FOLY_FS_BOT_MVMNT_03",
@@ -913,16 +997,6 @@
       "wav_on_disk": 6,
       "silent_cue": false,
       "object": "BL_WPN_TURRET_HVY_ION_BLASTER.FINE_AIM_START"
-     },
-     {
-      "class": "SoundCue",
-      "waves": [
-       "WL_GUN_FOLEY.RELOAD_BOLT_07",
-       "WL_GUN_PLASMA.GUN_DRYFIRE_GENERICPOWERDOWN"
-      ],
-      "wav_on_disk": 2,
-      "silent_cue": false,
-      "object": "BL_WPN_FOLEY.SHOOT_DRY_FIRE_PLASMA_01"
      },
      {
       "class": "SoundCue",
@@ -966,8 +1040,18 @@
     "Texture2D": [
      {
       "class": "Texture2D",
-      "file": "content/FX_Screen_p/FX/Screen_EnergonBloodsplatter_FX/ThumbnailTexture.png",
-      "object": "FX_Screen_p.FX.Screen_EnergonBloodsplatter_FX.ThumbnailTexture"
+      "file": "content/PROP_NEU_Pickups_p/AmmoPickup/PROP_NEU_AmmoPickup_MASK.png",
+      "object": "PROP_NEU_Pickups_p.AmmoPickup.PROP_NEU_AmmoPickup_MASK"
+     },
+     {
+      "class": "Texture2D",
+      "file": "content/PROP_NEU_Pickups_p/AmmoPickup/PROP_NEU_AmmoPickup_NORM.png",
+      "object": "PROP_NEU_Pickups_p.AmmoPickup.PROP_NEU_AmmoPickup_NORM"
+     },
+     {
+      "class": "Texture2D",
+      "file": "content/PROP_NEU_Pickups_p/AmmoPickup/PROP_NEU_AmmoPickup_CLR.png",
+      "object": "PROP_NEU_Pickups_p.AmmoPickup.PROP_NEU_AmmoPickup_CLR"
      },
      {
       "class": "Texture2D",
@@ -976,8 +1060,23 @@
      },
      {
       "class": "Texture2D",
+      "file": "content/FX_Screen_p/FX/Screen_EnergonBloodsplatter_FX/ThumbnailTexture.png",
+      "object": "FX_Screen_p.FX.Screen_EnergonBloodsplatter_FX.ThumbnailTexture"
+     },
+     {
+      "class": "Texture2D",
       "file": "content/FX_Pickups_p/FX/Pickup_FX/ThumbnailTexture.png",
       "object": "FX_Pickups_p.FX.Pickup_FX.ThumbnailTexture"
+     },
+     {
+      "class": "Texture2D",
+      "file": "content/FX_Textures_p/Textures/Noise_CLR.png",
+      "object": "FX_Textures_p.Textures.Noise_CLR"
+     },
+     {
+      "class": "Texture2D",
+      "file": "content/WEP_Shared_p/PickUpRing_MASK.png",
+      "object": "WEP_Shared_p.PickUpRing_MASK"
      },
      {
       "class": "Texture2D",
@@ -993,6 +1092,28 @@
       "class": "Texture2D",
       "file": "content/FX_TurretIonBlaster_p/FX/MuzzleFlash_TurretIon_FX/ThumbnailTexture.png",
       "object": "FX_TurretIonBlaster_p.FX.MuzzleFlash_TurretIon_FX.ThumbnailTexture"
+     },
+     {
+      "class": "Texture2D",
+      "file": "content/WEP_TurretIonGun_p/WEP_TurretIonGun_NORM.png",
+      "object": "WEP_TurretIonGun_p.WEP_TurretIonGun_NORM"
+     },
+     {
+      "class": "Texture2D",
+      "file": "content/WEP_TurretIonGun_p/WEP_TurretIonGun_CLR.png",
+      "object": "WEP_TurretIonGun_p.WEP_TurretIonGun_CLR"
+     },
+     {
+      "class": "Texture2D",
+      "file": "content/WEP_TurretIonGun_p/WEP_TurretIonGun_MASK.png",
+      "object": "WEP_TurretIonGun_p.WEP_TurretIonGun_MASK"
+     }
+    ],
+    "TextureCube": [
+     {
+      "class": "TextureCube",
+      "file": null,
+      "object": "ENV_AllShader_p.CubeMaps.CHR_Metals_CUBEMAP_Metals_A_Center"
      }
     ]
    }
@@ -1025,13 +1146,30 @@
     "SpeedMultiplier": "0.75",
     "FloatModifier": "0.75"
    },
-   "objects_walked": 49,
+   "objects_walked": 61,
    "summary": {
+    "Material": 1,
+    "MaterialInstanceConstant": 1,
     "SoundCue": 3,
-    "StaticMesh": 1
+    "StaticMesh": 1,
+    "Texture2D": 3
    },
    "missing_exports": [],
    "assets": {
+    "Material": [
+     {
+      "class": "Material",
+      "file": null,
+      "object": "WEP_Shared_p.WEP_PhongMain_MAT"
+     }
+    ],
+    "MaterialInstanceConstant": [
+     {
+      "class": "MaterialInstanceConstant",
+      "file": "content/FX_RollerMine_p/Material/FX_RollerMine_MATINST.mat",
+      "object": "FX_RollerMine_p.Material.FX_RollerMine_MATINST"
+     }
+    ],
     "SoundCue": [
      {
       "class": "SoundCue",
@@ -1070,6 +1208,23 @@
       "gltf": "content/FX_RollerMine_p/Mesh/RollerMine_STAT.gltf",
       "object": "FX_RollerMine_p.Mesh.RollerMine_STAT"
      }
+    ],
+    "Texture2D": [
+     {
+      "class": "Texture2D",
+      "file": "content/FX_RollerMine_p/RollerMine_MASK.png",
+      "object": "FX_RollerMine_p.RollerMine_MASK"
+     },
+     {
+      "class": "Texture2D",
+      "file": "content/FX_RollerMine_p/RollerMine_CLR.png",
+      "object": "FX_RollerMine_p.RollerMine_CLR"
+     },
+     {
+      "class": "Texture2D",
+      "file": "content/FX_RollerMine_p/RollerMine_NORM.png",
+      "object": "FX_RollerMine_p.RollerMine_NORM"
+     }
     ]
    }
   },
@@ -1105,14 +1260,14 @@
     ";BuffTime": "-1",
     ";FloatModifier": "1.5"
    },
-   "objects_walked": 201,
+   "objects_walked": 581,
    "summary": {
-    "Material": 11,
-    "MaterialInstanceConstant": 2,
+    "Material": 13,
+    "MaterialInstanceConstant": 3,
     "ParticleSystem": 2,
     "SoundCue": 2,
     "StaticMesh": 1,
-    "Texture2D": 2
+    "Texture2D": 17
    },
    "missing_exports": [],
    "assets": {
@@ -1120,7 +1275,7 @@
      {
       "class": "Material",
       "file": null,
-      "object": "FX_Materials_p.Materials.Ring_Distort_Add_MAT"
+      "object": "WEP_Rocket_p.WEP_Projectile_MAT"
      },
      {
       "class": "Material",
@@ -1130,7 +1285,7 @@
      {
       "class": "Material",
       "file": null,
-      "object": "FX_Materials_p.Materials.Metal_Debris_Mat"
+      "object": "FX_Materials_p.Materials.Embers_Anim_MAT"
      },
      {
       "class": "Material",
@@ -1140,12 +1295,12 @@
      {
       "class": "Material",
       "file": null,
-      "object": "FX_Materials_p.Materials.Embers_Anim_MAT"
+      "object": "FX_Materials_p.Materials.Metal_Debris_Mat"
      },
      {
       "class": "Material",
       "file": null,
-      "object": "FX_Materials_p.Materials.Basic_Particle_Add_MAT"
+      "object": "FX_Materials_p.Materials.Ring_Distort_Add_MAT"
      },
      {
       "class": "Material",
@@ -1155,12 +1310,17 @@
      {
       "class": "Material",
       "file": null,
-      "object": "FX_Materials_p.Materials.Glow_Mod_MAT"
+      "object": "FX_Materials_p.Materials.Explosion_Anim_02_MAT"
      },
      {
       "class": "Material",
       "file": null,
-      "object": "FX_Materials_p.Materials.Explosion_Anim_02_MAT"
+      "object": "FX_Materials_p.Materials.Basic_Particle_Add_MAT"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Materials_p.Materials.Glow_Mod_MAT"
      },
      {
       "class": "Material",
@@ -1171,9 +1331,19 @@
       "class": "Material",
       "file": null,
       "object": "FX_Materials_p.Materials.Lightning_Anim_03_MAT"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Materials_p.Materials.Sparks_02_MAT"
      }
     ],
     "MaterialInstanceConstant": [
+     {
+      "class": "MaterialInstanceConstant",
+      "file": null,
+      "object": "WEP_Rocket_p.WEP_OmegaRocket_MATINST"
+     },
      {
       "class": "MaterialInstanceConstant",
       "file": null,
@@ -1240,6 +1410,81 @@
       "class": "Texture2D",
       "file": "content/FX_FusionCannon_p/FX/Trail_FusionCannon_FX/ThumbnailTexture.png",
       "object": "FX_FusionCannon_p.FX.Trail_FusionCannon_FX.ThumbnailTexture"
+     },
+     {
+      "class": "Texture2D",
+      "file": "content/WEP_Rocket_p/WEP_OmegaRocket_TEXSET/WEP_StandardRocket_TEXSET_Masks_NormY.png",
+      "object": "WEP_Rocket_p.WEP_OmegaRocket_TEXSET.WEP_StandardRocket_TEXSET_Masks_NormY"
+     },
+     {
+      "class": "Texture2D",
+      "file": "content/WEP_Rocket_p/WEP_OmegaRocket_TEXSET/WEP_StandardRocket_TEXSET_Color_NormX.png",
+      "object": "WEP_Rocket_p.WEP_OmegaRocket_TEXSET.WEP_StandardRocket_TEXSET_Color_NormX"
+     },
+     {
+      "class": "Texture2D",
+      "file": "content/FX_Textures_p/Textures/Sparks_01_CLR.png",
+      "object": "FX_Textures_p.Textures.Sparks_01_CLR"
+     },
+     {
+      "class": "Texture2D",
+      "file": "content/FX_Textures_p/Textures/ember02a_CLR.png",
+      "object": "FX_Textures_p.Textures.ember02a_CLR"
+     },
+     {
+      "class": "Texture2D",
+      "file": "content/FX_Textures_p/Textures/SmokeTile_CLR.png",
+      "object": "FX_Textures_p.Textures.SmokeTile_CLR"
+     },
+     {
+      "class": "Texture2D",
+      "file": "content/FX_Textures_p/Textures/SmokeBall_CLR.png",
+      "object": "FX_Textures_p.Textures.SmokeBall_CLR"
+     },
+     {
+      "class": "Texture2D",
+      "file": "content/FX_Textures_p/Normals/MetalScrap_Norm.png",
+      "object": "FX_Textures_p.Normals.MetalScrap_Norm"
+     },
+     {
+      "class": "Texture2D",
+      "file": "content/FX_Textures_p/Textures/DiffClouds_CLR.png",
+      "object": "FX_Textures_p.Textures.DiffClouds_CLR"
+     },
+     {
+      "class": "Texture2D",
+      "file": "content/FX_Textures_p/Normals/Ring_NORM.png",
+      "object": "FX_Textures_p.Normals.Ring_NORM"
+     },
+     {
+      "class": "Texture2D",
+      "file": "content/FX_Textures_p/Textures/Ring_CLR.png",
+      "object": "FX_Textures_p.Textures.Ring_CLR"
+     },
+     {
+      "class": "Texture2D",
+      "file": "content/FX_Textures_p/Textures/Explosion_CLR.png",
+      "object": "FX_Textures_p.Textures.Explosion_CLR"
+     },
+     {
+      "class": "Texture2D",
+      "file": "content/FX_Textures_p/Textures/Explosion_Anim6_CLR.png",
+      "object": "FX_Textures_p.Textures.Explosion_Anim6_CLR"
+     },
+     {
+      "class": "Texture2D",
+      "file": "content/FX_Textures_p/Textures/SphereGlow_01_CLR.png",
+      "object": "FX_Textures_p.Textures.SphereGlow_01_CLR"
+     },
+     {
+      "class": "Texture2D",
+      "file": "content/FX_Textures_p/Textures/Spot_CLR.png",
+      "object": "FX_Textures_p.Textures.Spot_CLR"
+     },
+     {
+      "class": "Texture2D",
+      "file": "content/FX_Textures_p/Textures/Noise_CLR.png",
+      "object": "FX_Textures_p.Textures.Noise_CLR"
      }
     ]
    }
@@ -1255,14 +1500,14 @@
     "TransGame.Default__TnGuidedMissileData"
    ],
    "ini": null,
-   "objects_walked": 210,
+   "objects_walked": 590,
    "summary": {
-    "Material": 11,
-    "MaterialInstanceConstant": 2,
+    "Material": 13,
+    "MaterialInstanceConstant": 3,
     "ParticleSystem": 2,
     "SoundCue": 2,
     "StaticMesh": 1,
-    "Texture2D": 2
+    "Texture2D": 17
    },
    "missing_exports": [],
    "assets": {
@@ -1270,7 +1515,7 @@
      {
       "class": "Material",
       "file": null,
-      "object": "FX_Materials_p.Materials.Ring_Distort_Add_MAT"
+      "object": "WEP_Rocket_p.WEP_Projectile_MAT"
      },
      {
       "class": "Material",
@@ -1280,7 +1525,7 @@
      {
       "class": "Material",
       "file": null,
-      "object": "FX_Materials_p.Materials.Metal_Debris_Mat"
+      "object": "FX_Materials_p.Materials.Embers_Anim_MAT"
      },
      {
       "class": "Material",
@@ -1290,12 +1535,12 @@
      {
       "class": "Material",
       "file": null,
-      "object": "FX_Materials_p.Materials.Embers_Anim_MAT"
+      "object": "FX_Materials_p.Materials.Metal_Debris_Mat"
      },
      {
       "class": "Material",
       "file": null,
-      "object": "FX_Materials_p.Materials.Basic_Particle_Add_MAT"
+      "object": "FX_Materials_p.Materials.Ring_Distort_Add_MAT"
      },
      {
       "class": "Material",
@@ -1305,12 +1550,17 @@
      {
       "class": "Material",
       "file": null,
-      "object": "FX_Materials_p.Materials.Glow_Mod_MAT"
+      "object": "FX_Materials_p.Materials.Explosion_Anim_02_MAT"
      },
      {
       "class": "Material",
       "file": null,
-      "object": "FX_Materials_p.Materials.Explosion_Anim_02_MAT"
+      "object": "FX_Materials_p.Materials.Basic_Particle_Add_MAT"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Materials_p.Materials.Glow_Mod_MAT"
      },
      {
       "class": "Material",
@@ -1321,9 +1571,19 @@
       "class": "Material",
       "file": null,
       "object": "FX_Materials_p.Materials.Lightning_Anim_03_MAT"
+     },
+     {
+      "class": "Material",
+      "file": null,
+      "object": "FX_Materials_p.Materials.Sparks_02_MAT"
      }
     ],
     "MaterialInstanceConstant": [
+     {
+      "class": "MaterialInstanceConstant",
+      "file": null,
+      "object": "WEP_Rocket_p.WEP_OmegaRocket_MATINST"
+     },
      {
       "class": "MaterialInstanceConstant",
       "file": null,
@@ -1390,6 +1650,81 @@
       "class": "Texture2D",
       "file": "content/FX_FusionCannon_p/FX/Trail_FusionCannon_FX/ThumbnailTexture.png",
       "object": "FX_FusionCannon_p.FX.Trail_FusionCannon_FX.ThumbnailTexture"
+     },
+     {
+      "class": "Texture2D",
+      "file": "content/WEP_Rocket_p/WEP_OmegaRocket_TEXSET/WEP_StandardRocket_TEXSET_Masks_NormY.png",
+      "object": "WEP_Rocket_p.WEP_OmegaRocket_TEXSET.WEP_StandardRocket_TEXSET_Masks_NormY"
+     },
+     {
+      "class": "Texture2D",
+      "file": "content/WEP_Rocket_p/WEP_OmegaRocket_TEXSET/WEP_StandardRocket_TEXSET_Color_NormX.png",
+      "object": "WEP_Rocket_p.WEP_OmegaRocket_TEXSET.WEP_StandardRocket_TEXSET_Color_NormX"
+     },
+     {
+      "class": "Texture2D",
+      "file": "content/FX_Textures_p/Textures/Sparks_01_CLR.png",
+      "object": "FX_Textures_p.Textures.Sparks_01_CLR"
+     },
+     {
+      "class": "Texture2D",
+      "file": "content/FX_Textures_p/Textures/ember02a_CLR.png",
+      "object": "FX_Textures_p.Textures.ember02a_CLR"
+     },
+     {
+      "class": "Texture2D",
+      "file": "content/FX_Textures_p/Textures/SmokeTile_CLR.png",
+      "object": "FX_Textures_p.Textures.SmokeTile_CLR"
+     },
+     {
+      "class": "Texture2D",
+      "file": "content/FX_Textures_p/Textures/SmokeBall_CLR.png",
+      "object": "FX_Textures_p.Textures.SmokeBall_CLR"
+     },
+     {
+      "class": "Texture2D",
+      "file": "content/FX_Textures_p/Normals/MetalScrap_Norm.png",
+      "object": "FX_Textures_p.Normals.MetalScrap_Norm"
+     },
+     {
+      "class": "Texture2D",
+      "file": "content/FX_Textures_p/Textures/DiffClouds_CLR.png",
+      "object": "FX_Textures_p.Textures.DiffClouds_CLR"
+     },
+     {
+      "class": "Texture2D",
+      "file": "content/FX_Textures_p/Normals/Ring_NORM.png",
+      "object": "FX_Textures_p.Normals.Ring_NORM"
+     },
+     {
+      "class": "Texture2D",
+      "file": "content/FX_Textures_p/Textures/Ring_CLR.png",
+      "object": "FX_Textures_p.Textures.Ring_CLR"
+     },
+     {
+      "class": "Texture2D",
+      "file": "content/FX_Textures_p/Textures/Explosion_CLR.png",
+      "object": "FX_Textures_p.Textures.Explosion_CLR"
+     },
+     {
+      "class": "Texture2D",
+      "file": "content/FX_Textures_p/Textures/Explosion_Anim6_CLR.png",
+      "object": "FX_Textures_p.Textures.Explosion_Anim6_CLR"
+     },
+     {
+      "class": "Texture2D",
+      "file": "content/FX_Textures_p/Textures/SphereGlow_01_CLR.png",
+      "object": "FX_Textures_p.Textures.SphereGlow_01_CLR"
+     },
+     {
+      "class": "Texture2D",
+      "file": "content/FX_Textures_p/Textures/Spot_CLR.png",
+      "object": "FX_Textures_p.Textures.Spot_CLR"
+     },
+     {
+      "class": "Texture2D",
+      "file": "content/FX_Textures_p/Textures/Noise_CLR.png",
+      "object": "FX_Textures_p.Textures.Noise_CLR"
      }
     ]
    }

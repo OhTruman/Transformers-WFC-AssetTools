@@ -82,7 +82,12 @@ def closure(root):
         if not row: continue
         if row['class'] in LEAF:
             leaves[o] = OD([('class', row['class'])] + list(leaf_status(o, row['class']).items()))
-            if row['class'] != 'ParticleSystem': continue
+            if row['class'] in ('StaticMesh', 'SkeletalMesh'):   # mesh section materials (asset index), walked as further nodes
+                for mm in (assets().get(o.lower()) or {}).get('materials') or []:
+                    mr = mm.get('ref') if isinstance(mm, dict) else mm
+                    if mr and mr not in seen and A.get(mr): seen[mr] = d + 1; dq.append(mr)
+                continue
+            if row['class'] not in ('ParticleSystem', 'Material', 'MaterialInstanceConstant'): continue
         if d >= MAX_DEPTH: continue
         nxt = set(); refs_in(A.values(o) or {}, nxt)
         for (s,) in A.con().execute('SELECT opath FROM objects WHERE outer_path = ?', (o,)).fetchall(): nxt.add(s)
@@ -122,7 +127,7 @@ def main():
         for o, v in leaves.items(): by[v['class']].append(dict(v, object=o))
         missing = [o for o, v in leaves.items() if (v['class'] in ('StaticMesh', 'SkeletalMesh') and not v.get('gltf')) or
                    (v['class'] == 'SoundCue' and v.get('waves') and not v.get('wav_on_disk')) or
-                   (v['class'].startswith('Texture') and not v.get('file'))]
+                   (v['class'].startswith('Texture') and v['class'] != 'TextureCube' and not v.get('file'))]   # cubemaps: Rendering decodes the 6 faces
         out[n] = OD([('roots', rs), ('script_spawned_roots (name-matched, PROVISIONAL)', extra.get(n)), ('ini', ab.get(n)), ('objects_walked', objs),
                      ('summary', {c: len(v) for c, v in sorted(by.items())}), ('missing_exports', missing),
                      ('assets', OD(sorted(by.items())))])
