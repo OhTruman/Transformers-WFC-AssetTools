@@ -192,6 +192,25 @@ def donor_clips(cid, form, own_sel, donor):
         if w2: out.append((so, g, w2))
     return out, d.get('source_gltf')
 
+# PC ADAPTATION (user decision 2026-10-06, Integration): Laserbeak is a non-humanoid flyer (robot and vehicle = the same mesh
+# VH_Laserbeak_SKEL, 0 bones shared with the MP rig) -> playable Jet-family flyer that never transforms, driven only by its own
+# 19 original clips. State -> clip mapping below; weapons fire from its authored sockets (no fire / melee / reload anims exist).
+FLYER_STATE_MAP = {'Minion3': OrderedDict([
+    ('family', 'Jet (flyer; never transforms - robot and vehicle forms are the same body)'),
+    ('idle', 'NAV_Idle'), ('idle_hover', 'Nav_Hover_VEH'), ('hover_pose', 'Nav_Hover_Pose_VEH'),
+    ('move_forward', 'Nav_Hover_F_VEH'), ('move_back', 'Nav_Hover_B_VEH'), ('move_left', 'Nav_Hover_L_VEH'),
+    ('move_right', 'Nav_Hover_R_VEH'), ('ascend', 'Nav_Hover_Ascent_VEH'), ('hover_additive', 'ADD_Nav_Hover_VEH'),
+    ('boost', 'Nav_Boost_VEH'), ('boost_left', 'Nav_Boost_L_VEH'), ('boost_right', 'Nav_Boost_R_VEH'),
+    ('hover_to_boost', 'Nav_Hover_to_Boost_VEH'), ('boost_to_hover', 'Nav_Boost_to_Hover_VEH'), ('land', 'Nav_Land_VEH'),
+    ('death', 'Revive_Fall'), ('downed_idle', 'Revive_Idle'), ('revive', 'Revive_Getup'), ('spawn_in', 'Transform_ToRobot'),
+    ('fire', None), ('melee', None), ('reload', None), ('transform', None),
+    ('weapon_sockets', {'primary': 'WeaponSocket_Primary', 'primary_alt': 'WeaponSocket_Primary2', 'secondary': 'WeaponSocket_Secondary',
+                        'heavy': 'WeaponSocket_Heavy', 'melee': 'WeaponSocket_Melee'}),
+    ('notes', 'fire / melee / reload / transform have no authored clip: fire from the sockets with no body animation (hover clips '
+              'keep playing), melee and reload are instant, transform is a no-op (both forms identical). Death = Revive_Fall then '
+              'ragdoll / hide. All clips are Laserbeak originals (Laserbeak_VEH_ANIM); only the state assignment is a PC ADAPTATION.'),
+    ('status', 'PC ADAPTATION (user decision 2026-10-06)')])}
+
 def runtime_colors_common():
     ap = AU.values('TransGame.Default__TnCharacterApplier')
     return {'applier_parameter_bindings (TransGame.Default__TnCharacterApplier, CONFIRMED)': {
@@ -294,6 +313,7 @@ def export(cid, ch, preset, A, common):
         ('ui', ch.get('ui')), ('audio', ch.get('audio')),
         ('energon_default', energon_default(res.get('robot'))),
         ('notify_only_clips (ability clips without glb track)', notify_only_clips(ch.get('abilities'))),
+        ('flyer_state_map (PC ADAPTATION)', FLYER_STATE_MAP.get(cid)),
         ('team_colour', common),
         ('vehicle_fx (VEHDEF particle structs; sockets on vehicle.glb)', vehicle_fx((ch.get('vehicle') or {}).get('definition'))
                                                                           if (ch.get('vehicle') or {}).get('definition') else None),
