@@ -55,6 +55,10 @@ def fx_status(t):
             em.append({'emitter': e.get('name'), 'type_data': td.get('class') or 'Sprite (no TypeData)',
                        'type_data_props': td.get('props'), 'material': ((L.get('RequiredModule') or {}).get('props') or {}).get('Material'),
                        'undecoded_modules (PMI_Unknown)': sum(1 for m in L.get('compiled_modules') or [] if m.get('module') == 'PMI_Unknown'),
+                       'resolved_modules (PMI_Unknown slots named by object class)': [
+                           {'slot': m['index'], 'module': m['module'], 'object': m.get('module_object'),
+                            'properties': m.get('module_properties (authored, defaults filled)')}
+                           for m in L.get('compiled_modules') or [] if m.get('module_enum')] or None,
                        'assignment_complete': L.get('assignment_complete')})
         bm = [{'object': o_, 'class': c_, 'values': AU.values(o_)} for (o_, c_) in AU.con().execute(
             "SELECT opath, class FROM objects WHERE opath LIKE ? AND class LIKE 'ParticleModuleBeam%'", (t + '.%',)).fetchall()]
