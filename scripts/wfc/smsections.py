@@ -51,7 +51,7 @@ def sections(pkg_name, mesh_opath):
     for o in range(4, len(d) - 44):
         n = struct.unpack_from('>i', d, o - 4)[0]
         if not 1 <= n <= 64: continue
-        el = _elem(d, o)
+        el = _elem(d, o, allow_empty=True)   # section 0 can be empty (null-material dummy: Bridge_1536, Corruptor_Body)
         if not el or el['index'] != 0 or el['first_index'] != 0 or not _is_mat(p, el['material_index_ref']): continue
         out, q, tri = [el], o + el['size'], el['num_triangles']
         ok = True
@@ -63,7 +63,7 @@ def sections(pkg_name, mesh_opath):
                (x['num_triangles'] == 0 and x['first_index'] not in (0, 3 * tri)):
                 ok = False; break
             out.append(x); q += x['size']; tri += x['num_triangles']
-        if not ok: continue
+        if not ok or tri == 0: continue         # an all-empty run is not a real element array
         for x in out:
             v = x.pop('material_index_ref'); x.pop('size')
             x['material'] = (p.object_path(v) if v > 0 else p.full_path(v)) if v else None
