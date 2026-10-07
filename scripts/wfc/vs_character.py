@@ -91,6 +91,8 @@ def bake_customization(mat, tag):
     p = os.path.join(OUT, 'textures', '%s_specular.png' % tag); Image.fromarray((spec * 255).astype('u1')).save(p); files['specular'] = p
     return files
 
+RT_TRANSLATE_BONES = ('C_Root_Reference_XR', 'C_Spine00_Hips_XB')
+
 def build_form(form, mesh_op, anim_sets, A):
     a = A[mesh_op.lower()]
     gl = next(o for o in a['extracted'] if o.endswith('.gltf'))
@@ -120,7 +122,9 @@ def build_form(form, mesh_op, anim_sets, A):
     # animations: copy curated clips, retarget channels by bone name onto this mesh's nodes
     node_of = {n.get('name'): i for i, n in enumerate(glb.j['nodes'])}
     clips = []
-    for set_op, set_gltf, wanted in anim_sets:
+    for entry in anim_sets:
+        set_op, set_gltf, wanted = entry[:3]
+        rt = entry[3] if len(entry) > 3 else None    # PC ADAPTATION retarget: {'donor': id, 'hip_ratio': r}
         ag, ab = load_gltf(os.path.join(ROOT, set_gltf))
         anode = [n['name'] for n in ag['nodes']]
         for an in ag.get('animations', []):
@@ -128,23 +132,28 @@ def build_form(form, mesh_op, anim_sets, A):
             if not cat: continue
             samplers, channels, missing = [], [], 0
             for ch in an['channels']:
-                tgt = node_of.get(anode[ch['target']['node']])
+                bone = anode[ch['target']['node']]
+                tgt = node_of.get(bone)
                 if tgt is None: missing += 1; continue
+                if rt and ch['target']['path'] == 'translation' and bone not in RT_TRANSLATE_BONES:
+                    continue    # retarget: bone lengths stay this mesh's bind pose (rotation-only transfer; same rig, bind rotations equal)
                 s = an['samplers'][ch['sampler']]
                 inp = accessor(ag, ab, s['input']).astype('f4')
                 out = accessor(ag, ab, s['output']).astype('f4')
+                if rt and ch['target']['path'] == 'translation': out = out * rt['hip_ratio']   # root / hips motion scaled to this body
                 samplers.append({'input': glb.acc(inp, 'SCALAR', True), 'output': glb.acc(out, 'VEC3' if out.shape[1] == 3 else 'VEC4'),
                                  'interpolation': 'LINEAR'})
                 channels.append({'sampler': len(samplers) - 1, 'target': {'node': tgt, 'path': ch['target']['path']}})
             if not channels: continue
             dur = float(max(glb.j['accessors'][s['input']]['max'][0] for s in samplers))
             name = an['name'] if not any(c['name'] == an['name'] for c in clips) else '%s@%s' % (an['name'], set_op.split('.')[-1])
-            glb.j['animations'].append({'name': name, 'samplers': samplers, 'channels': channels,
-                                        'extras': {'category': cat, 'source_animset': set_op, 'additive': an['name'].upper().startswith('ADD'),
-                                                   'unmapped_channels': missing}})
+            ex = {'category': cat, 'source_animset': set_op, 'additive': an['name'].upper().startswith('ADD'), 'unmapped_channels': missing}
+            if rt: ex['retargeted_from'] = rt['donor']; ex['pc_adaptation'] = True
+            glb.j['animations'].append({'name': name, 'samplers': samplers, 'channels': channels, 'extras': ex})
             clips.append({'name': name, 'sequence': an['name'], 'category': cat, 'source_animset': set_op,
                           'source_gltf': set_gltf, 'duration_s': round(dur, 4), 'channels': len(channels),
-                          'unmapped_channels': missing, 'additive': an['name'].upper().startswith('ADD')})
+                          'unmapped_channels': missing, 'additive': an['name'].upper().startswith('ADD'),
+                          'provenance': ('retargeted_from:%s (PC ADAPTATION)' % rt['donor']) if rt else 'original'})
     glb.j.pop('buffers', None)
     out = os.path.join(OUT, form + '.glb')
     glb.write(out)

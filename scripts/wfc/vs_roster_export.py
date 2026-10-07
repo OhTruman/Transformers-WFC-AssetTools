@@ -13,7 +13,8 @@ Clip selection: every clip of the chassis-specific sets (name contains the iconi
 the shared compatible sets. Every glb / texture / clip path written is checked to exist (character.json validation).
 Memory: one chassis at a time; run under run_bounded.py.
 """
-import json, os, re, sys, time
+import json, os
+import numpy as np, re, sys, time
 from collections import Counter, OrderedDict
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -153,6 +154,44 @@ def notify_only_clips(abilities):
                                          '(MP_ESC_BrokenHope / Remnant), never a versus map: playing them in versus is a PC ADAPTATION; '
                                          'the clip skeleton is the CQC cloaker (no glb track exported, notifies only)')])
 
+# PC ADAPTATION (user decision 2026-10-06, Integration): locked bodies get the shared MP robot clips of the closest MP chassis,
+# retargeted rotation-only onto their own bind pose (same WFC rig naming; bind rotations of every shared bone are identical,
+# mismatch 0.000) with root / hips translation scaled by the hip-height ratio. Their own original clips always win.
+RETARGET = {'Car8': 'Car5', 'Car9': 'Car5', 'Car10': 'Car5', 'Minion1': 'Car', 'Minion2': 'Car'}
+
+def hip_height(gltf_rel):
+    g, _ = load_gltf(os.path.join(ROOT, gltf_rel))
+    parent = {c: i for i, n in enumerate(g['nodes']) for c in n.get('children', [])}
+    idx = next((i for i, n in enumerate(g['nodes']) if n.get('name') == 'C_Spine00_Hips_XB'), None)
+    if idx is None: return None
+    def q2m(q):
+        x, y, z, w = q
+        return np.array([[1-2*(y*y+z*z), 2*(x*y-z*w), 2*(x*z+y*w)], [2*(x*y+z*w), 1-2*(x*x+z*z), 2*(y*z-x*w)], [2*(x*z-y*w), 2*(y*z+x*w), 1-2*(x*x+y*y)]])
+    chain = []; k = idx
+    while k is not None: chain.append(k); k = parent.get(k)
+    M = np.eye(4)
+    for k in reversed(chain):
+        n = g['nodes'][k]; L = np.eye(4)
+        if 'matrix' in n: L = np.array(n['matrix']).reshape(4, 4).T
+        else:
+            L[:3, :3] = q2m(n.get('rotation', [0, 0, 0, 1])) @ np.diag(n.get('scale', [1, 1, 1])); L[:3, 3] = n.get('translation', [0, 0, 0])
+        M = M @ L
+    return float(M[1, 3])
+
+def donor_clips(cid, form, own_sel, donor):
+    """shared clips of the donor chassis for categories this body lacks, tagged for retargeting"""
+    dj = os.path.join(VS, 'Characters', donor, 'character.json')
+    if form != 'robot' or not os.path.exists(dj): return [], None
+    d = json.load(open(dj, encoding='utf-8'))['robot']
+    have = {c for _, _, w in own_sel for c in w.values()}
+    have_names = {n for _, _, w in own_sel for n in w}
+    dsel = select_clips(form, d.get('anim_sets_compatible') or [], None)
+    out = []
+    for so, g, w in dsel:
+        w2 = {n: c for n, c in w.items() if c not in have and n not in have_names and not c.startswith('chassis_specific')}
+        if w2: out.append((so, g, w2))
+    return out, d.get('source_gltf')
+
 def runtime_colors_common():
     ap = AU.values('TransGame.Default__TnCharacterApplier')
     return {'applier_parameter_bindings (TransGame.Default__TnCharacterApplier, CONFIRMED)': {
@@ -193,6 +232,18 @@ def export(cid, ch, preset, A, common):
         sets = [s for s in f.get('anim_sets') or [] if usable(compat.get(s) or {})]
         partial = {s: (compat.get(s) or {}).get('missing_on_mesh') for s in sets if (compat.get(s) or {}).get('status') == 'partial'}
         sel = select_clips(form, sets, key)
+        rt_info = None
+        if cid in RETARGET and form == 'robot':
+            extra, dsrc = donor_clips(cid, form, sel, RETARGET[cid])
+            own_src = next((o for o in a.get('extracted') or [] if o.endswith('.gltf')), None)
+            th, dh = (hip_height(own_src) if own_src else None), (hip_height(dsrc) if dsrc else None)
+            ratio = round(th / dh, 4) if th and dh else 1.0
+            sel = sel + [(so_, g_, w_, {'donor': RETARGET[cid], 'hip_ratio': ratio}) for so_, g_, w_ in extra]
+            rt_info = OrderedDict([('donor', RETARGET[cid]), ('hip_height_m', th), ('donor_hip_height_m', dh), ('hip_ratio', ratio),
+                                   ('donor_sets', [x[0] for x in extra]),
+                                   ('method', 'rotation-only transfer onto this bind pose (identical bind rotations, same rig naming); '
+                                              'root / hips translation x hip_ratio; own original clips kept and never overridden'),
+                                   ('status', 'PC ADAPTATION (user decision 2026-10-06)')])
         slots = f.get('material_slots (umodel short names resolved within the mesh package family - HIGH)') or []
         saved = a.get('materials')
         if slots: a['materials'] = [{'ref': s['material']} if s.get('material') else {} for s in slots]
@@ -208,6 +259,7 @@ def export(cid, ch, preset, A, common):
             ('joints', f.get('joint_count')), ('skeleton_signature', f.get('skeleton_signature')),
             ('physics_asset', f.get('physics_asset')), ('anim_tree', f.get('anim_tree')),
             ('anim_sets_compatible', sets), ('anim_sets_partial_used (missing bones; tracks skipped as in UE3, HIGH)', partial or None),
+            ('retarget (PC ADAPTATION)', rt_info),
             ('anim_sets_rejected', [s for s in f.get('anim_sets') or [] if s not in sets]),
             ('sockets', VC.sockets(mop, A)),
             ('materials', [{'slot': m['slot'], 'material': m['material'],
