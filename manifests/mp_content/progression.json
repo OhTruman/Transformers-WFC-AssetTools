@@ -1,0 +1,5025 @@
+{
+ "generated_by": "AssetTools/scripts/wfc/progression.py",
+ "generated": "2026-10-06 20:28",
+ "source": "cooked Coalesced.ini / Coalesced.int (Xbox 360), decoded; values verbatim (CONFIRMED authored data)",
+ "semantics": "RE notes/MP_PROGRESSION_SCORING_AI_2026-10-06.md (+ notes/data/mp_*.json): per-specialty XP and level 0..25 = number of LevelTable thresholds <= XP; challenge tiers = GoalValues[i] -> XpRewardValues[i]",
+ "providers": {
+  "Chassis": {
+   "Car": {
+    "UniqueId": "Car",
+    "UniqueIconicId": "Bumblebee",
+    "ObjectPath": "TR_BumbleBee_ROBODEF_p.BumbleBee_ROBODEF",
+    "FactionRestriction": 0,
+    "DefaultSpecialty": "Scout",
+    "LockedChassis": "false",
+    "LockedCharacter": "false",
+    "CustomizationCameraId": 0,
+    "loc_INT": {
+     "FriendlyName": "Runner",
+     "FriendlyIconicName": "Bumblebee"
+    },
+    "loc_FRA": {
+     "FriendlyName": "Joggeur",
+     "FriendlyIconicName": "Bumblebee"
+    }
+   },
+   "Jet": {
+    "UniqueId": "Jet",
+    "UniqueIconicId": "Starscream",
+    "ObjectPath": "TR_StarScream_ROBODEF_p.StarScream_ROBODEF",
+    "FactionRestriction": 1,
+    "DefaultSpecialty": "Scientist",
+    "LockedChassis": "false",
+    "LockedCharacter": "false",
+    "CustomizationCameraId": 1,
+    "loc_INT": {
+     "FriendlyName": "Energon Seeker",
+     "FriendlyIconicName": "Starscream"
+    },
+    "loc_FRA": {
+     "FriendlyName": "Chercheur d'énergon",
+     "FriendlyIconicName": "Starscream"
+    }
+   },
+   "Tank": {
+    "UniqueId": "Tank",
+    "UniqueIconicId": "Megatron",
+    "ObjectPath": "TR_Megatron_ROBODEF_p.Megatron_ROBODEF",
+    "FactionRestriction": 1,
+    "DefaultSpecialty": "Soldier",
+    "LockedChassis": "false",
+    "LockedCharacter": "false",
+    "CustomizationCameraId": 3,
+    "loc_INT": {
+     "FriendlyName": "Destroyer",
+     "FriendlyIconicName": "Megatron"
+    },
+    "loc_FRA": {
+     "FriendlyName": "Destructeur",
+     "FriendlyIconicName": "Megatron"
+    }
+   },
+   "Truck": {
+    "UniqueId": "Truck",
+    "UniqueIconicId": "Optimus Prime",
+    "ObjectPath": "TR_Optimus_ROBODEF_p.Optimus_ROBODEF",
+    "FactionRestriction": 0,
+    "DefaultSpecialty": "Leader",
+    "LockedChassis": "false",
+    "LockedCharacter": "false",
+    "CustomizationCameraId": 2,
+    "loc_INT": {
+     "FriendlyName": "Heavy Rig",
+     "FriendlyIconicName": "Optimus Prime"
+    },
+    "loc_FRA": {
+     "FriendlyName": "Engin lourd",
+     "FriendlyIconicName": "Optimus Prime"
+    }
+   },
+   "Truck7": {
+    "UniqueId": "Truck7",
+    "UniqueIconicId": "Optimus",
+    "ObjectPath": "TR_Optimus_ROBODEF_p.Optimus_ROBODEF",
+    "FactionRestriction": 0,
+    "DefaultSpecialty": "Leader",
+    "LockedChassis": "true",
+    "LockedCharacter": "false",
+    "CustomizationCameraId": 2,
+    "loc_INT": {
+     "FriendlyName": "Heavy Rig",
+     "FriendlyIconicName": "Optimus"
+    },
+    "loc_FRA": {
+     "FriendlyName": "Engin lourd",
+     "FriendlyIconicName": "Optimus"
+    }
+   },
+   "Car2": {
+    "UniqueId": "Car2",
+    "UniqueIconicId": "Sideswipe",
+    "ObjectPath": "TR_Sideswipe_ROBODEF_p.Sideswipe_ROBODEF",
+    "FactionRestriction": 0,
+    "DefaultSpecialty": "Scout",
+    "LockedChassis": "false",
+    "LockedCharacter": "false",
+    "CustomizationCameraId": 0,
+    "loc_INT": {
+     "FriendlyName": "Speedster",
+     "FriendlyIconicName": "Sideswipe"
+    },
+    "loc_FRA": {
+     "FriendlyName": "Fonceur",
+     "FriendlyIconicName": "Sideswipe"
+    }
+   },
+   "Car3": {
+    "UniqueId": "Car3",
+    "UniqueIconicId": "Breakdown",
+    "ObjectPath": "TR_Breakdown_ROBODEF_p.Breakdown_ROBODEF",
+    "FactionRestriction": 1,
+    "DefaultSpecialty": "Scout",
+    "LockedChassis": "false",
+    "LockedCharacter": "false",
+    "CustomizationCameraId": 0,
+    "loc_INT": {
+     "FriendlyName": "Racer",
+     "FriendlyIconicName": "Breakdown"
+    },
+    "loc_FRA": {
+     "FriendlyName": "Coureur",
+     "FriendlyIconicName": "Breakdown"
+    }
+   },
+   "Car4": {
+    "UniqueId": "Car4",
+    "UniqueIconicId": "Barricade",
+    "ObjectPath": "TR_Barricade_ROBODEF_p.Barricade_ROBODEF",
+    "FactionRestriction": 1,
+    "DefaultSpecialty": "Scout",
+    "LockedChassis": "false",
+    "LockedCharacter": "false",
+    "CustomizationCameraId": 0,
+    "loc_INT": {
+     "FriendlyName": "Enforcer",
+     "FriendlyIconicName": "Barricade"
+    },
+    "loc_FRA": {
+     "FriendlyName": "Exécuteur",
+     "FriendlyIconicName": "Barricade"
+    }
+   },
+   "Car5": {
+    "UniqueId": "Car5",
+    "UniqueIconicId": "Arcee",
+    "ObjectPath": "TR_Arcee_ROBODEF_p.Arcee_ROBODEF",
+    "FactionRestriction": 0,
+    "DefaultSpecialty": "Scout",
+    "LockedChassis": "true",
+    "LockedCharacter": "true",
+    "CustomizationCameraId": 0,
+    "loc_INT": {
+     "FriendlyName": "Sprinter",
+     "FriendlyIconicName": "Arcee"
+    },
+    "loc_FRA": {
+     "FriendlyName": "Sprinteur",
+     "FriendlyIconicName": "Arcee"
+    }
+   },
+   "Car6": {
+    "UniqueId": "Car6",
+    "UniqueIconicId": "Jazz",
+    "ObjectPath": "TR_Jazz_ROBODEF_p.Jazz_ROBODEF",
+    "FactionRestriction": 0,
+    "DefaultSpecialty": "Scout",
+    "LockedChassis": "true",
+    "LockedCharacter": "true",
+    "CustomizationCameraId": 0,
+    "loc_INT": {
+     "FriendlyName": "Dragster",
+     "FriendlyIconicName": "Jazz"
+    },
+    "loc_FRA": {
+     "FriendlyName": "Dragster",
+     "FriendlyIconicName": "Jazz"
+    }
+   },
+   "Car7": {
+    "UniqueId": "Car7",
+    "UniqueIconicId": "Deadend",
+    "ObjectPath": "TR_Deadend_ROBODEF_p.Deadend_ROBODEF",
+    "FactionRestriction": 1,
+    "DefaultSpecialty": "Scout",
+    "LockedChassis": "true",
+    "LockedCharacter": "true",
+    "CustomizationCameraId": 0,
+    "loc_INT": {
+     "FriendlyName": "Tracker",
+     "FriendlyIconicName": "Deadend"
+    },
+    "loc_FRA": {
+     "FriendlyName": "Pisteur",
+     "FriendlyIconicName": "Deadend"
+    }
+   },
+   "Car8": {
+    "UniqueId": "Car8",
+    "UniqueIconicId": "DecepticonCarSoldier",
+    "ObjectPath": "TR_SoldierCarDec_ROBODEF_p.SoldierCarMGDec_ROBODEF",
+    "FactionRestriction": 1,
+    "DefaultSpecialty": "Scout",
+    "LockedChassis": "true",
+    "LockedCharacter": "true",
+    "CustomizationCameraId": 0
+   },
+   "Car9": {
+    "UniqueId": "Car9",
+    "UniqueIconicId": "AutobotCarSoldier",
+    "ObjectPath": "TR_SoldierCarAut_ROBODEF_p.SoldierCarMGAut_ROBODEF",
+    "FactionRestriction": 0,
+    "DefaultSpecialty": "Scout",
+    "LockedChassis": "true",
+    "LockedCharacter": "true",
+    "CustomizationCameraId": 0
+   },
+   "Car10": {
+    "UniqueId": "Car10",
+    "UniqueIconicId": "NeutralCarSoldier",
+    "ObjectPath": "TR_SoldierCarNeu_ROBODEF_p.SoldierCarMGNeu_ROBODEF",
+    "FactionRestriction": 3,
+    "DefaultSpecialty": "Scout",
+    "LockedChassis": "true",
+    "LockedCharacter": "true",
+    "CustomizationCameraId": 0
+   },
+   "Jet2": {
+    "UniqueId": "Jet2",
+    "UniqueIconicId": "Thundercracker",
+    "ObjectPath": "TR_Thunder_ROBODEF_p.Thunder_ROBODEF",
+    "FactionRestriction": 1,
+    "DefaultSpecialty": "Scientist",
+    "LockedChassis": "true",
+    "LockedCharacter": "false",
+    "CustomizationCameraId": 1,
+    "loc_INT": {
+     "FriendlyName": "Seeker",
+     "FriendlyIconicName": "Thundercracker"
+    },
+    "loc_FRA": {
+     "FriendlyName": "Pisteur",
+     "FriendlyIconicName": "Thundercracker"
+    }
+   },
+   "Jet3": {
+    "UniqueId": "Jet3",
+    "UniqueIconicId": "Skywarp",
+    "ObjectPath": "TR_Skywarp_ROBODEF_p.Skywarp_ROBODEF",
+    "FactionRestriction": 1,
+    "DefaultSpecialty": "Scientist",
+    "LockedChassis": "true",
+    "LockedCharacter": "false",
+    "CustomizationCameraId": 1,
+    "loc_INT": {
+     "FriendlyName": "Seeker",
+     "FriendlyIconicName": "Skywarp"
+    },
+    "loc_FRA": {
+     "FriendlyName": "Pisteur",
+     "FriendlyIconicName": "Skywarp"
+    }
+   },
+   "Jet4": {
+    "UniqueId": "Jet4",
+    "UniqueIconicId": "AirRaid",
+    "ObjectPath": "TR_AirRaid_ROBODEF_p.AirRaid_ROBODEF",
+    "FactionRestriction": 0,
+    "DefaultSpecialty": "Scientist",
+    "LockedChassis": "false",
+    "LockedCharacter": "false",
+    "CustomizationCameraId": 1,
+    "loc_INT": {
+     "FriendlyName": "Skyraider",
+     "FriendlyIconicName": "Air Raid"
+    },
+    "loc_FRA": {
+     "FriendlyName": "Commando volant",
+     "FriendlyIconicName": "Air Raid"
+    }
+   },
+   "Jet5": {
+    "UniqueId": "Jet5",
+    "UniqueIconicId": "Jetfire",
+    "ObjectPath": "TR_Jetfire_ROBODEF_p.Jetfire_ROBODEF",
+    "FactionRestriction": 0,
+    "DefaultSpecialty": "Scientist",
+    "LockedChassis": "false",
+    "LockedCharacter": "false",
+    "CustomizationCameraId": 1,
+    "loc_INT": {
+     "FriendlyName": "Air Defender",
+     "FriendlyIconicName": "Jetfire"
+    },
+    "loc_FRA": {
+     "FriendlyName": "Défenseur aérien",
+     "FriendlyIconicName": "Jetfire"
+    }
+   },
+   "Jet6": {
+    "UniqueId": "Jet6",
+    "UniqueIconicId": "SilverBolt",
+    "ObjectPath": "TR_SilverBolt_ROBODEF_p.SilverBolt_ROBODEF",
+    "FactionRestriction": 0,
+    "DefaultSpecialty": "Scientist",
+    "LockedChassis": "false",
+    "LockedCharacter": "false",
+    "CustomizationCameraId": 1,
+    "loc_INT": {
+     "FriendlyName": "Interceptor",
+     "FriendlyIconicName": "Silverbolt"
+    },
+    "loc_FRA": {
+     "FriendlyName": "Intercepteur",
+     "FriendlyIconicName": "Silverbolt"
+    }
+   },
+   "Jet7": {
+    "UniqueId": "Jet7",
+    "UniqueIconicId": "Shockwave",
+    "ObjectPath": "TR_Shockwave_ROBODEF_p.Shockwave_ROBODEF",
+    "FactionRestriction": 1,
+    "DefaultSpecialty": "Scientist",
+    "LockedChassis": "true",
+    "LockedCharacter": "true",
+    "CustomizationCameraId": 1,
+    "loc_INT": {
+     "FriendlyName": "Retaliator",
+     "FriendlyIconicName": "Shockwave"
+    },
+    "loc_FRA": {
+     "FriendlyName": "Vengeur",
+     "FriendlyIconicName": "Shockwave"
+    }
+   },
+   "Jet8": {
+    "UniqueId": "Jet8",
+    "UniqueIconicId": "Slipstream",
+    "ObjectPath": "TR_Slipstream_ROBODEF_p.Slipstream_ROBODEF",
+    "FactionRestriction": 1,
+    "DefaultSpecialty": "Scientist",
+    "LockedChassis": "true",
+    "LockedCharacter": "true",
+    "CustomizationCameraId": 1,
+    "loc_INT": {
+     "FriendlyName": "Stalker",
+     "FriendlyIconicName": "Slipstream"
+    },
+    "loc_FRA": {
+     "FriendlyName": "Traqueur",
+     "FriendlyIconicName": "Slipstream"
+    }
+   },
+   "Tank2": {
+    "UniqueId": "Tank2",
+    "UniqueIconicId": "Brawl",
+    "ObjectPath": "TR_Brawl_ROBODEF_p.Brawl_ROBODEF",
+    "FactionRestriction": 1,
+    "DefaultSpecialty": "Soldier",
+    "LockedChassis": "false",
+    "LockedCharacter": "false",
+    "CustomizationCameraId": 3,
+    "loc_INT": {
+     "FriendlyName": "Crusher",
+     "FriendlyIconicName": "Brawl"
+    },
+    "loc_FRA": {
+     "FriendlyName": "Broyeur",
+     "FriendlyIconicName": "Brawl"
+    }
+   },
+   "Tank3": {
+    "UniqueId": "Tank3",
+    "UniqueIconicId": "Warpath",
+    "ObjectPath": "TR_Warpath_ROBODEF_p.Warpath_ROBODEF",
+    "FactionRestriction": 0,
+    "DefaultSpecialty": "Soldier",
+    "LockedChassis": "false",
+    "LockedCharacter": "false",
+    "CustomizationCameraId": 3,
+    "loc_INT": {
+     "FriendlyName": "Defender",
+     "FriendlyIconicName": "Warpath"
+    },
+    "loc_FRA": {
+     "FriendlyName": "Défenseur",
+     "FriendlyIconicName": "Warpath"
+    }
+   },
+   "Tank4": {
+    "UniqueId": "Tank4",
+    "UniqueIconicId": "Scattershot",
+    "ObjectPath": "TR_Scattershot_ROBODEF_p.Scattershot_ROBODEF",
+    "FactionRestriction": 0,
+    "DefaultSpecialty": "Soldier",
+    "LockedChassis": "true",
+    "LockedCharacter": "true",
+    "CustomizationCameraId": 3,
+    "loc_INT": {
+     "FriendlyName": "Protector",
+     "FriendlyIconicName": "Scattershot"
+    },
+    "loc_FRA": {
+     "FriendlyName": "Protecteur",
+     "FriendlyIconicName": "Scattershot"
+    }
+   },
+   "Tank5": {
+    "UniqueId": "Tank5",
+    "UniqueIconicId": "Demolishor",
+    "ObjectPath": "TR_Demolishor_ROBODEF_p.Demolishor_ROBODEF",
+    "FactionRestriction": 1,
+    "DefaultSpecialty": "Soldier",
+    "LockedChassis": "true",
+    "LockedCharacter": "true",
+    "CustomizationCameraId": 3,
+    "loc_INT": {
+     "FriendlyName": "Eradicator",
+     "FriendlyIconicName": "Demolishor"
+    },
+    "loc_FRA": {
+     "FriendlyName": "Éliminateur",
+     "FriendlyIconicName": "Demolishor"
+    }
+   },
+   "Truck2": {
+    "UniqueId": "Truck2",
+    "UniqueIconicId": "Ratchet",
+    "ObjectPath": "TR_Ratchet_ROBODEF_p.Ratchet_ROBODEF",
+    "FactionRestriction": 0,
+    "DefaultSpecialty": "Leader",
+    "LockedChassis": "false",
+    "LockedCharacter": "false",
+    "CustomizationCameraId": 2,
+    "loc_INT": {
+     "FriendlyName": "Medic Rig",
+     "FriendlyIconicName": "Ratchet"
+    },
+    "loc_FRA": {
+     "FriendlyName": "Engin médical",
+     "FriendlyIconicName": "Ratchet"
+    }
+   },
+   "Truck3": {
+    "UniqueId": "Truck3",
+    "UniqueIconicId": "Ironhide",
+    "ObjectPath": "TR_Ironhide_ROBODEF_p.Ironhide_ROBODEF",
+    "FactionRestriction": 0,
+    "DefaultSpecialty": "Leader",
+    "LockedChassis": "false",
+    "LockedCharacter": "false",
+    "CustomizationCameraId": 2,
+    "loc_INT": {
+     "FriendlyName": "Armored Rig",
+     "FriendlyIconicName": "Ironhide"
+    },
+    "loc_FRA": {
+     "FriendlyName": "Engin blindé",
+     "FriendlyIconicName": "Ironhide"
+    }
+   },
+   "Truck4": {
+    "UniqueId": "Truck4",
+    "UniqueIconicId": "Soundwave",
+    "ObjectPath": "TR_Soundwave_ROBODEF_p.Soundwave_ROBODEF",
+    "FactionRestriction": 1,
+    "DefaultSpecialty": "Leader",
+    "LockedChassis": "false",
+    "LockedCharacter": "false",
+    "CustomizationCameraId": 2,
+    "loc_INT": {
+     "FriendlyName": "Spy Rig",
+     "FriendlyIconicName": "Soundwave"
+    },
+    "loc_FRA": {
+     "FriendlyName": "Engin espion",
+     "FriendlyIconicName": "Soundwave"
+    }
+   },
+   "Truck5": {
+    "UniqueId": "Truck5",
+    "UniqueIconicId": "Zeta Prime",
+    "ObjectPath": "TR_ZetaPrime_ROBODEF_p.ZetaPrime_ROBODEF",
+    "FactionRestriction": 0,
+    "DefaultSpecialty": "Leader",
+    "LockedChassis": "true",
+    "LockedCharacter": "true",
+    "CustomizationCameraId": 2,
+    "loc_INT": {
+     "FriendlyName": "Elite Rig",
+     "FriendlyIconicName": "Zeta Prime"
+    },
+    "loc_FRA": {
+     "FriendlyName": "Engin d'élite",
+     "FriendlyIconicName": "Zeta Prime"
+    }
+   },
+   "Truck6": {
+    "UniqueId": "Truck6",
+    "UniqueIconicId": "Onslaught",
+    "ObjectPath": "TR_Onslaught_ROBODEF_p.Onslaught_ROBODEF",
+    "FactionRestriction": 1,
+    "DefaultSpecialty": "Leader",
+    "LockedChassis": "true",
+    "LockedCharacter": "true",
+    "CustomizationCameraId": 2,
+    "loc_INT": {
+     "FriendlyName": "Tactical Rig",
+     "FriendlyIconicName": "Onslaught"
+    },
+    "loc_FRA": {
+     "FriendlyName": "Engin tactique",
+     "FriendlyIconicName": "Onslaught"
+    }
+   },
+   "Minion1": {
+    "UniqueId": "Minion1",
+    "UniqueIconicId": "Frenzy",
+    "ObjectPath": "TR_Frenzy_ROBODEF_p.Frenzy_ROBODEF",
+    "FactionRestriction": 1,
+    "DefaultSpecialty": "Scout",
+    "LockedChassis": "true",
+    "LockedCharacter": "true",
+    "CustomizationCameraId": 2,
+    "loc_INT": {
+     "FriendlyIconicName": "Frenzy"
+    },
+    "loc_FRA": {
+     "FriendlyIconicName": "Frenzy"
+    }
+   },
+   "Minion2": {
+    "UniqueId": "Minion2",
+    "UniqueIconicId": "Rumble",
+    "ObjectPath": "TR_Rumble_ROBODEF_p.Rumble_ROBODEF",
+    "FactionRestriction": 1,
+    "DefaultSpecialty": "Scout",
+    "LockedChassis": "true",
+    "LockedCharacter": "true",
+    "CustomizationCameraId": 2,
+    "loc_INT": {
+     "FriendlyIconicName": "Rumble"
+    },
+    "loc_FRA": {
+     "FriendlyIconicName": "Rumble"
+    }
+   },
+   "Minion3": {
+    "UniqueId": "Minion3",
+    "UniqueIconicId": "Laserbeak",
+    "ObjectPath": "TR_Laserbeak_ROBODEF_p.Laserbeak_ROBODEF",
+    "FactionRestriction": 1,
+    "DefaultSpecialty": "Scout",
+    "LockedChassis": "true",
+    "LockedCharacter": "true",
+    "CustomizationCameraId": 2,
+    "loc_INT": {
+     "FriendlyIconicName": "Laserbeak"
+    },
+    "loc_FRA": {
+     "FriendlyIconicName": "Laserbeak"
+    }
+   }
+  },
+  "Specialty": {
+   "Soldier": {
+    "UniqueId": "Soldier",
+    "XpPropertyId": 81,
+    "ObjectPath": "TransGame.TnSpecialtySoldier",
+    "DefaultSecondaryWeapon": "HomingRocket",
+    "loc_INT": {
+     "FriendlyName": "Soldier"
+    },
+    "loc_FRA": {
+     "FriendlyName": "Soldat"
+    }
+   },
+   "Leader": {
+    "UniqueId": "Leader",
+    "XpPropertyId": 83,
+    "ObjectPath": "TransGame.TnSpecialtyLeader",
+    "DefaultSecondaryWeapon": "HeavyPistol",
+    "loc_INT": {
+     "FriendlyName": "Leader"
+    },
+    "loc_FRA": {
+     "FriendlyName": "Chef"
+    }
+   },
+   "Scientist": {
+    "UniqueId": "Scientist",
+    "XpPropertyId": 82,
+    "ObjectPath": "TransGame.TnSpecialtyScientist",
+    "DefaultSecondaryWeapon": "RepairRay",
+    "loc_INT": {
+     "FriendlyName": "Scientist"
+    },
+    "loc_FRA": {
+     "FriendlyName": "Scientifique"
+    }
+   },
+   "Scout": {
+    "UniqueId": "Scout",
+    "XpPropertyId": 80,
+    "ObjectPath": "TransGame.TnSpecialtyScout",
+    "DefaultSecondaryWeapon": "EMPShotgun",
+    "loc_INT": {
+     "FriendlyName": "Scout"
+    },
+    "loc_FRA": {
+     "FriendlyName": "Éclaireur"
+    }
+   }
+  },
+  "Skill": {
+   "AbilityCooldown": {
+    "UniqueId": "AbilityCooldown",
+    "SpecialtyRestriction": "Scout,Soldier,Leader,Scientist",
+    "LevelRestriction": 25,
+    "ObjectPath": "TransGame.TnSkillAbilityCooldown",
+    "MaxSkillLevel": 1,
+    "SkillType": 2,
+    "loc_INT": {
+     "FriendlyName": "Rapid Recharge",
+     "Description": "Reduces Ability recharge time."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Rechargement rapide",
+     "Description": "Réduit le temps de recharge des compétences."
+    }
+   },
+   "IncreaseAmmoFromClips": {
+    "UniqueId": "IncreaseAmmoFromClips",
+    "SpecialtyRestriction": "Scout,Soldier,Leader,Scientist",
+    "LevelRestriction": 9,
+    "ObjectPath": "TransGame.TnSkillIncreaseAmmoFromClips",
+    "MaxSkillLevel": 1,
+    "SkillType": 2,
+    "loc_INT": {
+     "FriendlyName": "Blaster Amplifier",
+     "Description": "Carry two extra clips of ammo."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Amplificateur de blaster",
+     "Description": "Permet de transporter deux chargeurs de munitions supplémentaires."
+    }
+   },
+   "ExtraGrenade": {
+    "UniqueId": "ExtraGrenade",
+    "SpecialtyRestriction": "Scout,Soldier,Leader,Scientist",
+    "LevelRestriction": 21,
+    "ObjectPath": "TransGame.TnSkillExtraGrenade",
+    "MaxSkillLevel": 1,
+    "SkillType": 2,
+    "loc_INT": {
+     "FriendlyName": "Explosive Capacitor",
+     "Description": "Carry an extra grenade."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Condensateur explosif",
+     "Description": "Permet de transporter une grenade supplémentaire."
+    }
+   },
+   "ReduceRecoil": {
+    "UniqueId": "ReduceRecoil",
+    "SpecialtyRestriction": "Scout,Soldier,Leader,Scientist",
+    "LevelRestriction": 6,
+    "ObjectPath": "TransGame.TnSkillReduceRecoil",
+    "MaxSkillLevel": 1,
+    "SkillType": 2,
+    "loc_INT": {
+     "FriendlyName": "Weapon Stabilizer",
+     "Description": "Reduces the kickback when firing weapons."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Stabilisateur d'arme",
+     "Description": "Réduit le recul des armes lors des tirs."
+    }
+   },
+   "DecreaseHealthRegenDelay": {
+    "UniqueId": "DecreaseHealthRegenDelay",
+    "SpecialtyRestriction": "Scout,Soldier,Leader,Scientist",
+    "LevelRestriction": 15,
+    "ObjectPath": "TransGame.TnSkillDecreaseHealthRegenDelay",
+    "MaxSkillLevel": 1,
+    "SkillType": 2,
+    "loc_INT": {
+     "FriendlyName": "First Aid",
+     "Description": "Decreases health regeneration delay."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Premiers secours",
+     "Description": "Réduit le délai de régénération de l'énergie."
+    }
+   },
+   "Backstab": {
+    "UniqueId": "Backstab",
+    "SpecialtyRestriction": "Scout",
+    "LevelRestriction": 1,
+    "ObjectPath": "TransGame.TnSkillIncreaseMeleeDamageFromBehind",
+    "MaxSkillLevel": 1,
+    "SkillType": 0,
+    "loc_INT": {
+     "FriendlyName": "Backstab",
+     "Description": "Gives Melee damage bonus when attacking from behind."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Attaque sournoise",
+     "Description": "Procure un bonus de dégâts de mêlée pour les attaques par derrière."
+    }
+   },
+   "DisableCloakEffects": {
+    "UniqueId": "DisableCloakEffects",
+    "SpecialtyRestriction": "Scout",
+    "LevelRestriction": 13,
+    "ObjectPath": "TransGame.TnSkillDisableCloakEffects",
+    "MaxSkillLevel": 1,
+    "SkillType": 1,
+    "loc_INT": {
+     "FriendlyName": "Dimensional Step",
+     "Description": "Adds armor when coming out of cloak and removes activation cloaking effects."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Marche dimensionnelle",
+     "Description": "Ajoute le blindage à la désactivation du camouflage et supprime les effets de l'activation du camouflage."
+    }
+   },
+   "IncreaseDamageAfterCloak": {
+    "UniqueId": "IncreaseDamageAfterCloak",
+    "SpecialtyRestriction": "Scout",
+    "LevelRestriction": 1,
+    "ObjectPath": "TransGame.TnSkillIncreaseDamageAfterCloak",
+    "MaxSkillLevel": 1,
+    "SkillType": 0,
+    "loc_INT": {
+     "FriendlyName": "Surprise Attack",
+     "Description": "Increases damage after decloaking."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Attaque surprise",
+     "Description": "Augmente tes dégâts lorsque tu perds ton camouflage."
+    }
+   },
+   "IncreaseCloakTime": {
+    "UniqueId": "IncreaseCloakTime",
+    "SpecialtyRestriction": "Scout",
+    "LevelRestriction": 3,
+    "ObjectPath": "TransGame.TnSkillIncreaseCloakTime",
+    "MaxSkillLevel": 1,
+    "SkillType": 1,
+    "loc_INT": {
+     "FriendlyName": "Ghost",
+     "Description": "Cloaking generators resonate at a higher frequency providing increased cloaking time."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Fantôme",
+     "Description": "Les générateurs de camouflage résonnent à une fréquence supérieure permettant de prolonger la durée du camouflage."
+    }
+   },
+   "ImprovedHardLock": {
+    "UniqueId": "ImprovedHardLock",
+    "SpecialtyRestriction": "Scout",
+    "LevelRestriction": 17,
+    "ObjectPath": "TransGame.TnSkillImprovedHardLock",
+    "MaxSkillLevel": 2,
+    "SkillType": 0,
+    "loc_INT": {
+     "FriendlyName": "Targeting Chip",
+     "Description": "Marked targets take increased damage."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Puce de ciblage",
+     "Description": "Les cibles marquées subissent plus de dégâts."
+    }
+   },
+   "IncreasedHardLockDuration": {
+    "UniqueId": "IncreasedHardLockDuration",
+    "SpecialtyRestriction": "Scout",
+    "LevelRestriction": 7,
+    "ObjectPath": "TransGame.TnSkillIncreasedHardLockDuration",
+    "MaxSkillLevel": 2,
+    "SkillType": 0,
+    "loc_INT": {
+     "FriendlyName": "Vendetta",
+     "Description": "Mark Target lasts longer."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Vendetta",
+     "Description": "Prolonge l'effet de la compétence Marquage de cible."
+    }
+   },
+   "ModifyHoverDamageIncrease": {
+    "UniqueId": "ModifyHoverDamageIncrease",
+    "SpecialtyRestriction": "Soldier",
+    "LevelRestriction": 7,
+    "ObjectPath": "TransGame.TnSkillModifyHoverDamageIncrease",
+    "MaxSkillLevel": 1,
+    "SkillType": 0,
+    "loc_INT": {
+     "FriendlyName": "Death from Above",
+     "Description": "Increases damage bonus during hover."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Destruction venue du ciel",
+     "Description": "Augmente le bonus de dégâts lorsque tu planes."
+    }
+   },
+   "IncreaseDecoyTrapTime": {
+    "UniqueId": "IncreaseDecoyTrapTime",
+    "SpecialtyRestriction": "Scout",
+    "LevelRestriction": 23,
+    "ObjectPath": "TransGame.TnSkillIncreaseDecoyTrapTime",
+    "MaxSkillLevel": 1,
+    "SkillType": 0,
+    "loc_INT": {
+     "FriendlyName": "Stinger",
+     "Description": "Decoy trap stun effect lasts longer."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Perforation",
+     "Description": "Prolonge la durée de l'étourdissement infligé par le leurre."
+    }
+   },
+   "DecoyDot": {
+    "UniqueId": "DecoyDot",
+    "SpecialtyRestriction": "Scout",
+    "LevelRestriction": 10,
+    "ObjectPath": "TransGame.TnSkillDecoyDot",
+    "MaxSkillLevel": 1,
+    "SkillType": 0,
+    "loc_INT": {
+     "FriendlyName": "Shock Treatment",
+     "Description": "Infuses decoy with poisoned energon which causes residual damage to victim's circuitry."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Traitement de choc",
+     "Description": "Imprègne le leurre d'énergon empoisonné, qui provoque des dégâts résiduels aux circuits de la victime."
+    }
+   },
+   "IncreaseKamikazeMineRange": {
+    "UniqueId": "IncreaseKamikazeMineRange",
+    "SpecialtyRestriction": "Leader",
+    "LevelRestriction": 6,
+    "ObjectPath": "TransGame.TnSkillIncreaseKamikazeMineRange",
+    "MaxSkillLevel": 1,
+    "SkillType": 2,
+    "loc_INT": {
+     "FriendlyName": "Seeker",
+     "Description": "Increases the search radius for Thermo Mines."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Pisteur",
+     "Description": "Étend le rayon de détection des mines thermiques."
+    }
+   },
+   "IncreaseDefaultSpeed": {
+    "UniqueId": "IncreaseDefaultSpeed",
+    "SpecialtyRestriction": "Scout",
+    "LevelRestriction": 8,
+    "ObjectPath": "TransGame.TnSkillIncreaseDefaultSpeed",
+    "MaxSkillLevel": 1,
+    "SkillType": 1,
+    "loc_INT": {
+     "FriendlyName": "Leg Servos",
+     "Description": "Grants faster footspeed"
+    },
+    "loc_FRA": {
+     "FriendlyName": "Jambes à servomoteur",
+     "Description": "Augmente la vitesse de déplacement à pied."
+    }
+   },
+   "IncreaseDodgeSpeed": {
+    "UniqueId": "IncreaseDodgeSpeed",
+    "SpecialtyRestriction": "Scout",
+    "LevelRestriction": 19,
+    "ObjectPath": "TransGame.TnSkillIncreaseDodgeSpeed",
+    "MaxSkillLevel": 1,
+    "SkillType": 1,
+    "loc_INT": {
+     "FriendlyName": "Fuel Efficiency",
+     "Description": "Energon fuel compressor increases dash distance."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Haut rendement",
+     "Description": "Le compresseur à énergon augmente la distance d'accélération."
+    }
+   },
+   "AmmoBeaconGiveGrenade": {
+    "UniqueId": "AmmoBeaconGiveGrenade",
+    "SpecialtyRestriction": "Soldier",
+    "LevelRestriction": 10,
+    "ObjectPath": "TransGame.TnSkillAmmoBeaconGiveGrenade",
+    "MaxSkillLevel": 1,
+    "SkillType": 0,
+    "loc_INT": {
+     "FriendlyName": "Grenade Dispenser",
+     "Description": "Ammo beacon generates one grenade for each teammate."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Distributeur de grenades",
+     "Description": "La balise à munitions génère une grenade pour chaque coéquipier."
+    }
+   },
+   "AmmoBeaconGiftDropper": {
+    "UniqueId": "AmmoBeaconGiftDropper",
+    "SpecialtyRestriction": "Soldier",
+    "LevelRestriction": 23,
+    "ObjectPath": "TransGame.TnSkillAmmoBeaconGiftDropper",
+    "MaxSkillLevel": 1,
+    "SkillType": 0,
+    "loc_INT": {
+     "FriendlyName": "Path Blaster",
+     "Description": "Ammo Beacon spawns an Ion Displacer turret when user and teammates stand near it and its gauge is full."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Blaster",
+     "Description": "La balise à munitions génère un déplaceur à ions lorsque la jauge de l'utilisateur est remplie et que lui et ses coéquipiers se trouvent à proximité."
+    }
+   },
+   "IncreaseShockwaveDamage": {
+    "UniqueId": "IncreaseShockwaveDamage",
+    "SpecialtyRestriction": "Scientist",
+    "LevelRestriction": 1,
+    "ObjectPath": "TransGame.TnSkillIncreaseShockwaveDamage",
+    "MaxSkillLevel": 1,
+    "SkillType": 0,
+    "loc_INT": {
+     "FriendlyName": "Energon Storm",
+     "Description": "Increases damage Shockwave deals."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Tempête d'énergon",
+     "Description": "Augmente les dégâts infligés par la compétence Onde de choc."
+    }
+   },
+   "IncreaseShockwaveRadius": {
+    "UniqueId": "IncreaseShockwaveRadius",
+    "SpecialtyRestriction": "Scientist",
+    "LevelRestriction": 23,
+    "ObjectPath": "TransGame.TnSkillIncreaseShockwaveRadius",
+    "MaxSkillLevel": 1,
+    "SkillType": 0,
+    "loc_INT": {
+     "FriendlyName": "Repulsion Amplifier",
+     "Description": "Increases radius of Shockwave."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Amplificateur répulsion",
+     "Description": "Étend le rayon d'action de la compétence Onde de choc."
+    }
+   },
+   "IncreaseWhirlwindDamage": {
+    "UniqueId": "IncreaseWhirlwindDamage",
+    "SpecialtyRestriction": "Soldier",
+    "LevelRestriction": 1,
+    "ObjectPath": "TransGame.TnSkillIncreaseWhirlwindDamage",
+    "MaxSkillLevel": 1,
+    "SkillType": 0,
+    "loc_INT": {
+     "FriendlyName": "P.o.K.E. Alpha",
+     "Description": "Increases damage of Whirlwind ability."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Poing destructeur Alpha",
+     "Description": "Augmente les dégâts de la compétence Tourbillon."
+    }
+   },
+   "DecreaseDamageTakenDuringWhirlwind": {
+    "UniqueId": "DecreaseDamageTakenDuringWhirlwind",
+    "SpecialtyRestriction": "Soldier",
+    "LevelRestriction": 19,
+    "ObjectPath": "TransGame.TnSkillDecreaseDamageTakenDuringWhirlwind",
+    "MaxSkillLevel": 1,
+    "SkillType": 1,
+    "loc_INT": {
+     "FriendlyName": "Energon Absorbers",
+     "Description": "Decreases damage taken while Whirlwinding"
+    },
+    "loc_FRA": {
+     "FriendlyName": "Absorbeurs d'énergon",
+     "Description": "Réduit les dégâts subis durant l'utilisation de la compétence Tourbillon."
+    }
+   },
+   "IncreaseWhirlwindSpeed": {
+    "UniqueId": "IncreaseWhirlwindSpeed",
+    "SpecialtyRestriction": "Soldier",
+    "LevelRestriction": 3,
+    "ObjectPath": "TransGame.TnSkillIncreaseWhirlwindSpeed",
+    "MaxSkillLevel": 1,
+    "SkillType": 1,
+    "loc_INT": {
+     "FriendlyName": "Flurry of Blows",
+     "Description": "Increases movement speed while using the Whirlwind ability."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Volée de coups",
+     "Description": "Augmente la vitesse de déplacement pendant l'utilisation de la compétence Tourbillon."
+    }
+   },
+   "CanBeDowned": {
+    "UniqueId": "CanBeDowned",
+    "SpecialtyRestriction": "Leader",
+    "LevelRestriction": 24,
+    "ObjectPath": "TransGame.TnSkillCanBeDowned",
+    "MaxSkillLevel": 1,
+    "SkillType": 1,
+    "loc_INT": {
+     "FriendlyName": "Reserve Power Cells",
+     "Description": "Ability to shoot for a brief time after being downed."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Batteries de secours",
+     "Description": "Permettent de tirer pendant un court instant après avoir été abattu."
+    }
+   },
+   "IncreaseFlashBangRadius": {
+    "UniqueId": "IncreaseFlashBangRadius",
+    "SpecialtyRestriction": "Scout",
+    "LevelRestriction": 6,
+    "ObjectPath": "TransGame.TnSkillIncreaseFlashBangRadius",
+    "MaxSkillLevel": 1,
+    "SkillType": 2,
+    "loc_INT": {
+     "FriendlyName": "EMP Intensifier",
+     "Description": "Increases EMP Flash Bang radius"
+    },
+    "loc_FRA": {
+     "FriendlyName": "Intensificateur d'IEM",
+     "Description": "Étend le rayon d'action des grenades aveuglantes IEM."
+    }
+   },
+   "FlashBangDoesntEffectSelf": {
+    "UniqueId": "FlashBangDoesntEffectSelf",
+    "SpecialtyRestriction": "Scout",
+    "LevelRestriction": 24,
+    "ObjectPath": "TransGame.TnSkillFlashBangDoesntEffectSelf",
+    "MaxSkillLevel": 1,
+    "SkillType": 1,
+    "loc_INT": {
+     "FriendlyName": "EMP Blinders",
+     "Description": "EMP Flash Bang doesn't blind user"
+    },
+    "loc_FRA": {
+     "FriendlyName": "Brouilleurs IEM",
+     "Description": "Les grenades aveuglantes IEM n'aveuglent pas leur utilisateur."
+    }
+   },
+   "FastReload": {
+    "UniqueId": "FastReload",
+    "SpecialtyRestriction": "Soldier",
+    "LevelRestriction": 24,
+    "ObjectPath": "TransGame.TnSkillFastReload",
+    "MaxSkillLevel": 1,
+    "SkillType": 1,
+    "loc_INT": {
+     "FriendlyName": "Improved HeatSink",
+     "Description": "Reload time for all weapons decreased."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Refroidisseur amélioré",
+     "Description": "Réduit le temps de rechargement de toutes les armes."
+    }
+   },
+   "DecreaseWeaponSpread": {
+    "UniqueId": "DecreaseWeaponSpread",
+    "SpecialtyRestriction": "Soldier",
+    "LevelRestriction": 1,
+    "ObjectPath": "TransGame.TnSkillDecreaseWeaponSpread",
+    "MaxSkillLevel": 1,
+    "SkillType": 0,
+    "loc_INT": {
+     "FriendlyName": "Sharp Shooter",
+     "Description": "Reduces the spread for all weapons."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Tireur d'élite",
+     "Description": "Réduit la dispersion de toutes les armes."
+    }
+   },
+   "IncreaseDamageHeavyWeapons": {
+    "UniqueId": "IncreaseDamageHeavyWeapons",
+    "SpecialtyRestriction": "Soldier",
+    "LevelRestriction": 17,
+    "ObjectPath": "TransGame.TnSkillIncreaseDamageHeavyWeapons",
+    "MaxSkillLevel": 1,
+    "SkillType": 0,
+    "loc_INT": {
+     "FriendlyName": "Heavy Weapons",
+     "Description": "Increases damage for EMP Shotgun, X12 ScrapMaker, and the Thermo Rocket Launcher."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Armes lourdes",
+     "Description": "Augmente les dégâts du fusil IEM, du Destructeur X12 et du lance-roquettes thermiques."
+    }
+   },
+   "IncreaseRepairRayHealing": {
+    "UniqueId": "IncreaseRepairRayHealing",
+    "SpecialtyRestriction": "Scientist",
+    "LevelRestriction": 13,
+    "ObjectPath": "TransGame.TnSkillIncreaseRepairRayHealing",
+    "MaxSkillLevel": 1,
+    "SkillType": 1,
+    "loc_INT": {
+     "FriendlyName": "Energon Optimization",
+     "Description": "Increases healing rate of Repair Ray."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Optimisation de l'énergon",
+     "Description": "Améliore l'efficacité du rayon réparateur."
+    }
+   },
+   "DecreaseDamageWhenRepairRayHealing": {
+    "UniqueId": "DecreaseDamageWhenRepairRayHealing",
+    "SpecialtyRestriction": "Scientist",
+    "LevelRestriction": 3,
+    "ObjectPath": "TransGame.TnSkillDecreaseDamageWhenRepairRayHealing",
+    "MaxSkillLevel": 1,
+    "SkillType": 1,
+    "loc_INT": {
+     "FriendlyName": "Battle Medic",
+     "Description": "Take reduced damage when healing teammates with the Repair Ray."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Médecine de guerre",
+     "Description": "Réduit les dégâts subis en soignant des coéquipiers avec le rayon réparateur."
+    }
+   },
+   "IncreaseRepairRayRange": {
+    "UniqueId": "IncreaseRepairRayRange",
+    "SpecialtyRestriction": "Scientist",
+    "LevelRestriction": 1,
+    "ObjectPath": "TransGame.TnSkillIncreaseRepairRayRange",
+    "MaxSkillLevel": 1,
+    "SkillType": 0,
+    "loc_INT": {
+     "FriendlyName": "Range Finder",
+     "Description": "Energy cell boosts Repair Ray output range."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Détecteur de portée",
+     "Description": "Une batterie permet d'augmenter la portée du rayon réparateur."
+    }
+   },
+   "IncreaseDrainRate": {
+    "UniqueId": "IncreaseDrainRate",
+    "SpecialtyRestriction": "Scientist",
+    "LevelRestriction": 19,
+    "ObjectPath": "TransGame.TnSkillIncreaseDrainRate",
+    "MaxSkillLevel": 1,
+    "SkillType": 1,
+    "loc_INT": {
+     "FriendlyName": "Leech",
+     "Description": "Increases heal rate of Drain Ability."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Sangsue",
+     "Description": "Améliore l'efficacité de la compétence Drain."
+    }
+   },
+   "RocketSentry": {
+    "UniqueId": "RocketSentry",
+    "SpecialtyRestriction": "Scientist",
+    "LevelRestriction": 7,
+    "ObjectPath": "TransGame.TnSkillRocketSentry",
+    "MaxSkillLevel": 1,
+    "SkillType": 0,
+    "loc_INT": {
+     "FriendlyName": "Rocket Sentry",
+     "Description": "Spawns a Rocket Sentry (sentries can see cloaked characters)."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Gardien lance-roquettes",
+     "Description": "Génère un Gardien lance-roquettes capable de détecter les unités furtives."
+    }
+   },
+   "RepairSentry": {
+    "UniqueId": "RepairSentry",
+    "SpecialtyRestriction": "Scientist",
+    "LevelRestriction": 10,
+    "ObjectPath": "TransGame.TnSkillRepairSentry",
+    "MaxSkillLevel": 1,
+    "SkillType": 0,
+    "loc_INT": {
+     "FriendlyName": "Repair Sentry",
+     "Description": "Spawns a Repair Sentry."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Robot réparateur",
+     "Description": "Génère un robot réparateur."
+    }
+   },
+   "IncreaseSentryPower": {
+    "UniqueId": "IncreaseSentryPower",
+    "SpecialtyRestriction": "Scientist",
+    "LevelRestriction": 24,
+    "ObjectPath": "TransGame.TnSkillIncreaseSentryPower",
+    "MaxSkillLevel": 1,
+    "SkillType": 1,
+    "loc_INT": {
+     "FriendlyName": "Sentry Power Core",
+     "Description": "Increases Sentry power."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Noyau d'énergie Gardien",
+     "Description": "Augmente l'énergie du Gardien."
+    }
+   },
+   "DecreaseSentryDamageTaken": {
+    "UniqueId": "DecreaseSentryDamageTaken",
+    "SpecialtyRestriction": "Scientist",
+    "LevelRestriction": 3,
+    "ObjectPath": "TransGame.TnSkillDecreaseSentryDamageTaken",
+    "MaxSkillLevel": 1,
+    "SkillType": 1,
+    "loc_INT": {
+     "FriendlyName": "Sentry Armor",
+     "Description": "Increases Sentry armor."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Blindage de Gardien",
+     "Description": "Améliore le blindage du Gardien."
+    }
+   },
+   "KeepDisguiseWhenDamaged": {
+    "UniqueId": "KeepDisguiseWhenDamaged",
+    "SpecialtyRestriction": "Scientist",
+    "LevelRestriction": 8,
+    "ObjectPath": "TransGame.TnSkillKeepDisguiseWhenDamaged",
+    "MaxSkillLevel": 1,
+    "SkillType": 1,
+    "loc_INT": {
+     "FriendlyName": "Master of Disguise",
+     "Description": "Disguise remains active even when shot."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Maître du déguisement",
+     "Description": "Tu conserves ton déguisement même si tu te fais tirer dessus."
+    }
+   },
+   "IncreaseDamageAfterDisguise": {
+    "UniqueId": "IncreaseDamageAfterDisguise",
+    "SpecialtyRestriction": "Scientist",
+    "LevelRestriction": 17,
+    "ObjectPath": "TransGame.TnSkillIncreaseDamageAfterDisguise",
+    "MaxSkillLevel": 1,
+    "SkillType": 0,
+    "loc_INT": {
+     "FriendlyName": "Friendly Fire",
+     "Description": "Increases damage after losing your disguise."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Tir allié",
+     "Description": "Augmente tes dégâts lorsque ton déguisement tombe."
+    }
+   },
+   "IncreaseAbilityJammedTime": {
+    "UniqueId": "IncreaseAbilityJammedTime",
+    "SpecialtyRestriction": "Soldier",
+    "LevelRestriction": 8,
+    "ObjectPath": "TransGame.TnSkillIncreaseAbilityJammedTime",
+    "MaxSkillLevel": 1,
+    "SkillType": 1,
+    "loc_INT": {
+     "FriendlyName": "Saboteur",
+     "Description": "Adds time to the Energon Sling effect."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Saboteur",
+     "Description": "Prolonge l'effet de la fronde à énergon."
+    }
+   },
+   "IncreaseHoverDuration": {
+    "UniqueId": "IncreaseHoverDuration",
+    "SpecialtyRestriction": "Soldier",
+    "LevelRestriction": 13,
+    "ObjectPath": "TransGame.TnSkillIncreaseHoverDuration",
+    "MaxSkillLevel": 1,
+    "SkillType": 1,
+    "loc_INT": {
+     "FriendlyName": "Flight Pack",
+     "Description": "Adds time to Hover duration."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Kit de vol",
+     "Description": "Augmente la durée de la compétence Planeur."
+    }
+   },
+   "ReduceExplosionDamage": {
+    "UniqueId": "ReduceExplosionDamage",
+    "SpecialtyRestriction": "Soldier,Leader",
+    "LevelRestriction": 3,
+    "ObjectPath": "TransGame.TnSkillReduceExplosionDamage",
+    "MaxSkillLevel": 1,
+    "SkillType": 1,
+    "loc_INT": {
+     "FriendlyName": "Flak Armor",
+     "Description": "Reduces explosion damage."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Blindage anti-éclats",
+     "Description": "Réduit les dégâts des explosions."
+    }
+   },
+   "IncreaseHealingGrenadeTime": {
+    "UniqueId": "IncreaseHealingGrenadeTime",
+    "SpecialtyRestriction": "Scientist",
+    "LevelRestriction": 6,
+    "ObjectPath": "TransGame.TnSkillIncreaseHealingGrenadeTime",
+    "MaxSkillLevel": 1,
+    "SkillType": 2,
+    "loc_INT": {
+     "FriendlyName": "Sanctuary",
+     "Description": "Increases duration of Healing Grenade."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Sanctuaire",
+     "Description": "Augmente la durée d'effet des grenades régénérantes."
+    }
+   },
+   "IncreaseRamDamage": {
+    "UniqueId": "IncreaseRamDamage",
+    "SpecialtyRestriction": "Leader",
+    "LevelRestriction": 1,
+    "ObjectPath": "TransGame.TnSkillIncreaseRamDamage",
+    "MaxSkillLevel": 1,
+    "loc_INT": {
+     "FriendlyName": "Roll Out",
+     "Description": "Increases ram damage."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Laminage",
+     "Description": "Augmente les dégâts des charges."
+    }
+   },
+   "ExplodeOnDeath": {
+    "UniqueId": "ExplodeOnDeath",
+    "SpecialtyRestriction": "Leader",
+    "LevelRestriction": 8,
+    "ObjectPath": "TransGame.TnSkillExplodeOnDeath",
+    "MaxSkillLevel": 1,
+    "SkillType": 1,
+    "loc_INT": {
+     "FriendlyName": "Martyrdom",
+     "Description": "Drop Thermo Mines in inventory when killed."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Martyre",
+     "Description": "Permet de lâcher des mines thermiques dans ton inventaire quand tu es désactivé."
+    }
+   },
+   "IncreaseWarcryRange": {
+    "UniqueId": "IncreaseWarcryRange",
+    "SpecialtyRestriction": "Leader",
+    "LevelRestriction": 1,
+    "ObjectPath": "TransGame.TnSkillIncreaseWarcryRange",
+    "MaxSkillLevel": 1,
+    "SkillType": 0,
+    "loc_INT": {
+     "FriendlyName": "Rally",
+     "Description": "Increases Warcry's radius."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Ralliement",
+     "Description": "Augmente le rayon d'action du cri de guerre."
+    }
+   },
+   "ImprovedWarcry": {
+    "UniqueId": "ImprovedWarcry",
+    "SpecialtyRestriction": "Leader",
+    "LevelRestriction": 23,
+    "ObjectPath": "TransGame.TnSkillImprovedWarcry",
+    "MaxSkillLevel": 1,
+    "SkillType": 0,
+    "loc_INT": {
+     "FriendlyName": "Rage",
+     "Description": "Damage and Armor buff for Warcry increased."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Rage",
+     "Description": "Augmente le bonus de dégâts et de blindage procuré par le cri de guerre."
+    }
+   },
+   "IncreaseWarcryTime": {
+    "UniqueId": "IncreaseWarcryTime",
+    "SpecialtyRestriction": "Leader",
+    "LevelRestriction": 10,
+    "ObjectPath": "TransGame.TnSkillIncreaseWarcryTime",
+    "MaxSkillLevel": 1,
+    "SkillType": 0,
+    "loc_INT": {
+     "FriendlyName": "No Surrender",
+     "Description": "Warcry effect lasts longer."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Aucune reddition",
+     "Description": "Prolonge la durée d'effet du cri de guerre."
+    }
+   },
+   "TransformDisruptorDot": {
+    "UniqueId": "TransformDisruptorDot",
+    "SpecialtyRestriction": "Leader",
+    "LevelRestriction": 17,
+    "ObjectPath": "TransGame.TnSkillTransformDisruptorDot",
+    "MaxSkillLevel": 1,
+    "SkillType": 0,
+    "loc_INT": {
+     "FriendlyName": "Corrode",
+     "Description": "Adds damage over time to victims of the Disruption."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Corroder",
+     "Description": "Inflige des dégâts répétés supplémentaires aux cibles de la compétence Perturbateur."
+    }
+   },
+   "IncreaseTransformDisruptorTime": {
+    "UniqueId": "IncreaseTransformDisruptorTime",
+    "SpecialtyRestriction": "Leader",
+    "LevelRestriction": 13,
+    "ObjectPath": "TransGame.TnSkillIncreaseTransformDisruptorTime",
+    "MaxSkillLevel": 1,
+    "SkillType": 1,
+    "loc_INT": {
+     "FriendlyName": "Chaos Master",
+     "Description": "Disruption effect lasts longer"
+    },
+    "loc_FRA": {
+     "FriendlyName": "Maître du chaos",
+     "Description": "Prolonge la durée d'effet de la compétence Perturbateur."
+    }
+   },
+   "RollerSphereIncreaseFriendlySpeed": {
+    "UniqueId": "RollerSphereIncreaseFriendlySpeed",
+    "SpecialtyRestriction": "Leader",
+    "LevelRestriction": 19,
+    "ObjectPath": "TransGame.TnSkillRollerSphereIncreaseFriendlySpeed",
+    "MaxSkillLevel": 1,
+    "SkillType": 1,
+    "loc_INT": {
+     "FriendlyName": "Ion Booster",
+     "Description": "Gives speed boost to teammates near the Moleculon Bomb."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Booster à ions",
+     "Description": "Procure un bonus de vitesse aux coéquipiers près de la bombe Moleculon."
+    }
+   },
+   "RollerSphereDot": {
+    "UniqueId": "RollerSphereDot",
+    "SpecialtyRestriction": "Leader",
+    "LevelRestriction": 7,
+    "ObjectPath": "TransGame.TnSkillRollerSphereDot",
+    "MaxSkillLevel": 1,
+    "SkillType": 0,
+    "loc_INT": {
+     "FriendlyName": "Duck and Cover",
+     "Description": "Cause residual damage to enemies near Moleculon Bomb."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Tous aux abris",
+     "Description": "Inflige des dégâts résiduels aux ennemis près de la bombe Moleculon."
+    }
+   },
+   "HealthForKill": {
+    "UniqueId": "HealthForKill",
+    "SpecialtyRestriction": "Scout",
+    "LevelRestriction": 3,
+    "ObjectPath": "TransGame.TnSkillHealthForKill",
+    "MaxSkillLevel": 1,
+    "SkillType": 1,
+    "loc_INT": {
+     "FriendlyName": "Health Matrix",
+     "Description": "Gives health for every kill."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Matrice énergétique",
+     "Description": "Régénère de l'énergie à chaque élimination."
+    }
+   },
+   "IncreaseGrenadeRadius": {
+    "UniqueId": "IncreaseGrenadeRadius",
+    "SpecialtyRestriction": "Soldier",
+    "LevelRestriction": 6,
+    "ObjectPath": "TransGame.TnSkillIncreaseGrenadeRadius",
+    "MaxSkillLevel": 1,
+    "SkillType": 2,
+    "loc_INT": {
+     "FriendlyName": "Nemesis Maker",
+     "Description": "Adds explosive grenade molecules which increase Flak Grenade's damage radius."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Créateur d'ennemi juré",
+     "Description": "Ajoute des molécules explosives qui augmentent le rayon d'action des grenades antiaériennes."
+    }
+   },
+   "IncreaseBarrierHealth": {
+    "UniqueId": "IncreaseBarrierHealth",
+    "SpecialtyRestriction": "Leader",
+    "LevelRestriction": 3,
+    "ObjectPath": "TransGame.TnSkillIncreaseBarrierHealth",
+    "MaxSkillLevel": 1,
+    "SkillType": 1,
+    "loc_INT": {
+     "FriendlyName": "Empowered Shields",
+     "Description": "Increases Health of Energon Shield Barrier."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Boucliers optimisés",
+     "Description": "Augmente la résistance des barrières protectrices à l'énergon."
+    }
+   }
+  },
+  "Killstreak": {
+   "HealthRegenStreak": {
+    "UniqueId": "HealthRegenStreak",
+    "KillsRequired": 5,
+    "SpecialtyRestriction": "Scout",
+    "ObjectPath": "TransGame.TnKillStreakHealthRegen",
+    "loc_INT": {
+     "FriendlyName": "Energon Recharger"
+    },
+    "loc_FRA": {
+     "FriendlyName": "Chargeur d'énergon"
+    }
+   },
+   "OrbitalReconStreak": {
+    "UniqueId": "OrbitalReconStreak",
+    "KillsRequired": 3,
+    "SpecialtyRestriction": "Scout",
+    "ObjectPath": "TransGame.TnKillStreakOrbitalRecon",
+    "loc_INT": {
+     "FriendlyName": "Orbital Beacon"
+    },
+    "loc_FRA": {
+     "FriendlyName": "Balise orbitale"
+    }
+   },
+   "ImprovedOrbitalReconStreak": {
+    "UniqueId": "ImprovedOrbitalReconStreak",
+    "KillsRequired": 7,
+    "SpecialtyRestriction": "Scout",
+    "ObjectPath": "TransGame.TnKillStreakImprovedOrbitalRecon",
+    "loc_INT": {
+     "FriendlyName": "Orbital Beacon 2.0"
+    },
+    "loc_FRA": {
+     "FriendlyName": "Balise orbitale 2.0"
+    }
+   },
+   "MinePooperStreak": {
+    "UniqueId": "MinePooperStreak",
+    "KillsRequired": 7,
+    "SpecialtyRestriction": "Leader",
+    "ObjectPath": "TransGame.TnKillStreakMinePooper",
+    "loc_INT": {
+     "FriendlyName": "Thermo Mine Re-Spawner",
+     "Description": "Spawn a Trail of Thermo Mines"
+    },
+    "loc_FRA": {
+     "FriendlyName": "Générateur de mines thermiques",
+     "Description": "Génère une série de mines thermiques."
+    }
+   },
+   "SpawnRocketTurretStreak": {
+    "UniqueId": "SpawnRocketTurretStreak",
+    "KillsRequired": 7,
+    "SpecialtyRestriction": "Scientist",
+    "ObjectPath": "TransGame.TnKillStreakSpawnRocketTurret",
+    "loc_INT": {
+     "FriendlyName": "Nucleon Shock Cannon",
+     "Description": "Spawns a useable Rocket Turret."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Canon à nucléons",
+     "Description": "Génère une tourelle à roquettes utilisable."
+    }
+   },
+   "FastAbilityCooldownStreak": {
+    "UniqueId": "FastAbilityCooldownStreak",
+    "KillsRequired": 3,
+    "SpecialtyRestriction": "Leader",
+    "ObjectPath": "TransGame.TnKillStreakFastAbilityCooldown",
+    "loc_INT": {
+     "FriendlyName": "Intercooler",
+     "Description": "Greatly decreases the cooldown time for Ability use."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Dissipateur",
+     "Description": "Réduit considérablement le délai de refroidissement des compétences."
+    }
+   },
+   "TeamAbilityJammerStreak": {
+    "UniqueId": "TeamAbilityJammerStreak",
+    "KillsRequired": 5,
+    "SpecialtyRestriction": "Soldier",
+    "ObjectPath": "TransGame.TnKillStreakTeamAbilityJammer",
+    "loc_INT": {
+     "FriendlyName": "Electromagnetic Pulse",
+     "Description": "Jams enemy team's ability use for a brief time."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Impulsion électromagnétique",
+     "Description": "Bloque les compétences de l'équipe ennemie pendant un court instant."
+    }
+   },
+   "RefillAmmoStreak": {
+    "UniqueId": "RefillAmmoStreak",
+    "KillsRequired": 3,
+    "SpecialtyRestriction": "Soldier",
+    "ObjectPath": "TransGame.TnKillStreakRefillAmmo",
+    "loc_INT": {
+     "FriendlyName": "Ammo Matrix"
+    },
+    "loc_FRA": {
+     "FriendlyName": "Matrice de munitions"
+    }
+   },
+   "OverShieldStreak": {
+    "UniqueId": "OverShieldStreak",
+    "KillsRequired": 5,
+    "SpecialtyRestriction": "Scientist",
+    "ObjectPath": "TransGame.TnKillStreakOverShield",
+    "loc_INT": {
+     "FriendlyName": "Overshield Matrix"
+    },
+    "loc_FRA": {
+     "FriendlyName": "Matrice de bouclier"
+    }
+   },
+   "FriendlyKillHealthBonusStreak": {
+    "UniqueId": "FriendlyKillHealthBonusStreak",
+    "KillsRequired": 3,
+    "SpecialtyRestriction": "Scientist",
+    "ObjectPath": "TransGame.TnKillstreakFriendlyKillHealthBonus",
+    "loc_INT": {
+     "FriendlyName": "Health Matrix 2.0"
+    },
+    "loc_FRA": {
+     "FriendlyName": "Matrice énergétique 2.0"
+    }
+   },
+   "PokeStreak": {
+    "UniqueId": "PokeStreak",
+    "KillsRequired": 5,
+    "SpecialtyRestriction": "Leader",
+    "ObjectPath": "TransGame.TnKillStreakPoke",
+    "loc_INT": {
+     "FriendlyName": "P.O.K.E. 2.0"
+    },
+    "loc_FRA": {
+     "FriendlyName": "POING DESTRUCTEUR 2.0"
+    }
+   },
+   "GuidedMissileStreak": {
+    "UniqueId": "GuidedMissileStreak",
+    "KillsRequired": 7,
+    "SpecialtyRestriction": "Soldier",
+    "ObjectPath": "TransGame.TnKillstreakGuidedMissile",
+    "loc_INT": {
+     "FriendlyName": "Omega Missile",
+     "Description": "Fires off a guided missile capable of mass destruction."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Missile Omega",
+     "Description": "Tire un missile téléguidé pouvant provoquer une destruction massive."
+    }
+   }
+  },
+  "Ability": {
+   "Cloaking": {
+    "UniqueId": "Cloaking",
+    "SpecialtyRestriction": "Scout",
+    "LevelRestriction": 0,
+    "ObjectPath": "TransGame.TnAbilityCloaking",
+    "loc_INT": {
+     "FriendlyName": "Cloaking",
+     "Description": "Become nearly invisible on the battlefield."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Camouflage",
+     "Description": "Deviens quasiment invisible sur le champ de bataille."
+    }
+   },
+   "HardLock": {
+    "UniqueId": "HardLock",
+    "SpecialtyRestriction": "Scout",
+    "LevelRestriction": 5,
+    "ObjectPath": "TransGame.TnAbilityHardLock",
+    "loc_INT": {
+     "FriendlyName": "Mark Target",
+     "Description": "Tags an enemy with an electromagnetic pulse which weakens their armor and reveals their location."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Marquage de cible",
+     "Description": "Marque un ennemi grâce à une impulsion électromagnétique qui affaiblit son blindage et dévoile sa position."
+    }
+   },
+   "Hover": {
+    "UniqueId": "Hover",
+    "SpecialtyRestriction": "Soldier",
+    "LevelRestriction": 0,
+    "ObjectPath": "TransGame.TnAbilityHover",
+    "loc_INT": {
+     "FriendlyName": "Hover",
+     "Description": "Gives ability to hover in the air and increases weapon damage."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Planeur",
+     "Description": "Permet de planer et d'augmenter les dégâts des armes."
+    }
+   },
+   "DecoyTrap": {
+    "UniqueId": "DecoyTrap",
+    "SpecialtyRestriction": "Scout",
+    "LevelRestriction": 2,
+    "ObjectPath": "TransGame.TnAbilityDecoyTrap",
+    "loc_INT": {
+     "FriendlyName": "Decoy Trap",
+     "Description": "Spawns a decoy pickup which stuns enemies when touched."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Leurre",
+     "Description": "Génère un leurre étourdissant les ennemis qui le touchent."
+    }
+   },
+   "Dodge": {
+    "UniqueId": "Dodge",
+    "SpecialtyRestriction": "Scout",
+    "LevelRestriction": 0,
+    "ObjectPath": "TransGame.TnAbilityDodge",
+    "loc_INT": {
+     "FriendlyName": "Dash",
+     "Description": "Quickly dash in any direction."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Accélération",
+     "Description": "Permet d'avancer rapidement dans n'importe quelle direction."
+    }
+   },
+   "SpawnAmmoCrate": {
+    "UniqueId": "SpawnAmmoCrate",
+    "SpecialtyRestriction": "Soldier",
+    "LevelRestriction": 2,
+    "ObjectPath": "TransGame.TnAbilitySpawnAmmoCrate",
+    "loc_INT": {
+     "FriendlyName": "Ammo Beacon",
+     "Description": "Deploys a beacon which refills teammate's ammo and increases weapon damage when near it."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Balise à munitions",
+     "Description": "Ravitaille le coequipier et augmente les dégâts de son arme"
+    }
+   },
+   "Shockwave": {
+    "UniqueId": "Shockwave",
+    "SpecialtyRestriction": "Scientist",
+    "LevelRestriction": 0,
+    "ObjectPath": "TransGame.TnAbilityShockwave",
+    "loc_INT": {
+     "FriendlyName": "Shockwave",
+     "Description": "Pushes enemies back and causes damage."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Onde de choc",
+     "Description": "Repousse les ennemis tout en leur infligeant des dégâts."
+    }
+   },
+   "Whirlwind": {
+    "UniqueId": "Whirlwind",
+    "SpecialtyRestriction": "Soldier",
+    "LevelRestriction": 0,
+    "ObjectPath": "TransGame.TnAbilityWhirlwind",
+    "loc_INT": {
+     "FriendlyName": "Whirlwind",
+     "Description": "Gives ability to do a Whirlwind melee attack."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Tourbillon",
+     "Description": "Permet d'effectuer une attaque de mêlée tourbillonnante."
+    }
+   },
+   "Drain": {
+    "UniqueId": "Drain",
+    "SpecialtyRestriction": "Scientist",
+    "LevelRestriction": 2,
+    "ObjectPath": "TransGame.TnAbilityDrain",
+    "loc_INT": {
+     "FriendlyName": "Drain",
+     "Description": "Siphons health from enemies."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Drain",
+     "Description": "Permet de siphonner l'énergie des ennemis."
+    }
+   },
+   "SpawnSentry": {
+    "UniqueId": "SpawnSentry",
+    "SpecialtyRestriction": "Scientist",
+    "LevelRestriction": 0,
+    "ObjectPath": "TransGame.TnAbilitySpawnSentry",
+    "loc_INT": {
+     "FriendlyName": "Spawn Sentry",
+     "Description": "Spawns a sentry (sentries can see cloaked characters)."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Génération de Gardien",
+     "Description": "Génère un Gardien capable de détecter les unités furtives."
+    }
+   },
+   "AbilityJammer": {
+    "UniqueId": "AbilityJammer",
+    "SpecialtyRestriction": "Soldier",
+    "LevelRestriction": 5,
+    "ObjectPath": "TransGame.TnAbilityAbilityJammer",
+    "loc_INT": {
+     "FriendlyName": "Energon Sling",
+     "Description": "Disables enemy Ability use for a brief time."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Fronde à énergon",
+     "Description": "Empêche l'ennemi d'utiliser ses compétences pendant un bref instant."
+    }
+   },
+   "Disguise": {
+    "UniqueId": "Disguise",
+    "SpecialtyRestriction": "Scientist",
+    "LevelRestriction": 5,
+    "ObjectPath": "TransGame.TnAbilityDisguise",
+    "loc_INT": {
+     "FriendlyName": "Disguise",
+     "Description": "Appear as an ally to the enemy."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Déguisement",
+     "Description": "Permet de se faire passer pour un allié aux yeux de l'ennemi."
+    }
+   },
+   "Poke": {
+    "UniqueId": "Poke",
+    "SpecialtyRestriction": "SinglePlayer",
+    "ObjectPath": "TransGame.TnAbilityPoke",
+    "loc_INT": {
+     "FriendlyName": "P.O.K.E. 2.0",
+     "Description": "P.O.K.E. 2.0"
+    },
+    "loc_FRA": {
+     "FriendlyName": "POING DESTRUCTEUR 2.0",
+     "Description": "POING DESTRUCTEUR 2.0"
+    }
+   },
+   "GuidedMissile": {
+    "UniqueId": "GuidedMissile",
+    "SpecialtyRestriction": "SinglePlayer",
+    "ObjectPath": "TransGame.TnAbilityGuidedMissile",
+    "loc_INT": {
+     "FriendlyName": "Guided Missile",
+     "Description": "Remote controlled mini-nuke"
+    },
+    "loc_FRA": {
+     "FriendlyName": "Missile téléguidé",
+     "Description": "Petite bombe nucléaire contrôlée à distance."
+    }
+   },
+   "Warcry": {
+    "UniqueId": "Warcry",
+    "SpecialtyRestriction": "Leader",
+    "LevelRestriction": 0,
+    "ObjectPath": "TransGame.TnAbilityWarcry",
+    "loc_INT": {
+     "FriendlyName": "Warcry",
+     "Description": "Area of effect buffs armor and damage output."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Cri de guerre",
+     "Description": "Procure un bonus de blindage et de dégâts dans une certaine zone."
+    }
+   },
+   "TransformDisruptor": {
+    "UniqueId": "TransformDisruptor",
+    "SpecialtyRestriction": "Leader",
+    "LevelRestriction": 5,
+    "ObjectPath": "TransGame.TnAbilityTransformDisruptor",
+    "loc_INT": {
+     "FriendlyName": "Disruption",
+     "Description": "Forces victim to change form and locks them in that form for a brief time."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Perturbation",
+     "Description": "Oblige la victime à changer de forme et la bloque sous cette forme pendant un court instant."
+    }
+   },
+   "RollerSphere": {
+    "UniqueId": "RollerSphere",
+    "SpecialtyRestriction": "Leader",
+    "LevelRestriction": 2,
+    "ObjectPath": "TransGame.TnAbilityRollerSphere",
+    "loc_INT": {
+     "FriendlyName": "Moleculon Bomb",
+     "Description": "Slows enemies who get near it and causes damage when it explodes."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Bombe Moleculon",
+     "Description": "Ralentit les ennemis qui s'en approchent et leur inflige des dégâts quand elle explose."
+    }
+   },
+   "Barrier": {
+    "UniqueId": "Barrier",
+    "SpecialtyRestriction": "Leader",
+    "LevelRestriction": 0,
+    "ObjectPath": "TransGame.TnAbilityBarrier",
+    "loc_INT": {
+     "FriendlyName": "Barrier",
+     "Description": "Deploys an Energon Shield Barrier."
+    },
+    "loc_FRA": {
+     "FriendlyName": "Barrière",
+     "Description": "Déploie une barrière protectrice à l'énergon."
+    }
+   }
+  },
+  "Challenge": {
+   "CHALLENGE_BASIC_LIFETIME": {
+    "ChallengeId": 9984,
+    "StatPropertyId": 5888,
+    "CategoryId": "Basic",
+    "GoalValues": [
+     30,
+     60,
+     90
+    ],
+    "XpRewardValues": [
+     25,
+     50,
+     100
+    ],
+    "loc_INT": {
+     "ChallengeName": "Trainee",
+     "Description": "Survive `g seconds in a multiplayer match without being killed."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Recrue",
+     "Description": "Survis `g secondes sans te faire désactiver durant une partie multijoueur."
+    }
+   },
+   "CHALLENGE_BASIC_KILL_HIGHERLEVEL": {
+    "ChallengeId": 9985,
+    "StatPropertyId": 5889,
+    "CategoryId": "Basic",
+    "GoalValues": [
+     5,
+     10,
+     15
+    ],
+    "XpRewardValues": [
+     25,
+     50,
+     100
+    ],
+    "loc_INT": {
+     "ChallengeName": "Dark Horse",
+     "Description": "Kill `g opponents who are a higher level than you."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Bête noire",
+     "Description": "Désactive `g ennemis d'un niveau supérieur au tien."
+    }
+   },
+   "CHALLENGE_BASIC_USE_ABILITY": {
+    "ChallengeId": 9986,
+    "StatPropertyId": 5890,
+    "CategoryId": "Basic",
+    "GoalValues": [
+     5,
+     10,
+     15
+    ],
+    "XpRewardValues": [
+     25,
+     50,
+     100
+    ],
+    "loc_INT": {
+     "ChallengeName": "Power Surge",
+     "Description": "Use an active ability `g times."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Surtension",
+     "Description": "Utilise une compétence active `g fois."
+    }
+   },
+   "CHALLENGE_BASIC_FIRST_KILL": {
+    "ChallengeId": 9987,
+    "StatPropertyId": 5891,
+    "CategoryId": "Basic",
+    "GoalValues": [
+     3,
+     5,
+     7
+    ],
+    "XpRewardValues": [
+     25,
+     50,
+     100
+    ],
+    "loc_INT": {
+     "ChallengeName": "First Blood",
+     "Description": "Score the first kill in a multiplayer match `g times."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Premier sang",
+     "Description": "Élimine un ennemi en premier `g fois durant une partie multijoueur."
+    }
+   },
+   "CHALLENGE_BASIC_FIRST_DEATH": {
+    "ChallengeId": 9988,
+    "StatPropertyId": 5892,
+    "CategoryId": "Basic",
+    "GoalValues": [
+     3,
+     5,
+     7
+    ],
+    "XpRewardValues": [
+     25,
+     50,
+     100
+    ],
+    "loc_INT": {
+     "ChallengeName": "Sacrifice",
+     "Description": "Be the first one eliminated in a multiplayer match `g times."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Sacrifice",
+     "Description": "Fais-toi éliminer en premier `g fois durant une partie multijoueur."
+    }
+   },
+   "CHALLENGE_BASIC_ASSIST": {
+    "ChallengeId": 9989,
+    "StatPropertyId": 5893,
+    "CategoryId": "Basic",
+    "GoalValues": [
+     5,
+     10,
+     15
+    ],
+    "XpRewardValues": [
+     25,
+     50,
+     100
+    ],
+    "loc_INT": {
+     "ChallengeName": "Kill Assist",
+     "Description": "Get `g kill assists during a multiplayer match."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Aide à l'élimination",
+     "Description": "Effectue `g aides à l'élimination durant une partie multijoueur."
+    }
+   },
+   "CHALLENGE_BASIC_KILL_FINEAIM_OFF": {
+    "ChallengeId": 9990,
+    "StatPropertyId": 5894,
+    "CategoryId": "Basic",
+    "GoalValues": [
+     5,
+     10,
+     15
+    ],
+    "XpRewardValues": [
+     25,
+     50,
+     100
+    ],
+    "loc_INT": {
+     "ChallengeName": "Spray 'n' Pray",
+     "Description": "Destroy `g opponents without using fine aim."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Tir au petit bonheur",
+     "Description": "Détruis `g ennemis sans utiliser la visée ajustée."
+    }
+   },
+   "CHALLENGE_BASIC_KILL_FINEAIM_ON": {
+    "ChallengeId": 9991,
+    "StatPropertyId": 5895,
+    "CategoryId": "Basic",
+    "GoalValues": [
+     5,
+     10,
+     15
+    ],
+    "XpRewardValues": [
+     25,
+     50,
+     100
+    ],
+    "loc_INT": {
+     "ChallengeName": "Eagle Eye",
+     "Description": "Destroy `g opponents using fine aim."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Oeil de faucon",
+     "Description": "Détruis `g ennemis en utilisant la visée ajustée."
+    }
+   },
+   "CHALLENGE_BASIC_VEHICLE_TIME": {
+    "ChallengeId": 9992,
+    "StatPropertyId": 5896,
+    "CategoryId": "Basic",
+    "GoalValues": [
+     300,
+     600,
+     900
+    ],
+    "XpRewardValues": [
+     25,
+     50,
+     100
+    ],
+    "loc_INT": {
+     "ChallengeName": "Gear Head",
+     "Description": "Clock `g seconds in vehicle form."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Tête motrice",
+     "Description": "Passe `g secondes en forme Véhicule."
+    }
+   },
+   "CHALLENGE_BASIC_KILLS": {
+    "ChallengeId": 9993,
+    "StatPropertyId": 5897,
+    "CategoryId": "Basic",
+    "GoalValues": [
+     25,
+     50,
+     75
+    ],
+    "XpRewardValues": [
+     25,
+     50,
+     100
+    ],
+    "loc_INT": {
+     "ChallengeName": "Initiation",
+     "Description": "Destroy a total of `g enemies."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Initiation",
+     "Description": "Détruis un total de `g ennemis."
+    }
+   },
+   "CHALLENGE_BASIC_KILLS_VEHICLE": {
+    "ChallengeId": 9994,
+    "StatPropertyId": 5898,
+    "CategoryId": "Basic",
+    "GoalValues": [
+     5,
+     10,
+     15
+    ],
+    "XpRewardValues": [
+     25,
+     50,
+     100
+    ],
+    "loc_INT": {
+     "ChallengeName": "Road Kill",
+     "Description": "Destroy `g enemies while in vehicle form."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Rage au volant",
+     "Description": "Détruis `g ennemis en étant en forme Véhicule."
+    }
+   },
+   "CHALLENGE_SCOUT_HEAVYPISTOL": {
+    "ChallengeId": 9472,
+    "StatPropertyId": 5376,
+    "CategoryId": "Scout",
+    "GoalValues": [
+     25,
+     50,
+     100
+    ],
+    "XpRewardValues": [
+     250,
+     500,
+     1000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Frontline Scout",
+     "Description": "As a Scout, eliminate `g opponents with the Energon Battle Pistol."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Éclaireur en première ligne",
+     "Description": "En tant qu'éclaireur, élimine `g ennemis avec le pistolet de combat à énergon."
+    }
+   },
+   "CHALLENGE_SCOUT_HEAVYPISTOL_MARKED": {
+    "ChallengeId": 9473,
+    "StatPropertyId": 5377,
+    "CategoryId": "Scout",
+    "GoalValues": [
+     25,
+     50,
+     100
+    ],
+    "XpRewardValues": [
+     500,
+     1000,
+     1500
+    ],
+    "loc_INT": {
+     "ChallengeName": "Tag 'em and Bag 'em!",
+     "Description": "As a Scout, eliminate `g opponents with the Energon Battle Pistol after marking them."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Ciblage et élimination",
+     "Description": "En tant qu'éclaireur, élimine `g ennemis avec le pistolet de combat à énergon après les avoir marqués."
+    }
+   },
+   "CHALLENGE_SCOUT_HEAVYPISTOL_DECOY": {
+    "ChallengeId": 9474,
+    "StatPropertyId": 5378,
+    "CategoryId": "Scout",
+    "GoalValues": [
+     10,
+     25,
+     50
+    ],
+    "XpRewardValues": [
+     1000,
+     1500,
+     2000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Stun and Gun",
+     "Description": "As a Scout, eliminate `g opponents with the Energon Battle Pistol while they are stunned by your decoy trap."
+    },
+    "loc_FRA": {
+     "ChallengeName": "En deux temps",
+     "Description": "En tant qu'éclaireur, élimine `g ennemis avec le pistolet de combat à énergon pendant qu'ils sont étourdis par ton leurre."
+    }
+   },
+   "CHALLENGE_SCOUT_PLASMACANNON": {
+    "ChallengeId": 9475,
+    "StatPropertyId": 5379,
+    "CategoryId": "Scout",
+    "GoalValues": [
+     15,
+     30,
+     50
+    ],
+    "XpRewardValues": [
+     250,
+     500,
+     1000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Heat Monger!",
+     "Description": "As a Scout, eliminate `g opponents with the Plasma Cannon."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Quelle chaleur !",
+     "Description": "En tant qu'éclaireur, élimine `g ennemis avec le canon à plasma."
+    }
+   },
+   "CHALLENGE_SCOUT_PLASMACANNON_TANK": {
+    "ChallengeId": 9476,
+    "StatPropertyId": 5380,
+    "CategoryId": "Scout",
+    "GoalValues": [
+     10,
+     25,
+     50
+    ],
+    "XpRewardValues": [
+     500,
+     1000,
+     1500
+    ],
+    "loc_INT": {
+     "ChallengeName": "Tank Buster",
+     "Description": "As a Scout, destroy `g tanks with the Plasma Cannon."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Destructeur de blindés",
+     "Description": "En tant qu'éclaireur, détruis `g blindés avec le canon à plasma."
+    }
+   },
+   "CHALLENGE_SCOUT_PLASMACANNON_PLANE_MARKED": {
+    "ChallengeId": 9477,
+    "StatPropertyId": 5381,
+    "CategoryId": "Scout",
+    "GoalValues": [
+     5,
+     10,
+     20
+    ],
+    "XpRewardValues": [
+     1000,
+     1500,
+     2000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Bug Zapper",
+     "Description": "As a Scout, destroy `g jets with the Plasma Cannon after marking them."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Tapette à mouches",
+     "Description": "En tant qu'éclaireur, détruis `g engins aériens avec le canon à plasma après les avoir marqués."
+    }
+   },
+   "CHALLENGE_SCOUT_SHOTGUN": {
+    "ChallengeId": 9478,
+    "StatPropertyId": 5382,
+    "CategoryId": "Scout",
+    "GoalValues": [
+     25,
+     50,
+     100
+    ],
+    "XpRewardValues": [
+     250,
+     500,
+     1000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Scout Raider",
+     "Description": "As a Scout, eliminate `g opponents with the Scatter Blaster."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Éclaireur commando",
+     "Description": "En tant qu'éclaireur, élimine `g ennemis avec le blaster dispersant."
+    }
+   },
+   "CHALLENGE_SCOUT_SHOTGUN_CLOAKED": {
+    "ChallengeId": 9479,
+    "StatPropertyId": 5383,
+    "CategoryId": "Scout",
+    "GoalValues": [
+     10,
+     25,
+     50
+    ],
+    "XpRewardValues": [
+     500,
+     1000,
+     1500
+    ],
+    "loc_INT": {
+     "ChallengeName": "Didn't see that comin'!",
+     "Description": "As a Scout, eliminate `g opponents with a single blast from the Scatter Blaster while coming out of cloak."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Ils n'ont rien vu venir !",
+     "Description": "En tant qu'éclaireur, élimine `g ennemis d'un seul tir de blaster dispersant en abandonnant ton camouflage."
+    }
+   },
+   "CHALLENGE_SCOUT_SHOTGUN_ENEMY_CLOAKED": {
+    "ChallengeId": 9480,
+    "StatPropertyId": 5384,
+    "CategoryId": "Scout",
+    "GoalValues": [
+     5,
+     10,
+     20
+    ],
+    "XpRewardValues": [
+     1000,
+     1500,
+     2000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Insta-Gib",
+     "Description": "As a Scout, destroy `g opposing Scouts while they are cloaked with a single blast from the Scatter Blaster."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Aucune chance",
+     "Description": "En tant qu'éclaireur, élimine `g éclaireurs ennemis camouflés d'un seul tir de blaster dispersant."
+    }
+   },
+   "CHALLENGE_SCOUT_SNIPERRIFLE": {
+    "ChallengeId": 9481,
+    "StatPropertyId": 5385,
+    "CategoryId": "Scout",
+    "GoalValues": [
+     25,
+     50,
+     100
+    ],
+    "XpRewardValues": [
+     250,
+     500,
+     1000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Null Ray Marksman",
+     "Description": "As a Scout, eliminate `g opponents with the Null Ray."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Spécialiste rayon neutralisant",
+     "Description": "En tant qu'éclaireur, élimine `g ennemis avec le rayon neutralisant."
+    }
+   },
+   "CHALLENGE_SCOUT_SNIPERRIFLE_HEADSHOT": {
+    "ChallengeId": 9482,
+    "StatPropertyId": 5386,
+    "CategoryId": "Scout",
+    "GoalValues": [
+     25,
+     50,
+     100
+    ],
+    "XpRewardValues": [
+     500,
+     1000,
+     1500
+    ],
+    "loc_INT": {
+     "ChallengeName": "Null Ray Expert",
+     "Description": "As a Scout, get `g headshots with the Null Ray."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Expert du rayon neutralisant",
+     "Description": "En tant qu'éclaireur, élimine `g ennemis d'un tir en pleine tête avec le rayon neutralisant."
+    }
+   },
+   "CHALLENGE_SCOUT_SNIPERRIFLE_PLANE": {
+    "ChallengeId": 9483,
+    "StatPropertyId": 5387,
+    "CategoryId": "Scout",
+    "GoalValues": [
+     25,
+     50,
+     100
+    ],
+    "XpRewardValues": [
+     1000,
+     1500,
+     2000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Bird Hunter",
+     "Description": "As a Scout, snipe `g enemy jets out of the air with the Null Ray."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Chasseur de coucous",
+     "Description": "En tant qu'éclaireur, abats `g ennemis aériens en plein vol avec le rayon neutralisant."
+    }
+   },
+   "CHALLENGE_SCOUT_INVEHICLE_KILL": {
+    "ChallengeId": 9484,
+    "StatPropertyId": 5388,
+    "CategoryId": "Scout",
+    "GoalValues": [
+     25,
+     50,
+     100
+    ],
+    "XpRewardValues": [
+     250,
+     500,
+     1000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Death on Wheels",
+     "Description": "Eliminate `g opponents using car weaponry."
+    },
+    "loc_FRA": {
+     "ChallengeName": "La mort sur roues",
+     "Description": "Élimine `g ennemis en utilisant ton armement de forme Voiture."
+    }
+   },
+   "CHALLENGE_SCOUT_INVEHICLE_DISTANCE": {
+    "ChallengeId": 9485,
+    "StatPropertyId": 5389,
+    "CategoryId": "Scout",
+    "GoalValues": [
+     100000,
+     250000,
+     500000
+    ],
+    "XpRewardValues": [
+     250,
+     500,
+     1000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Road Trip",
+     "Description": "Drive a total of `g meters."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Virée",
+     "Description": "Conduis un total de `g mètres."
+    }
+   },
+   "CHALLENGE_SCOUT_INVEHICLE_TANKKILL": {
+    "ChallengeId": 9486,
+    "StatPropertyId": 5390,
+    "CategoryId": "Scout",
+    "GoalValues": [
+     25,
+     50,
+     100
+    ],
+    "XpRewardValues": [
+     500,
+     1000,
+     1500
+    ],
+    "loc_INT": {
+     "ChallengeName": "Underdog",
+     "Description": "Destroy `g tanks while in car form."
+    },
+    "loc_FRA": {
+     "ChallengeName": "David contre Goliath",
+     "Description": "Détruis `g blindés en étant en forme Voiture."
+    }
+   },
+   "CHALLENGE_SCOUT_DASH": {
+    "ChallengeId": 9487,
+    "StatPropertyId": 5391,
+    "CategoryId": "Scout",
+    "GoalValues": [
+     5000,
+     10000,
+     20000
+    ],
+    "XpRewardValues": [
+     100,
+     250,
+     500
+    ],
+    "loc_INT": {
+     "ChallengeName": "Look Ma, No Wheels!",
+     "Description": "Dash `g meters in multiplayer."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Sans les roues !",
+     "Description": "Accélère sur `g mètres en multijoueur."
+    }
+   },
+   "CHALLENGE_SCOUT_SURPRISEATTACK": {
+    "ChallengeId": 9488,
+    "StatPropertyId": 5392,
+    "CategoryId": "Scout",
+    "GoalValues": [
+     25,
+     50,
+     100
+    ],
+    "XpRewardValues": [
+     250,
+     500,
+     1000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Ninja",
+     "Description": "Eliminate `g opponents while using the surprise attack ability."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Ninja",
+     "Description": "Élimine `g ennemis en utilisant la compétence Attaque surprise."
+    }
+   },
+   "CHALLENGE_SCOUT_BACKSTAB": {
+    "ChallengeId": 9489,
+    "StatPropertyId": 5393,
+    "CategoryId": "Scout",
+    "GoalValues": [
+     25,
+     50,
+     100
+    ],
+    "XpRewardValues": [
+     250,
+     500,
+     1000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Assassin",
+     "Description": "Deliver the final blow on `g enemies using the backstab ability."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Assassin",
+     "Description": "Porte le coup de grâce à `g ennemis en utilisant la compétence Attaque sournoise."
+    }
+   },
+   "CHALLENGE_SCOUT_MARKTARGET": {
+    "ChallengeId": 9490,
+    "StatPropertyId": 5394,
+    "CategoryId": "Scout",
+    "GoalValues": [
+     25,
+     50,
+     100
+    ],
+    "XpRewardValues": [
+     250,
+     500,
+     1000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Hunter",
+     "Description": "Deliver the final blow on `g enemies after marking them with the Mark Target skill."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Chasseur",
+     "Description": "Porte le coup de grâce à `g ennemis après les avoir marqués avec la compétence Marquage de cible."
+    }
+   },
+   "CHALLENGE_SCOUT_DECOYTRAP": {
+    "ChallengeId": 9491,
+    "StatPropertyId": 5395,
+    "CategoryId": "Scout",
+    "GoalValues": [
+     10,
+     25,
+     50
+    ],
+    "XpRewardValues": [
+     500,
+     1000,
+     1500
+    ],
+    "loc_INT": {
+     "ChallengeName": "It's a Trap!",
+     "Description": "Eliminate `g enemies after stunning them with a decoy trap."
+    },
+    "loc_FRA": {
+     "ChallengeName": "C'est un piège !",
+     "Description": "Élimine `g ennemis après les avoir étourdis avec un leurre."
+    }
+   },
+   "WEAPON_FLASHBANG_KILLS": {
+    "ChallengeId": 9492,
+    "StatPropertyId": 5396,
+    "CategoryId": "Scout",
+    "GoalValues": [
+     25,
+     50,
+     100
+    ],
+    "XpRewardValues": [
+     250,
+     500,
+     1000
+    ],
+    "loc_INT": {
+     "ChallengeName": "EMP Grenade Expert",
+     "Description": "Eliminate `g opponents while they are stunned by your own EMP Grenade."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Expert des grenades IEM",
+     "Description": "Élimine `g ennemis étourdis par une de tes grenades IEM."
+    }
+   },
+   "WEAPON_MELEE_SCOUT_KILLS": {
+    "ChallengeId": 9493,
+    "StatPropertyId": 5397,
+    "CategoryId": "Scout",
+    "GoalValues": [
+     50,
+     125,
+     300
+    ],
+    "XpRewardValues": [
+     250,
+     500,
+     1000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Samurai",
+     "Description": "Eliminate `g opponents with the Energon Sword."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Samouraï",
+     "Description": "Élimine `g ennemis avec l'épée en énergon."
+    }
+   },
+   "CHALLENGE_SCIENTIST_ASSAULTRIFLE": {
+    "ChallengeId": 9552,
+    "StatPropertyId": 5456,
+    "CategoryId": "Scientist",
+    "GoalValues": [
+     25,
+     50,
+     100
+    ],
+    "XpRewardValues": [
+     250,
+     500,
+     1000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Hackjob",
+     "Description": "As a Scientist, eliminate `g opponents with the Neutron Assault Rifle."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Abattage",
+     "Description": "En tant que scientifique, élimine `g ennemis avec le fusil d'assaut à neutrons."
+    }
+   },
+   "CHALLENGE_SCIENTIST_ASSAULTRIFLE_HEADSHOT": {
+    "ChallengeId": 9553,
+    "StatPropertyId": 5457,
+    "CategoryId": "Scientist",
+    "GoalValues": [
+     10,
+     25,
+     50
+    ],
+    "XpRewardValues": [
+     500,
+     1000,
+     1500
+    ],
+    "loc_INT": {
+     "ChallengeName": "Lobotomy",
+     "Description": "As a Scientist, get `g headshots with the Neutron Assault Rifle."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Lobotomie",
+     "Description": "En tant que scientifique, élimine `g ennemis d'un tir en pleine tête avec le fusil d'assaut à neutrons."
+    }
+   },
+   "CHALLENGE_SCIENTIST_ASSAULTRIFLE_SHOCKWAVE": {
+    "ChallengeId": 9554,
+    "StatPropertyId": 5458,
+    "CategoryId": "Scientist",
+    "GoalValues": [
+     5,
+     10,
+     20
+    ],
+    "XpRewardValues": [
+     1000,
+     1500,
+     2000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Mad Scientist",
+     "Description": "As a Scientist, deliver the final blow to `g enemies with the Neutron Assault Rifle after knocking them back with the Shockwave ability."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Savant fou",
+     "Description": "En tant que scientifique, porte le coup de grâce à `g ennemis avec le fusil d'assaut à neutrons après les avoir repoussés avec la compétence Onde de choc."
+    }
+   },
+   "CHALLENGE_SCIENTIST_SHOTGUN": {
+    "ChallengeId": 9555,
+    "StatPropertyId": 5459,
+    "CategoryId": "Scientist",
+    "GoalValues": [
+     25,
+     50,
+     100
+    ],
+    "XpRewardValues": [
+     250,
+     500,
+     1000
+    ],
+    "loc_INT": {
+     "ChallengeName": "CQC Expert",
+     "Description": "As a Scientist, eliminate `g opponents with the EMP Shotgun."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Expert du combat rapproché",
+     "Description": "En tant que scientifique, élimine `g ennemis avec le fusil IEM."
+    }
+   },
+   "CHALLENGE_SCIENTIST_SHOTGUN_DRAIN": {
+    "ChallengeId": 9556,
+    "StatPropertyId": 5460,
+    "CategoryId": "Scientist",
+    "GoalValues": [
+     10,
+     25,
+     50
+    ],
+    "XpRewardValues": [
+     500,
+     1000,
+     1500
+    ],
+    "loc_INT": {
+     "ChallengeName": "No Contest",
+     "Description": "As a Scientist, eliminate `g opponents with the EMP shotgun while using your Drain ability."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Aucune résistance",
+     "Description": "En tant que scientifique, élimine `g ennemis avec le fusil IEM tout en utilisant la compétence Drain."
+    }
+   },
+   "CHALLENGE_SCIENTIST_SHOTGUN_DISGUISED": {
+    "ChallengeId": 9557,
+    "StatPropertyId": 5461,
+    "CategoryId": "Scientist",
+    "GoalValues": [
+     5,
+     10,
+     20
+    ],
+    "XpRewardValues": [
+     1000,
+     1500,
+     2000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Nobody's Fool",
+     "Description": "As a Scientist, eliminate `g disguised enemies with the EMP Shotgun."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Pas dupe",
+     "Description": "En tant que scientifique, élimine `g ennemis déguisés avec le fusil IEM."
+    }
+   },
+   "CHALLENGE_SCIENTIST_BURSTRIFLE": {
+    "ChallengeId": 9558,
+    "StatPropertyId": 5462,
+    "CategoryId": "Scientist",
+    "GoalValues": [
+     25,
+     50,
+     100
+    ],
+    "XpRewardValues": [
+     250,
+     500,
+     1000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Burst Rifle Marksman",
+     "Description": "As a Scientist, eliminate `g opponents with the Photon Burst Rifle."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Spécialiste du fusil à photons",
+     "Description": "En tant que scientifique, élimine `g ennemis avec le fusil à photons."
+    }
+   },
+   "CHALLENGE_SCIENTIST_BURSTRIFLE_HEADSHOTS": {
+    "ChallengeId": 9559,
+    "StatPropertyId": 5463,
+    "CategoryId": "Scientist",
+    "GoalValues": [
+     10,
+     25,
+     50
+    ],
+    "XpRewardValues": [
+     500,
+     1000,
+     1500
+    ],
+    "loc_INT": {
+     "ChallengeName": "Burst Rifle Expert",
+     "Description": "As a Scientist, get `g headshots with the Photon Burst Rifle."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Expert du fusil à photons",
+     "Description": "En tant que scientifique, élimine `g ennemis d'un tir en pleine tête avec le fusil à photons."
+    }
+   },
+   "CHALLENGE_SCIENTIST_BURSTRIFLE_MARKED": {
+    "ChallengeId": 9560,
+    "StatPropertyId": 5464,
+    "CategoryId": "Scientist",
+    "GoalValues": [
+     5,
+     10,
+     20
+    ],
+    "XpRewardValues": [
+     1000,
+     1500,
+     2000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Bull's Eye!",
+     "Description": "As a Scientist, eliminate `g opponents with the Photon Burst Rifle after they have been marked by a Scout."
+    },
+    "loc_FRA": {
+     "ChallengeName": "En plein dans le mille !",
+     "Description": "En tant que scientifique, élimine `g ennemis avec le fusil à photons après qu'un éclaireur les ait marqués."
+    }
+   },
+   "CHALLENGE_SCIENTIST_REPAIRRAY": {
+    "ChallengeId": 9561,
+    "StatPropertyId": 5465,
+    "CategoryId": "Scientist",
+    "GoalValues": [
+     10,
+     25,
+     50
+    ],
+    "XpRewardValues": [
+     250,
+     500,
+     1000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Repair Ray Expert",
+     "Description": "As a Scientist, eliminate `g opponents with the Energon Repair Ray."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Expert du rayon réparateur",
+     "Description": "En tant que scientifique, élimine `g ennemis avec le rayon réparateur à énergon."
+    }
+   },
+   "CHALLENGE_SCIENTIST_INVEHICLE_KILL": {
+    "ChallengeId": 9564,
+    "StatPropertyId": 5468,
+    "CategoryId": "Scientist",
+    "GoalValues": [
+     25,
+     50,
+     100
+    ],
+    "XpRewardValues": [
+     250,
+     500,
+     1000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Deadly Skies",
+     "Description": "Destroy `g enemies while in jet form."
+    },
+    "loc_FRA": {
+     "ChallengeName": "La mort venue du ciel",
+     "Description": "Détruis `g ennemis en étant en forme Jet."
+    }
+   },
+   "CHALLENGE_SCIENTIST_INVEHICLE_TANKKILL": {
+    "ChallengeId": 9562,
+    "StatPropertyId": 5466,
+    "CategoryId": "Scientist",
+    "GoalValues": [
+     5,
+     10,
+     20
+    ],
+    "XpRewardValues": [
+     250,
+     500,
+     1000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Dive Bomber",
+     "Description": "Destroy `g tanks while in jet form."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Bombardier",
+     "Description": "Détruis `g blindés en étant en forme Jet."
+    }
+   },
+   "CHALLENGE_SCIENTIST_INVEHICLE_PLANEKILL": {
+    "ChallengeId": 9563,
+    "StatPropertyId": 5467,
+    "CategoryId": "Scientist",
+    "GoalValues": [
+     5,
+     10,
+     20
+    ],
+    "XpRewardValues": [
+     250,
+     500,
+     1000
+    ],
+    "loc_INT": {
+     "ChallengeName": "The Red Baron",
+     "Description": "Shoot down `g jets while also being in jet form."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Le Baron Rouge",
+     "Description": "Abats `g engins aériens en étant en forme Jet."
+    }
+   },
+   "CHALLENGE_SCIENTIST_SHOCKWAVE": {
+    "ChallengeId": 9565,
+    "StatPropertyId": 5469,
+    "CategoryId": "Scientist",
+    "GoalValues": [
+     10,
+     25,
+     50
+    ],
+    "XpRewardValues": [
+     250,
+     500,
+     1000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Tsunami",
+     "Description": "Eliminate `g enemies with the Shockwave ability."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Tsunami",
+     "Description": "Élimine `g ennemis avec la compétence Onde de choc."
+    }
+   },
+   "CHALLENGE_SCIENTIST_DRAIN": {
+    "ChallengeId": 9566,
+    "StatPropertyId": 5470,
+    "CategoryId": "Scientist",
+    "GoalValues": [
+     25,
+     50,
+     100
+    ],
+    "XpRewardValues": [
+     250,
+     500,
+     1000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Plague Bearer",
+     "Description": "Eliminate `g enemies using the Drain ability."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Pestiféré",
+     "Description": "Élimine `g ennemis en utilisant la compétence Drain."
+    }
+   },
+   "CHALLENGE_SCIENTIST_DISGUISED": {
+    "ChallengeId": 9567,
+    "StatPropertyId": 5471,
+    "CategoryId": "Scientist",
+    "GoalValues": [
+     5,
+     10,
+     25
+    ],
+    "XpRewardValues": [
+     250,
+     500,
+     1000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Spy",
+     "Description": "Eliminate `g enemies while disguised."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Espion",
+     "Description": "Élimine `g ennemis en étant déguisé."
+    }
+   },
+   "CHALLENGE_SCIENTIST_SENTRY": {
+    "ChallengeId": 9568,
+    "StatPropertyId": 5472,
+    "CategoryId": "Scientist",
+    "GoalValues": [
+     10,
+     15,
+     25
+    ],
+    "XpRewardValues": [
+     250,
+     500,
+     1000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Defender",
+     "Description": "Eliminate `g enemies with a deployed Sentry Turret."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Défenseur",
+     "Description": "Élimine `g ennemis avec une tourelle défensive déployée."
+    }
+   },
+   "HEAL_REPAIRRAY": {
+    "ChallengeId": 9569,
+    "StatPropertyId": 5473,
+    "CategoryId": "Scientist",
+    "GoalValues": [
+     1000,
+     2500,
+     5000
+    ],
+    "XpRewardValues": [
+     250,
+     500,
+     1000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Combat Medic",
+     "Description": "Heal `g total accumulated health with the Energon Repair Ray."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Médecin de combat",
+     "Description": "Soigne un total de `g points d'énergie avec le rayon réparateur à énergon."
+    }
+   },
+   "HEAL_GRENADE": {
+    "ChallengeId": 9570,
+    "StatPropertyId": 5474,
+    "CategoryId": "Scientist",
+    "GoalValues": [
+     1000,
+     2500,
+     5000
+    ],
+    "XpRewardValues": [
+     250,
+     500,
+     1000
+    ],
+    "loc_INT": {
+     "ChallengeName": "First Aid",
+     "Description": "Heal `g total accumulated health with a Heal Grenade."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Premiers secours",
+     "Description": "Soigne un total de `g points d'énergie avec des grenades régénérantes."
+    }
+   },
+   "HEAL_REPAIRSENTRY": {
+    "ChallengeId": 9571,
+    "StatPropertyId": 5475,
+    "CategoryId": "Scientist",
+    "GoalValues": [
+     1000,
+     2500,
+     5000
+    ],
+    "XpRewardValues": [
+     250,
+     500,
+     1000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Life Flight",
+     "Description": "Heal `g total accumulated health with a spawned repair sentry."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Secours providentiels",
+     "Description": "Soigne un total de `g points d'énergie avec un robot réparateur généré."
+    }
+   },
+   "WEAPON_MELEE_SCIENTIST_KILLS": {
+    "ChallengeId": 9572,
+    "StatPropertyId": 5476,
+    "CategoryId": "Scientist",
+    "GoalValues": [
+     50,
+     125,
+     300
+    ],
+    "XpRewardValues": [
+     250,
+     500,
+     1000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Slugger",
+     "Description": "Eliminate `g opponents with the Energon Club."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Cogneur",
+     "Description": "Élimine `g ennemis avec le gourdin en énergon."
+    }
+   },
+   "CHALLENGE_SOLDIER_ASSAULTRIFLE": {
+    "ChallengeId": 9728,
+    "StatPropertyId": 5632,
+    "CategoryId": "Soldier",
+    "GoalValues": [
+     25,
+     50,
+     100
+    ],
+    "XpRewardValues": [
+     250,
+     500,
+     1000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Infantry",
+     "Description": "As a Soldier, eliminate `g opponents with the Neutron Assault Rifle."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Infanterie",
+     "Description": "En tant que soldat, élimine `g ennemis avec le fusil d'assaut à neutrons."
+    }
+   },
+   "CHALLENGE_SOLDIER_ASSAULTRIFLE_HEADSHOT": {
+    "ChallengeId": 9729,
+    "StatPropertyId": 5633,
+    "CategoryId": "Soldier",
+    "GoalValues": [
+     10,
+     25,
+     50
+    ],
+    "XpRewardValues": [
+     500,
+     1000,
+     1500
+    ],
+    "loc_INT": {
+     "ChallengeName": "Dead Eye",
+     "Description": "As a Soldier, get `g Headshots with the Neutron Assault Rifle."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Entre les deux yeux",
+     "Description": "En tant que soldat, élimine `g ennemis d'un tir en pleine tête avec le fusil d'assaut à neutrons."
+    }
+   },
+   "CHALLENGE_SOLDIER_ASSAULTRIFLE_WHIRLWIND": {
+    "ChallengeId": 9730,
+    "StatPropertyId": 5634,
+    "CategoryId": "Soldier",
+    "GoalValues": [
+     5,
+     10,
+     20
+    ],
+    "XpRewardValues": [
+     1000,
+     1500,
+     2000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Vertigo",
+     "Description": "As a Soldier, deliver the final blow to `g enemies with the Neutron Assault Rifle after damaging them with the Whirlwind ability."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Vertige",
+     "Description": "En tant que soldat, porte le coup de grâce à `g ennemis avec le fusil d'assaut à neutrons après les avoir endommagés avec la compétence Tourbillon."
+    }
+   },
+   "CHALLENGE_SOLDIER_MG": {
+    "ChallengeId": 9731,
+    "StatPropertyId": 5635,
+    "CategoryId": "Soldier",
+    "GoalValues": [
+     25,
+     50,
+     100
+    ],
+    "XpRewardValues": [
+     250,
+     500,
+     1000
+    ],
+    "loc_INT": {
+     "ChallengeName": "X12 Marksman",
+     "Description": "As a Soldier, eliminate `g opponents with the X12 Scrapmaker."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Technicien du Destructeur X12",
+     "Description": "En tant que soldat, élimine `g ennemis avec le Destructeur X12."
+    }
+   },
+   "CHALLENGE_SOLDIER_MG_HEADSHOT": {
+    "ChallengeId": 9732,
+    "StatPropertyId": 5636,
+    "CategoryId": "Soldier",
+    "GoalValues": [
+     5,
+     10,
+     20
+    ],
+    "XpRewardValues": [
+     500,
+     1000,
+     1500
+    ],
+    "loc_INT": {
+     "ChallengeName": "X12 Expert",
+     "Description": "As a Soldier, get `g headshots with the X12 Scrapmaker."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Expert du Destructeur X12",
+     "Description": "En tant que soldat, élimine `g ennemis d'un tir en plein tête avec le Destructeur X12."
+    }
+   },
+   "CHALLENGE_SOLDIER_MG_HOVERING_LEADER": {
+    "ChallengeId": 9733,
+    "StatPropertyId": 5637,
+    "CategoryId": "Soldier",
+    "GoalValues": [
+     5,
+     10,
+     20
+    ],
+    "XpRewardValues": [
+     1000,
+     1500,
+     2000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Junkyard Dog",
+     "Description": "As a Soldier, eliminate `g Leaders with the X12 Scrapmaker while you are hovering."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Pour la casse",
+     "Description": "En tant que soldat, élimine `g chefs ennemis avec le Destructeur X12 en planant."
+    }
+   },
+   "CHALLENGE_SOLDIER_SHOTGUN": {
+    "ChallengeId": 9734,
+    "StatPropertyId": 5638,
+    "CategoryId": "Soldier",
+    "GoalValues": [
+     25,
+     50,
+     100
+    ],
+    "XpRewardValues": [
+     250,
+     500,
+     1000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Trench Gunner",
+     "Description": "As a Soldier, eliminate `g opponents with the EMP Shotgun."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Soldat des tranchées",
+     "Description": "En tant que soldat, élimine `g ennemis avec le fusil IEM."
+    }
+   },
+   "CHALLENGE_SOLDIER_SHOTGUN_HEADSHOT": {
+    "ChallengeId": 9735,
+    "StatPropertyId": 5639,
+    "CategoryId": "Soldier",
+    "GoalValues": [
+     5,
+     10,
+     20
+    ],
+    "XpRewardValues": [
+     500,
+     1000,
+     1500
+    ],
+    "loc_INT": {
+     "ChallengeName": "No Guts, No Glory",
+     "Description": "As a Soldier, get `g headshots with the EMP Shotgun."
+    },
+    "loc_FRA": {
+     "ChallengeName": "La gloire se mérite !",
+     "Description": "En tant que soldat, élimine `g ennemis d'un tir en pleine tête avec le fusil IEM."
+    }
+   },
+   "CHALLENGE_SOLDIER_SHOTGUN_LEADER": {
+    "ChallengeId": 9736,
+    "StatPropertyId": 5640,
+    "CategoryId": "Soldier",
+    "GoalValues": [
+     5,
+     10,
+     20
+    ],
+    "XpRewardValues": [
+     1000,
+     1500,
+     2000
+    ],
+    "loc_INT": {
+     "ChallengeName": "The Rest Will Fall",
+     "Description": "As a Soldier, eliminate `g enemy Leaders with the EMP Shotgun."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Les autres suivront !",
+     "Description": "En tant que soldat, élimine `g chefs ennemis avec le fusil IEM."
+    }
+   },
+   "CHALLENGE_SOLDIER_HOMINGROCKET": {
+    "ChallengeId": 9737,
+    "StatPropertyId": 5641,
+    "CategoryId": "Soldier",
+    "GoalValues": [
+     25,
+     50,
+     100
+    ],
+    "XpRewardValues": [
+     250,
+     500,
+     1000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Homing Rocket Expert",
+     "Description": "As a Soldier, eliminate `g opponents with the Thermo Rocket Launcher."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Expert roquettes autoguidées",
+     "Description": "En tant que soldat, élimine `g ennemis avec le lance-roquettes thermiques."
+    }
+   },
+   "CHALLENGE_SOLDIER_HOMINGROCKET_SCIENTIST": {
+    "ChallengeId": 9738,
+    "StatPropertyId": 5642,
+    "CategoryId": "Soldier",
+    "GoalValues": [
+     10,
+     25,
+     50
+    ],
+    "XpRewardValues": [
+     500,
+     1000,
+     1500
+    ],
+    "loc_INT": {
+     "ChallengeName": "Arch Enemy",
+     "Description": "As a Soldier, eliminate `g opposing Scientists with the Thermo Rocket Launcher."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Ennemi juré",
+     "Description": "En tant que soldat, élimine `g scientifiques ennemis avec le lance-roquettes thermiques."
+    }
+   },
+   "CHALLENGE_SOLDIER_HOMINGROCKET_CLOAKED": {
+    "ChallengeId": 9739,
+    "StatPropertyId": 5643,
+    "CategoryId": "Soldier",
+    "GoalValues": [
+     5,
+     10,
+     20
+    ],
+    "XpRewardValues": [
+     1000,
+     1500,
+     2000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Who Needs Lock On?",
+     "Description": "As a Soldier, eliminate `g enemy Scouts with the Thermo Rocket Launcher while they are cloaked."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Le verrouillage, pas pour moi !",
+     "Description": "En tant que soldat, élimine `g éclaireurs ennemis camouflés avec le lance-roquettes thermiques."
+    }
+   },
+   "CHALLENGE_SOLDIER_INVEHICLE_KILL": {
+    "ChallengeId": 9740,
+    "StatPropertyId": 5644,
+    "CategoryId": "Soldier",
+    "GoalValues": [
+     25,
+     50,
+     100
+    ],
+    "XpRewardValues": [
+     250,
+     500,
+     1000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Tank Commander",
+     "Description": "Destroy `g enemies with the tank cannon."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Chef de char",
+     "Description": "Détruis `g ennemis avec le canon de blindé."
+    }
+   },
+   "CHALLENGE_SOLDIER_INVEHICLE_PLANEKILL": {
+    "ChallengeId": 9741,
+    "StatPropertyId": 5645,
+    "CategoryId": "Soldier",
+    "GoalValues": [
+     5,
+     10,
+     20
+    ],
+    "XpRewardValues": [
+     250,
+     500,
+     1000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Anti Air",
+     "Description": "Destroy `g enemy jets with the tank cannon."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Attaque antiaérienne",
+     "Description": "Détruis `g engins aériens ennemis avec le canon de blindé."
+    }
+   },
+   "CHALLENGE_SOLDIER_INVEHICLE_TANKKILL": {
+    "ChallengeId": 9742,
+    "StatPropertyId": 5646,
+    "CategoryId": "Soldier",
+    "GoalValues": [
+     5,
+     10,
+     20
+    ],
+    "XpRewardValues": [
+     250,
+     500,
+     1000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Battalion Leader",
+     "Description": "Deliver the final blow on `g enemy tanks with the tank cannon."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Chef de bataillon",
+     "Description": "Porte le coup de grâce à `g blindés ennemis avec le canon de blindé."
+    }
+   },
+   "CHALLENGE_SOLDIER_HOVER": {
+    "ChallengeId": 9743,
+    "StatPropertyId": 5647,
+    "CategoryId": "Soldier",
+    "GoalValues": [
+     25,
+     50,
+     100
+    ],
+    "XpRewardValues": [
+     250,
+     500,
+     1000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Airborne",
+     "Description": "Eliminate `g opponents while hovering."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Attaque aéroportée",
+     "Description": "Élimine `g ennemis en planant."
+    }
+   },
+   "CHALLENGE_SOLDIER_WHIRLWIND": {
+    "ChallengeId": 9744,
+    "StatPropertyId": 5648,
+    "CategoryId": "Soldier",
+    "GoalValues": [
+     25,
+     50,
+     100
+    ],
+    "XpRewardValues": [
+     250,
+     500,
+     1000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Slice 'n' Dice",
+     "Description": "Eliminate `g opponents with the Whirlwind."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Découpage",
+     "Description": "Élimine `g ennemis avec la compétence Tourbillon."
+    }
+   },
+   "CHALLENGE_SOLDIER_ABILITYJAMMER": {
+    "ChallengeId": 9745,
+    "StatPropertyId": 5649,
+    "CategoryId": "Soldier",
+    "GoalValues": [
+     5,
+     10,
+     20
+    ],
+    "XpRewardValues": [
+     250,
+     500,
+     1000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Jam it!",
+     "Description": "Eliminate `g enemies after jamming their abilities with the Energon Sling."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Enrayage",
+     "Description": "Élimine `g ennemis après avoir bloqué leurs compétences avec la fronde à énergon."
+    }
+   },
+   "CHALLENGE_SOLDIER_DEPLOYAMMO": {
+    "ChallengeId": 9746,
+    "StatPropertyId": 5650,
+    "CategoryId": "Soldier",
+    "GoalValues": [
+     25,
+     50,
+     100
+    ],
+    "XpRewardValues": [
+     250,
+     500,
+     1000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Mother Lode",
+     "Description": "Deliver `g ammo beacons."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Stock familial",
+     "Description": "Livre `g balises à munitions."
+    }
+   },
+   "WEAPON_FRAGGRENADE_KILLS": {
+    "ChallengeId": 9747,
+    "StatPropertyId": 5651,
+    "CategoryId": "Soldier",
+    "GoalValues": [
+     25,
+     50,
+     100
+    ],
+    "XpRewardValues": [
+     250,
+     500,
+     1000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Grenade Expert",
+     "Description": "Eliminate `g opponents with the Flak Grenade."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Expert des grenades",
+     "Description": "Élimine `g ennemis avec des grenades antiaériennes."
+    }
+   },
+   "WEAPON_MELEE_SOLDIER_KILLS": {
+    "ChallengeId": 9748,
+    "StatPropertyId": 5652,
+    "CategoryId": "Soldier",
+    "GoalValues": [
+     50,
+     125,
+     300
+    ],
+    "XpRewardValues": [
+     250,
+     500,
+     1000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Paladin",
+     "Description": "Eliminate `g opponents with the Energon Hammer."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Paladin",
+     "Description": "Élimine `g ennemis avec le marteau en énergon."
+    }
+   },
+   "CHALLENGE_LEADER_HEAVYPISTOL": {
+    "ChallengeId": 9808,
+    "StatPropertyId": 5712,
+    "CategoryId": "Leader",
+    "GoalValues": [
+     25,
+     50,
+     100
+    ],
+    "XpRewardValues": [
+     250,
+     500,
+     1000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Battle Pistol Marksman",
+     "Description": "As a Leader, eliminate `g opponents with the Energon Battle Pistol."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Spécialiste du pistolet",
+     "Description": "En tant que chef, élimine `g ennemis avec le pistolet de combat à énergon."
+    }
+   },
+   "CHALLENGE_LEADER_HEAVYPISTOL_HEADSHOT": {
+    "ChallengeId": 9809,
+    "StatPropertyId": 5713,
+    "CategoryId": "Leader",
+    "GoalValues": [
+     25,
+     50,
+     100
+    ],
+    "XpRewardValues": [
+     500,
+     1000,
+     1500
+    ],
+    "loc_INT": {
+     "ChallengeName": "Battle Pistol Expert",
+     "Description": "As a Leader, get `g headshots with the Energon Battle Pistol."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Expert du pistolet de combat",
+     "Description": "En tant que chef, élimine `g ennemis d'un tir en pleine tête avec le pistolet de combat à énergon."
+    }
+   },
+   "CHALLENGE_LEADER_HEAVYPISTOL_DISRUPTOR_TANK": {
+    "ChallengeId": 9810,
+    "StatPropertyId": 5714,
+    "CategoryId": "Leader",
+    "GoalValues": [
+     5,
+     10,
+     20
+    ],
+    "XpRewardValues": [
+     1000,
+     1500,
+     2000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Disruptor",
+     "Description": "As a Leader, take out `g tanks with the Energon Battle Pistol after using Disruptor on a Soldier."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Perturbateur",
+     "Description": "En tant que chef, détruis `g blindés avec le pistolet de combat à énergon après avoir utilisé la compétence Perturbateur sur un soldat."
+    }
+   },
+   "CHALLENGE_LEADER_IONBLASTER": {
+    "ChallengeId": 9811,
+    "StatPropertyId": 5715,
+    "CategoryId": "Leader",
+    "GoalValues": [
+     25,
+     50,
+     100
+    ],
+    "XpRewardValues": [
+     250,
+     500,
+     1000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Platoon Leader",
+     "Description": "As a Leader, eliminate `g opponents with the Ion Blaster."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Chef de peloton",
+     "Description": "En tant que chef, élimine `g ennemis avec le blaster à ions."
+    }
+   },
+   "CHALLENGE_LEADER_IONBLASTER_WARCRY": {
+    "ChallengeId": 9812,
+    "StatPropertyId": 5716,
+    "CategoryId": "Leader",
+    "GoalValues": [
+     10,
+     25,
+     50
+    ],
+    "XpRewardValues": [
+     500,
+     1000,
+     1500
+    ],
+    "loc_INT": {
+     "ChallengeName": "Adrenaline Rush",
+     "Description": "As a Leader, eliminate `g opponents with the Ion Blaster while under the effects of your Warcry."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Montée d'adrénaline",
+     "Description": "En tant que chef, élimine `g ennemis avec le blaster à ions en étant sous l'effet de ton cri de guerre."
+    }
+   },
+   "CHALLENGE_LEADER_IONBLASTER_SPHERE_SCOUT": {
+    "ChallengeId": 9813,
+    "StatPropertyId": 5717,
+    "CategoryId": "Leader",
+    "GoalValues": [
+     5,
+     10,
+     20
+    ],
+    "XpRewardValues": [
+     1000,
+     1500,
+     2000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Wrecking Machine",
+     "Description": "As a Leader, take out `g Scouts with the Ion Blaster after slowing them down with the Moleculon Bomb."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Machine destructrice",
+     "Description": "En tant que chef, élimine `g éclaireurs avec le blaster à ions après les avoir ralentis avec la bombe Moleculon."
+    }
+   },
+   "CHALLENGE_LEADER_GLAUNCHER": {
+    "ChallengeId": 9814,
+    "StatPropertyId": 5718,
+    "CategoryId": "Leader",
+    "GoalValues": [
+     25,
+     50,
+     100
+    ],
+    "XpRewardValues": [
+     250,
+     500,
+     1000
+    ],
+    "loc_INT": {
+     "ChallengeName": "S.W.A.T. Leader",
+     "Description": "As a Leader, eliminate `g opponents with the Magma Frag Launcher."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Le Pulvérisateur",
+     "Description": "En tant que chef, élimine `g ennemis avec le lance-grenades."
+    }
+   },
+   "CHALLENGE_LEADER_GLAUNCHER_TANK": {
+    "ChallengeId": 9815,
+    "StatPropertyId": 5719,
+    "CategoryId": "Leader",
+    "GoalValues": [
+     10,
+     25,
+     50
+    ],
+    "XpRewardValues": [
+     500,
+     1000,
+     1500
+    ],
+    "loc_INT": {
+     "ChallengeName": "Tough Luck",
+     "Description": "As a Leader, destroy `g tanks with the Magma Frag Launcher."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Pas de chance",
+     "Description": "En tant que chef, détruis `g blindés avec le lance-grenades."
+    }
+   },
+   "CHALLENGE_LEADER_GLAUNCHER_DISRUPTOR_SCIENTIST": {
+    "ChallengeId": 9816,
+    "StatPropertyId": 5720,
+    "CategoryId": "Leader",
+    "GoalValues": [
+     5,
+     10,
+     20
+    ],
+    "XpRewardValues": [
+     1000,
+     1500,
+     2000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Overpower",
+     "Description": "As a Leader, eliminate `g Scientists with the Magma Frag Launcher after using the Disruptor."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Maîtrise",
+     "Description": "En tant que chef, élimine `g scientifiques avec le lance-grenades après avoir utilisé la compétence Perturbateur."
+    }
+   },
+   "CHALLENGE_LEADER_FUSIONCANNON": {
+    "ChallengeId": 9817,
+    "StatPropertyId": 5721,
+    "CategoryId": "Leader",
+    "GoalValues": [
+     25,
+     50,
+     100
+    ],
+    "XpRewardValues": [
+     250,
+     500,
+     1000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Fusion Cannon Expert",
+     "Description": "As a Leader, eliminate `g opponents with the Fusion Cannon."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Expert du canon à fusion",
+     "Description": "En tant que chef, élimine `g ennemis avec le canon à fusion."
+    }
+   },
+   "CHALLENGE_LEADER_FUSIONCANNON_LEADER": {
+    "ChallengeId": 9818,
+    "StatPropertyId": 5722,
+    "CategoryId": "Leader",
+    "GoalValues": [
+     10,
+     25,
+     50
+    ],
+    "XpRewardValues": [
+     500,
+     1000,
+     1500
+    ],
+    "loc_INT": {
+     "ChallengeName": "Hammer of Justice",
+     "Description": "As a Leader, eliminate `g opposing Leaders with the Fusion Cannon."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Glaive de la justice",
+     "Description": "En tant que chef, élimine `g chefs ennemis avec le canon à fusion."
+    }
+   },
+   "CHALLENGE_LEADER_FUSIONCANNON_PLANE": {
+    "ChallengeId": 9819,
+    "StatPropertyId": 5723,
+    "CategoryId": "Leader",
+    "GoalValues": [
+     5,
+     10,
+     20
+    ],
+    "XpRewardValues": [
+     1000,
+     1500,
+     2000
+    ],
+    "loc_INT": {
+     "ChallengeName": "No Fly Zone",
+     "Description": "As a Leader, take down `g jets with the Fusion Cannon."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Interdiction de vol",
+     "Description": "En tant que chef, abats `g engins aériens avec le canon à fusion."
+    }
+   },
+   "CHALLENGE_LEADER_INVEHICLE_KILL": {
+    "ChallengeId": 9820,
+    "StatPropertyId": 5724,
+    "CategoryId": "Leader",
+    "GoalValues": [
+     25,
+     50,
+     100
+    ],
+    "XpRewardValues": [
+     250,
+     500,
+     1000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Keep on Truckin'!",
+     "Description": "Eliminate `g enemies using truck weaponry."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Ça roule !",
+     "Description": "Élimine `g ennemis avec ton armement de forme Camion."
+    }
+   },
+   "CHALLENGE_LEADER_INVEHICLE_PLANEKILL": {
+    "ChallengeId": 9821,
+    "StatPropertyId": 5725,
+    "CategoryId": "Leader",
+    "GoalValues": [
+     5,
+     10,
+     20
+    ],
+    "XpRewardValues": [
+     250,
+     500,
+     1000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Anti-Air Expert",
+     "Description": "Take down `g jets using truck weaponry."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Expert de la DCA",
+     "Description": "Abats `g soldats aériens avec ton armement de forme Camion."
+    }
+   },
+   "WEAPON_MELEE_RAM_KILLS": {
+    "ChallengeId": 9822,
+    "StatPropertyId": 5726,
+    "CategoryId": "Leader",
+    "GoalValues": [
+     5,
+     10,
+     20
+    ],
+    "XpRewardValues": [
+     250,
+     500,
+     1000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Freight Train",
+     "Description": "Destroy `g enemies by ramming them."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Train de marchandises",
+     "Description": "Détruis `g ennemis en les chargeant."
+    }
+   },
+   "CHALLENGE_LEADER_WARCRY": {
+    "ChallengeId": 9823,
+    "StatPropertyId": 5727,
+    "CategoryId": "Leader",
+    "GoalValues": [
+     25,
+     75,
+     150
+    ],
+    "XpRewardValues": [
+     250,
+     500,
+     1000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Morale Booster",
+     "Description": "Eliminate `g enemies while under the effect of Warcry."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Motivation",
+     "Description": "Élimine `g ennemis en étant sous l'effet de ton cri de guerre."
+    }
+   },
+   "CHALLENGE_LEADER_DOWNED": {
+    "ChallengeId": 9824,
+    "StatPropertyId": 5728,
+    "CategoryId": "Leader",
+    "GoalValues": [
+     3,
+     5,
+     7
+    ],
+    "XpRewardValues": [
+     250,
+     500,
+     1000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Robotopossum!",
+     "Description": "Eliminate `g enemies while downed and on Reserve Power Cells."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Robopossum !",
+     "Description": "Élimine `g ennemis en étant sur tes batteries de secours."
+    }
+   },
+   "CHALLENGE_LEADER_TRANSFORMDISRUPTOR": {
+    "ChallengeId": 9825,
+    "StatPropertyId": 5729,
+    "CategoryId": "Leader",
+    "GoalValues": [
+     10,
+     25,
+     50
+    ],
+    "XpRewardValues": [
+     250,
+     500,
+     1000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Puppet Master",
+     "Description": "Eliminate `g enemies while they are affected by your Disruptor."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Marionnettiste",
+     "Description": "Élimine `g ennemis sous l'effet de ta compétence Perturbateur."
+    }
+   },
+   "CHALLENGE_LEADER_SPHERE": {
+    "ChallengeId": 9826,
+    "StatPropertyId": 5730,
+    "CategoryId": "Leader",
+    "GoalValues": [
+     25,
+     50,
+     100
+    ],
+    "XpRewardValues": [
+     250,
+     500,
+     1000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Slow Motion",
+     "Description": "Eliminate `g enemies after affecting them with the Moleculon Bomb."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Ralenti",
+     "Description": "Élimine `g ennemis après les avoir affectés avec la bombe Moleculon."
+    }
+   },
+   "WEAPON_KAMIKAZEMINE_KILLS": {
+    "ChallengeId": 9827,
+    "StatPropertyId": 5731,
+    "CategoryId": "Leader",
+    "GoalValues": [
+     25,
+     50,
+     100
+    ],
+    "XpRewardValues": [
+     250,
+     500,
+     1000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Thermo Mine Expert",
+     "Description": "Eliminate `g opponents with a Thermo Mine."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Expert des mines thermiques",
+     "Description": "Élimine `g ennemis avec des mines thermiques."
+    }
+   },
+   "WEAPON_MELEE_LEADER_KILLS": {
+    "ChallengeId": 9828,
+    "StatPropertyId": 5732,
+    "CategoryId": "Leader",
+    "GoalValues": [
+     50,
+     125,
+     300
+    ],
+    "XpRewardValues": [
+     250,
+     500,
+     1000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Warrior",
+     "Description": "Eliminate `g opponents with the Energon Axe."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Guerrier",
+     "Description": "Élimine `g ennemis avec la hache en énergon."
+    }
+   },
+   "CHALLENGE_PRIME_KILLSTREAK_HIGHEST": {
+    "ChallengeId": 10064,
+    "StatPropertyId": 5968,
+    "CategoryId": "Prime",
+    "PrimeChallenge": "true",
+    "GoalValues": [
+     15,
+     20,
+     25
+    ],
+    "XpRewardValues": [
+     1000,
+     1500,
+     2000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Unstoppable!",
+     "Description": "Eliminate `g enemies in a row without dying."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Invincible",
+     "Description": "Élimine `g ennemis d'affilée sans être désactivé."
+    }
+   },
+   "CHALLENGE_PRIME_KILLSTREAK_SCOUT3_SINGLEMATCH": {
+    "ChallengeId": 10065,
+    "StatPropertyId": 5969,
+    "CategoryId": "Prime",
+    "PrimeChallenge": "true",
+    "GoalValues": [
+     3,
+     4,
+     5
+    ],
+    "XpRewardValues": [
+     500,
+     1000,
+     1500
+    ],
+    "loc_INT": {
+     "ChallengeName": "You Can't Hide!",
+     "Description": "Activate the Orbital Beacon `g times in a single match."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Aucune cachette au monde",
+     "Description": "Active la balise orbitale `g fois au cours d'une seule partie."
+    }
+   },
+   "CHALLENGE_PRIME_KILLSTREAK_SCOUT5_SINGLEMATCH": {
+    "ChallengeId": 10067,
+    "StatPropertyId": 5971,
+    "CategoryId": "Prime",
+    "PrimeChallenge": "true",
+    "GoalValues": [
+     2,
+     3,
+     4
+    ],
+    "XpRewardValues": [
+     1000,
+     1500,
+     2000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Adrenaline!",
+     "Description": "Activate the Energon Recharger `g times in a single match"
+    },
+    "loc_FRA": {
+     "ChallengeName": "Adrénaline",
+     "Description": "Active le chargeur d'énergon `g fois au cours d'une seule partie."
+    }
+   },
+   "CHALLENGE_PRIME_KILLSTREAK_SCOUT7_SINGLEMATCH": {
+    "ChallengeId": 10068,
+    "StatPropertyId": 5972,
+    "CategoryId": "Prime",
+    "PrimeChallenge": "true",
+    "GoalValues": [
+     2,
+     3,
+     4
+    ],
+    "XpRewardValues": [
+     1500,
+     2000,
+     2500
+    ],
+    "loc_INT": {
+     "ChallengeName": "Omnipotent",
+     "Description": "Activate the Orbital Beacon 2.0 `g times in a single match."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Toute-puissance",
+     "Description": "Active la balise orbitale 2.0 `g fois au cours d'une seule partie."
+    }
+   },
+   "CHALLENGE_PRIME_KILLSTREAK_SCOUT3_TOTAL": {
+    "ChallengeId": 10069,
+    "StatPropertyId": 5973,
+    "CategoryId": "Prime",
+    "PrimeChallenge": "true",
+    "GoalValues": [
+     25,
+     50,
+     100
+    ],
+    "XpRewardValues": [
+     500,
+     1000,
+     1500
+    ],
+    "loc_INT": {
+     "ChallengeName": "All-Seeing Eye",
+     "Description": "Activate the Orbital Beacon a total of `g times"
+    },
+    "loc_FRA": {
+     "ChallengeName": "Oeil de la Providence",
+     "Description": "Active la balise orbitale `g fois."
+    }
+   },
+   "CHALLENGE_PRIME_KILLSTREAK_SCOUT5_TOTAL": {
+    "ChallengeId": 10070,
+    "StatPropertyId": 5974,
+    "CategoryId": "Prime",
+    "PrimeChallenge": "true",
+    "GoalValues": [
+     10,
+     25,
+     50
+    ],
+    "XpRewardValues": [
+     1000,
+     1500,
+     2000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Regen Junkie!",
+     "Description": "Activate the Energon Recharger a total of `g times."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Accro à la régénération",
+     "Description": "Active le chargeur d'énergon `g fois."
+    }
+   },
+   "CHALLENGE_PRIME_KILLSTREAK_SCOUT7_TOTAL": {
+    "ChallengeId": 10071,
+    "StatPropertyId": 5975,
+    "CategoryId": "Prime",
+    "PrimeChallenge": "true",
+    "GoalValues": [
+     5,
+     15,
+     25
+    ],
+    "XpRewardValues": [
+     1500,
+     2000,
+     2500
+    ],
+    "loc_INT": {
+     "ChallengeName": "X-Ray Vision",
+     "Description": "Activate the Orbital Beacon 2.0 a total of `g times."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Vision aux rayons X",
+     "Description": "Active la balise orbitale 2.0 `g fois."
+    }
+   },
+   "CHALLENGE_PRIME_KILLSTREAK_SOLDIER3_SINGLEMATCH": {
+    "ChallengeId": 10072,
+    "StatPropertyId": 5976,
+    "CategoryId": "Prime",
+    "PrimeChallenge": "true",
+    "GoalValues": [
+     3,
+     4,
+     5
+    ],
+    "XpRewardValues": [
+     500,
+     1000,
+     1500
+    ],
+    "loc_INT": {
+     "ChallengeName": "Bandolier",
+     "Description": "Activate the Ammo Matrix `g times in a single match."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Cartouchière",
+     "Description": "Active la matrice de munitions `g fois au cours d'une seule partie."
+    }
+   },
+   "CHALLENGE_PRIME_KILLSTREAK_SOLDIER5_SINGLEMATCH": {
+    "ChallengeId": 10073,
+    "StatPropertyId": 5977,
+    "CategoryId": "Prime",
+    "PrimeChallenge": "true",
+    "GoalValues": [
+     2,
+     3,
+     4
+    ],
+    "XpRewardValues": [
+     1000,
+     1500,
+     2000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Black Out!",
+     "Description": "Activate The Electromagnetic Pulse `g times in a single match."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Black-out",
+     "Description": "Active l'impulsion électromagnétique `g fois au cours d'une seule partie."
+    }
+   },
+   "CHALLENGE_PRIME_KILLSTREAK_SOLDIER7_SINGLEMATCH": {
+    "ChallengeId": 10074,
+    "StatPropertyId": 5978,
+    "CategoryId": "Prime",
+    "PrimeChallenge": "true",
+    "GoalValues": [
+     2,
+     3,
+     4
+    ],
+    "XpRewardValues": [
+     1500,
+     2000,
+     2500
+    ],
+    "loc_INT": {
+     "ChallengeName": "Phoenix Rising",
+     "Description": "Activate the Omega Missile `g times in a single match."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Tel le phénix",
+     "Description": "Active le missile Omega `g fois au cours d'une seule partie."
+    }
+   },
+   "CHALLENGE_PRIME_KILLSTREAK_SOLDIER3_TOTAL": {
+    "ChallengeId": 10075,
+    "StatPropertyId": 5979,
+    "CategoryId": "Prime",
+    "PrimeChallenge": "true",
+    "GoalValues": [
+     25,
+     50,
+     100
+    ],
+    "XpRewardValues": [
+     500,
+     1000,
+     1500
+    ],
+    "loc_INT": {
+     "ChallengeName": "Jackpot!",
+     "Description": "Activate the Ammo Matrix a total of `g times."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Jackpot !",
+     "Description": "Active la matrice de munitions `g fois."
+    }
+   },
+   "CHALLENGE_PRIME_KILLSTREAK_SOLDIER5_TOTAL": {
+    "ChallengeId": 10076,
+    "StatPropertyId": 5980,
+    "CategoryId": "Prime",
+    "PrimeChallenge": "true",
+    "GoalValues": [
+     10,
+     25,
+     50
+    ],
+    "XpRewardValues": [
+     1000,
+     1500,
+     2000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Short Circuit",
+     "Description": "Activate The Electromagnetic Pulse a total of `g times."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Court-circuit",
+     "Description": "Active l'impulsion électromagnétique `g fois."
+    }
+   },
+   "CHALLENGE_PRIME_KILLSTREAK_SOLDIER7_TOTAL": {
+    "ChallengeId": 10077,
+    "StatPropertyId": 5981,
+    "CategoryId": "Prime",
+    "PrimeChallenge": "true",
+    "GoalValues": [
+     5,
+     15,
+     25
+    ],
+    "XpRewardValues": [
+     1500,
+     2000,
+     2500
+    ],
+    "loc_INT": {
+     "ChallengeName": "Make it Rain!",
+     "Description": "Activate the Omega Missile a total of `g times."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Que la pluie s'abatte !",
+     "Description": "Active le missile Omega `g fois."
+    }
+   },
+   "CHALLENGE_PRIME_KILLSTREAK_LEADER3_SINGLEMATCH": {
+    "ChallengeId": 10078,
+    "StatPropertyId": 5982,
+    "CategoryId": "Prime",
+    "PrimeChallenge": "true",
+    "GoalValues": [
+     3,
+     4,
+     5
+    ],
+    "XpRewardValues": [
+     500,
+     1000,
+     1500
+    ],
+    "loc_INT": {
+     "ChallengeName": "Drop the Zero!",
+     "Description": "Activate The Intercooler `g times in a single match."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Froid glacial",
+     "Description": "Active le dissipateur `g fois au cours d'une seule partie."
+    }
+   },
+   "CHALLENGE_PRIME_KILLSTREAK_LEADER5_SINGLEMATCH": {
+    "ChallengeId": 10079,
+    "StatPropertyId": 5983,
+    "CategoryId": "Prime",
+    "PrimeChallenge": "true",
+    "GoalValues": [
+     2,
+     3,
+     4
+    ],
+    "XpRewardValues": [
+     1000,
+     1500,
+     2000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Really?",
+     "Description": "Activate the P.O.K.E. 2.0 a total of `g times in a single match."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Vraiment ?",
+     "Description": "Active le poing destructeur 2.0 `g fois au cours d'une seule partie."
+    }
+   },
+   "CHALLENGE_PRIME_KILLSTREAK_LEADER7_SINGLEMATCH": {
+    "ChallengeId": 10080,
+    "StatPropertyId": 5984,
+    "CategoryId": "Prime",
+    "PrimeChallenge": "true",
+    "GoalValues": [
+     2,
+     3,
+     4
+    ],
+    "XpRewardValues": [
+     1500,
+     2000,
+     2500
+    ],
+    "loc_INT": {
+     "ChallengeName": "Mine! All Mine!",
+     "Description": "Activate the Thermo Mine Re-spawner `g times in a single match."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Champ de mines",
+     "Description": "Active le générateur de mines thermiques `g fois au cours d'une seule partie."
+    }
+   },
+   "CHALLENGE_PRIME_KILLSTREAK_LEADER3_TOTAL": {
+    "ChallengeId": 10081,
+    "StatPropertyId": 5985,
+    "CategoryId": "Prime",
+    "PrimeChallenge": "true",
+    "GoalValues": [
+     25,
+     50,
+     100
+    ],
+    "XpRewardValues": [
+     500,
+     1000,
+     1500
+    ],
+    "loc_INT": {
+     "ChallengeName": "Cool as Ice!",
+     "Description": "Activate The Intercooler a total of `g times."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Zéro absolu",
+     "Description": "Active le dissipateur `g fois."
+    }
+   },
+   "CHALLENGE_PRIME_KILLSTREAK_LEADER5_TOTAL": {
+    "ChallengeId": 10082,
+    "StatPropertyId": 5986,
+    "CategoryId": "Prime",
+    "PrimeChallenge": "true",
+    "GoalValues": [
+     10,
+     25,
+     50
+    ],
+    "XpRewardValues": [
+     1000,
+     1500,
+     2000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Stoked",
+     "Description": "Activate the P.O.K.E. 2.0 a total of `g times."
+    },
+    "loc_FRA": {
+     "ChallengeName": "K.O.",
+     "Description": "Active le poing destructeur 2.0 `g fois."
+    }
+   },
+   "CHALLENGE_PRIME_KILLSTREAK_LEADER7_TOTAL": {
+    "ChallengeId": 10083,
+    "StatPropertyId": 5987,
+    "CategoryId": "Prime",
+    "PrimeChallenge": "true",
+    "GoalValues": [
+     5,
+     15,
+     25
+    ],
+    "XpRewardValues": [
+     1500,
+     2000,
+     2500
+    ],
+    "loc_INT": {
+     "ChallengeName": "Seek and Destroy!",
+     "Description": "Activate the Thermo Mine Re-spawner a total of `g times."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Recherche et destruction",
+     "Description": "Active le générateur de mines thermiques `g fois."
+    }
+   },
+   "CHALLENGE_PRIME_KILLSTREAK_SCIENTIST3_SINGLEMATCH": {
+    "ChallengeId": 10084,
+    "StatPropertyId": 5988,
+    "CategoryId": "Prime",
+    "PrimeChallenge": "true",
+    "GoalValues": [
+     3,
+     4,
+     5
+    ],
+    "XpRewardValues": [
+     500,
+     1000,
+     1500
+    ],
+    "loc_INT": {
+     "ChallengeName": "Whambulance!",
+     "Description": "Activate the Health Matrix 2.0 `g times in a single match."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Ambulance",
+     "Description": "Active la matrice énergétique 2.0 `g fois au cours d'une seule partie."
+    }
+   },
+   "CHALLENGE_PRIME_KILLSTREAK_SCIENTIST5_SINGLEMATCH": {
+    "ChallengeId": 10085,
+    "StatPropertyId": 5989,
+    "CategoryId": "Prime",
+    "PrimeChallenge": "true",
+    "GoalValues": [
+     2,
+     3,
+     4
+    ],
+    "XpRewardValues": [
+     1000,
+     1500,
+     2000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Guardian Angel",
+     "Description": "Activate the Overshield Matrix `g times in a single match."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Ange gardien",
+     "Description": "Active la matrice de bouclier `g fois durant une seule partie."
+    }
+   },
+   "CHALLENGE_PRIME_KILLSTREAK_SCIENTIST7_SINGLEMATCH": {
+    "ChallengeId": 10086,
+    "StatPropertyId": 5990,
+    "CategoryId": "Prime",
+    "PrimeChallenge": "true",
+    "GoalValues": [
+     2,
+     3,
+     4
+    ],
+    "XpRewardValues": [
+     1500,
+     2000,
+     2500
+    ],
+    "loc_INT": {
+     "ChallengeName": "Bamboozled!",
+     "Description": "Activate The Nucleon Shock Cannon `g times in a single match."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Tuerie",
+     "Description": "Active le canon à nucléons `g fois au cours d'une seule partie."
+    }
+   },
+   "CHALLENGE_PRIME_KILLSTREAK_SCIENTIST3_TOTAL": {
+    "ChallengeId": 10087,
+    "StatPropertyId": 5991,
+    "CategoryId": "Prime",
+    "PrimeChallenge": "true",
+    "GoalValues": [
+     25,
+     50,
+     100
+    ],
+    "XpRewardValues": [
+     500,
+     1000,
+     1500
+    ],
+    "loc_INT": {
+     "ChallengeName": "Painkiller!",
+     "Description": "Activate the Health Matrix 2.0 a total of `g times."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Analgésiques",
+     "Description": "Active la matrice énergétique 2.0 `g fois."
+    }
+   },
+   "CHALLENGE_PRIME_KILLSTREAK_SCIENTIST5_TOTAL": {
+    "ChallengeId": 10088,
+    "StatPropertyId": 5992,
+    "CategoryId": "Prime",
+    "PrimeChallenge": "true",
+    "GoalValues": [
+     10,
+     25,
+     50
+    ],
+    "XpRewardValues": [
+     1000,
+     1500,
+     2000
+    ],
+    "loc_INT": {
+     "ChallengeName": "Divine Protection",
+     "Description": "Activate the Overshield Matrix a total of `g times."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Protection divine",
+     "Description": "Active la matrice de bouclier `g fois."
+    }
+   },
+   "CHALLENGE_PRIME_KILLSTREAK_SCIENTIST7_TOTAL": {
+    "ChallengeId": 10089,
+    "StatPropertyId": 5993,
+    "CategoryId": "Prime",
+    "PrimeChallenge": "true",
+    "GoalValues": [
+     5,
+     15,
+     25
+    ],
+    "XpRewardValues": [
+     1500,
+     2000,
+     2500
+    ],
+    "loc_INT": {
+     "ChallengeName": "No More Mr. Nice Guy!",
+     "Description": "Activate The Nucleon Shock Cannon a total of `g times."
+    },
+    "loc_FRA": {
+     "ChallengeName": "Adieu !",
+     "Description": "Active le canon à nucléons `g fois."
+    }
+   }
+  }
+ },
+ "xp_config": {
+  "TransGame.TnStatisticsXpTable": {
+   "Enabled": "false"
+  },
+  "TransGame.TnXpManager": {
+   "LevelTable": [
+    500,
+    1500,
+    3000,
+    5000,
+    7500,
+    11000,
+    15500,
+    21000,
+    27500,
+    35000,
+    44000,
+    54500,
+    66500,
+    80000,
+    95000,
+    112000,
+    131000,
+    152000,
+    175000,
+    200000,
+    227000,
+    256000,
+    287000,
+    320000,
+    355000
+   ]
+  },
+  "TransGame.TnCharacterCustomizationData": {
+   "UnlockCharacterSlotLevels": [
+    5,
+    10
+   ],
+   "NumberOfColorPalettes": 5
+  },
+  "TransGame.TnXpEventType": {
+   "GlobalXpMultiplier": 1,
+   "DeathmatchXpAmount": -1
+  },
+  "TransGame.TnXpEventTypeKill": {
+   "XpAmount": 50,
+   "DeathmatchXpAmount": 25
+  },
+  "TransGame.TnXpEventTypeBombCarrierKill": {
+   "XpAmount": 100
+  },
+  "TransGame.TnXpEventTypeEndKillStreak": {
+   "XpAmount": 75
+  },
+  "TransGame.TnXpEventTypeFirstKill": {
+   "XpAmount": 100
+  },
+  "TransGame.TnXpEventTypeFlagCarrierKill": {
+   "XpAmount": 100
+  },
+  "TransGame.TnXpEventTypeKillDomination2": {
+   "XpAmount": 20
+  },
+  "TransGame.TnXpEventTypeKillDomination3": {
+   "XpAmount": 40
+  },
+  "TransGame.TnXpEventTypeKillDomination4": {
+   "XpAmount": 60
+  },
+  "TransGame.TnXpEventTypeKillerLowHealth": {
+   "XpAmount": 75
+  },
+  "TransGame.TnXpEventTypeKillPayback": {
+   "XpAmount": 50
+  },
+  "TransGame.TnXpEventTypeKillPaybackDomination": {
+   "XpAmount": 50
+  },
+  "TransGame.TnXpEventTypeKillStreak3": {
+   "XpAmount": 100,
+   "DeathmatchXpAmount": 50
+  },
+  "TransGame.TnXpEventTypeKillStreak5": {
+   "XpAmount": 150,
+   "DeathmatchXpAmount": 100
+  },
+  "TransGame.TnXpEventTypeKillStreak7": {
+   "XpAmount": 200,
+   "DeathmatchXpAmount": 150
+  },
+  "TransGame.TnXpEventTypeMultiKill2": {
+   "XpAmount": 100,
+   "DeathmatchXpAmount": 50
+  },
+  "TransGame.TnXpEventTypeMultiKill3": {
+   "XpAmount": 150,
+   "DeathmatchXpAmount": 100
+  },
+  "TransGame.TnXpEventTypeMultiKill4": {
+   "XpAmount": 200,
+   "DeathmatchXpAmount": 150
+  },
+  "TransGame.TnXpEventTypeZoneKill": {
+   "XpAmount": 20
+  },
+  "TransGame.TnXpEventTypeDominationPointKill": {
+   "XpAmount": 20
+  },
+  "TransGame.TnXpEventTypeKillScoutMelee": {
+   "XpAmount": 25
+  },
+  "TransGame.TnXpEventTypeKillScientistMelee": {
+   "XpAmount": 25
+  },
+  "TransGame.TnXpEventTypeKillSoldierMelee": {
+   "XpAmount": 25
+  },
+  "TransGame.TnXpEventTypeKillLeaderMelee": {
+   "XpAmount": 25
+  },
+  "TransGame.TnKillAwardRuleLongRange": {
+   "LongDistance": 8000
+  },
+  "TransGame.TnXpEventTypeLongRange": {
+   "XpAmount": 50
+  },
+  "TransGame.TnXpEventTypeHeadshot": {
+   "XpAmount": 75
+  },
+  "TransGame.TnXpEventTypeKillAbilityJammer": {
+   "XpAmount": 100
+  },
+  "TransGame.TnXpEventTypeKillBackstab": {
+   "XpAmount": 100
+  },
+  "TransGame.TnXpEventTypeKillDecoyTrap": {
+   "XpAmount": 100
+  },
+  "TransGame.TnXpEventTypeKilledDisguise": {
+   "XpAmount": 100
+  },
+  "TransGame.TnXpEventTypeKillerDisguise": {
+   "XpAmount": 100
+  },
+  "TransGame.TnXpEventTypeKilledDrain": {
+   "XpAmount": 50
+  },
+  "TransGame.TnXpEventTypeKillFlashBang": {
+   "XpAmount": 50
+  },
+  "TransGame.TnXpEventTypeKillerFlashbang": {
+   "XpAmount": 50
+  },
+  "TransGame.TnXpEventTypeKilledHover": {
+   "XpAmount": 50
+  },
+  "TransGame.TnXpEventTypeKillerHover": {
+   "XpAmount": 100
+  },
+  "TransGame.TnXpEventTypeKillGuidedMissile": {
+   "XpAmount": 100
+  },
+  "TransGame.TnXpEventTypeKillWhirlWind": {
+   "XpAmount": 50
+  },
+  "TransGame.TnXpEventTypeKillShockwave": {
+   "XpAmount": 50
+  },
+  "TransGame.TnXpEventTypeKillMarkTarget": {
+   "XpAmount": 100
+  },
+  "TransGame.TnXpEventTypeKillTransformDisruptor": {
+   "XpAmount": 50
+  },
+  "TransGame.TnXpEventTypeKilledWarcry": {
+   "XpAmount": 50
+  },
+  "TransGame.TnXpEventTypeKillerSurpriseAttack": {
+   "XpAmount": 50
+  },
+  "TransGame.TnXpEventTypeKillerWarcry": {
+   "XpAmount": 25
+  },
+  "TransGame.TnXpEventTypeKillRam": {
+   "XpAmount": 150
+  },
+  "TransGame.TnXpEventTypeKillerDowned": {
+   "XpAmount": 150
+  },
+  "TransGame.TnXpEventTypeKillRollerSphere": {
+   "XpAmount": 50
+  },
+  "TransGame.TnXpEventTypeHealGrenadeTeammates": {
+   "XpAmount": 50
+  },
+  "TransGame.TnXpEventTypeHealRepairRayLowHealth": {
+   "XpAmount": 15
+  },
+  "TransGame.TnXpEventTypeBombDefuse": {
+   "XpAmount": 75
+  },
+  "TransGame.TnXpEventTypeBombDetonate": {
+   "XpAmount": 200
+  },
+  "TransGame.TnXpEventTypeBombPlant": {
+   "XpAmount": 50
+  },
+  "TransGame.TnXpEventTypeFlagCapture": {
+   "XpAmount": 200
+  },
+  "TransGame.TnXpEventTypeFlagReturn": {
+   "XpAmount": 75
+  },
+  "TransGame.TnXpEventTypeFlagDefend": {
+   "XpAmount": 100
+  },
+  "TransGame.TnXpEventTypeDominationCapture": {
+   "XpAmount": 150
+  },
+  "TransGame.TnXpEventTypeZoneHold0": {
+   "XpAmount": 5
+  },
+  "TransGame.TnXpEventTypeZoneHold1": {
+   "XpAmount": 10
+  },
+  "TransGame.TnXpEventTypeZoneHold2": {
+   "XpAmount": 15
+  },
+  "TransGame.TnXpEventTypeZoneHold3": {
+   "XpAmount": 20
+  },
+  "TransGame.TnXpEventTypeZoneHold4": {
+   "XpAmount": 25
+  },
+  "TransGame.TnXpEventTypeZoneHold5": {
+   "XpAmount": 30
+  },
+  "TransGame.TnXpEventTypeAssist": {
+   "XpAmount": 25,
+   "DeathmatchXpAmount": 15
+  },
+  "TransGame.TnXpEventTypeWeakAssist": {
+   "XpAmount": 15,
+   "DeathmatchXpAmount": 10
+  },
+  "TransGame.TnXpEventTypeFirstDeath": {
+   "XpAmount": 75
+  },
+  "TransGame.TnXpEventTypeGameLose": {
+   "XpAmount": 150,
+   "DeathmatchXpAmount": 75
+  },
+  "TransGame.TnXpEventTypeGameWin": {
+   "XpAmount": 300,
+   "DeathmatchXpAmount": 150
+  },
+  "TransGame.TnXpEventTypeMineKill": {
+   "XpAmount": 25
+  },
+  "TransGame.TnXpEventTypeRollerMineKill": {
+   "XpAmount": 25
+  },
+  "TransGame.TnXpEventTypeSentryKill": {
+   "XpAmount": 25,
+   "DeathmatchXpAmount": 15
+  },
+  "TransGame.TnXpEventTypeKillAfterDeath": {
+   "XpAmount": 25
+  },
+  "TransGame.TnXpEventTypeKillHoverMelee": {
+   "XpAmount": 50
+  }
+ },
+ "summary": {
+  "providers": {
+   "Chassis": 33,
+   "Specialty": 4,
+   "Skill": 56,
+   "Killstreak": 12,
+   "Ability": 18,
+   "Challenge": 121
+  },
+  "level_table_thresholds": 25,
+  "max_level_xp": 355000,
+  "xp_sections": 76
+ }
+}
