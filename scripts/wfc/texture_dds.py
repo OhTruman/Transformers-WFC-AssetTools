@@ -11,6 +11,8 @@ what the console sampled, modulo the tiling / endianness of the memory layout). 
 DXT5, or A8R8G8B8 uncompressed) with the longest verified mip chain:
   every mip k > 0 is decoded and compared with a 2^k box-downsample of mip 0 (PSNR); the chain is cut at the first mip below
   MIN_PSNR (the Xbox packed mip tail, MipTailBaseIdx, is not proven) and the cut is recorded - never guessed.
+Verification is memory-bounded: each level is compared with a 2x box-downsample of the previous accepted level on a centred
+crop of at most 128 x 128 px (only those blocks are decoded).
 Index: manifests/extracted/textures_dds.jsonl  {object_path, png, dds, format, size, mips_written, mips_cooked, mip_tail_base, ...}
 """
 import json, os, struct, sys, time
@@ -23,6 +25,8 @@ import flipbook_export as FB  # noqa: E402
 from vs_common import ROOT  # noqa: E402
 
 AT = os.path.normpath(os.path.join(HERE, '..', '..'))
+RESUME = '--resume' in sys.argv
+OUT_ROOT = os.path.join(AT, 'out', 'dds')   # mirror tree: out/dds/<path of the PNG relative to ExtractedAssets>.dds (Integration)
 MIN_PSNR = 24.0
 _addr_cache = {}
 
@@ -30,7 +34,7 @@ def untile_np(data, wb, hb, bpb):
     """vectorised Xenos XGAddress2DTiledOffset (same math as flipbook_export.untile_2d)"""
     key = (wb, hb, bpb)
     if key not in _addr_cache:
-        log2 = {4: 2, 8: 3, 16: 4}[bpb]; aw = (wb + 31) & ~31
+        log2 = {1: 0, 2: 1, 4: 2, 8: 3, 16: 4}[bpb]; aw = (wb + 31) & ~31
         y, x = np.mgrid[0:hb, 0:wb].astype(np.int64)
         macro = ((x >> 5) + (y >> 5) * (aw >> 5)) << (log2 + 7)
         micro = ((x & 7) + ((y & 6) << 2)) << log2
@@ -46,7 +50,7 @@ def untile_np(data, wb, hb, bpb):
     out[ok] = src[addr[ok]]
     return out.tobytes()
 
-BPB = {'PF_DXT1': 8, 'PF_DXT3': 16, 'PF_DXT5': 16, 'PF_A8R8G8B8': 4}
+BPB = {'PF_DXT1': 8, 'PF_DXT3': 16, 'PF_DXT5': 16, 'PF_A8R8G8B8': 4, 'PF_G8': 1}
 FOURCC = {'PF_DXT1': b'DXT1', 'PF_DXT3': b'DXT3', 'PF_DXT5': b'DXT5'}
 
 def mip_linear(raw, w, h, fmt):
@@ -55,6 +59,8 @@ def mip_linear(raw, w, h, fmt):
     if fmt == 'PF_A8R8G8B8':
         lin = np.frombuffer(untile_np(raw, w, h, 4), np.uint8).reshape(-1, 4)   # BE ARGB -> DDS BGRA (LE A8R8G8B8)
         return lin[:, ::-1].tobytes()
+    if fmt == 'PF_G8':
+        return untile_np(raw, w, h, 1)                                          # 8-bit luminance, no byte order
     wb, hb = max(1, (w + 3) // 4), max(1, (h + 3) // 4)
     return FB.swap16(untile_np(raw, wb, hb, bpb))
 
@@ -101,6 +107,13 @@ def accept(img, ref):
     c = 1.0 if a.std() < 1e-3 and b.std() < 1e-3 else float(np.corrcoef(a, b)[0, 1]) if a.std() > 1e-3 and b.std() > 1e-3 else 0.0
     return (s >= MIN_PSNR or c >= MIN_CORR), round(s, 1), round(c, 3)
 
+def tail_tile(raw, tw, th, fmt):
+    """the packed-tail surface of the tail-base mip as a (rows, cols, bpb) block array: width = the tail-base level's block
+    width aligned to 32, height 32 blocks (Xenos tiles are 32 x 32 blocks; a 256 x 16 tail base is 64 x 32 blocks)"""
+    bpb = BPB[fmt]
+    cols = max(32, ((max(1, tw // 4) + 31) // 32) * 32); rows = max(32, ((max(1, th // 4) + 31) // 32) * 32)
+    return np.frombuffer(mip_linear(raw, cols * 4, rows * 4, fmt), np.uint8).reshape(rows, cols, bpb)
+
 def packed_offset_blocks(tw, th, t):
     """Xenos packed mip tail position of packed level t inside the tail tile (Xenia GetPackedTileOffset; verified on
     fbook_sinewave / FloorTrim_02_SPEC: t0 -> (4,0), t1 -> (2,0) blocks for square tails)"""
@@ -121,6 +134,7 @@ def dds_bytes(fmt, w, h, levels):
     pitch = len(levels[0])
     hdr = struct.pack('<4sIIIIIII', b'DDS ', 124, flags, h, w, pitch, 0, len(levels)) + b'\0' * 44
     if fmt in FOURCC: pf = struct.pack('<II4sIIIII', 32, 0x4, FOURCC[fmt], 0, 0, 0, 0, 0)
+    elif fmt == 'PF_G8': pf = struct.pack('<II4sIIIII', 32, 0x20000, b'\0\0\0\0', 8, 0xFF, 0, 0, 0)   # DDPF_LUMINANCE L8
     else: pf = struct.pack('<II4sIIIII', 32, 0x41, b'\0\0\0\0', 32, 0x00FF0000, 0x0000FF00, 0x000000FF, 0xFF000000)
     caps = struct.pack('<IIIII', 0x1000 | 0x400000 | 0x8, 0, 0, 0, 0)
     return hdr + pf + caps + b''.join(levels)
@@ -130,6 +144,8 @@ def _decode_linear(lin, w, h, fmt):
     re-encode as identity-tiled by decoding directly with the same block decoder"""
     if fmt == 'PF_A8R8G8B8':
         a = np.frombuffer(lin, np.uint8).reshape(h, w, 4); return a[..., [2, 1, 0, 3]]
+    if fmt == 'PF_G8':
+        g = np.frombuffer(lin, np.uint8).reshape(h, w); return np.stack([g, g, g, np.full_like(g, 255)], -1)
     wb, hb = max(1, w // 4), max(1, h // 4)
     if fmt == 'PF_DXT1':
         px = FB.dxt_color(np.frombuffer(lin, np.uint8).reshape(-1, 8))
@@ -137,24 +153,76 @@ def _decode_linear(lin, w, h, fmt):
         b = np.frombuffer(lin, np.uint8).reshape(-1, 16); px = FB.dxt_color(b[:, 8:], alpha1bit=False)
     return px.reshape(hb, wb, 4, 4, 4).transpose(0, 2, 1, 3, 4).reshape(hb * 4, wb * 4, 4)[:h, :w].astype(np.uint8)
 
+def _evict():
+    """drop cached packages AND collect: objtree.package sets p._tr = TypedReader(p) (a reference cycle), so the decompressed
+    package bytes are only freed by the cycle collector - without gc.collect() ~380 MB per level package accumulates"""
+    import gc
+    objtree.package.cache_clear(); gc.collect()
+
+def crop_blocks(lin, w, h, fmt, x0, y0, cw, ch):
+    """decode only the pixel region [x0, x0+cw) x [y0, y0+ch) (block aligned) of a LINEAR level (memory-bounded verification)"""
+    if fmt == 'PF_A8R8G8B8':
+        a = np.frombuffer(lin, np.uint8).reshape(h, w, 4)[y0:y0 + ch, x0:x0 + cw]; return a[..., [2, 1, 0, 3]]
+    if fmt == 'PF_G8':
+        g = np.frombuffer(lin, np.uint8).reshape(h, w)[y0:y0 + ch, x0:x0 + cw]; return np.stack([g, g, g, np.full_like(g, 255)], -1)
+    bpb = BPB[fmt]; wb = max(1, w // 4)
+    blk = np.frombuffer(lin, np.uint8).reshape(-1, wb, bpb)[y0 // 4:(y0 + ch) // 4, x0 // 4:(x0 + cw) // 4]
+    return _decode_linear(np.ascontiguousarray(blk).tobytes(), cw, ch, fmt)
+
+def verify_pair(prev, pw, ph, cur, w, h, fmt):
+    """compare level k (cur) with a 2x box-downsample of level k-1 (prev) on a centred crop <= 128x128 px"""
+    cw, ch = min(w, 128) // 4 * 4, min(h, 128) // 4 * 4
+    if cw < 4 or ch < 4: return True, 99.0, 1.0
+    x0, y0 = (w - cw) // 2 // 4 * 4, (h - ch) // 2 // 4 * 4
+    c = crop_blocks(cur, w, h, fmt, x0, y0, cw, ch).astype(np.float32)
+    pv = crop_blocks(prev, pw, ph, fmt, 2 * x0, 2 * y0, 2 * cw, 2 * ch).astype(np.float32)
+    return accept(c, box_down(pv, 1))
+
 def export(opath, png_rel, out_rel=None):
     inv = objtree.inv()
-    rows = inv.execute("SELECT package FROM exports WHERE opath = ? ORDER BY serial_size DESC", (opath,)).fetchall()
-    for (pkg,) in rows:
-        pr, mips = read_mips(pkg, opath)
+    rows = inv.execute("SELECT package FROM exports WHERE opath = ? COLLATE NOCASE ORDER BY serial_size DESC", (opath,)).fetchall()
+    # the copy with the largest STORED top mip wins (lightmap level copies can lack their top mips)
+    # own package first (small, holds the full chain when cooked standalone); level-package copies only if needed (memory)
+    own = opath.split('.')[0].lower()
+    seen_ = []
+    for (p_,) in rows:                    # rows: largest serialized copy first
+        if p_ not in seen_: seen_.append(p_)
+    order = sorted(seen_, key=lambda p_: 0 if p_.lower() in (own, own + '_lm') else 1)   # stable: own package, then by size
+    cands = []
+    for pkg in order[:4]:
+        try: pr_, mips_ = read_mips(pkg, opath)
+        except MemoryError: _evict(); continue
+        except Exception: continue
+        finally:
+            if objtree.package.cache_info().currsize > 1: _evict()
+        f_ = next((k for k, m in enumerate(mips_) if m[2]), None)
+        if f_ is not None:
+            cands.append((f_, -sum(1 for m in mips_ if m[2]), pkg, pr_, mips_))
+            if f_ == 0 and all(m[2] for m in mips_[:max(1, (pr_.get('MipTailBaseIdx') or len(mips_)) + 1)]):
+                break                    # full chain down to the tail stored here: no need to open other copies
+    cands.sort(key=lambda x: (x[0], x[1]))
+    for _f, _n, pkg, pr, mips in cands[:1]:
         fmt = (pr or {}).get('Format')
         if fmt not in BPB: return {'object_path': opath, 'status': 'unsupported format %s' % fmt}
         first = next((k for k, m in enumerate(mips) if m[2]), None)
         if first is None: continue
         w0, h0, raw0 = mips[first]
-        levels = [mip_linear(raw0, w0, h0, fmt)]
-        top = _decode_linear(levels[0], w0, h0, fmt).astype(np.float32)
+        tb0 = pr.get('MipTailBaseIdx')
+        if fmt in FOURCC and tb0 is not None and first >= tb0 and mips[tb0][2]:
+            # the top stored level is itself inside the Xbox packed mip tail (e.g. 1024x64 lightmaps whose top stored mip is
+            # 256x16): take it from the tail tile at its packed position, like the lower packed levels
+            tile = tail_tile(mips[tb0][2], mips[tb0][0], mips[tb0][1], fmt)
+            bx, by = packed_offset_blocks(mips[tb0][0], mips[tb0][1], first - tb0)
+            levels = [np.ascontiguousarray(tile[by:by + max(1, h0 // 4), bx:bx + max(1, w0 // 4)]).tobytes()]
+        else:
+            levels = [mip_linear(raw0, w0, h0, fmt)]
         verified, cut = [{'mip': first, 'psnr': 99.0, 'corr': 1.0, 'packed': False}], None
+        pw_, ph_ = w0, h0
         tb = pr.get('MipTailBaseIdx')
         tail = None
         if fmt in FOURCC and tb is not None and first <= tb < len(mips) and mips[tb][2]:
             tw, th = mips[tb][0], mips[tb][1]
-            tail = (tw, th, np.frombuffer(mip_linear(mips[tb][2], 128, 128, fmt), np.uint8).reshape(32, 32, BPB[fmt]))
+            tail = (tw, th, tail_tile(mips[tb][2], tw, th, fmt))
         for k in range(first + 1, len(mips)):
             _, _, raw = mips[k]
             w, h = max(1, w0 >> (k - first)), max(1, h0 >> (k - first))   # logical size (cooked headers clamp tiny mips to 4x4)
@@ -167,20 +235,18 @@ def export(opath, png_rel, out_rel=None):
                 blk = tail[2][by:by + bh, bx:bx + bw]
                 if blk.shape[:2] != (bh, bw): cut = 'mip %d packed position out of the tail tile' % k; break
                 lin = blk.tobytes()
-                img = FB.decode(FB.swap16(_retile_identity(lin)), w, h, fmt) if False else _decode_linear(lin, w, h, fmt)
             else:
                 if not raw: cut = 'mip %d has no stored data (not cooked)' % k; break
                 if w < 4 or h < 4: cut = 'mip %d (%dx%d) below one DXT block: chain stops at 4x4' % (k, w, h); break
                 try:
-                    lin = mip_linear(raw, w, h, fmt); img = _decode_linear(lin, w, h, fmt)
+                    lin = mip_linear(raw, w, h, fmt)
                 except Exception as ex:
                     cut = 'mip %d decode error %s' % (k, ex); break
-            ref = box_down(top, k - first)
-            ok, s_, c_ = accept(img.astype(np.float32)[:ref.shape[0], :ref.shape[1]], ref[:img.shape[0], :img.shape[1]])
-            if not ok: cut = 'mip %d rejected (PSNR %.1f, corr %.3f vs downsampled mip %d)%s' % (k, s_, c_, first, ' [packed]' if packed else ''); break
-            levels.append(lin); verified.append({'mip': k, 'psnr': s_, 'corr': c_, 'packed': packed})
+            ok, s_, c_ = verify_pair(levels[-1], pw_, ph_, lin, w, h, fmt)
+            if not ok: cut = 'mip %d rejected (PSNR %.1f, corr %.3f vs downsampled mip %d)%s' % (k, s_, c_, k - 1, ' [packed]' if packed else ''); break
+            levels.append(lin); verified.append({'mip': k, 'psnr': s_, 'corr': c_, 'packed': packed}); pw_, ph_ = w, h
         out_rel = out_rel or (os.path.splitext(png_rel)[0] + '.dds')
-        out = os.path.join(ROOT, out_rel)
+        out = os.path.join(OUT_ROOT, out_rel)
         os.makedirs(os.path.dirname(out), exist_ok=True)
         open(out, 'wb').write(dds_bytes(fmt, w0, h0, levels))
         return {'object_path': opath, 'status': 'ok', 'png': png_rel, 'dds': out_rel.replace(os.sep, '/'), 'format': fmt,
@@ -198,9 +264,106 @@ def pilot():
     random.seed(7); tests += random.sample(pool, 6)
     for t in tests:
         png = next((x for x in (A.get(t) or {}).get('extracted') or [] if x.endswith('.png')), 'content/' + t.replace('.', '/') + '.png')
-        r = export(t, png, out_rel='pilot_dds/' + t.replace('.', '_') + '.dds')
+        r = export(t, png, out_rel='_pilot/' + t.replace('.', '_') + '.dds')
         print(json.dumps({k: r.get(k) for k in ('object_path', 'status', 'format', 'size', 'mips_cooked', 'mips_written', 'mip_tail_base',
                                                 'chain_cut')}), [(v['mip'], v['psnr'], v['corr'], v['packed']) for v in r.get('mip_verification') or []])
 
+def targets():
+    A = json.load(open(os.path.join(AT, 'manifests', 'assets.json'), encoding='utf-8'))['assets']
+    A = [(a['object_path'], a.get('class'), a.get('extracted')) for a in A if a.get('class') in ('Texture2D', 'TextureFlipBook')]
+    out = []
+    for op_, cls_, ext_ in A:
+        png = next((x for x in ext_ or [] if x.endswith('.png') and os.path.exists(os.path.join(ROOT, x))), None)
+        if png: out.append((op_, png))
+    del A
+    fb = os.path.join(AT, 'manifests', 'audit', 'flipbooks.json')
+    if os.path.exists(fb):
+        have = {o for o, _ in out}
+        for o, v in (json.load(open(fb, encoding='utf-8')).get('textures') or {}).items():
+            if v.get('file') and o not in have and os.path.exists(os.path.join(ROOT, v['file'])): out.append((o, v['file']))
+    import glob
+    for d in sorted(glob.glob(os.path.join(ROOT, 'VerticalSlice', 'Maps', '*'))):
+        names = {}
+        for fn in ('lightmaps.json', 'lightmaps_destructibles.json'):
+            pth = os.path.join(d, fn)
+            if not os.path.exists(pth): continue
+            j = json.load(open(pth, encoding='utf-8'))
+            for r in (j.get('props') or []) + (j.get('components') or []):
+                for c in r.get('coeffs') or [r.get('atlas')]:
+                    if c: names[c] = r.get('atlas_package')
+        inv = objtree.inv()
+        for c, pk in sorted(names.items()):
+            png = os.path.join(d, 'lightmaps', c + '.png')
+            if not (pk and os.path.exists(png)): continue
+            # real object path: <level>_LM.<name>, case varies between cooked copies (MP_ESC_BrokenHope_BASE_m_LM / _Base_m_LM)
+            root = pk.lower()[:-3] if pk.lower().endswith('_lm') else pk.lower()
+            hit = next((o for (o,) in inv.execute("SELECT DISTINCT opath FROM exports WHERE opath LIKE ? AND class = 'LightMapTexture2D'",
+                                                     ('%.' + c,)).fetchall() if o.lower().startswith(root)), None)
+            out.append((hit or (pk + '.' + c), os.path.relpath(png, ROOT).replace(os.sep, '/')))
+    # assets.json maps some distinct objects to one PNG (umodel name collisions: EditorTextureSet_*, ThumbnailTexture, same-named
+    # TEXSET members). The object whose own path matches the PNG keeps the mirrored .dds; every other one gets a .dds named by its
+    # own object path, so no object's DDS is another object's texture.
+    by_png = {}
+    for o, png in out: by_png.setdefault(png, []).append(o)
+    res = []
+    for o, png in out:
+        mirror = os.path.splitext(png)[0] + '.dds'
+        if len(by_png[png]) > 1 and not mirror.lower().endswith(('/' + o.replace('.', '/') + '.dds').lower()):
+            mirror = 'content/' + o.replace('.', '/') + '.dds'
+        res.append((o, png, mirror, len(by_png[png]) > 1))
+    return res
+
+def _work(item):
+    o, png, out_rel, _shared = item
+    try:
+        if objtree.package.cache_info().currsize > 1: _evict()   # working-set guard (6 GB job cap)
+        return export(o, png, out_rel=out_rel)
+    except MemoryError:
+        _evict(); return {'object_path': o, 'png': png, 'status': 'error MemoryError (skipped)'}
+    except BaseException as ex:          # native (pyo3) panics are not picklable: report as text, never break the pool
+        return {'object_path': o, 'png': png, 'status': 'error %s' % str(ex)[:120]}
+
+def bulk(limit=None, workers=2):
+    from concurrent.futures import ProcessPoolExecutor
+    from collections import Counter
+    items = targets()
+    items.sort(key=lambda x: x[0].split('.')[0])   # group by own package: consecutive textures reuse the cached package
+    if limit: items = items[:limit]
+    idx = os.path.join(AT, 'manifests', 'extracted', 'textures_dds.jsonl')
+    os.makedirs(os.path.dirname(idx), exist_ok=True)
+    done = {}
+    if RESUME and os.path.exists(idx):        # keep finished rows (status ok and the .dds on disk); redo the rest
+        for l in open(idx, encoding='utf-8'):
+            try: r = json.loads(l)
+            except Exception: continue
+            if r.get('status') == 'ok' and os.path.exists(os.path.join(OUT_ROOT, r.get('dds', '~'))): done[r['object_path']] = r
+        want = {x[0]: x for x in items}
+        # redo rows written to another path, and every member of a shared-PNG group (a member may have overwritten the file)
+        done = {o: r for o, r in done.items() if o in want and r['dds'] == want[o][2] and not want[o][3]}
+        items = [x for x in items if x[0] not in done]
+    st = Counter(); fmts = Counter(); mipn = Counter(); t0 = time.time()
+    import gc; gc.collect()
+    ex = ProcessPoolExecutor(workers) if workers > 0 else None
+    it = ex.map(_work, items, chunksize=8) if ex else map(_work, items)
+    with open(idx, 'w', encoding='utf-8') as f:
+        for r in done.values():
+            f.write(json.dumps(r, default=str) + chr(10)); st['ok'] += 1; fmts[r['format']] += 1; mipn[r['mips_written']] += 1
+        for k, r in enumerate(it):
+            r['png'] = r.get('png') or items[k][1]
+            f.write(json.dumps(r, default=str) + chr(10))
+            st[r['status'] if r['status'] == 'ok' else r['status'][:40]] += 1
+            if r['status'] == 'ok': fmts[r['format']] += 1; mipn[r['mips_written']] += 1
+            if k % 500 == 0: print(k, len(items), dict(st), round(time.time() - t0), flush=True)
+    if ex: ex.shutdown()
+    summ = {'generated_by': 'AssetTools/scripts/wfc/texture_dds.py', 'generated': time.strftime('%Y-%m-%d %H:%M'),
+            'out_root': 'AssetTools/out/dds/<path of the PNG relative to ExtractedAssets>.dds',
+            'index': 'AssetTools/manifests/extracted/textures_dds.jsonl (local)', 'targets': len(items) + len(done), 'status': dict(st),
+            'formats': dict(fmts), 'mips_written_histogram': dict(sorted(mipn.items())), 'seconds': round(time.time() - t0)}
+    json.dump(summ, open(os.path.join(AT, 'manifests', 'audit', 'textures_dds_summary.json'), 'w', encoding='utf-8'), indent=1)
+    print(json.dumps(summ))
+
 if __name__ == '__main__':
     if '--pilot' in sys.argv: pilot()
+    elif '--bulk' in sys.argv:
+        lim = int(sys.argv[sys.argv.index('--limit') + 1]) if '--limit' in sys.argv else None
+        bulk(lim, workers=int(sys.argv[sys.argv.index('--workers') + 1]) if '--workers' in sys.argv else 2)
