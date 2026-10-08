@@ -15,7 +15,7 @@ Verification is memory-bounded: each level is compared with a 2x box-downsample 
 crop of at most 128 x 128 px (only those blocks are decoded).
 Index: manifests/extracted/textures_dds.jsonl  {object_path, png, dds, format, size, mips_written, mips_cooked, mip_tail_base, ...}
 """
-import json, os, struct, sys, time
+import json, os, re, struct, sys, time
 import numpy as np
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -121,6 +121,42 @@ def packed_offset_blocks(tw, th, t):
     o = 16 >> t
     return (0, o // 4) if lw > lh else (o // 4, 0)
 
+def packed_base_position(tile, w, h, fmt, png_rel):
+    """whole texture inside the packed tail (MipTailBaseIdx 0): position of the base level in the tail tile, in blocks.
+    Observed (exact match with umodel PNGs, 2026-10-08): min side < 16 -> origin; 16 x 32 / 32 x 16 / 64 x 16 / 16 x 128 -> the Xenia
+    packed offset (16 px along the short axis); 16 x 16 -> origin for some pages, (8, 0) for others (no rule found). So the
+    candidates are tried against the PNG when there is one; without an exact match the rule is used and marked PROVISIONAL."""
+    bw, bh = max(1, w // 4), max(1, h // 4)
+    rule = (0, 0) if min(w, h) < 16 else packed_offset_blocks(w, h, 0)
+    if png_rel and os.path.exists(os.path.join(ROOT, png_rel)):
+        from PIL import Image
+        q = np.asarray(Image.open(os.path.join(ROOT, png_rel)).convert('RGB')).astype(np.int16)
+        for c in dict.fromkeys([rule, (0, 0), packed_offset_blocks(w, h, 0), (8, 0), (0, 8)]):
+            blk = tile[c[1]:c[1] + bh, c[0]:c[0] + bw]
+            if blk.shape[:2] != (bh, bw): continue
+            img = _decode_linear(np.ascontiguousarray(blk).tobytes(), w, h, fmt)[..., :3].astype(np.int16)
+            if img.shape == q.shape and not np.abs(img - q).max():
+                return c[0], c[1], 'exact RGB match with the umodel PNG'
+    return rule[0], rule[1], 'PROVISIONAL rule (no exact PNG match)'
+
+def dxt5_alpha(lin):
+    """BC3 alpha per texel (blocks x 16): a0 > a1 -> 8-step ramp, else 6-step ramp + 0 + 255; 3-bit LE indices"""
+    b = np.frombuffer(lin, np.uint8).reshape(-1, 16).astype(np.int32)
+    a0, a1 = b[:, 0], b[:, 1]
+    i = np.arange(1, 7)[None, :]
+    ramp8 = ((7 - i) * a0[:, None] + i * a1[:, None]) // 7
+    ramp6 = ((5 - i[:, :4]) * a0[:, None] + i[:, :4] * a1[:, None]) // 5
+    pal6 = np.concatenate([ramp6, np.zeros((len(b), 1), np.int32), np.full((len(b), 1), 255, np.int32)], 1)
+    pal = np.where((a0 > a1)[:, None], ramp8, pal6)
+    pal = np.concatenate([a0[:, None], a1[:, None], pal], 1)
+    bits = sum(b[:, 2 + k].astype(np.int64) << (8 * k) for k in range(6))
+    idx = np.stack([(bits >> (3 * t)) & 7 for t in range(16)], 1)
+    return np.take_along_axis(pal, idx.astype(np.int64), 1)
+
+def alpha_all_zero(lin, w, h, fmt):
+    if fmt == 'PF_A8R8G8B8': return not any(lin[3::4])
+    return not dxt5_alpha(lin).any()
+
 def decode_rgba(raw, w, h, fmt):
     return FB.decode(raw, w, h, fmt)
 
@@ -207,12 +243,16 @@ def export(opath, png_rel, out_rel=None):
         first = next((k for k, m in enumerate(mips) if m[2]), None)
         if first is None: continue
         w0, h0, raw0 = mips[first]
+        base_src = None
         tb0 = pr.get('MipTailBaseIdx')
         if fmt in FOURCC and tb0 is not None and first >= tb0 and mips[tb0][2]:
             # the top stored level is itself inside the Xbox packed mip tail (e.g. 1024x64 lightmaps whose top stored mip is
             # 256x16): take it from the tail tile at its packed position, like the lower packed levels
             tile = tail_tile(mips[tb0][2], mips[tb0][0], mips[tb0][1], fmt)
-            bx, by = packed_offset_blocks(mips[tb0][0], mips[tb0][1], first - tb0)
+            if first == tb0 == 0:
+                bx, by, base_src = packed_base_position(tile, w0, h0, fmt, png_rel)
+            else:
+                bx, by = packed_offset_blocks(mips[tb0][0], mips[tb0][1], first - tb0)
             levels = [np.ascontiguousarray(tile[by:by + max(1, h0 // 4), bx:bx + max(1, w0 // 4)]).tobytes()]
         else:
             levels = [mip_linear(raw0, w0, h0, fmt)]
@@ -253,7 +293,11 @@ def export(opath, png_rel, out_rel=None):
                 'read_from': pkg, 'size': [w0, h0], 'top_stored_mip': first, 'mips_cooked': len(mips),
                 'mips_written': len(levels), 'mip_tail_base': pr.get('MipTailBaseIdx'), 'mip_verification': verified,
                 'chain_cut': cut, 'srgb': pr.get('SRGB', True), 'lod_group': pr.get('LODGroup'),
-                'address_xy': [pr.get('AddressX'), pr.get('AddressY')]}
+                'address_xy': [pr.get('AddressX'), pr.get('AddressY')],
+                **({'packed_base_offset_blocks': [bx, by], 'packed_base_offset_source': base_src} if base_src else {}),
+                # A8R8G8B8 whose cooked alpha is 0 everywhere (Scaleform GFx pages, LowHealthScanline): kept verbatim; umodel's PNG
+                # for these is RGB (opaque), so a PNG compare differs in alpha only
+                **({'alpha_all_zero': alpha_all_zero(levels[0], w0, h0, fmt)} if fmt in ('PF_A8R8G8B8', 'PF_DXT5') else {})}
     return {'object_path': opath, 'status': 'no stored mip data in any cooked copy'}
 
 def pilot():
@@ -300,13 +344,36 @@ def targets():
             hit = next((o for (o,) in inv.execute("SELECT DISTINCT opath FROM exports WHERE opath LIKE ? AND class = 'LightMapTexture2D'",
                                                      ('%.' + c,)).fetchall() if o.lower().startswith(root)), None)
             out.append((hit or (pk + '.' + c), os.path.relpath(png, ROOT).replace(os.sep, '/')))
+        # pages with a PNG in lightmaps/ but no lightmaps*.json reference (Streets BSP ModelComponent pages)
+        M = os.path.basename(d); have = {o.split('.')[-1] for o, _ in out}
+        for png in sorted(glob.glob(os.path.join(d, 'lightmaps', 'LightMapTexture2D_*.png'))):
+            c = os.path.basename(png)[:-4]
+            if c in have: continue
+            hit = next((o for (o,) in inv.execute("SELECT DISTINCT opath FROM exports WHERE opath LIKE ? AND class = 'LightMapTexture2D'",
+                                                     ('%.' + c,)).fetchall() if o.lower().startswith(M.lower())), None)
+            if hit: out.append((hit, os.path.relpath(png, ROOT).replace(os.sep, '/')))
+    # BSP (ModelComponent) lightmap pages of the generic maps (manifests/next_map/<MAP>_bsp_audit.json); no PNG was ever written for
+    # most of them, so the DDS is their only export (png None, mip_verification from the cooked chain only)
+    have = {o for o, _ in out}
+    for f in sorted(glob.glob(os.path.join(AT, 'manifests', 'next_map', 'MP_*_bsp_audit.json'))):
+        M = os.path.basename(f)[:-len('_bsp_audit.json')]
+        for o in sorted(set(re.findall(r'"([A-Za-z0-9_]+_LM\.LightMapTexture2D_\d+)"', open(f, encoding='utf-8').read()))):
+            if o in have: continue
+            png = 'VerticalSlice/Maps/%s/lightmaps/%s.png' % (M, o.split('.')[-1])
+            out.append((o, png if os.path.exists(os.path.join(ROOT, png)) else None)); have.add(o)
     # assets.json maps some distinct objects to one PNG (umodel name collisions: EditorTextureSet_*, ThumbnailTexture, same-named
     # TEXSET members). The object whose own path matches the PNG keeps the mirrored .dds; every other one gets a .dds named by its
     # own object path, so no object's DDS is another object's texture.
     by_png = {}
-    for o, png in out: by_png.setdefault(png, []).append(o)
+    for o, png in out:
+        if png: by_png.setdefault(png, []).append(o)
+    BSP_MAPS = sorted({os.path.basename(f)[:-len('_bsp_audit.json')] for f in glob.glob(os.path.join(AT, 'manifests', 'next_map', 'MP_*_bsp_audit.json'))},
+                      key=len, reverse=True)
     res = []
     for o, png in out:
+        if png is None:
+            res.append((o, None, 'VerticalSlice/Maps/%s/lightmaps/%s.dds' % (next(M for M in BSP_MAPS if o.lower().startswith(M.lower())),
+                                                                             o.split('.')[-1]), False)); continue
         mirror = os.path.splitext(png)[0] + '.dds'
         if len(by_png[png]) > 1 and not mirror.lower().endswith(('/' + o.replace('.', '/') + '.dds').lower()):
             mirror = 'content/' + o.replace('.', '/') + '.dds'
@@ -317,7 +384,10 @@ def _work(item):
     o, png, out_rel, _shared = item
     try:
         if objtree.package.cache_info().currsize > 1: _evict()   # working-set guard (6 GB job cap)
-        return export(o, png, out_rel=out_rel)
+        r = export(o, png, out_rel=out_rel)
+        if _shared and png and out_rel != os.path.splitext(png)[0] + '.dds':
+            r['png_is_other_object'] = True      # assets.json maps this object to another object's PNG; the .dds is this object's
+        return r
     except MemoryError:
         _evict(); return {'object_path': o, 'png': png, 'status': 'error MemoryError (skipped)'}
     except BaseException as ex:          # native (pyo3) panics are not picklable: report as text, never break the pool
@@ -341,6 +411,12 @@ def bulk(limit=None, workers=2):
         # redo rows written to another path, and every member of a shared-PNG group (a member may have overwritten the file)
         done = {o: r for o, r in done.items() if o in want and r['dds'] == want[o][2] and not want[o][3]}
         items = [x for x in items if x[0] not in done]
+        for r in done.values():                  # rows written before the alpha flag existed: read the top level back from the .dds
+            if r['format'] in ('PF_A8R8G8B8', 'PF_DXT5') and 'alpha_all_zero' not in r:
+                w, h = r['size']; n = (max(1, w // 4) * max(1, h // 4) * 16) if r['format'] == 'PF_DXT5' else w * h * 4
+                with open(os.path.join(OUT_ROOT, r['dds']), 'rb') as f: f.seek(128); lin = f.read(n)
+                if r['format'] == 'PF_A8R8G8B8': r['alpha_all_zero'] = not any(lin[3::4])
+                else: r['alpha_all_zero'] = alpha_all_zero(lin, w, h, r['format'])
     st = Counter(); fmts = Counter(); mipn = Counter(); t0 = time.time()
     import gc; gc.collect()
     ex = ProcessPoolExecutor(workers) if workers > 0 else None

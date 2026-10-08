@@ -171,16 +171,35 @@ def mip0(pkg, opath):
         return pr, raw, {'flags': fl, 'mip_index': mi, 'num_mips': nm, 'element_count': cnt, 'size_on_disk': sod, 'offset': off}
     return None, None, None
 
+REPLACE = '--replace-umodel' in sys.argv   # re-decode flipbooks whose PNG umodel wrote; replace it where it differs
+
+def dds_agrees(opath, img):
+    """safety gate for --replace-umodel: the independent texture_dds export of the same object must have the same RGB"""
+    from PIL import Image
+    idx = os.path.join(AT, 'manifests', 'extracted', 'textures_dds.jsonl')
+    if not os.path.exists(idx): return False, 'no texture_dds index'
+    r = next((json.loads(l) for l in open(idx, encoding='utf-8') if ('"%s"' % opath) in l), None)
+    if not r or r.get('status') != 'ok': return False, 'no texture_dds row'
+    d = np.asarray(Image.open(os.path.join(AT, 'out', 'dds', r['dds'])).convert('RGBA')).astype(int)
+    if d.shape != img.shape or np.abs(d[..., :3] - img[..., :3].astype(int)).max(): return False, 'texture_dds RGB differs'
+    return True, '(exact RGB, %s)' % r['dds']
+
 def main():
     from PIL import Image
     inv = objtree.inv()
-    if len(sys.argv) > 1: targets = sys.argv[1:]
+    args = [a for a in sys.argv[1:] if not a.startswith('--')]
+    if args: targets = args
     else:
         targets = [o for (o,) in inv.execute("SELECT DISTINCT opath FROM exports WHERE class = 'TextureFlipBook'").fetchall()]
+    fbj = os.path.join(AT, 'manifests', 'audit', 'flipbooks.json')
+    prev = (json.load(open(fbj, encoding='utf-8')).get('textures') or {}) if os.path.exists(fbj) else {}
+    if REPLACE and any(str(v.get('status', '')).startswith('replaced') for v in prev.values()):
+        sys.exit('flipbooks.json already holds replacements: rerun from its pre-replacement state')
     res = OD(); aj = os.path.join(AT, 'manifests', 'assets.json'); A = json.load(open(aj, encoding='utf-8')); byop = {a['object_path']: a for a in A['assets']}
     for opath in sorted(targets):
         rel = 'content/' + opath.replace('.', '/') + '.png'; out = os.path.join(ROOT, rel)
-        if os.path.exists(out): res[opath] = {'status': 'exists', 'file': rel}; continue
+        if os.path.exists(out) and not REPLACE: res[opath] = {'status': 'exists', 'file': rel}; continue
+        old_png = os.path.exists(out)
         rows = inv.execute("SELECT package FROM exports WHERE opath = ? AND class = 'TextureFlipBook' ORDER BY serial_size ASC", (opath,)).fetchall()
         err = None
         for (pkg,) in rows:
@@ -188,8 +207,17 @@ def main():
                 pr, raw, bulk = mip0(pkg, opath)
                 if raw is None: continue
                 img = decode(raw, pr['SizeX'], pr['SizeY'], pr.get('Format'))
+                status = 'exported'
+                if old_png:
+                    cur = np.asarray(Image.open(out).convert('RGBA'))
+                    if cur.shape == img.shape and not np.abs(cur.astype(int) - img).max():
+                        res[opath] = dict(prev.get(opath) or {'status': 'exists', 'file': rel}, verified='PNG identical to the cooked decode'); break
+                    ok_, why = dds_agrees(opath, img)
+                    if not ok_:
+                        res[opath] = {'status': 'exists', 'file': rel, 'not_replaced': why}; break
+                    status = 'replaced umodel PNG (it differed from the cooked data; decode agrees with texture_dds %s)' % why
                 os.makedirs(os.path.dirname(out), exist_ok=True); Image.fromarray(img, 'RGBA').save(out)
-                res[opath] = OD([('status', 'exported'), ('file', rel), ('read_from', pkg), ('format', pr.get('Format')),
+                res[opath] = OD([('status', status), ('file', rel), ('read_from', pkg), ('format', pr.get('Format')),
                                  ('size', [pr['SizeX'], pr['SizeY']]), ('cells', [pr.get('HorizontalImages'), pr.get('VerticalImages')]),
                                  ('frame_rate', pr.get('FrameRate')), ('bulk', bulk)])
                 a = byop.get(opath)
