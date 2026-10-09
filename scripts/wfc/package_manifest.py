@@ -30,6 +30,10 @@ REB = os.path.dirname(AT)
 G = 1024 ** 3
 # Rebuild/data: frontend defaults read at runtime through WFC_SOURCE_DIR (Catalog.cpp loadSettingsDefaults fallback; Systems'
 # WFC_FILELOG Seed run: game_settings / character_presets / chassis_xp_unlocks / profile_defaults / scenes .json)
+# exe tree: --bin-tree (default the playtest Release); --bin-dest = its path inside the package (default the same; Play.bat runs
+# Rebuild/build/release/bin). The slim package uses Integration's Release of the 09c head, Rebuild/build/release-slim/bin, which
+# carries the four *-vgmstream-*.dll and licenses/vgmstream (FSB playback, Systems)
+BIN_TREE = None
 TREES = ['Rebuild/build/release/bin', 'Rebuild/work/render', 'Rebuild/data', 'AssetTools/manifests', 'AssetTools/out/dds', 'ExtractedAssets']
 COMPRESS = ('.bin', '.glb', '.gltf')
 
@@ -38,14 +42,21 @@ def arg(name, default=None):
 
 def excluded(tree, rel):
     low = rel.lower(); base = os.path.basename(low)
-    if tree == 'Rebuild/build/release/bin':
+    if tree == BIN_TREE:
         return base.endswith(('.log', '.dmp')) or base.startswith('wfc_crash_') or base == 'wfc_profile.ini'
     if tree == 'AssetTools/manifests':
         return low.endswith('.db') or low.startswith(('packages/', 'authored_shards/'))
     return False
 
 def main():
+    global BIN_TREE
+    BIN_TREE = arg('--bin-tree', 'Rebuild/build/release/bin').replace(os.sep, '/').rstrip('/')
+    bin_dest = arg('--bin-dest', BIN_TREE).replace(os.sep, '/').rstrip('/')
+    TREES[0] = BIN_TREE
     xpr = '--xpr' in sys.argv
+    # render-data lightmap PNGs with a verified DDS twin (Rendering's list, relative to Rebuild/work/render)
+    rd_path = arg('--png-droppable-render')
+    rd_drop = {l.strip().replace(chr(92), '/').lower() for l in open(rd_path, encoding='utf-8') if l.strip()} if rd_path else set()
     tf = json.load(open(os.path.join(REB, 'Rebuild', 'work', 'render', 'texture_formats.json'), encoding='utf-8'))['textures']
     lm_keys = {k for k in tf if '/lightmaps/' in k}
     pd_path = arg('--png-droppable', os.path.join(REB, 'Rebuild', 'work', 'png_droppable.txt'))
@@ -63,11 +74,13 @@ def main():
                 src = os.path.join(dp, nm); rel = os.path.relpath(src, base).replace(os.sep, '/')
                 if excluded(tree, rel): continue
                 size = os.path.getsize(src); low = rel.lower(); ext = os.path.splitext(low)[1]
-                dest = 'Transformers Rebuild/%s/%s' % (tree, rel); action, why = 'keep', ''
+                dest = 'Transformers Rebuild/%s/%s' % (bin_dest if tree == BIN_TREE else tree, rel); action, why = 'keep', ''
                 if ext == '.psa':
                     action, why = 'drop', 'psa'
                 elif ext == '.png' and tree == 'ExtractedAssets' and (low in lm_keys or low in png_drop):
                     action, why = 'drop', 'png_dds_twin'
+                elif ext == '.png' and tree == 'Rebuild/work/render' and low in rd_drop:
+                    action, why = 'drop', 'png_dds_twin_renderdata'
                 elif ext == '.wav' and tree == 'ExtractedAssets' and wav_ok and os.path.exists(src[:-4] + '.fsb'):
                     action, why = 'drop', 'wav_fsb'
                 elif ext in COMPRESS:
@@ -109,7 +122,13 @@ def main():
         for rel in sorted(opened):
             if rel in dropped: fails.append({'path': rel, 'problem': 'opened but dropped (%s)' % dropped[rel]})
             elif rel not in ship: fails.append({'path': rel, 'problem': 'opened but not shipped (outside the manifest trees or excluded)'})
-        ver = OD([('filelogs', logs), ('content_paths_opened', len(opened)), ('failures', len(fails)), ('failure_list', fails[:500]),
+        from collections import Counter
+        by_kind = Counter('%s | %s' % (f['problem'], os.path.splitext(f['path'])[1] or '(none)') for f in fails)
+        ver = OD([('filelogs', logs), ('content_paths_opened', len(opened)), ('failures', len(fails)),
+                  ('failures_by_reason_and_extension', OD(by_kind.most_common())),
+                  # WAVs opened by a pre-FSB build are expected to fail: listed in full only for the other kinds
+                  ('failures_other_than_wav', [f for f in fails if not f['path'].endswith('.wav')]),
+                  ('failure_list', fails[:500]),
                   ('tried_but_missing_at_capture (informational: fallbacks / optional files)', missing_tried[:500])])
     # outputs
     od = os.path.join(AT, 'out', 'package'); os.makedirs(od, exist_ok=True)
