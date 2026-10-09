@@ -28,7 +28,9 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 AT = os.path.normpath(os.path.join(HERE, '..', '..'))
 REB = os.path.dirname(AT)
 G = 1024 ** 3
-TREES = ['Rebuild/build/release/bin', 'Rebuild/work/render', 'AssetTools/manifests', 'AssetTools/out/dds', 'ExtractedAssets']
+# Rebuild/data: frontend defaults read at runtime through WFC_SOURCE_DIR (Catalog.cpp loadSettingsDefaults fallback; Systems'
+# WFC_FILELOG Seed run: game_settings / character_presets / chassis_xp_unlocks / profile_defaults / scenes .json)
+TREES = ['Rebuild/build/release/bin', 'Rebuild/work/render', 'Rebuild/data', 'AssetTools/manifests', 'AssetTools/out/dds', 'ExtractedAssets']
 COMPRESS = ('.bin', '.glb', '.gltf')
 
 def arg(name, default=None):
@@ -87,16 +89,23 @@ def main():
     if logs:
         ship = {r[1].lower() for r in rows if r[3] != 'drop'}
         dropped = {r[1].lower(): r[4] for r in rows if r[3] == 'drop'}
-        fails, opened, missing_tried = [], set(), []
+        fails, opened, written, missing_tried = [], set(), set(), []
+        # --map-prefix OLD=NEW: logs from builds run elsewhere (e.g. a scratch source tree as WFC_SOURCE_DIR)
+        prefix_map = [(a.replace('\\', '/').lower().rstrip('/') + '/', b.replace('\\', '/').rstrip('/') + '/')
+                      for a, b in (sys.argv[i + 1].split('=', 1) for i, x in enumerate(sys.argv) if x == '--map-prefix')]
         for lg in logs:
             for l in open(lg, encoding='utf-8', errors='replace'):
                 parts = l.rstrip('\n').split(' ', 2)
-                if len(parts) < 3 or parts[0] != 'r' or parts[1] != 'ok': continue
+                if len(parts) < 3 or parts[1] != 'ok' or parts[0] not in ('r', 'w'): continue
                 p = parts[2].replace('\\', '/')
+                for a, b in prefix_map:
+                    if p.lower().startswith(a): p = b + p[len(a):]
                 if not p.lower().startswith('f:/transformers rebuild/'): continue
-                opened.add(p[len('f:/transformers rebuild/'):].lower())   # any path under the root, inside the trees or not
+                rel = p[len('f:/transformers rebuild/'):].lower()
+                (written if parts[0] == 'w' else opened).add(rel)   # any path under the root, inside the trees or not
             missing_tried += [l.rstrip().split(' ', 2)[2] for l in open(lg, encoding='utf-8', errors='replace')
                              if l.startswith('r missing ')]
+        opened -= written            # files the game writes (wfc.log, wfc_characters.ini, profiles) are runtime state, not content
         for rel in sorted(opened):
             if rel in dropped: fails.append({'path': rel, 'problem': 'opened but dropped (%s)' % dropped[rel]})
             elif rel not in ship: fails.append({'path': rel, 'problem': 'opened but not shipped (outside the manifest trees or excluded)'})
