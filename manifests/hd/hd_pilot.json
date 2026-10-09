@@ -1,0 +1,1470 @@
+{
+ "generated_by": "AssetTools/scripts/wfc/hd_pilot.py",
+ "generated": "2026-10-09 12:23",
+ "decision": "user 2026-10-09: optional faithful 2x HD pack (originals stay default; no remastering)",
+ "models": {
+  "animevideov3_x2": {
+   "model": "realesr-animevideov3",
+   "native_scale": 2
+  },
+  "x4plus_down2": {
+   "model": "realesrgan-x4plus",
+   "native_scale": 4
+  }
+ },
+ "gpu_seconds": {
+  "animevideov3_x2": 4.6,
+  "x4plus_down2": 86.5
+ },
+ "gate": "model raw output >= 28 dB (area-downsample vs original); after back-projection >= 40 dB and max per-channel mean shift <= 0.6/255; else keep the original",
+ "by_class": {
+  "colour": {
+   "pilot": 28,
+   "accepted": 28,
+   "rejected": 0,
+   "chosen_models": {
+    "x4plus_down2": 5,
+    "animevideov3_x2": 23
+   },
+   "hd_over_original_bytes": 6.3
+  },
+  "normal": {
+   "pilot": 10,
+   "accepted": 8,
+   "rejected": 2,
+   "chosen_models": {
+    "x4plus_down2": 4,
+    "original (rejected: no faithful upscale)": 2,
+    "animevideov3_x2": 4
+   },
+   "hd_over_original_bytes": 8.11
+  },
+  "data": {
+   "pilot": 12,
+   "accepted": 11,
+   "rejected": 1,
+   "chosen_models": {
+    "animevideov3_x2": 8,
+    "x4plus_down2": 3,
+    "original (rejected: no faithful upscale)": 1
+   },
+   "hd_over_original_bytes": 4.61
+  }
+ },
+ "pack_size_estimate": {
+  "colour": {
+   "original_MB": 857,
+   "hd_pack_MB_estimate": 5402
+  },
+  "normal": {
+   "original_MB": 406,
+   "hd_pack_MB_estimate": 2634
+  },
+  "data": {
+   "original_MB": 449,
+   "hd_pack_MB_estimate": 1898
+  }
+ },
+ "pack_total_MB_estimate": 9934,
+ "sheets": [
+  "AssetTools/out/hd/_pilot_sheet_colour.png",
+  "AssetTools/out/hd/_pilot_sheet_data.png",
+  "AssetTools/out/hd/_pilot_sheet_normal.png"
+ ],
+ "textures": [
+  {
+   "object_path": "ENV_ORB_Trypticon_p.Materials.TrypBridgeSupport_CLR",
+   "cls": "colour",
+   "lod_group": null,
+   "size": [
+    1024,
+    1024
+   ],
+   "format": "PF_DXT1",
+   "animevideov3_x2": {
+    "raw_psnr": 35.2,
+    "raw_mean_shift": 2.374,
+    "psnr_downsampled_vs_original": 51.14,
+    "max_mean_shift": 0.5,
+    "faithful": true
+   },
+   "x4plus_down2": {
+    "raw_psnr": 35.58,
+    "raw_mean_shift": 2.151,
+    "psnr_downsampled_vs_original": 51.15,
+    "max_mean_shift": 0.497,
+    "faithful": true
+   },
+   "chosen": "x4plus_down2",
+   "hd_dds": "content/ENV_ORB_Trypticon_p/Materials/TrypBridgeSupport_CLR.dds",
+   "hd_bytes": 5592580,
+   "orig_bytes": 688256
+  },
+  {
+   "object_path": "PROP_FloorStains_p.ENV_staindecal_01_CLR",
+   "cls": "colour",
+   "lod_group": null,
+   "size": [
+    1024,
+    1024
+   ],
+   "format": "PF_DXT1",
+   "animevideov3_x2": {
+    "raw_psnr": 34.15,
+    "raw_mean_shift": 0.917,
+    "psnr_downsampled_vs_original": 55.81,
+    "max_mean_shift": 0.143,
+    "faithful": true
+   },
+   "x4plus_down2": {
+    "raw_psnr": 33.71,
+    "raw_mean_shift": 1.744,
+    "psnr_downsampled_vs_original": 55.85,
+    "max_mean_shift": 0.142,
+    "faithful": true
+   },
+   "chosen": "x4plus_down2",
+   "hd_dds": "content/PROP_FloorStains_p/ENV_staindecal_01_CLR.dds",
+   "hd_bytes": 5592580,
+   "orig_bytes": 699176
+  },
+  {
+   "object_path": "ENV_NEU_Variation_p.fbook_sinewave6_CLR",
+   "cls": "colour",
+   "lod_group": null,
+   "size": [
+    512,
+    512
+   ],
+   "format": "PF_DXT1",
+   "animevideov3_x2": {
+    "raw_psnr": 30.53,
+    "raw_mean_shift": 4.104,
+    "psnr_downsampled_vs_original": 49.41,
+    "max_mean_shift": 0.489,
+    "faithful": true
+   },
+   "x4plus_down2": {
+    "raw_psnr": 28.78,
+    "raw_mean_shift": 7.21,
+    "psnr_downsampled_vs_original": 49.41,
+    "max_mean_shift": 0.471,
+    "faithful": true
+   },
+   "chosen": "animevideov3_x2",
+   "hd_dds": "content/ENV_NEU_Variation_p/fbook_sinewave6_CLR.dds",
+   "hd_bytes": 1398276,
+   "orig_bytes": 174888
+  },
+  {
+   "object_path": "ENV_KON_PrisonBarge_p.Textures.WallDeco_01_CLR",
+   "cls": "colour",
+   "lod_group": null,
+   "size": [
+    1024,
+    1024
+   ],
+   "format": "PF_DXT1",
+   "animevideov3_x2": {
+    "raw_psnr": 41.3,
+    "raw_mean_shift": 0.648,
+    "psnr_downsampled_vs_original": 53.16,
+    "max_mean_shift": 0.313,
+    "faithful": true
+   },
+   "x4plus_down2": {
+    "raw_psnr": 40.01,
+    "raw_mean_shift": 0.981,
+    "psnr_downsampled_vs_original": 53.15,
+    "max_mean_shift": 0.311,
+    "faithful": true
+   },
+   "chosen": "animevideov3_x2",
+   "hd_dds": "content/ENV_KON_PrisonBarge_p/Textures/WallDeco_01_CLR.dds",
+   "hd_bytes": 5592580,
+   "orig_bytes": 688256
+  },
+  {
+   "object_path": "ENV_IAC_BLDS_3_p.Texture.RectBld_CLR",
+   "cls": "colour",
+   "lod_group": null,
+   "size": [
+    128,
+    128
+   ],
+   "format": "PF_DXT1",
+   "animevideov3_x2": {
+    "raw_psnr": 33.19,
+    "raw_mean_shift": 1.383,
+    "psnr_downsampled_vs_original": 51.15,
+    "max_mean_shift": 0.488,
+    "faithful": true
+   },
+   "x4plus_down2": {
+    "raw_psnr": 31.36,
+    "raw_mean_shift": 2.948,
+    "psnr_downsampled_vs_original": 51.15,
+    "max_mean_shift": 0.485,
+    "faithful": true
+   },
+   "chosen": "animevideov3_x2",
+   "hd_dds": "content/ENV_IAC_BLDS_3_p/Texture/RectBld_CLR.dds",
+   "hd_bytes": 87556,
+   "orig_bytes": 11048
+  },
+  {
+   "object_path": "ENV_IAC_Interior_2_p.Texture.museumWall2_CLR",
+   "cls": "colour",
+   "lod_group": null,
+   "size": [
+    128,
+    128
+   ],
+   "format": "PF_DXT1",
+   "animevideov3_x2": {
+    "raw_psnr": 36.64,
+    "raw_mean_shift": 1.815,
+    "psnr_downsampled_vs_original": 51.11,
+    "max_mean_shift": 0.496,
+    "faithful": true
+   },
+   "x4plus_down2": {
+    "raw_psnr": 35.26,
+    "raw_mean_shift": 1.438,
+    "psnr_downsampled_vs_original": 51.06,
+    "max_mean_shift": 0.494,
+    "faithful": true
+   },
+   "chosen": "animevideov3_x2",
+   "hd_dds": "content/ENV_IAC_Interior_2_p/Texture/museumWall2_CLR.dds",
+   "hd_bytes": 87556,
+   "orig_bytes": 11048
+  },
+  {
+   "object_path": "PROP_dropship_auto_p.VH_ABDropship_A_CLR",
+   "cls": "colour",
+   "lod_group": null,
+   "size": [
+    128,
+    128
+   ],
+   "format": "PF_DXT1",
+   "animevideov3_x2": {
+    "raw_psnr": 31.46,
+    "raw_mean_shift": 2.253,
+    "psnr_downsampled_vs_original": 51.06,
+    "max_mean_shift": 0.5,
+    "faithful": true
+   },
+   "x4plus_down2": {
+    "raw_psnr": 29.65,
+    "raw_mean_shift": 2.345,
+    "psnr_downsampled_vs_original": 50.89,
+    "max_mean_shift": 0.498,
+    "faithful": true
+   },
+   "chosen": "animevideov3_x2",
+   "hd_dds": "content/PROP_dropship_auto_p/VH_ABDropship_A_CLR.dds",
+   "hd_bytes": 87556,
+   "orig_bytes": 11048
+  },
+  {
+   "object_path": "DES_KON_FuelCanisters_p.Textures.FuelCanister_CLR",
+   "cls": "colour",
+   "lod_group": null,
+   "size": [
+    1024,
+    1024
+   ],
+   "format": "PF_DXT1",
+   "animevideov3_x2": {
+    "raw_psnr": 37.35,
+    "raw_mean_shift": 1.356,
+    "psnr_downsampled_vs_original": 51.23,
+    "max_mean_shift": 0.492,
+    "faithful": true
+   },
+   "x4plus_down2": {
+    "raw_psnr": 35.64,
+    "raw_mean_shift": 1.911,
+    "psnr_downsampled_vs_original": 51.17,
+    "max_mean_shift": 0.493,
+    "faithful": true
+   },
+   "chosen": "animevideov3_x2",
+   "hd_dds": "content/DES_KON_FuelCanisters_p/Textures/FuelCanister_CLR.dds",
+   "hd_bytes": 5592580,
+   "orig_bytes": 688256
+  },
+  {
+   "object_path": "TR_Optimus_ROBO_p.RB_Optimus_CustAB_AuxGlow",
+   "cls": "colour",
+   "lod_group": "TEXTUREGROUP_Character",
+   "size": [
+    1024,
+    1024
+   ],
+   "format": "PF_DXT1",
+   "animevideov3_x2": {
+    "raw_psnr": 34.65,
+    "raw_mean_shift": 1.117,
+    "psnr_downsampled_vs_original": 53.67,
+    "max_mean_shift": 0.096,
+    "faithful": true
+   },
+   "x4plus_down2": {
+    "raw_psnr": 30.48,
+    "raw_mean_shift": 3.784,
+    "psnr_downsampled_vs_original": 53.25,
+    "max_mean_shift": 0.059,
+    "faithful": true
+   },
+   "chosen": "animevideov3_x2",
+   "hd_dds": "content/TR_Optimus_ROBO_p/RB_Optimus_CustAB_AuxGlow.dds",
+   "hd_bytes": 5592580,
+   "orig_bytes": 699136
+  },
+  {
+   "object_path": "TR_SoldierCarDec_ROBO_p.RB_SoldierCarDec_CustAB_AuxGlow",
+   "cls": "colour",
+   "lod_group": "TEXTUREGROUP_Character",
+   "size": [
+    1024,
+    1024
+   ],
+   "format": "PF_DXT1",
+   "animevideov3_x2": {
+    "raw_psnr": 31.22,
+    "raw_mean_shift": 2.048,
+    "psnr_downsampled_vs_original": 50.61,
+    "max_mean_shift": 0.174,
+    "faithful": true
+   },
+   "x4plus_down2": {
+    "raw_psnr": 27.76,
+    "raw_mean_shift": 5.702,
+    "psnr_downsampled_vs_original": 50.07,
+    "max_mean_shift": 0.092,
+    "faithful": false
+   },
+   "chosen": "animevideov3_x2",
+   "hd_dds": "content/TR_SoldierCarDec_ROBO_p/RB_SoldierCarDec_CustAB_AuxGlow.dds",
+   "hd_bytes": 5592580,
+   "orig_bytes": 699136
+  },
+  {
+   "object_path": "TR_Slipstream_ROBO_p.RB_Slipstream_CustAB_AuxGlow",
+   "cls": "colour",
+   "lod_group": "TEXTUREGROUP_Character",
+   "size": [
+    512,
+    512
+   ],
+   "format": "PF_DXT1",
+   "animevideov3_x2": {
+    "raw_psnr": 33.15,
+    "raw_mean_shift": 1.416,
+    "psnr_downsampled_vs_original": 51.95,
+    "max_mean_shift": 0.152,
+    "faithful": true
+   },
+   "x4plus_down2": {
+    "raw_psnr": 28.56,
+    "raw_mean_shift": 5.674,
+    "psnr_downsampled_vs_original": 51.75,
+    "max_mean_shift": 0.091,
+    "faithful": true
+   },
+   "chosen": "animevideov3_x2",
+   "hd_dds": "content/TR_Slipstream_ROBO_p/RB_Slipstream_CustAB_AuxGlow.dds",
+   "hd_bytes": 1398276,
+   "orig_bytes": 174720
+  },
+  {
+   "object_path": "TR_SoldierTankAut_VEH_p.VH_SoldierTankAutCore_GrungeClr",
+   "cls": "colour",
+   "lod_group": "TEXTUREGROUP_Character",
+   "size": [
+    256,
+    256
+   ],
+   "format": "PF_DXT1",
+   "animevideov3_x2": {
+    "raw_psnr": 34.99,
+    "raw_mean_shift": 2.823,
+    "psnr_downsampled_vs_original": 51.46,
+    "max_mean_shift": 0.484,
+    "faithful": true
+   },
+   "x4plus_down2": {
+    "raw_psnr": 34.21,
+    "raw_mean_shift": 1.741,
+    "psnr_downsampled_vs_original": 51.41,
+    "max_mean_shift": 0.48,
+    "faithful": true
+   },
+   "chosen": "animevideov3_x2",
+   "hd_dds": "content/TR_SoldierTankAut_VEH_p/VH_SoldierTankAutCore_GrungeClr.dds",
+   "hd_bytes": 349700,
+   "orig_bytes": 43816
+  },
+  {
+   "object_path": "TR_Breakdown_ROBO_p.RB_Breakdown_CustAB_AuxGlowMap",
+   "cls": "colour",
+   "lod_group": "TEXTUREGROUP_Character",
+   "size": [
+    512,
+    512
+   ],
+   "format": "PF_DXT1",
+   "animevideov3_x2": {
+    "raw_psnr": 29.76,
+    "raw_mean_shift": 2.24,
+    "psnr_downsampled_vs_original": 49.54,
+    "max_mean_shift": 0.195,
+    "faithful": true
+   },
+   "x4plus_down2": {
+    "raw_psnr": 27.23,
+    "raw_mean_shift": 6.064,
+    "psnr_downsampled_vs_original": 49.08,
+    "max_mean_shift": 0.138,
+    "faithful": false
+   },
+   "chosen": "animevideov3_x2",
+   "hd_dds": "content/TR_Breakdown_ROBO_p/RB_Breakdown_CustAB_AuxGlowMap.dds",
+   "hd_bytes": 1398276,
+   "orig_bytes": 174720
+  },
+  {
+   "object_path": "TR_Onslaught_VEH_p.VH_Onslaught_GRUNGE",
+   "cls": "colour",
+   "lod_group": "TEXTUREGROUP_Character",
+   "size": [
+    256,
+    256
+   ],
+   "format": "PF_DXT1",
+   "animevideov3_x2": {
+    "raw_psnr": 37.53,
+    "raw_mean_shift": 2.963,
+    "psnr_downsampled_vs_original": 51.9,
+    "max_mean_shift": 0.459,
+    "faithful": true
+   },
+   "x4plus_down2": {
+    "raw_psnr": 38.62,
+    "raw_mean_shift": 1.924,
+    "psnr_downsampled_vs_original": 51.63,
+    "max_mean_shift": 0.469,
+    "faithful": true
+   },
+   "chosen": "animevideov3_x2",
+   "hd_dds": "content/TR_Onslaught_VEH_p/VH_Onslaught_GRUNGE.dds",
+   "hd_bytes": 349700,
+   "orig_bytes": 43816
+  },
+  {
+   "object_path": "WEP_SentryBlaster01_p.WEP_SentryBlaster01_CLR",
+   "cls": "colour",
+   "lod_group": "TEXTUREGROUP_Weapon",
+   "size": [
+    512,
+    512
+   ],
+   "format": "PF_DXT1",
+   "animevideov3_x2": {
+    "raw_psnr": 32.76,
+    "raw_mean_shift": 0.294,
+    "psnr_downsampled_vs_original": 51.32,
+    "max_mean_shift": 0.424,
+    "faithful": true
+   },
+   "x4plus_down2": {
+    "raw_psnr": 31.89,
+    "raw_mean_shift": 1.383,
+    "psnr_downsampled_vs_original": 51.14,
+    "max_mean_shift": 0.424,
+    "faithful": true
+   },
+   "chosen": "animevideov3_x2",
+   "hd_dds": "content/WEP_SentryBlaster01_p/WEP_SentryBlaster01_CLR.dds",
+   "hd_bytes": 1398276,
+   "orig_bytes": 174888
+  },
+  {
+   "object_path": "WEP_Shield_p.Decepticon.WEP_Shield_D_CLR",
+   "cls": "colour",
+   "lod_group": "TEXTUREGROUP_Weapon",
+   "size": [
+    128,
+    128
+   ],
+   "format": "PF_DXT1",
+   "animevideov3_x2": {
+    "raw_psnr": 38.81,
+    "raw_mean_shift": 0.976,
+    "psnr_downsampled_vs_original": 51.19,
+    "max_mean_shift": 0.5,
+    "faithful": true
+   },
+   "x4plus_down2": {
+    "raw_psnr": 33.35,
+    "raw_mean_shift": 4.311,
+    "psnr_downsampled_vs_original": 51.26,
+    "max_mean_shift": 0.487,
+    "faithful": true
+   },
+   "chosen": "x4plus_down2",
+   "hd_dds": "content/WEP_Shield_p/Decepticon/WEP_Shield_D_CLR.dds",
+   "hd_bytes": 87556,
+   "orig_bytes": 11048
+  },
+  {
+   "object_path": "WEP_TortureSword_p.WEP_TortureSword_CLR",
+   "cls": "colour",
+   "lod_group": "TEXTUREGROUP_Weapon",
+   "size": [
+    512,
+    512
+   ],
+   "format": "PF_DXT1",
+   "animevideov3_x2": {
+    "raw_psnr": 34.93,
+    "raw_mean_shift": 0.449,
+    "psnr_downsampled_vs_original": 51.66,
+    "max_mean_shift": 0.348,
+    "faithful": true
+   },
+   "x4plus_down2": {
+    "raw_psnr": 34.91,
+    "raw_mean_shift": 0.429,
+    "psnr_downsampled_vs_original": 51.72,
+    "max_mean_shift": 0.343,
+    "faithful": true
+   },
+   "chosen": "x4plus_down2",
+   "hd_dds": "content/WEP_TortureSword_p/WEP_TortureSword_CLR.dds",
+   "hd_bytes": 1398276,
+   "orig_bytes": 174888
+  },
+  {
+   "object_path": "WEP_BazookaTemp1_p.WEP_Bazooka_CLR",
+   "cls": "colour",
+   "lod_group": "TEXTUREGROUP_Weapon",
+   "size": [
+    512,
+    512
+   ],
+   "format": "PF_DXT1",
+   "animevideov3_x2": {
+    "raw_psnr": 33.89,
+    "raw_mean_shift": 0.336,
+    "psnr_downsampled_vs_original": 51.3,
+    "max_mean_shift": 0.464,
+    "faithful": true
+   },
+   "x4plus_down2": {
+    "raw_psnr": 30.61,
+    "raw_mean_shift": 2.771,
+    "psnr_downsampled_vs_original": 50.93,
+    "max_mean_shift": 0.464,
+    "faithful": true
+   },
+   "chosen": "animevideov3_x2",
+   "hd_dds": "content/WEP_BazookaTemp1_p/WEP_Bazooka_CLR.dds",
+   "hd_bytes": 1398276,
+   "orig_bytes": 174888
+  },
+  {
+   "object_path": "WEP_TurretBase_p.WEP_TurretBase01_CLR",
+   "cls": "colour",
+   "lod_group": "TEXTUREGROUP_Weapon",
+   "size": [
+    512,
+    512
+   ],
+   "format": "PF_DXT1",
+   "animevideov3_x2": {
+    "raw_psnr": 35.01,
+    "raw_mean_shift": 0.315,
+    "psnr_downsampled_vs_original": 51.75,
+    "max_mean_shift": 0.402,
+    "faithful": true
+   },
+   "x4plus_down2": {
+    "raw_psnr": 33.75,
+    "raw_mean_shift": 0.971,
+    "psnr_downsampled_vs_original": 51.67,
+    "max_mean_shift": 0.399,
+    "faithful": true
+   },
+   "chosen": "animevideov3_x2",
+   "hd_dds": "content/WEP_TurretBase_p/WEP_TurretBase01_CLR.dds",
+   "hd_bytes": 1398276,
+   "orig_bytes": 174888
+  },
+  {
+   "object_path": "WEP_Omega_AI_p.WEP_OmegaRocket_CLR",
+   "cls": "colour",
+   "lod_group": "TEXTUREGROUP_Weapon",
+   "size": [
+    128,
+    128
+   ],
+   "format": "PF_DXT1",
+   "animevideov3_x2": {
+    "raw_psnr": 36.76,
+    "raw_mean_shift": 0.909,
+    "psnr_downsampled_vs_original": 51.14,
+    "max_mean_shift": 0.506,
+    "faithful": true
+   },
+   "x4plus_down2": {
+    "raw_psnr": 34.12,
+    "raw_mean_shift": 2.735,
+    "psnr_downsampled_vs_original": 51.17,
+    "max_mean_shift": 0.498,
+    "faithful": true
+   },
+   "chosen": "x4plus_down2",
+   "hd_dds": "content/WEP_Omega_AI_p/WEP_OmegaRocket_CLR.dds",
+   "hd_bytes": 87556,
+   "orig_bytes": 11048
+  },
+  {
+   "object_path": "ENV_IAC_Deco_1_p.Texture.Capacitor_01_Red_CLR_TEXSET.Capacitor_01_Red_CLR_TEXSET_Color_NormX",
+   "cls": "colour",
+   "lod_group": null,
+   "size": [
+    1024,
+    1024
+   ],
+   "format": "PF_DXT5",
+   "animevideov3_x2": {
+    "raw_psnr": 34.49,
+    "raw_mean_shift": 3.118,
+    "psnr_downsampled_vs_original": 41.13,
+    "max_mean_shift": 0.385,
+    "faithful": true
+   },
+   "x4plus_down2": {
+    "raw_psnr": 31.57,
+    "raw_mean_shift": 2.638,
+    "psnr_downsampled_vs_original": 41.03,
+    "max_mean_shift": 0.44,
+    "faithful": true
+   },
+   "chosen": "animevideov3_x2",
+   "hd_dds": "content/ENV_IAC_Deco_1_p/Texture/Capacitor_01_Red_CLR_TEXSET/Capacitor_01_Red_CLR_TEXSET_Color_NormX.dds",
+   "hd_bytes": 5592580,
+   "orig_bytes": 1398224
+  },
+  {
+   "object_path": "ENV_ORB_WhiteMaterials2_p.Textures.White_CanyonWall_C_TEXSET.White_CanyonWall_C_TEXSET_Color_NormX",
+   "cls": "colour",
+   "lod_group": null,
+   "size": [
+    512,
+    512
+   ],
+   "format": "PF_DXT5",
+   "animevideov3_x2": {
+    "raw_psnr": 33.72,
+    "raw_mean_shift": 3.375,
+    "psnr_downsampled_vs_original": 46.41,
+    "max_mean_shift": 0.435,
+    "faithful": true
+   },
+   "x4plus_down2": {
+    "raw_psnr": 32.25,
+    "raw_mean_shift": 1.68,
+    "psnr_downsampled_vs_original": 44.35,
+    "max_mean_shift": 0.451,
+    "faithful": true
+   },
+   "chosen": "animevideov3_x2",
+   "hd_dds": "content/ENV_ORB_WhiteMaterials2_p/Textures/White_CanyonWall_C_TEXSET/White_CanyonWall_C_TEXSET_Color_NormX.dds",
+   "hd_bytes": 1398276,
+   "orig_bytes": 349648
+  },
+  {
+   "object_path": "ENV_ORB_PowerCorridor_p.Materials.TrypPower_Tubes_CLR_TEXSET.TrypPower_Tubes_CLR_TEXSET_Color_NormX",
+   "cls": "colour",
+   "lod_group": null,
+   "size": [
+    512,
+    512
+   ],
+   "format": "PF_DXT5",
+   "animevideov3_x2": {
+    "raw_psnr": 34.39,
+    "raw_mean_shift": 3.246,
+    "psnr_downsampled_vs_original": 44.65,
+    "max_mean_shift": 0.437,
+    "faithful": true
+   },
+   "x4plus_down2": {
+    "raw_psnr": 32.67,
+    "raw_mean_shift": 2.645,
+    "psnr_downsampled_vs_original": 44.22,
+    "max_mean_shift": 0.456,
+    "faithful": true
+   },
+   "chosen": "animevideov3_x2",
+   "hd_dds": "content/ENV_ORB_PowerCorridor_p/Materials/TrypPower_Tubes_CLR_TEXSET/TrypPower_Tubes_CLR_TEXSET_Color_NormX.dds",
+   "hd_bytes": 1398276,
+   "orig_bytes": 349648
+  },
+  {
+   "object_path": "ENV_IAC_CleanMaterials_p.Textures.ENV_IAC_CleanTerminalFloor_TEXSET.ENV_IAC_CleanTerminalFloor_TEXSET_Color_NormX",
+   "cls": "colour",
+   "lod_group": null,
+   "size": [
+    512,
+    512
+   ],
+   "format": "PF_DXT5",
+   "animevideov3_x2": {
+    "raw_psnr": 35.94,
+    "raw_mean_shift": 3.454,
+    "psnr_downsampled_vs_original": 48.88,
+    "max_mean_shift": 0.402,
+    "faithful": true
+   },
+   "x4plus_down2": {
+    "raw_psnr": 34.32,
+    "raw_mean_shift": 2.081,
+    "psnr_downsampled_vs_original": 48.41,
+    "max_mean_shift": 0.419,
+    "faithful": true
+   },
+   "chosen": "animevideov3_x2",
+   "hd_dds": "content/ENV_IAC_CleanMaterials_p/Textures/ENV_IAC_CleanTerminalFloor_TEXSET/ENV_IAC_CleanTerminalFloor_TEXSET_Color_NormX.dds",
+   "hd_bytes": 1398276,
+   "orig_bytes": 349648
+  },
+  {
+   "object_path": "ENV_IAC_Deco_1_p.Texture.Balcony_CLR_TEXSET.Balcony_CLR_TEXSET_Color_NormX",
+   "cls": "colour",
+   "lod_group": null,
+   "size": [
+    512,
+    512
+   ],
+   "format": "PF_DXT5",
+   "animevideov3_x2": {
+    "raw_psnr": 36.66,
+    "raw_mean_shift": 3.348,
+    "psnr_downsampled_vs_original": 50.11,
+    "max_mean_shift": 0.38,
+    "faithful": true
+   },
+   "x4plus_down2": {
+    "raw_psnr": 36.58,
+    "raw_mean_shift": 1.872,
+    "psnr_downsampled_vs_original": 49.97,
+    "max_mean_shift": 0.448,
+    "faithful": true
+   },
+   "chosen": "animevideov3_x2",
+   "hd_dds": "content/ENV_IAC_Deco_1_p/Texture/Balcony_CLR_TEXSET/Balcony_CLR_TEXSET_Color_NormX.dds",
+   "hd_bytes": 1398276,
+   "orig_bytes": 349648
+  },
+  {
+   "object_path": "ENV_KON_Architecture_p.Texture.BasePlatform_02_CLR_TEXSET.BasePlatform_02_CLR_TEXSET_Color_NormX",
+   "cls": "colour",
+   "lod_group": null,
+   "size": [
+    512,
+    512
+   ],
+   "format": "PF_DXT5",
+   "animevideov3_x2": {
+    "raw_psnr": 37.48,
+    "raw_mean_shift": 3.53,
+    "psnr_downsampled_vs_original": 49.45,
+    "max_mean_shift": 0.385,
+    "faithful": true
+   },
+   "x4plus_down2": {
+    "raw_psnr": 37.3,
+    "raw_mean_shift": 2.099,
+    "psnr_downsampled_vs_original": 49.4,
+    "max_mean_shift": 0.422,
+    "faithful": true
+   },
+   "chosen": "animevideov3_x2",
+   "hd_dds": "content/ENV_KON_Architecture_p/Texture/BasePlatform_02_CLR_TEXSET/BasePlatform_02_CLR_TEXSET_Color_NormX.dds",
+   "hd_bytes": 1398276,
+   "orig_bytes": 349648
+  },
+  {
+   "object_path": "ENV_CORE_Floors_p.Materials.CenterChamberFloorRails_CLR_TEXSET.CenterChamberFloorRails_CLR_TEXSET_Color_NormX",
+   "cls": "colour",
+   "lod_group": null,
+   "size": [
+    1024,
+    512
+   ],
+   "format": "PF_DXT5",
+   "animevideov3_x2": {
+    "raw_psnr": 35.56,
+    "raw_mean_shift": 3.372,
+    "psnr_downsampled_vs_original": 48.69,
+    "max_mean_shift": 0.41,
+    "faithful": true
+   },
+   "x4plus_down2": {
+    "raw_psnr": 31.49,
+    "raw_mean_shift": 3.219,
+    "psnr_downsampled_vs_original": 48.48,
+    "max_mean_shift": 0.403,
+    "faithful": true
+   },
+   "chosen": "animevideov3_x2",
+   "hd_dds": "content/ENV_CORE_Floors_p/Materials/CenterChamberFloorRails_CLR_TEXSET/CenterChamberFloorRails_CLR_TEXSET_Color_NormX.dds",
+   "hd_bytes": 2796388,
+   "orig_bytes": 699168
+  },
+  {
+   "object_path": "ENV_CORE_Wall_p.Textures.ENV_CORE_CanyonTopPillar_A_CLR_TEXSET.ENV_CORE_CanyonTopPillar_A_CLR_TEXSET_Color_NormX",
+   "cls": "colour",
+   "lod_group": null,
+   "size": [
+    512,
+    512
+   ],
+   "format": "PF_DXT5",
+   "animevideov3_x2": {
+    "raw_psnr": 33.73,
+    "raw_mean_shift": 3.31,
+    "psnr_downsampled_vs_original": 48.68,
+    "max_mean_shift": 0.403,
+    "faithful": true
+   },
+   "x4plus_down2": {
+    "raw_psnr": 31.53,
+    "raw_mean_shift": 3.694,
+    "psnr_downsampled_vs_original": 47.65,
+    "max_mean_shift": 0.419,
+    "faithful": true
+   },
+   "chosen": "animevideov3_x2",
+   "hd_dds": "content/ENV_CORE_Wall_p/Textures/ENV_CORE_CanyonTopPillar_A_CLR_TEXSET/ENV_CORE_CanyonTopPillar_A_CLR_TEXSET_Color_NormX.dds",
+   "hd_bytes": 1398276,
+   "orig_bytes": 349648
+  },
+  {
+   "object_path": "ENV_IAC_Decagon_p.Materials.CtrMainFloorRails_XY_Norm",
+   "cls": "data",
+   "lod_group": "TEXTUREGROUP_WorldNormalMap",
+   "size": [
+    64,
+    128
+   ],
+   "format": "PF_DXT5",
+   "animevideov3_x2": {
+    "raw_psnr": 36.01,
+    "raw_mean_shift": 3.546,
+    "psnr_downsampled_vs_original": 49.69,
+    "max_mean_shift": 0.379,
+    "faithful": true
+   },
+   "x4plus_down2": {
+    "raw_psnr": 34.82,
+    "raw_mean_shift": 2.251,
+    "psnr_downsampled_vs_original": 48.69,
+    "max_mean_shift": 0.418,
+    "faithful": true
+   },
+   "chosen": "animevideov3_x2",
+   "hd_dds": "content/ENV_IAC_Decagon_p/Materials/CtrMainFloorRails_XY_Norm.dds",
+   "hd_bytes": 43876,
+   "orig_bytes": 11040
+  },
+  {
+   "object_path": "TR_AirRaid_VEH_p.VH_AirRaid_NORM",
+   "cls": "data",
+   "lod_group": "TEXTUREGROUP_Character",
+   "size": [
+    1024,
+    1024
+   ],
+   "format": "PF_DXT5",
+   "animevideov3_x2": {
+    "raw_psnr": 34.99,
+    "raw_mean_shift": 3.363,
+    "psnr_downsampled_vs_original": 45.64,
+    "max_mean_shift": 0.463,
+    "faithful": true
+   },
+   "x4plus_down2": {
+    "raw_psnr": 35.13,
+    "raw_mean_shift": 1.904,
+    "psnr_downsampled_vs_original": 44.67,
+    "max_mean_shift": 0.459,
+    "faithful": true
+   },
+   "chosen": "animevideov3_x2",
+   "hd_dds": "content/TR_AirRaid_VEH_p/VH_AirRaid_NORM.dds",
+   "hd_bytes": 5592580,
+   "orig_bytes": 1398224
+  },
+  {
+   "object_path": "WEP_ButterflyAxe_p.WEP_ButterflyAxe_NORM",
+   "cls": "normal",
+   "lod_group": "TEXTUREGROUP_Weapon",
+   "size": [
+    512,
+    512
+   ],
+   "format": "PF_DXT1",
+   "animevideov3_x2": {
+    "raw_psnr": 32.84,
+    "raw_mean_shift": 1.36,
+    "psnr_downsampled_vs_original": 44.0,
+    "max_mean_shift": 0.505,
+    "faithful": true
+   },
+   "x4plus_down2": {
+    "raw_psnr": 31.85,
+    "raw_mean_shift": 2.364,
+    "psnr_downsampled_vs_original": 44.12,
+    "max_mean_shift": 0.531,
+    "faithful": true
+   },
+   "chosen": "x4plus_down2",
+   "hd_dds": "content/WEP_ButterflyAxe_p/WEP_ButterflyAxe_NORM.dds",
+   "hd_bytes": 1398256,
+   "orig_bytes": 174888
+  },
+  {
+   "object_path": "ENV_CORE_SeedChamberBoss_p.Materials.ENV_CORE_ControlPannel_NORM",
+   "cls": "normal",
+   "lod_group": "TEXTUREGROUP_WorldNormalMap",
+   "size": [
+    512,
+    512
+   ],
+   "format": "PF_DXT1",
+   "animevideov3_x2": {
+    "raw_psnr": 28.34,
+    "raw_mean_shift": 0.433,
+    "psnr_downsampled_vs_original": 38.94,
+    "max_mean_shift": 0.849,
+    "faithful": false
+   },
+   "x4plus_down2": {
+    "raw_psnr": 26.84,
+    "raw_mean_shift": 2.771,
+    "psnr_downsampled_vs_original": 38.73,
+    "max_mean_shift": 0.934,
+    "faithful": false
+   },
+   "chosen": "original (rejected: no faithful upscale)",
+   "orig_bytes": 163968
+  },
+  {
+   "object_path": "ENV_UND_Support_p.Materials.PROP_UND_Pipe_A_NORM",
+   "cls": "normal",
+   "lod_group": "TEXTUREGROUP_WorldNormalMap",
+   "size": [
+    1024,
+    1024
+   ],
+   "format": "PF_DXT1",
+   "animevideov3_x2": {
+    "raw_psnr": 33.11,
+    "raw_mean_shift": 0.901,
+    "psnr_downsampled_vs_original": 43.28,
+    "max_mean_shift": 0.433,
+    "faithful": true
+   },
+   "x4plus_down2": {
+    "raw_psnr": 31.59,
+    "raw_mean_shift": 3.021,
+    "psnr_downsampled_vs_original": 43.34,
+    "max_mean_shift": 0.501,
+    "faithful": true
+   },
+   "chosen": "x4plus_down2",
+   "hd_dds": "content/ENV_UND_Support_p/Materials/PROP_UND_Pipe_A_NORM.dds",
+   "hd_bytes": 5592560,
+   "orig_bytes": 688256
+  },
+  {
+   "object_path": "ENV_GLB_Textures.DetailNorm.MetalScratch_1_NORM",
+   "cls": "normal",
+   "lod_group": "TEXTUREGROUP_WorldNormalMap",
+   "size": [
+    256,
+    256
+   ],
+   "format": "PF_DXT1",
+   "animevideov3_x2": {
+    "raw_psnr": 32.35,
+    "raw_mean_shift": 0.593,
+    "psnr_downsampled_vs_original": 43.34,
+    "max_mean_shift": 0.523,
+    "faithful": true
+   },
+   "x4plus_down2": {
+    "raw_psnr": 30.82,
+    "raw_mean_shift": 2.705,
+    "psnr_downsampled_vs_original": 43.31,
+    "max_mean_shift": 0.539,
+    "faithful": true
+   },
+   "chosen": "animevideov3_x2",
+   "hd_dds": "content/ENV_GLB_Textures/DetailNorm/MetalScratch_1_NORM.dds",
+   "hd_bytes": 349680,
+   "orig_bytes": 43816
+  },
+  {
+   "object_path": "ENV_NEU_Variation_p.ENV_F_rubblefloor_NORM",
+   "cls": "normal",
+   "lod_group": "TEXTUREGROUP_WorldNormalMap",
+   "size": [
+    1024,
+    1024
+   ],
+   "format": "PF_DXT1",
+   "animevideov3_x2": {
+    "raw_psnr": 35.77,
+    "raw_mean_shift": 0.887,
+    "psnr_downsampled_vs_original": 48.66,
+    "max_mean_shift": 0.489,
+    "faithful": true
+   },
+   "x4plus_down2": {
+    "raw_psnr": 34.2,
+    "raw_mean_shift": 2.934,
+    "psnr_downsampled_vs_original": 48.65,
+    "max_mean_shift": 0.505,
+    "faithful": true
+   },
+   "chosen": "animevideov3_x2",
+   "hd_dds": "content/ENV_NEU_Variation_p/ENV_F_rubblefloor_NORM.dds",
+   "hd_bytes": 5592560,
+   "orig_bytes": 699176
+  },
+  {
+   "object_path": "ENV_KON_Architecture_p.Texture.DoorFrame_01_NORM",
+   "cls": "normal",
+   "lod_group": "TEXTUREGROUP_WorldNormalMap",
+   "size": [
+    1024,
+    1024
+   ],
+   "format": "PF_DXT1",
+   "animevideov3_x2": {
+    "raw_psnr": 31.82,
+    "raw_mean_shift": 2.231,
+    "psnr_downsampled_vs_original": 34.41,
+    "max_mean_shift": 2.085,
+    "faithful": false
+   },
+   "x4plus_down2": {
+    "raw_psnr": 31.05,
+    "raw_mean_shift": 2.522,
+    "psnr_downsampled_vs_original": 34.38,
+    "max_mean_shift": 2.12,
+    "faithful": false
+   },
+   "chosen": "original (rejected: no faithful upscale)",
+   "orig_bytes": 699176
+  },
+  {
+   "object_path": "ENV_KON_Bridges_p.Textures.ENV__KON_Bridge_Straight_NORM",
+   "cls": "normal",
+   "lod_group": "TEXTUREGROUP_WorldNormalMap",
+   "size": [
+    1024,
+    1024
+   ],
+   "format": "PF_DXT1",
+   "animevideov3_x2": {
+    "raw_psnr": 34.84,
+    "raw_mean_shift": 1.565,
+    "psnr_downsampled_vs_original": 46.4,
+    "max_mean_shift": 0.472,
+    "faithful": true
+   },
+   "x4plus_down2": {
+    "raw_psnr": 32.48,
+    "raw_mean_shift": 2.321,
+    "psnr_downsampled_vs_original": 45.94,
+    "max_mean_shift": 0.536,
+    "faithful": true
+   },
+   "chosen": "animevideov3_x2",
+   "hd_dds": "content/ENV_KON_Bridges_p/Textures/ENV__KON_Bridge_Straight_NORM.dds",
+   "hd_bytes": 5592560,
+   "orig_bytes": 688256
+  },
+  {
+   "object_path": "FX_Textures_p.Normals.Water_Ripple_NRM",
+   "cls": "normal",
+   "lod_group": "TEXTUREGROUP_WorldNormalMap",
+   "size": [
+    512,
+    512
+   ],
+   "format": "PF_DXT1",
+   "animevideov3_x2": {
+    "raw_psnr": 35.34,
+    "raw_mean_shift": 1.546,
+    "psnr_downsampled_vs_original": 46.68,
+    "max_mean_shift": 0.709,
+    "faithful": false
+   },
+   "x4plus_down2": {
+    "raw_psnr": 33.82,
+    "raw_mean_shift": 2.957,
+    "psnr_downsampled_vs_original": 46.57,
+    "max_mean_shift": 0.431,
+    "faithful": true
+   },
+   "chosen": "x4plus_down2",
+   "hd_dds": "content/FX_Textures_p/Normals/Water_Ripple_NRM.dds",
+   "hd_bytes": 1398256,
+   "orig_bytes": 163968
+  },
+  {
+   "object_path": "ENV_CORE_Wall_p.Textures.ENV_CORE_BSPWall_D_NORM",
+   "cls": "normal",
+   "lod_group": "TEXTUREGROUP_WorldNormalMap",
+   "size": [
+    1024,
+    1024
+   ],
+   "format": "PF_DXT1",
+   "animevideov3_x2": {
+    "raw_psnr": 31.97,
+    "raw_mean_shift": 1.34,
+    "psnr_downsampled_vs_original": 41.83,
+    "max_mean_shift": 0.451,
+    "faithful": true
+   },
+   "x4plus_down2": {
+    "raw_psnr": 31.74,
+    "raw_mean_shift": 2.534,
+    "psnr_downsampled_vs_original": 41.96,
+    "max_mean_shift": 0.476,
+    "faithful": true
+   },
+   "chosen": "x4plus_down2",
+   "hd_dds": "content/ENV_CORE_Wall_p/Textures/ENV_CORE_BSPWall_D_NORM.dds",
+   "hd_bytes": 5592560,
+   "orig_bytes": 688256
+  },
+  {
+   "object_path": "ENV_NEU_Roads_p.Ground_Flat.ENV_Road_Straight_4096x8192_NORM",
+   "cls": "normal",
+   "lod_group": "TEXTUREGROUP_WorldNormalMap",
+   "size": [
+    1024,
+    1024
+   ],
+   "format": "PF_DXT1",
+   "animevideov3_x2": {
+    "raw_psnr": 34.87,
+    "raw_mean_shift": 1.819,
+    "psnr_downsampled_vs_original": 47.05,
+    "max_mean_shift": 0.404,
+    "faithful": true
+   },
+   "x4plus_down2": {
+    "raw_psnr": 32.76,
+    "raw_mean_shift": 2.494,
+    "psnr_downsampled_vs_original": 46.78,
+    "max_mean_shift": 0.507,
+    "faithful": true
+   },
+   "chosen": "animevideov3_x2",
+   "hd_dds": "content/ENV_NEU_Roads_p/Ground_Flat/ENV_Road_Straight_4096x8192_NORM.dds",
+   "hd_bytes": 5592560,
+   "orig_bytes": 688256
+  },
+  {
+   "object_path": "ENV_IAC_Tower_p.Texture.cyl_component_3_MASKS",
+   "cls": "data",
+   "lod_group": null,
+   "size": [
+    128,
+    128
+   ],
+   "format": "PF_DXT1",
+   "animevideov3_x2": {
+    "raw_psnr": 44.23,
+    "raw_mean_shift": 1.09,
+    "psnr_downsampled_vs_original": 57.0,
+    "max_mean_shift": 0.248,
+    "faithful": true
+   },
+   "x4plus_down2": {
+    "raw_psnr": 37.77,
+    "raw_mean_shift": 1.517,
+    "psnr_downsampled_vs_original": 55.25,
+    "max_mean_shift": 0.434,
+    "faithful": true
+   },
+   "chosen": "animevideov3_x2",
+   "hd_dds": "content/ENV_IAC_Tower_p/Texture/cyl_component_3_MASKS.dds",
+   "hd_bytes": 87556,
+   "orig_bytes": 11048
+  },
+  {
+   "object_path": "ENV_ORB_Spacedome_p.GodRays.ENV_ORB_LightRays_maskB",
+   "cls": "data",
+   "lod_group": null,
+   "size": [
+    512,
+    512
+   ],
+   "format": "PF_DXT1",
+   "animevideov3_x2": {
+    "raw_psnr": 41.32,
+    "raw_mean_shift": 1.486,
+    "psnr_downsampled_vs_original": 52.76,
+    "max_mean_shift": 0.361,
+    "faithful": true
+   },
+   "x4plus_down2": {
+    "raw_psnr": 43.02,
+    "raw_mean_shift": 1.026,
+    "psnr_downsampled_vs_original": 52.88,
+    "max_mean_shift": 0.341,
+    "faithful": true
+   },
+   "chosen": "x4plus_down2",
+   "hd_dds": "content/ENV_ORB_Spacedome_p/GodRays/ENV_ORB_LightRays_maskB.dds",
+   "hd_bytes": 1398276,
+   "orig_bytes": 174888
+  },
+  {
+   "object_path": "ENV_KON_Prison_p.Texture.LandingBayWallDeco_MASK",
+   "cls": "data",
+   "lod_group": null,
+   "size": [
+    512,
+    512
+   ],
+   "format": "PF_DXT1",
+   "animevideov3_x2": {
+    "raw_psnr": 35.53,
+    "raw_mean_shift": 1.152,
+    "psnr_downsampled_vs_original": 52.76,
+    "max_mean_shift": 0.496,
+    "faithful": true
+   },
+   "x4plus_down2": {
+    "raw_psnr": 34.67,
+    "raw_mean_shift": 0.362,
+    "psnr_downsampled_vs_original": 52.96,
+    "max_mean_shift": 0.498,
+    "faithful": true
+   },
+   "chosen": "x4plus_down2",
+   "hd_dds": "content/ENV_KON_Prison_p/Texture/LandingBayWallDeco_MASK.dds",
+   "hd_bytes": 1398276,
+   "orig_bytes": 163968
+  },
+  {
+   "object_path": "ENV_ORB_CoolantRoom_p.Material.ORB_RoutingPipeA_TEXSET.ORB_RoutingPipeA_Masks_NormY",
+   "cls": "data",
+   "lod_group": null,
+   "size": [
+    512,
+    512
+   ],
+   "format": "PF_DXT5",
+   "animevideov3_x2": {
+    "raw_psnr": 35.92,
+    "raw_mean_shift": 3.324,
+    "psnr_downsampled_vs_original": 45.18,
+    "max_mean_shift": 0.446,
+    "faithful": true
+   },
+   "x4plus_down2": {
+    "raw_psnr": 35.62,
+    "raw_mean_shift": 2.096,
+    "psnr_downsampled_vs_original": 43.69,
+    "max_mean_shift": 0.451,
+    "faithful": true
+   },
+   "chosen": "animevideov3_x2",
+   "hd_dds": "content/ENV_ORB_CoolantRoom_p/Material/ORB_RoutingPipeA_TEXSET/ORB_RoutingPipeA_Masks_NormY.dds",
+   "hd_bytes": 1398276,
+   "orig_bytes": 349648
+  },
+  {
+   "object_path": "ENV_CORE_DropShip_p.Textures.ENV_CORE_DSFrontRoofB_CLR_TEXSET.ENV_CORE_DSFrontRoofB_CLR_TEXSET_Masks_NormY",
+   "cls": "data",
+   "lod_group": null,
+   "size": [
+    512,
+    512
+   ],
+   "format": "PF_DXT5",
+   "animevideov3_x2": {
+    "raw_psnr": 37.29,
+    "raw_mean_shift": 3.619,
+    "psnr_downsampled_vs_original": 51.0,
+    "max_mean_shift": 0.316,
+    "faithful": true
+   },
+   "x4plus_down2": {
+    "raw_psnr": 37.08,
+    "raw_mean_shift": 2.476,
+    "psnr_downsampled_vs_original": 51.45,
+    "max_mean_shift": 0.291,
+    "faithful": true
+   },
+   "chosen": "x4plus_down2",
+   "hd_dds": "content/ENV_CORE_DropShip_p/Textures/ENV_CORE_DSFrontRoofB_CLR_TEXSET/ENV_CORE_DSFrontRoofB_CLR_TEXSET_Masks_NormY.dds",
+   "hd_bytes": 1398276,
+   "orig_bytes": 349648
+  },
+  {
+   "object_path": "ENV_IAC_RedMaterials_p.Textures.ENV_IAC_RedPlazaFloor_TEXSET.ENV_IAC_RedPlazaFloor_TEXSET_Masks_NormY",
+   "cls": "data",
+   "lod_group": null,
+   "size": [
+    512,
+    512
+   ],
+   "format": "PF_DXT5",
+   "animevideov3_x2": {
+    "raw_psnr": 34.62,
+    "raw_mean_shift": 3.314,
+    "psnr_downsampled_vs_original": 51.9,
+    "max_mean_shift": 0.445,
+    "faithful": true
+   },
+   "x4plus_down2": {
+    "raw_psnr": 33.99,
+    "raw_mean_shift": 1.899,
+    "psnr_downsampled_vs_original": 49.08,
+    "max_mean_shift": 0.432,
+    "faithful": true
+   },
+   "chosen": "animevideov3_x2",
+   "hd_dds": "content/ENV_IAC_RedMaterials_p/Textures/ENV_IAC_RedPlazaFloor_TEXSET/ENV_IAC_RedPlazaFloor_TEXSET_Masks_NormY.dds",
+   "hd_bytes": 1398276,
+   "orig_bytes": 349648
+  },
+  {
+   "object_path": "DES_IAC_EnergonTank_p.Texture.EnergonTank_01_TEXSET.EnergonTank_01_TEXSET_Masks_NormY",
+   "cls": "data",
+   "lod_group": null,
+   "size": [
+    512,
+    512
+   ],
+   "format": "PF_DXT5",
+   "animevideov3_x2": {
+    "raw_psnr": 35.94,
+    "raw_mean_shift": 3.185,
+    "psnr_downsampled_vs_original": 50.09,
+    "max_mean_shift": 0.438,
+    "faithful": true
+   },
+   "x4plus_down2": {
+    "raw_psnr": 34.99,
+    "raw_mean_shift": 1.762,
+    "psnr_downsampled_vs_original": 48.39,
+    "max_mean_shift": 0.456,
+    "faithful": true
+   },
+   "chosen": "animevideov3_x2",
+   "hd_dds": "content/DES_IAC_EnergonTank_p/Texture/EnergonTank_01_TEXSET/EnergonTank_01_TEXSET_Masks_NormY.dds",
+   "hd_bytes": 1398276,
+   "orig_bytes": 349632
+  },
+  {
+   "object_path": "ENV_ORB_Trypticon_p.Materials.Tryp_MetalFloor_CLR_TEXSET.Tryp_MetalFloor_CLR_TEXSET_Masks_NormY",
+   "cls": "data",
+   "lod_group": null,
+   "size": [
+    512,
+    512
+   ],
+   "format": "PF_DXT5",
+   "animevideov3_x2": {
+    "raw_psnr": 32.33,
+    "raw_mean_shift": 2.747,
+    "psnr_downsampled_vs_original": 46.51,
+    "max_mean_shift": 0.455,
+    "faithful": true
+   },
+   "x4plus_down2": {
+    "raw_psnr": 31.04,
+    "raw_mean_shift": 1.791,
+    "psnr_downsampled_vs_original": 44.93,
+    "max_mean_shift": 0.47,
+    "faithful": true
+   },
+   "chosen": "animevideov3_x2",
+   "hd_dds": "content/ENV_ORB_Trypticon_p/Materials/Tryp_MetalFloor_CLR_TEXSET/Tryp_MetalFloor_CLR_TEXSET_Masks_NormY.dds",
+   "hd_bytes": 1398276,
+   "orig_bytes": 349648
+  },
+  {
+   "object_path": "ENV_CORE_Floors_p.Materials.OmegaBridgeSupport_MASK",
+   "cls": "data",
+   "lod_group": null,
+   "size": [
+    512,
+    512
+   ],
+   "format": "PF_DXT1",
+   "animevideov3_x2": {
+    "raw_psnr": 42.03,
+    "raw_mean_shift": 0.828,
+    "psnr_downsampled_vs_original": 55.83,
+    "max_mean_shift": 0.485,
+    "faithful": true
+   },
+   "x4plus_down2": {
+    "raw_psnr": 40.49,
+    "raw_mean_shift": 0.058,
+    "psnr_downsampled_vs_original": 55.78,
+    "max_mean_shift": 0.49,
+    "faithful": true
+   },
+   "chosen": "animevideov3_x2",
+   "hd_dds": "content/ENV_CORE_Floors_p/Materials/OmegaBridgeSupport_MASK.dds",
+   "hd_bytes": 1398276,
+   "orig_bytes": 163968
+  },
+  {
+   "object_path": "ENV_ORB_DebrisBase_p.Materials.ENV_ORB_SliceFloorGlass_mask",
+   "cls": "data",
+   "lod_group": null,
+   "size": [
+    256,
+    256
+   ],
+   "format": "PF_DXT1",
+   "animevideov3_x2": {
+    "raw_psnr": 27.43,
+    "raw_mean_shift": 2.316,
+    "psnr_downsampled_vs_original": 52.61,
+    "max_mean_shift": 0.495,
+    "faithful": false
+   },
+   "x4plus_down2": {
+    "raw_psnr": 24.43,
+    "raw_mean_shift": 4.085,
+    "psnr_downsampled_vs_original": 52.44,
+    "max_mean_shift": 0.498,
+    "faithful": false
+   },
+   "chosen": "original (rejected: no faithful upscale)",
+   "orig_bytes": 43776
+  }
+ ]
+}
