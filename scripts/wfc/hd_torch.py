@@ -77,14 +77,19 @@ def run():
     save_scale = int(sys.argv[sys.argv.index('--save-scale') + 1]) if '--save-scale' in sys.argv else None
     times = {}
     for m in names:
-        d = load(m, dev); od = os.path.join(work, 'out_' + m); os.makedirs(od, exist_ok=True); t0 = time.time()
+        d = load(m, dev); od = os.path.join(work, 'out_' + m); os.makedirs(od, exist_ok=True); t0 = time.time(); fails = []
         for f in sorted(os.listdir(src)):
             if f.endswith('.png') and not os.path.exists(os.path.join(od, f)):
-                im = Image.open(os.path.join(src, f)).convert('RGB'); out = Image.fromarray(upscale(d, dev, np.asarray(im)))
-                if save_scale and out.size != (save_scale * im.size[0], save_scale * im.size[1]):
-                    out = out.resize((save_scale * im.size[0], save_scale * im.size[1]), Image.BOX)
-                tmp = os.path.join(od, f + '.part.png'); out.save(tmp); os.replace(tmp, os.path.join(od, f))   # no half-written files on a stop
-        times[m] = round(time.time() - t0, 1); print(m, '%.0fs' % times[m], flush=True)
+                try:                                                        # one bad input must not stop (and idle) the GPU run
+                    im = Image.open(os.path.join(src, f)).convert('RGB'); out = Image.fromarray(upscale(d, dev, np.asarray(im)))
+                    if save_scale and out.size != (save_scale * im.size[0], save_scale * im.size[1]):
+                        out = out.resize((save_scale * im.size[0], save_scale * im.size[1]), Image.BOX)
+                    tmp = os.path.join(od, f + '.part.png'); out.save(tmp); os.replace(tmp, os.path.join(od, f))   # no half-written files on a stop
+                except Exception as ex:
+                    fails.append({'file': f, 'error': '%s: %s' % (type(ex).__name__, str(ex)[:300])}); print('FAIL', m, f, str(ex)[:120], flush=True)
+        # failed inputs are retried on the next run; downstream treats a missing output as "no candidate from this model"
+        json.dump(fails, open(os.path.join(work, 'failures_%s.json' % m), 'w'), indent=1)
+        times[m] = round(time.time() - t0, 1); print(m, '%.0fs' % times[m], 'failed', len(fails), flush=True)
     json.dump({'device': how, 'seconds': times}, open(os.path.join(work, 'torch_times.json'), 'w'), indent=1)
 
 def credits(used=None):

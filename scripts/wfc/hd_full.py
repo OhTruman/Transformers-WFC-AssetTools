@@ -103,21 +103,46 @@ def cand_img(s, c):
     if c.startswith('ncnn:'):
         try: return H.rebuild(s, c[5:])
         except Exception: return None
-    if c == V3.NORMAL: return V3.normal_rg0(s, 2)
-    return V3.assemble(s, c, 2)
+    try: return V3.normal_rg0(s, 2) if c == V3.NORMAL else V3.assemble(s, c, 2)
+    except Exception: return None                                       # output missing (failed / skipped in the GPU run)
 
 def post():
     sel = json.load(open(H.SEL, encoding='utf-8')); os.makedirs(PACK, exist_ok=True)
     part = os.path.join(FULL, '_partial.jsonl'); done = set()
     if '--resume' in sys.argv and os.path.exists(part):
         for l in open(part, encoding='utf-8'):
-            try: done.add(json.loads(l)['object_path'])
+            try:
+                r = json.loads(l)
+                if 'error' not in r: done.add(r['object_path'])            # failed textures are retried on --resume
             except Exception: pass
     elif os.path.exists(part):
         os.replace(part, part + '.bak')
     t0 = time.time(); n = 0
     for s in sel:
         if s['object_path'] in done: continue
+        try: rec = post_one(s)
+        except Exception as ex:                                             # one bad texture must not stop the run; it stays original
+            rec = OD([('k', s['k']), ('object_path', s['object_path']), ('png', s.get('png')), ('cls', s['cls']), ('faithful', False),
+                      ('error', '%s: %s' % (type(ex).__name__, str(ex)[:300]))]); print('FAIL', s['k'], str(ex)[:120], flush=True)
+        with open(part, 'a', encoding='utf-8') as f: f.write(json.dumps(rec) + chr(10))
+        n += 1
+        if n % 100 == 0: print(n, 'textures', '%.0fs' % (time.time() - t0), flush=True)
+    print('post done', n, 'new', '%.0fs' % (time.time() - t0))
+
+def load_recs():
+    """the latest _partial.jsonl record per texture (a retried failure appends a newer one); records that still failed are left out
+    (the texture stays original) and counted"""
+    last = OD()
+    for l in open(os.path.join(FULL, '_partial.jsonl'), encoding='utf-8'):
+        try: r = json.loads(l)
+        except Exception: continue
+        last.pop(r['object_path'], None); last[r['object_path']] = r
+    errs = [r for r in last.values() if 'error' in r]
+    if errs: print(len(errs), 'textures failed in post (kept original):', ', '.join(str(r['k']) for r in errs[:20]))
+    return [r for r in last.values() if 'error' not in r]
+
+def post_one(s):
+    if True:
         target = H.source(s); w, h = s['size']
         lz = np.asarray(Image.fromarray(target, 'RGBA').resize((2 * w, 2 * h), Image.LANCZOS))
         locked = OD([('lanczos', V3.lock(target, lz, s, 2))]); missing = []
@@ -137,14 +162,11 @@ def post():
             Image.fromarray(hd, 'RGBA').save(png); rec['hd_png'] = os.path.relpath(png, FULL).replace(os.sep, '/')
             d = H.encode(hd, s, s['dds'], modern=False)
             rec['hd_dds'] = os.path.relpath(d, PACK).replace(os.sep, '/') if d else None; rec['hd_bytes'] = os.path.getsize(d) if d else None
-        with open(part, 'a', encoding='utf-8') as f: f.write(json.dumps(rec) + chr(10))
-        n += 1
-        if n % 100 == 0: print(n, 'textures', '%.0fs' % (time.time() - t0), flush=True)
-    print('post done', n, 'new', '%.0fs' % (time.time() - t0))
+        return rec
 
 def sheets():
     """review sheets per class (and LOD group), 16 textures each: original | HD at the most detailed 64 px spot"""
-    recs = [json.loads(l) for l in open(os.path.join(FULL, '_partial.jsonl'), encoding='utf-8')]
+    recs = load_recs()
     sel = {s['object_path']: s for s in json.load(open(H.SEL, encoding='utf-8'))}
     od = os.path.join(FULL, 'review'); os.makedirs(od, exist_ok=True)
     groups = OD()
@@ -174,7 +196,7 @@ def index():
     """hd_index.json (Rendering's loader) from the faithful records whose verdict (verdicts.json: k -> PASS / REMAKE + why) is PASS;
     REMAKE -> remake_candidates.json; CREDITS.txt for the models used"""
     import authored as A
-    recs = [json.loads(l) for l in open(os.path.join(FULL, '_partial.jsonl'), encoding='utf-8')]
+    recs = load_recs()
     vp = os.path.join(FULL, 'verdicts.json'); verd = json.load(open(vp, encoding='utf-8')) if os.path.exists(vp) else {}
     rows = []; remake = []; used = Counter(); total = 0; con = A.con()
     for r in recs:
