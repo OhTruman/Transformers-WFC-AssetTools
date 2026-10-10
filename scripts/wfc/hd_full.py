@@ -82,13 +82,19 @@ def gpu():
         elif m == 'normal':
             subprocess.run([py, ht, 'run', '--work', FULL, '--in', os.path.join(FULL, 'in_normal'), '--models', V3.NORMAL, '--save-scale', '2'])
         elif m == 'rplksr':
-            subprocess.run([py, ht, 'run', '--work', FULL, '--in', os.path.join(FULL, 'in'), '--models', RPLKSR, '--save-scale', '2'])
+            # colour + normal inputs only (Integration 2026-10-10: data / mask maps keep animevideov3 + Lanczos; halves the GPU time)
+            cn = os.path.join(FULL, 'in_cn'); os.makedirs(cn, exist_ok=True)
+            for s in json.load(open(H.SEL, encoding='utf-8')):
+                if s['cls'] in ('colour', 'normal'):
+                    for n in s['inputs']:
+                        if not os.path.exists(os.path.join(cn, n)): shutil.copy(os.path.join(FULL, 'in', n), os.path.join(cn, n))
+            subprocess.run([py, ht, 'run', '--work', FULL, '--in', cn, '--models', RPLKSR, '--save-scale', '2'])
         elif m == 'dat2':
             subprocess.run([py, ht, 'run', '--work', FULL, '--in', os.path.join(FULL, 'in_dat'), '--models', DAT2, '--save-scale', '2'])
         print(m, '%.0fs' % (time.time() - t0), flush=True)
 
 def candidates(s):
-    names = ['ncnn:' + NCNN, RPLKSR]
+    names = ['ncnn:' + NCNN] + ([RPLKSR] if s['cls'] in ('colour', 'normal') else [])
     if s['cls'] == 'normal': names.append(V3.NORMAL)
     if s['cls'] == 'colour' and s.get('lod_group') in MOST_SEEN: names.append(DAT2)
     return names
