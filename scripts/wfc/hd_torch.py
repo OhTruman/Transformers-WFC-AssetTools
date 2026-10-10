@@ -71,12 +71,18 @@ def run():
     work = sys.argv[sys.argv.index('--work') + 1] if '--work' in sys.argv else os.path.join(AT, 'out', 'hd', '_work_v3')
     src = sys.argv[sys.argv.index('--in') + 1] if '--in' in sys.argv else os.path.join(work, 'in')
     names = sys.argv[sys.argv.index('--models') + 1].split(',') if '--models' in sys.argv else list(MODELS)
+    # --save-scale 2: area-downsample the model output to 2x before saving (the pack is 2x; a 4x RealPLKSR output of the full
+    # pack would be ~100 GB of PNG)
+    save_scale = int(sys.argv[sys.argv.index('--save-scale') + 1]) if '--save-scale' in sys.argv else None
     times = {}
     for m in names:
         d = load(m, dev); od = os.path.join(work, 'out_' + m); os.makedirs(od, exist_ok=True); t0 = time.time()
         for f in sorted(os.listdir(src)):
             if f.endswith('.png') and not os.path.exists(os.path.join(od, f)):
-                Image.fromarray(upscale(d, dev, np.asarray(Image.open(os.path.join(src, f)).convert('RGB')))).save(os.path.join(od, f))
+                im = Image.open(os.path.join(src, f)).convert('RGB'); out = Image.fromarray(upscale(d, dev, np.asarray(im)))
+                if save_scale and out.size != (save_scale * im.size[0], save_scale * im.size[1]):
+                    out = out.resize((save_scale * im.size[0], save_scale * im.size[1]), Image.BOX)
+                tmp = os.path.join(od, f + '.part.png'); out.save(tmp); os.replace(tmp, os.path.join(od, f))   # no half-written files on a stop
         times[m] = round(time.time() - t0, 1); print(m, '%.0fs' % times[m], flush=True)
     json.dump({'device': how, 'seconds': times}, open(os.path.join(work, 'torch_times.json'), 'w'), indent=1)
 
