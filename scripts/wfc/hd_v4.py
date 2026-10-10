@@ -23,7 +23,7 @@ sys.path.insert(0, HERE)
 import hd_v3 as V3  # noqa: E402  (sets hd_pilot to v2 mode: deblocked source, original-format encode)
 H = V3.H
 AT = H.AT
-H.OUTV = os.path.join(H.HD, 'v4')
+H.OUTV = os.path.join(H.HD, 'v5')
 V2W = os.path.join(H.HD, '_work_v2')
 TILE, FLAT_W, GRID_W, TEMP = 64, 1.5, 3.0, 0.15
 CANDS = ['v2:animevideov3_x2', 'v2:x4plus_down2', '4x-PBRify-RPLKSRd-V3', '2x-AoMR-mosr', '4x-PBRify-UpscalerDAT2-V1', '4x-TextureDAT2-otf']
@@ -47,6 +47,27 @@ def box_blur(a, r):
     out = c[k:, k:] - c[:-k, k:] - c[k:, :-k] + c[:-k, :-k]
     return out[:a.shape[0], :a.shape[1]] / (k * k)
 
+# calibrated on the pilot (bazooka / bridge, median tile excess): Lanczos -3.6, DAT2 -1.3, TextureDAT2 -0.3..-0.8, AoMR ~0 (the
+# worm source on grunge): the cap limits new-octave energy to the cleaner texture models' level
+SPEC_W, SPEC_CAP = 6.0, -0.5
+# colour textures: AoMR-mosr and Real-ESRGAN x4plus produce invented 'worm' texture on grunge (v3 / v4 review) -> not candidates
+COLOUR_EXCLUDE = ('2x-AoMR-mosr', 'v2:x4plus_down2')
+_win = {}
+
+def spectral_excess(t):
+    """invented-texture detector for one HD luma tile (n x n): fit log power vs log frequency over the band the original already
+    holds (0.06-0.22 cycles / HD px: locked to the original), extrapolate into the new octave (0.27-0.5) and return the mean log
+    excess there. Real detail continues the falloff (~0); Lanczos is below it (< 0); invented worms / grain sit above it (> 0)."""
+    n = t.shape[0]
+    if n not in _win:
+        hw = np.hanning(n); fy, fx = np.meshgrid(np.fft.fftfreq(n), np.fft.fftfreq(n), indexing='ij'); _win[n] = (np.outer(hw, hw), np.hypot(fx, fy))
+    win, fr = _win[n]
+    P = np.abs(np.fft.fft2((t - t.mean()) * win)) ** 2 + 1e-9
+    lo = (fr >= 0.06) & (fr <= 0.22); hi = (fr >= 0.27) & (fr <= 0.5)
+    if lo.sum() < 8 or hi.sum() < 8: return 0.0
+    a, b = np.polyfit(np.log(fr[lo]), np.log(P[lo]), 1)
+    return float((np.log(P[hi]) - (a * np.log(fr[hi]) + b)).mean())
+
 def tile_scores(target, hd, lz, s):
     """per-tile score (rows x cols) for one locked candidate"""
     t = luma(lz); d = np.abs(luma(H._lit(hd) if s['cls'] == 'normal' else hd) - (luma(H._lit(lz)) if s['cls'] == 'normal' else t))
@@ -55,6 +76,7 @@ def tile_scores(target, hd, lz, s):
     S = S / (np.percentile(S, 95) + 1e-6); S = np.clip(S, 0, 1)
     h, w = d.shape; rows, cols = max(1, h // TILE), max(1, w // TILE)
     x = luma(hd); ex = np.abs(np.diff(x, axis=1)); ey = np.abs(np.diff(x, axis=0))
+    xs = luma(H._lit(hd)) if s['cls'] == 'normal' else x
     gx = np.zeros_like(ex, bool); gx[:, 3::4] = True; gy = np.zeros_like(ey, bool); gy[3::4, :] = True
     out = np.zeros((rows, cols))
     for i in range(rows):
@@ -65,8 +87,28 @@ def tile_scores(target, hd, lz, s):
             exs, gxs = ex[sl[0], sl[1]][:, :-1] if ex[sl[0], sl[1]].shape[1] > 1 else ex[sl[0], sl[1]], gx[sl[0], sl[1]][:, :-1] if gx[sl[0], sl[1]].shape[1] > 1 else gx[sl[0], sl[1]]
             on, off = (exs[gxs].mean() if gxs.any() else 0.0), (exs[~gxs].mean() if (~gxs).any() else 0.0)
             grid = max(0.0, float(on - off))
-            out[i, j] = aligned - FLAT_W * flat - GRID_W * grid
+            spec = spectral_excess(xs[sl]) if xs[sl].shape == (TILE, TILE) else 0.0
+            out[i, j] = aligned - FLAT_W * flat - GRID_W * grid - SPEC_W * max(0.0, spec - SPEC_CAP) * max(aligned, 1e-3)
     return out
+
+TONE_STD_RATIO, TONE_DARK_MAX, TONE_LOCAL_RATIO = (0.97, 1.03), 1.5, (0.95, 1.10)
+
+def tone_check(target, hd, s):
+    """Integration / Rendering 2026-10-09: a lighter or washed-out result must not PASS. At native size (area-downsample of the HD):
+    per-channel std within TONE_STD_RATIO of the original, the darkest 10 % (luma) within TONE_DARK_MAX levels; and the local
+    contrast (std in 8 px windows, original resolution) within TONE_LOCAL_RATIO; mean shift is already gated"""
+    w, h = s['size']
+    dn = np.asarray(Image.fromarray(hd, 'RGBA').resize((w, h), Image.BOX)).astype(np.float64)[..., :3]
+    o = target.astype(np.float64)[..., :3]
+    nch = 2 if s['cls'] == 'normal' else 3          # normals: X / Y only (Z is re-derived by renormalisation, not a tone)
+    so, sd = o[..., :nch].reshape(-1, nch).std(0), dn[..., :nch].reshape(-1, nch).std(0)
+    ratio = [float(b / a) if a > 1 else 1.0 for a, b in zip(so, sd)]
+    lo, ld = luma(o), luma(dn); dark = lo <= np.percentile(lo, 10)
+    dark_diff = float(abs(ld[dark].mean() - lo[dark].mean()))
+    loc = lambda x: np.sqrt(np.maximum(box_blur(x ** 2, 4) - box_blur(x, 4) ** 2, 0)).mean()
+    lr = float(loc(ld) / max(loc(lo), 1e-6))
+    ok = all(TONE_STD_RATIO[0] <= r <= TONE_STD_RATIO[1] for r in ratio) and dark_diff <= TONE_DARK_MAX and TONE_LOCAL_RATIO[0] <= lr <= TONE_LOCAL_RATIO[1]
+    return OD([('std_ratio', [round(r, 3) for r in ratio]), ('dark10_diff', round(dark_diff, 2)), ('local_contrast_ratio', round(lr, 3)), ('ok', bool(ok))])
 
 def fuse(target, locked, lz, s):
     names = list(locked); h, w = lz.shape[:2]
@@ -82,11 +124,20 @@ def fuse(target, locked, lz, s):
 
 def post():
     sel = json.load(open(H.SEL, encoding='utf-8')); res = []
+    part = os.path.join(H.OUTV, '_partial.jsonl'); os.makedirs(H.OUTV, exist_ok=True)
+    done = {}
+    if '--resume' in sys.argv and os.path.exists(part):         # resumable across timed-window stops
+        for l in open(part, encoding='utf-8'):
+            try: r = json.loads(l, object_pairs_hook=OD); done[r['object_path']] = r
+            except Exception: pass
+    else:
+        open(part, 'w').close()
     for s in sel:
+        if s['object_path'] in done: res.append(done[s['object_path']]); continue
         target = H.source(s); w, h = s['size']
         lz = np.asarray(Image.fromarray(target, 'RGBA').resize((2 * w, 2 * h), Image.LANCZOS))
         locked = OD([('lanczos', V3.lock(target, lz, s, 2))])
-        names = CANDS + ([V3.NORMAL] if s['cls'] == 'normal' else [])
+        names = [c for c in CANDS if not (s['cls'] == 'colour' and c in COLOUR_EXCLUDE)] + ([V3.NORMAL] if s['cls'] == 'normal' else [])
         for c in names:
             raw = candidate(s, c)
             if raw is None: continue
@@ -94,9 +145,11 @@ def post():
             if g['faithful']: locked[c] = hd
         fused, share = fuse(target, locked, lz, s)
         hd = V3.lock(target, fused, s, 2); p, sh, _ = H.gate(target, hd, s)
-        ok = bool(p >= H.FINAL_MIN_DB and sh <= H.FINAL_MAX_SHIFT)
+        tone = tone_check(target, hd, s)
+        ok = bool(p >= H.FINAL_MIN_DB and sh <= H.FINAL_MAX_SHIFT and tone['ok'])
         rec = OD([('object_path', s['object_path']), ('cls', s['cls']), ('lod_group', s['lod_group']), ('size', s['size']), ('format', s['format']),
-                  ('candidates_faithful', list(locked)), ('blend_share', share), ('final_psnr', round(p, 2)), ('max_mean_shift', round(sh, 3)), ('faithful', ok)])
+                  ('candidates_faithful', list(locked)), ('blend_share', share), ('final_psnr', round(p, 2)), ('max_mean_shift', round(sh, 3)),
+                  ('tone', tone), ('faithful', ok)])
         if ok:
             png = os.path.join(H.OUTV, '_png', '%03d.png' % s['k']); os.makedirs(os.path.dirname(png), exist_ok=True)
             Image.fromarray(hd, 'RGBA').save(png); rec['hd_png'] = os.path.relpath(png, H.OUTV).replace(os.sep, '/')
@@ -106,15 +159,16 @@ def post():
             rec['hd_bytes_bc7'] = os.path.getsize(d7) if d7 else None
         rec['orig_bytes'] = os.path.getsize(os.path.join(H.DDS, s['dds']))
         res.append(rec)
+        with open(part, 'a', encoding='utf-8') as f: f.write(json.dumps(rec) + chr(10))
         print(s['object_path'].split('.')[-1][:34], s['cls'], 'faithful' if ok else 'REJECT', dict(sorted(share.items(), key=lambda x: -x[1])[:3]), flush=True)
     out = OD([('generated_by', 'AssetTools/scripts/wfc/hd_v4.py'), ('scoring', OD([('tile', TILE), ('flat_weight', FLAT_W), ('grid_weight', GRID_W), ('temperature', TEMP)])),
               ('candidates', CANDS + [V3.NORMAL, 'lanczos']), ('accepted', sum(1 for r in res if r['faithful'])), ('textures', res)])
-    json.dump(out, open(os.path.join(AT, 'manifests', 'hd', 'hd_pilot_v4.json'), 'w', encoding='utf-8'), indent=1)
+    json.dump(out, open(os.path.join(AT, 'manifests', 'hd', 'hd_pilot_v5.json'), 'w', encoding='utf-8'), indent=1)
     tot = Counter(); [tot.update({k: v}) for r in res for k, v in r['blend_share'].items()]
     print('accepted', out['accepted'], '/', len(res), '| mean blend share', {k: round(v / len(res), 3) for k, v in tot.most_common()})
 
 def compare():
-    man = json.load(open(os.path.join(AT, 'manifests', 'hd', 'hd_pilot_v4.json'), encoding='utf-8'))
+    man = json.load(open(os.path.join(AT, 'manifests', 'hd', 'hd_pilot_v5.json'), encoding='utf-8'))
     v2 = {r['object_path']: r for r in json.load(open(V3.V2MAN, encoding='utf-8'))['textures']}
     sel = {s['object_path']: s for s in json.load(open(H.SEL, encoding='utf-8'))}
     od = os.path.join(H.OUTV, 'compare'); os.makedirs(od, exist_ok=True)
@@ -132,7 +186,7 @@ def compare():
         n = 96; hh, ww = g.shape
         _, x, y = max(((g[yy:yy + n, xx:xx + n].sum(), xx, yy) for yy in range(0, max(1, hh - n), 16) for xx in range(0, max(1, ww - n), 16)))
         cols = [('Original %dx%d' % tuple(s['size']), orig, 1)] + ([('v2 (shown before)', a2, 2)] if a2 is not None else []) + \
-               [('v4 ensemble, original formats', a4, 2)] + ([('v4 ensemble, %s' % ('BC5' if nrm else 'BC7'), a7, 2)] if a7 is not None else [])
+               [('v5, original formats', a4, 2)] + ([('v5, %s' % ('BC5' if nrm else 'BC7'), a7, 2)] if a7 is not None else [])
         S = 512; im = Image.new('RGB', (len(cols) * (S + 10) + 10, S + 74), (16, 16, 20)); d = ImageDraw.Draw(im)
         d.text((10, 8), '%s (%s)%s - same zoomed region; every HD version shrinks back to the original' % (name, s['lod_group'] or 'environment',
                ', normal map shown lit' if nrm else ''), fill=(170, 170, 170))
@@ -159,7 +213,7 @@ def verdict():
       found faithful detail to add), or the structure-aligned detail gain over Lanczos < DETAIL_GAIN_MIN"""
     import authored as A
     con = A.con()
-    man = json.load(open(os.path.join(AT, 'manifests', 'hd', 'hd_pilot_v4.json'), encoding='utf-8'))
+    man = json.load(open(os.path.join(AT, 'manifests', 'hd', 'hd_pilot_v5.json'), encoding='utf-8'))
     sel = {s['object_path']: s for s in json.load(open(H.SEL, encoding='utf-8'))}
     rp = os.path.join(AT, 'manifests', 'hd', 'remake_candidates.json')
     remake = OD((r['object_path'], r) for r in (json.load(open(rp, encoding='utf-8')).get('textures', []) if os.path.exists(rp) else []))
@@ -186,7 +240,7 @@ def verdict():
                                            ('source', 'hd_v4 pilot')])
         else:
             remake.pop(r['object_path'], None)
-    json.dump(man, open(os.path.join(AT, 'manifests', 'hd', 'hd_pilot_v4.json'), 'w', encoding='utf-8'), indent=1)
+    json.dump(man, open(os.path.join(AT, 'manifests', 'hd', 'hd_pilot_v5.json'), 'w', encoding='utf-8'), indent=1)
     json.dump(OD([('generated_by', 'AssetTools/scripts/wfc/hd_v4.py verdict'),
                   ('rule', 'user 2026-10-09: PASS = faithful and reads as HD (kept); REMAKE = still pixelated / soft -> remake pass after the full pack'),
                   ('thresholds', OD([('min_side', MIN_SIDE_HD), ('lanczos_share_max', LANCZOS_SHARE_MAX), ('detail_gain_min', DETAIL_GAIN_MIN)])),

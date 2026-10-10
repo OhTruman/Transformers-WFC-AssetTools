@@ -52,7 +52,7 @@ def classify(r, tf):
     if re.search(r'_(norm|nrm)$', name): return 'normal'
     # packed data / masks (authored sRGB or not; '_maks' is an authored typo of MASKS): every channel is data. Names win over the
     # LOD group (e.g. ENV_COR_RoutingPipeAGuts_MASK is grouped WorldNormalMap)
-    if r.get('srgb') is False or re.search(r'mask|maks|spec|difflum|_lum$|rough|gloss|height', name): return 'data'
+    if r.get('srgb') is False or re.search(r'mask|maks|spec|difflum|_lum$|rough|gloss|height|custab|auxglow', name): return 'data'
     if 'NormalMap' in g: return 'normal'
     return 'colour'
 
