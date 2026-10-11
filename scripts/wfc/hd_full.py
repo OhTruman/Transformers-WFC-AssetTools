@@ -161,7 +161,7 @@ def load_recs():
 def post_one(s):
     if True:
         target = H.source(s); w, h = s['size']
-        lz = np.asarray(Image.fromarray(target, 'RGBA').resize((2 * w, 2 * h), Image.LANCZOS))
+        lz = H.resize_straight(target, (2 * w, 2 * h), Image.LANCZOS)
         locked = OD([('lanczos', V3.lock(target, lz, s, 2))]); missing = []
         for c in candidates(s):
             raw = cand_img(s, c)

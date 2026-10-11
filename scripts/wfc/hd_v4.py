@@ -98,7 +98,7 @@ def tone_check(target, hd, s):
     per-channel std within TONE_STD_RATIO of the original, the darkest 10 % (luma) within TONE_DARK_MAX levels; and the local
     contrast (std in 8 px windows, original resolution) within TONE_LOCAL_RATIO; mean shift is already gated"""
     w, h = s['size']
-    dn = np.asarray(Image.fromarray(hd, 'RGBA').resize((w, h), Image.BOX)).astype(np.float64)[..., :3]
+    dn = H.resize_straight(hd, (w, h), Image.BOX).astype(np.float64)[..., :3]
     o = target.astype(np.float64)[..., :3]
     nch = 2 if s['cls'] == 'normal' else 3          # normals: X / Y only (Z is re-derived by renormalisation, not a tone)
     so, sd = o[..., :nch].reshape(-1, nch).std(0), dn[..., :nch].reshape(-1, nch).std(0)
@@ -135,7 +135,7 @@ def post():
     for s in sel:
         if s['object_path'] in done: res.append(done[s['object_path']]); continue
         target = H.source(s); w, h = s['size']
-        lz = np.asarray(Image.fromarray(target, 'RGBA').resize((2 * w, 2 * h), Image.LANCZOS))
+        lz = H.resize_straight(target, (2 * w, 2 * h), Image.LANCZOS)
         locked = OD([('lanczos', V3.lock(target, lz, s, 2))])
         names = [c for c in CANDS if not (s['cls'] == 'colour' and c in COLOUR_EXCLUDE)] + ([V3.NORMAL] if s['cls'] == 'normal' else [])
         for c in names:
@@ -200,7 +200,7 @@ MIN_SIDE_HD, LANCZOS_SHARE_MAX, DETAIL_GAIN_MIN = 64, 0.6, 1.25
 def detail_gain(target, hd, s):
     """structure-aligned detail of the HD texture relative to a plain Lanczos 2x of the same target (1.0 = nothing added)"""
     w, h = s['size']
-    lz = np.asarray(Image.fromarray(target, 'RGBA').resize((2 * w, 2 * h), Image.LANCZOS))
+    lz = H.resize_straight(target, (2 * w, 2 * h), Image.LANCZOS)
     f = (lambda a: luma(H._lit(a))) if s['cls'] == 'normal' else luma
     g = np.hypot(*np.gradient(f(lz))); S = np.clip(box_blur(g, 3) / (np.percentile(box_blur(g, 3), 95) + 1e-6), 0, 1)
     hp = lambda a: np.abs(f(a) - box_blur(f(a), 1))

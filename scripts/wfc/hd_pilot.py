@@ -210,10 +210,15 @@ def back_project(orig, hd, s):
         x = np.dstack([np.clip(np.round((v + 1) / 2 * 255), 0, 255).astype(np.uint8), x[..., 3]])
     return x
 
+def resize_straight(a, size, method):
+    """resize an RGBA uint8 array channel by channel. PIL's RGBA resize premultiplies alpha (RGB scaled by alpha, 0 under alpha 0),
+    which made the gate / tone check / Lanczos reference wrong on every texture with a non-opaque alpha (M4 errata 2026-10-11)"""
+    return np.dstack([np.asarray(Image.fromarray(np.ascontiguousarray(a[..., c]), 'L').resize(size, method)) for c in range(a.shape[2])])
+
 def gate(orig, hd, s):
     """faithfulness: HD area-downsampled back to the original size must reproduce the original"""
     w, h = s['size']
-    down = np.asarray(Image.fromarray(hd, 'RGBA').resize((w, h), Image.BOX)).astype(np.float64)
+    down = resize_straight(hd, (w, h), Image.BOX).astype(np.float64)
     ch = [0, 1, 2] + ([3] if any('chA' in n for n in s['inputs']) else [])
     o = orig[..., ch].astype(np.float64); d = down[..., ch]
     p = psnr(o, d); shift = float(np.abs(o.reshape(-1, len(ch)).mean(0) - d.reshape(-1, len(ch)).mean(0)).max())
@@ -267,7 +272,7 @@ def post():
     for s in sel:
         orig = source(s)                        # v2: the deblocked original is the lock target
         w, h = s['size']
-        lanczos = np.asarray(Image.fromarray(orig, 'RGBA').resize((2 * w, 2 * h), Image.LANCZOS))
+        lanczos = resize_straight(orig, (2 * w, 2 * h), Image.LANCZOS)
         rec = OD([('object_path', s['object_path']), ('cls', s['cls']), ('lod_group', s['lod_group']), ('size', s['size']), ('format', s['format'])])
         if V2:
             raw0 = np.asarray(Image.open(os.path.join(DDS, s['dds'])).convert('RGBA'))

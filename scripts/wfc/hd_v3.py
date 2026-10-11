@@ -78,7 +78,7 @@ def post():
     res = []
     for s in sel:
         target = H.source(s); w, h = s['size']
-        lz = np.asarray(Image.fromarray(target, 'RGBA').resize((2 * w, 2 * h), Image.LANCZOS)); base = H.sharpness(lz, s)
+        lz = H.resize_straight(target, (2 * w, 2 * h), Image.LANCZOS); base = H.sharpness(lz, s)
         rec = OD([('object_path', s['object_path']), ('cls', s['cls']), ('lod_group', s['lod_group']), ('size', s['size']), ('format', s['format']), ('cands', OD())])
         hds = {}
         names = FAST + TRANSFORMERS + ([NORMAL] if s['cls'] == 'normal' else [])

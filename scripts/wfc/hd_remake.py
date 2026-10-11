@@ -154,7 +154,7 @@ def m4_attempt(s, target):
     """what M4 produced (the rejected result too, for gate failures): the shipped _hdpng, else the fuse recomputed"""
     recs = {r['k']: r for r in F.load_recs()}; r = recs.get(s['k'], {})
     if r.get('hd_png'): return np.asarray(Image.open(os.path.join(F.FULL, r['hd_png'])).convert('RGBA'))
-    w, h = s['size']; lz = np.asarray(Image.fromarray(target, 'RGBA').resize((2 * w, 2 * h), Image.LANCZOS))
+    w, h = s['size']; lz = H.resize_straight(target, (2 * w, 2 * h), Image.LANCZOS)
     locked = OD([('lanczos', V3.lock(target, lz, s, 2))])
     for c in F.candidates(s):
         raw = F.cand_img(s, c)
@@ -210,7 +210,7 @@ def run():
             if raw_ is None: continue
             keep('direct:' + {F.RPLKSR: 'RPLKSR', F.DAT2: 'DAT2', V3.NORMAL: 'NormalRG0'}.get(c, 'animevideov3'), lockx(target, raw_, renorm)); del raw_
         w, h = s['size']
-        lz = np.asarray(Image.fromarray(target, 'RGBA').resize((2 * w, 2 * h), Image.LANCZOS))
+        lz = H.resize_straight(target, (2 * w, 2 * h), Image.LANCZOS)
         keep('edge', lockx(target, edge_pull(lz), renorm)); del lz
         if per: keep('pattern', lockx(target, pattern_rebuild(target, per), renorm))
         if s['cls'] == 'normal' and not two: keep('height', lockx(target, height_variant(target), renorm))
@@ -276,7 +276,7 @@ def rescore():
         disp = 'normal2' if two else s['cls']
         per = {a: v for a, v in periods(target).items() if v[0] >= 3}
         w, h = s['size']
-        lz = lockx(target, np.asarray(Image.fromarray(target, 'RGBA').resize((2 * w, 2 * h), Image.LANCZOS)), s['cls'] == 'normal' and not two)
+        lz = lockx(target, H.resize_straight(target, (2 * w, 2 * h), Image.LANCZOS), s['cls'] == 'normal' and not two)
         base = metrics(target, lz, s_eval, per, disp); r['lanczos_reference'] = base
         r['periods'] = {('y' if a == 0 else 'x'): [pp, round(c, 2)] for a, (pp, c) in per.items()}
         for n_ in list(r['variants']):
