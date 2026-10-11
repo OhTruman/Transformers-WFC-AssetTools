@@ -36,6 +36,7 @@ G = 1024 ** 3
 BIN_TREE = None
 TREES = ['Rebuild/build/release/bin', 'Rebuild/work/render', 'Rebuild/data', 'AssetTools/manifests', 'AssetTools/out/dds', 'ExtractedAssets']
 COMPRESS = ('.bin', '.glb', '.gltf')
+HD_TREE = 'AssetTools/out/hd/pack'
 
 def arg(name, default=None):
     return sys.argv[sys.argv.index(name) + 1] if name in sys.argv else default
@@ -63,6 +64,15 @@ def main():
     png_drop = set()
     if os.path.exists(pd_path):
         png_drop = {l.strip().replace('\\', '/').lower() for l in open(pd_path, encoding='utf-8') if l.strip()}
+    # --hd-pack: the optional faithful HD pack (AssetTools/out/hd/pack; Rendering's loader reads <dds root>/../hd/pack/hd_index.json,
+    # WfcPipeline.cpp hdRoot). Only the index, CREDITS.txt and the DDS files its rows name ship: the pack dir also holds DDS of
+    # non-PASS textures (REMAKE / dropped keys), which no row references (hd_not_indexed)
+    hd_rows = None
+    if '--hd-pack' in sys.argv:
+        TREES.append(HD_TREE)
+        hd_rows = {r['dds'].replace('\\', '/').lower() for r in json.load(open(os.path.join(REB, HD_TREE, 'hd_index.json'), encoding='utf-8'))['rows']}
+        miss = [d for d in hd_rows if not os.path.exists(os.path.join(REB, HD_TREE, d))]
+        if miss: raise SystemExit('hd_index rows without a DDS file: %s' % miss[:5])
     gate = arg('--wav-gate'); wav_ok = False
     if gate:
         g = json.load(open(gate, encoding='utf-8')); wav_ok = g.get('passed') is True
@@ -75,7 +85,9 @@ def main():
                 if excluded(tree, rel): continue
                 size = os.path.getsize(src); low = rel.lower(); ext = os.path.splitext(low)[1]
                 dest = 'Transformers Rebuild/%s/%s' % (bin_dest if tree == BIN_TREE else tree, rel); action, why = 'keep', ''
-                if ext == '.psa':
+                if tree == HD_TREE and low not in hd_rows and low not in ('hd_index.json', 'credits.txt'):
+                    action, why = 'drop', 'hd_not_indexed'
+                elif ext == '.psa':
                     action, why = 'drop', 'psa'
                 elif ext == '.png' and tree == 'ExtractedAssets' and (low in lm_keys or low in png_drop):
                     action, why = 'drop', 'png_dds_twin'
@@ -135,6 +147,11 @@ def main():
     with open(os.path.join(od, 'slim_files.tsv'), 'w', encoding='utf-8') as f:
         f.write('dest\tsource\tbytes\taction\treason\n')
         for r in rows: f.write('%s\t%s\t%d\t%s\t%s\n' % r)
+    # Systems' builder: the files shipped compressed (source, package name, raw bytes)
+    with open(os.path.join(od, 'xpr_twins.tsv'), 'w', encoding='utf-8') as f:
+        f.write('source\tdest_xpr\tbytes\n')
+        for r in rows:
+            if r[3] == 'xpr': f.write('%s\t%s\t%d\n' % (r[1], r[0], r[2]))
     total = sum(r[2] for r in rows); ship = [r for r in rows if r[3] != 'drop']
     ship_b = sum(xsize.get(r[1], r[2]) if r[3] == 'xpr' or (xsize and r[1] in xsize) else r[2] for r in ship)
     per_tree = OD()
@@ -145,7 +162,8 @@ def main():
               ('source_trees', TREES), ('file_list', 'AssetTools/out/package/slim_files.tsv (dest, source, bytes, action, reason)'),
               ('inputs', OD([('texture_formats_lightmap_keys', len(lm_keys)), ('png_droppable', pd_path if os.path.exists(pd_path) else 'absent (rule part skipped)'),
                              ('png_droppable_entries', len(png_drop)), ('wav_gate', gate or 'not given (WAVs kept)'), ('wav_gate_passed', wav_ok),
-                             ('xpr_names', xpr), ('xpress_measured', bool(xsize))])),
+                             ('xpr_names', xpr), ('xpress_measured', bool(xsize)),
+                             ('hd_pack', OD([('index', HD_TREE + '/hd_index.json'), ('rows', len(hd_rows))]) if hd_rows is not None else 'not included')])),
               ('rules', OD((k, OD([('files', v[0]), ('GB', round(v[1] / G, 3))])) for k, v in sorted(rule.items()))),
               ('totals', OD([('source_files', len(rows)), ('source_GB', round(total / G, 3)), ('package_files', len(ship)),
                              ('package_GB_uncompressed', round(sum(r[2] for r in ship) / G, 3)),
