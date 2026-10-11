@@ -21,6 +21,11 @@ import hd_v3 as V3  # noqa: E402
 H, V4 = F.H, F.V4
 OUT = os.path.join(H.HD, 'errata')
 
+def hold_exit():
+    """CPU work runs outside performance holds only: exit 75 (resumable) when one appears, the cmd runner waits and restarts"""
+    h = glob.glob(os.path.join(os.path.dirname(H.AT), '*', 'work', 'PERF_HOLD'))
+    if h: print('PERF_HOLD present: stopping', h, flush=True); sys.exit(75)
+
 def shard():
     return tuple(int(x) for x in sys.argv[sys.argv.index('--shard') + 1].split('/')) if '--shard' in sys.argv else (0, 1)
 
@@ -63,7 +68,7 @@ def regate():
     t0 = time.time()
     for k in ks:
         if k % n != i or k in done: continue
-        s = sel[k]
+        hold_exit(); s = sel[k]
         try:
             target, hd, share = recompute(s)
             p, sh, _ = H.gate(target, hd, s); tone = V4.tone_check(target, hd, s); gain = V4.detail_gain(target, hd, s)
@@ -91,7 +96,7 @@ def passgain():
     t0 = time.time()
     for k in sorted(int(k) for k, x in v.items() if x['verdict'] == 'PASS'):
         if k % n != i or k in done: continue
-        s, r = sel[k], recs[k]
+        hold_exit(); s, r = sel[k], recs[k]
         no = non_opaque(s)
         if no <= 0.01: continue
         target = H.source(s); hd = np.asarray(Image.open(os.path.join(F.FULL, r['hd_png'])).convert('RGBA'))
