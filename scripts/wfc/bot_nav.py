@@ -34,8 +34,10 @@ from vs_common import VS, GLB  # noqa: E402
 import map_structure_audit as MSA  # noqa: E402
 import authored as A  # noqa: E402
 
-MAP = sys.argv[1] if len(sys.argv) > 1 else 'MP_IAC_Streets'
-OUT = os.path.join(VS, 'Maps', MAP)
+MAP = sys.argv[1] if len(sys.argv) > 1 and not sys.argv[1].startswith('--') else 'MP_IAC_Streets'
+OUT = os.path.join(VS, 'Maps', MAP)                                       # inputs (collision_pawn.glb, gameplay.json)
+# --out DIR: write bot_nav.json / .glb (+ bot_nav_pruned.json with --debug) there instead of next to the inputs (dry runs)
+DST = sys.argv[sys.argv.index('--out') + 1] if '--out' in sys.argv else OUT
 CELL = MSA.CELL
 WALK_NY = MSA.WALK_NY
 HUGE_M2 = MSA.HUGE_M2
@@ -77,7 +79,8 @@ def params():
                          'additionally rise by CELL * tan(slope) on walkable ramps')
     P['agent_radius_default_m'] = (cyl.get('CollisionRadius', 175.0) / 100, 'CONFIRMED: TnPlayerPawn CollisionCylinder.CollisionRadius (cm)')
     P['agent_height_m'] = (2 * cyl.get('CollisionHeight', 200.0) / 100, 'CONFIRMED: 2 x TnPlayerPawn CollisionCylinder.CollisionHeight (half-height, cm)')
-    P['min_radius_m'] = (1.0, 'polygons keep cells whose clearance >= this (Rebuild robot radii 1.40-2.00 m)')
+    P['min_radius_m'] = (float(sys.argv[sys.argv.index('--min-radius') + 1]) if '--min-radius' in sys.argv else 1.0,
+                         'polygons keep cells whose clearance >= this (Rebuild robot radii 1.40-2.00 m); --min-radius overrides (diagnostics)')
     P['clearance_bands_m'] = ([1.5, 2.5, 4.5], 'cells merge only within one band [<1.5, 1.5-2.5, 2.5-4.5, >=4.5 m] so clearance_m / '
                                               'clearance_max_m filter chassis radii and the 4.4 m vehicle radius')
     P['vehicle_radius_m'] = (4.40, 'CONFIRMED: versus TnReachSpec CollisionRadius 440 cm (RE mp_navigation_audit). Vehicles move by RB hover '
@@ -122,6 +125,50 @@ def obstruction(path, layers, crop=lambda T: T):
     for k, L in layers.c.items(): occ[k].extend(L)
     return {k: np.unique(np.round(np.array(v), 2)) for k, v in occ.items()}, dropped
 
+def forced_dir_blocks(occ, lo, hi):
+    """TnForcedDirVolume with bBlockPawns: robots are hard-blocked from entering it and pushed out along its arrow
+    (RE decomp TransGame.TnForcedDirVolume.HardBlock / TickSpecial; class defaults AffectsCars / AffectsTanks / AffectsPlanes
+    true = every chassis). Its brush is added to the obstruction samples: per cell, the volume's lower and upper surface
+    heights (vertical ray through the cell centre), so floors whose agent column reaches into it are not open.
+    Streets: 4 volumes over the whole map from y ~-682 up (rooftop band)."""
+    ph = os.path.join(OUT, 'physics.json')
+    if not os.path.exists(ph): return []
+    used = []
+    for v in json.load(open(ph, encoding='utf-8')).get('volumes') or []:
+        au = v.get('authored') or {}
+        # HardBlock tests the volume's own bBlockPawns (class default false; physics.json blocks_pawn is the generic collision
+        # flag, not this) and IsAffected by chassis VehicleType: applied only when it affects every chassis (cars, tanks, planes
+        # all true; class defaults true). Partial volumes (e.g. planes only) are listed, not applied (per-chassis = PROVISIONAL).
+        if v.get('class') != 'TnForcedDirVolume' or au.get('bBlockPawns') is not True or not v.get('polygons_gltf'): continue
+        if any(au.get(k) is False for k in ('AffectsCars', 'AffectsTanks', 'AffectsPlanes')) or au.get('OnlyAffectsPlayers') is False:
+            used.append({'actor': v.get('actor'), 'cells': 0, 'not_applied': 'affects only some chassis: %s' % {k: au.get(k) for k in ('AffectsCars', 'AffectsTanks', 'AffectsPlanes')}})
+            continue
+        tris = []
+        for poly in v['polygons_gltf']:
+            for i in range(1, len(poly) - 1): tris.append([poly[0], poly[i], poly[i + 1]])
+        T = np.array(tris, float); P = T.reshape(-1, 3)
+        x0, x1 = max(P[:, 0].min(), lo[0]), min(P[:, 0].max(), hi[0]); z0, z1 = max(P[:, 2].min(), lo[2]), min(P[:, 2].max(), hi[2])
+        if x0 >= x1 or z0 >= z1: continue
+        xs = np.arange(math.floor(x0 / CELL), math.ceil(x1 / CELL)); zs = np.arange(math.floor(z0 / CELL), math.ceil(z1 / CELL))
+        X, Z = np.meshgrid((xs + 0.5) * CELL, (zs + 0.5) * CELL); X = X.ravel(); Z = Z.ravel()
+        ymin = np.full(X.shape, np.inf); ymax = np.full(X.shape, -np.inf)
+        for a, b, c in T:
+            v0 = c[[0, 2]] - a[[0, 2]]; v1 = b[[0, 2]] - a[[0, 2]]
+            d00, d01, d11 = v0 @ v0, v0 @ v1, v1 @ v1; den = d00 * d11 - d01 * d01
+            if abs(den) < 1e-9: continue                                    # vertical face
+            w0 = X - a[0]; w1 = Z - a[2]; d20 = w0 * v0[0] + w1 * v0[1]; d21 = w0 * v1[0] + w1 * v1[1]
+            u = (d11 * d20 - d01 * d21) / den; s = (d00 * d21 - d01 * d20) / den
+            hit = (u >= -1e-6) & (s >= -1e-6) & (u + s <= 1 + 1e-6)
+            y = a[1] + u * (c[1] - a[1]) + s * (b[1] - a[1])
+            ymin = np.where(hit, np.minimum(ymin, y), ymin); ymax = np.where(hit, np.maximum(ymax, y), ymax)
+        n = 0
+        for x, z, y0, y1 in zip(X, Z, ymin, ymax):
+            if np.isfinite(y0):
+                k = (int(math.floor(x / CELL)), int(math.floor(z / CELL)))
+                occ[k] = np.unique(np.concatenate([occ.get(k, np.array([])), np.round([y0, y1], 2)])); n += 1
+        used.append({'actor': v.get('actor'), 'cells': n, 'bottom_y_min': round(float(np.min(ymin[np.isfinite(ymin)])), 2) if n else None})
+    return used
+
 def main():
     t0 = time.time()
     P, jumps = params(); p = {k: v[0] for k, v in P.items()}
@@ -142,6 +189,7 @@ def main():
             C = crop(T); cropped += len(T) - len(C)
             if len(C): col.add_tris(C, 'collision')
     occ, dropped = obstruction(pawn_glb, col, crop)
+    forced = forced_dir_blocks(occ, lo, hi)
     STEP, H = p['step_m'], p['agent_height_m']
     # open floor samples
     nodes = {}
@@ -252,6 +300,12 @@ def main():
                 mid = (x + dx * (r - 1), z + dz * (r - 1)); oc = occ.get(mid, np.array([]))
                 if ((oc > h + STEP) & (oc <= h + H)).any(): break
             hit = False
+            # the target column continues the source floor (a floor there is step-reachable from the source): the pawn walks on
+            # it, so nothing below it is a drop target (that was the through-floor bug)
+            # A level floor that is only an open ledge rim (eroded by min_radius, not in any polygon) does not block: drops across
+            # eroded ledges are real (Gorge spawn ledges, cae2607); a level floor that is nav, or has an obstruction on it, does.
+            level_floor = any(rise_ok((k, h), (kk, q2)) and ((kk, q2) in cell_poly or not nodes.get((kk, q2), {}).get('open'))
+                              for q2 in col.c.get(kk, ()))
             for q in by_k.get(kk, ()):
                 pq = cell_poly.get((kk, q))
                 if pq is None or pq == pid or rise_ok((k, h), (kk, q)): continue
@@ -260,6 +314,10 @@ def main():
                 kind = ('jump_up' if 0 < rise <= p['jump_up_max_m'] else 'double_jump_up' if 0 < rise <= p['double_jump_up_max_m']
                         else 'drop_down' if -p['max_drop_m'] <= rise < 0 else None)
                 if not kind or (pid, pq, kind) in seen: continue
+                # no drop into a column whose floor continues the source level (Streets: ~12.5k false drops through the street
+                # onto the BSP base 20-35 m below). Narrower tests (any obstruction / any walkable surface between landing and
+                # source) also removed Gorge's real spawn-ledge drops over sloped cliffs (3 original R_WALK ReachSpecs).
+                if kind == 'drop_down' and level_floor and '--legacy-drops' not in sys.argv: continue
                 # landing headroom / no obstruction in the jump column of the source
                 if kind in ('jump_up', 'double_jump_up') and nodes[(k, h)]['headroom'] < rise + H: continue
                 seen.add((pid, pq, kind))
@@ -326,6 +384,33 @@ def main():
         for v in rev.get(u, []):
             if v not in back: back.add(v); dq.append(v)
     one_way = len(reach - back)
+    if '--debug' in sys.argv:
+        # pruned regions: connected groups (neighbour edges) of cells dropped as unreached / one-way, with bbox and why
+        why = {c['id']: ('one_way' if c['id'] in reach else 'unreached') for c in cells_out if c['id'] not in (reach & back)}
+        seenp = set(); groups = []
+        for c0 in why:
+            if c0 in seenp: continue
+            dq = deque([c0]); seenp.add(c0); G = []
+            while dq:
+                u = dq.popleft(); G.append(u)
+                for e in cells_out[u]['edges']:
+                    for nb in e['neighbors']:
+                        v = nb['cell']
+                        if v in why and v not in seenp and why[v] == why[c0]: seenp.add(v); dq.append(v)
+            P_ = np.array([cells_out[u]['centroid_gltf'] for u in G])
+            groups.append(OD([('why', why[c0]), ('cells', len(G)), ('area_m2', sum(cells_out[u]['area_m2'] for u in G)),
+                              ('bbox_min_gltf', [round(v, 1) for v in P_.min(0)]), ('bbox_max_gltf', [round(v, 1) for v in P_.max(0)]),
+                              ('max_clearance_m', max(cells_out[u]['clearance_max_m'] for u in G)),
+                              ('links_out', sum(1 for u in G for v in out_l.get(u, []) if v not in why)),
+                              ('links_in', sum(1 for u in G for v in rev.get(u, []) if v not in why)),
+                              # where the entries come from: link sources in kept cells, 8 m clusters (holes / ledges)
+                              ('entry_sources_gltf', sorted(Counter(tuple(int(math.floor(l['from_gltf'][i] / 8)) * 8 if i != 1 else round(l['from_gltf'][1])
+                                                                          for i in range(3))
+                                                                    for l in links if l['to_cell'] in set(G) and l['from_cell'] not in why).items(),
+                                                            key=lambda x: -x[1])[:40])]))
+        groups.sort(key=lambda g_: -g_['area_m2'])
+        os.makedirs(DST, exist_ok=True)
+        json.dump(groups, open(os.path.join(DST, 'bot_nav_pruned.json'), 'w', encoding='utf-8'), indent=1)
     reach &= back
     remap = {old: new for new, old in enumerate(sorted(reach))}
     kept = []
@@ -412,11 +497,12 @@ def main():
                       ('links', dict(Counter(l['kind'] for l in links))), ('cover_hints', dict(Counter(c['type'] for c in cover))),
                       ('components', len(sizes)), ('largest_component_cells', sizes[main_comp] if sizes else 0),
                       ('anchors', len(anchors)), ('anchors_on_nav', sum(1 for a in anchors if a['cell'] is not None)),
-                      ('anchors_in_largest_component', anch_main), ('anchors_with_main_approach_cell', anch_appr), ('core_cells (two-way reachable incl. links)', len(core)), ('oversized_triangles_excluded', dropped), ('triangles_outside_region', cropped),
+                      ('anchors_in_largest_component', anch_main), ('anchors_with_main_approach_cell', anch_appr), ('core_cells (two-way reachable incl. links)', len(core)), ('oversized_triangles_excluded', dropped), ('forced_dir_volumes_blocking', forced), ('triangles_outside_region', cropped),
                       ('seconds', round(time.time() - t0, 1))])),
         ('cells', cells_out), ('links', links), ('cover', cover), ('anchors', anchors),
         ('waypoints', {'nodes': wp_nodes, 'edges': wp_edges})])
-    json.dump(out, open(os.path.join(OUT, 'bot_nav.json'), 'w', encoding='utf-8'), separators=(',', ':'))
+    os.makedirs(DST, exist_ok=True)
+    json.dump(out, open(os.path.join(DST, 'bot_nav.json'), 'w', encoding='utf-8'), separators=(',', ':'))
     # debug mesh: one primitive, polygons as quads (two triangles), coloured by vehicle flag via two primitives
     glb = GLB('AssetTools bot_nav debug')
     for flag in (False, True):
@@ -430,7 +516,7 @@ def main():
         mi = glb.mesh('nav_' + ('vehicle' if flag else 'robot'), [{'attributes': {'POSITION': glb.acc(np.array(V, 'f4'), 'VEC3', True, 34962)},
                        'indices': glb.acc(np.array(I, 'u4'), 'SCALAR', target=34963), 'material': len(mat) - 1}])
         glb.node({'name': 'bot_nav_' + ('vehicle' if flag else 'robot'), 'mesh': mi})
-    glb.write(os.path.join(OUT, 'bot_nav.glb'))
+    glb.write(os.path.join(DST, 'bot_nav.glb'))
     print(json.dumps(out['stats']))
 
 if __name__ == '__main__':
