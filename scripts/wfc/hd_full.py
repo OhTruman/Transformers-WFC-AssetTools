@@ -221,10 +221,23 @@ def index():
     import authored as A
     recs = load_recs()
     vp = os.path.join(FULL, 'verdicts.json'); verd = json.load(open(vp, encoding='utf-8')) if os.path.exists(vp) else {}
-    rows = []; remake = []; used = Counter(); total = 0; con = A.con()
+    rows = []; remake = []; used = Counter(); total = 0; con = A.con(); unresolved = []
+    # the key is the PNG the loader swaps, so it must be this object's own source. assets.json maps some distinct objects to one
+    # PNG (umodel name collisions: EditorTextureSet_*, same-named TEXSET members; textures_dds marks them png_is_other_object):
+    # their HD texture has no PNG of its own to replace, so they stay original (Rendering loader check 2026-10-11: two rows on
+    # the canyon floor's EditorTextureSet_Masks_NormY key; a third on the hydrant's PNG)
+    man = {}
+    for l in open(os.path.join(AT, 'manifests', 'extracted', 'textures_dds.jsonl'), encoding='utf-8'):
+        m = json.loads(l); man[m['object_path']] = m
+    def own_source(r):
+        png = r.get('png') or ''
+        return bool(png) and not man.get(r['object_path'], {}).get('png_is_other_object') and \
+            os.path.splitext(png)[0].lower().endswith('/' + r['object_path'].replace('.', '/').lower())
     for r in recs:
         v = verd.get(str(r['k'])) or {'verdict': 'PENDING'}
-        if r.get('hd_dds') and v['verdict'] == 'PASS':
+        if r.get('hd_dds') and v['verdict'] == 'PASS' and not own_source(r):
+            unresolved.append(OD([('object_path', r['object_path']), ('png', r.get('png')), ('dds', r['hd_dds'])]))
+        elif r.get('hd_dds') and v['verdict'] == 'PASS':
             rows.append(OD([('key', (r.get('png') or '').lower()), ('object_path', r['object_path']), ('dds', r['hd_dds']), ('format', r['format']),
                             ('size', [2 * r['size'][0], 2 * r['size'][1]]), ('srgb', r.get('srgb')), ('class', r['cls']),
                             ('bytes', r['hd_bytes']), ('final_psnr', r['final_psnr']), ('max_mean_shift', r['max_mean_shift'])]))
@@ -235,17 +248,21 @@ def index():
             remake.append(OD([('object_path', r['object_path']), ('class', r['cls']), ('lod_group', r['lod_group']), ('size', r['size']),
                               ('referencing_objects', uses), ('why', v.get('why') or (['no faithful upscale (gate)'] if not r.get('hd_dds') else [])),
                               ('source', 'hd_full')]))
+    dup = [k for k, n in Counter(r['key'] for r in rows).items() if n > 1]
+    if dup: raise SystemExit('hd_index: duplicate keys (one PNG, several HD textures): %s' % dup)
     idx = OD([('version', 1), ('generator', 'AssetTools/scripts/wfc/hd_full.py'), ('generated', time.strftime('%Y-%m-%d %H:%M')),
               ('gate', 'back-projection lock to the deblocked original + tone check (native std / darkest 10 % / local contrast) + eye review'),
               ('textures', len(rows)), ('total_bytes', total),
-              ('kept_original', sum(1 for r in recs if (verd.get(str(r['k'])) or {}).get('verdict') == 'KEEP')), ('rows', rows)])
+              ('kept_original', sum(1 for r in recs if (verd.get(str(r['k'])) or {}).get('verdict') == 'KEEP')),
+              ('dropped_no_own_source', unresolved), ('rows', rows)])
     json.dump(idx, open(os.path.join(PACK, 'hd_index.json'), 'w', encoding='utf-8'), indent=1)
     json.dump(OD([('generated_by', 'AssetTools/scripts/wfc/hd_full.py index'), ('textures', remake)]),
               open(os.path.join(AT, 'manifests', 'hd', 'remake_candidates.json'), 'w', encoding='utf-8'), indent=1)
     import hd_torch as T
     T.credits([m for m in (RPLKSR, DAT2, V3.NORMAL) if used.get(m)])
     shutil.copy(os.path.join(H.HD, 'CREDITS.txt'), os.path.join(PACK, 'CREDITS.txt'))
-    print('index', len(rows), 'PASS', '%.2f GB' % (total / 2 ** 30), '| remake', len(remake), '| pending', sum(1 for r in recs if str(r['k']) not in verd))
+    print('index', len(rows), 'PASS', '%.2f GB' % (total / 2 ** 30), '| remake', len(remake), '| pending', sum(1 for r in recs if str(r['k']) not in verd),
+          '| dropped (no own source PNG)', len(unresolved))
 
 if __name__ == '__main__':
     {'prep': prep, 'gpu': gpu, 'post': post, 'sheets': sheets, 'index': index}[sys.argv[1]]()
