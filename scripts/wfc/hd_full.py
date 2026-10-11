@@ -108,13 +108,24 @@ def cand_img(s, c):
 
 def post():
     sel = json.load(open(H.SEL, encoding='utf-8')); os.makedirs(PACK, exist_ok=True)
-    part = os.path.join(FULL, '_partial.jsonl'); done = set()
-    if '--resume' in sys.argv and os.path.exists(part):
-        for l in open(part, encoding='utf-8'):
-            try:
-                r = json.loads(l)
-                if 'error' not in r: done.add(r['object_path'])            # failed textures are retried on --resume
-            except Exception: pass
+    # --shard i/N: this worker takes textures with k % N == i and appends to its own _partial_s<i>.jsonl (parallel CPU workers)
+    shard = tuple(int(x) for x in sys.argv[sys.argv.index('--shard') + 1].split('/')) if '--shard' in sys.argv else None
+    if shard: sel = [x for x in sel if x['k'] % shard[1] == shard[0]]
+    part = os.path.join(FULL, '_partial_s%d.jsonl' % shard[0] if shard else '_partial.jsonl'); done = set()
+    # --redo k,k,...: rerun these textures after a post fix; newer records (field 't') supersede the old ones in load_recs()
+    redo = set(int(x) for x in sys.argv[sys.argv.index('--redo') + 1].split(',')) if '--redo' in sys.argv else None
+    if redo is not None:
+        sel = [x for x in sel if x['k'] in redo]; part = os.path.join(FULL, '_partial_redo.jsonl')
+        import glob                                                         # H.encode reuses enc/<k>_*.png: drop it so the DDS is rebuilt
+        for x in sel:
+            for f in glob.glob(os.path.join(FULL, 'enc', '%03d_*.png' % x['k'])): os.remove(f)
+    elif '--resume' in sys.argv:
+        for pf in partial_files():
+            for l in open(pf, encoding='utf-8'):
+                try:
+                    r = json.loads(l)
+                    if 'error' not in r: done.add(r['object_path'])        # failed textures are retried on --resume
+                except Exception: pass
     elif os.path.exists(part):
         os.replace(part, part + '.bak')
     t0 = time.time(); n = 0
@@ -123,20 +134,26 @@ def post():
         try: rec = post_one(s)
         except Exception as ex:                                             # one bad texture must not stop the run; it stays original
             rec = OD([('k', s['k']), ('object_path', s['object_path']), ('png', s.get('png')), ('cls', s['cls']), ('faithful', False),
-                      ('error', '%s: %s' % (type(ex).__name__, str(ex)[:300]))]); print('FAIL', s['k'], str(ex)[:120], flush=True)
+                      ('error', '%s: %s' % (type(ex).__name__, str(ex)[:300])), ('t', time.time())]); print('FAIL', s['k'], str(ex)[:120], flush=True)
         with open(part, 'a', encoding='utf-8') as f: f.write(json.dumps(rec) + chr(10))
         n += 1
         if n % 100 == 0: print(n, 'textures', '%.0fs' % (time.time() - t0), flush=True)
     print('post done', n, 'new', '%.0fs' % (time.time() - t0))
 
+def partial_files():
+    import glob
+    return sorted(glob.glob(os.path.join(FULL, '_partial*.jsonl')))   # _partial, _partial_s<i> (shards), _partial_redo
+
 def load_recs():
-    """the latest _partial.jsonl record per texture (a retried failure appends a newer one); records that still failed are left out
-    (the texture stays original) and counted"""
+    """the latest record per texture (a retried failure or a --redo appends a newer one: larger 't', or later in the file for
+    records written before 't' existed); records that still failed are left out (the texture stays original) and counted"""
     last = OD()
-    for l in open(os.path.join(FULL, '_partial.jsonl'), encoding='utf-8'):
-        try: r = json.loads(l)
-        except Exception: continue
-        last.pop(r['object_path'], None); last[r['object_path']] = r
+    for pf in partial_files():
+        for l in open(pf, encoding='utf-8'):
+            try: r = json.loads(l)
+            except Exception: continue
+            if r.get('t', 0) < last.get(r['object_path'], {}).get('t', 0): continue
+            last.pop(r['object_path'], None); last[r['object_path']] = r
     errs = [r for r in last.values() if 'error' in r]
     if errs: print(len(errs), 'textures failed in post (kept original):', ', '.join(str(r['k']) for r in errs[:20]))
     return [r for r in last.values() if 'error' not in r]
@@ -152,11 +169,16 @@ def post_one(s):
             hd, g = V3.evaluate(target, raw, s, 2)
             if g['faithful']: locked[c] = hd
         fused, share = V4.fuse(target, locked, lz, s)
-        hd = V3.lock(target, fused, s, 2); p, sh, _ = H.gate(target, hd, s); tone = V4.tone_check(target, hd, s)
+        hd = V3.lock(target, fused, s, 2)
+        const = [c for c in range(4) if target[..., c].min() == target[..., c].max()]
+        if const:                                                           # a channel constant in the original stays exactly constant
+            hd = hd.copy(); hd[..., const] = target[0, 0, const]
+        p, sh, _ = H.gate(target, hd, s); tone = V4.tone_check(target, hd, s)
         ok = bool(p >= H.FINAL_MIN_DB and sh <= H.FINAL_MAX_SHIFT and tone['ok'])
         rec = OD([('k', s['k']), ('object_path', s['object_path']), ('png', s.get('png')), ('cls', s['cls']), ('lod_group', s['lod_group']),
                   ('size', s['size']), ('format', s['format']), ('srgb', s.get('srgb')), ('candidates_missing', missing),
-                  ('blend_share', share), ('final_psnr', round(p, 2)), ('max_mean_shift', round(sh, 3)), ('tone', tone), ('faithful', ok)])
+                  ('blend_share', share), ('final_psnr', round(p, 2)), ('max_mean_shift', round(sh, 3)), ('tone', tone), ('faithful', ok),
+                  ('const_channels', const), ('t', time.time())])
         if ok:
             png = os.path.join(FULL, '_hdpng', '%05d.png' % s['k']); os.makedirs(os.path.dirname(png), exist_ok=True)
             Image.fromarray(hd, 'RGBA').save(png); rec['hd_png'] = os.path.relpath(png, FULL).replace(os.sep, '/')
@@ -193,8 +215,9 @@ def sheets():
     print('sheets', made, 'in', od)
 
 def index():
-    """hd_index.json (Rendering's loader) from the faithful records whose verdict (verdicts.json: k -> PASS / REMAKE + why) is PASS;
-    REMAKE -> remake_candidates.json; CREDITS.txt for the models used"""
+    """hd_index.json (Rendering's loader) from the faithful records whose verdict (verdicts.json from hd_verdicts.py: k -> PASS /
+    REMAKE / KEEP + why) is PASS; REMAKE and gate failures -> remake_candidates.json; KEEP (must stay exact) is in neither, the
+    original stays in use; CREDITS.txt for the models used"""
     import authored as A
     recs = load_recs()
     vp = os.path.join(FULL, 'verdicts.json'); verd = json.load(open(vp, encoding='utf-8')) if os.path.exists(vp) else {}
@@ -207,14 +230,15 @@ def index():
                             ('bytes', r['hd_bytes']), ('final_psnr', r['final_psnr']), ('max_mean_shift', r['max_mean_shift'])]))
             total += r['hd_bytes'] or 0
             used.update(k for k, x in r['blend_share'].items() if x > 0.01)
-        elif v['verdict'] == 'REMAKE' or not r.get('hd_dds'):
+        elif v['verdict'] == 'REMAKE' or (not r.get('hd_dds') and v['verdict'] != 'KEEP'):
             uses = con.execute("SELECT COUNT(DISTINCT src) FROM refs WHERE dst = ?", (r['object_path'],)).fetchone()[0]
             remake.append(OD([('object_path', r['object_path']), ('class', r['cls']), ('lod_group', r['lod_group']), ('size', r['size']),
                               ('referencing_objects', uses), ('why', v.get('why') or (['no faithful upscale (gate)'] if not r.get('hd_dds') else [])),
                               ('source', 'hd_full')]))
     idx = OD([('version', 1), ('generator', 'AssetTools/scripts/wfc/hd_full.py'), ('generated', time.strftime('%Y-%m-%d %H:%M')),
               ('gate', 'back-projection lock to the deblocked original + tone check (native std / darkest 10 % / local contrast) + eye review'),
-              ('textures', len(rows)), ('total_bytes', total), ('rows', rows)])
+              ('textures', len(rows)), ('total_bytes', total),
+              ('kept_original', sum(1 for r in recs if (verd.get(str(r['k'])) or {}).get('verdict') == 'KEEP')), ('rows', rows)])
     json.dump(idx, open(os.path.join(PACK, 'hd_index.json'), 'w', encoding='utf-8'), indent=1)
     json.dump(OD([('generated_by', 'AssetTools/scripts/wfc/hd_full.py index'), ('textures', remake)]),
               open(os.path.join(AT, 'manifests', 'hd', 'remake_candidates.json'), 'w', encoding='utf-8'), indent=1)
