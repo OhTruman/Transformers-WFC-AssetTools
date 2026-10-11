@@ -113,6 +113,7 @@ def main():
     logs = [sys.argv[i + 1] for i, a in enumerate(sys.argv) if a == '--filelog']
     if logs:
         ship = {r[1].lower() for r in rows if r[3] != 'drop'}
+        ship |= {r[1].lower() + '.xpr' for r in rows if r[3] == 'xpr'}     # a compressed file is opened under its package name
         dropped = {r[1].lower(): r[4] for r in rows if r[3] == 'drop'}
         fails, opened, written, missing_tried = [], set(), set(), []
         # --map-prefix OLD=NEW: logs from builds run elsewhere (e.g. a scratch source tree as WFC_SOURCE_DIR)

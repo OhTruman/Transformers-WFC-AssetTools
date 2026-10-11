@@ -14,7 +14,7 @@ from PIL import Image
 HERE = os.path.dirname(os.path.abspath(__file__))
 AT = os.path.normpath(os.path.join(HERE, '..', '..'))
 MODELS = json.load(open(os.path.join(AT, 'bin', 'hdmodels', 'models.json'), encoding='utf-8'))
-TILE, PAD = 192, 16
+TILE, PAD = int(os.environ.get("WFC_HD_TILE", "192")), 16   # WFC_HD_TILE: smaller tiles when VRAM is shared
 
 def device():
     import torch
