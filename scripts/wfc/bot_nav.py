@@ -290,15 +290,34 @@ def main():
     # off-mesh links: cells on different, non-connected layers up to LINK_REACH cells apart (ledge edges are eroded by min_radius)
     LINK_REACH = 6   # cells (m): gaps up to ~6 m are crossed by a running jump / drop (robot GroundSpeed 1400 cm/s, airtime ~1 s)
     links = []; seen = set()
+    dbg = '--debug' in sys.argv; rej = defaultdict(list)   # --debug: rejected upward exits per source cell (bot_nav_pruned.json)
+    # --probe "x,z;x,z": trace the link scan of these source columns (glTF metres) to <out>/link_probe.txt (diagnostics only)
+    probe = {(int(math.floor(float(a) / CELL)), int(math.floor(float(b) / CELL))) for a, b in
+             (s.split(',') for s in sys.argv[sys.argv.index('--probe') + 1].split(';'))} if '--probe' in sys.argv else set()
+    plog = []
     for (k, h), pid in cell_poly.items():
         x, z = k
         for dx, dz in ((1, 0), (-1, 0), (0, 1), (0, -1)):
           for r in range(1, LINK_REACH + 1):
             kk = (x + dx * r, z + dz * r)
+            if k in probe:
+                oc_ = occ.get((x + dx * (r - 1), z + dz * (r - 1)), np.array([])) if r > 1 else np.array([])
+                plog.append('src %s h %.2f cell %d head %.2f dir %s r %d | mid occ in (h+step, h+H]: %s | floors at %s: %s' % (
+                    k, h, pid, nodes[(k, h)]['headroom'], (dx, dz), r, [round(float(v - h), 2) for v in oc_[(oc_ > h + STEP) & (oc_ <= h + H)]][:4],
+                    kk, [(round(float(q - h), 2), cell_poly.get((kk, q)), bool(nodes.get((kk, q), {}).get('open'))) for q in col.c.get(kk, ())]))
             # cells between source and target must be free at the source level (ledge edges eroded by min_radius)
             if r > 1:
                 mid = (x + dx * (r - 1), z + dz * (r - 1)); oc = occ.get(mid, np.array([]))
-                if ((oc > h + STEP) & (oc <= h + H)).any(): break
+                if ((oc > h + STEP) & (oc <= h + H)).any():
+                    if dbg:   # the first upward target past the block, and the lowest obstruction in the mid column
+                        for r2 in range(r, LINK_REACH + 1):
+                            k2 = (x + dx * r2, z + dz * r2)
+                            q2 = [q for q in by_k.get(k2, ()) if cell_poly.get((k2, q)) not in (None, pid)
+                                  and 0 < q - h <= p['double_jump_up_max_m']]
+                            if q2:
+                                rej[pid].append(('mid_blocked', round(min(q2) - h, 2), cell_poly[(k2, min(q2))], (x, h, z), (k2[0], min(q2), k2[1]),
+                                                 round(float(oc[(oc > h + STEP) & (oc <= h + H)].min() - h), 2))); break
+                    break
             hit = False
             # the target column continues the source floor (a floor there is step-reachable from the source): the pawn walks on
             # it, so nothing below it is a drop target (that was the through-floor bug)
@@ -313,19 +332,40 @@ def main():
                 rise = q - h
                 kind = ('jump_up' if 0 < rise <= p['jump_up_max_m'] else 'double_jump_up' if 0 < rise <= p['double_jump_up_max_m']
                         else 'drop_down' if -p['max_drop_m'] <= rise < 0 else None)
+                if dbg and not kind and rise > 0:
+                    rej[pid].append(('rise_above_double', round(rise, 2), pq, (x, h, z), (kk[0], q, kk[1]), None))
                 if not kind or (pid, pq, kind) in seen: continue
                 # no drop into a column whose floor continues the source level (Streets: ~12.5k false drops through the street
                 # onto the BSP base 20-35 m below). Narrower tests (any obstruction / any walkable surface between landing and
                 # source) also removed Gorge's real spawn-ledge drops over sloped cliffs (3 original R_WALK ReachSpecs).
                 if kind == 'drop_down' and level_floor and '--legacy-drops' not in sys.argv: continue
                 # landing headroom / no obstruction in the jump column of the source
-                if kind in ('jump_up', 'double_jump_up') and nodes[(k, h)]['headroom'] < rise + H: continue
+                if kind in ('jump_up', 'double_jump_up') and nodes[(k, h)]['headroom'] < rise + H:
+                    if dbg: rej[pid].append(('source_headroom', round(rise, 2), pq, (x, h, z), (kk[0], q, kk[1]), round(nodes[(k, h)]['headroom'], 2)))
+                    continue
                 seen.add((pid, pq, kind))
                 links.append({'kind': kind, 'from_cell': pid, 'to_cell': pq, 'rise_m': round(rise, 2), 'span_m': r * CELL,
                               'from_gltf': [(x + 0.5) * CELL, round(h, 3), (z + 0.5) * CELL],
                               'to_gltf': [(kk[0] + 0.5) * CELL, round(q, 3), (kk[1] + 0.5) * CELL],
                               'forms': ['robot'] if kind in ('jump_up', 'double_jump_up') else ['robot', 'vehicle']})
-            if hit or any(abs(q - h) <= STEP for q in by_k.get(kk, ())): break
+            if hit or any(abs(q - h) <= STEP for q in by_k.get(kk, ())):
+                if k in probe: plog.append('   stop: %s' % ('hit' if hit else 'source floor continues'))
+                break
+    if probe:
+        os.makedirs(DST, exist_ok=True); open(os.path.join(DST, 'link_probe.txt'), 'w', encoding='utf-8').write('\n'.join(plog) + '\n')
+    if '--probe-box' in sys.argv:   # "x0,x1,z0,z1,y0,y1": per column, floors (y, cell, open, clearance, headroom) and occupancy in y0..y1
+        L_ = []
+        for box in sys.argv[sys.argv.index('--probe-box') + 1].split(';'):
+          x0_, x1_, z0_, z1_, y0_, y1_ = (float(v) for v in box.split(','))
+          L_.append('== box ' + box)
+          for cx in range(int(math.floor(x0_)), int(math.floor(x1_)) + 1):
+            for cz in range(int(math.floor(z0_)), int(math.floor(z1_)) + 1):
+                kk = (cx, cz); oc = occ.get(kk, np.array([]))
+                L_.append('col x %d..%d z %d..%d floors %s occ %s' % (cx, cx + 1, cz, cz + 1,
+                          [(round(q, 2), cell_poly.get((kk, q)), bool(nodes.get((kk, q), {}).get('open')), round(nodes.get((kk, q), {}).get('clear', 0), 1),
+                            round(nodes.get((kk, q), {}).get('headroom', 0), 2)) for q in sorted(col.c.get(kk, ())) if y0_ <= q <= y1_],
+                          sorted(round(float(v), 2) for v in oc if y0_ <= v <= y1_)))
+        os.makedirs(DST, exist_ok=True); open(os.path.join(DST, 'link_probe_box.txt'), 'w', encoding='utf-8').write('\n'.join(L_) + '\n')
     # cover hints: open cells next to a tall obstruction
     cover = []
     for (k, h), pid in cell_poly.items():
@@ -363,26 +403,98 @@ def main():
     # playable set: cells reachable from any anchor through neighbours and links (both directions for drop / jump pairs are
     # listed separately, so reachability follows link direction). Unreachable geometry (rooftops, out-of-bounds) is dropped.
     raw_cells = len(cells_out)
-    out_l = defaultdict(list)
-    for l in links: out_l[l['from_cell']].append(l['to_cell'])
-    reach = set(); dq = deque(a['cell'] for a in anchors if a['cell'] is not None)
-    reach.update(dq)
-    while dq:
-        u = dq.popleft()
-        nxt = [nb['cell'] for e in cells_out[u]['edges'] for nb in e['neighbors']] + out_l.get(u, [])
-        for v in nxt:
-            if v not in reach: reach.add(v); dq.append(v)
-    # ... and that can get back to an anchor (drop-only pits / under-map shells are not playable)
-    rev = defaultdict(list)
-    for c in cells_out:
-        for e in c['edges']:
-            for nb in e['neighbors']: rev[nb['cell']].append(c['id'])
-    for l in links: rev[l['to_cell']].append(l['from_cell'])
-    back = set(a['cell'] for a in anchors if a['cell'] is not None); dq = deque(back)
-    while dq:
-        u = dq.popleft()
-        for v in rev.get(u, []):
-            if v not in back: back.add(v); dq.append(v)
+    def playable():
+        out_l = defaultdict(list)
+        for l in links: out_l[l['from_cell']].append(l['to_cell'])
+        reach = set(); dq = deque(a['cell'] for a in anchors if a['cell'] is not None)
+        reach.update(dq)
+        while dq:
+            u = dq.popleft()
+            nxt = [nb['cell'] for e in cells_out[u]['edges'] for nb in e['neighbors']] + out_l.get(u, [])
+            for v in nxt:
+                if v not in reach: reach.add(v); dq.append(v)
+        # ... and that can get back to an anchor (drop-only pits / under-map shells are not playable)
+        rev = defaultdict(list)
+        for c in cells_out:
+            for e in c['edges']:
+                for nb in e['neighbors']: rev[nb['cell']].append(c['id'])
+        for l in links: rev[l['to_cell']].append(l['from_cell'])
+        back = set(a['cell'] for a in anchors if a['cell'] is not None); dq = deque(back)
+        while dq:
+            u = dq.popleft()
+            for v in rev.get(u, []):
+                if v not in back: back.add(v); dq.append(v)
+        return reach, back, out_l, rev
+    reach, back, out_l, rev = playable()
+    # exit rescue (--rescue-exits): cells that bots reach but cannot leave (one-way) often sit under an overhang (a deck above
+    # the floor), so no jump fits in the cell's own column; the way out is to walk up to RIM_WALK cells along the floor onto its
+    # open rim (eroded by min_radius, not in a polygon) and jump there. The pawn rises in the launch column J, moves over the
+    # columns between at the height of the highest thing in them (ledge lip, deck-edge railing) and lands on the target floor:
+    # the cleared height eff = max(target floor, obstruction tops between) sets the kind, J needs headroom >= eff + H, and the
+    # columns between must be free from eff + step to eff + H. Double jumps keep RESCUE_DJ_MARGIN below the authored maximum.
+    # The landing must be a two-way cell; rounds repeat so stranded areas can chain out through rescued ones. One link per
+    # stranded region and 8 m launch patch (the lowest jump, then the shortest walk).
+    rescued = []
+    if '--rescue-exits' in sys.argv:
+        RIM_WALK = 3; EMPTY = np.array([]); dirs = ((1, 0), (-1, 0), (0, 1), (0, -1))
+        # PROVISIONAL tool parameter: near-limit double jumps (Gorge T3 ~9 m, Gameplay "not recommended"); --rescue-dj-margin overrides
+        RESCUE_DJ_MARGIN = float(sys.argv[sys.argv.index('--rescue-dj-margin') + 1]) if '--rescue-dj-margin' in sys.argv else 1.0
+        rank = {'jump_up': 0, 'double_jump_up': 1}
+        for rnd in range(8):
+            stranded = reach - back; best = {}
+            gid = {}
+            for c0 in stranded:   # stranded regions (neighbour edges)
+                if c0 in gid: continue
+                gid[c0] = c0; dq = deque([c0])
+                while dq:
+                    u = dq.popleft()
+                    for e in cells_out[u]['edges']:
+                        for nb in e['neighbors']:
+                            if nb['cell'] in stranded and nb['cell'] not in gid: gid[nb['cell']] = c0; dq.append(nb['cell'])
+            # launch columns per region with the shortest walk (and the lowest source cell id on ties) from any stranded cell
+            launch = {}
+            for pid in sorted(stranded):
+                for (k, h) in polys[pid]['cells']:
+                    for dx, dz in dirs:
+                        J, hj = k, h
+                        for i in range(RIM_WALK + 1):
+                            if i:
+                                J2 = (J[0] + dx, J[1] + dz)
+                                nxt = [q for q in col.c.get(J2, ()) if rise_ok((J, hj), (J2, q)) and nodes.get((J2, q), {}).get('open')]
+                                if not nxt: break
+                                J, hj = J2, min(nxt, key=lambda q: abs(q - hj))
+                            lk = (gid[pid], J, hj)
+                            if lk not in launch or (i, pid) < launch[lk]: launch[lk] = (i, pid)
+            for (g_, J, hj), (i, pid) in sorted(launch.items()):
+                hd = nodes[(J, hj)]['headroom']
+                if hd < STEP + H: continue   # no jump fits in this column
+                for ex, ez in dirs:
+                    for s in range(1, LINK_REACH + 1):
+                        T = (J[0] + ex * s, J[1] + ez * s)
+                        mids = [occ.get((J[0] + ex * m, J[1] + ez * m), EMPTY) for m in range(1, s)]
+                        for q in by_k.get(T, ()):
+                            pq = cell_poly.get((T, q)); rise = q - hj
+                            if pq is None or pq not in back or rise <= STEP or rise > p['double_jump_up_max_m']: continue
+                            eff = max([q] + [float(oc[(oc > hj + STEP) & (oc <= q + H)].max()) for oc in mids if ((oc > hj + STEP) & (oc <= q + H)).any()])
+                            clear = eff - hj
+                            kind = ('jump_up' if clear <= p['jump_up_max_m'] else
+                                    'double_jump_up' if clear <= p['double_jump_up_max_m'] - RESCUE_DJ_MARGIN else None)
+                            if not kind or hd < clear + H: continue
+                            if any(((oc > eff + STEP) & (oc <= eff + H)).any() for oc in mids): continue
+                            key = (g_, int(math.floor(J[0] * CELL / 8)), int(math.floor(J[1] * CELL / 8)))
+                            cand = (rank[kind], clear, i + s, kind, pid, pq, i, s, J, hj, T, q)
+                            if key not in best or cand < best[key]: best[key] = cand
+            new = []
+            for (_, clear, _, kind, pid, pq, i, s, J, hj, T, q) in sorted(best.values(), key=lambda c: (c[4], c[5])):
+                new.append({'kind': kind, 'from_cell': pid, 'to_cell': pq, 'rise_m': round(q - hj, 2), 'span_m': (i + s) * CELL,
+                            'from_gltf': [(J[0] + 0.5) * CELL, round(hj, 3), (J[1] + 0.5) * CELL],
+                            'to_gltf': [(T[0] + 0.5) * CELL, round(q, 3), (T[1] + 0.5) * CELL],
+                            'forms': ['robot'], 'rule': 'exit_rescue', 'rim_walk_m': i * CELL, 'clear_height_m': round(clear, 2)})
+            if not new: break
+            links += new; rescued += new
+            reach, back, out_l, rev = playable()
+        os.makedirs(DST, exist_ok=True)
+        json.dump(rescued, open(os.path.join(DST, 'bot_nav_rescue.json'), 'w', encoding='utf-8'), indent=1)   # pre-remap cell ids
     one_way = len(reach - back)
     if '--debug' in sys.argv:
         # pruned regions: connected groups (neighbour edges) of cells dropped as unreached / one-way, with bbox and why
@@ -407,7 +519,18 @@ def main():
                               ('entry_sources_gltf', sorted(Counter(tuple(int(math.floor(l['from_gltf'][i] / 8)) * 8 if i != 1 else round(l['from_gltf'][1])
                                                                           for i in range(3))
                                                                     for l in links if l['to_cell'] in set(G) and l['from_cell'] not in why).items(),
-                                                            key=lambda x: -x[1])[:40])]))
+                                                            key=lambda x: -x[1])[:40]),
+                              ('entry_examples', [OD([('kind', l['kind']), ('from_gltf', l['from_gltf']), ('to_gltf', l['to_gltf'])])
+                                                  for l in links if l['to_cell'] in set(G) and l['from_cell'] not in why][:8]),
+                              # why no way out: rejected upward candidates toward kept cells (reason counts, lowest-rise examples per
+                              # reason; value = mid-column obstruction / source headroom above the source floor, m)
+                              ('exit_rejects', dict(Counter(e[0] for u in G for e in rej.get(u, []) if e[2] not in why))),
+                              ('exit_reject_examples', [OD([('reason', e[0]), ('rise_m', e[1]), ('to_cell', e[2]),
+                                                            ('from_gltf', [e[3][0] + 0.5, round(e[3][1], 2), e[3][2] + 0.5]),
+                                                            ('to_gltf', [e[4][0] + 0.5, round(e[4][1], 2), e[4][2] + 0.5]), ('value_m', e[5])])
+                                                        for reason in ('mid_blocked', 'source_headroom', 'rise_above_double')
+                                                        for e in sorted((e for u in G for e in rej.get(u, []) if e[0] == reason and e[2] not in why),
+                                                                        key=lambda e: e[1])[:6]])]))
         groups.sort(key=lambda g_: -g_['area_m2'])
         os.makedirs(DST, exist_ok=True)
         json.dump(groups, open(os.path.join(DST, 'bot_nav_pruned.json'), 'w', encoding='utf-8'), indent=1)

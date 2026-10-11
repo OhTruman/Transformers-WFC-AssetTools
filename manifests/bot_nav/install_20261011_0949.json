@@ -1,0 +1,1093 @@
+{
+ "installed": "2026-10-11 09:49:03",
+ "source": "AssetTools/out/bot_nav/dry7/MP_UND_Gorge (bot_nav.py --rescue-exits; Gorge only)",
+ "approved_by": "Integration (rebuild-9f) 2026-10-11: (a) install the exit-rescue rule on Gorge only after the 10-map rerun proves the other 9 byte-identical; (c) no T3 link",
+ "backup": "AssetTools/backups/bot_nav_20261011_0949",
+ "control_nav_for_WFC_BOTNAV": "F:/Transformers Rebuild/AssetTools/backups/bot_nav_20261011_0949/MP_UND_Gorge/bot_nav.json (= dry6, installed 2026-10-10 23:27)",
+ "checks": {
+  "other_9_maps": "dry7 bot_nav.json equal to dry6 and to installed except generated / stats.seconds; bot_nav.glb byte-identical (not reinstalled)",
+  "reachspec_audit_gorge": "733 walking ReachSpecs, 733 with nav path, 0 missing, 20 detours > 2.5x (shipped dry6: same)",
+  "stats_gorge": {
+   "cells": "7098 -> 7748",
+   "walkable_area_m2": "59665 -> 62622.0",
+   "links": {
+    "drop_down": 2837,
+    "double_jump_up": 8,
+    "jump_up": 103
+   }
+  }
+ },
+ "rule": "exit_rescue: one-way cells (reachable, no way back) may walk <= 3 cells onto their open rim and jump; launch headroom >= cleared height + 4 m; cleared height = highest obstruction between lip and landing; landing two-way; one link per stranded region per 8 m patch; double jumps <= 8.5 m (PROVISIONAL 1 m margin)",
+ "not_changed": [
+  "T3 bowl: no exit within jump limits in pawn collision (walls / railing >= 9.2 m); stays on the stranded suicide (Integration (c))",
+  "y -10 under-deck floors: interior of the deck structure, reached only by false through-deck drop links; parked follow-up rule (Integration (b))",
+  "T2, T4: no nav change (Gameplay handoff)"
+ ],
+ "exit_rescue_links": [
+  {
+   "region": "other",
+   "kind": "jump_up",
+   "from_cell": 1023,
+   "to_cell": 842,
+   "from_gltf": [
+    -116.5,
+    -2.608,
+    -121.5
+   ],
+   "to_gltf": [
+    -113.5,
+    -2.04,
+    -121.5
+   ],
+   "rise_m": 0.57,
+   "clear_height_m": 0.57,
+   "rim_walk_m": 1.0
+  },
+  {
+   "region": "other",
+   "kind": "jump_up",
+   "from_cell": 1036,
+   "to_cell": 988,
+   "from_gltf": [
+    -116.5,
+    10.522,
+    -118.5
+   ],
+   "to_gltf": [
+    -113.5,
+    11.52,
+    -118.5
+   ],
+   "rise_m": 1.0,
+   "clear_height_m": 1.0,
+   "rim_walk_m": 0.0
+  },
+  {
+   "region": "other",
+   "kind": "jump_up",
+   "from_cell": 1036,
+   "to_cell": 988,
+   "from_gltf": [
+    -116.5,
+    10.522,
+    -120.5
+   ],
+   "to_gltf": [
+    -113.5,
+    11.52,
+    -120.5
+   ],
+   "rise_m": 1.0,
+   "clear_height_m": 1.0,
+   "rim_walk_m": 1.0
+  },
+  {
+   "region": "other",
+   "kind": "jump_up",
+   "from_cell": 1036,
+   "to_cell": 988,
+   "from_gltf": [
+    -116.5,
+    10.522,
+    -111.5
+   ],
+   "to_gltf": [
+    -113.5,
+    11.52,
+    -111.5
+   ],
+   "rise_m": 1.0,
+   "clear_height_m": 1.0,
+   "rim_walk_m": 1.0
+  },
+  {
+   "region": "other",
+   "kind": "jump_up",
+   "from_cell": 1784,
+   "to_cell": 1702,
+   "from_gltf": [
+    -116.5,
+    10.521,
+    -68.5
+   ],
+   "to_gltf": [
+    -113.5,
+    11.52,
+    -68.5
+   ],
+   "rise_m": 1.0,
+   "clear_height_m": 1.0,
+   "rim_walk_m": 1.0
+  },
+  {
+   "region": "other",
+   "kind": "jump_up",
+   "from_cell": 1784,
+   "to_cell": 1703,
+   "from_gltf": [
+    -116.5,
+    10.521,
+    -63.5
+   ],
+   "to_gltf": [
+    -112.5,
+    11.52,
+    -63.5
+   ],
+   "rise_m": 1.0,
+   "clear_height_m": 1.0,
+   "rim_walk_m": 0.0
+  },
+  {
+   "region": "other",
+   "kind": "jump_up",
+   "from_cell": 1976,
+   "to_cell": 1972,
+   "from_gltf": [
+    -160.5,
+    -8.067,
+    -59.5
+   ],
+   "to_gltf": [
+    -164.5,
+    -7.68,
+    -59.5
+   ],
+   "rise_m": 0.39,
+   "clear_height_m": 0.39,
+   "rim_walk_m": 1.0
+  },
+  {
+   "region": "other",
+   "kind": "jump_up",
+   "from_cell": 1976,
+   "to_cell": 1972,
+   "from_gltf": [
+    -159.5,
+    -8.067,
+    -59.5
+   ],
+   "to_gltf": [
+    -164.5,
+    -7.68,
+    -59.5
+   ],
+   "rise_m": 0.39,
+   "clear_height_m": 0.39,
+   "rim_walk_m": 0.0
+  },
+  {
+   "region": "other",
+   "kind": "jump_up",
+   "from_cell": 2021,
+   "to_cell": 2020,
+   "from_gltf": [
+    -162.5,
+    -12.039,
+    -58.5
+   ],
+   "to_gltf": [
+    -164.5,
+    -7.68,
+    -58.5
+   ],
+   "rise_m": 4.36,
+   "clear_height_m": 4.36,
+   "rim_walk_m": 1.0
+  },
+  {
+   "region": "other",
+   "kind": "jump_up",
+   "from_cell": 2198,
+   "to_cell": 2020,
+   "from_gltf": [
+    -162.5,
+    -12.039,
+    -54.5
+   ],
+   "to_gltf": [
+    -164.5,
+    -7.68,
+    -54.5
+   ],
+   "rise_m": 4.36,
+   "clear_height_m": 4.36,
+   "rim_walk_m": 1.0
+  },
+  {
+   "region": "other",
+   "kind": "jump_up",
+   "from_cell": 2440,
+   "to_cell": 2020,
+   "from_gltf": [
+    -160.5,
+    -8.257,
+    -47.5
+   ],
+   "to_gltf": [
+    -164.5,
+    -7.68,
+    -47.5
+   ],
+   "rise_m": 0.58,
+   "clear_height_m": 0.58,
+   "rim_walk_m": 1.0
+  },
+  {
+   "region": "other",
+   "kind": "jump_up",
+   "from_cell": 2440,
+   "to_cell": 2020,
+   "from_gltf": [
+    -159.5,
+    -8.257,
+    -47.5
+   ],
+   "to_gltf": [
+    -164.5,
+    -7.68,
+    -47.5
+   ],
+   "rise_m": 0.58,
+   "clear_height_m": 0.58,
+   "rim_walk_m": 0.0
+  },
+  {
+   "region": "other",
+   "kind": "jump_up",
+   "from_cell": 2677,
+   "to_cell": 2020,
+   "from_gltf": [
+    -162.5,
+    -12.039,
+    -37.5
+   ],
+   "to_gltf": [
+    -164.5,
+    -7.68,
+    -37.5
+   ],
+   "rise_m": 4.36,
+   "clear_height_m": 4.36,
+   "rim_walk_m": 1.0
+  },
+  {
+   "region": "other",
+   "kind": "jump_up",
+   "from_cell": 2680,
+   "to_cell": 2020,
+   "from_gltf": [
+    -160.5,
+    -8.269,
+    -37.5
+   ],
+   "to_gltf": [
+    -164.5,
+    -7.68,
+    -37.5
+   ],
+   "rise_m": 0.59,
+   "clear_height_m": 0.59,
+   "rim_walk_m": 1.0
+  },
+  {
+   "region": "other",
+   "kind": "jump_up",
+   "from_cell": 2680,
+   "to_cell": 2020,
+   "from_gltf": [
+    -158.5,
+    -8.269,
+    -37.5
+   ],
+   "to_gltf": [
+    -164.5,
+    -7.68,
+    -37.5
+   ],
+   "rise_m": 0.59,
+   "clear_height_m": 0.59,
+   "rim_walk_m": 0.0
+  },
+  {
+   "region": "other",
+   "kind": "jump_up",
+   "from_cell": 2927,
+   "to_cell": 2020,
+   "from_gltf": [
+    -162.5,
+    -12.039,
+    -30.5
+   ],
+   "to_gltf": [
+    -164.5,
+    -7.68,
+    -30.5
+   ],
+   "rise_m": 4.36,
+   "clear_height_m": 4.36,
+   "rim_walk_m": 1.0
+  },
+  {
+   "region": "other",
+   "kind": "jump_up",
+   "from_cell": 3083,
+   "to_cell": 2020,
+   "from_gltf": [
+    -160.5,
+    -8.054,
+    -25.5
+   ],
+   "to_gltf": [
+    -164.5,
+    -7.68,
+    -25.5
+   ],
+   "rise_m": 0.37,
+   "clear_height_m": 0.37,
+   "rim_walk_m": 2.0
+  },
+  {
+   "region": "other",
+   "kind": "jump_up",
+   "from_cell": 3083,
+   "to_cell": 2020,
+   "from_gltf": [
+    -158.5,
+    -8.054,
+    -25.5
+   ],
+   "to_gltf": [
+    -164.5,
+    -7.68,
+    -25.5
+   ],
+   "rise_m": 0.37,
+   "clear_height_m": 0.37,
+   "rim_walk_m": 0.0
+  },
+  {
+   "region": "T1",
+   "kind": "jump_up",
+   "from_cell": 4824,
+   "to_cell": 4642,
+   "from_gltf": [
+    -162.5,
+    -12.039,
+    22.5
+   ],
+   "to_gltf": [
+    -164.5,
+    -7.68,
+    22.5
+   ],
+   "rise_m": 4.36,
+   "clear_height_m": 4.36,
+   "rim_walk_m": 1.0
+  },
+  {
+   "region": "T1",
+   "kind": "jump_up",
+   "from_cell": 4888,
+   "to_cell": 4642,
+   "from_gltf": [
+    -162.5,
+    -12.039,
+    24.5
+   ],
+   "to_gltf": [
+    -164.5,
+    -7.68,
+    24.5
+   ],
+   "rise_m": 4.36,
+   "clear_height_m": 4.36,
+   "rim_walk_m": 1.0
+  },
+  {
+   "region": "T1",
+   "kind": "jump_up",
+   "from_cell": 4950,
+   "to_cell": 4949,
+   "from_gltf": [
+    -158.5,
+    10.542,
+    26.5
+   ],
+   "to_gltf": [
+    -161.5,
+    11.55,
+    26.5
+   ],
+   "rise_m": 1.01,
+   "clear_height_m": 1.01,
+   "rim_walk_m": 2.0
+  },
+  {
+   "region": "T1",
+   "kind": "jump_up",
+   "from_cell": 5021,
+   "to_cell": 4642,
+   "from_gltf": [
+    -159.5,
+    -8.695,
+    29.5
+   ],
+   "to_gltf": [
+    -164.5,
+    -7.68,
+    29.5
+   ],
+   "rise_m": 1.01,
+   "clear_height_m": 1.01,
+   "rim_walk_m": 1.0
+  },
+  {
+   "region": "other",
+   "kind": "jump_up",
+   "from_cell": 5273,
+   "to_cell": 4642,
+   "from_gltf": [
+    -162.5,
+    -12.039,
+    37.5
+   ],
+   "to_gltf": [
+    -164.5,
+    -7.68,
+    37.5
+   ],
+   "rise_m": 4.36,
+   "clear_height_m": 4.36,
+   "rim_walk_m": 1.0
+  },
+  {
+   "region": "other",
+   "kind": "jump_up",
+   "from_cell": 5276,
+   "to_cell": 4642,
+   "from_gltf": [
+    -160.5,
+    -8.168,
+    37.5
+   ],
+   "to_gltf": [
+    -164.5,
+    -7.68,
+    37.5
+   ],
+   "rise_m": 0.49,
+   "clear_height_m": 0.49,
+   "rim_walk_m": 1.0
+  },
+  {
+   "region": "other",
+   "kind": "jump_up",
+   "from_cell": 5276,
+   "to_cell": 4642,
+   "from_gltf": [
+    -159.5,
+    -8.168,
+    37.5
+   ],
+   "to_gltf": [
+    -164.5,
+    -7.68,
+    37.5
+   ],
+   "rise_m": 0.49,
+   "clear_height_m": 0.49,
+   "rim_walk_m": 0.0
+  },
+  {
+   "region": "other",
+   "kind": "jump_up",
+   "from_cell": 5421,
+   "to_cell": 4642,
+   "from_gltf": [
+    -162.5,
+    -12.039,
+    42.5
+   ],
+   "to_gltf": [
+    -164.5,
+    -7.68,
+    42.5
+   ],
+   "rise_m": 4.36,
+   "clear_height_m": 4.36,
+   "rim_walk_m": 1.0
+  },
+  {
+   "region": "other",
+   "kind": "jump_up",
+   "from_cell": 5661,
+   "to_cell": 4642,
+   "from_gltf": [
+    -162.5,
+    -12.039,
+    48.5
+   ],
+   "to_gltf": [
+    -164.5,
+    -7.68,
+    48.5
+   ],
+   "rise_m": 4.36,
+   "clear_height_m": 4.36,
+   "rim_walk_m": 1.0
+  },
+  {
+   "region": "other",
+   "kind": "jump_up",
+   "from_cell": 5711,
+   "to_cell": 4642,
+   "from_gltf": [
+    -160.5,
+    -8.155,
+    49.5
+   ],
+   "to_gltf": [
+    -164.5,
+    -7.68,
+    49.5
+   ],
+   "rise_m": 0.48,
+   "clear_height_m": 0.48,
+   "rim_walk_m": 1.0
+  },
+  {
+   "region": "other",
+   "kind": "jump_up",
+   "from_cell": 5711,
+   "to_cell": 4642,
+   "from_gltf": [
+    -159.5,
+    -8.155,
+    49.5
+   ],
+   "to_gltf": [
+    -164.5,
+    -7.68,
+    49.5
+   ],
+   "rise_m": 0.48,
+   "clear_height_m": 0.48,
+   "rim_walk_m": 0.0
+  },
+  {
+   "region": "other",
+   "kind": "jump_up",
+   "from_cell": 5851,
+   "to_cell": 5825,
+   "from_gltf": [
+    -116.5,
+    10.522,
+    58.5
+   ],
+   "to_gltf": [
+    -113.5,
+    11.52,
+    58.5
+   ],
+   "rise_m": 1.0,
+   "clear_height_m": 1.0,
+   "rim_walk_m": 0.0
+  },
+  {
+   "region": "other",
+   "kind": "jump_up",
+   "from_cell": 5851,
+   "to_cell": 5826,
+   "from_gltf": [
+    -116.5,
+    10.522,
+    54.5
+   ],
+   "to_gltf": [
+    -112.5,
+    11.52,
+    54.5
+   ],
+   "rise_m": 1.0,
+   "clear_height_m": 1.0,
+   "rim_walk_m": 0.0
+  },
+  {
+   "region": "other",
+   "kind": "jump_up",
+   "from_cell": 6434,
+   "to_cell": 6404,
+   "from_gltf": [
+    -116.5,
+    10.522,
+    81.5
+   ],
+   "to_gltf": [
+    -113.5,
+    11.52,
+    81.5
+   ],
+   "rise_m": 1.0,
+   "clear_height_m": 1.0,
+   "rim_walk_m": 0.0
+  },
+  {
+   "region": "other",
+   "kind": "jump_up",
+   "from_cell": 6434,
+   "to_cell": 6404,
+   "from_gltf": [
+    -116.5,
+    10.522,
+    88.5
+   ],
+   "to_gltf": [
+    -113.5,
+    11.52,
+    88.5
+   ],
+   "rise_m": 1.0,
+   "clear_height_m": 1.0,
+   "rim_walk_m": 0.0
+  },
+  {
+   "region": "other",
+   "kind": "jump_up",
+   "from_cell": 6722,
+   "to_cell": 6405,
+   "from_gltf": [
+    -116.5,
+    10.522,
+    103.5
+   ],
+   "to_gltf": [
+    -112.5,
+    11.52,
+    103.5
+   ],
+   "rise_m": 1.0,
+   "clear_height_m": 1.0,
+   "rim_walk_m": 0.0
+  },
+  {
+   "region": "other",
+   "kind": "jump_up",
+   "from_cell": 6789,
+   "to_cell": 6404,
+   "from_gltf": [
+    -116.5,
+    10.75,
+    111.5
+   ],
+   "to_gltf": [
+    -113.5,
+    11.52,
+    111.5
+   ],
+   "rise_m": 0.77,
+   "clear_height_m": 0.77,
+   "rim_walk_m": 2.0
+  },
+  {
+   "region": "other",
+   "kind": "jump_up",
+   "from_cell": 6789,
+   "to_cell": 6404,
+   "from_gltf": [
+    -116.5,
+    10.783,
+    112.5
+   ],
+   "to_gltf": [
+    -113.5,
+    11.52,
+    112.5
+   ],
+   "rise_m": 0.74,
+   "clear_height_m": 0.74,
+   "rim_walk_m": 3.0
+  },
+  {
+   "region": "other",
+   "kind": "jump_up",
+   "from_cell": 6860,
+   "to_cell": 6404,
+   "from_gltf": [
+    -117.5,
+    10.856,
+    116.5
+   ],
+   "to_gltf": [
+    -113.5,
+    11.52,
+    116.5
+   ],
+   "rise_m": 0.66,
+   "clear_height_m": 0.66,
+   "rim_walk_m": 1.0
+  },
+  {
+   "region": "other",
+   "kind": "jump_up",
+   "from_cell": 1960,
+   "to_cell": 1970,
+   "from_gltf": [
+    -174.5,
+    -15.338,
+    -59.5
+   ],
+   "to_gltf": [
+    -169.5,
+    -12.039,
+    -59.5
+   ],
+   "rise_m": 3.3,
+   "clear_height_m": 3.3,
+   "rim_walk_m": 0.0
+  },
+  {
+   "region": "other",
+   "kind": "jump_up",
+   "from_cell": 2012,
+   "to_cell": 2107,
+   "from_gltf": [
+    -172.5,
+    -15.338,
+    -51.5
+   ],
+   "to_gltf": [
+    -168.5,
+    -12.039,
+    -51.5
+   ],
+   "rise_m": 3.3,
+   "clear_height_m": 3.3,
+   "rim_walk_m": 0.0
+  },
+  {
+   "region": "other",
+   "kind": "jump_up",
+   "from_cell": 2102,
+   "to_cell": 2436,
+   "from_gltf": [
+    -174.5,
+    -15.338,
+    -47.5
+   ],
+   "to_gltf": [
+    -168.5,
+    -12.039,
+    -47.5
+   ],
+   "rise_m": 3.3,
+   "clear_height_m": 3.3,
+   "rim_walk_m": 0.0
+  },
+  {
+   "region": "other",
+   "kind": "jump_up",
+   "from_cell": 2601,
+   "to_cell": 2677,
+   "from_gltf": [
+    -166.5,
+    -15.338,
+    -40.5
+   ],
+   "to_gltf": [
+    -166.5,
+    -12.039,
+    -37.5
+   ],
+   "rise_m": 3.3,
+   "clear_height_m": 3.3,
+   "rim_walk_m": 0.0
+  },
+  {
+   "region": "other",
+   "kind": "jump_up",
+   "from_cell": 2601,
+   "to_cell": 2677,
+   "from_gltf": [
+    -165.5,
+    -15.338,
+    -39.5
+   ],
+   "to_gltf": [
+    -165.5,
+    -12.039,
+    -37.5
+   ],
+   "rise_m": 3.3,
+   "clear_height_m": 3.3,
+   "rim_walk_m": 1.0
+  },
+  {
+   "region": "other",
+   "kind": "jump_up",
+   "from_cell": 2649,
+   "to_cell": 2712,
+   "from_gltf": [
+    -172.5,
+    -15.338,
+    -36.5
+   ],
+   "to_gltf": [
+    -169.5,
+    -12.039,
+    -36.5
+   ],
+   "rise_m": 3.3,
+   "clear_height_m": 3.3,
+   "rim_walk_m": 0.0
+  },
+  {
+   "region": "other",
+   "kind": "jump_up",
+   "from_cell": 2649,
+   "to_cell": 2860,
+   "from_gltf": [
+    -172.5,
+    -15.338,
+    -28.5
+   ],
+   "to_gltf": [
+    -168.5,
+    -12.039,
+    -28.5
+   ],
+   "rise_m": 3.3,
+   "clear_height_m": 3.3,
+   "rim_walk_m": 0.0
+  },
+  {
+   "region": "other",
+   "kind": "jump_up",
+   "from_cell": 3184,
+   "to_cell": 3078,
+   "from_gltf": [
+    -168.5,
+    -15.338,
+    -22.5
+   ],
+   "to_gltf": [
+    -168.5,
+    -12.039,
+    -25.5
+   ],
+   "rise_m": 3.3,
+   "clear_height_m": 3.3,
+   "rim_walk_m": 0.0
+  },
+  {
+   "region": "other",
+   "kind": "jump_up",
+   "from_cell": 3184,
+   "to_cell": 3078,
+   "from_gltf": [
+    -167.5,
+    -15.338,
+    -22.5
+   ],
+   "to_gltf": [
+    -167.5,
+    -12.039,
+    -25.5
+   ],
+   "rise_m": 3.3,
+   "clear_height_m": 3.3,
+   "rim_walk_m": 0.0
+  },
+  {
+   "region": "T1",
+   "kind": "jump_up",
+   "from_cell": 3919,
+   "to_cell": 4674,
+   "from_gltf": [
+    -166.5,
+    -15.338,
+    11.5
+   ],
+   "to_gltf": [
+    -166.5,
+    -12.039,
+    17.5
+   ],
+   "rise_m": 3.3,
+   "clear_height_m": 3.3,
+   "rim_walk_m": 0.0
+  },
+  {
+   "region": "T1",
+   "kind": "jump_up",
+   "from_cell": 4441,
+   "to_cell": 4707,
+   "from_gltf": [
+    -169.5,
+    -15.338,
+    13.5
+   ],
+   "to_gltf": [
+    -169.5,
+    -12.039,
+    19.5
+   ],
+   "rise_m": 3.3,
+   "clear_height_m": 3.3,
+   "rim_walk_m": 0.0
+  },
+  {
+   "region": "T1",
+   "kind": "jump_up",
+   "from_cell": 4591,
+   "to_cell": 4674,
+   "from_gltf": [
+    -172.5,
+    -15.338,
+    17.5
+   ],
+   "to_gltf": [
+    -169.5,
+    -12.039,
+    17.5
+   ],
+   "rise_m": 3.3,
+   "clear_height_m": 3.3,
+   "rim_walk_m": 0.0
+  },
+  {
+   "region": "T1",
+   "kind": "jump_up",
+   "from_cell": 5131,
+   "to_cell": 5018,
+   "from_gltf": [
+    -167.5,
+    -15.338,
+    31.5
+   ],
+   "to_gltf": [
+    -167.5,
+    -12.039,
+    28.5
+   ],
+   "rise_m": 3.3,
+   "clear_height_m": 3.3,
+   "rim_walk_m": 1.0
+  },
+  {
+   "region": "T1",
+   "kind": "jump_up",
+   "from_cell": 5131,
+   "to_cell": 5273,
+   "from_gltf": [
+    -168.5,
+    -15.338,
+    31.5
+   ],
+   "to_gltf": [
+    -168.5,
+    -12.039,
+    37.5
+   ],
+   "rise_m": 3.3,
+   "clear_height_m": 3.3,
+   "rim_walk_m": 1.0
+  },
+  {
+   "region": "T1",
+   "kind": "jump_up",
+   "from_cell": 5194,
+   "to_cell": 5273,
+   "from_gltf": [
+    -168.5,
+    -15.338,
+    34.5
+   ],
+   "to_gltf": [
+    -168.5,
+    -12.039,
+    37.5
+   ],
+   "rise_m": 3.3,
+   "clear_height_m": 3.3,
+   "rim_walk_m": 0.0
+  },
+  {
+   "region": "other",
+   "kind": "jump_up",
+   "from_cell": 5194,
+   "to_cell": 5273,
+   "from_gltf": [
+    -167.5,
+    -15.338,
+    35.5
+   ],
+   "to_gltf": [
+    -167.5,
+    -12.039,
+    37.5
+   ],
+   "rise_m": 3.3,
+   "clear_height_m": 3.3,
+   "rim_walk_m": 1.0
+  },
+  {
+   "region": "other",
+   "kind": "jump_up",
+   "from_cell": 5243,
+   "to_cell": 5418,
+   "from_gltf": [
+    -174.5,
+    -15.338,
+    46.5
+   ],
+   "to_gltf": [
+    -168.5,
+    -12.039,
+    46.5
+   ],
+   "rise_m": 3.3,
+   "clear_height_m": 3.3,
+   "rim_walk_m": 0.0
+  },
+  {
+   "region": "other",
+   "kind": "jump_up",
+   "from_cell": 5244,
+   "to_cell": 5418,
+   "from_gltf": [
+    -172.5,
+    -15.338,
+    48.5
+   ],
+   "to_gltf": [
+    -168.5,
+    -12.039,
+    48.5
+   ],
+   "rise_m": 3.3,
+   "clear_height_m": 3.3,
+   "rim_walk_m": 0.0
+  }
+ ],
+ "files": [
+  {
+   "map": "MP_UND_Gorge",
+   "file": "bot_nav.json",
+   "path": "VerticalSlice/Maps/MP_UND_Gorge/bot_nav.json",
+   "old_sha256": "423c45056dd335aa1763980e867118df87b26bd00651520602edf8b0af5738ad",
+   "new_sha256": "9d26b6bcb7dc5bf3795437c3c689a0ff042200846bb16d95362a506a8ae18603",
+   "old_bytes": 9681582,
+   "new_bytes": 10679911
+  },
+  {
+   "map": "MP_UND_Gorge",
+   "file": "bot_nav.glb",
+   "path": "VerticalSlice/Maps/MP_UND_Gorge/bot_nav.glb",
+   "old_sha256": "3ee887377067b62aeaea2158bf4cb0efe4fe9e7f6d3e71e800e2531d799cb81a",
+   "new_sha256": "dcb2193336cb065e03eb273f22b5ba133d1debc554627bbd353e9166ec73ac16",
+   "old_bytes": 512464,
+   "new_bytes": 559268
+  }
+ ]
+}
