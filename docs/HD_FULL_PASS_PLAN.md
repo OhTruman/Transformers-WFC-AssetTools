@@ -48,7 +48,12 @@ choice from the Rust in-game sheet.
 4. Integration announcement -> install to the HD pack (backup of 3f410a1), FILELOG check in game on Streets / Gorge / Rust.
 Rough total: 3–5 days of wall time, depending on GPU gaps and review pace.
 
+## Decisions (Integration 2026-10-11: plan approved as drafted)
+- VRAM: <= 8 GB of textures per map in game (MEMSTATS), with Rendering's compressed upload (BC7 / S3TC sRGB) for HD-on. If 4x on
+  the screen-visible set exceeds 8 GB, narrow the 4x set; do not raise the budget.
+- 4x only for screen-visible textures plus characters and weapons.
+- Install keeps 3f410a1 as a backup; FILELOG check on Streets / Gorge / Rust.
+
 ## Open
-- The variant choice (user, from the Rust sheet).
-- The per-map VRAM target (from MEMSTATS).
+- The variant choice (user, from the Rust in-game sheet; Integration sends it).
 - hd_pbr does not fit: there is no renderer PBR path (reported earlier).
