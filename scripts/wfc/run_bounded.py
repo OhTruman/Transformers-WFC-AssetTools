@@ -1,12 +1,24 @@
-"""Run a pipeline step inside a Windows Job Object with a hard memory cap (deliberate memory guard).
+r"""Run a pipeline step inside a Windows Job Object with a hard memory cap (deliberate memory guard).
 
 The child (and anything it spawns) is assigned to a job with JOB_OBJECT_LIMIT_JOB_MEMORY: allocations beyond the cap fail
 inside the child instead of exhausting system memory, and KILL_ON_JOB_CLOSE ends the job if this runner exits.
 Reports exit code, wall time and the job's peak committed memory.
 
   python run_bounded.py --cap-gb 6 [--log logs/x.log] -- <python script> [args...]
+
+Performance holds (Integration 2026-10-11): a lane's hold is F:\Transformers Rebuild\<lane>\work\PERF_HOLD (presence = hold active).
+Waiting is done by scripts/wfc/hold_wait.cmd before python starts (lane watchdogs flag any foreign python.exe, so a waiting python
+would itself contaminate a timed run); this runner only refuses to start (exit 75) when a hold exists. WFC_GATE_IGNORE_HOLD=1
+skips only AssetTools' own hold.
 """
-import argparse, ctypes, os, subprocess, sys, time
+import argparse, ctypes, glob, os, subprocess, sys, time
+
+ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))   # F:\Transformers Rebuild
+
+def active_holds():
+    own = os.path.join(ROOT, 'AssetTools', 'work', 'PERF_HOLD')
+    return [f for f in glob.glob(os.path.join(ROOT, '*', 'work', 'PERF_HOLD'))
+            if not (os.environ.get('WFC_GATE_IGNORE_HOLD') == '1' and os.path.normcase(f) == os.path.normcase(own))]
 from ctypes import wintypes as W
 
 JobObjectExtendedLimitInformation = 9
@@ -34,6 +46,8 @@ def main():
     ap.add_argument('cmd', nargs=argparse.REMAINDER)
     a = ap.parse_args()
     cmd = a.cmd[1:] if a.cmd and a.cmd[0] == '--' else a.cmd
+    on = active_holds()
+    if on: print('run_bounded: refused, PERF_HOLD present (wait with hold_wait.cmd): %s' % ', '.join(on)); sys.exit(75)
     k = ctypes.windll.kernel32
     k.CreateJobObjectW.restype = W.HANDLE
     k.OpenProcess.restype = W.HANDLE
