@@ -334,5 +334,68 @@ def sheet():
         im.save(os.path.join(OUT, 'texture_sheet_%d.png' % (part // 10 + 1)))
     print('sheets', (len(rws) + 9) // 10)
 
+INGAME = os.path.join(REB, 'Rebuild-Rendering', 'work', 'hdpush', 'runs')   # Rendering's captures (read in place)
+SOURCES = [('off', 'original (HD off)'), ('gen4x', 'A  4x'), ('gen4x_mid', 'B  4x + mid-band'), ('gen4x_mid_nrm', 'C  4x + mid + normal'),
+           ('m4', 'M4 shipped pack (reference)')]
+SPOTS = ['ground_rust', 'wall_blockbldpanel', 'interior_wall', 'floor_panel', 'wall_archive']
+
+def ingame():
+    """in-game before / after for the user (Integration): per spot, the settled 2560x1440 frame (m00600) of each source;
+    the 640x360 region where C differs most from the original is shown 1:1 for every source, at AF 16 and AF 4"""
+    import re
+    dst = os.path.join(OUT, 'ingame'); os.makedirs(dst, exist_ok=True)
+    shot = lambda s, af, sp: np.asarray(Image.open(os.path.join(INGAME, '%s_af%d_%s' % (s, af, sp), 'shots', 'm00600.bmp')).convert('RGB'))
+    mem = OD()
+    for s, _ in SOURCES:
+        m = re.search(r'other textures \d+ = (\d+) MB.*?(\d+) HD\)', open(os.path.join(INGAME, '%s_af16_%s' % (s, SPOTS[0]), 'wfc.log'),
+                                                                        encoding='utf-8', errors='replace').read())
+        mem[s] = OD([('texture_mb', int(m.group(1))), ('hd_loaded', int(m.group(2)))])
+    CW, CH, LBL = 640, 360, 26; summary = OD()
+    for sp in SPOTS:
+        a, c = shot('off', 16, sp).astype(np.int16), shot('gen4x_mid_nrm', 16, sp).astype(np.int16)
+        dif = np.abs(a - c).sum(2).astype(np.float32); best = (-1, 0, 0)
+        # HUD = equal in every source and at AF 4 and 16 (texture filtering changes every textured surface, not the HUD)
+        hud = np.ones(dif.shape, bool)
+        for s, _ in SOURCES:
+            for af in (4, 16): hud &= (shot(s, af, sp).astype(np.int16) == a).all(2)
+        hud[:300] = True; hud[640:820, 120:900] = True; hud[400:560, 1200:1360] = True   # HUD blends with the scene: top bar, kill feed, crosshair
+        hud = hud.astype(np.float32)
+        for lim in (0.01, 0.03, 0.1, 1.0):
+            for y in range(0, a.shape[0] - CH + 1, 60):
+                for x in range(0, a.shape[1] - CW + 1, 80):
+                    if hud[y:y + CH, x:x + CW].mean() > lim: continue
+                    v = dif[y:y + CH, x:x + CW].mean()
+                    if v > best[0]: best = (v, x, y)
+            if best[0] >= 0: break
+        _, x0, y0 = best
+        W = len(SOURCES) * (CW + 8)
+        im = Image.new('RGB', (W, LBL + 720 + 3 * (CH + LBL) + 40), (16, 16, 20)); d = ImageDraw.Draw(im)
+        d.text((6, 6), 'Rust / %s   2560x1440 in game, same camera, only textures differ.  Top: full frame original | C (yellow box = 1:1 region)' % sp,
+               fill=(235, 235, 235))
+        for j, s in enumerate(('off', 'gen4x_mid_nrm')):
+            f = Image.fromarray(shot(s, 16, sp).astype(np.uint8)).resize((1280, 720), Image.LANCZOS); fd = ImageDraw.Draw(f)
+            fd.rectangle([x0 // 2, y0 // 2, (x0 + CW) // 2, (y0 + CH) // 2], outline=(255, 220, 0), width=2)
+            im.paste(f, (j * 1288, LBL))
+        Y = LBL + 728; diffs = OD()
+        for af in (16, 4):
+            d.text((6, Y + 4), 'AF %dx, 1:1 crop' % af, fill=(255, 220, 0))
+            for j, (s, lab) in enumerate(SOURCES):
+                fr = shot(s, af, sp); cr = fr[y0:y0 + CH, x0:x0 + CW]
+                im.paste(Image.fromarray(cr), (j * (CW + 8), Y + LBL)); d.text((j * (CW + 8) + 120, Y + 4), lab, fill=(235, 235, 235))
+                if af == 16: diffs[s] = round(float(np.abs(cr.astype(np.int16) - shot('off', 16, sp)[y0:y0 + CH, x0:x0 + CW]).mean()), 2)
+            Y += CH + LBL
+        d.text((6, Y + 4), 'AF 16x, centre of the crop at 2x (nearest), BRIGHTENED 2x for visibility (not as seen in game)', fill=(255, 220, 0))
+        for j, (s, lab) in enumerate(SOURCES):
+            cr = shot(s, 16, sp)[y0 + CH // 4:y0 + CH // 4 + CH // 2, x0 + CW // 4:x0 + CW // 4 + CW // 2]
+            cr = np.clip(cr.astype(np.int16) * 2, 0, 255).astype(np.uint8)
+            im.paste(Image.fromarray(cr).resize((CW, CH), Image.NEAREST), (j * (CW + 8), Y + LBL)); d.text((j * (CW + 8) + 120, Y + 4), lab, fill=(235, 235, 235))
+        Y += CH + LBL
+        d.text((6, Y + 10), 'texture VRAM (MEMSTATS): ' + '   '.join('%s %d MB' % (s, mem[s]['texture_mb']) for s, _ in SOURCES), fill=(200, 200, 200))
+        p = os.path.join(dst, 'ingame_%s.png' % sp); im.save(p); summary[sp] = OD([('crop_xywh', [x0, y0, CW, CH]), ('mean_abs_diff_vs_off_af16', diffs)])
+        print(sp, (x0, y0), diffs, flush=True)
+    json.dump(OD([('generated', time.strftime('%Y-%m-%d %H:%M')), ('captures', 'Rendering, Rebuild-Rendering/work/hdpush/runs (m00600, 2560x1440)'),
+                  ('memstats', mem), ('spots', summary)]), open(os.path.join(dst, 'ingame.json'), 'w', encoding='utf-8'), indent=1)
+    print(json.dumps(mem))
+
 if __name__ == '__main__':
-    {'select': select, 'gen': gen, 'build': build, 'pack': pack, 'sheet': sheet}[sys.argv[1]]()
+    {'select': select, 'gen': gen, 'build': build, 'pack': pack, 'sheet': sheet, 'ingame': ingame}[sys.argv[1]]()
