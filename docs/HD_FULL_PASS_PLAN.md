@@ -112,5 +112,14 @@ Starts when the M1 slots end (PERF_HOLD cleared).
   out/hd/run_full_cpu_s{0,1}.cmd (colour, CPU, 2 x 6 threads, `--shard i/2`) and run_full_gpu.cmd (masks / data / normals, DirectML,
   GPU gaps). Measured: 367 s per 1024² per CPU shard -> about 47 h for the 1,657 colour textures; 2048² masks about 90 s on DML.
 
+- Full build (2026-10-12): scripts/wfc/hd_full_push.py (units = TEXSET pairs or single textures, batches of 100 units, review
+  tiles / sheets of 8, eye decisions in hd_full_eye.py, pack/hd_index.json only for reviewed batches). Gate calibration before the run:
+  `broken_blocks` (garbage / flat model tiles) is judged on A, and B / C / D inherit it (they are fixed filters of A; their own count
+  flagged D's intended fine band in flat blocks: colour 2 / 10). On lit normals the > 6x test is off: 14 of 30 normal outputs were
+  flagged and none was a garbage tile (grain in flat areas, 128 px upscales; eye review judges those). Torch blur (same kernel / edge
+  padding, max 1 level from the numpy version, ~6x faster).
+- Memory (Integration 2026-10-12, system commit low): one colour process (12 threads), the DML runner and one build process; every job
+  checks free commit per texture (< 8 GB: exit 75, the runner waits in cmd until > 12 GB: scripts/wfc/commit_wait.cmd).
+
 ## Open
 - hd_pbr does not fit: there is no renderer PBR path (reported earlier).

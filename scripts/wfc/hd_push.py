@@ -93,6 +93,18 @@ def partner(r, R):
     elif r['kind'] == 'texset_masks': p = r['png'].replace('_Masks_NormY.png', '_Color_NormX.png')
     else: return None
     return next((x for x in R if x['png'] == p), None)
+def free_commit_gb():
+    """system commit still available (GlobalMemoryStatusEx ullAvailPageFile), GB"""
+    import ctypes
+    class M(ctypes.Structure):
+        _fields_ = [('dwLength', ctypes.c_ulong), ('dwMemoryLoad', ctypes.c_ulong)] + [(n, ctypes.c_ulonglong) for n in
+                    ('tp', 'ap', 'tpf', 'apf', 'tv', 'av', 'aev')]
+    m = M(); m.dwLength = ctypes.sizeof(M); ctypes.windll.kernel32.GlobalMemoryStatusEx(ctypes.byref(m))
+    return m.apf / 2 ** 30
+COMMIT_PAUSE_GB = float(os.environ.get('WFC_COMMIT_PAUSE_GB', '8'))   # Integration 2026-10-12: pause < 8 GB free commit, resume > 12
+def low_commit():
+    f = free_commit_gb()
+    return ['free commit %.1f GB < %.0f' % (f, COMMIT_PAUSE_GB)] if f < COMMIT_PAUSE_GB else []
 def held():
     """a performance hold, or a game / fidelity run sharing the GPU (the pilot runs in gaps only)"""
     h = glob.glob(os.path.join(REB, '*', 'work', 'PERF_HOLD'))
@@ -125,7 +137,7 @@ def gen():
     def run(model, img, path):
         if os.path.exists(path) or cpu_only != (model in CPU_MODELS): return
         d = torch.device('cpu') if model in CPU_MODELS else dev
-        stop = glob.glob(os.path.join(REB, '*', 'work', 'PERF_HOLD')) if model in CPU_MODELS else held()
+        stop = (glob.glob(os.path.join(REB, '*', 'work', 'PERF_HOLD')) if model in CPU_MODELS else held()) + low_commit()
         if stop: print('PERF_HOLD present: stopping', stop, flush=True); sys.exit(75)
         if model not in models: models[model] = T.load(model, d)
         t0 = time.time(); out = T.upscale(models[model], d, img); Image.fromarray(out).save(path)
@@ -150,6 +162,17 @@ def gblur(a, sigma):
     """separable gaussian blur (float32, edge padding), per channel"""
     if sigma <= 0: return a
     r = int(math.ceil(3 * sigma)); k = np.exp(-0.5 * (np.arange(-r, r + 1) / sigma) ** 2).astype(np.float32); k /= k.sum()
+    if os.environ.get('WFC_HD_TORCH_BLUR') == '1':    # same kernel and edge padding as a torch separable conv (full pass: ~10x faster)
+        import torch
+        import torch.nn.functional as TF
+        t = torch.from_numpy(np.ascontiguousarray(a, np.float32)); hw = t.ndim == 2
+        t = (t[None] if hw else t.permute(2, 0, 1))[:, None]                       # C x 1 x H x W
+        kt = torch.from_numpy(k)
+        with torch.no_grad():
+            t = TF.conv2d(TF.pad(t, (0, 0, r, r), mode='replicate'), kt.view(1, 1, -1, 1))
+            t = TF.conv2d(TF.pad(t, (r, r, 0, 0), mode='replicate'), kt.view(1, 1, 1, -1))
+        t = t[:, 0]
+        return (t[0] if hw else t.permute(1, 2, 0)).numpy()
     x = a.astype(np.float32)
     for ax in (0, 1):
         p = np.pad(x, [(r, r) if i == ax else (0, 0) for i in range(x.ndim)], mode='edge')
@@ -220,12 +243,14 @@ def drift(o, hd, k):
     loc = lambda x: np.sqrt(np.maximum(V4.box_blur(x ** 2, 4) - V4.box_blur(x, 4) ** 2, 0)).mean()
     lc = float(loc(V4.luma(d)) / max(loc(V4.luma(of)), 1e-6))
     hd8 = np.clip(np.round(hd), 0, 255).astype(np.uint8)
-    bb = broken_blocks(H._lit(o, True), H._lit(hd8, True)) if k == 'normal' else broken_blocks(o[..., :3], hd8[..., :3])
+    bb = broken_blocks(H._lit(o, True), H._lit(hd8, True), noise=BB_NORMAL_NOISE) if k == 'normal' else broken_blocks(o[..., :3], hd8[..., :3])
     ok = bool(s >= SSIM_MIN and sh <= SHIFT_MAX and newc <= NEWCOL_MAX and bb == 0)
     return OD([('ssim', round(s, 3)), ('mean_shift', round(sh, 2)), ('new_colours', round(newc, 4)), ('local_contrast_ratio', round(lc, 3)),
                ('broken_blocks', bb), ('ok', ok)])
 
-def broken_blocks(o, hd, B=128):
+BB_NORMAL_NOISE = True   # full pass sets False: on lit normals the > 6x test flags model grain in flat areas, not garbage tiles
+
+def broken_blocks(o, hd, B=128, noise=True):
     """full-resolution check (the box-downsampled gate averages tile noise away): HD blocks whose blurred luma departs from a
     Lanczos upscale of the original, or whose fine detail is > 6x / < 1/12 of it (garbage / flat model tiles)"""
     W, Hh = hd.shape[1], hd.shape[0]
@@ -236,7 +261,7 @@ def broken_blocks(o, hd, B=128):
     for y in range(0, Hh - B + 1, B):
         for x in range(0, W - B + 1, B):
             d = dl[y:y + B, x:x + B].mean(); a = fl[y:y + B - 1, x:x + B - 1].mean() + 0.5; b = fh[y:y + B - 1, x:x + B - 1].mean() + 0.5
-            if d > 24 or b / a > 6 or b / a < 1 / 12: n += 1
+            if d > 24 or (noise and b / a > 6) or b / a < 1 / 12: n += 1
     return n
 
 def encode(img, r, root):
@@ -249,58 +274,67 @@ def encode(img, r, root):
     if p.returncode != 0 or not os.path.exists(tmp): raise RuntimeError('texconv: ' + p.stdout[-300:])
     os.replace(tmp, dst); return dst
 
+def variants(r, R):
+    """the four ladder levels of one texture (float32 HxWx4, 4x or 2x): gen4x (anchored model output), + mid band, + normal detail,
+    D. Kinds: colour / texset_color / texset_masks / normal, and data (full pass: masks, spec, glow; mask model, no boosts)"""
+    o = orig(r); w, h = r['size']; f = factor(r); W, Hh = f * w, f * h; k = r['kind']
+    A = np.zeros((Hh, W, 4), np.float32); A[..., 3] = resize(o[..., 3], (W, Hh)) if k != 'normal' else 255
+    if k in ('colour', 'texset_color', 'texset_masks', 'data'):
+        A[..., :3] = anchor(o[..., :3], raw4(raw_path(r, 'rgb'), f, (W, Hh)), f)
+    if k in ('colour', 'data') and r['format'] == 'PF_DXT5' and os.path.exists(raw_path(r, 'alpha')):
+        A[..., 3] = anchor(o[..., 3:4], raw4(raw_path(r, 'alpha'), f, (W, Hh))[..., :1], f)[..., 0]
+    nrm = None                                                    # unit normals at 4x (gen4x) for the normal boost
+    if k == 'normal':
+        n = raw4(raw_path(r, 'nrm'), f, (W, Hh)).astype(np.float32)
+        xy = anchor(o[..., :2], n[..., :2], f); nrm = nrm_from_xy(xy[..., 0], xy[..., 1])
+        A[..., :3] = (nrm + 1) * 127.5
+    texn = None
+    if k in ('texset_color', 'texset_masks'):
+        c = r if k == 'texset_color' else partner(r, R); m = partner(c, R) if c else None
+        if c and m and os.path.exists(raw_path(c, 'texnrm')):
+            cw, ch = c['size']; fc = factor(c); n = raw4(raw_path(c, 'texnrm'), fc, (fc * cw, fc * ch)).astype(np.float32)
+            ox = orig(c)[..., 3].astype(np.float32); oy = resize(orig(m)[..., 3], (cw, ch)).astype(np.float32)
+            xy = anchor(np.stack([ox, oy], -1), n[..., :2], fc); texn = (c, nrm_from_xy(xy[..., 0], xy[..., 1]))
+            comp = 0 if k == 'texset_color' else 1
+            A[..., 3] = resize(np.clip((texn[1][..., comp] + 1) * 127.5, 0, 255).astype(np.uint8), (W, Hh))
+    # variants
+    V = OD([('gen4x', A)])
+    B = A.copy()
+    if k in ('colour', 'texset_color'): B[..., :3] = mid_boost(A[..., :3], f)
+    V['gen4x_mid'] = B
+    C = B.copy()
+    if k == 'normal':
+        ls = lumsrc(r, R); lum = None
+        if ls and os.path.exists(raw_path(ls, 'rgb')):
+            fl = factor(ls); lw, lh = ls['size']
+            lum = V4.luma(mid_boost(anchor(orig(ls)[..., :3], raw4(raw_path(ls, 'rgb'), fl, (fl * lw, fl * lh)), fl), fl))
+            if lum.shape != (Hh, W): lum = np.asarray(Image.fromarray(lum.astype(np.float32), 'F').resize((W, Hh), Image.BILINEAR))
+        C[..., :3] = (nrm_boost(nrm, lum) + 1) * 127.5
+        D = C.copy(); D[..., :3] = (nrm_boost(nrm, lum, D_NRM_BASE, D_NRM_MICRO) + 1) * 127.5
+    if texn is not None:
+        c = texn[0]; fc = factor(c); cw, ch = c['size']
+        lum = V4.luma(mid_boost(anchor(orig(c)[..., :3], raw4(raw_path(c, 'rgb'), fc, (fc * cw, fc * ch)), fc), fc))
+        nb = nrm_boost(texn[1], lum); comp = 0 if k == 'texset_color' else 1
+        C[..., 3] = resize(np.clip((nb[..., comp] + 1) * 127.5, 0, 255).astype(np.uint8), (W, Hh))
+        nd = nrm_boost(texn[1], lum, D_NRM_BASE, D_NRM_MICRO)
+        Dt = resize(np.clip((nd[..., comp] + 1) * 127.5, 0, 255).astype(np.uint8), (W, Hh))
+    V['gen4x_mid_nrm'] = C
+    if k != 'normal': D = C.copy()
+    if k in ('colour', 'texset_color'): D[..., :3] = detail_boost_d(A[..., :3], f)
+    if texn is not None: D[..., 3] = Dt
+    V['gen4x_d'] = D
+    return o, f, W, Hh, V
+
+def lumsrc(r, R):
+    """the colour texture a normal map's micro relief comes from (same package folder, same name prefix)"""
+    return next((x for x in R if x['kind'] == 'colour' and os.path.dirname(x['png']) == os.path.dirname(r['png'])
+                 and os.path.basename(x['png']).split('_')[0] == os.path.basename(r['png']).split('_')[0]), None)
+
 def build():
     R = rows(); res = []; idx = {v: [] for v in VARIANTS}
     for r in R:
-        o = orig(r); w, h = r['size']; f = factor(r); W, Hh = f * w, f * h; k = r['kind']
-        A = np.zeros((Hh, W, 4), np.float32); A[..., 3] = resize(o[..., 3], (W, Hh)) if k != 'normal' else 255
-        if k in ('colour', 'texset_color', 'texset_masks'):
-            A[..., :3] = anchor(o[..., :3], raw4(raw_path(r, 'rgb'), f, (W, Hh)), f)
-        if k == 'colour' and r['format'] == 'PF_DXT5' and os.path.exists(raw_path(r, 'alpha')):
-            A[..., 3] = anchor(o[..., 3:4], raw4(raw_path(r, 'alpha'), f, (W, Hh))[..., :1], f)[..., 0]
-        nrm = None                                                    # unit normals at 4x (gen4x) for the normal boost
-        if k == 'normal':
-            n = raw4(raw_path(r, 'nrm'), f, (W, Hh)).astype(np.float32)
-            xy = anchor(o[..., :2], n[..., :2], f); nrm = nrm_from_xy(xy[..., 0], xy[..., 1])
-            A[..., :3] = (nrm + 1) * 127.5
-        texn = None
-        if k in ('texset_color', 'texset_masks'):
-            c = r if k == 'texset_color' else partner(r, R); m = partner(c, R) if c else None
-            if c and m and os.path.exists(raw_path(c, 'texnrm')):
-                cw, ch = c['size']; fc = factor(c); n = raw4(raw_path(c, 'texnrm'), fc, (fc * cw, fc * ch)).astype(np.float32)
-                ox = orig(c)[..., 3].astype(np.float32); oy = resize(orig(m)[..., 3], (cw, ch)).astype(np.float32)
-                xy = anchor(np.stack([ox, oy], -1), n[..., :2], fc); texn = (c, nrm_from_xy(xy[..., 0], xy[..., 1]))
-                comp = 0 if k == 'texset_color' else 1
-                A[..., 3] = resize(np.clip((texn[1][..., comp] + 1) * 127.5, 0, 255).astype(np.uint8), (W, Hh))
-        # variants
-        V = OD([('gen4x', A)])
-        B = A.copy()
-        if k in ('colour', 'texset_color'): B[..., :3] = mid_boost(A[..., :3], f)
-        V['gen4x_mid'] = B
-        C = B.copy()
-        if k == 'normal':
-            lumsrc = next((x for x in R if x['kind'] == 'colour' and os.path.dirname(x['png']) == os.path.dirname(r['png'])
-                           and os.path.basename(x['png']).split('_')[0] == os.path.basename(r['png']).split('_')[0]), None)
-            lum = None
-            if lumsrc and os.path.exists(raw_path(lumsrc, 'rgb')):
-                fl = factor(lumsrc); lw, lh = lumsrc['size']
-                lum = V4.luma(mid_boost(anchor(orig(lumsrc)[..., :3], raw4(raw_path(lumsrc, 'rgb'), fl, (fl * lw, fl * lh)), fl), fl))
-                if lum.shape != (Hh, W): lum = np.asarray(Image.fromarray(lum.astype(np.float32), 'F').resize((W, Hh), Image.BILINEAR))
-            C[..., :3] = (nrm_boost(nrm, lum) + 1) * 127.5
-            D = C.copy(); D[..., :3] = (nrm_boost(nrm, lum, D_NRM_BASE, D_NRM_MICRO) + 1) * 127.5
-        if texn is not None:
-            c = texn[0]; fc = factor(c); cw, ch = c['size']
-            lum = V4.luma(mid_boost(anchor(orig(c)[..., :3], raw4(raw_path(c, 'rgb'), fc, (fc * cw, fc * ch)), fc), fc))
-            nb = nrm_boost(texn[1], lum); comp = 0 if k == 'texset_color' else 1
-            C[..., 3] = resize(np.clip((nb[..., comp] + 1) * 127.5, 0, 255).astype(np.uint8), (W, Hh))
-            nd = nrm_boost(texn[1], lum, D_NRM_BASE, D_NRM_MICRO)
-            Dt = resize(np.clip((nd[..., comp] + 1) * 127.5, 0, 255).astype(np.uint8), (W, Hh))
-        V['gen4x_mid_nrm'] = C
-        if k != 'normal': D = C.copy()
-        if k in ('colour', 'texset_color'): D[..., :3] = detail_boost_d(A[..., :3], f)
-        if texn is not None: D[..., 3] = Dt
-        V['gen4x_d'] = D
-        rec = OD([('i', r['i']), ('png', r['png']), ('kind', k), ('size', r['size']), ('area_m2', r['area_m2'])])
+        o, f, W, Hh, V = variants(r, R); k = r['kind']
+        rec = OD([('i', r['i']), ('png', r['png']), ('kind', k), ('size', r['size']), ('area_m2', r.get('area_m2'))])
         for v, img in V.items():
             u8 = np.clip(np.round(img), 0, 255).astype(np.uint8); m = drift(o, u8, k); rec[v] = m
             if m['ok']:
