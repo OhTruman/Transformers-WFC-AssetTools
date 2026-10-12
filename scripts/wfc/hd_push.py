@@ -25,7 +25,9 @@ if '--v2' not in sys.argv: sys.argv.append('--v2')
 import hd_pilot as H  # noqa: E402
 import hd_v4 as V4  # noqa: E402
 REB = os.path.dirname(H.AT)
-OUT = os.path.join(H.HD, 'push_pilot'); RAW = os.path.join(OUT, '_raw')
+# WFC_HD_PUSH_SET=full: the HD full pass (docs/HD_FULL_PASS_PLAN.md) on out/hd/full/selection.json instead of the Rust pilot
+FULL = os.environ.get('WFC_HD_PUSH_SET') == 'full'
+OUT = os.path.join(H.HD, 'push_full' if FULL else 'push_pilot'); RAW = os.path.join(OUT, '_raw')
 VARIANTS = ['gen4x', 'gen4x_mid', 'gen4x_mid_nrm', 'gen4x_d']   # D (Integration 2026-10-11, user 'the most amount of details'): stronger than C
 COLOUR_MODEL, MASK_MODEL, NORMAL_MODEL = '4x-Textures-GTAV-rgt-s', '4x-PBRify-RPLKSRd-V3', '4x-Normal-RG0-BC1'
 EXTRA = ['content/TR_BumbleBee_ROBO_p/RB_Bumblebee_GrngCLR.png', 'content/TR_BumbleBee_ROBO_p/RB_Bumblebee_Norm_XY_1024.png',
@@ -69,6 +71,21 @@ def select():
     from collections import Counter
     print(len(rows), Counter(r['kind'] for r in rows))
 
+def select_full():
+    """the full pass: every texture of the M4 selection except KEEP verdicts and tiny (<= 64 px) ones (Lanczos / kept, plan).
+    Kind from the selection class (data = masks / spec / glow: mask model), TEXSET halves by name; i = the selection key k"""
+    sel = json.load(open(os.path.join(H.HD, 'full', 'selection.json'), encoding='utf-8'))
+    ver = json.load(open(os.path.join(H.HD, 'full', 'verdicts.json'), encoding='utf-8'))
+    rows = []
+    for x in sel:
+        if ver.get(str(x['k']), {}).get('verdict') == 'KEEP' or max(x['size']) <= 64: continue
+        k = kind(x['png']); k = k if k.startswith('texset') else x['cls']
+        rows.append(OD([('i', x['k']), ('png', x['png']), ('dds', x['dds']), ('object_path', x['object_path']), ('format', x['format']),
+                        ('size', x['size']), ('kind', k), ('verdict', ver.get(str(x['k']), {}).get('verdict'))]))
+    os.makedirs(OUT, exist_ok=True)
+    json.dump(rows, open(os.path.join(OUT, 'select.json'), 'w', encoding='utf-8'), indent=1)
+    print(len(rows), Counter(r['kind'] for r in rows), Counter(r['verdict'] for r in rows))
+
 def rows(): return json.load(open(os.path.join(OUT, 'select.json'), encoding='utf-8'))
 def orig(r): return np.asarray(Image.open(os.path.join(H.DDS, r['dds'])).convert('RGBA'))
 def partner(r, R):
@@ -95,13 +112,16 @@ CPU_MODELS = {COLOUR_MODEL}   # rgt-s on DirectML returns garbage for interior (
 
 def gen():
     """the model outputs (resumable; exits 75 when a performance hold appears, the cmd runner waits and restarts).
-    --cpu-only: only the CPU_MODELS outputs (no GPU use; these yield to PERF_HOLD files only, not to a running game)"""
+    --cpu-only: only the CPU_MODELS outputs (no GPU use; these yield to PERF_HOLD files only, not to a running game)
+    --shard i/n: only rows whose position % n == i (parallel CPU shards)"""
     import torch
     import hd_torch as T
     cpu_only = '--cpu-only' in sys.argv
     dev, name = (torch.device('cpu'), 'cpu') if cpu_only else T.device(); print('device', name, flush=True)
     torch.set_num_threads(int(os.environ.get('WFC_HD_CPU_THREADS', '6')))
     os.makedirs(RAW, exist_ok=True); R = rows(); models = {}
+    sh = next((a.split('/') for a in sys.argv if '/' in a and a.replace('/', '').isdigit()), None)
+    mine = (lambda j: j % int(sh[1]) == int(sh[0])) if sh else (lambda j: True)
     def run(model, img, path):
         if os.path.exists(path) or cpu_only != (model in CPU_MODELS): return
         d = torch.device('cpu') if model in CPU_MODELS else dev
@@ -110,13 +130,14 @@ def gen():
         if model not in models: models[model] = T.load(model, d)
         t0 = time.time(); out = T.upscale(models[model], d, img); Image.fromarray(out).save(path)
         print(os.path.basename(path), img.shape, '%.0fs' % (time.time() - t0), flush=True)
-    for r in R:
+    for j, r in enumerate(R):
+        if not mine(j) or (cpu_only and r['kind'] not in ('colour', 'texset_color')): continue
         o = orig(r); w, h = r['size']; g3 = lambda c: np.dstack([c, c, c])
         if r['kind'] in ('colour', 'texset_color'): run(COLOUR_MODEL, o[..., :3], raw_path(r, 'rgb'))
-        if r['kind'] == 'texset_masks': run(MASK_MODEL, o[..., :3], raw_path(r, 'rgb'))
+        if r['kind'] in ('texset_masks', 'data'): run(MASK_MODEL, o[..., :3], raw_path(r, 'rgb'))
         if r['kind'] == 'normal':
             n = o[..., :3].copy(); n[..., 2] = 0; run(NORMAL_MODEL, n, raw_path(r, 'nrm'))     # RG0 convention (M4)
-        if r['kind'] == 'colour' and r['format'] == 'PF_DXT5': run(MASK_MODEL, g3(o[..., 3]), raw_path(r, 'alpha'))
+        if r['kind'] in ('colour', 'data') and r['format'] == 'PF_DXT5': run(MASK_MODEL, g3(o[..., 3]), raw_path(r, 'alpha'))
         if r['kind'] == 'texset_color':                         # NormX (this alpha) + NormY (the masks' alpha) at this size
             p = partner(r, R)
             if p is None: continue
@@ -432,4 +453,4 @@ def ingame():
     print(json.dumps(mem))
 
 if __name__ == '__main__':
-    {'select': select, 'gen': gen, 'build': build, 'pack': pack, 'sheet': sheet, 'ingame': ingame}[sys.argv[1]]()
+    {'select': select, 'select_full': select_full, 'gen': gen, 'build': build, 'pack': pack, 'sheet': sheet, 'ingame': ingame}[sys.argv[1]]()

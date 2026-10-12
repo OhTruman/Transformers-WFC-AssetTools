@@ -105,6 +105,12 @@ Starts when the M1 slots end (PERF_HOLD cleared).
   palette kept). Rendering's C vs D in-game captures (`_cd` runs, compressed sRGB upload build): same VRAM (1,566 MB, 36 HD); sheets
   out/hd/push_pilot/ingame_cd (`hd_push.py ingame cd`).
 
+- **User decision (relayed by Integration 2026-10-12): D for the full pass, "D all the way".** Ladder D -> C -> B -> A -> original,
+  D on top; the remake pool takes the same ladder; eye review mandatory; a progress line to Integration per completed batch.
+- Full pass started 2026-10-12 (Integration OK): `WFC_HD_PUSH_SET=full hd_push.py select_full` -> out/hd/push_full (3,771 textures:
+  KEEP and <= 64 px excluded; kind from the selection class, so data / spec / glow maps use the mask model). Runners
+  out/hd/run_full_cpu_s{0,1}.cmd (colour, CPU, 2 x 6 threads, `--shard i/2`) and run_full_gpu.cmd (masks / data / normals, DirectML,
+  GPU gaps). Measured: 367 s per 1024² per CPU shard -> about 47 h for the 1,657 colour textures; 2048² masks about 90 s on DML.
+
 ## Open
-- D vs C (user, from the Rust C vs D sheet).
 - hd_pbr does not fit: there is no renderer PBR path (reported earlier).
