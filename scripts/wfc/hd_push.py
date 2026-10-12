@@ -26,7 +26,7 @@ import hd_pilot as H  # noqa: E402
 import hd_v4 as V4  # noqa: E402
 REB = os.path.dirname(H.AT)
 OUT = os.path.join(H.HD, 'push_pilot'); RAW = os.path.join(OUT, '_raw')
-VARIANTS = ['gen4x', 'gen4x_mid', 'gen4x_mid_nrm']
+VARIANTS = ['gen4x', 'gen4x_mid', 'gen4x_mid_nrm', 'gen4x_d']   # D (Integration 2026-10-11, user 'the most amount of details'): stronger than C
 COLOUR_MODEL, MASK_MODEL, NORMAL_MODEL = '4x-Textures-GTAV-rgt-s', '4x-PBRify-RPLKSRd-V3', '4x-Normal-RG0-BC1'
 EXTRA = ['content/TR_BumbleBee_ROBO_p/RB_Bumblebee_GrngCLR.png', 'content/TR_BumbleBee_ROBO_p/RB_Bumblebee_Norm_XY_1024.png',
          'content/WEP_HeavyPistol_p/WEP_HeavyPistol_CLR.png', 'content/WEP_HeavyPistol_p/WEP_HeavyPistol_NORM.png']
@@ -35,6 +35,8 @@ MAX_SIDE = 4096   # Integration: VRAM (sRGB colour decodes to 4-8 B/px): 4x up t
 SSIM_MIN, SHIFT_MAX, NEWCOL_MAX = 0.80, 3.0, 0.03
 MID_SIGMA_ORIG, MID_GAIN = 3.0, 0.6
 NRM_BASE, NRM_MICRO = 1.25, 0.15
+# D: luminance-only mid + fine band (chroma kept, so the palette holds), stronger relief
+D_MID_GAIN, D_FINE_SIGMA_ORIG, D_FINE_GAIN, D_NRM_BASE, D_NRM_MICRO = 1.0, 1.0, 0.5, 1.6, 0.30
 
 def kind(png):
     b = os.path.basename(png)
@@ -153,16 +155,23 @@ def mid_boost(x, f=4):
     s = MID_SIGMA_ORIG * f
     return np.clip(x + MID_GAIN * (x - gblur(x, s)), 0, 255)
 
+def detail_boost_d(x, f=4):
+    """D: mid band (MID_SIGMA_ORIG) at D_MID_GAIN plus a fine band (D_FINE_SIGMA_ORIG) at D_FINE_GAIN, on luminance only"""
+    Y = V4.luma(x).astype(np.float32)
+    Yb = Y + D_MID_GAIN * (Y - gblur(Y, MID_SIGMA_ORIG * f)) + D_FINE_GAIN * (Y - gblur(Y, D_FINE_SIGMA_ORIG * f))
+    return np.clip(x + (Yb - Y)[..., None], 0, 255)
+
 def nrm_from_xy(x, y):
     X = x / 127.5 - 1; Y = y / 127.5 - 1; Z = np.sqrt(np.clip(1 - X * X - Y * Y, 0, 1)); return np.stack([X, Y, Z], -1)
 
-def nrm_boost(n, lum):
+def nrm_boost(n, lum, base=None, micro=None):
     """n: HxWx3 unit normals; base relief x NRM_BASE, then whiteout blend with micro relief from the colour's own detail"""
-    n = n.copy(); n[..., :2] *= NRM_BASE
+    base = NRM_BASE if base is None else base; micro = NRM_MICRO if micro is None else micro
+    n = n.copy(); n[..., :2] *= base
     if lum is not None:
         d = lum - gblur(lum, 3.0); d = d / (d.std() + 1e-6)
         gy, gx = np.gradient(d)
-        m = np.stack([-gx * NRM_MICRO, -gy * NRM_MICRO, np.ones_like(d)], -1)
+        m = np.stack([-gx * micro, -gy * micro, np.ones_like(d)], -1)
         n = np.stack([n[..., 0] + m[..., 0], n[..., 1] + m[..., 1], n[..., 2] * m[..., 2]], -1)
     return n / np.maximum(np.linalg.norm(n, axis=-1, keepdims=True), 1e-6)
 
@@ -257,12 +266,19 @@ def build():
                 lum = V4.luma(mid_boost(anchor(orig(lumsrc)[..., :3], raw4(raw_path(lumsrc, 'rgb'), fl, (fl * lw, fl * lh)), fl), fl))
                 if lum.shape != (Hh, W): lum = np.asarray(Image.fromarray(lum.astype(np.float32), 'F').resize((W, Hh), Image.BILINEAR))
             C[..., :3] = (nrm_boost(nrm, lum) + 1) * 127.5
+            D = C.copy(); D[..., :3] = (nrm_boost(nrm, lum, D_NRM_BASE, D_NRM_MICRO) + 1) * 127.5
         if texn is not None:
             c = texn[0]; fc = factor(c); cw, ch = c['size']
             lum = V4.luma(mid_boost(anchor(orig(c)[..., :3], raw4(raw_path(c, 'rgb'), fc, (fc * cw, fc * ch)), fc), fc))
             nb = nrm_boost(texn[1], lum); comp = 0 if k == 'texset_color' else 1
             C[..., 3] = resize(np.clip((nb[..., comp] + 1) * 127.5, 0, 255).astype(np.uint8), (W, Hh))
+            nd = nrm_boost(texn[1], lum, D_NRM_BASE, D_NRM_MICRO)
+            Dt = resize(np.clip((nd[..., comp] + 1) * 127.5, 0, 255).astype(np.uint8), (W, Hh))
         V['gen4x_mid_nrm'] = C
+        if k != 'normal': D = C.copy()
+        if k in ('colour', 'texset_color'): D[..., :3] = detail_boost_d(A[..., :3], f)
+        if texn is not None: D[..., 3] = Dt
+        V['gen4x_d'] = D
         rec = OD([('i', r['i']), ('png', r['png']), ('kind', k), ('size', r['size']), ('area_m2', r['area_m2'])])
         for v, img in V.items():
             u8 = np.clip(np.round(img), 0, 255).astype(np.uint8); m = drift(o, u8, k); rec[v] = m
@@ -278,7 +294,9 @@ def build():
                   open(os.path.join(OUT, v, 'hd_index.json'), 'w', encoding='utf-8'), indent=1)
     json.dump(OD([('generated', time.strftime('%Y-%m-%d %H:%M')), ('variants', VARIANTS),
                   ('drift_gate', OD([('ssim_min', SSIM_MIN), ('mean_shift_max', SHIFT_MAX), ('new_colours_max', NEWCOL_MAX)])),
-                  ('params', OD([('mid_sigma_orig_px', MID_SIGMA_ORIG), ('mid_gain', MID_GAIN), ('normal_base', NRM_BASE), ('normal_micro', NRM_MICRO)])),
+                  ('params', OD([('mid_sigma_orig_px', MID_SIGMA_ORIG), ('mid_gain', MID_GAIN), ('normal_base', NRM_BASE), ('normal_micro', NRM_MICRO),
+                                  ('d', OD([('mid_gain', D_MID_GAIN), ('fine_sigma_orig_px', D_FINE_SIGMA_ORIG), ('fine_gain', D_FINE_GAIN),
+                                            ('normal_base', D_NRM_BASE), ('normal_micro', D_NRM_MICRO)]))])),
                   ('models', OD([('colour', COLOUR_MODEL), ('masks_alpha', MASK_MODEL), ('normal', NORMAL_MODEL)])), ('textures', res)]),
               open(os.path.join(OUT, 'push_pilot.json'), 'w', encoding='utf-8'), indent=1)
     print({v: len(idx[v]) for v in VARIANTS})

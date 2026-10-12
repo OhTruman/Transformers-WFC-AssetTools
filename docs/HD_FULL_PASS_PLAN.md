@@ -54,6 +54,43 @@ Rough total: 3–5 days of wall time, depending on GPU gaps and review pace.
 - 4x only for screen-visible textures plus characters and weapons.
 - Install keeps 3f410a1 as a backup; FILELOG check on Streets / Gorge / Rust.
 
+## User decision (relayed by Integration 2026-10-11): variant C, "I want the most amount of details"
+Rust pilot (hd_push.py, in-game sheets out/hd/push_pilot/ingame): A 4x / B +mid-band / C +normal detail all cost the same VRAM
+(3,265 MB vs 1,432 MB off, uncompressed sRGB upload); C is the most visible on lit surfaces.
+
+### Method (replaces the per-class table above where they differ)
+- Every texture: the 4x model output, anchored to the original (low-frequency back-projection); then the ladder
+  **D -> C -> B -> A -> original**: the strongest level that passes the drift gate (SSIM >= 0.80, mean shift <= 3, new colours <= 3 %)
+  and the full-resolution `broken_blocks` gate = 0 is used. TEXSET Color / Masks pairs always take the same level.
+  D only if the user approves it from a C vs D sheet; until then the top is C.
+- Models: colour 4x-Textures-GTAV-rgt-s (**CPU**: DirectML corrupts interior tiles), masks / alpha 4x-PBRify-RPLKSRd-V3 and
+  normals 4x-Normal-RG0-BC1 on DirectML (verified clean).
+- 4x up to 4096² (originals up to 1024), 2x for 2048 originals.
+- Remake pool (1,470 = 1,556 REMAKE - 86 errata wins): the same ladder. Where it falls to the original, the M4 remake variants
+  (hd_remake: edge / height / direct) are tried at the highest level that passes. Eye review decides, as for all textures.
+- Eye review: mandatory for every texture that enters the pack (close-up sheets, original | chosen level, 8 per sheet);
+  reject -> next lower level or original. EYE_REJECT list in the generator, never hand edits.
+- VRAM: <= 8 GB per map, assumes Rendering's compressed sRGB upload (Rendering estimate: C, 4x full Rust ~3.3 GB).
+
+### D prototype (Integration: "more mid-band and relief than C, same layout / motifs / palette, still gated")
+- Luminance-only mid band (gain 1.0 vs C's 0.6, sigma 3 orig px) plus a fine band (sigma 1 orig px, gain 0.5); chroma unchanged,
+  so the palette holds. Normal relief base x1.6 (C 1.25), micro 0.30 (C 0.15).
+- Run on the Rust pilot set when the M1 slots end (CPU build ~20 min); texture sheets + eye review; Rendering's in-game C vs D
+  captures for the user.
+
+### Timeline (PROVISIONAL; measured pilot rates)
+| step | rate | full pass |
+|---|---|---|
+| colour model on CPU (12 of 32 threads) | ~230 s / 1024², 55 s / 512² (6 threads, pilot) | ~1,700 colour textures: ~25-45 h CPU |
+| first: DirectML retest of the colour model at 144 px tiles (edge tiles were correct) | if clean: ~10x faster | ~4-6 h GPU instead |
+| masks / normals on DirectML | 1-4 s each | ~2 h GPU |
+| build (anchor, ladder, gates, BC encode) | ~25 s / texture (4 levels) | ~3,800 textures: ~26 h CPU, ~9 h in 3 shards |
+| eye review | ~100-150 / h | ~3,800 textures (all levels changed): ~25-35 h, in batches as builds land |
+| install + FILELOG (Streets / Gorge / Rust) | | ~0.5 day |
+Wall time with gaps and holds: about 4-6 days after the M1 slots end, if the DirectML retest is clean. If it isn't (CPU colour model),
+about 6-8 days. Everything is resumable and hold-aware; an announced PERF HOLD = all runners stopped.
+
 ## Open
-- The variant choice (user, from the Rust in-game sheet; Integration sends it).
+- D vs C (user, from the Rust C vs D sheet).
+- The DirectML colour-model retest at 144 px tiles (first GPU job after M1).
 - hd_pbr does not fit: there is no renderer PBR path (reported earlier).
