@@ -90,6 +90,12 @@ Rust pilot (hd_push.py, in-game sheets out/hd/push_pilot/ingame): A 4x / B +mid-
 Wall time with gaps and holds: about 4-6 days after the M1 slots end, if the DirectML retest is clean. If it isn't (CPU colour model),
 about 6-8 days. Everything is resumable and hold-aware; an announced PERF HOLD = all runners stopped.
 
+### Approved (Integration 2026-10-11), with conditions
+1. The DirectML colour retest (scripts/wfc/hd_dml_retest.py, 144 px tiles) counts as clean only if broken_blocks == 0 AND sampled
+   interior tiles match a CPU run (mean |diff| <= 1.0), on >= 20 colour textures of mixed sizes (256 / 512 / 1024 / 2048).
+2. Eye review is mandatory per texture; progress goes to Integration once per completed batch.
+Starts when the M1 slots end (PERF_HOLD cleared).
+
 ## Open
 - D vs C (user, from the Rust C vs D sheet).
 - The DirectML colour-model retest at 144 px tiles (first GPU job after M1).
