@@ -96,7 +96,15 @@ about 6-8 days. Everything is resumable and hold-aware; an announced PERF HOLD =
 2. Eye review is mandatory per texture; progress goes to Integration once per completed batch.
 Starts when the M1 slots end (PERF_HOLD cleared).
 
+### Results 2026-10-12 (after the M1 slots)
+- DirectML retest at 144 px tiles: **NOT CLEAN** (stopped at 13 of 20 once the rule could no longer pass): 3 clean, 10 with broken
+  blocks (256 px 5/5, 512 px 4/6, 1024 px 1/2). Every sampled interior tile matched the CPU (mean |diff| 0.0); the corrupt tile is the
+  top-left corner tile (128 px input, no padding), seen by eye on k 61 / 1872 / 2397. DML is also only ~2x faster than CPU (101 s vs
+  ~228 s per 1024², `aten::roll` falls back to CPU), so the colour model stays on **CPU** (timeline row "6-8 days").
+- D prototype on the Rust pilot: D on 26 of 37 textures (8 fall to C, 1 B, 2 A); texture-space eye review passed (layout, motifs and
+  palette kept). Rendering's C vs D in-game captures (`_cd` runs, compressed sRGB upload build): same VRAM (1,566 MB, 36 HD); sheets
+  out/hd/push_pilot/ingame_cd (`hd_push.py ingame cd`).
+
 ## Open
 - D vs C (user, from the Rust C vs D sheet).
-- The DirectML colour-model retest at 144 px tiles (first GPU job after M1).
 - hd_pbr does not fit: there is no renderer PBR path (reported earlier).

@@ -353,30 +353,43 @@ def sheet():
     print('sheets', (len(rws) + 9) // 10)
 
 INGAME = os.path.join(REB, 'Rebuild-Rendering', 'work', 'hdpush', 'runs')   # Rendering's captures (read in place)
-SOURCES = [('off', 'original (HD off)'), ('gen4x', 'A  4x'), ('gen4x_mid', 'B  4x + mid-band'), ('gen4x_mid_nrm', 'C  4x + mid + normal'),
-           ('m4', 'M4 shipped pack (reference)')]
+SOURCES = [('off', 'original (HD off)', ''), ('gen4x', 'A  4x', ''), ('gen4x_mid', 'B  4x + mid-band', ''),
+           ('gen4x_mid_nrm', 'C  4x + mid + normal', ''), ('m4', 'M4 shipped pack (reference)', '')]
+# C vs D (user to choose): Rendering's '_cd' runs on the build with the compressed sRGB upload; the original is the earlier pilot run
+SOURCES_CD = [('off', 'original (HD off; earlier build)', ''), ('gen4x_mid_nrm', 'C  4x + mid + normal', '_cd'),
+              ('gen4x_d', 'D  4x + stronger mid/fine + relief', '_cd')]
 SPOTS = ['ground_rust', 'wall_blockbldpanel', 'interior_wall', 'floor_panel', 'wall_archive']
 
 def ingame():
-    """in-game before / after for the user (Integration): per spot, the settled 2560x1440 frame (m00600) of each source;
-    the 640x360 region where C differs most from the original is shown 1:1 for every source, at AF 16 and AF 4"""
+    """in-game before / after for the user (Integration): per spot, the settled 2560x1440 frame (m00600) of each source; the 640x360
+    region where the two compared sources differ most is shown 1:1 for every source, at AF 16 and AF 4.
+    `ingame` = original vs C (A/B/C/M4 pilot); `ingame cd` = C vs D (crop where D departs most from C)"""
     import re
-    dst = os.path.join(OUT, 'ingame'); os.makedirs(dst, exist_ok=True)
-    shot = lambda s, af, sp: np.asarray(Image.open(os.path.join(INGAME, '%s_af%d_%s' % (s, af, sp), 'shots', 'm00600.bmp')).convert('RGB'))
+    cd = 'cd' in sys.argv[2:]
+    srcs, (ra, rb), top = (SOURCES_CD, ('gen4x_mid_nrm', 'gen4x_d'), ('gen4x_mid_nrm', 'gen4x_d')) if cd else \
+                          (SOURCES, ('off', 'gen4x_mid_nrm'), ('off', 'gen4x_mid_nrm'))
+    suf = {s: x for s, _, x in srcs}; lab = {s: l for s, l, _ in srcs}
+    dst = os.path.join(OUT, 'ingame_cd' if cd else 'ingame'); os.makedirs(dst, exist_ok=True)
+    run = lambda s, af, sp: os.path.join(INGAME, '%s_af%d_%s%s' % (s, af, sp, suf[s]))
+    shot = lambda s, af, sp: np.asarray(Image.open(os.path.join(run(s, af, sp), 'shots', 'm00600.bmp')).convert('RGB'))
     mem = OD()
-    for s, _ in SOURCES:
-        m = re.search(r'other textures \d+ = (\d+) MB.*?(\d+) HD\)', open(os.path.join(INGAME, '%s_af16_%s' % (s, SPOTS[0]), 'wfc.log'),
+    for s, _, _ in srcs:
+        m = re.search(r'other textures \d+ = (\d+) MB.*?(\d+) HD\)', open(os.path.join(run(s, 16, SPOTS[0]), 'wfc.log'),
                                                                         encoding='utf-8', errors='replace').read())
         mem[s] = OD([('texture_mb', int(m.group(1))), ('hd_loaded', int(m.group(2)))])
     CW, CH, LBL = 640, 360, 26; summary = OD()
     for sp in SPOTS:
-        a, c = shot('off', 16, sp).astype(np.int16), shot('gen4x_mid_nrm', 16, sp).astype(np.int16)
+        a, c = shot(ra, 16, sp).astype(np.int16), shot(rb, 16, sp).astype(np.int16)
         dif = np.abs(a - c).sum(2).astype(np.float32); best = (-1, 0, 0)
-        # HUD = equal in every source and at AF 4 and 16 (texture filtering changes every textured surface, not the HUD)
+        # HUD = equal in every source (same build) and at AF 4 and 16 (texture filtering changes every textured surface, not the HUD)
         hud = np.ones(dif.shape, bool)
-        for s, _ in SOURCES:
+        for s, _, x in srcs:
+            if x != suf[ra]: continue
             for af in (4, 16): hud &= (shot(s, af, sp).astype(np.int16) == a).all(2)
         hud[:300] = True; hud[640:820, 120:900] = True; hud[400:560, 1200:1360] = True   # HUD blends with the scene: top bar, kill feed, crosshair
+        if cd:   # C and D are equal over most of the scene, so the equality mask is meaningless here: fixed zones from the '_cd' frames
+            hud = np.zeros(dif.shape, bool)
+            hud[:300] = True; hud[1040:1300, 100:800] = True; hud[680:840, 1180:1380] = True   # top bar, kill feed (lower here), crosshair
         hud = hud.astype(np.float32)
         for lim in (0.01, 0.03, 0.1, 1.0):
             for y in range(0, a.shape[0] - CH + 1, 60):
@@ -386,32 +399,35 @@ def ingame():
                     if v > best[0]: best = (v, x, y)
             if best[0] >= 0: break
         _, x0, y0 = best
-        W = len(SOURCES) * (CW + 8)
+        W = max(len(srcs), 2) * (CW + 8) if not cd else max(len(srcs) * (CW + 8), 2 * 1288)
         im = Image.new('RGB', (W, LBL + 720 + 3 * (CH + LBL) + 40), (16, 16, 20)); d = ImageDraw.Draw(im)
-        d.text((6, 6), 'Rust / %s   2560x1440 in game, same camera, only textures differ.  Top: full frame original | C (yellow box = 1:1 region)' % sp,
-               fill=(235, 235, 235))
-        for j, s in enumerate(('off', 'gen4x_mid_nrm')):
+        d.text((6, 6), 'Rust / %s   2560x1440 in game, same camera, only textures differ.  Top: full frame %s | %s (yellow box = 1:1 region)'
+               % (sp, lab[top[0]].split('(')[0].strip(), lab[top[1]].split('(')[0].strip()), fill=(235, 235, 235))
+        for j, s in enumerate(top):
             f = Image.fromarray(shot(s, 16, sp).astype(np.uint8)).resize((1280, 720), Image.LANCZOS); fd = ImageDraw.Draw(f)
             fd.rectangle([x0 // 2, y0 // 2, (x0 + CW) // 2, (y0 + CH) // 2], outline=(255, 220, 0), width=2)
             im.paste(f, (j * 1288, LBL))
         Y = LBL + 728; diffs = OD()
         for af in (16, 4):
             d.text((6, Y + 4), 'AF %dx, 1:1 crop' % af, fill=(255, 220, 0))
-            for j, (s, lab) in enumerate(SOURCES):
+            for j, (s, l, _) in enumerate(srcs):
                 fr = shot(s, af, sp); cr = fr[y0:y0 + CH, x0:x0 + CW]
-                im.paste(Image.fromarray(cr), (j * (CW + 8), Y + LBL)); d.text((j * (CW + 8) + 120, Y + 4), lab, fill=(235, 235, 235))
-                if af == 16: diffs[s] = round(float(np.abs(cr.astype(np.int16) - shot('off', 16, sp)[y0:y0 + CH, x0:x0 + CW]).mean()), 2)
+                im.paste(Image.fromarray(cr), (j * (CW + 8), Y + LBL)); d.text((j * (CW + 8) + 120, Y + 4), l, fill=(235, 235, 235))
+                if af == 16: diffs[s] = round(float(np.abs(cr.astype(np.int16) - shot(ra, 16, sp)[y0:y0 + CH, x0:x0 + CW]).mean()), 2)
             Y += CH + LBL
         d.text((6, Y + 4), 'AF 16x, centre of the crop at 2x (nearest), BRIGHTENED 2x for visibility (not as seen in game)', fill=(255, 220, 0))
-        for j, (s, lab) in enumerate(SOURCES):
+        for j, (s, l, _) in enumerate(srcs):
             cr = shot(s, 16, sp)[y0 + CH // 4:y0 + CH // 4 + CH // 2, x0 + CW // 4:x0 + CW // 4 + CW // 2]
             cr = np.clip(cr.astype(np.int16) * 2, 0, 255).astype(np.uint8)
-            im.paste(Image.fromarray(cr).resize((CW, CH), Image.NEAREST), (j * (CW + 8), Y + LBL)); d.text((j * (CW + 8) + 120, Y + 4), lab, fill=(235, 235, 235))
+            im.paste(Image.fromarray(cr).resize((CW, CH), Image.NEAREST), (j * (CW + 8), Y + LBL)); d.text((j * (CW + 8) + 120, Y + 4), l, fill=(235, 235, 235))
         Y += CH + LBL
-        d.text((6, Y + 10), 'texture VRAM (MEMSTATS): ' + '   '.join('%s %d MB' % (s, mem[s]['texture_mb']) for s, _ in SOURCES), fill=(200, 200, 200))
-        p = os.path.join(dst, 'ingame_%s.png' % sp); im.save(p); summary[sp] = OD([('crop_xywh', [x0, y0, CW, CH]), ('mean_abs_diff_vs_off_af16', diffs)])
+        d.text((6, Y + 10), 'texture VRAM (MEMSTATS): ' + '   '.join('%s %d MB' % (lab[s].split('(')[0].strip(), mem[s]['texture_mb']) for s, _, _ in srcs),
+               fill=(200, 200, 200))
+        p = os.path.join(dst, 'ingame_%s.png' % sp); im.save(p)
+        summary[sp] = OD([('crop_xywh', [x0, y0, CW, CH]), ('mean_abs_diff_vs_%s_af16' % ra, diffs)])
         print(sp, (x0, y0), diffs, flush=True)
-    json.dump(OD([('generated', time.strftime('%Y-%m-%d %H:%M')), ('captures', 'Rendering, Rebuild-Rendering/work/hdpush/runs (m00600, 2560x1440)'),
+    json.dump(OD([('generated', time.strftime('%Y-%m-%d %H:%M')), ('captures', 'Rendering, Rebuild-Rendering/work/hdpush/runs (m00600, 2560x1440)'
+                   + (', C / D from the _cd runs (compressed sRGB upload build); original from the earlier pilot run' if cd else '')),
                   ('memstats', mem), ('spots', summary)]), open(os.path.join(dst, 'ingame.json'), 'w', encoding='utf-8'), indent=1)
     print(json.dumps(mem))
 
