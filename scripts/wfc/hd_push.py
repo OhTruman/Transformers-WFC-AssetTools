@@ -87,6 +87,8 @@ def raw_path(r, part): return os.path.join(RAW, '%03d_%s.png' % (r['i'], part))
 def resize(a, size, m=Image.LANCZOS):
     return H.resize_straight(a, size, m) if a.ndim == 3 else np.asarray(Image.fromarray(a, 'L').resize(size, m))
 
+# eye review of texture_sheet_*.png (2026-10-11): rejected textures keep the original in every variant
+EYE_REJECT = {'content/ENV_AllShader_p/Textures/Metal_01_TiledNORM.png'}   # diagonal grain turns into crumpled foil (motif change)
 CPU_MODELS = {COLOUR_MODEL}   # rgt-s on DirectML returns garbage for interior (160 px) tiles; CPU output is correct (2026-10-11)
 
 def gen():
@@ -287,6 +289,7 @@ def pack():
     covers what gen4x covers); a TEXSET Color / Masks pair (NormX / NormY halves of one normal) always takes the same level"""
     R = rows(); T = {t['i']: t for t in json.load(open(os.path.join(OUT, 'push_pilot.json'), encoding='utf-8'))['textures']}
     def level(r, p):
+        if any(x['png'] in EYE_REJECT for x in (r, partner(r, R)) if x is not None): return None
         for q in range(p, -1, -1):
             if all(T[x['i']][VARIANTS[q]]['ok'] for x in (r, partner(r, R)) if x is not None): return q
         return None
