@@ -109,8 +109,11 @@ def low_commit():
 def held():
     """a performance hold, or a game / fidelity run sharing the GPU (the pilot runs in gaps only)"""
     h = glob.glob(os.path.join(REB, '*', 'work', 'PERF_HOLD'))
-    t = subprocess.run(['tasklist', '/FO', 'CSV', '/NH'], capture_output=True, text=True, errors='replace').stdout.lower()
-    return h + [e for e in ('wfc_rebuild.exe', 'wfc_fidelity.exe') if '"%s"' % e in t]
+    # windowed game exes only: Gameplay's WFC_NULLRENDER sims (MainWindowHandle 0) use no GPU (Integration 2026-10-13)
+    ps = ('Get-Process wfc_rebuild,wfc_fidelity -ErrorAction SilentlyContinue | Where-Object MainWindowHandle -ne 0 | '
+          'ForEach-Object { $_.ProcessName + ".exe" }')
+    t = subprocess.run(['powershell', '-NoProfile', '-Command', ps], capture_output=True, text=True, errors='replace').stdout.split()
+    return h + sorted(set(t))
 def factor(r): return max(1, min(4, MAX_SIDE // max(r['size'])))
 def raw4(path, f, size, mode='RGB'):
     im = Image.open(path).convert(mode)
