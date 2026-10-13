@@ -301,5 +301,44 @@ EYE = {
     'content/ENV_IAC_Interior_1_p/Materials/Interior_Walls_CLR_TEXSET/EditorTextureSet_Color_NormX.png': C,
     # smooth FX gradient (blast alpha): every level adds a cross-hatch
     'content/ENV_IAC_Ground_p/Texture/ENV_BlastAlpha_CLR.png': None,
+
+    # ---- batch 8 (2026-10-13; ladder crops for every suspect) ----
+    # B and up blow white rims / bars, crush rust and red organic metal to black or bleach holo lines; A is faithful
+    'content/ENV_IAC_Orrery_p/cards/OrreryRings_CLR.png': A,
+    'content/ENV_IAC_RedMaterials_p/Textures/OrganicMetal2_CLR_TEXSET/OrganicMetal2_CLR_TEXSET_Color_NormX.png': A,
+    'content/ENV_IAC_RedMaterials_p/Textures/TallBuildingOne_red_CLR_TEXSETT/TallBuildingOne_red_CLR_TEXSETT_Color_NormX.png': A,
+    'content/ENV_IAC_Shader_p/Decals/Rust_CLR.png': A,
+    'content/ENV_IAC_Support_p/Texture/CeilingTrim_A_CLR_TEXSET/CeilingTrim_A_CLR_TEXSET_Color_NormX.png': A,
+    'content/ENV_IAC_Terminal_p/Materials/TerminalDoorArch_CLR.png': A,
+    'content/ENV_IAC_Terminal_p/Materials/TerminalDoorArch_CLR_TEXSET/TerminalDoorArch_CLR_TEXSET_Color_NormX.png': A,
+    'content/ENV_IAC_TubeRoads_p/Materials/Tubes_Road_CLR.png': A,
+    'content/ENV_IAC_TubeRoads_p/Materials/Tubes_Road_CLR_TEXSET/Tubes_Road_CLR_TEXSET_Color_NormX.png': A,
+    # D blows white edges / stripes or exaggerates cells; C holds
+    'content/ENV_IAC_LightSources_p/Light_Objects/ENV_IAC_WallLightFixture_TEXSET/ENV_IAC_WallLightFixture_TEXSET_Color_NormX.png': C,
+    'content/ENV_IAC_Orrery_p/KeyHolder/PROP_IAC_OmegaKeyHolder_TEXSET/PROP_IAC_OmegaKeyHolder_TEXSET_Color_NormX.png': C,
+    'content/ENV_IAC_Orrery_p/OrreryColumn_CLR.png': C,
+    'content/ENV_IAC_Orrery_p/OrreryColumn_CLR_TEXSET/OrreryColumn_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_IAC_Orrery_p/Orrery_cybertronDebris_CLR.png': C,
+    'content/ENV_IAC_Orrery_p/Orrery_cybertronDebris_CLR_TEXSET/Orrery_cybertronDebris_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_IAC_RedMaterials_p/Textures/ENV_IAC_RedPlazaFloor_TEXSET/ENV_IAC_RedPlazaFloor_TEXSET_Color_NormX.png': C,
+    'content/ENV_IAC_SentinelArena_p/Texture/Masher_CLR.png': C,
+    'content/ENV_IAC_SentinelArena_p/Texture/Shield_CLR_TEXSET/Shield_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_IAC_Support_p/Texture/CeilingTrim_A_CLR.png': C,
+    'content/ENV_IAC_Tower_p/Texture/cyl_component_2_CLR.png': C,
+    'content/ENV_IAC_Tower_p/Texture/cyl_component_2_CLR_TEXSET/cyl_component_2_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_IAC_Train_p/Texture/ENV_TrainCoach_TEXSET/ENV_TrainCoach_TEXSET_Color_NormX.png': C,
+    'content/ENV_IAC_TubeRoads_p/Materials/SpeedUp_Bar_CLR.png': C,
+    'content/ENV_IAC_TubeRoads_p/Materials/SpeedUp_Bar_CLR_TEXSET/SpeedUp_Bar_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_IAC_TubeRoads_p/Materials/TubeDoor_CLR.png': C,
+    'content/ENV_IAC_Turret_p/Texture/ENV_Searchlight_CLR.png': C,
+    'content/ENV_IAC_Turret_p/Texture/ENV_Searchlight_CLR_TEXSET/ENV_Searchlight_CLR_TEXSET_Color_NormX.png': C,
+    # light-function shadow decal (dot grid) and Spacedome nebula / sky textures (and their mask): soft gradients turn into shards / speckle at every level
+    'content/ENV_IAC_LightSources_p/LightFunction/CustomShadowDecal_01.png': None,
+    'content/ENV_IAC_Spacedome_p/Nebulae_Blob_CLR.png': None,
+    'content/ENV_IAC_Spacedome_p/Nebulae_streak_CLR.png': None,
+    'content/ENV_IAC_Spacedome_p/Nebulae_wicked_CLR.png': None,
+    'content/ENV_IAC_Spacedome_p/TallNebulae_CLR.png': None,
+    'content/ENV_IAC_Spacedome_p/TallNebulae_MASK.png': None,
+    'content/ENV_IAC_Spacedome_p/blueNebulae_CLR.png': None,
 }
-REVIEWED = {0, 1, 2, 3, 4, 5, 6, 7}   # batches 0-2: 2026-10-12; 3-7: 2026-10-13
+REVIEWED = {0, 1, 2, 3, 4, 5, 6, 7, 8}   # batches 0-2: 2026-10-12; 3-8: 2026-10-13
