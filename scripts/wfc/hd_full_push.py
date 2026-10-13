@@ -179,7 +179,7 @@ def pack():
         if b not in E.REVIEWED: continue
         for u in bu:
             for r in u:
-                if not os.path.exists(res_path(r)): continue
+                if not done(r): continue          # missing, or built before its eye cap: stale level, never packed
                 x = json.load(open(res_path(r), encoding='utf-8'))
                 if not x['level']: continue
                 # key from the texture's own dds path: 8 selection rows carry a png path borrowed from a same-named texture in
