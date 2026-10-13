@@ -59,15 +59,27 @@ def pipe():
                                                                     requires_safety_checker=False)
         p.scheduler = DPMSolverMultistepScheduler.from_config(p.scheduler.config)
         p.set_progress_bar_config(disable=True)
+        # smaller GPU packets and less VRAM (AMD TDRs 2026-10-13 under combined load): attention in slices, VAE per tile
+        p.enable_attention_slicing('auto'); p.enable_vae_slicing()
         _pipe = (p.to(dev), dev)
     return _pipe
+
+STEP_MAX = [0.0]
+def _step_cb(pipe_, i, t, kw):
+    """per-denoise-step wall time (synchronised by reading a scalar), so a step that nears the 2 s TDR limit shows up"""
+    now = time.time(); kw['latents'][0, 0, 0, 0].item()
+    if _step_cb.last: STEP_MAX[0] = max(STEP_MAX[0], time.time() - _step_cb.last)
+    _step_cb.last = time.time(); return kw
+_step_cb.last = None
 
 def gen_tile(rgb_u8, txt, strength, seed):
     import torch
     p, dev = pipe(); im = Image.fromarray(rgb_u8)
     g = torch.Generator().manual_seed(seed)
     out = p(prompt=txt, negative_prompt=NEG, image=im, control_image=im, strength=strength, num_inference_steps=STEPS,
-            guidance_scale=CFG, controlnet_conditioning_scale=CN_SCALE, generator=g, output_type='np').images[0]
+            guidance_scale=CFG, controlnet_conditioning_scale=CN_SCALE, generator=g, output_type='np',
+            callback_on_step_end=_step_cb, callback_on_step_end_tensor_inputs=['latents']).images[0]
+    _step_cb.last = None
     return (np.clip(out, 0, 1) * 255).astype(np.float32)
 
 def regenerate(rgb, txt, strength, seed):
@@ -124,8 +136,8 @@ def probe():
     for k in range(3):                                   # warm tiles (the first includes DML kernel compilation)
         a = time.time(); gen_tile(x, DEFAULT, 0.4, k + 1); ts.append(time.time() - a)
     done.set(); peak[0] = max(peak[0], vram_gb())
-    print('load %.0fs, first %d tile %.1fs, warm tiles %s s, peak VRAM %.1f GB, rss %.1f GB, free commit %.1f GB' % (
-        t1 - t0, TILE, t2 - t1, ' / '.join('%.1f' % t for t in ts), peak[0], psutil.Process().memory_info().rss / 2 ** 30,
+    print('load %.0fs, first %d tile %.1fs, warm tiles %s s, max step %.2f s, peak VRAM %.1f GB, rss %.1f GB, free commit %.1f GB' % (
+        t1 - t0, TILE, t2 - t1, ' / '.join('%.1f' % t for t in ts), STEP_MAX[0], peak[0], psutil.Process().memory_info().rss / 2 ** 30,
         P.free_commit_gb()), flush=True)
 
 def ladder():
