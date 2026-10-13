@@ -95,13 +95,30 @@ def lock(G, D, o, prot):
     if prot is not None: rgb = rgb * (1 - prot[..., None]) + D[..., :3] * prot[..., None]
     return np.clip(rgb, 0, 255)
 
+def vram_gb():
+    """this process's dedicated GPU memory (Windows 'GPU Process Memory' counter; DML has no allocator stats)"""
+    import subprocess
+    c = ("(Get-Counter '\\GPU Process Memory(pid_%d*)\\Dedicated Usage').CounterSamples | Measure-Object CookedValue -Sum"
+         " | ForEach-Object { $_.Sum }" % os.getpid())
+    try: return float(subprocess.run(['powershell', '-NoProfile', '-Command', c], capture_output=True, text=True).stdout.strip()) / 2 ** 30
+    except Exception: return float('nan')
+
 def probe():
-    import psutil
+    import psutil, threading
+    peak = [0.0]; done = threading.Event()
+    def watch():
+        while not done.is_set(): peak[0] = max(peak[0], vram_gb()); time.sleep(2)
+    threading.Thread(target=watch, daemon=True).start()
     t0 = time.time(); pipe(); t1 = time.time()
     x = (np.random.default_rng(0).random((TILE, TILE, 3)) * 255).astype(np.uint8)
     gen_tile(x, DEFAULT, 0.4, 0); t2 = time.time()
-    print('load %.0fs, one %d tile %.1fs, rss %.1f GB, free commit %.1f GB' % (t1 - t0, TILE, t2 - t1,
-          psutil.Process().memory_info().rss / 2 ** 30, P.free_commit_gb()), flush=True)
+    ts = []
+    for k in range(3):                                   # warm tiles (the first includes DML kernel compilation)
+        a = time.time(); gen_tile(x, DEFAULT, 0.4, k + 1); ts.append(time.time() - a)
+    done.set(); peak[0] = max(peak[0], vram_gb())
+    print('load %.0fs, first %d tile %.1fs, warm tiles %s s, peak VRAM %.1f GB, rss %.1f GB, free commit %.1f GB' % (
+        t1 - t0, TILE, t2 - t1, ' / '.join('%.1f' % t for t in ts), peak[0], psutil.Process().memory_info().rss / 2 ** 30,
+        P.free_commit_gb()), flush=True)
 
 def ladder():
     us, R = EP.units(); out = os.path.join(G_ROOT, 'ladder'); os.makedirs(out, exist_ok=True); S = 240
