@@ -26,7 +26,7 @@ are only 1-2 h, so the safest route is a short window without the RT exe.
 - **Method**: as the Rust pilot. SD 1.5 + ControlNet tile at G2 (denoise 0.40) only, with no G1 / G3 ladder for the full pass.
   Exact lock to D at the original resolution; tint (Masks B) and emissive (Masks R) regions are kept as D. The TEXSET alpha gets
   relief from the E colour's height. Experimental's gates apply.
-- **GPU**: measured on Rust at G2, 2048² is ~2 min and 4096² ~9 min, so ~0.55 min per 1024² unit. That gives **~8 GPU hours** for
+- **GPU (CORRECTED 16:50)**: measured on Rust at G2, 2048² HD output ~2 min and 4096² ~9 min, so ~0.5 min per 1024² of HD output. The first estimate applied this to ORIGINAL-size units (16x too low). Milestone 1 (175 textures in D b0-12) is ~11 GPU h; all world surfaces ~110 GPU h. Options: generate at 2x then upscale (4x less), fewer steps, scope cut; decided after a first-window A/B. Old figure: **~8 GPU hours** for
   everything. It needs ~10.8 GB VRAM and must run without GL / RT exes (TDR finding), so it needs exclusive GPU windows.
 - **CPU**: height model + lock + BC encode, ~25 s per texture, so ~10 h, running in parallel.
 - **Eye review**: 100 % (Experimental), ~12 h.

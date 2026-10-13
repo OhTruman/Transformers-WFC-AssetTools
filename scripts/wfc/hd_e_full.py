@@ -40,7 +40,7 @@ def map_objects(maps):
         for l in open(os.path.join(TSV_DIR, '%s_textures.tsv' % m), encoding='utf-8'):
             c = l.rstrip('\n').split('\t')
             if l.startswith('#') or c[0] == 'object' or len(c) < 3 or c[2] != '2d': continue
-            if not c[0].startswith(('ENV_', 'DES_')) or any(k.lower() in c[0].lower() for k in NOT_COLOUR): continue
+            if not c[0].startswith(('ENV_', 'DES_')) or any(k in c[0] for k in NOT_COLOUR): continue      # case-sensitive: NORM must not hit Color_NormX
             rows.append((-int(c[1] or 0), c[0].lower()))
         for _, o in sorted(rows):
             if o not in seen: seen.add(o); out.append((m, o))
@@ -135,7 +135,8 @@ def pack():
 
 if __name__ == '__main__':
     a = sys.argv[1] if len(sys.argv) > 1 else 'list'
-    maps = sys.argv[2].split(',') if len(sys.argv) > 2 else None
+    args = [x for x in sys.argv[2:] if not x.startswith('--')]          # hd_push appends --v2 on import
+    maps = args[0].split(',') if args else None
     if a == 'list':
         us, _ = units(maps)
         for mp, r, d, m, md in us: print(r['i'], mp, r['kind'], d['level'], d['size'], r['png'], '+ masks' if md else '')
