@@ -122,6 +122,48 @@ def ab(ids):
     sh.save(os.path.join(out, 'ab_sheet.png')); json.dump(rep, open(os.path.join(out, 'ab_gates.json'), 'w', encoding='utf-8'), indent=1)
     print('ab sheet', os.path.join(out, 'ab_sheet.png'), flush=True)
 
+G.DENOISE.setdefault('G4', 0.70)        # stronger level for the "full overhaul" (user 2026-10-13); not in the pilot ladder
+
+def lock_soft(Gc, D, o, prot, k=2):
+    """lock to D's colour at 1/k of the original resolution (k = 2: layout, colours and designs stay; detail up to k original pixels
+    is free), then D in protected regions"""
+    Hh, W = D.shape[:2]; oh, ow = o.shape[:2]; lw, lh = max(1, ow // k), max(1, oh // k); rgb = Gc.copy()
+    for _ in range(2):
+        corr = EP.area(D[..., :3], lw, lh) - EP.area(np.clip(rgb, 0, 255).astype(np.float32), lw, lh)
+        rgb = rgb + EP.up(corr.astype(np.float32), W, Hh)
+    if prot is not None: rgb = rgb * (1 - prot[..., None]) + D[..., :3] * prot[..., None]
+    return np.clip(rgb, 0, 255)
+
+def ab4(ids):
+    """second A/B (Integration 2026-10-13): Original | D | E-4x-G3 (exact lock) | E-4x-G4 (denoise 0.70, lock at half the
+    original resolution); 100 % HD crops at the busiest and flattest spot; same protection / gates (gates vs D at full original res)"""
+    us, R = EP.units(); sel = [u for u in us if u[0]['i'] in ids]; out = os.path.join(F_ROOT, 'ab'); os.makedirs(out, exist_ok=True)
+    rows, rep = [], OD()
+    for r, d, m, md in sel:
+        EP.stop(); o = P.orig(r); D = EP.load_d(d); f = D.shape[1] / o.shape[1]
+        M0 = EP.load_d(md) if md else None; pr = EP.protect_mask(M0, (D.shape[1], D.shape[0]), f); txt = G.prompt(r['png'])
+        p3 = os.path.join(AT, 'out', 'hd', 'push_e_gen', 'raw', '%05d_G3.png' % r['i'])
+        raw3 = np.asarray(Image.open(p3)).astype(np.float32) if os.path.exists(p3) else generate(r, D, o, txt, 'G3', 4)
+        t0 = time.time(); raw4 = generate(r, D, o, txt, 'G4', 4); dt = round(time.time() - t0)
+        arms = OD([('E-4x-G3', G.lock(raw3, D, o, pr)), ('E-4x-G4', lock_soft(raw4, D, o, pr))])
+        rep[r['png']] = OD((k, OD([('gates', EP.gates(D, v, o, M0))])) for k, v in arms.items())
+        rep[r['png']]['E-4x-G4']['seconds'] = dt
+        rep[r['png']]['protected_pct'] = round(100 * float(pr.mean()), 1) if pr is not None else 0.0
+        S = 300; n, busy, flat = EP.spots(o); n = min(n, 32); cols = [D[..., :3]] + list(arms.values())
+        im = Image.new('RGB', ((len(cols) + 1) * (S + 6), 2 * S + 36), (16, 16, 20)); dr = ImageDraw.Draw(im)
+        dr.text((3, 2), '%05d %s   Original | D | E-4x-G3 | E-4x-G4 (soft lock)   protected %s%%' % (r['i'], r['png'][-50:], rep[r['png']]['protected_pct']), fill=(230, 230, 230))
+        for row, (x, y) in enumerate((busy, flat)):
+            yy = 18 + row * (S + 18); kk = int(f * n)
+            im.paste(Image.fromarray(np.ascontiguousarray(o[y:y + n, x:x + n, :3])).resize((S, S), Image.NEAREST), (0, yy))
+            for c, img in enumerate(cols, 1):
+                cr = np.clip(np.round(img), 0, 255).astype(np.uint8)[int(f * y):int(f * y) + kk, int(f * x):int(f * x) + kk]
+                im.paste(Image.fromarray(np.ascontiguousarray(cr)).resize((S, S), Image.NEAREST if kk <= S else Image.LANCZOS), (c * (S + 6), yy))
+        rows.append(im); print('ab4', r['i'], {k: v['gates']['pass'] for k, v in rep[r['png']].items() if isinstance(v, dict) and 'gates' in v}, dt, 's', flush=True)
+    sh = Image.new('RGB', (rows[0].width, sum(i.height for i in rows)), (16, 16, 20)); y = 0
+    for i in rows: sh.paste(i, (0, y)); y += i.height
+    sh.save(os.path.join(out, 'ab4_sheet.png')); json.dump(rep, open(os.path.join(out, 'ab4_gates.json'), 'w', encoding='utf-8'), indent=1)
+    print('ab4 sheet', os.path.join(out, 'ab4_sheet.png'), flush=True)
+
 def gen(maps=None):
     us, R = units(maps)
     for p in (RES, REVIEW, PACK): os.makedirs(p, exist_ok=True)
@@ -194,3 +236,4 @@ if __name__ == '__main__':
     elif a == 'sheets': sheets()
     elif a == 'pack': pack()
     elif a == 'ab': ab([int(x) for x in args[0].split(',')])
+    elif a == 'ab4': ab4([int(x) for x in args[0].split(',')])

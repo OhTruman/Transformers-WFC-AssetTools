@@ -80,7 +80,9 @@ def protect_mask(M, size, f):
     """texels E must leave as D (Systems' SYSTEMS_M6_TINT_CHANNELS.json, verified by Experimental): ENV TEXSET Masks B = custom A/B
     tint blend, R = emissive (plus a rim around it). 1 = protected. M: the TEXSET Masks half (HxWx4) or None"""
     if M is None: return None
-    m = np.maximum(M[..., 2], M[..., 0]) / 255
+    ch = os.environ.get('WFC_E_PROTECT', 'BR').upper()      # which Masks channels protect (B tint, R emissive); semantics: Systems
+    if not ch: return None
+    m = np.max(np.stack([M[..., {'R': 0, 'G': 1, 'B': 2}[c]] for c in ch], -1), -1) / 255
     if M.shape[1::-1] != tuple(size): m = np.asarray(Image.fromarray(m.astype(np.float32), 'F').resize(tuple(size), Image.BILINEAR))
     m = (m > 0.1).astype(np.float32)
     return np.clip(P.gblur(m[..., None], 2 * f)[..., 0] * 3, 0, 1)        # feathered rim, about 2 original pixels
