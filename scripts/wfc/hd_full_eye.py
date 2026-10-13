@@ -203,5 +203,34 @@ EYE = {
     'content/ENV_CORE_Wall_p/Textures/WaterFall_CLRWaterFall_CLR.png': None,
     'content/ENV_GLB_EnvEffects_p/Texture/skybg.png': None,
     'content/ENV_GLB_Textures/DetailNorm/ENV_KON_Metal_01_TiledNORM.png': None,
+
+    # ---- batch 5 (2026-10-13; ladder crops for every suspect) ----
+    # B and up draw a ragged dark line along soft edges (BlockTop) or blow grime / stains into white blotches; A is faithful
+    'content/ENV_IAC_BLDS_3_p/Texture/BlockTop_CLR.png': A,
+    'content/ENV_IAC_BLDS_3_p/Texture/BlockTop_CLR_TEXSET/BlockTop_CLR_TEXSET_Color_NormX.png': A,
+    'content/ENV_IAC_BLDS_3_p/Texture/stains_022_CLR.png': A,
+    'content/ENV_IAC_Bridge_p/ENV_cyberWalls_CLR.png': A,
+    # D blows white edges / exaggerates cells in flat concrete and painted panels; C holds
+    'content/ENV_IAC_BLDS_1_p/Texture/RibWall_CLR.png': C,
+    'content/ENV_IAC_BLDS_1_p/Texture/Spires_CLR.png': C,
+    'content/ENV_IAC_BLDS_1_p/Texture/VentWall_CLR.png': C,
+    'content/ENV_IAC_BLDS_2_p/Textures/ArchTop01_CLR.png': C,
+    'content/ENV_IAC_BLDS_2_p/Textures/HalfArchInteriors_CLR.png': C,
+    'content/ENV_IAC_BLDS_2_p/Textures/HalfArchInteriors_CLR_TEXSET/EditorTextureSet_Color_NormX.png': C,
+    'content/ENV_IAC_BLDS_2_p/Textures/HalfArchSideNub_CLR_TEXSET/HalfArchSideNub_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_IAC_BLDS_2_p/Textures/TallBuildingOne_CLR.png': C,
+    'content/ENV_IAC_BLDS_2_p/Textures/TallBuildingOne_CLR_TEXSET/TallBuildingOne_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_IAC_BLDS_3_p/Elevator/RoundLight_CLR.png': C,
+    'content/ENV_IAC_BLDS_3_p/Elevator/RoundLight_CLR_TEXSET/RoundLight_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_IAC_BLDS_3_p/Texture/BlockBldPanel_CLR.png': C,
+    'content/ENV_IAC_BLDS_3_p/Texture/CyberPanelTile_CLR.png': C,
+    'content/ENV_IAC_BLDS_3_p/Texture/RectBld_Alt_CLR_TEXSET/RectBld_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_IAC_Background_p/Materials/CityBackdrop_CLR.png': C,
+    'content/ENV_IAC_Background_p/Materials/Neutral_CLR.png': C,
+    'content/ENV_IAC_Background_p/Materials/SkyRing_TEXSET/SkyRing_TEXSET_Color_NormX.png': C,
+    # distant backdrop / sky: the city-lights noise turns into outlined glitter shards at every level; nebulae gain cell texture
+    'content/ENV_IAC_Background_p/Materials/BackgroundCity_01_CLR.png': None,
+    'content/ENV_IAC_Background_p/Materials/IaconNebula_01_B_CLR.png': None,
+    'content/ENV_IAC_Background_p/Materials/IaconNebula_01_D_CLR.png': None,
 }
-REVIEWED = {0, 1, 2, 3, 4}   # batches 0-2: 2026-10-12; 3-4: 2026-10-13
+REVIEWED = {0, 1, 2, 3, 4, 5}   # batches 0-2: 2026-10-12; 3-5: 2026-10-13
