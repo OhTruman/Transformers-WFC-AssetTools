@@ -1,0 +1,140 @@
+{
+ "generated": "2026-10-13 07:18",
+ "purpose": "HD level E generative pilot (docs/HD_BEYOND_D_PLAN.md); approved by Integration 2026-10-12/13",
+ "models": [
+  {
+   "name": "Stable Diffusion v1.5 (fp16 components: unet, vae, text_encoder, tokenizer, scheduler)",
+   "source": "https://huggingface.co/stable-diffusion-v1-5/stable-diffusion-v1-5",
+   "dir": "work/models/sd15",
+   "licence": "CreativeML OpenRAIL-M",
+   "licence_text": "work/models/licences/creativeml-openrail-m/license.txt",
+   "note": "use restrictions (Attachment A) must be passed on with the pack credits; safety_checker not downloaded (textures, no people)"
+  },
+  {
+   "name": "ControlNet v1.1 tile (control_v11f1e_sd15_tile)",
+   "source": "https://huggingface.co/lllyasviel/control_v11f1e_sd15_tile",
+   "dir": "work/models/controlnet_tile_sd15",
+   "licence": "CreativeML OpenRAIL-M (model card: openrail)",
+   "licence_text": "work/models/licences/creativeml-openrail-m/license.txt",
+   "note": "weights only in .bin (pickle); load with torch.load weights_only"
+  }
+ ],
+ "not_used": {
+  "FLUX.1-schnell": "Apache-2.0 and preferred, but 12B parameters (about 24 GB fp16 transformer + T5-XXL) do not fit DirectML on the 24 GB RX 7900 XTX without quantised kernels, which DML lacks"
+ },
+ "python_packages": {
+  "diffusers": "0.31.0",
+  "transformers": "4.46.3",
+  "accelerate": "1.1.1",
+  "huggingface-hub": "0.26.5",
+  "tokenizers": "0.20.3",
+  "sentencepiece": "0.2.2",
+  "protobuf": "7.36.2",
+  "torch": "2.4.1",
+  "torch-directml": "0.2.5.dev240914",
+  "numpy": "2.5.3"
+ },
+ "pip_constraints": "work/models/pip_constraints.txt (torch / numpy / pillow / safetensors pinned; newest diffusers needs a newer torch than torch-directml supports, so diffusers 0.31 / transformers 4.46 / accelerate 1.1)",
+ "files": [
+  {
+   "path": "work/models/controlnet_tile_sd15/config.json",
+   "bytes": 955,
+   "sha256": "c6488d01fc339c83d777b6d71df4f5bc36c035b2c977f987e8a5c0a54c79b706"
+  },
+  {
+   "path": "work/models/controlnet_tile_sd15/diffusion_pytorch_model.bin",
+   "bytes": 1445255176,
+   "sha256": "eb05b4c3665bd76dad70a90652014a9b3aab391abd8a5bb484e860330f9492fb"
+  },
+  {
+   "path": "work/models/controlnet_tile_sd15/README.md",
+   "bytes": 15800,
+   "sha256": "395adf03b6eb36d6571b87e8050cf45c55e3cb51651bc741ff58e5012982af6b"
+  },
+  {
+   "path": "work/models/licences/creativeml-openrail-m/license.html",
+   "bytes": 326777,
+   "sha256": "2248b4f96c29953764bd4f5b9528acbfd98ddd9c03bc11713824788b7e0753ae"
+  },
+  {
+   "path": "work/models/licences/creativeml-openrail-m/license.txt",
+   "bytes": 14385,
+   "sha256": "be351ebe7ac01bcdbb018639aadcfd38f136b7dc3f2a3d4d3a24db51d1b210ef"
+  },
+  {
+   "path": "work/models/licences/creativeml-openrail-m/README.md",
+   "bytes": 185,
+   "sha256": "6b655fc8688faaacc1f83b7fea7f5c13e28b7ffeeca8d7bbd1880c1a4a022c57"
+  },
+  {
+   "path": "work/models/sd15/model_index.json",
+   "bytes": 541,
+   "sha256": "e2f6f22e274374010aec30c79eb2d6e53fff4a36ac0225523a92cb2d41a83347"
+  },
+  {
+   "path": "work/models/sd15/README.md",
+   "bytes": 14461,
+   "sha256": "2079161f9df7524bd9eca5e53ff5911271b8551e0f868b7b5a92b84776df28a3"
+  },
+  {
+   "path": "work/models/sd15/feature_extractor/preprocessor_config.json",
+   "bytes": 342,
+   "sha256": "2a1da83b5e1032aaeef397552ddb408dca0d8cd1dc58f61bf6abf38d6f33a0a2"
+  },
+  {
+   "path": "work/models/sd15/scheduler/scheduler_config.json",
+   "bytes": 308,
+   "sha256": "699cce92eb7c122e2eb7dfdea78e6187fda76a5ed4a8e42319b85610e620e091"
+  },
+  {
+   "path": "work/models/sd15/text_encoder/config.json",
+   "bytes": 617,
+   "sha256": "845df614cb9327ae7bbea027316246fae917827407da6df13572e41b5f93b4cc"
+  },
+  {
+   "path": "work/models/sd15/text_encoder/model.fp16.safetensors",
+   "bytes": 246144864,
+   "sha256": "77795e2023adcf39bc29a884661950380bd093cf0750a966d473d1718dc9ef4e"
+  },
+  {
+   "path": "work/models/sd15/tokenizer/merges.txt",
+   "bytes": 524619,
+   "sha256": "9fd691f7c8039210e0fced15865466c65820d09b63988b0174bfe25de299051a"
+  },
+  {
+   "path": "work/models/sd15/tokenizer/special_tokens_map.json",
+   "bytes": 472,
+   "sha256": "c4864a9376a8401918425bed71fc14fc0e81f9b59ec45c1cf96cccb2df508eac"
+  },
+  {
+   "path": "work/models/sd15/tokenizer/tokenizer_config.json",
+   "bytes": 806,
+   "sha256": "00439066fcba73de57644cf41e4e3b9f2dbb09d7f3fc2005898ba52399045882"
+  },
+  {
+   "path": "work/models/sd15/tokenizer/vocab.json",
+   "bytes": 1059962,
+   "sha256": "e089ad92ba36837a0d31433e555c8f45fe601ab5c221d4f607ded32d9f7a4349"
+  },
+  {
+   "path": "work/models/sd15/unet/config.json",
+   "bytes": 743,
+   "sha256": "78f474de6bab3d893868f37be97b636ae65c0df3073ed3256ca458ff599b5f96"
+  },
+  {
+   "path": "work/models/sd15/unet/diffusion_pytorch_model.fp16.safetensors",
+   "bytes": 1719125304,
+   "sha256": "c83908253f9a64d08c25fc90874c9c8aef9a329ce1ca5fb909d73b0c83d1ea21"
+  },
+  {
+   "path": "work/models/sd15/vae/config.json",
+   "bytes": 547,
+   "sha256": "786a7d21647ddea6a04b9675c03d3cb45e90a2f3c6da5fbda2c54ade040036de"
+  },
+  {
+   "path": "work/models/sd15/vae/diffusion_pytorch_model.fp16.safetensors",
+   "bytes": 167335342,
+   "sha256": "4fbcf0ebe55a0984f5a5e00d8c4521d52359af7229bb4d81890039d2aa16dd7c"
+  }
+ ]
+}
