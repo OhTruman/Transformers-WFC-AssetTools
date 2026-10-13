@@ -232,5 +232,41 @@ EYE = {
     'content/ENV_IAC_Background_p/Materials/BackgroundCity_01_CLR.png': None,
     'content/ENV_IAC_Background_p/Materials/IaconNebula_01_B_CLR.png': None,
     'content/ENV_IAC_Background_p/Materials/IaconNebula_01_D_CLR.png': None,
+
+    # ---- batch 6 (2026-10-13; ladder crops for every suspect) ----
+    # B and up blow white panels / rims, crush purple tint to black or turn a lit metal bowl into speckle; A is faithful
+    'content/ENV_IAC_CleanMaterials_p/Textures/ENV_D1_FloorTile1_TEXSET/ENV_D1_FloorTile1_TEXSET_Color_NormX.png': A,
+    'content/ENV_IAC_CleanMaterials_p/Textures/ENV_IAC_CleanArchTop01_TEXSET/ENV_IAC_CleanTerminalFloor_TEXSET_Color_NormX.png': A,
+    'content/ENV_IAC_CleanMaterials_p/Textures/ENV_IAC_CleanGiantPillar_TEXSET/ENV_IAC_CleanTerminalFloor_TEXSET_Color_NormX.png': A,
+    'content/ENV_IAC_Corruption_p/Materials/TubesRoad_Corrupt_CLR.png': A,
+    'content/ENV_IAC_Decagon_p/Materials/DecoPlazaFloor_CLR_TEXSET/DecoPlazaFloor_CLR_TEXSET_Color_NormX.png': A,
+    'content/ENV_IAC_Deco_1_p/Texture/Central_FanShaftLit_CLR_TEXSET/Central_FanShaft_CLR_TEXSET_Color_NormX.png': A,
+    'content/ENV_IAC_Deco_1_p/Texture/Central_FanShaft_CLR_TEXSET/Central_FanShaft_CLR_TEXSET_Color_NormX.png': A,
+    # D blows white edges, exaggerates cells or darkens outlines; C holds
+    'content/ENV_IAC_Bridge_p/Lock_halogram.png': C,
+    'content/ENV_IAC_CleanMaterials_p/Textures/ENV_D1_FloorTile2_TEXSET/ENV_D1_FloorTile2_TEXSET_Color_NormX.png': C,
+    'content/ENV_IAC_CleanMaterials_p/Textures/ENV_IAC_CleanTerminalFloor_TEXSET/ENV_IAC_CleanTerminalFloor_TEXSET_Color_NormX.png': C,
+    'content/ENV_IAC_Decagon_p/DestroyedStairs/BurnHole_CLR.png': C,
+    'content/ENV_IAC_Decagon_p/Materials/CtrMainFloorRails_CLR.png': C,
+    'content/ENV_IAC_Decagon_p/Materials/CtrMainFloorRails_CLR_TEXSET/CtrMainFloorRails_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_IAC_Decagon_p/Materials/DecWalls_CLR.png': C,
+    'content/ENV_IAC_Decagon_p/Materials/Dec_Walls_Light_TEXSET/Dec_Walls_Light_TEXSET_Color_NormX.png': C,
+    'content/ENV_IAC_Decagon_p/Materials/Decagon_Exterior_CLR.png': C,
+    'content/ENV_IAC_Decagon_p/Materials/Decagon_Exterior_CLR_TEXSET/Decagon_Exterior_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_IAC_Decagon_p/Materials/DecoPlazaFloor_CLR.png': C,
+    'content/ENV_IAC_Decagon_p/Materials/EMV_IAC_SliceFloorA_CLR.png': C,
+    'content/ENV_IAC_Decagon_p/Materials/EMV_IAC_SliceFloorA_CLR_TEXSET/EditorTextureSet_Color_NormX.png': C,
+    'content/ENV_IAC_Decagon_p/Materials/ENV_IAC_CeilingDecoA_CLR.png': C,
+    'content/ENV_IAC_Decagon_p/Materials/ENV_IAC_CeilingDecoA_CLR_TEXSET/ENV_IAC_CeilingDecoA_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_IAC_Decagon_p/Materials/ENV_IAC_SliceFloorB_CLR.png': C,
+    'content/ENV_IAC_Decagon_p/Materials/ENV_IAC_SliceFloorB_CLR_TEXSET/EditorTextureSet_Color_NormX.png': C,
+    'content/ENV_IAC_Deco_1_p/Texture/Arch_Support_CLR_TEXSET/Arch_Support_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_IAC_Deco_1_p/Texture/Capacitor_01_Red_CLR_TEXSET/Capacitor_01_Red_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_IAC_Deco_1_p/Texture/Central_FanShaft_CLR.png': C,
+    'content/ENV_IAC_Deco_1_p/Texture/Iac_SideSupp01_CLR.png': C,
+    'content/ENV_IAC_Deco_1_p/Texture/LightFixture_A_CLR.png': C,
+    'content/ENV_IAC_Deco_1_p/Texture/LightFixture_A_CLR_TEXSET/LightFixture_A_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_IAC_Deco_1_p/Texture/LightPole_01v2_CLR.png': C,
+    'content/ENV_IAC_Deco_1_p/Texture/Nose_CLR.png': C,
 }
-REVIEWED = {0, 1, 2, 3, 4, 5}   # batches 0-2: 2026-10-12; 3-5: 2026-10-13
+REVIEWED = {0, 1, 2, 3, 4, 5, 6}   # batches 0-2: 2026-10-12; 3-6: 2026-10-13
