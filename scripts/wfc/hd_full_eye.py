@@ -268,5 +268,38 @@ EYE = {
     'content/ENV_IAC_Deco_1_p/Texture/LightFixture_A_CLR_TEXSET/LightFixture_A_CLR_TEXSET_Color_NormX.png': C,
     'content/ENV_IAC_Deco_1_p/Texture/LightPole_01v2_CLR.png': C,
     'content/ENV_IAC_Deco_1_p/Texture/Nose_CLR.png': C,
+
+    # ---- batch 7 (2026-10-13; ladder crops for every suspect) ----
+    # organic metal grit turns into glitter shards, sidewalk / map-line whites blow out from B up; A is faithful
+    'content/ENV_IAC_Elevator_p/Materials/ElevatorShaft_CLR.png': A,
+    'content/ENV_IAC_Ground_p/Texture/OrganicMetal2_CLR.png': A,
+    'content/ENV_IAC_Ground_p/Texture/OrganicMetal2_CLR_TEXSET/OrganicMetal2_CLR_TEXSET_Color_NormX.png': A,
+    'content/ENV_IAC_Ground_p/Texture/Sidewalk_CLR.png': A,
+    'content/ENV_IAC_HoloMap_p/Texture/MapSurface_CLR.png': A,
+    # D blows white rims / lines or exaggerates cells; C holds
+    'content/ENV_IAC_Deco_1_p/Texture/Spire_CLR_TEXSET/Spire_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_IAC_Deco_1_p/Texture/TrainTrack/TrainTrack_Color_NormX.png': C,
+    'content/ENV_IAC_Deco_1_p/Texture/decocorner01_CLR_TEXSET/decocorner01_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_IAC_Elevator_p/Materials/ElevatorShaft_CLR_TEXSET/ElevatorShaft_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_IAC_Ground_p/MaterialOverride/Rust_Decals_OR/RUST3_MP.png': C,
+    'content/ENV_IAC_Ground_p/Texture/CraterDecal_CLR.png': C,
+    'content/ENV_IAC_Ground_p/Texture/FloorRamp_CLR_TEXSET/FloorRamp_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_IAC_Ground_p/Texture/GlassFloor_A_CLR.png': C,
+    'content/ENV_IAC_Ground_p/Texture/GroundVent_CLR_TEXSET/GroundVent_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_IAC_Ground_p/Texture/HospitalFloor_CLR.png': C,
+    'content/ENV_IAC_Ground_p/Texture/Panel_CLR_TEXSET/Panel_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_IAC_Ground_p/Texture/Platform_CLR.png': C,
+    'content/ENV_IAC_Ground_p/Texture/StreetLines_CLR.png': C,
+    'content/ENV_IAC_Ground_p/Texture/TireTracks_CLR.png': C,
+    'content/ENV_IAC_Ground_p/Texture/vaultsCard_CLR.png': C,
+    'content/ENV_IAC_HoloMap_p/Texture/A1_HighwayMap_CLR.png': C,
+    'content/ENV_IAC_Interior_1_p/Materials/Interior_Floor_Ceiling_CLR.png': C,
+    'content/ENV_IAC_Interior_1_p/Materials/Interior_NewFloor_TEXSET/Interior_NewFloor_TEXSET_Color_NormX.png': C,
+    'content/ENV_IAC_Interior_1_p/Materials/Interior_Spacers_CLR.png': C,
+    'content/ENV_IAC_Interior_1_p/Materials/Interior_Spacers_CLR_TEXSET/Interior_Spacers_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_IAC_Interior_1_p/Materials/Interior_Walls_CLR.png': C,
+    'content/ENV_IAC_Interior_1_p/Materials/Interior_Walls_CLR_TEXSET/EditorTextureSet_Color_NormX.png': C,
+    # smooth FX gradient (blast alpha): every level adds a cross-hatch
+    'content/ENV_IAC_Ground_p/Texture/ENV_BlastAlpha_CLR.png': None,
 }
-REVIEWED = {0, 1, 2, 3, 4, 5, 6}   # batches 0-2: 2026-10-12; 3-6: 2026-10-13
+REVIEWED = {0, 1, 2, 3, 4, 5, 6, 7}   # batches 0-2: 2026-10-12; 3-7: 2026-10-13
