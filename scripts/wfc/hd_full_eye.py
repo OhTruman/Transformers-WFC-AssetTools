@@ -382,5 +382,47 @@ EYE = {
     'content/ENV_KON_Architecture_p/Texture/WallPanel_01_CLR_TEXSET/WallPanel_01_CLR_TEXSET_Color_NormX.png': C,
     # tiled detail normal (as Metal_01_TiledNORM): crumpled-foil grain
     'content/ENV_KON_Architecture_p/Texture/Metal_01_TiledNORM.png': None,
+
+    # ---- batch 10 (2026-10-13; ladder crops for every suspect) ----
+    # Kon bridges / deco: B and up blow white chips, slabs and stains into glare or turn noisy islands / stains into high-contrast shards; A is faithful
+    'content/ENV_KON_Architecture_p/Texture/WallPanel_05_CLR.png': A,
+    'content/ENV_KON_Architecture_p/Texture/WallPanel_05_CLR_TEXSET/EditorTextureSet_Color_NormX.png': A,
+    'content/ENV_KON_BackgroundPrefabs_p/BackgroundSoldiers/SoldierIdle_FLIP_CLR.png': A,
+    'content/ENV_KON_Bridges_p/Textures/Bridge_Arch_CLR.png': A,
+    'content/ENV_KON_Bridges_p/Textures/ENV_KON_Bridge_StraightWet_CLR_TEXSET/ENV_KON_Bridge_StraightWet_CLR_TEXSET_Color_NormX.png': A,
+    'content/ENV_KON_Bridges_p/Textures/ENV_KON_Bridge_Straight_CLR_TEXSET/ENV_KON_Bridge_Straight_CLR_TEXSET_Color_NormX.png': A,
+    'content/ENV_KON_Deco_p/Texture/BackgroundIsland_01_CLR_TEXSET/BackgroundIsland_01_CLR_TEXSET_Color_NormX.png': A,
+    'content/ENV_KON_Deco_p/Texture/BackgroundIsland_03_CLR_TEXSET/BackgroundIsland_03_CLR_TEXSET_Color_NormX.png': A,
+    'content/ENV_KON_Deco_p/Texture/ColumnCap_01_CLR.png': A,
+    'content/ENV_KON_Deco_p/Texture/ColumnCap_01_CLR_TEXSET/ColumnCap_01_CLR_TEXSET_Color_NormX.png': A,
+    'content/ENV_KON_Deco_p/Texture/LightSupport_CLR.png': A,
+    'content/ENV_KON_Deco_p/Texture/Light_01_CLR.png': A,
+    'content/ENV_KON_Deco_p/Texture/stains_01_CLR.png': A,
+    # D blows white rims, stripes and edges; C holds
+    'content/ENV_KON_Architecture_p/Texture/WallPanel_02_CLR.png': C,
+    'content/ENV_KON_Architecture_p/Texture/WallPanel_02_CLR_TEXSET/WallPanel_02_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_KON_Architecture_p/Texture/WallPanel_04_CLR.png': C,
+    'content/ENV_KON_Architecture_p/Texture/WallTrim_01_CLR.png': C,
+    'content/ENV_KON_Architecture_p/Texture/WallTrim_01_CLR_TEXSET/WallTrim_01_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_KON_BackgroundPrefabs_p/BackgroundSoldiers/ImprisonedSoldierCard_CLR.png': C,
+    'content/ENV_KON_Bridges_p/Textures/Bridge_Arch_CLR_TEXSET/Bridge_Arch_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_KON_Bridges_p/Textures/Bridge_CrossWet_CLR_TEXSET/Bridge_CrossWet_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_KON_Bridges_p/Textures/Bridge_Cross_CLR_TEXSET/Bridge_Cross_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_KON_Bridges_p/Textures/ENV_Big3_Building3Base1_768x1024x2816_CLR.png': C,
+    'content/ENV_KON_Bridges_p/Textures/ENV_Big3_Building3Base1_768x1024x2816_CLR_TEXSET/ENV_Big3_Building3Base1_768x1024x2816_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_KON_Bridges_p/Textures/ENV_Small1_Flat1_Side_384x1536x768_CLR.png': C,
+    'content/ENV_KON_Bridges_p/Textures/ENV_Small1_Flat1_Side_384x1536x768_CLR_TEXSET/ENV_Small1_Flat1_Side_384x1536x768_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_KON_Bridges_p/Textures/Panel_02_CLR.png': C,
+    'content/ENV_KON_Deco_p/Decals/ENV_KON_HazardSign_CLR.png': C,
+    'content/ENV_KON_Deco_p/Texture/BackgroundIsland_01_CLR.png': C,
+    'content/ENV_KON_Deco_p/Texture/BackgroundIsland_CLR.png': C,
+    'content/ENV_KON_Deco_p/Texture/BackgroundIsland_CLR_TEXSET/BackgroundIsland_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_KON_Deco_p/Texture/DoorWayCap_CLR.png': C,
+    'content/ENV_KON_Deco_p/Texture/DoorWayCap_CLR_TEXSET/DoorWayCap_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_KON_Deco_p/Texture/LightSupport_CLR_TEXSET/LightSupport_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_KON_Deco_p/Texture/Light_01_CLR_TEXSET/Light_01_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_KON_Deco_p/Texture/Wing_01_CLR_TEXSET/Wing_01_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_KON_PrisonBarge_p/Textures/CeilingDeco_01_CLR.png': C,
+    'content/ENV_KON_PrisonBarge_p/Textures/CeilingDeco_01_CLR_TEXSET/CeilingDeco_01_CLR_TEXSET_Color_NormX.png': C,
 }
-REVIEWED = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}   # batches 0-2: 2026-10-12; 3-9: 2026-10-13
+REVIEWED = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10}   # batches 0-2: 2026-10-12; 3-10: 2026-10-13
