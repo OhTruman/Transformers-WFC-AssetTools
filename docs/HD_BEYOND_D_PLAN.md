@@ -122,8 +122,10 @@ roughness / metal / AO into each other):
 
 1. Customisation / faction read: no E inside custom-colour / Energon tint mask regions (TEXSET mask channels) or the rim around EMIS
    glow; those regions gated at mean dE ~ 0. Characters and weapons excluded from E by default (separate eye sheet if ever).
-   The pilot reports dE inside each TEXSET mask channel's region; which channel is the tint mask is UNKNOWN to AssetTools (to
-   confirm with Systems / Rendering from the matc shader), so the exclusion itself is not implemented yet.
+   Channels (Systems' SYSTEMS_M6_TINT_CHANNELS.json, verified by Experimental): ENV TEXSET Masks_NormY B = custom A/B tint blend,
+   G = gloss / spec mask, R = emissive mask (A = normal Y); WEP_Projectile Masks B; WEP_PhongMain _MASK B (+ G kept); CHR
+   CustAB_AuxGlow and SpecPwr_DifLum_EnrGlow textures untouched; WEP_TurretIonGun colour G drives the tint. hd_e_pilot.py keeps D
+   wherever Masks B or R > 0.1 plus a feathered rim of about 2 original pixels; the gates report dE per mask channel.
 2. Gates (implemented in hd_e_pilot.py at the original resolution, E vs D): |dmean L| <= 1; mean shift <= 3; pixels in colour bins
    D lacks <= 3 %; Lab dE p99 <= 3; spurious new edges <= 0.5 %; seam = wrap step / interior step, E <= max(D, original) x 1.15.
    Still open: UV-island borders from UV0 coverage (no UV data in AssetTools yet); alpha-exact checked after the BC encode (for

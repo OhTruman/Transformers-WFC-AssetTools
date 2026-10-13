@@ -76,7 +76,16 @@ def area(x, w, h):
 def up(x, w, h):
     return np.stack([np.asarray(Image.fromarray(x[..., c], 'F').resize((w, h), Image.BILINEAR)) for c in range(x.shape[-1])], -1)
 
-def e_colour(D, o, hgt, s, seed):
+def protect_mask(M, size, f):
+    """texels E must leave as D (Systems' SYSTEMS_M6_TINT_CHANNELS.json, verified by Experimental): ENV TEXSET Masks B = custom A/B
+    tint blend, R = emissive (plus a rim around it). 1 = protected. M: the TEXSET Masks half (HxWx4) or None"""
+    if M is None: return None
+    m = np.maximum(M[..., 2], M[..., 0]) / 255
+    if M.shape[1::-1] != tuple(size): m = np.asarray(Image.fromarray(m.astype(np.float32), 'F').resize(tuple(size), Image.BILINEAR))
+    m = (m > 0.1).astype(np.float32)
+    return np.clip(P.gblur(m[..., None], 2 * f)[..., 0] * 3, 0, 1)        # feathered rim, about 2 original pixels
+
+def e_colour(D, o, hgt, s, seed, prot=None):
     """E at strength s on the D colour (HxWx4 float); returns RGB float and the fine height used for relief"""
     Hh, W = D.shape[:2]; oh, ow = o.shape[:2]; f = W / ow
     hp = hgt - P.gblur(hgt[..., None], 2 * f)[..., 0]                      # fine relief
@@ -95,6 +104,7 @@ def e_colour(D, o, hgt, s, seed):
     for _ in range(2):
         corr = area(D[..., :3], ow, oh) - area(np.clip(rgb, 0, 255).astype(np.float32), ow, oh)
         rgb = rgb + up(corr.astype(np.float32), W, Hh)
+    if prot is not None: rgb = rgb * (1 - prot[..., None]) + D[..., :3] * prot[..., None]
     return np.clip(rgb, 0, 255), hp
 
 def relief(alpha, hp, comp, s, size):
@@ -153,8 +163,8 @@ def ladder():
         stop(); t0 = time.time()
         o = P.orig(r); D = load_d(d); f = D.shape[1] / o.shape[1]
         hgt = height(D[..., :3].astype(np.uint8), os.path.join(E_ROOT, 'height', '%05d.png' % r['i']))
-        Es = OD((k, e_colour(D, o, hgt, s, r['i'])[0]) for k, s in STRENGTH.items())
-        M = load_d(md) if md else None
+        M = load_d(md) if md else None; pr = protect_mask(M, (D.shape[1], D.shape[0]), f)
+        Es = OD((k, e_colour(D, o, hgt, s, r['i'], pr)[0]) for k, s in STRENGTH.items())
         rep[r['png']] = OD((k, gates(D, e, o, M)) for k, e in Es.items())
         n, busy, flat = spots(o); im = Image.new('RGB', (5 * (S + 6), 2 * S + 36), (16, 16, 20)); dr = ImageDraw.Draw(im)
         dr.text((3, 2), '%05d %s  orig | D | E1 | E2 | E3  (busiest, flattest)' % (r['i'], r['png'][-80:]), fill=(230, 230, 230))
@@ -174,7 +184,8 @@ def pack(level='E2'):
     for r, d, m, md in us:
         stop(); o = P.orig(r); D = load_d(d)
         hgt = height(D[..., :3].astype(np.uint8), os.path.join(E_ROOT, 'height', '%05d.png' % r['i']))
-        rgb, hp = e_colour(D, o, hgt, s, r['i']); E = D.copy(); E[..., :3] = rgb
+        M0 = load_d(md) if md else None; pr = protect_mask(M0, (D.shape[1], D.shape[0]), D.shape[1] / o.shape[1])
+        rgb, hp = e_colour(D, o, hgt, s, r['i'], pr); E = D.copy(); E[..., :3] = rgb
         if r['kind'] == 'texset_color': E[..., 3] = relief(D[..., 3], hp, 0, s, (D.shape[1], D.shape[0]))
         todo = [(r, d, E)]
         if m is not None and md is not None:
