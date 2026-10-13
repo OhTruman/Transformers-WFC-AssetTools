@@ -93,13 +93,30 @@ with the hard lock replaced by the soft lock, so it may add detail.
 The next pass after E runs it per texture on the **final** colour (E where accepted, else the eye-capped D), so the maps
 match what ships.
 
-Open with Systems before any run (their renderer path decides the format):
-- Packing. The proposal is ORM in one DXT1 (R = AO, G = roughness, B = metal) per colour texture, with height kept separate
-  (G8 or DXT5 alpha) only if their path uses parallax. This is about 0.5 byte per texel extra; it needs a VRAM check against
-  the 8 GB per map.
-- Index: sibling rows in `hd_index.json` (`role: orm / height`, same key prefix). Existing keys are not renamed.
-- The metalness heuristic stays PROVISIONAL until Systems or the user accepts it on in-game shots.
-- The renderer has no PBR path today, as reported earlier; M6 must provide it.
+Format contract (Systems, 2026-10-12), replacing the ORM-in-DXT1 proposal (BC1's shared 5:6:5 endpoints would bleed
+roughness / metal / AO into each other):
+
+- **roughness**: BC4, linear. One per source texture: the one feeding the material's SpecularColor, else DiffuseColor.
+  Systems' mapping table lists those textures, which is the generator's work list.
+- **metal**: a per-material constant from Systems' classification table, not a texture. Only for materials that mix metal and
+  non-metal inside one texture: an **ORM in BC7**, linear (R = small-scale AO, G = roughness, B = metal). The metalness
+  heuristic stays PROVISIONAL and applies only there.
+- **AO**: skipped (the lightmaps and RT AO cover it); only as the R channel of an ORM that exists anyway.
+- **height**: BC4, only if parallax is approved later.
+- **Index**: sibling rows next to the original texture's row:
+  `{"tex": <original texture name>, "role": "roughness" | "orm" | "height", "dds", "format": "BC4" | "BC7", "space": "linear",
+  "from": <generator id + version>}`.
+  - I'll add `key` too: the parent row's key plus `#<role>`, so key lookups stay unique and existing keys are unchanged.
+- **Without siblings** a material keeps Systems' derived values, so the maps are a per-family improvement measured against the
+  derived version.
+- **Encoding**: DirectXTex texconv (MIT, already in bin/texconv), BC4_UNORM / BC7_UNORM, DDS DX10 header. BC7 on the CPU is slow
+  (`-nogpu`), so the time is measured on the pilot.
+- **Rendering** must confirm the loader reads BC4 / BC7 (RGTC / BPTC, DX10 header); today it accepts only DXT1/3/5, A8R8G8B8 and G8,
+  and an unknown format makes it ignore the whole pack. So the PBR rows go in a separate index file (`hd_pbr_index.json`) until
+  the loader accepts them, and can never disable the colour pack.
+- **Order**: Systems' matc "pbr" mapping on the existing textures first; then the classification audit sends the work list;
+  then the generated maps.
+- The renderer had no PBR path; M6 provides it.
 
 ## Order
 
