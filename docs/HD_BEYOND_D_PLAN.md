@@ -118,6 +118,42 @@ roughness / metal / AO into each other):
   then the generated maps.
 - The renderer had no PBR path; M6 provides it.
 
+## Experimental review (2026-10-12): required before E pilot results count
+
+1. Customisation / faction read: no E inside custom-colour / Energon tint mask regions (TEXSET mask channels) or the rim around EMIS
+   glow; those regions gated at mean dE ~ 0. Characters and weapons excluded from E by default (separate eye sheet if ever).
+   The pilot reports dE inside each TEXSET mask channel's region; which channel is the tint mask is UNKNOWN to AssetTools (to
+   confirm with Systems / Rendering from the matc shader), so the exclusion itself is not implemented yet.
+2. Gates (implemented in hd_e_pilot.py at the original resolution, E vs D): |dmean L| <= 1; mean shift <= 3; pixels in colour bins
+   D lacks <= 3 %; Lab dE p99 <= 3; spurious new edges <= 0.5 %; seam = wrap step / interior step, E <= max(D, original) x 1.15.
+   Still open: UV-island borders from UV0 coverage (no UV data in AssetTools yet); alpha-exact checked after the BC encode (for
+   TEXSET the alpha is a normal component and changes on purpose; for alpha-as-mask textures it must stay exact).
+   Eye review 100 % for E; seed / strength recorded per row.
+3. E installs as a NEW pack root with an atomic switch, never over D rows; D stays shippable (HD: Faithful (D) / Enhanced (E)).
+   Pairs and timed runs use a frozen root (out/hd/push_..._snap_<date>), never the live one.
+4. M6 maps at HALF the colour resolution; never G8 / RGBA8 fallbacks; each roughness map's mean normalised to Systems' derived
+   value per material (spec_power_mean, m6_mapping.json); one height per texture feeds both E micro-normals and M6 height; M6 maps
+   per batch from D where E is not accepted. Work list: Systems' SYSTEMS_M6_WORKLIST.json (490 parents, 15 ORM candidates held).
+
+## E pilot v1 results (2026-10-12, detail-map synthesis, no diffusion)
+
+- Set: the 11 colour units MP_IAC_Rust's materials bind that were already packed at D (20 textures with the TEXSET masks).
+- v1 (isotropic micro grain at 10 levels): reads as sensor noise. Rejected by eye.
+- v2: grime in cavities, wear on raised edges, relief shading from the 1x-PBRify-Height high-pass, faint grain, exact two-step
+  lock at the original resolution. E2 passes the gates on 9 of 11 (E1 11 / 11, E3 2 / 11). By eye it adds faint embossed
+  micro-structure (panel seams, pitting) and keeps every design; it is NOT the visibly "realistic and new" look the user asked
+  for. PBRify height invents small "+" / circuit marks in flat areas.
+- Conclusion (PROVISIONAL until the user sees it): the synthesis route is a safe floor; visible realism needs the generative
+  route (img2img + structure control), which needs a diffusion stack AssetTools does not have yet.
+- Pilot pack: out/hd/push_e_pilot/pack (E2, 20 rows, 125.5 MB), ladder sheets out/hd/push_e_pilot/ladder_sheet_{1,2}.png.
+
+## D pass fix found by the pilot
+
+8 selection rows carry a png path borrowed from a same-named texture in another package (EditorTextureSet, RectBld, Tubes_Road,
+IaconTable). Pack keys now come from each row's own dds path (identical for every other row), and TEXSET halves pair by dds path.
+Outputs built with the wrong pairing were removed for rebuild (results 733 / 734 / 1434, texnrm 733 / 1936 / 2705); batches 0-2
+are unaffected. Eye caps are keyed by png, so such twins share a cap.
+
 ## Order
 
 1. D pass completes (colour model about 2026-10-14), its batches are reviewed and packed, and it is installed via an

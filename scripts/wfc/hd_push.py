@@ -89,10 +89,11 @@ def select_full():
 def rows(): return json.load(open(os.path.join(OUT, 'select.json'), encoding='utf-8'))
 def orig(r): return np.asarray(Image.open(os.path.join(H.DDS, r['dds'])).convert('RGBA'))
 def partner(r, R):
-    if r['kind'] == 'texset_color': p = r['png'].replace('_Color_NormX.png', '_Masks_NormY.png')
-    elif r['kind'] == 'texset_masks': p = r['png'].replace('_Masks_NormY.png', '_Color_NormX.png')
+    """the other TEXSET half, by dds path (8 selection rows share a png path with a same-named texture in another package)"""
+    if r['kind'] == 'texset_color': p = r['dds'].replace('_Color_NormX.dds', '_Masks_NormY.dds')
+    elif r['kind'] == 'texset_masks': p = r['dds'].replace('_Masks_NormY.dds', '_Color_NormX.dds')
     else: return None
-    return next((x for x in R if x['png'] == p), None)
+    return next((x for x in R if x['dds'] == p), None)
 def free_commit_gb():
     """system commit still available (GlobalMemoryStatusEx ullAvailPageFile), GB"""
     import ctypes

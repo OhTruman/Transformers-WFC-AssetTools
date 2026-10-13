@@ -182,7 +182,10 @@ def pack():
                 if not os.path.exists(res_path(r)): continue
                 x = json.load(open(res_path(r), encoding='utf-8'))
                 if not x['level']: continue
-                rows_.append(OD([('key', x['png'].lower()), ('object_path', x['object_path']), ('dds', x['dds']), ('format', x['format']),
+                # key from the texture's own dds path: 8 selection rows carry a png path borrowed from a same-named texture in
+                # another package (e.g. WEP_StandardRocket's EditorTextureSet as CanyonFloor_A's), so png keys would collide.
+                # Identical to the png key for every other row (checked on batches 0-2: 0 differences)
+                rows_.append(OD([('key', x['dds'].lower()[:-4] + '.png'),('object_path', x['object_path']), ('dds', x['dds']), ('format', x['format']),
                                  ('size', x['hd_size']), ('bytes', x['bytes']), ('level', x['level'])])); lv[x['level']] += 1
     json.dump(OD([('version', 1), ('generator', 'AssetTools/scripts/wfc/hd_full_push.py (HD full pass, ladder D->C->B->A, eye-reviewed batches)'),
                   ('generated', time.strftime('%Y-%m-%d %H:%M')), ('reviewed_batches', sorted(E.REVIEWED)), ('textures', len(rows_)),
