@@ -130,5 +130,10 @@ Starts when the M1 slots end (PERF_HOLD cleared).
   cells / woven ridges at every level -> original; rails / floor tiles / Guts floors / Guardian guns -> A; stone that shatters
   into bright shards at B+ -> A; one normal with grid moire at C / D -> B.
 
+- Eye review batch 3 (2026-10-13, ladder crops for 41 suspects + the GutsFloorB copies): 463 textures packed over batches 0-3
+  (211 D / 138 C / 34 B / 80 A, 3,428.5 MB). New pattern: grit / gravel (HealthCrate, Battery, TunnelSupport) turns into glitter
+  shards from B up -> A. Frozen snapshot of batches 0-2 for Systems' hd_verify: out/hd/push_full_snap_20261013_b0-2.
+- Overnight 2026-10-13: one 12-thread CPU colour process (2 x 8-thread shards measured slower in total); commit guard 35 / 40 GB.
+
 ## Open
 - hd_pbr does not fit: there is no renderer PBR path (reported earlier).
