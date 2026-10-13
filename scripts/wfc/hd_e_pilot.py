@@ -89,13 +89,13 @@ def protect_mask(M, size, f, mask_name=None):
     ENV_PhongMain_NS materials with Enable_CustomColorTint; there diffuse = albedo x mix(CustA, CustB, B). Protect where that tint
     T deviates from white (max channel |T - 1| > 0.1, worst case over every material sharing the mask) so E bakes no hue into a tinted
     texel; elsewhere B is a detail-normal mask (not protected). R (emissive) is always protected, with a feathered rim.
-    Mask names shared by many TEXSETs (EditorTextureSet_*) are ambiguous in the table: treated conservatively (old B > 0.1 rule).
+    The table is keyed by the mask's full object path (Systems b4560051; every tint-enabled material parses).
     1 = protected. M: the TEXSET Masks half (HxWx4) or None"""
     if M is None: return None
     b = M[..., 2].astype(np.float32) / 255; m = (M[..., 0].astype(np.float32) / 255 > 0.1).astype(np.float32)
-    mats = tint_ab()['by_mask'].get(mask_name) if mask_name else None
-    if mask_name and mask_name.lower().startswith('editortextureset'): m = np.maximum(m, (b > 0.1).astype(np.float32))
-    elif mats:
+    bm = tint_ab()['by_mask']; mats = None
+    if mask_name: mats = bm.get(mask_name) or next((v for k, v in bm.items() if k.lower() == mask_name.lower()), None)
+    if mats:
         dev = np.zeros_like(b)
         for x in mats:
             A = np.array(x['A'], np.float32); B = np.array(x['B'], np.float32)
