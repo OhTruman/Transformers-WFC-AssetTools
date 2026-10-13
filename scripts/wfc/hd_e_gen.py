@@ -86,6 +86,14 @@ def regenerate(rgb, txt, strength, seed):
             wsum[y:y + t, x:x + t] += wt
     return (acc / np.maximum(wsum, 1e-6))[pad:pad + Hh, pad:pad + W]
 
+def cached(i, level, fn):
+    """checkpoint each regenerated texture (before the lock) so a stop / driver reset resumes at the next unit / strength"""
+    p = os.path.join(G_ROOT, 'raw', '%05d_%s.png' % (i, level))
+    if os.path.exists(p): return np.asarray(Image.open(p)).astype(np.float32)
+    g = fn(); os.makedirs(os.path.dirname(p), exist_ok=True)
+    Image.fromarray(np.clip(np.round(g), 0, 255).astype(np.uint8)).save(p + '.tmp.png'); os.replace(p + '.tmp.png', p)
+    return g
+
 def lock(G, D, o, prot):
     """exact two-step lock to D's colour at the original resolution, then D in protected regions"""
     Hh, W = D.shape[:2]; oh, ow = o.shape[:2]; rgb = G.copy()
@@ -129,7 +137,7 @@ def ladder():
         EP.stop(); t0 = time.time()
         o = P.orig(r); D = EP.load_d(d); f = D.shape[1] / o.shape[1]
         M = EP.load_d(md) if md else None; pr = EP.protect_mask(M, (D.shape[1], D.shape[0]), f); txt = prompt(r['png'])
-        Gs = OD((k, lock(regenerate(D[..., :3], txt, s, r['i']), D, o, pr)) for k, s in DENOISE.items())
+        Gs = OD((k, lock(cached(r['i'], k, lambda s=s: regenerate(D[..., :3], txt, s, r['i'])), D, o, pr)) for k, s in DENOISE.items())
         rep[r['png']] = OD((k, EP.gates(D, g, o, M)) for k, g in Gs.items())
         for k in rep[r['png']]: rep[r['png']][k]['from'] = 'sd15+controlnet_tile denoise %.2f steps %d cfg %.1f seed %d prompt "%s"' % (
             DENOISE[k], STEPS, CFG, r['i'], txt)
@@ -150,7 +158,7 @@ def pack(level='G2'):
     for r, d, m, md in us:
         EP.stop(); o = P.orig(r); D = EP.load_d(d); f = D.shape[1] / o.shape[1]
         M0 = EP.load_d(md) if md else None; pr = EP.protect_mask(M0, (D.shape[1], D.shape[0]), f)
-        G = lock(regenerate(D[..., :3], prompt(r['png']), s, r['i']), D, o, pr); E = D.copy(); E[..., :3] = G
+        G = lock(cached(r['i'], level, lambda: regenerate(D[..., :3], prompt(r['png']), s, r['i'])), D, o, pr); E = D.copy(); E[..., :3] = G
         hgt = EP.height(G.astype(np.uint8), os.path.join(G_ROOT, 'height', '%05d.png' % r['i']))   # relief from the E colour
         hp = hgt - P.gblur(hgt[..., None], 2 * f)[..., 0]
         if r['kind'] == 'texset_color': E[..., 3] = EP.relief(D[..., 3], hp, 0, 1.0, (D.shape[1], D.shape[0]))
