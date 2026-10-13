@@ -53,12 +53,14 @@ def main():
     k.OpenProcess.restype = W.HANDLE
     job = k.CreateJobObjectW(None, None)
     info = EXTENDED()
-    info.BasicLimitInformation.LimitFlags = JOB_OBJECT_LIMIT_JOB_MEMORY | JOB_OBJECT_LIMIT_KILL_ON_JOB_CLOSE
+    # DIE_ON_UNHANDLED_EXCEPTION (0x400): a crashing child exits instead of leaving a WER dialog on the desktop
+    info.BasicLimitInformation.LimitFlags = JOB_OBJECT_LIMIT_JOB_MEMORY | JOB_OBJECT_LIMIT_KILL_ON_JOB_CLOSE | 0x400
     info.JobMemoryLimit = int(a.cap_gb * 2**30)
     if not k.SetInformationJobObject(W.HANDLE(job), JobObjectExtendedLimitInformation, ctypes.byref(info), ctypes.sizeof(info)):
         sys.exit('SetInformationJobObject failed')
     out = open(a.log, 'w', encoding='utf-8') if a.log else None
     t0 = time.time()
+    k.SetErrorMode(0x8003)   # inherited: no critical-error / GP-fault / open-file dialogs in the child
     p = subprocess.Popen([sys.executable] + cmd, stdout=out or None, stderr=subprocess.STDOUT if out else None,
                          creationflags=0x00000004)   # CREATE_SUSPENDED: assign before it runs
     h = k.OpenProcess(0x1F0FFF, False, p.pid)

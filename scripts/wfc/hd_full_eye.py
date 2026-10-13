@@ -46,5 +46,74 @@ EYE = {
     'content/ENV_AllShader_p/Textures/DefaultTextureSetC/DefaultTextureSetC_Masks_NormY.png': None,
     # flat designer colour: a dark edge appears, nothing gained
     'content/Designer_Materials_p/LightBlue.png': None,
+
+    # ---- batch 1 (2026-10-12; ladder crops for every suspect) ----
+    # busy colour: B and up crush blacks / blow white edges and bands; A is faithful
+    'content/ENV_AllShader_p/Textures/Ice_crystals_CLR.png': A,
+    'content/ENV_AllShader_p/Textures/stains_01_CLR.png': A,
+    'content/ENV_AllShader_p_OLD/Templates/Metal_Clr.png': A,
+    'content/ENV_CORE_Deco_p/Textures/ENV_CORE_CeilingDecoA_CLR_TEXSET/ENV_CORE_CeilingDecoA_CLR_TEXSET_Color_NormX.png': A,
+    'content/ENV_CORE_Deco_p/Textures/ENV_CORE_InteriorDoor_CLR_TEXSET/ORB_D1_InteriorDoor_CLR_TEXSET_Color_NormX.png': A,
+    'content/ENV_CORE_Deco_p/Textures/ENV_CORE_SupportDecoB_CLR.png': A,
+    'content/ENV_CORE_Deco_p/Textures/ENV_CORE_SupportDecoB_CLR_TEXSET/ENV_CORE_SupportDecoB_CLR_TEXSET_Color_NormX.png': A,
+    # D blows whites / exaggerates grain; C holds
+    'content/ENV_ArchiveInterior_p/Courtyard/SimpleFloor_TexSet/SimpleFloor_TexSet_Color_NormX.png': C,
+    'content/ENV_ArchiveInterior_p/FaceDeco/FaceDeco1_CLR_TEXSET/FaceDeco1_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_CORE_Deco_p/Textures/CanyonDeco_A_NoEmis_TEXSET/CanyonDeco_A_NoEmis_TEXSET_Color_NormX.png': C,
+    'content/ENV_CORE_Deco_p/Textures/ENV_CORE_CanyonDeco_A_CLR.png': C,
+    'content/ENV_CORE_Deco_p/Textures/ENV_CORE_CanyonDeco_A_CLR_TEXSET/ENV_CORE_CanyonDeco_A_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_CORE_Deco_p/Textures/ENV_CORE_WallDecoA_CLR.png': C,
+    'content/ENV_CORE_Deco_p/Textures/ENV_CORE_WallDecoA_CLR_TEXSET/ENV_CORE_WallDecoA_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_CORE_DropShip_p/Doors/ENV_CORE_DSFBDoors_TEXSET/ENV_CORE_DSFBDoors_TEXSET_Color_NormX.png': C,
+    'content/ENV_CORE_Floors_p/Materials/CenterChamberFloorCenterDisc_CLR.png': C,
+    # tiling noise turned into polygon cells at every level
+    'content/ENV_AllShader_p/Textures/Rust_C_CLR.png': None,
+    # FX / shader textures (arcs, fractal, 4 px pixel pattern): the model invents structure
+    'content/ENV_AllShader_p/Textures/ElectricArcsElectricArcsElectricArcsElectricArcs.png': None,
+    'content/ENV_AllShader_p/Textures/ElectricArcs_512.png': None,
+    'content/ENV_AllShader_p/Textures/Pixel_4_CLR.png': None,
+    'content/ENV_AllShader_p/Textures/fractalMaps.png': None,
+
+    # ---- batch 2 (2026-10-12; ladder crops for every suspect) ----
+    # busy / high-contrast colour (rails, floor tiles, Guts floors, Guardian guns): A is faithful
+    'content/ENV_CORE_Floors_p/Materials/CenterChamberFloorRails_CLR.png': A,
+    'content/ENV_CORE_Floors_p/Materials/CenterChamberFloorRails_CLR_TEXSET/CenterChamberFloorRails_CLR_TEXSET_Color_NormX.png': A,
+    'content/ENV_CORE_Floors_p/Materials/CenterChamberMainFloorRails_CLR.png': A,
+    'content/ENV_CORE_Floors_p/Materials/CenterChamberMainFloorRails_CLR_TEXSET/CenterChamberMainFloorRails_CLR_TEXSET_Color_NormX.png': A,
+    'content/ENV_CORE_Floors_p/Materials/ENV_CORE_FloorTileBSP_CLR.png': A,
+    'content/ENV_CORE_Floors_p/Materials/ENV_CORE_FloorTileBSP_CLR_TEXSET/ENV_CORE_FloorTileBSP_CLR_TEXSET_Color_NormX.png': A,
+    'content/ENV_CORE_Floors_p/Materials/ENV_CORE_MPFloor_CLR_TEXSET/ENV_CORE_MPFloor_CLR_TEXSET_Color_NormX.png': A,
+    'content/ENV_CORE_Floors_p/Materials/ENV_COR_GutsFloorA_CLR.png': A,
+    'content/ENV_CORE_Floors_p/Materials/ENV_COR_GutsFloorC_CLR.png': A,
+    'content/ENV_CORE_Floors_p/Materials/ENV_COR_GutsFloorC_CLR_TEXSET/ENV_COR_GutsFloorC_CLR_TEXSET_Color_NormX.png': A,
+    'content/ENV_CORE_Floors_p/Materials/Sidewalk_CLR_TEXSET/Sidewalk_CLR_TEXSET_Color_NormX.png': A,
+    'content/ENV_CORE_Mechparts_p/Materials/ENV_COR_Tracks_CLR_TEXSET/EditorTextureSet_Color_NormX.png': A,
+    'content/ENV_CORE_SeedChamberBoss_p/Materials/COR_GuardianGuns_CLR.png': A,
+    # soft stone: B and up shatter it into bright shards; A holds
+    'content/ENV_CORE_Floors_p/Materials/ENV_CORE_Tunnel1Slope_CLR_TEXSET/ENV_CORE_Tunnel1Slope_CLR_TEXSET_Color_NormX.png': A,
+    'content/ENV_CORE_Floors_p/Materials/OmegaBridgeSupport_CLR_TEXSET/OmegaBridgeSupport_CLR_TEXSET_Color_NormX.png': A,
+    # D blows white rims / rings or exaggerates cells; C holds
+    'content/ENV_CORE_Floors_p/Materials/Core_MPFloorMP_CLR.png': C,
+    'content/ENV_CORE_Floors_p/Materials/Core_MPFloor_CLR.png': C,
+    'content/ENV_CORE_Floors_p/Materials/ENV_CORE_MPYFloor_CLR_TEXSET/ENV_CORE_MPYFloor_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_CORE_Floors_p/Materials/ENV_CORE_Tunnel1Slope_CLR.png': C,
+    'content/ENV_CORE_Floors_p/Materials/ENV_COR_GutsFloorB_CLR.png': C,
+    'content/ENV_CORE_Floors_p/Materials/ENV_COR_GutsFloorB_CLR_TEXSET/ENV_COR_GutsFloorB_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_CORE_Floors_p/Materials/OmegaBridgeSupport_CLR.png': C,
+    'content/ENV_CORE_Floors_p/Materials/OmegaBridge_CLR_TEXSET/OmegaBridge_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_CORE_Platform_p/Textures/ENV_CORE_CanyonGate_A_CLR_TEXSET/ENV_CORE_CanyonGate_A_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_CORE_Platform_p/Textures/ENV_CORE_CoreIntCenter_CLR.png': C,
+    'content/ENV_CORE_SeedChamberBoss_p/Materials/COR_GuardianBase_CLR.png': C,
+    'content/ENV_CORE_SeedChamberBoss_p/Materials/COR_GuardianBase_CLR_TEXSET/COR_GuardianBase_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_CORE_SeedChamberBoss_p/Materials/COR_GuardianCenterDisc_CLR.png': C,
+    'content/ENV_CORE_SeedChamberBoss_p/Materials/COR_GuardianCenterDisc_CLR_TEXSET/COR_GuardianCenterDisc_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_CORE_SeedChamberBoss_p/Materials/COR_GuardianCore_CLR_TEXSET/COR_GuardianCore_CLR_TEXSET_Color_NormX.png': C,
+    # normal: C and D add a grid moire on the flat faces; B is clean
+    'content/ENV_CORE_Platform_p/Textures/ENV_CORE_CanyonGate_B_NORM.png': B,
+    # normal from a dithered checker: every level turns the dither into woven ridges
+    'content/ENV_CORE_Platform_p/Textures/ENV_CORE_CoreIntCenter_NORM.png': None,
+    # glow / emissive: the green turns pale
+    'content/ENV_CORE_SeedChamberBoss_p/Materials/COR_GuardianCore_EMIS.png': None,
+    'content/ENV_CORE_SeedChamberBoss_p/Materials/COR_GuardianHeadA_EMIS.png': None,
 }
-REVIEWED = {0}   # batch 0: 2026-10-12
+REVIEWED = {0, 1, 2}   # batches 0-2: 2026-10-12

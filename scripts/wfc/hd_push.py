@@ -101,7 +101,7 @@ def free_commit_gb():
                     ('tp', 'ap', 'tpf', 'apf', 'tv', 'av', 'aev')]
     m = M(); m.dwLength = ctypes.sizeof(M); ctypes.windll.kernel32.GlobalMemoryStatusEx(ctypes.byref(m))
     return m.apf / 2 ** 30
-COMMIT_PAUSE_GB = float(os.environ.get('WFC_COMMIT_PAUSE_GB', '8'))   # Integration 2026-10-12: pause < 8 GB free commit, resume > 12
+COMMIT_PAUSE_GB = float(os.environ.get('WFC_COMMIT_PAUSE_GB', '14'))   # Integration 2026-10-12: pause < 14 GB free commit, resume > 18 (C: tight; was 8 / 12)
 def low_commit():
     f = free_commit_gb()
     return ['free commit %.1f GB < %.0f' % (f, COMMIT_PAUSE_GB)] if f < COMMIT_PAUSE_GB else []
