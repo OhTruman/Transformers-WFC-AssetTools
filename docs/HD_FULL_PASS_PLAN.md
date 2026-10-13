@@ -121,6 +121,7 @@ Starts when the M1 slots end (PERF_HOLD cleared).
 - Memory (Integration 2026-10-12, system commit low): one colour process (12 threads), the DML runner and one build process; every job
   checks free commit per texture (< 8 GB: exit 75, the runner waits in cmd until > 12 GB: scripts/wfc/commit_wait.cmd).
   Raised the same day when C: ran tight (pagefile growth): pause < 14 GB, resume > 18 GB, at most 2 HD processes at once.
+  Then (C: 7.4 GB free) until the PC restart: pause < 16 GB, resume > 20 GB, ONE HD process (CPU colour); GPU gen and build wait.
 - Crash hygiene (2026-10-12): the DML gen died once with a fail-fast (0xC0000409) and left a WER dialog on the desktop; the runner
   then wrote its .done marker anyway. run_bounded now runs children with SetErrorMode + JOB_OBJECT_LIMIT_DIE_ON_UNHANDLED_EXCEPTION
   (a crash exits without a dialog), and the gen runners mark done only on rc 0.

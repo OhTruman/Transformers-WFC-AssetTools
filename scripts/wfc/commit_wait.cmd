@@ -1,8 +1,8 @@
 @echo off
-rem Wait until the system has at least WFC_COMMIT_RESUME_GB (default 18) of free commit (Integration 2026-10-12: jobs pause below
-rem 14 GB, see hd_push.low_commit, and resume above 18; raised from 8 / 12 when C: ran tight). No python while waiting.
+rem Wait until the system has at least WFC_COMMIT_RESUME_GB (default 20) of free commit (Integration 2026-10-12: jobs pause below
+rem 16 GB, see hd_push.low_commit, and resume above 20; raised from 8 / 12, then 14 / 18, as C: ran tight). No python while waiting.
 setlocal
-if not defined WFC_COMMIT_RESUME_GB set WFC_COMMIT_RESUME_GB=18
+if not defined WFC_COMMIT_RESUME_GB set WFC_COMMIT_RESUME_GB=20
 set "SAID="
 :check
 for /f %%F in ('powershell -NoProfile -Command "[int]((Get-CimInstance Win32_OperatingSystem).FreeVirtualMemory/1MB)"') do set FREE=%%F

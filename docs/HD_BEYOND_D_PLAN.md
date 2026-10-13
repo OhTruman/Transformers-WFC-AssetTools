@@ -105,15 +105,15 @@ roughness / metal / AO into each other):
 - **height**: BC4, only if parallax is approved later.
 - **Index**: sibling rows next to the original texture's row:
   `{"tex": <original texture name>, "role": "roughness" | "orm" | "height", "dds", "format": "BC4" | "BC7", "space": "linear",
-  "from": <generator id + version>}`.
+  "from": <generator id + version>, "bytes", "srgb": false}`. `bytes` is for Rendering's MEMSTATS column; `srgb: false` duplicates `space` for the loader.
   - I'll add `key` too: the parent row's key plus `#<role>`, so key lookups stay unique and existing keys are unchanged.
 - **Without siblings** a material keeps Systems' derived values, so the maps are a per-family improvement measured against the
   derived version.
 - **Encoding**: DirectXTex texconv (MIT, already in bin/texconv), BC4_UNORM / BC7_UNORM, DDS DX10 header. BC7 on the CPU is slow
   (`-nogpu`), so the time is measured on the pilot.
 - **Rendering** must confirm the loader reads BC4 / BC7 (RGTC / BPTC, DX10 header); today it accepts only DXT1/3/5, A8R8G8B8 and G8,
-  and an unknown format makes it ignore the whole pack. So the PBR rows go in a separate index file (`hd_pbr_index.json`) until
-  the loader accepts them, and can never disable the colour pack.
+  and an unknown format makes it ignore the whole pack. So the PBR rows go in a separate index file (`hd_pbr_index.json`; Rendering resolves it by
+  (parent object, role)) until the loader accepts them, and can never disable the colour pack.
 - **Order**: Systems' matc "pbr" mapping on the existing textures first; then the classification audit sends the work list;
   then the generated maps.
 - The renderer had no PBR path; M6 provides it.
