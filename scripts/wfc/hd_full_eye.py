@@ -163,5 +163,45 @@ EYE = {
     'content/ENV_CORE_SupportColumns_p/Textures/ENV_COR_GutsFloorB_CLRENV_COR_GutsFloorB_CLR_TEXSET/ENV_COR_GutsFloorB_CLRENV_COR_GutsFloorB_CLR_TEXSET_Color_NormX.png': C,
     # painterly rubble turns into polygon cells at every level
     'content/ENV_CORE_Wall_p/ENV_CORE_BSPWall_B_CLR.png': None,
+
+    # ---- batch 4 (2026-10-13; ladder crops for every suspect) ----
+    # busy colour: B and up turn grime into white blotches / blow white edges; A is faithful
+    'content/ENV_CORE_Wall_p/ENV_CORE_BSPWall_B_CLR_TEXSET/EditorTextureSet_Color_NormX.png': A,
+    'content/ENV_CORE_Wall_p/Textures/Core_RoutingWallsA_CLR.png': A,
+    'content/ENV_CORE_Wall_p/Textures/Core_RoutingWallsA_CLR_TEXSET/EditorTextureSet_Color_NormX.png': A,
+    'content/ENV_CORE_Wall_p/Textures/Core_RoutingWallsB_CLR.png': A,
+    'content/ENV_CORE_Wall_p/Textures/ENV_CORE_CanyonWall_C_CLR_TEXSET/EditorTextureSet_Color_NormX.png': A,
+    'content/ENV_CORE_Wall_p/Textures/ENV_CORE_ENERGYCliffWall_A/ENV_CORE_ENERGYCliffWall_A_Color_NormX.png': A,
+    'content/ENV_CORE_Wall_p/Textures/ENV_CORE_InroomRndTunnel_A_CLR_TEXSET/EditorTextureSet_Color_NormX.png': A,
+    'content/ENV_CORE_Wall_p/Textures/ENV_CORE_TunnelFloorA_CLR.png': A,
+    'content/ENV_CORE_Wall_p/Textures/ENV_CORE_TunnelFloorA_CLR_TEXSET/ENV_CORE_TunnelFloorA_CLR_TEXSET_Color_NormX.png': A,
+    # D blows white rims / panels or exaggerates cells; C holds
+    'content/ENV_CORE_Wall_p/Textures/ENV_CORE_BSPWall_A_CLR.png': C,
+    'content/ENV_CORE_Wall_p/Textures/ENV_CORE_BSPWall_C_CLR_TEXSET/EditorTextureSet_Color_NormX.png': C,
+    'content/ENV_CORE_Wall_p/Textures/ENV_CORE_BSPWall_D_CLR.png': C,
+    'content/ENV_CORE_Wall_p/Textures/ENV_CORE_BSPWall_E_TEXSET/ENV_CORE_BSPWall_E_TEXSET_Color_NormX.png': C,
+    'content/ENV_CORE_Wall_p/Textures/ENV_CORE_BSPWall_F_TEXSET/ENV_CORE_BSPWall_F_TEXSET_Color_NormX.png': C,
+    'content/ENV_CORE_Wall_p/Textures/ENV_CORE_BSPWall_G_TEXSET/ENV_CORE_BSPWall_G_TEXSET_Color_NormX.png': C,
+    'content/ENV_CORE_Wall_p/Textures/ENV_CORE_CanyonTopPillar_A_CLR.png': C,
+    'content/ENV_CORE_Wall_p/Textures/ENV_CORE_CanyonTopPillar_A_CLR_TEXSET/ENV_CORE_CanyonTopPillar_A_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_CORE_Wall_p/Textures/ENV_CORE_CanyonWall_B_CLR.png': C,
+    'content/ENV_CORE_Wall_p/Textures/ENV_CORE_InroomCnrWall_A_CLR_TEXSET/EditorTextureSet_Color_NormX.png': C,
+    'content/ENV_CORE_Wall_p/Textures/ENV_CORE_InroomWall_A_CLR_TEXSET/ENV_CORE_InroomWall_A_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_CORE_Wall_p/Textures/ENV_CORE_InroomWall_B_CLR.png': C,
+    'content/ENV_CORE_Wall_p/Textures/ENV_CORE_InroomWall_B_CLR_TEXSET/ENV_CORE_InroomWall_B_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_CORE_Wall_p/Textures/ENV_CORE_InsideWall_A_CLR.png': C,
+    'content/ENV_CORE_Wall_p/Textures/ENV_CORE_InsideWall_A_CLR_TEXSET/ENV_CORE_InsideWall_A_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_CORE_Wall_p/Textures/ENV_CORE_MRFloor_A_CLR.png': C,
+    'content/ENV_CORE_Wall_p/Textures/ENV_CORE_MRFloor_A_CLR_TEXSET/ENV_CORE_MRFloor_A_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_CORE_Wall_p/Textures/ENV_CORE_TunnelCenter_Side01_CLR_TEXSET/ENV_CORE_TunnelCenter_Side01_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_CORE_Wall_p/Textures/ENV_COR_MRStairs_TEXSET/ENV_COR_MRStairs_TEXSET_Color_NormX.png': C,
+    'content/ENV_CORE_Wall_p/Textures/ENV_Core_CliffWall_B/ENV_Core_CliffWall_B_Color_NormX.png': C,
+    'content/ENV_IAC_BLDS_1_p/Texture/CurveWall_CLR.png': C,
+    'content/ENV_IAC_BLDS_1_p/Texture/CurveWall_CLR_TEXSET/CurveWall_CLR_TEXSET_Color_NormX.png': C,
+    # flat designer gradient (TunnelGlass), waterfall FX, sky gradient, tiled detail normal (as Metal_01_TiledNORM): nothing gained, artefacts added
+    'content/ENV_CORE_Wall_p/Textures/ENV_UND_TunnelGlass_CLR.png': None,
+    'content/ENV_CORE_Wall_p/Textures/WaterFall_CLRWaterFall_CLR.png': None,
+    'content/ENV_GLB_EnvEffects_p/Texture/skybg.png': None,
+    'content/ENV_GLB_Textures/DetailNorm/ENV_KON_Metal_01_TiledNORM.png': None,
 }
-REVIEWED = {0, 1, 2, 3}   # batches 0-2: 2026-10-12; 3: 2026-10-13
+REVIEWED = {0, 1, 2, 3, 4}   # batches 0-2: 2026-10-12; 3-4: 2026-10-13
