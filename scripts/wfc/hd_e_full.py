@@ -97,7 +97,7 @@ def ab(ids):
     rows, rep = [], OD()
     for r, d, m, md in sel:
         EP.stop(); o = P.orig(r); D = EP.load_d(d); f = D.shape[1] / o.shape[1]
-        M0 = EP.load_d(md) if md else None; pr = EP.protect_mask(M0, (D.shape[1], D.shape[0]), f); txt = G.prompt(r['png'])
+        M0 = EP.load_d(md) if md else None; pr = EP.protect_mask(M0, (D.shape[1], D.shape[0]), f, md['object_path'].split('.')[-1] if md else None); txt = G.prompt(r['png'])
         arms = OD(); secs = OD()
         for name, sc, lv in AB_ARMS:
             t0 = time.time()
@@ -141,7 +141,7 @@ def ab4(ids):
     rows, rep = [], OD()
     for r, d, m, md in sel:
         EP.stop(); o = P.orig(r); D = EP.load_d(d); f = D.shape[1] / o.shape[1]
-        M0 = EP.load_d(md) if md else None; pr = EP.protect_mask(M0, (D.shape[1], D.shape[0]), f); txt = G.prompt(r['png'])
+        M0 = EP.load_d(md) if md else None; pr = EP.protect_mask(M0, (D.shape[1], D.shape[0]), f, md['object_path'].split('.')[-1] if md else None); txt = G.prompt(r['png'])
         p3 = os.path.join(AT, 'out', 'hd', 'push_e_gen', 'raw', '%05d_G3.png' % r['i'])
         raw3 = np.asarray(Image.open(p3)).astype(np.float32) if os.path.exists(p3) else generate(r, D, o, txt, 'G3', 4)
         t0 = time.time(); raw4 = generate(r, D, o, txt, 'G4', 4); dt = round(time.time() - t0)
@@ -171,7 +171,7 @@ def gen(maps=None):
         if os.path.exists(res_path(r)): continue
         EP.stop(); t0 = time.time()
         o = P.orig(r); D = EP.load_d(d); f = D.shape[1] / o.shape[1]
-        M0 = EP.load_d(md) if md else None; pr = EP.protect_mask(M0, (D.shape[1], D.shape[0]), f); txt = G.prompt(r['png'])
+        M0 = EP.load_d(md) if md else None; pr = EP.protect_mask(M0, (D.shape[1], D.shape[0]), f, md['object_path'].split('.')[-1] if md else None); txt = G.prompt(r['png'])
         E3 = G.lock(generate(r, D, o, txt), D, o, pr)
         g = EP.gates(D, E3, o, M0)
         frm = 'sd15+controlnet_tile at %dx, denoise %.2f steps %d cfg %.1f seed %d prompt "%s"' % (GEN_SCALE, STRENGTH, G.STEPS, G.CFG, r['i'], txt)

@@ -76,15 +76,34 @@ def area(x, w, h):
 def up(x, w, h):
     return np.stack([np.asarray(Image.fromarray(x[..., c], 'F').resize((w, h), Image.BILINEAR)) for c in range(x.shape[-1])], -1)
 
-def protect_mask(M, size, f):
-    """texels E must leave as D (Systems' SYSTEMS_M6_TINT_CHANNELS.json, verified by Experimental): ENV TEXSET Masks B = custom A/B
-    tint blend, R = emissive (plus a rim around it). 1 = protected. M: the TEXSET Masks half (HxWx4) or None"""
+TINT_AB = os.path.join(os.path.dirname(AT), 'Rebuild-Systems', 'docs', 'handoff', 'SYSTEMS_M6_TINT_AB.json')
+_tint = None
+def tint_ab():
+    global _tint
+    if _tint is None:
+        _tint = json.load(open(TINT_AB, encoding='utf-8')) if os.path.exists(TINT_AB) else {'by_mask': {}, 'unparsed': []}
+    return _tint
+
+def protect_mask(M, size, f, mask_name=None):
+    """texels E must leave as D. Systems 2026-10-13 (agents/systems 5fc3a0b6, SYSTEMS_M6_TINT_AB.json): Masks B is a colour tint ONLY in
+    ENV_PhongMain_NS materials with Enable_CustomColorTint; there diffuse = albedo x mix(CustA, CustB, B). Protect where that tint
+    T deviates from white (max channel |T - 1| > 0.1, worst case over every material sharing the mask) so E bakes no hue into a tinted
+    texel; elsewhere B is a detail-normal mask (not protected). R (emissive) is always protected, with a feathered rim.
+    Mask names shared by many TEXSETs (EditorTextureSet_*) are ambiguous in the table: treated conservatively (old B > 0.1 rule).
+    1 = protected. M: the TEXSET Masks half (HxWx4) or None"""
     if M is None: return None
-    ch = os.environ.get('WFC_E_PROTECT', 'BR').upper()      # which Masks channels protect (B tint, R emissive); semantics: Systems
-    if not ch: return None
-    m = np.max(np.stack([M[..., {'R': 0, 'G': 1, 'B': 2}[c]] for c in ch], -1), -1) / 255
+    b = M[..., 2].astype(np.float32) / 255; m = (M[..., 0].astype(np.float32) / 255 > 0.1).astype(np.float32)
+    mats = tint_ab()['by_mask'].get(mask_name) if mask_name else None
+    if mask_name and mask_name.lower().startswith('editortextureset'): m = np.maximum(m, (b > 0.1).astype(np.float32))
+    elif mats:
+        dev = np.zeros_like(b)
+        for x in mats:
+            A = np.array(x['A'], np.float32); B = np.array(x['B'], np.float32)
+            T = A[None, None, :] * (1 - b[..., None]) + B[None, None, :] * b[..., None]
+            dev = np.maximum(dev, np.abs(T - 1).max(-1))
+        m = np.maximum(m, (dev > 0.1).astype(np.float32))
     if M.shape[1::-1] != tuple(size): m = np.asarray(Image.fromarray(m.astype(np.float32), 'F').resize(tuple(size), Image.BILINEAR))
-    m = (m > 0.1).astype(np.float32)
+    m = (m > 0.5).astype(np.float32)
     return np.clip(P.gblur(m[..., None], 2 * f)[..., 0] * 3, 0, 1)        # feathered rim, about 2 original pixels
 
 def e_colour(D, o, hgt, s, seed, prot=None):
