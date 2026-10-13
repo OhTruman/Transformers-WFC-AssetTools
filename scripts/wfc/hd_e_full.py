@@ -73,6 +73,55 @@ def tile(o, D, E, f, label):
             im.paste(Image.fromarray(np.ascontiguousarray(cr)).resize((S, S), Image.LANCZOS), (c * (S + 6), yy))
     return im
 
+GEN_SCALE = int(os.environ.get('WFC_E_GEN_SCALE', '2'))   # 2: generate at 2x the original, D's 4x fine band on top (Integration
+                                                          # 2026-10-13, option a: 4x less GPU); 4: generate at the HD size (Rust pilot)
+
+def generate(r, D, o, txt, level=None, scale=None):
+    """E colour before the lock. At scale 2 the model redraws D box-downsampled to 2x the original; the result is upscaled to the
+    HD size and D's own detail above 2x (D - up(down(D))) is added back, so E's new mid-scale detail sits under D's fine band"""
+    level = level or LEVEL; scale = scale or GEN_SCALE; s = G.DENOISE[level]
+    Hh, W = D.shape[:2]; oh, ow = o.shape[:2]; w2, h2 = 2 * ow, 2 * oh
+    if scale >= 4 or (w2, h2) == (W, Hh): return G.cached(r['i'], level, lambda: G.regenerate(D[..., :3], txt, s, r['i']))
+    D2 = EP.area(D[..., :3], w2, h2)
+    g2 = G.cached(r['i'], level + 'x2', lambda: G.regenerate(np.clip(np.round(D2), 0, 255).astype(np.float32), txt, s, r['i']))
+    fine = D[..., :3] - EP.up(D2.astype(np.float32), W, Hh)
+    return np.clip(EP.up(g2.astype(np.float32), W, Hh) + fine, 0, 255)
+
+AB_ARMS = [('E-2x-G2', 2, 'G2'), ('E-2x-G3', 2, 'G3'), ('E-4x-G3', 4, 'G3')]
+
+def ab(ids):
+    """A/B for the user's path / strength choice (Integration 2026-10-13) on Rust pilot units: Original | D | E-2x-G2 | E-2x-G3 |
+    E-4x-G3, 100 % HD-pixel crops at the busiest and flattest spot, same locks / protection / gates. 4x arms reuse the pilot's
+    checkpoints (push_e_gen/raw); 2x arms are generated here (checkpointed under push_e_full/raw)"""
+    us, R = EP.units(); sel = [u for u in us if u[0]['i'] in ids]; out = os.path.join(F_ROOT, 'ab'); os.makedirs(out, exist_ok=True)
+    rows, rep = [], OD()
+    for r, d, m, md in sel:
+        EP.stop(); o = P.orig(r); D = EP.load_d(d); f = D.shape[1] / o.shape[1]
+        M0 = EP.load_d(md) if md else None; pr = EP.protect_mask(M0, (D.shape[1], D.shape[0]), f); txt = G.prompt(r['png'])
+        arms = OD(); secs = OD()
+        for name, sc, lv in AB_ARMS:
+            t0 = time.time()
+            if sc == 4:
+                p4 = os.path.join(AT, 'out', 'hd', 'push_e_gen', 'raw', '%05d_%s.png' % (r['i'], lv))
+                raw = np.asarray(Image.open(p4)).astype(np.float32) if os.path.exists(p4) else generate(r, D, o, txt, lv, 4)
+            else: raw = generate(r, D, o, txt, lv, 2)
+            arms[name] = G.lock(raw, D, o, pr); secs[name] = round(time.time() - t0)
+        rep[r['png']] = OD((k, OD([('gates', EP.gates(D, v, o, M0)), ('seconds', secs[k])])) for k, v in arms.items())
+        S = 300; n, busy, flat = EP.spots(o); n = min(n, 32); cols = [D[..., :3]] + list(arms.values())
+        im = Image.new('RGB', ((len(cols) + 1) * (S + 6), 2 * S + 36), (16, 16, 20)); dr = ImageDraw.Draw(im)
+        dr.text((3, 2), '%05d %s   Original | D | %s   (100%% HD pixels)' % (r['i'], r['png'][-50:], ' | '.join(arms)), fill=(230, 230, 230))
+        for row, (x, y) in enumerate((busy, flat)):
+            yy = 18 + row * (S + 18); k = int(f * n)
+            im.paste(Image.fromarray(np.ascontiguousarray(o[y:y + n, x:x + n, :3])).resize((S, S), Image.NEAREST), (0, yy))
+            for c, img in enumerate(cols, 1):
+                cr = np.clip(np.round(img), 0, 255).astype(np.uint8)[int(f * y):int(f * y) + k, int(f * x):int(f * x) + k]
+                im.paste(Image.fromarray(np.ascontiguousarray(cr)).resize((S, S), Image.NEAREST if k <= S else Image.LANCZOS), (c * (S + 6), yy))
+        rows.append(im); print('ab', r['i'], {k: (v['gates']['pass'], v['seconds']) for k, v in rep[r['png']].items()}, flush=True)
+    sh = Image.new('RGB', (rows[0].width, sum(i.height for i in rows)), (16, 16, 20)); y = 0
+    for i in rows: sh.paste(i, (0, y)); y += i.height
+    sh.save(os.path.join(out, 'ab_sheet.png')); json.dump(rep, open(os.path.join(out, 'ab_gates.json'), 'w', encoding='utf-8'), indent=1)
+    print('ab sheet', os.path.join(out, 'ab_sheet.png'), flush=True)
+
 def gen(maps=None):
     us, R = units(maps)
     for p in (RES, REVIEW, PACK): os.makedirs(p, exist_ok=True)
@@ -81,9 +130,9 @@ def gen(maps=None):
         EP.stop(); t0 = time.time()
         o = P.orig(r); D = EP.load_d(d); f = D.shape[1] / o.shape[1]
         M0 = EP.load_d(md) if md else None; pr = EP.protect_mask(M0, (D.shape[1], D.shape[0]), f); txt = G.prompt(r['png'])
-        E3 = G.lock(G.cached(r['i'], LEVEL, lambda: G.regenerate(D[..., :3], txt, STRENGTH, r['i'])), D, o, pr)
+        E3 = G.lock(generate(r, D, o, txt), D, o, pr)
         g = EP.gates(D, E3, o, M0)
-        frm = 'sd15+controlnet_tile denoise %.2f steps %d cfg %.1f seed %d prompt "%s"' % (STRENGTH, G.STEPS, G.CFG, r['i'], txt)
+        frm = 'sd15+controlnet_tile at %dx, denoise %.2f steps %d cfg %.1f seed %d prompt "%s"' % (GEN_SCALE, STRENGTH, G.STEPS, G.CFG, r['i'], txt)
         rec = OD([('i', r['i']), ('map', mp), ('png', r['png']), ('key', d['key']), ('d_level', d['level']), ('gates', g), ('from', frm),
                   ('rows', [])])
         if g['pass']:
@@ -144,3 +193,4 @@ if __name__ == '__main__':
     elif a == 'gen': gen(maps)
     elif a == 'sheets': sheets()
     elif a == 'pack': pack()
+    elif a == 'ab': ab([int(x) for x in args[0].split(',')])
