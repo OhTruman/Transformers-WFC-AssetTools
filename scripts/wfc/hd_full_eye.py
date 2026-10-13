@@ -340,5 +340,47 @@ EYE = {
     'content/ENV_IAC_Spacedome_p/TallNebulae_CLR.png': None,
     'content/ENV_IAC_Spacedome_p/TallNebulae_MASK.png': None,
     'content/ENV_IAC_Spacedome_p/blueNebulae_CLR.png': None,
+
+    # ---- batch 9 (2026-10-13; ladder crops for every suspect) ----
+    # Kon architecture: B and up turn grit / gravel into glitter or blow white chips and rims; A is faithful
+    'content/ENV_KON_Architecture_p/Texture/BasePlatform04_CLR_TEXSET/BasePlatform04_CLR_TEXSET_Color_NormX.png': A,
+    'content/ENV_KON_Architecture_p/Texture/BridgeArchBase_CLR.png': A,
+    'content/ENV_KON_Architecture_p/Texture/BridgeArchTop_CLR_TEXSET/BridgeArchTop_CLR_TEXSET_Color_NormX.png': A,
+    'content/ENV_KON_Architecture_p/Texture/BuildingSupport_01_B_CLR_TEXSET/BuildingSupport_01_B_CLR_TEXSET_Color_NormX.png': A,
+    'content/ENV_KON_Architecture_p/Texture/CeilingTile_02_CLR_TEXSET/EditorTextureSet_Color_NormX.png': A,
+    'content/ENV_KON_Architecture_p/Texture/CeilingTile_03_CLR_TEXSET/EditorTextureSet_Color_NormX.png': A,
+    'content/ENV_KON_Architecture_p/Texture/FloorTrim_02_CLR.png': A,
+    'content/ENV_KON_Architecture_p/Texture/PillarEnergon_CLR.png': A,
+    'content/ENV_KON_Architecture_p/Texture/PillarEnergon_CLR_TEXSET/PillarEnergon_CLR_TEXSET_Color_NormX.png': A,
+    'content/ENV_KON_Architecture_p/Texture/TrackConveyor_CLR_TEXSET/TrackConveyor_CLR_TEXSET_Color_NormX.png': A,
+    'content/ENV_KON_Architecture_p/Texture/WallLight_01_CLR.png': A,
+    'content/ENV_KON_Architecture_p/Texture/WallLight_01_CLR_TEXSET/WallLight_01_CLR_TEXSET_Color_NormX.png': A,
+    # D blows white edges or exaggerates cells; C holds
+    'content/ENV_IAC_Walls_p/Texture/Wall_A_sm_CLR_TEXSET/Wall_A_sm_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_KON_Architecture_p/Texture/BridgeArchBase_CLR_TEXSET/EditorTextureSet_Color_NormX.png': C,
+    'content/ENV_KON_Architecture_p/Texture/BridgeArchTop_CLR.png': C,
+    'content/ENV_KON_Architecture_p/Texture/BridgeSupport__01_CLR.png': C,
+    'content/ENV_KON_Architecture_p/Texture/BridgeSupport__01_CLR_TEXSET/BridgeSupport__01_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_KON_Architecture_p/Texture/BuildingSupport_01_B_CLR.png': C,
+    'content/ENV_KON_Architecture_p/Texture/CeilingTile_02_CLR.png': C,
+    'content/ENV_KON_Architecture_p/Texture/CeilingTile_03_CLR.png': C,
+    'content/ENV_KON_Architecture_p/Texture/Column_01_CLR.png': C,
+    'content/ENV_KON_Architecture_p/Texture/Column_01_CLR_TEXSET/Column_01_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_KON_Architecture_p/Texture/DoorFrame_01_CLR_TEXSET/EditorTextureSet_Color_NormX.png': C,
+    'content/ENV_KON_Architecture_p/Texture/Door_01_CLR.png': C,
+    'content/ENV_KON_Architecture_p/Texture/Door_01_CLR_TEXSET/Door_01_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_KON_Architecture_p/Texture/FloorPanel_01_CLR.png': C,
+    'content/ENV_KON_Architecture_p/Texture/FloorPanel_01_CLR_TEXSET/EditorTextureSet_Color_NormX.png': C,
+    'content/ENV_KON_Architecture_p/Texture/FloorTrim_01_CLR_TEXSET/FloorTrim_01_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_KON_Architecture_p/Texture/FloorTrim_02_CLR_TEXSET/EditorTextureSet_Color_NormX.png': C,
+    'content/ENV_KON_Architecture_p/Texture/Pillar_01_CLR.png': C,
+    'content/ENV_KON_Architecture_p/Texture/Pillar_01_CLR_TEXSET/EditorTextureSet_Color_NormX.png': C,
+    'content/ENV_KON_Architecture_p/Texture/TrackConveyor_CLR.png': C,
+    'content/ENV_KON_Architecture_p/Texture/TurretBase_CLR.png': C,
+    'content/ENV_KON_Architecture_p/Texture/TurretBase_CLR_TEXSET/TurretBase_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_KON_Architecture_p/Texture/WallPanel_01_CLR.png': C,
+    'content/ENV_KON_Architecture_p/Texture/WallPanel_01_CLR_TEXSET/WallPanel_01_CLR_TEXSET_Color_NormX.png': C,
+    # tiled detail normal (as Metal_01_TiledNORM): crumpled-foil grain
+    'content/ENV_KON_Architecture_p/Texture/Metal_01_TiledNORM.png': None,
 }
-REVIEWED = {0, 1, 2, 3, 4, 5, 6, 7, 8}   # batches 0-2: 2026-10-12; 3-8: 2026-10-13
+REVIEWED = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}   # batches 0-2: 2026-10-12; 3-9: 2026-10-13
