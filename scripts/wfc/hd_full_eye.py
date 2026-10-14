@@ -783,5 +783,44 @@ EYE = {
     'content/ENV_UND_Floors_p/Texture/ENV_UND_Platform_A_TEXSET/ENV_UND_Platform_A_TEXSET_Color_NormX.png': C,
     # tiled detail normal (as Metal_01_TiledNORM)
     'content/ENV_UND_Floors_p/Materials/ENV_UND_01_TiledNORM.png': None,
+
+    # ---- batch 19 (2026-10-14; ladder crops for every suspect) ----
+    # Underground support corners, pillars C, mech gear, BSP wall tile, canyon walls, studded wall A and wall B: B and up turn grit into glitter, blow white chips or stripes; A is faithful
+    'content/ENV_UND_Support_p/Materials/ENV_UND_SupportCorner_A_CLR.png': A,
+    'content/ENV_UND_Support_p/Materials/ENV_UND_SupportCorner_A_CLR_TEXSET/ENV_UND_SupportCorner_A_CLR_TEXSET_Color_NormX.png': A,
+    'content/ENV_UND_Support_p/Materials/ENV_UND_SupportPillars_C_CLR.png': A,
+    'content/ENV_UND_Support_p/Materials/ENV_UND_SupportPillars_C_CLR_TEXSET/ENV_UND_SupportPillars_C_CLR_TEXSET_Color_NormX.png': A,
+    'content/ENV_UND_Support_p/Materials/PROP_UND_MechGear_A_CLR.png': A,
+    'content/ENV_UND_Support_p/Materials/PROP_UND_MechGear_A_CLR_TEXSET/PROP_UND_MechGear_A_CLR_TEXSET_Color_NormX.png': A,
+    'content/ENV_UND_Walls_p/Materials/ENV_UND_BSPWallTile_A_CLR.png': A,
+    'content/ENV_UND_Walls_p/Materials/ENV_UND_CanyonWall_B_CLR.png': A,
+    'content/ENV_UND_Walls_p/Materials/ENV_UND_CanyonWall_B_CLR_TEXSET/ENV_UND_CanyonWall_B_CLR_TEXSET_Color_NormX.png': A,
+    'content/ENV_UND_Walls_p/Materials/ENV_UND_CanyonWall_C_CLR.png': A,
+    'content/ENV_UND_Walls_p/Materials/ENV_UND_Wall_A_CLR.png': A,
+    'content/ENV_UND_Walls_p/Materials/ENV_UND_Wall_B_CLR.png': A,
+    'content/ENV_UND_Walls_p/Materials/ENV_UND_Wall_B_CLR_TEXSET/ENV_UND_Wall_B_CLR_TEXSET_Color_NormX.png': A,
+    # D blows white rims / edges; C holds
+    'content/ENV_UND_Support_p/Materials/ENV_UND_SupportColumnTop_A_CLR_TEXSET/ENV_UND_SupportColumnTop_A_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_UND_Support_p/Materials/ENV_UND_SupportColumn_A_CLR.png': C,
+    'content/ENV_UND_Support_p/Materials/ENV_UND_SupportColumn_A_CLR_TEXSET/ENV_UND_SupportColumn_A_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_UND_Support_p/Materials/ENV_UND_SupportPillars_B_CLR.png': C,
+    'content/ENV_UND_Support_p/Materials/ENV_UND_SupportPillars_B_CLR_TEXSET/ENV_UND_SupportPillars_B_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_UND_Support_p/Materials/FramePillars_CLR.png': C,
+    'content/ENV_UND_Support_p/Materials/PROP_UND_Pipe_A_CLR_TEXSET/PROP_UND_Pipe_A_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_UND_Walls_p/Materials/ENV_UND_RoundWall_A_CLR.png': C,
+    'content/ENV_UND_Walls_p/Materials/ENV_UND_RoundWall_A_CLR_TEXSET/ENV_UND_RoundWall_A_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_UND_Walls_p/Materials/ENV_UND_Wall_A_CLR_TEXSET/ENV_UND_Wall_A_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_UND_Walls_p/Materials/ENV_UND_Wall_C_CLR.png': C,
+    'content/ENV_UND_Walls_p/Materials/ENV_UND_Wall_C_CLR_TEXSET/ENV_UND_Wall_C_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_VIG_Decepticon_p/VIG_DecSmallShip_COLOR_TEXSET/VIG_DecSmallShip_COLOR_TEXSET_Color_NormX.png': C,
+    # wall normals whose stripes turn into twisted-rope ridges or blobs, editor grid paper / materials background, and corruptor / plasma FX gradients (noise turns into blocks)
+    'content/ENV_UND_Walls_p/Materials/ENV_UND_BSPWallTile_B_NORM.png': None,
+    'content/ENV_UND_Walls_p/Materials/ENV_UND_RoundWall_A_NORM.png': None,
+    'content/ENV_UND_Walls_p/Materials/ENV_UND_Wall_A_NORM.png': None,
+    'content/EditorMaterials/Gridpaper.png': None,
+    'content/EditorMaterials/MaterialsBackground.png': None,
+    'content/FX_Corruptor_p/corruptor_noise_CLR.png': None,
+    'content/FX_Corruptor_p/corruptor_spike_CLR.png': None,
+    'content/FX_DES_PortJet/plasmajet_CLR.png': None,
 }
-REVIEWED = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18}   # batches 0-2: 2026-10-12; 3-13: 2026-10-13; 14-18: 2026-10-14
+REVIEWED = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19}   # batches 0-2: 2026-10-12; 3-13: 2026-10-13; 14-19: 2026-10-14
