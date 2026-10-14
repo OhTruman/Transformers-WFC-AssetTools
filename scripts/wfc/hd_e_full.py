@@ -28,7 +28,9 @@ G.G_ROOT = F_ROOT                      # checkpoints (raw/) and heights go under
 D_PACK = os.path.join(AT, 'out', 'hd', 'push_full', 'pack')
 TSV_DIR = os.path.join(os.path.dirname(AT), 'Rebuild-Rendering', 'work', 'handoff_assettools')
 MILESTONE1 = ['MP_KON_Molten', 'MP_IAC_Streets', 'MP_UND_Gorge', 'MP_IAC_Rust', 'MP_ORB_Debris']
-LEVEL, STRENGTH = 'G2', G.DENOISE['G2']
+G.DENOISE.setdefault('G4', 0.70)
+LEVEL = os.environ.get('WFC_E_LEVEL', 'G3')       # user default 2026-10-13: E-4x-G3 (G4 invents objects)
+STRENGTH = G.DENOISE[LEVEL]
 NOT_COLOUR = ('NORM', 'MASK', 'Masks_NormY', 'SPEC', 'EMIS', 'GLOW', 'Cube', 'Alpha', '_DIS', 'Illum', 'Flare', 'Nebula')
 RES, REVIEW, SHEETS, PACK = (os.path.join(F_ROOT, x) for x in ('results', 'review', 'sheets', 'pack'))
 
@@ -73,7 +75,7 @@ def tile(o, D, E, f, label):
             im.paste(Image.fromarray(np.ascontiguousarray(cr)).resize((S, S), Image.LANCZOS), (c * (S + 6), yy))
     return im
 
-GEN_SCALE = int(os.environ.get('WFC_E_GEN_SCALE', '2'))   # 2: generate at 2x the original, D's 4x fine band on top (Integration
+GEN_SCALE = int(os.environ.get('WFC_E_GEN_SCALE', '4'))   # 2: generate at 2x the original, D's 4x fine band on top (Integration
                                                           # 2026-10-13, option a: 4x less GPU); 4: generate at the HD size (Rust pilot)
 
 def generate(r, D, o, txt, level=None, scale=None):

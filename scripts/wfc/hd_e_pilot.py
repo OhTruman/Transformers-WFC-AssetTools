@@ -166,7 +166,7 @@ def gates(D, E, o, masks=None):
         for c, nm in enumerate('RGB'):
             sel = mk[..., c] > 0.5
             g['dE_mask%s' % nm] = round(float(dE[sel].mean()), 2) if sel.any() else None
-    g['pass'] = bool(abs(g['dmean_L']) <= 1 and g['mean_shift'] <= 3 and g['new_colours_pct'] <= 3 and g['dE_p99'] <= 3
+    g['pass'] = bool(abs(g['dmean_L']) <= 1 and g['mean_shift'] <= 3 and g['new_colours_pct'] <= 3 and g['dE_p99'] <= float(os.environ.get('WFC_E_DE_P99', '3'))
                      and g['new_edges_pct'] <= 0.5 and g['seam_e'] <= max(g['seam_d'], g['seam_orig']) * 1.15 + 0.1)
     return g
 
