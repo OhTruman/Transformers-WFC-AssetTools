@@ -650,5 +650,39 @@ EYE = {
     'content/ENV_ORB_CybertronPlanet_p/Medium_Res/Cybertron_Buildings_EMISS.png': None,
     'content/ENV_ORB_CybertronPlanet_p/Medium_Res/Glow_Light_MASK.png': None,
     'content/ENV_ORB_D1_Architecture_p/Textures/Nebula_02_CLR.png': None,
+
+    # ---- batch 16 (2026-10-14; ladder crops for every suspect) ----
+    # Megatron cruiser / ship paint, manhole grate, piston chamber, dead transport: B and up blow white trims and paint into glare; A is faithful
+    'content/ENV_ORB_D1_MegatronCruiser_p/Texture/Ship_Cockpit_01_CLR.png': A,
+    'content/ENV_ORB_D1_MegatronCruiser_p/Texture/Ship_Stern_01_CLR_TEXSET/Ship_Stern_01_CLR_TEXSET_Color_NormX.png': A,
+    'content/ENV_ORB_D1_MegatronShip_p/Texture/PROP_MegatronShip1_TEXSET_02/PROP_MegatronShip1_TEXSET_02_Color_NormX.png': A,
+    'content/ENV_ORB_D1_MegatronShip_p/Texture/PROP_MegatronShip2_TEXSET_02/PROP_MegatronShip2_TEXSET_02_Color_NormX.png': A,
+    'content/ENV_ORB_D1_Shader_p/Textures/ManHole_TEXSET/ManHole_TEXSET_Color_NormX.png': A,
+    'content/ENV_ORB_DecoTrim_p/Structural_Trim/PistonChamber_CLR.png': A,
+    'content/ENV_ORB_GalacticTransport_p/Materials/GalacticTransport_DEAD_CLR.png': A,
+    # D blows white edges / grime or exaggerates cells; C holds
+    'content/ENV_ORB_D1_MegatronCruiser_p/Texture/DestroyCeilingPanel_TEXSET/DestroyCeilingPanel_TEXSET_Color_NormX.png': C,
+    'content/ENV_ORB_D1_MegatronCruiser_p/Texture/Ship_Chair_01_CLR.png': C,
+    'content/ENV_ORB_D1_MegatronCruiser_p/Texture/Ship_FloorPanel_01_CLR.png': C,
+    'content/ENV_ORB_D1_MegatronCruiser_p/Texture/Ship_FloorPanel_01_CLR_TEXSET/Ship_FloorPanel_01_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_ORB_D1_MegatronCruiser_p/Texture/Ship_Hatch_01_CLR.png': C,
+    'content/ENV_ORB_D1_MegatronCruiser_p/Texture/Ship_Stern_01_CLR.png': C,
+    'content/ENV_ORB_D1_MegatronCruiser_p/Texture/Ship_WallPanel_01_CLR.png': C,
+    'content/ENV_ORB_D1_Shader_p/Textures/ENV_ORB_D1_Track_TEXSET/ENV_ORB_D1_Track_TEXSET_Color_NormX.png': C,
+    'content/ENV_ORB_DebrisBase_p/Materials/EMV_ORB_SliceFloorA_CLR.png': C,
+    'content/ENV_ORB_DebrisBase_p/Materials/EMV_ORB_SliceFloorA_CLR_TEXSET/EMV_ORB_SliceFloorA_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_ORB_DebrisBase_p/Materials/ENV_ORB_SliceFloorB_CLR.png': C,
+    'content/ENV_ORB_DebrisBase_p/Materials/ENV_ORB_Slicewall_CLR_TEXSET/ENV_ORB_Slicewall_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_ORB_DecoTrim_p/Structural_Trim/PROP_ORB_DoorFrame_SPECCOLOR_TEXSET/PROP_ORB_DoorFrame_SPECCOLOR_TEXSET_Color_NormX.png': C,
+    'content/ENV_ORB_DecoTrim_p/Structural_Trim/PROP_ORB_SideSupp01_CLR_TEXSET/PROP_ORB_SideSupp01_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_ORB_DecoTrim_p/Structural_Trim/PROP_ORB_TrimBigA_CLR.png': C,
+    'content/ENV_ORB_DecoTrim_p/Structural_Trim/PistonHousing_TEXSET/PistonHousing_TEXSET_Color_NormX.png': C,
+    # electricity mask, lens flares and a spinning light function: soft gradients turn into blocks / hatching at every level
+    'content/ENV_ORB_D1_Shader_p/Textures/ORB_Electricty_MASK.png': None,
+    'content/ENV_ORB_Effects_p/Materials/LensFlare_01.png': None,
+    'content/ENV_ORB_Effects_p/Materials/LensFlare_02.png': None,
+    'content/ENV_ORB_Effects_p/Materials/LensFlare_Base.png': None,
+    'content/ENV_ORB_Effects_p/Materials/LensFlare_Ring.png': None,
+    'content/ENV_ORB_Effects_p/Materials/SpinningLightFunction_CLR.png': None,
 }
-REVIEWED = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}   # batches 0-2: 2026-10-12; 3-13: 2026-10-13; 14-15: 2026-10-14
+REVIEWED = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16}   # batches 0-2: 2026-10-12; 3-13: 2026-10-13; 14-16: 2026-10-14
