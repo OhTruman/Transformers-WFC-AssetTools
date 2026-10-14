@@ -226,6 +226,74 @@ def pack():
     print(len(rows), 'rows', round(sum(r['bytes'] for r in rows) / 2 ** 20, 1), 'MB; units', n, 'gate-fail', fail, 'rejected', rej,
           'unreviewed', unrev, flush=True)
 
+RETRY_LEVEL, RETRY_STRENGTH = 'R1', 0.50     # second pass for eye-rejected units (Integration 2026-10-14)
+RETRY_NEG = 'text, logo, emblem, face, label, plaque, machinery'
+RETRY_SKIP = ('logo', 'text')                # REJECT reasons that stay D (logos / text are not regenerated)
+
+def retry(maps=None):
+    """eye-rejected units again at denoise 0.50 with a stronger negative prompt; results go to results_retry/ and review_retry/
+    (the first-pass result and its rejection stay as they are). Logo / text rejects are skipped: they stay D"""
+    import hd_e_eye as EE
+    us, R = units(maps); rr_dir = os.path.join(F_ROOT, 'results_retry'); rv_dir = os.path.join(F_ROOT, 'review_retry')
+    for p in (rr_dir, rv_dir): os.makedirs(p, exist_ok=True)
+    G.DENOISE.setdefault(RETRY_LEVEL, RETRY_STRENGTH); neg0 = G.NEG; G.NEG = G.NEG + ', ' + RETRY_NEG
+    try:
+        for mp, r, d, m, md in us:
+            why = EE.REJECT.get(r['png'])
+            if not why or any(k in why.lower() for k in RETRY_SKIP): continue
+            rp = os.path.join(rr_dir, '%05d.json' % r['i'])
+            if os.path.exists(rp): continue
+            EP.stop(); t0 = time.time()
+            o = P.orig(r); D = EP.load_d(d); f = D.shape[1] / o.shape[1]
+            M0 = EP.load_d(md) if md else None; pr = EP.protect_mask(M0, (D.shape[1], D.shape[0]), f, md['object_path'] if md else None)
+            txt = G.prompt(r['png'])
+            E3 = G.lock(G.cached(r['i'], RETRY_LEVEL, lambda: G.regenerate(D[..., :3], txt, RETRY_STRENGTH, r['i'])), D, o, pr)
+            g = EP.gates(D, E3, o, M0)
+            frm = 'sd15+controlnet_tile at 4x, denoise %.2f (retry), steps %d cfg %.1f seed %d prompt "%s" neg+ "%s"' % (
+                RETRY_STRENGTH, G.STEPS, G.CFG, r['i'], txt, RETRY_NEG)
+            rec = OD([('i', r['i']), ('map', mp), ('png', r['png']), ('key', d['key']), ('first_reject', why), ('gates', g), ('from', frm), ('rows', [])])
+            if g['pass']:
+                E = D.copy(); E[..., :3] = E3
+                hgt = EP.height(E3.astype(np.uint8), os.path.join(F_ROOT, 'height', '%05d_r1.png' % r['i']))
+                hp = hgt - P.gblur(hgt[..., None], 2 * f)[..., 0]
+                if r['kind'] == 'texset_color': E[..., 3] = EP.relief(D[..., 3], hp, 0, 1.0, (D.shape[1], D.shape[0]))
+                todo = [(r, d, E)]
+                if m is not None and md is not None:
+                    M = EP.load_d(md); M[..., 3] = EP.relief(M[..., 3], hp, 1, 1.0, (M.shape[1], M.shape[0])); todo.append((m, md, M))
+                for rr, dd, img in todo:
+                    dst = P.encode(np.clip(np.round(img), 0, 255).astype(np.uint8), rr, PACK)
+                    tmp = os.path.join(P.OUT, '_enc', 'pack', '%03d.png' % rr['i'])
+                    if os.path.exists(tmp): os.remove(tmp)
+                    rec['rows'].append(OD([('key', dd['key']), ('object_path', dd['object_path']), ('dds', dd['dds']), ('format', dd['format']),
+                                           ('size', dd['size']), ('bytes', os.path.getsize(dst)), ('level', 'e_r1'), ('d_level', dd['level']), ('from', frm)]))
+            tile(o, D, E3, f, '%05d %s RETRY d0.50  orig | D | E   first: %s   gates %s' % (r['i'], mp, why[:40], 'PASS' if g['pass'] else 'FAIL')
+                 ).save(os.path.join(rv_dir, '%05d.png' % r['i']))
+            json.dump(rec, open(rp, 'w', encoding='utf-8'), indent=1)
+            print('retry', r['i'], mp, 'PASS' if g['pass'] else 'FAIL', '%.0fs' % (time.time() - t0), flush=True)
+    finally:
+        G.NEG = neg0
+    print('retry done', flush=True)
+
+def contact(mp, n_ok=6, n_rej=3):
+    """one sheet per map for the user: n_ok accepted units (D | E crops where E changed most) and n_rej rejected ones with the reason"""
+    import hd_e_eye as EE
+    recs = [json.load(open(p, encoding='utf-8')) for p in sorted(glob.glob(os.path.join(RES, '*.json')))]
+    recs = [x for x in recs if x['map'] == mp]
+    ok = sorted([x for x in recs if x['rows'] and x['png'] not in EE.REJECT], key=lambda x: -x['gates']['dE_mean'])[:n_ok]
+    rej = [x for x in recs if x['png'] in EE.REJECT][:n_rej]
+    ims = []
+    for x in ok + rej:
+        t = Image.open(os.path.join(REVIEW, '%05d.png' % x['i'])).convert('RGB')
+        w = t.width // 3; t = t.crop((w, 0, t.width, t.height))          # D | E only
+        lab = Image.new('RGB', (t.width, 22), (16, 16, 20)); dr = ImageDraw.Draw(lab)
+        dr.text((4, 4), ('ACCEPTED  ' if x in ok else 'REJECTED (stays D): %s  ' % EE.REJECT[x['png']]) + x['png'].split('/')[-1][:60],
+                fill=(120, 220, 120) if x in ok else (240, 120, 120))
+        c = Image.new('RGB', (t.width, t.height + 22), (16, 16, 20)); c.paste(lab, (0, 0)); c.paste(t, (0, 22)); ims.append(c)
+    cols = 3; rows_ = (len(ims) + cols - 1) // cols; W, Hh = ims[0].width, max(i.height for i in ims)
+    sh = Image.new('RGB', (cols * W, rows_ * Hh), (16, 16, 20))
+    for k, i in enumerate(ims): sh.paste(i, ((k % cols) * W, (k // cols) * Hh))
+    p = os.path.join(F_ROOT, 'contact_%s.png' % mp); sh.save(p); print('contact', p, len(ok), 'accepted', len(rej), 'rejected', flush=True)
+
 if __name__ == '__main__':
     a = sys.argv[1] if len(sys.argv) > 1 else 'list'
     args = [x for x in sys.argv[2:] if not x.startswith('--')]          # hd_push appends --v2 on import
@@ -239,3 +307,5 @@ if __name__ == '__main__':
     elif a == 'pack': pack()
     elif a == 'ab': ab([int(x) for x in args[0].split(',')])
     elif a == 'ab4': ab4([int(x) for x in args[0].split(',')])
+    elif a == 'retry': retry(maps)
+    elif a == 'contact': contact(args[0])
