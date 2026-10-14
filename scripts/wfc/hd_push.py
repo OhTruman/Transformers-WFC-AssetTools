@@ -144,7 +144,13 @@ def gen():
         stop = (glob.glob(os.path.join(REB, '*', 'work', 'PERF_HOLD')) if model in CPU_MODELS else held()) + low_commit()
         if stop: print('PERF_HOLD present: stopping', stop, flush=True); sys.exit(75)
         if model not in models: models[model] = T.load(model, d)
-        t0 = time.time(); out = T.upscale(models[model], d, img); Image.fromarray(out).save(path + '.tmp.png'); os.replace(path + '.tmp.png', path)   # atomic: a killed job leaves no truncated PNG
+        last = [time.time()]
+        def check():                                                   # re-checked during a texture, at most every 20 s (Integration 2026-10-14)
+            if time.time() - last[0] < 20: return
+            last[0] = time.time()
+            s2 = (glob.glob(os.path.join(REB, '*', 'work', 'PERF_HOLD')) if model in CPU_MODELS else held()) + low_commit()
+            if s2: print('PERF_HOLD present mid-texture: stopping', s2, flush=True); sys.exit(75)
+        t0 = time.time(); out = T.upscale(models[model], d, img, check); Image.fromarray(out).save(path + '.tmp.png'); os.replace(path + '.tmp.png', path)   # atomic: a killed job leaves no truncated PNG
         print(os.path.basename(path), img.shape, '%.0fs' % (time.time() - t0), flush=True)
     for j, r in enumerate(R):
         if not mine(j) or (cpu_only and r['kind'] not in ('colour', 'texset_color')): continue

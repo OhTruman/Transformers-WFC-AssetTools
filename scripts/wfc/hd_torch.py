@@ -30,7 +30,7 @@ def load(name, dev):
     d.model.eval().to(dev)
     return d
 
-def upscale(d, dev, img):
+def upscale(d, dev, img, check=None):
     """img HxWx3 uint8 -> (s*H)x(s*W)x3 uint8, tiled with PAD overlap (reflect padding at the border)"""
     import torch
     s = d.scale; h, w = img.shape[:2]
@@ -39,6 +39,7 @@ def upscale(d, dev, img):
     with torch.no_grad():
         for y0 in range(0, h, TILE):
             for x0 in range(0, w, TILE):
+                if check is not None: check()                               # e.g. a PERF_HOLD set mid-texture (big CPU textures take minutes)
                 ya, yb, xa, xb = max(0, y0 - PAD), min(h, y0 + TILE + PAD), max(0, x0 - PAD), min(w, x0 + TILE + PAD)
                 t = x[..., ya:yb, xa:xb]
                 ph, pw = (-t.shape[2]) % 8, (-t.shape[3]) % 8              # windowed transformers want multiples of 8
