@@ -203,12 +203,12 @@ def gen(maps=None):
 def sheets():
     os.makedirs(SHEETS, exist_ok=True)
     fs = sorted(glob.glob(os.path.join(REVIEW, '*.png')))
-    for s in range(0, len(fs), 8):
-        ims = [Image.open(p) for p in fs[s:s + 8]]
+    for s in range(0, len(fs), 4):                     # 4 per sheet: readable at review size
+        ims = [Image.open(p) for p in fs[s:s + 4]]
         o = Image.new('RGB', (max(i.width for i in ims), sum(i.height for i in ims)), (16, 16, 20)); y = 0
         for i in ims: o.paste(i, (0, y)); y += i.height
-        o.save(os.path.join(SHEETS, 'e%03d.png' % (s // 8 + 1)))
-    print(len(fs), 'units', (len(fs) + 7) // 8, 'sheets', flush=True)
+        o.save(os.path.join(SHEETS, 'e%03d.png' % (s // 4 + 1)))
+    print(len(fs), 'units', (len(fs) + 3) // 4, 'sheets', flush=True)
 
 def pack():
     import hd_e_eye as EE
