@@ -42,6 +42,7 @@ def upscale(d, dev, img):
                 ya, yb, xa, xb = max(0, y0 - PAD), min(h, y0 + TILE + PAD), max(0, x0 - PAD), min(w, x0 + TILE + PAD)
                 t = x[..., ya:yb, xa:xb]
                 ph, pw = (-t.shape[2]) % 8, (-t.shape[3]) % 8              # windowed transformers want multiples of 8
+                ph, pw = max(ph, 16 - t.shape[2]), max(pw, 16 - t.shape[3])  # and >= 16 px per side (RGT: log(H // 16) on a 4 px strip)
                 if ph or pw:                                                # reflect needs pad < size; tiny (4x4) inputs replicate
                     t = torch.nn.functional.pad(t, (0, pw, 0, ph), mode='reflect' if ph < t.shape[2] and pw < t.shape[3] else 'replicate')
                 r = d.model(t.to(dev)).float().clamp(0, 1).cpu()[0].permute(1, 2, 0).numpy()
