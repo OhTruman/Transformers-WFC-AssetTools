@@ -566,5 +566,46 @@ EYE = {
     'content/ENV_NEU_Variation_p/ENV_bulletdecal_01_GLOW2.png': None,
     'content/ENV_NEU_Variation_p/ENV_ebarrel_GLOW.png': None,
     'content/ENV_NEU_Variation_p/ENV_manholes_GLOW.png': None,
+
+    # ---- batch 14 (2026-10-14; ladder crops for every suspect) ----
+    # variation decals (oil / rust patches, hazard signs, AB logo), metal plates, slag and beam-nexus rock: B and up blow white blotches and crush blacks; A is faithful
+    'content/ENV_NEU_Variation_p/ENV_oilpatch_01_CLR.png': A,
+    'content/ENV_NEU_Variation_p/ENV_powerplug_CLR.png': A,
+    'content/ENV_NEU_Variation_p/MOD_rustpatch2_CLR.png': A,
+    'content/ENV_NEU_Variation_p/MOD_rustpatch3_CLR.png': A,
+    'content/ENV_NEU_Variation_p/MOD_rustpatch4_CLR.png': A,
+    'content/ENV_NEU_Variation_p/MOD_rustpatch5_CLR.png': A,
+    'content/ENV_NEU_Variation_p/MOD_rustpatch6_CLR.png': A,
+    'content/ENV_NEU_Variation_p/MOD_rustpatch7_CLR.png': A,
+    'content/ENV_NEU_Variation_p/MetalPlates_1.png': A,
+    'content/ENV_NEU_Variation_p/Metalbase1_Clr.png': A,
+    'content/ENV_NEU_Variation_p/fbook_scalines_CLR.png': A,
+    'content/ENV_NEU_Variation_p/redsign_ABlogo_CLR.png': A,
+    'content/ENV_NEU_Variation_p/yellowsign_arrows2_CLR.png': A,
+    'content/ENV_NEU_Variation_p/yellowsign_circle2_CLR.png': A,
+    'content/ENV_NEU_Variation_p/yellowsign_curve_CLR.png': A,
+    'content/ENV_NEU_Variation_p/yellowsign_textarrow_CLR.png': A,
+    'content/ENV_ORB_Beam_p/Material/MoltenMetalRing_SLAG_CLR.png': A,
+    'content/ENV_ORB_Beam_p/Material/ORB_BeamNexus_CLR.png': A,
+    'content/ENV_ORB_Beam_p/Material/ORB_BeamNexus_CLR_TEXSET/ORB_BeamNexus_CLR_TEXSET_Color_NormX.png': A,
+    'content/ENV_ORB_CoolantCorridor_p/Materials/CoolantPipe_CLR.png': A,
+    # D blows white stripes on the wrecked Autobot tank / receptor; C holds
+    'content/ENV_NEU_Variation_p/fbook_sinewave4_CLR.png': C,
+    'content/ENV_NEU_WreckedVehicles_p/Textures/Destroyed_AutobotTank_CLR.png': C,
+    'content/ENV_NEU_WreckedVehicles_p/Textures/Destroyed_AutobotTank_CLR_TEXSET/Destroyed_AutobotTank_CLR_TEXSET_Color_NormX.png': C,
+    'content/ENV_ORB_A1_LowRez_p/Material/BeamReceptor_CLR.png': C,
+    'content/ENV_ORB_A1_LowRez_p/Material/BeamReceptor_CLR_TEXSET/BeamReceptor_CLR_TEXSET_Color_NormX.png': C,
+    # glow / strobe / FX textures (power-plug glow, fbook noise, bar / smoke / spin strobes, beam tongues, heat haze, beam): soft gradients turn into blocks at every level
+    'content/ENV_NEU_Variation_p/ENV_powerplug_GLOW.png': None,
+    'content/ENV_NEU_Variation_p/fbook_noise_CLR.png': None,
+    'content/ENV_NEU_landmarking_p/barstrobe_clr.png': None,
+    'content/ENV_NEU_landmarking_p/smokestrobe_clr.png': None,
+    'content/ENV_NEU_landmarking_p/spinstrobe_clr.png': None,
+    'content/ENV_ORB_Beam_p/Material/BeamTongue.png': None,
+    'content/ENV_ORB_Beam_p/Material/BeamTongue_Pulse_2_CLR.png': None,
+    'content/ENV_ORB_Beam_p/Material/BeamTongue_Pulse_CLR.png': None,
+    'content/ENV_ORB_Beam_p/Material/BeamTongue_Purple.png': None,
+    'content/ENV_ORB_Beam_p/Material/HeatHaze.png': None,
+    'content/ENV_ORB_Beam_p/Material/ORB_Beam_CLR.png': None,
 }
-REVIEWED = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13}   # batches 0-2: 2026-10-12; 3-13: 2026-10-13
+REVIEWED = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14}   # batches 0-2: 2026-10-12; 3-13: 2026-10-13; 14: 2026-10-14
