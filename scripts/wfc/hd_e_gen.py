@@ -31,7 +31,8 @@ MODELS = os.path.join(AT, 'work', 'models')
 G_ROOT = os.path.join(AT, 'out', 'hd', 'push_e_gen')
 DENOISE = OD([('G1', 0.25), ('G2', 0.40), ('G3', 0.55)])
 TILE, OV, STEPS, CFG, CN_SCALE = 512, 64, 20, 5.0, 0.9
-NEG = 'text, letters, logo, watermark, people, face, cartoon, painting, illustration, blurry, lowres, jpeg artifacts, oversaturated'
+NEG = ('text, letters, logo, watermark, people, face, cartoon, painting, illustration, blurry, lowres, jpeg artifacts, oversaturated, '
+       'wood, wood grain, streaks, stripes, scanlines, sticker, label')   # wood-grain streaks on flat dark areas (A/B 2026-10-13)
 CLASSES = [  # (name keywords, material prompt): first match wins
     (('floor', 'grate', 'tracks', 'rail'), 'worn industrial metal floor plates, scuffs, scratches, grime in seams, chipped paint'),
     (('wall', 'arch', 'panel', 'sign', 'deco'), 'weathered sci-fi metal wall panels, fine scratches, dust, grime, small dents'),
