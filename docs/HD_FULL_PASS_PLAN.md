@@ -135,5 +135,10 @@ Starts when the M1 slots end (PERF_HOLD cleared).
   shards from B up -> A. Frozen snapshot of batches 0-2 for Systems' hd_verify: out/hd/push_full_snap_20261013_b0-2.
 - Overnight 2026-10-13: one 12-thread CPU colour process (2 x 8-thread shards measured slower in total); commit guard 35 / 40 GB.
 
+- D COMPLETE (2026-10-16 01:33): all 32 batches eye-reviewed, rebuilt at their caps and packed. Frozen snapshot
+  out/hd/push_full_snap_20261016_b0-31: 3,505 rows, 21.27 GB (1,458 D / 1,202 C / 226 B / 619 A; 2,062 DXT1 / 1,438 DXT5 / 5
+  A8R8G8B8), byte-checked, 0 stale. Eye caps are keyed by each row's own dds path first (c48e6b2): EditorTextureSet twins share a png
+  path. E (generative) was dropped by the user on 2026-10-14; its outputs are archive only.
+
 ## Open
 - hd_pbr does not fit: there is no renderer PBR path (reported earlier).
