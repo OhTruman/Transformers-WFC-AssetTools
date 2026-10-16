@@ -1269,5 +1269,27 @@ EYE = {
     'content/WEP_Shotgun_p/WEP_Shotgun_CLR.png': A,
     'content/WEP_Shotgun_p/WEP_Shotgun_NORM.png': A,
     'content/WEP_SniperRifle_p/WEP_SniperRifle_CLR.png': A,
+
+    # ---- batch 31 (2026-10-16; weapons, sheets) ----
+    # last weapons (sniper, spiked bat / mace, torture sword, Trypticon mouth / shoulder cannons, turrets, vicious axe, war hammer): B and up blow worn metal white and crush blacks; normals gain a stucco grain; A is faithful
+    'content/WEP_SniperRifle_p/WEP_SniperRifle_NORM.png': A,
+    'content/WEP_SpikedBat_p/WEP_SpikedBat_CLR.png': A,
+    'content/WEP_SpikedBat_p/WEP_SpikedBat_NORM.png': A,
+    'content/WEP_SpikedMace_p/WEP_SpikedMace_CLR.png': A,
+    'content/WEP_SpikedMace_p/WEP_SpikedMace_NORM.png': A,
+    'content/WEP_TortureSword_p/WEP_TortureSword_CLR.png': A,
+    'content/WEP_TortureSword_p/WEP_TortureSword_NORM.png': A,
+    'content/WEP_TrypticonMouthCannon_p/WEP_TrypMouthCannon_CLR.png': A,
+    'content/WEP_TrypticonShoulderCannon_p/WEP_TrypShoulderCannon_CLR.png': A,
+    'content/WEP_TurretBase_p/WEP_TurretBase01_CLR.png': A,
+    'content/WEP_TurretIonGun_p/WEP_TurretGun01_CLR.png': A,
+    'content/WEP_TurretIonGun_p/WEP_TurretGun01_NORM.png': A,
+    'content/WEP_TurretIonGun_p/WEP_TurretIonGun_CLR.png': A,
+    'content/WEP_TurretIonGun_p/WEP_TurretIonGun_NORM.png': A,
+    'content/WEP_TurretRocket_p/WEP_TurretRocket_CLR.png': A,
+    'content/WEP_TurretRocket_p/WEP_TurretRocket_NORM.png': A,
+    'content/WEP_ViciousAxe_p/WEP_ViciousAxe_NORM.png': A,
+    'content/WEP_WarHammer_p/WEP_WarHammer_CLR.png': A,
+    'content/WEP_WarHammer_p/WEP_WarHammer_NORM.png': A,
 }
-REVIEWED = set(range(31))   # batches 0-2: 2026-10-12; 3-13: 2026-10-13; 14-20: 2026-10-14; 21-25: 2026-10-15; 26-30: 2026-10-16 (28: character data maps, all clean at D)
+REVIEWED = set(range(32))   # all batches: 0-2: 2026-10-12; 3-13: 2026-10-13; 14-20: 2026-10-14; 21-25: 2026-10-15; 26-31: 2026-10-16 (28: character data maps, all clean at D)
