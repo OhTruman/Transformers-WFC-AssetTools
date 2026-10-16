@@ -26,7 +26,9 @@ def owner(opath):
     r = inv().execute('SELECT package FROM exports WHERE opath=? ORDER BY serial_size DESC, package LIMIT 1', (opath,)).fetchone()
     return r[0] if r else None
 
-@lru_cache(maxsize=16)
+# WFC_PKG_CACHE: decompressed packages kept (default 16, unchanged); campaign chapters with 50+ levels set it lower to stay
+# under the job cap (D3B_IAC vs_props reached 10 GB). Cache size only: outputs are identical
+@lru_cache(maxsize=int(os.environ.get('WFC_PKG_CACHE') or 16))
 def package(name):
     p = ue3pkg.Package(os.path.join(extract.COOKED, name + '.xxx'))
     p._tr = tp.TypedReader(p)

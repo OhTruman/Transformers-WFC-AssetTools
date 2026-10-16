@@ -39,6 +39,11 @@ def main(M, notes=None):
       '(refuses while any PERF_HOLD exists, cap %.0f GB), `hold_wait.cmd` before launch; outputs under `AssetTools/work/campaign_pilot/'
       'VerticalSlice/Maps/%s/` via `WFC_VS_ROOT`; ExtractedAssets / Game Dump not written. authored.db rows re-parsed before this run '
       '(parser fix f384c7b).\n' % (CAP_GB, M))
+    lg = os.path.join(AT, 'work', 'campaign_pilot', M + '.log')
+    hdr = open(lg, encoding='utf-8', errors='replace').readline().strip() if os.path.exists(lg) else ''
+    pc = re.search(r'pkgcache (\d+)', hdr)
+    a('Run: `%s`; package cache WFC_PKG_CACHE = %s (MP default 16).
+' % (hdr, pc.group(1) if pc else '16 (default; run before the setting existed)'))
     a('## 1. Stages\n\n| stage | rc | wall | peak GB |\n|---|---|---|---|')
     for s in order:
         if s in S:

@@ -7,16 +7,17 @@ cd /d "F:\Transformers Rebuild\AssetTools"
 call scripts\wfc\f_env.cmd
 set "WFC_VS_ROOT=F:\Transformers Rebuild\AssetTools\work\campaign_pilot\VerticalSlice"
 set "CUDA_VISIBLE_DEVICES="
+if "%WFC_PKG_CACHE%"=="" set "WFC_PKG_CACHE=6"
 set "LOG=work\campaign_pilot\%1.log"
 set "CAP=%~2"
 if "%CAP%"=="" set "CAP=6"
-echo start %date% %time% cap %2 > %LOG%
+echo start %date% %time% cap %CAP% pkgcache %WFC_PKG_CACHE% > %LOG%
 call scripts\wfc\hold_wait.cmd
 bin\py\python.exe scripts\wfc\run_map_pipeline.py %1 --cap-gb %CAP% >> %LOG% 2>&1
 set "PRC=%errorlevel%"
 echo pipeline rc %PRC% %time% >> %LOG%
 rem m05 / structure audit pending for campaign chapters (Integration): when the driver stops, run the stages after m05
-if not "%PRC%"=="0" call "F:\Transformers Rebuild\AssetTools\work\campaign_pilot\run_campaign_rest.cmd" %1 %CAP%
+findstr /c:"FAILED at m05_bsp_default_faces" %LOG% >nul && call "F:\Transformers Rebuild\AssetTools\work\campaign_pilot\run_campaign_rest.cmd" %1 %CAP%
 un_campaign_rest.cmd" %1 %CAP%
 call scripts\wfc\hold_wait.cmd
 bin\py\python.exe scripts\wfc\run_bounded.py --cap-gb %CAP% --log logs\%1_pipeline\99_vs_streaming.log -- scripts\wfc\vs_streaming.py %1 >> %LOG% 2>&1
