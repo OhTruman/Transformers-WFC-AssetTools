@@ -1135,5 +1135,27 @@ EYE = {
     'content/TPRO_COR_WeldingArm_p/Materials/ENV_COR_WelderArmParts_NORM.png': None,
     'content/TPRO_IAC_Doors_p/InteriorDoor_NORM.png': None,
     'content/TPRO_ORB_D1_Doors_p/Texture/ORB_D1_InteriorDoor_NORM.png': None,
+
+    # ---- batch 26 (2026-10-16; character / vehicle data maps + TR shader textures, sheets) ----
+    # interior / piston-chamber shader colour, a normal map classed as colour (SoldierCarAut), Corruptor TEXSET stripes and gib extras: B and up blow pale stripes and metal to flat white or crush the shading; A is faithful
+    'content/TR_AllShader_p/Textures/Interior_Color.png': A,
+    'content/TR_AllShader_p/Textures/PistonChamber_CLR.png': A,
+    'content/TR_BruteAut_ROBO_p/NewSoldierCarTextures/RB_SoldierCarAut_Norm_NEW.png': A,
+    'content/TR_Corruptor_VEH_p/TR_Corruptor1_TEXSET/TR_Corruptor1_TEXSET_Color_NormX.png': A,
+    'content/TR_Corruptor_VEH_p/TR_Corruptor2_TEXSET/TR_Corruptor2_TEXSET_Color_NormX.png': A,
+    'content/TR_Death_Gibs_p/Materials/RB_GibExtra_CLR.png': A,
+    # security camera, interior emissive, Bumblebee / Arcee / CQC grunge (blown eye dots) and Corruptor TEXSETs: D blows whites; C holds
+    'content/TPRO_SecurityCamera_p/PROP_NEU_SecurityCamera_CLR_TEXSET/PROP_NEU_SecurityCamera_CLR_TEXSET_Color_NormX.png': C,
+    'content/TR_AllShader_p/Textures/Interior_Emiss.png': C,
+    'content/TR_AllShader_p/Textures/VH_Bumblebee_Clr.png': C,
+    'content/TR_Arcee_ROBO_p/RB_Arcee_GrungeClr.png': C,
+    'content/TR_CQCAut_ROBO_p/RB_CQCAut_GrungeClr.png': C,
+    'content/TR_CQCDec_ROBO_p/RB_CQCDec_GrungeClr.png': C,
+    'content/TR_Corruptor_VEH_p/TR_Corruptor3_TEXSET/TR_Corruptor3_TEXSET_Color_NormX.png': C,
+    'content/TR_Corruptor_VEH_p/VH_CorruptorDoorPanel_TEXSET/VH_CorruptorDoorPanel_TEXSET_Color_NormX.png': C,
+    # debug clouds / electric arcs and fractalMaps (as batch 1)
+    'content/TR_AllShader_p/Debug/DiffClouds_CLR.png': None,
+    'content/TR_AllShader_p/Debug/ElectricArcsElectricArcs.png': None,
+    'content/TR_AllShader_p/Textures/fractalMaps.png': None,
 }
-REVIEWED = set(range(26))   # batches 0-2: 2026-10-12; 3-13: 2026-10-13; 14-20: 2026-10-14; 21-25: 2026-10-15
+REVIEWED = set(range(27))   # batches 0-2: 2026-10-12; 3-13: 2026-10-13; 14-20: 2026-10-14; 21-25: 2026-10-15; 26: 2026-10-16
