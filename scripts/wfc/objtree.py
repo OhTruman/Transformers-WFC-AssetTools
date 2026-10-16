@@ -26,14 +26,31 @@ def owner(opath):
     r = inv().execute('SELECT package FROM exports WHERE opath=? ORDER BY serial_size DESC, package LIMIT 1', (opath,)).fetchone()
     return r[0] if r else None
 
-# WFC_PKG_CACHE: decompressed packages kept (default 16, unchanged); campaign chapters with 50+ levels set it lower to stay
-# under the job cap (D3B_IAC vs_props reached 10 GB). Cache size only: outputs are identical
-@lru_cache(maxsize=int(os.environ.get('WFC_PKG_CACHE') or 16))
+# WFC_PKG_CACHE: decompressed packages kept (default 16, unchanged). Own LRU instead of functools.lru_cache: a package and its
+# TypedReader reference each other, so a package evicted from lru_cache stayed in memory until the cycle collector ran; a smaller
+# cache then only multiplied dead copies (D3B_IAC vs_map hit 10 GB at 6). Eviction here runs gc.collect() so it is freed at once.
+# Cache size / eviction only: outputs are identical
+from collections import OrderedDict as _OD
+_PKGS = _OD()
+_PKG_MAX = int(os.environ.get('WFC_PKG_CACHE') or 16)
 def package(name):
+    if name in _PKGS:
+        _PKGS.move_to_end(name); return _PKGS[name]
     p = ue3pkg.Package(os.path.join(extract.COOKED, name + '.xxx'))
     p._tr = tp.TypedReader(p)
     p._idx = {p.object_path(i + 1).lower(): i + 1 for i in range(len(p.exports))}
+    _PKGS[name] = p
+    if len(_PKGS) > _PKG_MAX:
+        while len(_PKGS) > _PKG_MAX: _PKGS.popitem(last=False)
+        import gc; gc.collect()             # free the evicted package <-> reader cycles now (still-held packages stay valid)
     return p
+
+class _Info:
+    def __init__(self): self.currsize = len(_PKGS); self.maxsize = _PKG_MAX
+def _cache_clear():
+    _PKGS.clear()
+package.cache_clear = _cache_clear          # functools.lru_cache API kept for texture_dds / pstream_flag_census
+package.cache_info = lambda: _Info()
 
 def _refs(v, out):
     if isinstance(v, dict):
