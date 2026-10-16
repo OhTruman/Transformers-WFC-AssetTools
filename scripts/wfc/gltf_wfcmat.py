@@ -56,6 +56,7 @@ def strip(g):
     return g
 
 def run(prefixes=('WEP_', 'PROP_')):
+    if os.path.exists(os.path.join(OUT, 'FROZEN.json')): sys.exit('work/gltf_wfcmat is FROZEN (push_gltf_wfcmat_20261016, shipped as an overlay); write a new snapshot folder instead')
     resolve = resolver(); report = OD([('generated_by', 'scripts/wfc/gltf_wfcmat.py'), ('meshes', [])]); n = ok = unres = 0
     for r in mesh_rows(prefixes):
         src = os.path.join(EA, r['output'])
