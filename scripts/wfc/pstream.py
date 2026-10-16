@@ -75,6 +75,11 @@ CENSUS_COUNTS = {'PMI_LocationDirect': (0, 3)}
 MULTI_UNPROVEN = {
     'PMI_LocationPrimitiveCylinder': (['StartRadius', 'StartHeight', 'VelocityScale'], ['StartLocation']),
     'PMI_LocationPrimitiveSphere': (['StartRadius', 'VelocityScale'], ['StartLocation']),
+    # Engine.ParticleModuleOrbit schema (class default object): three RawDistributionVector, no floats. Count proven by the
+    # LODs where it is the only unlayouted module (assignment then completes exactly); order inside the group unproven.
+    # Without it, assignment stopped at Orbit and every later module lost its curves (Squib_HomRocket_01_FX Embers_Dup_Dup:
+    # AccelerationOverLife, DynamicParameter, VelocityOverLife)
+    'PMI_Orbit': ([], ['OffsetAmount', 'RotationAmount', 'RotationRateAmount']),
 }
 MULTI_UNPROVEN.update(MULTI_UNPROVEN_EXTRA)
 FLOAT_T, VEC_T = (1, 2, 3, 4), (7, 8, 9, 10)
@@ -203,6 +208,10 @@ def system(ps, pkg=None):
                         props = dict(_A.values(obj) or {})
                         if cls == 'ParticleModuleCollision': props.setdefault('CollisionCompletionOption', 'EPCC_Kill (default, enum 0)')
                         if cls == 'ParticleModuleSwitchableColorScaleOverLife': props.setdefault('ChannelSwitch', 'PMC_A (default)')
+                if name == 'PMI_VelocityOverLife':
+                    # Absolute (bool) is not in the compiled stream; Engine.Default__ParticleModuleVelocityOverLifetime does not
+                    # set it, so the class default False applies: velocity *= VelOverLife(t) (UE3). PROVISIONAL per instance
+                    vol_props = {'Absolute': False}
                 mods.append({'index': r['index'], 'module': name, 'module_id': r['module_id'],
                              **({'module_enum': r['module'], 'module_object': obj, 'module_class': cls,
                                  'module_properties (authored, defaults filled)': props} if props is not None else {}),
@@ -210,6 +219,7 @@ def system(ps, pkg=None):
                              'raw_flags': [r['flagA'], r['flagB']],
                              'enabled (flagA; HIGH - particle_flag_census.json)': r['flagA'] == 1,
                              'payload_offset': r['payload_offset'],
+                             **({'props': vol_props} if name == 'PMI_VelocityOverLife' else {}),
                              'distributions': [{'property': x['property'], 'property_candidates': x.get('property_candidates'),
                                                 'kind': x['dist']['kind'], 'op': x['dist']['op'],
                                                 'values': x['dist']['values'], 'confidence': x['confidence'],
