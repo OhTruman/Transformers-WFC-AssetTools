@@ -72,6 +72,7 @@ def encode_bc4(img01, dst):
     os.replace(out, dst); return os.path.getsize(dst)
 
 def gen(root):
+    if os.path.exists(os.path.join(root, 'FROZEN.json')): sys.exit('%s is FROZEN (accepted by Systems); write a new root instead' % root)
     w = json.load(open(WORKLIST, encoding='utf-8'))
     dpack = {r['object_path'].lower(): r for r in json.load(open(os.path.join(D_SNAP, 'hd_index.json'), encoding='utf-8'))['rows']}
     orig = {json.loads(l)['object_path'].lower(): json.loads(l) for l in open(DDS_INDEX, encoding='utf-8')}
