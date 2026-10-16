@@ -23,7 +23,9 @@ sys.path.insert(0, HERE)
 from vs_common import VS, read_glb, accessor  # noqa: E402
 
 AT = os.path.normpath(os.path.join(HERE, '..', '..'))
-CELL = 1.0          # m
+# WFC_AUDIT_CELL: layer-grid cell size (default 1 m, unchanged for MP). Campaign chapters use a coarser cell to stay under the job cap
+# (A1 / A3 / D2 / D3B reached 10 GB at 1 m); the cell size is recorded in the output's method.cell_m
+CELL = float(os.environ.get('WFC_AUDIT_CELL') or 1.0)          # m
 STEP_M = 1.25       # walk rule: max height change between neighbour cells (conservative; robots also jump / transform)
 WALK_NY = 0.7       # walkable if normal.y >= 0.7 (~45 deg)
 HUGE_M2 = 20000.0   # triangles larger than this never enter the grids

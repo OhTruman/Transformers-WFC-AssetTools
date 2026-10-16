@@ -104,19 +104,31 @@ def guard():
         print('MEMORY GUARD: working set > %.1f GB, aborting' % MEM_LIMIT_GB); sys.exit(3)
 
 class Grid:
+    """uniform 3D grid over the obstacle triangles, stored compactly (2026-10-16): sorted int64 cell keys + per-cell ranges of int32
+    triangle ids (CSR) instead of a dict of Python int lists (campaign chapters ran out of memory: A1 / A3 / D2 / D3B). Same cells, same
+    candidate sets per ray, and ray_hits returns the nearest hit, so results are unchanged."""
     def __init__(self, T):
         self.T = T
         lo = T.min(1); hi = T.max(1)
         self.o = lo.min(0)
         a = np.floor((lo - self.o) / CELL).astype(np.int64); b = np.floor((hi - self.o) / CELL).astype(np.int64)
-        span = np.prod(b - a + 1, axis=1)
+        dim = b - a + 1; span = np.prod(dim, axis=1)
         self.big = np.where(span > MAX_CELLS_PER_TRI)[0]
-        self.cells = defaultdict(list)
-        for i in np.where(span <= MAX_CELLS_PER_TRI)[0]:
-            for x in range(a[i, 0], b[i, 0] + 1):
-                for y in range(a[i, 1], b[i, 1] + 1):
-                    for z in range(a[i, 2], b[i, 2] + 1):
-                        self.cells[(x, y, z)].append(int(i))
+        self.n = (b.max(0) + 2) if len(b) else np.ones(3, np.int64)       # cells per axis (key = (x * ny + y) * nz + z)
+        small = np.where(span <= MAX_CELLS_PER_TRI)[0]
+        keys, ids = [], []
+        shapes = dim[small]
+        for shp in np.unique(shapes, axis=0):                              # one vectorised block per triangle footprint shape
+            sel = small[np.all(shapes == shp, axis=1)]
+            off = np.stack(np.meshgrid(*[np.arange(k) for k in shp], indexing='ij'), -1).reshape(-1, 3)
+            c = a[sel][:, None, :] + off[None, :, :]
+            keys.append(((c[..., 0] * self.n[1] + c[..., 1]) * self.n[2] + c[..., 2]).ravel())
+            ids.append(np.repeat(sel.astype(np.int32), len(off)))
+        keys = np.concatenate(keys) if keys else np.zeros(0, np.int64); ids = np.concatenate(ids) if ids else np.zeros(0, np.int32)
+        order = np.lexsort((ids, keys)); keys = keys[order]; self.ids = ids[order]
+        self.keys, self.start = np.unique(keys, return_index=True)
+        self.end = np.r_[self.start[1:], len(keys)].astype(np.int64)
+        self.ncells = len(self.keys)
         self.bigset = set(int(i) for i in self.big)
         guard()
     def blocked(self, p0, p1, skip):
@@ -124,10 +136,12 @@ class Grid:
         if L < 1e-6: return False
         d = d / L
         n = int(L / (CELL * 0.5)) + 2
+        c = np.floor((p0 + d[None, :] * (L * np.arange(n)[:, None] / (n - 1)) - self.o) / CELL).astype(np.int64)
+        ok = np.all((c >= 0) & (c < self.n), axis=1)
+        k = np.unique((c[ok, 0] * self.n[1] + c[ok, 1]) * self.n[2] + c[ok, 2])
+        pos = np.searchsorted(self.keys, k); hit = pos < len(self.keys); hit[hit] = self.keys[pos[hit]] == k[hit]; pos = pos[hit]
         ids = set()
-        for k in range(n):
-            c = tuple(np.floor((p0 + d * (L * k / (n - 1)) - self.o) / CELL).astype(int))
-            ids.update(self.cells.get(c, ()))
+        for q in pos: ids.update(self.ids[self.start[q]:self.end[q]].tolist())
         ids |= self.bigset
         ids -= skip
         if not ids: return False
@@ -160,7 +174,7 @@ def main():
     for x in (sp if isinstance(sp, list) else [y for v in sp.values() for y in v]):
         if x.get('location_ue'): pts.append(x['location_ue'])
     V = np.unique(np.array([[q[0], q[2] + EYE_UU, q[1]] for q in pts]), axis=0) * 0.01
-    print('obstacles', len(allT), 'big', len(grid.big), 'cells', len(grid.cells), 'viewpoints', len(V), 'mem %.2f GB' % rss_gb(), flush=True)
+    print('obstacles', len(allT), 'big', len(grid.big), 'cells', grid.ncells, 'viewpoints', len(V), 'mem %.2f GB' % rss_gb(), flush=True)
     nodes = []
     for ni, (si, pts, node) in enumerate(bsp.polygons(M)):
         s = M['surfs'][si]; mat = int(s['Material'])
