@@ -1169,5 +1169,40 @@ EYE = {
     # Handcuffs energy flipbook and glow gradient: soft FX turn into shards / hatching
     'content/TR_Handcuffs_p/FBOOK_static_CLR.png': None,
     'content/TR_Handcuffs_p/handcuffs_CLR.png': None,
+
+    # ---- batch 29 (2026-10-16; characters, UI, weapons, sheets) ----
+    # weapon colour maps (assault rifle, axe, bazooka, club, broadsword, burst rifle, butterfly axe, staffs, code of power, det pack, EMP shotgun, grenade launcher) and the Trypticon jetpack TEXSET: B and up blow worn metal into white and crush blacks; weapon normals from B up add a stucco grain that is not in the original; A is faithful
+    'content/TR_Trypticon_Jetpack_p/Texture/TrypticonJetpack_DesParts_TEXSET/TrypticonJetpack_DesParts_TEXSET_Color_NormX.png': A,
+    'content/TR_Trypticon_Jetpack_p/Texture/TrypticonJetpack_DesParts_TEXSET/TrypticonJetpack_DesParts_TEXSET_Masks_NormY.png': A,
+    'content/WEP_AssaultRifle_p/WEP_AssaultRifle_CLR.png': A,
+    'content/WEP_AssaultRifle_p/WEP_AssaultRifle_NORM.png': A,
+    'content/WEP_Axe_p/Autobot/WEP_Axe_A_CLR.png': A,
+    'content/WEP_BazookaTemp1_p/WEP_Bazooka_CLR.png': A,
+    'content/WEP_BeatDownClub_p/WEP_BeatDownClub_CLR.png': A,
+    'content/WEP_BeatDownClub_p/WEP_BeatDownClub_NORM.png': A,
+    'content/WEP_BroadSword_p/WEP_BroadSword_CLR.png': A,
+    'content/WEP_BroadSword_p/WEP_BroadSword_NORM.png': A,
+    'content/WEP_BurstRifle_p/Textures/WEP_BurstRifle_CLR.png': A,
+    'content/WEP_BurstRifle_p/Textures/WEP_BurstRifle_NORM.png': A,
+    'content/WEP_ButterflyAxe_p/WEP_ButterflyAxe_CLR.png': A,
+    'content/WEP_ButterflyAxe_p/WEP_ButterflyAxe_NORM.png': A,
+    'content/WEP_CeremonialStaff_p/WEP_CeremonialStaff_CLR.png': A,
+    'content/WEP_CeremonialStaff_p/WEP_CeremonialStaff_NORM.png': A,
+    'content/WEP_CodeOfPower_p/PROP_NEU_CodeOfPower_CLR.png': A,
+    'content/WEP_CodeOfPower_p/PROP_NEU_CodeOfPower_NORM.png': A,
+    'content/WEP_DetPack_p/WEP_DetPack_CLR.png': A,
+    'content/WEP_EMPShotgun_p/WEP_EMPShotgun_CLR.png': A,
+    'content/WEP_EMPShotgun_p/WEP_EMPShotgun_NORM.png': A,
+    'content/WEP_FightingStaff_p/WEP_FightingStaff_CLR.png': A,
+    'content/WEP_FightingStaff_p/WEP_FightingStaff_NORM.png': A,
+    'content/WEP_GrenadeLauncher_p/WEP_GrenadeLauncher_CLR.png': A,
+    # Trypticon jetpack diffuse-luminance: D blows whites; C holds
+    'content/TR_Trypticon_Jetpack_p/Texture/TrypticonJetpack_DifLum.png': C,
+    # front-end / lobby UI: nebula and space-dome backdrops, radial pulse and the Autobot / Decepticon faction logos (soft gradient glow turns into hatching)
+    'content/UI_FrontEndMaterials_p/Nebula_FrontEnd_CLR.png': None,
+    'content/UI_FrontEndMaterials_p/RadialPulse_CLR.png': None,
+    'content/UI_LobbyMaterials_p/BackdropSpaceDome_CLR.png': None,
+    'content/UI_LobbyMaterials_p/FactionLogoAutobot_CLR.png': None,
+    'content/UI_LobbyMaterials_p/FactionLogoDecepticon_CLR.png': None,
 }
-REVIEWED = set(range(29))   # batches 0-2: 2026-10-12; 3-13: 2026-10-13; 14-20: 2026-10-14; 21-25: 2026-10-15; 26-28: 2026-10-16 (28: character data maps, all clean at D)
+REVIEWED = set(range(30))   # batches 0-2: 2026-10-12; 3-13: 2026-10-13; 14-20: 2026-10-14; 21-25: 2026-10-15; 26-29: 2026-10-16 (28: character data maps, all clean at D)
