@@ -1,0 +1,97 @@
+{
+ "generated_by": "scripts/wfc/authored_reparse.py (Integration package-6 parser fix, 2026-10-16)",
+ "cause": "authored.db (built 2026-10-06) predates typed_props garbage-tag guard: the first header-skip candidate (4) parsed as garbage for these objects; the current reader rejects it and reads the real tags at skip 8",
+ "mp_objects": [
+  {
+   "map": "MP_IAC_Berth",
+   "object": "MP_IAC_Berth_ART_m.TheWorld.PersistentLevel.BlockingVolume_1193.BrushComponent_13699",
+   "class": "BrushComponent",
+   "old_names": [
+    "Blueprint_195",
+    "_DialogEventManager_1336",
+    "VertexData",
+    "PermutedVertexData",
+    "FaceTriData",
+    "EdgeDirections",
+    "FaceNormalDirections",
+    "FacePlaneData",
+    "ElemBox",
+    "InnerElemBox"
+   ],
+   "recovered_properties": [
+    "BRUSH",
+    "BrushAggGeom",
+    "CachedPhysBrushDataVersion"
+   ]
+  },
+  {
+   "map": "MP_IAC_Berth",
+   "object": "MP_IAC_Berth_ART_m.TheWorld.PersistentLevel.DecalActor_9370.DecalComponent_16109",
+   "class": "DecalComponent",
+   "old_names": [
+    "Clr_S_Darken_Power_374",
+    "_DialogEventManager_463",
+    "_DialogEventManager_1253"
+   ],
+   "recovered_properties": [
+    "DecalMaterial",
+    "Width",
+    "Height",
+    "FarPlane",
+    "Location",
+    "Orientation",
+    "HitLocation",
+    "HitNormal",
+    "HitTangent",
+    "HitBinormal",
+    "DecalReceivers",
+    "OriginalParentRelativeTransform",
+    "LightingChannels"
+   ]
+  },
+  {
+   "map": "MP_UND_Gorge",
+   "object": "MP_UND_Gorge_AUDIO_m.TheWorld.PersistentLevel.TriggerVolume_6601.BrushComponent_4896",
+   "class": "BrushComponent",
+   "old_names": [
+    "AMB_SYNTH_GEN_DRONE_90",
+    "_DialogEventManager_415",
+    "ElemBox",
+    "InnerElemBox"
+   ],
+   "recovered_properties": [
+    "BRUSH",
+    "BrushAggGeom",
+    "CachedPhysBrushDataVersion"
+   ]
+  },
+  {
+   "map": "MP_UND_Gorge",
+   "object": "MP_UND_Gorge_AUDIO_m.TheWorld.PersistentLevel.TriggerVolume_8025.BrushComponent_14718",
+   "class": "BrushComponent",
+   "old_names": [
+    "AMB_UND_BWL_DEC_LR_90",
+    "_DialogEventManager_418",
+    "ElemBox",
+    "InnerElemBox"
+   ],
+   "recovered_properties": [
+    "BRUSH",
+    "BrushAggGeom",
+    "CachedPhysBrushDataVersion"
+   ]
+  }
+ ],
+ "effect_on_runtime_outputs": "none: Berth + Gorge regenerated before / after (work/parserfix): world/collision/audio/map_fx byte-identical; vs_mapfx, collision and audio read these components natively from the cooked package, not from authored.db. Changes only in authored-DB reports (Berth actor inventory: decal DecalMaterial + LightingChannels) and vs_validate (tag check 1 FAIL -> 0)",
+ "overlay_files": [],
+ "vs_validate_all_10_mp": "45 checks, 0 failures each",
+ "campaign_rows_reparsed": {
+  "D5_OME": 80,
+  "A1_IAC": 1231,
+  "A5_TRY": 131
+ },
+ "backups": [
+  "backups/authored_reparse_20261016_072646.json (MP 4 rows)",
+  "backups/authored_reparse_20261016_073518.json (campaign 1,442 rows)"
+ ]
+}
