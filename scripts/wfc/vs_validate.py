@@ -152,6 +152,9 @@ def main():
     pj = check_manifest(os.path.join(M, 'props.json'))
     sp = json.load(open(os.path.join(M, 'spawnpoints.json')))
     for f in ('collision.json', 'lights.json'): check_manifest(os.path.join(M, f))
+    import tag_parse_audit as _T   # mis-parsed tags in authored.db (A1_IAC: components lost their StaticMesh)
+    tp = _T.check(MP, mp['sublevels'])
+    check('authored tags parse against the class schema', tp['flagged'] == 0, {k: tp[k] for k in ('objects_checked', 'flagged', 'by_level', 'by_class', 'examples')})
     bspt = sum(v.get('render_triangles', 0) for v in mp['bsp'].values())
     check('map BSP geometry recovered', bspt > 0, {'bsp_render_triangles': bspt})   # completeness vs authored: m04_bsp audit
     # campaign: props whose StaticMesh reference does not resolve ('mesh not extracted') are reported, not failed
