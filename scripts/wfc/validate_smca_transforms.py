@@ -23,7 +23,7 @@ import numpy as np
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 import authored as A, objtree  # noqa: E402
-from vs_common import VS, read_glb, ue_to_gltf_matrix  # noqa: E402
+from vs_common import VS, read_glb, ue_to_gltf_matrix, is_campaign  # noqa: E402
 
 MAP = next((sys.argv[i + 1] for i, x in enumerate(sys.argv[:-1]) if x == '--map'), 'MP_IAC_Streets')
 LV = MAP + '_ART_m'
@@ -187,6 +187,8 @@ def main():
         return {tuple(np.round(np.array(n['matrix'], 'f8'), 4).tolist()) for v in nodes.values() for n in v}
     wm = matset(world)
     for x in smca:
+        # campaign: components whose StaticMesh does not resolve (D5 GLB_ART sky / light-ray cards) have no world.glb node
+        if is_campaign(MAP) and not x.get('gltf'): st['campaign_meshless_components_skipped'] += 1; continue
         key = tuple(np.round(np.array(x['gltf_matrix'], 'f8'), 4).tolist())
         st['world_glb_node_match'] += int(key in wm)
         if key not in wm: fails.append('world.glb node missing for ' + x['component'])

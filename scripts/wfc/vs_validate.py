@@ -14,7 +14,7 @@ from PIL import Image
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-from vs_common import ROOT, VS, read_glb, accessor, rel  # noqa: E402
+from vs_common import ROOT, VS, VS_SHARED, read_glb, accessor, rel, is_campaign  # noqa: E402
 import vs_skinpreview, vs_preview, extract  # noqa: E402
 
 REPORT = {'generated': time.strftime('%Y-%m-%d %H:%M:%S'), 'checks': [], 'failures': 0}
@@ -137,7 +137,7 @@ def spawn_ground(world_glb, spawns):
     return res
 
 def main():
-    A = os.path.join(VS, 'Characters', 'Optimus'); W = os.path.join(VS, 'Weapons', 'IonBlaster')
+    A = os.path.join(VS_SHARED, 'Characters', 'Optimus'); W = os.path.join(VS_SHARED, 'Weapons', 'IonBlaster')
     MP = sys.argv[1] if len(sys.argv) > 1 else 'MP_IAC_Streets'; M = os.path.join(VS, 'Maps', MP)
     robot = glb_checks(os.path.join(A, 'robot.glb'), True)
     vehicle = glb_checks(os.path.join(A, 'vehicle.glb'), True)
@@ -154,7 +154,8 @@ def main():
     for f in ('collision.json', 'lights.json'): check_manifest(os.path.join(M, f))
     bspt = sum(v.get('render_triangles', 0) for v in mp['bsp'].values())
     check('map BSP geometry recovered', bspt > 0, {'bsp_render_triangles': bspt})   # completeness vs authored: m04_bsp audit
-    check('map props placed with meshes', pj['count'] > 500 and all(p.get('gltf') for p in pj['props']),
+    # campaign: props whose StaticMesh reference does not resolve ('mesh not extracted') are reported, not failed
+    check('map props placed with meshes', pj['count'] > 500 and all(p.get('gltf') or (is_campaign(MP) and p.get('error') == 'mesh not extracted') for p in pj['props']),
           {'props': pj['count'], 'without_mesh': sum(1 for p in pj['props'] if not p.get('gltf'))})
     starts = [s for s in sp['points'] if 'PlayerStart' in s['class']]
     gw = spawn_ground(os.path.join(M, 'world.glb'), starts)

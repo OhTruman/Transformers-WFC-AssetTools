@@ -15,6 +15,11 @@ import extract  # noqa: E402
 ROOT = os.path.dirname(extract.OUT)                 # ExtractedAssets
 # WFC_VS_ROOT: write map outputs elsewhere (campaign pilot -> AssetTools/work, ExtractedAssets untouched); unset = unchanged
 VS = os.environ.get('WFC_VS_ROOT') or os.path.join(ROOT, 'VerticalSlice')
+VS_SHARED = os.path.join(ROOT, 'VerticalSlice')        # slice character / weapon (read even when WFC_VS_ROOT redirects maps)
+
+def is_campaign(map_name):
+    """campaign chapter (A1_IAC, D5_OME, ...): not an MP_ / UI_ map; validators relax MP-only checks for these"""
+    return not map_name.upper().startswith(('MP_', 'UI_'))
 URU = 2 * math.pi / 65536.0
 
 S3 = np.array([[1, 0, 0], [0, 0, 1], [0, 1, 0]], dtype='f8')
