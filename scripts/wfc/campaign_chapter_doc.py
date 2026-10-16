@@ -42,8 +42,7 @@ def main(M, notes=None):
     lg = os.path.join(AT, 'work', 'campaign_pilot', M + '.log')
     hdr = open(lg, encoding='utf-8', errors='replace').readline().strip() if os.path.exists(lg) else ''
     pc = re.search(r'pkgcache (\d+)', hdr)
-    a('Run: `%s`; package cache WFC_PKG_CACHE = %s (MP default 16).
-' % (hdr, pc.group(1) if pc else '16 (default; run before the setting existed)'))
+    a('Run: `%s`; package cache WFC_PKG_CACHE = %s (MP default 16).\n' % (hdr, pc.group(1) if pc else '16 (default; run before the setting existed)'))
     a('## 1. Stages\n\n| stage | rc | wall | peak GB |\n|---|---|---|---|')
     for s in order:
         if s in S:

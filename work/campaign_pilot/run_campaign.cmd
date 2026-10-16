@@ -17,6 +17,8 @@ bin\py\python.exe scripts\wfc\run_map_pipeline.py %1 --cap-gb %CAP% >> %LOG% 2>&
 set "PRC=%errorlevel%"
 echo pipeline rc %PRC% %time% >> %LOG%
 rem m05 / structure audit pending for campaign chapters (Integration): when the driver stops, run the stages after m05
+findstr /c:"FAILED at map_structure_audit" %LOG% >nul && call "F:\Transformers Rebuild\AssetTools\work\campaign_pilot\run_stages.cmd" %1 %CAP% map_complete map_render_index
+un_stages.cmd" %1 %CAP% map_complete map_render_index
 findstr /c:"FAILED at m05_bsp_default_faces" %LOG% >nul && call "F:\Transformers Rebuild\AssetTools\work\campaign_pilot\run_campaign_rest.cmd" %1 %CAP%
 un_campaign_rest.cmd" %1 %CAP%
 call scripts\wfc\hold_wait.cmd
