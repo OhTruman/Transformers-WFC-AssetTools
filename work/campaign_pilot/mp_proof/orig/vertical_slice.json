@@ -1,0 +1,2619 @@
+{
+ "generated": "2026-10-05 19:33:12",
+ "root": "ExtractedAssets (paths below are relative to it)",
+ "coordinate_system": "glTF Y-up, metres, right-handed; v_gltf = 0.01*(x,z,y)_UE (umodel convention; all slice files agree)",
+ "player_character": {
+  "name": "Optimus Prime",
+  "manifest": "VerticalSlice/Characters/Optimus/character.json",
+  "robot_form": {
+   "glb": "VerticalSlice/Characters/Optimus/robot.glb",
+   "mesh_object": "TR_Optimus_ROBO_p.RB_Optimus_A_SKELMESH",
+   "joints": 106,
+   "triangles": 11555,
+   "height_m": 4.412,
+   "embedded_clips": 75,
+   "sockets": 38
+  },
+  "vehicle_form": {
+   "glb": "VerticalSlice/Characters/Optimus/vehicle.glb",
+   "mesh_object": "TR_Optimus_VEH_p.VH_OptimusPrime_SKEL",
+   "joints": 69,
+   "triangles": 11651,
+   "embedded_clips": 13
+  },
+  "skeleton_relationship": "Robot and vehicle are separate skeletons with no shared bone names (106 vs 69 joints). Transformation = robot clip Transform_ToVehicle_ROBO / vehicle clip Transform_ToVehicle_VEH (and the reverse Transform_ToRobot_*), each on its own skeleton; the game swaps meshes during the transition.",
+  "animations": {
+   "embedded_in_glb": {
+    "robot": [
+     {
+      "name": "Cust_Idle",
+      "category": "idle",
+      "duration_s": 9.9667,
+      "additive": false
+     },
+     {
+      "name": "NAV_Idle",
+      "category": "idle",
+      "duration_s": 3.6333,
+      "additive": false
+     },
+     {
+      "name": "Transform_ToRobot_ROBO",
+      "category": "transform_to_robot",
+      "duration_s": 1.1333,
+      "additive": false
+     },
+     {
+      "name": "Transform_ToVehicle_ROBO",
+      "category": "transform_to_vehicle",
+      "duration_s": 1.9667,
+      "additive": false
+     },
+     {
+      "name": "Transform_ToVehicle_SuperBoost_Robo",
+      "category": "transform_to_vehicle",
+      "duration_s": 0.3333,
+      "additive": false
+     },
+     {
+      "name": "ADD_HitReaction_React_B",
+      "category": "hit_reaction",
+      "duration_s": 1.4667,
+      "additive": true
+     },
+     {
+      "name": "ADD_HitReaction_React_F",
+      "category": "hit_reaction",
+      "duration_s": 1.4667,
+      "additive": true
+     },
+     {
+      "name": "ADD_HitReaction_React_L",
+      "category": "hit_reaction",
+      "duration_s": 0.4,
+      "additive": true
+     },
+     {
+      "name": "ADD_HitReaction_React_R",
+      "category": "hit_reaction",
+      "duration_s": 0.4333,
+      "additive": true
+     },
+     {
+      "name": "ADD_Shooting_equip_weapon",
+      "category": "equip",
+      "duration_s": 0.5,
+      "additive": true
+     },
+     {
+      "name": "ADD_Shooting_OverHeat_End",
+      "category": "fire",
+      "duration_s": 0.6,
+      "additive": true
+     },
+     {
+      "name": "ADD_Shooting_OverHeat_Loop",
+      "category": "fire",
+      "duration_s": 1.4667,
+      "additive": true
+     },
+     {
+      "name": "ADD_Shooting_OverHeat_Start",
+      "category": "fire",
+      "duration_s": 1.4333,
+      "additive": true
+     },
+     {
+      "name": "ADD_Shooting_Reload_Fast_ROBO",
+      "category": "reload",
+      "duration_s": 1.4667,
+      "additive": true
+     },
+     {
+      "name": "ADD_Shooting_Reload_Med_ROBO",
+      "category": "reload",
+      "duration_s": 2.4667,
+      "additive": true
+     },
+     {
+      "name": "ADD_Shooting_Reload_Slow_ROBO",
+      "category": "reload",
+      "duration_s": 4.5,
+      "additive": true
+     },
+     {
+      "name": "ADD_Shooting_UnEquip_Weapon",
+      "category": "equip",
+      "duration_s": 0.5,
+      "additive": true
+     },
+     {
+      "name": "Death_BackShot",
+      "category": "death",
+      "duration_s": 0.8095,
+      "additive": false
+     },
+     {
+      "name": "Death_FrontShot",
+      "category": "death",
+      "duration_s": 0.1,
+      "additive": false
+     },
+     {
+      "name": "Death_HeadShot",
+      "category": "death",
+      "duration_s": 1.7407,
+      "additive": false
+     },
+     {
+      "name": "Melee_Block_H2H",
+      "category": "melee",
+      "duration_s": 0.0333,
+      "additive": false
+     },
+     {
+      "name": "Melee_EnergonSword_01",
+      "category": "melee",
+      "duration_s": 0.9667,
+      "additive": false
+     },
+     {
+      "name": "Melee_EnergonSword_03",
+      "category": "melee",
+      "duration_s": 0.9667,
+      "additive": false
+     },
+     {
+      "name": "Melee_GunButt_H2H",
+      "category": "melee",
+      "duration_s": 0.6667,
+      "additive": false
+     },
+     {
+      "name": "Melee_KnockBack_H2H",
+      "category": "melee",
+      "duration_s": 0.9667,
+      "additive": false
+     },
+     {
+      "name": "Melee_KnockForward_H2H",
+      "category": "melee",
+      "duration_s": 0.9667,
+      "additive": false
+     },
+     {
+      "name": "Melee_KnockLeft_H2H",
+      "category": "melee",
+      "duration_s": 0.8333,
+      "additive": false
+     },
+     {
+      "name": "Melee_KnockRight_H2H",
+      "category": "melee",
+      "duration_s": 1.0333,
+      "additive": false
+     },
+     {
+      "name": "MELEE_Stomp",
+      "category": "melee",
+      "duration_s": 0.7333,
+      "additive": false
+     },
+     {
+      "name": "Nav_Boost_B",
+      "category": "boost_dodge",
+      "duration_s": 0.4667,
+      "additive": false
+     },
+     {
+      "name": "Nav_Boost_F",
+      "category": "boost_dodge",
+      "duration_s": 0.4667,
+      "additive": false
+     },
+     {
+      "name": "Nav_Boost_L",
+      "category": "boost_dodge",
+      "duration_s": 0.4667,
+      "additive": false
+     },
+     {
+      "name": "Nav_Boost_R",
+      "category": "boost_dodge",
+      "duration_s": 0.4667,
+      "additive": false
+     },
+     {
+      "name": "Nav_Hover",
+      "category": "boost_dodge",
+      "duration_s": 3.2,
+      "additive": false
+     },
+     {
+      "name": "Nav_Idle_Base",
+      "category": "idle",
+      "duration_s": 3.9667,
+      "additive": false
+     },
+     {
+      "name": "Nav_Idle_Pose",
+      "category": "idle",
+      "duration_s": 0.0333,
+      "additive": false
+     },
+     {
+      "name": "Nav_IdlePivot90_L",
+      "category": "turn",
+      "duration_s": 0.5333,
+      "additive": false
+     },
+     {
+      "name": "Nav_IdlePivot90_R",
+      "category": "turn",
+      "duration_s": 0.5333,
+      "additive": false
+     },
+     {
+      "name": "Nav_Jump_Descent",
+      "category": "fall",
+      "duration_s": 0.9,
+      "additive": false
+     },
+     {
+      "name": "Nav_Jump_Descent_02",
+      "category": "fall",
+      "duration_s": 1.6333,
+      "additive": false
+     },
+     {
+      "name": "Nav_Jump_Descent_03",
+      "category": "fall",
+      "duration_s": 3.3,
+      "additive": false
+     },
+     {
+      "name": "Nav_Jump_Drift",
+      "category": "fall",
+      "duration_s": 0.3667,
+      "additive": false
+     },
+     {
+      "name": "Nav_Land",
+      "category": "land",
+      "duration_s": 0.5333,
+      "additive": false
+     },
+     {
+      "name": "Nav_Land_02",
+      "category": "land",
+      "duration_s": 0.7,
+      "additive": false
+     },
+     {
+      "name": "Nav_Land_03",
+      "category": "land",
+      "duration_s": 1.0,
+      "additive": false
+     },
+     {
+      "name": "Nav_Pivot180_L",
+      "category": "turn",
+      "duration_s": 0.9,
+      "additive": false
+     },
+     {
+      "name": "Nav_Pivot180_R",
+      "category": "turn",
+      "duration_s": 0.9,
+      "additive": false
+     },
+     {
+      "name": "Nav_Pivot90_L",
+      "category": "turn",
+      "duration_s": 0.7,
+      "additive": false
+     },
+     {
+      "name": "Nav_Pivot90_R",
+      "category": "turn",
+      "duration_s": 0.7,
+      "additive": false
+     },
+     {
+      "name": "Nav_Slide_B",
+      "category": "boost_dodge",
+      "duration_s": 2.9667,
+      "additive": false
+     },
+     {
+      "name": "Nav_Slide_F",
+      "category": "boost_dodge",
+      "duration_s": 2.9667,
+      "additive": false
+     },
+     {
+      "name": "Nav_StrafeJog_B",
+      "category": "run",
+      "duration_s": 0.7333,
+      "additive": false
+     },
+     {
+      "name": "Nav_StrafeJog_F",
+      "category": "run",
+      "duration_s": 0.7333,
+      "additive": false
+     },
+     {
+      "name": "Nav_StrafeJog_L",
+      "category": "run",
+      "duration_s": 0.7333,
+      "additive": false
+     },
+     {
+      "name": "Nav_StrafeJog_R",
+      "category": "run",
+      "duration_s": 0.7333,
+      "additive": false
+     },
+     {
+      "name": "Nav_StrafeWalk_B",
+      "category": "walk",
+      "duration_s": 1.1,
+      "additive": false
+     },
+     {
+      "name": "Nav_StrafeWalk_F",
+      "category": "walk",
+      "duration_s": 1.1,
+      "additive": false
+     },
+     {
+      "name": "Nav_StrafeWalk_L",
+      "category": "walk",
+      "duration_s": 1.1,
+      "additive": false
+     },
+     {
+      "name": "Nav_StrafeWalk_R",
+      "category": "walk",
+      "duration_s": 1.1,
+      "additive": false
+     },
+     {
+      "name": "Nav_TakeOff_01",
+      "category": "jump",
+      "duration_s": 0.4667,
+      "additive": false
+     },
+     {
+      "name": "Nav_TakeOff_02",
+      "category": "jump",
+      "duration_s": 1.5,
+      "additive": false
+     },
+     {
+      "name": "Shooting_Aim_F_C",
+      "category": "aim",
+      "duration_s": 0.0333,
+      "additive": false
+     },
+     {
+      "name": "Shooting_Aim_F_D",
+      "category": "aim",
+      "duration_s": 0.0333,
+      "additive": false
+     },
+     {
+      "name": "Shooting_Aim_F_U",
+      "category": "aim",
+      "duration_s": 0.0333,
+      "additive": false
+     },
+     {
+      "name": "Shooting_Aim_L_C",
+      "category": "aim",
+      "duration_s": 0.0333,
+      "additive": false
+     },
+     {
+      "name": "Shooting_Aim_L_D",
+      "category": "aim",
+      "duration_s": 0.0333,
+      "additive": false
+     },
+     {
+      "name": "Shooting_Aim_L_U",
+      "category": "aim",
+      "duration_s": 0.0333,
+      "additive": false
+     },
+     {
+      "name": "Shooting_Aim_R_C",
+      "category": "aim",
+      "duration_s": 0.0333,
+      "additive": false
+     },
+     {
+      "name": "Shooting_Aim_R_D",
+      "category": "aim",
+      "duration_s": 0.0333,
+      "additive": false
+     },
+     {
+      "name": "Shooting_Aim_R_U",
+      "category": "aim",
+      "duration_s": 0.0333,
+      "additive": false
+     },
+     {
+      "name": "Shooting_equip_weapon",
+      "category": "equip",
+      "duration_s": 0.5,
+      "additive": false
+     },
+     {
+      "name": "Shooting_Reload_IonBlaster_ROBO",
+      "category": "reload",
+      "duration_s": 1.6333,
+      "additive": false
+     },
+     {
+      "name": "Shooting_RocketBarrage_Stand_F",
+      "category": "fire",
+      "duration_s": 1.1667,
+      "additive": false
+     },
+     {
+      "name": "Shooting_UnEquip_Weapon",
+      "category": "equip",
+      "duration_s": 0.5,
+      "additive": false
+     },
+     {
+      "name": "Melee_2HitCombo_EnergonHammer",
+      "category": "melee",
+      "duration_s": 0.8222,
+      "additive": false
+     }
+    ],
+    "vehicle": [
+     {
+      "name": "ADD_Nav_Hover_VEH",
+      "category": "vehicle_move",
+      "duration_s": 2.0,
+      "additive": true
+     },
+     {
+      "name": "Death_Hover_VEH",
+      "category": "vehicle_death",
+      "duration_s": 0.5,
+      "additive": false
+     },
+     {
+      "name": "Nav_BoostToHover_VEH",
+      "category": "vehicle_move",
+      "duration_s": 1.0,
+      "additive": false
+     },
+     {
+      "name": "Nav_Hover_B_VEH",
+      "category": "vehicle_move",
+      "duration_s": 0.0333,
+      "additive": false
+     },
+     {
+      "name": "Nav_Hover_F_VEH",
+      "category": "vehicle_move",
+      "duration_s": 0.0333,
+      "additive": false
+     },
+     {
+      "name": "Nav_Hover_L_VEH",
+      "category": "vehicle_move",
+      "duration_s": 0.0333,
+      "additive": false
+     },
+     {
+      "name": "Nav_Hover_Pose_VEH",
+      "category": "vehicle_idle",
+      "duration_s": 0.0333,
+      "additive": false
+     },
+     {
+      "name": "Nav_Hover_R_VEH",
+      "category": "vehicle_move",
+      "duration_s": 0.0333,
+      "additive": false
+     },
+     {
+      "name": "Nav_HoverToBoost_VEH",
+      "category": "vehicle_move",
+      "duration_s": 0.6667,
+      "additive": false
+     },
+     {
+      "name": "Nav_Idle_Wheels_VEH",
+      "category": "vehicle_idle",
+      "duration_s": 1.1333,
+      "additive": false
+     },
+     {
+      "name": "Transform_ToRobot_VEH",
+      "category": "vehicle_transform_to_robot",
+      "duration_s": 1.1333,
+      "additive": false
+     },
+     {
+      "name": "Transform_ToVehicle_SuperBoost_Veh",
+      "category": "vehicle_transform_to_vehicle",
+      "duration_s": 0.8,
+      "additive": false
+     },
+     {
+      "name": "Transform_ToVehicle_VEH",
+      "category": "vehicle_transform_to_vehicle",
+      "duration_s": 1.9667,
+      "additive": false
+     }
+    ]
+   },
+   "categories_covered": [
+    "aim",
+    "boost_dodge",
+    "death",
+    "equip",
+    "fall",
+    "fire",
+    "hit_reaction",
+    "idle",
+    "jump",
+    "land",
+    "melee",
+    "reload",
+    "run",
+    "transform_to_robot",
+    "transform_to_vehicle",
+    "turn",
+    "vehicle_death",
+    "vehicle_idle",
+    "vehicle_move",
+    "vehicle_transform_to_robot",
+    "vehicle_transform_to_vehicle",
+    "walk"
+   ],
+   "full_compatible_sets": {
+    "robot": [
+     {
+      "animset": "CINE_A1_BridgeCollapse_p.Optimus_ROBO_ANIM",
+      "anim_gltf": "content/CINE_A1_BridgeCollapse_p/Optimus_ROBO_ANIM.anim.gltf",
+      "sequences": 1
+     },
+     {
+      "animset": "CINE_A1_IronhideIntro_p.Optimus_ROBO_ANIM",
+      "anim_gltf": "content/CINE_A1_IronhideIntro_p/Optimus_ROBO_ANIM.anim.gltf",
+      "sequences": 1
+     },
+     {
+      "animset": "CINE_A1_StarscreamOutro_p.Optimus_ROBO_ANIM",
+      "anim_gltf": "content/CINE_A1_StarscreamOutro_p/Optimus_ROBO_ANIM.anim.gltf",
+      "sequences": 1
+     },
+     {
+      "animset": "CINE_A2_BruteEscape_p.Optimus_ROBO_ANIM",
+      "anim_gltf": "content/CINE_A2_BruteEscape_p/Optimus_ROBO_ANIM.anim.gltf",
+      "sequences": 1
+     },
+     {
+      "animset": "CINE_A2_CQCIntro_p.Optimus_ROBO_ANIM",
+      "anim_gltf": "content/CINE_A2_CQCIntro_p/Optimus_ROBO_ANIM.anim.gltf",
+      "sequences": 3
+     },
+     {
+      "animset": "CINE_A2_LevelIntro_p.Optimus_ROBO_ANIM",
+      "anim_gltf": "content/CINE_A2_LevelIntro_p/Optimus_ROBO_ANIM.anim.gltf",
+      "sequences": 1
+     },
+     {
+      "animset": "CINE_A2_SoundwaveBossIntro_p.Optimus_ROBO_ANIM",
+      "anim_gltf": "content/CINE_A2_SoundwaveBossIntro_p/Optimus_ROBO_ANIM.anim.gltf",
+      "sequences": 1
+     },
+     {
+      "animset": "CINE_A2_SoundwaveBossIntro_p.ZetaPrime_ROBO_ANIM",
+      "anim_gltf": "content/CINE_A2_SoundwaveBossIntro_p/ZetaPrime_ROBO_ANIM.anim.gltf",
+      "sequences": 1
+     },
+     {
+      "animset": "CINE_A2_SoundwaveBossOutro_p.Optimus_ROBO_ANIM",
+      "anim_gltf": "content/CINE_A2_SoundwaveBossOutro_p/Optimus_ROBO_ANIM.anim.gltf",
+      "sequences": 3
+     },
+     {
+      "animset": "CINE_A2_SoundwaveBossOutro_p.ZetaPrime_ROBO_ANIM",
+      "anim_gltf": "content/CINE_A2_SoundwaveBossOutro_p/ZetaPrime_ROBO_ANIM.anim.gltf",
+      "sequences": 1
+     },
+     {
+      "animset": "CINE_A3_AttackofCrab_p.OptimusPrime_ROBO_CINE",
+      "anim_gltf": "content/CINE_A3_AttackofCrab_p/OptimusPrime_ROBO_CINE.anim.gltf",
+      "sequences": 2
+     },
+     {
+      "animset": "CINE_A3_LevelIntro_p.ANIM_WARPATH_ROBO",
+      "anim_gltf": "content/CINE_A3_LevelIntro_p/ANIM_WARPATH_ROBO.anim.gltf",
+      "sequences": 1
+     },
+     {
+      "animset": "CINE_A5_LevelOutro_p.optimus_robo",
+      "anim_gltf": "content/CINE_A5_LevelOutro_p/optimus_robo.anim.gltf",
+      "sequences": 6
+     },
+     {
+      "animset": "CINE_D1_JetIntro_p.D1_JetIntro_Brawl_CINE",
+      "anim_gltf": "content/CINE_D1_JetIntro_p/D1_JetIntro_Brawl_CINE.anim.gltf",
+      "sequences": 1
+     },
+     {
+      "animset": "CINE_D1_JetIntro_p.D1_JetIntro_Megatron_CINE",
+      "anim_gltf": "content/CINE_D1_JetIntro_p/D1_JetIntro_Megatron_CINE.anim.gltf",
+      "sequences": 1
+     },
+     {
+      "animset": "CINE_D1_MeetSoundwave_p.HM_Shared_ROBO_ANIM",
+      "anim_gltf": "content/CINE_D1_MeetSoundwave_p/HM_Shared_ROBO_ANIM.anim.gltf",
+      "sequences": 2
+     },
+     {
+      "animset": "CINE_D1_MegatronInfusion_p.Brawl_ROBO_CINE",
+      "anim_gltf": "content/CINE_D1_MegatronInfusion_p/Brawl_ROBO_CINE.anim.gltf",
+      "sequences": 2
+     },
+     {
+      "animset": "CINE_D1_MegatronInfusion_p.Megatron_ROBO_CINE",
+      "anim_gltf": "content/CINE_D1_MegatronInfusion_p/Megatron_ROBO_CINE.anim.gltf",
+      "sequences": 9
+     },
+     {
+      "animset": "CINE_D1_SoundwaveIntro_p.CINE_D1_Brawl",
+      "anim_gltf": "content/CINE_D1_SoundwaveIntro_p/CINE_D1_Brawl.anim.gltf",
+      "sequences": 6
+     },
+     {
+      "animset": "CINE_D1_SoundwaveIntro_p.CINE_D1_Megatron",
+      "anim_gltf": "content/CINE_D1_SoundwaveIntro_p/CINE_D1_Megatron.anim.gltf",
+      "sequences": 6
+     },
+     {
+      "animset": "CINE_D1_StarscreamIntro_p.Brawl_ROBO_ANIM",
+      "anim_gltf": "content/CINE_D1_StarscreamIntro_p/Brawl_ROBO_ANIM.anim.gltf",
+      "sequences": 2
+     },
+     {
+      "animset": "CINE_D1_StarscreamIntro_p.Megatron_ROBO_ANIM",
+      "anim_gltf": "content/CINE_D1_StarscreamIntro_p/Megatron_ROBO_ANIM.anim.gltf",
+      "sequences": 3
+     },
+     {
+      "animset": "CINE_D3B_EnemyDropOff_p.Megatron_ROBO_ANIM",
+      "anim_gltf": "content/CINE_D3B_EnemyDropOff_p/Megatron_ROBO_ANIM.anim.gltf",
+      "sequences": 4
+     },
+     {
+      "animset": "CINE_D3B_LevelIntro_p.Megatron_ROBO_ANIM",
+      "anim_gltf": "content/CINE_D3B_LevelIntro_p/Megatron_ROBO_ANIM.anim.gltf",
+      "sequences": 6
+     },
+     {
+      "animset": "CINE_D3B_LevelOutro_p.Megatron_ROBO_ANIM",
+      "anim_gltf": "content/CINE_D3B_LevelOutro_p/Megatron_ROBO_ANIM.anim.gltf",
+      "sequences": 1
+     },
+     {
+      "animset": "CINE_D3_BrawlIntro_p.Brawl_ROBO_ANIM",
+      "anim_gltf": "content/CINE_D3_BrawlIntro_p/Brawl_ROBO_ANIM.anim.gltf",
+      "sequences": 1
+     },
+     {
+      "animset": "CINE_D3_Planetarium_p.Megatron_ROBO_ANIM",
+      "anim_gltf": "content/CINE_D3_Planetarium_p/Megatron_ROBO_ANIM.anim.gltf",
+      "sequences": 1
+     },
+     {
+      "animset": "CINE_D3_Planetarium_p.Zeta_ROBO_ANIM",
+      "anim_gltf": "content/CINE_D3_Planetarium_p/Zeta_ROBO_ANIM.anim.gltf",
+      "sequences": 2
+     },
+     {
+      "animset": "CINE_D3_SentinelIntro_p.Megatron_ROBO_ANIM",
+      "anim_gltf": "content/CINE_D3_SentinelIntro_p/Megatron_ROBO_ANIM.anim.gltf",
+      "sequences": 6
+     },
+     {
+      "animset": "CINE_D3_SentinelIntro_p.Sentinel_ROBO_ANIM",
+      "anim_gltf": "content/CINE_D3_SentinelIntro_p/Sentinel_ROBO_ANIM.anim.gltf",
+      "sequences": 1
+     },
+     {
+      "animset": "CINE_D5_LevelIntro_p.Megatron_ROBO_ANIM",
+      "anim_gltf": "content/CINE_D5_LevelIntro_p/Megatron_ROBO_ANIM.anim.gltf",
+      "sequences": 2
+     },
+     {
+      "animset": "CINE_D5_LevelOutro_p.Megatron_ROBO_ANIM",
+      "anim_gltf": "content/CINE_D5_LevelOutro_p/Megatron_ROBO_ANIM.anim.gltf",
+      "sequences": 2
+     },
+     {
+      "animset": "CINE_IAC_Betrayal_p.Anim.Cine_D3A_HeavyMed",
+      "anim_gltf": "content/CINE_IAC_Betrayal_p/Anim/Cine_D3A_HeavyMed.anim.gltf",
+      "sequences": 1
+     },
+     {
+      "animset": "CINE_IAC_Corruptor_p.Anim.Cine_A1_HeavyMed",
+      "anim_gltf": "content/CINE_IAC_Corruptor_p/Anim/Cine_A1_HeavyMed.anim.gltf",
+      "sequences": 1
+     },
+     {
+      "animset": "TR_HeavyMedium_ANM_p.Brawl_ROBO_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_ANM_p/Brawl_ROBO_ANIM.anim.gltf",
+      "sequences": 7
+     },
+     {
+      "animset": "TR_HeavyMedium_ANM_p.Demolishor_ROBO_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_ANM_p/Demolishor_ROBO_ANIM.anim.gltf",
+      "sequences": 4
+     },
+     {
+      "animset": "TR_HeavyMedium_ANM_p.HalfWallEmote_ROBO_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_ANM_p/HalfWallEmote_ROBO_ANIM.anim.gltf",
+      "sequences": 6
+     },
+     {
+      "animset": "TR_HeavyMedium_ANM_p.IdleEmote_ROBO_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_ANM_p/IdleEmote_ROBO_ANIM.anim.gltf",
+      "sequences": 7
+     },
+     {
+      "animset": "TR_HeavyMedium_ANM_p.Interact_ROBO_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_ANM_p/Interact_ROBO_ANIM.anim.gltf",
+      "sequences": 9
+     },
+     {
+      "animset": "TR_HeavyMedium_ANM_p.Jetfire_ROBO_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_ANM_p/Jetfire_ROBO_ANIM.anim.gltf",
+      "sequences": 11
+     },
+     {
+      "animset": "TR_HeavyMedium_ANM_p.LedgeEmote_ROBO_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_ANM_p/LedgeEmote_ROBO_ANIM.anim.gltf",
+      "sequences": 5
+     },
+     {
+      "animset": "TR_HeavyMedium_ANM_p.Megatron_ROBO_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_ANM_p/Megatron_ROBO_ANIM.anim.gltf",
+      "sequences": 14
+     },
+     {
+      "animset": "TR_HeavyMedium_ANM_p.Melee_TwoHanded_ROBO_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_ANM_p/Melee_TwoHanded_ROBO_ANIM.anim.gltf",
+      "sequences": 25
+     },
+     {
+      "animset": "TR_HeavyMedium_ANM_p.OpenEmote_ROBO_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_ANM_p/OpenEmote_ROBO_ANIM.anim.gltf",
+      "sequences": 6
+     },
+     {
+      "animset": "TR_HeavyMedium_ANM_p.Optimus_ROBO_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_ANM_p/Optimus_ROBO_ANIM.anim.gltf",
+      "sequences": 14
+     },
+     {
+      "animset": "TR_HeavyMedium_ANM_p.Reacts_ROBO_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_ANM_p/Reacts_ROBO_ANIM.anim.gltf",
+      "sequences": 13
+     },
+     {
+      "animset": "TR_HeavyMedium_ANM_p.Reacts_ROBO_AUT_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_ANM_p/Reacts_ROBO_AUT_ANIM.anim.gltf",
+      "sequences": 2
+     },
+     {
+      "animset": "TR_HeavyMedium_ANM_p.Reacts_ROBO_DEC_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_ANM_p/Reacts_ROBO_DEC_ANIM.anim.gltf",
+      "sequences": 2
+     },
+     {
+      "animset": "TR_HeavyMedium_ANM_p.Scattershot_ROBO_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_ANM_p/Scattershot_ROBO_ANIM.anim.gltf",
+      "sequences": 6
+     },
+     {
+      "animset": "TR_HeavyMedium_ANM_p.Shared_ROBO_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_ANM_p/Shared_ROBO_ANIM.anim.gltf",
+      "sequences": 234
+     },
+     {
+      "animset": "TR_HeavyMedium_ANM_p.Shockwave_ROBO_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_ANM_p/Shockwave_ROBO_ANIM.anim.gltf",
+      "sequences": 7
+     },
+     {
+      "animset": "TR_HeavyMedium_ANM_p.VIG_A1_Jetfire_ROBO_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_ANM_p/VIG_A1_Jetfire_ROBO_ANIM.anim.gltf",
+      "sequences": 2
+     },
+     {
+      "animset": "TR_HeavyMedium_ANM_p.VIG_A1_Optimus_ROBO_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_ANM_p/VIG_A1_Optimus_ROBO_ANIM.anim.gltf",
+      "sequences": 1
+     },
+     {
+      "animset": "TR_HeavyMedium_ANM_p.VIG_A2_Optimus_ROBO_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_ANM_p/VIG_A2_Optimus_ROBO_ANIM.anim.gltf",
+      "sequences": 2
+     },
+     {
+      "animset": "TR_HeavyMedium_ANM_p.VIG_A2_ROBO_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_ANM_p/VIG_A2_ROBO_ANIM.anim.gltf",
+      "sequences": 6
+     },
+     {
+      "animset": "TR_HeavyMedium_ANM_p.VIG_A3_ROBO_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_ANM_p/VIG_A3_ROBO_ANIM.anim.gltf",
+      "sequences": 2
+     },
+     {
+      "animset": "TR_HeavyMedium_ANM_p.VIG_A4_ROBO_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_ANM_p/VIG_A4_ROBO_ANIM.anim.gltf",
+      "sequences": 3
+     },
+     {
+      "animset": "TR_HeavyMedium_ANM_p.VIG_BangWindow_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_ANM_p/VIG_BangWindow_ANIM.anim.gltf",
+      "sequences": 1
+     },
+     {
+      "animset": "TR_HeavyMedium_ANM_p.VIG_Conversation_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_ANM_p/VIG_Conversation_ANIM.anim.gltf",
+      "sequences": 2
+     },
+     {
+      "animset": "TR_HeavyMedium_ANM_p.VIG_Cover_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_ANM_p/VIG_Cover_ANIM.anim.gltf",
+      "sequences": 12
+     },
+     {
+      "animset": "TR_HeavyMedium_ANM_p.VIG_Crawl_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_ANM_p/VIG_Crawl_ANIM.anim.gltf",
+      "sequences": 2
+     },
+     {
+      "animset": "TR_HeavyMedium_ANM_p.VIG_D1_Jetfire_ROBO_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_ANM_p/VIG_D1_Jetfire_ROBO_ANIM.anim.gltf",
+      "sequences": 1
+     },
+     {
+      "animset": "TR_HeavyMedium_ANM_p.VIG_D1_ROBO1_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_ANM_p/VIG_D1_ROBO1_ANIM.anim.gltf",
+      "sequences": 2
+     },
+     {
+      "animset": "TR_HeavyMedium_ANM_p.VIG_D2_ROBO_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_ANM_p/VIG_D2_ROBO_ANIM.anim.gltf",
+      "sequences": 1
+     },
+     {
+      "animset": "TR_HeavyMedium_ANM_p.VIG_D3_ROBO_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_ANM_p/VIG_D3_ROBO_ANIM.anim.gltf",
+      "sequences": 17
+     },
+     {
+      "animset": "TR_HeavyMedium_ANM_p.VIG_D4_ROBO2_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_ANM_p/VIG_D4_ROBO2_ANIM.anim.gltf",
+      "sequences": 1
+     },
+     {
+      "animset": "TR_HeavyMedium_ANM_p.VIG_DragFriendly_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_ANM_p/VIG_DragFriendly_ANIM.anim.gltf",
+      "sequences": 4
+     },
+     {
+      "animset": "TR_HeavyMedium_ANM_p.VIG_FallDown_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_ANM_p/VIG_FallDown_ANIM.anim.gltf",
+      "sequences": 4
+     },
+     {
+      "animset": "TR_HeavyMedium_ANM_p.VIG_GetUp_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_ANM_p/VIG_GetUp_ANIM.anim.gltf",
+      "sequences": 7
+     },
+     {
+      "animset": "TR_HeavyMedium_ANM_p.VIG_GroundLift_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_ANM_p/VIG_GroundLift_ANIM.anim.gltf",
+      "sequences": 3
+     },
+     {
+      "animset": "TR_HeavyMedium_ANM_p.VIG_HandCuffed_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_ANM_p/VIG_HandCuffed_ANIM.anim.gltf",
+      "sequences": 3
+     },
+     {
+      "animset": "TR_HeavyMedium_ANM_p.VIG_HitReact_Explosion_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_ANM_p/VIG_HitReact_Explosion_ANIM.anim.gltf",
+      "sequences": 2
+     },
+     {
+      "animset": "TR_HeavyMedium_ANM_p.VIG_HitReact_HeadShot_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_ANM_p/VIG_HitReact_HeadShot_ANIM.anim.gltf",
+      "sequences": 4
+     },
+     {
+      "animset": "TR_HeavyMedium_ANM_p.VIG_HitReact_Knockback_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_ANM_p/VIG_HitReact_Knockback_ANIM.anim.gltf",
+      "sequences": 1
+     },
+     {
+      "animset": "TR_HeavyMedium_ANM_p.VIG_Interact_ComputerTerminal_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_ANM_p/VIG_Interact_ComputerTerminal_ANIM.anim.gltf",
+      "sequences": 5
+     },
+     {
+      "animset": "TR_HeavyMedium_ANM_p.VIG_Jump_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_ANM_p/VIG_Jump_ANIM.anim.gltf",
+      "sequences": 3
+     },
+     {
+      "animset": "TR_HeavyMedium_ANM_p.VIG_Jump_NoTrans_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_ANM_p/VIG_Jump_NoTrans_ANIM.anim.gltf",
+      "sequences": 3
+     },
+     {
+      "animset": "TR_HeavyMedium_ANM_p.VIG_LookAt_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_ANM_p/VIG_LookAt_ANIM.anim.gltf",
+      "sequences": 5
+     },
+     {
+      "animset": "TR_HeavyMedium_ANM_p.VIG_PointAt_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_ANM_p/VIG_PointAt_ANIM.anim.gltf",
+      "sequences": 2
+     },
+     {
+      "animset": "TR_HeavyMedium_ANM_p.VIG_ROBO_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_ANM_p/VIG_ROBO_ANIM.anim.gltf",
+      "sequences": 1
+     },
+     {
+      "animset": "TR_HeavyMedium_ANM_p.VIG_Reload_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_ANM_p/VIG_Reload_ANIM.anim.gltf",
+      "sequences": 1
+     },
+     {
+      "animset": "TR_HeavyMedium_ANM_p.VIG_Run_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_ANM_p/VIG_Run_ANIM.anim.gltf",
+      "sequences": 4
+     },
+     {
+      "animset": "TR_HeavyMedium_ANM_p.VIG_Scanning_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_ANM_p/VIG_Scanning_ANIM.anim.gltf",
+      "sequences": 2
+     },
+     {
+      "animset": "TR_HeavyMedium_ANM_p.VIG_Walk_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_ANM_p/VIG_Walk_ANIM.anim.gltf",
+      "sequences": 2
+     },
+     {
+      "animset": "TR_HeavyMedium_ANM_p.VIG_Waving_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_ANM_p/VIG_Waving_ANIM.anim.gltf",
+      "sequences": 3
+     },
+     {
+      "animset": "TR_HeavyMedium_ANM_p.WallEmote_ROBO_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_ANM_p/WallEmote_ROBO_ANIM.anim.gltf",
+      "sequences": 6
+     },
+     {
+      "animset": "TR_HeavyMedium_ANM_p.Warpath_ROBO_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_ANM_p/Warpath_ROBO_ANIM.anim.gltf",
+      "sequences": 6
+     },
+     {
+      "animset": "TR_HeavyMedium_ANM_p.Zeta_ROBO_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_ANM_p/Zeta_ROBO_ANIM.anim.gltf",
+      "sequences": 6
+     },
+     {
+      "animset": "TR_HeavyMedium_Emote_p.EMOTE_A1_AntiAirIdle_ROBO_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_Emote_p/EMOTE_A1_AntiAirIdle_ROBO_ANIM.anim.gltf",
+      "sequences": 4
+     },
+     {
+      "animset": "TR_HeavyMedium_Emote_p.EMOTE_A1_Puzzle_ROBO_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_Emote_p/EMOTE_A1_Puzzle_ROBO_ANIM.anim.gltf",
+      "sequences": 4
+     },
+     {
+      "animset": "TR_HeavyMedium_Emote_p.EMOTE_Conversation_ROBO_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_Emote_p/EMOTE_Conversation_ROBO_ANIM.anim.gltf",
+      "sequences": 5
+     },
+     {
+      "animset": "TR_HeavyMedium_Emote_p.EMOTE_Gesture_Point_ROBO_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_Emote_p/EMOTE_Gesture_Point_ROBO_ANIM.anim.gltf",
+      "sequences": 5
+     },
+     {
+      "animset": "TR_HeavyMedium_Emote_p.Emote_Open_CrouchWave_ROBO_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_Emote_p/Emote_Open_CrouchWave_ROBO_ANIM.anim.gltf",
+      "sequences": 5
+     },
+     {
+      "animset": "TR_HeavyMedium_Emote_p.Emote_Open_NoWave_ROBO_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_Emote_p/Emote_Open_NoWave_ROBO_ANIM.anim.gltf",
+      "sequences": 5
+     },
+     {
+      "animset": "TR_HeavyMedium_Emote_p.Emote_Open_Wave_ROBO_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_Emote_p/Emote_Open_Wave_ROBO_ANIM.anim.gltf",
+      "sequences": 6
+     },
+     {
+      "animset": "TR_HeavyMedium_Emote_p.Emote_Waving_D1_ROBO_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_Emote_p/Emote_Waving_D1_ROBO_ANIM.anim.gltf",
+      "sequences": 6
+     },
+     {
+      "animset": "TR_LightSmall_ANM_p.VIG_D3_ROBO_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_ANM_p/VIG_D3_ROBO_ANIM.anim.gltf",
+      "sequences": 17
+     },
+     {
+      "animset": "TR_LightSmall_ANM_p.VIG_Jump_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_ANM_p/VIG_Jump_ANIM.anim.gltf",
+      "sequences": 3
+     },
+     {
+      "animset": "TR_SoldierTankDec_ROBO_p.Shared_ROBO_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_ANM_p/Shared_ROBO_ANIM.anim.gltf",
+      "sequences": 234
+     },
+     {
+      "animset": "TR_ZetaPrimeBoss_p.ZetaPrimeBoss_ROBO_ANIM",
+      "anim_gltf": "content/TR_ZetaPrimeBoss_p/ZetaPrimeBoss_ROBO_ANIM.anim.gltf",
+      "sequences": 48
+     }
+    ],
+    "vehicle": [
+     {
+      "animset": "CINE_A1_BridgeCollapse_p.Optimus_VEH_ANIM",
+      "anim_gltf": "content/CINE_A1_BridgeCollapse_p/Optimus_VEH_ANIM.anim.gltf",
+      "sequences": 1
+     },
+     {
+      "animset": "TR_HeavyMedium_ANM_p.Optimus_VEH_ANIM",
+      "anim_gltf": "content/TR_HeavyMedium_ANM_p/Optimus_VEH_ANIM.anim.gltf",
+      "sequences": 18
+     }
+    ]
+   }
+  },
+  "transformation": {
+   "robot_to_vehicle": [
+    "robot:Transform_ToVehicle_ROBO",
+    "vehicle:Transform_ToVehicle_VEH"
+   ],
+   "vehicle_to_robot": [
+    "vehicle:Transform_ToRobot_VEH",
+    "robot:Transform_ToRobot_ROBO"
+   ],
+   "sounds": [
+    {
+     "cue": "BL_TRANSFORM.OPTIMUS_BOT2VEH",
+     "class": "SoundCue",
+     "waves": [
+      {
+       "wave": "WL_TRANS_OPTIMUS.TRANS_OPTIMUS_TO_VEH",
+       "wav": "content/WL_TRANS_OPTIMUS/TRANS_OPTIMUS_TO_VEH.wav"
+      },
+      {
+       "wave": "WL_TRANS_OPTIMUS.TRANS_OPTIMUS_TO_VEH_SERVOS",
+       "wav": "content/WL_TRANS_OPTIMUS/TRANS_OPTIMUS_TO_VEH_SERVOS.wav"
+      },
+      {
+       "wave": "WL_TRUCK.AIR_SEMI_RELEASE_09",
+       "wav": "content/WL_TRUCK/AIR_SEMI_RELEASE_09.wav"
+      },
+      {
+       "wave": "WL_TRUCK.MECH_TRUCK_LAND_HEAVY_01",
+       "wav": "content/WL_TRUCK/MECH_TRUCK_LAND_HEAVY_01.wav"
+      },
+      {
+       "wave": "WL_TRUCK.MECH_TRUCK_LAND_HEAVY_02",
+       "wav": "content/WL_TRUCK/MECH_TRUCK_LAND_HEAVY_02.wav"
+      },
+      {
+       "wave": "WL_TRUCK.MECH_TRUCK_LAND_HEAVY_03",
+       "wav": "content/WL_TRUCK/MECH_TRUCK_LAND_HEAVY_03.wav"
+      },
+      {
+       "wave": "WL_WHSH_JET.WHSH_BOOST_FINISH_01_LR",
+       "wav": "content/WL_WHSH_JET/WHSH_BOOST_FINISH_01_LR.wav"
+      },
+      {
+       "wave": "WL_WHSH_JET.WHSH_BOOST_FLARE_LR_03",
+       "wav": "content/WL_WHSH_JET/WHSH_BOOST_FLARE_LR_03.wav"
+      }
+     ]
+    },
+    {
+     "cue": "BL_TRANSFORM.OPTIMUS_VEH2BOT",
+     "class": "SoundCue",
+     "waves": [
+      {
+       "wave": "WL_TRANS_OPTIMUS.TRANS_OPTIMUS_TO_BOT",
+       "wav": "content/WL_TRANS_OPTIMUS/TRANS_OPTIMUS_TO_BOT.wav"
+      },
+      {
+       "wave": "WL_TRANS_OPTIMUS.TRANS_OPTIMUS_TO_BOT_SERVOS",
+       "wav": "content/WL_TRANS_OPTIMUS/TRANS_OPTIMUS_TO_BOT_SERVOS.wav"
+      },
+      {
+       "wave": "WL_TRUCK.MECH_IMPT_TRUCK_LIGHT_01",
+       "wav": "content/WL_TRUCK/MECH_IMPT_TRUCK_LIGHT_01.wav"
+      },
+      {
+       "wave": "WL_TRUCK.MECH_IMPT_TRUCK_LIGHT_02",
+       "wav": "content/WL_TRUCK/MECH_IMPT_TRUCK_LIGHT_02.wav"
+      },
+      {
+       "wave": "WL_TRUCK.MECH_IMPT_TRUCK_LIGHT_03",
+       "wav": "content/WL_TRUCK/MECH_IMPT_TRUCK_LIGHT_03.wav"
+      }
+     ]
+    }
+   ]
+  },
+  "sounds": {
+   "vehicle": [
+    {
+     "cue": "BL_VEH_OPTIMUS_PRIME.VEH_OPTIMUS_BOOST_END",
+     "class": "SoundCue",
+     "waves": [
+      {
+       "wave": "WL_TRUCK.AUTO_OPTIMUS_BOOST_END_LR",
+       "wav": "content/WL_TRUCK/AUTO_OPTIMUS_BOOST_END_LR.wav"
+      },
+      {
+       "wave": "WL_TRUCK.SYNTH_AIR_RELEASE_02",
+       "wav": "content/WL_TRUCK/SYNTH_AIR_RELEASE_02.wav"
+      },
+      {
+       "wave": "WL_TRUCK.SYNTH_AIR_RELEASE_07",
+       "wav": "content/WL_TRUCK/SYNTH_AIR_RELEASE_07.wav"
+      },
+      {
+       "wave": "WL_WHSH_JET.WHSH_BOOST_FINISH_01_LR",
+       "wav": "content/WL_WHSH_JET/WHSH_BOOST_FINISH_01_LR.wav"
+      },
+      {
+       "wave": "WL_WHSH_JET.WHSH_BOOST_FINISH_01_LSRS",
+       "wav": "content/WL_WHSH_JET/WHSH_BOOST_FINISH_01_LSRS.wav"
+      }
+     ]
+    },
+    {
+     "cue": "BL_VEH_OPTIMUS_PRIME.VEH_OPTIMUS_BOOST_LOOP",
+     "class": "SoundCue",
+     "waves": [
+      {
+       "wave": "WL_PLANE.JET_TURBO_WHINE_LP",
+       "wav": "content/WL_PLANE/JET_TURBO_WHINE_LP.wav"
+      },
+      {
+       "wave": "WL_TRUCK.AUTO_OPTIMUS_ENGINE_BOOST_LR_LP",
+       "wav": "content/WL_TRUCK/AUTO_OPTIMUS_ENGINE_BOOST_LR_LP.wav"
+      },
+      {
+       "wave": "WL_TRUCK.AUTO_OPTIMUS_ENGINE_MID_LR_LP",
+       "wav": "content/WL_TRUCK/AUTO_OPTIMUS_ENGINE_MID_LR_LP.wav"
+      },
+      {
+       "wave": "WL_TRUCK.MECH_OPTIMUS_TIRE_NOISE_02_LP",
+       "wav": "content/WL_TRUCK/MECH_OPTIMUS_TIRE_NOISE_02_LP.wav"
+      },
+      {
+       "wave": "WL_TRUCK.SYNTH_ENERGY_MOD_PAN_LP",
+       "wav": "content/WL_TRUCK/SYNTH_ENERGY_MOD_PAN_LP.wav"
+      }
+     ]
+    },
+    {
+     "cue": "BL_VEH_OPTIMUS_PRIME.VEH_OPTIMUS_BOOST_START",
+     "class": "SoundCue",
+     "waves": [
+      {
+       "wave": "WL_TRUCK.AUTO_OPTIMUS_BOOST_START_LR",
+       "wav": "content/WL_TRUCK/AUTO_OPTIMUS_BOOST_START_LR.wav"
+      },
+      {
+       "wave": "WL_TRUCK.SYNTH_AIR_RELEASE_04",
+       "wav": "content/WL_TRUCK/SYNTH_AIR_RELEASE_04.wav"
+      },
+      {
+       "wave": "WL_TRUCK.SYNTH_AIR_RELEASE_08",
+       "wav": "content/WL_TRUCK/SYNTH_AIR_RELEASE_08.wav"
+      },
+      {
+       "wave": "WL_TRUCK.SYNTH_ENGINE_ACCEL",
+       "wav": "content/WL_TRUCK/SYNTH_ENGINE_ACCEL.wav"
+      },
+      {
+       "wave": "WL_WHSH_JET.WHSH_BOOST_FLARE_LR_03",
+       "wav": "content/WL_WHSH_JET/WHSH_BOOST_FLARE_LR_03.wav"
+      }
+     ]
+    },
+    {
+     "cue": "BL_VEH_OPTIMUS_PRIME.VEH_OPTIMUS_BOOST_WHEELS",
+     "class": "SoundCue",
+     "waves": [
+      {
+       "wave": "WL_TRUCK.AUTO_BOOST_PEELOUT_TRUCK",
+       "wav": "content/WL_TRUCK/AUTO_BOOST_PEELOUT_TRUCK.wav"
+      }
+     ]
+    },
+    {
+     "cue": "BL_VEH_OPTIMUS_PRIME.VEH_OPTIMUS_DEATH",
+     "class": "SoundCue",
+     "waves": [
+      {
+       "wave": "WL_TRUCK.AUTO_OPTIMUS_ENGINE_BOOST_LR_LP",
+       "wav": "content/WL_TRUCK/AUTO_OPTIMUS_ENGINE_BOOST_LR_LP.wav"
+      },
+      {
+       "wave": "WL_TRUCK.MECH_TRUCK_LAND_HEAVY_01",
+       "wav": "content/WL_TRUCK/MECH_TRUCK_LAND_HEAVY_01.wav"
+      },
+      {
+       "wave": "WL_TRUCK.MECH_TRUCK_LAND_HEAVY_02",
+       "wav": "content/WL_TRUCK/MECH_TRUCK_LAND_HEAVY_02.wav"
+      },
+      {
+       "wave": "WL_TRUCK.MECH_TRUCK_LAND_HEAVY_03",
+       "wav": "content/WL_TRUCK/MECH_TRUCK_LAND_HEAVY_03.wav"
+      },
+      {
+       "wave": "WL_TRUCK.SYNTH_ENGINE_ACCEL",
+       "wav": "content/WL_TRUCK/SYNTH_ENGINE_ACCEL.wav"
+      }
+     ]
+    },
+    {
+     "cue": "BL_VEH_OPTIMUS_PRIME.VEH_OPTIMUS_DRIVE_JUMP_LOOP",
+     "class": "SoundCue",
+     "waves": [
+      {
+       "wave": "WL_TRUCK.AUTO_OPTIMUS_IDLE_LR_LP",
+       "wav": "content/WL_TRUCK/AUTO_OPTIMUS_IDLE_LR_LP.wav"
+      },
+      {
+       "wave": "WL_TRUCK.SYNTH_ENERGY_MOD_PAN_LP",
+       "wav": "content/WL_TRUCK/SYNTH_ENERGY_MOD_PAN_LP.wav"
+      }
+     ]
+    },
+    {
+     "cue": "BL_VEH_OPTIMUS_PRIME.VEH_OPTIMUS_DRIVE_JUMP_START",
+     "class": "SoundCue",
+     "waves": [
+      {
+       "wave": "WL_TANK.TANK_JUMP_LR",
+       "wav": "content/WL_TANK/TANK_JUMP_LR.wav"
+      },
+      {
+       "wave": "WL_TRUCK.AUTO_OPTIMUS_JUMP_LR",
+       "wav": "content/WL_TRUCK/AUTO_OPTIMUS_JUMP_LR.wav"
+      },
+      {
+       "wave": "WL_TRUCK.SYNTH_AIR_RELEASE_04",
+       "wav": "content/WL_TRUCK/SYNTH_AIR_RELEASE_04.wav"
+      }
+     ]
+    },
+    {
+     "cue": "BL_VEH_OPTIMUS_PRIME.VEH_OPTIMUS_DRIVE_OFFLOAD",
+     "class": "SoundCue",
+     "waves": [
+      {
+       "wave": "WL_TRUCK.AUTO_OPTIMUS_ENGINE_MID_LR_LP",
+       "wav": "content/WL_TRUCK/AUTO_OPTIMUS_ENGINE_MID_LR_LP.wav"
+      },
+      {
+       "wave": "WL_TRUCK.AUTO_OPTIMUS_IDLE_LR_LP",
+       "wav": "content/WL_TRUCK/AUTO_OPTIMUS_IDLE_LR_LP.wav"
+      },
+      {
+       "wave": "WL_TRUCK.SYNTH_ENERGY_MOD_PAN_LP",
+       "wav": "content/WL_TRUCK/SYNTH_ENERGY_MOD_PAN_LP.wav"
+      }
+     ]
+    },
+    {
+     "cue": "BL_VEH_OPTIMUS_PRIME.VEH_OPTIMUS_DRIVE_ONLOAD",
+     "class": "SoundCue",
+     "waves": [
+      {
+       "wave": "WL_TRUCK.AUTO_OPTIMUS_ENGINE_MID_LR_LP",
+       "wav": "content/WL_TRUCK/AUTO_OPTIMUS_ENGINE_MID_LR_LP.wav"
+      },
+      {
+       "wave": "WL_TRUCK.SYNTH_ENERGY_MOD_PAN_LP",
+       "wav": "content/WL_TRUCK/SYNTH_ENERGY_MOD_PAN_LP.wav"
+      }
+     ]
+    },
+    {
+     "cue": "BL_VEH_OPTIMUS_PRIME.VEH_OPTIMUS_HOVER_LAND_HEAVY",
+     "class": "SoundCue",
+     "waves": [
+      {
+       "wave": "WL_TANK.MECH_TANK_LAND_HARD_01",
+       "wav": "content/WL_TANK/MECH_TANK_LAND_HARD_01.wav"
+      },
+      {
+       "wave": "WL_TANK.MECH_TANK_LAND_HARD_02",
+       "wav": "content/WL_TANK/MECH_TANK_LAND_HARD_02.wav"
+      },
+      {
+       "wave": "WL_TANK.MECH_TANK_LAND_HARD_03",
+       "wav": "content/WL_TANK/MECH_TANK_LAND_HARD_03.wav"
+      }
+     ]
+    },
+    {
+     "cue": "BL_VEH_OPTIMUS_PRIME.VEH_OPTIMUS_HOVER_LAND_LIGHT",
+     "class": "SoundCue",
+     "waves": [
+      {
+       "wave": "WL_TANK.MECH_TANK_LAND_LIGHT_01",
+       "wav": "content/WL_TANK/MECH_TANK_LAND_LIGHT_01.wav"
+      },
+      {
+       "wave": "WL_TANK.MECH_TANK_LAND_LIGHT_02",
+       "wav": "content/WL_TANK/MECH_TANK_LAND_LIGHT_02.wav"
+      },
+      {
+       "wave": "WL_TANK.MECH_TANK_LAND_LIGHT_03",
+       "wav": "content/WL_TANK/MECH_TANK_LAND_LIGHT_03.wav"
+      }
+     ]
+    },
+    {
+     "cue": "BL_VEH_OPTIMUS_PRIME.VEH_OPTIMUS_IMPT_HEAVY",
+     "class": "SoundCue",
+     "waves": [
+      {
+       "wave": "WL_TRUCK.MECH_IMPT_TRUCK_HEAVY_01",
+       "wav": "content/WL_TRUCK/MECH_IMPT_TRUCK_HEAVY_01.wav"
+      },
+      {
+       "wave": "WL_TRUCK.MECH_IMPT_TRUCK_HEAVY_02",
+       "wav": "content/WL_TRUCK/MECH_IMPT_TRUCK_HEAVY_02.wav"
+      },
+      {
+       "wave": "WL_TRUCK.MECH_IMPT_TRUCK_HEAVY_03",
+       "wav": "content/WL_TRUCK/MECH_IMPT_TRUCK_HEAVY_03.wav"
+      }
+     ]
+    },
+    {
+     "cue": "BL_VEH_OPTIMUS_PRIME.VEH_OPTIMUS_IMPT_LIGHT",
+     "class": "SoundCue",
+     "waves": [
+      {
+       "wave": "WL_TRUCK.MECH_IMPT_TRUCK_LIGHT_01",
+       "wav": "content/WL_TRUCK/MECH_IMPT_TRUCK_LIGHT_01.wav"
+      },
+      {
+       "wave": "WL_TRUCK.MECH_IMPT_TRUCK_LIGHT_02",
+       "wav": "content/WL_TRUCK/MECH_IMPT_TRUCK_LIGHT_02.wav"
+      },
+      {
+       "wave": "WL_TRUCK.MECH_IMPT_TRUCK_LIGHT_03",
+       "wav": "content/WL_TRUCK/MECH_IMPT_TRUCK_LIGHT_03.wav"
+      }
+     ]
+    },
+    {
+     "cue": "BL_VEH_OPTIMUS_PRIME.VEH_OPTIMUS_RAM_BOOST_START",
+     "class": "SoundCue",
+     "waves": [
+      {
+       "wave": "WL_TRUCK.AUTO_OPTIMUS_BOOST_END_LR",
+       "wav": "content/WL_TRUCK/AUTO_OPTIMUS_BOOST_END_LR.wav"
+      },
+      {
+       "wave": "WL_TRUCK.AUTO_OPTIMUS_BOOST_START_LR",
+       "wav": "content/WL_TRUCK/AUTO_OPTIMUS_BOOST_START_LR.wav"
+      },
+      {
+       "wave": "WL_TRUCK.MECH_TRANS_RAM_ACTIVATE",
+       "wav": "content/WL_TRUCK/MECH_TRANS_RAM_ACTIVATE.wav"
+      },
+      {
+       "wave": "WL_TRUCK.SYNTH_AIR_RELEASE_08",
+       "wav": "content/WL_TRUCK/SYNTH_AIR_RELEASE_08.wav"
+      },
+      {
+       "wave": "WL_WHSH_JET.WHSH_BOOST_FLARE_LR_03",
+       "wav": "content/WL_WHSH_JET/WHSH_BOOST_FLARE_LR_03.wav"
+      }
+     ]
+    },
+    {
+     "cue": "BL_VEH_OPTIMUS_PRIME.VEH_OPTIMUS_RAM_NITRO_START",
+     "class": "SoundCue",
+     "waves": [
+      {
+       "wave": "WL_TRUCK.AUTO_OPTIMUS_BOOST_START_LR",
+       "wav": "content/WL_TRUCK/AUTO_OPTIMUS_BOOST_START_LR.wav"
+      },
+      {
+       "wave": "WL_TRUCK.MECH_TRANS_RAM_ACTIVATE",
+       "wav": "content/WL_TRUCK/MECH_TRANS_RAM_ACTIVATE.wav"
+      },
+      {
+       "wave": "WL_TRUCK.SYNTH_AIR_RELEASE_04",
+       "wav": "content/WL_TRUCK/SYNTH_AIR_RELEASE_04.wav"
+      },
+      {
+       "wave": "WL_TRUCK.SYNTH_AIR_RELEASE_07",
+       "wav": "content/WL_TRUCK/SYNTH_AIR_RELEASE_07.wav"
+      },
+      {
+       "wave": "WL_TRUCK.SYNTH_AIR_RELEASE_08",
+       "wav": "content/WL_TRUCK/SYNTH_AIR_RELEASE_08.wav"
+      },
+      {
+       "wave": "WL_TRUCK.SYNTH_ENGINE_ACCEL",
+       "wav": "content/WL_TRUCK/SYNTH_ENGINE_ACCEL.wav"
+      },
+      {
+       "wave": "WL_WHSH_JET.WHSH_BOOST_FLARE_LR_03",
+       "wav": "content/WL_WHSH_JET/WHSH_BOOST_FLARE_LR_03.wav"
+      }
+     ]
+    },
+    {
+     "cue": "BL_VEH_OPTIMUS_PRIME.VEH_OPTIMUS_TIRE_SQUEAL",
+     "class": "SoundCue",
+     "waves": [
+      {
+       "wave": "WL_TRUCK.MECH_TIRE_SQUEAL_HEAVY_LP",
+       "wav": "content/WL_TRUCK/MECH_TIRE_SQUEAL_HEAVY_LP.wav"
+      }
+     ]
+    },
+    {
+     "cue": "BL_VEH_OPTIMUS_PRIME.VEH_OPTIMUS_WHEELS_LAND_HEAVY",
+     "class": "SoundCue",
+     "waves": [
+      {
+       "wave": "WL_AUTO.AUTO_BOOST_PEELOUT_CAR",
+       "wav": "content/WL_AUTO/AUTO_BOOST_PEELOUT_CAR.wav"
+      },
+      {
+       "wave": "WL_TRUCK.MECH_TRUCK_BOTTOM_OUT_01",
+       "wav": "content/WL_TRUCK/MECH_TRUCK_BOTTOM_OUT_01.wav"
+      },
+      {
+       "wave": "WL_TRUCK.MECH_TRUCK_BOTTOM_OUT_02",
+       "wav": "content/WL_TRUCK/MECH_TRUCK_BOTTOM_OUT_02.wav"
+      },
+      {
+       "wave": "WL_TRUCK.MECH_TRUCK_BOTTOM_OUT_03",
+       "wav": "content/WL_TRUCK/MECH_TRUCK_BOTTOM_OUT_03.wav"
+      }
+     ]
+    },
+    {
+     "cue": "BL_VEH_OPTIMUS_PRIME.VEH_OPTIMUS_WHEELS_LAND_LIGHT",
+     "class": "SoundCue",
+     "waves": [
+      {
+       "wave": "WL_TRUCK.AIR_SEMI_RELEASE_09",
+       "wav": "content/WL_TRUCK/AIR_SEMI_RELEASE_09.wav"
+      },
+      {
+       "wave": "WL_TRUCK.MECH_TRUCK_LAND_HEAVY_01",
+       "wav": "content/WL_TRUCK/MECH_TRUCK_LAND_HEAVY_01.wav"
+      },
+      {
+       "wave": "WL_TRUCK.MECH_TRUCK_LAND_HEAVY_02",
+       "wav": "content/WL_TRUCK/MECH_TRUCK_LAND_HEAVY_02.wav"
+      },
+      {
+       "wave": "WL_TRUCK.MECH_TRUCK_LAND_HEAVY_03",
+       "wav": "content/WL_TRUCK/MECH_TRUCK_LAND_HEAVY_03.wav"
+      }
+     ]
+    }
+   ],
+   "footsteps_movement": [
+    {
+     "cue": "BL_FS_LRG_BOT.FOLEY_FS_GROAN_SERVO_01",
+     "class": "SoundCue",
+     "waves": [
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_01",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_GROAN_01.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_02",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_GROAN_02.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_03",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_GROAN_03.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_04",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_GROAN_04.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_RATTLE_01",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_GROAN_RATTLE_01.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_RATTLE_02",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_GROAN_RATTLE_02.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_RATTLE_03",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_GROAN_RATTLE_03.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_01",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_01.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_02",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_02.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_03",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_03.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_04",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_04.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_05",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_05.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_06",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_06.wav"
+      }
+     ]
+    },
+    {
+     "cue": "BL_FS_LRG_BOT.FOLEY_GROAN_SERVO_IMPT",
+     "class": "SoundCue",
+     "waves": [
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_01",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_GROAN_01.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_02",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_GROAN_02.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_03",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_GROAN_03.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_04",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_GROAN_04.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_RATTLE_01",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_GROAN_RATTLE_01.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_RATTLE_02",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_GROAN_RATTLE_02.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_RATTLE_03",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_GROAN_RATTLE_03.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_01",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_01.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_02",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_02.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_03",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_03.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_04",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_04.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_05",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_05.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_06",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_06.wav"
+      }
+     ]
+    },
+    {
+     "cue": "BL_FS_LRG_BOT.FOLEY_JUMPJETS_BOOST",
+     "class": "SoundCue",
+     "waves": [
+      {
+       "wave": "WL_FS_BOT.FS_BOT_LARGE_JUMP_CHARGED_01",
+       "wav": "content/WL_FS_BOT/FS_BOT_LARGE_JUMP_CHARGED_01.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_BOT_LARGE_JUMP_CHARGED_02",
+       "wav": "content/WL_FS_BOT/FS_BOT_LARGE_JUMP_CHARGED_02.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_BOT_LARGE_JUMP_CHARGED_03",
+       "wav": "content/WL_FS_BOT/FS_BOT_LARGE_JUMP_CHARGED_03.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_BOT_LARGE_JUMP_CHARGED_04",
+       "wav": "content/WL_FS_BOT/FS_BOT_LARGE_JUMP_CHARGED_04.wav"
+      }
+     ]
+    },
+    {
+     "cue": "BL_FS_LRG_BOT.FOLEY_WOUNDED_SERVO",
+     "class": "SoundCue",
+     "waves": [
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_RATTLE_01",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_GROAN_RATTLE_01.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_RATTLE_02",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_GROAN_RATTLE_02.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_RATTLE_03",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_GROAN_RATTLE_03.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_RATTLE_04",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_GROAN_RATTLE_04.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_RATTLE_05",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_GROAN_RATTLE_05.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_01",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_01.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_02",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_02.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_03",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_03.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_04",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_04.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_05",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_05.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_06",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_06.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_WOUNDED_SERVO_01",
+       "wav": "content/WL_FS_BOT/FS_WOUNDED_SERVO_01.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_WOUNDED_SERVO_02",
+       "wav": "content/WL_FS_BOT/FS_WOUNDED_SERVO_02.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_WOUNDED_SERVO_03",
+       "wav": "content/WL_FS_BOT/FS_WOUNDED_SERVO_03.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_WOUNDED_SERVO_04",
+       "wav": "content/WL_FS_BOT/FS_WOUNDED_SERVO_04.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_WOUNDED_SERVO_05",
+       "wav": "content/WL_FS_BOT/FS_WOUNDED_SERVO_05.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_WOUNDED_SERVO_06",
+       "wav": "content/WL_FS_BOT/FS_WOUNDED_SERVO_06.wav"
+      }
+     ]
+    },
+    {
+     "cue": "BL_FS_LRG_BOT.FOLEY_WOUNDED_SERVO_UP",
+     "class": "SoundCue",
+     "waves": [
+      {
+       "wave": "WL_FS_BOT.FS_WOUNDED_SERVO_01",
+       "wav": "content/WL_FS_BOT/FS_WOUNDED_SERVO_01.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_WOUNDED_SERVO_02",
+       "wav": "content/WL_FS_BOT/FS_WOUNDED_SERVO_02.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_WOUNDED_SERVO_03",
+       "wav": "content/WL_FS_BOT/FS_WOUNDED_SERVO_03.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_WOUNDED_SERVO_04",
+       "wav": "content/WL_FS_BOT/FS_WOUNDED_SERVO_04.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_WOUNDED_SERVO_05",
+       "wav": "content/WL_FS_BOT/FS_WOUNDED_SERVO_05.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_WOUNDED_SERVO_06",
+       "wav": "content/WL_FS_BOT/FS_WOUNDED_SERVO_06.wav"
+      }
+     ]
+    },
+    {
+     "cue": "BL_FS_LRG_BOT.FS_JETSOLDIER_HOVERSTRAFE",
+     "class": "SoundCue",
+     "waves": [
+      {
+       "wave": "WL_PLANE.JET_ENGINE_WASH_LP",
+       "wav": "content/WL_PLANE/JET_ENGINE_WASH_LP.wav"
+      },
+      {
+       "wave": "WL_WHSH_JET.SPACESHIP_BY_01",
+       "wav": "content/WL_WHSH_JET/SPACESHIP_BY_01.wav"
+      },
+      {
+       "wave": "WL_WHSH_JET.SPACESHIP_BY_02",
+       "wav": "content/WL_WHSH_JET/SPACESHIP_BY_02.wav"
+      },
+      {
+       "wave": "WL_WHSH_JET.SPACESHIP_BY_03",
+       "wav": "content/WL_WHSH_JET/SPACESHIP_BY_03.wav"
+      },
+      {
+       "wave": "WL_WHSH_JET.SPACESHIP_BY_05",
+       "wav": "content/WL_WHSH_JET/SPACESHIP_BY_05.wav"
+      },
+      {
+       "wave": "WL_WHSH_JET.SPACESHIP_BY_06",
+       "wav": "content/WL_WHSH_JET/SPACESHIP_BY_06.wav"
+      }
+     ]
+    },
+    {
+     "cue": "BL_FS_LRG_BOT.FS_JETSOLDIER_SLIDE",
+     "class": "SoundCue",
+     "waves": [
+      {
+       "wave": "WL_DEST_METAL.MTL_IMPT_MANHOLE_COVER_FALL_01",
+       "wav": "content/WL_DEST_METAL/MTL_IMPT_MANHOLE_COVER_FALL_01.wav"
+      },
+      {
+       "wave": "WL_DEST_METAL.MTL_SCRAPE_DRY_ICE_01",
+       "wav": "content/WL_DEST_METAL/MTL_SCRAPE_DRY_ICE_01.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_GENERIC_HIGH_FALL_02_LSRS",
+       "wav": "content/WL_FS_BOT/FS_GENERIC_HIGH_FALL_02_LSRS.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_LAND_01",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_LAND_01.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_LAND_02",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_LAND_02.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_LAND_03",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_LAND_03.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_LAND_04",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_LAND_04.wav"
+      }
+     ]
+    },
+    {
+     "cue": "BL_FS_LRG_BOT.FS_JUMP",
+     "class": "SoundCue",
+     "waves": [
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_LAND_01",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_LAND_01.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_LAND_02",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_LAND_02.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_LAND_03",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_LAND_03.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_LAND_04",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_LAND_04.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.MTL_FOLEY_JUMP_MED_BOT_01",
+       "wav": "content/WL_FS_BOT/MTL_FOLEY_JUMP_MED_BOT_01.wav"
+      },
+      {
+       "wave": "WL_WHSH_MELEE.WHSH_JET_BY_JUMPJETS",
+       "wav": "content/WL_WHSH_MELEE/WHSH_JET_BY_JUMPJETS.wav"
+      }
+     ]
+    },
+    {
+     "cue": "BL_FS_LRG_BOT.FS_JUMP_CHARGED",
+     "class": "SoundCue",
+     "waves": [
+      {
+       "wave": "WL_FS_BOT.FS_BOT_LARGE_JUMP_CHARGED_01",
+       "wav": "content/WL_FS_BOT/FS_BOT_LARGE_JUMP_CHARGED_01.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_BOT_LARGE_JUMP_CHARGED_02",
+       "wav": "content/WL_FS_BOT/FS_BOT_LARGE_JUMP_CHARGED_02.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_BOT_LARGE_JUMP_CHARGED_03",
+       "wav": "content/WL_FS_BOT/FS_BOT_LARGE_JUMP_CHARGED_03.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_BOT_LARGE_JUMP_CHARGED_04",
+       "wav": "content/WL_FS_BOT/FS_BOT_LARGE_JUMP_CHARGED_04.wav"
+      }
+     ]
+    },
+    {
+     "cue": "BL_FS_LRG_BOT.FS_LAND_DEFAULT",
+     "class": "SoundCue",
+     "waves": [
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_01",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_GROAN_01.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_02",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_GROAN_02.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_03",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_GROAN_03.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_04",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_GROAN_04.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_RATTLE_01",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_GROAN_RATTLE_01.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_RATTLE_02",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_GROAN_RATTLE_02.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_RATTLE_03",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_GROAN_RATTLE_03.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_LAND_01",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_LAND_01.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_LAND_02",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_LAND_02.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_LAND_03",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_LAND_03.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_LAND_04",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_LAND_04.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_01",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_01.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_02",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_02.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_03",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_03.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_04",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_04.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_05",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_05.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_06",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_06.wav"
+      }
+     ]
+    },
+    {
+     "cue": "BL_FS_LRG_BOT.FS_LAND_HARD",
+     "class": "SoundCue",
+     "waves": [
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_01",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_GROAN_01.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_02",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_GROAN_02.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_03",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_GROAN_03.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_04",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_GROAN_04.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_RATTLE_01",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_GROAN_RATTLE_01.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_RATTLE_02",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_GROAN_RATTLE_02.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_RATTLE_03",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_GROAN_RATTLE_03.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_LAND_01",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_LAND_01.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_LAND_02",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_LAND_02.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_LAND_03",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_LAND_03.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_LAND_04",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_LAND_04.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_01",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_01.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_02",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_02.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_03",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_03.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_04",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_04.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_05",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_05.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_06",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_06.wav"
+      }
+     ]
+    },
+    {
+     "cue": "BL_FS_LRG_BOT.FS_LAND_HIGH_FALL",
+     "class": "SoundCue",
+     "waves": [
+      {
+       "wave": "WL_FS_BOT.FS_GENERIC_HIGH_FALL_02_LR",
+       "wav": "content/WL_FS_BOT/FS_GENERIC_HIGH_FALL_02_LR.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_01",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_01.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_02",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_02.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_03",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_03.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_04",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_04.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_05",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_05.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_06",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_06.wav"
+      }
+     ]
+    },
+    {
+     "cue": "BL_FS_LRG_BOT.FS_RUN_DEFAULT",
+     "class": "SoundCue",
+     "waves": [
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_01",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_01.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_02",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_02.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_03",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_03.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_04",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_04.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_05",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_05.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_06",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_06.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_01",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_01.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_02",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_02.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_03",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_03.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_04",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_04.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_05",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_05.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_06",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_06.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.SRVO_BOT_FOLY_FS_FILTSWEEP_01",
+       "wav": "content/WL_FS_BOT/SRVO_BOT_FOLY_FS_FILTSWEEP_01.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.SRVO_BOT_FOLY_FS_FILTSWEEP_02",
+       "wav": "content/WL_FS_BOT/SRVO_BOT_FOLY_FS_FILTSWEEP_02.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.SRVO_BOT_FOLY_FS_FILTSWEEP_03",
+       "wav": "content/WL_FS_BOT/SRVO_BOT_FOLY_FS_FILTSWEEP_03.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.SRVO_BOT_FOLY_FS_FILTSWEEP_04",
+       "wav": "content/WL_FS_BOT/SRVO_BOT_FOLY_FS_FILTSWEEP_04.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.SRVO_BOT_FOLY_FS_FILTSWEEP_05",
+       "wav": "content/WL_FS_BOT/SRVO_BOT_FOLY_FS_FILTSWEEP_05.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.SRVO_BOT_FOLY_FS_FILTSWEEP_06",
+       "wav": "content/WL_FS_BOT/SRVO_BOT_FOLY_FS_FILTSWEEP_06.wav"
+      }
+     ]
+    },
+    {
+     "cue": "BL_FS_LRG_BOT.FS_SCUFF_DEFAULT",
+     "class": "SoundCue",
+     "waves": [
+      {
+       "wave": "WL_FS_BOT.MTL_FOLY_FS_BOT_MVMNT_01",
+       "wav": "content/WL_FS_BOT/MTL_FOLY_FS_BOT_MVMNT_01.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.MTL_FOLY_FS_BOT_MVMNT_02",
+       "wav": "content/WL_FS_BOT/MTL_FOLY_FS_BOT_MVMNT_02.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.MTL_FOLY_FS_BOT_MVMNT_03",
+       "wav": "content/WL_FS_BOT/MTL_FOLY_FS_BOT_MVMNT_03.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.MTL_FOLY_FS_BOT_MVMNT_04",
+       "wav": "content/WL_FS_BOT/MTL_FOLY_FS_BOT_MVMNT_04.wav"
+      }
+     ]
+    },
+    {
+     "cue": "BL_FS_LRG_BOT.FS_TANK_SOLDIER_LAND",
+     "class": "SoundCue",
+     "waves": [
+      {
+       "wave": "WL_FS_BOT.FS_GENERIC_HIGH_FALL_02_LR",
+       "wav": "content/WL_FS_BOT/FS_GENERIC_HIGH_FALL_02_LR.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_HV_MTL_TANKSOLDIER_02",
+       "wav": "content/WL_FS_BOT/FS_HV_MTL_TANKSOLDIER_02.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_HV_MTL_TANKSOLDIER_04",
+       "wav": "content/WL_FS_BOT/FS_HV_MTL_TANKSOLDIER_04.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_01",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_GROAN_01.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_02",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_GROAN_02.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_03",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_GROAN_03.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_04",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_GROAN_04.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_RATTLE_01",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_GROAN_RATTLE_01.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_RATTLE_02",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_GROAN_RATTLE_02.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_RATTLE_03",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_GROAN_RATTLE_03.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MVMNT_SERVO_TANKSOLDIER_01",
+       "wav": "content/WL_FS_BOT/FS_MVMNT_SERVO_TANKSOLDIER_01.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MVMNT_SERVO_TANKSOLDIER_02",
+       "wav": "content/WL_FS_BOT/FS_MVMNT_SERVO_TANKSOLDIER_02.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MVMNT_SERVO_TANKSOLDIER_03",
+       "wav": "content/WL_FS_BOT/FS_MVMNT_SERVO_TANKSOLDIER_03.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MVMNT_SERVO_TANKSOLDIER_04",
+       "wav": "content/WL_FS_BOT/FS_MVMNT_SERVO_TANKSOLDIER_04.wav"
+      }
+     ]
+    },
+    {
+     "cue": "BL_FS_LRG_BOT.FS_TANK_SOLDIER_SCUFF",
+     "class": "SoundCue",
+     "waves": [
+      {
+       "wave": "WL_FS_BOT.FS_MVMNT_SERVO_TANKSOLDIER_01",
+       "wav": "content/WL_FS_BOT/FS_MVMNT_SERVO_TANKSOLDIER_01.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MVMNT_SERVO_TANKSOLDIER_02",
+       "wav": "content/WL_FS_BOT/FS_MVMNT_SERVO_TANKSOLDIER_02.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MVMNT_SERVO_TANKSOLDIER_03",
+       "wav": "content/WL_FS_BOT/FS_MVMNT_SERVO_TANKSOLDIER_03.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MVMNT_SERVO_TANKSOLDIER_04",
+       "wav": "content/WL_FS_BOT/FS_MVMNT_SERVO_TANKSOLDIER_04.wav"
+      }
+     ]
+    },
+    {
+     "cue": "BL_FS_LRG_BOT.FS_TANK_SOLDIER_WALK_DEFAULT",
+     "class": "SoundCue",
+     "waves": [
+      {
+       "wave": "WL_FS_BOT.FS_HV_MTL_TANKSOLDIER_02",
+       "wav": "content/WL_FS_BOT/FS_HV_MTL_TANKSOLDIER_02.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_HV_MTL_TANKSOLDIER_04",
+       "wav": "content/WL_FS_BOT/FS_HV_MTL_TANKSOLDIER_04.wav"
+      }
+     ]
+    },
+    {
+     "cue": "BL_FS_LRG_BOT.FS_WALK_DEFAULT",
+     "class": "SoundCue",
+     "waves": [
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_01",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_01.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_02",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_02.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_03",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_03.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_04",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_04.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_05",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_05.wav"
+      },
+      {
+       "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_06",
+       "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_06.wav"
+      }
+     ]
+    }
+   ]
+  },
+  "materials": {
+   "robot": [
+    {
+     "slot": 0,
+     "material": "TR_Optimus_ROBO_p.RB_OptimusPrime_Cust_Mat_INST_B",
+     "baked": {
+      "basecolor": "VerticalSlice/Characters/Optimus/textures/robot_0_RB_OptimusPrime_Cust_Mat_INST_B_basecolor.png",
+      "emissive": "VerticalSlice/Characters/Optimus/textures/robot_0_RB_OptimusPrime_Cust_Mat_INST_B_emissive.png",
+      "specular": "VerticalSlice/Characters/Optimus/textures/robot_0_RB_OptimusPrime_Cust_Mat_INST_B_specular.png"
+     },
+     "roles": {
+      "reflection": null,
+      "normal": "content/TR_Optimus_ROBO_p/RB_Optimus_Norm_b.png",
+      "emissive": "content/TR_Optimus_ROBO_p/RB_Optimus_SpecPwr_DifLum_EnrGlow.png",
+      "mask": "content/TR_Optimus_ROBO_p/RB_Optimus_CustAB_AuxGlow.png",
+      "base_color": "content/TR_Optimus_ROBO_p/RB_Optimus_GrungeClr.png"
+     }
+    },
+    {
+     "slot": 1,
+     "material": "TR_Optimus_ROBO_p.RB_OptimusPrime_Cust_Mat_INST_B",
+     "baked": {
+      "basecolor": "VerticalSlice/Characters/Optimus/textures/robot_1_RB_OptimusPrime_Cust_Mat_INST_B_basecolor.png",
+      "emissive": "VerticalSlice/Characters/Optimus/textures/robot_1_RB_OptimusPrime_Cust_Mat_INST_B_emissive.png",
+      "specular": "VerticalSlice/Characters/Optimus/textures/robot_1_RB_OptimusPrime_Cust_Mat_INST_B_specular.png"
+     },
+     "roles": {
+      "reflection": null,
+      "normal": "content/TR_Optimus_ROBO_p/RB_Optimus_Norm_b.png",
+      "emissive": "content/TR_Optimus_ROBO_p/RB_Optimus_SpecPwr_DifLum_EnrGlow.png",
+      "mask": "content/TR_Optimus_ROBO_p/RB_Optimus_CustAB_AuxGlow.png",
+      "base_color": "content/TR_Optimus_ROBO_p/RB_Optimus_GrungeClr.png"
+     }
+    },
+    {
+     "slot": 2,
+     "material": "TR_Optimus_ROBO_p.InteriorAlt_Energon_MAT_INST",
+     "baked": {},
+     "roles": {
+      "normal": "content/TR_AllShader_p/Textures/Interior_Norm.png",
+      "base_color": "content/TR_AllShader_p/Textures/Interior_Color.png",
+      "emissive": "content/TR_AllShader_p/Textures/Interior_Emiss.png"
+     }
+    }
+   ],
+   "vehicle": [
+    {
+     "slot": 0,
+     "material": "TR_Optimus_VEH_p.RB_OptimusPrime_Cust2_Mat_INST",
+     "baked": {
+      "basecolor": "VerticalSlice/Characters/Optimus/textures/vehicle_0_RB_OptimusPrime_Cust2_Mat_INST_basecolor.png",
+      "emissive": "VerticalSlice/Characters/Optimus/textures/vehicle_0_RB_OptimusPrime_Cust2_Mat_INST_emissive.png",
+      "specular": "VerticalSlice/Characters/Optimus/textures/vehicle_0_RB_OptimusPrime_Cust2_Mat_INST_specular.png"
+     },
+     "roles": {
+      "reflection": null,
+      "normal": "content/TR_Optimus_VEH_p/VH_Optimus_NORM.png",
+      "emissive": "content/TR_Optimus_VEH_p/VH_Optimus_SpecPwr_DifLum_EnrGlow.png",
+      "mask": "content/TR_Optimus_VEH_p/VH_Optimus_CustAB_AuxGlow.png",
+      "base_color": "content/TR_Optimus_VEH_p/VH_Optimus_GrungeClr.png"
+     }
+    },
+    {
+     "slot": 1,
+     "material": "TR_Optimus_VEH_p.InteriorAlt_Energon_MAT_INST",
+     "baked": {},
+     "roles": {
+      "normal": "content/TR_AllShader_p/Textures/Interior_Norm.png",
+      "base_color": "content/TR_AllShader_p/Textures/Interior_Color.png",
+      "emissive": "content/TR_AllShader_p/Textures/Interior_Emiss.png"
+     }
+    }
+   ]
+  }
+ },
+ "weapon": {
+  "name": "Ion Blaster",
+  "manifest": "VerticalSlice/Weapons/IonBlaster/weapon.json",
+  "glb": "VerticalSlice/Weapons/IonBlaster/weapon.glb",
+  "clips": [
+   "IonBlaster_Drop",
+   "IonBlaster_Equip",
+   "IonBlaster_Fire",
+   "IonBlaster_Idle",
+   "IonBlaster_Reload",
+   "IonBlaster_StaticIdle",
+   "Shooting_Reload_IonBlaster",
+   "Shooting_Reload_IonBlaster_AP"
+  ],
+  "fire_sound": {
+   "cue": "BL_WPN_GUN_ION_BLASTER.SHOOT",
+   "class": "SoundCue",
+   "waves": [
+    {
+     "wave": "WL_GUN_HANDCANNON.GUN_HANDCANNON_SHOOT_LR_01",
+     "wav": "content/WL_GUN_HANDCANNON/GUN_HANDCANNON_SHOOT_LR_01.wav"
+    },
+    {
+     "wave": "WL_GUN_ION_BLASTER.GUN_ION_BLASTER_HEAD",
+     "wav": "content/WL_GUN_ION_BLASTER/GUN_ION_BLASTER_HEAD.wav"
+    },
+    {
+     "wave": "WL_GUN_NEUTRON_RIFLE.GUN_ASSAULTRIFLE_NRG_DISTANT",
+     "wav": "content/WL_GUN_NEUTRON_RIFLE/GUN_ASSAULTRIFLE_NRG_DISTANT.wav"
+    },
+    {
+     "wave": "WL_GUN_NEUTRON_RIFLE.MTL_SHELL_SLUG_DROP_CONCRT_01",
+     "wav": "content/WL_GUN_NEUTRON_RIFLE/MTL_SHELL_SLUG_DROP_CONCRT_01.wav"
+    },
+    {
+     "wave": "WL_GUN_NEUTRON_RIFLE.MTL_SHELL_SLUG_DROP_CONCRT_02",
+     "wav": "content/WL_GUN_NEUTRON_RIFLE/MTL_SHELL_SLUG_DROP_CONCRT_02.wav"
+    },
+    {
+     "wave": "WL_GUN_NEUTRON_RIFLE.MTL_SHELL_SLUG_DROP_CONCRT_03",
+     "wav": "content/WL_GUN_NEUTRON_RIFLE/MTL_SHELL_SLUG_DROP_CONCRT_03.wav"
+    },
+    {
+     "wave": "WL_GUN_NEUTRON_RIFLE.MTL_SHELL_SLUG_DROP_CONCRT_04",
+     "wav": "content/WL_GUN_NEUTRON_RIFLE/MTL_SHELL_SLUG_DROP_CONCRT_04.wav"
+    }
+   ]
+  },
+  "reload_sounds": [
+   {
+    "cue": "BL_WPN_GUN_ION_BLASTER.ANIM_RELOAD_01",
+    "class": "SoundCue",
+    "waves": [
+     {
+      "wave": "WL_GUN_FOLEY.GUN_DW2_REDEEM_RELOAD_START",
+      "wav": "content/WL_GUN_FOLEY/GUN_DW2_REDEEM_RELOAD_START.wav"
+     },
+     {
+      "wave": "WL_GUN_FOLEY.RELOAD_AIR_RELEASE_THUMP",
+      "wav": "content/WL_GUN_FOLEY/RELOAD_AIR_RELEASE_THUMP.wav"
+     },
+     {
+      "wave": "WL_GUN_FOLEY.RELOAD_SERVO_MECH_05",
+      "wav": "content/WL_GUN_FOLEY/RELOAD_SERVO_MECH_05.wav"
+     }
+    ]
+   },
+   {
+    "cue": "BL_WPN_GUN_ION_BLASTER.ANIM_RELOAD_02",
+    "class": "SoundCue",
+    "waves": [
+     {
+      "wave": "WL_FOLY_BOT.SERVO_IDLE_FOLY_01",
+      "wav": "content/WL_FOLY_BOT/SERVO_IDLE_FOLY_01.wav"
+     },
+     {
+      "wave": "WL_FOLY_BOT.SERVO_IDLE_FOLY_04",
+      "wav": "content/WL_FOLY_BOT/SERVO_IDLE_FOLY_04.wav"
+     },
+     {
+      "wave": "WL_GUN_FOLEY.GUN_RIFLE_CLIP_RELOAD",
+      "wav": "content/WL_GUN_FOLEY/GUN_RIFLE_CLIP_RELOAD.wav"
+     },
+     {
+      "wave": "WL_GUN_FOLEY.RELOAD_BOLT_07",
+      "wav": "content/WL_GUN_FOLEY/RELOAD_BOLT_07.wav"
+     },
+     {
+      "wave": "WL_GUN_FOLEY.RELOAD_FLANGE_02",
+      "wav": "content/WL_GUN_FOLEY/RELOAD_FLANGE_02.wav"
+     },
+     {
+      "wave": "WL_GUN_FOLEY.RELOAD_MTL_SCRAPE_03",
+      "wav": "content/WL_GUN_FOLEY/RELOAD_MTL_SCRAPE_03.wav"
+     },
+     {
+      "wave": "WL_GUN_FOLEY.RELOAD_SYNTH_BUBBLE",
+      "wav": "content/WL_GUN_FOLEY/RELOAD_SYNTH_BUBBLE.wav"
+     },
+     {
+      "wave": "WL_GUN_ION_BLASTER.TRANS_ION_UNEQUIP_SERVOS",
+      "wav": "content/WL_GUN_ION_BLASTER/TRANS_ION_UNEQUIP_SERVOS.wav"
+     },
+     {
+      "wave": "WL_GUN_PULSE_RIFLE.GUN_FOLEY_MG_SERVO_MTL_SYNTH_02",
+      "wav": "content/WL_GUN_PULSE_RIFLE/GUN_FOLEY_MG_SERVO_MTL_SYNTH_02.wav"
+     }
+    ]
+   }
+  ],
+  "hud_icons": [
+   {
+    "object": "UI_GFxCharacterSelect_p.IonBlaster",
+    "png": "content/UI_GFxCharacterSelect_p/IonBlaster.png"
+   },
+   {
+    "object": "UI_GFxCustomize_p.IonBlaster",
+    "png": "content/UI_GFxCharacterSelect_p/IonBlaster.png"
+   },
+   {
+    "object": "UI_GFxHud_p.TnWeaponIonBlaster",
+    "png": "content/UI_GFxHud_p/TnWeaponIonBlaster.png"
+   },
+   {
+    "object": "UI_GFxHud_p.death_IonBlaster",
+    "png": "content/UI_GFxHud_p/death_IonBlaster.png"
+   }
+  ],
+  "gameplay": {
+   "MaxAmmoCount": 250,
+   "MaxAmmoClipCount": 50,
+   "InitialReserveAmmoCount": 150,
+   "DefaultPickupAmount": 150,
+   "FireIntervalModifier": {
+    "IntervalRange": {
+     "Min": 0.06499999761581421,
+     "Max": 0.06499999761581421
+    },
+    "RampTime": 0.0
+   },
+   "PerShotSpreadModifier": {
+    "Modifier": {
+     "Min": 0.07999999821186066,
+     "Max": 0.18000000715255737
+    },
+    "ModifierChangePerShot": 0.004999999888241291,
+    "Cooldown": 2.0
+   },
+   "FineAimSpreadModifier": 0.5,
+   "InstantHitDamage": [
+    15.0
+   ],
+   "InstantHitDamageTypes": [
+    "TransGame.TnDamageTypeIonBlaster"
+   ],
+   "WeaponRange": 30000.0,
+   "RangeDamageModifiers": [
+    {
+     "Range": 5000.0,
+     "Modifier": 1.0
+    },
+    {
+     "Range": 30000.0,
+     "Modifier": 0.5
+    }
+   ],
+   "EquipTime": 0.20000000298023224,
+   "PutDownTime": 0.5,
+   "WeaponReloadAnimTime": 1.5,
+   "HeatProperties": {
+    "HeatMax": 0.0,
+    "Modifiers": [
+     "WEP_IonBlaster_p.IonBlaster_WEPDATA.TnPerShotHeatModifier_7837",
+     "WEP_IonBlaster_p.IonBlaster_WEPDATA.TnLoseHeatModifier_14224",
+     "WEP_IonBlaster_p.IonBlaster_WEPDATA.TnOverheatHeatModifier_10724"
+    ]
+   }
+  },
+  "effects": [
+   "FX_IonBlaster_p.FX.A_Impact_IonBlaster_FX",
+   "FX_IonBlaster_p.FX.Impact_IonBlaster_FX",
+   "FX_IonBlaster_p.FX.Magazine_IonBlaster_FX",
+   "FX_IonBlaster_p.FX.MuzzleFlash_IonBlaster_FX"
+  ]
+ },
+ "map": {
+  "name": "MP_IAC_Streets",
+  "dir": "VerticalSlice/Maps/MP_IAC_Streets",
+  "world_glb": "VerticalSlice/Maps/MP_IAC_Streets/world.glb",
+  "collision_glb": "VerticalSlice/Maps/MP_IAC_Streets/collision.glb",
+  "files": {
+   "map.json": "VerticalSlice/Maps/MP_IAC_Streets/map.json",
+   "props.json": "VerticalSlice/Maps/MP_IAC_Streets/props.json",
+   "collision.json": "VerticalSlice/Maps/MP_IAC_Streets/collision.json",
+   "spawnpoints.json": "VerticalSlice/Maps/MP_IAC_Streets/spawnpoints.json",
+   "lights.json": "VerticalSlice/Maps/MP_IAC_Streets/lights.json",
+   "materials.json": "VerticalSlice/Maps/MP_IAC_Streets/materials.json"
+  },
+  "sublevels": [
+   "MP_IAC_Streets_ART_m",
+   "MP_IAC_Streets_AUDIO_m",
+   "MP_IAC_Streets_BASE_m"
+  ],
+  "bsp_render_triangles": 2460,
+  "placed_props": 1952,
+  "unique_meshes": 216,
+  "spawn_and_gameplay_points": {
+   "TriggerVolume": 20,
+   "TnAmmoCratePickupFactory": 14,
+   "TnBombPlantPoint": 2,
+   "TnDominationPoint": 3,
+   "TnFlagCapturePoint": 2,
+   "TnForcedDirVolume": 4,
+   "TnFreeForAllPlayerStart": 24,
+   "TnGameObjectivePickupFactoryBomb": 1,
+   "TnGameObjectivePickupFactoryFlag": 2,
+   "TnHealthPickupFactory": 9,
+   "TnKingOfTheHillZone": 5,
+   "TnOverShieldPickupFactory": 1,
+   "TnSpawnCluster": 12,
+   "TnTeamPlayerStart": 60
+  },
+  "world_triangles": 229707
+ },
+ "validation": {
+  "checks": 44,
+  "failures": 0,
+  "report": "AssetTools/manifests/vertical_slice_validation.json"
+ }
+}
