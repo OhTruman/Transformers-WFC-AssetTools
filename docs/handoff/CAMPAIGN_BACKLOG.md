@@ -10,11 +10,13 @@ Order set by Integration (2026-10-16). Each fix is generic: MP / Streets outputs
      names come out as unrelated names (e.g. `Wave_Alpha_Pan_Speed_1407`), which looks like a name-table / tag-size desync.
    - The detector runs over the 10 MP maps first. If any MP component is affected, this moves up to package 6 (Streets byte-identical
      except the recovered components), and the detector joins the validator.
-3. **m05_bsp_default_faces and map_structure_audit grids.** Both exceed the 10 GB chapter cap on A1_IAC (MemoryError in their ray /
+3. **m05_bsp_default_faces and map_structure_audit grids, plus bsp_alignment** (D2_COR: 2,074 more exported than authored BSP
+   triangles, 747 unaccounted nodes). Both exceed the 10 GB chapter cap on A1_IAC (MemoryError in their ray /
    triangle grids). Fix them with oversized-triangle exclusion / coarser cells (Streets byte-identical as the gate), then rerun both
    alone on every finished chapter. The default-material face list feeds the campaign texture / material pass.
 4. **matc pass for campaign materials** (Rendering, when they have a gap): D5_OME 46 of 115; A1_IAC 269 of 524.
    - Lists: `work/campaign_pilot/<MAP>_materials_for_rendering.json`.
-5. **Player-start ground check.** A1_IAC's start has no ground within 6 m (the nearest is 236 m below). Recheck after item 2.
+5. **Player-start ground check: campaign-mode relaxation** (approved 2026-10-16). Campaign starts are often airborne or on platforms
+   (A1_IAC: 236 m drop; D2_COR: 15 of 30 grounded). Allow them in campaign mode; the MP rule stays unchanged.
 
 Chapters still to run, in size order: D3B_IAC, D2_COR, A3_COR, A4_ORB, D3A_IAC, A2_KON, D1_ORB. Done: D5_OME, A1_IAC, A5_TRY.
