@@ -58,10 +58,33 @@ def particle_rec(ps, level_pkgs):
     s['cooked_in_streets'] = [p for p in own if p.startswith(MAP)]
     return s
 
+_SLICE_TEXT = {}
+_VARIANTS = {}
+def variants(pkg):
+    """HmDestructibleBlueprint objects of a blueprint package (memoised; the class index replaces a full LIKE scan per actor)"""
+    if pkg not in _VARIANTS: _VARIANTS[pkg] = sorted({x['opath'] for x in A.find(pkg + '.%', 'HmDestructibleBlueprint')})
+    return _VARIANTS[pkg]
+
+_LOCS = []
+def placed_locations(d):
+    """(locations of every placed level actor, player-start locations) of MAP: one scan per run, not per actor"""
+    if not _LOCS:
+        locs, starts = [], []
+        for o, pj in d.execute("SELECT opath, props FROM objects WHERE package LIKE ? AND opath LIKE '%.PersistentLevel.%' "
+                               "AND props LIKE '%\"Location\"%'", (MAP + '%',)).fetchall():
+            if o.count('.') != 3: continue
+            L = json.loads(pj).get('Location')
+            if isinstance(L, dict):
+                locs.append((L['X'], L['Y'], L['Z']))
+                if 'PlayerStart' in o: starts.append((L['X'], L['Y'], L['Z']))
+        _LOCS.extend([locs, starts])
+    return _LOCS[0], _LOCS[1]
+
 def slice_coverage(names):
     hits = {}
     for f in sorted(glob.glob(os.path.join(SLICE, '*.json'))):
-        t = open(f, encoding='utf-8').read()
+        if f not in _SLICE_TEXT: _SLICE_TEXT[f] = open(f, encoding='utf-8').read()   # read once (A1_IAC: 1,040 actors)
+        t = _SLICE_TEXT[f]
         found = [n for n in names if n in t]
         if found: hits[os.path.basename(f)] = found
     return hits
@@ -103,8 +126,7 @@ def build_actor(actor):
                         'blueprint_defaults (HM_Engine.Default__HmDestructibleBlueprint, inherited)':
                             {k: field(bp, k) for k in ('DamageAngle', 'AIDamageModifier', 'RadiusDamageModifier',
                                                        'MinRadiusDamageDistanceForModifier')},
-                        'variants_in_other_levels': sorted({x['opath'] for x in A.find(bp.split('.')[0] + '.%')
-                                                            if x['class'] == 'HmDestructibleBlueprint'}),
+                        'variants_in_other_levels': variants(bp.split('.')[0]),
                         'tree': tree(bp)}
     meshes, mats, particles, cues = {}, set(), {}, {}
     pieces = []
@@ -192,14 +214,7 @@ def build_actor(actor):
         'verdict': None}
     # where the actor sits relative to the playable space (player starts) and every other placed actor
     import numpy as np
-    locs, starts = [], []
-    for o, pj in d.execute("SELECT opath, props FROM objects WHERE package LIKE ? AND opath LIKE '%.PersistentLevel.%' "
-                           "AND props LIKE '%\"Location\"%'", (MAP + '%',)).fetchall():
-        if o.count('.') != 3: continue
-        L = json.loads(pj).get('Location')
-        if isinstance(L, dict):
-            locs.append((L['X'], L['Y'], L['Z']))
-            if 'PlayerStart' in o: starts.append((L['X'], L['Y'], L['Z']))
+    locs, starts = placed_locations(d)
     S = np.array(starts); P = np.array([own['Location'][k] for k in ('X', 'Y', 'Z')])
     rec['placement_context'] = {
         'actor_location': P.tolist(),

@@ -289,9 +289,14 @@ def main():
     c('destructibles', 'COMPLETE', {'count': dd.get('count', 0)})
     # hazard / kill volumes (PhysicsVolume / DynamicPhysicsVolume with bPainCausing, effective values over the class chain)
     hz = []
+    # which level objects exist (case-insensitive, like A.get): one LIKE scan per sublevel instead of a NOCASE full scan per miss
+    lvl_objs = set()
+    if any('PhysicsVolume' in v['class'] for v in (col.get('volumes') or [])):
+        for lv in (m.get('sublevels') or []):
+            lvl_objs |= {r[0].lower() for r in A.con().execute('SELECT opath FROM objects WHERE opath LIKE ?', (lv + '.TheWorld.PersistentLevel.%',))}
     for v in (col.get('volumes') or []):
         if 'PhysicsVolume' not in v['class']: continue
-        o = next((o_ for lv in (m.get('sublevels') or []) for o_ in [lv + '.TheWorld.PersistentLevel.' + v['actor']] if A.get(o_)), None)
+        o = next((o_ for lv in (m.get('sublevels') or []) for o_ in [lv + '.TheWorld.PersistentLevel.' + v['actor']] if o_.lower() in lvl_objs), None)
         ev_ = A.values(o) if o else {}
         if not ev_.get('bPainCausing'): continue
         hz.append({'actor': v['actor'], 'class': v['class'], 'object': o, 'polygons_gltf': v['polygons_gltf'],
