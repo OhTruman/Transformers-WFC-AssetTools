@@ -1170,4 +1170,4 @@ EYE = {
     'content/TR_Handcuffs_p/FBOOK_static_CLR.png': None,
     'content/TR_Handcuffs_p/handcuffs_CLR.png': None,
 }
-REVIEWED = set(range(28))   # batches 0-2: 2026-10-12; 3-13: 2026-10-13; 14-20: 2026-10-14; 21-25: 2026-10-15; 26-27: 2026-10-16
+REVIEWED = set(range(29))   # batches 0-2: 2026-10-12; 3-13: 2026-10-13; 14-20: 2026-10-14; 21-25: 2026-10-15; 26-28: 2026-10-16 (28: character data maps, all clean at D)
