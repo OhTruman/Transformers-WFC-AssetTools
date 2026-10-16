@@ -35,6 +35,8 @@ VIEW_M = 200.0
 # WFC_M05_CELL: grid cell size (default 4 m, unchanged for MP). Accelerator only: ray hits are exact, so any cell size gives the
 # same result; campaign chapters use a coarser cell for fewer grid entries (A1_IAC: 78 M entries at 4 m)
 CELL = float(os.environ.get('WFC_M05_CELL') or 4.0)
+# WFC_M05_TILE (m, campaign only): process default-material faces in tiles with tile-local obstacle grids; unset = original single grid
+TILE = float(os.environ.get('WFC_M05_TILE') or 0)
 CT = {5126: 'f4', 5125: 'u4', 5123: 'u2', 5121: 'u1'}
 NC = {'SCALAR': 1, 'VEC2': 2, 'VEC3': 3, 'VEC4': 4, 'MAT4': 16}
 
@@ -166,23 +168,58 @@ def main():
         G = np.stack([pts[:, 0], pts[:, 2], pts[:, 1]], 1) * 0.01
         for j in range(1, len(G) - 1):
             bt.append([G[0], G[j], G[j + 1]]); bown.append(ni)
-    allT = np.concatenate([np.concatenate(tris), np.array(bt)])
-    nmesh = sum(len(t) for t in tris)
-    tri_of_node = defaultdict(set)
-    for k, ni in enumerate(bown): tri_of_node[ni].add(nmesh + k)
-    grid = Grid(allT)
+    if not TILE:
+        allT = np.concatenate([np.concatenate(tris), np.array(bt)])
+        nmesh = sum(len(t) for t in tris)
+        tri_of_node = defaultdict(set)
+        for k, ni in enumerate(bown): tri_of_node[ni].add(nmesh + k)
+        grid = Grid(allT); nobst = len(allT); nbig = len(grid.big); ncells = grid.ncells
+    else:
+        # WFC_M05_TILE (campaign): no global obstacle grid; per tile of default-material faces, a grid of the obstacles within the
+        # tile's faces' bounds +- (VIEW_M + 1 m) - every visibility ray (<= VIEW_M) and cover ray lies inside that box
+        btA = np.array(bt) if bt else np.zeros((0, 3, 3)); bt_lo = btA.min(1) if len(btA) else btA; bt_hi = btA.max(1) if len(btA) else btA
+        bsp_of_node = defaultdict(list)
+        for k, ni in enumerate(bown): bsp_of_node[ni].append(k)
+        nobst = sum(len(t) for t in tris) + len(btA); nbig = ncells = 'per tile'
     nav = json.load(open(os.path.join(VS, 'Maps', MAP, 'navigation.json'), encoding='utf-8'))['nodes']
     pts = [n['location_ue'] for n in nav if n.get('location_ue')]
     sp = json.load(open(os.path.join(VS, 'Maps', MAP, 'gameplay.json'), encoding='utf-8'))['player_starts']
     for x in (sp if isinstance(sp, list) else [y for v in sp.values() for y in v]):
         if x.get('location_ue'): pts.append(x['location_ue'])
     V = np.unique(np.array([[q[0], q[2] + EYE_UU, q[1]] for q in pts]), axis=0) * 0.01
-    print('obstacles', len(allT), 'big', len(grid.big), 'cells', grid.ncells, 'viewpoints', len(V), 'mem %.2f GB' % rss_gb(), flush=True)
+    print('obstacles', nobst, 'big', nbig, 'cells', ncells, 'viewpoints', len(V), 'tile', TILE, 'mem %.2f GB' % rss_gb(), flush=True)
+
+    def default_nodes():
+        for ni, (si, pts, node) in enumerate(bsp.polygons(M)):
+            s = M['surfs'][si]; mat = int(s['Material'])
+            mp = p.object_path(mat) if mat > 0 else (p.full_path(mat) if mat < 0 else None)
+            if mp and 'DefaultMaterial' in mp: yield ni, si, pts, node
+
+    def node_iter():
+        if not TILE:
+            for ni, si, pts, node in default_nodes(): yield ni, si, pts, node, grid, tri_of_node[ni]
+            return
+        tiles = defaultdict(list)
+        for ni, si, pts, node in default_nodes():
+            G = np.stack([pts[:, 0], pts[:, 2], pts[:, 1]], 1) * 0.01; c = G.mean(0)
+            tiles[(int(np.floor(c[0] / TILE)), int(np.floor(c[2] / TILE)))].append((ni, si, pts, node, G))
+        for key in sorted(tiles):
+            grp = tiles[key]
+            bx0 = np.min([g[4].min(0) for g in grp], 0) - (VIEW_M + 1); bx1 = np.max([g[4].max(0) for g in grp], 0) + (VIEW_M + 1)
+            mk = np.where(np.all(hi >= bx0, 1) & np.all(lo <= bx1, 1))[0]
+            bk = np.where(np.all(bt_hi >= bx0, 1) & np.all(bt_lo <= bx1, 1))[0] if len(btA) else np.zeros(0, int)
+            parts = [tris[k] for k in mk] + ([btA[bk]] if len(bk) else [])
+            Tt = np.concatenate(parts) if parts else np.zeros((1, 3, 3)) + 1e9
+            off = sum(len(tris[k]) for k in mk); g2l = {int(b): off + j for j, b in enumerate(bk)}
+            gt = Grid(Tt)
+            print('tile', key, 'faces', len(grp), 'obstacles', len(Tt), 'mem %.2f GB' % rss_gb(), flush=True)
+            for ni, si, pts, node, G in grp:
+                yield ni, si, pts, node, gt, {g2l[b] for b in bsp_of_node[ni] if b in g2l}
+            del gt, Tt, parts
+
     nodes = []
-    for ni, (si, pts, node) in enumerate(bsp.polygons(M)):
-        s = M['surfs'][si]; mat = int(s['Material'])
-        mp = p.object_path(mat) if mat > 0 else (p.full_path(mat) if mat < 0 else None)
-        if not mp or 'DefaultMaterial' not in mp: continue
+    for ni, si, pts, node, grid, skip in node_iter():
+        s = M['surfs'][si]
         G = np.stack([pts[:, 0], pts[:, 2], pts[:, 1]], 1) * 0.01
         nr = M['vectors'][int(s['vNormal'])]; n = np.array([nr[0], nr[2], nr[1]]); n /= np.linalg.norm(n)
         c = G.mean(0)
@@ -201,7 +238,7 @@ def main():
         for v in front[np.argsort(np.linalg.norm(front - c, axis=1))][:150]:
             for sp, cv_ in zip(samples, cov):
                 if cv_: continue
-                if not grid.blocked(v, sp + 0.02 * n, tri_of_node[ni]):
+                if not grid.blocked(v, sp + 0.02 * n, skip):
                     seen_by += 1; first = first or (v[[0, 2, 1]] * 100).round(0).tolist(); break
             if seen_by >= 3: break
         guard()
@@ -212,6 +249,7 @@ def main():
                       'front_side_viewpoints_within_%dm' % VIEW_M: int(len(front)),
                       'visible_in_play': seen_by > 0, 'example_viewpoint_ue': first,
                       'nearby_meshes': sorted({owners[k][1] for k in cand})[:6]})
+    nodes.sort(key=lambda x: x['node_index'])          # tiles visit nodes out of order; keep the untiled order
     vc = Counter(x['verdict'] for x in nodes)
     vis = [x for x in nodes if x['visible_in_play']]
     area = defaultdict(float)
