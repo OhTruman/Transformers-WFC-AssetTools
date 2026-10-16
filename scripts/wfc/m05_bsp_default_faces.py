@@ -32,7 +32,9 @@ GLB = os.path.join(VS, 'Maps', MAP, 'world.glb')
 COVER_M = 0.64          # 64 UU in front of the face
 EYE_UU = 200.0
 VIEW_M = 200.0
-CELL = 4.0
+# WFC_M05_CELL: grid cell size (default 4 m, unchanged for MP). Accelerator only: ray hits are exact, so any cell size gives the
+# same result; campaign chapters use a coarser cell for fewer grid entries (A1_IAC: 78 M entries at 4 m)
+CELL = float(os.environ.get('WFC_M05_CELL') or 4.0)
 CT = {5126: 'f4', 5125: 'u4', 5123: 'u2', 5121: 'u1'}
 NC = {'SCALAR': 1, 'VEC2': 2, 'VEC3': 3, 'VEC4': 4, 'MAT4': 16}
 
@@ -125,9 +127,10 @@ class Grid:
             keys.append(((c[..., 0] * self.n[1] + c[..., 1]) * self.n[2] + c[..., 2]).ravel())
             ids.append(np.repeat(sel.astype(np.int32), len(off)))
         keys = np.concatenate(keys) if keys else np.zeros(0, np.int64); ids = np.concatenate(ids) if ids else np.zeros(0, np.int32)
-        order = np.lexsort((ids, keys)); keys = keys[order]; self.ids = ids[order]
-        self.keys, self.start = np.unique(keys, return_index=True)
-        self.end = np.r_[self.start[1:], len(keys)].astype(np.int64)
+        order = np.argsort(keys, kind='stable'); self.ids = ids[order]; del ids
+        keys = keys[order]; del order                                       # one sort; ranges by run boundaries (no second sort)
+        b = np.flatnonzero(np.r_[True, keys[1:] != keys[:-1]])
+        self.keys = keys[b]; self.start = b; self.end = np.r_[b[1:], len(keys)].astype(np.int64); del keys
         self.ncells = len(self.keys)
         self.bigset = set(int(i) for i in self.big)
         guard()
