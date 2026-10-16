@@ -97,7 +97,7 @@ def main(M, notes=None):
     a('4. **Materials for Rendering** (`work/campaign_pilot/%s_materials_for_rendering.json`): %d materials, %d with `.mat`, %d compiled '
       'somewhere -> **%d need a matc pass**.' % (M, len(rows), sum(r['mat_file'] for r in rows), sum(r['compiled_somewhere'] for r in rows),
                                                  sum(not r['compiled_somewhere'] for r in rows)))
-    pend = [s for s in ('m05_bsp_default_faces', 'map_structure_audit') if s in S and S[s][0] != 0]
+    pend = [s for s in ('m05_bsp_default_faces', 'map_structure_audit') if s not in S or S[s][0] != 0]   # failed, or skipped (WFC_SKIP_STAGES)
     a('5. **Pending diagnostics**: %s.' % (', '.join(pend) + ' (grid fix later, Streets byte-identical as the gate)' if pend else 'none: m05 and the structure audit both ran'))
     if notes and os.path.exists(notes): a('\n## 4. Notes\n\n' + open(notes, encoding='utf-8').read().strip())
     out = os.path.join(AT, 'docs', 'handoff', 'CAMPAIGN_PILOT_%s.md' % M)

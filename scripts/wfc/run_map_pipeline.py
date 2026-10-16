@@ -46,7 +46,11 @@ def main():
     for f in os.listdir(logdir): os.remove(os.path.join(logdir, f))
     failed = None
     try:
+        # WFC_SKIP_STAGES: comma-separated stage scripts to leave out (campaign: m05_bsp_default_faces.py,map_structure_audit.py,
+        # pending the grid fix; Integration 2026-10-16). Unset = every stage, as before
+        skip = {x.strip() for x in (os.environ.get('WFC_SKIP_STAGES') or '').split(',') if x.strip()}
         for i, st in enumerate(STAGES, 1):
+            if st[0] in skip: print('skipped (WFC_SKIP_STAGES): %s' % st[0]); continue
             args = [x.replace('{M}', a.map) for x in st]
             log = os.path.join(logdir, '%02d_%s.log' % (i, st[0][:-3]))
             r = subprocess.run([sys.executable, os.path.join(HERE, 'run_bounded.py'), '--cap-gb', str(a.cap_gb), '--log', log, '--',
