@@ -13,7 +13,8 @@ sys.path.insert(0, HERE)
 import extract  # noqa: E402
 
 ROOT = os.path.dirname(extract.OUT)                 # ExtractedAssets
-VS = os.path.join(ROOT, 'VerticalSlice')
+# WFC_VS_ROOT: write map outputs elsewhere (campaign pilot -> AssetTools/work, ExtractedAssets untouched); unset = unchanged
+VS = os.environ.get('WFC_VS_ROOT') or os.path.join(ROOT, 'VerticalSlice')
 URU = 2 * math.pi / 65536.0
 
 S3 = np.array([[1, 0, 0], [0, 0, 1], [0, 1, 0]], dtype='f8')
