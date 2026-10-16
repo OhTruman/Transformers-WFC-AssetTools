@@ -1157,5 +1157,17 @@ EYE = {
     'content/TR_AllShader_p/Debug/DiffClouds_CLR.png': None,
     'content/TR_AllShader_p/Debug/ElectricArcsElectricArcs.png': None,
     'content/TR_AllShader_p/Textures/fractalMaps.png': None,
+
+    # ---- batch 27 (2026-10-16; character / vehicle data maps, sheets) ----
+    # Omega Supreme pelvis scaffold / right-hand chest colour: B and up blow pale cracks and grid lines to flat white; A is faithful
+    'content/TR_OmegaSupreme_ROBO_p/RB_OmegaSupreme_PelvisShoulderScaffold_CLR.png': A,
+    'content/TR_OmegaSupreme_ROBO_p/RB_OmegaSupreme_RhandChest_CLR.png': A,
+    # Laserbeak red paint, Omega arms / legs and the Autobot chest-emblem glow: D speckles or blotches flat paint; C holds
+    'content/TR_Laserbeak_VEH_p/VH_Laserbeak_GRUNGE.png': C,
+    'content/TR_OmegaSupreme_ROBO_p/RB_OmegaSupreme_ArmsLegs_CLR.png': C,
+    'content/TR_OmegaSupreme_ROBO_p/RB_OmegaSupreme_RhandChest_GlowA_Energon_GlowB.png': C,
+    # Handcuffs energy flipbook and glow gradient: soft FX turn into shards / hatching
+    'content/TR_Handcuffs_p/FBOOK_static_CLR.png': None,
+    'content/TR_Handcuffs_p/handcuffs_CLR.png': None,
 }
-REVIEWED = set(range(27))   # batches 0-2: 2026-10-12; 3-13: 2026-10-13; 14-20: 2026-10-14; 21-25: 2026-10-15; 26: 2026-10-16
+REVIEWED = set(range(28))   # batches 0-2: 2026-10-12; 3-13: 2026-10-13; 14-20: 2026-10-14; 21-25: 2026-10-15; 26-27: 2026-10-16
