@@ -20,10 +20,16 @@ def package(name):
     if name not in _PK: _PK[name] = ue3pkg.Package(os.path.join(extract.COOKED, name + '.xxx'))
     return _PK[name]
 
+def levels_for(m):
+    """'ALL_CAMPAIGN': every cooked campaign map package (inventory.db role 'campaign chapter', contains_map), else the map's levels"""
+    if m != 'ALL_CAMPAIGN': return T.levels_of(m)
+    inv = sqlite3.connect(os.path.join(AT, 'manifests', 'inventory.db'))
+    return [r[0] for r in inv.execute("SELECT package FROM packages WHERE contains_map = 1 AND role LIKE '%campaign chapter%'")]
+
 def flagged(maps):
     con = sqlite3.connect(DB); out = []
     for m in maps:
-        for lv in T.levels_of(m):
+        for lv in levels_for(m):
             for key, opath, cls, cp, pkg, props in con.execute(
                     'SELECT key, opath, class, class_path, package, props FROM objects WHERE opath LIKE ?', (lv + '.TheWorld.PersistentLevel.%',)):
                 sk = T.schema(cp)
