@@ -118,13 +118,15 @@ def main():
         R = reach_from(s)
         reach_ok += all(g in R for g in goals)
     for n, d in nodes.items(): d['out_degree'] = len(adj[n]); d['in_degree'] = sum(1 for e in edges if e['end'] == n)
+    dd = [e['distance'] for e in edges if e['distance'] is not None]
     analysis = {'nodes': len(nodes), 'edges': len(edges), 'node_classes': dict(Counter(d['class'] for d in nodes.values())),
                 'navpoint_classes_without_edges': dict(Counter(d['class'] for d in nodes.values() if d['out_degree'] == 0 and d['in_degree'] == 0)),
                 'edge_classes': dict(Counter(e['class'] for e in edges)), 'reach_flags': dict(Counter('|'.join(e['flags']) for e in edges)),
                 'collision_sizes': dict(Counter('r%s h%s' % (e['collision_radius'], e['collision_height']) for e in edges)),
                 'max_path_sizes': dict(Counter(json.dumps(d['max_path_size'], sort_keys=True) for d in nodes.values())),
-                'edge_distance_ue': {'min': min(e['distance'] for e in edges), 'median': float(np.median([e['distance'] for e in edges])),
-                                     'max': max(e['distance'] for e in edges)} if edges else None,
+                # Distance untagged on a few campaign reach specs (D2_COR: 3 of 29,401; UE3 omits a value equal to the default 0):
+                # summarised over the tagged ones; such edges keep distance None
+                'edge_distance_ue': {'min': min(dd), 'median': float(np.median(dd)), 'max': max(dd)} if dd else None,
                 'distance_vs_euclidean_abs_err': {'max': round(max(dist_err), 3), 'median': round(float(np.median(dist_err)), 3)} if dist_err else None,
                 'edges_with_unresolved_end': len(bad_end), 'directed_pairs': len(pairs), 'bidirectional_pairs': sym,
                 'components': [len(c) for c in comps], 'largest_component_classes': dict(Counter(nodes[n]['class'] for n in comps[0])) if comps else {},
