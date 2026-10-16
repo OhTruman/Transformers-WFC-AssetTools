@@ -1,0 +1,725 @@
+{
+ "TnSeqAct_MissionComplete": {
+  "class": "TransContent.TnSeqAct_MissionComplete",
+  "super_chain": [
+   "TransContent.TnSeqAct_MissionComplete",
+   "HM_Engine.SeqAct_MoviePlayer",
+   "Engine.SeqAct_Latent",
+   "Engine.SequenceAction",
+   "Engine.SequenceOp",
+   "Engine.SequenceObject",
+   "Core.Object"
+  ],
+  "own_props": {},
+  "inputs": [
+   [
+    "Play",
+    null
+   ]
+  ],
+  "outputs": [],
+  "variables": [
+   [
+    "Player",
+    "Targets"
+   ]
+  ],
+  "instances": 12,
+  "instance_values": {
+   "bIsSkippable": [
+    "false",
+    "true"
+   ],
+   "MovieName": [
+    "\"Blank.bik\"",
+    "\"FMV_a1outro.bik\"",
+    "\"FMV_a2outro.bik\"",
+    "\"FMV_a3outro.bik\"",
+    "\"FMV_credits.bik \"",
+    "\"FMV_d1outro.bik\""
+   ]
+  }
+ },
+ "TnSeqEvent_Interact": {
+  "class": "TransGame.TnSeqEvent_Interact",
+  "super_chain": [
+   "TransGame.TnSeqEvent_Interact",
+   "Engine.SequenceEvent",
+   "Engine.SequenceOp",
+   "Engine.SequenceObject",
+   "Core.Object"
+  ],
+  "own_props": {},
+  "inputs": [],
+  "outputs": [
+   [
+    "Touch",
+    null
+   ],
+   [
+    "Untouch",
+    null
+   ],
+   [
+    "Adjusting",
+    null
+   ],
+   [
+    "Begin Use",
+    null
+   ],
+   [
+    "End Use",
+    null
+   ]
+  ],
+  "variables": [],
+  "instances": 245,
+  "instance_values": {
+   "MaxWidth": [
+    "256",
+    "259",
+    "264",
+    "267",
+    "272",
+    "275"
+   ],
+   "Originator": [
+    "\"A1_IAC_DecoEnd_Design_m.TheWorld.PersistentLevel.TnInteractButton_14724\"",
+    "\"A1_IAC_DecoInt_Design_m.TheWorld.PersistentLevel.TnInteractHackingTerminal_611\"",
+    "\"A1_IAC_DecoPlaza_Design_m.TheWorld.PersistentLevel.TnInteractButton_10232\"",
+    "\"A1_IAC_DecoPlaza_Design_m.TheWorld.PersistentLevel.TnInteractHackingTerminal_16",
+    "\"A1_IAC_Elevator_Design_m.TheWorld.PersistentLevel.TnInteractButton_4785\"",
+    "\"A1_IAC_Elevator_Design_m.TheWorld.PersistentLevel.TnInteractHackingTerminal_308"
+   ],
+   "bPlayerOnly": [
+    "false"
+   ],
+   "bEnabled": [
+    "false"
+   ],
+   "MaxTriggerCount": [
+    "0",
+    "1"
+   ]
+  }
+ },
+ "SeqAct_TnAiMoveToActor": {
+  "class": "TransGame.SeqAct_TnAiMoveToActor",
+  "super_chain": [
+   "TransGame.SeqAct_TnAiMoveToActor",
+   "Engine.SeqAct_AIMoveToActor",
+   "Engine.SeqAct_Latent",
+   "Engine.SequenceAction",
+   "Engine.SequenceOp",
+   "Engine.SequenceObject",
+   "Core.Object"
+  ],
+  "own_props": {
+   "Range": {
+    "type": "ByteProperty",
+    "enum": "TransGame.TnAiRangeDetector.ETnRange"
+   },
+   "FocusActor": {
+    "type": "ObjectProperty",
+    "class": "Engine.Actor"
+   },
+   "DestinationActor": {
+    "type": "ObjectProperty",
+    "class": "Engine.Actor"
+   }
+  },
+  "inputs": [],
+  "outputs": [],
+  "variables": [
+   [
+    "Target",
+    "Targets"
+   ],
+   [
+    "Destination",
+    "DestinationActor"
+   ],
+   [
+    "Look At",
+    "FocusActor"
+   ]
+  ],
+  "instances": 390,
+  "instance_values": {
+   "Range": [
+    "\"RANGE_Close\"",
+    "\"RANGE_Medium\"",
+    "\"RANGE_Striking\"",
+    "\"RANGE_Touch\""
+   ],
+   "bInterruptable": [
+    "true"
+   ]
+  }
+ },
+ "TnSeqAct_ActivateTogethernessVolume": {
+  "class": "TransGame.TnSeqAct_ActivateTogethernessVolume",
+  "super_chain": [
+   "TransGame.TnSeqAct_ActivateTogethernessVolume",
+   "Engine.SequenceAction",
+   "Engine.SequenceOp",
+   "Engine.SequenceObject",
+   "Core.Object"
+  ],
+  "own_props": {
+   "HideTeleports": {
+    "type": "BoolProperty"
+   },
+   "InstigatingPawn": {
+    "type": "ObjectProperty",
+    "class": "TransGame.TnPawn"
+   }
+  },
+  "inputs": [],
+  "outputs": [],
+  "variables": [
+   [
+    "Volume",
+    "Targets"
+   ],
+   [
+    "Instigator",
+    "InstigatingPawn"
+   ]
+  ],
+  "instances": 135,
+  "instance_values": {
+   "HideTeleports": [
+    "true"
+   ]
+  }
+ },
+ "SeqAct_TnAssignTacticalVolume": {
+  "class": "TransGame.SeqAct_TnAssignTacticalVolume",
+  "super_chain": [
+   "TransGame.SeqAct_TnAssignTacticalVolume",
+   "Engine.SequenceAction",
+   "Engine.SequenceOp",
+   "Engine.SequenceObject",
+   "Core.Object"
+  ],
+  "own_props": {
+   "TacticalVolume": {
+    "type": "ObjectProperty",
+    "class": "TransGame.TnTacticalVolume"
+   }
+  },
+  "inputs": [
+   [
+    "Assign",
+    null
+   ],
+   [
+    "UnAssign",
+    null
+   ],
+   [
+    "Toggle",
+    null
+   ]
+  ],
+  "outputs": [],
+  "variables": [
+   [
+    "Target",
+    "Targets"
+   ],
+   [
+    "Tactical Volume",
+    "TacticalVolume"
+   ]
+  ],
+  "instances": 434,
+  "instance_values": {
+   "TacticalVolume": [
+    "\"D1_ORB_DarkEnergon_DGN_m.TheWorld.PersistentLevel.TnTacticalVolume_12307\""
+   ]
+  }
+ },
+ "SeqAct_TnAiUseTurret": {
+  "class": "TransContent.SeqAct_TnAiUseTurret",
+  "super_chain": [
+   "TransContent.SeqAct_TnAiUseTurret",
+   "Engine.SequenceAction",
+   "Engine.SequenceOp",
+   "Engine.SequenceObject",
+   "Core.Object"
+  ],
+  "own_props": {
+   "_TurretActionSet": {
+    "type": "ObjectProperty",
+    "class": "HM_Engine.HmGoapActionSet"
+   },
+   "_TurretGoalSet": {
+    "type": "ObjectProperty",
+    "class": "HM_Engine.HmGoapGoalSet"
+   },
+   "Turrets": {
+    "type": "ArrayProperty",
+    "inner": {
+     "type": "ObjectProperty",
+     "class": "TransGame.TnMountableTurretBase"
+    }
+   }
+  },
+  "inputs": [
+   [
+    "Stay In Turret",
+    null
+   ],
+   [
+    "Can Leave Turret",
+    null
+   ]
+  ],
+  "outputs": [],
+  "variables": [
+   [
+    "Target",
+    "Targets"
+   ],
+   [
+    "Turret Object",
+    "Turrets"
+   ]
+  ],
+  "instances": 54,
+  "instance_values": {
+   "_TurretGoalSet": [
+    "\"TR_AIGoalSet_p.TR_AiGoalSet_UseTurret\""
+   ],
+   "_TurretActionSet": [
+    "\"TR_AiActionSet_p.TR_AiActionSet_UseTurret\""
+   ]
+  }
+ },
+ "TnSeqAct_DownRevive": {
+  "class": "TransGame.TnSeqAct_DownRevive",
+  "super_chain": [
+   "TransGame.TnSeqAct_DownRevive",
+   "Engine.SequenceAction",
+   "Engine.SequenceOp",
+   "Engine.SequenceObject",
+   "Core.Object"
+  ],
+  "own_props": {
+   "CanHealWhenDown": {
+    "type": "BoolProperty"
+   },
+   "FullRevive": {
+    "type": "BoolProperty"
+   },
+   "DrainHealthWhenDown": {
+    "type": "BoolProperty"
+   }
+  },
+  "inputs": [
+   [
+    "Down",
+    null
+   ],
+   [
+    "Revive",
+    null
+   ]
+  ],
+  "outputs": [],
+  "variables": [],
+  "instances": 12,
+  "instance_values": {
+   "DrainHealthWhenDown": [
+    "false",
+    "true"
+   ],
+   "CanHealWhenDown": [
+    "false",
+    "true"
+   ]
+  }
+ },
+ "TnSeqEvent_Downed": {
+  "class": "TransGame.TnSeqEvent_Downed",
+  "super_chain": [
+   "TransGame.TnSeqEvent_Downed",
+   "Engine.SequenceEvent",
+   "Engine.SequenceOp",
+   "Engine.SequenceObject",
+   "Core.Object"
+  ],
+  "own_props": {},
+  "inputs": [],
+  "outputs": [
+   [
+    "Downed",
+    null
+   ],
+   [
+    "Revived",
+    null
+   ]
+  ],
+  "variables": [],
+  "instances": 16,
+  "instance_values": {
+   "ReTriggerDelay": [
+    "0.10000000149011612"
+   ],
+   "bPlayerOnly": [
+    "false"
+   ],
+   "MaxWidth": [
+    "65",
+    "66",
+    "96"
+   ],
+   "MaxTriggerCount": [
+    "0"
+   ]
+  }
+ },
+ "TnSeqEvent_DetPack": {
+  "class": "TransGame.TnSeqEvent_DetPack",
+  "super_chain": [
+   "TransGame.TnSeqEvent_DetPack",
+   "Engine.SequenceEvent",
+   "Engine.SequenceOp",
+   "Engine.SequenceObject",
+   "Core.Object"
+  ],
+  "own_props": {},
+  "inputs": [],
+  "outputs": [
+   [
+    "BaBoom",
+    null
+   ]
+  ],
+  "variables": [],
+  "instances": 12,
+  "instance_values": {
+   "Originator": [
+    "\"D2_COR_Chamber_Design_m.TheWorld.PersistentLevel.TnInteractDetpack_15226\"",
+    "\"D2_COR_Gorge_01_Design_m.TheWorld.PersistentLevel.TnInteractDetpack_4451\"",
+    "\"D3A_IAC_City2_DESIGN_m.TheWorld.PersistentLevel.TnInteractDetpack_3422\"",
+    "\"D3A_IAC_CityTank_DESIGN_m.TheWorld.PersistentLevel.TnInteractDetpack_11710\"",
+    "\"D3A_IAC_CourtTrans_DESIGN_m.TheWorld.PersistentLevel.TnInteractDetpack_12283\"",
+    "\"D3A_IAC_CourtTrans_DESIGN_m.TheWorld.PersistentLevel.TnInteractDetpack_12782\""
+   ],
+   "MaxWidth": [
+    "277",
+    "285"
+   ],
+   "MaxTriggerCount": [
+    "0",
+    "1"
+   ],
+   "bPlayerOnly": [
+    "false"
+   ]
+  }
+ },
+ "TnSeqEvent_TankStatus": {
+  "class": "TransGame.TnSeqEvent_TankStatus",
+  "super_chain": [
+   "TransGame.TnSeqEvent_TankStatus",
+   "Engine.SequenceEvent",
+   "Engine.SequenceOp",
+   "Engine.SequenceObject",
+   "Core.Object"
+  ],
+  "own_props": {},
+  "inputs": [],
+  "outputs": [
+   [
+    "FuelCellDamaged",
+    null
+   ],
+   [
+    "FuelCellDestroyed",
+    null
+   ]
+  ],
+  "variables": [],
+  "instances": 4,
+  "instance_values": {
+   "MaxWidth": [
+    "131"
+   ],
+   "MaxTriggerCount": [
+    "0"
+   ],
+   "bPlayerOnly": [
+    "false"
+   ]
+  }
+ },
+ "SeqAct_TnAiJump": {
+  "class": "TransGame.SeqAct_TnAiJump",
+  "super_chain": [
+   "TransGame.SeqAct_TnAiJump",
+   "Engine.SequenceAction",
+   "Engine.SequenceOp",
+   "Engine.SequenceObject",
+   "Core.Object"
+  ],
+  "own_props": {},
+  "inputs": [
+   [
+    "Jump",
+    null
+   ]
+  ],
+  "outputs": [],
+  "variables": [],
+  "instances": 6,
+  "instance_values": {}
+ },
+ "TnSeqAct_AiDisableShootingBehavior": {
+  "class": "TransContent.TnSeqAct_AiDisableShootingBehavior",
+  "super_chain": [
+   "TransContent.TnSeqAct_AiDisableShootingBehavior",
+   "Engine.SequenceAction",
+   "Engine.SequenceOp",
+   "Engine.SequenceObject",
+   "Core.Object"
+  ],
+  "own_props": {
+   "ShootingDisabledGoalSet": {
+    "type": "ObjectProperty",
+    "class": "HM_Engine.HmGoapGoalSet"
+   },
+   "ShootingDisabledActionSet": {
+    "type": "ObjectProperty",
+    "class": "HM_Engine.HmGoapActionSet"
+   }
+  },
+  "inputs": [
+   [
+    "Disable Shooting Behavior",
+    null
+   ],
+   [
+    "Enable Default Behavior",
+    null
+   ]
+  ],
+  "outputs": [],
+  "variables": [],
+  "instances": 6,
+  "instance_values": {
+   "ShootingDisabledActionSet": [
+    "\"TR_AiActionSet_p.Soldier_NoWeapon_Buddy_AiActionSet\""
+   ],
+   "ShootingDisabledGoalSet": [
+    "\"TR_AIGoalSet_p.NoWeapon_Buddy_AiGoalSet\""
+   ]
+  }
+ },
+ "TnSeqEvent_HealthStatus": {
+  "class": "TransGame.TnSeqEvent_HealthStatus",
+  "super_chain": [
+   "TransGame.TnSeqEvent_HealthStatus",
+   "Engine.SequenceEvent",
+   "Engine.SequenceOp",
+   "Engine.SequenceObject",
+   "Core.Object"
+  ],
+  "own_props": {},
+  "inputs": [],
+  "outputs": [
+   [
+    "Healthy",
+    null
+   ],
+   [
+    "Wounded",
+    null
+   ]
+  ],
+  "variables": [],
+  "instances": 2,
+  "instance_values": {
+   "MaxWidth": [
+    "101"
+   ],
+   "MaxTriggerCount": [
+    "0"
+   ],
+   "bPlayerOnly": [
+    "false"
+   ]
+  }
+ },
+ "TnSeqEvent_OmegaStatus": {
+  "class": "TransGame.TnSeqEvent_OmegaStatus",
+  "super_chain": [
+   "TransGame.TnSeqEvent_OmegaStatus",
+   "Engine.SequenceEvent",
+   "Engine.SequenceOp",
+   "Engine.SequenceObject",
+   "Core.Object"
+  ],
+  "own_props": {},
+  "inputs": [],
+  "outputs": [
+   [
+    "Healthy",
+    null
+   ],
+   [
+    "Wounded",
+    null
+   ],
+   [
+    "Critical",
+    null
+   ],
+   [
+    "Dying",
+    null
+   ],
+   [
+    "GrabbedBattery",
+    null
+   ],
+   [
+    "ShootingRockets",
+    null
+   ],
+   [
+    "Corrupted",
+    null
+   ],
+   [
+    "SentryDestroyed",
+    null
+   ],
+   [
+    "LockingGrabOnEnemy",
+    null
+   ],
+   [
+    "HeartArmorDestroyed",
+    null
+   ]
+  ],
+  "variables": [],
+  "instances": 2,
+  "instance_values": {
+   "MaxWidth": [
+    "155"
+   ],
+   "MaxTriggerCount": [
+    "0"
+   ],
+   "bPlayerOnly": [
+    "false"
+   ]
+  }
+ },
+ "TnSeqEvent_TrypticonEvents": {
+  "class": "TransGame.TnSeqEvent_TrypticonEvents",
+  "super_chain": [
+   "TransGame.TnSeqEvent_TrypticonEvents",
+   "Engine.SequenceEvent",
+   "Engine.SequenceOp",
+   "Engine.SequenceObject",
+   "Core.Object"
+  ],
+  "own_props": {},
+  "inputs": [],
+  "outputs": [
+   [
+    "Left Tail Smash",
+    null
+   ],
+   [
+    "Right Tail Smash",
+    null
+   ],
+   [
+    "Left Tail Strike",
+    null
+   ],
+   [
+    "Center Tail Strike",
+    null
+   ],
+   [
+    "Right Tail Strike",
+    null
+   ],
+   [
+    "Left Shoulder Destroyed",
+    null
+   ],
+   [
+    "Right Shoulder Destroyed",
+    null
+   ],
+   [
+    "First Chest Destroyed",
+    null
+   ],
+   [
+    "Second Chest Destroyed",
+    null
+   ],
+   [
+    "Back Exposed",
+    null
+   ],
+   [
+    "First Back Destroyed",
+    null
+   ],
+   [
+    "Second Back Destroyed",
+    null
+   ],
+   [
+    "Third Back Destroyed",
+    null
+   ],
+   [
+    "Test Attack 1",
+    null
+   ],
+   [
+    "Test Attack 2",
+    null
+   ],
+   [
+    "Test Attack 3",
+    null
+   ],
+   [
+    "Test Attack 4",
+    null
+   ],
+   [
+    "Test Attack 5",
+    null
+   ]
+  ],
+  "variables": [],
+  "instances": 2,
+  "instance_values": {
+   "MaxWidth": [
+    "181"
+   ],
+   "MaxTriggerCount": [
+    "0"
+   ],
+   "bPlayerOnly": [
+    "false"
+   ]
+  }
+ }
+}
