@@ -1238,8 +1238,8 @@ EYE = {
     'content/WEP_RocketLauncher_p/WEP_RocketLauncher_NORM.png': A,
     'content/WEP_Rocket_p/WEP_OmegaRocket_TEXSET/WEP_StandardRocket_TEXSET_Color_NormX.png': A,
     'content/WEP_Rocket_p/WEP_OmegaRocket_TEXSET/WEP_StandardRocket_TEXSET_Masks_NormY.png': A,
-    'content/ENV_CORE_Platform_p/Textures/ENV_CORE_CanyonFloor_A_CLR_TEXSET/EditorTextureSet_Color_NormX.png': A,
-    'content/ENV_CORE_Platform_p/Textures/ENV_CORE_CanyonFloor_A_CLR_TEXSET/EditorTextureSet_Masks_NormY.png': A,
+    'content/WEP_Rocket_p/WEP_StandardRocket_TEXSET/EditorTextureSet_Color_NormX.png': A,   # dds-keyed: WEP_StandardRocket shares CanyonFloor_A's png path
+    'content/WEP_Rocket_p/WEP_StandardRocket_TEXSET/EditorTextureSet_Masks_NormY.png': A,   # dds-keyed: WEP_StandardRocket shares CanyonFloor_A's png path
     'content/WEP_SentryAbility_p/TPRO_DeployedTurret_CLR.png': A,
     'content/WEP_SentryBall_p/WEP_SentryBallBase_CLR.png': A,
     'content/WEP_SentryBall_p/WEP_SentryBallBase_NORM.png': A,

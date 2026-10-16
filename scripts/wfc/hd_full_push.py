@@ -53,14 +53,19 @@ def need(r, R):
     return n
 
 def ready(u, R): return all(os.path.exists(p) for r in u for p in need(r, R))
+def eye(r):
+    """the eye cap for a row: keyed by its own dds path (as .png) first, then by png. 8 selection rows share a png path with a
+    same-named texture in another package (EditorTextureSet twins), so png keys alone would cap the wrong texture"""
+    k = r['dds'][:-4] + '.png'
+    return E.EYE[k] if k in E.EYE else E.EYE.get(r['png'], 'gen4x_d')
 def cap(r):
-    c = E.EYE.get(r['png'], 'gen4x_d')
+    c = eye(r)
     return None if c is None else LEVELS.index(c)
 def res_path(r): return os.path.join(RES, '%05d.json' % r['i'])
 def done(r):
     p = res_path(r)
     if not os.path.exists(p): return False
-    return json.load(open(p, encoding='utf-8')).get('cap') == E.EYE.get(r['png'], 'gen4x_d')
+    return json.load(open(p, encoding='utf-8')).get('cap') == eye(r)
 
 def show(a, k, alpha=False):
     """what the eye checks: lit shading for normals, the alpha (TEXSET normal half / DXT5 alpha) as grey, else RGB"""
@@ -125,7 +130,7 @@ def build_unit(u, R):
         os.makedirs(TILE, exist_ok=True); tile(r, o, hd, f, lvl, gates).save(os.path.join(TILE, '%05d.png' % r['i']))
         rec = OD([('i', r['i']), ('png', r['png']), ('dds', r['dds']), ('object_path', r['object_path']), ('format', r['format']),
                   ('kind', r['kind']), ('verdict_m4', r.get('verdict')), ('size', r['size']), ('hd_size', [W, Hh]),
-                  ('unit', [x['i'] for x in u]), ('cap', E.EYE.get(r['png'], 'gen4x_d')), ('level', lvl), ('bytes', nb),
+                  ('unit', [x['i'] for x in u]), ('cap', eye(r)), ('level', lvl), ('bytes', nb),
                   ('gates', gates), ('built', time.strftime('%Y-%m-%d %H:%M'))])
         os.makedirs(RES, exist_ok=True); json.dump(rec, open(res_path(r), 'w', encoding='utf-8'), indent=1)
     return q
