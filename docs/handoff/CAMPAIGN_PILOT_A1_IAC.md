@@ -126,3 +126,17 @@ is needed (not made).
 
 Per Integration: the VelocityOverLife decode, then the parser detector over the MP maps, then the next chapter in size order:
 A5_TRY (211 MB), D3B_IAC, D2_COR, A3_COR, A4_ORB, D3A_IAC, A2_KON, D1_ORB. The rules stay: stop at the 10 GB cap or after an hour.
+
+## 6. Rerun after the parser fix (2026-10-16 08:02)
+
+The authored.db re-parse (f384c7b, `authored_reparse.py`) recovered every mis-parsed A1 row: 1,231 objects, including 1,221
+StaticMeshComponents, 6 decals, 2 point lights and 2 particle components. The detector reads 0.
+
+Rerun results:
+- **Placed meshes without a mesh: 1,211 → 0** (24,287 placed). `placed_meshes` PARTIAL → COMPLETE, so 30 COMPLETE (was 29).
+- lighting.json: 2,842 light components.
+- Stage times are unchanged: vs_destructibles 140 s, map_complete 14 s, clean run about 22 min.
+- m05 and the structure audit still exceed 10 GB (pending, backlog item 3).
+- The player-start check still fails: `TnCampaignPlayerStart_10303` has no ground within 6 m (236 m drop) even with the highway
+  meshes back. So the start is not over the missing geometry; the chapter most likely starts in the air or on a matinee platform.
+  PROVISIONAL, to check against the level's intro matinee.
