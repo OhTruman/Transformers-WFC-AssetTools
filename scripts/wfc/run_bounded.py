@@ -8,8 +8,12 @@ Reports exit code, wall time and the job's peak committed memory.
 
 Performance holds (Integration 2026-10-11): a lane's hold is F:\Transformers Rebuild\<lane>\work\PERF_HOLD (presence = hold active).
 Waiting is done by scripts/wfc/hold_wait.cmd before python starts (lane watchdogs flag any foreign python.exe, so a waiting python
-would itself contaminate a timed run); this runner only refuses to start (exit 75) when a hold exists. WFC_GATE_IGNORE_HOLD=1
+would itself contaminate a timed run); this runner refuses to start (exit 75) when a hold exists. WFC_GATE_IGNORE_HOLD=1
 skips only AssetTools' own hold.
+Hold watchdog (Integration 2026-10-17): while the stage runs, the hold files are polled every second. When one appears, the stage's
+Job Object is terminated (only this stage's own process tree), a marker <log>.HOLD_INTERRUPTED is written next to the log (its
+outputs may be partial) and the runner exits 76. The calling cmd runner (no python while waiting) then waits until no hold has
+existed for 60 s (hold_clear60.cmd) and reruns the stage from the start.
 """
 import argparse, ctypes, glob, os, subprocess, sys, time
 
@@ -69,12 +73,24 @@ def main():
     # resume the main thread (suspended at creation)
     ntdll = ctypes.windll.ntdll
     ntdll.NtResumeProcess(W.HANDLE(h))
-    rc = p.wait()
+    rc = None; interrupted = None
+    while rc is None:
+        try:
+            rc = p.wait(timeout=1.0)
+        except subprocess.TimeoutExpired:
+            on = active_holds()
+            if on:
+                k.TerminateJobObject(W.HANDLE(job), 76)          # kills this stage's process tree only (its job), nothing else
+                p.wait(); rc = 76; interrupted = (time.strftime('%Y-%m-%d %H:%M:%S'), on)
     q = EXTENDED()
     k.QueryInformationJobObject(W.HANDLE(job), JobObjectExtendedLimitInformation, ctypes.byref(q), ctypes.sizeof(q), None)
     line = 'run_bounded: rc=%s  wall=%.1fs  peak_job_memory=%.2f GB  cap=%.1f GB  cmd=%s' % (
         rc, time.time() - t0, q.PeakJobMemoryUsed / 2**30, a.cap_gb, ' '.join(cmd))
     print(line)
+    if interrupted:
+        line += '  INTERRUPTED by PERF_HOLD at %s (%s): outputs may be partial, rerun the stage' % (interrupted[0], ', '.join(interrupted[1]))
+        print(line)
+        if a.log: open(a.log + '.HOLD_INTERRUPTED', 'w', encoding='utf-8').write(line + os.linesep)
     if out:
         out.close(); open(a.log, 'a', encoding='utf-8').write(os.linesep + line + os.linesep)
     k.CloseHandle(W.HANDLE(h)); k.CloseHandle(W.HANDLE(job))

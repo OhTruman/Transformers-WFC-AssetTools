@@ -28,7 +28,10 @@ STAGES = [['vs_map.py', '{M}'], ['vs_lighting.py', '{M}'], ['vs_light_probes.py'
 
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument('map'); ap.add_argument('--cap-gb', type=float, default=6.0)
-    ap.add_argument('--allow-streets', action='store_true'); a = ap.parse_args()
+    ap.add_argument('--allow-streets', action='store_true')
+    # hold watchdog (Integration 2026-10-17): a stage killed by a PERF_HOLD (run_bounded exit 76) stops this driver at once (no python
+    # waits); logs/<MAP>_pipeline/RESUME_AT holds the stage number, and the cmd runner restarts with --from-stage after the hold
+    ap.add_argument('--from-stage', type=int, default=1); a = ap.parse_args()
     if a.map == 'MP_IAC_Streets' and not a.allow_streets:
         sys.exit('refusing MP_IAC_Streets: use the Streets regeneration order in CLAUDE.md (or --allow-streets)')
     sys.path.insert(0, HERE)
@@ -43,23 +46,31 @@ def main():
     open(lock, 'w').write('%s pid %d started %s' % (a.map, os.getpid(), time.ctime()))
     logdir = os.path.join(AT, 'logs', a.map + '_pipeline')
     os.makedirs(logdir, exist_ok=True)
-    for f in os.listdir(logdir): os.remove(os.path.join(logdir, f))
-    failed = None
+    if a.from_stage <= 1:
+        for f in os.listdir(logdir): os.remove(os.path.join(logdir, f))
+    failed = None; held = None
     try:
         # WFC_SKIP_STAGES: comma-separated stage scripts to leave out (campaign: m05_bsp_default_faces.py,map_structure_audit.py,
         # pending the grid fix; Integration 2026-10-16). Unset = every stage, as before
         skip = {x.strip() for x in (os.environ.get('WFC_SKIP_STAGES') or '').split(',') if x.strip()}
         for i, st in enumerate(STAGES, 1):
+            if i < a.from_stage: continue
             if st[0] in skip: print('skipped (WFC_SKIP_STAGES): %s' % st[0]); continue
             args = [x.replace('{M}', a.map) for x in st]
             log = os.path.join(logdir, '%02d_%s.log' % (i, st[0][:-3]))
             r = subprocess.run([sys.executable, os.path.join(HERE, 'run_bounded.py'), '--cap-gb', str(a.cap_gb), '--log', log, '--',
                                 os.path.join(HERE, args[0])] + args[1:], cwd=AT, capture_output=True, text=True)
             print((r.stdout.strip().splitlines() or ['?'])[-1][:160])
+            if r.returncode == 76:
+                held = i; open(os.path.join(logdir, 'RESUME_AT'), 'w').write(str(i)); break
             if r.returncode != 0:
                 failed = st[0]; break
     finally:
         os.remove(lock)
+    if held:
+        print('pipeline', a.map, 'INTERRUPTED by PERF_HOLD at stage %d (%s): resume with --from-stage %d' % (held, STAGES[held - 1][0], held))
+        sys.exit(76)
+    if os.path.exists(os.path.join(logdir, 'RESUME_AT')): os.remove(os.path.join(logdir, 'RESUME_AT'))
     subprocess.run([sys.executable, os.path.join(HERE, 'next_map_probe_summary.py'), a.map, os.path.relpath(logdir, AT)], cwd=AT)
     print('pipeline', a.map, 'FAILED at ' + failed if failed else 'OK')
     sys.exit(1 if failed else 0)
