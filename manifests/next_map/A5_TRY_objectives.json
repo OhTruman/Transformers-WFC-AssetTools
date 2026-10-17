@@ -1,0 +1,368 @@
+{
+ "map": "A5_TRY",
+ "generated_by": "AssetTools/scripts/wfc/vs_objectives.py",
+ "source": "authored.db TnWorldInfo._ObjectiveBank + SeqAct_TnSetCurrentObjective; text: ExtractedAssets/config/Coalesced_{int,FRA}.json [Objectives] of TransGame.int / .fra; semantics RE CAMPAIGN_HUD_OBJECTIVES_RE.md (b8f071e)",
+ "counts": {
+  "bank_keys": 6,
+  "setters": 7,
+  "setters_with_key_in_bank": 6,
+  "setters_key_not_in_bank": 0,
+  "setters_clearing": 1,
+  "setters_with_firing_event": 7,
+  "bank_keys_never_set": 0,
+  "keys_without_int_text": 0,
+  "banks_found": 1
+ },
+ "bank_owner": "A5_TRY_BASE_m.TheWorld.PersistentLevel.TnWorldInfo_13562",
+ "other_banks": {},
+ "bank": [
+  {
+   "index": 0,
+   "key": "A5_TRY_OBJ1",
+   "key_raw": "A5_TRY_OBJ1",
+   "text": {
+    "int": "Inspect the crash site",
+    "fra": "Inspecter le site du crash",
+    "int_all": null,
+    "fra_all": null
+   },
+   "set_by": [
+    "A5_TRY_BASE_m.TheWorld.PersistentLevel.Main_Sequence.OBJECTIVES_MARKERS.SeqAct_TnSetCurrentObjective_6988"
+   ]
+  },
+  {
+   "index": 1,
+   "key": "A5_TRY_OBJ2",
+   "key_raw": "A5_TRY_OBJ2",
+   "text": {
+    "int": "Find a way to overload shoulder cannons",
+    "fra": "Trouver un moyen de surcharger les canons d'\u00e9paule",
+    "int_all": null,
+    "fra_all": null
+   },
+   "set_by": [
+    "A5_TRY_BASE_m.TheWorld.PersistentLevel.Main_Sequence.OBJECTIVES_MARKERS.SeqAct_TnSetCurrentObjective_9049"
+   ]
+  },
+  {
+   "index": 2,
+   "key": "A5_TRY_OBJ3",
+   "key_raw": "A5_TRY_OBJ3",
+   "text": {
+    "int": "Damage Trypticon's chest coils",
+    "fra": "Endommager les dissipateurs de Trypticon",
+    "int_all": null,
+    "fra_all": null
+   },
+   "set_by": [
+    "A5_TRY_BASE_m.TheWorld.PersistentLevel.Main_Sequence.OBJECTIVES_MARKERS.SeqAct_TnSetCurrentObjective_4063"
+   ]
+  },
+  {
+   "index": 3,
+   "key": "A5_TRY_OBJ4",
+   "key_raw": "A5_TRY_OBJ4",
+   "text": {
+    "int": "Destroy Trypticon's power source",
+    "fra": "D\u00e9truire la source d'\u00e9nergie de Trypticon",
+    "int_all": null,
+    "fra_all": null
+   },
+   "set_by": [
+    "A5_TRY_BASE_m.TheWorld.PersistentLevel.Main_Sequence.OBJECTIVES_MARKERS.SeqAct_TnSetCurrentObjective_10785"
+   ]
+  },
+  {
+   "index": 4,
+   "key": "A5_TRY_OBJ5",
+   "key_raw": "A5_TRY_OBJ5",
+   "text": {
+    "int": "Find a way through debris blocking path",
+    "fra": "Franchir les d\u00e9bris bloquant le passage",
+    "int_all": null,
+    "fra_all": null
+   },
+   "set_by": [
+    "A5_TRY_BASE_m.TheWorld.PersistentLevel.Main_Sequence.OBJECTIVES_MARKERS.SeqAct_TnSetCurrentObjective_255"
+   ]
+  },
+  {
+   "index": 5,
+   "key": "A5_TRY_OBJ6",
+   "key_raw": "A5_TRY_OBJ6",
+   "text": {
+    "int": "Shoot the energon batteries to overheat shoulder cannons",
+    "fra": "Tirer sur les batteries d'\u00e9nergon pour surcharger les canons",
+    "int_all": null,
+    "fra_all": null
+   },
+   "set_by": [
+    "A5_TRY_BASE_m.TheWorld.PersistentLevel.Main_Sequence.OBJECTIVES_MARKERS.SeqAct_TnSetCurrentObjective_3467"
+   ]
+  }
+ ],
+ "setters": [
+  {
+   "action": "A5_TRY_BASE_m.TheWorld.PersistentLevel.Main_Sequence.OBJECTIVES_MARKERS.SeqAct_TnSetCurrentObjective_10785",
+   "sublevel": "A5_TRY_BASE_m",
+   "key": "A5_TRY_OBJ4",
+   "key_raw": "A5_TRY_OBJ4",
+   "clears_objective": false,
+   "bank_index": 3,
+   "comment": "DESTROY TRYPTICON'S FUEL CELLS",
+   "text": {
+    "int": "Destroy Trypticon's power source",
+    "fra": "D\u00e9truire la source d'\u00e9nergie de Trypticon",
+    "int_all": null,
+    "fra_all": null
+   },
+   "properties": {
+    "bCallHandler": true,
+    "bAutoActivateOutputLinks": true,
+    "PlayerIndex": -1
+   },
+   "fired_by_direct": [
+    {
+     "op": "A5_TRY_BASE_m.TheWorld.PersistentLevel.Main_Sequence.OBJECTIVES_MARKERS.SeqEvent_RemoteEvent_5653",
+     "class": "SeqEvent_RemoteEvent",
+     "output": "Out"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "A5_TRY_BASE_m.TheWorld.PersistentLevel.Main_Sequence.OBJECTIVES_MARKERS.SeqEvent_RemoteEvent_5653",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "Set_Objective_FuelCells",
+     "Originator": null,
+     "ObjComment": "Set_Objective_FuelCells",
+     "MaxTriggerCount": 0,
+     "depth": 1
+    }
+   ]
+  },
+  {
+   "action": "A5_TRY_BASE_m.TheWorld.PersistentLevel.Main_Sequence.OBJECTIVES_MARKERS.SeqAct_TnSetCurrentObjective_255",
+   "sublevel": "A5_TRY_BASE_m",
+   "key": "A5_TRY_OBJ5",
+   "key_raw": "A5_TRY_OBJ5",
+   "clears_objective": false,
+   "bank_index": 4,
+   "comment": "FIND A WAY THROUGH DEBRIS BLOCKING PATH",
+   "text": {
+    "int": "Find a way through debris blocking path",
+    "fra": "Franchir les d\u00e9bris bloquant le passage",
+    "int_all": null,
+    "fra_all": null
+   },
+   "properties": {
+    "bCallHandler": true,
+    "bAutoActivateOutputLinks": true,
+    "PlayerIndex": -1
+   },
+   "fired_by_direct": [
+    {
+     "op": "A5_TRY_BASE_m.TheWorld.PersistentLevel.Main_Sequence.OBJECTIVES_MARKERS.SeqEvent_RemoteEvent_6245",
+     "class": "SeqEvent_RemoteEvent",
+     "output": "Out"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "A5_TRY_BASE_m.TheWorld.PersistentLevel.Main_Sequence.OBJECTIVES_MARKERS.SeqEvent_RemoteEvent_6245",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "Set_Objective_FindWayThroughDebris",
+     "Originator": null,
+     "ObjComment": "Set_Objective_FindWayThroughDebris",
+     "MaxTriggerCount": 0,
+     "depth": 1
+    }
+   ]
+  },
+  {
+   "action": "A5_TRY_BASE_m.TheWorld.PersistentLevel.Main_Sequence.OBJECTIVES_MARKERS.SeqAct_TnSetCurrentObjective_3467",
+   "sublevel": "A5_TRY_BASE_m",
+   "key": "A5_TRY_OBJ6",
+   "key_raw": "A5_TRY_OBJ6",
+   "clears_objective": false,
+   "bank_index": 5,
+   "comment": "USE ENERGON BATTERIES TO OVERLOAD SHOULDER-MOUNTED CANNONS",
+   "text": {
+    "int": "Shoot the energon batteries to overheat shoulder cannons",
+    "fra": "Tirer sur les batteries d'\u00e9nergon pour surcharger les canons",
+    "int_all": null,
+    "fra_all": null
+   },
+   "properties": {
+    "bCallHandler": true,
+    "bAutoActivateOutputLinks": true,
+    "PlayerIndex": -1
+   },
+   "fired_by_direct": [
+    {
+     "op": "A5_TRY_BASE_m.TheWorld.PersistentLevel.Main_Sequence.OBJECTIVES_MARKERS.SeqEvent_RemoteEvent_2536",
+     "class": "SeqEvent_RemoteEvent",
+     "output": "Out"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "A5_TRY_BASE_m.TheWorld.PersistentLevel.Main_Sequence.OBJECTIVES_MARKERS.SeqEvent_RemoteEvent_2536",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "Set_Objective_OverloadShoulderCannons",
+     "Originator": null,
+     "ObjComment": "Set_Objective_OverloadShoulderCannons",
+     "MaxTriggerCount": 0,
+     "depth": 1
+    }
+   ]
+  },
+  {
+   "action": "A5_TRY_BASE_m.TheWorld.PersistentLevel.Main_Sequence.OBJECTIVES_MARKERS.SeqAct_TnSetCurrentObjective_4063",
+   "sublevel": "A5_TRY_BASE_m",
+   "key": "A5_TRY_OBJ3",
+   "key_raw": "A5_TRY_OBJ3",
+   "clears_objective": false,
+   "bank_index": 2,
+   "comment": "ATTACK OVER HEATING CHEST PANELS",
+   "text": {
+    "int": "Damage Trypticon's chest coils",
+    "fra": "Endommager les dissipateurs de Trypticon",
+    "int_all": null,
+    "fra_all": null
+   },
+   "properties": {
+    "bCallHandler": true,
+    "bAutoActivateOutputLinks": true,
+    "PlayerIndex": -1
+   },
+   "fired_by_direct": [
+    {
+     "op": "A5_TRY_BASE_m.TheWorld.PersistentLevel.Main_Sequence.OBJECTIVES_MARKERS.SeqEvent_RemoteEvent_3226",
+     "class": "SeqEvent_RemoteEvent",
+     "output": "Out"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "A5_TRY_BASE_m.TheWorld.PersistentLevel.Main_Sequence.OBJECTIVES_MARKERS.SeqEvent_RemoteEvent_3226",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "Set_Objective_ChestPanels",
+     "Originator": null,
+     "ObjComment": "Set_Objective_ChestPanels",
+     "MaxTriggerCount": 0,
+     "depth": 1
+    }
+   ]
+  },
+  {
+   "action": "A5_TRY_BASE_m.TheWorld.PersistentLevel.Main_Sequence.OBJECTIVES_MARKERS.SeqAct_TnSetCurrentObjective_6988",
+   "sublevel": "A5_TRY_BASE_m",
+   "key": "A5_TRY_OBJ1",
+   "key_raw": "A5_TRY_OBJ1",
+   "clears_objective": false,
+   "bank_index": 0,
+   "comment": "INSPECT THE CRASH SITE",
+   "text": {
+    "int": "Inspect the crash site",
+    "fra": "Inspecter le site du crash",
+    "int_all": null,
+    "fra_all": null
+   },
+   "properties": {
+    "bCallHandler": true,
+    "bAutoActivateOutputLinks": true,
+    "PlayerIndex": -1
+   },
+   "fired_by_direct": [
+    {
+     "op": "A5_TRY_BASE_m.TheWorld.PersistentLevel.Main_Sequence.OBJECTIVES_MARKERS.SeqEvent_RemoteEvent_7787",
+     "class": "SeqEvent_RemoteEvent",
+     "output": "Out"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "A5_TRY_BASE_m.TheWorld.PersistentLevel.Main_Sequence.OBJECTIVES_MARKERS.SeqEvent_RemoteEvent_7787",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "Set_Objective_InspectCrash",
+     "Originator": null,
+     "ObjComment": "Set_Objective_InspectCrash",
+     "MaxTriggerCount": 0,
+     "depth": 1
+    }
+   ]
+  },
+  {
+   "action": "A5_TRY_BASE_m.TheWorld.PersistentLevel.Main_Sequence.OBJECTIVES_MARKERS.SeqAct_TnSetCurrentObjective_734",
+   "sublevel": "A5_TRY_BASE_m",
+   "key": null,
+   "key_raw": null,
+   "clears_objective": true,
+   "bank_index": null,
+   "comment": "Objective None",
+   "text": null,
+   "properties": {
+    "bCallHandler": true,
+    "bAutoActivateOutputLinks": true,
+    "PlayerIndex": -1
+   },
+   "fired_by_direct": [
+    {
+     "op": "A5_TRY_BASE_m.TheWorld.PersistentLevel.Main_Sequence.OBJECTIVES_MARKERS.SeqEvent_RemoteEvent_2245",
+     "class": "SeqEvent_RemoteEvent",
+     "output": "Out"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "A5_TRY_BASE_m.TheWorld.PersistentLevel.Main_Sequence.OBJECTIVES_MARKERS.SeqEvent_RemoteEvent_2245",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "Set_Objective_None",
+     "Originator": null,
+     "ObjComment": "Set_Objective_None",
+     "MaxTriggerCount": 0,
+     "depth": 1
+    }
+   ]
+  },
+  {
+   "action": "A5_TRY_BASE_m.TheWorld.PersistentLevel.Main_Sequence.OBJECTIVES_MARKERS.SeqAct_TnSetCurrentObjective_9049",
+   "sublevel": "A5_TRY_BASE_m",
+   "key": "A5_TRY_OBJ2",
+   "key_raw": "A5_TRY_OBJ2",
+   "clears_objective": false,
+   "bank_index": 1,
+   "comment": "FIND A WAY TO OVERLOAD SHOULDER-MOUNTED CANNONS",
+   "text": {
+    "int": "Find a way to overload shoulder cannons",
+    "fra": "Trouver un moyen de surcharger les canons d'\u00e9paule",
+    "int_all": null,
+    "fra_all": null
+   },
+   "properties": {
+    "bCallHandler": true,
+    "bAutoActivateOutputLinks": true,
+    "PlayerIndex": -1
+   },
+   "fired_by_direct": [
+    {
+     "op": "A5_TRY_BASE_m.TheWorld.PersistentLevel.Main_Sequence.OBJECTIVES_MARKERS.SeqEvent_RemoteEvent_6377",
+     "class": "SeqEvent_RemoteEvent",
+     "output": "Out"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "A5_TRY_BASE_m.TheWorld.PersistentLevel.Main_Sequence.OBJECTIVES_MARKERS.SeqEvent_RemoteEvent_6377",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "Set_Objective_ShoulderCannons",
+     "Originator": null,
+     "ObjComment": "Set_Objective_ShoulderCannons",
+     "MaxTriggerCount": 0,
+     "depth": 1
+    }
+   ]
+  }
+ ],
+ "keys_without_int_text": []
+}

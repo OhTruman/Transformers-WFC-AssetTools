@@ -1,0 +1,618 @@
+{
+ "map": "A1_IAC",
+ "generated_by": "AssetTools/scripts/wfc/vs_objectives.py",
+ "source": "authored.db TnWorldInfo._ObjectiveBank + SeqAct_TnSetCurrentObjective; text: ExtractedAssets/config/Coalesced_{int,FRA}.json [Objectives] of TransGame.int / .fra; semantics RE CAMPAIGN_HUD_OBJECTIVES_RE.md (b8f071e)",
+ "counts": {
+  "bank_keys": 7,
+  "setters": 14,
+  "setters_with_key_in_bank": 7,
+  "setters_key_not_in_bank": 0,
+  "setters_clearing": 7,
+  "setters_with_firing_event": 14,
+  "bank_keys_never_set": 0,
+  "keys_without_int_text": 0,
+  "banks_found": 1
+ },
+ "bank_owner": "A1_IAC_Base_m.TheWorld.PersistentLevel.TnWorldInfo_10695",
+ "other_banks": {},
+ "bank": [
+  {
+   "index": 0,
+   "key": "A1_OBJ1",
+   "key_raw": "A1_OBJ1",
+   "text": {
+    "int": "Activate Planetary Guns",
+    "fra": "Activer les canons plan\u00e9taires",
+    "int_all": null,
+    "fra_all": null
+   },
+   "set_by": [
+    "A1_IAC_Base_m.TheWorld.PersistentLevel.Main_Sequence.Objectives.SeqAct_TnSetCurrentObjective_3726"
+   ]
+  },
+  {
+   "index": 1,
+   "key": "A1_OBJ2",
+   "key_raw": "A1_OBJ2",
+   "text": {
+    "int": "Reach Iacon Speedway",
+    "fra": "Atteindre la voie rapide de Iacon",
+    "int_all": null,
+    "fra_all": null
+   },
+   "set_by": [
+    "A1_IAC_Base_m.TheWorld.PersistentLevel.Main_Sequence.Objectives.SeqAct_TnSetCurrentObjective_12486"
+   ]
+  },
+  {
+   "index": 2,
+   "key": "A1_OBJ3",
+   "key_raw": "A1_OBJ3",
+   "text": {
+    "int": "Get to the Decagon",
+    "fra": "Aller au Decagon",
+    "int_all": null,
+    "fra_all": null
+   },
+   "set_by": [
+    "A1_IAC_Base_m.TheWorld.PersistentLevel.Main_Sequence.Objectives.SeqAct_TnSetCurrentObjective_12464"
+   ]
+  },
+  {
+   "index": 3,
+   "key": "A1_OBJ4",
+   "key_raw": "A1_OBJ4",
+   "text": {
+    "int": "Restore the Communication Grid",
+    "fra": "R\u00e9tablir les communications",
+    "int_all": null,
+    "fra_all": null
+   },
+   "set_by": [
+    "A1_IAC_Base_m.TheWorld.PersistentLevel.Main_Sequence.Objectives.SeqAct_TnSetCurrentObjective_6595"
+   ]
+  },
+  {
+   "index": 4,
+   "key": "A1_OBJ5",
+   "key_raw": "A1_OBJ5",
+   "text": {
+    "int": "Get to the broadcast room",
+    "fra": "Atteindre la salle des transmissions",
+    "int_all": null,
+    "fra_all": null
+   },
+   "set_by": [
+    "A1_IAC_Base_m.TheWorld.PersistentLevel.Main_Sequence.Objectives.SeqAct_TnSetCurrentObjective_15896"
+   ]
+  },
+  {
+   "index": 5,
+   "key": "A1_OBJ6",
+   "key_raw": "A1_OBJ6",
+   "text": {
+    "int": "Defeat Starscream",
+    "fra": "Battre Starscream",
+    "int_all": null,
+    "fra_all": null
+   },
+   "set_by": [
+    "A1_IAC_Base_m.TheWorld.PersistentLevel.Main_Sequence.Objectives.SeqAct_TnSetCurrentObjective_1657"
+   ]
+  },
+  {
+   "index": 6,
+   "key": "A1_OBJ7",
+   "key_raw": "A1_OBJ7",
+   "text": {
+    "int": "Defeat Decepticon war machine",
+    "fra": "Battre la machine de guerre Decepticon",
+    "int_all": null,
+    "fra_all": null
+   },
+   "set_by": [
+    "A1_IAC_Base_m.TheWorld.PersistentLevel.Main_Sequence.Objectives.SeqAct_TnSetCurrentObjective_10328"
+   ]
+  }
+ ],
+ "setters": [
+  {
+   "action": "A1_IAC_Base_m.TheWorld.PersistentLevel.Main_Sequence.Objectives.SeqAct_TnSetCurrentObjective_10328",
+   "sublevel": "A1_IAC_Base_m",
+   "key": "A1_OBJ7",
+   "key_raw": "A1_OBJ7",
+   "clears_objective": false,
+   "bank_index": 6,
+   "comment": "Destroy War Machine",
+   "text": {
+    "int": "Defeat Decepticon war machine",
+    "fra": "Battre la machine de guerre Decepticon",
+    "int_all": null,
+    "fra_all": null
+   },
+   "properties": {
+    "bCallHandler": true,
+    "bAutoActivateOutputLinks": true,
+    "PlayerIndex": -1
+   },
+   "fired_by_direct": [
+    {
+     "op": "A1_IAC_Base_m.TheWorld.PersistentLevel.Main_Sequence.Objectives.SeqEvent_RemoteEvent_5930",
+     "class": "SeqEvent_RemoteEvent",
+     "output": "Out"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "A1_IAC_Base_m.TheWorld.PersistentLevel.Main_Sequence.Objectives.SeqEvent_RemoteEvent_5930",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "SetDestroyWarMachine",
+     "Originator": null,
+     "ObjComment": "SetDestroyWarMachine",
+     "MaxTriggerCount": 1,
+     "depth": 1
+    }
+   ]
+  },
+  {
+   "action": "A1_IAC_Base_m.TheWorld.PersistentLevel.Main_Sequence.Objectives.SeqAct_TnSetCurrentObjective_12464",
+   "sublevel": "A1_IAC_Base_m",
+   "key": "A1_OBJ3",
+   "key_raw": "A1_OBJ3",
+   "clears_objective": false,
+   "bank_index": 2,
+   "comment": "Get to the Decagon",
+   "text": {
+    "int": "Get to the Decagon",
+    "fra": "Aller au Decagon",
+    "int_all": null,
+    "fra_all": null
+   },
+   "properties": {
+    "bCallHandler": true,
+    "bAutoActivateOutputLinks": true,
+    "PlayerIndex": -1
+   },
+   "fired_by_direct": [
+    {
+     "op": "A1_IAC_Base_m.TheWorld.PersistentLevel.Main_Sequence.Objectives.SeqEvent_RemoteEvent_1665",
+     "class": "SeqEvent_RemoteEvent",
+     "output": "Out"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "A1_IAC_Base_m.TheWorld.PersistentLevel.Main_Sequence.Objectives.SeqEvent_RemoteEvent_1665",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "SetGetToTheDecagon",
+     "Originator": null,
+     "ObjComment": "SetGetToTheDecagon",
+     "MaxTriggerCount": 0,
+     "depth": 1
+    }
+   ]
+  },
+  {
+   "action": "A1_IAC_Base_m.TheWorld.PersistentLevel.Main_Sequence.Objectives.SeqAct_TnSetCurrentObjective_12486",
+   "sublevel": "A1_IAC_Base_m",
+   "key": "A1_OBJ2",
+   "key_raw": "A1_OBJ2",
+   "clears_objective": false,
+   "bank_index": 1,
+   "comment": "Investigate Comets",
+   "text": {
+    "int": "Reach Iacon Speedway",
+    "fra": "Atteindre la voie rapide de Iacon",
+    "int_all": null,
+    "fra_all": null
+   },
+   "properties": {
+    "bCallHandler": true,
+    "bAutoActivateOutputLinks": true,
+    "PlayerIndex": -1
+   },
+   "fired_by_direct": [
+    {
+     "op": "A1_IAC_Base_m.TheWorld.PersistentLevel.Main_Sequence.Objectives.SeqEvent_RemoteEvent_5834",
+     "class": "SeqEvent_RemoteEvent",
+     "output": "Out"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "A1_IAC_Base_m.TheWorld.PersistentLevel.Main_Sequence.Objectives.SeqEvent_RemoteEvent_5834",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "SetReachIaconSpeedway",
+     "Originator": null,
+     "ObjComment": "SetReachIaconSpeedway",
+     "MaxTriggerCount": 0,
+     "depth": 1
+    }
+   ]
+  },
+  {
+   "action": "A1_IAC_Base_m.TheWorld.PersistentLevel.Main_Sequence.Objectives.SeqAct_TnSetCurrentObjective_13708",
+   "sublevel": "A1_IAC_Base_m",
+   "key": null,
+   "key_raw": " ",
+   "clears_objective": true,
+   "bank_index": null,
+   "comment": " ",
+   "text": null,
+   "properties": {
+    "bCallHandler": true,
+    "bAutoActivateOutputLinks": true,
+    "PlayerIndex": -1
+   },
+   "fired_by_direct": [
+    {
+     "op": "A1_IAC_Base_m.TheWorld.PersistentLevel.Main_Sequence.Objectives.SeqEvent_RemoteEvent_11932",
+     "class": "SeqEvent_RemoteEvent",
+     "output": "Out"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "A1_IAC_Base_m.TheWorld.PersistentLevel.Main_Sequence.Objectives.SeqEvent_RemoteEvent_11932",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "RemoveGetToTheCommandRoom",
+     "Originator": null,
+     "ObjComment": "RemoveGetToTheCommandRoom",
+     "MaxTriggerCount": 1,
+     "depth": 1
+    }
+   ]
+  },
+  {
+   "action": "A1_IAC_Base_m.TheWorld.PersistentLevel.Main_Sequence.Objectives.SeqAct_TnSetCurrentObjective_15896",
+   "sublevel": "A1_IAC_Base_m",
+   "key": "A1_OBJ5",
+   "key_raw": "A1_OBJ5",
+   "clears_objective": false,
+   "bank_index": 4,
+   "comment": "Get to the Command Room",
+   "text": {
+    "int": "Get to the broadcast room",
+    "fra": "Atteindre la salle des transmissions",
+    "int_all": null,
+    "fra_all": null
+   },
+   "properties": {
+    "bCallHandler": true,
+    "bAutoActivateOutputLinks": true,
+    "PlayerIndex": -1
+   },
+   "fired_by_direct": [
+    {
+     "op": "A1_IAC_Base_m.TheWorld.PersistentLevel.Main_Sequence.Objectives.SeqEvent_RemoteEvent_1434",
+     "class": "SeqEvent_RemoteEvent",
+     "output": "Out"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "A1_IAC_Base_m.TheWorld.PersistentLevel.Main_Sequence.Objectives.SeqEvent_RemoteEvent_1434",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "SetGetToTheCommandRoom",
+     "Originator": null,
+     "ObjComment": "SetGetToTheCommandRoom",
+     "MaxTriggerCount": 1,
+     "depth": 1
+    }
+   ]
+  },
+  {
+   "action": "A1_IAC_Base_m.TheWorld.PersistentLevel.Main_Sequence.Objectives.SeqAct_TnSetCurrentObjective_1657",
+   "sublevel": "A1_IAC_Base_m",
+   "key": "A1_OBJ6",
+   "key_raw": "A1_OBJ6",
+   "clears_objective": false,
+   "bank_index": 5,
+   "comment": "Get to the Command Room",
+   "text": {
+    "int": "Defeat Starscream",
+    "fra": "Battre Starscream",
+    "int_all": null,
+    "fra_all": null
+   },
+   "properties": {
+    "bCallHandler": true,
+    "bAutoActivateOutputLinks": true,
+    "PlayerIndex": -1
+   },
+   "fired_by_direct": [
+    {
+     "op": "A1_IAC_Base_m.TheWorld.PersistentLevel.Main_Sequence.Objectives.SeqEvent_RemoteEvent_12211",
+     "class": "SeqEvent_RemoteEvent",
+     "output": "Out"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "A1_IAC_Base_m.TheWorld.PersistentLevel.Main_Sequence.Objectives.SeqEvent_RemoteEvent_12211",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "SetDefeatStarscream",
+     "Originator": null,
+     "ObjComment": "SetDefeatStarscream",
+     "MaxTriggerCount": 1,
+     "depth": 1
+    }
+   ]
+  },
+  {
+   "action": "A1_IAC_Base_m.TheWorld.PersistentLevel.Main_Sequence.Objectives.SeqAct_TnSetCurrentObjective_2909",
+   "sublevel": "A1_IAC_Base_m",
+   "key": null,
+   "key_raw": " ",
+   "clears_objective": true,
+   "bank_index": null,
+   "comment": " ",
+   "text": null,
+   "properties": {
+    "bCallHandler": true,
+    "bAutoActivateOutputLinks": true,
+    "PlayerIndex": -1
+   },
+   "fired_by_direct": [
+    {
+     "op": "A1_IAC_Base_m.TheWorld.PersistentLevel.Main_Sequence.Objectives.SeqEvent_RemoteEvent_10789",
+     "class": "SeqEvent_RemoteEvent",
+     "output": "Out"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "A1_IAC_Base_m.TheWorld.PersistentLevel.Main_Sequence.Objectives.SeqEvent_RemoteEvent_10789",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "DefeatStarscreamComplete",
+     "Originator": null,
+     "ObjComment": "DefeatStarscreamComplete",
+     "MaxTriggerCount": 1,
+     "depth": 1
+    }
+   ]
+  },
+  {
+   "action": "A1_IAC_Base_m.TheWorld.PersistentLevel.Main_Sequence.Objectives.SeqAct_TnSetCurrentObjective_3726",
+   "sublevel": "A1_IAC_Base_m",
+   "key": "A1_OBJ1",
+   "key_raw": "A1_OBJ1",
+   "clears_objective": false,
+   "bank_index": 0,
+   "comment": "Activate Planetary Guns",
+   "text": {
+    "int": "Activate Planetary Guns",
+    "fra": "Activer les canons plan\u00e9taires",
+    "int_all": null,
+    "fra_all": null
+   },
+   "properties": {
+    "bCallHandler": true,
+    "bAutoActivateOutputLinks": true,
+    "PlayerIndex": -1
+   },
+   "fired_by_direct": [
+    {
+     "op": "A1_IAC_Base_m.TheWorld.PersistentLevel.Main_Sequence.Objectives.SeqEvent_RemoteEvent_8752",
+     "class": "SeqEvent_RemoteEvent",
+     "output": "Out"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "A1_IAC_Base_m.TheWorld.PersistentLevel.Main_Sequence.Objectives.SeqEvent_RemoteEvent_8752",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "SetPlanetrayGunObjective",
+     "Originator": null,
+     "ObjComment": "SetPlanetrayGunObjective",
+     "MaxTriggerCount": 0,
+     "depth": 1
+    }
+   ]
+  },
+  {
+   "action": "A1_IAC_Base_m.TheWorld.PersistentLevel.Main_Sequence.Objectives.SeqAct_TnSetCurrentObjective_3907",
+   "sublevel": "A1_IAC_Base_m",
+   "key": null,
+   "key_raw": " ",
+   "clears_objective": true,
+   "bank_index": null,
+   "comment": " ",
+   "text": null,
+   "properties": {
+    "bCallHandler": true,
+    "bAutoActivateOutputLinks": true,
+    "PlayerIndex": -1
+   },
+   "fired_by_direct": [
+    {
+     "op": "A1_IAC_Base_m.TheWorld.PersistentLevel.Main_Sequence.Objectives.SeqEvent_RemoteEvent_15784",
+     "class": "SeqEvent_RemoteEvent",
+     "output": "Out"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "A1_IAC_Base_m.TheWorld.PersistentLevel.Main_Sequence.Objectives.SeqEvent_RemoteEvent_15784",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "ReachIaconSpeedwayComplete",
+     "Originator": null,
+     "ObjComment": "ReachIaconSpeedwayComplete",
+     "MaxTriggerCount": 0,
+     "depth": 1
+    }
+   ]
+  },
+  {
+   "action": "A1_IAC_Base_m.TheWorld.PersistentLevel.Main_Sequence.Objectives.SeqAct_TnSetCurrentObjective_4166",
+   "sublevel": "A1_IAC_Base_m",
+   "key": null,
+   "key_raw": " ",
+   "clears_objective": true,
+   "bank_index": null,
+   "comment": " ",
+   "text": null,
+   "properties": {
+    "bCallHandler": true,
+    "bAutoActivateOutputLinks": true,
+    "PlayerIndex": -1
+   },
+   "fired_by_direct": [
+    {
+     "op": "A1_IAC_Base_m.TheWorld.PersistentLevel.Main_Sequence.Objectives.SeqEvent_RemoteEvent_774",
+     "class": "SeqEvent_RemoteEvent",
+     "output": "Out"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "A1_IAC_Base_m.TheWorld.PersistentLevel.Main_Sequence.Objectives.SeqEvent_RemoteEvent_774",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "RemoveGetToTheDecagon",
+     "Originator": null,
+     "ObjComment": "RemoveGetToTheDecagon",
+     "MaxTriggerCount": 0,
+     "depth": 1
+    }
+   ]
+  },
+  {
+   "action": "A1_IAC_Base_m.TheWorld.PersistentLevel.Main_Sequence.Objectives.SeqAct_TnSetCurrentObjective_4501",
+   "sublevel": "A1_IAC_Base_m",
+   "key": null,
+   "key_raw": " ",
+   "clears_objective": true,
+   "bank_index": null,
+   "comment": " ",
+   "text": null,
+   "properties": {
+    "bCallHandler": true,
+    "bAutoActivateOutputLinks": true,
+    "PlayerIndex": -1
+   },
+   "fired_by_direct": [
+    {
+     "op": "A1_IAC_Base_m.TheWorld.PersistentLevel.Main_Sequence.Objectives.SeqEvent_RemoteEvent_7979",
+     "class": "SeqEvent_RemoteEvent",
+     "output": "Out"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "A1_IAC_Base_m.TheWorld.PersistentLevel.Main_Sequence.Objectives.SeqEvent_RemoteEvent_7979",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "PlanetrayGunObjectiveComplete",
+     "Originator": null,
+     "ObjComment": "PlanetrayGunObjectiveComplete",
+     "MaxTriggerCount": 0,
+     "depth": 1
+    }
+   ]
+  },
+  {
+   "action": "A1_IAC_Base_m.TheWorld.PersistentLevel.Main_Sequence.Objectives.SeqAct_TnSetCurrentObjective_4578",
+   "sublevel": "A1_IAC_Base_m",
+   "key": null,
+   "key_raw": " ",
+   "clears_objective": true,
+   "bank_index": null,
+   "comment": null,
+   "text": null,
+   "properties": {
+    "bCallHandler": true,
+    "bAutoActivateOutputLinks": true,
+    "PlayerIndex": -1
+   },
+   "fired_by_direct": [
+    {
+     "op": "A1_IAC_Base_m.TheWorld.PersistentLevel.Main_Sequence.Objectives.SeqEvent_RemoteEvent_6481",
+     "class": "SeqEvent_RemoteEvent",
+     "output": "Out"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "A1_IAC_Base_m.TheWorld.PersistentLevel.Main_Sequence.Objectives.SeqEvent_RemoteEvent_6481",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "RemoveDestroyWarMachine",
+     "Originator": null,
+     "ObjComment": "RemoveDestroyWarMachine",
+     "MaxTriggerCount": 1,
+     "depth": 1
+    }
+   ]
+  },
+  {
+   "action": "A1_IAC_Base_m.TheWorld.PersistentLevel.Main_Sequence.Objectives.SeqAct_TnSetCurrentObjective_527",
+   "sublevel": "A1_IAC_Base_m",
+   "key": null,
+   "key_raw": " ",
+   "clears_objective": true,
+   "bank_index": null,
+   "comment": " ",
+   "text": null,
+   "properties": {
+    "bCallHandler": true,
+    "bAutoActivateOutputLinks": true,
+    "PlayerIndex": -1
+   },
+   "fired_by_direct": [
+    {
+     "op": "A1_IAC_Base_m.TheWorld.PersistentLevel.Main_Sequence.Objectives.SeqEvent_RemoteEvent_8090",
+     "class": "SeqEvent_RemoteEvent",
+     "output": "Out"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "A1_IAC_Base_m.TheWorld.PersistentLevel.Main_Sequence.Objectives.SeqEvent_RemoteEvent_8090",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "RemoveRestoreComGrid",
+     "Originator": null,
+     "ObjComment": "RemoveRestoreComGrid",
+     "MaxTriggerCount": 1,
+     "depth": 1
+    }
+   ]
+  },
+  {
+   "action": "A1_IAC_Base_m.TheWorld.PersistentLevel.Main_Sequence.Objectives.SeqAct_TnSetCurrentObjective_6595",
+   "sublevel": "A1_IAC_Base_m",
+   "key": "A1_OBJ4",
+   "key_raw": "A1_OBJ4",
+   "clears_objective": false,
+   "bank_index": 3,
+   "comment": "Get to the Command Room",
+   "text": {
+    "int": "Restore the Communication Grid",
+    "fra": "R\u00e9tablir les communications",
+    "int_all": null,
+    "fra_all": null
+   },
+   "properties": {
+    "bCallHandler": true,
+    "bAutoActivateOutputLinks": true,
+    "PlayerIndex": -1
+   },
+   "fired_by_direct": [
+    {
+     "op": "A1_IAC_Base_m.TheWorld.PersistentLevel.Main_Sequence.Objectives.SeqEvent_RemoteEvent_7651",
+     "class": "SeqEvent_RemoteEvent",
+     "output": "Out"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "A1_IAC_Base_m.TheWorld.PersistentLevel.Main_Sequence.Objectives.SeqEvent_RemoteEvent_7651",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "SetRestoreComGrid",
+     "Originator": null,
+     "ObjComment": "SetRestoreComGrid",
+     "MaxTriggerCount": 1,
+     "depth": 1
+    }
+   ]
+  }
+ ],
+ "keys_without_int_text": []
+}

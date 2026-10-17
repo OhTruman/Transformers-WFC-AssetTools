@@ -1,0 +1,222 @@
+{
+ "map": "D5_OME",
+ "generated_by": "AssetTools/scripts/wfc/vs_objectives.py",
+ "source": "authored.db TnWorldInfo._ObjectiveBank + SeqAct_TnSetCurrentObjective; text: ExtractedAssets/config/Coalesced_{int,FRA}.json [Objectives] of TransGame.int / .fra; semantics RE CAMPAIGN_HUD_OBJECTIVES_RE.md (b8f071e)",
+ "counts": {
+  "bank_keys": 3,
+  "setters": 4,
+  "setters_with_key_in_bank": 3,
+  "setters_key_not_in_bank": 0,
+  "setters_clearing": 1,
+  "setters_with_firing_event": 4,
+  "bank_keys_never_set": 0,
+  "keys_without_int_text": 0,
+  "banks_found": 1
+ },
+ "bank_owner": "D5_OME_BASE_m.TheWorld.PersistentLevel.TnWorldInfo_11029",
+ "other_banks": {},
+ "bank": [
+  {
+   "index": 0,
+   "key": "D5_OME_OBJ1",
+   "key_raw": "D5_OME_OBJ1",
+   "text": {
+    "int": "Destroy Omega Supreme's turrets",
+    "fra": "D\u00e9truire les tourelles d'Omega Supreme",
+    "int_all": null,
+    "fra_all": null
+   },
+   "set_by": [
+    "D5_OME_BASE_m.TheWorld.PersistentLevel.Main_Sequence.OBJECTIVES_MARKERS.SeqAct_TnSetCurrentObjective_255"
+   ]
+  },
+  {
+   "index": 1,
+   "key": "D5_OME_OBJ2",
+   "key_raw": "D5_OME_OBJ2",
+   "text": {
+    "int": "Corrupt batteries to defeat Omega Supreme",
+    "fra": "Corrompre les batteries",
+    "int_all": null,
+    "fra_all": null
+   },
+   "set_by": [
+    "D5_OME_BASE_m.TheWorld.PersistentLevel.Main_Sequence.OBJECTIVES_MARKERS.SeqAct_TnSetCurrentObjective_3467"
+   ]
+  },
+  {
+   "index": 2,
+   "key": "D5_OME_OBJ3",
+   "key_raw": "D5_OME_OBJ3",
+   "text": {
+    "int": "Destroy armor protecting Omega Supreme's chest",
+    "fra": "D\u00e9truire le plastron d'Omega Supreme",
+    "int_all": null,
+    "fra_all": null
+   },
+   "set_by": [
+    "D5_OME_BASE_m.TheWorld.PersistentLevel.Main_Sequence.OBJECTIVES_MARKERS.SeqAct_TnSetCurrentObjective_4063"
+   ]
+  }
+ ],
+ "setters": [
+  {
+   "action": "D5_OME_BASE_m.TheWorld.PersistentLevel.Main_Sequence.OBJECTIVES_MARKERS.SeqAct_TnSetCurrentObjective_255",
+   "sublevel": "D5_OME_BASE_m",
+   "key": "D5_OME_OBJ1",
+   "key_raw": "D5_OME_OBJ1",
+   "clears_objective": false,
+   "bank_index": 0,
+   "comment": "DESTROY OMEGA'S TURRETS",
+   "text": {
+    "int": "Destroy Omega Supreme's turrets",
+    "fra": "D\u00e9truire les tourelles d'Omega Supreme",
+    "int_all": null,
+    "fra_all": null
+   },
+   "properties": {
+    "bCallHandler": true,
+    "bAutoActivateOutputLinks": true,
+    "PlayerIndex": -1
+   },
+   "fired_by_direct": [
+    {
+     "op": "D5_OME_BASE_m.TheWorld.PersistentLevel.Main_Sequence.OBJECTIVES_MARKERS.SeqEvent_RemoteEvent_6245",
+     "class": "SeqEvent_RemoteEvent",
+     "output": "Out"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "D5_OME_BASE_m.TheWorld.PersistentLevel.Main_Sequence.OBJECTIVES_MARKERS.SeqEvent_RemoteEvent_6245",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "Set_Objective_DestroyTurrets",
+     "Originator": null,
+     "ObjComment": "Set_Objective_DestroyTurrets",
+     "MaxTriggerCount": 1,
+     "depth": 1
+    }
+   ]
+  },
+  {
+   "action": "D5_OME_BASE_m.TheWorld.PersistentLevel.Main_Sequence.OBJECTIVES_MARKERS.SeqAct_TnSetCurrentObjective_3467",
+   "sublevel": "D5_OME_BASE_m",
+   "key": "D5_OME_OBJ2",
+   "key_raw": "D5_OME_OBJ2",
+   "clears_objective": false,
+   "bank_index": 1,
+   "comment": "CORRUPT BATTERIES TO DEFEAT OMEGA",
+   "text": {
+    "int": "Corrupt batteries to defeat Omega Supreme",
+    "fra": "Corrompre les batteries",
+    "int_all": null,
+    "fra_all": null
+   },
+   "properties": {
+    "bCallHandler": true,
+    "bAutoActivateOutputLinks": true,
+    "PlayerIndex": -1
+   },
+   "fired_by_direct": [
+    {
+     "op": "D5_OME_BASE_m.TheWorld.PersistentLevel.Main_Sequence.OBJECTIVES_MARKERS.SeqEvent_RemoteEvent_2536",
+     "class": "SeqEvent_RemoteEvent",
+     "output": "Out"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "D5_OME_BASE_m.TheWorld.PersistentLevel.Main_Sequence.OBJECTIVES_MARKERS.SeqEvent_RemoteEvent_2536",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "Set_Objective_CorruptBatteries",
+     "Originator": null,
+     "ObjComment": "Set_Objective_CorruptBatteries",
+     "MaxTriggerCount": 1,
+     "depth": 1
+    }
+   ]
+  },
+  {
+   "action": "D5_OME_BASE_m.TheWorld.PersistentLevel.Main_Sequence.OBJECTIVES_MARKERS.SeqAct_TnSetCurrentObjective_4063",
+   "sublevel": "D5_OME_BASE_m",
+   "key": "D5_OME_OBJ3",
+   "key_raw": "D5_OME_OBJ3",
+   "clears_objective": false,
+   "bank_index": 2,
+   "comment": "DESTROY ARMOR PROTECTING CHEST",
+   "text": {
+    "int": "Destroy armor protecting Omega Supreme's chest",
+    "fra": "D\u00e9truire le plastron d'Omega Supreme",
+    "int_all": null,
+    "fra_all": null
+   },
+   "properties": {
+    "bCallHandler": true,
+    "bAutoActivateOutputLinks": true,
+    "PlayerIndex": -1
+   },
+   "fired_by_direct": [
+    {
+     "op": "D5_OME_BASE_m.TheWorld.PersistentLevel.Main_Sequence.OBJECTIVES_MARKERS.SeqAct_Delay_1300",
+     "class": "SeqAct_Delay",
+     "output": "Finished"
+    },
+    {
+     "op": "D5_OME_BASE_m.TheWorld.PersistentLevel.Main_Sequence.OBJECTIVES_MARKERS.SeqAct_Delay_1300",
+     "class": "SeqAct_Delay",
+     "output": "Aborted"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "D5_OME_BASE_m.TheWorld.PersistentLevel.Main_Sequence.OBJECTIVES_MARKERS.SeqEvent_RemoteEvent_3226",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "Set_Objective_DestroyChestArmor",
+     "Originator": null,
+     "ObjComment": "Set_Objective_DestroyChestArmor",
+     "MaxTriggerCount": 1,
+     "depth": 2
+    }
+   ]
+  },
+  {
+   "action": "D5_OME_BASE_m.TheWorld.PersistentLevel.Main_Sequence.OBJECTIVES_MARKERS.SeqAct_TnSetCurrentObjective_734",
+   "sublevel": "D5_OME_BASE_m",
+   "key": null,
+   "key_raw": null,
+   "clears_objective": true,
+   "bank_index": null,
+   "comment": "Objective None",
+   "text": null,
+   "properties": {
+    "bCallHandler": true,
+    "bAutoActivateOutputLinks": true,
+    "PlayerIndex": -1
+   },
+   "fired_by_direct": [
+    {
+     "op": "D5_OME_BASE_m.TheWorld.PersistentLevel.Main_Sequence.OBJECTIVES_MARKERS.SeqAct_Delay_12439",
+     "class": "SeqAct_Delay",
+     "output": "Finished"
+    },
+    {
+     "op": "D5_OME_BASE_m.TheWorld.PersistentLevel.Main_Sequence.OBJECTIVES_MARKERS.SeqAct_Delay_12439",
+     "class": "SeqAct_Delay",
+     "output": "Aborted"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "D5_OME_BASE_m.TheWorld.PersistentLevel.Main_Sequence.OBJECTIVES_MARKERS.SeqEvent_RemoteEvent_2245",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "Set_Objective_None",
+     "Originator": null,
+     "ObjComment": "Set_Objective_None",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    }
+   ]
+  }
+ ],
+ "keys_without_int_text": []
+}
