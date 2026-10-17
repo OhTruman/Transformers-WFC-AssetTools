@@ -36,6 +36,8 @@ KINDS = [
      'blank Description read as "clear" (PROVISIONAL); D1 sets one key not in its bank'),
     ('FaceFX', '`ExtractedAssets/content/**/*.fxa` (+ `work/fxa/*.csv`)', 'work/fxa/fxa_parse.py, fxa_proof.py',
      'CAMPAIGN_FACEFX_RE.md (+ RE FACEFX_BONE_BLEND_RE.md)', 'visual check waits for Gameplay\'s hook; Trypticon correlation is a metric limit (PROVISIONAL)'),
+    ('Collision physmats', '`manifests/maps/<ch>/collision_{weapon,pawn}_physmat.json`', 'collision_physmat.py', 'MP_COLLISION_PHYSMAT.md',
+     'triangles without an authored PhysMaterial fall to the engine default (Metal), listed; simple-hull rule PROVISIONAL'),
     ('Materials for rendering', '`work/campaign_pilot/<ch>_materials_for_rendering.json`', 'campaign_chapter_doc.py',
      'CAMPAIGN_PIPELINE_SUMMARY.md §2', 'materials not compiled in any Rendering materials_glsl.json need a matc pass'),
 ]

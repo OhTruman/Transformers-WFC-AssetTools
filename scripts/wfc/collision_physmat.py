@@ -16,13 +16,15 @@ Every triangle of every mesh is covered by exactly one run (checked). Rules (the
   none                  nothing authored -> engine default
 Reads physics.json (vs_physics), the cooked level BSP (vs_map's reader), authored.db. Read only on ExtractedAssets.
 
-  python collision_physmat.py <MAP> [...]
+  python collision_physmat.py [--world pawn|weapon] <MAP> [...]
+Campaign chapters (Integration 2026-10-18): run with WFC_VS_ROOT = the campaign VerticalSlice; both worlds (pawn = non-zero-extent
+movement traces, weapon = zero-extent). Output name collision_<world>_physmat.json (MP default world = weapon, unchanged).
 """
 import hashlib, json, os, sys
 import numpy as np
 
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
-from vs_common import VS_SHARED, ROOT, read_glb, load_gltf, accessor, ue_points_to_gltf  # noqa: E402
+from vs_common import VS, ROOT, read_glb, load_gltf, accessor, ue_points_to_gltf  # noqa: E402
 import authored as A  # noqa: E402
 
 AT = os.path.dirname(os.path.dirname(HERE))
@@ -57,8 +59,8 @@ def bsp_order(level_name, mats_physmat):
         for t in tris: pts_all.append(gp[list(t)])
     return runs, (np.array(pts_all, 'f4').reshape(-1, 3) if pts_all else np.zeros((0, 3)))
 
-def run(M):
-    md = os.path.join(VS_SHARED, 'Maps', M); gp = os.path.join(md, 'collision_weapon.glb')
+def run(M, world='weapon'):
+    md = os.path.join(VS, 'Maps', M); gp = os.path.join(md, 'collision_%s.glb' % world)
     j, bins = read_glb(gp); sha = hashlib.sha256(open(gp, 'rb').read()).hexdigest()
     phys = json.load(open(os.path.join(md, 'physics.json'), encoding='utf-8'))
     default = (A.values('Engine.Default__Engine') or {}).get('DefaultPhysMaterialName')
@@ -136,7 +138,7 @@ def run(M):
         for p in phys.get('props') or []:
             if p.get('actor') == n.get('name') and p.get('mesh') == ex['mesh'] and (p.get('flags') or {}).get('PhysMaterialOverride'):
                 overrides[str(ni)] = pidx(p['flags']['PhysMaterialOverride']); break
-    rep = {'map': M, 'generated_by': 'AssetTools/scripts/wfc/collision_physmat.py', 'glb': 'ExtractedAssets/VerticalSlice/Maps/%s/collision_weapon.glb' % M,
+    rep = {'map': M, 'generated_by': 'AssetTools/scripts/wfc/collision_physmat.py', 'glb': os.path.relpath(gp, os.path.dirname(AT)).replace(os.sep, '/'),
            'glb_sha256': sha, 'engine_default_physmat': default, 'physmats': table, 'meshes': out, 'node_overrides': overrides,
            'unresolved': unresolved,
            'checks': {'meshes': len(out), 'coverage_ok': sum(1 for r in out.values() if r['coverage_ok']), 'bsp': bsp_checks,
@@ -146,9 +148,12 @@ def run(M):
     for r in out.values():
         for x in r['runs']: rep['checks']['runs_by_rule'][x[3]] = rep['checks']['runs_by_rule'].get(x[3], 0) + x[1]
     od = os.path.join(AT, 'manifests', 'maps', M); os.makedirs(od, exist_ok=True)
-    json.dump(rep, open(os.path.join(od, 'collision_weapon_physmat.json'), 'w', encoding='utf-8'), indent=1)
+    json.dump(rep, open(os.path.join(od, 'collision_%s_physmat.json' % world), 'w', encoding='utf-8'), indent=1)
     c = rep['checks']; print(M, json.dumps({k: c[k] for k in ('meshes', 'coverage_ok', 'triangles', 'triangles_unresolved', 'runs_by_rule')}),
                              'bsp', {k: (v['positions_match'], v['replayed_triangles'], v['glb_triangles']) for k, v in c['bsp'].items()}, 'physmats', len(table) - 1, flush=True)
 
 if __name__ == '__main__':
-    for M in sys.argv[1:]: run(M)
+    args = sys.argv[1:]; world = 'weapon'
+    if args and args[0].startswith('--world'):
+        world = args[0].split('=', 1)[1] if '=' in args[0] else args[1]; args = args[1:] if '=' in args[0] else args[2:]
+    for M in args: run(M, world)
