@@ -161,6 +161,28 @@ None left: every byte of all 22 files is accounted for by the layout above. Stil
 
 **Not needed for the hook:** the phoneme map (generation only), the class / name hash tables (parser internals).
 
+## Trypticon's low jaw-voice correlation (2026-10-18, PROVISIONAL: "the metric, not the data")
+
+On `DX_TRPTCN_LK004350` the jaw angle correlates only weakly with the voice's RMS envelope.
+
+**What was ruled out:**
+- **Blend rule.** The product rule and the nlerp sum differ by under 0.5°.
+- **Wrong language.** The merged `content/WL_DX_TRPTCN` wave is the *French* twin, byte-identical to `_LOC/FRA`, while Optimus's merged
+  wave is English. With the English `_LOC/int` twin, though, the correlation goes *down*: 0.30 → 0.11. `fxa_proof.py` now prefers
+  `_LOC/int` anyway, because FaceFX is authored to the English line.
+- **Saturation.** The jaw spans 0–35.6°, with only 2 of 272 frames near the maximum.
+- **A timing offset.** The best lag in ±1 s gives 0.24, at −0.6 s.
+- **A different jaw bone.** The .fxa has the standard 14 face bones, with one jaw, `C_Face01_Jaw_XF2`.
+
+**What stands out:**
+- 245 of the 272 frames are voiced. Trypticon's line is one continuous, heavily processed giant-robot voice, so its RMS envelope is
+  nearly flat and cannot track syllables.
+- The larger curve scale (b = 3.02, against 1.44 for Optimus) fits a giant face rather than an error.
+- Optimus's normal voice, with gaps between words, gives 0.53.
+
+**Next test:** a speech-band (300–3,000 Hz) envelope or syllable onsets, or simply the eye once Gameplay's hook runs. Integration has
+deferred it to that point.
+
 ## Rest pose and binding (for Gameplay's hook)
 
 - **Rest-pose files:**
