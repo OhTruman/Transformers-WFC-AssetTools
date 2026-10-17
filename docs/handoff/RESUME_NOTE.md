@@ -1,11 +1,11 @@
-# AssetTools resume note (2026-10-16 21:50)
+# AssetTools resume note (2026-10-17 01:05)
 
-- **Diagnostic chain** (m05 tiled `WFC_M05_TILE=256` + structure audit `WFC_AUDIT_CELL=2`, then map_complete / render_index): done
-  for 8 of 10 chapters (A2, A4, A5, D1, D2, D3A, D3B, D5 both OK; A1 and A3 structure audit OK). **Open:** the m05 retry for A1_IAC
-  and A3_COR (tiled). The 14:59 retry loop in `work/campaign_pilot/run_diag.cmd` logged "done" without running; rerun it with
-  `work/campaign_pilot/run_m05_retry.cmd`. Then regenerate the chapter docs (`campaign_chapter_doc.py`) and the summary.
-- **Deletions:** you approved directly (21:4x) deleting `out/hd/push_full` and `out/hd/full/{in,in_normal,in_dat}`; keep
-  full/*.json. b0-2 / b0-6 / b0-12 are already deleted. hd_dev_full junctions point only at b0-31 and push_m6 (checked).
-- **Feasibility doc** `docs/handoff/CROSSPLAY_PLATFORM_FEASIBILITY.md`: not started (fill-in work after the items above; drop it
-  for any package 6 task).
-- **Particle LOD check:** dropped by Integration (Systems: the original's LOD 1 really is heavier).
+- **Campaign pipeline:** all 10 chapters exported, and the diagnostics are done: m05 over all BSP levels, tiled; structure audit at a
+  2 m cell. Docs: `CAMPAIGN_PILOT_<chapter>.md` and `CAMPAIGN_PIPELINE_SUMMARY.md`. Open: bsp_alignment (D2), pickup discovery
+  (backlog 1), the player-start relaxation (backlog 5).
+- **Deletions:** done; F: about 166 GB free. push_full and the full/in* inputs were deleted after the user's direct OK; b0-15, b0-31,
+  push_m6 and the E archive are kept.
+- **FaceFX RE** (`CAMPAIGN_FACEFX_RE.md`, `work/fxa/fxa_parse.py`, `fxa_proof.py`): all 22 files parse byte-exact; node floats, value
+  scale and timing are proven. Open: the cinematic slope scale, the phonemeId table, and the bone-blend visual check (needs Gameplay's
+  pose hook).
+- **Nothing is running.**
