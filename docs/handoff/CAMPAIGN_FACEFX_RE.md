@@ -138,8 +138,9 @@ None left: every byte of all 22 files is accounted for by the layout above. Stil
    - **These replace the face bones' local transforms** from the body animation (FaceFX overrides the face, it doesn't add to it).
 
 **Expected output, one test frame:**
-- Optimus `DX_OPRIME_LK009275` (the first Optimus Dialogue animation in `RB_Optimus_FaceFX.fxa`; start −0.272 s, end 1.945 s) at t = 1.0 s.
-- `work/fxa/fxa_proof.py Optimus DX_OPRIME_LK009275` writes (reference files: `work/fxa/proof_DX_OPRIME_LK009275_linear.csv` / `_hermite.csv`) the 30 Hz CSV of all 14 bones (pos + quat), linear and Hermite. Gameplay's hook must
+- Optimus `DX_OPRIME_LK002649` (`RB_Optimus_FaceFX.fxa`; start −0.222 s, end 2.869 s; voice wave 1.96 s) at t = 1.0 s. On this line
+  the spec blend gives jaw-angle vs voice-envelope correlation 0.53 (linear) / 0.52 (Hermite), jaw up to 6.6° / 7.6°.
+- `work/fxa/fxa_proof.py Optimus DX_OPRIME_LK002649` writes (reference files: `work/fxa/proof_DX_OPRIME_LK002649_linear.csv` / `_hermite.csv`) the 30 Hz CSV of all 14 bones (pos + quat), linear and Hermite. Gameplay's hook must
   reproduce the CSV row at t = 1.0 within 1e-4 (positions) / 1e-3 (quaternion components) for the linear mode.
 - Pass also by eye: the jaw opens on loud syllables (the timing proof above), and the face is neutral during the lead-in and after
   `end`.
