@@ -50,6 +50,11 @@
 - **Open:**
   - Standing by for Systems' package-7 build data list (overlay files, material sets).
   - Integration will ask for a rerun of `work/matB_review/review.py` on the frozen live tree before the material (B) switch.
+- **RE provisionals parts 1-2 applied:**
+  - physmat hull fallback only for StaticMeshActor owners, as node overrides (83b669d);
+  - matinee live_without_actor, objectives whitespace_noop (94c758e).
+  - The 10 MP physmat rows were appended to out/package/slim_files.tsv (backup .bak_20261018). Update their byte counts whenever the
+    physmat files are regenerated.
 - **pstream state (2026-10-18):**
   - All 2,736 MP LODs decode the parameter blob and assign every distribution (31,842 CONFIRMED, 4 PROVISIONAL for SubUVDirect).
   - Sphere and Cylinder floats are base-class-first (VelocityScale first): RE 178abb0, pstream 3470a25.
