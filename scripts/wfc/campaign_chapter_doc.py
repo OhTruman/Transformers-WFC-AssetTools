@@ -114,9 +114,10 @@ def main(M, notes=None):
           fmt(tri.get('start', {})), fmt(tri.get('pickup', {}))))
         cv = r.get('campaign_verdict')
         if cv:
-            a('   - **Campaign verdict: %s%s** (audit raw: %s). %d airborne_by_design starts are exempt as level design; %d off-graph starts still count. '
-              'The exemption reads reachFlags 2 as R_FLY%s.' % (cv['status'], ' (PROVISIONAL)' if cv['exemption_applied'] else '', r['structure_audit'],
-              cv['airborne_starts_exempt'], cv['starts_still_counted'], ', PROVISIONAL until RE confirms the enum' if cv['airborne_starts_exempt'] else ''))
+            a('   - **Campaign verdict: %s%s** (audit raw: %s). %d airborne_by_design and %d elevated_above_floor starts are exempt as level design; '
+              '%d off-graph starts still count.%s' % (cv['status'], ' (PROVISIONAL)' if cv['exemption_applied'] else '', r['structure_audit'],
+              cv['airborne_starts_exempt'], cv.get('elevated_starts_exempt', 0), cv['starts_still_counted'],
+              ' The airborne exemption reads reachFlags 2 as R_FLY, PROVISIONAL until RE confirms the enum.' if cv['airborne_starts_exempt'] else ''))
     mt = os.path.join(AT, 'manifests', 'next_map', M + '_matinee.json')
     if os.path.exists(mt):
         c = json.load(open(mt, encoding='utf-8'))['counts']; gb = c.get('group_binding') or {}

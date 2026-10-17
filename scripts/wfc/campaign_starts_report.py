@@ -85,13 +85,17 @@ def campaign_verdict(sa, tri):
     reachFlags 2 = R_FLY until RE confirms the enum; unclassified / no-floor / on-mover starts still count. The audit's own
     structure_audit.json verdict is left as generated (no audit rerun)."""
     fails = list((sa.get('verdict') or {}).get('failures') or [])
+    # exempt as level design (Integration 2026-10-18, PROVISIONAL): airborne_by_design, and elevated_above_floor (a spawn that drops onto
+    # walkable floor 3-30 m below)
     air = [t['actor'] for t in tri if t['kind'] == 'start' and t['category'] == 'airborne_by_design']
-    other = [t['actor'] for t in tri if t['kind'] == 'start' and t['category'] != 'airborne_by_design']
-    exempt = 'player starts off walk graph' in fails and air and not other
+    elev = [t['actor'] for t in tri if t['kind'] == 'start' and t['category'] == 'elevated_above_floor']
+    other = [t['actor'] for t in tri if t['kind'] == 'start' and t['category'] not in ('airborne_by_design', 'elevated_above_floor')]
+    exempt = 'player starts off walk graph' in fails and (air or elev) and not other
     if exempt: fails.remove('player starts off walk graph')
-    return {'status': 'PASS' if not fails else 'ATTENTION', 'failures': fails, 'airborne_starts_exempt': len(air),
+    return {'status': 'PASS' if not fails else 'ATTENTION', 'failures': fails, 'airborne_starts_exempt': len(air), 'elevated_starts_exempt': len(elev),
             'starts_still_counted': len(other), 'exemption_applied': bool(exempt),
-            'provisional': bool(air), 'note': 'airborne_by_design starts exempt (reachFlags 2 read as R_FLY: PROVISIONAL until RE confirms)'}
+            'provisional': bool(air or elev), 'note': 'airborne_by_design (reachFlags 2 read as R_FLY: PROVISIONAL until RE confirms) and '
+                                                      'elevated_above_floor starts exempt as level design (PROVISIONAL)'}
 
 def main():
     rows = []
