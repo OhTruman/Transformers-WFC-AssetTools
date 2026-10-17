@@ -13,7 +13,9 @@ TSV = os.path.join(ROOT, 'out', 'package', 'slim_files.tsv')
 OUT = os.path.join(ROOT, 'out', 'package', 'slim_files.refresh.tsv')
 # rows the audit found missing from the list and Systems confirmed as real gaps (PACKAGE7_SLIM_AUDIT.md resolution): pc_strings.int is
 # already appended to the live tsv (2026-10-18); the other 25 need no row (build_slim adds them / case match / runtime user file)
-ADD = []
+# package 7 head deed7f1a (Integration 2026-10-18): Rendering's loader reads <map>/lens_flares.json next to materials_glsl.json
+ADD = [('Transformers Rebuild/Rebuild/work/render/%s/lens_flares.json' % m, 'Rebuild/work/render/%s/lens_flares.json' % m, 'keep')
+       for m in ('MP_ESC_BrokenHope', 'MP_ESC_Remnant', 'MP_IAC_Rust', 'MP_IAC_Seed', 'MP_ORB_Debris', 'MP_UND_Gorge')]
 
 def main():
     raw = open(TSV, 'rb').read().decode('utf-8')
