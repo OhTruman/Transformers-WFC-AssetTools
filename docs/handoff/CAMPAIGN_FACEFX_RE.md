@@ -16,9 +16,31 @@ file lands on the same next structure.
 
 str = u32 length + bytes, no terminator; everything big-endian.
 
+| compiled face graph | **u32 nNodes (52; Soundwave 42; Skywarp / Starscream / Thundercracker 53)**; per node 9 words: u32 type (0 = the single gaze driver node, 4 = all other nodes), u32 nameIdx, f32 ×4 (Gaze_Eye_Yaw −10, −0.1, 10, 0.1; the others 0, 1, 1, 1: min / max-type parameters, roles HYPOTHESIS), u32 0 ×3. Then the **node lookup hash table: u32 nBuckets (= nNodes); per bucket u32 hash, u32 n, n × (str name, u32 nodeIndex)**. Proven: every lookup name equals its node's name (19 files) |
+| animation groups | u32 groupNameIdx ("Default"), u32 0 (anims), u32 x (1; Starscream 3); then u32 groupNameIdx ("Dialogue"), u32 nAnims |
+| animation block | u32 animNameIdx, u32 nCurves, nCurves × (u32 nodeNameIdx, u32 0), **i32 −K**, f32 start, f32 end, u32 nCurves, **u32 flag (number of extra f32; 0 in all but one animation)**, f32 end, f32 b, flag × f32, nCurves × u16 keyCount (Σ = K), K × i16 time (t = v × end / 32767), K × i8 value, **then the trailer: f32 blendIn, f32 blendOut, u32 0, str SoundCue, str animName, u32 (0 / 1 / 2)** |
+| file tail | 572 bytes, identical in size in every fully walked file (probably the FxPhonemeMap); not decoded |
+
+**Walk proof:** 18 files are walked from the header through every animation to the 572-byte tail: 3,414 animations, every K equal to the
+sum of its key counts. Systems' blocks started at the trailer of the previous animation, so their undecoded "X" is the *next*
+animation's name index, and their "−K / a == end / b" fields are the header above.
+
+**Value scale (HYPOTHESIS, strong):** phoneme, blink and eyebrow curves use i8 0..127, head / gaze curves −127..127, so value = i8 /
+127 × the node's range (phonemes 0..1; Gaze_Eye_Yaw node range ±10).
+
+## Exceptions (not yet decoded)
+
+- **ZetaPrime:** one animation (`CINE_A2_Zeta_Grunt`, flag 1) carries 1,864 bytes after its values, paired i8 bytes (`ed ed fa fa 05
+  05 …`), probably stored in / out slopes for a cinematic. The 101 other animations are fine.
+- **Starscream:** group header x = 3, and 20,050 bytes remain after the Dialogue group, so there are more groups or sections.
+- **OmegaSupreme:** the node lookup table differs; a string length is misread at 0x3A91.
+- **KON Megatron wall / holo faces (33 bones):** the face-graph node records differ (name index out of range); these are also the
+  blocks Systems saw with extra bytes.
+
 ## Next
 
-1. The compiled face graph, which starts right after the bone list with u32 0x34 / 0x35 / 0x36 / 0x2A (node count?), u32 4 (or 0),
-   u32 0x0F …: node table, link table, link functions.
-2. The animation groups → join Systems' proven animation-block layout, then the value scale, X, b, and the interpolation.
-3. The KON 33-bone exceptions.
+1. The exceptions above, in this order: Omega (one structure), KON (the 33-bone rig), Starscream (extra groups), the ZetaPrime slopes.
+2. The 572-byte tail (phoneme map).
+3. Interpolation: no slopes are stored except the ZetaPrime case. Compare FaceFX 1.7 Hermite with derived slopes against linear on
+   curve shapes; a visual proof on one line (DX_TRPTCN_LK004350).
+4. Bone-pose application: rest pose plus the weighted sum of the node deltas from the master bone list links.
