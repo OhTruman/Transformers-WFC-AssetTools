@@ -52,6 +52,22 @@ Campaign verdict = the audit verdict with airborne_by_design starts exempt (leve
 
 Triage: airborne_by_design = real level data (fly-only reach specs, R_FLY PROVISIONAL); on_mover = audit limit (no mover collision in the walk graph); no_floor_below = UNKNOWN; unclassified = walk-rule limit or unconnected floor (per-actor look).
 
+## 1d. Matinee export (`vs_matinee.py`; schema `CAMPAIGN_MATINEE_SCHEMA.md`)
+
+| chapter | InterpData | played | SeqAct_Interp | groups | director | bound | bound_runtime | empty_link | no_link | unresolved | Move | Director | Sound+Dialog | Event | AnimControl | FaceFX |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| A1_IAC | 495 | 488 | 490 | 1633 | 71 | 1458 | 15 | 25 | 37 | 27 | 1163 | 69 | 907 | 464 | 1047 | 12 |
+| A2_KON | 359 | 359 | 359 | 1006 | 24 | 955 | 10 | 9 | 8 | 0 | 720 | 24 | 241 | 217 | 661 | 24 |
+| A3_COR | 457 | 456 | 456 | 1324 | 29 | 1077 | 15 | 57 | 74 | 72 | 617 | 29 | 412 | 223 | 695 | 9 |
+| A4_ORB | 289 | 281 | 305 | 1328 | 30 | 1022 | 10 | 119 | 139 | 8 | 762 | 30 | 248 | 248 | 345 | 3 |
+| A5_TRY | 139 | 137 | 137 | 471 | 28 | 354 | 3 | 22 | 64 | 0 | 324 | 28 | 217 | 95 | 295 | 5 |
+| D1_ORB | 434 | 432 | 432 | 1520 | 84 | 1201 | 20 | 113 | 85 | 17 | 769 | 81 | 378 | 231 | 749 | 20 |
+| D2_COR | 319 | 318 | 355 | 987 | 25 | 879 | 6 | 26 | 34 | 17 | 736 | 25 | 220 | 226 | 247 | 2 |
+| D3A_IAC | 717 | 717 | 717 | 1840 | 68 | 1564 | 7 | 66 | 112 | 23 | 525 | 63 | 451 | 351 | 810 | 14 |
+| D3B_IAC | 326 | 323 | 323 | 980 | 61 | 728 | 28 | 41 | 121 | 1 | 523 | 61 | 845 | 264 | 456 | 19 |
+| D5_OME | 40 | 40 | 40 | 161 | 24 | 120 | 4 | 11 | 2 | 0 | 101 | 24 | 66 | 27 | 77 | 13 |
+| **total** | 3575 | 3551 | 3614 | 11250 | 444 | 9358 | 118 | 489 | 676 | 165 | 6240 | 434 | 3985 | 2346 | 5382 | 121 |
+
 ## 2. Blocker classes (totals over the 10 chapters)
 
 - **Kismet**: 127610 objects; High Moon custom classes with no RE decomp file (by file name, PROVISIONAL), with the chapters using them:

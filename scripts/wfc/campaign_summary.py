@@ -86,6 +86,20 @@ def main():
           'PROVISIONAL where the exemption decides it: reachFlags 2 is read as R_FLY until RE confirms the enum. Unclassified starts still count.')
         a('\nTriage: airborne_by_design = real level data (fly-only reach specs, R_FLY PROVISIONAL); on_mover = audit limit (no mover '
           'collision in the walk graph); no_floor_below = UNKNOWN; unclassified = walk-rule limit or unconnected floor (per-actor look).\n')
+    if all(os.path.exists(os.path.join(AT, 'manifests', 'next_map', M + '_matinee.json')) for M in CHAPTERS):
+        a('## 1d. Matinee export (`vs_matinee.py`; schema `CAMPAIGN_MATINEE_SCHEMA.md`)\n')
+        a('| chapter | InterpData | played | SeqAct_Interp | groups | director | bound | bound_runtime | empty_link | no_link | unresolved | Move | Director | Sound+Dialog | Event | AnimControl | FaceFX |')
+        a('|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|')
+        T = Counter()
+        for M in CHAPTERS:
+            c = json.load(open(os.path.join(AT, 'manifests', 'next_map', M + '_matinee.json'), encoding='utf-8'))['counts']
+            gb = c.get('group_binding') or {}; tb = c['tracks_by_class']
+            row = [c['interp_data'], c['played'], c['seqact_interp'], c['groups'], c['director_groups'], gb.get('bound', 0), gb.get('bound_runtime', 0),
+                   gb.get('empty_link', 0), gb.get('no_link', 0), gb.get('unresolved', 0), tb.get('InterpTrackMove', 0), tb.get('InterpTrackDirector', 0),
+                   tb.get('InterpTrackSound', 0) + tb.get('InterpTrackDialog', 0), tb.get('InterpTrackEvent', 0), tb.get('InterpTrackAnimControl', 0), tb.get('InterpTrackFaceFX', 0)]
+            T.update(dict(enumerate(row)))
+            a('| %s | %s |' % (M, ' | '.join(str(x) for x in row)))
+        a('| **total** | %s |\n' % ' | '.join(str(T[i]) for i in range(16)))
     a('## 2. Blocker classes (totals over the 10 chapters)\n')
     a('- **Kismet**: %d objects; High Moon custom classes with no RE decomp file (by file name, PROVISIONAL), with the chapters using them:' % tot['kismet'])
     for x in sorted(nodec, key=lambda x: (-len(nodec[x]), x)): a('  - `%s`: %d chapters (%s)' % (x, len(nodec[x]), ', '.join(nodec[x])))

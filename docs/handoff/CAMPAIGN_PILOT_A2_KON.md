@@ -70,6 +70,8 @@ Total wall 39.4 min; peak 7.45 GB. Stage failures: none.
 6. **Starts and walk graph** (`manifests/next_map/campaign_starts_report.json`, backlog 5): 96 starts (62 campaign starts + 34 checkpoints), 96 / 96 on reachable floor; walk graph 1,223,128 m2 (audit PASS); pickups on reachable floor 41 / 45; vs_validate ground check (reported only) 70 grounded / 0 airborne of the 70 it checks.
    - Triage of what is off the walk graph (categories in `campaign_starts_report.py`): starts: none; pickups: 1 on_mover, 3 unclassified. airborne_by_design = real level data (fly-only reach specs, PROVISIONAL flag meaning); on_mover = audit limit (no mover collision in the walk graph); no_floor_below = UNKNOWN; unclassified = walk-rule limit (no jump / transform) or an unconnected floor, per-actor look needed.
    - **Campaign verdict: PASS** (audit raw: PASS). 0 airborne_by_design starts are exempt as level design; 0 off-graph starts still count. The exemption reads reachFlags 2 as R_FLY.
+7. **Matinee** (`manifests/next_map/A2_KON_matinee.json`, schema `CAMPAIGN_MATINEE_SCHEMA.md`): 359 InterpData (359 played by a SeqAct_Interp), 359 SeqAct_Interp, 1006 groups (24 director). Group binding: 955 bound, 24 director, 10 bound_runtime, 9 empty_link, 8 no_link. Undecoded track classes: none; unresolved bindings: none.
+   - Tracks: Move 720, AnimControl 661, Sound 237, Event 217, Toggle 127, ActorVectorMaterialParam 72, FloatProp 61, FaceFX 24, Director 24, Fade 15, VectorProp 4, Slomo 4, Dialog 4, ActorFloatMaterialParam 3, ColorScale 2.
 
 ## 4. Notes
 

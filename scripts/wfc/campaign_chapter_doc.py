@@ -117,6 +117,15 @@ def main(M, notes=None):
             a('   - **Campaign verdict: %s%s** (audit raw: %s). %d airborne_by_design starts are exempt as level design; %d off-graph starts still count. '
               'The exemption reads reachFlags 2 as R_FLY%s.' % (cv['status'], ' (PROVISIONAL)' if cv['exemption_applied'] else '', r['structure_audit'],
               cv['airborne_starts_exempt'], cv['starts_still_counted'], ', PROVISIONAL until RE confirms the enum' if cv['airborne_starts_exempt'] else ''))
+    mt = os.path.join(AT, 'manifests', 'next_map', M + '_matinee.json')
+    if os.path.exists(mt):
+        c = json.load(open(mt, encoding='utf-8'))['counts']; gb = c.get('group_binding') or {}
+        a('7. **Matinee** (`manifests/next_map/%s_matinee.json`, schema `CAMPAIGN_MATINEE_SCHEMA.md`): %d InterpData (%d played by a SeqAct_Interp), '
+          '%d SeqAct_Interp, %d groups (%d director). Group binding: %s. Undecoded track classes: %s; unresolved bindings: %s.' % (
+          M, c['interp_data'], c['played'], c['seqact_interp'], c['groups'], c['director_groups'],
+          ', '.join('%d %s' % (v, k) for k, v in sorted(gb.items(), key=lambda kv: -kv[1])),
+          ', '.join('%s %d' % kv for kv in c['undecoded_track_classes'].items()) or 'none', ', '.join('%s %d' % kv for kv in c['unresolved_bindings'].items()) or 'none'))
+        a('   - Tracks: %s.' % ', '.join('%s %d' % (k.replace('InterpTrack', ''), v) for k, v in c['tracks_by_class'].items()))
     if notes and os.path.exists(notes): a('\n## 4. Notes\n\n' + open(notes, encoding='utf-8').read().strip())
     out = os.path.join(AT, 'docs', 'handoff', 'CAMPAIGN_PILOT_%s.md' % M)
     open(out, 'w', encoding='utf-8').write('\n'.join(L) + '\n'); print(out, '%.1f min, peak %.2f GB' % (total / 60, peak))
