@@ -33,7 +33,9 @@ def flags(f):
 
 def parse_model_component(p, t, model_idx):
     key = struct.pack('>i', model_idx)
-    a = t.find(key, 0, 16)
+    # search from byte 4: the tail starts 8 bytes early, inside the tag stream's terminating 'None' name index, which can equal the
+    # model's export index (D2_COR_TNL3_Art_m: both 868) and matched first, leaving every ModelComponent of the level unparsed
+    a = t.find(key, 4, 16)
     if a < 4: return None
     o = a + 4
     ne = struct.unpack_from('>i', t, o)[0]; o += 4
