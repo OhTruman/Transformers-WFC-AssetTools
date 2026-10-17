@@ -32,6 +32,11 @@ not checked against WFC's native code.
 
 - **`fired_by_events`:** the same Kismet back-walk as the pawn-factory manifest. It starts at the Play input (index 0) and walks up to
   12 ops back to the nearest SeqEvent_* / TnSeqEvent_* (e.g. remote event `StartIntroMovie` for the D5 intro).
+- **SeqAct_Interp outputs** (RE 27d1ee0): only **Completed** and **Aborted**.
+  - A skip (CancelMatinee) fires Aborted.
+  - A reverse play that reaches the start fires Aborted.
+  - A mid-way Stop fires nothing.
+  - The runtime semantics (director cuts, MoveFrame, AnimControl, FaceFX) are in `RE-Workspace/work/handoff/CAMPAIGN_MATINEE_RUNTIME_RE.md`.
 - **Times** are seconds on the matinee timeline. Keys before 0 occur: lead-in keys are authored that way.
 - **Units are as authored:** UE units (cm) and degrees for move tracks, UE axes (X, Y, Z = UE, not glTF). Convert with
   `vs_common.ue_points_to_gltf` / the pipeline's C matrix like every other position.
@@ -44,7 +49,7 @@ not checked against WFC's native code.
 | InterpTrackDirector | `cuts` [{t, camera_group, transition}]: camera_group is a group name in the same InterpData |
 | InterpTrackSound, InterpTrackDialog | `keys` [{t, cue, volume, pitch}], `volume_pitch` curve, `continue_on_end`, `continue_on_skip` |
 | InterpTrackEvent | `keys` [{t, event}]: fires the SeqAct_Interp output of that name; `fire_forwards` / `fire_backwards` / `fire_when_jumping_forwards` |
-| InterpTrackToggle | `keys` [{t, action ETTA_On / ETTA_Off / ETTA_Toggle / ETTA_Trigger}] |
+| InterpTrackToggle | `keys` [{t, action}]: WFC's ETrackToggleAction is {ETTA_Off, ETTA_On, ETTA_Toggle} (RE 27d1ee0); the campaign uses only On (3,058) / Off (3,010) |
 | InterpTrackAnimControl | `slot`, `keys` [{t, anim (AnimSeqName), start_offset, end_offset, rate, looping, reverse}], `weight` curve |
 | InterpTrackFaceFX | `keys` [{t, group, anim}]: FaceFX group + sequence, played from the bound actor's .fxa (CAMPAIGN_FACEFX_RE.md) |
 | InterpTrackFloatProp / VectorProp / ColorProp | `property` (e.g. FOVAngle on camera groups), `curve` |
@@ -55,8 +60,11 @@ not checked against WFC's native code.
 | InterpTrackColorScale | `curve` (scene colour scale) |
 
 - **Curve key:** `{t, v, arrive, leave, mode}`, i.e. FInterpCurve InVal / OutVal / ArriveTangent / LeaveTangent / InterpMode.
-- **Interp modes:** CIM_Linear, CIM_CurveAuto, CIM_CurveAutoClamped, CIM_CurveUser, CIM_CurveBreak, CIM_Constant. Evaluate as UE3
-  FInterpCurve (Hermite with the stored tangents, linear or step per mode).
+- **Interp modes:** WFC's Core EInterpCurveMode is {CIM_Linear, CIM_CurveAuto, CIM_Constant, CIM_CurveUser, CIM_CurveBreak}, bytes 0–4.
+  There is no CIM_CurveAutoClamped in this engine (RE 27d1ee0).
+  - Campaign counts: CurveAuto 89,702, Linear 28,021, CurveUser 5,869, CurveBreak 2,129, Constant 934.
+  - The names in the export are the cooked FNames, so no name table of ours is involved.
+  - Evaluate as UE3 FInterpCurve: Hermite with the stored tangents, linear, or step for Constant.
 - **Undecoded:** a class not in the table would be exported with its raw props and counted in `counts.undecoded_track_classes`. Over the
   10 chapters that count is empty, except for one bare `InterpTrack` with no properties (A-chapter data, nothing to decode).
 - **Move tracks without position keys** (e.g. 2 in the D5 intro): rotation-only or lookup-only tracks. They are exported as authored.
@@ -87,7 +95,7 @@ resolved:
 - **no_link:** the action has no link for the group at all.
 - **unresolved:** links exist, but none of them resolved.
 
-**Runtime note (PROVISIONAL, stock UE3 `USeqAct_Interp::InitInterp`):**
+**Runtime note (stock UE3 `USeqAct_Interp::InitInterp`; RE 27d1ee0 rates it HIGH for WFC):**
 - A group without an actor still gets a group instance. Its Move / Toggle / AnimControl / material / property tracks have nothing to
   act on and do nothing.
 - Director, Event and Fade / Slomo / ColorScale tracks need no actor.

@@ -126,6 +126,15 @@ def main(M, notes=None):
           ', '.join('%d %s' % (v, k) for k, v in sorted(gb.items(), key=lambda kv: -kv[1])),
           ', '.join('%s %d' % kv for kv in c['undecoded_track_classes'].items()) or 'none', ', '.join('%s %d' % kv for kv in c['unresolved_bindings'].items()) or 'none'))
         a('   - Tracks: %s.' % ', '.join('%s %d' % (k.replace('InterpTrack', ''), v) for k, v in c['tracks_by_class'].items()))
+    dg = os.path.join(AT, 'manifests', 'next_map', M + '_dialog.json')
+    if os.path.exists(dg):
+        c = json.load(open(dg, encoding='utf-8'))['counts']
+        a('8. **Dialog** (`manifests/next_map/%s_dialog.json`, schema `CAMPAIGN_DIALOG_SCHEMA.md`): %d conversations, %d lines (%d with a bound speaker, '
+          '%d without a wave); waves with INT subtitles %d, FRA only %d, none %d; with FaceFX %d. Anim notifies: %d copies cooked in, %d distinct, '
+          '%d unmatched; %d sound events in %d dialog groups; %d dialog event managers.' % (
+          M, c['conversations'], c['lines'], c.get('lines_speaker_bound', 0), c['lines_without_wave'], c['waves_with_int_subtitles'], c['waves_fra_only'],
+          c['waves_without_subtitles'], c['waves_with_facefx'], c['anim_notify_copies'], c['anim_notifies_distinct'], c['anim_notifies_unmatched'],
+          c['sound_events'], c['dialog_groups'], c['dialog_event_managers']))
     if notes and os.path.exists(notes): a('\n## 4. Notes\n\n' + open(notes, encoding='utf-8').read().strip())
     out = os.path.join(AT, 'docs', 'handoff', 'CAMPAIGN_PILOT_%s.md' % M)
     open(out, 'w', encoding='utf-8').write('\n'.join(L) + '\n'); print(out, '%.1f min, peak %.2f GB' % (total / 60, peak))

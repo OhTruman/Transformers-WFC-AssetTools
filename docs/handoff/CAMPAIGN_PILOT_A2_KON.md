@@ -72,6 +72,7 @@ Total wall 39.4 min; peak 7.45 GB. Stage failures: none.
    - **Campaign verdict: PASS** (audit raw: PASS). 0 airborne_by_design starts are exempt as level design; 0 off-graph starts still count. The exemption reads reachFlags 2 as R_FLY.
 7. **Matinee** (`manifests/next_map/A2_KON_matinee.json`, schema `CAMPAIGN_MATINEE_SCHEMA.md`): 359 InterpData (359 played by a SeqAct_Interp), 359 SeqAct_Interp, 1006 groups (24 director). Group binding: 955 bound, 24 director, 10 bound_runtime, 9 empty_link, 8 no_link. Undecoded track classes: none; unresolved bindings: none.
    - Tracks: Move 720, AnimControl 661, Sound 237, Event 217, Toggle 127, ActorVectorMaterialParam 72, FloatProp 61, FaceFX 24, Director 24, Fade 15, VectorProp 4, Slomo 4, Dialog 4, ActorFloatMaterialParam 3, ColorScale 2.
+8. **Dialog** (`manifests/next_map/A2_KON_dialog.json`, schema `CAMPAIGN_DIALOG_SCHEMA.md`): 134 conversations, 241 lines (236 with a bound speaker, 0 without a wave); waves with INT subtitles 241, FRA only 0, none 0; with FaceFX 177. Anim notifies: 389 copies cooked in, 219 distinct, 0 unmatched; 12 sound events in 9 dialog groups; 56 dialog event managers.
 
 ## 4. Notes
 

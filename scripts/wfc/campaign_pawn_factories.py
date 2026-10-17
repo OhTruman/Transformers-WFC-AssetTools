@@ -94,6 +94,10 @@ def chapter(M):
                     'factory': fac,
                     'spawn_points': [{'object': s, 'class': (A.get(s) or {}).get('class'), 'location_ue': loc(s)} for s in sp],
                     'spawn_count': count if count is not None else v.get('SpawnCount'), 'max_spawned_in_world': v.get('MaxNumSpawnedInWorld'),
+                    # pacing (RE 6ce8158: the factory data is the only spawn pacing; waves are Kismet chains). Effective values,
+                    # class default SpawnDelay 0.5 s (SeqAct_ActorFactory CDO)
+                    'spawn_delay': v.get('SpawnDelay'), 'check_spawn_collision': v.get('bCheckSpawnCollision'),
+                    'destroy_spawned_on_stream_out': v.get('bDestroySpawnedActorsOnStreamOut'),
                     'outputs': [{'output': ol.get('LinkDesc'), 'to': [l.get('LinkedOp') for l in ol.get('Links') or []]}
                                 for ol in p.get('OutputLinks') or [] if ol.get('Links')],
                     'spawned_variable': spawned_var, 'character_variables': charvars,

@@ -100,6 +100,18 @@ def main():
             T.update(dict(enumerate(row)))
             a('| %s | %s |' % (M, ' | '.join(str(x) for x in row)))
         a('| **total** | %s |\n' % ' | '.join(str(T[i]) for i in range(16)))
+    if all(os.path.exists(os.path.join(AT, 'manifests', 'next_map', M + '_dialog.json')) for M in CHAPTERS):
+        a('## 1e. Dialog manifest (`vs_dialog.py`; schema `CAMPAIGN_DIALOG_SCHEMA.md`)\n')
+        cols = ['conversations', 'lines', 'lines_speaker_bound', 'lines_without_wave', 'waves_with_int_subtitles', 'waves_fra_only', 'waves_without_subtitles',
+                'waves_with_facefx', 'conversations_with_firing_event', 'anim_notify_copies', 'anim_notifies_distinct', 'anim_notifies_unmatched', 'sound_events', 'dialog_groups']
+        a('| chapter | ' + ' | '.join(c.replace('_', ' ') for c in cols) + ' |'); a('|---' * (len(cols) + 1) + '|')
+        T = Counter()
+        for M in CHAPTERS:
+            c = json.load(open(os.path.join(AT, 'manifests', 'next_map', M + '_dialog.json'), encoding='utf-8'))['counts']
+            T.update({k: c.get(k, 0) for k in cols}); a('| %s | %s |' % (M, ' | '.join(str(c.get(k, 0)) for k in cols)))
+        a('| **total** | %s |\n' % ' | '.join(str(T[k]) for k in cols))
+        a('Anim-notify "distinct" is per chapter: the same animation notify is cooked into several chapters. Sound events and dialog groups are shared '
+          'banks, so the per-chapter numbers overlap too.\n')
     a('## 2. Blocker classes (totals over the 10 chapters)\n')
     a('- **Kismet**: %d objects; High Moon custom classes with no RE decomp file (by file name, PROVISIONAL), with the chapters using them:' % tot['kismet'])
     for x in sorted(nodec, key=lambda x: (-len(nodec[x]), x)): a('  - `%s`: %d chapters (%s)' % (x, len(nodec[x]), ', '.join(nodec[x])))

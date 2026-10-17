@@ -61,11 +61,22 @@ def var_targets(var, seq_vars, depth=0):
         if p.get('ObjValue'): return [p['ObjValue']], 'object'
         # empty in the authored data: filled at runtime, typically by a pawn factory's "Spawned" output -> name the writers
         out = []; written = []
+        # the variable may be wired into a sub-sequence's variable link; inside, a SeqVar_External with that label is the same
+        # variable, so its writers count too (e.g. A2 "AirRaid" -> Air_Raid sequence)
+        cands = [var]
         for src, prop in A.refs_to(var):
-            g2 = A.get(src) or {}; c2 = g2.get('class') or ''
-            if prop != 'VariableLinks': continue
+            g2 = A.get(src) or {}
+            if prop != 'VariableLinks' or g2.get('class') != 'Sequence': continue
             for vl in (g2.get('props') or {}).get('VariableLinks') or []:
                 if var not in (vl.get('LinkedVariables') or []): continue
+                for e in A.find(src + '.%', 'SeqVar_External'):
+                    ev = A.values(e['opath']) or {}
+                    if (ev.get('ExtVarName') or ev.get('VariableLabel')) == vl.get('LinkDesc') and ev.get('ParentSequence') == src: cands.append(e['opath'])
+        for cv, (src, prop) in ((cv, r) for cv in cands for r in A.refs_to(cv)):
+            g2 = A.get(src) or {}; c2 = g2.get('class') or ''
+            if prop != 'VariableLinks' or c2 == 'Sequence': continue
+            for vl in (g2.get('props') or {}).get('VariableLinks') or []:
+                if cv not in (vl.get('LinkedVariables') or []): continue
                 if 'PawnFactory' in c2 and vl.get('LinkDesc') in ('Spawned', 'Spawned List'):
                     f = (g2.get('props') or {}).get('Factory'); fv = A.values(f) if f else {}
                     arch = next((fv[k] for k in ('AiCharacterDefinitionTemplate', 'Sentry', 'Blueprint') if fv.get(k)), None)

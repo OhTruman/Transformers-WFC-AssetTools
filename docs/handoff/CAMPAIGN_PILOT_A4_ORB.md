@@ -73,6 +73,7 @@ Total wall 30.1 min; peak 9.25 GB. Stage failures: none.
    - **Campaign verdict: PASS (PROVISIONAL)** (audit raw: ATTENTION). 7 airborne_by_design starts are exempt as level design; 0 off-graph starts still count. The exemption reads reachFlags 2 as R_FLY, PROVISIONAL until RE confirms the enum.
 7. **Matinee** (`manifests/next_map/A4_ORB_matinee.json`, schema `CAMPAIGN_MATINEE_SCHEMA.md`): 289 InterpData (281 played by a SeqAct_Interp), 305 SeqAct_Interp, 1328 groups (30 director). Group binding: 1022 bound, 139 no_link, 119 empty_link, 30 director, 10 bound_runtime, 8 unresolved. Undecoded track classes: none; unresolved bindings: none.
    - Tracks: Move 762, Toggle 396, AnimControl 345, Sound 248, Event 248, FloatProp 126, FloatMaterialParam 79, VectorProp 43, ActorFloatMaterialParam 35, Director 30, Fade 5, Slomo 5, ActorVectorMaterialParam 3, FaceFX 3.
+8. **Dialog** (`manifests/next_map/A4_ORB_dialog.json`, schema `CAMPAIGN_DIALOG_SCHEMA.md`): 95 conversations, 201 lines (201 with a bound speaker, 0 without a wave); waves with INT subtitles 201, FRA only 0, none 0; with FaceFX 178. Anim notifies: 351 copies cooked in, 224 distinct, 0 unmatched; 17 sound events in 10 dialog groups; 47 dialog event managers.
 
 ## 4. Notes
 

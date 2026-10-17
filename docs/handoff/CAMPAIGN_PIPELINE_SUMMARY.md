@@ -68,6 +68,24 @@ Triage: airborne_by_design = real level data (fly-only reach specs, R_FLY PROVIS
 | D5_OME | 40 | 40 | 40 | 161 | 24 | 120 | 4 | 11 | 2 | 0 | 101 | 24 | 66 | 27 | 77 | 13 |
 | **total** | 3575 | 3551 | 3614 | 11250 | 444 | 9358 | 118 | 489 | 676 | 165 | 6240 | 434 | 3985 | 2346 | 5382 | 121 |
 
+## 1e. Dialog manifest (`vs_dialog.py`; schema `CAMPAIGN_DIALOG_SCHEMA.md`)
+
+| chapter | conversations | lines | lines speaker bound | lines without wave | waves with int subtitles | waves fra only | waves without subtitles | waves with facefx | conversations with firing event | anim notify copies | anim notifies distinct | anim notifies unmatched | sound events | dialog groups |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| A1_IAC | 72 | 122 | 122 | 0 | 131 | 0 | 0 | 115 | 68 | 452 | 222 | 0 | 12 | 9 |
+| A2_KON | 134 | 241 | 236 | 0 | 241 | 0 | 0 | 177 | 126 | 389 | 219 | 0 | 12 | 9 |
+| A3_COR | 99 | 192 | 192 | 1 | 192 | 0 | 0 | 189 | 95 | 498 | 228 | 0 | 17 | 10 |
+| A4_ORB | 95 | 201 | 201 | 0 | 201 | 0 | 0 | 178 | 84 | 351 | 224 | 0 | 17 | 10 |
+| A5_TRY | 25 | 50 | 50 | 0 | 50 | 0 | 0 | 48 | 25 | 171 | 171 | 0 | 6 | 6 |
+| D1_ORB | 61 | 118 | 118 | 0 | 118 | 0 | 0 | 99 | 58 | 443 | 213 | 0 | 11 | 8 |
+| D2_COR | 81 | 175 | 175 | 0 | 175 | 0 | 0 | 169 | 80 | 224 | 211 | 0 | 12 | 9 |
+| D3A_IAC | 165 | 241 | 241 | 0 | 258 | 0 | 0 | 217 | 162 | 498 | 220 | 0 | 17 | 10 |
+| D3B_IAC | 118 | 179 | 178 | 0 | 195 | 0 | 0 | 169 | 118 | 511 | 228 | 0 | 17 | 10 |
+| D5_OME | 42 | 42 | 42 | 0 | 42 | 0 | 0 | 42 | 42 | 165 | 165 | 0 | 5 | 4 |
+| **total** | 892 | 1561 | 1555 | 1 | 1603 | 0 | 0 | 1403 | 858 | 3702 | 2101 | 0 | 126 | 85 |
+
+Anim-notify "distinct" is per chapter: the same animation notify is cooked into several chapters. Sound events and dialog groups are shared banks, so the per-chapter numbers overlap too.
+
 ## 2. Blocker classes (totals over the 10 chapters)
 
 - **Kismet**: 127610 objects; High Moon custom classes with no RE decomp file (by file name, PROVISIONAL), with the chapters using them:
