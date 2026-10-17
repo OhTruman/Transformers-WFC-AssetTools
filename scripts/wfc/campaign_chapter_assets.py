@@ -187,7 +187,7 @@ def main(ch):
     def nm(name): return load(os.path.join(NM, '%s_%s.json' % (ch, name)))
     kis, mat, pf, dlg, obj = nm('kismet'), nm('matinee'), nm('pawn_factories'), nm('dialog'), nm('objectives')
     mv = load(os.path.join(ROOT, 'manifests', 'movies', 'movies_webm_manifest.json')) or {}
-    tag = ch.split('_')[0].lower()
+    tag = ch.split('_')[0].lower()[:2]      # D3A / D3B share the d3 movies
     movies = OD((k, OD([('source', v.get('source')), ('duration_s', v.get('source_duration_s'))]))
                 for k, v in (mv.get('movies') or {}).items() if k.lower().startswith('fmv_' + tag))
     out = OD()
