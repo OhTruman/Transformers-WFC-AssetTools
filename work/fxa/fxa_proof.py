@@ -98,7 +98,11 @@ def main(actor='Trypticon', anim='DX_TRPTCN_LK004350'):
             for v in t:
                 r = find(v)
                 if r: return r
-    w = find(A.cue(a['cue']))
+    w = find(A.cue(a['cue'])) if a['cue'] else None
+    if not w:
+        out = {'actor': os.path.basename(f), 'anim': anim, 'curves': len(cur), 'start': a['start'], 'end': a['end'], 'b': a['b'],
+               'wave': 'none in the cue tree: CSVs written, no voice comparison'}
+        print(out); return out
     wp = os.path.join(os.path.dirname(P.EA), w['wav'])
     with wave.open(wp) as wf:
         sr = wf.getframerate(); ch = wf.getnchannels(); raw = wf.readframes(wf.getnframes())
