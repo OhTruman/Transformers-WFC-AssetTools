@@ -56,7 +56,10 @@
   - Decoy Trap assets (`decoy_trap_assets.py`);
   - Trail2 templates (`trail2_templates.py`);
   - campaign chapter assets for all 10 chapters (`campaign_chapter_assets.py <CH>` + `campaign_assets_summary.py`), plus the matc dry
-    run (`work/matc_dryrun/`: 1,725 / 1,763 clean). Open for RE: the PowerCell_Voltage_FX unclaimed distributions.
+    run (`work/matc_dryrun/`: 1,725 / 1,763 clean);
+  - campaign data gaps closed into `out/campaign_{textures,anims}` (`CAMPAIGN_DATA_GAPS_CLOSED.md`);
+  - pstream now assigns by each record's own distribution base index (regression over all cooked LODs: identical; PowerCell fixed);
+  - (B) frozen-arm verification: `work/matB_review/verify_frozen.py`, PASS at 10:59; rerun if the arm changes.
 - **RE provisionals parts 1-2 applied:**
   - physmat hull fallback only for StaticMeshActor owners, as node overrides (83b669d);
   - matinee live_without_actor, objectives whitespace_noop (94c758e).
