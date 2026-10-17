@@ -178,6 +178,36 @@ def lod_tail(p, i):
     x = p.exports[i - 1]
     return p.data[x['serial_offset'] + used:x['serial_offset'] + x['serial_size']]
 
+# Scalar module fields Rendering's batch 1 needs (2026-10-18). The per-instance module objects are stripped in the cook and the compiled
+# stream decoded here carries only distributions, so these are CLASS DEFAULTS from the cooked CDOs (labelled per field); a class with
+# no CDO in the cook gives UNKNOWN (None), never a guess. Per-instance values: only if RE finds them in the compiled stream.
+_FIELDS = None
+def class_default_fields():
+    global _FIELDS
+    if _FIELDS is None:
+        import authored as _A
+        sph = _A.values('Engine.Default__ParticleModuleLocationPrimitiveSphere') or {}
+        cbp = _A.values('Engine.Default__ParticleModuleColorByParameter') or {}
+        src_s = 'class default: Engine.Default__ParticleModuleLocationPrimitiveSphere (per-instance value not in the cook stream)'
+        src_s0 = 'class default: not set in the cooked CDO, so the UE3 property default (bool False) (per-instance value not in the cook stream)'
+        src_c = 'class default: Engine.Default__ParticleModuleColorByParameter (per-instance value not in the cook stream)'
+        _FIELDS = {
+            'PMI_Gravity': ({'GravityMultiplier': None},
+                            {'GravityMultiplier': 'UNKNOWN: HM_Engine.HmParticleModuleGravity has no CDO in the cook; per-instance value not in the cook stream'}),
+            'PMI_LocationPrimitiveSphere': (
+                {**{k: bool(sph.get(k, False)) for k in ('Positive_X', 'Positive_Y', 'Positive_Z', 'Negative_X', 'Negative_Y', 'Negative_Z')},
+                 'SurfaceOnly': bool(sph.get('SurfaceOnly', False)), 'Velocity': bool(sph.get('Velocity', False))},
+                {**{k: (src_s if k in sph else src_s0) for k in ('Positive_X', 'Positive_Y', 'Positive_Z', 'Negative_X', 'Negative_Y', 'Negative_Z')},
+                 'SurfaceOnly': src_s if 'SurfaceOnly' in sph else src_s0, 'Velocity': src_s if 'Velocity' in sph else src_s0}),
+            'PMI_ColorByParameter': ({'ColorParam': cbp.get('ColorParam'), 'DefaultColor': cbp.get('DefaultColor')},
+                                     {'ColorParam': src_c if 'ColorParam' in cbp else 'class default: not set in the cooked CDO, so the UE3 name default (None) '
+                                      '(per-instance value not in the cook stream)', 'DefaultColor': src_c}),
+            'PMI_DynamicParameter': ({'DynamicParams': None},
+                                     {'DynamicParams': 'UNKNOWN: ParticleModuleParameterDynamic has no CDO in the cook; slot ParamName / bUseEmitterTime / '
+                                                       'bSpawnTimeOnly per instance not in the cook stream'}),
+        }
+    return _FIELDS
+
 def system(ps, pkg=None):
     """particles.summarize() (tagged data) + every LOD's compiled module list with assigned distributions."""
     import particles
@@ -220,6 +250,8 @@ def system(ps, pkg=None):
                              'enabled (flagA; HIGH - particle_flag_census.json)': r['flagA'] == 1,
                              'payload_offset': r['payload_offset'],
                              **({'props': vol_props} if name == 'PMI_VelocityOverLife' else {}),
+                             **({'fields': dict(class_default_fields()[name][0]), 'fields_source': dict(class_default_fields()[name][1])}
+                                if name in class_default_fields() else {}),
                              'distributions': [{'property': x['property'], 'property_candidates': x.get('property_candidates'),
                                                 'kind': x['dist']['kind'], 'op': x['dist']['op'],
                                                 'values': x['dist']['values'], 'confidence': x['confidence'],
