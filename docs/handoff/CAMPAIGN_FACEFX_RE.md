@@ -57,7 +57,10 @@ None left: every byte of all 22 files is accounted for by the layout above. Stil
     on Trypticon LK004350.
   - Jaw angle against the voice: median 0.22 over 21 Optimus lines. Weaker than the curve activity, so the blend (additive
     rotations, sign, clamp) is not yet right.
-  - Next: blend rotations as normalised weighted sums (FaceFX bone-pose blending) and compare.
+  - Blend variants on the jaw, 34 Optimus lines, best lag within ±3 frames, with negative node values inverting the rotation:
+    product of slerps 0.30, normalised weighted sum (nlerp) 0.30, product with values clamped to [0, 1] 0.30. Jaw angle against
+    loudness cannot separate them; the choice needs a visual check on a skinned face (Gameplay's pose hook). Recommendation: the
+    nlerp sum (order-independent, cheapest).
 - **Interpolation:** linear and derived-Hermite give similar correlation (0.22 vs 0.18). The data can't separate them; the visual
   look (smoothness) decides.
 
