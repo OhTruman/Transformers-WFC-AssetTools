@@ -112,6 +112,11 @@ def main(M, notes=None):
           'level data (fly-only reach specs, PROVISIONAL flag meaning); on_mover = audit limit (no mover collision in the walk graph); '
           'no_floor_below = UNKNOWN; unclassified = walk-rule limit (no jump / transform) or an unconnected floor, per-actor look needed.' % (
           fmt(tri.get('start', {})), fmt(tri.get('pickup', {}))))
+        cv = r.get('campaign_verdict')
+        if cv:
+            a('   - **Campaign verdict: %s%s** (audit raw: %s). %d airborne_by_design starts are exempt as level design; %d off-graph starts still count. '
+              'The exemption reads reachFlags 2 as R_FLY%s.' % (cv['status'], ' (PROVISIONAL)' if cv['exemption_applied'] else '', r['structure_audit'],
+              cv['airborne_starts_exempt'], cv['starts_still_counted'], ', PROVISIONAL until RE confirms the enum' if cv['airborne_starts_exempt'] else ''))
     if notes and os.path.exists(notes): a('\n## 4. Notes\n\n' + open(notes, encoding='utf-8').read().strip())
     out = os.path.join(AT, 'docs', 'handoff', 'CAMPAIGN_PILOT_%s.md' % M)
     open(out, 'w', encoding='utf-8').write('\n'.join(L) + '\n'); print(out, '%.1f min, peak %.2f GB' % (total / 60, peak))

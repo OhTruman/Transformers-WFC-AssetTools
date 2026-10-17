@@ -70,6 +70,7 @@ Total wall 30.1 min; peak 9.25 GB. Stage failures: none.
 5. **Pending diagnostics**: none: m05 and the structure audit both ran.
 6. **Starts and walk graph** (`manifests/next_map/campaign_starts_report.json`, backlog 5): 25 starts (2 campaign starts + 23 checkpoints), 18 / 25 on reachable floor; walk graph 2,628,060 m2 (audit ATTENTION); pickups on reachable floor 13 / 24; vs_validate ground check (reported only) 2 grounded / 0 airborne of the 2 it checks.
    - Triage of what is off the walk graph (categories in `campaign_starts_report.py`): starts: 7 airborne_by_design; pickups: 11 unclassified. airborne_by_design = real level data (fly-only reach specs, PROVISIONAL flag meaning); on_mover = audit limit (no mover collision in the walk graph); no_floor_below = UNKNOWN; unclassified = walk-rule limit (no jump / transform) or an unconnected floor, per-actor look needed.
+   - **Campaign verdict: PASS (PROVISIONAL)** (audit raw: ATTENTION). 7 airborne_by_design starts are exempt as level design; 0 off-graph starts still count. The exemption reads reachFlags 2 as R_FLY, PROVISIONAL until RE confirms the enum.
 
 ## 4. Notes
 

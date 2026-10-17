@@ -77,6 +77,19 @@ def triage(M, g, ps):
                     'category': cat, 'airborne_reason': fly.get(x['actor']) if cat == 'airborne_by_design' else None, 'mover': {'class': mv[0][1], 'actor': mv[0][2], 'dy_m': mv[0][3]} if mv else None})
     return out
 
+def campaign_verdict(sa, tri):
+    """Integration 2026-10-17: the structure audit's verdict with airborne_by_design starts exempt (level design), PROVISIONAL on
+    reachFlags 2 = R_FLY until RE confirms the enum; unclassified / no-floor / on-mover starts still count. The audit's own
+    structure_audit.json verdict is left as generated (no audit rerun)."""
+    fails = list((sa.get('verdict') or {}).get('failures') or [])
+    air = [t['actor'] for t in tri if t['kind'] == 'start' and t['category'] == 'airborne_by_design']
+    other = [t['actor'] for t in tri if t['kind'] == 'start' and t['category'] != 'airborne_by_design']
+    exempt = 'player starts off walk graph' in fails and air and not other
+    if exempt: fails.remove('player starts off walk graph')
+    return {'status': 'PASS' if not fails else 'ATTENTION', 'failures': fails, 'airborne_starts_exempt': len(air),
+            'starts_still_counted': len(other), 'exemption_applied': bool(exempt),
+            'provisional': bool(air), 'note': 'airborne_by_design starts exempt (reachFlags 2 read as R_FLY: PROVISIONAL until RE confirms)'}
+
 def main():
     rows = []
     for M in CHAPTERS:
@@ -98,6 +111,7 @@ def main():
                      'pickups_not_on_walk_graph': pk.get('not_on_walk_graph'), 'structure_audit': (sa.get('verdict') or {}).get('status')
                      if isinstance(sa.get('verdict'), dict) else sa.get('status'),
                      'off_walk_graph_triage': {k: dict(Counter(t['category'] for t in tri if t['kind'] == k)) for k in ('start', 'pickup')},
+                     'campaign_verdict': campaign_verdict(sa, tri),
                      'off_walk_graph': tri})
     out = os.path.join(AT, 'manifests', 'next_map', 'campaign_starts_report.json')
     json.dump({'generated_by': 'AssetTools/scripts/wfc/campaign_starts_report.py', 'chapters': rows}, open(out, 'w', encoding='utf-8'), indent=1)

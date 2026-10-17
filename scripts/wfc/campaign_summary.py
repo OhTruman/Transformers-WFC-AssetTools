@@ -73,13 +73,17 @@ def main():
     sr = os.path.join(AT, 'manifests', 'next_map', 'campaign_starts_report.json')
     if os.path.exists(sr):
         a('## 1c. Starts and walk graph (backlog 5; `campaign_starts_report.py`, campaign-mode ground check reported only)\n')
-        a('| chapter | starts (campaign + checkpoint) | on reachable floor | walk graph m2 | pickups on reachable floor | audit | off-graph starts (triage) | off-graph pickups (triage) |')
-        a('|---|---|---|---|---|---|---|---|')
+        a('| chapter | starts (campaign + checkpoint) | on reachable floor | walk graph m2 | pickups on reachable floor | audit (raw) | campaign verdict | airborne starts (exempt) | off-graph starts (triage) | off-graph pickups (triage) |')
+        a('|---|---|---|---|---|---|---|---|---|---|')
         fmt = lambda d: ', '.join('%d %s' % (v, k) for k, v in sorted(d.items())) or '-'
         for r in json.load(open(sr, encoding='utf-8'))['chapters']:
-            a('| %s | %d (%d + %d) | %s / %d | %s | %s / %s | %s | %s | %s |' % (r['map'], r['starts'], r['campaign_player_starts'], r['checkpoints'],
+            cv = r['campaign_verdict']
+            a('| %s | %d (%d + %d) | %s / %d | %s | %s / %s | %s | %s%s | %d | %s | %s |' % (r['map'], r['starts'], r['campaign_player_starts'], r['checkpoints'],
               r['starts_on_reachable_floor'], r['starts'], '{:,.0f}'.format(r['walk_graph_area_m2'] or 0), r['pickups_on_reachable_floor'], r['pickups'],
-              r['structure_audit'], fmt(r['off_walk_graph_triage'].get('start', {})), fmt(r['off_walk_graph_triage'].get('pickup', {}))))
+              r['structure_audit'], cv['status'], ' (PROVISIONAL)' if cv['exemption_applied'] else '', cv['airborne_starts_exempt'],
+              fmt(r['off_walk_graph_triage'].get('start', {})), fmt(r['off_walk_graph_triage'].get('pickup', {}))))
+        a('\nCampaign verdict = the audit verdict with airborne_by_design starts exempt (level design; Integration 2026-10-17). '
+          'PROVISIONAL where the exemption decides it: reachFlags 2 is read as R_FLY until RE confirms the enum. Unclassified starts still count.')
         a('\nTriage: airborne_by_design = real level data (fly-only reach specs, R_FLY PROVISIONAL); on_mover = audit limit (no mover '
           'collision in the walk graph); no_floor_below = UNKNOWN; unclassified = walk-rule limit or unconnected floor (per-actor look).\n')
     a('## 2. Blocker classes (totals over the 10 chapters)\n')
