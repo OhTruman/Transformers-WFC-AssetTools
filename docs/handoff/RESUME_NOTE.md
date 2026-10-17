@@ -1,4 +1,4 @@
-# AssetTools resume note (2026-10-17 04:35)
+# AssetTools resume note (2026-10-17 04:50)
 
 - **Done today:**
   - Campaign starts seed the walk graph; the ground check is reported only in campaign mode (544f3d9; MP identical on all 10).
@@ -16,13 +16,16 @@
   ```
   - The hold was set at 04:14:28 and removed at 04:14:58; the rerun started about 04:15:59.
   - A stage killed by a hold leaves `<stage log>.HOLD_INTERRUPTED`; the next start deletes it.
-- **Blocked (reported to Integration, waiting for a go):** D1_ORB map_structure_audit hits MemoryError at the 10 GB cap.
-  - Cause: the walk graph, seeded from 22 starts, holds its reachable set as Python tuples.
-  - Proposed fix: a packed numpy reachable set, gated MP byte-identical on 10 maps plus the 9 finished chapters, then rerun D1 audit +
-    map_complete.
-  - D1's map_complete ran on the stale audit.
-- **Open:** reconcile the vs_validate ground-check count with the audit's start count in the chapter docs; regenerate the chapter docs
-  and summary after D1. The FaceFX bone-blend visual check stays parked until Gameplay's hook.
+- **Backlog 5 DONE (d84baf2):** all 10 chapters are in the starts report.
+  - Generated outputs: summary section 1c and section 6 of each chapter doc.
+  - Off-walk-graph triage: airborne_by_design / on_mover / no_floor_below / unclassified.
+  - D1's cap at 04:24 was a launch error: run_stages.cmd had no WFC_AUDIT_CELL=2, so the audit ran at 1 m. Fixed in run_stages.cmd
+    and run_campaign_rest.cmd; D1 reran at 2 m, peak 3.51 GB, PASS.
+- **Open:**
+  - Code items from the triage, for the campaign phase: mover collision at its initial pose in the walk graph; 6 no_floor_below starts
+    (A4 / D2) still need a look.
+  - The FaceFX bone-blend visual check stays parked until Gameplay's hook.
+  - Integration copies the docs by file.
 - **Rules:** check `*/work/PERF_HOLD` before any interpreter. While a hold is on: no python, node or py_compile at all; edit with the
   editor or the shell only.
 - **Nothing is running.**
