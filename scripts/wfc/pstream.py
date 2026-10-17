@@ -208,6 +208,100 @@ def class_default_fields():
         }
     return _FIELDS
 
+# Compiled parameter blob (RE re-workspace-0c, 2026-10-18; runner layouts read from the native code, verified on
+# FX_AssaultRifle_p.FX.Tracer_AssaultRifle_FX ...ParticleLODLevel_8227): after the four module-order lists of the raw region come
+# u32 SIZE, SIZE bytes = the modules' parameter blocks concatenated IN RECORD ORDER (modules without parameters add nothing),
+# then the LOD name list (u32 n + n x {i32 name index, i32 number}) that name-typed fields index. All big-endian.
+_I, _F, _N = 'i', 'f', 'name'
+_AX = [('Positive_X', _I), ('Positive_Y', _I), ('Positive_Z', _I), ('Negative_X', _I), ('Negative_Y', _I), ('Negative_Z', _I)]
+BLOCKS = {
+    'PMI_SizeMultiplyLife': [('MultiplyX', _I), ('MultiplyY', _I), ('MultiplyZ', _I)],
+    'PMI_ColorByParameter': [('ColorParam', _N), ('DefaultColor', 'argb')],
+    'PMI_ColorScaleOverLife': [('bEmitterTime', _I)],
+    'PMI_Gravity': [('GravityMultiplier', _F)],
+    'PMI_LocationEmitter': [('EmitterName', _N), ('InheritSourceVelocityScale', _F), ('InheritSourceRotationScale', _F),
+                            ('SelectionMethod', 'enum:ELESM_Random,ELESM_Sequential'), ('bInheritSourceVelocity', _I), ('bInheritSourceRotation', _I)],
+    'PMI_DynamicParameter': [('bUseEmitterTime[0]', _I), ('bUseEmitterTime[1]', _I), ('bUseEmitterTime[2]', _I), ('bUseEmitterTime[3]', _I)],
+    'PMI_LocationPrimitiveSphere': _AX + [('SurfaceOnly', _I), ('Velocity', _I)],
+    'PMI_LocationPrimitiveCylinder': _AX + [('SurfaceOnly', _I), ('Velocity', _I), ('RadialVelocity', _I), ('HeightAxis', 'enum:PMLPC_HEIGHTAXIS_X,PMLPC_HEIGHTAXIS_Y,PMLPC_HEIGHTAXIS_Z')],
+    'PMI_Orbit': [('ChainMode (H, not read by the runners)', _I)] + [(f'{a}.{b}', _I) for a in ('OffsetOptions', 'RotationOptions', 'RotationRateOptions')
+                                                                       for b in ('bProcessDuringSpawn', 'bProcessDuringUpdate', 'bUseEmitterTime')],
+    'PMI_LocationEmitterDirect': [('EmitterName (H)', _N)],
+}
+ZERO_BLOCK = {'PMI_Lifetime', 'PMI_Size', 'PMI_Velocity', 'PMI_LocationDirect', 'PMI_VelocityInheritParent', 'PMI_AccelerationOverLife'}
+# block sizes SOLVED by the census (pstream_blob_census.py: LODs where the module is the only unknown, SIZE - known = constant);
+# their field layout is not from RE, so values are emitted as raw big-endian int32 words 'raw[k]' (UNNAMED) for RE to name
+CENSUS_SIZES = {'PMI_Color': 0, 'PMI_Location': 0, 'PMI_Rotation': 0, 'PMI_SubUV': 0, 'PMI_Unknown': 0,
+                'PMI_MeshRotation': 4, 'PMI_VelocityOverLife': 4, 'PMI_ColorOverLife': 0, 'PMI_MeshRotationRate': 0, 'PMI_RotationRate': 0,
+                'PMI_SubUVDirect': 0, 'PMI_SizeScale': 12, 'PMI_SizeMultiplyVelocity': 12, 'PMI_Acceleration': 0}
+def block_size(m):
+    if m in ZERO_BLOCK: return 0
+    if m in BLOCKS: return 4 * len(BLOCKS[m])
+    return CENSUS_SIZES.get(m)
+
+def _fields_for(r, name, pb):
+    """the record's fields: compiled values from the parameter blob when decoded, else (A) class defaults, labelled per field"""
+    blk = (pb.get('blocks') or {}).get(r['index'])
+    if blk is not None:
+        return {'fields': dict(blk), 'fields_source': {k: 'compiled' for k in blk}}
+    if name in class_default_fields():
+        f, s = class_default_fields()[name]
+        return {'fields': dict(f), 'fields_source': {k: 'class_default: ' + v for k, v in s.items()},
+                'fields_note': 'parameter blob not decoded for this LOD (%s)' % pb.get('status')}
+    return {}
+
+def param_blob(pr, p=None):
+    """-> {'size', 'blocks': {record index: {field: value}}, 'names', 'status'}; status 'decoded' only when SIZE == the sum of the known
+    block sizes of the LOD's records (every record's size known)."""
+    raw = bytes.fromhex((pr.get('raw_between_list_and_groups') or '').replace(' ', ''))
+    o = 0
+    try:
+        # FOUR module-order lists (u32 count + count bytes), then u32 SIZE. RE read the 4th list's count as "int 0": it is empty in most
+        # LODs, but holds the Orbit module's index in the Orbit LODs (census 2026-10-18: SIZE then fits exactly)
+        for _ in range(4):
+            n = struct.unpack_from('>I', raw, o)[0]; o += 4 + n
+        size = struct.unpack_from('>I', raw, o)[0]; o += 4
+    except struct.error:
+        return {'status': 'no blob header'}
+    if o + size > len(raw): return {'status': 'no blob header', 'at': o - 4}
+    blob = raw[o:o + size]; o += size; names = []
+    try:
+        nn = struct.unpack_from('>I', raw, o)[0]
+        for k in range(nn):
+            ni, num = struct.unpack_from('>ii', raw, o + 4 + 8 * k)
+            nm = p.names[ni] if p is not None and 0 <= ni < len(p.names) else ni
+            names.append(nm if not num else '%s_%d' % (nm, num - 1))
+    except struct.error:
+        pass
+    sizes = [block_size(r['module']) for r in pr['records']]
+    out = {'size': size, 'names': names}
+    if any(s is None for s in sizes):
+        out['status'] = 'unknown block size for ' + ', '.join(sorted({r['module'] for r, s in zip(pr['records'], sizes) if s is None})); return out
+    if sum(sizes) != size:
+        out['status'] = 'size mismatch: SIZE %d != sum of known blocks %d' % (size, sum(sizes)); return out
+    blocks = {}; b = 0
+    for r, s in zip(pr['records'], sizes):
+        if not s: continue
+        f = {}
+        if r['module'] not in BLOCKS:                         # census-sized block, layout unknown: raw words
+            for k in range(s // 4): f['raw[%d] (UNNAMED: size from census, layout not from RE)' % k] = struct.unpack('>i', blob[b + 4 * k:b + 4 * k + 4])[0]
+            blocks[r['index']] = f; b += s; continue
+        for k, (name, typ) in enumerate(BLOCKS[r['module']]):
+            w = blob[b + 4 * k:b + 4 * k + 4]
+            if typ == _F: v = round(struct.unpack('>f', w)[0], 7)
+            elif typ == 'argb': v = {'A': w[0], 'R': w[1], 'G': w[2], 'B': w[3]}
+            else:
+                v = struct.unpack('>i', w)[0]
+                if typ == _N: v = names[v] if 0 <= v < len(names) else {'name_index': v}
+                elif typ.startswith('enum:'):
+                    opts = typ[5:].split(','); v = opts[v] if 0 <= v < len(opts) else (opts[-1] if 'HEIGHTAXIS' in typ else v)
+                elif name in [a for a, _ in _AX] or name.startswith(('b', 'Surface', 'Velocity', 'Radial', 'Offset', 'Rotation', 'Multiply')):
+                    v = bool(v) if v in (0, 1) else v
+            f[name] = v
+        blocks[r['index']] = f; b += s
+    out.update({'status': 'decoded', 'blocks': blocks})
+    return out
+
 def system(ps, pkg=None):
     """particles.summarize() (tagged data) + every LOD's compiled module list with assigned distributions."""
     import particles
@@ -226,6 +320,8 @@ def system(ps, pkg=None):
             except Exception as ex:
                 L['compiled_modules_error'] = str(ex); continue
             a = assign(pr)
+            pb = param_blob(pr, p)
+            L['parameter_blob'] = {k: v for k, v in pb.items() if k != 'blocks'}
             mods = []
             for r in pr['records']:
                 obj = cls = None; props = None; name = r['module']
@@ -250,8 +346,7 @@ def system(ps, pkg=None):
                              'enabled (flagA; HIGH - particle_flag_census.json)': r['flagA'] == 1,
                              'payload_offset': r['payload_offset'],
                              **({'props': vol_props} if name == 'PMI_VelocityOverLife' else {}),
-                             **({'fields': dict(class_default_fields()[name][0]), 'fields_source': dict(class_default_fields()[name][1])}
-                                if name in class_default_fields() else {}),
+                             **(_fields_for(r, name, pb)),
                              'distributions': [{'property': x['property'], 'property_candidates': x.get('property_candidates'),
                                                 'kind': x['dist']['kind'], 'op': x['dist']['op'],
                                                 'values': x['dist']['values'], 'confidence': x['confidence'],
