@@ -37,6 +37,7 @@ VIEW_M = 200.0
 CELL = float(os.environ.get('WFC_M05_CELL') or 4.0)
 # WFC_M05_TILE (m, campaign only): process default-material faces in tiles with tile-local obstacle grids; unset = original single grid
 TILE = float(os.environ.get('WFC_M05_TILE') or 0)
+ALL_LEVELS = bool(os.environ.get('WFC_M05_ALL_LEVELS'))
 CT = {5126: 'f4', 5125: 'u4', 5123: 'u2', 5121: 'u1'}
 NC = {'SCALAR': 1, 'VEC2': 2, 'VEC3': 3, 'VEC4': 4, 'MAT4': 16}
 
@@ -153,21 +154,34 @@ class Grid:
         t = ray_hits(p0, d, self.T[list(ids)], L - 0.02)
         return t is not None and t > 0.02
 
-def main():
-    p = objtree.package(LV)
+def level_model(lv):
+    p = objtree.package(lv)
     level = next(i + 1 for i, e in enumerate(p.exports) if p.class_name(e) == 'Level')
     mi = max((i + 1 for i, e in enumerate(p.exports) if p.class_name(e) == 'Model' and e['outer'] == level),
              key=lambda i: p.exports[i - 1]['serial_size'])
-    M = bsp.read_model(p, mi)
+    return p, bsp.read_model(p, mi)
+
+def main():
+    # WFC_M05_ALL_LEVELS (campaign): every level with exported BSP (map.json), not only bsp_level(); faces of all of them are analysed
+    # and the BSP of all of them occludes. Unset = the single bsp_level() level, as before
+    if ALL_LEVELS:
+        mj = json.load(open(os.path.join(VS, 'Maps', MAP, 'map.json'), encoding='utf-8'))['bsp']
+        LEVELS = [k for k, v in mj.items() if (v or {}).get('render_triangles')]
+    else:
+        LEVELS = [LV]
+    LM = [(lv,) + level_model(lv) for lv in LEVELS]
+    p, M = LM[0][1], LM[0][2]
+    nkey = (lambda li, ni: (li, ni)) if ALL_LEVELS else (lambda li, ni: ni)
     tris, owners, boxes = scene_triangles()
     lo = np.array([b[0] for b in boxes]); hi = np.array([b[1] for b in boxes])
     # obstacle set: meshes + all rendered BSP polygons (fan triangles), remembering which BSP node owns which triangle
     bt, bown = [], []
-    for ni, (si, pts, node) in enumerate(bsp.polygons(M)):
-        if int(M['surfs'][si]['PolyFlags']) & (bsp.PF_INVISIBLE | bsp.PF_PORTAL): continue
-        G = np.stack([pts[:, 0], pts[:, 2], pts[:, 1]], 1) * 0.01
-        for j in range(1, len(G) - 1):
-            bt.append([G[0], G[j], G[j + 1]]); bown.append(ni)
+    for li, (lv_, p_, M_) in enumerate(LM):
+        for ni, (si, pts, node) in enumerate(bsp.polygons(M_)):
+            if int(M_['surfs'][si]['PolyFlags']) & (bsp.PF_INVISIBLE | bsp.PF_PORTAL): continue
+            G = np.stack([pts[:, 0], pts[:, 2], pts[:, 1]], 1) * 0.01
+            for j in range(1, len(G) - 1):
+                bt.append([G[0], G[j], G[j + 1]]); bown.append(nkey(li, ni))
     if not TILE:
         allT = np.concatenate([np.concatenate(tris), np.array(bt)])
         nmesh = sum(len(t) for t in tris)
@@ -190,14 +204,15 @@ def main():
     print('obstacles', nobst, 'big', nbig, 'cells', ncells, 'viewpoints', len(V), 'tile', TILE, 'mem %.2f GB' % rss_gb(), flush=True)
 
     def default_nodes():
-        for ni, (si, pts, node) in enumerate(bsp.polygons(M)):
-            s = M['surfs'][si]; mat = int(s['Material'])
-            mp = p.object_path(mat) if mat > 0 else (p.full_path(mat) if mat < 0 else None)
-            if mp and 'DefaultMaterial' in mp: yield ni, si, pts, node
+        for li, (lv_, p_, M_) in enumerate(LM):
+            for ni, (si, pts, node) in enumerate(bsp.polygons(M_)):
+                s = M_['surfs'][si]; mat = int(s['Material'])
+                mp = p_.object_path(mat) if mat > 0 else (p_.full_path(mat) if mat < 0 else None)
+                if mp and 'DefaultMaterial' in mp: yield (li, ni), si, pts, node
 
     def node_iter():
         if not TILE:
-            for ni, si, pts, node in default_nodes(): yield ni, si, pts, node, grid, tri_of_node[ni]
+            for (li, ni), si, pts, node in default_nodes(): yield (li, ni), si, pts, node, grid, tri_of_node[nkey(li, ni)]
             return
         tiles = defaultdict(list)
         for ni, si, pts, node in default_nodes():
@@ -214,11 +229,12 @@ def main():
             gt = Grid(Tt)
             print('tile', key, 'faces', len(grp), 'obstacles', len(Tt), 'mem %.2f GB' % rss_gb(), flush=True)
             for ni, si, pts, node, G in grp:
-                yield ni, si, pts, node, gt, {g2l[b] for b in bsp_of_node[ni] if b in g2l}
+                yield ni, si, pts, node, gt, {g2l[b] for b in bsp_of_node[nkey(*ni)] if b in g2l}
             del gt, Tt, parts
 
     nodes = []
-    for ni, si, pts, node, grid, skip in node_iter():
+    for (li, ni), si, pts, node, grid, skip in node_iter():
+        lvname, p, M = LM[li]
         s = M['surfs'][si]
         G = np.stack([pts[:, 0], pts[:, 2], pts[:, 1]], 1) * 0.01
         nr = M['vectors'][int(s['vNormal'])]; n = np.array([nr[0], nr[2], nr[1]]); n /= np.linalg.norm(n)
@@ -242,14 +258,14 @@ def main():
                     seen_by += 1; first = first or (v[[0, 2, 1]] * 100).round(0).tolist(); break
             if seen_by >= 3: break
         guard()
-        nodes.append({'node_index': ni, 'surface': si, 'brush': p.object_path(int(s['Actor'])) if int(s['Actor']) > 0 else None,
+        nodes.append({**({'level': lvname} if ALL_LEVELS else {}), 'node_index': ni, 'surface': si, 'brush': p.object_path(int(s['Actor'])) if int(s['Actor']) > 0 else None,
                       'poly_flags_raw': '0x%08X' % int(s['PolyFlags']), 'centroid_ue': (c[[0, 2, 1]] * 100).round(1).tolist(),
                       'normal_ue': [round(float(x), 4) for x in n[[0, 2, 1]]], 'area_m2': round(float(area), 3),
                       'samples_covered': f'{sum(cov)}/{len(cov)}', 'verdict': verdict,
                       'front_side_viewpoints_within_%dm' % VIEW_M: int(len(front)),
                       'visible_in_play': seen_by > 0, 'example_viewpoint_ue': first,
                       'nearby_meshes': sorted({owners[k][1] for k in cand})[:6]})
-    nodes.sort(key=lambda x: x['node_index'])          # tiles visit nodes out of order; keep the untiled order
+    nodes.sort(key=lambda x: (LEVELS.index(x['level']) if ALL_LEVELS else 0, x['node_index']))   # tiles visit nodes out of order
     vc = Counter(x['verdict'] for x in nodes)
     vis = [x for x in nodes if x['visible_in_play']]
     area = defaultdict(float)
