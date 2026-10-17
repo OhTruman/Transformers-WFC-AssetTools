@@ -147,6 +147,22 @@ None left: every byte of all 22 files is accounted for by the layout above. Stil
 
 **Not needed for the hook:** the phoneme map (generation only), the class / name hash tables (parser internals).
 
+## Rest pose and binding (for Gameplay's hook)
+
+- **Rest-pose files:**
+  - `work/fxa/facefx_rest_pose.csv`: the rest pose of every face bone in all 22 actors (346 rows: position, quaternion as stored
+    w-first, scale, skeleton bone index).
+  - `work/fxa/optimus_face_bone_binding.csv`: the Optimus binding. All 14 bones exist in
+    `ExtractedAssets/VerticalSlice/Characters/Optimus/robot.glb` under the same names (glb nodes 7–20), with the .glb bind
+    locals beside the FaceFX rest.
+- **Mapping from the data (PROVISIONAL, for Gameplay to confirm on the full skeleton):**
+  - Units: FaceFX is UE centimetres; the .glb is metres (÷100).
+  - The 13 face bones parented to `C_Head01_Face_XF2` match **glb_t = (x, z, −y) / 100** to rounding (eyelids, cheeks, lip corners,
+    lips, jaw).
+  - Their rest rotation (−1, 0, 0, 0) is identity, i.e. glb (0, 0, 0, 1): FaceFX stores w first, and q and −q are the same rotation.
+  - The head bone itself (parented to the neck) matches the glb rotation as (x, z, y, w) up to the sign of q. Its translation's y
+    flips sign (a different parent frame), so settle that one bone on the full skeleton.
+
 ## Next
 
 1. The visual proof above (a CSV + plot tool in work/fxa).
