@@ -40,9 +40,16 @@
   run_bounded: rc=0  wall=9.2s  peak_job_memory=1.39 GB  cap=10.0 GB  cmd=scripts\wfc\map_complete.py A2_KON
   map_complete rc 0  4:16:08.71
   ```
+- **Done later on 2026-10-18:**
+  - D2 Guardian Chamber: the floor exists; the starts are elevated spawns (`elevated_above_floor`, exempt) (0baed93, 7f80fc2).
+  - Movies: 54 WebM in out/movies (gitignored); manifest + subtitle JSON in manifests/movies (2c23b15). The old ExtractedAssets subtitles
+    are 10x early.
+  - Physmat: MP weapon world (2c1d9ba); campaign weapon + pawn worlds (85f80a6).
+  - pstream: option A (7eb8b5e) and option B (09a0feb), the compiled parameter blob, 2,736 of 2,736 LODs. Rendering regenerates
+    map_fx_runtime.json.
 - **Open:**
   - Standing by for Systems' package-7 build data list (overlay files, material sets).
-  - Offered follow-up: find the D2 Guardian Chamber floor in the cooked Chamber packages.
+  - RE to name the census-sized particle blocks (SizeScale, SizeMultiplyVelocity, MeshRotation, VelocityOverLife).
   - The airborne exemption rests on reachFlags 2 = R_FLY: PROVISIONAL until RE confirms the enum.
   - Matinee: 165 groups are unresolved (empty variables in the cook), listed in CAMPAIGN_MATINEE_SCHEMA.md §3b.
   - Trypticon's low jaw-voice correlation is not explained by the blend rule (product and nlerp differ <= 0.47 deg).
