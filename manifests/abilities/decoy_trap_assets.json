@@ -1,0 +1,4150 @@
+{
+ "generated_by": "AssetTools/scripts/wfc/decoy_trap_assets.py",
+ "mechanics_source": "RE-Workspace/work/handoff/MP_DECOY_TRAP_RE.md (3f0271f)",
+ "data_sources": [
+  "manifests/authored.db (CDOs)",
+  "manifests/inventory.db",
+  "ExtractedAssets/VerticalSlice/{Characters,Weapons}",
+  "scripts/wfc/pstream.py (compiled particle modules)"
+ ],
+ "classes": {
+  "TnAbilityDecoyTrap": {
+   "InventoryTypeToSpawn": "TransGame.TnDecoyTrap",
+   "TossVelocity": {
+    "X": 2000.0,
+    "Y": 1200.0,
+    "Z": 0.0
+   },
+   "SpawnDelay": 0.5,
+   "OnTriggerSound": "BL_TRANS_POWER.DECOY_TRAP_DEPLOY",
+   "Cooldown": [
+    60.0
+   ],
+   "OnTriggerAnimParams": {
+    "AnimName": "Skill_Barrier",
+    "BlendOutTime": 0.30000001192092896,
+    "RootMotionMode": "RMM_Ignore"
+   },
+   "CooldownCondition": "TransGame.Default__TnAbilityDecoyTrap.CooldownCondition0"
+  },
+  "TnDecoyTrap": {
+   "BuffClass": "TransGame.TnBuffDecoyTrap",
+   "PickupSound": "BL_TRANS_POWER.DECOY_TRAP_EXPLODE",
+   "DroppedPickupClass": "TransGame.TnDroppedPickupDecoyTrap",
+   "DroppedPickupMesh": null,
+   "PickupFactoryMesh": "TransGame.Default__TnDecoyTrap.MeshComponentA",
+   "Components": [
+    null
+   ]
+  },
+  "TnBuffDecoyTrap": {
+   "MarkerDescription": "Victim Trapped",
+   "IntroLoopAnimation": {
+    "MaskType": "CAMT_FullBody",
+    "AnimName": "HitReactions_React_DecoyTrap_In",
+    "BlendInTime": 0.30000001192092896,
+    "BlendOutTime": 0.10000000149011612,
+    "StartPosition": 0.0,
+    "PlayRate": 1.0,
+    "Looping": true,
+    "RootMotionMode": "RMM_Ignore",
+    "RootMotionRotationMode": "RMRM_Ignore",
+    "Override": "CAPO_PlayIfHigherOrEqualPriority",
+    "Priority": "CAPR_HighPriority",
+    "AnimSet": null,
+    "DirtyBitToggle": false
+   },
+   "OutroAnimation": {
+    "MaskType": "CAMT_FullBody",
+    "AnimName": "HitReactions_React_DecoyTrap_Out",
+    "BlendInTime": 0.10000000149011612,
+    "BlendOutTime": 0.3499999940395355,
+    "StartPosition": 0.0,
+    "PlayRate": 1.0,
+    "Looping": false,
+    "RootMotionMode": "RMM_Ignore",
+    "RootMotionRotationMode": "RMRM_Ignore",
+    "Override": "CAPO_PlayIfHigherOrEqualPriority",
+    "Priority": "CAPR_HighPriority",
+    "AnimSet": null,
+    "DirtyBitToggle": false
+   },
+   "BuffTime": [
+    2.0
+   ],
+   "FxSocket": "TargetingSocket",
+   "ApplyFx": "FX_Multiplayer_p.FX.DecoyTrap_FX",
+   "BuffReplicationType": "kBuffReplicateToAll",
+   "InstigatorBuffTimeModifier": "TransGame.Default__TnBuffDecoyTrap.InstigatorBuffTimeModifier0"
+  },
+  "TnBuffDotFromDecoy": {
+   "DamagePerSecond": [
+    30.0
+   ],
+   "DotDamageType": "TransGame.TnDamageTypeDecoyDot",
+   "BuffTime": [
+    2.0
+   ],
+   "InstigatorBuffTimeModifier": "TransGame.Default__TnBuffDotFromDecoy.InstigatorBuffTimeModifier0"
+  },
+  "TnBuffIncreaseDecoyTrapTime": {
+   "FloatModifier": [
+    1.5
+   ],
+   "BuffTime": [
+    -1.0
+   ],
+   "BuffReplicationType": "kBuffReplicateToNone",
+   "InstigatorBuffTimeModifier": "TransGame.Default__TnBuffIncreaseDecoyTrapTime.InstigatorBuffTimeModifier0"
+  },
+  "TnSkillDecoyDot": {},
+  "TnSkillIncreaseDecoyTrapTime": {
+   "BuffToApply": "TransGame.TnBuffIncreaseDecoyTrapTime"
+  },
+  "TnDamageTypeDecoyDot": {
+   "ShouldCauseHitReaction": false,
+   "ShowHudFeedback": false,
+   "ExemptFromAccuracyKills": true,
+   "DeathString": "`k [Decoy] `o",
+   "Suicide": "`o [Suicide][Decoy]",
+   "bInstantHit": false
+  },
+  "TnObjectiveMarkerTypeDecoyTrap": {
+   "MarkerSetup": {
+    "Mat": "UI_HudMarkers_p.MarkerDeceptDestructible_MAT",
+    "MatInst": null,
+    "HealthBarMat": null,
+    "HealthBarMatInst": null,
+    "MarkerZOffsetWS": 0.0,
+    "DrawLabelWhenFocused": true,
+    "DrawLabelWhenUnfocused": false,
+    "DrawLabelWhenOffscreen": false,
+    "LabelOffset": {
+     "X": 0.0,
+     "Y": -0.03999999910593033,
+     "Z": 0.0
+    },
+    "LabelZOffsetWS": 0.0,
+    "LabelColor": {
+     "B": 250,
+     "G": 210,
+     "R": 100,
+     "A": 220
+    },
+    "FocusParam": "Over",
+    "FocusedMarkerSize": 0.05000000074505806,
+    "UnfocusedMarkerSize": 0.05000000074505806,
+    "DrawWhenOffscreen": true,
+    "OnScreenParam": "OnScreen",
+    "OffscreenMarkerSize": 0.0625,
+    "RotationParam": "ArrowAngle"
+   }
+  },
+  "TnXpEventTypeKillDecoyTrap": {
+   "XpAmount": 100.0,
+   "Announcement": "Enjoy The Gift",
+   "Description": "You killed an enemy after they were stunned by your trap."
+  },
+  "TnDroppedPickupDecoyTrap (archetype chain resolved)": {
+   "values": {
+    "GlitchDelay": 5.0,
+    "GlitchDuration": 2.0,
+    "ArmDelay": 3.0,
+    "HighlightFx": "TransGame.Default__TnDroppedPickupDecoyTrap.HighlightFx0",
+    "CanBeDestroyed": true,
+    "Defragger": "TransGame.Default__TnDroppedPickupDecoyTrap.Defragger0",
+    "PickupEffect": "TransGame.Default__TnDroppedPickupDecoyTrap.PickupEffect0",
+    "LightEnvironment": "TransGame.Default__TnDroppedPickupDecoyTrap.MyLightEnvironment",
+    "Components": [
+     null,
+     "TransGame.Default__TnDroppedPickupDecoyTrap.CollisionCylinder",
+     "TransGame.Default__TnDroppedPickupDecoyTrap.MyLightEnvironment",
+     "TransGame.Default__TnDroppedPickupDecoyTrap.PickupEffect0",
+     "TransGame.Default__TnDroppedPickupDecoyTrap.TouchCylinder"
+    ],
+    "CollisionComponent": "TransGame.Default__TnDroppedPickupDecoyTrap.CollisionCylinder",
+    "CampaignLifeSpan": 120.0,
+    "MultiplayerLifeSpan": 30.0,
+    "LifeSpan": 180.0,
+    "HighlightFxMat": "WEP_Shared_p.WEP_PickupTarget_MAT",
+    "InstantKillDamageTypes": [
+     "TransGame.TnDamageTypeFlashBang",
+     "TransGame.TnDamageTypeMelee"
+    ],
+    "CheckAtRestInterval": 0.20000000298023224,
+    "TeamNum": 255,
+    "bPickupWhenTouched": false,
+    "bKillDuringLevelTransition": true,
+    "bAlwaysRelevant": true,
+    "bShouldBaseAtStartup": false,
+    "bNoEncroachCheck": true,
+    "bActorSyncToRBPhysicsWithRotation": true,
+    "bOnlyDirtyReplication": false,
+    "ImpactSoundRetriggerDelay": 0.25,
+    "ImpactSoundRetriggerTimer": 0.25,
+    "RemoteRole": "ROLE_SimulatedProxy",
+    "bIgnoreRigidBodyPawns": true,
+    "bOrientOnSlope": true,
+    "bUpdateSimulatedPosition": true,
+    "bCollideActors": true,
+    "bCollideWorld": true,
+    "NetUpdateFrequency": 8.0,
+    "NetPriority": 1.399999976158142,
+    "CollisionPreset": "COLLIDE_CustomDefault",
+    "RotationRate": {
+     "Pitch": 0,
+     "Yaw": 5000,
+     "Roll": 0
+    },
+    "DesiredRotation": {
+     "Pitch": 0,
+     "Yaw": 30000,
+     "Roll": 0
+    },
+    "CustomTimeDilation": 1.0,
+    "Role": "ROLE_Authority",
+    "bShouldTick": true,
+    "bPushedByEncroachers": true,
+    "bRouteBeginPlayEvenIfStatic": true,
+    "bReplicateMovement": true,
+    "bMovable": true,
+    "bNoCylinderCollision": true,
+    "bJustTeleported": true,
+    "bUpdatePhysicsWhenNotRendered": true,
+    "DrawScale": 1.0,
+    "DrawScale3D": {
+     "X": 1.0,
+     "Y": 1.0,
+     "Z": 1.0
+    },
+    "ActorIndex": -1,
+    "ReplicatedCollisionPreset": "None",
+    "MessageClass": "Engine.LocalMessage",
+    "SupportedEvents": [
+     "Engine.SeqEvent_Touch",
+     "Engine.SeqEvent_Destroyed",
+     "Engine.SeqEvent_TakeDamage"
+    ]
+   },
+   "value_source": {
+    "GlitchDelay": "TransGame.Default__TnDroppedPickupDecoyTrap",
+    "GlitchDuration": "TransGame.Default__TnDroppedPickupDecoyTrap",
+    "ArmDelay": "TransGame.Default__TnDroppedPickupDecoyTrap",
+    "HighlightFx": "TransGame.Default__TnDroppedPickupDecoyTrap",
+    "CanBeDestroyed": "TransGame.Default__TnDroppedPickupDecoyTrap",
+    "Defragger": "TransGame.Default__TnDroppedPickupDecoyTrap",
+    "PickupEffect": "TransGame.Default__TnDroppedPickupDecoyTrap",
+    "LightEnvironment": "TransGame.Default__TnDroppedPickupDecoyTrap",
+    "Components": "TransGame.Default__TnDroppedPickupDecoyTrap",
+    "CollisionComponent": "TransGame.Default__TnDroppedPickupDecoyTrap",
+    "CampaignLifeSpan": "TransGame.Default__TnDroppedPickupWeapon",
+    "MultiplayerLifeSpan": "TransGame.Default__TnDroppedPickupWeapon",
+    "LifeSpan": "TransGame.Default__TnDroppedPickupWeapon",
+    "HighlightFxMat": "TransGame.Default__TnDroppedPickupDefrag",
+    "InstantKillDamageTypes": "TransGame.Default__TnDroppedPickupDefrag",
+    "CheckAtRestInterval": "TransGame.Default__TnDroppedPickup",
+    "TeamNum": "TransGame.Default__TnDroppedPickup",
+    "bPickupWhenTouched": "TransGame.Default__TnDroppedPickup",
+    "bKillDuringLevelTransition": "TransGame.Default__TnDroppedPickup",
+    "bAlwaysRelevant": "TransGame.Default__TnDroppedPickup",
+    "bShouldBaseAtStartup": "TransGame.Default__TnDroppedPickup",
+    "bNoEncroachCheck": "TransGame.Default__TnDroppedPickup",
+    "bActorSyncToRBPhysicsWithRotation": "TransGame.Default__TnDroppedPickup",
+    "bOnlyDirtyReplication": "TransGame.Default__TnDroppedPickup",
+    "ImpactSoundRetriggerDelay": "HM_Engine.Default__HmDroppedPickup",
+    "ImpactSoundRetriggerTimer": "HM_Engine.Default__HmDroppedPickup",
+    "RemoteRole": "Engine.Default__DroppedPickup",
+    "bIgnoreRigidBodyPawns": "Engine.Default__DroppedPickup",
+    "bOrientOnSlope": "Engine.Default__DroppedPickup",
+    "bUpdateSimulatedPosition": "Engine.Default__DroppedPickup",
+    "bCollideActors": "Engine.Default__DroppedPickup",
+    "bCollideWorld": "Engine.Default__DroppedPickup",
+    "NetUpdateFrequency": "Engine.Default__DroppedPickup",
+    "NetPriority": "Engine.Default__DroppedPickup",
+    "CollisionPreset": "Engine.Default__DroppedPickup",
+    "RotationRate": "Engine.Default__DroppedPickup",
+    "DesiredRotation": "Engine.Default__DroppedPickup",
+    "CustomTimeDilation": "Engine.Default__Actor",
+    "Role": "Engine.Default__Actor",
+    "bShouldTick": "Engine.Default__Actor",
+    "bPushedByEncroachers": "Engine.Default__Actor",
+    "bRouteBeginPlayEvenIfStatic": "Engine.Default__Actor",
+    "bReplicateMovement": "Engine.Default__Actor",
+    "bMovable": "Engine.Default__Actor",
+    "bNoCylinderCollision": "Engine.Default__Actor",
+    "bJustTeleported": "Engine.Default__Actor",
+    "bUpdatePhysicsWhenNotRendered": "Engine.Default__Actor",
+    "DrawScale": "Engine.Default__Actor",
+    "DrawScale3D": "Engine.Default__Actor",
+    "ActorIndex": "Engine.Default__Actor",
+    "ReplicatedCollisionPreset": "Engine.Default__Actor",
+    "MessageClass": "Engine.Default__Actor",
+    "SupportedEvents": "Engine.Default__Actor"
+   }
+  }
+ },
+ "trap_visual": {
+  "own_mesh": null,
+  "rule": "TnDecoyTrap has no mesh: DroppedPickupMesh None, PickupFactoryMesh = MeshComponentA whose StaticMesh is unset through the chain (TnBuffPickup.MeshComponentA sets only render flags). TnAbilityDecoyTrap.OnDropInventory -> SetDecoyWeapon(owner current weapon class): the dropped trap shows THAT WEAPON's pickup mesh (RE \u00a72, CONFIRMED). So the trap mesh, materials and defrag material are the per-weapon ones already exported in VerticalSlice/Weapons/<W>/weapon.{glb,json}.",
+  "spin": "weapon PickupRotationRate with Yaw negated (RE \u00a72)",
+  "scale": "weapon PickupScale (HIGH: the dropped-weapon path applies it as for a real drop)",
+  "highlight_fx": {
+   "component": "HighlightFx0 (StaticMeshComponent, inherited TnDroppedPickupDefrag)",
+   "static_mesh": "FX_Mesh_p.Mesh.Plane_STAT",
+   "material": "WEP_Shared_p.WEP_PickupTarget_MAT",
+   "values": {
+    "values": {
+     "LightEnvironment": "TransGame.Default__TnDroppedPickupDecoyTrap.MyLightEnvironment",
+     "StaticMesh": "FX_Mesh_p.Mesh.Plane_STAT",
+     "bForceDirectLightMap": true,
+     "bCastDynamicShadow": false,
+     "bRequiresStaticLightingRebuild": false,
+     "CollideActors": false,
+     "AbsoluteRotation": true
+    },
+    "value_source": {
+     "LightEnvironment": "TransGame.Default__TnDroppedPickupDecoyTrap.HighlightFx0",
+     "StaticMesh": "TransGame.Default__TnDroppedPickupDefrag.HighlightFx0",
+     "bForceDirectLightMap": "TransGame.Default__TnDroppedPickupDefrag.HighlightFx0",
+     "bCastDynamicShadow": "TransGame.Default__TnDroppedPickupDefrag.HighlightFx0",
+     "bRequiresStaticLightingRebuild": "TransGame.Default__TnDroppedPickupDefrag.HighlightFx0",
+     "CollideActors": "TransGame.Default__TnDroppedPickupDefrag.HighlightFx0",
+     "AbsoluteRotation": "TransGame.Default__TnDroppedPickupDefrag.HighlightFx0"
+    }
+   }
+  },
+  "pickup_effect": {
+   "component": "PickupEffect0 (ParticleSystemComponent, inherited TnDroppedPickupDefrag)",
+   "values": {
+    "values": {
+     "Template": "FX_Pickups_p.FX.Pickup_FX",
+     "bAutoActivate": false,
+     "SecondsBeforeInactive": 1.0,
+     "bRequiresStaticLightingRebuild": false
+    },
+    "value_source": {
+     "Template": "TransGame.Default__TnDroppedPickupDefrag.PickupEffect0",
+     "bAutoActivate": "TransGame.Default__TnDroppedPickupDefrag.PickupEffect0",
+     "SecondsBeforeInactive": "TransGame.Default__TnDroppedPickupDefrag.PickupEffect0",
+     "bRequiresStaticLightingRebuild": "TransGame.Default__TnDroppedPickupDefrag.PickupEffect0"
+    }
+   }
+  },
+  "defragger": "Defragger0: TnDefragger with no authored values through the chain (the fade-in / glitch drives the weapon material's defrag parameter; the WEP materials sample WEP_Shared_p WEP_Defrag_Alphas)",
+  "candidate_weapons (all exported weapons; the trap copies whatever the thrower holds)": [
+   {
+    "weapon": "AssaultRifle",
+    "class": "TransContent.TnWeaponAssaultRifle",
+    "glb": "VerticalSlice/Weapons/AssaultRifle/weapon.glb",
+    "mesh_object": "WEP_AssaultRifle_p.WEP_AssaultRifle_SKEL",
+    "materials": [
+     "WEP_AssaultRifle_p.WEP_AssaultRifle_MATINST"
+    ],
+    "PickupScale": 1.0,
+    "PickupRotationRate": {
+     "Pitch": 0,
+     "Yaw": 10000,
+     "Roll": 0
+    },
+    "DroppedPickupClass": "TransGame.TnDroppedPickupWeapon",
+    "usable_by_chassis": {
+     "on_foot": [
+      "Jet",
+      "Tank",
+      "Jet2",
+      "Jet3",
+      "Jet4",
+      "Jet5",
+      "Jet6",
+      "Jet7",
+      "Jet8",
+      "Tank2",
+      "Tank3",
+      "Tank4",
+      "Tank5"
+     ],
+     "vehicle_preset": []
+    }
+   },
+   {
+    "weapon": "AssaultRifleVehicle",
+    "class": "TransContent.TnWeaponAssaultRifleVehicle",
+    "glb": null,
+    "mesh_object": null,
+    "materials": [],
+    "PickupScale": 1.0,
+    "PickupRotationRate": {
+     "Pitch": 0,
+     "Yaw": 10000,
+     "Roll": 0
+    },
+    "DroppedPickupClass": "TransGame.TnDroppedPickupWeapon",
+    "usable_by_chassis": {
+     "on_foot": [],
+     "vehicle_preset": [
+      "Car",
+      "Car2",
+      "Car3",
+      "Car4",
+      "Car5",
+      "Car6",
+      "Car7",
+      "Car8",
+      "Car9",
+      "Car10"
+     ]
+    }
+   },
+   {
+    "weapon": "Axe",
+    "class": "TransContent.TnWeaponAxe",
+    "glb": "VerticalSlice/Weapons/Axe/weapon.glb",
+    "mesh_object": "WEP_Axe_p.Autobot.WEP_Axe_SKEL",
+    "materials": [
+     "WEP_Axe_p.Autobot.WEP_Axe_Energon_MATINST",
+     "WEP_Axe_p.Autobot.WEP_Axe_A_WIP_MATINST"
+    ],
+    "PickupScale": 1.0,
+    "PickupRotationRate": {
+     "Pitch": 0,
+     "Yaw": 10000,
+     "Roll": 0
+    },
+    "DroppedPickupClass": "TransGame.TnDroppedPickupWeapon",
+    "usable_by_chassis": {
+     "on_foot": [
+      "Truck2",
+      "Truck3"
+     ],
+     "vehicle_preset": []
+    }
+   },
+   {
+    "weapon": "Bazooka",
+    "class": "TransContent.TnWeaponBazooka",
+    "glb": "VerticalSlice/Weapons/Bazooka/weapon.glb",
+    "mesh_object": "WEP_BazookaTemp1_p.WEP_Bazooka_SKEL",
+    "materials": [
+     "WEP_BazookaTemp1_p.WEP_Bazooka_MATINST"
+    ],
+    "PickupScale": 1.0,
+    "PickupRotationRate": {
+     "Pitch": 0,
+     "Yaw": 10000,
+     "Roll": 0
+    },
+    "DroppedPickupClass": "TransGame.TnDroppedPickupWeapon",
+    "usable_by_chassis": {
+     "on_foot": [
+      "Truck",
+      "Truck2",
+      "Truck3",
+      "Truck4",
+      "Truck5",
+      "Truck6"
+     ],
+     "vehicle_preset": []
+    }
+   },
+   {
+    "weapon": "BeatDownClub",
+    "class": "TransContent.TnWeaponBeatDownClub",
+    "glb": "VerticalSlice/Weapons/BeatDownClub/weapon.glb",
+    "mesh_object": "WEP_BeatDownClub_p.WEP_BeatDownClub_SKEL",
+    "materials": [
+     "WEP_BeatDownClub_p.WEP_BeatDownClub_MATINST"
+    ],
+    "PickupScale": 1.0,
+    "PickupRotationRate": {
+     "Pitch": 0,
+     "Yaw": 10000,
+     "Roll": 0
+    },
+    "DroppedPickupClass": "TransGame.TnDroppedPickupWeapon",
+    "usable_by_chassis": {
+     "on_foot": [
+      "Jet4",
+      "Jet5",
+      "Jet6"
+     ],
+     "vehicle_preset": []
+    }
+   },
+   {
+    "weapon": "BroadSword",
+    "class": "TransContent.TnWeaponBroadSword",
+    "glb": "VerticalSlice/Weapons/BroadSword/weapon.glb",
+    "mesh_object": "WEP_BroadSword_p.WEP_BroadSword_SKEL",
+    "materials": [
+     "WEP_BroadSword_p.WEP_BroadSword_MATINST",
+     "WEP_BroadSword_p.WEP_BroadSword_EnergonTech_MATINST"
+    ],
+    "PickupScale": 1.0,
+    "PickupRotationRate": {
+     "Pitch": 0,
+     "Yaw": 10000,
+     "Roll": 0
+    },
+    "DroppedPickupClass": "TransGame.TnDroppedPickupWeapon",
+    "usable_by_chassis": null
+   },
+   {
+    "weapon": "BurstRifle",
+    "class": "TransContent.TnWeaponBurstRifle",
+    "glb": "VerticalSlice/Weapons/BurstRifle/weapon.glb",
+    "mesh_object": "WEP_BurstRifle_p.WEP_BurstRifle_SKEL",
+    "materials": [
+     "WEP_BurstRifle_p.Materials.WEP_BurstRifle_MATINST"
+    ],
+    "PickupScale": 1.0,
+    "PickupRotationRate": {
+     "Pitch": 0,
+     "Yaw": 10000,
+     "Roll": 0
+    },
+    "DroppedPickupClass": "TransGame.TnDroppedPickupWeapon",
+    "usable_by_chassis": {
+     "on_foot": [
+      "Jet",
+      "Jet2",
+      "Jet3",
+      "Jet4",
+      "Jet5",
+      "Jet6",
+      "Jet7",
+      "Jet8"
+     ],
+     "vehicle_preset": []
+    }
+   },
+   {
+    "weapon": "ButterflyAxe",
+    "class": "TransContent.TnWeaponButterflyAxe",
+    "glb": "VerticalSlice/Weapons/ButterflyAxe/weapon.glb",
+    "mesh_object": "WEP_ButterflyAxe_p.WEP_ButterflyAxe_SKEL",
+    "materials": [
+     "WEP_ButterflyAxe_p.WEP_ButterflyAxeEnergon_Tech_MATINST",
+     "WEP_ButterflyAxe_p.WEP_ButterflyAxe_MATINST"
+    ],
+    "PickupScale": 1.0,
+    "PickupRotationRate": {
+     "Pitch": 0,
+     "Yaw": 10000,
+     "Roll": 0
+    },
+    "DroppedPickupClass": "TransGame.TnDroppedPickupWeapon",
+    "usable_by_chassis": {
+     "on_foot": [
+      "Truck"
+     ],
+     "vehicle_preset": []
+    }
+   },
+   {
+    "weapon": "CeremonialStaff",
+    "class": "TransContent.TnWeaponCeremonialStaff",
+    "glb": "VerticalSlice/Weapons/CeremonialStaff/weapon.glb",
+    "mesh_object": "WEP_CeremonialStaff_p.WEP_CeremonialStaff_SKEL",
+    "materials": [
+     "WEP_ProngDagger_p.WEP_Energon_A_MATINST",
+     "WEP_CeremonialStaff_p.WEP_CeremonialStaff_MATINST"
+    ],
+    "PickupScale": 1.0,
+    "PickupRotationRate": {
+     "Pitch": 0,
+     "Yaw": 10000,
+     "Roll": 0
+    },
+    "DroppedPickupClass": "TransGame.TnDroppedPickupWeapon",
+    "usable_by_chassis": null
+   },
+   {
+    "weapon": "EMPShotgun",
+    "class": "TransContent.TnWeaponEmpShotgun",
+    "glb": "VerticalSlice/Weapons/EMPShotgun/weapon.glb",
+    "mesh_object": "WEP_EMPShotgun_p.WEP_EMPShotgun_SKEL",
+    "materials": [
+     "WEP_EMPShotgun_p.WEP_EMPShotgun_MATINST"
+    ],
+    "PickupScale": 1.0,
+    "PickupRotationRate": {
+     "Pitch": 0,
+     "Yaw": 10000,
+     "Roll": 0
+    },
+    "DroppedPickupClass": "TransGame.TnDroppedPickupWeapon",
+    "usable_by_chassis": {
+     "on_foot": [
+      "Jet",
+      "Tank",
+      "Jet2",
+      "Jet3",
+      "Jet4",
+      "Jet5",
+      "Jet6",
+      "Jet7",
+      "Jet8",
+      "Tank2",
+      "Tank3",
+      "Tank4",
+      "Tank5"
+     ],
+     "vehicle_preset": []
+    }
+   },
+   {
+    "weapon": "FightingStaff",
+    "class": "TransContent.TnWeaponFightingStaff",
+    "glb": "VerticalSlice/Weapons/FightingStaff/weapon.glb",
+    "mesh_object": "WEP_FightingStaff_p.WEP_FightingStaff_SKEL",
+    "materials": [
+     "WEP_FightingStaff_p.WEP_FightingStaff_MATINST",
+     "WEP_ProngDagger_p.WEP_Energon_A_MATINST"
+    ],
+    "PickupScale": 1.0,
+    "PickupRotationRate": {
+     "Pitch": 0,
+     "Yaw": 10000,
+     "Roll": 0
+    },
+    "DroppedPickupClass": "TransGame.TnDroppedPickupWeapon",
+    "usable_by_chassis": null
+   },
+   {
+    "weapon": "FlakGrenades",
+    "class": "TransContent.TnWeaponFlakGrenades",
+    "glb": null,
+    "mesh_object": null,
+    "materials": [],
+    "PickupScale": 1.0,
+    "PickupRotationRate": {
+     "Pitch": 0,
+     "Yaw": 10000,
+     "Roll": 0
+    },
+    "DroppedPickupClass": "TransGame.TnDroppedPickupWeapon",
+    "usable_by_chassis": {
+     "on_foot": [
+      "Truck",
+      "Truck2",
+      "Truck3",
+      "Truck4",
+      "Truck5",
+      "Truck6"
+     ],
+     "vehicle_preset": []
+    }
+   },
+   {
+    "weapon": "FlashBangs",
+    "class": "TransContent.TnWeaponFlashBangs",
+    "glb": "VerticalSlice/Weapons/FlashBangs/weapon.glb",
+    "mesh_object": "WEP_GrenadeLauncher_p.WEP_GrenadeLauncher_SKEL",
+    "materials": [
+     "WEP_GrenadeLauncher_p.WEP_GrenadeLauncher_MATINST"
+    ],
+    "PickupScale": 1.0,
+    "PickupRotationRate": {
+     "Pitch": 0,
+     "Yaw": 10000,
+     "Roll": 0
+    },
+    "DroppedPickupClass": "TransGame.TnDroppedPickupWeapon",
+    "usable_by_chassis": {
+     "on_foot": [
+      "Tank",
+      "Tank2",
+      "Tank3",
+      "Tank4",
+      "Tank5"
+     ],
+     "vehicle_preset": []
+    }
+   },
+   {
+    "weapon": "GatlingGun",
+    "class": "TransContent.TnWeaponGatlingGun",
+    "glb": "VerticalSlice/Weapons/GatlingGun/weapon.glb",
+    "mesh_object": "WEP_TurretIonGun_p.WEP_TurretIonGun_SKEL",
+    "materials": [
+     "WEP_TurretIonGun_p.WEP_TurretIonGun_MATINST"
+    ],
+    "PickupScale": 1.0,
+    "PickupRotationRate": {
+     "Pitch": 0,
+     "Yaw": 10000,
+     "Roll": 0
+    },
+    "DroppedPickupClass": "TransGame.TnDroppedPickupWeapon",
+    "usable_by_chassis": null
+   },
+   {
+    "weapon": "GrenadeLauncher",
+    "class": "TransContent.TnWeaponGrenadeLauncher",
+    "glb": "VerticalSlice/Weapons/GrenadeLauncher/weapon.glb",
+    "mesh_object": "WEP_GrenadeLauncher_p.WEP_GrenadeLauncher_SKEL",
+    "materials": [
+     "WEP_GrenadeLauncher_p.WEP_GrenadeLauncher_MATINST"
+    ],
+    "PickupScale": 1.0,
+    "PickupRotationRate": {
+     "Pitch": 0,
+     "Yaw": 10000,
+     "Roll": 0
+    },
+    "DroppedPickupClass": "TransGame.TnDroppedPickupWeapon",
+    "usable_by_chassis": {
+     "on_foot": [
+      "Truck",
+      "Truck2",
+      "Truck3",
+      "Truck4",
+      "Truck5",
+      "Truck6"
+     ],
+     "vehicle_preset": []
+    }
+   },
+   {
+    "weapon": "HalberdAxe",
+    "class": "TransContent.TnWeaponHalberdAxe",
+    "glb": "VerticalSlice/Weapons/HalberdAxe/weapon.glb",
+    "mesh_object": "WEP_HalberdAxe_p.WEP_HalberdAxe_SKEL",
+    "materials": [
+     "WEP_HalberdAxe_p.WEP_HalberdAxe_MATINST",
+     "WEP_HalberdAxe_p.WEP_HalberdAxe_EnergonTech_MATINST"
+    ],
+    "PickupScale": 1.0,
+    "PickupRotationRate": {
+     "Pitch": 0,
+     "Yaw": 10000,
+     "Roll": 0
+    },
+    "DroppedPickupClass": "TransGame.TnDroppedPickupWeapon",
+    "usable_by_chassis": null
+   },
+   {
+    "weapon": "Hammer",
+    "class": "TransContent.TnWeaponHammer",
+    "glb": "VerticalSlice/Weapons/Hammer/weapon.glb",
+    "mesh_object": "WEP_Hammer_p.WEP_Hammer_SKEL",
+    "materials": [
+     "WEP_Hammer_p.WEP_Hammer_D_MATINST",
+     "WEP_Hammer_p.WEP_Hammer_Spikes_MATINST"
+    ],
+    "PickupScale": 1.0,
+    "PickupRotationRate": {
+     "Pitch": 0,
+     "Yaw": 10000,
+     "Roll": 0
+    },
+    "DroppedPickupClass": "TransGame.TnDroppedPickupWeapon",
+    "usable_by_chassis": {
+     "on_foot": [
+      "Tank2"
+     ],
+     "vehicle_preset": []
+    }
+   },
+   {
+    "weapon": "HealGrenades",
+    "class": "TransContent.TnWeaponHealGrenades",
+    "glb": "VerticalSlice/Weapons/HealGrenades/weapon.glb",
+    "mesh_object": "WEP_GrenadeLauncher_p.WEP_GrenadeLauncher_SKEL",
+    "materials": [
+     "WEP_GrenadeLauncher_p.WEP_GrenadeLauncher_MATINST"
+    ],
+    "PickupScale": 1.0,
+    "PickupRotationRate": {
+     "Pitch": 0,
+     "Yaw": 10000,
+     "Roll": 0
+    },
+    "DroppedPickupClass": "TransGame.TnDroppedPickupWeapon",
+    "usable_by_chassis": {
+     "on_foot": [
+      "Jet",
+      "Jet2",
+      "Jet3",
+      "Jet4",
+      "Jet5",
+      "Jet6",
+      "Jet7",
+      "Jet8"
+     ],
+     "vehicle_preset": []
+    }
+   },
+   {
+    "weapon": "HeavyMG",
+    "class": "TransContent.TnWeaponHeavyMG",
+    "glb": "VerticalSlice/Weapons/HeavyMG/weapon.glb",
+    "mesh_object": "WEP_HeavyMG_p.WEP_HeavyMG_SKEL",
+    "materials": [
+     "WEP_HeavyMG_p.WEP_HeavyMG_MATINST"
+    ],
+    "PickupScale": 1.0,
+    "PickupRotationRate": {
+     "Pitch": 0,
+     "Yaw": 10000,
+     "Roll": 0
+    },
+    "DroppedPickupClass": "TransGame.TnDroppedPickupWeapon",
+    "usable_by_chassis": {
+     "on_foot": [
+      "Tank",
+      "Tank2",
+      "Tank3",
+      "Tank4",
+      "Tank5"
+     ],
+     "vehicle_preset": []
+    }
+   },
+   {
+    "weapon": "HeavyPistol",
+    "class": "TransContent.TnWeaponHeavyPistol",
+    "glb": "VerticalSlice/Weapons/HeavyPistol/weapon.glb",
+    "mesh_object": "WEP_HeavyPistol_p.WEP_HeavyPistol_SKEL",
+    "materials": [
+     "WEP_HeavyPistol_p.WEP_HeavyPistol_MATINST"
+    ],
+    "PickupScale": 1.0,
+    "PickupRotationRate": {
+     "Pitch": 0,
+     "Yaw": 10000,
+     "Roll": 0
+    },
+    "DroppedPickupClass": "TransGame.TnDroppedPickupWeapon",
+    "usable_by_chassis": {
+     "on_foot": [
+      "Car",
+      "Truck",
+      "Car2",
+      "Car3",
+      "Car4",
+      "Car5",
+      "Car6",
+      "Car7",
+      "Truck2",
+      "Truck3",
+      "Truck4",
+      "Truck5",
+      "Truck6"
+     ],
+     "vehicle_preset": []
+    }
+   },
+   {
+    "weapon": "HeavyRepairRay",
+    "class": "TransContent.TnWeaponHeavyRepairRay",
+    "glb": "VerticalSlice/Weapons/HeavyRepairRay/weapon.glb",
+    "mesh_object": "WEP_TurretRepairRay_p.WEP_TurretRepairRay_SKEL",
+    "materials": [
+     "WEP_TurretRepairRay_p.WEP_TurretRepairRay_MATINST",
+     "WEP_TurretIonGun_p.WEP_TurretIonGun01_MATINST"
+    ],
+    "PickupScale": 1.0,
+    "PickupRotationRate": {
+     "Pitch": 0,
+     "Yaw": 10000,
+     "Roll": 0
+    },
+    "DroppedPickupClass": "TransGame.TnDroppedPickupWeapon",
+    "usable_by_chassis": null
+   },
+   {
+    "weapon": "HeavyRocketTurret",
+    "class": "TransContent.TnWeaponHeavyRocketTurret",
+    "glb": "VerticalSlice/Weapons/HeavyRocketTurret/weapon.glb",
+    "mesh_object": "WEP_TurretRocket_p.WEP_TurretRocket_SKEL",
+    "materials": [
+     "WEP_TurretRocket_p.WEP_TurretRocket_MATINST",
+     "WEP_TurretRocket_p.WEP_TurretRocket_MATINST"
+    ],
+    "PickupScale": 1.0,
+    "PickupRotationRate": {
+     "Pitch": 0,
+     "Yaw": 10000,
+     "Roll": 0
+    },
+    "DroppedPickupClass": "TransGame.TnDroppedPickupWeapon",
+    "usable_by_chassis": null
+   },
+   {
+    "weapon": "HomingRocket",
+    "class": "TransContent.TnWeaponRocketLauncher",
+    "glb": "VerticalSlice/Weapons/HomingRocket/weapon.glb",
+    "mesh_object": "WEP_RocketLauncher_p.WEP_RocketLauncher_SKEL",
+    "materials": [
+     "WEP_RocketLauncher_p.WEP_RocketLauncher_MATINST"
+    ],
+    "PickupScale": 1.0,
+    "PickupRotationRate": {
+     "Pitch": 0,
+     "Yaw": 10000,
+     "Roll": 0
+    },
+    "DroppedPickupClass": "TransGame.TnDroppedPickupWeapon",
+    "usable_by_chassis": {
+     "on_foot": [
+      "Tank",
+      "Tank2",
+      "Tank3",
+      "Tank4",
+      "Tank5"
+     ],
+     "vehicle_preset": []
+    }
+   },
+   {
+    "weapon": "HomingRocketVehicle",
+    "class": "TransContent.TnWeaponHomingRocketVehicle",
+    "glb": null,
+    "mesh_object": null,
+    "materials": [],
+    "PickupScale": 1.0,
+    "PickupRotationRate": {
+     "Pitch": 0,
+     "Yaw": 10000,
+     "Roll": 0
+    },
+    "DroppedPickupClass": "TransGame.TnDroppedPickupWeapon",
+    "usable_by_chassis": {
+     "on_foot": [],
+     "vehicle_preset": [
+      "Jet",
+      "Jet2",
+      "Jet3",
+      "Jet4",
+      "Jet5",
+      "Jet6",
+      "Jet7",
+      "Jet8"
+     ]
+    }
+   },
+   {
+    "weapon": "HuntingDagger",
+    "class": "TransContent.TnWeaponHuntingDagger",
+    "glb": "VerticalSlice/Weapons/HuntingDagger/weapon.glb",
+    "mesh_object": "WEP_HuntingDagger_p.WEP_HuntingDagger_SKEL",
+    "materials": [
+     "WEP_Shared_p.WEP_Energon_D_MATINST",
+     "WEP_HuntingDagger_p.WEP_HuntingDagger_MATINST"
+    ],
+    "PickupScale": 1.0,
+    "PickupRotationRate": {
+     "Pitch": 0,
+     "Yaw": 10000,
+     "Roll": 0
+    },
+    "DroppedPickupClass": "TransGame.TnDroppedPickupWeapon",
+    "usable_by_chassis": null
+   },
+   {
+    "weapon": "IonBlaster",
+    "class": "TransContent.TnWeaponIonBlaster",
+    "glb": "VerticalSlice/Weapons/IonBlaster/weapon.glb",
+    "mesh_object": "WEP_IonBlaster_p.WEP_IonBlaster_SKEL",
+    "materials": [
+     "WEP_IonBlaster_p.WEP_IonBlaster_MATINST"
+    ],
+    "PickupScale": null,
+    "PickupRotationRate": null,
+    "DroppedPickupClass": null,
+    "usable_by_chassis": null
+   },
+   {
+    "weapon": "KamikazeMines",
+    "class": "TransContent.TnWeaponKamikazeMines",
+    "glb": "VerticalSlice/Weapons/KamikazeMines/weapon.glb",
+    "mesh_object": "WEP_GrenadeLauncher_p.WEP_GrenadeLauncher_SKEL",
+    "materials": [
+     "WEP_GrenadeLauncher_p.WEP_GrenadeLauncher_MATINST"
+    ],
+    "PickupScale": 1.2000000476837158,
+    "PickupRotationRate": {
+     "Pitch": 0,
+     "Yaw": 10000,
+     "Roll": 0
+    },
+    "DroppedPickupClass": "TransGame.TnDroppedPickupWeapon",
+    "usable_by_chassis": {
+     "on_foot": [
+      "Car",
+      "Car2",
+      "Car3",
+      "Car4",
+      "Car5",
+      "Car6",
+      "Car7"
+     ],
+     "vehicle_preset": []
+    }
+   },
+   {
+    "weapon": "LancingSpear",
+    "class": "TransContent.TnWeaponLancingSpear",
+    "glb": "VerticalSlice/Weapons/LancingSpear/weapon.glb",
+    "mesh_object": "WEP_LancingSpear_p.WEP_LancingSpear_SKEL",
+    "materials": [
+     "WEP_LancingSpear_p.WEP_LancingSpear_MATINST",
+     "WEP_ProngDagger_p.WEP_Energon_A_MATINST"
+    ],
+    "PickupScale": 1.0,
+    "PickupRotationRate": {
+     "Pitch": 0,
+     "Yaw": 10000,
+     "Roll": 0
+    },
+    "DroppedPickupClass": "TransGame.TnDroppedPickupWeapon",
+    "usable_by_chassis": null
+   },
+   {
+    "weapon": "LongSword",
+    "class": "TransContent.TnWeaponLongSword",
+    "glb": "VerticalSlice/Weapons/LongSword/weapon.glb",
+    "mesh_object": "WEP_LongSword_p.WEP_LongSword_SKEL",
+    "materials": [
+     "WEP_LongSword_p.WEP_LongSword_MATINST",
+     "WEP_LongSword_p.WEP_LongSword_EnergonTech_MATINST"
+    ],
+    "PickupScale": 1.0,
+    "PickupRotationRate": {
+     "Pitch": 0,
+     "Yaw": 10000,
+     "Roll": 0
+    },
+    "DroppedPickupClass": "TransGame.TnDroppedPickupWeapon",
+    "usable_by_chassis": null
+   },
+   {
+    "weapon": "Maul",
+    "class": "TransContent.TnWeaponMaul",
+    "glb": "VerticalSlice/Weapons/Maul/weapon.glb",
+    "mesh_object": "WEP_Maul_p.WEP_Maul_SKEL",
+    "materials": [
+     "WEP_Maul_p.WEP_Maul_EnergonTech_MATINST",
+     "WEP_Maul_p.WEP_Maul_MATINST"
+    ],
+    "PickupScale": 1.0,
+    "PickupRotationRate": {
+     "Pitch": 0,
+     "Yaw": 10000,
+     "Roll": 0
+    },
+    "DroppedPickupClass": "TransGame.TnDroppedPickupWeapon",
+    "usable_by_chassis": {
+     "on_foot": [
+      "Tank3"
+     ],
+     "vehicle_preset": []
+    }
+   },
+   {
+    "weapon": "MountedHeavyIonBlaster",
+    "class": "TransContent.TnWeaponMountedHeavyIonBlaster",
+    "glb": "VerticalSlice/Weapons/MountedHeavyIonBlaster/weapon.glb",
+    "mesh_object": "WEP_TurretIonGun_p.WEP_TurretIonGun_SKEL",
+    "materials": [
+     "WEP_TurretIonGun_p.WEP_TurretIonGun_MATINST"
+    ],
+    "PickupScale": 1.0,
+    "PickupRotationRate": {
+     "Pitch": 0,
+     "Yaw": 10000,
+     "Roll": 0
+    },
+    "DroppedPickupClass": "TransGame.TnDroppedPickupWeapon",
+    "usable_by_chassis": null
+   },
+   {
+    "weapon": "MountedRepairRay",
+    "class": "TransContent.TnWeaponMountedRepairRay",
+    "glb": "VerticalSlice/Weapons/MountedRepairRay/weapon.glb",
+    "mesh_object": "WEP_TurretRepairRay_p.WEP_TurretRepairRay_SKEL",
+    "materials": [
+     "WEP_TurretRepairRay_p.WEP_TurretRepairRay_MATINST",
+     "WEP_TurretIonGun_p.WEP_TurretIonGun01_MATINST"
+    ],
+    "PickupScale": 1.0,
+    "PickupRotationRate": {
+     "Pitch": 0,
+     "Yaw": 10000,
+     "Roll": 0
+    },
+    "DroppedPickupClass": "TransGame.TnDroppedPickupWeapon",
+    "usable_by_chassis": null
+   },
+   {
+    "weapon": "MountedRocketTurret",
+    "class": "TransContent.TnWeaponMountedRocketTurret",
+    "glb": "VerticalSlice/Weapons/MountedRocketTurret/weapon.glb",
+    "mesh_object": "WEP_TurretRocket_p.WEP_TurretRocket_SKEL",
+    "materials": [
+     "WEP_TurretRocket_p.WEP_TurretRocket_MATINST",
+     "WEP_TurretRocket_p.WEP_TurretRocket_MATINST"
+    ],
+    "PickupScale": 1.0,
+    "PickupRotationRate": {
+     "Pitch": 0,
+     "Yaw": 10000,
+     "Roll": 0
+    },
+    "DroppedPickupClass": "TransGame.TnDroppedPickupWeapon",
+    "usable_by_chassis": null
+   },
+   {
+    "weapon": "PlaneAssaultRifle",
+    "class": "TransContent.TnWeaponAssaultRiflePlane",
+    "glb": null,
+    "mesh_object": null,
+    "materials": [],
+    "PickupScale": 1.0,
+    "PickupRotationRate": {
+     "Pitch": 0,
+     "Yaw": 10000,
+     "Roll": 0
+    },
+    "DroppedPickupClass": "TransGame.TnDroppedPickupWeapon",
+    "usable_by_chassis": {
+     "on_foot": [],
+     "vehicle_preset": [
+      "Jet",
+      "Jet2",
+      "Jet3",
+      "Jet4",
+      "Jet5",
+      "Jet6",
+      "Jet7",
+      "Jet8"
+     ]
+    }
+   },
+   {
+    "weapon": "PlaneMachineGun",
+    "class": "TransContent.TnWeaponPlaneMachineGun",
+    "glb": null,
+    "mesh_object": null,
+    "materials": [],
+    "PickupScale": 1.0,
+    "PickupRotationRate": {
+     "Pitch": 0,
+     "Yaw": 10000,
+     "Roll": 0
+    },
+    "DroppedPickupClass": "TransGame.TnDroppedPickupWeapon",
+    "usable_by_chassis": null
+   },
+   {
+    "weapon": "PlaneRocket",
+    "class": "TransContent.TnWeaponRocketPlane",
+    "glb": null,
+    "mesh_object": null,
+    "materials": [],
+    "PickupScale": 1.0,
+    "PickupRotationRate": {
+     "Pitch": 0,
+     "Yaw": 10000,
+     "Roll": 0
+    },
+    "DroppedPickupClass": "TransGame.TnDroppedPickupWeapon",
+    "usable_by_chassis": null
+   },
+   {
+    "weapon": "PlasmaCannon",
+    "class": "TransContent.TnWeaponPlasmaCannon",
+    "glb": "VerticalSlice/Weapons/PlasmaCannon/weapon.glb",
+    "mesh_object": "WEP_PlasmaCannon_p.WEP_PlasmaCannon_SKEL",
+    "materials": [
+     "WEP_PlasmaCannon_p.WEP_PlasmaCannon_A_MATINST"
+    ],
+    "PickupScale": 1.0,
+    "PickupRotationRate": {
+     "Pitch": 0,
+     "Yaw": 10000,
+     "Roll": 0
+    },
+    "DroppedPickupClass": "TransGame.TnDroppedPickupWeapon",
+    "usable_by_chassis": {
+     "on_foot": [
+      "Car",
+      "Car2",
+      "Car3",
+      "Car4",
+      "Car5",
+      "Car6",
+      "Car7"
+     ],
+     "vehicle_preset": []
+    }
+   },
+   {
+    "weapon": "Poke",
+    "class": "TransContent.TnWeaponPoke",
+    "glb": "VerticalSlice/Weapons/Poke/weapon.glb",
+    "mesh_object": "WEP_BroadSword_p.WEP_BroadSword_SKEL",
+    "materials": [
+     "WEP_BroadSword_p.WEP_BroadSword_MATINST",
+     "WEP_BroadSword_p.WEP_BroadSword_EnergonTech_MATINST"
+    ],
+    "PickupScale": 1.0,
+    "PickupRotationRate": {
+     "Pitch": 0,
+     "Yaw": 10000,
+     "Roll": 0
+    },
+    "DroppedPickupClass": "TransGame.TnDroppedPickupWeapon",
+    "usable_by_chassis": null
+   },
+   {
+    "weapon": "ProngDagger",
+    "class": "TransContent.TnWeaponProngDagger",
+    "glb": "VerticalSlice/Weapons/ProngDagger/weapon.glb",
+    "mesh_object": "WEP_ProngDagger_p.WEP_ProngDagger_SKEL",
+    "materials": [
+     "WEP_ProngDagger_p.WEP_Energon_A_MATINST",
+     "WEP_ProngDagger_p.WEP_ProngDagger_MATINST"
+    ],
+    "PickupScale": 1.0,
+    "PickupRotationRate": {
+     "Pitch": 0,
+     "Yaw": 10000,
+     "Roll": 0
+    },
+    "DroppedPickupClass": "TransGame.TnDroppedPickupWeapon",
+    "usable_by_chassis": null
+   },
+   {
+    "weapon": "RepairRay",
+    "class": "TransContent.TnWeaponRepairRay",
+    "glb": "VerticalSlice/Weapons/RepairRay/weapon.glb",
+    "mesh_object": "WEP_RepairBeam_p.WEP_RepairBeam_SKEL",
+    "materials": [
+     "WEP_RepairBeam_p.WEP_RepairBeam_MATINST"
+    ],
+    "PickupScale": 1.0,
+    "PickupRotationRate": {
+     "Pitch": 0,
+     "Yaw": 10000,
+     "Roll": 0
+    },
+    "DroppedPickupClass": "TransGame.TnDroppedPickupWeapon",
+    "usable_by_chassis": {
+     "on_foot": [
+      "Jet",
+      "Jet2",
+      "Jet3",
+      "Jet4",
+      "Jet5",
+      "Jet6",
+      "Jet7",
+      "Jet8"
+     ],
+     "vehicle_preset": []
+    }
+   },
+   {
+    "weapon": "RocketTemp",
+    "class": "TransContent.TnWeaponRocketTemp",
+    "glb": "VerticalSlice/Weapons/RocketTemp/weapon.glb",
+    "mesh_object": "WEP_Rocket_p.WEP_IonCannon_A_SKEL",
+    "materials": [
+     "WEP_Rocket_p.WEP_Rocket_Temp_MAT"
+    ],
+    "PickupScale": 1.0,
+    "PickupRotationRate": {
+     "Pitch": 0,
+     "Yaw": 10000,
+     "Roll": 0
+    },
+    "DroppedPickupClass": "TransGame.TnDroppedPickupWeapon",
+    "usable_by_chassis": null
+   },
+   {
+    "weapon": "RocketTurretKillStreak",
+    "class": "TransContent.TnWeaponRocketTurretKillStreak",
+    "glb": "VerticalSlice/Weapons/RocketTurretKillStreak/weapon.glb",
+    "mesh_object": "WEP_TurretRocket_p.WEP_TurretRocket_SKEL",
+    "materials": [
+     "WEP_TurretRocket_p.WEP_TurretRocket_MATINST",
+     "WEP_TurretRocket_p.WEP_TurretRocket_MATINST"
+    ],
+    "PickupScale": 1.0,
+    "PickupRotationRate": {
+     "Pitch": 0,
+     "Yaw": 10000,
+     "Roll": 0
+    },
+    "DroppedPickupClass": "TransGame.TnDroppedPickupWeapon",
+    "usable_by_chassis": null
+   },
+   {
+    "weapon": "RocketVehicle",
+    "class": "TransContent.TnWeaponRocketVehicle",
+    "glb": null,
+    "mesh_object": null,
+    "materials": [],
+    "PickupScale": 1.0,
+    "PickupRotationRate": {
+     "Pitch": 0,
+     "Yaw": 10000,
+     "Roll": 0
+    },
+    "DroppedPickupClass": "TransGame.TnDroppedPickupWeapon",
+    "usable_by_chassis": {
+     "on_foot": [],
+     "vehicle_preset": [
+      "Truck",
+      "Truck7",
+      "Truck2",
+      "Truck3",
+      "Truck4",
+      "Truck5",
+      "Truck6"
+     ]
+    }
+   },
+   {
+    "weapon": "SerratedBlade",
+    "class": "TransContent.TnWeaponSerratedBlade",
+    "glb": "VerticalSlice/Weapons/SerratedBlade/weapon.glb",
+    "mesh_object": "WEP_SerratedBlade_p.WEP_SerratedBlade_SKEL",
+    "materials": [
+     "WEP_SerratedBlade_p.WEP_SerratedBlade_MATINST",
+     "WEP_SerratedBlade_p.WEP_SerratedBlade_Energon_Tech_MATINST"
+    ],
+    "PickupScale": 1.0,
+    "PickupRotationRate": {
+     "Pitch": 0,
+     "Yaw": 10000,
+     "Roll": 0
+    },
+    "DroppedPickupClass": "TransGame.TnDroppedPickupWeapon",
+    "usable_by_chassis": null
+   },
+   {
+    "weapon": "ShortSword",
+    "class": "TransContent.TnWeaponShortSword",
+    "glb": "VerticalSlice/Weapons/ShortSword/weapon.glb",
+    "mesh_object": "WEP_ShortSword_p.WEP_ShortSword_SKEL",
+    "materials": [
+     "WEP_ShortSword_p.WEP_ShortSword_Energon_Tech_MATINST",
+     "WEP_ShortSword_p.WEP_ShortSword_MATINST"
+    ],
+    "PickupScale": 1.0,
+    "PickupRotationRate": {
+     "Pitch": 0,
+     "Yaw": 10000,
+     "Roll": 0
+    },
+    "DroppedPickupClass": "TransGame.TnDroppedPickupWeapon",
+    "usable_by_chassis": {
+     "on_foot": [
+      "Car",
+      "Car2",
+      "Car5",
+      "Car6"
+     ],
+     "vehicle_preset": []
+    }
+   },
+   {
+    "weapon": "Shotgun",
+    "class": "TransContent.TnWeaponShotgun",
+    "glb": "VerticalSlice/Weapons/Shotgun/weapon.glb",
+    "mesh_object": "WEP_Shotgun_p.WEP_Shotgun_SKEL",
+    "materials": [
+     "WEP_Shotgun_p.WEP_Shotgun_MATINST"
+    ],
+    "PickupScale": 1.0,
+    "PickupRotationRate": {
+     "Pitch": 0,
+     "Yaw": 10000,
+     "Roll": 0
+    },
+    "DroppedPickupClass": "TransGame.TnDroppedPickupWeapon",
+    "usable_by_chassis": {
+     "on_foot": [
+      "Car",
+      "Car2",
+      "Car3",
+      "Car4",
+      "Car5",
+      "Car6",
+      "Car7"
+     ],
+     "vehicle_preset": []
+    }
+   },
+   {
+    "weapon": "SniperRifle",
+    "class": "TransContent.TnWeaponSniperRifle",
+    "glb": "VerticalSlice/Weapons/SniperRifle/weapon.glb",
+    "mesh_object": "WEP_SniperRifle_p.WEP_SniperRifle_SKEL",
+    "materials": [
+     "WEP_SniperRifle_p.WEP_SniperRifle_MAT"
+    ],
+    "PickupScale": 1.0,
+    "PickupRotationRate": {
+     "Pitch": 0,
+     "Yaw": 10000,
+     "Roll": 0
+    },
+    "DroppedPickupClass": "TransGame.TnDroppedPickupWeapon",
+    "usable_by_chassis": {
+     "on_foot": [
+      "Car",
+      "Car2",
+      "Car3",
+      "Car4",
+      "Car5",
+      "Car6",
+      "Car7"
+     ],
+     "vehicle_preset": []
+    }
+   },
+   {
+    "weapon": "SpikedBat",
+    "class": "TransContent.TnWeaponSpikedBat",
+    "glb": "VerticalSlice/Weapons/SpikedBat/weapon.glb",
+    "mesh_object": "WEP_SpikedBat_p.WEP_SpikedBat_SKEL",
+    "materials": [
+     "WEP_SpikedBat_p.WEP_SpikedBat_EnergonTech_MATINST",
+     "WEP_SpikedBat_p.WEP_SpikedBat_MATINST"
+    ],
+    "PickupScale": 1.0,
+    "PickupRotationRate": {
+     "Pitch": 0,
+     "Yaw": 10000,
+     "Roll": 0
+    },
+    "DroppedPickupClass": "TransGame.TnDroppedPickupWeapon",
+    "usable_by_chassis": {
+     "on_foot": [
+      "Jet",
+      "Jet2",
+      "Jet3",
+      "Jet7",
+      "Jet8"
+     ],
+     "vehicle_preset": []
+    }
+   },
+   {
+    "weapon": "SpikedMace",
+    "class": "TransContent.TnWeaponSpikedMace",
+    "glb": "VerticalSlice/Weapons/SpikedMace/weapon.glb",
+    "mesh_object": "WEP_SpikedMace_p.WEP_SpikedMace_SKEL",
+    "materials": [
+     "WEP_SpikedMace_p.WEP_SpikedMace_EnergonTech_MATINST",
+     "WEP_SpikedMace_p.WEP_SpikedMace_MATINST"
+    ],
+    "PickupScale": 1.0,
+    "PickupRotationRate": {
+     "Pitch": 0,
+     "Yaw": 10000,
+     "Roll": 0
+    },
+    "DroppedPickupClass": "TransGame.TnDroppedPickupWeapon",
+    "usable_by_chassis": {
+     "on_foot": [
+      "Tank"
+     ],
+     "vehicle_preset": []
+    }
+   },
+   {
+    "weapon": "TankCannon",
+    "class": "TransContent.TnWeaponTankCannon",
+    "glb": null,
+    "mesh_object": null,
+    "materials": [],
+    "PickupScale": 1.0,
+    "PickupRotationRate": {
+     "Pitch": 0,
+     "Yaw": 10000,
+     "Roll": 0
+    },
+    "DroppedPickupClass": "TransGame.TnDroppedPickupWeapon",
+    "usable_by_chassis": {
+     "on_foot": [],
+     "vehicle_preset": [
+      "Tank",
+      "Tank2",
+      "Tank3",
+      "Tank4",
+      "Tank5"
+     ]
+    }
+   },
+   {
+    "weapon": "TortureSword",
+    "class": "TransContent.TnWeaponTortureSword",
+    "glb": "VerticalSlice/Weapons/TortureSword/weapon.glb",
+    "mesh_object": "WEP_TortureSword_p.WEP_TortureSword_SKEL",
+    "materials": [
+     "WEP_TortureSword_p.WEP_TortureSword_EnergonTech_MATINST",
+     "WEP_TortureSword_p.WEP_TortureSword_MATINST"
+    ],
+    "PickupScale": 1.0,
+    "PickupRotationRate": {
+     "Pitch": 0,
+     "Yaw": 10000,
+     "Roll": 0
+    },
+    "DroppedPickupClass": "TransGame.TnDroppedPickupWeapon",
+    "usable_by_chassis": {
+     "on_foot": [
+      "Car3",
+      "Car4"
+     ],
+     "vehicle_preset": []
+    }
+   },
+   {
+    "weapon": "ViciousAxe",
+    "class": "TransContent.TnWeaponViciousAxe",
+    "glb": "VerticalSlice/Weapons/ViciousAxe/weapon.glb",
+    "mesh_object": "WEP_ViciousAxe_p.WEP_ViciousAxe_SKEL",
+    "materials": [
+     "WEP_ViciousAxe_p.WEP_ViciousAxe_EnergonTech_MATINST",
+     "WEP_ViciousAxe_p.WEP_ViciousAxe_MATINST"
+    ],
+    "PickupScale": 1.0,
+    "PickupRotationRate": {
+     "Pitch": 0,
+     "Yaw": 10000,
+     "Roll": 0
+    },
+    "DroppedPickupClass": "TransGame.TnDroppedPickupWeapon",
+    "usable_by_chassis": {
+     "on_foot": [
+      "Truck4"
+     ],
+     "vehicle_preset": []
+    }
+   },
+   {
+    "weapon": "WarHammer",
+    "class": "TransContent.TnWeaponWarHammer",
+    "glb": "VerticalSlice/Weapons/WarHammer/weapon.glb",
+    "mesh_object": "WEP_WarHammer_p.WEP_WarHammer_SKEL",
+    "materials": [
+     "WEP_WarHammer_p.WEP_WarHammer_MATINST",
+     "WEP_WarHammer_p.WEP_WarHammer_EnergonTech_MATINST"
+    ],
+    "PickupScale": 1.0,
+    "PickupRotationRate": {
+     "Pitch": 0,
+     "Yaw": 10000,
+     "Roll": 0
+    },
+    "DroppedPickupClass": "TransGame.TnDroppedPickupWeapon",
+    "usable_by_chassis": null
+   }
+  ]
+ },
+ "collision": {
+  "CollisionCylinder (world collision of the dropped trap)": {
+   "values": {
+    "BlockCameras": false,
+    "CollisionHeight": 20.0,
+    "CollisionRadius": 20.0,
+    "IgnoreForOverlapChecks": true,
+    "Translation": {
+     "X": 0.0,
+     "Y": 0.0,
+     "Z": 20.0
+    },
+    "bRequiresStaticLightingRebuild": false,
+    "CollideActors": true
+   },
+   "value_source": {
+    "BlockCameras": "TransGame.Default__TnDroppedPickupDecoyTrap.CollisionCylinder",
+    "CollisionHeight": "TransGame.Default__TnDroppedPickupWeapon.CollisionCylinder",
+    "CollisionRadius": "TransGame.Default__TnDroppedPickupWeapon.CollisionCylinder",
+    "IgnoreForOverlapChecks": "TransGame.Default__TnDroppedPickupWeapon.CollisionCylinder",
+    "Translation": "TransGame.Default__TnDroppedPickupWeapon.CollisionCylinder",
+    "bRequiresStaticLightingRebuild": "Engine.Default__DroppedPickup.CollisionCylinder",
+    "CollideActors": "Engine.Default__DroppedPickup.CollisionCylinder"
+   }
+  },
+  "TouchCylinder (pickup volume; RE \u00a73)": {
+   "values": {
+    "BlockCameras": false,
+    "CollisionHeight": 100.0,
+    "CollisionRadius": 200.0,
+    "bRequiresStaticLightingRebuild": false,
+    "CollideActors": true,
+    "Translation": {
+     "X": 0.0,
+     "Y": 0.0,
+     "Z": 100.0
+    }
+   },
+   "value_source": {
+    "BlockCameras": "TransGame.Default__TnDroppedPickupDecoyTrap.TouchCylinder",
+    "CollisionHeight": "TransGame.Default__TnDroppedPickupWeapon.TouchCylinder",
+    "CollisionRadius": "TransGame.Default__TnDroppedPickupWeapon.TouchCylinder",
+    "bRequiresStaticLightingRebuild": "TransGame.Default__TnDroppedPickupWeapon.TouchCylinder",
+    "CollideActors": "TransGame.Default__TnDroppedPickupWeapon.TouchCylinder",
+    "Translation": "TransGame.Default__TnDroppedPickupWeapon.TouchCylinder"
+   }
+  },
+  "note": "Cylinders only; no mesh collision (the weapon mesh is not a collider: TnBuffPickup.MeshComponentA CollideActors false). InstantKillDamageTypes and CanBeDestroyed are in the resolved TnDroppedPickupDecoyTrap values."
+ },
+ "animations": {
+  "roles": {
+   "Skill_Barrier": "deploy (ability OnTriggerAnimParams; thrower)",
+   "HitReactions_React_DecoyTrap_In": "stun loop (TnBuffDecoyTrap.IntroLoopAnimation; victim, robot form)",
+   "HitReactions_React_DecoyTrap_Out": "stun end (TnBuffDecoyTrap.OutroAnimation; victim, robot form)",
+   "HitReactions_React_DecoyTrap": "present in the AnimSets; no class references it (UNKNOWN use)"
+  },
+  "note": "No dedicated deploy or hold anim exists: the ability plays Skill_Barrier (the Barrier ability's clip) once at trigger; there is no hold state. The stun clips play in robot form only (RE \u00a74); a vehicle-form victim gets no anim. AnimSet = AnimName lookup on the pawn's own sets (AnimSet None in the CDO).",
+  "per_chassis": [
+   {
+    "chassis": "Car",
+    "display": {
+     "custom_body": {
+      "INT": "Runner",
+      "FRA": "Joggeur"
+     },
+     "iconic": {
+      "INT": "Bumblebee",
+      "FRA": "Bumblebee"
+     }
+    },
+    "class": "Scout",
+    "mp_status": "MP character, available by default",
+    "decoy_in_class_pool": true,
+    "glb": "ExtractedAssets/VerticalSlice/Characters/Car/robot.glb",
+    "animations": {
+     "Skill_Barrier": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9667,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap_In": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 2.1333,
+      "notifies": [
+       {
+        "time_s": 0.01866164058446884,
+        "duration_s": null,
+        "class": "HmAnimNotify_PlayEffect",
+        "comment": "None",
+        "params": {
+         "ParticleSystemTemplate": "FX_Transformers_p.FX.Electrocution_Transformer_FX",
+         "SocketName": "Chest_FX",
+         "FireWhenForwards": true
+        }
+       }
+      ]
+     },
+     "HitReactions_React_DecoyTrap_Out": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 1.2667,
+      "notifies": [
+       {
+        "time_s": 0.01866164058446884,
+        "duration_s": null,
+        "class": "HmAnimNotify_PlayEffect",
+        "comment": "None",
+        "params": {
+         "ParticleSystemTemplate": "FX_Transformers_p.FX.Electrocution_Transformer_FX",
+         "SocketName": "Chest_FX",
+         "FireWhenForwards": true
+        }
+       }
+      ]
+     }
+    }
+   },
+   {
+    "chassis": "Car10",
+    "display": {
+     "custom_body": {
+      "INT": null,
+      "FRA": null
+     },
+     "iconic": {
+      "INT": null,
+      "FRA": null
+     }
+    },
+    "class": "Scout",
+    "mp_status": "not referenced by MP maps (TnAssetReferencesMultiplayer) - not a shipped MP character",
+    "decoy_in_class_pool": true,
+    "glb": "ExtractedAssets/VerticalSlice/Characters/Car10/robot.glb",
+    "animations": {
+     "Skill_Barrier": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9667,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap_In": null,
+     "HitReactions_React_DecoyTrap_Out": null,
+     "HitReactions_React_DecoyTrap": null
+    }
+   },
+   {
+    "chassis": "Car2",
+    "display": {
+     "custom_body": {
+      "INT": "Speedster",
+      "FRA": "Fonceur"
+     },
+     "iconic": {
+      "INT": "Sideswipe",
+      "FRA": "Sideswipe"
+     }
+    },
+    "class": "Scout",
+    "mp_status": "MP character, available by default",
+    "decoy_in_class_pool": true,
+    "glb": "ExtractedAssets/VerticalSlice/Characters/Car2/robot.glb",
+    "animations": {
+     "Skill_Barrier": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9667,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap_In": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 2.1333,
+      "notifies": [
+       {
+        "time_s": 0.01866164058446884,
+        "duration_s": null,
+        "class": "HmAnimNotify_PlayEffect",
+        "comment": "None",
+        "params": {
+         "ParticleSystemTemplate": "FX_Transformers_p.FX.Electrocution_Transformer_FX",
+         "SocketName": "Chest_FX",
+         "FireWhenForwards": true
+        }
+       }
+      ]
+     },
+     "HitReactions_React_DecoyTrap_Out": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 1.2667,
+      "notifies": [
+       {
+        "time_s": 0.01866164058446884,
+        "duration_s": null,
+        "class": "HmAnimNotify_PlayEffect",
+        "comment": "None",
+        "params": {
+         "ParticleSystemTemplate": "FX_Transformers_p.FX.Electrocution_Transformer_FX",
+         "SocketName": "Chest_FX",
+         "FireWhenForwards": true
+        }
+       }
+      ]
+     }
+    }
+   },
+   {
+    "chassis": "Car3",
+    "display": {
+     "custom_body": {
+      "INT": "Racer",
+      "FRA": "Coureur"
+     },
+     "iconic": {
+      "INT": "Breakdown",
+      "FRA": "Breakdown"
+     }
+    },
+    "class": "Scout",
+    "mp_status": "MP character, available by default",
+    "decoy_in_class_pool": true,
+    "glb": "ExtractedAssets/VerticalSlice/Characters/Car3/robot.glb",
+    "animations": {
+     "Skill_Barrier": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9667,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap_In": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 2.1333,
+      "notifies": [
+       {
+        "time_s": 0.01866164058446884,
+        "duration_s": null,
+        "class": "HmAnimNotify_PlayEffect",
+        "comment": "None",
+        "params": {
+         "ParticleSystemTemplate": "FX_Transformers_p.FX.Electrocution_Transformer_FX",
+         "SocketName": "Chest_FX",
+         "FireWhenForwards": true
+        }
+       }
+      ]
+     },
+     "HitReactions_React_DecoyTrap_Out": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 1.2667,
+      "notifies": [
+       {
+        "time_s": 0.01866164058446884,
+        "duration_s": null,
+        "class": "HmAnimNotify_PlayEffect",
+        "comment": "None",
+        "params": {
+         "ParticleSystemTemplate": "FX_Transformers_p.FX.Electrocution_Transformer_FX",
+         "SocketName": "Chest_FX",
+         "FireWhenForwards": true
+        }
+       }
+      ]
+     }
+    }
+   },
+   {
+    "chassis": "Car4",
+    "display": {
+     "custom_body": {
+      "INT": "Enforcer",
+      "FRA": "Ex\u00e9cuteur"
+     },
+     "iconic": {
+      "INT": "Barricade",
+      "FRA": "Barricade"
+     }
+    },
+    "class": "Scout",
+    "mp_status": "MP character, available by default",
+    "decoy_in_class_pool": true,
+    "glb": "ExtractedAssets/VerticalSlice/Characters/Car4/robot.glb",
+    "animations": {
+     "Skill_Barrier": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9667,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap_In": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 2.1333,
+      "notifies": [
+       {
+        "time_s": 0.01866164058446884,
+        "duration_s": null,
+        "class": "HmAnimNotify_PlayEffect",
+        "comment": "None",
+        "params": {
+         "ParticleSystemTemplate": "FX_Transformers_p.FX.Electrocution_Transformer_FX",
+         "SocketName": "Chest_FX",
+         "FireWhenForwards": true
+        }
+       }
+      ]
+     },
+     "HitReactions_React_DecoyTrap_Out": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 1.2667,
+      "notifies": [
+       {
+        "time_s": 0.01866164058446884,
+        "duration_s": null,
+        "class": "HmAnimNotify_PlayEffect",
+        "comment": "None",
+        "params": {
+         "ParticleSystemTemplate": "FX_Transformers_p.FX.Electrocution_Transformer_FX",
+         "SocketName": "Chest_FX",
+         "FireWhenForwards": true
+        }
+       }
+      ]
+     }
+    }
+   },
+   {
+    "chassis": "Car5",
+    "display": {
+     "custom_body": {
+      "INT": "Sprinter",
+      "FRA": "Sprinteur"
+     },
+     "iconic": {
+      "INT": "Arcee",
+      "FRA": "Arcee"
+     }
+    },
+    "class": "Scout",
+    "mp_status": "MP character, locked until unlocked",
+    "decoy_in_class_pool": true,
+    "glb": "ExtractedAssets/VerticalSlice/Characters/Car5/robot.glb",
+    "animations": {
+     "Skill_Barrier": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9667,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap_In": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 2.1333,
+      "notifies": [
+       {
+        "time_s": 0.01866164058446884,
+        "duration_s": null,
+        "class": "HmAnimNotify_PlayEffect",
+        "comment": "None",
+        "params": {
+         "ParticleSystemTemplate": "FX_Transformers_p.FX.Electrocution_Transformer_FX",
+         "SocketName": "Chest_FX",
+         "FireWhenForwards": true
+        }
+       }
+      ]
+     },
+     "HitReactions_React_DecoyTrap_Out": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 1.2667,
+      "notifies": [
+       {
+        "time_s": 0.01866164058446884,
+        "duration_s": null,
+        "class": "HmAnimNotify_PlayEffect",
+        "comment": "None",
+        "params": {
+         "ParticleSystemTemplate": "FX_Transformers_p.FX.Electrocution_Transformer_FX",
+         "SocketName": "Chest_FX",
+         "FireWhenForwards": true
+        }
+       }
+      ]
+     }
+    }
+   },
+   {
+    "chassis": "Car6",
+    "display": {
+     "custom_body": {
+      "INT": "Dragster",
+      "FRA": "Dragster"
+     },
+     "iconic": {
+      "INT": "Jazz",
+      "FRA": "Jazz"
+     }
+    },
+    "class": "Scout",
+    "mp_status": "MP character, locked until unlocked",
+    "decoy_in_class_pool": true,
+    "glb": "ExtractedAssets/VerticalSlice/Characters/Car6/robot.glb",
+    "animations": {
+     "Skill_Barrier": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9667,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap_In": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 2.1333,
+      "notifies": [
+       {
+        "time_s": 0.01866164058446884,
+        "duration_s": null,
+        "class": "HmAnimNotify_PlayEffect",
+        "comment": "None",
+        "params": {
+         "ParticleSystemTemplate": "FX_Transformers_p.FX.Electrocution_Transformer_FX",
+         "SocketName": "Chest_FX",
+         "FireWhenForwards": true
+        }
+       }
+      ]
+     },
+     "HitReactions_React_DecoyTrap_Out": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 1.2667,
+      "notifies": [
+       {
+        "time_s": 0.01866164058446884,
+        "duration_s": null,
+        "class": "HmAnimNotify_PlayEffect",
+        "comment": "None",
+        "params": {
+         "ParticleSystemTemplate": "FX_Transformers_p.FX.Electrocution_Transformer_FX",
+         "SocketName": "Chest_FX",
+         "FireWhenForwards": true
+        }
+       }
+      ]
+     }
+    }
+   },
+   {
+    "chassis": "Car7",
+    "display": {
+     "custom_body": {
+      "INT": "Tracker",
+      "FRA": "Pisteur"
+     },
+     "iconic": {
+      "INT": "Deadend",
+      "FRA": "Deadend"
+     }
+    },
+    "class": "Scout",
+    "mp_status": "MP character, locked until unlocked",
+    "decoy_in_class_pool": true,
+    "glb": "ExtractedAssets/VerticalSlice/Characters/Car7/robot.glb",
+    "animations": {
+     "Skill_Barrier": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9667,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap_In": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 2.1333,
+      "notifies": [
+       {
+        "time_s": 0.01866164058446884,
+        "duration_s": null,
+        "class": "HmAnimNotify_PlayEffect",
+        "comment": "None",
+        "params": {
+         "ParticleSystemTemplate": "FX_Transformers_p.FX.Electrocution_Transformer_FX",
+         "SocketName": "Chest_FX",
+         "FireWhenForwards": true
+        }
+       }
+      ]
+     },
+     "HitReactions_React_DecoyTrap_Out": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 1.2667,
+      "notifies": [
+       {
+        "time_s": 0.01866164058446884,
+        "duration_s": null,
+        "class": "HmAnimNotify_PlayEffect",
+        "comment": "None",
+        "params": {
+         "ParticleSystemTemplate": "FX_Transformers_p.FX.Electrocution_Transformer_FX",
+         "SocketName": "Chest_FX",
+         "FireWhenForwards": true
+        }
+       }
+      ]
+     }
+    }
+   },
+   {
+    "chassis": "Car8",
+    "display": {
+     "custom_body": {
+      "INT": null,
+      "FRA": null
+     },
+     "iconic": {
+      "INT": null,
+      "FRA": null
+     }
+    },
+    "class": "Scout",
+    "mp_status": "not referenced by MP maps (TnAssetReferencesMultiplayer) - not a shipped MP character",
+    "decoy_in_class_pool": true,
+    "glb": "ExtractedAssets/VerticalSlice/Characters/Car8/robot.glb",
+    "animations": {
+     "Skill_Barrier": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9667,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap_In": null,
+     "HitReactions_React_DecoyTrap_Out": null,
+     "HitReactions_React_DecoyTrap": null
+    }
+   },
+   {
+    "chassis": "Car9",
+    "display": {
+     "custom_body": {
+      "INT": null,
+      "FRA": null
+     },
+     "iconic": {
+      "INT": null,
+      "FRA": null
+     }
+    },
+    "class": "Scout",
+    "mp_status": "not referenced by MP maps (TnAssetReferencesMultiplayer) - not a shipped MP character",
+    "decoy_in_class_pool": true,
+    "glb": "ExtractedAssets/VerticalSlice/Characters/Car9/robot.glb",
+    "animations": {
+     "Skill_Barrier": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9667,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap_In": null,
+     "HitReactions_React_DecoyTrap_Out": null,
+     "HitReactions_React_DecoyTrap": null
+    }
+   },
+   {
+    "chassis": "Jet",
+    "display": {
+     "custom_body": {
+      "INT": "Energon Seeker",
+      "FRA": "Chercheur d'\u00e9nergon"
+     },
+     "iconic": {
+      "INT": "Starscream",
+      "FRA": "Starscream"
+     }
+    },
+    "class": "Scientist",
+    "mp_status": "MP character, available by default",
+    "decoy_in_class_pool": false,
+    "glb": "ExtractedAssets/VerticalSlice/Characters/Jet/robot.glb",
+    "animations": {
+     "Skill_Barrier": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9667,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap_In": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 2.1333,
+      "notifies": [
+       {
+        "time_s": 0.01866164058446884,
+        "duration_s": null,
+        "class": "HmAnimNotify_PlayEffect",
+        "comment": "None",
+        "params": {
+         "ParticleSystemTemplate": "FX_Transformers_p.FX.Electrocution_Transformer_FX",
+         "SocketName": "Chest_FX",
+         "FireWhenForwards": true
+        }
+       }
+      ]
+     },
+     "HitReactions_React_DecoyTrap_Out": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 1.2667,
+      "notifies": [
+       {
+        "time_s": 0.01866164058446884,
+        "duration_s": null,
+        "class": "HmAnimNotify_PlayEffect",
+        "comment": "None",
+        "params": {
+         "ParticleSystemTemplate": "FX_Transformers_p.FX.Electrocution_Transformer_FX",
+         "SocketName": "Chest_FX",
+         "FireWhenForwards": true
+        }
+       }
+      ]
+     }
+    }
+   },
+   {
+    "chassis": "Jet2",
+    "display": {
+     "custom_body": {
+      "INT": "Seeker",
+      "FRA": "Pisteur"
+     },
+     "iconic": {
+      "INT": "Thundercracker",
+      "FRA": "Thundercracker"
+     }
+    },
+    "class": "Scientist",
+    "mp_status": "MP character, locked until unlocked",
+    "decoy_in_class_pool": false,
+    "glb": "ExtractedAssets/VerticalSlice/Characters/Jet2/robot.glb",
+    "animations": {
+     "Skill_Barrier": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9667,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap_In": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 2.1333,
+      "notifies": [
+       {
+        "time_s": 0.01866164058446884,
+        "duration_s": null,
+        "class": "HmAnimNotify_PlayEffect",
+        "comment": "None",
+        "params": {
+         "ParticleSystemTemplate": "FX_Transformers_p.FX.Electrocution_Transformer_FX",
+         "SocketName": "Chest_FX",
+         "FireWhenForwards": true
+        }
+       }
+      ]
+     },
+     "HitReactions_React_DecoyTrap_Out": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 1.2667,
+      "notifies": [
+       {
+        "time_s": 0.01866164058446884,
+        "duration_s": null,
+        "class": "HmAnimNotify_PlayEffect",
+        "comment": "None",
+        "params": {
+         "ParticleSystemTemplate": "FX_Transformers_p.FX.Electrocution_Transformer_FX",
+         "SocketName": "Chest_FX",
+         "FireWhenForwards": true
+        }
+       }
+      ]
+     }
+    }
+   },
+   {
+    "chassis": "Jet3",
+    "display": {
+     "custom_body": {
+      "INT": "Seeker",
+      "FRA": "Pisteur"
+     },
+     "iconic": {
+      "INT": "Skywarp",
+      "FRA": "Skywarp"
+     }
+    },
+    "class": "Scientist",
+    "mp_status": "MP character, locked until unlocked",
+    "decoy_in_class_pool": false,
+    "glb": "ExtractedAssets/VerticalSlice/Characters/Jet3/robot.glb",
+    "animations": {
+     "Skill_Barrier": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9667,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap_In": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 2.1333,
+      "notifies": [
+       {
+        "time_s": 0.01866164058446884,
+        "duration_s": null,
+        "class": "HmAnimNotify_PlayEffect",
+        "comment": "None",
+        "params": {
+         "ParticleSystemTemplate": "FX_Transformers_p.FX.Electrocution_Transformer_FX",
+         "SocketName": "Chest_FX",
+         "FireWhenForwards": true
+        }
+       }
+      ]
+     },
+     "HitReactions_React_DecoyTrap_Out": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 1.2667,
+      "notifies": [
+       {
+        "time_s": 0.01866164058446884,
+        "duration_s": null,
+        "class": "HmAnimNotify_PlayEffect",
+        "comment": "None",
+        "params": {
+         "ParticleSystemTemplate": "FX_Transformers_p.FX.Electrocution_Transformer_FX",
+         "SocketName": "Chest_FX",
+         "FireWhenForwards": true
+        }
+       }
+      ]
+     }
+    }
+   },
+   {
+    "chassis": "Jet4",
+    "display": {
+     "custom_body": {
+      "INT": "Skyraider",
+      "FRA": "Commando volant"
+     },
+     "iconic": {
+      "INT": "Air Raid",
+      "FRA": "Air Raid"
+     }
+    },
+    "class": "Scientist",
+    "mp_status": "MP character, available by default",
+    "decoy_in_class_pool": false,
+    "glb": "ExtractedAssets/VerticalSlice/Characters/Jet4/robot.glb",
+    "animations": {
+     "Skill_Barrier": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9667,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap_In": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 2.1333,
+      "notifies": [
+       {
+        "time_s": 0.01866164058446884,
+        "duration_s": null,
+        "class": "HmAnimNotify_PlayEffect",
+        "comment": "None",
+        "params": {
+         "ParticleSystemTemplate": "FX_Transformers_p.FX.Electrocution_Transformer_FX",
+         "SocketName": "Chest_FX",
+         "FireWhenForwards": true
+        }
+       }
+      ]
+     },
+     "HitReactions_React_DecoyTrap_Out": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 1.2667,
+      "notifies": [
+       {
+        "time_s": 0.01866164058446884,
+        "duration_s": null,
+        "class": "HmAnimNotify_PlayEffect",
+        "comment": "None",
+        "params": {
+         "ParticleSystemTemplate": "FX_Transformers_p.FX.Electrocution_Transformer_FX",
+         "SocketName": "Chest_FX",
+         "FireWhenForwards": true
+        }
+       }
+      ]
+     }
+    }
+   },
+   {
+    "chassis": "Jet5",
+    "display": {
+     "custom_body": {
+      "INT": "Air Defender",
+      "FRA": "D\u00e9fenseur a\u00e9rien"
+     },
+     "iconic": {
+      "INT": "Jetfire",
+      "FRA": "Jetfire"
+     }
+    },
+    "class": "Scientist",
+    "mp_status": "MP character, available by default",
+    "decoy_in_class_pool": false,
+    "glb": "ExtractedAssets/VerticalSlice/Characters/Jet5/robot.glb",
+    "animations": {
+     "Skill_Barrier": {
+      "animset": "TR_HeavyMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9667,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap_In": {
+      "animset": "TR_HeavyMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 2.1333,
+      "notifies": [
+       {
+        "time_s": 0.01866164058446884,
+        "duration_s": null,
+        "class": "HmAnimNotify_PlayEffect",
+        "comment": "None",
+        "params": {
+         "ParticleSystemTemplate": "FX_Transformers_p.FX.Electrocution_Transformer_FX",
+         "SocketName": "Chest_FX",
+         "FireWhenForwards": true
+        }
+       }
+      ]
+     },
+     "HitReactions_React_DecoyTrap_Out": {
+      "animset": "TR_HeavyMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap": {
+      "animset": "TR_HeavyMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 1.2667,
+      "notifies": [
+       {
+        "time_s": 0.01866164058446884,
+        "duration_s": null,
+        "class": "HmAnimNotify_PlayEffect",
+        "comment": "None",
+        "params": {
+         "ParticleSystemTemplate": "FX_Transformers_p.FX.Electrocution_Transformer_FX",
+         "SocketName": "Chest_FX",
+         "FireWhenForwards": true
+        }
+       }
+      ]
+     }
+    }
+   },
+   {
+    "chassis": "Jet6",
+    "display": {
+     "custom_body": {
+      "INT": "Interceptor",
+      "FRA": "Intercepteur"
+     },
+     "iconic": {
+      "INT": "Silverbolt",
+      "FRA": "Silverbolt"
+     }
+    },
+    "class": "Scientist",
+    "mp_status": "MP character, available by default",
+    "decoy_in_class_pool": false,
+    "glb": "ExtractedAssets/VerticalSlice/Characters/Jet6/robot.glb",
+    "animations": {
+     "Skill_Barrier": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9667,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap_In": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 2.1333,
+      "notifies": [
+       {
+        "time_s": 0.01866164058446884,
+        "duration_s": null,
+        "class": "HmAnimNotify_PlayEffect",
+        "comment": "None",
+        "params": {
+         "ParticleSystemTemplate": "FX_Transformers_p.FX.Electrocution_Transformer_FX",
+         "SocketName": "Chest_FX",
+         "FireWhenForwards": true
+        }
+       }
+      ]
+     },
+     "HitReactions_React_DecoyTrap_Out": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 1.2667,
+      "notifies": [
+       {
+        "time_s": 0.01866164058446884,
+        "duration_s": null,
+        "class": "HmAnimNotify_PlayEffect",
+        "comment": "None",
+        "params": {
+         "ParticleSystemTemplate": "FX_Transformers_p.FX.Electrocution_Transformer_FX",
+         "SocketName": "Chest_FX",
+         "FireWhenForwards": true
+        }
+       }
+      ]
+     }
+    }
+   },
+   {
+    "chassis": "Jet7",
+    "display": {
+     "custom_body": {
+      "INT": "Retaliator",
+      "FRA": "Vengeur"
+     },
+     "iconic": {
+      "INT": "Shockwave",
+      "FRA": "Shockwave"
+     }
+    },
+    "class": "Scientist",
+    "mp_status": "MP character, locked until unlocked",
+    "decoy_in_class_pool": false,
+    "glb": "ExtractedAssets/VerticalSlice/Characters/Jet7/robot.glb",
+    "animations": {
+     "Skill_Barrier": {
+      "animset": "TR_HeavyMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9667,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap_In": {
+      "animset": "TR_HeavyMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 2.1333,
+      "notifies": [
+       {
+        "time_s": 0.01866164058446884,
+        "duration_s": null,
+        "class": "HmAnimNotify_PlayEffect",
+        "comment": "None",
+        "params": {
+         "ParticleSystemTemplate": "FX_Transformers_p.FX.Electrocution_Transformer_FX",
+         "SocketName": "Chest_FX",
+         "FireWhenForwards": true
+        }
+       }
+      ]
+     },
+     "HitReactions_React_DecoyTrap_Out": {
+      "animset": "TR_HeavyMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap": {
+      "animset": "TR_HeavyMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 1.2667,
+      "notifies": [
+       {
+        "time_s": 0.01866164058446884,
+        "duration_s": null,
+        "class": "HmAnimNotify_PlayEffect",
+        "comment": "None",
+        "params": {
+         "ParticleSystemTemplate": "FX_Transformers_p.FX.Electrocution_Transformer_FX",
+         "SocketName": "Chest_FX",
+         "FireWhenForwards": true
+        }
+       }
+      ]
+     }
+    }
+   },
+   {
+    "chassis": "Jet8",
+    "display": {
+     "custom_body": {
+      "INT": "Stalker",
+      "FRA": "Traqueur"
+     },
+     "iconic": {
+      "INT": "Slipstream",
+      "FRA": "Slipstream"
+     }
+    },
+    "class": "Scientist",
+    "mp_status": "MP character, locked until unlocked",
+    "decoy_in_class_pool": false,
+    "glb": "ExtractedAssets/VerticalSlice/Characters/Jet8/robot.glb",
+    "animations": {
+     "Skill_Barrier": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9667,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap_In": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 2.1333,
+      "notifies": [
+       {
+        "time_s": 0.01866164058446884,
+        "duration_s": null,
+        "class": "HmAnimNotify_PlayEffect",
+        "comment": "None",
+        "params": {
+         "ParticleSystemTemplate": "FX_Transformers_p.FX.Electrocution_Transformer_FX",
+         "SocketName": "Chest_FX",
+         "FireWhenForwards": true
+        }
+       }
+      ]
+     },
+     "HitReactions_React_DecoyTrap_Out": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 1.2667,
+      "notifies": [
+       {
+        "time_s": 0.01866164058446884,
+        "duration_s": null,
+        "class": "HmAnimNotify_PlayEffect",
+        "comment": "None",
+        "params": {
+         "ParticleSystemTemplate": "FX_Transformers_p.FX.Electrocution_Transformer_FX",
+         "SocketName": "Chest_FX",
+         "FireWhenForwards": true
+        }
+       }
+      ]
+     }
+    }
+   },
+   {
+    "chassis": "Minion1",
+    "display": {
+     "custom_body": {
+      "INT": null,
+      "FRA": null
+     },
+     "iconic": {
+      "INT": "Frenzy",
+      "FRA": "Frenzy"
+     }
+    },
+    "class": "Scout",
+    "mp_status": "not referenced by MP maps (TnAssetReferencesMultiplayer) - not a shipped MP character",
+    "decoy_in_class_pool": true,
+    "glb": "ExtractedAssets/VerticalSlice/Characters/Minion1/robot.glb",
+    "animations": {
+     "Skill_Barrier": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9667,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap_In": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 2.1333,
+      "notifies": [
+       {
+        "time_s": 0.01866164058446884,
+        "duration_s": null,
+        "class": "HmAnimNotify_PlayEffect",
+        "comment": "None",
+        "params": {
+         "ParticleSystemTemplate": "FX_Transformers_p.FX.Electrocution_Transformer_FX",
+         "SocketName": "Chest_FX",
+         "FireWhenForwards": true
+        }
+       }
+      ]
+     },
+     "HitReactions_React_DecoyTrap_Out": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 1.2667,
+      "notifies": [
+       {
+        "time_s": 0.01866164058446884,
+        "duration_s": null,
+        "class": "HmAnimNotify_PlayEffect",
+        "comment": "None",
+        "params": {
+         "ParticleSystemTemplate": "FX_Transformers_p.FX.Electrocution_Transformer_FX",
+         "SocketName": "Chest_FX",
+         "FireWhenForwards": true
+        }
+       }
+      ]
+     }
+    }
+   },
+   {
+    "chassis": "Minion2",
+    "display": {
+     "custom_body": {
+      "INT": null,
+      "FRA": null
+     },
+     "iconic": {
+      "INT": "Rumble",
+      "FRA": "Rumble"
+     }
+    },
+    "class": "Scout",
+    "mp_status": "not referenced by MP maps (TnAssetReferencesMultiplayer) - not a shipped MP character",
+    "decoy_in_class_pool": true,
+    "glb": "ExtractedAssets/VerticalSlice/Characters/Minion2/robot.glb",
+    "animations": {
+     "Skill_Barrier": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9667,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap_In": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 2.1333,
+      "notifies": [
+       {
+        "time_s": 0.01866164058446884,
+        "duration_s": null,
+        "class": "HmAnimNotify_PlayEffect",
+        "comment": "None",
+        "params": {
+         "ParticleSystemTemplate": "FX_Transformers_p.FX.Electrocution_Transformer_FX",
+         "SocketName": "Chest_FX",
+         "FireWhenForwards": true
+        }
+       }
+      ]
+     },
+     "HitReactions_React_DecoyTrap_Out": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 1.2667,
+      "notifies": [
+       {
+        "time_s": 0.01866164058446884,
+        "duration_s": null,
+        "class": "HmAnimNotify_PlayEffect",
+        "comment": "None",
+        "params": {
+         "ParticleSystemTemplate": "FX_Transformers_p.FX.Electrocution_Transformer_FX",
+         "SocketName": "Chest_FX",
+         "FireWhenForwards": true
+        }
+       }
+      ]
+     }
+    }
+   },
+   {
+    "chassis": "Minion3",
+    "display": {
+     "custom_body": {
+      "INT": null,
+      "FRA": null
+     },
+     "iconic": {
+      "INT": "Laserbeak",
+      "FRA": "Laserbeak"
+     }
+    },
+    "class": "Scout",
+    "mp_status": "not referenced by MP maps (TnAssetReferencesMultiplayer) - not a shipped MP character",
+    "decoy_in_class_pool": true,
+    "glb": "ExtractedAssets/VerticalSlice/Characters/Minion3/robot.glb",
+    "animations": {
+     "Skill_Barrier": null,
+     "HitReactions_React_DecoyTrap_In": null,
+     "HitReactions_React_DecoyTrap_Out": null,
+     "HitReactions_React_DecoyTrap": null
+    }
+   },
+   {
+    "chassis": "Optimus",
+    "display": null,
+    "class": null,
+    "mp_status": null,
+    "decoy_in_class_pool": false,
+    "glb": "ExtractedAssets/VerticalSlice/Characters/Optimus/robot.glb",
+    "animations": {
+     "Skill_Barrier": null,
+     "HitReactions_React_DecoyTrap_In": null,
+     "HitReactions_React_DecoyTrap_Out": null,
+     "HitReactions_React_DecoyTrap": null
+    }
+   },
+   {
+    "chassis": "Tank",
+    "display": {
+     "custom_body": {
+      "INT": "Destroyer",
+      "FRA": "Destructeur"
+     },
+     "iconic": {
+      "INT": "Megatron",
+      "FRA": "Megatron"
+     }
+    },
+    "class": "Soldier",
+    "mp_status": "MP character, available by default",
+    "decoy_in_class_pool": false,
+    "glb": "ExtractedAssets/VerticalSlice/Characters/Tank/robot.glb",
+    "animations": {
+     "Skill_Barrier": {
+      "animset": "TR_HeavyMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9667,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap_In": {
+      "animset": "TR_HeavyMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 2.1333,
+      "notifies": [
+       {
+        "time_s": 0.01866164058446884,
+        "duration_s": null,
+        "class": "HmAnimNotify_PlayEffect",
+        "comment": "None",
+        "params": {
+         "ParticleSystemTemplate": "FX_Transformers_p.FX.Electrocution_Transformer_FX",
+         "SocketName": "Chest_FX",
+         "FireWhenForwards": true
+        }
+       }
+      ]
+     },
+     "HitReactions_React_DecoyTrap_Out": {
+      "animset": "TR_HeavyMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap": {
+      "animset": "TR_HeavyMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 1.2667,
+      "notifies": [
+       {
+        "time_s": 0.01866164058446884,
+        "duration_s": null,
+        "class": "HmAnimNotify_PlayEffect",
+        "comment": "None",
+        "params": {
+         "ParticleSystemTemplate": "FX_Transformers_p.FX.Electrocution_Transformer_FX",
+         "SocketName": "Chest_FX",
+         "FireWhenForwards": true
+        }
+       }
+      ]
+     }
+    }
+   },
+   {
+    "chassis": "Tank2",
+    "display": {
+     "custom_body": {
+      "INT": "Crusher",
+      "FRA": "Broyeur"
+     },
+     "iconic": {
+      "INT": "Brawl",
+      "FRA": "Brawl"
+     }
+    },
+    "class": "Soldier",
+    "mp_status": "MP character, available by default",
+    "decoy_in_class_pool": false,
+    "glb": "ExtractedAssets/VerticalSlice/Characters/Tank2/robot.glb",
+    "animations": {
+     "Skill_Barrier": {
+      "animset": "TR_HeavyMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9667,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap_In": {
+      "animset": "TR_HeavyMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 2.1333,
+      "notifies": [
+       {
+        "time_s": 0.01866164058446884,
+        "duration_s": null,
+        "class": "HmAnimNotify_PlayEffect",
+        "comment": "None",
+        "params": {
+         "ParticleSystemTemplate": "FX_Transformers_p.FX.Electrocution_Transformer_FX",
+         "SocketName": "Chest_FX",
+         "FireWhenForwards": true
+        }
+       }
+      ]
+     },
+     "HitReactions_React_DecoyTrap_Out": {
+      "animset": "TR_HeavyMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap": {
+      "animset": "TR_HeavyMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 1.2667,
+      "notifies": [
+       {
+        "time_s": 0.01866164058446884,
+        "duration_s": null,
+        "class": "HmAnimNotify_PlayEffect",
+        "comment": "None",
+        "params": {
+         "ParticleSystemTemplate": "FX_Transformers_p.FX.Electrocution_Transformer_FX",
+         "SocketName": "Chest_FX",
+         "FireWhenForwards": true
+        }
+       }
+      ]
+     }
+    }
+   },
+   {
+    "chassis": "Tank3",
+    "display": {
+     "custom_body": {
+      "INT": "Defender",
+      "FRA": "D\u00e9fenseur"
+     },
+     "iconic": {
+      "INT": "Warpath",
+      "FRA": "Warpath"
+     }
+    },
+    "class": "Soldier",
+    "mp_status": "MP character, available by default",
+    "decoy_in_class_pool": false,
+    "glb": "ExtractedAssets/VerticalSlice/Characters/Tank3/robot.glb",
+    "animations": {
+     "Skill_Barrier": {
+      "animset": "TR_HeavyMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9667,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap_In": {
+      "animset": "TR_HeavyMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 2.1333,
+      "notifies": [
+       {
+        "time_s": 0.01866164058446884,
+        "duration_s": null,
+        "class": "HmAnimNotify_PlayEffect",
+        "comment": "None",
+        "params": {
+         "ParticleSystemTemplate": "FX_Transformers_p.FX.Electrocution_Transformer_FX",
+         "SocketName": "Chest_FX",
+         "FireWhenForwards": true
+        }
+       }
+      ]
+     },
+     "HitReactions_React_DecoyTrap_Out": {
+      "animset": "TR_HeavyMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap": {
+      "animset": "TR_HeavyMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 1.2667,
+      "notifies": [
+       {
+        "time_s": 0.01866164058446884,
+        "duration_s": null,
+        "class": "HmAnimNotify_PlayEffect",
+        "comment": "None",
+        "params": {
+         "ParticleSystemTemplate": "FX_Transformers_p.FX.Electrocution_Transformer_FX",
+         "SocketName": "Chest_FX",
+         "FireWhenForwards": true
+        }
+       }
+      ]
+     }
+    }
+   },
+   {
+    "chassis": "Tank4",
+    "display": {
+     "custom_body": {
+      "INT": "Protector",
+      "FRA": "Protecteur"
+     },
+     "iconic": {
+      "INT": "Scattershot",
+      "FRA": "Scattershot"
+     }
+    },
+    "class": "Soldier",
+    "mp_status": "MP character, locked until unlocked",
+    "decoy_in_class_pool": false,
+    "glb": "ExtractedAssets/VerticalSlice/Characters/Tank4/robot.glb",
+    "animations": {
+     "Skill_Barrier": {
+      "animset": "TR_HeavyMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9667,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap_In": {
+      "animset": "TR_HeavyMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 2.1333,
+      "notifies": [
+       {
+        "time_s": 0.01866164058446884,
+        "duration_s": null,
+        "class": "HmAnimNotify_PlayEffect",
+        "comment": "None",
+        "params": {
+         "ParticleSystemTemplate": "FX_Transformers_p.FX.Electrocution_Transformer_FX",
+         "SocketName": "Chest_FX",
+         "FireWhenForwards": true
+        }
+       }
+      ]
+     },
+     "HitReactions_React_DecoyTrap_Out": {
+      "animset": "TR_HeavyMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap": {
+      "animset": "TR_HeavyMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 1.2667,
+      "notifies": [
+       {
+        "time_s": 0.01866164058446884,
+        "duration_s": null,
+        "class": "HmAnimNotify_PlayEffect",
+        "comment": "None",
+        "params": {
+         "ParticleSystemTemplate": "FX_Transformers_p.FX.Electrocution_Transformer_FX",
+         "SocketName": "Chest_FX",
+         "FireWhenForwards": true
+        }
+       }
+      ]
+     }
+    }
+   },
+   {
+    "chassis": "Tank5",
+    "display": {
+     "custom_body": {
+      "INT": "Eradicator",
+      "FRA": "\u00c9liminateur"
+     },
+     "iconic": {
+      "INT": "Demolishor",
+      "FRA": "Demolishor"
+     }
+    },
+    "class": "Soldier",
+    "mp_status": "MP character, locked until unlocked",
+    "decoy_in_class_pool": false,
+    "glb": "ExtractedAssets/VerticalSlice/Characters/Tank5/robot.glb",
+    "animations": {
+     "Skill_Barrier": {
+      "animset": "TR_HeavyMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9667,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap_In": {
+      "animset": "TR_HeavyMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 2.1333,
+      "notifies": [
+       {
+        "time_s": 0.01866164058446884,
+        "duration_s": null,
+        "class": "HmAnimNotify_PlayEffect",
+        "comment": "None",
+        "params": {
+         "ParticleSystemTemplate": "FX_Transformers_p.FX.Electrocution_Transformer_FX",
+         "SocketName": "Chest_FX",
+         "FireWhenForwards": true
+        }
+       }
+      ]
+     },
+     "HitReactions_React_DecoyTrap_Out": {
+      "animset": "TR_HeavyMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap": {
+      "animset": "TR_HeavyMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 1.2667,
+      "notifies": [
+       {
+        "time_s": 0.01866164058446884,
+        "duration_s": null,
+        "class": "HmAnimNotify_PlayEffect",
+        "comment": "None",
+        "params": {
+         "ParticleSystemTemplate": "FX_Transformers_p.FX.Electrocution_Transformer_FX",
+         "SocketName": "Chest_FX",
+         "FireWhenForwards": true
+        }
+       }
+      ]
+     }
+    }
+   },
+   {
+    "chassis": "Truck",
+    "display": {
+     "custom_body": {
+      "INT": "Heavy Rig",
+      "FRA": "Engin lourd"
+     },
+     "iconic": {
+      "INT": "Optimus Prime",
+      "FRA": "Optimus Prime"
+     }
+    },
+    "class": "Leader",
+    "mp_status": "MP character, available by default",
+    "decoy_in_class_pool": false,
+    "glb": "ExtractedAssets/VerticalSlice/Characters/Truck/robot.glb",
+    "animations": {
+     "Skill_Barrier": {
+      "animset": "TR_HeavyMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9667,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap_In": {
+      "animset": "TR_HeavyMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 2.1333,
+      "notifies": [
+       {
+        "time_s": 0.01866164058446884,
+        "duration_s": null,
+        "class": "HmAnimNotify_PlayEffect",
+        "comment": "None",
+        "params": {
+         "ParticleSystemTemplate": "FX_Transformers_p.FX.Electrocution_Transformer_FX",
+         "SocketName": "Chest_FX",
+         "FireWhenForwards": true
+        }
+       }
+      ]
+     },
+     "HitReactions_React_DecoyTrap_Out": {
+      "animset": "TR_HeavyMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap": {
+      "animset": "TR_HeavyMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 1.2667,
+      "notifies": [
+       {
+        "time_s": 0.01866164058446884,
+        "duration_s": null,
+        "class": "HmAnimNotify_PlayEffect",
+        "comment": "None",
+        "params": {
+         "ParticleSystemTemplate": "FX_Transformers_p.FX.Electrocution_Transformer_FX",
+         "SocketName": "Chest_FX",
+         "FireWhenForwards": true
+        }
+       }
+      ]
+     }
+    }
+   },
+   {
+    "chassis": "Truck2",
+    "display": {
+     "custom_body": {
+      "INT": "Medic Rig",
+      "FRA": "Engin m\u00e9dical"
+     },
+     "iconic": {
+      "INT": "Ratchet",
+      "FRA": "Ratchet"
+     }
+    },
+    "class": "Leader",
+    "mp_status": "MP character, available by default",
+    "decoy_in_class_pool": false,
+    "glb": "ExtractedAssets/VerticalSlice/Characters/Truck2/robot.glb",
+    "animations": {
+     "Skill_Barrier": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9667,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap_In": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 2.1333,
+      "notifies": [
+       {
+        "time_s": 0.01866164058446884,
+        "duration_s": null,
+        "class": "HmAnimNotify_PlayEffect",
+        "comment": "None",
+        "params": {
+         "ParticleSystemTemplate": "FX_Transformers_p.FX.Electrocution_Transformer_FX",
+         "SocketName": "Chest_FX",
+         "FireWhenForwards": true
+        }
+       }
+      ]
+     },
+     "HitReactions_React_DecoyTrap_Out": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 1.2667,
+      "notifies": [
+       {
+        "time_s": 0.01866164058446884,
+        "duration_s": null,
+        "class": "HmAnimNotify_PlayEffect",
+        "comment": "None",
+        "params": {
+         "ParticleSystemTemplate": "FX_Transformers_p.FX.Electrocution_Transformer_FX",
+         "SocketName": "Chest_FX",
+         "FireWhenForwards": true
+        }
+       }
+      ]
+     }
+    }
+   },
+   {
+    "chassis": "Truck3",
+    "display": {
+     "custom_body": {
+      "INT": "Armored Rig",
+      "FRA": "Engin blind\u00e9"
+     },
+     "iconic": {
+      "INT": "Ironhide",
+      "FRA": "Ironhide"
+     }
+    },
+    "class": "Leader",
+    "mp_status": "MP character, available by default",
+    "decoy_in_class_pool": false,
+    "glb": "ExtractedAssets/VerticalSlice/Characters/Truck3/robot.glb",
+    "animations": {
+     "Skill_Barrier": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9667,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap_In": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 2.1333,
+      "notifies": [
+       {
+        "time_s": 0.01866164058446884,
+        "duration_s": null,
+        "class": "HmAnimNotify_PlayEffect",
+        "comment": "None",
+        "params": {
+         "ParticleSystemTemplate": "FX_Transformers_p.FX.Electrocution_Transformer_FX",
+         "SocketName": "Chest_FX",
+         "FireWhenForwards": true
+        }
+       }
+      ]
+     },
+     "HitReactions_React_DecoyTrap_Out": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 1.2667,
+      "notifies": [
+       {
+        "time_s": 0.01866164058446884,
+        "duration_s": null,
+        "class": "HmAnimNotify_PlayEffect",
+        "comment": "None",
+        "params": {
+         "ParticleSystemTemplate": "FX_Transformers_p.FX.Electrocution_Transformer_FX",
+         "SocketName": "Chest_FX",
+         "FireWhenForwards": true
+        }
+       }
+      ]
+     }
+    }
+   },
+   {
+    "chassis": "Truck4",
+    "display": {
+     "custom_body": {
+      "INT": "Spy Rig",
+      "FRA": "Engin espion"
+     },
+     "iconic": {
+      "INT": "Soundwave",
+      "FRA": "Soundwave"
+     }
+    },
+    "class": "Leader",
+    "mp_status": "MP character, available by default",
+    "decoy_in_class_pool": false,
+    "glb": "ExtractedAssets/VerticalSlice/Characters/Truck4/robot.glb",
+    "animations": {
+     "Skill_Barrier": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9667,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap_In": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 2.1333,
+      "notifies": [
+       {
+        "time_s": 0.01866164058446884,
+        "duration_s": null,
+        "class": "HmAnimNotify_PlayEffect",
+        "comment": "None",
+        "params": {
+         "ParticleSystemTemplate": "FX_Transformers_p.FX.Electrocution_Transformer_FX",
+         "SocketName": "Chest_FX",
+         "FireWhenForwards": true
+        }
+       }
+      ]
+     },
+     "HitReactions_React_DecoyTrap_Out": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 1.2667,
+      "notifies": [
+       {
+        "time_s": 0.01866164058446884,
+        "duration_s": null,
+        "class": "HmAnimNotify_PlayEffect",
+        "comment": "None",
+        "params": {
+         "ParticleSystemTemplate": "FX_Transformers_p.FX.Electrocution_Transformer_FX",
+         "SocketName": "Chest_FX",
+         "FireWhenForwards": true
+        }
+       }
+      ]
+     }
+    }
+   },
+   {
+    "chassis": "Truck5",
+    "display": {
+     "custom_body": {
+      "INT": "Elite Rig",
+      "FRA": "Engin d'\u00e9lite"
+     },
+     "iconic": {
+      "INT": "Zeta Prime",
+      "FRA": "Zeta Prime"
+     }
+    },
+    "class": "Leader",
+    "mp_status": "MP character, locked until unlocked",
+    "decoy_in_class_pool": false,
+    "glb": "ExtractedAssets/VerticalSlice/Characters/Truck5/robot.glb",
+    "animations": {
+     "Skill_Barrier": {
+      "animset": "TR_HeavyMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9667,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap_In": {
+      "animset": "TR_HeavyMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 2.1333,
+      "notifies": [
+       {
+        "time_s": 0.01866164058446884,
+        "duration_s": null,
+        "class": "HmAnimNotify_PlayEffect",
+        "comment": "None",
+        "params": {
+         "ParticleSystemTemplate": "FX_Transformers_p.FX.Electrocution_Transformer_FX",
+         "SocketName": "Chest_FX",
+         "FireWhenForwards": true
+        }
+       }
+      ]
+     },
+     "HitReactions_React_DecoyTrap_Out": {
+      "animset": "TR_HeavyMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap": {
+      "animset": "TR_HeavyMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 1.2667,
+      "notifies": [
+       {
+        "time_s": 0.01866164058446884,
+        "duration_s": null,
+        "class": "HmAnimNotify_PlayEffect",
+        "comment": "None",
+        "params": {
+         "ParticleSystemTemplate": "FX_Transformers_p.FX.Electrocution_Transformer_FX",
+         "SocketName": "Chest_FX",
+         "FireWhenForwards": true
+        }
+       }
+      ]
+     }
+    }
+   },
+   {
+    "chassis": "Truck6",
+    "display": {
+     "custom_body": {
+      "INT": "Tactical Rig",
+      "FRA": "Engin tactique"
+     },
+     "iconic": {
+      "INT": "Onslaught",
+      "FRA": "Onslaught"
+     }
+    },
+    "class": "Leader",
+    "mp_status": "MP character, locked until unlocked",
+    "decoy_in_class_pool": false,
+    "glb": "ExtractedAssets/VerticalSlice/Characters/Truck6/robot.glb",
+    "animations": {
+     "Skill_Barrier": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9667,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap_In": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 2.1333,
+      "notifies": [
+       {
+        "time_s": 0.01866164058446884,
+        "duration_s": null,
+        "class": "HmAnimNotify_PlayEffect",
+        "comment": "None",
+        "params": {
+         "ParticleSystemTemplate": "FX_Transformers_p.FX.Electrocution_Transformer_FX",
+         "SocketName": "Chest_FX",
+         "FireWhenForwards": true
+        }
+       }
+      ]
+     },
+     "HitReactions_React_DecoyTrap_Out": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap": {
+      "animset": "TR_LightMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 1.2667,
+      "notifies": [
+       {
+        "time_s": 0.01866164058446884,
+        "duration_s": null,
+        "class": "HmAnimNotify_PlayEffect",
+        "comment": "None",
+        "params": {
+         "ParticleSystemTemplate": "FX_Transformers_p.FX.Electrocution_Transformer_FX",
+         "SocketName": "Chest_FX",
+         "FireWhenForwards": true
+        }
+       }
+      ]
+     }
+    }
+   },
+   {
+    "chassis": "Truck7",
+    "display": {
+     "custom_body": {
+      "INT": "Heavy Rig",
+      "FRA": "Engin lourd"
+     },
+     "iconic": {
+      "INT": "Optimus",
+      "FRA": "Optimus"
+     }
+    },
+    "class": "Leader",
+    "mp_status": "MP character, locked until unlocked",
+    "decoy_in_class_pool": false,
+    "glb": "ExtractedAssets/VerticalSlice/Characters/Truck7/robot.glb",
+    "animations": {
+     "Skill_Barrier": {
+      "animset": "TR_HeavyMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9667,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap_In": {
+      "animset": "TR_HeavyMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 2.1333,
+      "notifies": [
+       {
+        "time_s": 0.01866164058446884,
+        "duration_s": null,
+        "class": "HmAnimNotify_PlayEffect",
+        "comment": "None",
+        "params": {
+         "ParticleSystemTemplate": "FX_Transformers_p.FX.Electrocution_Transformer_FX",
+         "SocketName": "Chest_FX",
+         "FireWhenForwards": true
+        }
+       }
+      ]
+     },
+     "HitReactions_React_DecoyTrap_Out": {
+      "animset": "TR_HeavyMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 0.9,
+      "notifies": []
+     },
+     "HitReactions_React_DecoyTrap": {
+      "animset": "TR_HeavyMedium_ANM_p.Shared_ROBO_ANIM",
+      "in": "robot.glb track",
+      "duration_s": 1.2667,
+      "notifies": [
+       {
+        "time_s": 0.01866164058446884,
+        "duration_s": null,
+        "class": "HmAnimNotify_PlayEffect",
+        "comment": "None",
+        "params": {
+         "ParticleSystemTemplate": "FX_Transformers_p.FX.Electrocution_Transformer_FX",
+         "SocketName": "Chest_FX",
+         "FireWhenForwards": true
+        }
+       }
+      ]
+     }
+    }
+   }
+  ],
+  "missing": [
+   {
+    "chassis": "Car10",
+    "anim": "HitReactions_React_DecoyTrap_In"
+   },
+   {
+    "chassis": "Car10",
+    "anim": "HitReactions_React_DecoyTrap_Out"
+   },
+   {
+    "chassis": "Car8",
+    "anim": "HitReactions_React_DecoyTrap_In"
+   },
+   {
+    "chassis": "Car8",
+    "anim": "HitReactions_React_DecoyTrap_Out"
+   },
+   {
+    "chassis": "Car9",
+    "anim": "HitReactions_React_DecoyTrap_In"
+   },
+   {
+    "chassis": "Car9",
+    "anim": "HitReactions_React_DecoyTrap_Out"
+   },
+   {
+    "chassis": "Minion3",
+    "anim": "Skill_Barrier"
+   },
+   {
+    "chassis": "Minion3",
+    "anim": "HitReactions_React_DecoyTrap_In"
+   },
+   {
+    "chassis": "Minion3",
+    "anim": "HitReactions_React_DecoyTrap_Out"
+   },
+   {
+    "chassis": "Optimus",
+    "anim": "Skill_Barrier"
+   },
+   {
+    "chassis": "Optimus",
+    "anim": "HitReactions_React_DecoyTrap_In"
+   },
+   {
+    "chassis": "Optimus",
+    "anim": "HitReactions_React_DecoyTrap_Out"
+   }
+  ]
+ },
+ "ui": {
+  "hud_ability_icon": {
+   "texture": "UI_GFxHud_p.TnAbilityDecoyTrap",
+   "png": "ExtractedAssets/content/UI_GFxHud_p/TnAbilityDecoyTrap.png",
+   "exists": true,
+   "size": [
+    64,
+    64
+   ],
+   "mode": "RGBA",
+   "bytes": 3484,
+   "copy": "AssetTools/out/abilities/decoy_trap/icons/TnAbilityDecoyTrap.png"
+  },
+  "kill_feed_icon (death_Decoy is a HUD texture, not a death anim)": {
+   "texture": "UI_GFxHud_p.death_Decoy",
+   "png": "ExtractedAssets/content/UI_GFxHud_p/death_Decoy.png",
+   "exists": true,
+   "size": [
+    32,
+    32
+   ],
+   "mode": "RGBA",
+   "bytes": 1589,
+   "copy": "AssetTools/out/abilities/decoy_trap/icons/death_Decoy.png"
+  },
+  "character_select_icon": {
+   "texture": "UI_GFxCharacterSelect_p.DecoyTrap",
+   "png": "ExtractedAssets/content/UI_GFxCharacterSelect_p/DecoyTrap.png",
+   "exists": true,
+   "size": [
+    64,
+    64
+   ],
+   "mode": "RGBA",
+   "bytes": 3484,
+   "copy": "AssetTools/out/abilities/decoy_trap/icons/DecoyTrap.png"
+  },
+  "victim_marker (TnObjectiveMarkerTypeDecoyTrap, creator client only)": {
+   "material": "UI_HudMarkers_p.MarkerDeceptDestructible_MAT",
+   "material_refs": [
+    {
+     "prop": "EmissiveColor",
+     "dst": "UI_HudMarkers_p.MarkerDeceptDestructible_MAT.MaterialExpressionTree_8096.MaterialExpressionVectorParameter_3931",
+     "class": "MaterialExpressionVectorParameter"
+    },
+    {
+     "prop": "Opacity",
+     "dst": "UI_HudMarkers_p.MarkerDeceptDestructible_MAT.MaterialExpressionTree_8096.MaterialExpressionMultiply_14147",
+     "class": "MaterialExpressionMultiply"
+    },
+    {
+     "prop": "ExpressionTree",
+     "dst": "UI_HudMarkers_p.MarkerDeceptDestructible_MAT.MaterialExpressionTree_8096",
+     "class": "MaterialExpressionTree"
+    }
+   ],
+   "MarkerDescription": "Victim Trapped"
+  }
+ },
+ "audio": {
+  "DECOY_TRAP_DEPLOY (ability OnTriggerSound)": {
+   "cue": "BL_TRANS_POWER.DECOY_TRAP_DEPLOY",
+   "class": "SoundCue",
+   "tree": {
+    "node": "SoundNodeRoot_12898",
+    "class": "SoundNodeRoot",
+    "params": {
+     "EnableOcclusionVolume": false,
+     "EnableOcclusionPitch": false,
+     "PlayMixerPresetOnlyIfLocalPlayerSound": true,
+     "SpatializationType": "kSmartPan_PreferPlayer",
+     "DistanceMin": 1800.0,
+     "DistanceMax": 12000.0,
+     "Priority": 220.0,
+     "SmartPanDistance2D": 200.0,
+     "SmartPanDistance3D": 400.0,
+     "Category": "SFX_TRANS_POWER",
+     "PlayMixerPreset": "TRANS_POWER_ACTIVATE"
+    },
+    "children": [
+     {
+      "node": "SoundNodeWaveEvent_14330",
+      "class": "SoundNodeWaveEvent",
+      "children": [
+       {
+        "node": "WL_TRANS_POWER.TRANS_POWER_TRAP_DEPLOY",
+        "class": "SoundNodeWaveEx",
+        "wav": "content/WL_TRANS_POWER/TRANS_POWER_TRAP_DEPLOY.wav",
+        "duration": 0.7693333625793457
+       }
+      ]
+     },
+     {
+      "node": "SoundNodeWaveEvent_3685",
+      "class": "SoundNodeWaveEvent",
+      "params": {
+       "Time": 0.5002495050430298
+      },
+      "children": [
+       {
+        "node": "WL_HUD_INTERFACE.SYNTH_HEALTH_VACUUM",
+        "class": "SoundNodeWaveEx",
+        "wav": "content/WL_HUD_INTERFACE/SYNTH_HEALTH_VACUUM.wav",
+        "duration": 1.1200624704360962
+       }
+      ]
+     }
+    ]
+   },
+   "root": {
+    "EnableOcclusionVolume": false,
+    "EnableOcclusionPitch": false,
+    "PlayMixerPresetOnlyIfLocalPlayerSound": true,
+    "SpatializationType": "kSmartPan_PreferPlayer",
+    "DistanceMin": 1800.0,
+    "DistanceMax": 12000.0,
+    "Priority": 220.0,
+    "SmartPanDistance2D": 200.0,
+    "SmartPanDistance3D": 400.0,
+    "Category": "SFX_TRANS_POWER",
+    "PlayMixerPreset": "TRANS_POWER_ACTIVATE"
+   },
+   "waves": [
+    {
+     "wave": "WL_TRANS_POWER.TRANS_POWER_TRAP_DEPLOY",
+     "wav": "content/WL_TRANS_POWER/TRANS_POWER_TRAP_DEPLOY.wav",
+     "duration": 0.7693333625793457,
+     "path": [
+      "SoundNodeRoot",
+      "SoundNodeWaveEvent"
+     ]
+    },
+    {
+     "wave": "WL_HUD_INTERFACE.SYNTH_HEALTH_VACUUM",
+     "wav": "content/WL_HUD_INTERFACE/SYNTH_HEALTH_VACUUM.wav",
+     "duration": 1.1200624704360962,
+     "path": [
+      "SoundNodeRoot",
+      "SoundNodeWaveEvent"
+     ]
+    }
+   ],
+   "category": "SFX_TRANS_POWER"
+  },
+  "DECOY_TRAP_EXPLODE (TnDecoyTrap PickupSound)": {
+   "cue": "BL_TRANS_POWER.DECOY_TRAP_EXPLODE",
+   "class": "SoundCue",
+   "tree": {
+    "node": "SoundNodeRoot_12898",
+    "class": "SoundNodeRoot",
+    "params": {
+     "Volume": -9.0,
+     "EnableOcclusionVolume": false,
+     "EnableOcclusionPitch": false,
+     "SpatializationType": "kSmartPan",
+     "DistanceMin": 1000.0,
+     "DistanceMax": 12000.0,
+     "Priority": 220.0,
+     "SmartPanDistance2D": 85.0,
+     "SmartPanDistance3D": 150.0,
+     "LoopStart": 0.3201761245727539,
+     "LoopEnd": 1.0517933368682861,
+     "Category": "SFX_TRANS_POWER"
+    },
+    "children": [
+     {
+      "node": "SoundNodeWaveEvent_4304",
+      "class": "SoundNodeWaveEvent",
+      "children": [
+       {
+        "node": "WL_TRANS_POWER.TRANS_POWER_TRAP_ELEC_LP_EXPLO",
+        "class": "SoundNodeWaveEx",
+        "wav": "content/WL_TRANS_POWER/TRANS_POWER_TRAP_ELEC_LP_EXPLO.wav",
+        "duration": 1.4896458387374878
+       }
+      ]
+     },
+     {
+      "node": "SoundNodeWaveEvent_8026",
+      "class": "SoundNodeWaveEvent",
+      "params": {
+       "PlayWhenSilent": true,
+       "Envelope": {
+        "VolumeCurve": [
+         {
+          "X": 0.002851352095603943,
+          "Y": 0.0
+         },
+         {
+          "X": 0.1471908688545227,
+          "Y": 0.9666666984558105
+         },
+         {
+          "X": 1.9254331588745117,
+          "Y": 1.0
+         },
+         {
+          "X": 4.098072052001953,
+          "Y": 1.0
+         },
+         {
+          "X": 4.56857967376709,
+          "Y": 0.0
+         }
+        ],
+        "PitchCurve": [
+         {
+          "X": 0.0,
+          "Y": -36.0
+         },
+         {
+          "X": 0.28036820888519287,
+          "Y": 0.0
+         }
+        ]
+       }
+      },
+      "children": [
+       {
+        "node": "WL_TRANS_POWER.TRANS_POWER_TRAP_ELEC_LP",
+        "class": "SoundNodeWaveEx",
+        "wav": "content/WL_TRANS_POWER/TRANS_POWER_TRAP_ELEC_LP.wav",
+        "duration": 4.586666584014893
+       }
+      ]
+     },
+     {
+      "node": "SoundNodeWaveEvent_16002",
+      "class": "SoundNodeWaveEvent",
+      "params": {
+       "PitchVariationMin": 2.0
+      },
+      "children": [
+       {
+        "node": "WL_WPN_GRENADE.KAMIKAZE_EXPL_01",
+        "class": "SoundNodeWaveEx",
+        "wav": "content/WL_WPN_GRENADE/KAMIKAZE_EXPL_01.wav",
+        "duration": 1.5017917156219482
+       },
+       {
+        "node": "WL_WPN_GRENADE.KAMIKAZE_EXPL_02",
+        "class": "SoundNodeWaveEx",
+        "wav": "content/WL_WPN_GRENADE/KAMIKAZE_EXPL_02.wav",
+        "duration": 1.525333285331726
+       },
+       {
+        "node": "WL_WPN_GRENADE.KAMIKAZE_EXPL_03",
+        "class": "SoundNodeWaveEx",
+        "wav": "content/WL_WPN_GRENADE/KAMIKAZE_EXPL_03.wav",
+        "duration": 1.628833293914795
+       }
+      ]
+     },
+     {
+      "node": "SoundNodeWaveEvent_9197",
+      "class": "SoundNodeWaveEvent",
+      "params": {
+       "Time": 3.5035417079925537,
+       "Volume": -3.0
+      },
+      "children": [
+       {
+        "node": "WL_ELEC.DEATH_LIGHT_01",
+        "class": "SoundNodeWaveEx",
+        "wav": "content/WL_ELEC/DEATH_LIGHT_01.wav",
+        "duration": 1.7173333168029785
+       },
+       {
+        "node": "WL_ELEC.DEATH_LIGHT_02",
+        "class": "SoundNodeWaveEx",
+        "wav": "content/WL_ELEC/DEATH_LIGHT_02.wav",
+        "duration": 1.5546666383743286
+       },
+       {
+        "node": "WL_ELEC.DEATH_LIGHT_03",
+        "class": "SoundNodeWaveEx",
+        "wav": "content/WL_ELEC/DEATH_LIGHT_03.wav",
+        "duration": 1.493333339691162
+       }
+      ]
+     }
+    ]
+   },
+   "root": {
+    "Volume": -9.0,
+    "EnableOcclusionVolume": false,
+    "EnableOcclusionPitch": false,
+    "SpatializationType": "kSmartPan",
+    "DistanceMin": 1000.0,
+    "DistanceMax": 12000.0,
+    "Priority": 220.0,
+    "SmartPanDistance2D": 85.0,
+    "SmartPanDistance3D": 150.0,
+    "LoopStart": 0.3201761245727539,
+    "LoopEnd": 1.0517933368682861,
+    "Category": "SFX_TRANS_POWER"
+   },
+   "waves": [
+    {
+     "wave": "WL_TRANS_POWER.TRANS_POWER_TRAP_ELEC_LP_EXPLO",
+     "wav": "content/WL_TRANS_POWER/TRANS_POWER_TRAP_ELEC_LP_EXPLO.wav",
+     "duration": 1.4896458387374878,
+     "path": [
+      "SoundNodeRoot",
+      "SoundNodeWaveEvent"
+     ]
+    },
+    {
+     "wave": "WL_TRANS_POWER.TRANS_POWER_TRAP_ELEC_LP",
+     "wav": "content/WL_TRANS_POWER/TRANS_POWER_TRAP_ELEC_LP.wav",
+     "duration": 4.586666584014893,
+     "path": [
+      "SoundNodeRoot",
+      "SoundNodeWaveEvent"
+     ]
+    },
+    {
+     "wave": "WL_WPN_GRENADE.KAMIKAZE_EXPL_01",
+     "wav": "content/WL_WPN_GRENADE/KAMIKAZE_EXPL_01.wav",
+     "duration": 1.5017917156219482,
+     "path": [
+      "SoundNodeRoot",
+      "SoundNodeWaveEvent"
+     ]
+    },
+    {
+     "wave": "WL_WPN_GRENADE.KAMIKAZE_EXPL_02",
+     "wav": "content/WL_WPN_GRENADE/KAMIKAZE_EXPL_02.wav",
+     "duration": 1.525333285331726,
+     "path": [
+      "SoundNodeRoot",
+      "SoundNodeWaveEvent"
+     ]
+    },
+    {
+     "wave": "WL_WPN_GRENADE.KAMIKAZE_EXPL_03",
+     "wav": "content/WL_WPN_GRENADE/KAMIKAZE_EXPL_03.wav",
+     "duration": 1.628833293914795,
+     "path": [
+      "SoundNodeRoot",
+      "SoundNodeWaveEvent"
+     ]
+    },
+    {
+     "wave": "WL_ELEC.DEATH_LIGHT_01",
+     "wav": "content/WL_ELEC/DEATH_LIGHT_01.wav",
+     "duration": 1.7173333168029785,
+     "path": [
+      "SoundNodeRoot",
+      "SoundNodeWaveEvent"
+     ]
+    },
+    {
+     "wave": "WL_ELEC.DEATH_LIGHT_02",
+     "wav": "content/WL_ELEC/DEATH_LIGHT_02.wav",
+     "duration": 1.5546666383743286,
+     "path": [
+      "SoundNodeRoot",
+      "SoundNodeWaveEvent"
+     ]
+    },
+    {
+     "wave": "WL_ELEC.DEATH_LIGHT_03",
+     "wav": "content/WL_ELEC/DEATH_LIGHT_03.wav",
+     "duration": 1.493333339691162,
+     "path": [
+      "SoundNodeRoot",
+      "SoundNodeWaveEvent"
+     ]
+    }
+   ],
+   "category": "SFX_TRANS_POWER"
+  },
+  "loop": {
+   "separate_loop_cue": null,
+   "in_explode_cue": "WL_TRANS_POWER.TRANS_POWER_TRAP_ELEC_LP (4.59 s) is a LAYER of DECOY_TRAP_EXPLODE: one wave event with a volume envelope 0 -> 1 by 0.15 s, held to 4.10 s, 0 at 4.57 s, pitch -36 -> 0 over 0.28 s. With the _EXPLO hit, a random KAMIKAZE_EXPL_0x (pitch var 2) and a random DEATH_LIGHT_0x at 3.50 s (-3 dB), the cue is a ~5 s one-shot spanning the stun.",
+   "root_LoopStart_LoopEnd": "the cue root carries LoopStart 0.320 / LoopEnd 1.052; what the HM root does with them is UNKNOWN (no RE note)."
+  },
+  "note": "BL_TRANS_POWER has only DECOY_TRAP_DEPLOY / DECOY_TRAP_EXPLODE for the decoy, and no decoy class carries an ambient / loop sound property; the trap is silent while it lies on the ground. Each wave has its .wav and .fsb in ExtractedAssets/content."
+ },
+ "fx": {
+  "DecoyTrap_FX (TnBuffDecoyTrap.ApplyFx; loops at the victim TargetingSocket)": {
+   "template": "FX_Multiplayer_p.FX.DecoyTrap_FX",
+   "file": "AssetTools/out/abilities/decoy_trap/fx/DecoyTrap_FX.pstream.json",
+   "missing": false,
+   "emitters": 6,
+   "lods_per_emitter": [
+    2
+   ],
+   "assignment_complete_all_lods": true,
+   "provisional_distributions": 0
+  },
+  "pickup_effect (inherited PickupEffect0, bAutoActivate false)": {
+   "template": "FX_Pickups_p.FX.Pickup_FX",
+   "file": "AssetTools/out/abilities/decoy_trap/fx/Pickup_FX.pstream.json",
+   "missing": false,
+   "emitters": 1,
+   "lods_per_emitter": [
+    2
+   ],
+   "assignment_complete_all_lods": true,
+   "provisional_distributions": 0
+  },
+  "anim_notify_fx (on the stun clip)": [
+   {
+    "template": "FX_Transformers_p.FX.Electrocution_Transformer_FX",
+    "file": "AssetTools/out/abilities/decoy_trap/fx/Electrocution_Transformer_FX.pstream.json",
+    "missing": false,
+    "emitters": 5,
+    "lods_per_emitter": [
+     3
+    ],
+    "assignment_complete_all_lods": true,
+    "provisional_distributions": 0
+   }
+  ],
+  "trap_own_idle_or_explode": null,
+  "note": "There is no trap-specific idle or explode particle system in the cook: the trap shows the weapon mesh + the inherited dropped-pickup PickupEffect / HighlightFx, and the \"explode\" is only the pickup sound (RE \u00a74)."
+ },
+ "not_in_dump": [
+  "a trap mesh of its own (by design: the thrower's weapon mesh)",
+  "a dedicated deploy / hold anim (Skill_Barrier is reused; no hold)",
+  "death_Decoy as an animation (it is the kill-feed icon texture)",
+  "a trap loop sound",
+  "a trap idle / explode FX"
+ ]
+}
