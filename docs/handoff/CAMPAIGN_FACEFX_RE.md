@@ -131,17 +131,31 @@ None left: every byte of all 22 files is accounted for by the layout above. Stil
    Hermite; to choose by eye). Cinematic curves use the stored slopes, i8 / 127 × extra f32.
 2. **Node values:** curve value, plus Σ linkFn(input) for nodes with input links (fn 1: m·x + b), clamped to [min, max]. Nodes
    without a curve are 0.
-3. **Bones:** for each master-bone-list bone with a skeletonBoneIndex (0x7FFFFFFF = match by name):
-   - local transform = rest ⊕ Σ over links of node value × delta;
-   - translation += v · dPos and scale += v · dScale;
-   - rotation = normalize(1 + Σ v · (conj(rest) · rot − 1)), i.e. nlerp of the deltas, then applied on top of the rest rotation.
-   - **These replace the face bones' local transforms** from the body animation (FaceFX overrides the face, it doesn't add to it).
+3. **Bones** (CONFIRMED by RE from the native code, 2026-10-17: `RE-Workspace/work/handoff/FACEFX_BONE_BLEND_RE.md`, d38c9f4; this
+   replaces the earlier nlerp-sum hypothesis). For each master-bone-list bone with a skeletonBoneIndex (0x7FFFFFFF = match by name):
+   - Start from P = rest_pos, Acc = R = rest_rot (w, x, y, z).
+   - For each link **in stored order**, with v its node value (no clamp in the bone pass; |v| < FLT_EPSILON is skipped):
+     - P += v · dPos.
+     - Flip R to the pose's hemisphere when |R + Q|² < |R − Q|² (Q = the link's rot); the flip carries over to later links.
+     - S = slerp(R, Q, v) if dot(R, Q) ≤ 0.55, else the plain lerp R·(1 − v) + Q·v.
+     - Acc = Acc ⊗ (M ⊗ S), where M = the stored `inv_rest_rot`.
+   - Normalise Acc once at the end. Scale is not used.
+   - **Application is additive** (FXBM_Additive everywhere). Convert FaceFX → UE3 as quat (x, −y, z, w) and vector (x, −y, z); then
+     rot = (Q·Qref⁻¹)·animRot and trans += P − Pref on the animated local pose. The earlier "replace" in this spec was wrong.
+   - The node clamp to [min, max] in step 2 is the face graph's own clamp (PROVISIONAL: RE did not trace the node evaluation).
+   - On DX_OPRIME_LK002649 the product rule and the old nlerp sum differ by at most 0.47° (head) / 0.34° (jaw) per frame, so the blend
+     rule does not explain the low jaw-voice correlation on Trypticon. That stays open, as a lip-sync timing or graph question.
 
 **Expected output, one test frame:**
 - Optimus `DX_OPRIME_LK002649` (`RB_Optimus_FaceFX.fxa`; start −0.222 s, end 2.869 s; voice wave 1.96 s) at t = 1.0 s. On this line
   the spec blend gives jaw-angle vs voice-envelope correlation 0.53 (linear) / 0.52 (Hermite), jaw up to 6.6° / 7.6°.
-- `work/fxa/fxa_proof.py Optimus DX_OPRIME_LK002649` writes (reference files: `work/fxa/proof_DX_OPRIME_LK002649_linear.csv` / `_hermite.csv`) the 30 Hz CSV of all 14 bones (pos + quat), linear and Hermite. Gameplay's hook must
-  reproduce the CSV row at t = 1.0 within 1e-4 (positions) / 1e-3 (quaternion components) for the linear mode.
+- `work/fxa/fxa_proof.py Optimus DX_OPRIME_LK002649` writes the 30 Hz CSV of all 14 bones, linear and Hermite.
+  - Reference files: `work/fxa/proof_DX_OPRIME_LK002649_linear.csv` / `_hermite.csv`, regenerated 2026-10-17 with the product rule.
+  - Values are FaceFX space, before any additive application or axis conversion: P absolute (rest + Σ v·dPos) and the absolute
+    rotation Acc (w, x, y, z). Compare quaternions up to sign (q ≡ −q).
+  - The rows are at t = start + k/30, so the "t = 1.0" test row is t = 1.0118.
+  - The old nlerp-sum files are kept as `_linear_nlerp.csv` / `_hermite_nlerp.csv`. Those hold delta rotations and delta positions.
+  - Gameplay's hook must reproduce the linear row within 1e-4 (positions) / 1e-3 (quaternion components).
 - Pass also by eye: the jaw opens on loud syllables (the timing proof above), and the face is neutral during the lead-in and after
   `end`.
 
