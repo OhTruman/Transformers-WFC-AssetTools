@@ -1,16 +1,12 @@
-## 3. Pending diagnostics (m05 / structure audit / bsp_alignment)
+## 3. Diagnostics (done 2026-10-16 / 17; table in section 1b)
 
-- `m05_bsp_default_faces` and `map_structure_audit` are ray / triangle-grid diagnostics. They export no level data, but they produce the
-  default-material face list (input to the campaign texture / material pass) and the playable-space / collision-vs-visible checks.
-- On the large chapters they exceed the 10 GB cap or their own 8 GB guard (A1, A3, D2, D3B), or run for over 50 min (A4). So they were
-  skipped from D3A onward, as Integration decided.
-- **Plan:**
-  1. Make the grids bounded: keep oversized triangles (sky dome, light planes, huge BSP polys) out of the uniform grid, test them
-     per ray instead (the CLAUDE.md ray-test rule), and use coarser cells for chapter-size bounds.
-  2. Gate: Streets and the 10 MP maps byte-identical (m05 / structure-audit outputs) before vs after.
-  3. Then run both alone per chapter (`run_stages.cmd <chapter> 10 m05_bsp_default_faces map_structure_audit map_complete`), and
-     update each chapter doc.
-- `bsp_alignment` (D2_COR: 2,074 more exported than authored BSP triangles, 747 unaccounted nodes) is checked in the same pass.
+- **m05 (default-material BSP faces):**
+  - Ran over **all BSP levels per chapter** (`WFC_M05_ALL_LEVELS`), with tile-local obstacle grids (`WFC_M05_TILE=256`).
+  - The MP path is unchanged: the single-level untiled default matches the gate on all 10 MP maps, Streets included, and tiled
+    output equals untiled on Gorge and BrokenHope.
+  - Every chapter is under the 10 GB cap. D1_ORB m05 took 82 min (10,048 faces), the only stage over an hour.
+- **Structure audit:** at a 2 m cell (`WFC_AUDIT_CELL=2`; the MP default stays 1 m); 9 chapters PASS, A2_KON ATTENTION.
+- **bsp_alignment** (D2_COR) is still to be looked at; the audit is the input.
 
 ## 4. Provisional items
 

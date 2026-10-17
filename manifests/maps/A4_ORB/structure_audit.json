@@ -1,0 +1,922 @@
+{
+ "map": "A4_ORB",
+ "generated_by": "AssetTools/scripts/wfc/map_structure_audit.py",
+ "method": {
+  "cell_m": 2.0,
+  "walk_step_m": 1.25,
+  "walkable_normal_y": 0.7,
+  "huge_triangle_m2": 20000.0,
+  "note": "walk graph is conservative (no jumping / vehicle form / jump pads): unreachable != unplayable"
+ },
+ "transforms": {
+  "smca_nodes_checked": 11214,
+  "smca_world_glb_matrix_mismatch": 0,
+  "examples": [],
+  "rule": "world.glb node matrix == props.json gltf_matrix (component S*R*T x native CachedParentToWorld; Streets lesson)"
+ },
+ "mirrored_instances": {
+  "primitive_instances": {
+   "normal": 11112,
+   "det>0 tris normal-agree": 6947792,
+   "det>0 tris normal-oppose": 8961,
+   "mirrored": 3600,
+   "det<0 tris normal-agree": 1506,
+   "det<0 tris normal-oppose": 2356632
+  },
+  "verdict": "CONSISTENT",
+  "rule": "for det<0 nodes the transformed winding opposes the transformed normals; a glTF renderer must flip the front face (glTF 2.0 spec 3.7.4). Exported data is consistent when det<0 tris mostly oppose and det>0 tris mostly agree."
+ },
+ "playable_space": {
+  "player_starts": 0,
+  "starts_on_reachable_floor": 0,
+  "starts_without_floor_below": [],
+  "starts_off_walk_graph_diagnosis": [],
+  "walk_graph_cells": 0,
+  "walk_graph_layers": 0,
+  "walk_graph_area_m2": 0.0,
+  "connected_from_any_start": true,
+  "bounds": null,
+  "kill_z_ue": [
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0
+  ],
+  "placement_checks": {
+   "pickups": {
+    "count": 0,
+    "on_walkable_reachable_floor": 0,
+    "not_on_walk_graph": []
+   },
+   "objectives": {
+    "count": 0,
+    "on_walkable_reachable_floor": 0,
+    "not_on_walk_graph": []
+   }
+  }
+ },
+ "collision_vs_visible": {
+  "reachable_floor_cells_with_visible_floor": 0,
+  "reachable_floor_cells_without_visible_floor (invisible floor) by collision source": {},
+  "agreement_pct": 0.0,
+  "agreement_pct_excluding_volume_tops": 0.0,
+  "visible_floor_cells_next_to_walk_graph_without_collision (fall-through candidates)": 0,
+  "fall_through_candidates_by_visible_source (top 25)": {},
+  "non_blocking_props_by_mesh (authored bCollideActors/bBlockActors false)": {
+   "ENV_GLB_EnvEffects_p.StaticMesh.FogPlane_STAT": 357,
+   "ENV_GLB_EnvEffects_p.StaticMesh.GlowSphere_STAT": 136,
+   "ENV_GLB_EnvEffects_p.StaticMesh.LightBeam_Cone_STAT": 116,
+   "DES_ORB_Asteroids_p.StaticMesh.DebrisCard_STAT": 96,
+   "ENV_ORB_Beam_p.StaticMesh.BeamCylinder_STAT": 93,
+   "DES_ORB_WallSocket_01_p.Meshes.Wall_Socket_01_Fuse_STAT": 63,
+   "ENV_ORB_CoolantRoom_p.Model.WaterfallA_STAT": 51,
+   "ENV_GLB_EnvEffects_p.StaticMesh.FogVolume_CylinderHi_STAT": 48,
+   "ENV_ORB_CoolantRoom_p.Model.Puddle1_STAT": 37,
+   "ENV_ORB_CoolantRoom_p.Model.Bubble3sided_STAT": 36,
+   "ENV_IAC_Ground_p.Platform.modPlatform_Trim_1024_STAT": 32,
+   "PROP_EnergonSigns_p.DecepticonGraffit.KON_ChevronHologram_Straigt_single_STAT": 32,
+   "ENV_ORB_D1_Deco_p.Meshes.GasChamber_Bottom_B_STAT": 23,
+   "ENV_IAC_BLDS_1_p.StaticMesh.FInCap_4096_STAT": 20,
+   "ENV_IAC_HoloMap_p.StaticMesh.Marker_Objective_STAT": 20,
+   "ENV_ORB_Nebula_p.StaticMesh.NebulaWreath_STAT": 18,
+   "ENV_ORB_PowerCorridor_p.StaticMesh.PowerTube_Metal_02_STAT": 16,
+   "ENV_GLB_EnvEffects_p.StaticMesh.LightBeam_Cone_Wide_STAT": 16,
+   "ENV_ORB_NerveCenter_p.StaticMeshes.Blast_Door_01_STAT": 16,
+   "ENV_ORB_PowerCorridor_p.StaticMesh.PowerTube_03_STAT": 15,
+   "ENV_IAC_HoloMap_p.StaticMesh.infoShard_01_STAT": 14,
+   "ENV_IAC_BLDS_1_p.StaticMesh.Saucer_8192_STAT": 13,
+   "ENV_ORB_GalacticTransport_p.StaticMeshes.GalacticTransport_Debris_01_STAT": 12,
+   "ENV_ORB_GalacticTransport_p.StaticMeshes.GalacticTransport_Debris_02_STAT": 12,
+   "ENV_ORB_D1_Architecture_p.Meshes.FloorTrim_Straight_01_STAT": 12,
+   "ENV_OA4_Design_p.SmallCube_STAT": 10,
+   "ENV_VIG_Autobot_p.Cruiser_STAT": 10,
+   "ENV_ORB_GalacticTransport_p.StaticMeshes.GalacticTransport_Debris_03_STAT": 10,
+   "ENV_ORB_Beam_p.StaticMesh.BeamNexus_STAT": 10,
+   "ENV_IAC_HoloMap_p.StaticMesh.infoShard_03_STAT": 10,
+   "ENV_ORB_SatGuard_p.StaticMesh.SatGuardTarget_STAT": 10,
+   "ENV_ORB_Trypticon_p.StaticMesh.Tryp_TurretBaseShallow_STAT": 10,
+   "ENV_GLB_EnvEffects_p.StaticMesh.FogVolume_CUBE_STAT": 9,
+   "ENV_ORB_GalacticTransport_p.StaticMeshes.GalacticTransport_Debris_05_STAT": 9,
+   "ENV_ORB_GalacticTransport_p.StaticMeshes.GalacticTransport_Debris_06_STAT": 9,
+   "DES_ORB_SpaceMine_p.SmallCube_STAT": 9,
+   "ENV_ORB_PowerCorridor_p.StaticMesh.Mini_Cable_Hang01_STAT": 9,
+   "DES_ORB_Asteroids_p.StaticMesh.Asteroid_Debris_07_STAT": 8,
+   "ENV_ORB_GalacticTransport_p.StaticMeshes.GalacticTransport_Debris_04_STAT": 8,
+   "ENV_ORB_PowerCorridor_p.StaticMesh.Gantry_Curve90_STAT": 8,
+   "PROP_EnergonSigns_p.EnergonSign_7_STAT": 8,
+   "PROP_NEU_WreckedBodies_p.DeaDCarSoldier05_STAT": 8,
+   "ENV_IAC_HoloMap_p.StaticMesh.infoShard_02_STAT": 8,
+   "ENV_ORB_PowerCorridor_p.StaticMesh.PowerTubeCircle_STAT": 8,
+   "ENV_ORB_GalacticTransport_p.StaticMeshes.GalacticTransport_STAT": 7,
+   "DES_ORB_Asteroids_p.StaticMesh.Asteroid_Debris_03_STAT": 7,
+   "FX_Mesh_p.Cylinder_STAT": 7,
+   "ENV_ORB_CoolantCorridor_p.StaticMeshes.CoolantSteps_STAT": 7,
+   "ENV_ORB_A1_LowRez_p.StaticMesh.BeamReceptorCan_STAT": 7,
+   "ENV_ORB_Trypticon_p.StaticMesh.Metal_Floor_Tile_STAT": 6,
+   "ENV_ORB_PowerCorridor_p.StaticMesh.PowerTube_02_STAT": 6,
+   "ENV_ORB_PowerCorridor_p.StaticMesh.PowerTube_01_STAT": 6,
+   "DES_ORB_Asteroids_p.StaticMesh.Asteroid_Debris_01_STAT": 6,
+   "ENV_ORB_A1_LowRez_p.StaticMesh.RelayStationBlade_STAT": 6,
+   "PROP_NEU_WreckedBodies_p.DeadCarSoldier02_STAT": 6,
+   "PROP_NEU_WreckedBodies_p.DeadCarSoldier04_STAT": 6,
+   "ENV_ORB_PowerCorridor_p.StaticMesh.MiniCables_01_STAT": 6,
+   "PROP_NEU_WallProps_p.DetachedParts.PROP_NEU_TurbineFan_STAT": 6,
+   "ENV_ORB_Beam_p.StaticMesh.BeamOuterCylinder_STAT": 5,
+   "Prop_ORB_FloatingRagdoll_p.Ragdoll_HelperCube_STAT": 5,
+   "DES_ORB_Asteroids_p.StaticMesh.Asteroid_Debris_05_STAT": 5,
+   "ENV_IAC_SentinelArena_p.StaticMesh.coreRing_STAT": 5,
+   "PROP_EnergonSigns_p.ENV_PaintedSign_7_STAT": 5,
+   "PROP_NEU_WreckedBodies_p.DeadSoldier03_STAT": 5,
+   "ENV_ORB_D1_Deco_p.Meshes.OrbitalDonut_STAT": 5,
+   "ENV_KON_Deco_p.Meshes.Forcefield_DoorWay_STAT": 5,
+   "PROP_NEU_WreckedBodies_p.DeadCarSoldierTorso05_STAT": 5,
+   "DES_ORB_Asteroids_p.StaticMesh.Asteroid_Debris_02_STAT": 4,
+   "DES_ORB_Asteroids_p.StaticMesh.MiniAsteroid_01_STAT": 4,
+   "ENV_ORB_Spacedome_p.Backdrop.VistaBackdrop_STAT": 4,
+   "ENV_OA4_Design_p.Temp_Meshes.ForceFieldDoor": 4,
+   "ENV_ORB_SatGuardGun_p.ENV_ORB_SatGuardGun_BARREL_STAT": 4,
+   "ENV_ORB_CoolantRoom_p.Model.WaterfallB_STAT": 4,
+   "PROP_NEU_WreckedBodies_p.DeadSoldier08_STAT": 4,
+   "PROP_NEU_WreckedBodies_p.DeadSoldierTorso02_STAT": 4,
+   "PROP_NEU_WreckedBodies_p.DeadSoldierLeg_STAT": 4,
+   "PROP_NEU_WreckedBodies_p.DeadSoldier02_STAT": 4,
+   "PROP_NEU_WreckedBodies_p.DeadCarSoldier01_STAT": 4,
+   "ENV_IAC_Orrery_p.StaticMesh.OrreryPlanet_Medium_STAT": 4,
+   "ENV_IAC_Orrery_p.StaticMesh.OrreryPlanet_Medium2_STAT": 4,
+   "ENV_IAC_Decagon_p.Interior.Env_IAC_Dec_Bridge1_STAT": 4,
+   "ENV_ORB_D1_Architecture_p.Meshes.FloorTrim_Corner_01_STAT": 4,
+   "ENV_ORB_D1_Debris_p.Meshes.Capacitor_01_Chunk02_STAT": 3,
+   "ENV_ORB_Trypticon_p.StaticMesh.TrypDoorFrame_01_STAT": 3,
+   "DES_ORB_Asteroids_p.StaticMesh.Asteroid_Debris_04_STAT": 3,
+   "ENV_ORB_D1_Debris_p.Meshes.Cratestack_Debri_01_STAT": 3,
+   "PROP_NEU_WreckedBodies_p.DeadSoldier04_STAT": 3,
+   "ENV_IAC_HoloMap_p.StaticMesh.Legend_Objective_STAT": 3,
+   "ENV_ORB_CybertronPlanet_p.MATTE.Cybertron_City_Beam_STAT": 2,
+   "ENV_ORB_Trypticon_p.StaticMesh.TrypSpike_01_STAT": 2,
+   "ENV_ORB_Trypticon_p.StaticMesh.Tryp_MetalFloor_A_STAT": 2,
+   "ENV_ORB_D1_Debris_p.Meshes.PistonSet_C_Debri_B_STAT": 2,
+   "ENV_ORB_D1_MegatronCruiser_p.Meshes.Destroy_WallPanel_STAT": 2,
+   "DES_ORB_Asteroids_p.StaticMesh.Asteroid_Arch_01_STAT": 2,
+   "DES_Trypticon_Jetpack_p.SmallCube_STAT": 2,
+   "ENV_ORB_Spacedome_p.Debris.Vortex_Debris_STAT": 2,
+   "ENV_ORB_SatGuard_p.StaticMesh.SatMouthLazer_STAT": 2,
+   "ENV_ORB_TryptiFinalChamber_p.TryptiHead.TryptiHead_BaseCollar_STAT": 2,
+   "ENV_ORB_Beam_p.StaticMesh.BeamCylinder_SHORT_STAT": 2,
+   "ENV_KON_Prison_p.Meshes.CellBlocksCap_01_STAT": 2,
+   "PROP_EnergonSigns_p.EnergonSign_spinner": 2,
+   "ENV_ORB_CoolantRoom_p.Model.Saucer_Hole_STAT": 2,
+   "ENV_IAC_Ground_p.Platform.modPlatform_Straight_1536_STAT": 2,
+   "PROP_NEU_WreckedBodies_p.DeadSoldierTorso01_STAT": 2,
+   "ENV_ORB_CoolantCorridor_p.StaticMeshes.CoolantTubeJoint_STAT": 2,
+   "ENV_IAC_Orrery_p.StaticMesh.tinyPlanetCard2_STAT": 2,
+   "ENV_ORB_CoolantRoom_p.Model.CoolantGlassWall_STAT": 2,
+   "ENV_ORB_CoolantRoom_p.Model.CoolantBubWindow_STAT": 2,
+   "ENV_ORB_D1_Debris_p.Meshes.CanyonFloor_C_Destroy02_STAT": 1,
+   "ENV_ORB_D1_Debris_p.Meshes.TunnelPipeA_Debri_B_STAT": 1,
+   "ENV_ORB_D1_Debris_p.Meshes.Capacitor_01_Chunk01_STAT": 1,
+   "ENV_NEU_CybertronOrbit_P.2D_Planet_Card.CybertronBeamHole_STAT": 1,
+   "ENV_ORB_TryptiFinalChamber_p.TryptiHead.TryptiHead_HeadBackUp_STAT": 1,
+   "ENV_ORB_TryptiFinalChamber_p.TryptiHead.TryptiHead_HeadBackOut_STAT": 1,
+   "DES_KON_FuelCanisters_p.Meshes.FuelCanister_STAT": 1,
+   "ENV_ORB_D1_Debris_p.Meshes.FloatingDebri_Lcorner_B_STAT": 1,
+   "ENV_ORB_Spacedome_p.SpaceDome_STATMESH": 1,
+   "DES_ORB_Asteroids_p.StaticMesh.SpaceDebris_Engine_STAT": 1,
+   "TPRO_IAC_ElevatoriPod_p.Model.ElevatorPodBase_STAT": 1,
+   "ENV_ORB_TryptiFinalChamber_p.StaticMesh.TryptiHead_HeadFull_STAT": 1,
+   "ENV_ORB_TryptiFinalChamber_p.StaticMesh.TryptiHead_CannonFull_STAT": 1,
+   "ENV_CORE_Wall_p.Inside_Walls.ENV_CORE_InroomWall4Tunel_A_STAT": 1,
+   "ENV_IAC_Design_p.SimpleCube_STAT": 1,
+   "ENV_ORB_A1_LowRez_p.StaticMesh.RelayRingEngergy_STAT": 1,
+   "ENV_ORB_PowerCorridor_p.StaticMesh.PowerTubeCircle2_STAT": 1,
+   "TPRO_A04_ADTemp_p.CubeTest2_STAT": 1,
+   "ENV_ORB_CoolantRoom_p.Model.Coolant_FogVolume_STAT": 1,
+   "ENV_IAC_BLDS_3_p.Elevator.elevator_platform_STAT": 1,
+   "PROP_EnergonSigns_p.ENV_PaintedSign_6_STAT": 1,
+   "ENV_IAC_Orrery_p.StaticMesh.OrreryPlanet_Small2_STAT": 1,
+   "ENV_ORB_CoolantCorridor_p.StaticMeshes.CoolantFlood_STAT": 1,
+   "ENV_ORB_CoolantRoom_p.Model.FluidPlane_STAT": 1,
+   "ENV_CORE_Deco_p.StaticMesh.ENV_CORE_CanyonDeco_D_STAT": 1,
+   "ENV_ORB_Trypticon_p.StaticMesh.Entrance_Lights_STAT": 1
+  },
+  "fall_through_examples_gltf": [],
+  "blocking_props_without_collision_node": {
+   "StaticInterpActor_10003": 1,
+   "StaticMeshCollectionActor_1388": 1,
+   "StaticMeshCollectionActor_3228": 5,
+   "StaticMeshCollectionActor_3076": 1,
+   "StaticMeshCollectionActor_10392": 3,
+   "StaticMeshCollectionActor_14": 1,
+   "StaticMeshCollectionActor_6239": 1,
+   "StaticMeshCollectionActor_7503": 3,
+   "StaticInterpActor_12777": 1,
+   "StaticInterpActor_14694": 1,
+   "StaticInterpActor_16284": 1,
+   "StaticInterpActor_2504": 1,
+   "StaticMeshCollectionActor_10267": 1,
+   "StaticMeshCollectionActor_2017": 1,
+   "StaticMeshCollectionActor_16039": 3,
+   "StaticMeshCollectionActor_16332": 1,
+   "StaticMeshCollectionActor_9474": 2,
+   "StaticMeshCollectionActor_9817": 1,
+   "StaticMeshCollectionActor_15825": 3,
+   "StaticMeshCollectionActor_15048": 1,
+   "StaticMeshCollectionActor_2807": 1,
+   "StaticMeshCollectionActor_15116": 2
+  },
+  "blocking_gaps_explained": [
+   {
+    "actor": "StaticInterpActor_10003",
+    "component": "",
+    "mesh": "ENV_ORB_CybertronPlanet_p.MATTE.Cybertron_MATTE_STAT",
+    "pawn_channel": "per_poly",
+    "gltf_translation_m": [
+     -1697.2,
+     -800.7,
+     -2623.2
+    ],
+    "reason": "per_poly collision expected but vs_physics wrote no node: physics.json pawn stats oversize_skipped=10 (>2 km shells), missing_geometry=1 (render mesh / hull not available)"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_1388",
+    "component": "StaticMeshActor_16122_SMC",
+    "mesh": "ENV_ORB_A1_LowRez_p.StaticMesh.RelayStationBlade_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -1617.7,
+     481.5,
+     -1723.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_3228",
+    "component": "StaticMeshActor_12767_SMC",
+    "mesh": "ENV_ORB_A1_LowRez_p.StaticMesh.RelayStationBlade_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -1617.7,
+     481.5,
+     -1723.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_3228",
+    "component": "StaticMeshActor_12762_SMC",
+    "mesh": "ENV_ORB_A1_LowRez_p.StaticMesh.RelayStationBlade_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -1617.7,
+     481.5,
+     -1723.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_3228",
+    "component": "StaticMeshActor_6103_SMC",
+    "mesh": "ENV_ORB_A1_LowRez_p.StaticMesh.RelayStationBlade_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -1617.7,
+     481.5,
+     -1723.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_3228",
+    "component": "StaticMeshActor_1488_SMC",
+    "mesh": "ENV_ORB_A1_LowRez_p.StaticMesh.RelayStationBlade_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -1617.7,
+     481.5,
+     -1723.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_3228",
+    "component": "StaticMeshActor_143_SMC",
+    "mesh": "ENV_ORB_A1_LowRez_p.StaticMesh.RelayStationBlade_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -1617.7,
+     481.5,
+     -1723.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_3076",
+    "component": "StaticMeshActor_12257_SMC",
+    "mesh": "ENV_ORB_Spacedome_p.SpaceDome_STATMESH",
+    "pawn_channel": "per_poly",
+    "gltf_translation_m": [
+     -2762.6,
+     -2607.5,
+     1002.1
+    ],
+    "reason": "per_poly collision expected but vs_physics wrote no node: physics.json pawn stats oversize_skipped=10 (>2 km shells), missing_geometry=1 (render mesh / hull not available)"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_10392",
+    "component": "StaticMeshActor_13187_SMC",
+    "mesh": "ENV_IAC_Ground_p.Platform.modPlatform_Trim_1024_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -3016.8,
+     -1496.0,
+     642.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_10392",
+    "component": "StaticMeshActor_4156_SMC",
+    "mesh": "ENV_IAC_Ground_p.Platform.modPlatform_Trim_1024_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -3018.8,
+     -1496.0,
+     652.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_10392",
+    "component": "StaticMeshActor_11203_SMC",
+    "mesh": "ENV_IAC_Ground_p.Platform.modPlatform_Trim_1024_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -3019.7,
+     -1493.5,
+     657.1
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_14",
+    "component": "StaticMeshActor_13304_SMC",
+    "mesh": "ENV_IAC_Ground_p.Platform.modPlatform_Trim_1024_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -3018.4,
+     -1484.2,
+     647.9
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_6239",
+    "component": "StaticMeshActor_7663_SMC",
+    "mesh": "ENV_IAC_Ground_p.Platform.modPlatform_Trim_1024_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -3018.4,
+     -1484.2,
+     894.8
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_7503",
+    "component": "StaticMeshActor_3297_SMC",
+    "mesh": "ENV_IAC_Ground_p.Platform.modPlatform_Trim_1024_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -3016.8,
+     -1496.0,
+     900.0
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_7503",
+    "component": "StaticMeshActor_10827_SMC",
+    "mesh": "ENV_IAC_Ground_p.Platform.modPlatform_Trim_1024_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -3018.8,
+     -1496.0,
+     890.0
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_7503",
+    "component": "StaticMeshActor_6989_SMC",
+    "mesh": "ENV_IAC_Ground_p.Platform.modPlatform_Trim_1024_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -3019.7,
+     -1493.5,
+     885.6
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticInterpActor_12777",
+    "component": "",
+    "mesh": "ENV_ORB_CoolantRoom_p.Model.CoolantSurfaceHole_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -3031.3,
+     -1497.2,
+     772.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticInterpActor_14694",
+    "component": "",
+    "mesh": "ENV_ORB_CoolantRoom_p.Model.CoolantSurface_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -3031.3,
+     -1497.2,
+     772.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticInterpActor_16284",
+    "component": "",
+    "mesh": "ENV_ORB_CoolantRoom_p.Model.CoolantSurfaceWtrRing_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -3051.0,
+     -1498.0,
+     773.8
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticInterpActor_2504",
+    "component": "",
+    "mesh": "ENV_ORB_CoolantRoom_p.Model.CoolantSurfaceHoleB_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -3031.3,
+     -1497.2,
+     772.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_10267",
+    "component": "StaticMeshActor_8455_SMC",
+    "mesh": "FX_Mesh_p.Cylinder_STAT",
+    "pawn_channel": "per_poly",
+    "gltf_translation_m": [
+     -2637.8,
+     -1463.0,
+     820.5
+    ],
+    "reason": "per-poly but every section has EnableCollision=false (authored) -> no collision geometry, as in UE3"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_2017",
+    "component": "StaticMeshActor_14879_SMC",
+    "mesh": "ENV_ORB_Spacedome_p.SpaceDome_STATMESH",
+    "pawn_channel": "per_poly",
+    "gltf_translation_m": [
+     9.0,
+     0.0,
+     0.0
+    ],
+    "reason": "per_poly collision expected but vs_physics wrote no node: physics.json pawn stats oversize_skipped=10 (>2 km shells), missing_geometry=1 (render mesh / hull not available)"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_16039",
+    "component": "StaticMeshActor_4405_SMC",
+    "mesh": "ENV_IAC_SentinelArena_p.StaticMesh.coreLight_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -3193.6,
+     -1543.3,
+     729.4
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_16039",
+    "component": "StaticMeshActor_8810_SMC",
+    "mesh": "ENV_IAC_SentinelArena_p.StaticMesh.coreLight_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -3110.1,
+     -1543.3,
+     728.9
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_16039",
+    "component": "StaticMeshActor_1044_SMC",
+    "mesh": "ENV_IAC_SentinelArena_p.StaticMesh.coreLight_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -3110.1,
+     -1543.3,
+     820.9
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_16332",
+    "component": "StaticMeshActor_12808_SMC",
+    "mesh": "ENV_IAC_SentinelArena_p.StaticMesh.coreLight_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -3193.6,
+     -1543.3,
+     819.9
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_9474",
+    "component": "StaticMeshActor_6727_SMC",
+    "mesh": "ENV_ORB_PowerCorridor_p.StaticMesh.Mini_Cable_Hang01_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -3094.6,
+     -1569.5,
+     780.8
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_9474",
+    "component": "StaticMeshActor_6408_SMC",
+    "mesh": "ENV_ORB_PowerCorridor_p.StaticMesh.Mini_Cable_Hang01_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -3094.6,
+     -1569.5,
+     763.8
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_9817",
+    "component": "StaticMeshActor_539_SMC",
+    "mesh": "ENV_IAC_Ground_p.Platform.modPlatform_Trim_1024_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -3109.8,
+     -1517.2,
+     768.5
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_15825",
+    "component": "StaticMeshActor_2147_SMC",
+    "mesh": "ENV_ORB_CybertronPlanet_p.MATTE.Cybertron_MATTE_STAT",
+    "pawn_channel": "per_poly",
+    "gltf_translation_m": [
+     -1288.7,
+     -2507.3,
+     192.5
+    ],
+    "reason": "per_poly collision expected but vs_physics wrote no node: physics.json pawn stats oversize_skipped=10 (>2 km shells), missing_geometry=1 (render mesh / hull not available)"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_15825",
+    "component": "StaticMeshActor_904_SMC",
+    "mesh": "ENV_ORB_CybertronPlanet_p.MATTE.Cybertron_MATTE_STAT",
+    "pawn_channel": "per_poly",
+    "gltf_translation_m": [
+     -2441.5,
+     -2093.5,
+     -726.9
+    ],
+    "reason": "per_poly collision expected but vs_physics wrote no node: physics.json pawn stats oversize_skipped=10 (>2 km shells), missing_geometry=1 (render mesh / hull not available)"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_15825",
+    "component": "StaticMeshActor_10151_SMC",
+    "mesh": "ENV_ORB_Spacedome_p.SpaceDome_STATMESH",
+    "pawn_channel": "per_poly",
+    "gltf_translation_m": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "reason": "per_poly collision expected but vs_physics wrote no node: physics.json pawn stats oversize_skipped=10 (>2 km shells), missing_geometry=1 (render mesh / hull not available)"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_15048",
+    "component": "StaticMeshActor_7398_SMC",
+    "mesh": "ENV_ORB_CybertronPlanet_p.MATTE.Cybertron_MATTE_STAT",
+    "pawn_channel": "per_poly",
+    "gltf_translation_m": [
+     -8.0,
+     -3779.2,
+     -4112.5
+    ],
+    "reason": "per_poly collision expected but vs_physics wrote no node: physics.json pawn stats oversize_skipped=10 (>2 km shells), missing_geometry=1 (render mesh / hull not available)"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_2807",
+    "component": "StaticMeshActor_10151_SMC",
+    "mesh": "ENV_ORB_Spacedome_p.SpaceDome_STATMESH",
+    "pawn_channel": "per_poly",
+    "gltf_translation_m": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "reason": "per_poly collision expected but vs_physics wrote no node: physics.json pawn stats oversize_skipped=10 (>2 km shells), missing_geometry=1 (render mesh / hull not available)"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_15116",
+    "component": "StaticMeshActor_13368_SMC",
+    "mesh": "ENV_ORB_A1_LowRez_p.StaticMesh.RelayStationBlade_STAT",
+    "pawn_channel": "simple",
+    "gltf_translation_m": [
+     2011.5,
+     1476.3,
+     -1585.9
+    ],
+    "reason": "simple collision expected but vs_physics wrote no node: physics.json pawn stats oversize_skipped=10 (>2 km shells), missing_geometry=1 (render mesh / hull not available)"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_15116",
+    "component": "StaticMeshActor_10463_SMC",
+    "mesh": "ENV_ORB_A1_LowRez_p.StaticMesh.RelayStationBlade_STAT",
+    "pawn_channel": "simple",
+    "gltf_translation_m": [
+     2011.5,
+     1476.3,
+     -1835.8
+    ],
+    "reason": "simple collision expected but vs_physics wrote no node: physics.json pawn stats oversize_skipped=10 (>2 km shells), missing_geometry=1 (render mesh / hull not available)"
+   }
+  ],
+  "collision_nodes_without_blocking_prop": {
+   "TnForcedDirVolume_12515": 1,
+   "TnForcedDirVolume_13803": 1,
+   "TnForcedDirVolume_14197": 1,
+   "TnForcedDirVolume_14351": 1,
+   "TnForcedDirVolume_14476": 1,
+   "TnForcedDirVolume_2979": 1,
+   "TnForcedDirVolume_3393": 1,
+   "DynamicBlockingVolume_10135": 1,
+   "DynamicBlockingVolume_11575": 1,
+   "DynamicBlockingVolume_12119": 1,
+   "DynamicBlockingVolume_13864": 1,
+   "DynamicBlockingVolume_15128": 1,
+   "DynamicBlockingVolume_16183": 1,
+   "DynamicBlockingVolume_16246": 1,
+   "DynamicBlockingVolume_2494": 1,
+   "DynamicBlockingVolume_3386": 1,
+   "DynamicBlockingVolume_3722": 1,
+   "DynamicBlockingVolume_4623": 1,
+   "DynamicBlockingVolume_4829": 1,
+   "DynamicBlockingVolume_6810": 1,
+   "DynamicBlockingVolume_902": 1,
+   "TnForcedDirVolume_10048": 1,
+   "DynamicBlockingVolume_1281": 2,
+   "TnForcedDirVolume_8133": 1,
+   "TnForcedDirVolume_14143": 1,
+   "TnForcedDirVolume_9651": 1,
+   "DynamicBlockingVolume_10334": 1,
+   "DynamicBlockingVolume_10469": 1,
+   "DynamicBlockingVolume_1082": 1,
+   "DynamicBlockingVolume_11801": 1,
+   "DynamicBlockingVolume_1187": 1,
+   "DynamicBlockingVolume_2855": 1,
+   "DynamicBlockingVolume_420": 1,
+   "DynamicBlockingVolume_5655": 1,
+   "DynamicBlockingVolume_9602": 1,
+   "DynamicBlockingVolume_2678": 1,
+   "DynamicBlockingVolume_2809": 1,
+   "HmPlayerOnlyBlockingVolume_15245": 1,
+   "HmPlayerOnlyBlockingVolume_3119": 1,
+   "HmPlayerOnlyBlockingVolume_5997": 1,
+   "HmPlayerOnlyBlockingVolume_6454": 1,
+   "TnForcedDirVolume_16320": 1,
+   "TnForcedDirVolume_10033": 1,
+   "TnForcedDirVolume_12347": 1,
+   "TnTeamBlockingVolume_11770": 1,
+   "TnTeamBlockingVolume_11833": 1,
+   "TnTeamBlockingVolume_3132": 1,
+   "TnTeamBlockingVolume_7233": 1,
+   "DynamicBlockingVolume_711": 1,
+   "TnForcedDirVolume_2796": 1,
+   "DynamicBlockingVolume_12714": 1,
+   "DynamicBlockingVolume_12931": 1,
+   "DynamicBlockingVolume_13646": 1,
+   "DynamicBlockingVolume_2534": 1,
+   "DynamicBlockingVolume_2943": 1,
+   "DynamicBlockingVolume_9085": 1,
+   "TnForcedDirVolume_2474": 1,
+   "TnForcedDirVolume_3215": 1,
+   "TnTeamBlockingVolume_11176": 1,
+   "DynamicBlockingVolume_10552": 1,
+   "DynamicBlockingVolume_10949": 1,
+   "DynamicBlockingVolume_10955": 1,
+   "DynamicBlockingVolume_11111": 1,
+   "DynamicBlockingVolume_11993": 1,
+   "DynamicBlockingVolume_12122": 1,
+   "DynamicBlockingVolume_12569": 1,
+   "DynamicBlockingVolume_12603": 1,
+   "DynamicBlockingVolume_13020": 1,
+   "DynamicBlockingVolume_13484": 1,
+   "DynamicBlockingVolume_13583": 1,
+   "DynamicBlockingVolume_1377": 1,
+   "DynamicBlockingVolume_14249": 1,
+   "DynamicBlockingVolume_14495": 1,
+   "DynamicBlockingVolume_14625": 1,
+   "DynamicBlockingVolume_1495": 1,
+   "DynamicBlockingVolume_15426": 1,
+   "DynamicBlockingVolume_1550": 1,
+   "DynamicBlockingVolume_16008": 1,
+   "DynamicBlockingVolume_16045": 1,
+   "DynamicBlockingVolume_16368": 1,
+   "DynamicBlockingVolume_1994": 1,
+   "DynamicBlockingVolume_2145": 1,
+   "DynamicBlockingVolume_2602": 1,
+   "DynamicBlockingVolume_2645": 1,
+   "DynamicBlockingVolume_2652": 1,
+   "DynamicBlockingVolume_2746": 1,
+   "DynamicBlockingVolume_2785": 1,
+   "DynamicBlockingVolume_2952": 1,
+   "DynamicBlockingVolume_3021": 1,
+   "DynamicBlockingVolume_3298": 1,
+   "DynamicBlockingVolume_3902": 1,
+   "DynamicBlockingVolume_4105": 1,
+   "DynamicBlockingVolume_5944": 1,
+   "DynamicBlockingVolume_6209": 1,
+   "DynamicBlockingVolume_6299": 1,
+   "DynamicBlockingVolume_6398": 1,
+   "DynamicBlockingVolume_6673": 1,
+   "DynamicBlockingVolume_6792": 1,
+   "DynamicBlockingVolume_7093": 1,
+   "DynamicBlockingVolume_7173": 1,
+   "DynamicBlockingVolume_7496": 1,
+   "DynamicBlockingVolume_803": 1,
+   "DynamicBlockingVolume_8302": 1,
+   "DynamicBlockingVolume_8549": 1,
+   "DynamicBlockingVolume_8842": 1,
+   "DynamicBlockingVolume_935": 1,
+   "DynamicBlockingVolume_9566": 1,
+   "DynamicBlockingVolume_9647": 1,
+   "DynamicBlockingVolume_9652": 1,
+   "DynamicBlockingVolume_9908": 1,
+   "DynamicBlockingVolume_9988": 1,
+   "HmPlayerOnlyBlockingVolume_866": 1,
+   "TnForcedDirVolume_10016": 1,
+   "TnForcedDirVolume_12130": 1,
+   "TnForcedDirVolume_14450": 1,
+   "TnForcedDirVolume_16203": 1,
+   "TnForcedDirVolume_1630": 1,
+   "TnForcedDirVolume_2180": 1,
+   "TnForcedDirVolume_5354": 1,
+   "TnForcedDirVolume_6568": 1,
+   "TnRadialForceVolume_11788": 1,
+   "TnRadialForceVolume_4": 1,
+   "TnTeamBlockingVolume_1310": 1,
+   "TnTeamBlockingVolume_13839": 1,
+   "TnTeamBlockingVolume_14680": 1,
+   "TnTeamBlockingVolume_16182": 1,
+   "DynamicBlockingVolume_2898": 1,
+   "DynamicBlockingVolume_10251": 1,
+   "TnForcedDirVolume_13842": 1,
+   "TnForcedDirVolume_15308": 1,
+   "TnForcedDirVolume_9010": 1,
+   "TnTeamBlockingVolume_12064": 1,
+   "TnTeamBlockingVolume_13751": 1,
+   "TnTeamBlockingVolume_15155": 1,
+   "TnTeamBlockingVolume_3129": 1,
+   "TnTeamBlockingVolume_315": 1,
+   "TnTeamBlockingVolume_5079": 1,
+   "TnTeamBlockingVolume_750": 1,
+   "TnForcedDirVolume_161": 1,
+   "TnForcedDirVolume_588": 1,
+   "TnForcedDirVolume_6608": 1,
+   "TnForcedDirVolume_1166": 1,
+   "TnForcedDirVolume_4167": 1,
+   "TnForcedDirVolume_5371": 1,
+   "TnForcedDirVolume_5916": 1,
+   "TnForcedDirVolume_7383": 1,
+   "DynamicBlockingVolume_5671": 1,
+   "TnForcedDirVolume_10918": 1,
+   "TnForcedDirVolume_8633": 1,
+   "TnTeamBlockingVolume_14686": 1,
+   "TnTeamBlockingVolume_15933": 1
+  },
+  "collision_node_kinds": {
+   "BSPCollision_A4_ORB_AmmoRoom_ART": 1,
+   "BSPCollision_A4_ORB_CogRoom_ART": 1,
+   "BSPCollision_A4_ORB_HoloRoom_ART": 1,
+   "BSPCollision_A4_ORB_IntroCave_Art": 1,
+   "BSPCollision_A4_ORB_NerveCenter_ART": 1,
+   "BSPCollision_A4_ORB_PreRelay1_ART": 1,
+   "BSPCollision_A4_ORB_PreRelay1_DSN": 1,
+   "BSPCollision_A4_ORB_Relay1Int_Art": 1,
+   "BSPCollision_A4_ORB_Relay2Int_Art": 1,
+   "BSPCollision_A4_ORB_Relay2_Tunnel_ART": 1,
+   "BSPCollision_A4_ORB_RelayCmdRoom_ART": 1,
+   "BSPCollision_A4_ORB_RelayCmdRoom_DSN": 1,
+   "BSPCollision_A4_ORB_TrypFlyingIntro_Art": 1,
+   "BlockingVolume": 167,
+   "TnForcedDirVolume": 38,
+   "DynamicBlockingVolume": 88,
+   "TnTransformerBlockingVolume": 33,
+   "HmPlayerOnlyBlockingVolume": 5,
+   "TnTeamBlockingVolume": 18,
+   "TnRadialForceVolume": 2,
+   "StaticInterpActor": 770,
+   "StaticMeshCollectionActor": 902,
+   "StaticMeshActor": 131
+  },
+  "oversized_triangles_excluded": {
+   "world": 4133,
+   "collision": 568
+  }
+ },
+ "materials": {
+  "default_material_triangles_by_kind": {
+   "bsp": 6062,
+   "StaticInterpActor": 252
+  },
+  "default_material_area_m2_by_kind": {
+   "bsp": 1313227.4,
+   "StaticInterpActor": 825.8
+  },
+  "note": "BSP faces with DefaultMaterial and their in-play visibility: manifests/next_map/<MAP>_bsp_default_faces.json (Streets: streets_bsp_default_faces.json)"
+ },
+ "lightmaps": {
+  "lightmaps_json_props": 9481,
+  "world_glb_nodes_with_lm_atlas": 9481,
+  "of_which_have_TEXCOORD_1": 9481,
+  "atlases_used": 193,
+  "atlases_without_png": [],
+  "binding_ok": true
+ },
+ "actors": {
+  "world_glb_nodes_by_kind": {
+   "bsp": 13,
+   "StaticInterpActor": 1312,
+   "StaticMeshActor": 150,
+   "StaticMeshCollectionActor": 11214,
+   "InterpActor": 10
+  },
+  "non_collection_actors": 1472,
+  "non_collection_actors_missing_from_world_glb": [],
+  "mode_gated_targets": 0,
+  "mode_gated_missing_from_world_glb": []
+ },
+ "verdict": {
+  "status": "PASS",
+  "failures": []
+ }
+}

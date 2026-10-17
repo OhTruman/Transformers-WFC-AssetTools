@@ -106,3 +106,8 @@ directly, with the same wrapper. Nine of them passed; `vs_validate` failed (bloc
   stay byte-identical (generic-fix rule).
 - A sublevel tag on `world.glb` nodes.
 - Then one large chapter (A1_IAC, 50 sublevels) as the scale test.
+
+## Diagnostics rerun (2026-10-17)
+
+- **m05** over all BSP levels (tiled): 36 default-material faces ({'exposed': 35, 'partial': 1}), 1 visible in play (532 m2).
+- **Structure audit** at a 2 m cell: PASS.

@@ -1735,14 +1735,32 @@
   },
   "bsp_default_material_faces": {
    "status": "AUTHORED",
-   "evidence": null
+   "evidence": {
+    "nodes": 2362,
+    "surfaces": 518,
+    "brushes": 236,
+    "by_verdict": {
+     "exposed": 1776,
+     "partial": 512,
+     "hidden": 74
+    },
+    "area_m2_by_verdict": {
+     "exposed": 1208587.79,
+     "partial": 102889.9,
+     "hidden": 1748.99
+    },
+    "visible_in_play": 142,
+    "visible_in_play_area_m2": 11927.35
+   },
+   "owner": "RENDERING",
+   "blocker": "faces authored with EngineMaterials.DefaultMaterial visible in play"
   },
   "negative_nonuniform_scales": {
-   "status": "UNVALIDATED",
+   "status": "COMPLETE",
    "evidence": {
     "mirrored": 2922,
     "non_uniform": 4337,
-    "winding": null
+    "winding": "CONSISTENT"
    }
   },
   "material_instances": {
@@ -1790,7 +1808,7 @@
    "status": "AUTHORED",
    "evidence": {
     "movers": 1323,
-    "in_world_glb_missing": null
+    "in_world_glb_missing": []
    },
    "owner": "GAMEPLAY",
    "blocker": "animate PHYS_Rotating / Matinee at runtime"
@@ -1805,26 +1823,482 @@
    }
   },
   "playable_space": {
-   "status": "ATTENTION",
+   "status": "COMPLETE",
    "evidence": {
-    "player_starts": null,
-    "starts_on_reachable_floor": null,
-    "walk_graph_area_m2": null,
+    "player_starts": 0,
+    "starts_on_reachable_floor": 0,
+    "walk_graph_area_m2": 0.0,
     "bounds": null,
-    "placement_checks": null
+    "placement_checks": {
+     "pickups": {
+      "count": 0,
+      "on_walkable_reachable_floor": 0,
+      "not_on_walk_graph": []
+     },
+     "objectives": {
+      "count": 0,
+      "on_walkable_reachable_floor": 0,
+      "not_on_walk_graph": []
+     }
+    }
    }
   },
   "collision_vs_visible": {
-   "status": "ATTENTION",
+   "status": "COMPLETE",
    "evidence": {
-    "agreement_pct": null,
-    "agreement_pct_excluding_volume_tops": null,
-    "blocking_gaps_explained": null
+    "agreement_pct": 0.0,
+    "agreement_pct_excluding_volume_tops": 0.0,
+    "blocking_gaps_explained": [
+     {
+      "actor": "StaticInterpActor_10003",
+      "component": "",
+      "mesh": "ENV_ORB_CybertronPlanet_p.MATTE.Cybertron_MATTE_STAT",
+      "pawn_channel": "per_poly",
+      "gltf_translation_m": [
+       -1697.2,
+       -800.7,
+       -2623.2
+      ],
+      "reason": "per_poly collision expected but vs_physics wrote no node: physics.json pawn stats oversize_skipped=10 (>2 km shells), missing_geometry=1 (render mesh / hull not available)"
+     },
+     {
+      "actor": "StaticMeshCollectionActor_1388",
+      "component": "StaticMeshActor_16122_SMC",
+      "mesh": "ENV_ORB_A1_LowRez_p.StaticMesh.RelayStationBlade_STAT",
+      "pawn_channel": "none",
+      "gltf_translation_m": [
+       -1617.7,
+       481.5,
+       -1723.7
+      ],
+      "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+     },
+     {
+      "actor": "StaticMeshCollectionActor_3228",
+      "component": "StaticMeshActor_12767_SMC",
+      "mesh": "ENV_ORB_A1_LowRez_p.StaticMesh.RelayStationBlade_STAT",
+      "pawn_channel": "none",
+      "gltf_translation_m": [
+       -1617.7,
+       481.5,
+       -1723.7
+      ],
+      "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+     },
+     {
+      "actor": "StaticMeshCollectionActor_3228",
+      "component": "StaticMeshActor_12762_SMC",
+      "mesh": "ENV_ORB_A1_LowRez_p.StaticMesh.RelayStationBlade_STAT",
+      "pawn_channel": "none",
+      "gltf_translation_m": [
+       -1617.7,
+       481.5,
+       -1723.7
+      ],
+      "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+     },
+     {
+      "actor": "StaticMeshCollectionActor_3228",
+      "component": "StaticMeshActor_6103_SMC",
+      "mesh": "ENV_ORB_A1_LowRez_p.StaticMesh.RelayStationBlade_STAT",
+      "pawn_channel": "none",
+      "gltf_translation_m": [
+       -1617.7,
+       481.5,
+       -1723.7
+      ],
+      "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+     },
+     {
+      "actor": "StaticMeshCollectionActor_3228",
+      "component": "StaticMeshActor_1488_SMC",
+      "mesh": "ENV_ORB_A1_LowRez_p.StaticMesh.RelayStationBlade_STAT",
+      "pawn_channel": "none",
+      "gltf_translation_m": [
+       -1617.7,
+       481.5,
+       -1723.7
+      ],
+      "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+     },
+     {
+      "actor": "StaticMeshCollectionActor_3228",
+      "component": "StaticMeshActor_143_SMC",
+      "mesh": "ENV_ORB_A1_LowRez_p.StaticMesh.RelayStationBlade_STAT",
+      "pawn_channel": "none",
+      "gltf_translation_m": [
+       -1617.7,
+       481.5,
+       -1723.7
+      ],
+      "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+     },
+     {
+      "actor": "StaticMeshCollectionActor_3076",
+      "component": "StaticMeshActor_12257_SMC",
+      "mesh": "ENV_ORB_Spacedome_p.SpaceDome_STATMESH",
+      "pawn_channel": "per_poly",
+      "gltf_translation_m": [
+       -2762.6,
+       -2607.5,
+       1002.1
+      ],
+      "reason": "per_poly collision expected but vs_physics wrote no node: physics.json pawn stats oversize_skipped=10 (>2 km shells), missing_geometry=1 (render mesh / hull not available)"
+     },
+     {
+      "actor": "StaticMeshCollectionActor_10392",
+      "component": "StaticMeshActor_13187_SMC",
+      "mesh": "ENV_IAC_Ground_p.Platform.modPlatform_Trim_1024_STAT",
+      "pawn_channel": "none",
+      "gltf_translation_m": [
+       -3016.8,
+       -1496.0,
+       642.7
+      ],
+      "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+     },
+     {
+      "actor": "StaticMeshCollectionActor_10392",
+      "component": "StaticMeshActor_4156_SMC",
+      "mesh": "ENV_IAC_Ground_p.Platform.modPlatform_Trim_1024_STAT",
+      "pawn_channel": "none",
+      "gltf_translation_m": [
+       -3018.8,
+       -1496.0,
+       652.7
+      ],
+      "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+     },
+     {
+      "actor": "StaticMeshCollectionActor_10392",
+      "component": "StaticMeshActor_11203_SMC",
+      "mesh": "ENV_IAC_Ground_p.Platform.modPlatform_Trim_1024_STAT",
+      "pawn_channel": "none",
+      "gltf_translation_m": [
+       -3019.7,
+       -1493.5,
+       657.1
+      ],
+      "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+     },
+     {
+      "actor": "StaticMeshCollectionActor_14",
+      "component": "StaticMeshActor_13304_SMC",
+      "mesh": "ENV_IAC_Ground_p.Platform.modPlatform_Trim_1024_STAT",
+      "pawn_channel": "none",
+      "gltf_translation_m": [
+       -3018.4,
+       -1484.2,
+       647.9
+      ],
+      "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+     },
+     {
+      "actor": "StaticMeshCollectionActor_6239",
+      "component": "StaticMeshActor_7663_SMC",
+      "mesh": "ENV_IAC_Ground_p.Platform.modPlatform_Trim_1024_STAT",
+      "pawn_channel": "none",
+      "gltf_translation_m": [
+       -3018.4,
+       -1484.2,
+       894.8
+      ],
+      "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+     },
+     {
+      "actor": "StaticMeshCollectionActor_7503",
+      "component": "StaticMeshActor_3297_SMC",
+      "mesh": "ENV_IAC_Ground_p.Platform.modPlatform_Trim_1024_STAT",
+      "pawn_channel": "none",
+      "gltf_translation_m": [
+       -3016.8,
+       -1496.0,
+       900.0
+      ],
+      "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+     },
+     {
+      "actor": "StaticMeshCollectionActor_7503",
+      "component": "StaticMeshActor_10827_SMC",
+      "mesh": "ENV_IAC_Ground_p.Platform.modPlatform_Trim_1024_STAT",
+      "pawn_channel": "none",
+      "gltf_translation_m": [
+       -3018.8,
+       -1496.0,
+       890.0
+      ],
+      "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+     },
+     {
+      "actor": "StaticMeshCollectionActor_7503",
+      "component": "StaticMeshActor_6989_SMC",
+      "mesh": "ENV_IAC_Ground_p.Platform.modPlatform_Trim_1024_STAT",
+      "pawn_channel": "none",
+      "gltf_translation_m": [
+       -3019.7,
+       -1493.5,
+       885.6
+      ],
+      "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+     },
+     {
+      "actor": "StaticInterpActor_12777",
+      "component": "",
+      "mesh": "ENV_ORB_CoolantRoom_p.Model.CoolantSurfaceHole_STAT",
+      "pawn_channel": "none",
+      "gltf_translation_m": [
+       -3031.3,
+       -1497.2,
+       772.7
+      ],
+      "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+     },
+     {
+      "actor": "StaticInterpActor_14694",
+      "component": "",
+      "mesh": "ENV_ORB_CoolantRoom_p.Model.CoolantSurface_STAT",
+      "pawn_channel": "none",
+      "gltf_translation_m": [
+       -3031.3,
+       -1497.2,
+       772.7
+      ],
+      "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+     },
+     {
+      "actor": "StaticInterpActor_16284",
+      "component": "",
+      "mesh": "ENV_ORB_CoolantRoom_p.Model.CoolantSurfaceWtrRing_STAT",
+      "pawn_channel": "none",
+      "gltf_translation_m": [
+       -3051.0,
+       -1498.0,
+       773.8
+      ],
+      "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+     },
+     {
+      "actor": "StaticInterpActor_2504",
+      "component": "",
+      "mesh": "ENV_ORB_CoolantRoom_p.Model.CoolantSurfaceHoleB_STAT",
+      "pawn_channel": "none",
+      "gltf_translation_m": [
+       -3031.3,
+       -1497.2,
+       772.7
+      ],
+      "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+     },
+     {
+      "actor": "StaticMeshCollectionActor_10267",
+      "component": "StaticMeshActor_8455_SMC",
+      "mesh": "FX_Mesh_p.Cylinder_STAT",
+      "pawn_channel": "per_poly",
+      "gltf_translation_m": [
+       -2637.8,
+       -1463.0,
+       820.5
+      ],
+      "reason": "per-poly but every section has EnableCollision=false (authored) -> no collision geometry, as in UE3"
+     },
+     {
+      "actor": "StaticMeshCollectionActor_2017",
+      "component": "StaticMeshActor_14879_SMC",
+      "mesh": "ENV_ORB_Spacedome_p.SpaceDome_STATMESH",
+      "pawn_channel": "per_poly",
+      "gltf_translation_m": [
+       9.0,
+       0.0,
+       0.0
+      ],
+      "reason": "per_poly collision expected but vs_physics wrote no node: physics.json pawn stats oversize_skipped=10 (>2 km shells), missing_geometry=1 (render mesh / hull not available)"
+     },
+     {
+      "actor": "StaticMeshCollectionActor_16039",
+      "component": "StaticMeshActor_4405_SMC",
+      "mesh": "ENV_IAC_SentinelArena_p.StaticMesh.coreLight_STAT",
+      "pawn_channel": "none",
+      "gltf_translation_m": [
+       -3193.6,
+       -1543.3,
+       729.4
+      ],
+      "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+     },
+     {
+      "actor": "StaticMeshCollectionActor_16039",
+      "component": "StaticMeshActor_8810_SMC",
+      "mesh": "ENV_IAC_SentinelArena_p.StaticMesh.coreLight_STAT",
+      "pawn_channel": "none",
+      "gltf_translation_m": [
+       -3110.1,
+       -1543.3,
+       728.9
+      ],
+      "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+     },
+     {
+      "actor": "StaticMeshCollectionActor_16039",
+      "component": "StaticMeshActor_1044_SMC",
+      "mesh": "ENV_IAC_SentinelArena_p.StaticMesh.coreLight_STAT",
+      "pawn_channel": "none",
+      "gltf_translation_m": [
+       -3110.1,
+       -1543.3,
+       820.9
+      ],
+      "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+     },
+     {
+      "actor": "StaticMeshCollectionActor_16332",
+      "component": "StaticMeshActor_12808_SMC",
+      "mesh": "ENV_IAC_SentinelArena_p.StaticMesh.coreLight_STAT",
+      "pawn_channel": "none",
+      "gltf_translation_m": [
+       -3193.6,
+       -1543.3,
+       819.9
+      ],
+      "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+     },
+     {
+      "actor": "StaticMeshCollectionActor_9474",
+      "component": "StaticMeshActor_6727_SMC",
+      "mesh": "ENV_ORB_PowerCorridor_p.StaticMesh.Mini_Cable_Hang01_STAT",
+      "pawn_channel": "none",
+      "gltf_translation_m": [
+       -3094.6,
+       -1569.5,
+       780.8
+      ],
+      "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+     },
+     {
+      "actor": "StaticMeshCollectionActor_9474",
+      "component": "StaticMeshActor_6408_SMC",
+      "mesh": "ENV_ORB_PowerCorridor_p.StaticMesh.Mini_Cable_Hang01_STAT",
+      "pawn_channel": "none",
+      "gltf_translation_m": [
+       -3094.6,
+       -1569.5,
+       763.8
+      ],
+      "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+     },
+     {
+      "actor": "StaticMeshCollectionActor_9817",
+      "component": "StaticMeshActor_539_SMC",
+      "mesh": "ENV_IAC_Ground_p.Platform.modPlatform_Trim_1024_STAT",
+      "pawn_channel": "none",
+      "gltf_translation_m": [
+       -3109.8,
+       -1517.2,
+       768.5
+      ],
+      "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+     },
+     {
+      "actor": "StaticMeshCollectionActor_15825",
+      "component": "StaticMeshActor_2147_SMC",
+      "mesh": "ENV_ORB_CybertronPlanet_p.MATTE.Cybertron_MATTE_STAT",
+      "pawn_channel": "per_poly",
+      "gltf_translation_m": [
+       -1288.7,
+       -2507.3,
+       192.5
+      ],
+      "reason": "per_poly collision expected but vs_physics wrote no node: physics.json pawn stats oversize_skipped=10 (>2 km shells), missing_geometry=1 (render mesh / hull not available)"
+     },
+     {
+      "actor": "StaticMeshCollectionActor_15825",
+      "component": "StaticMeshActor_904_SMC",
+      "mesh": "ENV_ORB_CybertronPlanet_p.MATTE.Cybertron_MATTE_STAT",
+      "pawn_channel": "per_poly",
+      "gltf_translation_m": [
+       -2441.5,
+       -2093.5,
+       -726.9
+      ],
+      "reason": "per_poly collision expected but vs_physics wrote no node: physics.json pawn stats oversize_skipped=10 (>2 km shells), missing_geometry=1 (render mesh / hull not available)"
+     },
+     {
+      "actor": "StaticMeshCollectionActor_15825",
+      "component": "StaticMeshActor_10151_SMC",
+      "mesh": "ENV_ORB_Spacedome_p.SpaceDome_STATMESH",
+      "pawn_channel": "per_poly",
+      "gltf_translation_m": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "reason": "per_poly collision expected but vs_physics wrote no node: physics.json pawn stats oversize_skipped=10 (>2 km shells), missing_geometry=1 (render mesh / hull not available)"
+     },
+     {
+      "actor": "StaticMeshCollectionActor_15048",
+      "component": "StaticMeshActor_7398_SMC",
+      "mesh": "ENV_ORB_CybertronPlanet_p.MATTE.Cybertron_MATTE_STAT",
+      "pawn_channel": "per_poly",
+      "gltf_translation_m": [
+       -8.0,
+       -3779.2,
+       -4112.5
+      ],
+      "reason": "per_poly collision expected but vs_physics wrote no node: physics.json pawn stats oversize_skipped=10 (>2 km shells), missing_geometry=1 (render mesh / hull not available)"
+     },
+     {
+      "actor": "StaticMeshCollectionActor_2807",
+      "component": "StaticMeshActor_10151_SMC",
+      "mesh": "ENV_ORB_Spacedome_p.SpaceDome_STATMESH",
+      "pawn_channel": "per_poly",
+      "gltf_translation_m": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "reason": "per_poly collision expected but vs_physics wrote no node: physics.json pawn stats oversize_skipped=10 (>2 km shells), missing_geometry=1 (render mesh / hull not available)"
+     },
+     {
+      "actor": "StaticMeshCollectionActor_15116",
+      "component": "StaticMeshActor_13368_SMC",
+      "mesh": "ENV_ORB_A1_LowRez_p.StaticMesh.RelayStationBlade_STAT",
+      "pawn_channel": "simple",
+      "gltf_translation_m": [
+       2011.5,
+       1476.3,
+       -1585.9
+      ],
+      "reason": "simple collision expected but vs_physics wrote no node: physics.json pawn stats oversize_skipped=10 (>2 km shells), missing_geometry=1 (render mesh / hull not available)"
+     },
+     {
+      "actor": "StaticMeshCollectionActor_15116",
+      "component": "StaticMeshActor_10463_SMC",
+      "mesh": "ENV_ORB_A1_LowRez_p.StaticMesh.RelayStationBlade_STAT",
+      "pawn_channel": "simple",
+      "gltf_translation_m": [
+       2011.5,
+       1476.3,
+       -1835.8
+      ],
+      "reason": "simple collision expected but vs_physics wrote no node: physics.json pawn stats oversize_skipped=10 (>2 km shells), missing_geometry=1 (render mesh / hull not available)"
+     }
+    ]
    }
   },
   "actor_visibility": {
    "status": "COMPLETE",
-   "evidence": null
+   "evidence": {
+    "world_glb_nodes_by_kind": {
+     "bsp": 13,
+     "StaticInterpActor": 1312,
+     "StaticMeshActor": 150,
+     "StaticMeshCollectionActor": 11214,
+     "InterpActor": 10
+    },
+    "non_collection_actors": 1472,
+    "non_collection_actors_missing_from_world_glb": [],
+    "mode_gated_targets": 0,
+    "mode_gated_missing_from_world_glb": []
+   }
   },
   "mode_specific_actors": {
    "status": "COMPLETE",
@@ -2225,8 +2699,11 @@
    "blocker": "pain / kill volumes and KillZ must be applied at runtime"
   },
   "structure_audit": {
-   "status": "NOT RUN",
-   "evidence": null
+   "status": "PASS",
+   "evidence": {
+    "status": "PASS",
+    "failures": []
+   }
   },
   "vs_validate": {
    "status": "PASS",

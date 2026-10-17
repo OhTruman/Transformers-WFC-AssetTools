@@ -1,0 +1,3220 @@
+{
+ "map": "D3B_IAC",
+ "generated_by": "AssetTools/scripts/wfc/map_structure_audit.py",
+ "method": {
+  "cell_m": 2.0,
+  "walk_step_m": 1.25,
+  "walkable_normal_y": 0.7,
+  "huge_triangle_m2": 20000.0,
+  "note": "walk graph is conservative (no jumping / vehicle form / jump pads): unreachable != unplayable"
+ },
+ "transforms": {
+  "smca_nodes_checked": 7969,
+  "smca_world_glb_matrix_mismatch": 0,
+  "examples": [],
+  "rule": "world.glb node matrix == props.json gltf_matrix (component S*R*T x native CachedParentToWorld; Streets lesson)"
+ },
+ "mirrored_instances": {
+  "primitive_instances": {
+   "normal": 7415,
+   "det>0 tris normal-agree": 4570731,
+   "det>0 tris normal-oppose": 2111,
+   "mirrored": 2485,
+   "det<0 tris normal-agree": 751,
+   "det<0 tris normal-oppose": 1659981
+  },
+  "verdict": "CONSISTENT",
+  "rule": "for det<0 nodes the transformed winding opposes the transformed normals; a glTF renderer must flip the front face (glTF 2.0 spec 3.7.4). Exported data is consistent when det<0 tris mostly oppose and det>0 tris mostly agree."
+ },
+ "playable_space": {
+  "player_starts": 0,
+  "starts_on_reachable_floor": 0,
+  "starts_without_floor_below": [],
+  "starts_off_walk_graph_diagnosis": [],
+  "walk_graph_cells": 0,
+  "walk_graph_layers": 0,
+  "walk_graph_area_m2": 0.0,
+  "connected_from_any_start": true,
+  "bounds": null,
+  "kill_z_ue": [
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -99000.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0
+  ],
+  "placement_checks": {
+   "pickups": {
+    "count": 0,
+    "on_walkable_reachable_floor": 0,
+    "not_on_walk_graph": []
+   },
+   "objectives": {
+    "count": 0,
+    "on_walkable_reachable_floor": 0,
+    "not_on_walk_graph": []
+   }
+  }
+ },
+ "collision_vs_visible": {
+  "reachable_floor_cells_with_visible_floor": 0,
+  "reachable_floor_cells_without_visible_floor (invisible floor) by collision source": {},
+  "agreement_pct": 0.0,
+  "agreement_pct_excluding_volume_tops": 0.0,
+  "visible_floor_cells_next_to_walk_graph_without_collision (fall-through candidates)": 0,
+  "fall_through_candidates_by_visible_source (top 25)": {},
+  "non_blocking_props_by_mesh (authored bCollideActors/bBlockActors false)": {
+   "ENV_IAC_BLDS_1_p.StaticMesh.Arch_4096_STAT": 183,
+   "ENV_NEU_Structures_p.Mid1.Mid1_Base1_768x2048x2048_STAT": 156,
+   "ENV_GLB_EnvEffects_p.StaticMesh.LightBeam_Cone_STAT": 133,
+   "ENV_IAC_Deco_1_p.StaticMesh.DecoBalcony1_STAT": 115,
+   "ENV_NEU_Structures_p.Small1.Small1_Silo_768x768x768_STAT": 110,
+   "ENV_IAC_LightSources_p.PinLights.PinLight_04_STAT": 108,
+   "ENV_GLB_EnvEffects_p.StaticMesh.FogPlane_STAT": 102,
+   "ENV_IAC_BLDS_3_p.HalfArch_STAT": 87,
+   "ENV_IAC_BLDS_1_p.StaticMesh.CurveWall_7168_STAT": 82,
+   "ENV_GLB_EnvEffects_p.StaticMesh.GlowSphere_STAT": 82,
+   "ENV_IAC_LightSources_p.PinLights.PinLight_02_STAT": 82,
+   "ENV_IAC_LightSources_p.PinLights.PinLight_07_STAT": 70,
+   "ENV_IAC_Deco_1_p.Supports.SideSuppPillarLow_STAT": 53,
+   "ENV_IAC_Deco_1_p.StaticMesh.DecoSphereHalf01_STAT": 51,
+   "ENV_NEU_Structures_p.Big2.Big2_Building2Trim3_1792x2560x9216x3584_STAT": 45,
+   "ENV_IAC_Deco_1_p.Supports.SideSuppPillar_STAT": 43,
+   "ENV_IAC_Ground_p.Platform.modPlatform_Straight_1536_STAT": 43,
+   "ENV_IAC_Decagon_p.Interior.ENV_IAC_CtrFloorRail_STAT": 41,
+   "ENV_NEU_Structures_p.Big3.Big3_Building3Piece2_3584x2048x1792_STAT": 31,
+   "ENV_IAC_BLDS_3_p.hemisphereDiscTop_STAT": 30,
+   "DES_IAC_Destructibles_p.bridge.DES_Arch_4097_STAT": 30,
+   "ENV_NEU_Structures_p.Big1.Big1_Trim1_2304x768x512_STAT": 26,
+   "ENV_IAC_BLDS_1_p.StaticMesh.Saucer_8192_STAT": 25,
+   "ENV_ArchiveInterior_p.FaceDeco.FaceDeco1_STAT": 25,
+   "ENV_IAC_Interior_1_p.Dome_Corridor.Dome_Straight_Trim_STAT": 24,
+   "ENV_IAC_Deco_1_p.StaticMesh.DecoDonut01_STAT": 23,
+   "ENV_IAC_BLDS_3_p.BackgroundLowPoly.RectBld_BackgroundVersion_STAT": 23,
+   "ENV_GLB_EnvEffects_p.StaticMesh.LightBeam_Cone_Wide_STAT": 22,
+   "ENV_NEU_Structures_p.Small1.Small1_Box2_384x768x768_STAT": 22,
+   "ENV_NEU_Structures_p.Big3.Big3_Building3Trim_1792x1024x768_STAT": 21,
+   "ENV_IAC_LightSources_p.PinLights.PinLight_06_STAT": 21,
+   "ENV_IAC_BLDS_2_p.Buildings_Square.Building_ONE_Middle_STAT": 21,
+   "ENV_IAC_BLDS_3_p.bld_2048x4096x4096_thru_STAT": 20,
+   "ENV_IAC_Ground_p.Debris.Debris2_STAT": 20,
+   "ENV_IAC_Deco_1_p.StaticMesh.LightPole_02_STAT": 20,
+   "ENV_IAC_LightSources_p.PinLights.PinLight_05_STAT": 19,
+   "ENV_IAC_BLDS_1_p.StaticMesh.RibWall_4096_STAT": 17,
+   "ENV_IAC_BLDS_1_p.StaticMesh.CapSpire_2304_STAT": 16,
+   "ENV_NEU_Structures_p.Mid1.Mid1_Tower2_1536x1024x1280_STAT": 16,
+   "ENV_NEU_Structures_p.Mid1.Mid1_Base2_640x3072x1536_STAT": 13,
+   "ENV_IAC_LightSources_p.PinLights.PinLight_03_STAT": 13,
+   "ENV_KON_PrisonBarge_p.Meshes.DomeDeco_01_B_STAT": 12,
+   "ENV_IAC_Deco_1_p.StaticMesh.Nose_1024_STAT": 12,
+   "ENV_IAC_TubeRoads_p.RegularTubes.TubeRoad_Straight_REG_STAT": 11,
+   "ENV_GLB_EnvEffects_p.StaticMesh.GlowSphere2Sided_STAT": 11,
+   "ENV_ORB_D1_Deco_p.Meshes.PowerTubes_01_1024_Straight_STAT": 10,
+   "PROP_EnergonSigns_p.Iacon_StreetSigns.IaconSign_12_STAT": 10,
+   "ENV_IAC_Terminal_p.Building.Terminal_Roof_STAT": 10,
+   "ENV_IAC_Interior_1_p.WallPanel.WallPanel_STAT": 10,
+   "ENV_IAC_BLDS_1_p.StaticMesh.SpireBase_4096_STAT": 10,
+   "ENV_VIG_Autobot_p.Cruiser_STAT": 10,
+   "ENV_IAC_BLDS_2_p.Buildings_Square.Building_ONE_Base_Door_STAT": 10,
+   "ENV_IAC_BLDS_2_p.Buildings_Square.PillarBuilding01_STAT": 10,
+   "ENV_IAC_Interior_1_p.Walls_Rooms.Corner2_WedgeSpacer_STAT": 10,
+   "ENV_IAC_Deco_1_p.Supports.PROP_IAC_SideSupp01b_STAT": 9,
+   "ENV_IAC_Interior_1_p.Walls_Rooms.Straight_WedgeSpacer_STAT": 9,
+   "ENV_IAC_Ground_p.Debris.blastRing_STAT": 9,
+   "ENV_VIG_Decepticon_p.VIG_Starscream_STAT": 9,
+   "ENV_IAC_Decagon_p.Interior.Env_IAC_Dec_Support_STAT": 9,
+   "PROP_EnergonSigns_p.EnergonSign_spinner": 8,
+   "PROP_NEU_Debris_p.StaticMeshes.Debris_Scatter_STAT": 8,
+   "ENV_IAC_BLDS_3_p.bld_2048x4096x4096_STAT": 7,
+   "ENV_IAC_Ground_p.Platform.modPlatform_Straight_2048_STAT": 7,
+   "ENV_ORB_D1_Debris_p.Meshes.Wall_DebrisChunk2_STAT": 7,
+   "DES_IAC_EnergonTank_p.Meshes.EnergonTank_01_STAT": 7,
+   "ENV_VIG_Decepticon_p.VIG_DecWarship1_STAT": 7,
+   "ENV_IAC_BLDS_1_p.StaticMesh.Spire_1536_STAT": 6,
+   "ENV_ORB_D1_Debris_p.Meshes.Wall_DebrisChunk3_STAT": 6,
+   "ENV_IAC_TubeRoads_p.RegularTubes.TubeJoint_Straight_REG_STAT": 6,
+   "ENV_IAC_TubeRoads_p.RegularTubes.TubeShell_Straight_REG_STAT": 6,
+   "ENV_IAC_BLDS_2_p.Buildings_Pieces.ArchTop01_STAT": 6,
+   "ENV_IAC_Deco_1_p.Supports.ArchSupport_STAT": 5,
+   "DES_IAC_Destructibles_p.bridge.DES_Bridge_Straight_2048_STAT": 5,
+   "ENV_IAC_Interior_1_p.Dome_Corridor.Dome_Corridor_Ceil_STAT": 5,
+   "ENV_IAC_Interior_1_p.Walls_Rooms.Wall_Middle_Flat_STAT": 5,
+   "ENV_IAC_TubeRoads_p.Debris.TubeDebris_02_STAT": 5,
+   "ENV_IAC_Terminal_p.Building.Terminal_DoorWall_STAT": 4,
+   "ENV_IAC_Ground_p.Debris.craterDebris_STAT": 4,
+   "ENV_ORB_D1_MegatronCruiser_p.Meshes.Destroy_Ship_Fin_STAT": 4,
+   "ENV_KON_Deco_p.Meshes.stain_medium_STAT": 4,
+   "PROP_EnergonSigns_p.MetalSigns.Prop_NEU_CitySigns_01_STAT": 4,
+   "ENV_IAC_Deco_1_p.StaticMesh.SmallSpire_512_STAT": 4,
+   "PROP_EnergonSigns_p.MetalSigns.Prop_NEU_CitySigns_05_STAT": 4,
+   "TPRO_IAC_Doors_p.Static.TubeDOOR_STAT": 4,
+   "ENV_VIG_Autobot_p.DropShip_STAT": 4,
+   "ENV_IAC_TubeRoads_p.RegularTubes.TubeJoint_Road_REG_STAT": 4,
+   "ENV_IAC_Interior_1_p.Dome_Corridor.Dome_Corridor_Floor_InnerTrimDamaged_STAT": 4,
+   "ENV_IAC_Decagon_p.UpperChamber.ENV_IAC_CeilingDecoA_FULL_STAT": 4,
+   "PROP_EnergonSigns_p.EnergonSign_7_STAT": 4,
+   "ENV_IAC_Ground_p.Beam.BeamCylinderTubes_STAT": 4,
+   "ENV_IAC_Deco_1_p.StaticMesh.Capacitor_01_Red_STAT": 3,
+   "ENV_IAC_Deco_1_p.Supports.PROP_ORB_GiantPillar_STAT": 3,
+   "TPRO_IAC_Doors_p.Static.IAC_interiorDoor_Static_STAT": 3,
+   "ENV_IAC_Ground_p.Beam.OmegaBeam_STAT": 3,
+   "ENV_ORB_D1_Deco_p.Meshes.GasChamber_Top_B_STAT": 3,
+   "TR_BruteAut_ROBO_p.RB_Backpack_STAT": 3,
+   "ENV_IAC_Ground_p.TireTracks.TireTrack_04_STAT": 3,
+   "PROP_EnergonSigns_p.EnergonSign_2_STAT": 3,
+   "ENV_ORB_D1_Debris_p.Meshes.Pillar01_Debri_02_STAT": 3,
+   "PROP_dropship_dec_p.dropship_nocargo_temp": 3,
+   "ENV_IAC_BLDS_1_p.StaticMesh.Arch_4096_Glass_STAT": 3,
+   "ENV_IAC_Interior_1_p.Walls_Rooms.Wall_Middle_Door_01_STAT": 3,
+   "ENV_IAC_BLDS_3_p.RectBld_STAT": 3,
+   "ENV_KON_Deco_p.Meshes.stain_small_STAT": 3,
+   "ENV_IAC_TubeRoads_p.Debris.TubeDebris_03_STAT": 3,
+   "ENV_IAC_Interior_1_p.Dome_Corridor.Dome_Corridor_OuterDoor_STAT": 3,
+   "ENV_IAC_Interior_1_p.Walls_Round.WallWindow_Window_STAT": 3,
+   "WEP_AssaultRifle_p.WEP_AssaultRifleTest_STAT": 3,
+   "ENV_IAC_BLDS_1_p.StaticMesh.Arch_4096_Glass_singleSide_STAT": 2,
+   "ENV_IAC_BLDS_1_p.StaticMesh.FInCap_4096_STAT": 2,
+   "PROP_EnergonSigns_p.Iacon_StreetSigns.IaconSign_06_STAT": 2,
+   "PROP_EnergonSigns_p.Iacon_StreetSigns.IaconSign_07_STAT": 2,
+   "ENV_VIG_Autobot_p.DroneShip_STAT": 2,
+   "DES_IAC_p.GlassShards.OuterWall_Glass_STAT": 2,
+   "ENV_ArchiveInterior_p.FaceDeco.FaceDeco1b_STAT": 2,
+   "TPRO_IAC_Doors_p.Static.RoundDoor_STAT": 2,
+   "WEP_Grenade_p.WEP_Grenade_Flashbang_STAT": 2,
+   "ENV_IAC_Interior_1_p.Walls_Rooms.Wall_Top_Straight_STAT": 2,
+   "ENV_IAC_Terminal_p.Building.Terminal_Floor_4096_STAT": 2,
+   "ENV_IAC_BLDS_3_p.Elevator.elevator_platform_STAT": 2,
+   "ENV_IAC_TubeRoads_p.TubeSlope_NEW.TubeSlope_Middle_STAT": 2,
+   "ENV_IAC_HoloMap_p.StaticMesh.mapSurface_STAT": 2,
+   "ENV_IAC_HoloMap_p.StaticMesh.infoShard_02_STAT": 2,
+   "DES_IAC_AirConditioner_p.Airconditioner_BaseDestroyed_STAT": 2,
+   "ENV_IAC_TubeRoads_p.Debris.TubeDebris_01_STAT": 2,
+   "ENV_IAC_TubeRoads_p.Debris.TubeDebris_04_STAT": 2,
+   "ENV_ORB_PowerCorridor_p.StaticMesh.PowerTube_Metal_04_STAT": 2,
+   "ENV_ORB_PowerCorridor_p.StaticMesh.PowerTube_Metal_03_STAT": 2,
+   "ENV_IAC_Interior_1_p.Ceilings.DomeCeiling_8192_STAT": 2,
+   "ENV_IAC_Interior_1_p.Walls_Round.WallEntry_8192_STAT": 2,
+   "ENV_IAC_Interior_1_p.Walls_Round.Floor_8192_STAT": 2,
+   "ENV_IAC_Interior_1_p.Dome_Corridor.Dome_Straight_Floor_Trim_STAT": 2,
+   "ENV_IAC_Interior_1_p.Walls_Rooms.Ceiling_Arch_STAT": 2,
+   "ENV_IAC_Terminal_p.Building.Terminal_Door_STAT": 1,
+   "PROP_EnergonSigns_p.Iacon_StreetSigns.IaconSign_03_STAT": 1,
+   "ENV_UND_Support_p.StaticMesh.Indust_Cratestack2_STATMESH": 1,
+   "FX_Mesh_p.LaserScanner_STATMESH": 1,
+   "ENV_IAC_Ground_p.TireTracks.TireTrack_02_STAT": 1,
+   "ENV_KON_Deco_p.Meshes.stain_long_STAT": 1,
+   "WEP_Rocket_p.WEP_Projectile_STAT": 1,
+   "PROP_EnergonSigns_p.ENV_PaintedSign_5_STAT": 1,
+   "ENV_ORB_D1_MegatronCruiser_p.Meshes.Ship_FloorPanel_01_Destory_STAT": 1,
+   "ENV_ORB_D1_MegatronCruiser_p.Meshes.Ship_CeilingPanel_01_Destory_STAT": 1,
+   "ENV_VIG_Decepticon_p.VIG_DecSmallShip_STAT": 1,
+   "TPRO_IAC_TubeRoad_p.polySurface1409_STAT": 1,
+   "ENV_IAC_TubeRoads_p.TubeSlope_NEW.TubeSlopeTOP_REG_STAT": 1,
+   "ENV_IAC_TubeRoads_p.TubeSlope_NEW.TubeSlope_MiddleRoad_STAT": 1,
+   "ENV_IAC_TubeRoads_p.TubeSlope_NEW.TubeSlopeTOP_Road_STAT": 1,
+   "ENV_ArchiveInterior_p.FaceDeco.FaceDeco1a_STAT": 1,
+   "ENV_ORB_Spacedome_p.SpaceDome_STATMESH": 1,
+   "PROP_EnergonSigns_p.MetalSigns.Prop_NEU_CitySigns_13_STAT": 1,
+   "PROP_EnergonSigns_p.MetalSigns.Prop_NEU_CitySigns_06_STAT": 1,
+   "PROP_EnergonSigns_p.lasermark_03": 1,
+   "PROP_dropship_auto_p.dropship_autobot_STAT": 1,
+   "CINE_D3B_LevelIntro_p.MegatronShip.PROP_MegatronShip_STAT": 1,
+   "TR_OmegaSupreme_ROBO_p.HeartShell_inside_STAT": 1,
+   "TPRO_OmegaKey_p.TPRO_OmegaKey_STAT": 1,
+   "ENV_IAC_TubeRoads_p.Deco.FlourescentLight_fixture_STAT": 1,
+   "ENV_ORB_PowerCorridor_p.StaticMesh.Gantry_StraightShort_STAT": 1,
+   "ENV_CORE_SupportColumns_p.StaticMesh.TunnelPipeA_Straight_STAT": 1,
+   "ENV_IAC_TubeRoads_p.Debris.TubeDebris_07_STAT": 1,
+   "ENV_IAC_TubeRoads_p.Buildings_And_Extras.TubeDome_DISC_REG_STAT": 1,
+   "ENV_ORB_PowerCorridor_p.StaticMesh.PowerTube_Metal_02_STAT": 1,
+   "ENV_IAC_Decagon_p.Interior.Dec_CentralPillar_Temp_STAT": 1,
+   "ENV_IAC_Interior_1_p.Walls_Round.Wall_Outer_8192_STAT": 1,
+   "ENV_IAC_Interior_1_p.Walls_Round.WallEntry_Outer_8192_STAT": 1,
+   "ENV_IAC_Interior_1_p.Walls_Round.Wall_8192_STAT": 1,
+   "ENV_IAC_Interior_1_p.Walls_Round.WallWindow_8192_STAT": 1,
+   "ENV_IAC_Ground_p.Floor.Panel_01_2048_STAT": 1,
+   "ENV_IAC_Ground_p.Debris.Scrappage1_STAT": 1,
+   "ENV_IAC_Ground_p.Platform.damageChunk_STAT": 1,
+   "ENV_IAC_Ground_p.Debris.Scrappage2_STAT": 1,
+   "ENV_IAC_Interior_1_p.Dome_Corridor.Dome_Corridor_Floor_InnerTrim_STAT": 1,
+   "ENV_IAC_Interior_1_p.Dome_Corridor.Dome_Corridor_OuterDoor_Glass_2_STAT": 1,
+   "ENV_IAC_BLDS_3_p.Floater_STAT": 1,
+   "PROP_EnergonSigns_p.Iacon_StreetSigns.IaconSign_14_STAT": 1,
+   "PROP_EnergonSigns_p.EnergonSign_4_STAT": 1,
+   "PROP_IAC_HospitalProps_p.ChemicalTank.PROP_IAC_HospitalChemTank_STAT": 1,
+   "ENV_IAC_Deco_1_p.Supports.LightFixture_A_STAT": 1
+  },
+  "fall_through_examples_gltf": [],
+  "blocking_props_without_collision_node": {
+   "StaticMeshCollectionActor_3430": 1,
+   "StaticMeshCollectionActor_4748": 3,
+   "StaticMeshCollectionActor_10816": 1,
+   "StaticMeshCollectionActor_13137": 1,
+   "StaticMeshCollectionActor_2849": 1,
+   "StaticMeshCollectionActor_5607": 2,
+   "StaticMeshCollectionActor_12466": 1,
+   "StaticMeshCollectionActor_12502": 2,
+   "StaticMeshCollectionActor_3180": 5,
+   "StaticMeshCollectionActor_3560": 12,
+   "StaticMeshCollectionActor_5954": 3,
+   "StaticMeshCollectionActor_6416": 4,
+   "StaticMeshCollectionActor_7590": 12,
+   "StaticMeshCollectionActor_8872": 5,
+   "StaticMeshCollectionActor_10704": 2,
+   "StaticMeshCollectionActor_7825": 1,
+   "StaticMeshCollectionActor_12049": 12,
+   "StaticMeshCollectionActor_14017": 1,
+   "StaticMeshCollectionActor_7180": 2,
+   "StaticMeshCollectionActor_7225": 3,
+   "StaticMeshCollectionActor_8259": 4,
+   "StaticMeshCollectionActor_12257": 2,
+   "StaticMeshCollectionActor_15103": 2,
+   "StaticMeshCollectionActor_11861": 3,
+   "StaticMeshCollectionActor_1928": 6,
+   "StaticMeshCollectionActor_2717": 1,
+   "StaticMeshCollectionActor_3456": 1,
+   "StaticMeshCollectionActor_8593": 2,
+   "StaticMeshCollectionActor_12772": 1,
+   "StaticMeshCollectionActor_13583": 2,
+   "StaticMeshCollectionActor_16057": 1,
+   "StaticMeshCollectionActor_2734": 1,
+   "StaticMeshCollectionActor_3945": 5,
+   "StaticMeshCollectionActor_5331": 3,
+   "StaticMeshCollectionActor_7381": 3,
+   "StaticMeshCollectionActor_7720": 1,
+   "StaticMeshCollectionActor_10355": 4,
+   "StaticMeshCollectionActor_10708": 1,
+   "StaticMeshCollectionActor_11928": 8,
+   "StaticMeshCollectionActor_349": 12,
+   "StaticMeshCollectionActor_4955": 10,
+   "StaticMeshCollectionActor_11836": 1,
+   "StaticMeshCollectionActor_1232": 12,
+   "StaticMeshCollectionActor_14311": 4,
+   "StaticMeshCollectionActor_3913": 1,
+   "StaticMeshCollectionActor_4369": 4,
+   "StaticMeshCollectionActor_15961": 2,
+   "StaticMeshCollectionActor_2159": 1,
+   "StaticMeshCollectionActor_2171": 1,
+   "StaticMeshCollectionActor_2220": 2,
+   "StaticMeshCollectionActor_3232": 4,
+   "StaticMeshCollectionActor_3796": 8,
+   "StaticMeshCollectionActor_7742": 2,
+   "StaticMeshCollectionActor_8256": 2,
+   "StaticMeshCollectionActor_8350": 1,
+   "StaticMeshCollectionActor_8535": 6,
+   "StaticMeshCollectionActor_9112": 5,
+   "StaticMeshCollectionActor_11530": 1,
+   "StaticMeshCollectionActor_15624": 6,
+   "StaticMeshCollectionActor_15853": 3,
+   "StaticMeshCollectionActor_162": 2,
+   "StaticMeshCollectionActor_3829": 1,
+   "StaticMeshCollectionActor_6313": 1,
+   "StaticMeshCollectionActor_6314": 1,
+   "StaticMeshCollectionActor_7042": 1
+  },
+  "blocking_gaps_explained": [
+   {
+    "actor": "StaticMeshCollectionActor_3430",
+    "component": "StaticMeshActor_5786_SMC",
+    "mesh": "ENV_IAC_Terminal_p.Building.Terminal_Door_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     984.3,
+     -201.0,
+     -381.4
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_4748",
+    "component": "StaticMeshActor_1362_SMC",
+    "mesh": "PROP_EnergonSigns_p.MetalSigns.Prop_NEU_CitySigns_01_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     1384.4,
+     -260.1,
+     467.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_4748",
+    "component": "StaticMeshActor_5736_SMC",
+    "mesh": "ENV_IAC_BLDS_3_p.bld_2048x4096x4096_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     1238.6,
+     -325.3,
+     493.3
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_4748",
+    "component": "StaticMeshActor_6667_SMC",
+    "mesh": "ENV_IAC_BLDS_3_p.Elevator.elevator_platform_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     1382.5,
+     -322.8,
+     471.1
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_10816",
+    "component": "StaticMeshActor_398_SMC",
+    "mesh": "ENV_GLB_EnvEffects_p.StaticMesh.FogPlane_STAT",
+    "pawn_channel": "per_poly",
+    "gltf_translation_m": [
+     1130.1,
+     -49.5,
+     -674.2
+    ],
+    "reason": "per_poly collision expected but vs_physics wrote no node: physics.json pawn stats oversize_skipped=3 (>2 km shells), missing_geometry=0 (render mesh / hull not available)"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_13137",
+    "component": "StaticMeshActor_8255_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeJoint_Road_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     1172.5,
+     320.0,
+     486.4
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_2849",
+    "component": "StaticMeshActor_13353_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeJoint_Straight_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     1172.5,
+     310.2,
+     476.2
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_5607",
+    "component": "StaticMeshActor_12675_SMC",
+    "mesh": "ENV_GLB_EnvEffects_p.StaticMesh.FogPlane_STAT",
+    "pawn_channel": "per_poly",
+    "gltf_translation_m": [
+     -675.8,
+     932.5,
+     -2504.2
+    ],
+    "reason": "per_poly collision expected but vs_physics wrote no node: physics.json pawn stats oversize_skipped=3 (>2 km shells), missing_geometry=0 (render mesh / hull not available)"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_5607",
+    "component": "StaticMeshActor_6250_SMC",
+    "mesh": "ENV_GLB_EnvEffects_p.StaticMesh.FogPlane_STAT",
+    "pawn_channel": "per_poly",
+    "gltf_translation_m": [
+     2734.1,
+     932.5,
+     -2412.0
+    ],
+    "reason": "per_poly collision expected but vs_physics wrote no node: physics.json pawn stats oversize_skipped=3 (>2 km shells), missing_geometry=0 (render mesh / hull not available)"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_12466",
+    "component": "StaticMeshActor_12630_SMC",
+    "mesh": "ENV_IAC_Deco_1_p.StaticMesh.DecoBalcony1_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -82.4,
+     -916.0,
+     -495.5
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_12502",
+    "component": "StaticMeshActor_10804_SMC",
+    "mesh": "ENV_IAC_BLDS_3_p.HalfArch_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     96.8,
+     -926.4,
+     -436.6
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_12502",
+    "component": "StaticMeshActor_3882_SMC",
+    "mesh": "ENV_IAC_Interior_1_p.Walls_Rooms.Straight_WedgeSpacer_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     97.4,
+     -923.8,
+     -477.6
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_3180",
+    "component": "StaticMeshActor_11380_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeShell_Straight_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -179.2,
+     -501.8,
+     -489.0
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_3180",
+    "component": "StaticMeshActor_2534_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeRoad_Straight_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -179.2,
+     -501.8,
+     -489.0
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_3180",
+    "component": "StaticMeshActor_15244_SMC",
+    "mesh": "ENV_IAC_Interior_1_p.Walls_Round.WallWindow_Outer_8192_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -178.0,
+     -942.1,
+     -473.6
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_3180",
+    "component": "StaticMeshActor_594_SMC",
+    "mesh": "ENV_IAC_Interior_1_p.Walls_Round.WallWindow_Outer_8192_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -178.0,
+     -942.1,
+     -473.6
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_3180",
+    "component": "StaticMeshActor_884_SMC",
+    "mesh": "ENV_IAC_BLDS_3_p.bld_2048x4096x4096_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -122.9,
+     -954.9,
+     -494.1
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_3560",
+    "component": "StaticMeshActor_3000_SMC",
+    "mesh": "ENV_IAC_Interior_1_p.Dome_Corridor.Dome_Corridor_Window_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -178.0,
+     -942.1,
+     -478.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_3560",
+    "component": "StaticMeshActor_11872_SMC",
+    "mesh": "ENV_IAC_Interior_1_p.Dome_Corridor.Dome_Corridor_Window_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -178.0,
+     -942.1,
+     -478.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_3560",
+    "component": "StaticMeshActor_6743_SMC",
+    "mesh": "ENV_IAC_Interior_1_p.Dome_Corridor.Dome_Corridor_Floor_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -178.0,
+     -942.1,
+     -478.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_3560",
+    "component": "StaticMeshActor_8742_SMC",
+    "mesh": "ENV_IAC_Interior_1_p.Dome_Corridor.Dome_Corridor_Floor_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -178.0,
+     -942.1,
+     -478.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_3560",
+    "component": "StaticMeshActor_13071_SMC",
+    "mesh": "ENV_IAC_Interior_1_p.Dome_Corridor.Dome_Corridor_WindowBlocked_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -178.0,
+     -942.1,
+     -478.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_3560",
+    "component": "StaticMeshActor_383_SMC",
+    "mesh": "ENV_IAC_Interior_1_p.Dome_Corridor.Dome_Corridor_Ceil_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -178.0,
+     -931.8,
+     -478.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_3560",
+    "component": "StaticMeshActor_12954_SMC",
+    "mesh": "ENV_IAC_Interior_1_p.Dome_Corridor.Dome_Corridor_Ceil_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -178.0,
+     -931.8,
+     -478.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_3560",
+    "component": "StaticMeshActor_15322_SMC",
+    "mesh": "ENV_IAC_Interior_1_p.Dome_Corridor.Dome_Corridor_Ceil_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -178.0,
+     -931.8,
+     -478.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_3560",
+    "component": "StaticMeshActor_3385_SMC",
+    "mesh": "ENV_IAC_Interior_1_p.Dome_Corridor.Dome_Corridor_Ceil_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -178.0,
+     -931.8,
+     -478.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_3560",
+    "component": "StaticMeshActor_6350_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeJoint_Straight_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -179.2,
+     -890.9,
+     -478.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_3560",
+    "component": "StaticMeshActor_11163_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeJoint_Straight_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -179.2,
+     -924.2,
+     -478.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_3560",
+    "component": "StaticMeshActor_7219_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeJoint_Road_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -178.0,
+     -890.9,
+     -489.0
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_5954",
+    "component": "StaticMeshActor_9985_SMC",
+    "mesh": "ENV_IAC_Interior_1_p.Walls_Rooms.Straight_WedgeSpacer_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     97.4,
+     -918.7,
+     -477.6
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_5954",
+    "component": "StaticMeshActor_1986_SMC",
+    "mesh": "ENV_IAC_Interior_1_p.Walls_Rooms.Straight_WedgeSpacer_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     98.7,
+     -918.7,
+     -477.6
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_5954",
+    "component": "StaticMeshActor_11567_SMC",
+    "mesh": "ENV_IAC_Interior_1_p.Walls_Rooms.Corner2_WedgeSpacer_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     115.6,
+     -913.6,
+     -480.6
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_6416",
+    "component": "StaticMeshActor_7848_SMC",
+    "mesh": "ENV_IAC_Interior_1_p.Dome_Corridor.Dome_Corridor_Lower_02_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -179.2,
+     -942.1,
+     -478.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_6416",
+    "component": "StaticMeshActor_9943_SMC",
+    "mesh": "ENV_IAC_Interior_1_p.Dome_Corridor.Dome_Corridor_Lower_02_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -179.2,
+     -942.1,
+     -478.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_6416",
+    "component": "StaticMeshActor_5219_SMC",
+    "mesh": "ENV_IAC_Interior_1_p.Dome_Corridor.Dome_Corridor_Lower_02_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -179.2,
+     -942.1,
+     -478.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_6416",
+    "component": "StaticMeshActor_13182_SMC",
+    "mesh": "ENV_IAC_Interior_1_p.Dome_Corridor.Dome_Corridor_Lower_02_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -179.2,
+     -942.1,
+     -478.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_7590",
+    "component": "StaticMeshActor_8893_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeJoint_Road_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -178.0,
+     -921.6,
+     -489.0
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_7590",
+    "component": "StaticMeshActor_9761_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeJoint_Road_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -179.2,
+     -696.3,
+     -489.0
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_7590",
+    "component": "StaticMeshActor_13394_SMC",
+    "mesh": "ENV_IAC_Interior_1_p.Dome_Corridor.Dome_Corridor_WindowBlocked_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -178.0,
+     -942.1,
+     -478.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_7590",
+    "component": "StaticMeshActor_7263_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeShell_Straight_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -179.2,
+     -860.2,
+     -489.0
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_7590",
+    "component": "StaticMeshActor_10146_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeShell_Straight_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -179.2,
+     -778.2,
+     -489.0
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_7590",
+    "component": "StaticMeshActor_3782_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeShell_Straight_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -179.2,
+     -665.6,
+     -489.0
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_7590",
+    "component": "StaticMeshActor_659_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeShell_Straight_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -179.2,
+     -583.7,
+     -489.0
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_7590",
+    "component": "StaticMeshActor_10837_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeRoad_Straight_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -179.2,
+     -860.2,
+     -489.0
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_7590",
+    "component": "StaticMeshActor_10721_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeRoad_Straight_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -179.2,
+     -778.2,
+     -489.0
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_7590",
+    "component": "StaticMeshActor_4810_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeRoad_Straight_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -179.2,
+     -665.6,
+     -489.0
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_7590",
+    "component": "StaticMeshActor_6037_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeRoad_Straight_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -179.2,
+     -583.7,
+     -489.0
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_7590",
+    "component": "StaticMeshActor_160_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeJoint_Straight_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -179.2,
+     -696.3,
+     -478.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_8872",
+    "component": "StaticMeshActor_1853_SMC",
+    "mesh": "ENV_IAC_Interior_1_p.Dome_Corridor.Dome_Corridor_Lower_02_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -179.2,
+     -934.4,
+     -478.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_8872",
+    "component": "StaticMeshActor_13825_SMC",
+    "mesh": "ENV_IAC_Interior_1_p.Dome_Corridor.Dome_Corridor_Lower_02_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -179.2,
+     -934.4,
+     -478.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_8872",
+    "component": "StaticMeshActor_11095_SMC",
+    "mesh": "ENV_IAC_Interior_1_p.Dome_Corridor.Dome_Corridor_Lower_02_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -179.2,
+     -934.4,
+     -478.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_8872",
+    "component": "StaticMeshActor_14229_SMC",
+    "mesh": "ENV_IAC_Interior_1_p.Dome_Corridor.Dome_Corridor_Lower_02_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -179.2,
+     -934.4,
+     -478.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_8872",
+    "component": "StaticMeshActor_7347_SMC",
+    "mesh": "ENV_IAC_Interior_1_p.Dome_Corridor.Dome_Corridor_Lower_02_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -179.2,
+     -942.1,
+     -478.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_10704",
+    "component": "StaticMeshActor_464_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeJoint_Road_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -178.0,
+     -921.6,
+     -489.0
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_10704",
+    "component": "StaticMeshActor_401_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeJoint_Road_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -178.0,
+     -952.3,
+     -489.0
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_7825",
+    "component": "StaticMeshActor_11122_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeJoint_Road_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -178.0,
+     -890.9,
+     -489.0
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_14017",
+    "component": "StaticMeshActor_13067_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeJoint_Road_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     1172.5,
+     -326.4,
+     486.4
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_7180",
+    "component": "StaticMeshActor_10819_SMC",
+    "mesh": "ENV_IAC_Deco_1_p.StaticMesh.DecoSphereHalf01_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     1147.5,
+     -296.3,
+     481.9
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_7180",
+    "component": "StaticMeshActor_15396_SMC",
+    "mesh": "ENV_IAC_Deco_1_p.StaticMesh.DecoSphereHalf01_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     1197.4,
+     -296.3,
+     481.9
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_7225",
+    "component": "StaticMeshActor_3600_SMC",
+    "mesh": "ENV_IAC_Ground_p.Platform.modPlatform_Trim_1024_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     1196.8,
+     -297.8,
+     485.3
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_7225",
+    "component": "StaticMeshActor_15309_SMC",
+    "mesh": "ENV_IAC_Ground_p.Platform.modPlatform_Trim_1024_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     1179.2,
+     -297.8,
+     485.3
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_7225",
+    "component": "StaticMeshActor_9490_SMC",
+    "mesh": "ENV_IAC_Ground_p.Platform.modPlatform_Trim_1024_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     1161.6,
+     -297.8,
+     485.3
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_8259",
+    "component": "StaticMeshActor_6735_SMC",
+    "mesh": "ENV_NEU_Structures_p.Small1.Small1_Silo_768x768x768_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     1199.3,
+     -311.0,
+     485.8
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_8259",
+    "component": "StaticMeshActor_2781_SMC",
+    "mesh": "ENV_NEU_Structures_p.Small1.Small1_Silo_768x768x768_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     1197.1,
+     -311.0,
+     485.8
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_8259",
+    "component": "StaticMeshActor_752_SMC",
+    "mesh": "ENV_NEU_Structures_p.Small1.Small1_Silo_768x768x768_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     1145.1,
+     -311.0,
+     485.8
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_8259",
+    "component": "StaticMeshActor_8675_SMC",
+    "mesh": "ENV_NEU_Structures_p.Small1.Small1_Silo_768x768x768_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     1147.4,
+     -311.0,
+     485.8
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_12257",
+    "component": "StaticMeshActor_11942_SMC",
+    "mesh": "ENV_IAC_Ground_p.Floor.GroundVent_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     937.2,
+     -188.2,
+     -500.0
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_12257",
+    "component": "StaticMeshActor_15039_SMC",
+    "mesh": "ENV_IAC_Ground_p.Floor.GroundVent_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     937.2,
+     -188.2,
+     -487.9
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_15103",
+    "component": "StaticMeshActor_11881_SMC",
+    "mesh": "ENV_IAC_BLDS_3_p.bld_2048x4096x4096_thru_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     1465.6,
+     -348.2,
+     499.2
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_15103",
+    "component": "StaticMeshActor_10433_SMC",
+    "mesh": "ENV_IAC_BLDS_3_p.bld_2048x4096x4096_thru_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     1465.6,
+     -348.2,
+     499.2
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_11861",
+    "component": "StaticMeshActor_7776_SMC",
+    "mesh": "ENV_IAC_Deco_1_p.StaticMesh.DecoDonut01_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     1347.0,
+     -243.0,
+     -293.8
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_11861",
+    "component": "StaticMeshActor_10728_SMC",
+    "mesh": "ENV_IAC_Deco_1_p.StaticMesh.DecoDonut01_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     1347.0,
+     -551.7,
+     -293.8
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_11861",
+    "component": "StaticMeshActor_12710_SMC",
+    "mesh": "ENV_IAC_Deco_1_p.StaticMesh.Capacitor_01_Red_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     1340.2,
+     -246.6,
+     -294.6
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_1928",
+    "component": "StaticMeshActor_3357_SMC",
+    "mesh": "ENV_IAC_Interior_1_p.Walls_Round.Wall_Outer_8192_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     1317.8,
+     -241.9,
+     -293.8
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_1928",
+    "component": "StaticMeshActor_538_SMC",
+    "mesh": "ENV_IAC_Interior_1_p.Walls_Round.Floor_8192_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     1346.6,
+     -242.1,
+     -293.8
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_1928",
+    "component": "StaticMeshActor_14230_SMC",
+    "mesh": "ENV_IAC_Interior_1_p.Walls_Round.Floor_8192_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     1346.6,
+     -241.9,
+     -293.8
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_1928",
+    "component": "StaticMeshActor_2009_SMC",
+    "mesh": "ENV_IAC_Interior_1_p.Walls_Round.Floor_8192_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     1346.6,
+     -241.9,
+     -293.8
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_1928",
+    "component": "StaticMeshActor_12178_SMC",
+    "mesh": "ENV_IAC_Interior_1_p.Walls_Round.Floor_8192_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     1346.6,
+     -224.3,
+     -293.8
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_1928",
+    "component": "StaticMeshActor_6106_SMC",
+    "mesh": "ENV_IAC_Interior_1_p.Walls_Round.Floor_8192_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     1346.6,
+     -224.3,
+     -293.8
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_2717",
+    "component": "StaticMeshActor_13400_SMC",
+    "mesh": "ENV_IAC_Interior_1_p.Walls_Round.Floor_8192_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     1346.6,
+     -242.1,
+     -293.8
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_3456",
+    "component": "StaticMeshActor_14152_SMC",
+    "mesh": "ENV_IAC_Interior_1_p.Walls_Round.Wall_Outer_8192_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     1346.6,
+     -241.9,
+     -293.8
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_8593",
+    "component": "StaticMeshActor_15116_SMC",
+    "mesh": "ENV_IAC_Interior_1_p.Ceilings.DomeCeiling_8192_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     1346.6,
+     -226.6,
+     -293.8
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_8593",
+    "component": "StaticMeshActor_7124_SMC",
+    "mesh": "ENV_IAC_Interior_1_p.Ceilings.DomeCeiling_8192_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     1346.6,
+     -226.6,
+     -293.8
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_12772",
+    "component": "StaticMeshActor_2127_SMC",
+    "mesh": "ENV_IAC_Deco_1_p.Supports.SideSuppPillarLow_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     0.0,
+     -861.3,
+     -478.4
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_13583",
+    "component": "StaticMeshActor_13986_SMC",
+    "mesh": "ENV_IAC_BLDS_3_p.HalfArch_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -81.9,
+     -995.2,
+     -487.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_13583",
+    "component": "StaticMeshActor_12620_SMC",
+    "mesh": "ENV_IAC_BLDS_3_p.HalfArch_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -41.0,
+     -995.2,
+     -487.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_16057",
+    "component": "StaticMeshActor_12720_SMC",
+    "mesh": "ENV_IAC_Deco_1_p.StaticMesh.Nose_1024_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     41.0,
+     -963.9,
+     -493.2
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_2734",
+    "component": "StaticMeshActor_12238_SMC",
+    "mesh": "ENV_IAC_Deco_1_p.Supports.SideSuppPillarLow_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     312.6,
+     -846.4,
+     -238.1
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_3945",
+    "component": "StaticMeshActor_5686_SMC",
+    "mesh": "ENV_NEU_Structures_p.Big2.Big2_Building2Trim3_1792x2560x9216x3584_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     325.2,
+     -846.4,
+     -501.8
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_3945",
+    "component": "StaticMeshActor_6945_SMC",
+    "mesh": "ENV_NEU_Structures_p.Big2.Big2_Building2Trim3_1792x2560x9216x3584_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     295.2,
+     -846.4,
+     -501.8
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_3945",
+    "component": "StaticMeshActor_7887_SMC",
+    "mesh": "ENV_IAC_BLDS_3_p.HalfArch_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     314.3,
+     -815.7,
+     -516.5
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_3945",
+    "component": "StaticMeshActor_11116_SMC",
+    "mesh": "ENV_IAC_BLDS_3_p.HalfArch_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     314.3,
+     -877.1,
+     -516.5
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_3945",
+    "component": "StaticMeshActor_3444_SMC",
+    "mesh": "ENV_IAC_BLDS_3_p.HalfArch_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     152.5,
+     -809.5,
+     -493.4
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_5331",
+    "component": "StaticMeshActor_12670_SMC",
+    "mesh": "ENV_IAC_Deco_1_p.StaticMesh.DecoBalcony1_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     457.2,
+     -174.2,
+     -484.5
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_5331",
+    "component": "StaticMeshActor_14606_SMC",
+    "mesh": "ENV_IAC_Deco_1_p.StaticMesh.DecoBalcony1_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     208.3,
+     -176.6,
+     -486.4
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_5331",
+    "component": "StaticMeshActor_16262_SMC",
+    "mesh": "ENV_IAC_Deco_1_p.StaticMesh.DecoBalcony1_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     208.3,
+     -176.6,
+     -558.1
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_7381",
+    "component": "StaticMeshActor_6156_SMC",
+    "mesh": "ENV_IAC_Deco_1_p.StaticMesh.Nose_1024_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -0.8,
+     -850.5,
+     -455.1
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_7381",
+    "component": "StaticMeshActor_9382_SMC",
+    "mesh": "ENV_IAC_Deco_1_p.StaticMesh.DecoBalcony1_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     1.3,
+     -836.6,
+     -375.9
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_7381",
+    "component": "StaticMeshActor_15455_SMC",
+    "mesh": "ENV_IAC_Deco_1_p.StaticMesh.DecoBalcony1_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     1.3,
+     -836.6,
+     -375.9
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_7720",
+    "component": "StaticMeshActor_1709_SMC",
+    "mesh": "ENV_IAC_Deco_1_p.StaticMesh.Nose_1024_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     83.2,
+     -963.9,
+     -493.2
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_10355",
+    "component": "StaticMeshActor_10831_SMC",
+    "mesh": "ENV_IAC_Interior_1_p.Dome_Corridor.Dome_Corridor_Upper_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -641.3,
+     -225.3,
+     -373.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_10355",
+    "component": "StaticMeshActor_6782_SMC",
+    "mesh": "ENV_IAC_Interior_1_p.Dome_Corridor.Dome_Corridor_Upper_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -641.3,
+     -225.3,
+     -373.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_10355",
+    "component": "StaticMeshActor_6018_SMC",
+    "mesh": "ENV_IAC_Interior_1_p.Dome_Corridor.Dome_Corridor_Upper_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -641.3,
+     -225.3,
+     -373.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_10355",
+    "component": "StaticMeshActor_3892_SMC",
+    "mesh": "ENV_IAC_Interior_1_p.Dome_Corridor.Dome_Corridor_Upper_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -641.3,
+     -225.3,
+     -373.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_10708",
+    "component": "StaticMeshActor_8322_SMC",
+    "mesh": "ENV_NEU_Structures_p.Small1.Small1_Silo_768x768x768_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -116.5,
+     -723.2,
+     -462.1
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_11928",
+    "component": "StaticMeshActor_4408_SMC",
+    "mesh": "ENV_IAC_BLDS_1_p.StaticMesh.CurveWall_7168_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -142.1,
+     -668.2,
+     -491.5
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_11928",
+    "component": "StaticMeshActor_4218_SMC",
+    "mesh": "ENV_IAC_BLDS_1_p.StaticMesh.CurveWall_7168_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -142.1,
+     -704.0,
+     -491.5
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_11928",
+    "component": "StaticMeshActor_2476_SMC",
+    "mesh": "ENV_IAC_BLDS_1_p.StaticMesh.CurveWall_7168_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -142.1,
+     -739.8,
+     -491.5
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_11928",
+    "component": "StaticMeshActor_4865_SMC",
+    "mesh": "ENV_IAC_BLDS_1_p.StaticMesh.CurveWall_7168_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -142.1,
+     -775.7,
+     -491.5
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_11928",
+    "component": "StaticMeshActor_7669_SMC",
+    "mesh": "ENV_IAC_BLDS_1_p.StaticMesh.CurveWall_7168_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -142.1,
+     -811.5,
+     -491.5
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_11928",
+    "component": "StaticMeshActor_3036_SMC",
+    "mesh": "ENV_IAC_BLDS_1_p.StaticMesh.CurveWall_7168_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -142.1,
+     -847.4,
+     -491.5
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_11928",
+    "component": "StaticMeshActor_1582_SMC",
+    "mesh": "ENV_IAC_BLDS_1_p.StaticMesh.CurveWall_7168_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -142.1,
+     -883.2,
+     -491.5
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_11928",
+    "component": "StaticMeshActor_7764_SMC",
+    "mesh": "ENV_NEU_Structures_p.Small1.Small1_Silo_768x768x768_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -116.5,
+     -757.8,
+     -462.1
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_349",
+    "component": "StaticMeshActor_6304_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeJoint_Straight_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -179.2,
+     -696.3,
+     -478.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_349",
+    "component": "StaticMeshActor_1597_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeJoint_Straight_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -179.2,
+     -51.2,
+     -478.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_349",
+    "component": "StaticMeshActor_9126_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeShell_Straight_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -179.2,
+     -860.2,
+     -489.0
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_349",
+    "component": "StaticMeshActor_7391_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeShell_Straight_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -179.2,
+     -778.2,
+     -489.0
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_349",
+    "component": "StaticMeshActor_2762_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeShell_Straight_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -179.2,
+     -665.6,
+     -489.0
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_349",
+    "component": "StaticMeshActor_4451_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeShell_Straight_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -179.2,
+     -583.7,
+     -489.0
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_349",
+    "component": "StaticMeshActor_12888_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeShell_Straight_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -179.2,
+     -501.8,
+     -489.0
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_349",
+    "component": "StaticMeshActor_3846_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeRoad_Straight_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -179.2,
+     -860.2,
+     -489.0
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_349",
+    "component": "StaticMeshActor_6917_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeRoad_Straight_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -179.2,
+     -778.2,
+     -489.0
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_349",
+    "component": "StaticMeshActor_731_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeRoad_Straight_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -179.2,
+     -665.6,
+     -489.0
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_349",
+    "component": "StaticMeshActor_10239_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeRoad_Straight_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -179.2,
+     -583.7,
+     -489.0
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_349",
+    "component": "StaticMeshActor_6413_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeRoad_Straight_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -179.2,
+     -501.8,
+     -489.0
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_4955",
+    "component": "StaticMeshActor_5262_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeShell_Straight_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -179.2,
+     -419.8,
+     -489.0
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_4955",
+    "component": "StaticMeshActor_13044_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeShell_Straight_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -179.2,
+     -337.9,
+     -489.0
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_4955",
+    "component": "StaticMeshActor_14823_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeShell_Straight_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -179.2,
+     -256.0,
+     -489.0
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_4955",
+    "component": "StaticMeshActor_3792_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeRoad_Straight_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -179.2,
+     -419.8,
+     -489.0
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_4955",
+    "component": "StaticMeshActor_7785_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeRoad_Straight_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -179.2,
+     -337.9,
+     -489.0
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_4955",
+    "component": "StaticMeshActor_1991_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeRoad_Straight_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -179.2,
+     -256.0,
+     -489.0
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_4955",
+    "component": "StaticMeshActor_13549_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeRoad_Straight_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -179.2,
+     -174.1,
+     -489.0
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_4955",
+    "component": "StaticMeshActor_4683_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeJoint_Road_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -179.2,
+     -696.3,
+     -489.0
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_4955",
+    "component": "StaticMeshActor_5812_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeJoint_Road_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -179.2,
+     -51.2,
+     -489.0
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_4955",
+    "component": "StaticMeshActor_167_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeJoint_Maintenance_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -179.2,
+     -92.2,
+     -489.0
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_11836",
+    "component": "StaticMeshActor_10960_SMC",
+    "mesh": "ENV_IAC_Deco_1_p.StaticMesh.DecoSphereHalf01_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     1148.2,
+     -265.0,
+     481.9
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_1232",
+    "component": "StaticMeshActor_2118_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeJoint_Straight_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     1172.5,
+     -70.4,
+     476.2
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_1232",
+    "component": "StaticMeshActor_13353_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeJoint_Straight_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     1172.5,
+     289.3,
+     476.2
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_1232",
+    "component": "StaticMeshActor_9126_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeShell_Straight_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     1172.5,
+     -234.2,
+     486.4
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_1232",
+    "component": "StaticMeshActor_7391_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeShell_Straight_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     1172.5,
+     -152.3,
+     486.4
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_1232",
+    "component": "StaticMeshActor_2762_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeShell_Straight_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     1172.5,
+     -39.7,
+     486.4
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_1232",
+    "component": "StaticMeshActor_4451_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeShell_Straight_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     1172.5,
+     43.5,
+     486.4
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_1232",
+    "component": "StaticMeshActor_9134_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeShell_Straight_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     1172.5,
+     125.4,
+     486.4
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_1232",
+    "component": "StaticMeshActor_3846_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeRoad_Straight_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     1172.5,
+     -234.2,
+     486.4
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_1232",
+    "component": "StaticMeshActor_6917_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeRoad_Straight_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     1172.5,
+     -152.3,
+     486.4
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_1232",
+    "component": "StaticMeshActor_844_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeRoad_Straight_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     1172.5,
+     -39.7,
+     486.4
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_1232",
+    "component": "StaticMeshActor_10239_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeRoad_Straight_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     1172.5,
+     43.5,
+     486.4
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_1232",
+    "component": "StaticMeshActor_195_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeRoad_Straight_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     1172.5,
+     125.4,
+     486.4
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_14311",
+    "component": "StaticMeshActor_2567_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeShell_Straight_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     1172.5,
+     207.4,
+     486.4
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_14311",
+    "component": "StaticMeshActor_16284_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeRoad_Straight_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     1172.5,
+     207.4,
+     486.4
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_14311",
+    "component": "StaticMeshActor_12540_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeJoint_Road_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     1172.5,
+     -70.4,
+     486.4
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_14311",
+    "component": "StaticMeshActor_10809_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeJoint_Straight_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     1172.5,
+     -295.7,
+     476.2
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_3913",
+    "component": "StaticMeshActor_6800_SMC",
+    "mesh": "ENV_IAC_Deco_1_p.StaticMesh.DecoSphereHalf01_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     1196.8,
+     -265.0,
+     481.9
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_4369",
+    "component": "StaticMeshActor_5799_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeJoint_Road_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     1172.5,
+     -295.7,
+     486.4
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_4369",
+    "component": "StaticMeshActor_627_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeJoint_Road_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     1172.5,
+     -265.0,
+     486.4
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_4369",
+    "component": "StaticMeshActor_12054_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeJoint_Road_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     1172.5,
+     289.3,
+     486.4
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_4369",
+    "component": "StaticMeshActor_3977_SMC",
+    "mesh": "ENV_IAC_TubeRoads_p.RegularTubes.TubeJoint_Straight_REG_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     1171.2,
+     -265.0,
+     476.2
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_12049",
+    "component": "StaticMeshActor_3630_SMC",
+    "mesh": "ENV_ArchiveInterior_p.FaceDeco.FaceDeco1a_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     731.5,
+     -150.0,
+     -479.9
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_12049",
+    "component": "StaticMeshActor_7371_SMC",
+    "mesh": "ENV_ArchiveInterior_p.FaceDeco.FaceDeco1a_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     690.0,
+     -150.0,
+     -479.9
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_12049",
+    "component": "StaticMeshActor_9141_SMC",
+    "mesh": "ENV_ArchiveInterior_p.FaceDeco.FaceDeco1a_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     822.1,
+     -150.0,
+     -479.9
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_12049",
+    "component": "StaticMeshActor_5545_SMC",
+    "mesh": "ENV_ArchiveInterior_p.FaceDeco.FaceDeco1a_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     637.9,
+     -150.0,
+     -479.9
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_12049",
+    "component": "StaticMeshActor_7827_SMC",
+    "mesh": "ENV_ArchiveInterior_p.FaceDeco.FaceDeco1b_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     731.3,
+     -161.2,
+     -477.8
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_12049",
+    "component": "StaticMeshActor_6162_SMC",
+    "mesh": "ENV_ArchiveInterior_p.FaceDeco.FaceDeco1b_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     691.6,
+     -161.2,
+     -477.8
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_12049",
+    "component": "StaticMeshActor_5312_SMC",
+    "mesh": "ENV_ArchiveInterior_p.FaceDeco.FaceDeco1b_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     731.1,
+     -161.2,
+     -476.6
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_12049",
+    "component": "StaticMeshActor_13523_SMC",
+    "mesh": "ENV_ArchiveInterior_p.FaceDeco.FaceDeco1b_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     691.7,
+     -161.2,
+     -476.6
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_12049",
+    "component": "StaticMeshActor_6701_SMC",
+    "mesh": "ENV_NEU_Structures_p.Small1.Small1_Silo_768x768x768_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     595.6,
+     -190.4,
+     -300.6
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_12049",
+    "component": "StaticMeshActor_12445_SMC",
+    "mesh": "ENV_NEU_Structures_p.Small1.Small1_Silo_768x768x768_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     562.8,
+     -190.0,
+     -334.3
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_12049",
+    "component": "StaticMeshActor_13159_SMC",
+    "mesh": "ENV_NEU_Structures_p.Small1.Small1_Silo_768x768x768_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     641.7,
+     -190.4,
+     -299.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_12049",
+    "component": "StaticMeshActor_1108_SMC",
+    "mesh": "ENV_NEU_Structures_p.Small1.Small1_Silo_768x768x768_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     674.9,
+     -190.4,
+     -332.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_15961",
+    "component": "StaticMeshActor_15700_SMC",
+    "mesh": "ENV_IAC_Interior_1_p.Ceilings.DomeCeiling_8192_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     619.5,
+     -210.0,
+     -355.8
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_15961",
+    "component": "StaticMeshActor_16239_SMC",
+    "mesh": "ENV_IAC_Interior_1_p.Ceilings.DomeCeiling_8192_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     619.5,
+     -210.0,
+     -355.8
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_2159",
+    "component": "StaticMeshActor_5267_SMC",
+    "mesh": "ENV_IAC_Deco_1_p.StaticMesh.DecoBalcony1_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     711.5,
+     -160.6,
+     -459.9
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_2171",
+    "component": "StaticMeshActor_7910_SMC",
+    "mesh": "ENV_IAC_Deco_1_p.StaticMesh.Nose_1024_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     712.3,
+     -233.3,
+     -304.1
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_2220",
+    "component": "StaticMeshActor_15290_SMC",
+    "mesh": "ENV_IAC_Deco_1_p.StaticMesh.Nose_1024_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     725.4,
+     -233.3,
+     -357.1
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_2220",
+    "component": "StaticMeshActor_698_SMC",
+    "mesh": "ENV_IAC_Deco_1_p.StaticMesh.Nose_1024_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     746.9,
+     -233.3,
+     -404.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_3232",
+    "component": "StaticMeshActor_11570_SMC",
+    "mesh": "ENV_IAC_Interior_1_p.Ceilings.DomeCeiling_8192_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     619.5,
+     -210.0,
+     -355.8
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_3232",
+    "component": "StaticMeshActor_9917_SMC",
+    "mesh": "ENV_IAC_Interior_1_p.Ceilings.DomeCeiling_8192_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     619.5,
+     -210.0,
+     -355.8
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_3232",
+    "component": "StaticMeshActor_4403_SMC",
+    "mesh": "ENV_IAC_Interior_1_p.Ceilings.DomeCeiling_8192_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     619.5,
+     -210.0,
+     -355.8
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_3232",
+    "component": "StaticMeshActor_16022_SMC",
+    "mesh": "ENV_IAC_Interior_1_p.Ceilings.DomeCeiling_8192_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     619.5,
+     -210.0,
+     -355.8
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_3796",
+    "component": "StaticMeshActor_7352_SMC",
+    "mesh": "DES_IAC_Omega_Cover_p.smaller.OmegaWall_Base_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     812.0,
+     53.0,
+     -481.1
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_3796",
+    "component": "StaticMeshActor_1767_SMC",
+    "mesh": "ENV_IAC_Ground_p.Platform.damageChunk_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     810.4,
+     -52.6,
+     -465.4
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_3796",
+    "component": "StaticMeshActor_10146_SMC",
+    "mesh": "ENV_IAC_Ground_p.Platform.damageChunk_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     817.8,
+     10.6,
+     -461.0
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_3796",
+    "component": "StaticMeshActor_15139_SMC",
+    "mesh": "ENV_IAC_Ground_p.Platform.damageChunk_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     808.0,
+     11.5,
+     -455.0
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_3796",
+    "component": "StaticMeshActor_12845_SMC",
+    "mesh": "ENV_IAC_Ground_p.Platform.damageChunk_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     812.6,
+     -107.0,
+     -471.5
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_3796",
+    "component": "StaticMeshActor_4511_SMC",
+    "mesh": "ENV_IAC_Ground_p.Platform.damageChunk_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     807.0,
+     -114.6,
+     -474.9
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_3796",
+    "component": "StaticMeshActor_10596_SMC",
+    "mesh": "ENV_IAC_Ground_p.Debris.craterDebris_EdgeGlow_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     806.6,
+     -65.5,
+     -464.4
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_3796",
+    "component": "StaticMeshActor_6708_SMC",
+    "mesh": "ENV_IAC_Ground_p.Debris.Scrappage1_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     807.7,
+     -37.6,
+     -475.8
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_7742",
+    "component": "StaticMeshActor_15186_SMC",
+    "mesh": "ENV_IAC_Interior_1_p.Walls_Round.Floor_8192_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     619.5,
+     -225.3,
+     -355.8
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_7742",
+    "component": "StaticMeshActor_13274_SMC",
+    "mesh": "ENV_IAC_Interior_1_p.Walls_Round.Floor_8192_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     619.5,
+     -225.3,
+     -355.8
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_8256",
+    "component": "StaticMeshActor_15845_SMC",
+    "mesh": "ENV_IAC_Deco_1_p.Supports.ArchSupport_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     619.8,
+     -211.2,
+     -247.4
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_8256",
+    "component": "StaticMeshActor_13877_SMC",
+    "mesh": "ENV_IAC_Deco_1_p.Supports.ArchSupport_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     542.4,
+     -212.8,
+     -278.4
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_8350",
+    "component": "StaticMeshActor_341_SMC",
+    "mesh": "DES_IAC_Omega_Cover_p.smaller.OmegaWall_Base_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     809.0,
+     12.6,
+     -466.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_8535",
+    "component": "StaticMeshActor_16222_SMC",
+    "mesh": "ENV_ArchiveInterior_p.FaceDeco.FaceDeco1_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     711.4,
+     2.6,
+     -474.9
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_8535",
+    "component": "StaticMeshActor_8600_SMC",
+    "mesh": "ENV_ArchiveInterior_p.FaceDeco.FaceDeco1a_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     711.4,
+     2.6,
+     -474.9
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_8535",
+    "component": "StaticMeshActor_2695_SMC",
+    "mesh": "ENV_IAC_BLDS_3_p.bld_2048x4096x4096_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     720.7,
+     -202.0,
+     -465.3
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_8535",
+    "component": "StaticMeshActor_10243_SMC",
+    "mesh": "ENV_IAC_BLDS_3_p.bld_2048x4096x4096_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     679.7,
+     -202.0,
+     -465.3
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_8535",
+    "component": "StaticMeshActor_15337_SMC",
+    "mesh": "ENV_IAC_BLDS_3_p.bld_2048x4096x4096_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     638.8,
+     -202.0,
+     -465.3
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_8535",
+    "component": "StaticMeshActor_257_SMC",
+    "mesh": "ENV_IAC_BLDS_3_p.bld_2048x4096x4096_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     597.8,
+     -202.0,
+     -465.3
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_9112",
+    "component": "StaticMeshActor_15308_SMC",
+    "mesh": "ENV_IAC_Deco_1_p.Supports.SideSuppPillarLow_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     730.9,
+     -193.3,
+     -449.3
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_9112",
+    "component": "StaticMeshActor_286_SMC",
+    "mesh": "ENV_IAC_Deco_1_p.Supports.SideSuppPillarLow_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     700.2,
+     -195.0,
+     -417.1
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_9112",
+    "component": "StaticMeshActor_9585_SMC",
+    "mesh": "ENV_IAC_Deco_1_p.StaticMesh.DecoDonut01_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     730.7,
+     -193.8,
+     -449.4
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_9112",
+    "component": "StaticMeshActor_8733_SMC",
+    "mesh": "ENV_IAC_Deco_1_p.StaticMesh.DecoDonut01_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     700.0,
+     -195.5,
+     -417.2
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_9112",
+    "component": "StaticMeshActor_15518_SMC",
+    "mesh": "ENV_IAC_BLDS_2_p.Buildings_Square.Building_ONE_Middle_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     705.5,
+     -209.6,
+     -442.6
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_11530",
+    "component": "StaticMeshActor_13832_SMC",
+    "mesh": "ENV_IAC_BLDS_2_p.Buildings_Square.PillarBuilding01_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     128.0,
+     -184.3,
+     -459.8
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_15624",
+    "component": "StaticMeshActor_15197_SMC",
+    "mesh": "ENV_NEU_Structures_p.Big3.Big3_Building3Walkway_1024x1536x4096_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     303.4,
+     -107.5,
+     -533.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_15624",
+    "component": "StaticMeshActor_6826_SMC",
+    "mesh": "ENV_NEU_Structures_p.Big3.Big3_Building3Walkway_1024x1536x4096_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     355.8,
+     -107.5,
+     -533.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_15624",
+    "component": "StaticMeshActor_6287_SMC",
+    "mesh": "ENV_NEU_Structures_p.Big3.Big3_Building3Walkway_1024x1536x4096_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     408.3,
+     -107.5,
+     -533.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_15624",
+    "component": "StaticMeshActor_14028_SMC",
+    "mesh": "ENV_NEU_Structures_p.Big3.Big3_Building3Walkway_1024x1536x4096_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     460.8,
+     -107.5,
+     -533.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_15624",
+    "component": "StaticMeshActor_4893_SMC",
+    "mesh": "ENV_NEU_Structures_p.Big3.Big3_Building3Walkway_1024x1536x4096_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     250.9,
+     -107.5,
+     -533.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_15624",
+    "component": "StaticMeshActor_10615_SMC",
+    "mesh": "ENV_NEU_Structures_p.Big3.Big3_Building3Walkway_1024x1536x4096_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     198.4,
+     -107.5,
+     -533.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_15853",
+    "component": "StaticMeshActor_7906_SMC",
+    "mesh": "ENV_IAC_Deco_1_p.Supports.ArchSupport_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     174.5,
+     -169.8,
+     -441.6
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_15853",
+    "component": "StaticMeshActor_3508_SMC",
+    "mesh": "ENV_IAC_Deco_1_p.Supports.ArchSupport_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     174.5,
+     -169.8,
+     -525.5
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_15853",
+    "component": "StaticMeshActor_1704_SMC",
+    "mesh": "ENV_IAC_Deco_1_p.Supports.ArchSupport_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     482.4,
+     -169.8,
+     -525.5
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_162",
+    "component": "StaticMeshActor_14961_SMC",
+    "mesh": "ENV_NEU_Structures_p.Small1.Small1_Silo_768x768x768_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     386.0,
+     -155.0,
+     -547.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_162",
+    "component": "StaticMeshActor_2681_SMC",
+    "mesh": "ENV_NEU_Structures_p.Small1.Small1_Silo_768x768x768_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     270.5,
+     -154.6,
+     -544.6
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_3829",
+    "component": "StaticMeshActor_12248_SMC",
+    "mesh": "ENV_IAC_BLDS_2_p.Buildings_Square.PillarBuilding01_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     288.9,
+     -354.0,
+     -472.6
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_6313",
+    "component": "StaticMeshActor_7062_SMC",
+    "mesh": "ENV_IAC_BLDS_2_p.Buildings_Square.PillarBuilding01_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     370.0,
+     -354.0,
+     -472.6
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_6314",
+    "component": "StaticMeshActor_14735_SMC",
+    "mesh": "ENV_IAC_Deco_1_p.Supports.ArchSupport_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     482.4,
+     -169.8,
+     -441.6
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_7042",
+    "component": "StaticMeshActor_15064_SMC",
+    "mesh": "ENV_IAC_Deco_1_p.StaticMesh.DecoBalcony1_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     452.9,
+     -174.2,
+     -563.2
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   }
+  ],
+  "collision_nodes_without_blocking_prop": {
+   "HmPlayerOnlyBlockingVolume_16283": 1,
+   "HmPlayerOnlyBlockingVolume_9262": 1,
+   "DynamicBlockingVolume_13804": 1,
+   "DynamicBlockingVolume_16155": 1,
+   "DynamicBlockingVolume_16243": 1,
+   "DynamicBlockingVolume_2005": 1,
+   "DynamicBlockingVolume_7286": 1,
+   "HmPlayerOnlyBlockingVolume_10234": 1,
+   "HmPlayerOnlyBlockingVolume_11580": 1,
+   "HmPlayerOnlyBlockingVolume_12303": 1,
+   "HmPlayerOnlyBlockingVolume_12773": 1,
+   "HmPlayerOnlyBlockingVolume_13332": 1,
+   "HmPlayerOnlyBlockingVolume_1598": 1,
+   "HmPlayerOnlyBlockingVolume_447": 1,
+   "HmPlayerOnlyBlockingVolume_5595": 1,
+   "HmPlayerOnlyBlockingVolume_603": 1,
+   "HmPlayerOnlyBlockingVolume_630": 1,
+   "HmPlayerOnlyBlockingVolume_6868": 1,
+   "HmPlayerOnlyBlockingVolume_7411": 1,
+   "HmPlayerOnlyBlockingVolume_8064": 1,
+   "HmPlayerOnlyBlockingVolume_8635": 1,
+   "HmPlayerOnlyBlockingVolume_9320": 1,
+   "TnForcedDirVolume_4899": 1,
+   "HmPlayerOnlyBlockingVolume_14093": 1,
+   "HmPlayerOnlyBlockingVolume_5235": 1,
+   "HmPlayerOnlyBlockingVolume_7585": 1,
+   "HmPlayerOnlyBlockingVolume_6984": 1,
+   "HmPlayerOnlyBlockingVolume_8284": 1,
+   "HmPlayerOnlyBlockingVolume_10463": 1,
+   "HmPlayerOnlyBlockingVolume_11010": 1,
+   "HmPlayerOnlyBlockingVolume_11096": 1,
+   "HmPlayerOnlyBlockingVolume_1177": 1,
+   "HmPlayerOnlyBlockingVolume_11819": 1,
+   "HmPlayerOnlyBlockingVolume_13985": 1,
+   "HmPlayerOnlyBlockingVolume_2139": 1,
+   "HmPlayerOnlyBlockingVolume_2435": 1,
+   "HmPlayerOnlyBlockingVolume_5678": 1,
+   "HmPlayerOnlyBlockingVolume_592": 1,
+   "HmPlayerOnlyBlockingVolume_6912": 1,
+   "HmPlayerOnlyBlockingVolume_6936": 1,
+   "HmPlayerOnlyBlockingVolume_700": 1,
+   "HmPlayerOnlyBlockingVolume_7234": 1,
+   "HmPlayerOnlyBlockingVolume_8830": 1,
+   "HmPlayerOnlyBlockingVolume_9505": 1,
+   "HmPlayerOnlyBlockingVolume_9916": 1,
+   "TnForcedDirVolume_369": 1,
+   "TnForcedDirVolume_8471": 1,
+   "HmPlayerOnlyBlockingVolume_12713": 1,
+   "HmPlayerOnlyBlockingVolume_14361": 1,
+   "HmPlayerOnlyBlockingVolume_4673": 1,
+   "TnForcedDirVolume_12910": 1,
+   "TnForcedDirVolume_13333": 1,
+   "TnForcedDirVolume_15086": 1,
+   "TnForcedDirVolume_2324": 1,
+   "TnForcedDirVolume_5933": 1,
+   "TnForcedDirVolume_7034": 1,
+   "DynamicBlockingVolume_118": 1,
+   "HmPlayerOnlyBlockingVolume_10163": 1,
+   "HmPlayerOnlyBlockingVolume_10890": 1,
+   "HmPlayerOnlyBlockingVolume_11677": 1,
+   "HmPlayerOnlyBlockingVolume_196": 1,
+   "HmPlayerOnlyBlockingVolume_507": 1,
+   "HmPlayerOnlyBlockingVolume_5079": 1,
+   "HmPlayerOnlyBlockingVolume_8213": 1,
+   "HmPlayerOnlyBlockingVolume_9026": 1,
+   "HmPlayerOnlyBlockingVolume_9534": 1,
+   "TnForcedDirVolume_5296": 1,
+   "TnForcedDirVolume_9343": 1,
+   "DynamicBlockingVolume_10208": 1,
+   "DynamicBlockingVolume_1034": 1,
+   "DynamicBlockingVolume_10503": 1,
+   "DynamicBlockingVolume_10521": 1,
+   "DynamicBlockingVolume_10834": 1,
+   "DynamicBlockingVolume_11216": 1,
+   "DynamicBlockingVolume_11335": 1,
+   "DynamicBlockingVolume_11336": 1,
+   "DynamicBlockingVolume_13216": 1,
+   "DynamicBlockingVolume_13524": 1,
+   "DynamicBlockingVolume_15115": 1,
+   "DynamicBlockingVolume_15381": 1,
+   "DynamicBlockingVolume_15809": 1,
+   "DynamicBlockingVolume_16034": 1,
+   "DynamicBlockingVolume_4009": 1,
+   "DynamicBlockingVolume_5649": 1,
+   "DynamicBlockingVolume_5674": 1,
+   "DynamicBlockingVolume_8153": 1,
+   "HmPlayerOnlyBlockingVolume_14959": 1,
+   "DynamicBlockingVolume_1003": 1,
+   "DynamicBlockingVolume_10218": 1,
+   "DynamicBlockingVolume_12146": 1,
+   "DynamicBlockingVolume_15308": 1,
+   "DynamicBlockingVolume_15311": 1,
+   "DynamicBlockingVolume_15835": 1,
+   "DynamicBlockingVolume_2279": 1,
+   "DynamicBlockingVolume_2555": 1,
+   "DynamicBlockingVolume_3749": 1,
+   "DynamicBlockingVolume_4601": 1,
+   "DynamicBlockingVolume_4751": 1,
+   "DynamicBlockingVolume_5595": 1,
+   "DynamicBlockingVolume_7868": 1,
+   "DynamicBlockingVolume_854": 1,
+   "DynamicBlockingVolume_8819": 1,
+   "DynamicBlockingVolume_9252": 1,
+   "DynamicBlockingVolume_9568": 1,
+   "HmPlayerOnlyBlockingVolume_11003": 1,
+   "HmPlayerOnlyBlockingVolume_14622": 1,
+   "HmPlayerOnlyBlockingVolume_4031": 1,
+   "HmPlayerOnlyBlockingVolume_5065": 1,
+   "HmPlayerOnlyBlockingVolume_5143": 1,
+   "HmPlayerOnlyBlockingVolume_9373": 1,
+   "DynamicBlockingVolume_12584": 1,
+   "DynamicBlockingVolume_13350": 1,
+   "DynamicBlockingVolume_2314": 1,
+   "DynamicBlockingVolume_3461": 1,
+   "DynamicBlockingVolume_5284": 1,
+   "HmPlayerOnlyBlockingVolume_11205": 1,
+   "HmPlayerOnlyBlockingVolume_11267": 1,
+   "HmPlayerOnlyBlockingVolume_11714": 1,
+   "HmPlayerOnlyBlockingVolume_12228": 1,
+   "HmPlayerOnlyBlockingVolume_12482": 1,
+   "HmPlayerOnlyBlockingVolume_13680": 1,
+   "HmPlayerOnlyBlockingVolume_13866": 1,
+   "HmPlayerOnlyBlockingVolume_14914": 1,
+   "HmPlayerOnlyBlockingVolume_15298": 1,
+   "HmPlayerOnlyBlockingVolume_15948": 1,
+   "HmPlayerOnlyBlockingVolume_2574": 1,
+   "HmPlayerOnlyBlockingVolume_6244": 1,
+   "HmPlayerOnlyBlockingVolume_9408": 1,
+   "HmPlayerOnlyBlockingVolume_11725": 1,
+   "HmPlayerOnlyBlockingVolume_13052": 1,
+   "HmPlayerOnlyBlockingVolume_13553": 1,
+   "HmPlayerOnlyBlockingVolume_13702": 1,
+   "HmPlayerOnlyBlockingVolume_1385": 1,
+   "HmPlayerOnlyBlockingVolume_13931": 1,
+   "HmPlayerOnlyBlockingVolume_16087": 1,
+   "HmPlayerOnlyBlockingVolume_1889": 1,
+   "HmPlayerOnlyBlockingVolume_235": 1,
+   "HmPlayerOnlyBlockingVolume_4933": 1,
+   "HmPlayerOnlyBlockingVolume_8302": 1,
+   "HmPlayerOnlyBlockingVolume_8783": 1,
+   "HmPlayerOnlyBlockingVolume_9062": 1,
+   "HmPlayerOnlyBlockingVolume_1049": 1,
+   "HmPlayerOnlyBlockingVolume_10792": 1,
+   "HmPlayerOnlyBlockingVolume_11997": 1,
+   "HmPlayerOnlyBlockingVolume_12148": 1,
+   "HmPlayerOnlyBlockingVolume_13701": 1,
+   "HmPlayerOnlyBlockingVolume_15619": 1,
+   "HmPlayerOnlyBlockingVolume_16182": 1,
+   "HmPlayerOnlyBlockingVolume_1694": 1,
+   "HmPlayerOnlyBlockingVolume_2271": 1,
+   "HmPlayerOnlyBlockingVolume_2439": 1,
+   "HmPlayerOnlyBlockingVolume_3107": 1,
+   "HmPlayerOnlyBlockingVolume_3360": 1,
+   "HmPlayerOnlyBlockingVolume_3441": 1,
+   "HmPlayerOnlyBlockingVolume_4710": 1,
+   "HmPlayerOnlyBlockingVolume_4843": 1,
+   "HmPlayerOnlyBlockingVolume_5166": 1,
+   "HmPlayerOnlyBlockingVolume_656": 1,
+   "HmPlayerOnlyBlockingVolume_6882": 1,
+   "HmPlayerOnlyBlockingVolume_7127": 1,
+   "HmPlayerOnlyBlockingVolume_8172": 1,
+   "HmPlayerOnlyBlockingVolume_9044": 1,
+   "HmPlayerOnlyBlockingVolume_9781": 1
+  },
+  "collision_node_kinds": {
+   "BSPCollision_D3B_IAC_BS1Exterior_ART": 1,
+   "BSPCollision_D3B_IAC_Balcony_ART": 1,
+   "BSPCollision_D3B_IAC_BottomInt_ART": 1,
+   "BSPCollision_D3B_IAC_BottomLedge_ART": 1,
+   "BSPCollision_D3B_IAC_BottomLift1_ART": 1,
+   "BSPCollision_D3B_IAC_BottomLift2_ART": 1,
+   "BSPCollision_D3B_IAC_BridgeStation1_ART": 1,
+   "BSPCollision_D3B_IAC_BridgeStation2_ART": 1,
+   "BSPCollision_D3B_IAC_BridgeTube_ART": 1,
+   "BSPCollision_D3B_IAC_GLB_ART": 1,
+   "BSPCollision_D3B_IAC_MiddleInt2_ART": 1,
+   "BSPCollision_D3B_IAC_TunnelDrop_ART": 1,
+   "BlockingVolume": 75,
+   "HmPlayerOnlyBlockingVolume": 106,
+   "DynamicBlockingVolume": 46,
+   "TnForcedDirVolume": 11,
+   "StaticInterpActor": 241,
+   "StaticMeshCollectionActor": 558,
+   "StaticMeshActor": 273
+  },
+  "oversized_triangles_excluded": {
+   "world": 12451,
+   "collision": 1083
+  }
+ },
+ "materials": {
+  "default_material_triangles_by_kind": {
+   "bsp": 230
+  },
+  "default_material_area_m2_by_kind": {
+   "bsp": 1378962.7
+  },
+  "note": "BSP faces with DefaultMaterial and their in-play visibility: manifests/next_map/<MAP>_bsp_default_faces.json (Streets: streets_bsp_default_faces.json)"
+ },
+ "lightmaps": {
+  "lightmaps_json_props": 6956,
+  "world_glb_nodes_with_lm_atlas": 6957,
+  "of_which_have_TEXCOORD_1": 6957,
+  "atlases_used": 125,
+  "atlases_without_png": [],
+  "binding_ok": true
+ },
+ "actors": {
+  "world_glb_nodes_by_kind": {
+   "bsp": 12,
+   "StaticMeshCollectionActor": 7969,
+   "StaticInterpActor": 558,
+   "StaticMeshActor": 331,
+   "InterpActor": 7
+  },
+  "non_collection_actors": 896,
+  "non_collection_actors_missing_from_world_glb": [],
+  "mode_gated_targets": 0,
+  "mode_gated_missing_from_world_glb": []
+ },
+ "verdict": {
+  "status": "PASS",
+  "failures": []
+ }
+}

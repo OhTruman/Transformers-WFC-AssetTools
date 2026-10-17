@@ -140,3 +140,8 @@ Rerun results:
 - The player-start check still fails: `TnCampaignPlayerStart_10303` has no ground within 6 m (236 m drop) even with the highway
   meshes back. So the start is not over the missing geometry; the chapter most likely starts in the air or on a matinee platform.
   PROVISIONAL, to check against the level's intro matinee.
+
+## Diagnostics rerun (2026-10-17)
+
+- **m05** over all BSP levels (tiled): 106 default-material faces ({'exposed': 86, 'partial': 20}), 6 visible in play (114 m2).
+- **Structure audit** at a 2 m cell: PASS.
