@@ -145,6 +145,10 @@ def main(actor='Trypticon', anim='DX_TRPTCN_LK004350'):
                'wave': 'none in the cue tree: CSVs written, no voice comparison'}
         print(out); return out
     wp = os.path.join(os.path.dirname(P.EA), w['wav'])
+    # the merged content/<bank>/ wave can be either language twin (WL_DX_TRPTCN's is the French one); FaceFX is authored to the
+    # English line, so prefer content/_LOC/int/<bank>/<wave> when it exists
+    lp = os.path.join(P.EA, '_LOC', 'int', os.path.relpath(wp, P.EA)) if os.path.relpath(wp, P.EA)[:2] != '..' else None
+    if lp and os.path.exists(lp): wp = lp
     with wave.open(wp) as wf:
         sr = wf.getframerate(); ch = wf.getnchannels(); raw = wf.readframes(wf.getnframes())
     pcm = np.frombuffer(raw, np.int16).astype(float).reshape(-1, ch).mean(1) / 32768
