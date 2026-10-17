@@ -113,6 +113,8 @@ def read_anim(r, N):
     if sum(counts) != k: raise ValueError('key counts %d != K %d' % (sum(counts), k))
     a['times'] = struct.unpack_from('>%dh' % k, r.d, r.o); r.o += 2 * k
     a['values'] = struct.unpack_from('>%db' % k, r.d, r.o); r.o += k
+    if a['flag']:                                       # flag 1 (cinematic curves): K x (i8 slopeIn, i8 slopeOut) after the values
+        a['slopes'] = struct.unpack_from('>%db' % (2 * k), r.d, r.o); r.o += 2 * k
     a['counts'] = counts; a['K'] = k
     a['blend_in'], a['blend_out'] = r.f32(), r.f32(); a['t_pad'] = r.u32()
     a['cue'] = r.s(); a['name2'] = r.s(); a['t_pad2'] = r.u32()
@@ -123,7 +125,7 @@ def parse_anims(path):
     groups = []
     g0 = {'name': N[r.u32()], 'n': r.u32(), 'x': r.u32()}
     groups.append(g0); anims = []
-    for _ in range(1):
+    for _ in range(g0['x']):                            # x = number of groups after 'Default' (Dialogue + cinematic groups)
         g = {'name': N[r.u32()], 'n': r.u32()}; groups.append(g)
         for _ in range(g['n']): a = read_anim(r, N); a['group'] = g['name']; anims.append(a)
     return x, groups, anims, r.o, len(d)
