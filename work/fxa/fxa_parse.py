@@ -83,8 +83,14 @@ def parse_full(path):
     x = parse(path); d = open(path, 'rb').read(); N = x['_names']; r = R(d, x['bones_end'])
     nodes = []
     for _ in range(r.u32()):
-        t = r.u32(); ni = r.u32(); fl = r.f32(4); tail = (r.u32(), r.u32(), r.u32())
-        nodes.append({'type': t, 'name': N[ni], 'f': fl, 'tail': tail})
+        t = r.u32(); ni = r.u32(); fl = r.f32(4); a0 = r.u32(); links = []
+        for _ in range(r.u32()):                         # input links: {u32 inputNode, u32 linkFn, u32 nParams, nParams x f32}
+            src = r.u32(); fn = r.u32(); np_ = r.u32(); links.append({'input': src, 'fn': fn, 'params': [r.f32() for _ in range(np_)]})
+        props = []
+        for _ in range(r.u32()):                         # user properties: u32 name, u32 type, i32 int, f32 real, u32 nStr, strs
+            pn = r.u32(); pt = r.u32(); iv = r.i32(); rv = r.f32(); props.append({'name': N[pn], 'type': pt, 'int': iv, 'real': rv,
+                                                                                  'strings': [r.s() for _ in range(r.u32())]})
+        nodes.append({'type': t, 'name': N[ni], 'f': fl, 'a': a0, 'links': links, 'props': props})
     lut = {}
     for _ in range(r.u32()):
         r.u32()
