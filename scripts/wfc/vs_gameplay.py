@@ -104,6 +104,13 @@ def main():
         return d
     # starts + clusters
     starts = [rec(r, ['Team', 'TeamNum']) for c in ('TnTeamPlayerStart', 'TnFreeForAllPlayerStart') for r in actors(c)]
+    if is_campaign(MAP):
+        # campaign: TnCampaignPlayerStart and every Checkpoint (Checkpoint.GetStartSpotForPlayer returns the checkpoint itself for the
+        # local player: RE decomp Engine.Checkpoint), from all sublevels; MP keeps the two MP start classes above
+        for c, kind in (('TnCampaignPlayerStart', 'campaign_player_start'), ('Checkpoint', 'checkpoint')):
+            for r in sorted((r for lv in subs for r in A.find(lv + '.TheWorld.PersistentLevel.%', c)), key=lambda r: r['opath']):
+                d = rec(r, ['StreamingState', 'DisplayOrder', 'Tag']); d['start_kind'] = kind; d['sublevel'] = r['opath'].split('.')[0]
+                starts.append(d)
     clusters = []
     member_of = defaultdict(list)
     for r in actors('TnSpawnCluster'):

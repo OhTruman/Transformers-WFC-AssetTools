@@ -24,7 +24,6 @@ Order set by Integration (2026-10-16). Each fix is generic: MP / Streets outputs
    alone on every finished chapter. The default-material face list feeds the campaign texture / material pass.
 4. **matc pass for campaign materials** (Rendering, when they have a gap): D5_OME 46 of 115; A1_IAC 269 of 524.
    - Lists: `work/campaign_pilot/<MAP>_materials_for_rendering.json`.
-5. **Player-start ground check: campaign-mode relaxation** (approved 2026-10-16). Campaign starts are often airborne or on platforms
+5. **Player-start ground check: campaign-mode relaxation** (approved 2026-10-16; in progress 2026-10-17). All 10 chapters are through the pipeline. Campaign starts are often airborne or on platforms
    (A1_IAC: 236 m drop; D2_COR: 15 of 30 grounded). Allow them in campaign mode; the MP rule stays unchanged.
 
-Chapters still to run, in size order: D3B_IAC, D2_COR, A3_COR, A4_ORB, D3A_IAC, A2_KON, D1_ORB. Done: D5_OME, A1_IAC, A5_TRY.
