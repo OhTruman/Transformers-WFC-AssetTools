@@ -18,6 +18,9 @@
       mp_transforming_actors.py + transforming_glb.py);
     - gates: MP identical, and the 2026-10-17 keys unchanged;
     - bridge collision is switched by Kismet ChangeCollision (Gameplay told).
+  - Cleanups (35515af):
+    - the 52 "unextracted" dialog waves exist as _LOC twins; the exporter now resolves them;
+    - D2 Guardian Chamber starts = missing floor (UNKNOWN; follow-up offered).
   - FaceFX: Trypticon paragraph (79ef99a); proof prefers the _LOC/int wave (7f17f67).
 - **Done 2026-10-17:** all committed and pushed on assettools/checkpoint.
   - Backlog 5 starts / walk graph: d84baf2, c9d7bce. The 6 no_floor_below starts are airborne by design (verdicts in
@@ -38,6 +41,8 @@
   map_complete rc 0  4:16:08.71
   ```
 - **Open:**
+  - Standing by for Systems' package-7 build data list (overlay files, material sets).
+  - Offered follow-up: find the D2 Guardian Chamber floor in the cooked Chamber packages.
   - The airborne exemption rests on reachFlags 2 = R_FLY: PROVISIONAL until RE confirms the enum.
   - Matinee: 165 groups are unresolved (empty variables in the cook), listed in CAMPAIGN_MATINEE_SCHEMA.md §3b.
   - Trypticon's low jaw-voice correlation is not explained by the blend rule (product and nlerp differ <= 0.47 deg).
