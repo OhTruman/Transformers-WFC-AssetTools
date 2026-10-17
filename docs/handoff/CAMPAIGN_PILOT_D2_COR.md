@@ -70,7 +70,7 @@ Total wall 28.9 min; peak 5.30 GB. Stage failures: none.
 4. **Materials for Rendering** (`work/campaign_pilot/D2_COR_materials_for_rendering.json`): 280 materials, 174 with `.mat`, 174 compiled somewhere -> **106 need a matc pass**.
 5. **Pending diagnostics**: none: m05 and the structure audit both ran.
 6. **Starts and walk graph** (`manifests/next_map/campaign_starts_report.json`, backlog 5): 52 starts (30 campaign starts + 22 checkpoints), 31 / 52 on reachable floor; walk graph 3,395,048 m2 (audit ATTENTION); pickups on reachable floor 32 / 45; vs_validate ground check (reported only) 15 grounded / 15 airborne of the 30 it checks.
-   - Triage of what is off the walk graph (categories in `campaign_starts_report.py`): starts: 18 airborne_by_design, 3 unclassified; pickups: 13 unclassified. airborne_by_design = real level data (fly-only reach specs, PROVISIONAL flag meaning); on_mover = audit limit (no mover collision in the walk graph); no_floor_below = UNKNOWN; unclassified = walk-rule limit (no jump / transform) or an unconnected floor, per-actor look needed.
+   - Triage of what is off the walk graph (categories in `campaign_starts_report.py`): starts: 18 airborne_by_design, 3 elevated_above_floor; pickups: 13 unclassified. airborne_by_design = real level data (fly-only reach specs, PROVISIONAL flag meaning); on_mover = audit limit (no mover collision in the walk graph); no_floor_below = UNKNOWN; unclassified = walk-rule limit (no jump / transform) or an unconnected floor, per-actor look needed.
    - **Campaign verdict: ATTENTION** (audit raw: ATTENTION). 18 airborne_by_design starts are exempt as level design; 3 off-graph starts still count. The exemption reads reachFlags 2 as R_FLY, PROVISIONAL until RE confirms the enum.
 7. **Matinee** (`manifests/next_map/D2_COR_matinee.json`, schema `CAMPAIGN_MATINEE_SCHEMA.md`): 319 InterpData (318 played by a SeqAct_Interp), 355 SeqAct_Interp, 987 groups (25 director). Group binding: 879 bound, 34 no_link, 26 empty_link, 25 director, 17 unresolved, 6 bound_runtime. Undecoded track classes: none; unresolved bindings: none.
    - Tracks: Move 736, AnimControl 247, Event 226, Sound 215, Toggle 94, FloatProp 64, Director 25, ActorFloatMaterialParam 7, Slomo 6, Dialog 5, VectorMaterialParam 5, FloatMaterialParam 4, VectorProp 3, Fade 3, FaceFX 2, ActorVectorMaterialParam 2.
@@ -95,25 +95,18 @@ Total wall 28.9 min; peak 5.30 GB. Stage failures: none.
   teleports or attaches the player.
 - The nearest dropship actor is 160 m away.
 
-**The 3 unclassified starts (2026-10-18): one site, "Guardian Chamber"** (`Checkpoint_8567` + its auxiliary
+**The 3 unclassified starts (2026-10-18, corrected the same day): one site, "Guardian Chamber"** (`Checkpoint_8567` + its auxiliary
 `TnCampaignPlayerStart_3766` / `_9617`, glTF ≈ (1050, −250, 1112), in D2_COR_Chamber_Design_m / Chamber_Art_m).
 
-**Verdict: UNKNOWN, a missing floor; NOT level design.**
+**Verdict: elevated spawns over a real floor; level data, NOT an export gap.**
+- **The floor exists** in both world.glb and collision_pawn.glb: `ENV_CORE_InroomRndTunnel_A_STAT` (StaticMeshCollectionActor_9905,
+  walkable, normal y 0.98) at y ≈ −259.9.
+  - The two starts are about 11.3 m above it; the checkpoint is about 13 m above a support-pillar top.
+  - The audit's seed search looks only 3 m below a start, so they were off the walk graph.
+- The ground node `TnTacticalPathNode_3036` stands 1.79 m above the same floor, a normal grounded height.
+- Their reach specs are mostly fly-only (3766: 4 of 6, 9617: 4 of 6, 8567: 3 of 4). The walk specs link only the three and the ground
+  node.
+- The triage now has a category for this, `elevated_above_floor` (walkable floor 3–30 m below).
 
-**Evidence that the original had floor there:**
-- `TnTacticalPathNode_3036`, a *ground* tactical node, sits 1.7 m from the checkpoint and 4.7 m below it (y ≈ −258.4).
-- The two starts have walk reach specs to the checkpoint, and the checkpoint has a walk spec out of the cluster. So it is not an
-  airborne cluster.
-
-**What our export has:**
-- Neither world.glb nor collision_pawn.glb has any geometry within 15 m horizontally between y −273 and −246, except pillar tops
-  (`SideSuppPillar_STAT`) and walls starting at y ≈ −262 and lower. There is no BSP there.
-
-**Ruled out:**
-- No InterpActor / matinee mover passes under the site: all D2 Move tracks were checked.
-- No destructible, skeletal floor or spawned pawn is there. The two SkeletalMeshActors 22 m away are COR_InteriorDoor.
-- No prop within 80 m failed to export. Both Chamber levels are exported.
-
-**Code / data item:** the Guardian Chamber floor slab at y ≈ −259 (resting on the support pillars) is absent from the export. Next step:
-look for the floor mesh in the cooked Chamber packages (props_missing_mesh, an unhandled actor class, or a component the exporter
-skips).
+**Correction:** the first version of this note said "missing floor". That came from a layer list I printed only partly and a vertex-box
+search that misses large triangles whose vertices lie outside the box. Triangle containment under each start finds the floor.

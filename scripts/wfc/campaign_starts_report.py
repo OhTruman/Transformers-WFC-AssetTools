@@ -10,6 +10,8 @@ Triage of every start / pickup off the walk graph (Integration: real level data 
   on_mover            a mover (InterpActor / StaticInterpActor / KActor ...) within 8 m horizontally and 3 m vertically (pivot) -> audit limit:
                       the walk graph has no mover collision (lift / platform pose)
   no_floor_below      start with no collision layer within 30 m below its cell -> UNKNOWN (missing collision, streaming, or airborne)
+  elevated_above_floor start with walkable collision 3-30 m below (beyond the audit's 3 m seed range) -> real level data: the spawn drops
+                      onto that floor (D2 Guardian Chamber, 2026-10-18)
   unclassified        none of the above -> the conservative walk rule (no jump / transform / vehicle) or a floor the flood
                       does not connect; needs a per-actor look
 
@@ -72,6 +74,7 @@ def triage(M, g, ps):
         
         elif mv: cat = 'on_mover'
         elif kind == 'start' and not any(-30 < d <= 0 for d in below): cat = 'no_floor_below'
+        elif kind == 'start' and not any(-3 <= d <= 0 for d in below): cat = 'elevated_above_floor'   # floor 3-30 m below: spawn drops onto it
         else: cat = 'unclassified'
         out.append({'kind': kind, 'actor': x['actor'], 'class': x.get('class') or x.get('start_kind'), 'sublevel': x.get('sublevel'),
                     'category': cat, 'airborne_reason': fly.get(x['actor']) if cat == 'airborne_by_design' else None, 'mover': {'class': mv[0][1], 'actor': mv[0][2], 'dy_m': mv[0][3]} if mv else None})

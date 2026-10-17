@@ -22,7 +22,7 @@ KINDS = [
      'MP Escalation weapon pickups are a package-7 regen item; loot drop tables are RE data (campaign_loot_tables.json)'),
     ('Starts / walk graph', '`manifests/next_map/campaign_starts_report.json`, `manifests/maps/<ch>/structure_audit.json`',
      'map_structure_audit.py, campaign_starts_report.py', 'CAMPAIGN_PIPELINE_SUMMARY.md §1c; chapter_notes/<ch>.md',
-     'airborne exemption reads reachFlags 2 as R_FLY (PROVISIONAL); D2 Guardian Chamber floor missing from the export (3 starts, UNKNOWN); unclassified off-graph pickups need a per-actor look'),
+     'airborne exemption reads reachFlags 2 as R_FLY (PROVISIONAL); D2 Guardian Chamber starts are elevated spawns over a real floor (elevated_above_floor); unclassified off-graph pickups need a per-actor look'),
     ('Collision', '`.../Maps/<ch>/collision_pawn.glb` (+ skeletal boxes in the audit walk graph)', 'vs_collision.py / vs_physics.py; skel_collision.py',
      'MP_TRANSFORMING_ACTORS.md; structure_audit `skeletal_world_actor_collision`',
      'TnTransformingWorldActor PhysicsAsset boxes are in the campaign walk graph only, not in collision_pawn.glb (runtime: Gameplay fidelity check); poses are the skeletal reference pose'),
