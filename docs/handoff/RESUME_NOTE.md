@@ -50,6 +50,13 @@
 - **Open:**
   - Standing by for Systems' package-7 build data list (overlay files, material sets).
   - Integration will ask for a rerun of `work/matB_review/review.py` on the frozen live tree before the material (B) switch.
+- **2026-10-18 handoffs (all committed):**
+  - package-7 slim audit (`work/handoff/PACKAGE7_SLIM_AUDIT.md`; the pc_strings.int row appended to the tsv);
+  - Gorge / Rust reference frames;
+  - Decoy Trap assets (`decoy_trap_assets.py`);
+  - Trail2 templates (`trail2_templates.py`);
+  - campaign chapter assets for all 10 chapters (`campaign_chapter_assets.py <CH>` + `campaign_assets_summary.py`), plus the matc dry
+    run (`work/matc_dryrun/`: 1,725 / 1,763 clean). Open for RE: the PowerCell_Voltage_FX unclaimed distributions.
 - **RE provisionals parts 1-2 applied:**
   - physmat hull fallback only for StaticMeshActor owners, as node overrides (83b669d);
   - matinee live_without_actor, objectives whitespace_noop (94c758e).
