@@ -21,7 +21,7 @@ Run: `start Fri 10/16/2026 10:13:54.84 cap 10 pkgcache 10`; package cache WFC_PK
 | vs_props | OK | 22.7 s | 1.40 |
 | vs_collision | OK | 1.2 s | 0.89 |
 | vs_physics | OK | 42.4 s | 1.25 |
-| vs_gameplay | OK | 4.6 s | 0.80 |
+| vs_gameplay | OK | 4.3 s | 0.81 |
 | vs_audio | OK | 7.3 s | 0.81 |
 | vs_mapfx | OK | 4.1 s | 1.19 |
 | m04_inventory | OK | 68.2 s | 1.47 |
@@ -30,24 +30,23 @@ Run: `start Fri 10/16/2026 10:13:54.84 cap 10 pkgcache 10`; package cache WFC_PK
 | m04_bsp | OK | 2.3 s | 1.05 |
 | m05_bsp_default_faces | OK | 822.0 s | 4.21 |
 | m04_kismet | OK | 3.6 s | 0.84 |
-| vs_pickups | OK | 1.5 s | 0.90 |
+| vs_pickups | OK | 1.3 s | 0.90 |
 | vs_destructibles | OK | 53.0 s | 1.54 |
 | vs_surface_audio | OK | 2.0 s | 1.00 |
 | map_structure_audit | OK | 287.5 s | 4.98 |
-| map_complete | OK | 8.9 s | 1.61 |
+| map_complete | OK | 7.5 s | 1.61 |
 | map_render_index | OK | 2.1 s | 1.37 |
 | vs_streaming | OK | 1.5 s | 1.09 |
 
-Total wall 28.6 min; peak 4.98 GB. Stage failures: none.
+Total wall 28.5 min; peak 4.98 GB. Stage failures: none.
 
 ## 2. Export and completeness
 
-- Completeness **INCOMPLETE**: 46 checks, 31 COMPLETE, 4 MISSING, 3 AUTHORED, 2 NONE, 2 EXPORTED, 1 PARTIAL, 1 UNVALIDATED, 1 PASS, 1 NOT RUN / FAIL.
+- Completeness **INCOMPLETE**: 46 checks, 32 COMPLETE, 4 MISSING, 3 AUTHORED, 2 EXPORTED, 1 PARTIAL, 1 NONE, 1 UNVALIDATED, 1 PASS, 1 NOT RUN / FAIL.
   - placed_meshes: PARTIAL {"placed": 24605, "unique": 1232, "missing_mesh": 12}
   - decals: NONE {"decals": 0}
   - map_fx: EXPORTED {"particle_components": 626, "systems": 72}
   - movers: AUTHORED {"count": 1476, "physics": {"PHYS_Interpolating": 1390, "PHYS_Rotating": 86}, "matinee": 1}
-  - pickups: NONE {"count": 0, "by_class": {}}
   - loading_metadata: MISSING {"loading_screen": null}
   - thumbnail: MISSING null
   - frontend_name: MISSING null

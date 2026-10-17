@@ -2,7 +2,10 @@
 
 Order set by Integration (2026-10-16). Each fix is generic: MP / Streets outputs must stay byte-identical, proven before and after.
 
-1. **Pickup-factory discovery for campaign chapters.**
+1. **Pickup-factory discovery for campaign chapters: DONE 2026-10-17.** 377 / 377 placed factories exported (`gameplay.json` pickups and
+   `<chapter>_pickup_factories.json`), with weapon class, pickup mesh and sublevel; MP output identical (gate `work/pickupfix/proof.json`).
+   Finding: the MP Escalation maps (BrokenHope 17, Remnant 16) also have TnWeaponPickupFactory that `gameplay.json` omits
+   (MP left unchanged by rule; an MP fidelity item for Integration).
    - A1_IAC: `vs_pickups` finds 0 of the 47 factories that `spawnpoints.json` lists (21 weapon, 20 ammo, 5 health, 1 overshield).
      Campaign factories sit in the design sublevels; the stage needs to look through every exported sublevel.
 2. **Tag parser fix** - DONE 2026-10-16 (f384c7b): authored.db rows re-parsed, MP runtime unchanged, campaign meshes / lights recovered. (authored.db mis-parses some components' tags).

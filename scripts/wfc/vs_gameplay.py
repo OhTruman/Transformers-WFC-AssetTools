@@ -19,7 +19,7 @@ from collections import Counter, defaultdict
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 import authored as A, extract  # noqa: E402
-from vs_common import VS, ue_actor_matrix, ue_to_gltf_matrix, ue_points_to_gltf  # noqa: E402
+from vs_common import VS, ue_actor_matrix, ue_to_gltf_matrix, ue_points_to_gltf, is_campaign  # noqa: E402
 
 MAP = sys.argv[1] if len(sys.argv) > 1 else 'MP_IAC_Streets'
 OUT = os.path.join(VS, 'Maps', MAP)
@@ -131,8 +131,15 @@ def main():
     out['spawn_clusters'] = clusters
     # pickups
     pk = []
-    for c in ('TnAmmoCratePickupFactory', 'TnHealthPickupFactory', 'TnOverShieldPickupFactory'):
-        for r in actors(c):
+    # campaign chapters (vs_common.is_campaign): pickup factories sit in the design sublevels, not the persistent level, and most
+    # are weapon factories (TnWeaponPickupFactory / TnPickupFactory); MP maps keep the original BASE-level, three-class set
+    camp = is_campaign(MAP)
+    pclasses = ('TnAmmoCratePickupFactory', 'TnHealthPickupFactory', 'TnOverShieldPickupFactory') +                (('TnWeaponPickupFactory', 'TnPickupFactory') if camp else ())
+    def pick_actors(c):
+        if not camp: return actors(c)
+        return sorted((r for lv in subs for r in A.find(lv + '.TheWorld.PersistentLevel.%', c)), key=lambda r: r['opath'])
+    for c in pclasses:
+        for r in pick_actors(c):
             d = rec(r, ['InventoryType', 'RespawnTime', 'ShouldDisplayHighlightFx', 'TeamNum'])
             v = A.values(r['opath']); inv = v.get('InventoryType')
             if inv:
@@ -141,6 +148,11 @@ def main():
                 d['inventory'] = {'class': inv, 'cdo': cdo, 'payload': {k: iv.get(k) for k in iv if re.search(
                     r'Health|Ammo|Shield|Amount|Duration|Valid|Pickup(Sound|ObtainedDialog)|Respawn|Desireability|Dropped', k)}}
             d['effects'] = {k: A.values(v[k]).get('Template') for k in ('PickupEffect', 'CustomPickupEffect') if v.get(k)}
+            if camp:
+                d['sublevel'] = r['opath'].split('.')[0]
+                if v.get('PickupMesh'):
+                    mv = A.values(v['PickupMesh'])
+                    d['pickup_mesh'] = {'component': v['PickupMesh'], 'mesh': mv.get('SkeletalMesh') or mv.get('StaticMesh')}
             pk.append(d)
     out['pickups'] = pk
     # objectives

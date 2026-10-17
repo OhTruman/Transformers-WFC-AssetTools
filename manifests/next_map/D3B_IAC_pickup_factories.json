@@ -1789,6 +1789,468 @@
     }
    ]
   },
+  "TnWeaponPickupFactory": {
+   "class": "TnWeaponPickupFactory",
+   "cdo": "TransGame.Default__TnWeaponPickupFactory",
+   "class_chain": [
+    "TransGame.Default__TnWeaponPickupFactory",
+    "TransGame.Default__TnPickupFactory",
+    "Engine.Default__PickupFactory",
+    "Engine.Default__NavigationPoint",
+    "Engine.Default__Actor",
+    "Engine.Default__ReplicatedObject",
+    "Core.Default__StateFullObject",
+    "Core.Default__Object"
+   ],
+   "factory_properties": {
+    "InventoryType": {
+     "value": null,
+     "source_package": "TransGame",
+     "object": "TransGame.Default__TnWeaponPickupFactory",
+     "class": "TnWeaponPickupFactory",
+     "property": "InventoryType",
+     "origin": "absent (engine default)",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "RespawnTime": {
+     "value": null,
+     "source_package": "TransGame",
+     "object": "TransGame.Default__TnWeaponPickupFactory",
+     "class": "TnWeaponPickupFactory",
+     "property": "RespawnTime",
+     "origin": "absent (engine default)",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "ShouldDisplayHighlightFx": {
+     "value": true,
+     "source_package": "TransGame",
+     "object": "TransGame.Default__TnWeaponPickupFactory",
+     "class": "TnWeaponPickupFactory",
+     "property": "ShouldDisplayHighlightFx",
+     "origin": "authored on object",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "bOnlyReplicateHidden": {
+     "value": true,
+     "source_package": "Engine",
+     "object": "Engine.Default__PickupFactory",
+     "class": "PickupFactory",
+     "property": "bOnlyReplicateHidden",
+     "origin": "inherited from Engine.Default__PickupFactory",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "CollisionPreset": {
+     "value": "COLLIDE_TouchAll",
+     "source_package": "Engine",
+     "object": "Engine.Default__PickupFactory",
+     "class": "PickupFactory",
+     "property": "CollisionPreset",
+     "origin": "inherited from Engine.Default__PickupFactory",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "bCollideActors": {
+     "value": true,
+     "source_package": "Engine",
+     "object": "Engine.Default__PickupFactory",
+     "class": "PickupFactory",
+     "property": "bCollideActors",
+     "origin": "inherited from Engine.Default__PickupFactory",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "bAlwaysRelevant": {
+     "value": true,
+     "source_package": "Engine",
+     "object": "Engine.Default__PickupFactory",
+     "class": "PickupFactory",
+     "property": "bAlwaysRelevant",
+     "origin": "inherited from Engine.Default__PickupFactory",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "SupportedEvents": {
+     "value": [
+      "Engine.SeqEvent_Touch",
+      "Engine.SeqEvent_Destroyed",
+      "Engine.SeqEvent_TakeDamage",
+      "Engine.SeqEvent_PickupStatusChange"
+     ],
+     "source_package": "Engine",
+     "object": "Engine.Default__PickupFactory",
+     "class": "PickupFactory",
+     "property": "SupportedEvents",
+     "origin": "inherited from Engine.Default__PickupFactory",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    }
+   },
+   "collision_cylinder": {
+    "CollisionRadius": {
+     "value": 200.0,
+     "source_package": "TransGame",
+     "object": "TransGame.Default__TnPickupFactory.CollisionCylinder",
+     "class": "CylinderComponent",
+     "property": "CollisionRadius",
+     "origin": "inherited from TransGame.Default__TnPickupFactory.CollisionCylinder",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "CollisionHeight": {
+     "value": 100.0,
+     "source_package": "TransGame",
+     "object": "TransGame.Default__TnPickupFactory.CollisionCylinder",
+     "class": "CylinderComponent",
+     "property": "CollisionHeight",
+     "origin": "inherited from TransGame.Default__TnPickupFactory.CollisionCylinder",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "Translation": {
+     "value": {
+      "X": 0.0,
+      "Y": 0.0,
+      "Z": 100.0
+     },
+     "source_package": "TransGame",
+     "object": "TransGame.Default__TnPickupFactory.CollisionCylinder",
+     "class": "CylinderComponent",
+     "property": "Translation",
+     "origin": "inherited from TransGame.Default__TnPickupFactory.CollisionCylinder",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    }
+   },
+   "effect_components": {
+    "PickupEffect": {
+     "component_archetype": "TransGame.Default__TnWeaponPickupFactory.PickupEffect0",
+     "Template": {
+      "value": "FX_Pickups_p.FX.Pickup_FX",
+      "source_package": "TransGame",
+      "object": "TransGame.Default__TnPickupFactory.PickupEffect0",
+      "class": "ParticleSystemComponent",
+      "property": "Template",
+      "origin": "inherited from TransGame.Default__TnPickupFactory.PickupEffect0",
+      "confidence": "CONFIRMED AUTHORED DATA"
+     },
+     "bAutoActivate": {
+      "value": false,
+      "source_package": "TransGame",
+      "object": "TransGame.Default__TnPickupFactory.PickupEffect0",
+      "class": "ParticleSystemComponent",
+      "property": "bAutoActivate",
+      "origin": "inherited from TransGame.Default__TnPickupFactory.PickupEffect0",
+      "confidence": "CONFIRMED AUTHORED DATA",
+      "note": "ParticleSystemComponent default bAutoActivate is true when unset"
+     },
+     "in_Components_array": {
+      "value": true,
+      "object": "TransGame.Default__TnWeaponPickupFactory",
+      "property": "Components",
+      "confidence": "CONFIRMED AUTHORED DATA",
+      "meaning": "UE3 attaches only components listed in the actor Components array at spawn; a component outside it exists (cooked) but is not attached unless native code attaches it"
+     },
+     "SecondsBeforeInactive": 1.0,
+     "CullDistance": null
+    }
+   },
+   "inventory": {
+    "class": null,
+    "cdo": null,
+    "payload": {},
+    "pickup_mesh": {
+     "value": null,
+     "confidence": "CONFIRMED AUTHORED DATA",
+     "note": "inventory CDO has no PickupFactoryMesh: the visible pickup is the particle effect (mesh emitter)"
+    }
+   },
+   "native_functions": [
+    {
+     "kind": "Function",
+     "name": "GetInventoryTypeFor",
+     "serial_size": 90
+    },
+    {
+     "kind": "Function",
+     "name": "TakePickUp",
+     "serial_size": 64
+    },
+    {
+     "kind": "Function",
+     "name": "GiveTo",
+     "serial_size": 140
+    },
+    {
+     "kind": "Function",
+     "name": "Pickup.TakePickUp",
+     "serial_size": 99
+    },
+    {
+     "kind": "Function",
+     "name": "Pickup.ValidTouch",
+     "serial_size": 119
+    },
+    {
+     "kind": "State",
+     "name": "Pickup",
+     "serial_size": 50
+    },
+    {
+     "kind": "Function",
+     "name": "InstantiateInventory",
+     "serial_size": 116
+    },
+    {
+     "kind": "Function",
+     "name": "SetPickupMesh",
+     "serial_size": 99
+    },
+    {
+     "kind": "Function",
+     "name": "GetRespawnTime",
+     "serial_size": 68
+    },
+    {
+     "kind": "Function",
+     "name": "IsReadyToPickup",
+     "serial_size": 106
+    },
+    {
+     "kind": "Function",
+     "name": "SetPickupHidden",
+     "serial_size": 142
+    },
+    {
+     "kind": "Function",
+     "name": "SetPickupVisible",
+     "serial_size": 144
+    },
+    {
+     "kind": "Function",
+     "name": "GetPickupRating",
+     "serial_size": 82
+    }
+   ]
+  },
+  "TnPickupFactory": {
+   "class": "TnPickupFactory",
+   "cdo": "TransGame.Default__TnPickupFactory",
+   "class_chain": [
+    "TransGame.Default__TnPickupFactory",
+    "Engine.Default__PickupFactory",
+    "Engine.Default__NavigationPoint",
+    "Engine.Default__Actor",
+    "Engine.Default__ReplicatedObject",
+    "Core.Default__StateFullObject",
+    "Core.Default__Object"
+   ],
+   "factory_properties": {
+    "InventoryType": {
+     "value": null,
+     "source_package": "TransGame",
+     "object": "TransGame.Default__TnPickupFactory",
+     "class": "TnPickupFactory",
+     "property": "InventoryType",
+     "origin": "absent (engine default)",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "RespawnTime": {
+     "value": null,
+     "source_package": "TransGame",
+     "object": "TransGame.Default__TnPickupFactory",
+     "class": "TnPickupFactory",
+     "property": "RespawnTime",
+     "origin": "absent (engine default)",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "bOnlyReplicateHidden": {
+     "value": true,
+     "source_package": "Engine",
+     "object": "Engine.Default__PickupFactory",
+     "class": "PickupFactory",
+     "property": "bOnlyReplicateHidden",
+     "origin": "inherited from Engine.Default__PickupFactory",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "CollisionPreset": {
+     "value": "COLLIDE_TouchAll",
+     "source_package": "Engine",
+     "object": "Engine.Default__PickupFactory",
+     "class": "PickupFactory",
+     "property": "CollisionPreset",
+     "origin": "inherited from Engine.Default__PickupFactory",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "bCollideActors": {
+     "value": true,
+     "source_package": "Engine",
+     "object": "Engine.Default__PickupFactory",
+     "class": "PickupFactory",
+     "property": "bCollideActors",
+     "origin": "inherited from Engine.Default__PickupFactory",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "bAlwaysRelevant": {
+     "value": true,
+     "source_package": "Engine",
+     "object": "Engine.Default__PickupFactory",
+     "class": "PickupFactory",
+     "property": "bAlwaysRelevant",
+     "origin": "inherited from Engine.Default__PickupFactory",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "SupportedEvents": {
+     "value": [
+      "Engine.SeqEvent_Touch",
+      "Engine.SeqEvent_Destroyed",
+      "Engine.SeqEvent_TakeDamage",
+      "Engine.SeqEvent_PickupStatusChange"
+     ],
+     "source_package": "Engine",
+     "object": "Engine.Default__PickupFactory",
+     "class": "PickupFactory",
+     "property": "SupportedEvents",
+     "origin": "inherited from Engine.Default__PickupFactory",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    }
+   },
+   "collision_cylinder": {
+    "CollisionRadius": {
+     "value": 200.0,
+     "source_package": "TransGame",
+     "object": "TransGame.Default__TnPickupFactory.CollisionCylinder",
+     "class": "CylinderComponent",
+     "property": "CollisionRadius",
+     "origin": "authored on object",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "CollisionHeight": {
+     "value": 100.0,
+     "source_package": "TransGame",
+     "object": "TransGame.Default__TnPickupFactory.CollisionCylinder",
+     "class": "CylinderComponent",
+     "property": "CollisionHeight",
+     "origin": "authored on object",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "Translation": {
+     "value": {
+      "X": 0.0,
+      "Y": 0.0,
+      "Z": 100.0
+     },
+     "source_package": "TransGame",
+     "object": "TransGame.Default__TnPickupFactory.CollisionCylinder",
+     "class": "CylinderComponent",
+     "property": "Translation",
+     "origin": "authored on object",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    }
+   },
+   "effect_components": {
+    "PickupEffect": {
+     "component_archetype": "TransGame.Default__TnPickupFactory.PickupEffect0",
+     "Template": {
+      "value": "FX_Pickups_p.FX.Pickup_FX",
+      "source_package": "TransGame",
+      "object": "TransGame.Default__TnPickupFactory.PickupEffect0",
+      "class": "ParticleSystemComponent",
+      "property": "Template",
+      "origin": "authored on object",
+      "confidence": "CONFIRMED AUTHORED DATA"
+     },
+     "bAutoActivate": {
+      "value": false,
+      "source_package": "TransGame",
+      "object": "TransGame.Default__TnPickupFactory.PickupEffect0",
+      "class": "ParticleSystemComponent",
+      "property": "bAutoActivate",
+      "origin": "authored on object",
+      "confidence": "CONFIRMED AUTHORED DATA",
+      "note": "ParticleSystemComponent default bAutoActivate is true when unset"
+     },
+     "in_Components_array": {
+      "value": true,
+      "object": "TransGame.Default__TnPickupFactory",
+      "property": "Components",
+      "confidence": "CONFIRMED AUTHORED DATA",
+      "meaning": "UE3 attaches only components listed in the actor Components array at spawn; a component outside it exists (cooked) but is not attached unless native code attaches it"
+     },
+     "SecondsBeforeInactive": 1.0,
+     "CullDistance": null
+    }
+   },
+   "inventory": {
+    "class": null,
+    "cdo": null,
+    "payload": {},
+    "pickup_mesh": {
+     "value": null,
+     "confidence": "CONFIRMED AUTHORED DATA",
+     "note": "inventory CDO has no PickupFactoryMesh: the visible pickup is the particle effect (mesh emitter)"
+    }
+   },
+   "native_functions": [
+    {
+     "kind": "Function",
+     "name": "GetInventoryTypeFor",
+     "serial_size": 90
+    },
+    {
+     "kind": "Function",
+     "name": "TakePickUp",
+     "serial_size": 64
+    },
+    {
+     "kind": "Function",
+     "name": "GiveTo",
+     "serial_size": 140
+    },
+    {
+     "kind": "Function",
+     "name": "Pickup.TakePickUp",
+     "serial_size": 99
+    },
+    {
+     "kind": "Function",
+     "name": "Pickup.ValidTouch",
+     "serial_size": 119
+    },
+    {
+     "kind": "State",
+     "name": "Pickup",
+     "serial_size": 50
+    },
+    {
+     "kind": "Function",
+     "name": "InstantiateInventory",
+     "serial_size": 116
+    },
+    {
+     "kind": "Function",
+     "name": "SetPickupMesh",
+     "serial_size": 99
+    },
+    {
+     "kind": "Function",
+     "name": "GetRespawnTime",
+     "serial_size": 68
+    },
+    {
+     "kind": "Function",
+     "name": "IsReadyToPickup",
+     "serial_size": 106
+    },
+    {
+     "kind": "Function",
+     "name": "SetPickupHidden",
+     "serial_size": 142
+    },
+    {
+     "kind": "Function",
+     "name": "SetPickupVisible",
+     "serial_size": 144
+    },
+    {
+     "kind": "Function",
+     "name": "GetPickupRating",
+     "serial_size": 82
+    }
+   ]
+  },
   "TnPickupFactory (shared base)": {
    "cdo": "TransGame.Default__TnPickupFactory",
    "effect_components": {
@@ -1948,7 +2410,10 @@
     }
    },
    "collision_cylinder": "D3B_IAC_Balcony_DSN_m.TheWorld.PersistentLevel.TnAmmoCratePickupFactory_9932.CylinderComponent_16197",
-   "in_gameplay_json": false
+   "sublevel": "D3B_IAC_Balcony_DSN_m",
+   "InventoryType": "TransGame.TnAmmoCratePickup",
+   "pickup_mesh": null,
+   "in_gameplay_json": true
   },
   {
    "actor": "D3B_IAC_Balcony_DSN_m.TheWorld.PersistentLevel.TnAmmoCratePickupFactory_9961",
@@ -2004,7 +2469,10 @@
     }
    },
    "collision_cylinder": "D3B_IAC_Balcony_DSN_m.TheWorld.PersistentLevel.TnAmmoCratePickupFactory_9961.CylinderComponent_16197",
-   "in_gameplay_json": false
+   "sublevel": "D3B_IAC_Balcony_DSN_m",
+   "InventoryType": "TransGame.TnAmmoCratePickup",
+   "pickup_mesh": null,
+   "in_gameplay_json": true
   },
   {
    "actor": "D3B_IAC_BottomLift1_DSN_m.TheWorld.PersistentLevel.TnAmmoCratePickupFactory_8324",
@@ -2060,7 +2528,10 @@
     }
    },
    "collision_cylinder": "D3B_IAC_BottomLift1_DSN_m.TheWorld.PersistentLevel.TnAmmoCratePickupFactory_8324.CylinderComponent_3163",
-   "in_gameplay_json": false
+   "sublevel": "D3B_IAC_BottomLift1_DSN_m",
+   "InventoryType": "TransGame.TnAmmoCratePickup",
+   "pickup_mesh": null,
+   "in_gameplay_json": true
   },
   {
    "actor": "D3B_IAC_Lift1B_DSN_m.TheWorld.PersistentLevel.TnAmmoCratePickupFactory_6808",
@@ -2113,7 +2584,10 @@
     }
    },
    "collision_cylinder": "D3B_IAC_Lift1B_DSN_m.TheWorld.PersistentLevel.TnAmmoCratePickupFactory_6808.CylinderComponent_15887",
-   "in_gameplay_json": false
+   "sublevel": "D3B_IAC_Lift1B_DSN_m",
+   "InventoryType": "TransGame.TnAmmoCratePickup",
+   "pickup_mesh": null,
+   "in_gameplay_json": true
   },
   {
    "actor": "D3B_IAC_MiddleInt1_DSN_m.TheWorld.PersistentLevel.TnAmmoCratePickupFactory_14102",
@@ -2166,7 +2640,10 @@
     }
    },
    "collision_cylinder": "D3B_IAC_MiddleInt1_DSN_m.TheWorld.PersistentLevel.TnAmmoCratePickupFactory_14102.CylinderComponent_3844",
-   "in_gameplay_json": false
+   "sublevel": "D3B_IAC_MiddleInt1_DSN_m",
+   "InventoryType": "TransGame.TnAmmoCratePickup",
+   "pickup_mesh": null,
+   "in_gameplay_json": true
   },
   {
    "actor": "D3B_IAC_MiddleInt1_DSN_m.TheWorld.PersistentLevel.TnAmmoCratePickupFactory_15621",
@@ -2222,7 +2699,10 @@
     }
    },
    "collision_cylinder": "D3B_IAC_MiddleInt1_DSN_m.TheWorld.PersistentLevel.TnAmmoCratePickupFactory_15621.CylinderComponent_15207",
-   "in_gameplay_json": false
+   "sublevel": "D3B_IAC_MiddleInt1_DSN_m",
+   "InventoryType": "TransGame.TnAmmoCratePickup",
+   "pickup_mesh": null,
+   "in_gameplay_json": true
   },
   {
    "actor": "D3B_IAC_Balcony_DSN_m.TheWorld.PersistentLevel.TnHealthPickupFactory_9968",
@@ -2295,16 +2775,1485 @@
     }
    },
    "collision_cylinder": "D3B_IAC_Balcony_DSN_m.TheWorld.PersistentLevel.TnHealthPickupFactory_9968.CylinderComponent_15629",
-   "in_gameplay_json": false
+   "sublevel": "D3B_IAC_Balcony_DSN_m",
+   "InventoryType": "TransGame.TnHealthPickup",
+   "pickup_mesh": null,
+   "in_gameplay_json": true
+  },
+  {
+   "actor": "D3B_IAC_Balcony_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_10670",
+   "class": "TnWeaponPickupFactory",
+   "package": "D3B_IAC_Balcony_DSN_m",
+   "transform": {
+    "Location": {
+     "X": 125077.4765625,
+     "Y": 47764.48046875,
+     "Z": 35472.0
+    },
+    "Rotation": {
+     "Pitch": 0,
+     "Yaw": 0,
+     "Roll": 0
+    },
+    "DrawScale": 1.0,
+    "note": "unset Rotation -> (0,0,0)"
+   },
+   "RespawnTime": {
+    "value": null,
+    "source_package": "D3B_IAC_Balcony_DSN_m",
+    "object": "D3B_IAC_Balcony_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_10670",
+    "class": "TnWeaponPickupFactory",
+    "property": "RespawnTime",
+    "origin": "absent (engine default)",
+    "confidence": "CONFIRMED AUTHORED DATA"
+   },
+   "DefenderTeamIndex": null,
+   "NetworkID": 1219,
+   "Base": null,
+   "MaxPathSize": null,
+   "effects": {
+    "PickupEffect": {
+     "component": "D3B_IAC_Balcony_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_10670.ParticleSystemComponent_6507",
+     "archetype": "TransGame.Default__TnWeaponPickupFactory.PickupEffect0",
+     "Template": "FX_Pickups_p.FX.Pickup_FX",
+     "bAutoActivate": false,
+     "instance_overrides": {
+      "bJustAttached": true,
+      "CullDistance": 300000.0,
+      "CachedCullDistance": 300000.0,
+      "bAcceptsDynamicLights": false,
+      "LightingChannels": {
+       "bInitialized": true,
+       "Dynamic": true
+      }
+     },
+     "in_map_fx_json": true
+    }
+   },
+   "collision_cylinder": "D3B_IAC_Balcony_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_10670.CylinderComponent_257",
+   "sublevel": "D3B_IAC_Balcony_DSN_m",
+   "InventoryType": "TransContent.TnWeaponHealGrenades",
+   "pickup_mesh": {
+    "component": "D3B_IAC_Balcony_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_10670.StaticMeshComponent_5377",
+    "mesh": "WEP_Grenade_p.WEP_Grenade_Heal_STAT"
+   },
+   "in_gameplay_json": true
+  },
+  {
+   "actor": "D3B_IAC_Balcony_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_4030",
+   "class": "TnWeaponPickupFactory",
+   "package": "D3B_IAC_Balcony_DSN_m",
+   "transform": {
+    "Location": {
+     "X": 109682.109375,
+     "Y": 47884.703125,
+     "Z": 35456.0
+    },
+    "Rotation": {
+     "Pitch": 0,
+     "Yaw": 0,
+     "Roll": 0
+    },
+    "DrawScale": 1.0,
+    "note": "unset Rotation -> (0,0,0)"
+   },
+   "RespawnTime": {
+    "value": null,
+    "source_package": "D3B_IAC_Balcony_DSN_m",
+    "object": "D3B_IAC_Balcony_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_4030",
+    "class": "TnWeaponPickupFactory",
+    "property": "RespawnTime",
+    "origin": "absent (engine default)",
+    "confidence": "CONFIRMED AUTHORED DATA"
+   },
+   "DefenderTeamIndex": null,
+   "NetworkID": 1220,
+   "Base": null,
+   "MaxPathSize": null,
+   "effects": {
+    "PickupEffect": {
+     "component": "D3B_IAC_Balcony_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_4030.ParticleSystemComponent_6507",
+     "archetype": "TransGame.Default__TnWeaponPickupFactory.PickupEffect0",
+     "Template": "FX_Pickups_p.FX.Pickup_FX",
+     "bAutoActivate": false,
+     "instance_overrides": {
+      "bJustAttached": true,
+      "CullDistance": 300000.0,
+      "CachedCullDistance": 300000.0,
+      "bAcceptsDynamicLights": false,
+      "LightingChannels": {
+       "bInitialized": true,
+       "Dynamic": true
+      }
+     },
+     "in_map_fx_json": true
+    }
+   },
+   "collision_cylinder": "D3B_IAC_Balcony_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_4030.CylinderComponent_257",
+   "sublevel": "D3B_IAC_Balcony_DSN_m",
+   "InventoryType": "TransContent.TnWeaponHealGrenades",
+   "pickup_mesh": {
+    "component": "D3B_IAC_Balcony_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_4030.StaticMeshComponent_1020",
+    "mesh": "WEP_Grenade_p.WEP_GrenadePickUp_STAT"
+   },
+   "in_gameplay_json": true
+  },
+  {
+   "actor": "D3B_IAC_Balcony_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_7098",
+   "class": "TnWeaponPickupFactory",
+   "package": "D3B_IAC_Balcony_DSN_m",
+   "transform": {
+    "Location": {
+     "X": 117334.0,
+     "Y": 51840.0,
+     "Z": 36228.0
+    },
+    "Rotation": {
+     "Pitch": 0,
+     "Yaw": 0,
+     "Roll": 0
+    },
+    "DrawScale": 1.0,
+    "note": "unset Rotation -> (0,0,0)"
+   },
+   "RespawnTime": {
+    "value": null,
+    "source_package": "D3B_IAC_Balcony_DSN_m",
+    "object": "D3B_IAC_Balcony_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_7098",
+    "class": "TnWeaponPickupFactory",
+    "property": "RespawnTime",
+    "origin": "absent (engine default)",
+    "confidence": "CONFIRMED AUTHORED DATA"
+   },
+   "DefenderTeamIndex": null,
+   "NetworkID": 1209,
+   "Base": "D3B_IAC_Balcony_DSN_m.TheWorld.PersistentLevel.StaticMeshActor_14146",
+   "MaxPathSize": {
+    "Radius": 1892.0,
+    "Height": 850.0
+   },
+   "effects": {
+    "PickupEffect": {
+     "component": "D3B_IAC_Balcony_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_7098.ParticleSystemComponent_3479",
+     "archetype": "TransGame.Default__TnWeaponPickupFactory.PickupEffect0",
+     "Template": "FX_Pickups_p.FX.Pickup_FX",
+     "bAutoActivate": false,
+     "instance_overrides": {
+      "bJustAttached": true,
+      "CullDistance": 300000.0,
+      "CachedCullDistance": 300000.0,
+      "bAcceptsDynamicLights": false,
+      "LightingChannels": {
+       "bInitialized": true,
+       "Dynamic": true
+      }
+     },
+     "in_map_fx_json": true
+    }
+   },
+   "collision_cylinder": "D3B_IAC_Balcony_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_7098.CylinderComponent_13465",
+   "sublevel": "D3B_IAC_Balcony_DSN_m",
+   "InventoryType": "TransContent.TnWeaponRocketLauncher",
+   "pickup_mesh": {
+    "component": "D3B_IAC_Balcony_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_7098.SkeletalMeshComponent_1915",
+    "mesh": "WEP_RocketLauncher_p.WEP_RocketLauncher_SKEL"
+   },
+   "in_gameplay_json": true
+  },
+  {
+   "actor": "D3B_IAC_Balcony_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_7529",
+   "class": "TnWeaponPickupFactory",
+   "package": "D3B_IAC_Balcony_DSN_m",
+   "transform": {
+    "Location": {
+     "X": 116224.0,
+     "Y": 44434.0,
+     "Z": 34307.99609375
+    },
+    "Rotation": {
+     "Pitch": 0,
+     "Yaw": 0,
+     "Roll": 0
+    },
+    "DrawScale": 1.0,
+    "note": "unset Rotation -> (0,0,0)"
+   },
+   "RespawnTime": {
+    "value": null,
+    "source_package": "D3B_IAC_Balcony_DSN_m",
+    "object": "D3B_IAC_Balcony_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_7529",
+    "class": "TnWeaponPickupFactory",
+    "property": "RespawnTime",
+    "origin": "absent (engine default)",
+    "confidence": "CONFIRMED AUTHORED DATA"
+   },
+   "DefenderTeamIndex": null,
+   "NetworkID": 1209,
+   "Base": null,
+   "MaxPathSize": {
+    "Radius": 250.0,
+    "Height": 300.0
+   },
+   "effects": {
+    "PickupEffect": {
+     "component": "D3B_IAC_Balcony_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_7529.ParticleSystemComponent_4197",
+     "archetype": "TransGame.Default__TnWeaponPickupFactory.PickupEffect0",
+     "Template": "FX_Pickups_p.FX.Pickup_FX",
+     "bAutoActivate": false,
+     "instance_overrides": {
+      "bJustAttached": true,
+      "CullDistance": 300000.0,
+      "CachedCullDistance": 300000.0,
+      "bAcceptsDynamicLights": false,
+      "LightingChannels": {
+       "bInitialized": true,
+       "Dynamic": true
+      }
+     },
+     "in_map_fx_json": true
+    }
+   },
+   "collision_cylinder": "D3B_IAC_Balcony_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_7529.CylinderComponent_13190",
+   "sublevel": "D3B_IAC_Balcony_DSN_m",
+   "InventoryType": "TransContent.TnWeaponGrenadeLauncher",
+   "pickup_mesh": {
+    "component": "D3B_IAC_Balcony_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_7529.SkeletalMeshComponent_13504",
+    "mesh": "WEP_GrenadeLauncher_p.WEP_GrenadeLauncher_SKEL"
+   },
+   "in_gameplay_json": true
+  },
+  {
+   "actor": "D3B_IAC_BottomInt_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_11908",
+   "class": "TnWeaponPickupFactory",
+   "package": "D3B_IAC_BottomInt_DSN_m",
+   "transform": {
+    "Location": {
+     "X": 15.015314102172852,
+     "Y": -56064.0,
+     "Z": -94446.0
+    },
+    "Rotation": {
+     "Pitch": 0,
+     "Yaw": 0,
+     "Roll": 0
+    },
+    "DrawScale": 1.0,
+    "note": "unset Rotation -> (0,0,0)"
+   },
+   "RespawnTime": {
+    "value": null,
+    "source_package": "D3B_IAC_BottomInt_DSN_m",
+    "object": "D3B_IAC_BottomInt_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_11908",
+    "class": "TnWeaponPickupFactory",
+    "property": "RespawnTime",
+    "origin": "absent (engine default)",
+    "confidence": "CONFIRMED AUTHORED DATA"
+   },
+   "DefenderTeamIndex": null,
+   "NetworkID": 48,
+   "Base": null,
+   "MaxPathSize": null,
+   "effects": {
+    "PickupEffect": {
+     "component": "D3B_IAC_BottomInt_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_11908.ParticleSystemComponent_654",
+     "archetype": "TransGame.Default__TnWeaponPickupFactory.PickupEffect0",
+     "Template": "FX_Pickups_p.FX.Pickup_FX",
+     "bAutoActivate": false,
+     "instance_overrides": {
+      "bJustAttached": true,
+      "CullDistance": 300000.0,
+      "CachedCullDistance": 300000.0,
+      "bAcceptsDynamicLights": false,
+      "LightingChannels": {
+       "bInitialized": true,
+       "Dynamic": true
+      }
+     },
+     "in_map_fx_json": true
+    }
+   },
+   "collision_cylinder": "D3B_IAC_BottomInt_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_11908.CylinderComponent_898",
+   "sublevel": "D3B_IAC_BottomInt_DSN_m",
+   "InventoryType": "TransContent.TnWeaponGrenadeLauncher",
+   "pickup_mesh": {
+    "component": "D3B_IAC_BottomInt_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_11908.SkeletalMeshComponent_15954",
+    "mesh": "WEP_GrenadeLauncher_p.WEP_GrenadeLauncher_SKEL"
+   },
+   "in_gameplay_json": true
+  },
+  {
+   "actor": "D3B_IAC_BottomInt_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_6059",
+   "class": "TnWeaponPickupFactory",
+   "package": "D3B_IAC_BottomInt_DSN_m",
+   "transform": {
+    "Location": {
+     "X": 2428.344970703125,
+     "Y": -52031.05078125,
+     "Z": -95484.0
+    },
+    "Rotation": {
+     "Pitch": 0,
+     "Yaw": 0,
+     "Roll": 0
+    },
+    "DrawScale": 1.0,
+    "note": "unset Rotation -> (0,0,0)"
+   },
+   "RespawnTime": {
+    "value": null,
+    "source_package": "D3B_IAC_BottomInt_DSN_m",
+    "object": "D3B_IAC_BottomInt_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_6059",
+    "class": "TnWeaponPickupFactory",
+    "property": "RespawnTime",
+    "origin": "absent (engine default)",
+    "confidence": "CONFIRMED AUTHORED DATA"
+   },
+   "DefenderTeamIndex": null,
+   "NetworkID": 14,
+   "Base": null,
+   "MaxPathSize": {
+    "Radius": 440.0,
+    "Height": 400.0
+   },
+   "effects": {
+    "PickupEffect": {
+     "component": "D3B_IAC_BottomInt_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_6059.ParticleSystemComponent_11408",
+     "archetype": "TransGame.Default__TnWeaponPickupFactory.PickupEffect0",
+     "Template": "FX_Pickups_p.FX.Pickup_FX",
+     "bAutoActivate": false,
+     "instance_overrides": {
+      "bJustAttached": true,
+      "CullDistance": 300000.0,
+      "CachedCullDistance": 300000.0,
+      "bAcceptsDynamicLights": false,
+      "LightingChannels": {
+       "bInitialized": true,
+       "Dynamic": true
+      }
+     },
+     "in_map_fx_json": true
+    }
+   },
+   "collision_cylinder": "D3B_IAC_BottomInt_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_6059.CylinderComponent_6498",
+   "sublevel": "D3B_IAC_BottomInt_DSN_m",
+   "InventoryType": "TransContent.TnWeaponFlakGrenades",
+   "pickup_mesh": {
+    "component": "D3B_IAC_BottomInt_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_6059.StaticMeshComponent_4119",
+    "mesh": "WEP_Grenade_p.WEP_Grenade_Flak_STAT"
+   },
+   "in_gameplay_json": true
+  },
+  {
+   "actor": "D3B_IAC_BottomLift2_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_1227",
+   "class": "TnWeaponPickupFactory",
+   "package": "D3B_IAC_BottomLift2_DSN_m",
+   "transform": {
+    "Location": {
+     "X": 117038.0,
+     "Y": 37404.0,
+     "Z": -32636.0
+    },
+    "Rotation": {
+     "Pitch": 0,
+     "Yaw": 0,
+     "Roll": 0
+    },
+    "DrawScale": 1.0,
+    "note": "unset Rotation -> (0,0,0)"
+   },
+   "RespawnTime": {
+    "value": null,
+    "source_package": "D3B_IAC_BottomLift2_DSN_m",
+    "object": "D3B_IAC_BottomLift2_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_1227",
+    "class": "TnWeaponPickupFactory",
+    "property": "RespawnTime",
+    "origin": "absent (engine default)",
+    "confidence": "CONFIRMED AUTHORED DATA"
+   },
+   "DefenderTeamIndex": null,
+   "NetworkID": 1063,
+   "Base": null,
+   "MaxPathSize": null,
+   "effects": {
+    "PickupEffect": {
+     "component": "D3B_IAC_BottomLift2_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_1227.ParticleSystemComponent_1494",
+     "archetype": "TransGame.Default__TnWeaponPickupFactory.PickupEffect0",
+     "Template": "FX_Pickups_p.FX.Pickup_FX",
+     "bAutoActivate": false,
+     "instance_overrides": {
+      "bJustAttached": true,
+      "CullDistance": 300000.0,
+      "CachedCullDistance": 300000.0,
+      "bAcceptsDynamicLights": false,
+      "LightingChannels": {
+       "bInitialized": true,
+       "Dynamic": true
+      }
+     },
+     "in_map_fx_json": true
+    }
+   },
+   "collision_cylinder": "D3B_IAC_BottomLift2_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_1227.CylinderComponent_2397",
+   "sublevel": "D3B_IAC_BottomLift2_DSN_m",
+   "InventoryType": "TransContent.TnWeaponShotgun",
+   "pickup_mesh": {
+    "component": "D3B_IAC_BottomLift2_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_1227.SkeletalMeshComponent_5906",
+    "mesh": "WEP_Shotgun_p.WEP_Shotgun_SKEL"
+   },
+   "in_gameplay_json": true
+  },
+  {
+   "actor": "D3B_IAC_BottomLift2_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_14456",
+   "class": "TnWeaponPickupFactory",
+   "package": "D3B_IAC_BottomLift2_DSN_m",
+   "transform": {
+    "Location": {
+     "X": 126497.7890625,
+     "Y": 49925.390625,
+     "Z": -32606.65625
+    },
+    "Rotation": {
+     "Pitch": 0,
+     "Yaw": 0,
+     "Roll": 0
+    },
+    "DrawScale": 1.0,
+    "note": "unset Rotation -> (0,0,0)"
+   },
+   "RespawnTime": {
+    "value": null,
+    "source_package": "D3B_IAC_BottomLift2_DSN_m",
+    "object": "D3B_IAC_BottomLift2_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_14456",
+    "class": "TnWeaponPickupFactory",
+    "property": "RespawnTime",
+    "origin": "absent (engine default)",
+    "confidence": "CONFIRMED AUTHORED DATA"
+   },
+   "DefenderTeamIndex": null,
+   "NetworkID": 1062,
+   "Base": null,
+   "MaxPathSize": null,
+   "effects": {
+    "PickupEffect": {
+     "component": "D3B_IAC_BottomLift2_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_14456.ParticleSystemComponent_9946",
+     "archetype": "TransGame.Default__TnWeaponPickupFactory.PickupEffect0",
+     "Template": "FX_Pickups_p.FX.Pickup_FX",
+     "bAutoActivate": false,
+     "instance_overrides": {
+      "bJustAttached": true,
+      "CullDistance": 300000.0,
+      "CachedCullDistance": 300000.0,
+      "bAcceptsDynamicLights": false,
+      "LightingChannels": {
+       "bInitialized": true,
+       "Dynamic": true
+      }
+     },
+     "in_map_fx_json": true
+    }
+   },
+   "collision_cylinder": "D3B_IAC_BottomLift2_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_14456.CylinderComponent_5838",
+   "sublevel": "D3B_IAC_BottomLift2_DSN_m",
+   "InventoryType": "TransContent.TnWeaponHeavyMG",
+   "pickup_mesh": {
+    "component": "D3B_IAC_BottomLift2_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_14456.SkeletalMeshComponent_1340",
+    "mesh": "WEP_HeavyMG_p.WEP_HeavyMG_SKEL"
+   },
+   "in_gameplay_json": true
+  },
+  {
+   "actor": "D3B_IAC_BridgeStation1_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_601",
+   "class": "TnWeaponPickupFactory",
+   "package": "D3B_IAC_BridgeStation1_DSN_m",
+   "transform": {
+    "Location": {
+     "X": 92877.96875,
+     "Y": -49351.0,
+     "Z": -18812.0
+    },
+    "Rotation": {
+     "Pitch": 0,
+     "Yaw": 0,
+     "Roll": 0
+    },
+    "DrawScale": 1.0,
+    "note": "unset Rotation -> (0,0,0)"
+   },
+   "RespawnTime": {
+    "value": null,
+    "source_package": "D3B_IAC_BridgeStation1_DSN_m",
+    "object": "D3B_IAC_BridgeStation1_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_601",
+    "class": "TnWeaponPickupFactory",
+    "property": "RespawnTime",
+    "origin": "absent (engine default)",
+    "confidence": "CONFIRMED AUTHORED DATA"
+   },
+   "DefenderTeamIndex": null,
+   "NetworkID": 935,
+   "Base": null,
+   "MaxPathSize": null,
+   "effects": {
+    "PickupEffect": {
+     "component": "D3B_IAC_BridgeStation1_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_601.ParticleSystemComponent_4783",
+     "archetype": "TransGame.Default__TnWeaponPickupFactory.PickupEffect0",
+     "Template": "FX_Pickups_p.FX.Pickup_FX",
+     "bAutoActivate": false,
+     "instance_overrides": {
+      "bJustAttached": true,
+      "OldPosition": {
+       "X": 95272.0,
+       "Y": -48457.0,
+       "Z": -18812.0
+      },
+      "CullDistance": 300000.0,
+      "CachedCullDistance": 300000.0,
+      "bAcceptsDynamicLights": false,
+      "LightingChannels": {
+       "bInitialized": true,
+       "Dynamic": true
+      }
+     },
+     "in_map_fx_json": true
+    }
+   },
+   "collision_cylinder": "D3B_IAC_BridgeStation1_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_601.CylinderComponent_7201",
+   "sublevel": "D3B_IAC_BridgeStation1_DSN_m",
+   "InventoryType": "TransContent.TnWeaponFlashBangs",
+   "pickup_mesh": {
+    "component": "D3B_IAC_BridgeStation1_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_601.StaticMeshComponent_14154",
+    "mesh": "WEP_Grenade_p.WEP_Grenade_Flashbang_STAT"
+   },
+   "in_gameplay_json": true
+  },
+  {
+   "actor": "D3B_IAC_Lift1B_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_7698",
+   "class": "TnWeaponPickupFactory",
+   "package": "D3B_IAC_Lift1B_DSN_m",
+   "transform": {
+    "Location": {
+     "X": -44578.25390625,
+     "Y": -44823.77734375,
+     "Z": -17916.0
+    },
+    "Rotation": {
+     "Pitch": 0,
+     "Yaw": 0,
+     "Roll": 0
+    },
+    "DrawScale": 1.0,
+    "note": "unset Rotation -> (0,0,0)"
+   },
+   "RespawnTime": {
+    "value": null,
+    "source_package": "D3B_IAC_Lift1B_DSN_m",
+    "object": "D3B_IAC_Lift1B_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_7698",
+    "class": "TnWeaponPickupFactory",
+    "property": "RespawnTime",
+    "origin": "absent (engine default)",
+    "confidence": "CONFIRMED AUTHORED DATA"
+   },
+   "DefenderTeamIndex": null,
+   "NetworkID": 190,
+   "Base": null,
+   "MaxPathSize": null,
+   "effects": {
+    "PickupEffect": {
+     "component": "D3B_IAC_Lift1B_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_7698.ParticleSystemComponent_5605",
+     "archetype": "TransGame.Default__TnWeaponPickupFactory.PickupEffect0",
+     "Template": "FX_Pickups_p.FX.Pickup_FX",
+     "bAutoActivate": false,
+     "instance_overrides": {
+      "bJustAttached": true,
+      "CullDistance": 300000.0,
+      "CachedCullDistance": 300000.0,
+      "bAcceptsDynamicLights": false,
+      "LightingChannels": {
+       "bInitialized": true,
+       "Dynamic": true
+      }
+     },
+     "in_map_fx_json": true
+    }
+   },
+   "collision_cylinder": "D3B_IAC_Lift1B_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_7698.CylinderComponent_16095",
+   "sublevel": "D3B_IAC_Lift1B_DSN_m",
+   "InventoryType": "TransContent.TnWeaponAssaultRifle",
+   "pickup_mesh": {
+    "component": "D3B_IAC_Lift1B_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_7698.SkeletalMeshComponent_8050",
+    "mesh": "WEP_AssaultRifle_p.WEP_AssaultRifle_SKEL"
+   },
+   "in_gameplay_json": true
+  },
+  {
+   "actor": "D3B_IAC_MiddleInt1_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_11188",
+   "class": "TnWeaponPickupFactory",
+   "package": "D3B_IAC_MiddleInt1_DSN_m",
+   "transform": {
+    "Location": {
+     "X": -69693.1875,
+     "Y": -35808.0,
+     "Z": -22528.935546875
+    },
+    "Rotation": {
+     "Pitch": 0,
+     "Yaw": 0,
+     "Roll": 0
+    },
+    "DrawScale": 1.0,
+    "note": "unset Rotation -> (0,0,0)"
+   },
+   "RespawnTime": {
+    "value": null,
+    "source_package": "D3B_IAC_MiddleInt1_DSN_m",
+    "object": "D3B_IAC_MiddleInt1_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_11188",
+    "class": "TnWeaponPickupFactory",
+    "property": "RespawnTime",
+    "origin": "absent (engine default)",
+    "confidence": "CONFIRMED AUTHORED DATA"
+   },
+   "DefenderTeamIndex": null,
+   "NetworkID": 264,
+   "Base": null,
+   "MaxPathSize": null,
+   "effects": {
+    "PickupEffect": {
+     "component": "D3B_IAC_MiddleInt1_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_11188.ParticleSystemComponent_11583",
+     "archetype": "TransGame.Default__TnWeaponPickupFactory.PickupEffect0",
+     "Template": "FX_Pickups_p.FX.Pickup_FX",
+     "bAutoActivate": false,
+     "instance_overrides": {
+      "bJustAttached": true,
+      "OldPosition": {
+       "X": -70114.1875,
+       "Y": -36567.0,
+       "Z": -22527.001953125
+      },
+      "CullDistance": 300000.0,
+      "CachedCullDistance": 300000.0,
+      "bAcceptsDynamicLights": false,
+      "LightingChannels": {
+       "bInitialized": true,
+       "Dynamic": true
+      }
+     },
+     "in_map_fx_json": true
+    }
+   },
+   "collision_cylinder": "D3B_IAC_MiddleInt1_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_11188.CylinderComponent_2315",
+   "sublevel": "D3B_IAC_MiddleInt1_DSN_m",
+   "InventoryType": "TransContent.TnWeaponKamikazeMines",
+   "pickup_mesh": {
+    "component": "D3B_IAC_MiddleInt1_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_11188.SkeletalMeshComponent_4451",
+    "mesh": "WEP_KamikazeMine_p.WEP_KamikazeMine_SKEL"
+   },
+   "in_gameplay_json": true
+  },
+  {
+   "actor": "D3B_IAC_MiddleInt1_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_13389",
+   "class": "TnWeaponPickupFactory",
+   "package": "D3B_IAC_MiddleInt1_DSN_m",
+   "transform": {
+    "Location": {
+     "X": -69715.6640625,
+     "Y": -42074.0,
+     "Z": -22536.0
+    },
+    "Rotation": {
+     "Pitch": 0,
+     "Yaw": 20992,
+     "Roll": 0
+    },
+    "DrawScale": 1.0,
+    "note": "unset Rotation -> (0,0,0)"
+   },
+   "RespawnTime": {
+    "value": null,
+    "source_package": "D3B_IAC_MiddleInt1_DSN_m",
+    "object": "D3B_IAC_MiddleInt1_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_13389",
+    "class": "TnWeaponPickupFactory",
+    "property": "RespawnTime",
+    "origin": "absent (engine default)",
+    "confidence": "CONFIRMED AUTHORED DATA"
+   },
+   "DefenderTeamIndex": null,
+   "NetworkID": 265,
+   "Base": null,
+   "MaxPathSize": null,
+   "effects": {
+    "PickupEffect": {
+     "component": "D3B_IAC_MiddleInt1_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_13389.ParticleSystemComponent_9510",
+     "archetype": "TransGame.Default__TnWeaponPickupFactory.PickupEffect0",
+     "Template": "FX_Pickups_p.FX.Pickup_FX",
+     "bAutoActivate": false,
+     "instance_overrides": {
+      "bJustAttached": true,
+      "CullDistance": 300000.0,
+      "CachedCullDistance": 300000.0,
+      "bAcceptsDynamicLights": false,
+      "LightingChannels": {
+       "bInitialized": true,
+       "Dynamic": true
+      }
+     },
+     "in_map_fx_json": true
+    }
+   },
+   "collision_cylinder": "D3B_IAC_MiddleInt1_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_13389.CylinderComponent_14840",
+   "sublevel": "D3B_IAC_MiddleInt1_DSN_m",
+   "InventoryType": "TransContent.TnWeaponHeavyMG",
+   "pickup_mesh": {
+    "component": "D3B_IAC_MiddleInt1_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_13389.SkeletalMeshComponent_5763",
+    "mesh": "WEP_HeavyMG_p.WEP_HeavyMG_SKEL"
+   },
+   "in_gameplay_json": true
+  },
+  {
+   "actor": "D3B_IAC_MiddleInt1_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_5995",
+   "class": "TnWeaponPickupFactory",
+   "package": "D3B_IAC_MiddleInt1_DSN_m",
+   "transform": {
+    "Location": {
+     "X": -64127.83203125,
+     "Y": -42880.31640625,
+     "Z": -21436.0
+    },
+    "Rotation": {
+     "Pitch": 0,
+     "Yaw": 19808,
+     "Roll": 0
+    },
+    "DrawScale": 1.0,
+    "note": "unset Rotation -> (0,0,0)"
+   },
+   "RespawnTime": {
+    "value": null,
+    "source_package": "D3B_IAC_MiddleInt1_DSN_m",
+    "object": "D3B_IAC_MiddleInt1_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_5995",
+    "class": "TnWeaponPickupFactory",
+    "property": "RespawnTime",
+    "origin": "absent (engine default)",
+    "confidence": "CONFIRMED AUTHORED DATA"
+   },
+   "DefenderTeamIndex": null,
+   "NetworkID": 263,
+   "Base": null,
+   "MaxPathSize": null,
+   "effects": {
+    "PickupEffect": {
+     "component": "D3B_IAC_MiddleInt1_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_5995.ParticleSystemComponent_1707",
+     "archetype": "TransGame.Default__TnWeaponPickupFactory.PickupEffect0",
+     "Template": "FX_Pickups_p.FX.Pickup_FX",
+     "bAutoActivate": false,
+     "instance_overrides": {
+      "bJustAttached": true,
+      "OldPosition": {
+       "X": -65034.1796875,
+       "Y": -38176.0,
+       "Z": -21247.001953125
+      },
+      "CullDistance": 300000.0,
+      "CachedCullDistance": 300000.0,
+      "bAcceptsDynamicLights": false,
+      "LightingChannels": {
+       "bInitialized": true,
+       "Dynamic": true
+      }
+     },
+     "in_map_fx_json": true
+    }
+   },
+   "collision_cylinder": "D3B_IAC_MiddleInt1_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_5995.CylinderComponent_13320",
+   "sublevel": "D3B_IAC_MiddleInt1_DSN_m",
+   "InventoryType": "TransContent.TnWeaponRocketLauncher",
+   "pickup_mesh": {
+    "component": "D3B_IAC_MiddleInt1_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_5995.SkeletalMeshComponent_7043",
+    "mesh": "WEP_RocketLauncher_p.WEP_RocketLauncher_SKEL"
+   },
+   "in_gameplay_json": true
+  },
+  {
+   "actor": "D3B_IAC_MiddleInt2_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_11027",
+   "class": "TnWeaponPickupFactory",
+   "package": "D3B_IAC_MiddleInt2_DSN_m",
+   "transform": {
+    "Location": {
+     "X": 28813.455078125,
+     "Y": -46720.80859375,
+     "Z": -23804.0
+    },
+    "Rotation": {
+     "Pitch": 0,
+     "Yaw": 0,
+     "Roll": 0
+    },
+    "DrawScale": 1.0,
+    "note": "unset Rotation -> (0,0,0)"
+   },
+   "RespawnTime": {
+    "value": null,
+    "source_package": "D3B_IAC_MiddleInt2_DSN_m",
+    "object": "D3B_IAC_MiddleInt2_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_11027",
+    "class": "TnWeaponPickupFactory",
+    "property": "RespawnTime",
+    "origin": "absent (engine default)",
+    "confidence": "CONFIRMED AUTHORED DATA"
+   },
+   "DefenderTeamIndex": null,
+   "NetworkID": 914,
+   "Base": null,
+   "MaxPathSize": {
+    "Radius": 1419.0,
+    "Height": 850.0
+   },
+   "effects": {
+    "PickupEffect": {
+     "component": "D3B_IAC_MiddleInt2_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_11027.ParticleSystemComponent_2716",
+     "archetype": "TransGame.Default__TnWeaponPickupFactory.PickupEffect0",
+     "Template": "FX_Pickups_p.FX.Pickup_FX",
+     "bAutoActivate": false,
+     "instance_overrides": {
+      "bJustAttached": true,
+      "CullDistance": 300000.0,
+      "CachedCullDistance": 300000.0,
+      "bAcceptsDynamicLights": false,
+      "LightingChannels": {
+       "bInitialized": true,
+       "Dynamic": true
+      }
+     },
+     "in_map_fx_json": true
+    }
+   },
+   "collision_cylinder": "D3B_IAC_MiddleInt2_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_11027.CylinderComponent_838",
+   "sublevel": "D3B_IAC_MiddleInt2_DSN_m",
+   "InventoryType": "TransContent.TnWeaponGrenadeLauncher",
+   "pickup_mesh": {
+    "component": "D3B_IAC_MiddleInt2_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_11027.SkeletalMeshComponent_16048",
+    "mesh": "WEP_GrenadeLauncher_p.WEP_GrenadeLauncher_SKEL"
+   },
+   "in_gameplay_json": true
+  },
+  {
+   "actor": "D3B_IAC_MiddleInt2_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_11504",
+   "class": "TnWeaponPickupFactory",
+   "package": "D3B_IAC_MiddleInt2_DSN_m",
+   "transform": {
+    "Location": {
+     "X": 37289.09375,
+     "Y": -46941.7578125,
+     "Z": -23804.0
+    },
+    "Rotation": {
+     "Pitch": 0,
+     "Yaw": 0,
+     "Roll": 0
+    },
+    "DrawScale": 1.0,
+    "note": "unset Rotation -> (0,0,0)"
+   },
+   "RespawnTime": {
+    "value": null,
+    "source_package": "D3B_IAC_MiddleInt2_DSN_m",
+    "object": "D3B_IAC_MiddleInt2_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_11504",
+    "class": "TnWeaponPickupFactory",
+    "property": "RespawnTime",
+    "origin": "absent (engine default)",
+    "confidence": "CONFIRMED AUTHORED DATA"
+   },
+   "DefenderTeamIndex": null,
+   "NetworkID": 914,
+   "Base": null,
+   "MaxPathSize": {
+    "Radius": 1571.0,
+    "Height": 850.0
+   },
+   "effects": {
+    "PickupEffect": {
+     "component": "D3B_IAC_MiddleInt2_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_11504.ParticleSystemComponent_4728",
+     "archetype": "TransGame.Default__TnWeaponPickupFactory.PickupEffect0",
+     "Template": "FX_Pickups_p.FX.Pickup_FX",
+     "bAutoActivate": false,
+     "instance_overrides": {
+      "bJustAttached": true,
+      "CullDistance": 300000.0,
+      "CachedCullDistance": 300000.0,
+      "bAcceptsDynamicLights": false,
+      "LightingChannels": {
+       "bInitialized": true,
+       "Dynamic": true
+      }
+     },
+     "in_map_fx_json": true
+    }
+   },
+   "collision_cylinder": "D3B_IAC_MiddleInt2_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_11504.CylinderComponent_10129",
+   "sublevel": "D3B_IAC_MiddleInt2_DSN_m",
+   "InventoryType": "TransContent.TnWeaponHealGrenades",
+   "pickup_mesh": {
+    "component": "D3B_IAC_MiddleInt2_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_11504.StaticMeshComponent_6023",
+    "mesh": "WEP_Grenade_p.WEP_Grenade_Heal_STAT"
+   },
+   "in_gameplay_json": true
+  },
+  {
+   "actor": "D3B_IAC_MiddleInt2_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_15597",
+   "class": "TnWeaponPickupFactory",
+   "package": "D3B_IAC_MiddleInt2_DSN_m",
+   "transform": {
+    "Location": {
+     "X": 24222.97265625,
+     "Y": -49257.65625,
+     "Z": -22524.0
+    },
+    "Rotation": {
+     "Pitch": 0,
+     "Yaw": 0,
+     "Roll": 0
+    },
+    "DrawScale": 1.0,
+    "note": "unset Rotation -> (0,0,0)"
+   },
+   "RespawnTime": {
+    "value": null,
+    "source_package": "D3B_IAC_MiddleInt2_DSN_m",
+    "object": "D3B_IAC_MiddleInt2_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_15597",
+    "class": "TnWeaponPickupFactory",
+    "property": "RespawnTime",
+    "origin": "absent (engine default)",
+    "confidence": "CONFIRMED AUTHORED DATA"
+   },
+   "DefenderTeamIndex": null,
+   "NetworkID": 390,
+   "Base": null,
+   "MaxPathSize": null,
+   "effects": {
+    "PickupEffect": {
+     "component": "D3B_IAC_MiddleInt2_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_15597.ParticleSystemComponent_4728",
+     "archetype": "TransGame.Default__TnWeaponPickupFactory.PickupEffect0",
+     "Template": "FX_Pickups_p.FX.Pickup_FX",
+     "bAutoActivate": false,
+     "instance_overrides": {
+      "bJustAttached": true,
+      "CullDistance": 300000.0,
+      "CachedCullDistance": 300000.0,
+      "bAcceptsDynamicLights": false,
+      "LightingChannels": {
+       "bInitialized": true,
+       "Dynamic": true
+      }
+     },
+     "in_map_fx_json": true
+    }
+   },
+   "collision_cylinder": "D3B_IAC_MiddleInt2_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_15597.CylinderComponent_10129",
+   "sublevel": "D3B_IAC_MiddleInt2_DSN_m",
+   "InventoryType": "TransContent.TnWeaponHealGrenades",
+   "pickup_mesh": {
+    "component": "D3B_IAC_MiddleInt2_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_15597.StaticMeshComponent_1670",
+    "mesh": "WEP_Grenade_p.WEP_Grenade_Heal_STAT"
+   },
+   "in_gameplay_json": true
+  },
+  {
+   "actor": "D3B_IAC_MiddleInt2_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_15642",
+   "class": "TnWeaponPickupFactory",
+   "package": "D3B_IAC_MiddleInt2_DSN_m",
+   "transform": {
+    "Location": {
+     "X": 24516.23046875,
+     "Y": -54864.0,
+     "Z": -20457.310546875
+    },
+    "Rotation": {
+     "Pitch": 0,
+     "Yaw": 11168,
+     "Roll": 0
+    },
+    "DrawScale": 1.0,
+    "note": "unset Rotation -> (0,0,0)"
+   },
+   "RespawnTime": {
+    "value": null,
+    "source_package": "D3B_IAC_MiddleInt2_DSN_m",
+    "object": "D3B_IAC_MiddleInt2_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_15642",
+    "class": "TnWeaponPickupFactory",
+    "property": "RespawnTime",
+    "origin": "absent (engine default)",
+    "confidence": "CONFIRMED AUTHORED DATA"
+   },
+   "DefenderTeamIndex": null,
+   "NetworkID": 914,
+   "Base": null,
+   "MaxPathSize": {
+    "Radius": 250.0,
+    "Height": 300.0
+   },
+   "effects": {
+    "PickupEffect": {
+     "component": "D3B_IAC_MiddleInt2_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_15642.ParticleSystemComponent_10709",
+     "archetype": "TransGame.Default__TnWeaponPickupFactory.PickupEffect0",
+     "Template": "FX_Pickups_p.FX.Pickup_FX",
+     "bAutoActivate": false,
+     "instance_overrides": {
+      "bJustAttached": true,
+      "CullDistance": 300000.0,
+      "CachedCullDistance": 300000.0,
+      "bAcceptsDynamicLights": false,
+      "LightingChannels": {
+       "bInitialized": true,
+       "Dynamic": true
+      }
+     },
+     "in_map_fx_json": true
+    }
+   },
+   "collision_cylinder": "D3B_IAC_MiddleInt2_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_15642.CylinderComponent_6288",
+   "sublevel": "D3B_IAC_MiddleInt2_DSN_m",
+   "InventoryType": "TransContent.TnWeaponSniperRifle",
+   "pickup_mesh": {
+    "component": "D3B_IAC_MiddleInt2_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_15642.SkeletalMeshComponent_6567",
+    "mesh": "WEP_SniperRifle_p.WEP_SniperRifle_SKEL"
+   },
+   "in_gameplay_json": true
+  },
+  {
+   "actor": "D3B_IAC_MiddleInt2_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_2339",
+   "class": "TnWeaponPickupFactory",
+   "package": "D3B_IAC_MiddleInt2_DSN_m",
+   "transform": {
+    "Location": {
+     "X": 25755.390625,
+     "Y": -45412.921875,
+     "Z": -20469.875
+    },
+    "Rotation": {
+     "Pitch": 0,
+     "Yaw": -17408,
+     "Roll": 0
+    },
+    "DrawScale": 1.0,
+    "note": "unset Rotation -> (0,0,0)"
+   },
+   "RespawnTime": {
+    "value": null,
+    "source_package": "D3B_IAC_MiddleInt2_DSN_m",
+    "object": "D3B_IAC_MiddleInt2_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_2339",
+    "class": "TnWeaponPickupFactory",
+    "property": "RespawnTime",
+    "origin": "absent (engine default)",
+    "confidence": "CONFIRMED AUTHORED DATA"
+   },
+   "DefenderTeamIndex": null,
+   "NetworkID": 914,
+   "Base": null,
+   "MaxPathSize": {
+    "Radius": 440.0,
+    "Height": 400.0
+   },
+   "effects": {
+    "PickupEffect": {
+     "component": "D3B_IAC_MiddleInt2_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_2339.ParticleSystemComponent_1682",
+     "archetype": "TransGame.Default__TnWeaponPickupFactory.PickupEffect0",
+     "Template": "FX_Pickups_p.FX.Pickup_FX",
+     "bAutoActivate": false,
+     "instance_overrides": {
+      "bJustAttached": true,
+      "CullDistance": 300000.0,
+      "CachedCullDistance": 300000.0,
+      "bAcceptsDynamicLights": false,
+      "LightingChannels": {
+       "bInitialized": true,
+       "Dynamic": true
+      }
+     },
+     "in_map_fx_json": true
+    }
+   },
+   "collision_cylinder": "D3B_IAC_MiddleInt2_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_2339.CylinderComponent_12079",
+   "sublevel": "D3B_IAC_MiddleInt2_DSN_m",
+   "InventoryType": "TransContent.TnWeaponGatlingGun",
+   "pickup_mesh": {
+    "component": "D3B_IAC_MiddleInt2_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_2339.SkeletalMeshComponent_9802",
+    "mesh": "WEP_TurretIonGun_p.WEP_TurretIonGun_SKEL"
+   },
+   "in_gameplay_json": true
+  },
+  {
+   "actor": "D3B_IAC_MiddleInt2_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_2718",
+   "class": "TnWeaponPickupFactory",
+   "package": "D3B_IAC_MiddleInt2_DSN_m",
+   "transform": {
+    "Location": {
+     "X": 16240.7392578125,
+     "Y": -53372.0,
+     "Z": -20476.0
+    },
+    "Rotation": {
+     "Pitch": 0,
+     "Yaw": 0,
+     "Roll": 0
+    },
+    "DrawScale": 1.0,
+    "note": "unset Rotation -> (0,0,0)"
+   },
+   "RespawnTime": {
+    "value": null,
+    "source_package": "D3B_IAC_MiddleInt2_DSN_m",
+    "object": "D3B_IAC_MiddleInt2_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_2718",
+    "class": "TnWeaponPickupFactory",
+    "property": "RespawnTime",
+    "origin": "absent (engine default)",
+    "confidence": "CONFIRMED AUTHORED DATA"
+   },
+   "DefenderTeamIndex": null,
+   "NetworkID": 914,
+   "Base": null,
+   "MaxPathSize": {
+    "Radius": 440.0,
+    "Height": 400.0
+   },
+   "effects": {
+    "PickupEffect": {
+     "component": "D3B_IAC_MiddleInt2_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_2718.ParticleSystemComponent_2637",
+     "archetype": "TransGame.Default__TnWeaponPickupFactory.PickupEffect0",
+     "Template": "FX_Pickups_p.FX.Pickup_FX",
+     "bAutoActivate": false,
+     "instance_overrides": {
+      "bJustAttached": true,
+      "CullDistance": 300000.0,
+      "CachedCullDistance": 300000.0,
+      "bAcceptsDynamicLights": false,
+      "LightingChannels": {
+       "bInitialized": true,
+       "Dynamic": true
+      }
+     },
+     "in_map_fx_json": true
+    }
+   },
+   "collision_cylinder": "D3B_IAC_MiddleInt2_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_2718.CylinderComponent_1618",
+   "sublevel": "D3B_IAC_MiddleInt2_DSN_m",
+   "InventoryType": "TransContent.TnWeaponBurstRifle",
+   "pickup_mesh": {
+    "component": "D3B_IAC_MiddleInt2_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_2718.SkeletalMeshComponent_9783",
+    "mesh": "WEP_BurstRifle_p.WEP_BurstRifle_SKEL"
+   },
+   "in_gameplay_json": true
+  },
+  {
+   "actor": "D3B_IAC_TunnelDrop_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_1502",
+   "class": "TnWeaponPickupFactory",
+   "package": "D3B_IAC_TunnelDrop_DSN_m",
+   "transform": {
+    "Location": {
+     "X": 66255.0,
+     "Y": -47296.0,
+     "Z": -22521.7890625
+    },
+    "Rotation": {
+     "Pitch": 0,
+     "Yaw": 0,
+     "Roll": 0
+    },
+    "DrawScale": 1.0,
+    "note": "unset Rotation -> (0,0,0)"
+   },
+   "RespawnTime": {
+    "value": null,
+    "source_package": "D3B_IAC_TunnelDrop_DSN_m",
+    "object": "D3B_IAC_TunnelDrop_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_1502",
+    "class": "TnWeaponPickupFactory",
+    "property": "RespawnTime",
+    "origin": "absent (engine default)",
+    "confidence": "CONFIRMED AUTHORED DATA"
+   },
+   "DefenderTeamIndex": null,
+   "NetworkID": 914,
+   "Base": null,
+   "MaxPathSize": {
+    "Radius": 250.0,
+    "Height": 300.0
+   },
+   "effects": {
+    "PickupEffect": {
+     "component": "D3B_IAC_TunnelDrop_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_1502.ParticleSystemComponent_3854",
+     "archetype": "TransGame.Default__TnWeaponPickupFactory.PickupEffect0",
+     "Template": "FX_Pickups_p.FX.Pickup_FX",
+     "bAutoActivate": false,
+     "instance_overrides": {
+      "bJustAttached": true,
+      "CullDistance": 300000.0,
+      "CachedCullDistance": 300000.0,
+      "bAcceptsDynamicLights": false,
+      "LightingChannels": {
+       "bInitialized": true,
+       "Dynamic": true
+      }
+     },
+     "in_map_fx_json": true
+    }
+   },
+   "collision_cylinder": "D3B_IAC_TunnelDrop_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_1502.CylinderComponent_12913",
+   "sublevel": "D3B_IAC_TunnelDrop_DSN_m",
+   "InventoryType": "TransContent.TnWeaponFlakGrenades",
+   "pickup_mesh": {
+    "component": "D3B_IAC_TunnelDrop_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_1502.StaticMeshComponent_14081",
+    "mesh": "WEP_Grenade_p.WEP_Grenade_Flak_STAT"
+   },
+   "in_gameplay_json": true
+  },
+  {
+   "actor": "D3B_IAC_TunnelDrop_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_15639",
+   "class": "TnWeaponPickupFactory",
+   "package": "D3B_IAC_TunnelDrop_DSN_m",
+   "transform": {
+    "Location": {
+     "X": 74068.0,
+     "Y": -58567.671875,
+     "Z": -17716.798828125
+    },
+    "Rotation": {
+     "Pitch": 0,
+     "Yaw": 0,
+     "Roll": 0
+    },
+    "DrawScale": 1.0,
+    "note": "unset Rotation -> (0,0,0)"
+   },
+   "RespawnTime": {
+    "value": null,
+    "source_package": "D3B_IAC_TunnelDrop_DSN_m",
+    "object": "D3B_IAC_TunnelDrop_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_15639",
+    "class": "TnWeaponPickupFactory",
+    "property": "RespawnTime",
+    "origin": "absent (engine default)",
+    "confidence": "CONFIRMED AUTHORED DATA"
+   },
+   "DefenderTeamIndex": null,
+   "NetworkID": 914,
+   "Base": null,
+   "MaxPathSize": {
+    "Radius": 2777.0,
+    "Height": 850.0
+   },
+   "effects": {
+    "PickupEffect": {
+     "component": "D3B_IAC_TunnelDrop_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_15639.ParticleSystemComponent_7495",
+     "archetype": "TransGame.Default__TnWeaponPickupFactory.PickupEffect0",
+     "Template": "FX_Pickups_p.FX.Pickup_FX",
+     "bAutoActivate": false,
+     "instance_overrides": {
+      "bJustAttached": true,
+      "CullDistance": 300000.0,
+      "CachedCullDistance": 300000.0,
+      "bAcceptsDynamicLights": false,
+      "LightingChannels": {
+       "bInitialized": true,
+       "Dynamic": true
+      }
+     },
+     "in_map_fx_json": true
+    }
+   },
+   "collision_cylinder": "D3B_IAC_TunnelDrop_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_15639.CylinderComponent_6727",
+   "sublevel": "D3B_IAC_TunnelDrop_DSN_m",
+   "InventoryType": "TransContent.TnWeaponRocketLauncher",
+   "pickup_mesh": {
+    "component": "D3B_IAC_TunnelDrop_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_15639.SkeletalMeshComponent_5344",
+    "mesh": "WEP_RocketLauncher_p.WEP_RocketLauncher_SKEL"
+   },
+   "in_gameplay_json": true
+  },
+  {
+   "actor": "D3B_IAC_TunnelDrop_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_7077",
+   "class": "TnWeaponPickupFactory",
+   "package": "D3B_IAC_TunnelDrop_DSN_m",
+   "transform": {
+    "Location": {
+     "X": 81770.0,
+     "Y": -49264.0,
+     "Z": -22521.75
+    },
+    "Rotation": {
+     "Pitch": 0,
+     "Yaw": 0,
+     "Roll": 0
+    },
+    "DrawScale": 1.0,
+    "note": "unset Rotation -> (0,0,0)"
+   },
+   "RespawnTime": {
+    "value": null,
+    "source_package": "D3B_IAC_TunnelDrop_DSN_m",
+    "object": "D3B_IAC_TunnelDrop_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_7077",
+    "class": "TnWeaponPickupFactory",
+    "property": "RespawnTime",
+    "origin": "absent (engine default)",
+    "confidence": "CONFIRMED AUTHORED DATA"
+   },
+   "DefenderTeamIndex": null,
+   "NetworkID": 718,
+   "Base": null,
+   "MaxPathSize": null,
+   "effects": {
+    "PickupEffect": {
+     "component": "D3B_IAC_TunnelDrop_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_7077.ParticleSystemComponent_3501",
+     "archetype": "TransGame.Default__TnWeaponPickupFactory.PickupEffect0",
+     "Template": "FX_Pickups_p.FX.Pickup_FX",
+     "bAutoActivate": false,
+     "instance_overrides": {
+      "bJustAttached": true,
+      "CullDistance": 300000.0,
+      "CachedCullDistance": 300000.0,
+      "bAcceptsDynamicLights": false,
+      "LightingChannels": {
+       "bInitialized": true,
+       "Dynamic": true
+      }
+     },
+     "in_map_fx_json": true
+    }
+   },
+   "collision_cylinder": "D3B_IAC_TunnelDrop_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_7077.CylinderComponent_13855",
+   "sublevel": "D3B_IAC_TunnelDrop_DSN_m",
+   "InventoryType": "TransContent.TnWeaponGrenadeLauncher",
+   "pickup_mesh": {
+    "component": "D3B_IAC_TunnelDrop_DSN_m.TheWorld.PersistentLevel.TnWeaponPickupFactory_7077.SkeletalMeshComponent_8313",
+    "mesh": "WEP_GrenadeLauncher_p.WEP_GrenadeLauncher_SKEL"
+   },
+   "in_gameplay_json": true
+  },
+  {
+   "actor": "D3B_IAC_BridgeStation1_DSN_m.TheWorld.PersistentLevel.TnPickupFactory_12654",
+   "class": "TnPickupFactory",
+   "package": "D3B_IAC_BridgeStation1_DSN_m",
+   "transform": {
+    "Location": {
+     "X": 96952.0,
+     "Y": -53159.0,
+     "Z": -18812.0
+    },
+    "Rotation": {
+     "Pitch": 0,
+     "Yaw": 4192,
+     "Roll": 0
+    },
+    "DrawScale": 1.0,
+    "note": "unset Rotation -> (0,0,0)"
+   },
+   "RespawnTime": {
+    "value": null,
+    "source_package": "D3B_IAC_BridgeStation1_DSN_m",
+    "object": "D3B_IAC_BridgeStation1_DSN_m.TheWorld.PersistentLevel.TnPickupFactory_12654",
+    "class": "TnPickupFactory",
+    "property": "RespawnTime",
+    "origin": "absent (engine default)",
+    "confidence": "CONFIRMED AUTHORED DATA"
+   },
+   "DefenderTeamIndex": null,
+   "NetworkID": 914,
+   "Base": null,
+   "MaxPathSize": {
+    "Radius": 250.0,
+    "Height": 300.0
+   },
+   "effects": {
+    "PickupEffect": {
+     "component": "D3B_IAC_BridgeStation1_DSN_m.TheWorld.PersistentLevel.TnPickupFactory_12654.ParticleSystemComponent_2073",
+     "archetype": "TransGame.Default__TnPickupFactory.PickupEffect0",
+     "Template": "FX_Pickups_p.FX.Pickup_FX",
+     "bAutoActivate": false,
+     "instance_overrides": {
+      "bJustAttached": true,
+      "CullDistance": 300000.0,
+      "CachedCullDistance": 300000.0,
+      "bAcceptsDynamicLights": false,
+      "LightingChannels": {
+       "bInitialized": true,
+       "Dynamic": true
+      }
+     },
+     "in_map_fx_json": true
+    }
+   },
+   "collision_cylinder": "D3B_IAC_BridgeStation1_DSN_m.TheWorld.PersistentLevel.TnPickupFactory_12654.CylinderComponent_12437",
+   "sublevel": "D3B_IAC_BridgeStation1_DSN_m",
+   "InventoryType": "TransContent.TnWeaponRepairRay",
+   "pickup_mesh": {
+    "component": "D3B_IAC_BridgeStation1_DSN_m.TheWorld.PersistentLevel.TnPickupFactory_12654.SkeletalMeshComponent_1551",
+    "mesh": "WEP_RepairBeam_p.WEP_RepairBeam_SKEL"
+   },
+   "in_gameplay_json": true
+  },
+  {
+   "actor": "D3B_IAC_BridgeStation2_DSN_m.TheWorld.PersistentLevel.TnPickupFactory_14023",
+   "class": "TnPickupFactory",
+   "package": "D3B_IAC_BridgeStation2_DSN_m",
+   "transform": {
+    "Location": {
+     "X": 142161.75,
+     "Y": 55858.19921875,
+     "Z": -32640.0
+    },
+    "Rotation": {
+     "Pitch": 0,
+     "Yaw": 0,
+     "Roll": 0
+    },
+    "DrawScale": 1.0,
+    "note": "unset Rotation -> (0,0,0)"
+   },
+   "RespawnTime": {
+    "value": 60.0,
+    "source_package": "D3B_IAC_BridgeStation2_DSN_m",
+    "object": "D3B_IAC_BridgeStation2_DSN_m.TheWorld.PersistentLevel.TnPickupFactory_14023",
+    "class": "TnPickupFactory",
+    "property": "RespawnTime",
+    "origin": "authored on object",
+    "confidence": "CONFIRMED AUTHORED DATA"
+   },
+   "DefenderTeamIndex": null,
+   "NetworkID": 1052,
+   "Base": null,
+   "MaxPathSize": null,
+   "effects": {
+    "PickupEffect": {
+     "component": "D3B_IAC_BridgeStation2_DSN_m.TheWorld.PersistentLevel.TnPickupFactory_14023.ParticleSystemComponent_4945",
+     "archetype": "TransGame.Default__TnPickupFactory.PickupEffect0",
+     "Template": "FX_Pickups_p.FX.Pickup_FX",
+     "bAutoActivate": false,
+     "instance_overrides": {
+      "bJustAttached": true,
+      "CullDistance": 300000.0,
+      "CachedCullDistance": 300000.0,
+      "bAcceptsDynamicLights": false,
+      "LightingChannels": {
+       "bInitialized": true,
+       "Dynamic": true
+      }
+     },
+     "in_map_fx_json": true
+    }
+   },
+   "collision_cylinder": "D3B_IAC_BridgeStation2_DSN_m.TheWorld.PersistentLevel.TnPickupFactory_14023.CylinderComponent_11717",
+   "sublevel": "D3B_IAC_BridgeStation2_DSN_m",
+   "InventoryType": "TransContent.TnWeaponFlakGrenades",
+   "pickup_mesh": {
+    "component": "D3B_IAC_BridgeStation2_DSN_m.TheWorld.PersistentLevel.TnPickupFactory_14023.StaticMeshComponent_12828",
+    "mesh": "WEP_Grenade_p.WEP_GrenadePickUp_STAT"
+   },
+   "in_gameplay_json": true
   }
  ],
  "counts": {
   "instances_by_class": {
    "TnAmmoCratePickupFactory": 6,
-   "TnHealthPickupFactory": 1
+   "TnHealthPickupFactory": 1,
+   "TnWeaponPickupFactory": 22,
+   "TnPickupFactory": 2
   },
   "effect_components_by_template": {
-   "FX_Pickups_p.FX.Pickup_FX": 7,
+   "FX_Pickups_p.FX.Pickup_FX": 31,
    "FX_Pickups_p.FX.HealthPickup_FX": 1
   },
   "expected": {

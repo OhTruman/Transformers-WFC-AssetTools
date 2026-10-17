@@ -20,13 +20,15 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 import authored as A, objtree, pstream as PS, particles, smsections  # noqa: E402
 from m03_common import field, lit, write, pkg_of, cls_of, CONF, HIGH, PART, UNK, map_arg, map_out, map_levels# noqa: E402
-from vs_common import VS, ROOT  # noqa: E402
+from vs_common import VS, ROOT, is_campaign  # noqa: E402
 
 MAP = map_arg()                      # positional map name (default MP_IAC_Streets)
 LV_ = map_levels(MAP)
 SLICE = os.path.join(VS, 'Maps', MAP)
 FACTORY_CLASSES = ['TnAmmoCratePickupFactory', 'TnHealthPickupFactory', 'TnOverShieldPickupFactory',
                    'TnGameObjectivePickupFactoryFlag', 'TnGameObjectivePickupFactoryBomb']
+# campaign chapters: weapon factories (TnWeaponPickupFactory, plain TnPickupFactory) are most of the placed pickups; MP keeps the list above
+if is_campaign(MAP): FACTORY_CLASSES = FACTORY_CLASSES + ['TnWeaponPickupFactory', 'TnPickupFactory']
 FX_PACKAGE = 'TransGame'     # the three pickup ParticleSystems are cooked in the always-loaded TransGame package
 EXPECTED = {'FX_Pickups_p.FX.Pickup_FX': 27, 'FX_Pickups_p.FX.HealthPickup_FX': 9, 'FX_Pickups_p.FX.OvershieldPickup_FX': 1}
 ROLE = {'FX_Pickups_p.FX.Pickup_FX': 'weapon/generic pickup light beam (Experimental/Systems "weapon pickup effect")',
@@ -142,6 +144,9 @@ def instance_rec(o, slice_gameplay, slice_fx):
             'NetworkID': v.get('NetworkID'), 'Base': v.get('Base'), 'MaxPathSize': v.get('MaxPathSize'),
             'effects': eff,
             'collision_cylinder': v.get('CylinderComponent'),
+            **({'sublevel': o.split('.')[0], 'InventoryType': A.values(o).get('InventoryType'),
+                'pickup_mesh': (lambda m: {'component': v['PickupMesh'], 'mesh': m.get('SkeletalMesh') or m.get('StaticMesh')})(A.values(v['PickupMesh']))
+                if v.get('PickupMesh') else None} if is_campaign(MAP) else {}),
             'in_gameplay_json': short in slice_gameplay}
 
 def fx_rec(ps):
