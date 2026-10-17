@@ -1,0 +1,37 @@
+walk-connected pieces (edges only): base 7 versus 8
+TnTransformingWorldActor_1476: deck y=15.38; on-deck cells 6 / 416 m2, ['main'], drop links from deck 9; under deck: base 22 cells -> versus 21 (lowest headroom [7.59, 7.59, 8.51])
+TnTransformingWorldActor_3522: deck y=15.37; on-deck cells 77 / 195 m2, ['main'], drop links from deck 36; under deck: base 58 cells -> versus 58 (lowest headroom [9.36, 9.36, 9.42])
+TnTransformingWorldActor_5091: deck y=15.34; on-deck cells 20 / 404 m2, ['main'], drop links from deck 22; under deck: base 38 cells -> versus 38 (lowest headroom [10.01, 10.01, 10.01])
+TnTransformingWorldActor_5711: deck y=15.37; on-deck cells 35 / 955 m2, ['main'], drop links from deck 50; under deck: base 87 cells -> versus 110 (lowest headroom [8.3, 8.39, 8.57])
+TnTransformingWorldActor_7490: deck y=15.38; on-deck cells 4 / 175 m2, ['main'], drop links from deck 0; under deck: base 29 cells -> versus 29 (lowest headroom [9.61, 10.41, 10.41])
+== deck coverage by polygon overlap
+  1476 base   walkable at deck height over the footprint:      7 m2 of 397
+  1476 versus walkable at deck height over the footprint:    269 m2 of 397
+  3522 base   walkable at deck height over the footprint:     66 m2 of 894
+  3522 versus walkable at deck height over the footprint:    553 m2 of 894
+  5091 base   walkable at deck height over the footprint:      0 m2 of 572
+  5091 versus walkable at deck height over the footprint:    381 m2 of 572
+  5711 base   walkable at deck height over the footprint:      0 m2 of 894
+  5711 versus walkable at deck height over the footprint:    613 m2 of 894
+  7490 base   walkable at deck height over the footprint:      0 m2 of 397
+  7490 versus walkable at deck height over the footprint:    266 m2 of 397
+== versus pieces [4795, 65, 53, 9, 5, 1, 1, 1]
+  piece 6 cells 65 area 171.0 y [7.51, 7.61, 7.7, 7.8] over deck of []
+  piece 7 cells 53 area 115.0 y [3.02, 3.07, 3.11, 3.16] over deck of ['5711']
+  piece 5 cells 9 area 13.0 y [1.95, 2.01, 2.36, 2.54] over deck of ['7490']
+  piece 4 cells 5 area 77.0 y [11.08] over deck of []
+  piece 1 cells 1 area 7.0 y [10.01] over deck of []
+  piece 2 cells 1 area 5.0 y [10.01] over deck of []
+  piece 3 cells 1 area 11.0 y [10.24] over deck of []
+base [(4688, 43098, -0.4, 99, -45), (65, 171, 7.5, 74, -24), (9, 13, 1.8, 64, -29), (5, 77, 11.1, 52, -72), (1, 7, 10.0, 132, -126), (1, 5, 10.0, 132, -118), (1, 11, 10.2, 148, -114)]
+versus [(4795, 45109, -0.4, 100, -43), (65, 171, 7.5, 74, -24), (53, 115, 3.0, 99, 15), (9, 13, 1.8, 64, -29), (5, 77, 11.1, 52, -72), (1, 7, 10.0, 132, -126), (1, 5, 10.0, 132, -118), (1, 11, 10.2, 148, -114)]
+== baseline cells that no longer exist, by deck (footprint + 1.5 m)
+  1476: 16 cells / 51 m2 gone; by floor height (m): {15: 16}; deck underside y=13.68
+  3522: 6 cells / 45 m2 gone; by floor height (m): {15: 6}; deck underside y=12.82
+  5091: 9 cells / 81 m2 gone; by floor height (m): {15: 9}; deck underside y=13.30
+  5711: 5 cells / 44 m2 gone; by floor height (m): {15: 5}; deck underside y=12.82
+  7490: 4 cells / 34 m2 gone; by floor height (m): {15: 4}; deck underside y=13.68
+total area of baseline cells not reproduced 655.0 | versus cells not in baseline 2781.0 (rect re-partitioning near changes splits cells)
+base cells y<6 in x80-120 z-5..40: 188 1144  versus: 240 1257
+1 m samples walkable in base but not in versus: 0 []
+versus headroom/clearance sample near there [(8.3, 1.5), (8.32, 2.5), (8.39, 2.5), (8.45, 1.5), (8.57, 4.5), (8.62, 1.5), (8.67, 2.5), (8.68, 4.5)]
