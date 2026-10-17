@@ -20,7 +20,7 @@ import numpy as np
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-from vs_common import VS, read_glb, accessor  # noqa: E402
+from vs_common import VS, read_glb, accessor, is_campaign  # noqa: E402
 
 AT = os.path.normpath(os.path.join(HERE, '..', '..'))
 # WFC_AUDIT_CELL: layer-grid cell size (default 1 m, unchanged for MP). Campaign chapters use a coarser cell to stay under the job cap
@@ -151,6 +151,24 @@ def main():
         col_nodes[(n.get('extras') or {}).get('kind', n['name'].rsplit('_', 1)[0])] += 0
         col_by_actor[n['name']] += 1; col_pairs.append((n['name'], (n.get('extras') or {}).get('mesh')))
         col.add_tris(T, n['name'].rsplit('_', 1)[0] if not n['name'].startswith('BSP') else 'BSP')
+    skel_col = None
+    if is_campaign(MAP):
+        # campaign only (Integration 2026-10-17, decision A; MP outputs unchanged): skeletal world actors block through their
+        # PhysicsAsset bodies, which collision_pawn.glb does not carry -> add them to the walk-graph collision at the reference pose
+        import skel_collision as K
+        import authored as AU
+        skel_col = {'actors': 0, 'with_collision': 0, 'boxes': 0, 'skipped': Counter(), 'undecoded': Counter(), 'bones_missing': []}
+        for lv in json.load(open(os.path.join(D, 'map.json'), encoding='utf-8'))['sublevels']:
+            for r in AU.find(lv + '.TheWorld.PersistentLevel.%', 'TnTransformingWorldActor'):
+                if r['opath'].count('.') != 3: continue
+                T, info = K.actor_tris(r['opath']); skel_col['actors'] += 1
+                if info.get('skipped'): skel_col['skipped'][info['skipped']] += 1
+                skel_col['undecoded'].update(info['undecoded'])
+                if info.get('bones_missing'): skel_col['bones_missing'].append({'actor': info['actor'], 'bones': info['bones_missing']})
+                if len(T):
+                    skel_col['with_collision'] += 1; skel_col['boxes'] += info['boxes']
+                    col.add_tris(T, 'TnTransformingWorldActor')
+        skel_col['skipped'] = dict(skel_col['skipped']); skel_col['undecoded'] = dict(skel_col['undecoded'])
     # props that block but have no collision node, and vice versa
     blocking = Counter(p['actor'] for p in props if p.get('block'))
     nonblocking = Counter(p['actor'] for p in props if not p.get('block'))
@@ -260,6 +278,7 @@ def main():
                                  'rule': 'for det<0 nodes the transformed winding opposes the transformed normals; a glTF renderer must flip the '
                                          'front face (glTF 2.0 spec 3.7.4). Exported data is consistent when det<0 tris mostly oppose and det>0 '
                                          'tris mostly agree.'}
+    if skel_col is not None: out['skeletal_world_actor_collision'] = skel_col   # campaign only (MP output keys unchanged)
     out['playable_space'] = {'player_starts': len(starts), 'starts_on_reachable_floor': len(starts_ok), 'starts_without_floor_below': unseeded, 'starts_off_walk_graph_diagnosis': start_diag,
                              'walk_graph_cells': len(reach_cells), 'walk_graph_layers': len(reach), 'walk_graph_area_m2': round(len(reach) * CELL * CELL, 1),
                              'connected_from_any_start': True, 'bounds': bbox, 'kill_z_ue': kz,

@@ -8,7 +8,7 @@ what this tool shows).
 
   python fxa_proof.py [actor substring] [animation name]     default Trypticon DX_TRPTCN_LK004350
 """
-import glob, os, sys, wave
+import glob, math, os, sys, wave
 import numpy as np
 
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
@@ -50,6 +50,38 @@ def qmul(a, b):
     w1, x1, y1, z1 = a.T; w2, x2, y2, z2 = b.T
     return np.stack([w1*w2 - x1*x2 - y1*y2 - z1*z2, w1*x2 + x1*w2 + y1*z2 - z1*y2, w1*y2 - x1*z2 + y1*w2 + z1*x2, w1*z2 + x1*y2 - y1*x2 + z1*w2], 1)
 
+FLT_EPS = 1.1920929e-7
+
+def bone_pose_product(b, val, n):
+    """RE (RE-Workspace/work/handoff/FACEFX_BONE_BLEND_RE.md §3, native 0x82D89B40), FaceFX space, per frame:
+    P = refPos + sum v*dPos; Acc = refRot; R = refRot; per link in stored order (|v| < FLT_EPSILON skipped, no clamp):
+    hemisphere-flip R toward the pose (persists), S = slerp(R, pose, v) or lerp when dot <= / > 0.55, Acc = Acc (x) (M (x) S),
+    M = the stored inverse ref rotation; one normalise at the end. Quaternions (w, x, y, z)."""
+    pos = np.tile(np.array(b['rest_pos'], float), (n, 1)); out = np.zeros((n, 4))
+    ref = np.array(b['rest_rot'], float); M = np.array(b['inv_rest_rot'], float)
+    for i in range(n):
+        acc = ref.copy(); R = ref.copy()
+        for l in b['links']:
+            s = val.get(l['node'])
+            if s is None: continue
+            v = float(s[i])
+            if -FLT_EPS < v < FLT_EPS: continue
+            pos[i] += v * np.array(l['dpos'])
+            Q = np.array(l['rot'], float)
+            if np.dot(R + Q, R + Q) < np.dot(R - Q, R - Q): R = -R
+            d = float(np.dot(R, Q))
+            if d <= 0.55:
+                th = math.acos(max(-1.0, min(1.0, d))); k = 1 / math.sin(th)
+                S = R * (math.sin((1 - v) * th) * k) + Q * (math.sin(v * th) * k)
+            else:
+                S = R * (1 - v) + Q * v
+            acc = qmul(acc[None], qmul(M[None], S[None]))[0]
+        m2 = float(np.dot(acc, acc))
+        if m2 < FLT_EPS: acc = np.array([1.0, 0, 0, 0])
+        elif abs(m2 - 1) > FLT_EPS: acc = acc / math.sqrt(m2)
+        out[i] = acc
+    return pos, out
+
 def main(actor='Trypticon', anim='DX_TRPTCN_LK004350'):
     f = [x for x in glob.glob(os.path.join(P.EA, '**', '*.fxa'), recursive=True) if actor.lower() in os.path.basename(x).lower()][0]
     x, groups, anims, pm, end, L = P.parse_all(f)
@@ -64,6 +96,15 @@ def main(actor='Trypticon', anim='DX_TRPTCN_LK004350'):
             if n: s = np.clip(s, n['f'][0], n['f'][2])
             val[name] = s
         rows = {}
+        if os.environ.get('FXA_BLEND', 'product') == 'product':
+            # RE's native rule (default since 2026-10-17); FaceFX-space values before any additive application
+            for b in x['bones']: rows[b['name']] = bone_pose_product(b, val, len(ts))
+            res[mode] = rows
+            with open(os.path.join(HERE, 'proof_%s_%s.csv' % (anim, mode)), 'w') as fo:
+                fo.write('t,' + ','.join('%s_%s' % (bn, c) for bn in rows for c in ('px', 'py', 'pz', 'qw', 'qx', 'qy', 'qz')) + '\n')
+                for i, t in enumerate(ts):
+                    fo.write('%.4f,' % t + ','.join('%.5f' % v for bn in rows for v in list(rows[bn][0][i]) + list(rows[bn][1][i])) + '\n')
+            continue
         for b in x['bones']:
             acc = np.tile([1.0, 0, 0, 0], (len(ts), 1)); pos = np.zeros((len(ts), 3)); scl = np.zeros((len(ts), 3))
             for l in b['links']:
