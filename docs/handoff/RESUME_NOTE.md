@@ -60,6 +60,12 @@
   - campaign data gaps closed into `out/campaign_{textures,anims}` (`CAMPAIGN_DATA_GAPS_CLOSED.md`);
   - pstream now assigns by each record's own distribution base index (regression over all cooked LODs: identical; PowerCell fixed);
   - (B) frozen-arm verification: `work/matB_review/verify_frozen.py`, PASS at 10:59; rerun if the arm changes.
+  - door interpolated light maps (`interp_lightmaps.py`), MP lens flares (`lens_flares.py`), campaign render dry run
+    (`work/campaign_render_dryrun/`, CAMPAIGN_RENDER_DRYRUN.md), BrokenHope versus nav (`work/bot_nav_versus/run.py` ->
+    manifests/maps/MP_ESC_BrokenHope/bot_nav_versus.json).
+  - Open findings, campaign phase: skel_collision poses TnTransformingWorldActor boxes from the reference skeleton (3.8-5.7 m off on
+    bridges); vs_audio reverb_presets misses non-AmbientAudioZone reverbs + prefix only for MP_IAC_ (parked; MP audio.json change
+    needs Integration's go). authored.db SoundMixerPresetName is fine (12-byte rows carry no PresetName).
 - **RE provisionals parts 1-2 applied:**
   - physmat hull fallback only for StaticMeshActor owners, as node overrides (83b669d);
   - matinee live_without_actor, objectives whitespace_noop (94c758e).
