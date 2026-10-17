@@ -1,0 +1,2546 @@
+{
+ "map": "MP_ESC_Remnant",
+ "generated_by": "AssetTools/scripts/wfc/interp_lightmaps.py",
+ "source": "cooked HmInterpolatedLightMappedSkeletalMeshComponent native tails (RE INTERPOLATED_LIGHTMAP_RE.md d2ad301; decoder RE-Workspace/tools/interp_lightmap.py, read-only)",
+ "shader": "L_i = A_i + LightMapLerpAmount * (B_i - A_i) with A_i / B_i = texture(capture 0 / 1 coeff i, uv * coordScale + coordBias) * scale_i; then the stock directional light-map decode (RE \u00a72, CONFIRMED)",
+ "lerp_driver": "LightMapLerpAmount = the actor AnimNodeSequence normalized position, set every component tick; script sets 0 / 1 at setup (RE \u00a73, CONFIRMED)",
+ "record_shape": "per capture: coeffs / scales (rgb) / coordScale / coordBias as in lighting.json lightmaps; scales_w = the 4th scale component (1 on all checked); atlas_rects_px = coordBias * size, coordScale * size",
+ "stats": {
+  "actors": 12,
+  "captures": 24,
+  "textures_in_render_atlas": 72,
+  "textures_decoded_here": 0,
+  "problems": []
+ },
+ "interpolated_lightmaps": {
+  "MP_ESC_Remnant_BASE_m.TheWorld.PersistentLevel.TnTransformingWorldActor_12943": {
+   "actor": "TnTransformingWorldActor_12943",
+   "component": "MP_ESC_Remnant_BASE_m.TheWorld.PersistentLevel.TnTransformingWorldActor_12943.HmInterpolatedLightMappedSkeletalMeshComponent_14305",
+   "skeletal_mesh": "TPRO_ORB_D1_Doors_p.ORB_InteriorDoor_SKEL",
+   "initial_state": "Untransformed",
+   "anim_sequence": "ORB_A4InteriorDoor_FastTransOpen",
+   "lighting_guid": "b7a7d9d44c480f11b254e6ad9c70ea10",
+   "baked_lights": [
+    "37e40a3047f54a738d155cb1407f990a",
+    "cc1db22a4f68ce851d669eba4987a814"
+   ],
+   "irrelevant_lights": [
+    "317012564b7a8cc3f640399d2f4743db",
+    "1d3d500244edb6487ecb95b0a9814a78",
+    "5c3130014579597ae51a54876720159b",
+    "98aa15bd48702cf8cb77bd8c9f896d1a",
+    "c71c8da244c14ab939f3c7a83515f84b",
+    "b8f354734d3e55247b1d689acdee2a39",
+    "97fc72524bcd9c97d310a18b58b21c75",
+    "6e0491bd4a8fe213dfc619afef9bf7c8",
+    "1e70de9c48cd1d16fc9e2bb79fd5054d",
+    "5f99ffb641bd0c3c85725498070f3847"
+   ],
+   "captures": [
+    {
+     "capture": 0,
+     "pose": "untransformed",
+     "capture_percentage": 0.0,
+     "type": 2,
+     "coeffs": [
+      "LightMapTexture2D_6121",
+      "LightMapTexture2D_6009",
+      "LightMapTexture2D_5793"
+     ],
+     "scales": [
+      [
+       0.3931601643562317,
+       0.14629626274108887,
+       0.12221771478652954
+      ],
+      [
+       0.7959948778152466,
+       0.21505960822105408,
+       0.11675906926393509
+      ],
+      [
+       0.7916281223297119,
+       0.21880169212818146,
+       0.11723900586366653
+      ]
+     ],
+     "scales_w": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "coordScale": [
+      0.125,
+      0.25
+     ],
+     "coordBias": [
+      0.25048828125,
+      0.0009765625
+     ],
+     "texture_files": [
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_6121.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_6009.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_5793.png",
+       "source": "render_atlas"
+      }
+     ],
+     "atlas_rects_px": [
+      {
+       "x": 64.125,
+       "y": 0.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        128
+       ]
+      },
+      {
+       "x": 64.125,
+       "y": 0.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        128
+       ]
+      },
+      {
+       "x": 64.125,
+       "y": 0.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        128
+       ]
+      }
+     ],
+     "lights": [
+      "37e40a3047f54a738d155cb1407f990a",
+      "cc1db22a4f68ce851d669eba4987a814"
+     ]
+    },
+    {
+     "capture": 1,
+     "pose": "transformed",
+     "capture_percentage": 1.0,
+     "type": 2,
+     "coeffs": [
+      "LightMapTexture2D_15047",
+      "LightMapTexture2D_13970",
+      "LightMapTexture2D_11488"
+     ],
+     "scales": [
+      [
+       0.3202890455722809,
+       0.1290462613105774,
+       0.12221771478652954
+      ],
+      [
+       0.35274121165275574,
+       0.1284065544605255,
+       0.1167200431227684
+      ],
+      [
+       0.3486785590648651,
+       0.12489811331033707,
+       0.11723900586366653
+      ]
+     ],
+     "scales_w": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "coordScale": [
+      0.125,
+      0.125
+     ],
+     "coordBias": [
+      0.00048828125,
+      0.50048828125
+     ],
+     "texture_files": [
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_15047.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_13970.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_11488.png",
+       "source": "render_atlas"
+      }
+     ],
+     "atlas_rects_px": [
+      {
+       "x": 0.125,
+       "y": 128.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 0.125,
+       "y": 128.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 0.125,
+       "y": 128.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      }
+     ],
+     "lights": [
+      "37e40a3047f54a738d155cb1407f990a",
+      "cc1db22a4f68ce851d669eba4987a814"
+     ]
+    }
+   ]
+  },
+  "MP_ESC_Remnant_BASE_m.TheWorld.PersistentLevel.TnTransformingWorldActor_13617": {
+   "actor": "TnTransformingWorldActor_13617",
+   "component": "MP_ESC_Remnant_BASE_m.TheWorld.PersistentLevel.TnTransformingWorldActor_13617.HmInterpolatedLightMappedSkeletalMeshComponent_14305",
+   "skeletal_mesh": "TPRO_ORB_D1_Doors_p.ORB_InteriorDoor_SKEL",
+   "initial_state": "Untransformed",
+   "anim_sequence": "ORB_A4InteriorDoor_FastTransOpen",
+   "lighting_guid": "d7ab2e62448a95ade19ba4acfcb9e57d",
+   "baked_lights": [
+    "37e40a3047f54a738d155cb1407f990a",
+    "01177c7e4f1a0c87c90735af61221534",
+    "7d7f877c4c35fb705f445eae6900c237"
+   ],
+   "irrelevant_lights": [
+    "317012564b7a8cc3f640399d2f4743db",
+    "1d3d500244edb6487ecb95b0a9814a78",
+    "bbf0c7644fc178173ab457bc3b87c132",
+    "970b39ff44f7e1202b89739349abf24a",
+    "c71c8da244c14ab939f3c7a83515f84b",
+    "330fca964cafff2b39a7a8ba79e6e069",
+    "cbe7f35c4d5bdc073e78aa9a7921e7fb"
+   ],
+   "captures": [
+    {
+     "capture": 0,
+     "pose": "untransformed",
+     "capture_percentage": 0.0,
+     "type": 2,
+     "coeffs": [
+      "LightMapTexture2D_15047",
+      "LightMapTexture2D_13970",
+      "LightMapTexture2D_11488"
+     ],
+     "scales": [
+      [
+       0.09180723130702972,
+       0.6834165453910828,
+       0.3996366560459137
+      ],
+      [
+       0.09385312348604202,
+       0.4177000820636749,
+       0.27270710468292236
+      ],
+      [
+       0.10652027279138565,
+       0.8997452855110168,
+       0.5602506399154663
+      ]
+     ],
+     "scales_w": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "coordScale": [
+      0.125,
+      0.125
+     ],
+     "coordBias": [
+      0.12548828125,
+      0.75048828125
+     ],
+     "texture_files": [
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_15047.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_13970.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_11488.png",
+       "source": "render_atlas"
+      }
+     ],
+     "atlas_rects_px": [
+      {
+       "x": 32.125,
+       "y": 192.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 32.125,
+       "y": 192.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 32.125,
+       "y": 192.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      }
+     ],
+     "lights": [
+      "37e40a3047f54a738d155cb1407f990a",
+      "01177c7e4f1a0c87c90735af61221534"
+     ]
+    },
+    {
+     "capture": 1,
+     "pose": "transformed",
+     "capture_percentage": 1.0,
+     "type": 2,
+     "coeffs": [
+      "LightMapTexture2D_15047",
+      "LightMapTexture2D_13970",
+      "LightMapTexture2D_11488"
+     ],
+     "scales": [
+      [
+       4.080565929412842,
+       2.365424156188965,
+       2.35235857963562
+      ],
+      [
+       6.167610168457031,
+       3.5392820835113525,
+       3.5016565322875977
+      ],
+      [
+       6.167263031005859,
+       3.5388967990875244,
+       3.501173973083496
+      ]
+     ],
+     "scales_w": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "coordScale": [
+      0.125,
+      0.125
+     ],
+     "coordBias": [
+      0.00048828125,
+      0.87548828125
+     ],
+     "texture_files": [
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_15047.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_13970.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_11488.png",
+       "source": "render_atlas"
+      }
+     ],
+     "atlas_rects_px": [
+      {
+       "x": 0.125,
+       "y": 224.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 0.125,
+       "y": 224.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 0.125,
+       "y": 224.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      }
+     ],
+     "lights": [
+      "37e40a3047f54a738d155cb1407f990a",
+      "01177c7e4f1a0c87c90735af61221534",
+      "7d7f877c4c35fb705f445eae6900c237"
+     ]
+    }
+   ]
+  },
+  "MP_ESC_Remnant_BASE_m.TheWorld.PersistentLevel.TnTransformingWorldActor_1373": {
+   "actor": "TnTransformingWorldActor_1373",
+   "component": "MP_ESC_Remnant_BASE_m.TheWorld.PersistentLevel.TnTransformingWorldActor_1373.HmInterpolatedLightMappedSkeletalMeshComponent_14305",
+   "skeletal_mesh": "TPRO_ORB_D1_Doors_p.ORB_InteriorDoor_SKEL",
+   "initial_state": "Untransformed",
+   "anim_sequence": "ORB_A4InteriorDoor_FastTransOpen",
+   "lighting_guid": "b2b3cc0140ee496895e0dbb0c93cfb03",
+   "baked_lights": [
+    "37e40a3047f54a738d155cb1407f990a",
+    "833a98114d48c4b518b712b123a2c429",
+    "043c61e0405ee1d417c8fe9c3de77391"
+   ],
+   "irrelevant_lights": [
+    "317012564b7a8cc3f640399d2f4743db",
+    "1d3d500244edb6487ecb95b0a9814a78",
+    "5c3130014579597ae51a54876720159b",
+    "bbf0c7644fc178173ab457bc3b87c132",
+    "c71c8da244c14ab939f3c7a83515f84b",
+    "fa8bbad24006ceb50124d7a6ed9012d8",
+    "03979e0e4ab2bbd4f3ec7a8ad926919b",
+    "5f99ffb641bd0c3c85725498070f3847"
+   ],
+   "captures": [
+    {
+     "capture": 0,
+     "pose": "untransformed",
+     "capture_percentage": 0.0,
+     "type": 2,
+     "coeffs": [
+      "LightMapTexture2D_6121",
+      "LightMapTexture2D_6009",
+      "LightMapTexture2D_5793"
+     ],
+     "scales": [
+      [
+       0.09180723130702972,
+       0.36460602283477783,
+       0.290811151266098
+      ],
+      [
+       0.08771426230669022,
+       0.5273531079292297,
+       0.4458800256252289
+      ],
+      [
+       0.08807373046875,
+       0.28907155990600586,
+       0.2534124255180359
+      ]
+     ],
+     "scales_w": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "coordScale": [
+      0.125,
+      0.25
+     ],
+     "coordBias": [
+      0.12548828125,
+      0.2509765625
+     ],
+     "texture_files": [
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_6121.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_6009.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_5793.png",
+       "source": "render_atlas"
+      }
+     ],
+     "atlas_rects_px": [
+      {
+       "x": 32.125,
+       "y": 32.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        128
+       ]
+      },
+      {
+       "x": 32.125,
+       "y": 32.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        128
+       ]
+      },
+      {
+       "x": 32.125,
+       "y": 32.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        128
+       ]
+      }
+     ],
+     "lights": [
+      "37e40a3047f54a738d155cb1407f990a",
+      "833a98114d48c4b518b712b123a2c429"
+     ]
+    },
+    {
+     "capture": 1,
+     "pose": "transformed",
+     "capture_percentage": 1.0,
+     "type": 2,
+     "coeffs": [
+      "LightMapTexture2D_6121",
+      "LightMapTexture2D_6009",
+      "LightMapTexture2D_5793"
+     ],
+     "scales": [
+      [
+       0.09180723130702972,
+       0.3222966194152832,
+       0.2795563042163849
+      ],
+      [
+       0.09186236560344696,
+       0.23761636018753052,
+       0.2294207215309143
+      ],
+      [
+       0.08807373046875,
+       0.21568170189857483,
+       0.19775664806365967
+      ]
+     ],
+     "scales_w": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "coordScale": [
+      0.125,
+      0.25
+     ],
+     "coordBias": [
+      0.12548828125,
+      0.5009765625
+     ],
+     "texture_files": [
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_6121.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_6009.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_5793.png",
+       "source": "render_atlas"
+      }
+     ],
+     "atlas_rects_px": [
+      {
+       "x": 32.125,
+       "y": 64.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        128
+       ]
+      },
+      {
+       "x": 32.125,
+       "y": 64.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        128
+       ]
+      },
+      {
+       "x": 32.125,
+       "y": 64.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        128
+       ]
+      }
+     ],
+     "lights": [
+      "37e40a3047f54a738d155cb1407f990a",
+      "043c61e0405ee1d417c8fe9c3de77391",
+      "833a98114d48c4b518b712b123a2c429"
+     ]
+    }
+   ]
+  },
+  "MP_ESC_Remnant_BASE_m.TheWorld.PersistentLevel.TnTransformingWorldActor_15255": {
+   "actor": "TnTransformingWorldActor_15255",
+   "component": "MP_ESC_Remnant_BASE_m.TheWorld.PersistentLevel.TnTransformingWorldActor_15255.HmInterpolatedLightMappedSkeletalMeshComponent_14305",
+   "skeletal_mesh": "TPRO_ORB_D1_Doors_p.ORB_InteriorDoor_SKEL",
+   "initial_state": "Untransformed",
+   "anim_sequence": "ORB_A4InteriorDoor_FastTransOpen",
+   "lighting_guid": "96e6a7724e3a37ebff657ebe7b7f94df",
+   "baked_lights": [
+    "37e40a3047f54a738d155cb1407f990a",
+    "b64c253747db923ffd511aa9ed7dc0f2",
+    "86d2ba104139021803c9ad852bd420de",
+    "eb40e6814959a920f5757fb868dfa3c5"
+   ],
+   "irrelevant_lights": [
+    "317012564b7a8cc3f640399d2f4743db",
+    "1d3d500244edb6487ecb95b0a9814a78",
+    "5c3130014579597ae51a54876720159b",
+    "de755a2d4842765e700d798d938987fd",
+    "fa8bbad24006ceb50124d7a6ed9012d8",
+    "5f99ffb641bd0c3c85725498070f3847"
+   ],
+   "captures": [
+    {
+     "capture": 0,
+     "pose": "untransformed",
+     "capture_percentage": 0.0,
+     "type": 2,
+     "coeffs": [
+      "LightMapTexture2D_6121",
+      "LightMapTexture2D_6009",
+      "LightMapTexture2D_5793"
+     ],
+     "scales": [
+      [
+       0.09180723130702972,
+       0.6641995906829834,
+       0.40604329109191895
+      ],
+      [
+       0.08771426230669022,
+       0.815507173538208,
+       0.5315961837768555
+      ],
+      [
+       0.08807376772165298,
+       0.3769429326057434,
+       0.2615659236907959
+      ]
+     ],
+     "scales_w": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "coordScale": [
+      0.125,
+      0.25
+     ],
+     "coordBias": [
+      0.75048828125,
+      0.2509765625
+     ],
+     "texture_files": [
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_6121.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_6009.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_5793.png",
+       "source": "render_atlas"
+      }
+     ],
+     "atlas_rects_px": [
+      {
+       "x": 192.125,
+       "y": 32.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        128
+       ]
+      },
+      {
+       "x": 192.125,
+       "y": 32.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        128
+       ]
+      },
+      {
+       "x": 192.125,
+       "y": 32.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        128
+       ]
+      }
+     ],
+     "lights": [
+      "37e40a3047f54a738d155cb1407f990a",
+      "b64c253747db923ffd511aa9ed7dc0f2",
+      "86d2ba104139021803c9ad852bd420de",
+      "eb40e6814959a920f5757fb868dfa3c5"
+     ]
+    },
+    {
+     "capture": 1,
+     "pose": "transformed",
+     "capture_percentage": 1.0,
+     "type": 2,
+     "coeffs": [
+      "LightMapTexture2D_6121",
+      "LightMapTexture2D_6009",
+      "LightMapTexture2D_5793"
+     ],
+     "scales": [
+      [
+       0.09180723130702972,
+       0.4931018054485321,
+       0.33857983350753784
+      ],
+      [
+       0.08769803494215012,
+       0.3936080038547516,
+       0.26026567816734314
+      ],
+      [
+       0.08807373046875,
+       0.38699063658714294,
+       0.26975107192993164
+      ]
+     ],
+     "scales_w": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "coordScale": [
+      0.125,
+      0.25
+     ],
+     "coordBias": [
+      0.00048828125,
+      0.5009765625
+     ],
+     "texture_files": [
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_6121.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_6009.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_5793.png",
+       "source": "render_atlas"
+      }
+     ],
+     "atlas_rects_px": [
+      {
+       "x": 0.125,
+       "y": 64.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        128
+       ]
+      },
+      {
+       "x": 0.125,
+       "y": 64.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        128
+       ]
+      },
+      {
+       "x": 0.125,
+       "y": 64.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        128
+       ]
+      }
+     ],
+     "lights": [
+      "37e40a3047f54a738d155cb1407f990a",
+      "b64c253747db923ffd511aa9ed7dc0f2",
+      "86d2ba104139021803c9ad852bd420de",
+      "eb40e6814959a920f5757fb868dfa3c5"
+     ]
+    }
+   ]
+  },
+  "MP_ESC_Remnant_BASE_m.TheWorld.PersistentLevel.TnTransformingWorldActor_3920": {
+   "actor": "TnTransformingWorldActor_3920",
+   "component": "MP_ESC_Remnant_BASE_m.TheWorld.PersistentLevel.TnTransformingWorldActor_3920.HmInterpolatedLightMappedSkeletalMeshComponent_14305",
+   "skeletal_mesh": "TPRO_ORB_D1_Doors_p.ORB_InteriorDoor_SKEL",
+   "initial_state": "Untransformed",
+   "anim_sequence": "ORB_A4InteriorDoor_FastTransOpen",
+   "lighting_guid": "6ea317f44a4298be681bd8a37b1fa381",
+   "baked_lights": [
+    "37e40a3047f54a738d155cb1407f990a",
+    "09fafee640b9736e20945fa6cce88241",
+    "b86b4b394ec4c915d10b508d25c0fb68",
+    "268a470a465cf0922e0400ba254fec42"
+   ],
+   "irrelevant_lights": [
+    "317012564b7a8cc3f640399d2f4743db",
+    "1d3d500244edb6487ecb95b0a9814a78",
+    "5c3130014579597ae51a54876720159b",
+    "bbf0c7644fc178173ab457bc3b87c132",
+    "68af74ea4ccf8a16c66802bb93535602",
+    "cbe7f35c4d5bdc073e78aa9a7921e7fb",
+    "03979e0e4ab2bbd4f3ec7a8ad926919b",
+    "5f99ffb641bd0c3c85725498070f3847"
+   ],
+   "captures": [
+    {
+     "capture": 0,
+     "pose": "untransformed",
+     "capture_percentage": 0.0,
+     "type": 2,
+     "coeffs": [
+      "LightMapTexture2D_6121",
+      "LightMapTexture2D_6009",
+      "LightMapTexture2D_5793"
+     ],
+     "scales": [
+      [
+       0.10132363438606262,
+       0.11607338488101959,
+       0.1564842015504837
+      ],
+      [
+       0.12216319143772125,
+       0.11159907281398773,
+       0.126830592751503
+      ],
+      [
+       0.13672515749931335,
+       0.11412544548511505,
+       0.14686369895935059
+      ]
+     ],
+     "scales_w": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "coordScale": [
+      0.125,
+      0.25
+     ],
+     "coordBias": [
+      0.62548828125,
+      0.2509765625
+     ],
+     "texture_files": [
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_6121.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_6009.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_5793.png",
+       "source": "render_atlas"
+      }
+     ],
+     "atlas_rects_px": [
+      {
+       "x": 160.125,
+       "y": 32.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        128
+       ]
+      },
+      {
+       "x": 160.125,
+       "y": 32.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        128
+       ]
+      },
+      {
+       "x": 160.125,
+       "y": 32.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        128
+       ]
+      }
+     ],
+     "lights": [
+      "37e40a3047f54a738d155cb1407f990a",
+      "09fafee640b9736e20945fa6cce88241",
+      "b86b4b394ec4c915d10b508d25c0fb68",
+      "268a470a465cf0922e0400ba254fec42"
+     ]
+    },
+    {
+     "capture": 1,
+     "pose": "transformed",
+     "capture_percentage": 1.0,
+     "type": 2,
+     "coeffs": [
+      "LightMapTexture2D_15047",
+      "LightMapTexture2D_13970",
+      "LightMapTexture2D_11488"
+     ],
+     "scales": [
+      [
+       0.09676381200551987,
+       0.10016829520463943,
+       0.12221771478652954
+      ],
+      [
+       0.09311697632074356,
+       0.11159907281398773,
+       0.126830592751503
+      ],
+      [
+       0.08846883475780487,
+       0.09586844593286514,
+       0.11723900586366653
+      ]
+     ],
+     "scales_w": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "coordScale": [
+      0.125,
+      0.125
+     ],
+     "coordBias": [
+      0.87548828125,
+      0.62548828125
+     ],
+     "texture_files": [
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_15047.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_13970.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_11488.png",
+       "source": "render_atlas"
+      }
+     ],
+     "atlas_rects_px": [
+      {
+       "x": 224.125,
+       "y": 160.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 224.125,
+       "y": 160.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 224.125,
+       "y": 160.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      }
+     ],
+     "lights": [
+      "37e40a3047f54a738d155cb1407f990a",
+      "09fafee640b9736e20945fa6cce88241",
+      "b86b4b394ec4c915d10b508d25c0fb68",
+      "268a470a465cf0922e0400ba254fec42"
+     ]
+    }
+   ]
+  },
+  "MP_ESC_Remnant_BASE_m.TheWorld.PersistentLevel.TnTransformingWorldActor_6670": {
+   "actor": "TnTransformingWorldActor_6670",
+   "component": "MP_ESC_Remnant_BASE_m.TheWorld.PersistentLevel.TnTransformingWorldActor_6670.HmInterpolatedLightMappedSkeletalMeshComponent_14305",
+   "skeletal_mesh": "TPRO_ORB_D1_Doors_p.ORB_InteriorDoor_SKEL",
+   "initial_state": "Untransformed",
+   "anim_sequence": "ORB_A4InteriorDoor_FastTransOpen",
+   "lighting_guid": "388126064d1f7d6d37b00ca8a07b5cf1",
+   "baked_lights": [
+    "37e40a3047f54a738d155cb1407f990a",
+    "b55a235e40eeb0f654ba498bb13a4f93",
+    "87d74bec457bee5ee05bc2b42bd466fa",
+    "a70634154e3efd055c69998f2ea1077e",
+    "7d7f877c4c35fb705f445eae6900c237"
+   ],
+   "irrelevant_lights": [
+    "317012564b7a8cc3f640399d2f4743db",
+    "1d3d500244edb6487ecb95b0a9814a78",
+    "5c3130014579597ae51a54876720159b",
+    "949345c54738bc18a2d0f6bcd9053b28"
+   ],
+   "captures": [
+    {
+     "capture": 0,
+     "pose": "untransformed",
+     "capture_percentage": 0.0,
+     "type": 2,
+     "coeffs": [
+      "LightMapTexture2D_15047",
+      "LightMapTexture2D_13970",
+      "LightMapTexture2D_11488"
+     ],
+     "scales": [
+      [
+       0.11394335329532623,
+       0.492940753698349,
+       0.38658347725868225
+      ],
+      [
+       0.15625295042991638,
+       0.5114469528198242,
+       0.4257439374923706
+      ],
+      [
+       0.2474207580089569,
+       0.2905830442905426,
+       0.2507183849811554
+      ]
+     ],
+     "scales_w": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "coordScale": [
+      0.125,
+      0.125
+     ],
+     "coordBias": [
+      0.37548828125,
+      0.50048828125
+     ],
+     "texture_files": [
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_15047.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_13970.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_11488.png",
+       "source": "render_atlas"
+      }
+     ],
+     "atlas_rects_px": [
+      {
+       "x": 96.125,
+       "y": 128.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 96.125,
+       "y": 128.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 96.125,
+       "y": 128.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      }
+     ],
+     "lights": [
+      "37e40a3047f54a738d155cb1407f990a",
+      "b55a235e40eeb0f654ba498bb13a4f93",
+      "87d74bec457bee5ee05bc2b42bd466fa"
+     ]
+    },
+    {
+     "capture": 1,
+     "pose": "transformed",
+     "capture_percentage": 1.0,
+     "type": 2,
+     "coeffs": [
+      "LightMapTexture2D_15047",
+      "LightMapTexture2D_13970",
+      "LightMapTexture2D_11488"
+     ],
+     "scales": [
+      [
+       3.7972068786621094,
+       2.207174062728882,
+       2.199847936630249
+      ],
+      [
+       6.172605037689209,
+       3.5470035076141357,
+       3.514573097229004
+      ],
+      [
+       6.172146320343018,
+       3.5464463233947754,
+       3.513803005218506
+      ]
+     ],
+     "scales_w": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "coordScale": [
+      0.125,
+      0.125
+     ],
+     "coordBias": [
+      0.12548828125,
+      0.62548828125
+     ],
+     "texture_files": [
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_15047.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_13970.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_11488.png",
+       "source": "render_atlas"
+      }
+     ],
+     "atlas_rects_px": [
+      {
+       "x": 32.125,
+       "y": 160.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 32.125,
+       "y": 160.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 32.125,
+       "y": 160.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      }
+     ],
+     "lights": [
+      "37e40a3047f54a738d155cb1407f990a",
+      "b55a235e40eeb0f654ba498bb13a4f93",
+      "87d74bec457bee5ee05bc2b42bd466fa",
+      "a70634154e3efd055c69998f2ea1077e",
+      "7d7f877c4c35fb705f445eae6900c237"
+     ]
+    }
+   ]
+  },
+  "MP_ESC_Remnant_BASE_m.TheWorld.PersistentLevel.TnTransformingWorldActor_7351": {
+   "actor": "TnTransformingWorldActor_7351",
+   "component": "MP_ESC_Remnant_BASE_m.TheWorld.PersistentLevel.TnTransformingWorldActor_7351.HmInterpolatedLightMappedSkeletalMeshComponent_14305",
+   "skeletal_mesh": "TPRO_ORB_D1_Doors_p.ORB_InteriorDoor_SKEL",
+   "initial_state": "Untransformed",
+   "anim_sequence": "ORB_A4InteriorDoor_FastTransOpen",
+   "lighting_guid": "c94ce9d74f591f1306446b9b37fe4f82",
+   "baked_lights": [
+    "37e40a3047f54a738d155cb1407f990a",
+    "718bb20c4cd486c8a41740bbfad384c5",
+    "b64c253747db923ffd511aa9ed7dc0f2",
+    "1d7e1ad141435597ef1ca4aa5b58fb52",
+    "f878563e469eaa3b2998c18e5da2d712",
+    "7d7f877c4c35fb705f445eae6900c237"
+   ],
+   "irrelevant_lights": [
+    "317012564b7a8cc3f640399d2f4743db",
+    "1d3d500244edb6487ecb95b0a9814a78",
+    "5c3130014579597ae51a54876720159b",
+    "c71c8da244c14ab939f3c7a83515f84b",
+    "cf64425d471ca355d2cfb5b4c7baf2d4",
+    "d1aaeb2c4b9127e456445fb3cf8e7c30"
+   ],
+   "captures": [
+    {
+     "capture": 0,
+     "pose": "untransformed",
+     "capture_percentage": 0.0,
+     "type": 2,
+     "coeffs": [
+      "LightMapTexture2D_6121",
+      "LightMapTexture2D_6009",
+      "LightMapTexture2D_5793"
+     ],
+     "scales": [
+      [
+       2.3590574264526367,
+       1.2538158893585205,
+       1.176841139793396
+      ],
+      [
+       6.508441925048828,
+       3.478907823562622,
+       3.2848305702209473
+      ],
+      [
+       3.9934475421905518,
+       2.0882809162139893,
+       1.939181923866272
+      ]
+     ],
+     "scales_w": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "coordScale": [
+      0.125,
+      0.25
+     ],
+     "coordBias": [
+      0.37548828125,
+      0.2509765625
+     ],
+     "texture_files": [
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_6121.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_6009.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_5793.png",
+       "source": "render_atlas"
+      }
+     ],
+     "atlas_rects_px": [
+      {
+       "x": 96.125,
+       "y": 32.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        128
+       ]
+      },
+      {
+       "x": 96.125,
+       "y": 32.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        128
+       ]
+      },
+      {
+       "x": 96.125,
+       "y": 32.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        128
+       ]
+      }
+     ],
+     "lights": [
+      "37e40a3047f54a738d155cb1407f990a",
+      "718bb20c4cd486c8a41740bbfad384c5",
+      "b64c253747db923ffd511aa9ed7dc0f2",
+      "1d7e1ad141435597ef1ca4aa5b58fb52",
+      "f878563e469eaa3b2998c18e5da2d712",
+      "7d7f877c4c35fb705f445eae6900c237"
+     ]
+    },
+    {
+     "capture": 1,
+     "pose": "transformed",
+     "capture_percentage": 1.0,
+     "type": 2,
+     "coeffs": [
+      "LightMapTexture2D_6121",
+      "LightMapTexture2D_6009",
+      "LightMapTexture2D_5793"
+     ],
+     "scales": [
+      [
+       2.236189126968384,
+       1.284727931022644,
+       1.2699552774429321
+      ],
+      [
+       2.7377161979675293,
+       1.4932883977890015,
+       1.4419121742248535
+      ],
+      [
+       2.477597713470459,
+       1.4355125427246094,
+       1.4267736673355103
+      ]
+     ],
+     "scales_w": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "coordScale": [
+      0.125,
+      0.25
+     ],
+     "coordBias": [
+      0.00048828125,
+      0.7509765625
+     ],
+     "texture_files": [
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_6121.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_6009.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_5793.png",
+       "source": "render_atlas"
+      }
+     ],
+     "atlas_rects_px": [
+      {
+       "x": 0.125,
+       "y": 96.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        128
+       ]
+      },
+      {
+       "x": 0.125,
+       "y": 96.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        128
+       ]
+      },
+      {
+       "x": 0.125,
+       "y": 96.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        128
+       ]
+      }
+     ],
+     "lights": [
+      "37e40a3047f54a738d155cb1407f990a",
+      "718bb20c4cd486c8a41740bbfad384c5",
+      "b64c253747db923ffd511aa9ed7dc0f2",
+      "1d7e1ad141435597ef1ca4aa5b58fb52",
+      "f878563e469eaa3b2998c18e5da2d712",
+      "7d7f877c4c35fb705f445eae6900c237"
+     ]
+    }
+   ]
+  },
+  "MP_ESC_Remnant_BASE_m.TheWorld.PersistentLevel.TnTransformingWorldActor_7404": {
+   "actor": "TnTransformingWorldActor_7404",
+   "component": "MP_ESC_Remnant_BASE_m.TheWorld.PersistentLevel.TnTransformingWorldActor_7404.HmInterpolatedLightMappedSkeletalMeshComponent_14305",
+   "skeletal_mesh": "TPRO_ORB_D1_Doors_p.ORB_InteriorDoor_SKEL",
+   "initial_state": "Untransformed",
+   "anim_sequence": "ORB_A4InteriorDoor_FastTransOpen",
+   "lighting_guid": "fa2cd92043be6f4d300871b8161acd67",
+   "baked_lights": [
+    "37e40a3047f54a738d155cb1407f990a",
+    "8fe328954d6848c1eb2f0e85067ee67b",
+    "b55a235e40eeb0f654ba498bb13a4f93",
+    "87d74bec457bee5ee05bc2b42bd466fa",
+    "a70634154e3efd055c69998f2ea1077e",
+    "7d7f877c4c35fb705f445eae6900c237"
+   ],
+   "irrelevant_lights": [
+    "317012564b7a8cc3f640399d2f4743db",
+    "1d3d500244edb6487ecb95b0a9814a78",
+    "eac91d0841168683a2942089c55b2611",
+    "13113c2747bc84287ca15f90dc2a2197",
+    "5694100d4a23c02c8689fb8ae6cb26fa",
+    "43fef85f4b04846b755ca3b5c352f9c3"
+   ],
+   "captures": [
+    {
+     "capture": 0,
+     "pose": "untransformed",
+     "capture_percentage": 0.0,
+     "type": 2,
+     "coeffs": [
+      "LightMapTexture2D_15047",
+      "LightMapTexture2D_13970",
+      "LightMapTexture2D_11488"
+     ],
+     "scales": [
+      [
+       0.09180723130702972,
+       0.5732355117797852,
+       0.3348720669746399
+      ],
+      [
+       0.08826270699501038,
+       0.3243909478187561,
+       0.22231458127498627
+      ],
+      [
+       0.09700508415699005,
+       0.7648360133171082,
+       0.48095080256462097
+      ]
+     ],
+     "scales_w": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "coordScale": [
+      0.125,
+      0.125
+     ],
+     "coordBias": [
+      0.12548828125,
+      0.50048828125
+     ],
+     "texture_files": [
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_15047.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_13970.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_11488.png",
+       "source": "render_atlas"
+      }
+     ],
+     "atlas_rects_px": [
+      {
+       "x": 32.125,
+       "y": 128.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 32.125,
+       "y": 128.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 32.125,
+       "y": 128.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      }
+     ],
+     "lights": [
+      "37e40a3047f54a738d155cb1407f990a",
+      "8fe328954d6848c1eb2f0e85067ee67b"
+     ]
+    },
+    {
+     "capture": 1,
+     "pose": "transformed",
+     "capture_percentage": 1.0,
+     "type": 2,
+     "coeffs": [
+      "LightMapTexture2D_15047",
+      "LightMapTexture2D_13970",
+      "LightMapTexture2D_11488"
+     ],
+     "scales": [
+      [
+       0.362103134393692,
+       0.4006541669368744,
+       0.2798575460910797
+      ],
+      [
+       0.3518684208393097,
+       0.34158024191856384,
+       0.2764899432659149
+      ],
+      [
+       0.41223132610321045,
+       0.38611486554145813,
+       0.3300967216491699
+      ]
+     ],
+     "scales_w": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "coordScale": [
+      0.125,
+      0.125
+     ],
+     "coordBias": [
+      0.37548828125,
+      0.75048828125
+     ],
+     "texture_files": [
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_15047.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_13970.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_11488.png",
+       "source": "render_atlas"
+      }
+     ],
+     "atlas_rects_px": [
+      {
+       "x": 96.125,
+       "y": 192.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 96.125,
+       "y": 192.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 96.125,
+       "y": 192.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      }
+     ],
+     "lights": [
+      "37e40a3047f54a738d155cb1407f990a",
+      "b55a235e40eeb0f654ba498bb13a4f93",
+      "8fe328954d6848c1eb2f0e85067ee67b",
+      "87d74bec457bee5ee05bc2b42bd466fa",
+      "a70634154e3efd055c69998f2ea1077e",
+      "7d7f877c4c35fb705f445eae6900c237"
+     ]
+    }
+   ]
+  },
+  "MP_ESC_Remnant_BASE_m.TheWorld.PersistentLevel.TnTransformingWorldActor_797": {
+   "actor": "TnTransformingWorldActor_797",
+   "component": "MP_ESC_Remnant_BASE_m.TheWorld.PersistentLevel.TnTransformingWorldActor_797.HmInterpolatedLightMappedSkeletalMeshComponent_14305",
+   "skeletal_mesh": "TPRO_ORB_D1_Doors_p.ORB_InteriorDoor_SKEL",
+   "initial_state": "Untransformed",
+   "anim_sequence": "ORB_A4InteriorDoor_FastTransOpen",
+   "lighting_guid": "24ae0ee649752c91597bde980331bf73",
+   "baked_lights": [
+    "37e40a3047f54a738d155cb1407f990a",
+    "bef0e9d94e91c631a4dee499424929a3",
+    "01177c7e4f1a0c87c90735af61221534",
+    "268a470a465cf0922e0400ba254fec42",
+    "9530ccb84027bc78581cc5a5a95c8f29",
+    "ee54c07043a738c89da53f9b7f4e68cf"
+   ],
+   "irrelevant_lights": [
+    "317012564b7a8cc3f640399d2f4743db",
+    "1d3d500244edb6487ecb95b0a9814a78",
+    "970b39ff44f7e1202b89739349abf24a",
+    "cbe7f35c4d5bdc073e78aa9a7921e7fb",
+    "5f99ffb641bd0c3c85725498070f3847"
+   ],
+   "captures": [
+    {
+     "capture": 0,
+     "pose": "untransformed",
+     "capture_percentage": 0.0,
+     "type": 2,
+     "coeffs": [
+      "LightMapTexture2D_15047",
+      "LightMapTexture2D_13970",
+      "LightMapTexture2D_11488"
+     ],
+     "scales": [
+      [
+       0.5039479732513428,
+       0.4027727544307709,
+       0.13633617758750916
+      ],
+      [
+       0.5551098585128784,
+       0.45836514234542847,
+       0.13693562150001526
+      ],
+      [
+       0.33865654468536377,
+       0.2845548987388611,
+       0.12063606083393097
+      ]
+     ],
+     "scales_w": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "coordScale": [
+      0.125,
+      0.125
+     ],
+     "coordBias": [
+      0.25048828125,
+      0.87548828125
+     ],
+     "texture_files": [
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_15047.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_13970.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_11488.png",
+       "source": "render_atlas"
+      }
+     ],
+     "atlas_rects_px": [
+      {
+       "x": 64.125,
+       "y": 224.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 64.125,
+       "y": 224.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 64.125,
+       "y": 224.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      }
+     ],
+     "lights": [
+      "37e40a3047f54a738d155cb1407f990a",
+      "bef0e9d94e91c631a4dee499424929a3",
+      "01177c7e4f1a0c87c90735af61221534",
+      "268a470a465cf0922e0400ba254fec42",
+      "9530ccb84027bc78581cc5a5a95c8f29"
+     ]
+    },
+    {
+     "capture": 1,
+     "pose": "transformed",
+     "capture_percentage": 1.0,
+     "type": 2,
+     "coeffs": [
+      "LightMapTexture2D_15047",
+      "LightMapTexture2D_13970",
+      "LightMapTexture2D_11488"
+     ],
+     "scales": [
+      [
+       0.42349177598953247,
+       0.3382023572921753,
+       0.12221772223711014
+      ],
+      [
+       0.46860814094543457,
+       0.3889690935611725,
+       0.11802026629447937
+      ],
+      [
+       0.21522533893585205,
+       0.17919069528579712,
+       0.11723900586366653
+      ]
+     ],
+     "scales_w": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "coordScale": [
+      0.125,
+      0.125
+     ],
+     "coordBias": [
+      0.12548828125,
+      0.87548828125
+     ],
+     "texture_files": [
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_15047.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_13970.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_11488.png",
+       "source": "render_atlas"
+      }
+     ],
+     "atlas_rects_px": [
+      {
+       "x": 32.125,
+       "y": 224.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 32.125,
+       "y": 224.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 32.125,
+       "y": 224.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      }
+     ],
+     "lights": [
+      "37e40a3047f54a738d155cb1407f990a",
+      "bef0e9d94e91c631a4dee499424929a3",
+      "ee54c07043a738c89da53f9b7f4e68cf",
+      "01177c7e4f1a0c87c90735af61221534",
+      "268a470a465cf0922e0400ba254fec42",
+      "9530ccb84027bc78581cc5a5a95c8f29"
+     ]
+    }
+   ]
+  },
+  "MP_ESC_Remnant_BASE_m.TheWorld.PersistentLevel.TnTransformingWorldActor_8277": {
+   "actor": "TnTransformingWorldActor_8277",
+   "component": "MP_ESC_Remnant_BASE_m.TheWorld.PersistentLevel.TnTransformingWorldActor_8277.HmInterpolatedLightMappedSkeletalMeshComponent_14305",
+   "skeletal_mesh": "TPRO_ORB_D1_Doors_p.ORB_InteriorDoor_SKEL",
+   "initial_state": "Untransformed",
+   "anim_sequence": "ORB_A4InteriorDoor_FastTransOpen",
+   "lighting_guid": "2b4b074d464fdcbc65b341bf97e73495",
+   "baked_lights": [
+    "37e40a3047f54a738d155cb1407f990a",
+    "2800f9524d7dd4b82038b4bf350f91c7"
+   ],
+   "irrelevant_lights": [
+    "317012564b7a8cc3f640399d2f4743db",
+    "1d3d500244edb6487ecb95b0a9814a78",
+    "b8cc82df41941b58f0a22fa783e0f164",
+    "425266a44ef2924ef218939efd89d176",
+    "0fbbf9ca4996db0a4c4396a715d465c5",
+    "bbf0c7644fc178173ab457bc3b87c132",
+    "b1d4f75e4885537e94ac6b862125f423",
+    "32117c0a40b939f0f05f778b62525b79",
+    "710b603f4627cc7518642e87eb8a9fdb",
+    "5f99ffb641bd0c3c85725498070f3847"
+   ],
+   "captures": [
+    {
+     "capture": 0,
+     "pose": "untransformed",
+     "capture_percentage": 0.0,
+     "type": 2,
+     "coeffs": [
+      "LightMapTexture2D_6121",
+      "LightMapTexture2D_6009",
+      "LightMapTexture2D_5793"
+     ],
+     "scales": [
+      [
+       0.09180723130702972,
+       0.6782177090644836,
+       0.3965809643268585
+      ],
+      [
+       0.1047624796628952,
+       0.8702791929244995,
+       0.543187141418457
+      ],
+      [
+       0.09124745428562164,
+       0.4327860474586487,
+       0.2855958640575409
+      ]
+     ],
+     "scales_w": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "coordScale": [
+      0.125,
+      0.25
+     ],
+     "coordBias": [
+      0.50048828125,
+      0.2509765625
+     ],
+     "texture_files": [
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_6121.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_6009.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_5793.png",
+       "source": "render_atlas"
+      }
+     ],
+     "atlas_rects_px": [
+      {
+       "x": 128.125,
+       "y": 32.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        128
+       ]
+      },
+      {
+       "x": 128.125,
+       "y": 32.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        128
+       ]
+      },
+      {
+       "x": 128.125,
+       "y": 32.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        128
+       ]
+      }
+     ],
+     "lights": [
+      "37e40a3047f54a738d155cb1407f990a",
+      "2800f9524d7dd4b82038b4bf350f91c7"
+     ]
+    },
+    {
+     "capture": 1,
+     "pose": "transformed",
+     "capture_percentage": 1.0,
+     "type": 2,
+     "coeffs": [
+      "LightMapTexture2D_15047",
+      "LightMapTexture2D_13970",
+      "LightMapTexture2D_11488"
+     ],
+     "scales": [
+      [
+       0.09833401441574097,
+       0.5101038813591003,
+       0.3300715982913971
+      ],
+      [
+       0.10176632553339005,
+       0.4608101546764374,
+       0.279215544462204
+      ],
+      [
+       0.08807373046875,
+       0.4604569673538208,
+       0.30326586961746216
+      ]
+     ],
+     "scales_w": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "coordScale": [
+      0.125,
+      0.125
+     ],
+     "coordBias": [
+      0.00048828125,
+      0.62548828125
+     ],
+     "texture_files": [
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_15047.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_13970.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_11488.png",
+       "source": "render_atlas"
+      }
+     ],
+     "atlas_rects_px": [
+      {
+       "x": 0.125,
+       "y": 160.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 0.125,
+       "y": 160.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 0.125,
+       "y": 160.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      }
+     ],
+     "lights": [
+      "37e40a3047f54a738d155cb1407f990a",
+      "2800f9524d7dd4b82038b4bf350f91c7"
+     ]
+    }
+   ]
+  },
+  "MP_ESC_Remnant_BASE_m.TheWorld.PersistentLevel.TnTransformingWorldActor_8437": {
+   "actor": "TnTransformingWorldActor_8437",
+   "component": "MP_ESC_Remnant_BASE_m.TheWorld.PersistentLevel.TnTransformingWorldActor_8437.HmInterpolatedLightMappedSkeletalMeshComponent_14305",
+   "skeletal_mesh": "TPRO_ORB_D1_Doors_p.ORB_InteriorDoor_SKEL",
+   "initial_state": "Untransformed",
+   "anim_sequence": "ORB_A4InteriorDoor_FastTransOpen",
+   "lighting_guid": "54f863ec453aa06155a12b8302b0ecef",
+   "baked_lights": [
+    "37e40a3047f54a738d155cb1407f990a",
+    "56b1184743cc44c5c9ce43a2188f9264",
+    "e1de7e9442376282504d5aa65d6fbc91",
+    "7d7f877c4c35fb705f445eae6900c237"
+   ],
+   "irrelevant_lights": [
+    "317012564b7a8cc3f640399d2f4743db",
+    "1d3d500244edb6487ecb95b0a9814a78",
+    "b8cc82df41941b58f0a22fa783e0f164",
+    "33b7ba7b42f34f5034d18a9bb58b5cec",
+    "bbf0c7644fc178173ab457bc3b87c132",
+    "970b39ff44f7e1202b89739349abf24a",
+    "32117c0a40b939f0f05f778b62525b79",
+    "2603214648d0ae1f42f179a3a2999027",
+    "6fb35d554fc2bc37827659b5aa437dce"
+   ],
+   "captures": [
+    {
+     "capture": 0,
+     "pose": "untransformed",
+     "capture_percentage": 0.0,
+     "type": 2,
+     "coeffs": [
+      "LightMapTexture2D_6121",
+      "LightMapTexture2D_6009",
+      "LightMapTexture2D_5793"
+     ],
+     "scales": [
+      [
+       0.09180723130702972,
+       0.7996461987495422,
+       0.46704477071762085
+      ],
+      [
+       0.11091442406177521,
+       0.8630487322807312,
+       0.5380725860595703
+      ],
+      [
+       0.09135255217552185,
+       0.5222135186195374,
+       0.33759090304374695
+      ]
+     ],
+     "scales_w": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "coordScale": [
+      0.125,
+      0.25
+     ],
+     "coordBias": [
+      0.00048828125,
+      0.2509765625
+     ],
+     "texture_files": [
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_6121.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_6009.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_5793.png",
+       "source": "render_atlas"
+      }
+     ],
+     "atlas_rects_px": [
+      {
+       "x": 0.125,
+       "y": 32.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        128
+       ]
+      },
+      {
+       "x": 0.125,
+       "y": 32.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        128
+       ]
+      },
+      {
+       "x": 0.125,
+       "y": 32.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        128
+       ]
+      }
+     ],
+     "lights": [
+      "37e40a3047f54a738d155cb1407f990a",
+      "56b1184743cc44c5c9ce43a2188f9264",
+      "e1de7e9442376282504d5aa65d6fbc91"
+     ]
+    },
+    {
+     "capture": 1,
+     "pose": "transformed",
+     "capture_percentage": 1.0,
+     "type": 2,
+     "coeffs": [
+      "LightMapTexture2D_15047",
+      "LightMapTexture2D_13970",
+      "LightMapTexture2D_11488"
+     ],
+     "scales": [
+      [
+       2.144594669342041,
+       1.2614362239837646,
+       1.2634150981903076
+      ],
+      [
+       6.167610168457031,
+       3.5392825603485107,
+       3.501657009124756
+      ],
+      [
+       6.167260646820068,
+       3.5388946533203125,
+       3.5011708736419678
+      ]
+     ],
+     "scales_w": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "coordScale": [
+      0.125,
+      0.125
+     ],
+     "coordBias": [
+      0.00048828125,
+      0.75048828125
+     ],
+     "texture_files": [
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_15047.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_13970.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_11488.png",
+       "source": "render_atlas"
+      }
+     ],
+     "atlas_rects_px": [
+      {
+       "x": 0.125,
+       "y": 192.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 0.125,
+       "y": 192.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 0.125,
+       "y": 192.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      }
+     ],
+     "lights": [
+      "37e40a3047f54a738d155cb1407f990a",
+      "56b1184743cc44c5c9ce43a2188f9264",
+      "e1de7e9442376282504d5aa65d6fbc91",
+      "7d7f877c4c35fb705f445eae6900c237"
+     ]
+    }
+   ]
+  },
+  "MP_ESC_Remnant_BASE_m.TheWorld.PersistentLevel.TnTransformingWorldActor_9081": {
+   "actor": "TnTransformingWorldActor_9081",
+   "component": "MP_ESC_Remnant_BASE_m.TheWorld.PersistentLevel.TnTransformingWorldActor_9081.HmInterpolatedLightMappedSkeletalMeshComponent_14305",
+   "skeletal_mesh": "TPRO_ORB_D1_Doors_p.ORB_InteriorDoor_SKEL",
+   "initial_state": "Untransformed",
+   "anim_sequence": "ORB_A4InteriorDoor_FastTransOpen",
+   "lighting_guid": "da4c006447ab788569b2fe811406caaf",
+   "baked_lights": [
+    "37e40a3047f54a738d155cb1407f990a",
+    "a4588e1440c557db97d56790891faec4",
+    "b64c253747db923ffd511aa9ed7dc0f2",
+    "81abdb514e83c3e8cd6526b6b63a25cb",
+    "e9b99dbc46303aa71ed68fa4eb96b696"
+   ],
+   "irrelevant_lights": [
+    "317012564b7a8cc3f640399d2f4743db",
+    "1d3d500244edb6487ecb95b0a9814a78",
+    "5c3130014579597ae51a54876720159b",
+    "91d12174440f4d43682f9480201c9f6c",
+    "55333cae46ba0f029a96e99dc124f34a",
+    "5f99ffb641bd0c3c85725498070f3847"
+   ],
+   "captures": [
+    {
+     "capture": 0,
+     "pose": "untransformed",
+     "capture_percentage": 0.0,
+     "type": 2,
+     "coeffs": [
+      "LightMapTexture2D_6121",
+      "LightMapTexture2D_6009",
+      "LightMapTexture2D_5793"
+     ],
+     "scales": [
+      [
+       0.09180723130702972,
+       0.5150423645973206,
+       0.510755717754364
+      ],
+      [
+       0.08771426230669022,
+       0.5690861940383911,
+       0.5798512101173401
+      ],
+      [
+       0.08807373046875,
+       0.30458489060401917,
+       0.31513237953186035
+      ]
+     ],
+     "scales_w": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "coordScale": [
+      0.125,
+      0.25
+     ],
+     "coordBias": [
+      0.25048828125,
+      0.2509765625
+     ],
+     "texture_files": [
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_6121.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_6009.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_5793.png",
+       "source": "render_atlas"
+      }
+     ],
+     "atlas_rects_px": [
+      {
+       "x": 64.125,
+       "y": 32.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        128
+       ]
+      },
+      {
+       "x": 64.125,
+       "y": 32.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        128
+       ]
+      },
+      {
+       "x": 64.125,
+       "y": 32.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        128
+       ]
+      }
+     ],
+     "lights": [
+      "37e40a3047f54a738d155cb1407f990a",
+      "a4588e1440c557db97d56790891faec4",
+      "b64c253747db923ffd511aa9ed7dc0f2",
+      "81abdb514e83c3e8cd6526b6b63a25cb",
+      "e9b99dbc46303aa71ed68fa4eb96b696"
+     ]
+    },
+    {
+     "capture": 1,
+     "pose": "transformed",
+     "capture_percentage": 1.0,
+     "type": 2,
+     "coeffs": [
+      "LightMapTexture2D_6121",
+      "LightMapTexture2D_6009",
+      "LightMapTexture2D_5793"
+     ],
+     "scales": [
+      [
+       0.09180884063243866,
+       0.33188652992248535,
+       0.33962059020996094
+      ],
+      [
+       0.08768881112337112,
+       0.25631409883499146,
+       0.2611510455608368
+      ],
+      [
+       0.08813922852277756,
+       0.24390974640846252,
+       0.242693230509758
+      ]
+     ],
+     "scales_w": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "coordScale": [
+      0.125,
+      0.25
+     ],
+     "coordBias": [
+      0.87548828125,
+      0.2509765625
+     ],
+     "texture_files": [
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_6121.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_6009.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_Remnant/lightmaps/LightMapTexture2D_5793.png",
+       "source": "render_atlas"
+      }
+     ],
+     "atlas_rects_px": [
+      {
+       "x": 224.125,
+       "y": 32.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        128
+       ]
+      },
+      {
+       "x": 224.125,
+       "y": 32.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        128
+       ]
+      },
+      {
+       "x": 224.125,
+       "y": 32.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        128
+       ]
+      }
+     ],
+     "lights": [
+      "37e40a3047f54a738d155cb1407f990a",
+      "a4588e1440c557db97d56790891faec4",
+      "b64c253747db923ffd511aa9ed7dc0f2",
+      "81abdb514e83c3e8cd6526b6b63a25cb",
+      "e9b99dbc46303aa71ed68fa4eb96b696"
+     ]
+    }
+   ]
+  }
+ }
+}

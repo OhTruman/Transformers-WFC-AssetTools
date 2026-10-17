@@ -1,0 +1,4439 @@
+{
+ "map": "MP_ESC_BrokenHope",
+ "generated_by": "AssetTools/scripts/wfc/interp_lightmaps.py",
+ "source": "cooked HmInterpolatedLightMappedSkeletalMeshComponent native tails (RE INTERPOLATED_LIGHTMAP_RE.md d2ad301; decoder RE-Workspace/tools/interp_lightmap.py, read-only)",
+ "shader": "L_i = A_i + LightMapLerpAmount * (B_i - A_i) with A_i / B_i = texture(capture 0 / 1 coeff i, uv * coordScale + coordBias) * scale_i; then the stock directional light-map decode (RE \u00a72, CONFIRMED)",
+ "lerp_driver": "LightMapLerpAmount = the actor AnimNodeSequence normalized position, set every component tick; script sets 0 / 1 at setup (RE \u00a73, CONFIRMED)",
+ "record_shape": "per capture: coeffs / scales (rgb) / coordScale / coordBias as in lighting.json lightmaps; scales_w = the 4th scale component (1 on all checked); atlas_rects_px = coordBias * size, coordScale * size",
+ "stats": {
+  "actors": 18,
+  "captures": 36,
+  "textures_in_render_atlas": 108,
+  "textures_decoded_here": 0,
+  "problems": []
+ },
+ "interpolated_lightmaps": {
+  "MP_ESC_BrokenHope_Base_m.TheWorld.PersistentLevel.TnTransformingWorldActor_11211": {
+   "actor": "TnTransformingWorldActor_11211",
+   "component": "MP_ESC_BrokenHope_Base_m.TheWorld.PersistentLevel.TnTransformingWorldActor_11211.HmInterpolatedLightMappedSkeletalMeshComponent_4566",
+   "skeletal_mesh": "TPRO_IAC_Doors_p.IAC_InteriorDoor_SKEL",
+   "initial_state": "Untransformed",
+   "anim_sequence": "IAC_InteriorDoor_TransOut",
+   "lighting_guid": "c7b40d9e402e317f85351ea72f851415",
+   "baked_lights": [
+    "9cdd17b142e02079aff03e983c8b9923",
+    "5bc2ff8e4f709051bd93f1a8ab0f975b",
+    "99628a4a45c7340d22bd1bbe5c4cdc87",
+    "e6caae8f4d67cdca2a49dfa8aa8a0757",
+    "017043ef40aed46224b1e3adb7f9e8ff",
+    "2d6a85de45ba5321dceb9689056bd602",
+    "01c8f15b48a790503a4541a785f64f31",
+    "b6cfe683436e08d61644f7a65b190388",
+    "21a0b7e74bca70c860aed6a7fbd63d91",
+    "1f56684b4a67a4abfdefde930eb3bbc8",
+    "1d28734448e33edcb063ac903f23fa3b",
+    "3b6f1a63450bb899279579a969928850",
+    "a9192af14ac8d76d1c52828c70fc88f2",
+    "6edfdd9242853111736172bbd5f4aab7"
+   ],
+   "irrelevant_lights": [
+    "6e0de0b349c89047f3e6eb90c02f8c93",
+    "e36b08904ad0e38628b1378b3eb97742",
+    "7cc0f07c4db1f6ada68033b59603a270",
+    "aed1f13d44039e41b55b2aa3fd31c676",
+    "11eab28f4f000d8294df579819fdea96",
+    "d0fd7aa54939d66236131da4681147f7",
+    "cebd6c934d953f2308a3d88e6a8e5868",
+    "e78e76fb47997ceb9de65a8f4199fab9",
+    "a1d20f0542b89a637af9e1bc3b3cdef5",
+    "cce2adc84a288ad28fae459b02d059d2",
+    "df5b7bf44ae2819bfede7d932d7d05bf",
+    "eb58cddb4cd3dc4991627190b712f965",
+    "f53d2edd40499f0abfa4b4b062be2268",
+    "6f390cfd4fd281d5826e7bb231aedeab",
+    "60dc10c4474a70dec6f93ba55926d4d7",
+    "aa3b5b9940a4cd88a42c81bec843a729",
+    "7b080d1044356dee4c76318d96fbac9d"
+   ],
+   "captures": [
+    {
+     "capture": 0,
+     "pose": "untransformed",
+     "capture_percentage": 0.0,
+     "type": 2,
+     "coeffs": [
+      "LightMapTexture2D_7958",
+      "LightMapTexture2D_13480",
+      "LightMapTexture2D_710"
+     ],
+     "scales": [
+      [
+       1.1416845321655273,
+       0.5758402943611145,
+       0.5348326563835144
+      ],
+      [
+       1.1619293689727783,
+       0.5855709910392761,
+       0.5210554003715515
+      ],
+      [
+       1.1471713781356812,
+       0.5761839151382446,
+       0.5054780840873718
+      ]
+     ],
+     "scales_w": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "coordScale": [
+      0.25,
+      0.25
+     ],
+     "coordBias": [
+      0.25048828125,
+      0.00048828125
+     ],
+     "texture_files": [
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_7958.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_13480.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_710.png",
+       "source": "render_atlas"
+      }
+     ],
+     "atlas_rects_px": [
+      {
+       "x": 64.125,
+       "y": 0.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 64.125,
+       "y": 0.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 64.125,
+       "y": 0.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      }
+     ],
+     "lights": [
+      "9cdd17b142e02079aff03e983c8b9923",
+      "5bc2ff8e4f709051bd93f1a8ab0f975b",
+      "99628a4a45c7340d22bd1bbe5c4cdc87",
+      "e6caae8f4d67cdca2a49dfa8aa8a0757",
+      "017043ef40aed46224b1e3adb7f9e8ff",
+      "2d6a85de45ba5321dceb9689056bd602",
+      "01c8f15b48a790503a4541a785f64f31",
+      "b6cfe683436e08d61644f7a65b190388",
+      "21a0b7e74bca70c860aed6a7fbd63d91"
+     ]
+    },
+    {
+     "capture": 1,
+     "pose": "transformed",
+     "capture_percentage": 1.0,
+     "type": 2,
+     "coeffs": [
+      "LightMapTexture2D_3073",
+      "LightMapTexture2D_223",
+      "LightMapTexture2D_6695"
+     ],
+     "scales": [
+      [
+       0.7336886525154114,
+       0.30871978402137756,
+       0.07585866749286652
+      ],
+      [
+       0.5392534732818604,
+       0.24282722175121307,
+       0.10974229127168655
+      ],
+      [
+       0.5151525139808655,
+       0.23566372692584991,
+       0.12283444404602051
+      ]
+     ],
+     "scales_w": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "coordScale": [
+      0.25,
+      0.25
+     ],
+     "coordBias": [
+      0.00048828125,
+      0.00048828125
+     ],
+     "texture_files": [
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_3073.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_223.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_6695.png",
+       "source": "render_atlas"
+      }
+     ],
+     "atlas_rects_px": [
+      {
+       "x": 0.125,
+       "y": 0.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 0.125,
+       "y": 0.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 0.125,
+       "y": 0.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      }
+     ],
+     "lights": [
+      "9cdd17b142e02079aff03e983c8b9923",
+      "1f56684b4a67a4abfdefde930eb3bbc8",
+      "1d28734448e33edcb063ac903f23fa3b",
+      "3b6f1a63450bb899279579a969928850",
+      "01c8f15b48a790503a4541a785f64f31",
+      "a9192af14ac8d76d1c52828c70fc88f2",
+      "6edfdd9242853111736172bbd5f4aab7"
+     ]
+    }
+   ]
+  },
+  "MP_ESC_BrokenHope_Base_m.TheWorld.PersistentLevel.TnTransformingWorldActor_11450": {
+   "actor": "TnTransformingWorldActor_11450",
+   "component": "MP_ESC_BrokenHope_Base_m.TheWorld.PersistentLevel.TnTransformingWorldActor_11450.HmInterpolatedLightMappedSkeletalMeshComponent_4566",
+   "skeletal_mesh": "TPRO_IAC_Doors_p.IAC_InteriorDoor_SKEL",
+   "initial_state": "Untransformed",
+   "anim_sequence": "IAC_InteriorDoor_TransOut",
+   "lighting_guid": "84b6e13a4c59981307bc08889babb36f",
+   "baked_lights": [
+    "c66b6586470f6036f6695ba8b67ac211",
+    "39a4e132481ca66c7f69b0b24bb23828",
+    "cc232bb446ff8a23e78dcdb5503ca0f4",
+    "edc2330046b6c01da448018c14ce2892",
+    "da00d3bf44d7a814e123e7af7061ed73",
+    "19a33f0f4081937bcf28839fbe3253b7",
+    "01c8f15b48a790503a4541a785f64f31",
+    "90e7785a46181a4f7839b5a462cfb1c9",
+    "8f4aad444aa30fd8874a85959f60a95e",
+    "32189685473e9d0c6d252fb20df4c581",
+    "177d5ac049c7a64481ea24af22207346"
+   ],
+   "irrelevant_lights": [
+    "6e0de0b349c89047f3e6eb90c02f8c93",
+    "99b9d7ff4043f89f007170ac889187f7",
+    "717ff5cc455af8ab653732b2dd1f31b0",
+    "bc250c344c339855ccd520855f4f5b9b",
+    "f829d79e47e44a50c82d1dbf4f7fce35",
+    "d0ce469d43356c73776f1584b17e17ef",
+    "62577d9745a988b8e3eab5bbadb355dd",
+    "21e45af941fe92f907d51eb93a0b7ed4",
+    "a1e7ffe240172d302ddfa5a3f4c693b4",
+    "bd55523449b1a7c685ba63baf9b32190",
+    "b6b7b77948258cc7066171882da1ab39",
+    "cad0407540b8b1cdf8a7a78e444e7a6c",
+    "dea06c1c4d1ebec06234ffb7d7fe5ec8",
+    "8dc98ea94f576bb11ab0baa8ebcfa719",
+    "3a53712c4ea288fef212e0b71ad9c4e8",
+    "071ab2564aa06605a55368a3f4de9425"
+   ],
+   "captures": [
+    {
+     "capture": 0,
+     "pose": "untransformed",
+     "capture_percentage": 0.0,
+     "type": 2,
+     "coeffs": [
+      "LightMapTexture2D_7958",
+      "LightMapTexture2D_13480",
+      "LightMapTexture2D_710"
+     ],
+     "scales": [
+      [
+       0.26715463399887085,
+       0.1574450582265854,
+       0.13980042934417725
+      ],
+      [
+       0.25983723998069763,
+       0.1504991501569748,
+       0.15494504570960999
+      ],
+      [
+       0.2607254385948181,
+       0.17929735779762268,
+       0.15429191291332245
+      ]
+     ],
+     "scales_w": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "coordScale": [
+      0.25,
+      0.25
+     ],
+     "coordBias": [
+      0.50048828125,
+      0.25048828125
+     ],
+     "texture_files": [
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_7958.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_13480.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_710.png",
+       "source": "render_atlas"
+      }
+     ],
+     "atlas_rects_px": [
+      {
+       "x": 128.125,
+       "y": 64.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 128.125,
+       "y": 64.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 128.125,
+       "y": 64.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      }
+     ],
+     "lights": [
+      "c66b6586470f6036f6695ba8b67ac211",
+      "39a4e132481ca66c7f69b0b24bb23828",
+      "cc232bb446ff8a23e78dcdb5503ca0f4",
+      "edc2330046b6c01da448018c14ce2892",
+      "da00d3bf44d7a814e123e7af7061ed73",
+      "19a33f0f4081937bcf28839fbe3253b7",
+      "01c8f15b48a790503a4541a785f64f31",
+      "90e7785a46181a4f7839b5a462cfb1c9",
+      "8f4aad444aa30fd8874a85959f60a95e",
+      "32189685473e9d0c6d252fb20df4c581",
+      "177d5ac049c7a64481ea24af22207346"
+     ]
+    },
+    {
+     "capture": 1,
+     "pose": "transformed",
+     "capture_percentage": 1.0,
+     "type": 2,
+     "coeffs": [
+      "LightMapTexture2D_14363",
+      "LightMapTexture2D_5245",
+      "LightMapTexture2D_14311"
+     ],
+     "scales": [
+      [
+       0.11122546344995499,
+       0.052466344088315964,
+       0.024378692731261253
+      ],
+      [
+       0.1988140493631363,
+       0.09495970606803894,
+       0.0448254719376564
+      ],
+      [
+       0.17806728184223175,
+       0.08806650340557098,
+       0.04635797441005707
+      ]
+     ],
+     "scales_w": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "coordScale": [
+      0.25,
+      0.25
+     ],
+     "coordBias": [
+      0.00048828125,
+      0.25048828125
+     ],
+     "texture_files": [
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_14363.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_5245.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_14311.png",
+       "source": "render_atlas"
+      }
+     ],
+     "atlas_rects_px": [
+      {
+       "x": 0.125,
+       "y": 64.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 0.125,
+       "y": 64.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 0.125,
+       "y": 64.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      }
+     ],
+     "lights": [
+      "da00d3bf44d7a814e123e7af7061ed73",
+      "01c8f15b48a790503a4541a785f64f31",
+      "177d5ac049c7a64481ea24af22207346"
+     ]
+    }
+   ]
+  },
+  "MP_ESC_BrokenHope_Base_m.TheWorld.PersistentLevel.TnTransformingWorldActor_12155": {
+   "actor": "TnTransformingWorldActor_12155",
+   "component": "MP_ESC_BrokenHope_Base_m.TheWorld.PersistentLevel.TnTransformingWorldActor_12155.HmInterpolatedLightMappedSkeletalMeshComponent_4566",
+   "skeletal_mesh": "TPRO_IAC_Doors_p.IAC_InteriorDoor_SKEL",
+   "initial_state": "Untransformed",
+   "anim_sequence": "IAC_InteriorDoor_TransOut",
+   "lighting_guid": "8cf7f516463fcc9b0fe2c2a9ada56384",
+   "baked_lights": [
+    "4a9ac77242a234d2cc65edbc4bf5e9d1",
+    "8e59b966450e19dec6d77899ede76eb9",
+    "67ada5ec482ae0c32483e1863d396999",
+    "99978ac84221d53aa5360f81b0e8120a",
+    "384112954db45d3bf6e60bbae8c4470c",
+    "e0a73824463e05a9a57e41a316ede6a8",
+    "05ad8de345126f90948823a10186f655",
+    "01c8f15b48a790503a4541a785f64f31",
+    "be202726421aeec2e315368571914629",
+    "a8a872234b66851e9f86b5924bad5d6a",
+    "241b0cd64b7d99112b0bf6b20d433855"
+   ],
+   "irrelevant_lights": [
+    "6e0de0b349c89047f3e6eb90c02f8c93",
+    "99b9d7ff4043f89f007170ac889187f7",
+    "4457e2c1456817f19e1632a3599c8c88",
+    "c5b7fe224545c3c8daa60280b8a8ed3a",
+    "5978616f4c5354e54b63ac8d2d445169",
+    "406f900a4ea67d78cb23d38b06ab5841",
+    "e004185d47445890acaeea97e97c236f",
+    "cebd6c934d953f2308a3d88e6a8e5868",
+    "b9a4f5414ff21eb4b63e55bf2b689908",
+    "1c427fe94f338a928f733ca5e87306f5",
+    "9d83e9cc4a65089279d9b58848f9ad3c",
+    "cad0407540b8b1cdf8a7a78e444e7a6c",
+    "6f390cfd4fd281d5826e7bb231aedeab",
+    "8813934a4550288426e8bbb92515a212",
+    "d0006ec64f86ef095529cb9992b22ada",
+    "8c55e56144e3486b18277aa0697dfb77",
+    "0c60196c489dfca57dd0749bf5e6aa18",
+    "8dc98ea94f576bb11ab0baa8ebcfa719",
+    "331aea1842854c6aa2ec6cb5096a1673",
+    "3a53712c4ea288fef212e0b71ad9c4e8"
+   ],
+   "captures": [
+    {
+     "capture": 0,
+     "pose": "untransformed",
+     "capture_percentage": 0.0,
+     "type": 2,
+     "coeffs": [
+      "LightMapTexture2D_7958",
+      "LightMapTexture2D_13480",
+      "LightMapTexture2D_710"
+     ],
+     "scales": [
+      [
+       0.06945554912090302,
+       0.38887131214141846,
+       0.497840017080307
+      ],
+      [
+       0.06895133852958679,
+       0.39017271995544434,
+       0.5037664175033569
+      ],
+      [
+       0.06783854216337204,
+       0.3813023865222931,
+       0.49123287200927734
+      ]
+     ],
+     "scales_w": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "coordScale": [
+      0.25,
+      0.25
+     ],
+     "coordBias": [
+      0.00048828125,
+      0.50048828125
+     ],
+     "texture_files": [
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_7958.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_13480.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_710.png",
+       "source": "render_atlas"
+      }
+     ],
+     "atlas_rects_px": [
+      {
+       "x": 0.125,
+       "y": 128.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 0.125,
+       "y": 128.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 0.125,
+       "y": 128.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      }
+     ],
+     "lights": [
+      "4a9ac77242a234d2cc65edbc4bf5e9d1",
+      "8e59b966450e19dec6d77899ede76eb9",
+      "67ada5ec482ae0c32483e1863d396999",
+      "99978ac84221d53aa5360f81b0e8120a",
+      "384112954db45d3bf6e60bbae8c4470c",
+      "e0a73824463e05a9a57e41a316ede6a8",
+      "05ad8de345126f90948823a10186f655",
+      "01c8f15b48a790503a4541a785f64f31",
+      "be202726421aeec2e315368571914629",
+      "a8a872234b66851e9f86b5924bad5d6a",
+      "241b0cd64b7d99112b0bf6b20d433855"
+     ]
+    },
+    {
+     "capture": 1,
+     "pose": "transformed",
+     "capture_percentage": 1.0,
+     "type": 2,
+     "coeffs": [
+      "LightMapTexture2D_7958",
+      "LightMapTexture2D_13480",
+      "LightMapTexture2D_710"
+     ],
+     "scales": [
+      [
+       0.0029261817689985037,
+       0.013445200398564339,
+       0.013445200398564339
+      ],
+      [
+       0.004660602193325758,
+       0.02141450345516205,
+       0.02141450345516205
+      ],
+      [
+       0.004767448175698519,
+       0.021905438974499702,
+       0.021905438974499702
+      ]
+     ],
+     "scales_w": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "coordScale": [
+      0.25,
+      0.25
+     ],
+     "coordBias": [
+      0.00048828125,
+      0.75048828125
+     ],
+     "texture_files": [
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_7958.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_13480.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_710.png",
+       "source": "render_atlas"
+      }
+     ],
+     "atlas_rects_px": [
+      {
+       "x": 0.125,
+       "y": 192.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 0.125,
+       "y": 192.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 0.125,
+       "y": 192.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      }
+     ],
+     "lights": [
+      "01c8f15b48a790503a4541a785f64f31"
+     ]
+    }
+   ]
+  },
+  "MP_ESC_BrokenHope_Base_m.TheWorld.PersistentLevel.TnTransformingWorldActor_12616": {
+   "actor": "TnTransformingWorldActor_12616",
+   "component": "MP_ESC_BrokenHope_Base_m.TheWorld.PersistentLevel.TnTransformingWorldActor_12616.HmInterpolatedLightMappedSkeletalMeshComponent_4566",
+   "skeletal_mesh": "TPRO_IAC_Doors_p.IAC_InteriorDoor_SKEL",
+   "initial_state": "Untransformed",
+   "anim_sequence": "IAC_InteriorDoor_TransOut",
+   "lighting_guid": "7bd6bf2643c8c73a85ace1b8f83e97a8",
+   "baked_lights": [
+    "05c4027345f70a18d9505ca1c2cbdb25",
+    "67ada5ec482ae0c32483e1863d396999",
+    "c8c22f304fdbd42379d77aa8ba4eff3c",
+    "384112954db45d3bf6e60bbae8c4470c",
+    "b8e88c184b090433c444a5a576ff397a",
+    "e964b80a46822f10eaa7e7923a0a18db",
+    "01c8f15b48a790503a4541a785f64f31",
+    "2dfe09064691b7487fc508a9c2320844",
+    "78122aaa46838d8062eeffa83a8a6cd5",
+    "241b0cd64b7d99112b0bf6b20d433855",
+    "c66b6586470f6036f6695ba8b67ac211",
+    "c3989c4a44e6fd0c1907248dc9a490da",
+    "a1c9b09548779aeffb7cbf941062b98c",
+    "05ad8de345126f90948823a10186f655",
+    "8f4aad444aa30fd8874a85959f60a95e",
+    "32189685473e9d0c6d252fb20df4c581",
+    "b5d15d824d109b0d8e7080952b7dee1b"
+   ],
+   "irrelevant_lights": [
+    "6e0de0b349c89047f3e6eb90c02f8c93",
+    "99b9d7ff4043f89f007170ac889187f7",
+    "717ff5cc455af8ab653732b2dd1f31b0",
+    "e199ec4841792a23304a38b7eb7f3ab7",
+    "5978616f4c5354e54b63ac8d2d445169",
+    "d1b2544a4bd695b4d648b6b7f4aaad58",
+    "2507fe8b451b01ebcf6eac92ebd53fd1",
+    "cebd6c934d953f2308a3d88e6a8e5868",
+    "b9a4f5414ff21eb4b63e55bf2b689908",
+    "2a3c1f9446394f577fc58a80c10471a5",
+    "7d44153043574898f88076be96a028ff",
+    "fa7d3f3f420a5653dc2d7cbd0c51683f",
+    "6f390cfd4fd281d5826e7bb231aedeab",
+    "dea06c1c4d1ebec06234ffb7d7fe5ec8",
+    "d0006ec64f86ef095529cb9992b22ada",
+    "965ac11148be8afc3fa59090300aa2ac"
+   ],
+   "captures": [
+    {
+     "capture": 0,
+     "pose": "untransformed",
+     "capture_percentage": 0.0,
+     "type": 2,
+     "coeffs": [
+      "LightMapTexture2D_7958",
+      "LightMapTexture2D_13480",
+      "LightMapTexture2D_710"
+     ],
+     "scales": [
+      [
+       0.16744312644004822,
+       0.9768421649932861,
+       0.666043758392334
+      ],
+      [
+       0.17198875546455383,
+       1.0293508768081665,
+       0.7006037831306458
+      ],
+      [
+       0.17345118522644043,
+       1.0215390920639038,
+       0.7084333300590515
+      ]
+     ],
+     "scales_w": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "coordScale": [
+      0.25,
+      0.25
+     ],
+     "coordBias": [
+      0.25048828125,
+      0.50048828125
+     ],
+     "texture_files": [
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_7958.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_13480.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_710.png",
+       "source": "render_atlas"
+      }
+     ],
+     "atlas_rects_px": [
+      {
+       "x": 64.125,
+       "y": 128.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 64.125,
+       "y": 128.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 64.125,
+       "y": 128.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      }
+     ],
+     "lights": [
+      "05c4027345f70a18d9505ca1c2cbdb25",
+      "67ada5ec482ae0c32483e1863d396999",
+      "c8c22f304fdbd42379d77aa8ba4eff3c",
+      "384112954db45d3bf6e60bbae8c4470c",
+      "b8e88c184b090433c444a5a576ff397a",
+      "e964b80a46822f10eaa7e7923a0a18db",
+      "01c8f15b48a790503a4541a785f64f31",
+      "2dfe09064691b7487fc508a9c2320844",
+      "78122aaa46838d8062eeffa83a8a6cd5",
+      "241b0cd64b7d99112b0bf6b20d433855"
+     ]
+    },
+    {
+     "capture": 1,
+     "pose": "transformed",
+     "capture_percentage": 1.0,
+     "type": 2,
+     "coeffs": [
+      "LightMapTexture2D_7958",
+      "LightMapTexture2D_13480",
+      "LightMapTexture2D_710"
+     ],
+     "scales": [
+      [
+       0.027978980913758278,
+       0.02867855504155159,
+       0.10410962998867035
+      ],
+      [
+       0.028372500091791153,
+       0.03812699764966965,
+       0.10778792947530746
+      ],
+      [
+       0.027219582349061966,
+       0.033164963126182556,
+       0.102572001516819
+      ]
+     ],
+     "scales_w": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "coordScale": [
+      0.25,
+      0.25
+     ],
+     "coordBias": [
+      0.50048828125,
+      0.00048828125
+     ],
+     "texture_files": [
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_7958.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_13480.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_710.png",
+       "source": "render_atlas"
+      }
+     ],
+     "atlas_rects_px": [
+      {
+       "x": 128.125,
+       "y": 0.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 128.125,
+       "y": 0.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 128.125,
+       "y": 0.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      }
+     ],
+     "lights": [
+      "c66b6586470f6036f6695ba8b67ac211",
+      "c3989c4a44e6fd0c1907248dc9a490da",
+      "a1c9b09548779aeffb7cbf941062b98c",
+      "05ad8de345126f90948823a10186f655",
+      "01c8f15b48a790503a4541a785f64f31",
+      "8f4aad444aa30fd8874a85959f60a95e",
+      "32189685473e9d0c6d252fb20df4c581",
+      "b5d15d824d109b0d8e7080952b7dee1b"
+     ]
+    }
+   ]
+  },
+  "MP_ESC_BrokenHope_Base_m.TheWorld.PersistentLevel.TnTransformingWorldActor_13872": {
+   "actor": "TnTransformingWorldActor_13872",
+   "component": "MP_ESC_BrokenHope_Base_m.TheWorld.PersistentLevel.TnTransformingWorldActor_13872.HmInterpolatedLightMappedSkeletalMeshComponent_4566",
+   "skeletal_mesh": "TPRO_IAC_Doors_p.IAC_InteriorDoor_SKEL",
+   "initial_state": "Untransformed",
+   "anim_sequence": "IAC_InteriorDoor_TransOut",
+   "lighting_guid": "e0375e104faaa2732611e2b38c079682",
+   "baked_lights": [
+    "25a099c54d965310af76658ec6bad71b",
+    "111c5f5d4fdf95fb6b95c68cc81705ba",
+    "73f1440c49f090245711cf802baabdaf",
+    "d0c19ee8430e5525270f4d80d20f003c",
+    "01c8f15b48a790503a4541a785f64f31",
+    "a8a872234b66851e9f86b5924bad5d6a",
+    "1eacf9724c6eecc4c3496ca970b34409",
+    "4e06734b4a7ba623df0acb887cfb1355",
+    "f15ced6245ce0f735e19d88ff7e4766e",
+    "f2703543418a01cce9de5baf6f5ac1bc"
+   ],
+   "irrelevant_lights": [
+    "6e0de0b349c89047f3e6eb90c02f8c93",
+    "4457e2c1456817f19e1632a3599c8c88",
+    "c5b7fe224545c3c8daa60280b8a8ed3a",
+    "3c4dcf584e16df12fc63b3abb8cb723a",
+    "549d080241ba3cb255d9bf8c52c18e01",
+    "99d36bf546928608c06a6586f511bb6a",
+    "c5c983c04c6d759fba8a3d852fcc0fdf",
+    "d0006ec64f86ef095529cb9992b22ada",
+    "016e1438402d6a0681b3f69d3c200e72"
+   ],
+   "captures": [
+    {
+     "capture": 0,
+     "pose": "untransformed",
+     "capture_percentage": 0.0,
+     "type": 2,
+     "coeffs": [
+      "LightMapTexture2D_14363",
+      "LightMapTexture2D_5245",
+      "LightMapTexture2D_14311"
+     ],
+     "scales": [
+      [
+       0.06114819273352623,
+       0.280963271856308,
+       0.280963271856308
+      ],
+      [
+       0.06252479553222656,
+       0.28728848695755005,
+       0.28728848695755005
+      ],
+      [
+       0.06195006147027016,
+       0.28464773297309875,
+       0.28464773297309875
+      ]
+     ],
+     "scales_w": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "coordScale": [
+      0.25,
+      0.25
+     ],
+     "coordBias": [
+      0.50048828125,
+      0.25048828125
+     ],
+     "texture_files": [
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_14363.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_5245.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_14311.png",
+       "source": "render_atlas"
+      }
+     ],
+     "atlas_rects_px": [
+      {
+       "x": 128.125,
+       "y": 64.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 128.125,
+       "y": 64.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 128.125,
+       "y": 64.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      }
+     ],
+     "lights": [
+      "25a099c54d965310af76658ec6bad71b",
+      "111c5f5d4fdf95fb6b95c68cc81705ba",
+      "73f1440c49f090245711cf802baabdaf",
+      "d0c19ee8430e5525270f4d80d20f003c",
+      "01c8f15b48a790503a4541a785f64f31",
+      "a8a872234b66851e9f86b5924bad5d6a"
+     ]
+    },
+    {
+     "capture": 1,
+     "pose": "transformed",
+     "capture_percentage": 1.0,
+     "type": 2,
+     "coeffs": [
+      "LightMapTexture2D_14363",
+      "LightMapTexture2D_5245",
+      "LightMapTexture2D_14311"
+     ],
+     "scales": [
+      [
+       0.06358733773231506,
+       0.2921706736087799,
+       0.2921706736087799
+      ],
+      [
+       0.06044308841228485,
+       0.277723491191864,
+       0.277723491191864
+      ],
+      [
+       0.06093321368098259,
+       0.266087144613266,
+       0.266087144613266
+      ]
+     ],
+     "scales_w": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "coordScale": [
+      0.25,
+      0.25
+     ],
+     "coordBias": [
+      0.75048828125,
+      0.00048828125
+     ],
+     "texture_files": [
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_14363.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_5245.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_14311.png",
+       "source": "render_atlas"
+      }
+     ],
+     "atlas_rects_px": [
+      {
+       "x": 192.125,
+       "y": 0.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 192.125,
+       "y": 0.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 192.125,
+       "y": 0.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      }
+     ],
+     "lights": [
+      "1eacf9724c6eecc4c3496ca970b34409",
+      "25a099c54d965310af76658ec6bad71b",
+      "4e06734b4a7ba623df0acb887cfb1355",
+      "73f1440c49f090245711cf802baabdaf",
+      "01c8f15b48a790503a4541a785f64f31",
+      "a8a872234b66851e9f86b5924bad5d6a",
+      "f15ced6245ce0f735e19d88ff7e4766e",
+      "f2703543418a01cce9de5baf6f5ac1bc"
+     ]
+    }
+   ]
+  },
+  "MP_ESC_BrokenHope_Base_m.TheWorld.PersistentLevel.TnTransformingWorldActor_14299": {
+   "actor": "TnTransformingWorldActor_14299",
+   "component": "MP_ESC_BrokenHope_Base_m.TheWorld.PersistentLevel.TnTransformingWorldActor_14299.HmInterpolatedLightMappedSkeletalMeshComponent_4566",
+   "skeletal_mesh": "TPRO_IAC_Doors_p.IAC_InteriorDoor_SKEL",
+   "initial_state": "Untransformed",
+   "anim_sequence": "IAC_InteriorDoor_TransOut",
+   "lighting_guid": "31ae4de44a05913e12b7ce88b3a10d3b",
+   "baked_lights": [
+    "eb8032c3451dc2de4198bdbe579e0750",
+    "371718c0433321098bd35186f1016d2e",
+    "3029c05049409903d30dd291d9f4f588",
+    "8bffef3e4b54bb12e66d60b711aaedab",
+    "cf2ed225438efcdea669a8ab1886a0c0",
+    "93db0bb549796d64ff1eabb7ae459ed2",
+    "01c8f15b48a790503a4541a785f64f31",
+    "74f58b5846d142a4b9ac4c944d38d578",
+    "190b7ad14c5077579e7bfbb0882967a9",
+    "21a0b7e74bca70c860aed6a7fbd63d91",
+    "6fd2b717429306942438c594144f53f3",
+    "901a7e914ba382a6e409e7beb2e901c4",
+    "83b2ed234baa78876714eeb76c5cfb93"
+   ],
+   "irrelevant_lights": [
+    "6e0de0b349c89047f3e6eb90c02f8c93",
+    "ddff8e984fea597e0b7ea8837e454486",
+    "3c4dcf584e16df12fc63b3abb8cb723a",
+    "a2b27bf142655eb79b7050b655c09c3e",
+    "b0923c4545e2a56abe41baaa2e99c839",
+    "7c9e1bd34385fd61f24081a23212b29c",
+    "e78e76fb47997ceb9de65a8f4199fab9",
+    "870dd3db4ec2cffb0f3dd1a75a827a29",
+    "09338e9a4089a2419527549408b7c1b0",
+    "6f390cfd4fd281d5826e7bb231aedeab",
+    "bc404e7846f0632692aa36b7759f0d0d"
+   ],
+   "captures": [
+    {
+     "capture": 0,
+     "pose": "untransformed",
+     "capture_percentage": 0.0,
+     "type": 2,
+     "coeffs": [
+      "LightMapTexture2D_7958",
+      "LightMapTexture2D_13480",
+      "LightMapTexture2D_710"
+     ],
+     "scales": [
+      [
+       0.06179835647344589,
+       0.688382625579834,
+       0.5499580502510071
+      ],
+      [
+       0.06379935145378113,
+       0.6910769939422607,
+       0.5810697078704834
+      ],
+      [
+       0.06396657228469849,
+       0.6857190728187561,
+       0.5755169987678528
+      ]
+     ],
+     "scales_w": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "coordScale": [
+      0.25,
+      0.25
+     ],
+     "coordBias": [
+      0.25048828125,
+      0.75048828125
+     ],
+     "texture_files": [
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_7958.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_13480.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_710.png",
+       "source": "render_atlas"
+      }
+     ],
+     "atlas_rects_px": [
+      {
+       "x": 64.125,
+       "y": 192.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 64.125,
+       "y": 192.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 64.125,
+       "y": 192.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      }
+     ],
+     "lights": [
+      "eb8032c3451dc2de4198bdbe579e0750",
+      "371718c0433321098bd35186f1016d2e",
+      "3029c05049409903d30dd291d9f4f588",
+      "8bffef3e4b54bb12e66d60b711aaedab",
+      "cf2ed225438efcdea669a8ab1886a0c0",
+      "93db0bb549796d64ff1eabb7ae459ed2",
+      "01c8f15b48a790503a4541a785f64f31",
+      "74f58b5846d142a4b9ac4c944d38d578",
+      "190b7ad14c5077579e7bfbb0882967a9",
+      "21a0b7e74bca70c860aed6a7fbd63d91",
+      "6fd2b717429306942438c594144f53f3",
+      "901a7e914ba382a6e409e7beb2e901c4",
+      "83b2ed234baa78876714eeb76c5cfb93"
+     ]
+    },
+    {
+     "capture": 1,
+     "pose": "transformed",
+     "capture_percentage": 1.0,
+     "type": 2,
+     "coeffs": [
+      "LightMapTexture2D_7958",
+      "LightMapTexture2D_13480",
+      "LightMapTexture2D_710"
+     ],
+     "scales": [
+      [
+       0.009895107708871365,
+       0.06932542473077774,
+       0.19297069311141968
+      ],
+      [
+       0.013898896984755993,
+       0.09662075340747833,
+       0.26638132333755493
+      ],
+      [
+       0.008183279074728489,
+       0.06639830768108368,
+       0.06346860527992249
+      ]
+     ],
+     "scales_w": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "coordScale": [
+      0.25,
+      0.25
+     ],
+     "coordBias": [
+      0.50048828125,
+      0.75048828125
+     ],
+     "texture_files": [
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_7958.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_13480.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_710.png",
+       "source": "render_atlas"
+      }
+     ],
+     "atlas_rects_px": [
+      {
+       "x": 128.125,
+       "y": 192.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 128.125,
+       "y": 192.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 128.125,
+       "y": 192.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      }
+     ],
+     "lights": [
+      "eb8032c3451dc2de4198bdbe579e0750",
+      "371718c0433321098bd35186f1016d2e",
+      "8bffef3e4b54bb12e66d60b711aaedab",
+      "cf2ed225438efcdea669a8ab1886a0c0",
+      "01c8f15b48a790503a4541a785f64f31",
+      "74f58b5846d142a4b9ac4c944d38d578",
+      "21a0b7e74bca70c860aed6a7fbd63d91",
+      "6fd2b717429306942438c594144f53f3",
+      "901a7e914ba382a6e409e7beb2e901c4"
+     ]
+    }
+   ]
+  },
+  "MP_ESC_BrokenHope_Base_m.TheWorld.PersistentLevel.TnTransformingWorldActor_1476": {
+   "actor": "TnTransformingWorldActor_1476",
+   "component": "MP_ESC_BrokenHope_Base_m.TheWorld.PersistentLevel.TnTransformingWorldActor_1476.HmInterpolatedLightMappedSkeletalMeshComponent_14837",
+   "skeletal_mesh": "TPRO_NEU_Bridges_p.NEU_BridgeStraight_SKEL",
+   "initial_state": "Transformed",
+   "anim_sequence": "NEU_BridgeStraight_TransOut",
+   "lighting_guid": "2e95f7f4464a6936d2b1b380f07231fc",
+   "baked_lights": [
+    "42aaa5e8495d30d989d9399c0536c907",
+    "b14a573544f24083ba3aa581cea28ad1",
+    "3321962f45e6585266b6f79ce978cc40",
+    "371718c0433321098bd35186f1016d2e",
+    "f7a01c8a445f14575563d78177b1122c",
+    "9cfa2379444828d29692618807f75356",
+    "4362fe4c4c32642b846227ba293a6e91",
+    "ca5918964af66b4478990fb1c7aafefe",
+    "a915670a43325117567d12a33388c82b",
+    "8d13246b460eb50fdcdd998c861a3ed4",
+    "93db0bb549796d64ff1eabb7ae459ed2",
+    "1ce56eee46d637f4f8c75fad9f49b1d6",
+    "01c8f15b48a790503a4541a785f64f31",
+    "2f95c0144bd660c7aa21f5a6c9755252",
+    "21a0b7e74bca70c860aed6a7fbd63d91",
+    "6e6cfa804f8c346e80943eb04050ee44"
+   ],
+   "irrelevant_lights": [
+    "fec9f96e4d9168094f2f21be1c82e304",
+    "6e0de0b349c89047f3e6eb90c02f8c93",
+    "99b9d7ff4043f89f007170ac889187f7",
+    "b175ecf2485328f0211a15a7942a576c",
+    "d32d153f45744106b03de4a50e4af381",
+    "ef20ef4f4aed86c89ce3c79b22486fdf",
+    "1c427fe94f338a928f733ca5e87306f5",
+    "17f5af99404a1c072204928574f87fba",
+    "deee2b844811630c4908ada5f1b8eed7",
+    "04929927469565167e8c2a965f135517",
+    "6a8174774d86a68b6d3167a24d415047",
+    "bc404e7846f0632692aa36b7759f0d0d",
+    "dff46ef141255dc1c5094a81e799fc2f",
+    "375c23334ee75636320e7cbdef928d29",
+    "ee24b68f4569a3246b0b84bb56611599",
+    "8c55e56144e3486b18277aa0697dfb77",
+    "579c530c4a54b0dffd89ddb40907a48b",
+    "331aea1842854c6aa2ec6cb5096a1673"
+   ],
+   "captures": [
+    {
+     "capture": 0,
+     "pose": "untransformed",
+     "capture_percentage": 0.0,
+     "type": 2,
+     "coeffs": [
+      "LightMapTexture2D_14363",
+      "LightMapTexture2D_5245",
+      "LightMapTexture2D_14311"
+     ],
+     "scales": [
+      [
+       0.33289429545402527,
+       0.2280837446451187,
+       0.46269795298576355
+      ],
+      [
+       0.2930644154548645,
+       0.2011192888021469,
+       0.3881155252456665
+      ],
+      [
+       0.2400888353586197,
+       0.17714737355709076,
+       0.41990742087364197
+      ]
+     ],
+     "scales_w": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "coordScale": [
+      0.125,
+      0.125
+     ],
+     "coordBias": [
+      0.75048828125,
+      0.87548828125
+     ],
+     "texture_files": [
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_14363.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_5245.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_14311.png",
+       "source": "render_atlas"
+      }
+     ],
+     "atlas_rects_px": [
+      {
+       "x": 192.125,
+       "y": 224.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 192.125,
+       "y": 224.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 192.125,
+       "y": 224.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      }
+     ],
+     "lights": [
+      "42aaa5e8495d30d989d9399c0536c907",
+      "b14a573544f24083ba3aa581cea28ad1",
+      "3321962f45e6585266b6f79ce978cc40",
+      "371718c0433321098bd35186f1016d2e",
+      "f7a01c8a445f14575563d78177b1122c",
+      "9cfa2379444828d29692618807f75356",
+      "4362fe4c4c32642b846227ba293a6e91",
+      "ca5918964af66b4478990fb1c7aafefe",
+      "a915670a43325117567d12a33388c82b",
+      "8d13246b460eb50fdcdd998c861a3ed4",
+      "93db0bb549796d64ff1eabb7ae459ed2",
+      "1ce56eee46d637f4f8c75fad9f49b1d6",
+      "01c8f15b48a790503a4541a785f64f31",
+      "2f95c0144bd660c7aa21f5a6c9755252",
+      "21a0b7e74bca70c860aed6a7fbd63d91"
+     ]
+    },
+    {
+     "capture": 1,
+     "pose": "transformed",
+     "capture_percentage": 1.0,
+     "type": 2,
+     "coeffs": [
+      "LightMapTexture2D_14363",
+      "LightMapTexture2D_5245",
+      "LightMapTexture2D_14311"
+     ],
+     "scales": [
+      [
+       0.3335871696472168,
+       0.23695319890975952,
+       0.505598247051239
+      ],
+      [
+       0.2780788242816925,
+       0.19285836815834045,
+       0.4384574592113495
+      ],
+      [
+       0.2641046941280365,
+       0.18647605180740356,
+       0.38088101148605347
+      ]
+     ],
+     "scales_w": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "coordScale": [
+      0.125,
+      0.125
+     ],
+     "coordBias": [
+      0.62548828125,
+      0.87548828125
+     ],
+     "texture_files": [
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_14363.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_5245.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_14311.png",
+       "source": "render_atlas"
+      }
+     ],
+     "atlas_rects_px": [
+      {
+       "x": 160.125,
+       "y": 224.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 160.125,
+       "y": 224.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 160.125,
+       "y": 224.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      }
+     ],
+     "lights": [
+      "42aaa5e8495d30d989d9399c0536c907",
+      "b14a573544f24083ba3aa581cea28ad1",
+      "6e6cfa804f8c346e80943eb04050ee44",
+      "3321962f45e6585266b6f79ce978cc40",
+      "371718c0433321098bd35186f1016d2e",
+      "f7a01c8a445f14575563d78177b1122c",
+      "9cfa2379444828d29692618807f75356",
+      "4362fe4c4c32642b846227ba293a6e91",
+      "ca5918964af66b4478990fb1c7aafefe",
+      "a915670a43325117567d12a33388c82b",
+      "8d13246b460eb50fdcdd998c861a3ed4",
+      "93db0bb549796d64ff1eabb7ae459ed2",
+      "1ce56eee46d637f4f8c75fad9f49b1d6",
+      "01c8f15b48a790503a4541a785f64f31",
+      "2f95c0144bd660c7aa21f5a6c9755252",
+      "21a0b7e74bca70c860aed6a7fbd63d91"
+     ]
+    }
+   ]
+  },
+  "MP_ESC_BrokenHope_Base_m.TheWorld.PersistentLevel.TnTransformingWorldActor_1531": {
+   "actor": "TnTransformingWorldActor_1531",
+   "component": "MP_ESC_BrokenHope_Base_m.TheWorld.PersistentLevel.TnTransformingWorldActor_1531.HmInterpolatedLightMappedSkeletalMeshComponent_4566",
+   "skeletal_mesh": "TPRO_IAC_Doors_p.IAC_InteriorDoor_SKEL",
+   "initial_state": "Untransformed",
+   "anim_sequence": "IAC_InteriorDoor_TransOut",
+   "lighting_guid": "a2ffad994d5b280e485a2cac7cc766df",
+   "baked_lights": [
+    "42aaa5e8495d30d989d9399c0536c907",
+    "4362fe4c4c32642b846227ba293a6e91",
+    "8d13246b460eb50fdcdd998c861a3ed4",
+    "5e73d0dc481bdb6dcf21169f81ea31a1",
+    "1ce56eee46d637f4f8c75fad9f49b1d6",
+    "01c8f15b48a790503a4541a785f64f31",
+    "2f95c0144bd660c7aa21f5a6c9755252",
+    "a8a872234b66851e9f86b5924bad5d6a"
+   ],
+   "irrelevant_lights": [
+    "fec9f96e4d9168094f2f21be1c82e304",
+    "6e0de0b349c89047f3e6eb90c02f8c93",
+    "4eb25b634a33f200140ff6bf20953758",
+    "99b9d7ff4043f89f007170ac889187f7",
+    "4878edaa4f6382643ade60aab68d4f1b",
+    "ef20ef4f4aed86c89ce3c79b22486fdf",
+    "5ed6e0f8490b4a37bad3d892d97540bc",
+    "c5b7fe224545c3c8daa60280b8a8ed3a",
+    "e004185d47445890acaeea97e97c236f",
+    "e45c220542fc675caa257d92236b8000",
+    "aefa58af4cdc76219694409090df3a98",
+    "cebd6c934d953f2308a3d88e6a8e5868",
+    "1c427fe94f338a928f733ca5e87306f5",
+    "17f5af99404a1c072204928574f87fba",
+    "dcdbaa634fadd6e0e72ab5b7faa40d69",
+    "870dd3db4ec2cffb0f3dd1a75a827a29",
+    "6456f1874a810b51dbc4d09ccab355b1",
+    "99d36bf546928608c06a6586f511bb6a",
+    "fa7d3f3f420a5653dc2d7cbd0c51683f",
+    "6a8174774d86a68b6d3167a24d415047",
+    "d0006ec64f86ef095529cb9992b22ada",
+    "375c23334ee75636320e7cbdef928d29",
+    "8c55e56144e3486b18277aa0697dfb77",
+    "579c530c4a54b0dffd89ddb40907a48b",
+    "331aea1842854c6aa2ec6cb5096a1673"
+   ],
+   "captures": [
+    {
+     "capture": 0,
+     "pose": "untransformed",
+     "capture_percentage": 0.0,
+     "type": 2,
+     "coeffs": [
+      "LightMapTexture2D_7958",
+      "LightMapTexture2D_13480",
+      "LightMapTexture2D_710"
+     ],
+     "scales": [
+      [
+       0.09224940091371536,
+       0.2889322340488434,
+       0.31908950209617615
+      ],
+      [
+       0.10410778969526291,
+       0.2912173271179199,
+       0.3209035396575928
+      ],
+      [
+       0.10222061723470688,
+       0.2916441261768341,
+       0.32338282465934753
+      ]
+     ],
+     "scales_w": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "coordScale": [
+      0.25,
+      0.25
+     ],
+     "coordBias": [
+      0.75048828125,
+      0.25048828125
+     ],
+     "texture_files": [
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_7958.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_13480.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_710.png",
+       "source": "render_atlas"
+      }
+     ],
+     "atlas_rects_px": [
+      {
+       "x": 192.125,
+       "y": 64.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 192.125,
+       "y": 64.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 192.125,
+       "y": 64.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      }
+     ],
+     "lights": [
+      "42aaa5e8495d30d989d9399c0536c907",
+      "4362fe4c4c32642b846227ba293a6e91",
+      "8d13246b460eb50fdcdd998c861a3ed4",
+      "5e73d0dc481bdb6dcf21169f81ea31a1",
+      "1ce56eee46d637f4f8c75fad9f49b1d6",
+      "01c8f15b48a790503a4541a785f64f31",
+      "2f95c0144bd660c7aa21f5a6c9755252",
+      "a8a872234b66851e9f86b5924bad5d6a"
+     ]
+    },
+    {
+     "capture": 1,
+     "pose": "transformed",
+     "capture_percentage": 1.0,
+     "type": 2,
+     "coeffs": [
+      "LightMapTexture2D_14363",
+      "LightMapTexture2D_5245",
+      "LightMapTexture2D_14311"
+     ],
+     "scales": [
+      [
+       0.0029261817689985037,
+       0.058961618691682816,
+       0.058961618691682816
+      ],
+      [
+       0.006819709204137325,
+       0.14986610412597656,
+       0.14986610412597656
+      ],
+      [
+       0.004767448175698519,
+       0.050589632242918015,
+       0.050589632242918015
+      ]
+     ],
+     "scales_w": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "coordScale": [
+      0.25,
+      0.25
+     ],
+     "coordBias": [
+      0.25048828125,
+      0.00048828125
+     ],
+     "texture_files": [
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_14363.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_5245.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_14311.png",
+       "source": "render_atlas"
+      }
+     ],
+     "atlas_rects_px": [
+      {
+       "x": 64.125,
+       "y": 0.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 64.125,
+       "y": 0.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 64.125,
+       "y": 0.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      }
+     ],
+     "lights": [
+      "1ce56eee46d637f4f8c75fad9f49b1d6",
+      "01c8f15b48a790503a4541a785f64f31",
+      "a8a872234b66851e9f86b5924bad5d6a"
+     ]
+    }
+   ]
+  },
+  "MP_ESC_BrokenHope_Base_m.TheWorld.PersistentLevel.TnTransformingWorldActor_16265": {
+   "actor": "TnTransformingWorldActor_16265",
+   "component": "MP_ESC_BrokenHope_Base_m.TheWorld.PersistentLevel.TnTransformingWorldActor_16265.HmInterpolatedLightMappedSkeletalMeshComponent_4566",
+   "skeletal_mesh": "TPRO_IAC_Doors_p.IAC_InteriorDoor_SKEL",
+   "initial_state": "Untransformed",
+   "anim_sequence": "IAC_InteriorDoor_TransOut",
+   "lighting_guid": "8a916bcf426446b0f52ae484ef0e8a9e",
+   "baked_lights": [
+    "bd9db1bb41786c482a95b9bce3db351d",
+    "1c155ce64a10192c138efcb4c94ccfbf",
+    "078cb4f24dfd32548ce365b2b584ae18",
+    "1a79a8f04117575db514ccaad8da26f0",
+    "0938c9d447b2ae5e17a398a8967538a8",
+    "b7e6bd534c2d58b615b87e9bdba9d028",
+    "37ac72f24bbad88564c284a7c05e4ab3",
+    "01c8f15b48a790503a4541a785f64f31",
+    "4e9eef9746f475bd07d60cac9c16f6f5",
+    "74f58b5846d142a4b9ac4c944d38d578",
+    "7f12ecb341ec8f0e2307cd8943873406",
+    "b964398149c1bebf175774a5b492b7c2",
+    "901a7e914ba382a6e409e7beb2e901c4",
+    "ea4fbddb488b20915621b48b45d356bd"
+   ],
+   "irrelevant_lights": [
+    "6e0de0b349c89047f3e6eb90c02f8c93",
+    "e70af3a94b77543005f0f480f906d723",
+    "c5b7fe224545c3c8daa60280b8a8ed3a",
+    "e78e76fb47997ceb9de65a8f4199fab9",
+    "99d36bf546928608c06a6586f511bb6a",
+    "534c287c438e31ba5e32b18120b1d835",
+    "6f390cfd4fd281d5826e7bb231aedeab",
+    "f03eba5244b9050c0359e292cf5fa003",
+    "d0006ec64f86ef095529cb9992b22ada",
+    "4d0de4464426607296708199680f358b",
+    "39acd38841188733a60aa2b9de3f7165",
+    "167bdee543813cf8cd9fa3a8e995faef",
+    "d209ea904bb181efd7be5cac0da46ca4"
+   ],
+   "captures": [
+    {
+     "capture": 0,
+     "pose": "untransformed",
+     "capture_percentage": 0.0,
+     "type": 2,
+     "coeffs": [
+      "LightMapTexture2D_7958",
+      "LightMapTexture2D_13480",
+      "LightMapTexture2D_710"
+     ],
+     "scales": [
+      [
+       0.11011326313018799,
+       1.2337148189544678,
+       0.9222548604011536
+      ],
+      [
+       0.1116262897849083,
+       1.2486943006515503,
+       0.9471023678779602
+      ],
+      [
+       0.10744712501764297,
+       1.2143009901046753,
+       0.9218761920928955
+      ]
+     ],
+     "scales_w": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "coordScale": [
+      0.25,
+      0.25
+     ],
+     "coordBias": [
+      0.00048828125,
+      0.25048828125
+     ],
+     "texture_files": [
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_7958.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_13480.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_710.png",
+       "source": "render_atlas"
+      }
+     ],
+     "atlas_rects_px": [
+      {
+       "x": 0.125,
+       "y": 64.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 0.125,
+       "y": 64.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 0.125,
+       "y": 64.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      }
+     ],
+     "lights": [
+      "bd9db1bb41786c482a95b9bce3db351d",
+      "1c155ce64a10192c138efcb4c94ccfbf",
+      "078cb4f24dfd32548ce365b2b584ae18",
+      "1a79a8f04117575db514ccaad8da26f0",
+      "0938c9d447b2ae5e17a398a8967538a8",
+      "b7e6bd534c2d58b615b87e9bdba9d028",
+      "37ac72f24bbad88564c284a7c05e4ab3",
+      "01c8f15b48a790503a4541a785f64f31",
+      "4e9eef9746f475bd07d60cac9c16f6f5",
+      "74f58b5846d142a4b9ac4c944d38d578",
+      "7f12ecb341ec8f0e2307cd8943873406",
+      "b964398149c1bebf175774a5b492b7c2",
+      "901a7e914ba382a6e409e7beb2e901c4"
+     ]
+    },
+    {
+     "capture": 1,
+     "pose": "transformed",
+     "capture_percentage": 1.0,
+     "type": 2,
+     "coeffs": [
+      "LightMapTexture2D_3073",
+      "LightMapTexture2D_223",
+      "LightMapTexture2D_6695"
+     ],
+     "scales": [
+      [
+       0.09591689705848694,
+       1.0940395593643188,
+       0.782293438911438
+      ],
+      [
+       0.11772816628217697,
+       1.3132972717285156,
+       1.0017799139022827
+      ],
+      [
+       0.1090908795595169,
+       1.2430013418197632,
+       0.8686613440513611
+      ]
+     ],
+     "scales_w": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "coordScale": [
+      0.25,
+      0.25
+     ],
+     "coordBias": [
+      0.75048828125,
+      0.75048828125
+     ],
+     "texture_files": [
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_3073.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_223.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_6695.png",
+       "source": "render_atlas"
+      }
+     ],
+     "atlas_rects_px": [
+      {
+       "x": 192.125,
+       "y": 192.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 192.125,
+       "y": 192.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 192.125,
+       "y": 192.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      }
+     ],
+     "lights": [
+      "bd9db1bb41786c482a95b9bce3db351d",
+      "1c155ce64a10192c138efcb4c94ccfbf",
+      "ea4fbddb488b20915621b48b45d356bd",
+      "078cb4f24dfd32548ce365b2b584ae18",
+      "1a79a8f04117575db514ccaad8da26f0",
+      "b7e6bd534c2d58b615b87e9bdba9d028",
+      "01c8f15b48a790503a4541a785f64f31",
+      "74f58b5846d142a4b9ac4c944d38d578",
+      "7f12ecb341ec8f0e2307cd8943873406",
+      "b964398149c1bebf175774a5b492b7c2",
+      "901a7e914ba382a6e409e7beb2e901c4"
+     ]
+    }
+   ]
+  },
+  "MP_ESC_BrokenHope_Base_m.TheWorld.PersistentLevel.TnTransformingWorldActor_2661": {
+   "actor": "TnTransformingWorldActor_2661",
+   "component": "MP_ESC_BrokenHope_Base_m.TheWorld.PersistentLevel.TnTransformingWorldActor_2661.HmInterpolatedLightMappedSkeletalMeshComponent_4566",
+   "skeletal_mesh": "TPRO_IAC_Doors_p.IAC_InteriorDoor_SKEL",
+   "initial_state": "Untransformed",
+   "anim_sequence": "IAC_InteriorDoor_TransOut",
+   "lighting_guid": "c933920247a951107fb5ae9c7ea514b2",
+   "baked_lights": [
+    "bd9db1bb41786c482a95b9bce3db351d",
+    "e273a28444b41f70c502a8bbf78765a0",
+    "0a21c69242713dc6c1a70c9b30e4523b",
+    "01c8f15b48a790503a4541a785f64f31",
+    "74f58b5846d142a4b9ac4c944d38d578",
+    "7f12ecb341ec8f0e2307cd8943873406",
+    "190b7ad14c5077579e7bfbb0882967a9",
+    "901a7e914ba382a6e409e7beb2e901c4",
+    "83b2ed234baa78876714eeb76c5cfb93"
+   ],
+   "irrelevant_lights": [
+    "6e0de0b349c89047f3e6eb90c02f8c93",
+    "e36b08904ad0e38628b1378b3eb97742",
+    "e6ba3cd74f3a5e53ef1de2ba25d0269a",
+    "e70af3a94b77543005f0f480f906d723",
+    "c5b7fe224545c3c8daa60280b8a8ed3a",
+    "e0c23a694c83e071357335ab6ba0518b",
+    "cebd6c934d953f2308a3d88e6a8e5868",
+    "e78e76fb47997ceb9de65a8f4199fab9",
+    "ae5a2ce442acf6dd882e28b90bba2324",
+    "f510a42647e51d3d526621a37f3aba73",
+    "99d36bf546928608c06a6586f511bb6a",
+    "387ff4bd40882c7a0f404e96e08c31e9",
+    "6f390cfd4fd281d5826e7bb231aedeab",
+    "bc404e7846f0632692aa36b7759f0d0d",
+    "6821bc374ffb7bcb348d52818b71ba71",
+    "1e78ce3348ecec07406dfd8258d2817e",
+    "d0006ec64f86ef095529cb9992b22ada",
+    "ee24b68f4569a3246b0b84bb56611599",
+    "4d0de4464426607296708199680f358b",
+    "39acd38841188733a60aa2b9de3f7165"
+   ],
+   "captures": [
+    {
+     "capture": 0,
+     "pose": "untransformed",
+     "capture_percentage": 0.0,
+     "type": 2,
+     "coeffs": [
+      "LightMapTexture2D_14363",
+      "LightMapTexture2D_5245",
+      "LightMapTexture2D_14311"
+     ],
+     "scales": [
+      [
+       0.06218535080552101,
+       0.14366285502910614,
+       0.2987293303012848
+      ],
+      [
+       0.06243681535124779,
+       0.22257204353809357,
+       0.3004792332649231
+      ],
+      [
+       0.061221323907375336,
+       0.15493468940258026,
+       0.3032780587673187
+      ]
+     ],
+     "scales_w": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "coordScale": [
+      0.25,
+      0.25
+     ],
+     "coordBias": [
+      0.00048828125,
+      0.00048828125
+     ],
+     "texture_files": [
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_14363.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_5245.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_14311.png",
+       "source": "render_atlas"
+      }
+     ],
+     "atlas_rects_px": [
+      {
+       "x": 0.125,
+       "y": 0.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 0.125,
+       "y": 0.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 0.125,
+       "y": 0.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      }
+     ],
+     "lights": [
+      "bd9db1bb41786c482a95b9bce3db351d",
+      "e273a28444b41f70c502a8bbf78765a0",
+      "0a21c69242713dc6c1a70c9b30e4523b",
+      "01c8f15b48a790503a4541a785f64f31",
+      "74f58b5846d142a4b9ac4c944d38d578",
+      "7f12ecb341ec8f0e2307cd8943873406",
+      "190b7ad14c5077579e7bfbb0882967a9",
+      "901a7e914ba382a6e409e7beb2e901c4",
+      "83b2ed234baa78876714eeb76c5cfb93"
+     ]
+    },
+    {
+     "capture": 1,
+     "pose": "transformed",
+     "capture_percentage": 1.0,
+     "type": 2,
+     "coeffs": [
+      "LightMapTexture2D_7958",
+      "LightMapTexture2D_13480",
+      "LightMapTexture2D_710"
+     ],
+     "scales": [
+      [
+       0.03661193326115608,
+       0.10447989404201508,
+       0.2777676582336426
+      ],
+      [
+       0.04111485183238983,
+       0.07842446118593216,
+       0.1991855353116989
+      ],
+      [
+       0.04039682075381279,
+       0.06859076023101807,
+       0.1719215363264084
+      ]
+     ],
+     "scales_w": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "coordScale": [
+      0.25,
+      0.25
+     ],
+     "coordBias": [
+      0.75048828125,
+      0.75048828125
+     ],
+     "texture_files": [
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_7958.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_13480.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_710.png",
+       "source": "render_atlas"
+      }
+     ],
+     "atlas_rects_px": [
+      {
+       "x": 192.125,
+       "y": 192.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 192.125,
+       "y": 192.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 192.125,
+       "y": 192.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      }
+     ],
+     "lights": [
+      "bd9db1bb41786c482a95b9bce3db351d",
+      "e273a28444b41f70c502a8bbf78765a0",
+      "0a21c69242713dc6c1a70c9b30e4523b",
+      "01c8f15b48a790503a4541a785f64f31",
+      "74f58b5846d142a4b9ac4c944d38d578",
+      "7f12ecb341ec8f0e2307cd8943873406",
+      "190b7ad14c5077579e7bfbb0882967a9",
+      "83b2ed234baa78876714eeb76c5cfb93"
+     ]
+    }
+   ]
+  },
+  "MP_ESC_BrokenHope_Base_m.TheWorld.PersistentLevel.TnTransformingWorldActor_3347": {
+   "actor": "TnTransformingWorldActor_3347",
+   "component": "MP_ESC_BrokenHope_Base_m.TheWorld.PersistentLevel.TnTransformingWorldActor_3347.HmInterpolatedLightMappedSkeletalMeshComponent_4566",
+   "skeletal_mesh": "TPRO_IAC_Doors_p.IAC_InteriorDoor_SKEL",
+   "initial_state": "Untransformed",
+   "anim_sequence": "IAC_InteriorDoor_TransOut",
+   "lighting_guid": "24548153458b0e468e6d92847798ce45",
+   "baked_lights": [
+    "1eacf9724c6eecc4c3496ca970b34409",
+    "ba4f0fd242afe1cde863179d68449324",
+    "4e06734b4a7ba623df0acb887cfb1355",
+    "0b2469a0464eb2b5e146a180f03776fb",
+    "ac12ff0d4fb0862e8ffd6689b312e729",
+    "aa7f307c4a6f3b647f6abfbbbf1b9b49",
+    "01c8f15b48a790503a4541a785f64f31",
+    "0d21d424496f1bd5fae8e8a63db8ee0b",
+    "f15ced6245ce0f735e19d88ff7e4766e",
+    "f2703543418a01cce9de5baf6f5ac1bc"
+   ],
+   "irrelevant_lights": [
+    "fec9f96e4d9168094f2f21be1c82e304",
+    "6e0de0b349c89047f3e6eb90c02f8c93",
+    "63e88dab4c38abc9b69b488c5f51d5ef",
+    "c5b7fe224545c3c8daa60280b8a8ed3a",
+    "e1acff464dfb1e01d29bd68dcc099488",
+    "faa2da674b93e826f3432595c8426e61",
+    "99d36bf546928608c06a6586f511bb6a",
+    "567e74ee48bd816562ad36914c3bade9",
+    "d0006ec64f86ef095529cb9992b22ada",
+    "dff46ef141255dc1c5094a81e799fc2f",
+    "016e1438402d6a0681b3f69d3c200e72"
+   ],
+   "captures": [
+    {
+     "capture": 0,
+     "pose": "untransformed",
+     "capture_percentage": 0.0,
+     "type": 2,
+     "coeffs": [
+      "LightMapTexture2D_7958",
+      "LightMapTexture2D_13480",
+      "LightMapTexture2D_710"
+     ],
+     "scales": [
+      [
+       0.09432510286569595,
+       0.5804290175437927,
+       0.5026671290397644
+      ],
+      [
+       0.09235474467277527,
+       0.5766627788543701,
+       0.47986364364624023
+      ],
+      [
+       0.08394848555326462,
+       0.5793156027793884,
+       0.4632725715637207
+      ]
+     ],
+     "scales_w": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "coordScale": [
+      0.25,
+      0.25
+     ],
+     "coordBias": [
+      0.75048828125,
+      0.50048828125
+     ],
+     "texture_files": [
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_7958.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_13480.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_710.png",
+       "source": "render_atlas"
+      }
+     ],
+     "atlas_rects_px": [
+      {
+       "x": 192.125,
+       "y": 128.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 192.125,
+       "y": 128.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 192.125,
+       "y": 128.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      }
+     ],
+     "lights": [
+      "1eacf9724c6eecc4c3496ca970b34409",
+      "ba4f0fd242afe1cde863179d68449324",
+      "4e06734b4a7ba623df0acb887cfb1355",
+      "0b2469a0464eb2b5e146a180f03776fb",
+      "ac12ff0d4fb0862e8ffd6689b312e729",
+      "aa7f307c4a6f3b647f6abfbbbf1b9b49",
+      "01c8f15b48a790503a4541a785f64f31",
+      "0d21d424496f1bd5fae8e8a63db8ee0b",
+      "f15ced6245ce0f735e19d88ff7e4766e",
+      "f2703543418a01cce9de5baf6f5ac1bc"
+     ]
+    },
+    {
+     "capture": 1,
+     "pose": "transformed",
+     "capture_percentage": 1.0,
+     "type": 2,
+     "coeffs": [
+      "LightMapTexture2D_14363",
+      "LightMapTexture2D_5245",
+      "LightMapTexture2D_14311"
+     ],
+     "scales": [
+      [
+       0.02547932043671608,
+       0.04176497459411621,
+       0.09776243567466736
+      ],
+      [
+       0.03791218623518944,
+       0.067391037940979,
+       0.14212514460086823
+      ],
+      [
+       0.030414771288633347,
+       0.044937342405319214,
+       0.11369336396455765
+      ]
+     ],
+     "scales_w": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "coordScale": [
+      0.25,
+      0.25
+     ],
+     "coordBias": [
+      0.75048828125,
+      0.25048828125
+     ],
+     "texture_files": [
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_14363.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_5245.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_14311.png",
+       "source": "render_atlas"
+      }
+     ],
+     "atlas_rects_px": [
+      {
+       "x": 192.125,
+       "y": 64.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 192.125,
+       "y": 64.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 192.125,
+       "y": 64.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      }
+     ],
+     "lights": [
+      "1eacf9724c6eecc4c3496ca970b34409",
+      "ba4f0fd242afe1cde863179d68449324",
+      "4e06734b4a7ba623df0acb887cfb1355",
+      "0b2469a0464eb2b5e146a180f03776fb",
+      "01c8f15b48a790503a4541a785f64f31",
+      "f2703543418a01cce9de5baf6f5ac1bc"
+     ]
+    }
+   ]
+  },
+  "MP_ESC_BrokenHope_Base_m.TheWorld.PersistentLevel.TnTransformingWorldActor_3522": {
+   "actor": "TnTransformingWorldActor_3522",
+   "component": "MP_ESC_BrokenHope_Base_m.TheWorld.PersistentLevel.TnTransformingWorldActor_3522.HmInterpolatedLightMappedSkeletalMeshComponent_14837",
+   "skeletal_mesh": "TPRO_NEU_Bridges_p.NEU_BridgeStraight_SKEL",
+   "initial_state": "Transformed",
+   "anim_sequence": "NEU_BridgeStraight_TransOut",
+   "lighting_guid": "f6207c0e4aca09b645c4f4bac2ede7d4",
+   "baked_lights": [
+    "b14a573544f24083ba3aa581cea28ad1",
+    "9cdd17b142e02079aff03e983c8b9923",
+    "5bc2ff8e4f709051bd93f1a8ab0f975b",
+    "3628010a43f4fb001ed7c99d169f7008",
+    "7f91517b45d0ba73f1f441a534615fe6",
+    "5bdda0e9485a96f468400791b88088f3",
+    "1e07b065459395447b74c9a1ec6c0077",
+    "99628a4a45c7340d22bd1bbe5c4cdc87",
+    "e629b736422492640d24648463ee03f7",
+    "017043ef40aed46224b1e3adb7f9e8ff",
+    "4362fe4c4c32642b846227ba293a6e91",
+    "5d3dcf3e43ec0527ba38dcb9208899e0",
+    "2d6a85de45ba5321dceb9689056bd602",
+    "3b6f1a63450bb899279579a969928850",
+    "01c8f15b48a790503a4541a785f64f31",
+    "a9192af14ac8d76d1c52828c70fc88f2",
+    "b6cfe683436e08d61644f7a65b190388",
+    "2f95c0144bd660c7aa21f5a6c9755252",
+    "e4c600134ec234e095340dbad7389009",
+    "21a0b7e74bca70c860aed6a7fbd63d91",
+    "6edfdd9242853111736172bbd5f4aab7",
+    "a111bad54a38899d2f2aff89eb5bbdf0",
+    "5624bcdd4249d2e0cda4a4830b8ee4e2",
+    "a423d9104f858a716fe1baac9b132614"
+   ],
+   "irrelevant_lights": [
+    "6e0de0b349c89047f3e6eb90c02f8c93",
+    "900e88414a34a2467c1bfebfacf921c6",
+    "67bf77754cc6208f05834d9ceaabe21b",
+    "299834ad460f9085dce50d8fb10ff339",
+    "7cc0f07c4db1f6ada68033b59603a270",
+    "89eeeb26480ad5e442026d851b3862ee",
+    "aed1f13d44039e41b55b2aa3fd31c676",
+    "2620752d42977ef2f78082a079772e10",
+    "d0fd7aa54939d66236131da4681147f7",
+    "0c7bc61e4a3f3a53ab47829398401bfa",
+    "029cdadd47975abba3baafba9928f9c5",
+    "cebd6c934d953f2308a3d88e6a8e5868",
+    "bd76ed18489793bc6ddc8592454107a9",
+    "50900350417e7957c81450ae76ded874",
+    "f187b88b46965026ac714d8ce006be7e",
+    "9d83e9cc4a65089279d9b58848f9ad3c",
+    "df5b7bf44ae2819bfede7d932d7d05bf",
+    "f53d2edd40499f0abfa4b4b062be2268",
+    "60dc10c4474a70dec6f93ba55926d4d7",
+    "ff1616104fbc93c1f7b39f8046cb313f",
+    "13e7cf8c4ffd1c656214e8afdd9b4726",
+    "aa3b5b9940a4cd88a42c81bec843a729",
+    "7b080d1044356dee4c76318d96fbac9d",
+    "579c530c4a54b0dffd89ddb40907a48b"
+   ],
+   "captures": [
+    {
+     "capture": 0,
+     "pose": "untransformed",
+     "capture_percentage": 0.0,
+     "type": 2,
+     "coeffs": [
+      "LightMapTexture2D_14363",
+      "LightMapTexture2D_5245",
+      "LightMapTexture2D_14311"
+     ],
+     "scales": [
+      [
+       1.7543413639068604,
+       0.943950891494751,
+       1.0358610153198242
+      ],
+      [
+       1.4259079694747925,
+       0.7497957348823547,
+       0.9028602242469788
+      ],
+      [
+       2.558018684387207,
+       1.2218965291976929,
+       1.054419755935669
+      ]
+     ],
+     "scales_w": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "coordScale": [
+      0.125,
+      0.125
+     ],
+     "coordBias": [
+      0.50048828125,
+      0.87548828125
+     ],
+     "texture_files": [
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_14363.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_5245.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_14311.png",
+       "source": "render_atlas"
+      }
+     ],
+     "atlas_rects_px": [
+      {
+       "x": 128.125,
+       "y": 224.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 128.125,
+       "y": 224.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 128.125,
+       "y": 224.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      }
+     ],
+     "lights": [
+      "b14a573544f24083ba3aa581cea28ad1",
+      "9cdd17b142e02079aff03e983c8b9923",
+      "5bc2ff8e4f709051bd93f1a8ab0f975b",
+      "3628010a43f4fb001ed7c99d169f7008",
+      "7f91517b45d0ba73f1f441a534615fe6",
+      "5bdda0e9485a96f468400791b88088f3",
+      "1e07b065459395447b74c9a1ec6c0077",
+      "99628a4a45c7340d22bd1bbe5c4cdc87",
+      "e629b736422492640d24648463ee03f7",
+      "017043ef40aed46224b1e3adb7f9e8ff",
+      "4362fe4c4c32642b846227ba293a6e91",
+      "5d3dcf3e43ec0527ba38dcb9208899e0",
+      "2d6a85de45ba5321dceb9689056bd602",
+      "3b6f1a63450bb899279579a969928850",
+      "01c8f15b48a790503a4541a785f64f31",
+      "a9192af14ac8d76d1c52828c70fc88f2",
+      "b6cfe683436e08d61644f7a65b190388",
+      "2f95c0144bd660c7aa21f5a6c9755252",
+      "e4c600134ec234e095340dbad7389009",
+      "21a0b7e74bca70c860aed6a7fbd63d91",
+      "6edfdd9242853111736172bbd5f4aab7"
+     ]
+    },
+    {
+     "capture": 1,
+     "pose": "transformed",
+     "capture_percentage": 1.0,
+     "type": 2,
+     "coeffs": [
+      "LightMapTexture2D_14363",
+      "LightMapTexture2D_5245",
+      "LightMapTexture2D_14311"
+     ],
+     "scales": [
+      [
+       3.827172040939331,
+       1.9098113775253296,
+       1.3700765371322632
+      ],
+      [
+       3.8043625354766846,
+       1.86455500125885,
+       1.416257381439209
+      ],
+      [
+       3.886814832687378,
+       1.8161271810531616,
+       1.2032418251037598
+      ]
+     ],
+     "scales_w": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "coordScale": [
+      0.125,
+      0.125
+     ],
+     "coordBias": [
+      0.62548828125,
+      0.75048828125
+     ],
+     "texture_files": [
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_14363.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_5245.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_14311.png",
+       "source": "render_atlas"
+      }
+     ],
+     "atlas_rects_px": [
+      {
+       "x": 160.125,
+       "y": 192.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 160.125,
+       "y": 192.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 160.125,
+       "y": 192.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      }
+     ],
+     "lights": [
+      "b14a573544f24083ba3aa581cea28ad1",
+      "9cdd17b142e02079aff03e983c8b9923",
+      "5bc2ff8e4f709051bd93f1a8ab0f975b",
+      "3628010a43f4fb001ed7c99d169f7008",
+      "7f91517b45d0ba73f1f441a534615fe6",
+      "5bdda0e9485a96f468400791b88088f3",
+      "a111bad54a38899d2f2aff89eb5bbdf0",
+      "5624bcdd4249d2e0cda4a4830b8ee4e2",
+      "1e07b065459395447b74c9a1ec6c0077",
+      "99628a4a45c7340d22bd1bbe5c4cdc87",
+      "e629b736422492640d24648463ee03f7",
+      "017043ef40aed46224b1e3adb7f9e8ff",
+      "4362fe4c4c32642b846227ba293a6e91",
+      "5d3dcf3e43ec0527ba38dcb9208899e0",
+      "2d6a85de45ba5321dceb9689056bd602",
+      "3b6f1a63450bb899279579a969928850",
+      "01c8f15b48a790503a4541a785f64f31",
+      "a9192af14ac8d76d1c52828c70fc88f2",
+      "b6cfe683436e08d61644f7a65b190388",
+      "a423d9104f858a716fe1baac9b132614",
+      "2f95c0144bd660c7aa21f5a6c9755252",
+      "e4c600134ec234e095340dbad7389009",
+      "21a0b7e74bca70c860aed6a7fbd63d91",
+      "6edfdd9242853111736172bbd5f4aab7"
+     ]
+    }
+   ]
+  },
+  "MP_ESC_BrokenHope_Base_m.TheWorld.PersistentLevel.TnTransformingWorldActor_4577": {
+   "actor": "TnTransformingWorldActor_4577",
+   "component": "MP_ESC_BrokenHope_Base_m.TheWorld.PersistentLevel.TnTransformingWorldActor_4577.HmInterpolatedLightMappedSkeletalMeshComponent_4566",
+   "skeletal_mesh": "TPRO_IAC_Doors_p.IAC_InteriorDoor_SKEL",
+   "initial_state": "Untransformed",
+   "anim_sequence": "IAC_InteriorDoor_TransOut",
+   "lighting_guid": "84749544432da1d3d9142e94eac9f70e",
+   "baked_lights": [
+    "b14a573544f24083ba3aa581cea28ad1",
+    "9cdd17b142e02079aff03e983c8b9923",
+    "7f91517b45d0ba73f1f441a534615fe6",
+    "5bdda0e9485a96f468400791b88088f3",
+    "e644fe90490693a8a5ef719446eb97c8",
+    "e629b736422492640d24648463ee03f7",
+    "f7d477e44699e3d4820c75a02ba39331",
+    "4362fe4c4c32642b846227ba293a6e91",
+    "5d3dcf3e43ec0527ba38dcb9208899e0",
+    "01c8f15b48a790503a4541a785f64f31",
+    "a9192af14ac8d76d1c52828c70fc88f2",
+    "b6cfe683436e08d61644f7a65b190388",
+    "e4c600134ec234e095340dbad7389009",
+    "21a0b7e74bca70c860aed6a7fbd63d91",
+    "6edfdd9242853111736172bbd5f4aab7"
+   ],
+   "irrelevant_lights": [
+    "6e0de0b349c89047f3e6eb90c02f8c93",
+    "89eeeb26480ad5e442026d851b3862ee",
+    "7066522c4a3f138313b6c0b64638b0af",
+    "cebd6c934d953f2308a3d88e6a8e5868",
+    "c14b3bb246675b6db4d6979b99175f63",
+    "18d4ec3846817552b76cfbab7ffc4692",
+    "6f390cfd4fd281d5826e7bb231aedeab",
+    "60dc10c4474a70dec6f93ba55926d4d7",
+    "ff1616104fbc93c1f7b39f8046cb313f",
+    "579c530c4a54b0dffd89ddb40907a48b"
+   ],
+   "captures": [
+    {
+     "capture": 0,
+     "pose": "untransformed",
+     "capture_percentage": 0.0,
+     "type": 2,
+     "coeffs": [
+      "LightMapTexture2D_14363",
+      "LightMapTexture2D_5245",
+      "LightMapTexture2D_14311"
+     ],
+     "scales": [
+      [
+       0.0511893704533577,
+       0.2352045327425003,
+       0.2352045327425003
+      ],
+      [
+       0.0727914422750473,
+       0.24319589138031006,
+       0.27309101819992065
+      ],
+      [
+       0.07685371488332748,
+       0.24073724448680878,
+       0.28754857182502747
+      ]
+     ],
+     "scales_w": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "coordScale": [
+      0.25,
+      0.25
+     ],
+     "coordBias": [
+      0.25048828125,
+      0.25048828125
+     ],
+     "texture_files": [
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_14363.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_5245.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_14311.png",
+       "source": "render_atlas"
+      }
+     ],
+     "atlas_rects_px": [
+      {
+       "x": 64.125,
+       "y": 64.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 64.125,
+       "y": 64.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 64.125,
+       "y": 64.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      }
+     ],
+     "lights": [
+      "b14a573544f24083ba3aa581cea28ad1",
+      "9cdd17b142e02079aff03e983c8b9923",
+      "7f91517b45d0ba73f1f441a534615fe6",
+      "5bdda0e9485a96f468400791b88088f3",
+      "e644fe90490693a8a5ef719446eb97c8",
+      "e629b736422492640d24648463ee03f7",
+      "f7d477e44699e3d4820c75a02ba39331",
+      "4362fe4c4c32642b846227ba293a6e91",
+      "5d3dcf3e43ec0527ba38dcb9208899e0",
+      "01c8f15b48a790503a4541a785f64f31",
+      "a9192af14ac8d76d1c52828c70fc88f2",
+      "b6cfe683436e08d61644f7a65b190388",
+      "e4c600134ec234e095340dbad7389009",
+      "21a0b7e74bca70c860aed6a7fbd63d91",
+      "6edfdd9242853111736172bbd5f4aab7"
+     ]
+    },
+    {
+     "capture": 1,
+     "pose": "transformed",
+     "capture_percentage": 1.0,
+     "type": 2,
+     "coeffs": [
+      "LightMapTexture2D_14363",
+      "LightMapTexture2D_5245",
+      "LightMapTexture2D_14311"
+     ],
+     "scales": [
+      [
+       0.016402537003159523,
+       0.07536626607179642,
+       0.07536626607179642
+      ],
+      [
+       0.017064377665519714,
+       0.07840728014707565,
+       0.07840728014707565
+      ],
+      [
+       0.02223082259297371,
+       0.04443264752626419,
+       0.084637850522995
+      ]
+     ],
+     "scales_w": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "coordScale": [
+      0.25,
+      0.25
+     ],
+     "coordBias": [
+      0.50048828125,
+      0.00048828125
+     ],
+     "texture_files": [
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_14363.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_5245.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_14311.png",
+       "source": "render_atlas"
+      }
+     ],
+     "atlas_rects_px": [
+      {
+       "x": 128.125,
+       "y": 0.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 128.125,
+       "y": 0.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 128.125,
+       "y": 0.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      }
+     ],
+     "lights": [
+      "5bdda0e9485a96f468400791b88088f3",
+      "e644fe90490693a8a5ef719446eb97c8",
+      "01c8f15b48a790503a4541a785f64f31",
+      "6edfdd9242853111736172bbd5f4aab7"
+     ]
+    }
+   ]
+  },
+  "MP_ESC_BrokenHope_Base_m.TheWorld.PersistentLevel.TnTransformingWorldActor_5091": {
+   "actor": "TnTransformingWorldActor_5091",
+   "component": "MP_ESC_BrokenHope_Base_m.TheWorld.PersistentLevel.TnTransformingWorldActor_5091.HmInterpolatedLightMappedSkeletalMeshComponent_14837",
+   "skeletal_mesh": "TPRO_NEU_Bridges_p.NEU_BridgeStraight_SKEL",
+   "initial_state": "Transformed",
+   "anim_sequence": "NEU_BridgeStraight_TransOut",
+   "lighting_guid": "87d273a1452ad66aeb884ea42b7c9bca",
+   "baked_lights": [
+    "4a9ac77242a234d2cc65edbc4bf5e9d1",
+    "67ada5ec482ae0c32483e1863d396999",
+    "c70ec0a045f24005ab0a479433de4ffc",
+    "332722014712bc28ef91a7bb4065ae0e",
+    "384112954db45d3bf6e60bbae8c4470c",
+    "a1c9b09548779aeffb7cbf941062b98c",
+    "05ad8de345126f90948823a10186f655",
+    "01c8f15b48a790503a4541a785f64f31",
+    "2dfe09064691b7487fc508a9c2320844",
+    "241b0cd64b7d99112b0bf6b20d433855",
+    "e964b80a46822f10eaa7e7923a0a18db"
+   ],
+   "irrelevant_lights": [
+    "6e0de0b349c89047f3e6eb90c02f8c93",
+    "99b9d7ff4043f89f007170ac889187f7",
+    "bc250c344c339855ccd520855f4f5b9b",
+    "b6a644b74ff7743351c8c7b4389eedd3",
+    "f829d79e47e44a50c82d1dbf4f7fce35",
+    "e199ec4841792a23304a38b7eb7f3ab7",
+    "e004185d47445890acaeea97e97c236f",
+    "c55c5c39482f527ebf55edbb5cfee68d",
+    "5a6d14a04fa05a2c3bee6d88d169cf64",
+    "cebd6c934d953f2308a3d88e6a8e5868",
+    "04ad22b64e45355a511f359e166d00a1",
+    "fa7d3f3f420a5653dc2d7cbd0c51683f",
+    "6f390cfd4fd281d5826e7bb231aedeab",
+    "8813934a4550288426e8bbb92515a212",
+    "d0006ec64f86ef095529cb9992b22ada",
+    "0c60196c489dfca57dd0749bf5e6aa18",
+    "8dc98ea94f576bb11ab0baa8ebcfa719",
+    "331aea1842854c6aa2ec6cb5096a1673",
+    "3a53712c4ea288fef212e0b71ad9c4e8"
+   ],
+   "captures": [
+    {
+     "capture": 0,
+     "pose": "untransformed",
+     "capture_percentage": 0.0,
+     "type": 2,
+     "coeffs": [
+      "LightMapTexture2D_14363",
+      "LightMapTexture2D_5245",
+      "LightMapTexture2D_14311"
+     ],
+     "scales": [
+      [
+       0.06564205884933472,
+       0.07952281832695007,
+       0.24724969267845154
+      ],
+      [
+       0.06014160439372063,
+       0.06976055353879929,
+       0.2236051708459854
+      ],
+      [
+       0.0629652664065361,
+       0.067850261926651,
+       0.2340976893901825
+      ]
+     ],
+     "scales_w": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "coordScale": [
+      0.125,
+      0.125
+     ],
+     "coordBias": [
+      0.25048828125,
+      0.62548828125
+     ],
+     "texture_files": [
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_14363.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_5245.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_14311.png",
+       "source": "render_atlas"
+      }
+     ],
+     "atlas_rects_px": [
+      {
+       "x": 64.125,
+       "y": 160.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 64.125,
+       "y": 160.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 64.125,
+       "y": 160.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      }
+     ],
+     "lights": [
+      "4a9ac77242a234d2cc65edbc4bf5e9d1",
+      "67ada5ec482ae0c32483e1863d396999",
+      "c70ec0a045f24005ab0a479433de4ffc",
+      "332722014712bc28ef91a7bb4065ae0e",
+      "384112954db45d3bf6e60bbae8c4470c",
+      "a1c9b09548779aeffb7cbf941062b98c",
+      "05ad8de345126f90948823a10186f655",
+      "01c8f15b48a790503a4541a785f64f31",
+      "2dfe09064691b7487fc508a9c2320844",
+      "241b0cd64b7d99112b0bf6b20d433855"
+     ]
+    },
+    {
+     "capture": 1,
+     "pose": "transformed",
+     "capture_percentage": 1.0,
+     "type": 2,
+     "coeffs": [
+      "LightMapTexture2D_14363",
+      "LightMapTexture2D_5245",
+      "LightMapTexture2D_14311"
+     ],
+     "scales": [
+      [
+       0.05977270007133484,
+       0.07365349680185318,
+       0.22544574737548828
+      ],
+      [
+       0.05918271094560623,
+       0.06877151876688004,
+       0.2200508713722229
+      ],
+      [
+       0.05929237976670265,
+       0.07009314000606537,
+       0.22082532942295074
+      ]
+     ],
+     "scales_w": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "coordScale": [
+      0.125,
+      0.125
+     ],
+     "coordBias": [
+      0.87548828125,
+      0.62548828125
+     ],
+     "texture_files": [
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_14363.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_5245.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_14311.png",
+       "source": "render_atlas"
+      }
+     ],
+     "atlas_rects_px": [
+      {
+       "x": 224.125,
+       "y": 160.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 224.125,
+       "y": 160.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 224.125,
+       "y": 160.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      }
+     ],
+     "lights": [
+      "4a9ac77242a234d2cc65edbc4bf5e9d1",
+      "67ada5ec482ae0c32483e1863d396999",
+      "c70ec0a045f24005ab0a479433de4ffc",
+      "332722014712bc28ef91a7bb4065ae0e",
+      "384112954db45d3bf6e60bbae8c4470c",
+      "a1c9b09548779aeffb7cbf941062b98c",
+      "e964b80a46822f10eaa7e7923a0a18db",
+      "05ad8de345126f90948823a10186f655",
+      "01c8f15b48a790503a4541a785f64f31",
+      "2dfe09064691b7487fc508a9c2320844",
+      "241b0cd64b7d99112b0bf6b20d433855"
+     ]
+    }
+   ]
+  },
+  "MP_ESC_BrokenHope_Base_m.TheWorld.PersistentLevel.TnTransformingWorldActor_5499": {
+   "actor": "TnTransformingWorldActor_5499",
+   "component": "MP_ESC_BrokenHope_Base_m.TheWorld.PersistentLevel.TnTransformingWorldActor_5499.HmInterpolatedLightMappedSkeletalMeshComponent_4566",
+   "skeletal_mesh": "TPRO_IAC_Doors_p.IAC_InteriorDoor_SKEL",
+   "initial_state": "Untransformed",
+   "anim_sequence": "IAC_InteriorDoor_TransOut",
+   "lighting_guid": "1a241adb4678487034bc7a87956416f7",
+   "baked_lights": [
+    "1f56684b4a67a4abfdefde930eb3bbc8",
+    "705615f04f582cc98feeea846f29986d",
+    "ee17027f4ee6e3284ebd51bae50975c6",
+    "e69ec3fd4ba863ad0ab8fc8b4d2e0b8a",
+    "24ff3e344330f8b63ccea5b67a7360d9",
+    "01c8f15b48a790503a4541a785f64f31",
+    "a9192af14ac8d76d1c52828c70fc88f2",
+    "3672b6be419eeb901c8af7b944155f5e",
+    "cc88caca4800957fbf104798f87dc411",
+    "89e8f8f04547bb89038a2fb34382d861",
+    "f602e9de448c6004c64ca5b4e739769f"
+   ],
+   "irrelevant_lights": [
+    "6e0de0b349c89047f3e6eb90c02f8c93",
+    "16827dda41ad01239733e389e5824f93",
+    "e36b08904ad0e38628b1378b3eb97742",
+    "8fdc842d4951b4ca0ee5b6af665cabaf",
+    "d3e4b6b64810c9b71054e8bfe4e7accc",
+    "0c7bc61e4a3f3a53ab47829398401bfa",
+    "8fd8c770431615522692e1aee3d0c595",
+    "cebd6c934d953f2308a3d88e6a8e5868",
+    "e78e76fb47997ceb9de65a8f4199fab9",
+    "2ac53d6f4c92fc523e9ae78a0e381bca",
+    "9d83e9cc4a65089279d9b58848f9ad3c",
+    "b6b7b77948258cc7066171882da1ab39",
+    "f758932541da2006bb8e369e63c5bd7b",
+    "eb58cddb4cd3dc4991627190b712f965",
+    "f53d2edd40499f0abfa4b4b062be2268",
+    "6f390cfd4fd281d5826e7bb231aedeab",
+    "d0006ec64f86ef095529cb9992b22ada",
+    "9b74c08a4ae70aa7590d8ca700882d2c",
+    "13e7cf8c4ffd1c656214e8afdd9b4726",
+    "7b080d1044356dee4c76318d96fbac9d"
+   ],
+   "captures": [
+    {
+     "capture": 0,
+     "pose": "untransformed",
+     "capture_percentage": 0.0,
+     "type": 2,
+     "coeffs": [
+      "LightMapTexture2D_3073",
+      "LightMapTexture2D_223",
+      "LightMapTexture2D_6695"
+     ],
+     "scales": [
+      [
+       0.07604783773422241,
+       0.34442511200904846,
+       0.3475739061832428
+      ],
+      [
+       0.07513079792261124,
+       0.3849969804286957,
+       0.3444076180458069
+      ],
+      [
+       0.07576952129602432,
+       0.345407098531723,
+       0.3474630117416382
+      ]
+     ],
+     "scales_w": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "coordScale": [
+      0.25,
+      0.25
+     ],
+     "coordBias": [
+      0.50048828125,
+      0.75048828125
+     ],
+     "texture_files": [
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_3073.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_223.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_6695.png",
+       "source": "render_atlas"
+      }
+     ],
+     "atlas_rects_px": [
+      {
+       "x": 128.125,
+       "y": 192.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 128.125,
+       "y": 192.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 128.125,
+       "y": 192.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      }
+     ],
+     "lights": [
+      "1f56684b4a67a4abfdefde930eb3bbc8",
+      "705615f04f582cc98feeea846f29986d",
+      "ee17027f4ee6e3284ebd51bae50975c6",
+      "e69ec3fd4ba863ad0ab8fc8b4d2e0b8a",
+      "24ff3e344330f8b63ccea5b67a7360d9",
+      "01c8f15b48a790503a4541a785f64f31",
+      "a9192af14ac8d76d1c52828c70fc88f2",
+      "3672b6be419eeb901c8af7b944155f5e",
+      "cc88caca4800957fbf104798f87dc411",
+      "89e8f8f04547bb89038a2fb34382d861",
+      "f602e9de448c6004c64ca5b4e739769f"
+     ]
+    },
+    {
+     "capture": 1,
+     "pose": "transformed",
+     "capture_percentage": 1.0,
+     "type": 2,
+     "coeffs": [
+      "LightMapTexture2D_7958",
+      "LightMapTexture2D_13480",
+      "LightMapTexture2D_710"
+     ],
+     "scales": [
+      [
+       0.0029261817689985037,
+       0.013445200398564339,
+       0.013445200398564339
+      ],
+      [
+       0.004660602193325758,
+       0.02141450345516205,
+       0.02141450345516205
+      ],
+      [
+       0.004767448175698519,
+       0.021905438974499702,
+       0.021905438974499702
+      ]
+     ],
+     "scales_w": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "coordScale": [
+      0.25,
+      0.25
+     ],
+     "coordBias": [
+      0.50048828125,
+      0.50048828125
+     ],
+     "texture_files": [
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_7958.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_13480.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_710.png",
+       "source": "render_atlas"
+      }
+     ],
+     "atlas_rects_px": [
+      {
+       "x": 128.125,
+       "y": 128.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 128.125,
+       "y": 128.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 128.125,
+       "y": 128.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      }
+     ],
+     "lights": [
+      "1f56684b4a67a4abfdefde930eb3bbc8",
+      "01c8f15b48a790503a4541a785f64f31",
+      "a9192af14ac8d76d1c52828c70fc88f2"
+     ]
+    }
+   ]
+  },
+  "MP_ESC_BrokenHope_Base_m.TheWorld.PersistentLevel.TnTransformingWorldActor_5711": {
+   "actor": "TnTransformingWorldActor_5711",
+   "component": "MP_ESC_BrokenHope_Base_m.TheWorld.PersistentLevel.TnTransformingWorldActor_5711.HmInterpolatedLightMappedSkeletalMeshComponent_14837",
+   "skeletal_mesh": "TPRO_NEU_Bridges_p.NEU_BridgeStraight_SKEL",
+   "initial_state": "Transformed",
+   "anim_sequence": "NEU_BridgeStraight_TransOut",
+   "lighting_guid": "e1c2aa254960614ebf304db3e084365d",
+   "baked_lights": [
+    "b14a573544f24083ba3aa581cea28ad1",
+    "9cdd17b142e02079aff03e983c8b9923",
+    "3628010a43f4fb001ed7c99d169f7008",
+    "eaffff414f96b55b53f31d965836618d",
+    "371718c0433321098bd35186f1016d2e",
+    "7f91517b45d0ba73f1f441a534615fe6",
+    "5bdda0e9485a96f468400791b88088f3",
+    "5624bcdd4249d2e0cda4a4830b8ee4e2",
+    "1e07b065459395447b74c9a1ec6c0077",
+    "f7a01c8a445f14575563d78177b1122c",
+    "e629b736422492640d24648463ee03f7",
+    "f7d477e44699e3d4820c75a02ba39331",
+    "4362fe4c4c32642b846227ba293a6e91",
+    "0c95a4194716b7f0a329cd84de87dc65",
+    "5d3dcf3e43ec0527ba38dcb9208899e0",
+    "2d6a85de45ba5321dceb9689056bd602",
+    "01c8f15b48a790503a4541a785f64f31",
+    "a9192af14ac8d76d1c52828c70fc88f2",
+    "b6cfe683436e08d61644f7a65b190388",
+    "2f95c0144bd660c7aa21f5a6c9755252",
+    "e4c600134ec234e095340dbad7389009",
+    "21a0b7e74bca70c860aed6a7fbd63d91",
+    "6edfdd9242853111736172bbd5f4aab7",
+    "a111bad54a38899d2f2aff89eb5bbdf0",
+    "017043ef40aed46224b1e3adb7f9e8ff",
+    "4f58558043a99c784238b28f9923a1ff"
+   ],
+   "irrelevant_lights": [
+    "6e0de0b349c89047f3e6eb90c02f8c93",
+    "900e88414a34a2467c1bfebfacf921c6",
+    "89eeeb26480ad5e442026d851b3862ee",
+    "029cdadd47975abba3baafba9928f9c5",
+    "f187b88b46965026ac714d8ce006be7e",
+    "52ad2ade4aafba3d6ae72681a99e7b7a",
+    "18d4ec3846817552b76cfbab7ffc4692",
+    "df5b7bf44ae2819bfede7d932d7d05bf",
+    "eb58cddb4cd3dc4991627190b712f965",
+    "f53d2edd40499f0abfa4b4b062be2268",
+    "04929927469565167e8c2a965f135517",
+    "bc404e7846f0632692aa36b7759f0d0d",
+    "60dc10c4474a70dec6f93ba55926d4d7",
+    "ff1616104fbc93c1f7b39f8046cb313f",
+    "ee24b68f4569a3246b0b84bb56611599",
+    "4d0de4464426607296708199680f358b",
+    "39acd38841188733a60aa2b9de3f7165",
+    "579c530c4a54b0dffd89ddb40907a48b"
+   ],
+   "captures": [
+    {
+     "capture": 0,
+     "pose": "untransformed",
+     "capture_percentage": 0.0,
+     "type": 2,
+     "coeffs": [
+      "LightMapTexture2D_14363",
+      "LightMapTexture2D_5245",
+      "LightMapTexture2D_14311"
+     ],
+     "scales": [
+      [
+       0.3160027861595154,
+       0.6767820119857788,
+       1.0386024713516235
+      ],
+      [
+       0.3298584818840027,
+       0.7237826585769653,
+       1.0839476585388184
+      ],
+      [
+       0.33362874388694763,
+       0.8320367336273193,
+       1.0975439548492432
+      ]
+     ],
+     "scales_w": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "coordScale": [
+      0.125,
+      0.125
+     ],
+     "coordBias": [
+      0.12548828125,
+      0.75048828125
+     ],
+     "texture_files": [
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_14363.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_5245.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_14311.png",
+       "source": "render_atlas"
+      }
+     ],
+     "atlas_rects_px": [
+      {
+       "x": 32.125,
+       "y": 192.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 32.125,
+       "y": 192.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 32.125,
+       "y": 192.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      }
+     ],
+     "lights": [
+      "b14a573544f24083ba3aa581cea28ad1",
+      "9cdd17b142e02079aff03e983c8b9923",
+      "3628010a43f4fb001ed7c99d169f7008",
+      "eaffff414f96b55b53f31d965836618d",
+      "371718c0433321098bd35186f1016d2e",
+      "7f91517b45d0ba73f1f441a534615fe6",
+      "5bdda0e9485a96f468400791b88088f3",
+      "5624bcdd4249d2e0cda4a4830b8ee4e2",
+      "1e07b065459395447b74c9a1ec6c0077",
+      "f7a01c8a445f14575563d78177b1122c",
+      "e629b736422492640d24648463ee03f7",
+      "f7d477e44699e3d4820c75a02ba39331",
+      "4362fe4c4c32642b846227ba293a6e91",
+      "0c95a4194716b7f0a329cd84de87dc65",
+      "5d3dcf3e43ec0527ba38dcb9208899e0",
+      "2d6a85de45ba5321dceb9689056bd602",
+      "01c8f15b48a790503a4541a785f64f31",
+      "a9192af14ac8d76d1c52828c70fc88f2",
+      "b6cfe683436e08d61644f7a65b190388",
+      "2f95c0144bd660c7aa21f5a6c9755252",
+      "e4c600134ec234e095340dbad7389009",
+      "21a0b7e74bca70c860aed6a7fbd63d91",
+      "6edfdd9242853111736172bbd5f4aab7"
+     ]
+    },
+    {
+     "capture": 1,
+     "pose": "transformed",
+     "capture_percentage": 1.0,
+     "type": 2,
+     "coeffs": [
+      "LightMapTexture2D_6888",
+      "LightMapTexture2D_9565",
+      "LightMapTexture2D_6660"
+     ],
+     "scales": [
+      [
+       0.44363734126091003,
+       2.0977447032928467,
+       2.3434488773345947
+      ],
+      [
+       0.3804363012313843,
+       1.8394666910171509,
+       2.083378791809082
+      ],
+      [
+       0.44057294726371765,
+       1.8411072492599487,
+       2.0430498123168945
+      ]
+     ],
+     "scales_w": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "coordScale": [
+      0.125,
+      0.25
+     ],
+     "coordBias": [
+      0.12548828125,
+      0.0009765625
+     ],
+     "texture_files": [
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_6888.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_9565.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_6660.png",
+       "source": "render_atlas"
+      }
+     ],
+     "atlas_rects_px": [
+      {
+       "x": 32.125,
+       "y": 0.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        128
+       ]
+      },
+      {
+       "x": 32.125,
+       "y": 0.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        128
+       ]
+      },
+      {
+       "x": 32.125,
+       "y": 0.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        128
+       ]
+      }
+     ],
+     "lights": [
+      "b14a573544f24083ba3aa581cea28ad1",
+      "9cdd17b142e02079aff03e983c8b9923",
+      "3628010a43f4fb001ed7c99d169f7008",
+      "eaffff414f96b55b53f31d965836618d",
+      "371718c0433321098bd35186f1016d2e",
+      "7f91517b45d0ba73f1f441a534615fe6",
+      "5bdda0e9485a96f468400791b88088f3",
+      "a111bad54a38899d2f2aff89eb5bbdf0",
+      "5624bcdd4249d2e0cda4a4830b8ee4e2",
+      "1e07b065459395447b74c9a1ec6c0077",
+      "f7a01c8a445f14575563d78177b1122c",
+      "e629b736422492640d24648463ee03f7",
+      "f7d477e44699e3d4820c75a02ba39331",
+      "017043ef40aed46224b1e3adb7f9e8ff",
+      "4f58558043a99c784238b28f9923a1ff",
+      "4362fe4c4c32642b846227ba293a6e91",
+      "0c95a4194716b7f0a329cd84de87dc65",
+      "5d3dcf3e43ec0527ba38dcb9208899e0",
+      "2d6a85de45ba5321dceb9689056bd602",
+      "01c8f15b48a790503a4541a785f64f31",
+      "a9192af14ac8d76d1c52828c70fc88f2",
+      "b6cfe683436e08d61644f7a65b190388",
+      "2f95c0144bd660c7aa21f5a6c9755252",
+      "e4c600134ec234e095340dbad7389009",
+      "21a0b7e74bca70c860aed6a7fbd63d91",
+      "6edfdd9242853111736172bbd5f4aab7"
+     ]
+    }
+   ]
+  },
+  "MP_ESC_BrokenHope_Base_m.TheWorld.PersistentLevel.TnTransformingWorldActor_7490": {
+   "actor": "TnTransformingWorldActor_7490",
+   "component": "MP_ESC_BrokenHope_Base_m.TheWorld.PersistentLevel.TnTransformingWorldActor_7490.HmInterpolatedLightMappedSkeletalMeshComponent_14837",
+   "skeletal_mesh": "TPRO_NEU_Bridges_p.NEU_BridgeStraight_SKEL",
+   "initial_state": "Transformed",
+   "anim_sequence": "NEU_BridgeStraight_TransOut",
+   "lighting_guid": "cda237e64fdae21b56d259ae839e04dd",
+   "baked_lights": [
+    "42aaa5e8495d30d989d9399c0536c907",
+    "b14a573544f24083ba3aa581cea28ad1",
+    "99e9c46f4b7a78f008dab6a53c01ee84",
+    "a54d8d53493dcd6c4ed28aa09062b1bd",
+    "371718c0433321098bd35186f1016d2e",
+    "6db561a341b3ccd551d6ff83d467de84",
+    "f7a01c8a445f14575563d78177b1122c",
+    "4362fe4c4c32642b846227ba293a6e91",
+    "ca5918964af66b4478990fb1c7aafefe",
+    "a915670a43325117567d12a33388c82b",
+    "8d13246b460eb50fdcdd998c861a3ed4",
+    "93db0bb549796d64ff1eabb7ae459ed2",
+    "01c8f15b48a790503a4541a785f64f31",
+    "2f95c0144bd660c7aa21f5a6c9755252",
+    "21a0b7e74bca70c860aed6a7fbd63d91",
+    "6e6cfa804f8c346e80943eb04050ee44",
+    "9cfa2379444828d29692618807f75356"
+   ],
+   "irrelevant_lights": [
+    "6e0de0b349c89047f3e6eb90c02f8c93",
+    "5ed6e0f8490b4a37bad3d892d97540bc",
+    "3eb58cb0437ab75424e232afb8b80fec",
+    "776cb7244f31f67d5f1f1aa66a96fd07",
+    "68f43c1143aa5d5d2a7be6b03e4b38e4",
+    "52ad2ade4aafba3d6ae72681a99e7b7a",
+    "04929927469565167e8c2a965f135517",
+    "6a8174774d86a68b6d3167a24d415047",
+    "f03eba5244b9050c0359e292cf5fa003",
+    "bc404e7846f0632692aa36b7759f0d0d",
+    "6821bc374ffb7bcb348d52818b71ba71",
+    "ee24b68f4569a3246b0b84bb56611599",
+    "8c55e56144e3486b18277aa0697dfb77",
+    "39acd38841188733a60aa2b9de3f7165",
+    "579c530c4a54b0dffd89ddb40907a48b",
+    "d209ea904bb181efd7be5cac0da46ca4",
+    "331aea1842854c6aa2ec6cb5096a1673"
+   ],
+   "captures": [
+    {
+     "capture": 0,
+     "pose": "untransformed",
+     "capture_percentage": 0.0,
+     "type": 2,
+     "coeffs": [
+      "LightMapTexture2D_14363",
+      "LightMapTexture2D_5245",
+      "LightMapTexture2D_14311"
+     ],
+     "scales": [
+      [
+       0.12238200753927231,
+       0.10236147791147232,
+       0.32337331771850586
+      ],
+      [
+       0.1053258553147316,
+       0.08966291695833206,
+       0.2772776484489441
+      ],
+      [
+       0.11413726955652237,
+       0.09985938668251038,
+       0.27051928639411926
+      ]
+     ],
+     "scales_w": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "coordScale": [
+      0.125,
+      0.125
+     ],
+     "coordBias": [
+      0.75048828125,
+      0.62548828125
+     ],
+     "texture_files": [
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_14363.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_5245.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_14311.png",
+       "source": "render_atlas"
+      }
+     ],
+     "atlas_rects_px": [
+      {
+       "x": 192.125,
+       "y": 160.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 192.125,
+       "y": 160.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 192.125,
+       "y": 160.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      }
+     ],
+     "lights": [
+      "42aaa5e8495d30d989d9399c0536c907",
+      "b14a573544f24083ba3aa581cea28ad1",
+      "99e9c46f4b7a78f008dab6a53c01ee84",
+      "a54d8d53493dcd6c4ed28aa09062b1bd",
+      "371718c0433321098bd35186f1016d2e",
+      "6db561a341b3ccd551d6ff83d467de84",
+      "f7a01c8a445f14575563d78177b1122c",
+      "4362fe4c4c32642b846227ba293a6e91",
+      "ca5918964af66b4478990fb1c7aafefe",
+      "a915670a43325117567d12a33388c82b",
+      "8d13246b460eb50fdcdd998c861a3ed4",
+      "93db0bb549796d64ff1eabb7ae459ed2",
+      "01c8f15b48a790503a4541a785f64f31",
+      "2f95c0144bd660c7aa21f5a6c9755252",
+      "21a0b7e74bca70c860aed6a7fbd63d91"
+     ]
+    },
+    {
+     "capture": 1,
+     "pose": "transformed",
+     "capture_percentage": 1.0,
+     "type": 2,
+     "coeffs": [
+      "LightMapTexture2D_14363",
+      "LightMapTexture2D_5245",
+      "LightMapTexture2D_14311"
+     ],
+     "scales": [
+      [
+       0.2524811327457428,
+       0.1791694164276123,
+       0.36571037769317627
+      ],
+      [
+       0.1601589173078537,
+       0.09993289411067963,
+       0.27477216720581055
+      ],
+      [
+       0.2285367250442505,
+       0.15687544643878937,
+       0.3294677734375
+      ]
+     ],
+     "scales_w": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "coordScale": [
+      0.125,
+      0.125
+     ],
+     "coordBias": [
+      0.87548828125,
+      0.75048828125
+     ],
+     "texture_files": [
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_14363.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_5245.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_14311.png",
+       "source": "render_atlas"
+      }
+     ],
+     "atlas_rects_px": [
+      {
+       "x": 224.125,
+       "y": 192.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 224.125,
+       "y": 192.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 224.125,
+       "y": 192.125,
+       "w": 32.0,
+       "h": 32.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      }
+     ],
+     "lights": [
+      "42aaa5e8495d30d989d9399c0536c907",
+      "b14a573544f24083ba3aa581cea28ad1",
+      "6e6cfa804f8c346e80943eb04050ee44",
+      "99e9c46f4b7a78f008dab6a53c01ee84",
+      "a54d8d53493dcd6c4ed28aa09062b1bd",
+      "371718c0433321098bd35186f1016d2e",
+      "6db561a341b3ccd551d6ff83d467de84",
+      "f7a01c8a445f14575563d78177b1122c",
+      "9cfa2379444828d29692618807f75356",
+      "4362fe4c4c32642b846227ba293a6e91",
+      "ca5918964af66b4478990fb1c7aafefe",
+      "a915670a43325117567d12a33388c82b",
+      "8d13246b460eb50fdcdd998c861a3ed4",
+      "93db0bb549796d64ff1eabb7ae459ed2",
+      "01c8f15b48a790503a4541a785f64f31",
+      "2f95c0144bd660c7aa21f5a6c9755252",
+      "21a0b7e74bca70c860aed6a7fbd63d91"
+     ]
+    }
+   ]
+  },
+  "MP_ESC_BrokenHope_Base_m.TheWorld.PersistentLevel.TnTransformingWorldActor_9615": {
+   "actor": "TnTransformingWorldActor_9615",
+   "component": "MP_ESC_BrokenHope_Base_m.TheWorld.PersistentLevel.TnTransformingWorldActor_9615.HmInterpolatedLightMappedSkeletalMeshComponent_4566",
+   "skeletal_mesh": "TPRO_IAC_Doors_p.IAC_InteriorDoor_SKEL",
+   "initial_state": "Untransformed",
+   "anim_sequence": "IAC_InteriorDoor_TransOut",
+   "lighting_guid": "9a1d68e44982d40766a685b0cd5c0a09",
+   "baked_lights": [
+    "9ddd522b4a2a2088dce9b8815ebcdcad",
+    "6b287ef24288e927833f2a9505b1713d",
+    "c66b6586470f6036f6695ba8b67ac211",
+    "633df03d4f542042559ad9b9287b524b",
+    "852701cc4e8b46d69f67ab85c4010bdb",
+    "fef5b14c4b1124d3a6129b88a9141735",
+    "edc2330046b6c01da448018c14ce2892",
+    "2a97b1054e02d9ab2d8f0c9fc8e6c1c7",
+    "0f81c822418873516d5587b4ca6dcc61",
+    "da00d3bf44d7a814e123e7af7061ed73",
+    "953474d9493f36f445e5ba87e2934865",
+    "ccb06e474d4f08605c1e358f1e673cab",
+    "56fac0fa4c4830d765928ebded20be3c",
+    "01c8f15b48a790503a4541a785f64f31",
+    "410e2b054eddaa1c66194291fd29b659",
+    "8f4aad444aa30fd8874a85959f60a95e",
+    "177d5ac049c7a64481ea24af22207346",
+    "b920724d44b1adb09a90c093f81d95f9",
+    "32189685473e9d0c6d252fb20df4c581"
+   ],
+   "irrelevant_lights": [
+    "6e0de0b349c89047f3e6eb90c02f8c93",
+    "99b9d7ff4043f89f007170ac889187f7",
+    "83a93c0542ff45873e39b2a158139156",
+    "bc250c344c339855ccd520855f4f5b9b",
+    "bf7f907a42a424df21465a9f0e60a805",
+    "838b3ce34c4787ce6402cbbc7e46da92",
+    "92f02a1f43368c9690b00faf38a8214e",
+    "d0ce469d43356c73776f1584b17e17ef",
+    "2331f57d45aab0848e5921a4ff82e29a",
+    "2a3c1f9446394f577fc58a80c10471a5",
+    "b6b7b77948258cc7066171882da1ab39",
+    "cad0407540b8b1cdf8a7a78e444e7a6c",
+    "dfa4fbcf45e9cd4cca148ca67cf71e7c",
+    "8dc98ea94f576bb11ab0baa8ebcfa719",
+    "3a53712c4ea288fef212e0b71ad9c4e8",
+    "071ab2564aa06605a55368a3f4de9425"
+   ],
+   "captures": [
+    {
+     "capture": 0,
+     "pose": "untransformed",
+     "capture_percentage": 0.0,
+     "type": 2,
+     "coeffs": [
+      "LightMapTexture2D_7958",
+      "LightMapTexture2D_13480",
+      "LightMapTexture2D_710"
+     ],
+     "scales": [
+      [
+       0.25064894556999207,
+       0.37577351927757263,
+       0.6774721145629883
+      ],
+      [
+       0.32439714670181274,
+       0.44526875019073486,
+       0.8564661741256714
+      ],
+      [
+       0.3090672791004181,
+       0.39500585198402405,
+       0.8036770224571228
+      ]
+     ],
+     "scales_w": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "coordScale": [
+      0.25,
+      0.25
+     ],
+     "coordBias": [
+      0.25048828125,
+      0.25048828125
+     ],
+     "texture_files": [
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_7958.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_13480.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_710.png",
+       "source": "render_atlas"
+      }
+     ],
+     "atlas_rects_px": [
+      {
+       "x": 64.125,
+       "y": 64.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 64.125,
+       "y": 64.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 64.125,
+       "y": 64.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      }
+     ],
+     "lights": [
+      "9ddd522b4a2a2088dce9b8815ebcdcad",
+      "6b287ef24288e927833f2a9505b1713d",
+      "c66b6586470f6036f6695ba8b67ac211",
+      "633df03d4f542042559ad9b9287b524b",
+      "852701cc4e8b46d69f67ab85c4010bdb",
+      "fef5b14c4b1124d3a6129b88a9141735",
+      "edc2330046b6c01da448018c14ce2892",
+      "2a97b1054e02d9ab2d8f0c9fc8e6c1c7",
+      "0f81c822418873516d5587b4ca6dcc61",
+      "da00d3bf44d7a814e123e7af7061ed73",
+      "953474d9493f36f445e5ba87e2934865",
+      "ccb06e474d4f08605c1e358f1e673cab",
+      "56fac0fa4c4830d765928ebded20be3c",
+      "01c8f15b48a790503a4541a785f64f31",
+      "410e2b054eddaa1c66194291fd29b659",
+      "8f4aad444aa30fd8874a85959f60a95e",
+      "177d5ac049c7a64481ea24af22207346"
+     ]
+    },
+    {
+     "capture": 1,
+     "pose": "transformed",
+     "capture_percentage": 1.0,
+     "type": 2,
+     "coeffs": [
+      "LightMapTexture2D_7958",
+      "LightMapTexture2D_13480",
+      "LightMapTexture2D_710"
+     ],
+     "scales": [
+      [
+       1.1066781282424927,
+       0.48215338587760925,
+       0.3312455415725708
+      ],
+      [
+       0.9051076769828796,
+       0.4006246328353882,
+       0.47264665365219116
+      ],
+      [
+       0.8454435467720032,
+       0.3475789725780487,
+       0.2654735743999481
+      ]
+     ],
+     "scales_w": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "coordScale": [
+      0.25,
+      0.25
+     ],
+     "coordBias": [
+      0.75048828125,
+      0.00048828125
+     ],
+     "texture_files": [
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_7958.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_13480.png",
+       "source": "render_atlas"
+      },
+      {
+       "file": "Rebuild/work/render/MP_ESC_BrokenHope/lightmaps/LightMapTexture2D_710.png",
+       "source": "render_atlas"
+      }
+     ],
+     "atlas_rects_px": [
+      {
+       "x": 192.125,
+       "y": 0.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 192.125,
+       "y": 0.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      },
+      {
+       "x": 192.125,
+       "y": 0.125,
+       "w": 64.0,
+       "h": 64.0,
+       "atlas_size": [
+        256,
+        256
+       ]
+      }
+     ],
+     "lights": [
+      "9ddd522b4a2a2088dce9b8815ebcdcad",
+      "6b287ef24288e927833f2a9505b1713d",
+      "c66b6586470f6036f6695ba8b67ac211",
+      "b920724d44b1adb09a90c093f81d95f9",
+      "852701cc4e8b46d69f67ab85c4010bdb",
+      "fef5b14c4b1124d3a6129b88a9141735",
+      "edc2330046b6c01da448018c14ce2892",
+      "2a97b1054e02d9ab2d8f0c9fc8e6c1c7",
+      "0f81c822418873516d5587b4ca6dcc61",
+      "da00d3bf44d7a814e123e7af7061ed73",
+      "953474d9493f36f445e5ba87e2934865",
+      "ccb06e474d4f08605c1e358f1e673cab",
+      "56fac0fa4c4830d765928ebded20be3c",
+      "01c8f15b48a790503a4541a785f64f31",
+      "410e2b054eddaa1c66194291fd29b659",
+      "8f4aad444aa30fd8874a85959f60a95e",
+      "32189685473e9d0c6d252fb20df4c581",
+      "177d5ac049c7a64481ea24af22207346"
+     ]
+    }
+   ]
+  }
+ }
+}
