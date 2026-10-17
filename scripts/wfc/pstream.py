@@ -63,27 +63,25 @@ MODULE_DISTS = {
     'PMI_Gravity': ([], []), 'PMI_ColorByParameter': ([], []), 'PMI_Unknown': ([], []), 'PMI_LocationEmitter': ([], []),
     # order CONFIRMED by RE from the runner (2026-10-18, batch 2): floats StartRadius, StartHeight, VelocityScale; vector StartLocation
     'PMI_LocationPrimitiveCylinder': (['StartRadius', 'StartHeight', 'VelocityScale'], ['StartLocation']),
+    # orders CONFIRMED by RE from the runners (spawn 0x8303E288 / update 0x83039A18, 2026-10-18): distribution k of the module
+    'PMI_Orbit': ([], ['OffsetAmount', 'RotationAmount', 'RotationRateAmount']),
+    'PMI_LocationDirect': ([], ['Location', 'LocationOffset', 'ScaleFactor']),     # Direction is not compiled (no runner reads it)
 }
 # order NOT read from the runner but taken from the runner's option order (PROVISIONAL): Orbit's options are read Offset (@4),
 # Rotation (@0x10), RotationRate (@0x1C) in that order (RE 2026-10-18), so the three vector distributions are named in that order
-ORDER_PROVISIONAL = {'PMI_Orbit': ([], ['OffsetAmount', 'RotationAmount', 'RotationRateAmount'])}
+ORDER_PROVISIONAL = {}     # Orbit confirmed by RE 2026-10-18 (moved to MODULE_DISTS)
 # census-proven distribution COUNTS whose property order inside the module is not proven
 MULTI_UNPROVEN_EXTRA = {
     'PMI_DynamicParameter': (['DynamicParams[0].ParamValue', 'DynamicParams[1].ParamValue',
                               'DynamicParams[2].ParamValue', 'DynamicParams[3].ParamValue'], []),   # census 4F/0V x79
-    'PMI_LocationDirect': ([], ['Location', 'LocationOffset', 'ScaleFactor', 'Direction']),        # census 0F/3V x9
     'PMI_SubUVDirect': ([], ['SubUVPosition', 'SubUVSize']),                                         # census 0F/2V x2
 }
-CENSUS_COUNTS = {'PMI_LocationDirect': (0, 3)}
+CENSUS_COUNTS = {}     # LocationDirect resolved by RE 2026-10-18 (3 distributions, named)
 # modules owning >1 float distribution whose internal order is not proven: values are assigned to the
 # module, the property only when every candidate carries the identical value
 MULTI_UNPROVEN = {
     'PMI_LocationPrimitiveSphere': (['StartRadius', 'VelocityScale'], ['StartLocation']),
-    # Engine.ParticleModuleOrbit schema (class default object): three RawDistributionVector, no floats. Count proven by the
-    # LODs where it is the only unlayouted module (assignment then completes exactly); order inside the group unproven.
-    # Without it, assignment stopped at Orbit and every later module lost its curves (Squib_HomRocket_01_FX Embers_Dup_Dup:
-    # AccelerationOverLife, DynamicParameter, VelocityOverLife)
-    'PMI_Orbit': ([], ['OffsetAmount', 'RotationAmount', 'RotationRateAmount']),
+    # (PMI_Orbit: order confirmed by RE 2026-10-18, now in MODULE_DISTS)
 }
 MULTI_UNPROVEN.update(MULTI_UNPROVEN_EXTRA)
 FLOAT_T, VEC_T = (1, 2, 3, 4), (7, 8, 9, 10)
