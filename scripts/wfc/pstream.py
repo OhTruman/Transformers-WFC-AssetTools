@@ -66,22 +66,25 @@ MODULE_DISTS = {
     # orders CONFIRMED by RE from the runners (spawn 0x8303E288 / update 0x83039A18, 2026-10-18): distribution k of the module
     'PMI_Orbit': ([], ['OffsetAmount', 'RotationAmount', 'RotationRateAmount']),
     'PMI_LocationDirect': ([], ['Location', 'LocationOffset', 'ScaleFactor']),     # Direction is not compiled (no runner reads it)
+    # RE spawn runner 0x8303E288 case 0x16 (2026-10-18), CONFIRMED: the LocationPrimitiveBase fields come first, so float k=0 is
+    # VelocityScale (read only when the block's Velocity flag is set) and k=1 StartRadius; vector k=0 StartLocation
+    'PMI_LocationPrimitiveSphere': (['VelocityScale', 'StartRadius'], ['StartLocation']),
+    'PMI_LocationEmitterDirect': ([], []),                          # case 0x14: no compiled distributions (param block only)
+    'PMI_DynamicParameter': (['DynamicParams[0].ParamValue', 'DynamicParams[1].ParamValue',   # case 0x1D: k = slot index
+                              'DynamicParams[2].ParamValue', 'DynamicParams[3].ParamValue'], []),
 }
 # order NOT read from the runner but taken from the runner's option order (PROVISIONAL): Orbit's options are read Offset (@4),
 # Rotation (@0x10), RotationRate (@0x1C) in that order (RE 2026-10-18), so the three vector distributions are named in that order
-ORDER_PROVISIONAL = {}     # Orbit confirmed by RE 2026-10-18 (moved to MODULE_DISTS)
+# SubUVDirect: RE rates k=0 SubUVPosition, k=1 SubUVSize HIGH (update worker 0x83018C90; pointers not visible in the decompile)
+ORDER_PROVISIONAL = {'PMI_SubUVDirect': ([], ['SubUVPosition', 'SubUVSize'])}
 # census-proven distribution COUNTS whose property order inside the module is not proven
 MULTI_UNPROVEN_EXTRA = {
-    'PMI_DynamicParameter': (['DynamicParams[0].ParamValue', 'DynamicParams[1].ParamValue',
-                              'DynamicParams[2].ParamValue', 'DynamicParams[3].ParamValue'], []),   # census 4F/0V x79
-    'PMI_SubUVDirect': ([], ['SubUVPosition', 'SubUVSize']),                                         # census 0F/2V x2
 }
 CENSUS_COUNTS = {}     # LocationDirect resolved by RE 2026-10-18 (3 distributions, named)
 # modules owning >1 float distribution whose internal order is not proven: values are assigned to the
 # module, the property only when every candidate carries the identical value
 MULTI_UNPROVEN = {
-    'PMI_LocationPrimitiveSphere': (['StartRadius', 'VelocityScale'], ['StartLocation']),
-    # (PMI_Orbit: order confirmed by RE 2026-10-18, now in MODULE_DISTS)
+    # (Orbit, LocationDirect, Sphere, DynamicParameter: orders confirmed by RE 2026-10-18, now in MODULE_DISTS)
 }
 MULTI_UNPROVEN.update(MULTI_UNPROVEN_EXTRA)
 FLOAT_T, VEC_T = (1, 2, 3, 4), (7, 8, 9, 10)
@@ -159,7 +162,7 @@ def assign(parsed):
                 for prop in ORDER_PROVISIONAL[m][gi]:
                     if not q: ok = False; break
                     out.append({'module_index': r['index'], 'module': m, 'property': prop, 'dist': q.pop(0), 'confidence': 'PROVISIONAL',
-                                'note': 'distribution order taken from the runner option order (Offset, Rotation, RotationRate); not read from the runner'})
+                                'note': 'order rated HIGH by RE (not read directly from the runner)'})
             elif m in MULTI_UNPROVEN:
                 props = MULTI_UNPROVEN[m][gi]
                 n = CENSUS_COUNTS[m][gi] if m in CENSUS_COUNTS else len(props)
