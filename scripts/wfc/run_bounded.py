@@ -63,6 +63,7 @@ def main():
     if not k.SetInformationJobObject(W.HANDLE(job), JobObjectExtendedLimitInformation, ctypes.byref(info), ctypes.sizeof(info)):
         sys.exit('SetInformationJobObject failed')
     out = open(a.log, 'w', encoding='utf-8') if a.log else None
+    if a.log and os.path.exists(a.log + '.HOLD_INTERRUPTED'): os.remove(a.log + '.HOLD_INTERRUPTED')   # the stage reruns from the start
     t0 = time.time()
     k.SetErrorMode(0x8003)   # inherited: no critical-error / GP-fault / open-file dialogs in the child
     p = subprocess.Popen([sys.executable] + cmd, stdout=out or None, stderr=subprocess.STDOUT if out else None,
