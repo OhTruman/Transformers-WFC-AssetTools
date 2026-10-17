@@ -6,6 +6,12 @@
   - Campaign verdict with airborne starts exempt (00e4619; A4 PASS PROVISIONAL, D2 ATTENTION).
   - Streaming runtime doc revised with the six RE corrections; streaming.json gained `fully_static` and `checkpoints` (7b48fc7).
   - Matinee export for all 10 chapters + CAMPAIGN_MATINEE_SCHEMA.md; MP no-change proof (b86d0f0).
+  - Dialog manifest for all 10 chapters + CAMPAIGN_DIALOG_SCHEMA.md (be27815):
+    - per-language subtitles from the cooked packages (`dialog_subtitles.py` -> work/dialog/subtitles.json);
+    - pawn factories gained spawn_delay;
+    - matinee and Kismet docs corrected per RE.
+  - Frontend CDO table: work/frontend_online_cdo_values.md (e2a345e).
+  - FaceFX: Trypticon paragraph (79ef99a); proof prefers the _LOC/int wave (7f17f67).
 - **Done 2026-10-17:** all committed and pushed on assettools/checkpoint.
   - Backlog 5 starts / walk graph: d84baf2, c9d7bce. The 6 no_floor_below starts are airborne by design (verdicts in
     chapter_notes A4_ORB / D2_COR). on_mover narrowed to 3 m (b43afb3).
@@ -25,6 +31,8 @@
   map_complete rc 0  4:16:08.71
   ```
 - **Open:**
+  - Proposed to Integration, waiting for a go: a per-chapter objectives export (TnWorldInfo._ObjectiveBank + SetCurrentObjective + INT / FRA
+    text).
   - The airborne exemption rests on reachFlags 2 = R_FLY: PROVISIONAL until RE confirms the enum.
   - Matinee: 165 groups are unresolved (empty variables in the cook), listed in CAMPAIGN_MATINEE_SCHEMA.md §3b.
   - Trypticon's low jaw-voice correlation is not explained by the blend rule (product and nlerp differ <= 0.47 deg).
