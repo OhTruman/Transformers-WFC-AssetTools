@@ -70,7 +70,7 @@ Total wall 28.5 min; peak 5.29 GB. Stage failures: none.
 4. **Materials for Rendering** (`work/campaign_pilot/D2_COR_materials_for_rendering.json`): 280 materials, 174 with `.mat`, 174 compiled somewhere -> **106 need a matc pass**.
 5. **Pending diagnostics**: none: m05 and the structure audit both ran.
 6. **Starts and walk graph** (`manifests/next_map/campaign_starts_report.json`, backlog 5): 52 starts (30 campaign starts + 22 checkpoints), 31 / 52 on reachable floor; walk graph 3,395,048 m2 (audit ATTENTION); pickups on reachable floor 32 / 45; vs_validate ground check (reported only) 15 grounded / 15 airborne of the 30 it checks.
-   - Triage of what is off the walk graph (categories in `campaign_starts_report.py`): starts: 18 airborne_by_design, 3 unclassified; pickups: 5 on_mover, 8 unclassified. airborne_by_design = real level data (fly-only reach specs, PROVISIONAL flag meaning); on_mover = audit limit (no mover collision in the walk graph); no_floor_below = UNKNOWN; unclassified = walk-rule limit (no jump / transform) or an unconnected floor, per-actor look needed.
+   - Triage of what is off the walk graph (categories in `campaign_starts_report.py`): starts: 18 airborne_by_design, 3 unclassified; pickups: 13 unclassified. airborne_by_design = real level data (fly-only reach specs, PROVISIONAL flag meaning); on_mover = audit limit (no mover collision in the walk graph); no_floor_below = UNKNOWN; unclassified = walk-rule limit (no jump / transform) or an unconnected floor, per-actor look needed.
 
 ## 4. Notes
 

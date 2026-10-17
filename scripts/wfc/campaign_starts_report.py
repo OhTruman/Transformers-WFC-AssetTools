@@ -7,7 +7,7 @@ Triage of every start / pickup off the walk graph (Integration: real level data 
   airborne_by_design  the start's navigation says airborne (fly_only(): fly-only paths / an airborne cluster / no paths but only air
                       navigation within 30 m); reachFlags 2 = stock UE3 EReachSpecFlags R_FLY (PROVISIONAL: the enum is
                       engine-native, not in the RE script decomp) -> real level data
-  on_mover            a mover (InterpActor / StaticInterpActor / KActor ...) within 8 m horizontally and 0-30 m below -> audit limit:
+  on_mover            a mover (InterpActor / StaticInterpActor / KActor ...) within 8 m horizontally and 3 m vertically (pivot) -> audit limit:
                       the walk graph has no mover collision (lift / platform pose)
   no_floor_below      start with no collision layer within 30 m below its cell -> UNKNOWN (missing collision, streaming, or airborne)
   unclassified        none of the above -> the conservative walk rule (no jump / transform / vehicle) or a floor the flood
@@ -66,7 +66,7 @@ def triage(M, g, ps):
     for kind, x in items:
         L = x['location_gltf']
         mv = sorted((math.hypot(t[0] - L[0], t[2] - L[2]), c, a, round(t[1] - L[1], 1)) for c, a, t in movers
-                    if math.hypot(t[0] - L[0], t[2] - L[2]) < 8 and -30 < t[1] - L[1] < 3)
+                    if math.hypot(t[0] - L[0], t[2] - L[2]) < 8 and -3 < t[1] - L[1] < 3)
         below = [q - L[1] for q in (diag.get(x['actor']) or {}).get('collision_layers_here', [])]
         if kind == 'start' and fly.get(x['actor']): cat = 'airborne_by_design'
         
