@@ -27,15 +27,28 @@
   "rule": "for det<0 nodes the transformed winding opposes the transformed normals; a glTF renderer must flip the front face (glTF 2.0 spec 3.7.4). Exported data is consistent when det<0 tris mostly oppose and det>0 tris mostly agree."
  },
  "playable_space": {
-  "player_starts": 0,
-  "starts_on_reachable_floor": 0,
+  "player_starts": 96,
+  "starts_on_reachable_floor": 96,
   "starts_without_floor_below": [],
   "starts_off_walk_graph_diagnosis": [],
-  "walk_graph_cells": 0,
-  "walk_graph_layers": 0,
-  "walk_graph_area_m2": 0.0,
+  "walk_graph_cells": 111044,
+  "walk_graph_layers": 305692,
+  "walk_graph_area_m2": 1222768.0,
   "connected_from_any_start": true,
-  "bounds": null,
+  "bounds": {
+   "x_m": [
+    28.0,
+    2112.0
+   ],
+   "z_m": [
+    -860.0,
+    862.0
+   ],
+   "floor_height_m": [
+    -56.49,
+    553.9
+   ]
+  },
   "kill_z_ue": [
    -262143.0,
    -262143.0,
@@ -97,53 +110,12 @@
   "placement_checks": {
    "pickups": {
     "count": 45,
-    "on_walkable_reachable_floor": 0,
+    "on_walkable_reachable_floor": 41,
     "not_on_walk_graph": [
-     "TnAmmoCratePickupFactory_6358",
-     "TnAmmoCratePickupFactory_1858",
-     "TnAmmoCratePickupFactory_10485",
-     "TnAmmoCratePickupFactory_14239",
-     "TnAmmoCratePickupFactory_15323",
-     "TnAmmoCratePickupFactory_177",
-     "TnAmmoCratePickupFactory_3319",
-     "TnAmmoCratePickupFactory_9978",
-     "TnAmmoCratePickupFactory_13460",
-     "TnAmmoCratePickupFactory_2334",
-     "TnAmmoCratePickupFactory_5312",
-     "TnHealthPickupFactory_13857",
-     "TnHealthPickupFactory_3866",
-     "TnWeaponPickupFactory_5803",
-     "TnWeaponPickupFactory_15744",
-     "TnWeaponPickupFactory_4650",
-     "TnWeaponPickupFactory_6096",
-     "TnWeaponPickupFactory_14519",
-     "TnWeaponPickupFactory_14986",
-     "TnWeaponPickupFactory_14183",
-     "TnWeaponPickupFactory_15545",
-     "TnWeaponPickupFactory_16182",
      "TnWeaponPickupFactory_2760",
-     "TnWeaponPickupFactory_12714",
-     "TnWeaponPickupFactory_8816",
-     "TnWeaponPickupFactory_11999",
-     "TnWeaponPickupFactory_15922",
-     "TnWeaponPickupFactory_393",
-     "TnWeaponPickupFactory_9604",
      "TnWeaponPickupFactory_2062",
      "TnWeaponPickupFactory_265",
-     "TnWeaponPickupFactory_5697",
-     "TnWeaponPickupFactory_7654",
-     "TnWeaponPickupFactory_2450",
-     "TnPickupFactory_119",
-     "TnPickupFactory_138",
-     "TnPickupFactory_2347",
-     "TnPickupFactory_9714",
-     "TnPickupFactory_11915",
-     "TnPickupFactory_13416",
-     "TnPickupFactory_15018",
-     "TnPickupFactory_8991",
-     "TnPickupFactory_5879",
-     "TnPickupFactory_10349",
-     "TnPickupFactory_4385"
+     "TnWeaponPickupFactory_5697"
     ]
    },
    "objectives": {
@@ -154,12 +126,48 @@
   }
  },
  "collision_vs_visible": {
-  "reachable_floor_cells_with_visible_floor": 0,
-  "reachable_floor_cells_without_visible_floor (invisible floor) by collision source": {},
-  "agreement_pct": 0.0,
-  "agreement_pct_excluding_volume_tops": 0.0,
-  "visible_floor_cells_next_to_walk_graph_without_collision (fall-through candidates)": 0,
-  "fall_through_candidates_by_visible_source (top 25)": {},
+  "reachable_floor_cells_with_visible_floor": 272423,
+  "reachable_floor_cells_without_visible_floor (invisible floor) by collision source": {
+   "StaticMeshCollectionActor": 19133,
+   "BlockingVolume": 9787,
+   "StaticMeshActor": 2976,
+   "DynamicBlockingVolume": 612,
+   "TnTeamBlockingVolume": 321,
+   "TnTransformerBlockingVolume": 237,
+   "StaticInterpActor": 133,
+   "HmPlayerOnlyBlockingVolume": 69,
+   "InterpActor": 1
+  },
+  "agreement_pct": 89.12,
+  "agreement_pct_excluding_volume_tops": 92.45,
+  "visible_floor_cells_next_to_walk_graph_without_collision (fall-through candidates)": 112204,
+  "fall_through_candidates_by_visible_source (top 25)": {
+   "ENV_KON_Architecture_p.Meshes.BridgeArchBase_STAT": 12152,
+   "ENV_KON_Architecture_p.Meshes.DoorFrame_01_STAT": 9515,
+   "ENV_KON_Architecture_p.Meshes.FloorTrim_Straight_02_STAT": 7120,
+   "ENV_KON_Architecture_p.Meshes.CrownTrim_01_STAT": 5357,
+   "ENV_ORB_PowerCorridor_p.StaticMesh.Gantry_Straight_STAT": 3843,
+   "ENV_KON_Prison_p.Meshes.WallSupport_01_STAT": 3760,
+   "ENV_KON_Deco_p.Meshes.ColumnCap_01_STAT": 3465,
+   "ENV_KON_Architecture_p.Meshes.BridgeArchTop_STAT": 3320,
+   "ENV_KON_Architecture_p.Meshes.BuildingSupport_01_B_STAT": 3207,
+   "ENV_KON_Prison_p.Meshes.Pillar_02_STAT": 3069,
+   "ENV_KON_Architecture_p.Meshes.Building_01_STAT": 3017,
+   "ENV_KON_Deco_p.Meshes.Wing_01_STAT": 3016,
+   "ENV_KON_Architecture_p.Meshes.BuildingSupport_01_A_STAT": 2935,
+   "ENV_KON_Architecture_p.Meshes.FloorTrim_01_STAT": 2891,
+   "ENV_KON_Architecture_p.Meshes.Arch_01_STAT": 2867,
+   "ENV_CORE_Floors_p.StaticMesh.ENV_COR_CenterChamberFloorCenterdisc_STAT": 2612,
+   "ENV_CORE_Wall_p.Inside_Walls.ENV_CORE_InroomRndTunnel_A_STAT": 2331,
+   "ENV_KON_Prison_p.Meshes.WallLight_02_B_STAT": 2300,
+   "ENV_KON_Prison_p.Meshes.TransfromBridge_Base_STAT": 2123,
+   "ENV_KON_PrisonRoads_p.Meshes.PrisonRoad_Straight_STAT": 1602,
+   "ENV_GLB_EnvEffects_p.StaticMesh.GlowSphere_STAT": 1599,
+   "ENV_KON_Architecture_p.Meshes.TrackConveyor_Straight_STAT": 1559,
+   "ENV_KON_Deco_p.Meshes.WallDeco_01_STAT": 1292,
+   "ENV_KON_Prison_p.Meshes.ParasitePiece_02_STAT": 1279,
+   "ENV_ORB_PowerCorridor_p.StaticMesh.Mini_Cable_Hang02_STAT": 1219
+  },
   "non_blocking_props_by_mesh (authored bCollideActors/bBlockActors false)": {
    "ENV_KON_Architecture_p.Meshes.DoorFrame_01_STAT": 541,
    "ENV_KON_Deco_p.Meshes.Wing_01_STAT": 378,
@@ -336,7 +344,108 @@
    "ENV_KON_Architecture_p.Meshes.BasePlatform_04_A_STAT": 1,
    "TR_Handcuffs_p.broken.CPRO_handcuffs_Broken1_STAT": 1
   },
-  "fall_through_examples_gltf": [],
+  "fall_through_examples_gltf": [
+   [
+    29.0,
+    -2.56,
+    39.0
+   ],
+   [
+    29.0,
+    -2.56,
+    63.0
+   ],
+   [
+    31.0,
+    -4.06,
+    71.0
+   ],
+   [
+    31.0,
+    -3.73,
+    71.0
+   ],
+   [
+    33.0,
+    -1.49,
+    67.0
+   ],
+   [
+    33.0,
+    -4.11,
+    73.0
+   ],
+   [
+    33.0,
+    -3.77,
+    73.0
+   ],
+   [
+    35.0,
+    -1.47,
+    69.0
+   ],
+   [
+    35.0,
+    -4.16,
+    73.0
+   ],
+   [
+    35.0,
+    -2.58,
+    137.0
+   ],
+   [
+    37.0,
+    -1.62,
+    71.0
+   ],
+   [
+    37.0,
+    -2.58,
+    137.0
+   ],
+   [
+    39.0,
+    -2.07,
+    139.0
+   ],
+   [
+    39.0,
+    -1.74,
+    139.0
+   ],
+   [
+    39.0,
+    -2.01,
+    143.0
+   ],
+   [
+    39.0,
+    -2.07,
+    149.0
+   ],
+   [
+    39.0,
+    -1.74,
+    149.0
+   ],
+   [
+    39.0,
+    -2.01,
+    153.0
+   ],
+   [
+    39.0,
+    -2.01,
+    159.0
+   ],
+   [
+    39.0,
+    -1.65,
+    159.0
+   ]
+  ],
   "blocking_props_without_collision_node": {
    "StaticMeshCollectionActor_10261": 5,
    "StaticMeshCollectionActor_1063": 4,
