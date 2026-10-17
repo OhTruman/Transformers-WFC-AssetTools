@@ -34,6 +34,42 @@ and **value = i8 / 127 × b**; the header float `b` (never below 1.0, median 1.1
 - `start` is a lead-in (median −0.27 s; 0 at most).
 - Key times are t = i16 × end / 32767 (Systems), so the animation spans [start, end] on the voice's clock, starting with the line.
 
+**Cinematic slopes (strong):** in all 21 measurable slope animations the largest |slope i8| is exactly 127, and the slopes correlate
+with finite-difference tangents of the decoded keys (median r 0.83). So **slope = i8 / 127 × the header's extra f32** (the
+animation's peak slope; fitted scale / extra f32 median 0.95). slopeIn and slopeOut are stored separately (they differ only at
+corners).
+
+**phonemeId table (strong):** the 42 map entries line up with FaceFX's ARPAbet phoneme order. Every vowel and consonant lands on the
+matching mouth target, and id 40 (SIL) is the only id without an entry:
+
+| id | phoneme | target | | id | phoneme | target |
+|---|---|---|---|---|---|---|
+| 0 | IY | Eat | | 21 | TH | Though |
+| 1 | IH | If | | 22 | V | Fave |
+| 2 | EH | If | | 23 | DH | Though |
+| 3 | EY | If | | 24 | M | Bump |
+| 4 | AE | If | | 25 | N | New |
+| 5 | AA | Ox | | 26 | NG | New |
+| 6 | AW | If | | 27 | L | Told |
+| 7 | AY | If | | 28 | R | Roar |
+| 8 | AH | If | | 29 | W | Wet |
+| 9 | AO | Ox | | 30 | Y | Wet |
+| 10 | OY | Oat | | 31 | HH | If |
+| 11 | OW | Oat | | 32 | B | Bump |
+| 12 | UH | Oat | | 33 | D | Told |
+| 13 | UW | Oat | | 34 | JH | Church |
+| 14 | ER | Earth | | 35 | G | Cage |
+| 15 | AX | If | | 36 | P | Bump |
+| 16 | S | Size | | 37 | T | Told |
+| 17 | SH | Church | | 38 | K | Cage |
+| 18 | Z | Size | | 39 | CH | Church |
+| 19 | ZH | Church | | 40 | SIL | (none) |
+| 20 | F | Fave | | 41 / 42 | SHORTSIL / FLAP | If 0.2 / Told 1.25 |
+
+The phoneme names are not in the executable as strings (the XEX is compressed; the RE image sections hold only the FaceFX class names),
+so the names stay a strong hypothesis. The runtime does not need them: animations drive the target nodes directly; the map is only
+for generating new lip-sync from audio.
+
 **Interpolation (open):**
 - The 3,557 dialog animations store no slopes. FaceFX 1.7 curves are Hermite, so for them the slopes are derived at load / run
   time; linear vs derived Hermite can't be proven from the data alone.
@@ -80,6 +116,35 @@ None left: every byte of all 22 files is accounted for by the layout above. Stil
    (lead-in) and end; total duration within 0.3 s of the wave.
 7. **Then:** Gameplay applies the same evaluation in the skinned pose (after the body anim, override the 14 face bones), and Systems
    syncs the curve clock to the voice playback position.
+
+## Pose hook Gameplay needs (exact spec, so it can be built without a round trip)
+
+**Input:**
+- **Skeletal pose** after the body animation: local (parent-space) transforms of all bones of the robot mesh.
+- **The actor's FaceFX data:** `fxa_parse.parse_all(<RB_*_FaceFX.fxa>)`. Master bone list: rest pos / rot / scale, skeletonBoneIndex,
+  links {node, dPos, rot, dScale}. Face-graph nodes {min, max, links, props}. Animations.
+- **Playing animation and time:** name (from InterpTrackFaceFX `FaceFXSeqName` or the dialog line) and t = the voice's playback
+  position in seconds, starting at the animation's `start` (negative lead-in).
+
+**Per frame:**
+1. **Curves:** each curve's value at t. Keys are t = i16 × end / 32767 and v = i8 / 127 × b. Interpolation is linear (or derived
+   Hermite; to choose by eye). Cinematic curves use the stored slopes, i8 / 127 × extra f32.
+2. **Node values:** curve value, plus Σ linkFn(input) for nodes with input links (fn 1: m·x + b), clamped to [min, max]. Nodes
+   without a curve are 0.
+3. **Bones:** for each master-bone-list bone with a skeletonBoneIndex (0x7FFFFFFF = match by name):
+   - local transform = rest ⊕ Σ over links of node value × delta;
+   - translation += v · dPos and scale += v · dScale;
+   - rotation = normalize(1 + Σ v · (conj(rest) · rot − 1)), i.e. nlerp of the deltas, then applied on top of the rest rotation.
+   - **These replace the face bones' local transforms** from the body animation (FaceFX overrides the face, it doesn't add to it).
+
+**Expected output, one test frame:**
+- Optimus `DX_OPRIME_LK009275` (the first Optimus Dialogue animation in `RB_Optimus_FaceFX.fxa`; start −0.272 s, end 1.945 s) at t = 1.0 s.
+- `work/fxa/fxa_proof.py Optimus DX_OPRIME_LK009275` writes (reference files: `work/fxa/proof_DX_OPRIME_LK009275_linear.csv` / `_hermite.csv`) the 30 Hz CSV of all 14 bones (pos + quat), linear and Hermite. Gameplay's hook must
+  reproduce the CSV row at t = 1.0 within 1e-4 (positions) / 1e-3 (quaternion components) for the linear mode.
+- Pass also by eye: the jaw opens on loud syllables (the timing proof above), and the face is neutral during the lead-in and after
+  `end`.
+
+**Not needed for the hook:** the phoneme map (generation only), the class / name hash tables (parser internals).
 
 ## Next
 
