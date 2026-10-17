@@ -5,7 +5,12 @@ Order set by Integration (2026-10-16). Each fix is generic: MP / Streets outputs
 1. **Pickup-factory discovery for campaign chapters: DONE 2026-10-17.** 377 / 377 placed factories exported (`gameplay.json` pickups and
    `<chapter>_pickup_factories.json`), with weapon class, pickup mesh and sublevel; MP output identical (gate `work/pickupfix/proof.json`).
    Finding: the MP Escalation maps (BrokenHope 17, Remnant 16) also have TnWeaponPickupFactory that `gameplay.json` omits
-   (MP left unchanged by rule; an MP fidelity item for Integration).
+   (MP left unchanged by rule). **Package 7 (Integration decision 2026-10-17):** in `scripts/wfc/vs_gameplay.py` and `vs_pickups.py`, let
+   the weapon-factory classes apply to MP too (replace `is_campaign(MAP)` in the class lists; the BASE-level search stays for MP), then run
+   `python scripts/wfc/run_bounded.py --cap-gb 10 -- scripts/wfc/vs_gameplay.py MP_ESC_BrokenHope` (then `vs_pickups.py`, `map_complete.py`,
+   `map_render_index.py`; the same for MP_ESC_Remnant). Files that change: `ExtractedAssets/VerticalSlice/Maps/MP_ESC_{BrokenHope,Remnant}/
+   gameplay.json` and `render_index.json`, `AssetTools/manifests/next_map/MP_ESC_{BrokenHope,Remnant}_pickup_factories.json` / `_pickup_fx.json`,
+   `manifests/maps/MP_ESC_{BrokenHope,Remnant}/map_complete.json` / `completeness.json`. The other 8 MP maps have no weapon factories, so they are unchanged.
    - A1_IAC: `vs_pickups` finds 0 of the 47 factories that `spawnpoints.json` lists (21 weapon, 20 ammo, 5 health, 1 overshield).
      Campaign factories sit in the design sublevels; the stage needs to look through every exported sublevel.
 2. **Tag parser fix** - DONE 2026-10-16 (f384c7b): authored.db rows re-parsed, MP runtime unchanged, campaign meshes / lights recovered. (authored.db mis-parses some components' tags).
