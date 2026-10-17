@@ -75,7 +75,7 @@ def main():
                                      ('rotation_ue', [int(p), int(yw), int(r)]), ('scale', float(sc))]))
     for anim_set, seq, t, what, sock, fl in notifies: uses[what].add('anim_notify')
 
-    out_t = []
+    out_t = []; used_sockets = set()
     for ps in templates:
         u = sorted(uses.get(ps, ()))
         s = pstream.system(ps)
@@ -106,10 +106,9 @@ def main():
                                 ('status', 'PARTIAL' if partial else 'COMPLETE'), ('partial_reasons', partial)]))
             if lods:
                 ems.append(OD([('emitter', e['emitter']), ('name', e.get('name')), ('emitter_props', e.get('props')), ('lods', lods)]))
-        att = [OD([('anim_set', a), ('sequence', q), ('time_s', float(t)), ('socket', so), ('attach', fl == '1'),
-                   ('socket_on_meshes', [OD([('mesh', x['mesh']), ('bone', x['bone']), ('offset_uu', x['offset_uu']),
-                                             ('rotation_ue', x['rotation_ue'])]) for x in sock_by_name.get(so, [])])])
+        att = [OD([('anim_set', a), ('sequence', q), ('time_s', float(t)), ('socket', so), ('attach', fl == '1')])
                for a, q, t, w, so, fl in notifies if w == ps]
+        used_sockets.update(x['socket'] for x in att)
         out_t.append(OD([('template', ps), ('package_decoded', s.get('package')), ('mp_referenced', bool(u)), ('referenced_by', u),
                          ('materials', s.get('materials')), ('system_props', s.get('props')),
                          ('trail2_emitters', ems), ('body_notify_attachments', att)]))
@@ -131,7 +130,9 @@ def main():
                            ('trail_lods_mp', sum(len(e['lods']) for t in mp for e in t.get('trail2_emitters') or [])),
                            ('partial_lods_mp', sum(1 for t in mp for e in t.get('trail2_emitters') or [] for L in e['lods'] if L['status'] == 'PARTIAL')),
                            ('partial_lods_all', sum(1 for t in out_t for e in t.get('trail2_emitters') or [] for L in e['lods'] if L['status'] == 'PARTIAL'))])),
-            ('templates', out_t)])
+            ('templates', out_t),
+            ('sockets (every TR_ / WEP_ mesh defining each socket a trail notify uses; MeshSockets.inc)',
+             OD((k, sock_by_name.get(k, [])) for k in sorted(used_sockets)))])
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     json.dump(m, open(OUT, 'w', encoding='utf-8'), indent=1)
     print(json.dumps(m['counts']))

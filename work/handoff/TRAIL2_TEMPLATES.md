@@ -109,22 +109,23 @@ Material = `RequiredModule.Material`. Tess = TessellationFactor. Notify sockets:
 | `Tracer_SniperRifle_FX` (FX_Sniper_p) | 1 x 2 | Tracer_Smoke_MAT | 10 | True | False | [20.0] |  |
 | `SwordTrail_Red_FX` (FX_Sword_p) | 1 x 2 | Trail_Blur_MAT | 5 | True | True | [50.0] | WeaponTrailSocket (24) |
 | `Trail_TankCannon_FX` (FX_TankCannon_p) | 1 x 3 | Tracer_MOD_MAT | 1 | False | True | [10.0] |  |
-| `Trails_Bumblebee_FX` (FX_Transformers_p) | 1 x 2 | Trail_Blur_MAT | 10 | True | True | [5.0] | ElbowSocket_L (58), ElbowSocket_R (58), KneeSideSocket_L (58), KneeSideSocket_R (58), WingLrgSocket_L (58), WingSmSocket_L (58) … |
+| `Trails_Bumblebee_FX` (FX_Transformers_p) | 1 x 2 | Trail_Blur_MAT | 10 | True | True | [5.0] | ElbowSocket_L (58), ElbowSocket_R (58), KneeSideSocket_L (58), KneeSideSocket_R (58), WingLrgSocket_L (58), WingSmSocket_L (58) ... |
 | `Trail_Missiles_FX` (FX_Trypticon_p) | 2 x 2/2 | Tracer_ADD_MAT, Tracer_MOD_MAT | 2/3 | False | True | [10.0] |  |
 | `Tracer_TurretIon_FX` (FX_TurretIonBlaster_p) | 1 x 2 | Trail_Smoke_01_MAT_INST | 5 | False | False | [20.0] |  |
 | `Rocket_Trail_FX` (FX_Weapons_p) | 1 x 2 | Spark_01_MAT_INST | 5 | False | True | [10.0] |  |
 
 ## Sockets and bones
 
-`body_notify_attachments` holds each notify row: anim set, sequence, time, socket, attach flag. For each socket name it also gives every
-TR_ / WEP_ skeletal mesh that defines it, with its bone, offset (UU) and rotation (from MeshSockets.inc).
+`body_notify_attachments` holds each notify row: anim set, sequence, time, socket, attach flag. The top-level `sockets` table gives, for
+each socket name used, every TR_ / WEP_ skeletal mesh that defines it, with its bone, offset (UU) and rotation (from MeshSockets.inc).
 
 - The listing isn't narrowed to the meshes that play that AnimSet. Pick the row whose mesh is the pawn or weapon in use.
 - Main users:
-  - **Trails_Bumblebee_FX:** 483 notify rows on the transform and melee clips. Sockets: Elbow / Knee / Wing / Booster sockets.
+  - **Trails_Bumblebee_FX:** 483 notify rows on the transform, Nav_Boost and melee clips, across 11 sockets (Elbow / KneeSide / Wing
+    sockets and others; full list in the json).
   - **SwordTrail_Red_FX:** 24 rows on `WeaponTrailSocket`, the energon-hammer and shield melee combos.
   - **Trails_Jet_D_FX:** 32 rows.
-  - **Shell_*** / **Magazine_*:** reload clips.
+  - **Shell_*:** fire clips (ShellEject / ShellSocket). **Magazine_*:** reload clips (MagazineSocket).
 - Templates with no notify row are spawned by code (projectile / weapon / CDO) or by the map.
 - The `referenced_by` field says which: map_fx_runtime:<map>, weapon:<W>, character:<chassis>, TransGame CDO:<class>, anim_notify.
 - Every MP template has at least one non-notify reference. The notify rows also include campaign-only TR_ sets.
