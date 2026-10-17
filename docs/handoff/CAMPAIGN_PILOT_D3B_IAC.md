@@ -33,12 +33,12 @@ Run: `start Fri 10/16/2026  9:36:53.63 cap 10 pkgcache 10`; package cache WFC_PK
 | vs_pickups | OK | 1.4 s | 0.91 |
 | vs_destructibles | OK | 69.0 s | 1.77 |
 | vs_surface_audio | OK | 2.2 s | 1.09 |
-| map_structure_audit | OK | 116.7 s | 4.48 |
-| map_complete | OK | 9.5 s | 1.65 |
+| map_structure_audit | OK | 124.7 s | 4.49 |
+| map_complete | OK | 10.2 s | 1.65 |
 | map_render_index | OK | 3.2 s | 1.52 |
 | vs_streaming | OK | 1.2 s | 0.99 |
 
-Total wall 16.3 min; peak 4.48 GB. Stage failures: none.
+Total wall 16.5 min; peak 4.49 GB. Stage failures: none.
 
 ## 2. Export and completeness
 
@@ -66,5 +66,5 @@ Total wall 16.3 min; peak 4.48 GB. Stage failures: none.
 3. **FaceFX / dialog**: 12 FaceFXAsset, 19 InterpTrackFaceFX, 511 HmAnimNotify_Dialog, 80 HmSoundEventDialogGroup, 2989 SoundCue.
 4. **Materials for Rendering** (`work/campaign_pilot/D3B_IAC_materials_for_rendering.json`): 359 materials, 227 with `.mat`, 214 compiled somewhere -> **145 need a matc pass**.
 5. **Pending diagnostics**: none: m05 and the structure audit both ran.
-6. **Starts and walk graph** (`manifests/next_map/campaign_starts_report.json`, backlog 5): 29 starts (3 campaign starts + 26 checkpoints), 29 / 29 on reachable floor; walk graph 1,772,780 m2 (audit PASS); pickups on reachable floor 31 / 31; vs_validate ground check (reported only) 3 grounded / 0 airborne of the 3 it checks.
+6. **Starts and walk graph** (`manifests/next_map/campaign_starts_report.json`, backlog 5): 29 starts (3 campaign starts + 26 checkpoints), 29 / 29 on reachable floor; walk graph 1,774,040 m2 (audit PASS); pickups on reachable floor 31 / 31; vs_validate ground check (reported only) 3 grounded / 0 airborne of the 3 it checks.
    - Triage of what is off the walk graph (categories in `campaign_starts_report.py`): starts: none; pickups: none. airborne_by_design = real level data (fly-only reach specs, PROVISIONAL flag meaning); on_mover = audit limit (no mover collision in the walk graph); no_floor_below = UNKNOWN; unclassified = walk-rule limit (no jump / transform) or an unconnected floor, per-actor look needed.

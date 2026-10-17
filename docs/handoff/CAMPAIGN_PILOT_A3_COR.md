@@ -33,12 +33,12 @@ Run: `start Fri 10/16/2026 10:32:36.50 cap 10 pkgcache 10`; package cache WFC_PK
 | vs_pickups | OK | 1.4 s | 0.90 |
 | vs_destructibles | OK | 142.7 s | 2.16 |
 | vs_surface_audio | OK | 2.1 s | 1.01 |
-| map_structure_audit | OK | 313.9 s | 3.73 |
-| map_complete | OK | 13.3 s | 2.96 |
+| map_structure_audit | OK | 306.8 s | 3.74 |
+| map_complete | OK | 14.8 s | 2.96 |
 | map_render_index | OK | 8.3 s | 2.70 |
 | vs_streaming | OK | 1.5 s | 1.06 |
 
-Total wall 36.0 min; peak 6.54 GB. Stage failures: none.
+Total wall 35.9 min; peak 6.54 GB. Stage failures: none.
 
 ## 2. Export and completeness
 
@@ -66,5 +66,5 @@ Total wall 36.0 min; peak 6.54 GB. Stage failures: none.
 3. **FaceFX / dialog**: 6 FaceFXAsset, 9 InterpTrackFaceFX, 498 HmAnimNotify_Dialog, 75 HmSoundEventDialogGroup, 2648 SoundCue.
 4. **Materials for Rendering** (`work/campaign_pilot/A3_COR_materials_for_rendering.json`): 254 materials, 142 with `.mat`, 175 compiled somewhere -> **79 need a matc pass**.
 5. **Pending diagnostics**: none: m05 and the structure audit both ran.
-6. **Starts and walk graph** (`manifests/next_map/campaign_starts_report.json`, backlog 5): 63 starts (38 campaign starts + 25 checkpoints), 63 / 63 on reachable floor; walk graph 1,992,608 m2 (audit PASS); pickups on reachable floor 64 / 70; vs_validate ground check (reported only) 38 grounded / 0 airborne of the 38 it checks.
+6. **Starts and walk graph** (`manifests/next_map/campaign_starts_report.json`, backlog 5): 63 starts (38 campaign starts + 25 checkpoints), 63 / 63 on reachable floor; walk graph 1,993,004 m2 (audit PASS); pickups on reachable floor 64 / 70; vs_validate ground check (reported only) 38 grounded / 0 airborne of the 38 it checks.
    - Triage of what is off the walk graph (categories in `campaign_starts_report.py`): starts: none; pickups: 2 on_mover, 4 unclassified. airborne_by_design = real level data (fly-only reach specs, PROVISIONAL flag meaning); on_mover = audit limit (no mover collision in the walk graph); no_floor_below = UNKNOWN; unclassified = walk-rule limit (no jump / transform) or an unconnected floor, per-actor look needed.

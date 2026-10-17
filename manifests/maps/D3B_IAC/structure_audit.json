@@ -26,16 +26,76 @@
   "verdict": "CONSISTENT",
   "rule": "for det<0 nodes the transformed winding opposes the transformed normals; a glTF renderer must flip the front face (glTF 2.0 spec 3.7.4). Exported data is consistent when det<0 tris mostly oppose and det>0 tris mostly agree."
  },
+ "skeletal_world_actor_collision": {
+  "actors": 55,
+  "with_collision": 53,
+  "boxes": 135,
+  "skipped": {
+   "no PhysicsAsset": 2
+  },
+  "undecoded": {},
+  "bones_missing": [
+   {
+    "actor": "TnTransformingWorldActor_12565",
+    "bones": [
+     "C_Robo09_XT"
+    ]
+   },
+   {
+    "actor": "TnTransformingWorldActor_1949",
+    "bones": [
+     "C_Robo09_XT"
+    ]
+   },
+   {
+    "actor": "TnTransformingWorldActor_2302",
+    "bones": [
+     "C_Robo09_XT"
+    ]
+   },
+   {
+    "actor": "TnTransformingWorldActor_2850",
+    "bones": [
+     "C_Robo09_XT"
+    ]
+   },
+   {
+    "actor": "TnTransformingWorldActor_5388",
+    "bones": [
+     "C_Robo09_XT"
+    ]
+   },
+   {
+    "actor": "TnTransformingWorldActor_12565",
+    "bones": [
+     "C_Robo09_XT"
+    ]
+   }
+  ]
+ },
  "playable_space": {
-  "player_starts": 0,
-  "starts_on_reachable_floor": 0,
+  "player_starts": 29,
+  "starts_on_reachable_floor": 29,
   "starts_without_floor_below": [],
   "starts_off_walk_graph_diagnosis": [],
-  "walk_graph_cells": 0,
-  "walk_graph_layers": 0,
-  "walk_graph_area_m2": 0.0,
+  "walk_graph_cells": 129937,
+  "walk_graph_layers": 443510,
+  "walk_graph_area_m2": 1774040.0,
   "connected_from_any_start": true,
-  "bounds": null,
+  "bounds": {
+   "x_m": [
+    -774.0,
+    1472.0
+   ],
+   "z_m": [
+    -692.0,
+    610.0
+   ],
+   "floor_height_m": [
+    -963.04,
+    367.32
+   ]
+  },
   "kill_z_ue": [
    -262143.0,
    -262143.0,
@@ -96,40 +156,8 @@
   "placement_checks": {
    "pickups": {
     "count": 31,
-    "on_walkable_reachable_floor": 0,
-    "not_on_walk_graph": [
-     "TnAmmoCratePickupFactory_9932",
-     "TnAmmoCratePickupFactory_9961",
-     "TnAmmoCratePickupFactory_8324",
-     "TnAmmoCratePickupFactory_6808",
-     "TnAmmoCratePickupFactory_14102",
-     "TnAmmoCratePickupFactory_15621",
-     "TnHealthPickupFactory_9968",
-     "TnWeaponPickupFactory_10670",
-     "TnWeaponPickupFactory_4030",
-     "TnWeaponPickupFactory_7098",
-     "TnWeaponPickupFactory_7529",
-     "TnWeaponPickupFactory_11908",
-     "TnWeaponPickupFactory_6059",
-     "TnWeaponPickupFactory_1227",
-     "TnWeaponPickupFactory_14456",
-     "TnWeaponPickupFactory_601",
-     "TnWeaponPickupFactory_7698",
-     "TnWeaponPickupFactory_11188",
-     "TnWeaponPickupFactory_13389",
-     "TnWeaponPickupFactory_5995",
-     "TnWeaponPickupFactory_11027",
-     "TnWeaponPickupFactory_11504",
-     "TnWeaponPickupFactory_15597",
-     "TnWeaponPickupFactory_15642",
-     "TnWeaponPickupFactory_2339",
-     "TnWeaponPickupFactory_2718",
-     "TnWeaponPickupFactory_1502",
-     "TnWeaponPickupFactory_15639",
-     "TnWeaponPickupFactory_7077",
-     "TnPickupFactory_12654",
-     "TnPickupFactory_14023"
-    ]
+    "on_walkable_reachable_floor": 31,
+    "not_on_walk_graph": []
    },
    "objectives": {
     "count": 0,
@@ -139,12 +167,47 @@
   }
  },
  "collision_vs_visible": {
-  "reachable_floor_cells_with_visible_floor": 0,
-  "reachable_floor_cells_without_visible_floor (invisible floor) by collision source": {},
-  "agreement_pct": 0.0,
-  "agreement_pct_excluding_volume_tops": 0.0,
-  "visible_floor_cells_next_to_walk_graph_without_collision (fall-through candidates)": 0,
-  "fall_through_candidates_by_visible_source (top 25)": {},
+  "reachable_floor_cells_with_visible_floor": 344123,
+  "reachable_floor_cells_without_visible_floor (invisible floor) by collision source": {
+   "StaticMeshCollectionActor": 73095,
+   "HmPlayerOnlyBlockingVolume": 11969,
+   "StaticInterpActor": 5541,
+   "BlockingVolume": 5189,
+   "StaticMeshActor": 1389,
+   "DynamicBlockingVolume": 1262,
+   "TnForcedDirVolume": 662,
+   "TnTransformingWorldActor": 280
+  },
+  "agreement_pct": 77.59,
+  "agreement_pct_excluding_volume_tops": 80.95,
+  "visible_floor_cells_next_to_walk_graph_without_collision (fall-through candidates)": 112216,
+  "fall_through_candidates_by_visible_source (top 25)": {
+   "ENV_IAC_BLDS_2_p.Buildings_Pieces.ArchTopRamp_STAT": 8282,
+   "ENV_IAC_Deco_1_p.StaticMesh.DecoDonut01_STAT": 5808,
+   "ENV_IAC_BLDS_3_p.HalfArch_STAT": 4681,
+   "ENV_IAC_BLDS_2_p.Buildings_Pieces.ArchTop01_STAT": 3518,
+   "ENV_IAC_Deco_1_p.StaticMesh.DecoBalcony1_STAT": 2920,
+   "ENV_CORE_SupportColumns_p.StaticMesh.TunnelPipeA_Straight_STAT": 2902,
+   "ENV_IAC_Interior_1_p.Walls_Round.Floor_8192_STAT": 2822,
+   "ENV_IAC_Ground_p.Platform.modPlatform_Straight_NoLip_2048_STAT": 2768,
+   "ENV_NEU_Structures_p.Mid1.Mid1_Base1_768x2048x2048_STAT": 2731,
+   "ENV_IAC_Ground_p.Beam.BeamCylinderTubes_STAT": 2693,
+   "ENV_IAC_BLDS_2_p.Buildings_Pieces.HalfArchMidA_STAT": 2301,
+   "ENV_IAC_Ground_p.Platform.modPlatform_T_NoLip_2048_STAT": 2161,
+   "ENV_IAC_TubeRoads_p.RegularTubes.TubeJoint_Straight_REG_STAT": 1899,
+   "ENV_NEU_Structures_p.Small1.Small1_Box2_384x768x768_STAT": 1851,
+   "ENV_IAC_Interior_1_p.Walls_Rooms.Corner2_WedgeSpacer_STAT": 1720,
+   "ENV_IAC_Deco_1_p.StaticMesh.Capacitor_01_Red_STAT": 1704,
+   "ENV_IAC_BLDS_2_p.Buildings_Square.PillarBuilding01_STAT": 1702,
+   "ENV_IAC_Interior_1_p.Dome_Corridor.Dome_Corridor_Ceil_STAT": 1700,
+   "ENV_IAC_BLDS_3_p.bld_2048x4096x4096_STAT": 1665,
+   "ENV_IAC_Ground_p.Platform.modPlatform_Straight_1536_STAT": 1664,
+   "ENV_IAC_BLDS_1_p.StaticMesh.FInCap_4096_STAT": 1482,
+   "ENV_IAC_TubeRoads_p.RegularTubes.TubeJoint_Road_REG_STAT": 1435,
+   "ENV_IAC_Ground_p.Platform.modPlatform_Straight_2048_STAT": 1430,
+   "ENV_IAC_Ground_p.Platform.modPlatform_T_2048_STAT": 1422,
+   "ENV_NEU_Structures_p.Small1.Small1_Silo_768x768x768_STAT": 1385
+  },
   "non_blocking_props_by_mesh (authored bCollideActors/bBlockActors false)": {
    "ENV_IAC_BLDS_1_p.StaticMesh.Arch_4096_STAT": 183,
    "ENV_NEU_Structures_p.Mid1.Mid1_Base1_768x2048x2048_STAT": 156,
@@ -326,7 +389,108 @@
    "PROP_IAC_HospitalProps_p.ChemicalTank.PROP_IAC_HospitalChemTank_STAT": 1,
    "ENV_IAC_Deco_1_p.Supports.LightFixture_A_STAT": 1
   },
-  "fall_through_examples_gltf": [],
+  "fall_through_examples_gltf": [
+   [
+    -751.0,
+    -224.05,
+    -363.0
+   ],
+   [
+    -751.0,
+    -225.1,
+    -359.0
+   ],
+   [
+    -751.0,
+    -225.26,
+    -357.0
+   ],
+   [
+    -751.0,
+    -225.23,
+    -353.0
+   ],
+   [
+    -749.0,
+    -224.03,
+    -497.0
+   ],
+   [
+    -749.0,
+    -224.03,
+    -495.0
+   ],
+   [
+    -749.0,
+    -224.2,
+    -487.0
+   ],
+   [
+    -749.0,
+    -224.2,
+    -409.0
+   ],
+   [
+    -749.0,
+    -224.03,
+    -399.0
+   ],
+   [
+    -749.0,
+    -224.06,
+    -361.0
+   ],
+   [
+    -747.0,
+    -224.2,
+    -495.0
+   ],
+   [
+    -747.0,
+    -224.03,
+    -489.0
+   ],
+   [
+    -747.0,
+    -224.2,
+    -409.0
+   ],
+   [
+    -747.0,
+    -224.03,
+    -401.0
+   ],
+   [
+    -745.0,
+    -224.64,
+    -515.0
+   ],
+   [
+    -745.0,
+    -224.66,
+    -509.0
+   ],
+   [
+    -745.0,
+    -225.68,
+    -467.0
+   ],
+   [
+    -745.0,
+    -225.81,
+    -465.0
+   ],
+   [
+    -745.0,
+    -225.68,
+    -435.0
+   ],
+   [
+    -745.0,
+    -224.03,
+    -407.0
+   ]
+  ],
   "blocking_props_without_collision_node": {
    "StaticMeshCollectionActor_3430": 1,
    "StaticMeshCollectionActor_4748": 3,

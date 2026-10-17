@@ -33,12 +33,12 @@ Run: `start Fri 10/16/2026 12:25:35.86 cap 10 pkgcache 10`; package cache WFC_PK
 | vs_pickups | OK | 1.4 s | 0.91 |
 | vs_destructibles | OK | 70.7 s | 1.75 |
 | vs_surface_audio | OK | 2.2 s | 1.04 |
-| map_structure_audit | OK | 261.0 s | 3.51 |
-| map_complete | OK | 10.0 s | 1.76 |
+| map_structure_audit | OK | 267.2 s | 3.53 |
+| map_complete | OK | 10.6 s | 1.76 |
 | map_render_index | OK | 2.2 s | 1.47 |
 | vs_streaming | OK | 1.7 s | 1.18 |
 
-Total wall 100.8 min; peak 4.95 GB. Stage failures: none.
+Total wall 100.9 min; peak 4.95 GB. Stage failures: none.
 
 ## 2. Export and completeness
 
@@ -66,5 +66,5 @@ Total wall 100.8 min; peak 4.95 GB. Stage failures: none.
 3. **FaceFX / dialog**: 12 FaceFXAsset, 20 InterpTrackFaceFX, 443 HmAnimNotify_Dialog, 83 HmSoundEventDialogGroup, 2461 SoundCue.
 4. **Materials for Rendering** (`work/campaign_pilot/D1_ORB_materials_for_rendering.json`): 533 materials, 230 with `.mat`, 266 compiled somewhere -> **267 need a matc pass**.
 5. **Pending diagnostics**: none: m05 and the structure audit both ran.
-6. **Starts and walk graph** (`manifests/next_map/campaign_starts_report.json`, backlog 5): 22 starts (1 campaign starts + 21 checkpoints), 22 / 22 on reachable floor; walk graph 2,528,516 m2 (audit PASS); pickups on reachable floor 22 / 25; vs_validate ground check (reported only) 1 grounded / 0 airborne of the 1 it checks.
+6. **Starts and walk graph** (`manifests/next_map/campaign_starts_report.json`, backlog 5): 22 starts (1 campaign starts + 21 checkpoints), 22 / 22 on reachable floor; walk graph 2,540,120 m2 (audit PASS); pickups on reachable floor 22 / 25; vs_validate ground check (reported only) 1 grounded / 0 airborne of the 1 it checks.
    - Triage of what is off the walk graph (categories in `campaign_starts_report.py`): starts: none; pickups: 3 unclassified. airborne_by_design = real level data (fly-only reach specs, PROVISIONAL flag meaning); on_mover = audit limit (no mover collision in the walk graph); no_floor_below = UNKNOWN; unclassified = walk-rule limit (no jump / transform) or an unconnected floor, per-actor look needed.

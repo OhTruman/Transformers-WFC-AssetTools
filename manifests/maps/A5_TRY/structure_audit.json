@@ -26,16 +26,37 @@
   "verdict": "CONSISTENT",
   "rule": "for det<0 nodes the transformed winding opposes the transformed normals; a glTF renderer must flip the front face (glTF 2.0 spec 3.7.4). Exported data is consistent when det<0 tris mostly oppose and det>0 tris mostly agree."
  },
+ "skeletal_world_actor_collision": {
+  "actors": 1,
+  "with_collision": 1,
+  "boxes": 3,
+  "skipped": {},
+  "undecoded": {},
+  "bones_missing": []
+ },
  "playable_space": {
-  "player_starts": 0,
-  "starts_on_reachable_floor": 0,
+  "player_starts": 7,
+  "starts_on_reachable_floor": 7,
   "starts_without_floor_below": [],
   "starts_off_walk_graph_diagnosis": [],
-  "walk_graph_cells": 0,
-  "walk_graph_layers": 0,
-  "walk_graph_area_m2": 0.0,
+  "walk_graph_cells": 72466,
+  "walk_graph_layers": 324387,
+  "walk_graph_area_m2": 1297548.0,
   "connected_from_any_start": true,
-  "bounds": null,
+  "bounds": {
+   "x_m": [
+    -496.0,
+    522.0
+   ],
+   "z_m": [
+    -472.0,
+    466.0
+   ],
+   "floor_height_m": [
+    -15.93,
+    569.31
+   ]
+  },
   "kill_z_ue": [
    -262143.0,
    -262143.0,
@@ -56,38 +77,11 @@
   "placement_checks": {
    "pickups": {
     "count": 30,
-    "on_walkable_reachable_floor": 0,
+    "on_walkable_reachable_floor": 27,
     "not_on_walk_graph": [
-     "TnAmmoCratePickupFactory_11927",
-     "TnAmmoCratePickupFactory_13947",
-     "TnAmmoCratePickupFactory_3249",
-     "TnAmmoCratePickupFactory_4839",
-     "TnHealthPickupFactory_15329",
-     "TnHealthPickupFactory_605",
-     "TnHealthPickupFactory_6521",
-     "TnHealthPickupFactory_767",
-     "TnOverShieldPickupFactory_15484",
-     "TnOverShieldPickupFactory_9968",
-     "TnWeaponPickupFactory_11106",
-     "TnWeaponPickupFactory_11629",
-     "TnWeaponPickupFactory_12082",
      "TnWeaponPickupFactory_15310",
-     "TnWeaponPickupFactory_1561",
      "TnWeaponPickupFactory_15796",
-     "TnWeaponPickupFactory_16086",
-     "TnWeaponPickupFactory_16198",
-     "TnWeaponPickupFactory_2059",
-     "TnWeaponPickupFactory_2675",
-     "TnWeaponPickupFactory_3626",
-     "TnWeaponPickupFactory_4642",
-     "TnWeaponPickupFactory_5903",
-     "TnWeaponPickupFactory_6673",
-     "TnWeaponPickupFactory_6986",
-     "TnWeaponPickupFactory_771",
-     "TnWeaponPickupFactory_7805",
-     "TnWeaponPickupFactory_8042",
-     "TnWeaponPickupFactory_8941",
-     "TnWeaponPickupFactory_9772"
+     "TnWeaponPickupFactory_16198"
     ]
    },
    "objectives": {
@@ -98,12 +92,47 @@
   }
  },
  "collision_vs_visible": {
-  "reachable_floor_cells_with_visible_floor": 0,
-  "reachable_floor_cells_without_visible_floor (invisible floor) by collision source": {},
-  "agreement_pct": 0.0,
-  "agreement_pct_excluding_volume_tops": 0.0,
-  "visible_floor_cells_next_to_walk_graph_without_collision (fall-through candidates)": 0,
-  "fall_through_candidates_by_visible_source (top 25)": {},
+  "reachable_floor_cells_with_visible_floor": 190420,
+  "reachable_floor_cells_without_visible_floor (invisible floor) by collision source": {
+   "StaticMeshCollectionActor": 70246,
+   "BlockingVolume": 52919,
+   "TnTeamBlockingVolume": 7497,
+   "DynamicBlockingVolume": 2772,
+   "HmPlayerOnlyBlockingVolume": 315,
+   "StaticInterpActor": 139,
+   "StaticMeshActor": 49,
+   "InterpActor": 30
+  },
+  "agreement_pct": 58.7,
+  "agreement_pct_excluding_volume_tops": 72.99,
+  "visible_floor_cells_next_to_walk_graph_without_collision (fall-through candidates)": 82601,
+  "fall_through_candidates_by_visible_source (top 25)": {
+   "ENV_ORB_D1_Debris_p.Meshes.FloatingDebri_Lcorner_B_STAT": 9459,
+   "DES_TrypticonDestructibles_p.PlayerPlatform_Base_STAT": 6703,
+   "ENV_ORB_D1_Debris_p.Meshes.FloatingDebri_Lcorner_STAT": 4506,
+   "ENV_IAC_Ground_p.Debris.Scrappage3_STAT": 4378,
+   "ENV_ORB_D1_Debris_p.Meshes.FloatingDebri_Lcorner_A_STAT": 3901,
+   "ENV_IAC_Ground_p.Debris.GroundChunk_Sink_STAT": 3711,
+   "ENV_IAC_Ground_p.Debris.Scrappage2_STAT": 3654,
+   "ENV_IAC_Ground_p.Debris.Scrappage1_STAT": 3579,
+   "ENV_IAC_Ground_p.Debris.ENV_CraterUpNoRing_STAT": 2288,
+   "ENV_IAC_Ground_p.Debris.craterDebris_STAT": 2268,
+   "ENV_ORB_D1_Debris_p.Meshes.Tunnel_StraightTrack_Debri_01_STAT": 1821,
+   "ENV_IAC_Omega_p.Mesh.BrokenLipUp_STAT": 1631,
+   "ENV_NEU_Structures_p.Big3.Big3_Building3Trim_1792x1024x768_STAT": 1439,
+   "ENV_IAC_Omega_p.Mesh.BrokenLipDown_STAT": 1429,
+   "ENV_NEU_Structures_p.Mid1.Mid1_Base2_640x3072x1536_STAT": 1308,
+   "ENV_IAC_Deco_1_p.Supports.ArchSupportBroken_STAT": 1199,
+   "ENV_IAC_Deco_1_p.Supports.SideSuppPillar_STAT": 1190,
+   "ENV_ORB_DebrisBase_p.DebrisFloor_02_STAT": 1164,
+   "ENV_IAC_Deco_1_p.Supports.ArchSupportTipBroken_STAT": 1150,
+   "ENV_ORB_D1_Debris_p.Meshes.TubeDebris_04_STAT": 1127,
+   "ENV_IAC_Ground_p.Platform.modPlatform_Straight_2048_STAT": 920,
+   "ENV_IAC_Deco_1_p.Supports.ArchSupport_STAT": 801,
+   "ENV_IAC_BLDS_3_p.HalfArch_STAT": 776,
+   "ENV_IAC_Ground_p.Debris.Debris2_STAT": 773,
+   "ENV_ORB_D1_Debris_p.Meshes.FloorTrim_Straight_Debri_01_STAT": 759
+  },
   "non_blocking_props_by_mesh (authored bCollideActors/bBlockActors false)": {
    "ENV_NEU_Structures_p.Big3.Big3_Building3Piece2_3584x2048x1792_STAT": 134,
    "ENV_IAC_Ground_p.Debris.Debris2_STAT": 84,
@@ -187,7 +216,108 @@
    "PROP_EnergonSigns_p.Iacon_StreetSigns.IaconSign_13_STAT": 1,
    "PROP_NEU_EnergonCube_p.Cube2.EnergonCube2_STAT": 1
   },
-  "fall_through_examples_gltf": [],
+  "fall_through_examples_gltf": [
+   [
+    -495.0,
+    507.86,
+    419.0
+   ],
+   [
+    -495.0,
+    507.86,
+    425.0
+   ],
+   [
+    -493.0,
+    508.8,
+    413.0
+   ],
+   [
+    -493.0,
+    507.86,
+    427.0
+   ],
+   [
+    -489.0,
+    507.86,
+    407.0
+   ],
+   [
+    -487.0,
+    508.8,
+    407.0
+   ],
+   [
+    -485.0,
+    506.88,
+    329.0
+   ],
+   [
+    -485.0,
+    507.44,
+    337.0
+   ],
+   [
+    -485.0,
+    507.49,
+    339.0
+   ],
+   [
+    -485.0,
+    507.49,
+    349.0
+   ],
+   [
+    -485.0,
+    507.49,
+    351.0
+   ],
+   [
+    -485.0,
+    506.88,
+    359.0
+   ],
+   [
+    -479.0,
+    541.43,
+    317.0
+   ],
+   [
+    -479.0,
+    541.46,
+    319.0
+   ],
+   [
+    -479.0,
+    541.46,
+    321.0
+   ],
+   [
+    -479.0,
+    541.44,
+    323.0
+   ],
+   [
+    -479.0,
+    506.88,
+    329.0
+   ],
+   [
+    -479.0,
+    507.61,
+    339.0
+   ],
+   [
+    -479.0,
+    507.49,
+    349.0
+   ],
+   [
+    -479.0,
+    541.43,
+    349.0
+   ]
+  ],
   "blocking_props_without_collision_node": {
    "StaticMeshCollectionActor_12513": 1,
    "StaticMeshCollectionActor_9166": 1,

@@ -33,16 +33,16 @@ Run: `start Fri 10/16/2026  7:43:49.68 cap 10`; package cache WFC_PKG_CACHE = 16
 | vs_pickups | OK | 1.4 s | 0.91 |
 | vs_destructibles | OK | 140.1 s | 2.37 |
 | vs_surface_audio | OK | 2.6 s | 1.02 |
-| map_structure_audit | OK | 308.8 s | 8.49 |
-| map_complete | OK | 13.6 s | 3.06 |
+| map_structure_audit | OK | 312.4 s | 8.50 |
+| map_complete | OK | 14.8 s | 3.06 |
 | map_render_index | OK | 8.4 s | 2.72 |
 | vs_streaming | OK | 1.7 s | 1.23 |
 
-Total wall 21.5 min; peak 8.49 GB. Stage failures: none.
+Total wall 21.6 min; peak 8.50 GB. Stage failures: none.
 
 ## 2. Export and completeness
 
-- Completeness **INCOMPLETE**: 46 checks, 32 COMPLETE, 4 MISSING, 3 EXPORTED, 3 AUTHORED, 3 ATTENTION, 1 PASS.
+- Completeness **INCOMPLETE**: 46 checks, 34 COMPLETE, 4 MISSING, 3 EXPORTED, 3 AUTHORED, 2 PASS.
   - decals: EXPORTED {"decals": 73}
   - map_fx: EXPORTED {"particle_components": 1265, "systems": 115}
   - movers: AUTHORED {"count": 1090, "physics": {"PHYS_Interpolating": 1046, "PHYS_Rotating": 44}, "matinee": 2}
@@ -53,9 +53,6 @@ Total wall 21.5 min; peak 8.49 GB. Stage failures: none.
   - bsp_default_material_faces: AUTHORED {"nodes": 106, "surfaces": 47, "brushes": 10, "by_verdict": {"exposed": 86, "partial": 20}, "area_m2_by_verdict": {"exposed": 42005.39, "partial": 3192.85}, "visible_in_play": 6, "visible_in_play_area
   - particles: EXPORTED {"components": 1265, "emitter_actors": 1216}
   - moving_scenery: AUTHORED {"movers": 1090, "in_world_glb_missing": []}
-  - playable_space: ATTENTION {"player_starts": 27, "starts_on_reachable_floor": 25, "walk_graph_area_m2": 2784604.0, "bounds": {"x_m": [-1414.0, 2568.0], "z_m": [-1464.0, 568.0], "floor_height_m": [-388.62, 465.73]}, "placement_c
-  - collision_vs_visible: ATTENTION {"agreement_pct": 67.54, "agreement_pct_excluding_volume_tops": 74.91, "blocking_gaps_explained": [{"actor": "StaticMeshCollectionActor_1209", "component": "StaticMeshActor_7765_SMC", "mesh": "ENV_IAC
-  - structure_audit: ATTENTION {"status": "ATTENTION", "failures": ["player starts off walk graph"]}
 - 51 levels (24 art, 21 design, 2 audio, 1 other, 1 base, 1 music, 1 cine); 24287 placed meshes (2680 unique, 0 without mesh); 6865 BSP triangles; 149 lights; 2115 volumes; 1216 emitters.
 - Gameplay points: {"TriggerVolume": 421, "TnCampaignPlayerStart": 1, "TnAmmoCratePickupFactory": 20, "TnHealthPickupFactory": 5, "TnMatineePreviewSpawnPoint": 129, "TnObjectiveMarkerPoint": 54, "TnWeaponPickupFactory": 21, "TnForcedDirVolume": 5, "TnOverShieldPickupFactory": 1}.
 - Navigation: 7849 nodes, 24448 edges.
@@ -68,5 +65,5 @@ Total wall 21.5 min; peak 8.49 GB. Stage failures: none.
 3. **FaceFX / dialog**: 14 FaceFXAsset, 12 InterpTrackFaceFX, 452 HmAnimNotify_Dialog, 56 HmSoundEventDialogGroup, 2881 SoundCue.
 4. **Materials for Rendering** (`work/campaign_pilot/A1_IAC_materials_for_rendering.json`): 533 materials, 300 with `.mat`, 258 compiled somewhere -> **275 need a matc pass**.
 5. **Pending diagnostics**: none: m05 and the structure audit both ran.
-6. **Starts and walk graph** (`manifests/next_map/campaign_starts_report.json`, backlog 5): 27 starts (1 campaign starts + 26 checkpoints), 25 / 27 on reachable floor; walk graph 2,784,604 m2 (audit ATTENTION); pickups on reachable floor 41 / 47; vs_validate ground check (reported only) 0 grounded / 1 airborne of the 1 it checks.
-   - Triage of what is off the walk graph (categories in `campaign_starts_report.py`): starts: 2 on_mover; pickups: 6 unclassified. airborne_by_design = real level data (fly-only reach specs, PROVISIONAL flag meaning); on_mover = audit limit (no mover collision in the walk graph); no_floor_below = UNKNOWN; unclassified = walk-rule limit (no jump / transform) or an unconnected floor, per-actor look needed.
+6. **Starts and walk graph** (`manifests/next_map/campaign_starts_report.json`, backlog 5): 27 starts (1 campaign starts + 26 checkpoints), 27 / 27 on reachable floor; walk graph 2,792,256 m2 (audit PASS); pickups on reachable floor 41 / 47; vs_validate ground check (reported only) 0 grounded / 1 airborne of the 1 it checks.
+   - Triage of what is off the walk graph (categories in `campaign_starts_report.py`): starts: none; pickups: 6 unclassified. airborne_by_design = real level data (fly-only reach specs, PROVISIONAL flag meaning); on_mover = audit limit (no mover collision in the walk graph); no_floor_below = UNKNOWN; unclassified = walk-rule limit (no jump / transform) or an unconnected floor, per-actor look needed.
