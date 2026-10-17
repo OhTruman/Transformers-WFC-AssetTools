@@ -50,11 +50,14 @@ def chapter(M):
     bank_t = [(k or '').strip() for k in bank]          # match on trimmed keys, keep the raw ones
     setters = []; missing_text = set()
     for a in sorted(o for o, x in ops.items() if x['class'] == 'SeqAct_TnSetCurrentObjective'):
-        v = A.values(a) or {}; raw = v.get('Description'); key = (raw or '').strip() or None   # blank / ' ' = clear the objective
+        v = A.values(a) or {}; raw = v.get('Description'); key = (raw or '').strip() or None
+        # RE CAMPAIGN_PROVISIONALS_CLOSED_RE.md (2d2a231, CONFIRMED): only an EMPTY Description clears (script tests != ""); a
+        # whitespace-only one (A1 " ") localizes to "<?INT?TransGame.Objectives. ?>", which is not in the bank -> runtime no-op
+        clears = (raw or '') == ''; ws_noop = bool(raw) and not raw.strip()
         direct, events = fired_by(a, ops, back)
         t = text(key) if key else None
         if key and not (t or {}).get('int'): missing_text.add(key)
-        setters.append(OD([('action', a), ('sublevel', a.split('.')[0]), ('key', key), ('key_raw', raw), ('clears_objective', key is None),
+        setters.append(OD([('action', a), ('sublevel', a.split('.')[0]), ('key', key), ('key_raw', raw), ('clears_objective', clears), ('whitespace_noop', ws_noop),
                            ('bank_index', bank_t.index(key) if key in bank_t else None),
                            ('comment', v.get('ObjComment')), ('text', t), ('properties', {k: x for k, x in v.items() if k not in SKIP}),
                            ('fired_by_direct', direct), ('fired_by_events', events)]))
@@ -69,7 +72,8 @@ def chapter(M):
               ('counts', OD([('bank_keys', len(bank)), ('setters', len(setters)),
                              ('setters_with_key_in_bank', sum(1 for s in setters if s['bank_index'] is not None)),
                              ('setters_key_not_in_bank', sum(1 for s in setters if s['key'] and s['bank_index'] is None)),
-                             ('setters_clearing', sum(1 for s in setters if not s['key'])),
+                             ('setters_clearing', sum(1 for s in setters if s['clears_objective'])),
+                             ('setters_whitespace_noop', sum(1 for s in setters if s['whitespace_noop'])),
                              ('setters_with_firing_event', sum(1 for s in setters if s['fired_by_events'])),
                              ('bank_keys_never_set', sum(1 for r in bank_rows if not r['set_by'])),
                              ('keys_without_int_text', len(missing_text)), ('banks_found', len(banks))])),

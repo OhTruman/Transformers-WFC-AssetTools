@@ -135,7 +135,7 @@ def chapter(M):
                                                  ('skippable', v.get('bIsSkippable')), ('group_bindings', binds),
                                                  ('fired_by_direct', direct), ('fired_by_events', events)]))
     datas = sorted({o['opath'] for lv in lvs for o in A.find(lv + '.TheWorld.PersistentLevel.%', 'InterpData')})
-    out = []; tc = Counter(); undecoded = Counter(); unknown_keys = Counter(); unbound = 0; gstates = Counter(); ngroups = 0; ndir = 0; unres = Counter()
+    out = []; tc = Counter(); undecoded = Counter(); unknown_keys = Counter(); unbound = 0; nlive = 0; gstates = Counter(); ngroups = 0; ndir = 0; unres = Counter()
     for d in datas:
         dv = A.values(d) or {}; groups = []
         pl = players.get(d, [])
@@ -161,7 +161,12 @@ def chapter(M):
             for b in bound.values():
                 for h in (b or {}).get('via', []):
                     if h.startswith('unresolved'): unres[h] += 1
-            groups.append(OD([('name', name), ('class', gg.get('class')), ('binding', gstate), ('bound', bound), ('tracks', tracks)]))
+            # RE CAMPAIGN_PROVISIONALS_CLOSED_RE.md (a509740, CONFIRMED): a group without an actor still runs its Event tracks (outputs
+            # fire) and Sound / Dialog tracks (play at the listener); only actor tracks are no-ops
+            live = sorted({t['class'] for t in tracks if t['class'] in ('InterpTrackEvent', 'InterpTrackSound', 'InterpTrackDialog') and not t['disabled']})                 if gstate in ('empty_link', 'no_link', 'unresolved') else []
+            if live: nlive += 1
+            groups.append(OD([('name', name), ('class', gg.get('class')), ('binding', gstate), ('bound', bound), ('tracks', tracks),
+                              ('live_without_actor', live)]))
         out.append(OD([('interp_data', d), ('sublevel', d.split('.')[0]), ('length', dv.get('InterpLength')), ('path_building', dv.get('bShouldBakeAndPrune')),
                        ('played_by', pl), ('groups', groups)]))
     orphan = [x['action'] for k, v in players.items() if k not in set(datas) for x in v]
@@ -169,7 +174,7 @@ def chapter(M):
               ('source', 'manifests/authored.db, effective values (authored + class defaults); schema docs/handoff/CAMPAIGN_MATINEE_SCHEMA.md'),
               ('counts', OD([('interp_data', len(out)), ('played', sum(1 for x in out if x['played_by'])), ('not_played_by_any_seqact_interp', sum(1 for x in out if not x['played_by'])),
                              ('seqact_interp', sum(len(v) for v in players.values())), ('seqact_interp_without_data_in_levels', len(orphan)),
-                             ('groups', ngroups), ('director_groups', ndir), ('groups_without_bound_actor', unbound), ('group_binding', dict(gstates)),
+                             ('groups', ngroups), ('director_groups', ndir), ('groups_without_bound_actor', unbound), ('group_binding', dict(gstates)), ('unbound_groups_live_without_actor', nlive),
                              ('tracks_by_class', OD(tc.most_common())), ('undecoded_track_classes', dict(undecoded)), ('unresolved_bindings', dict(unres))])),
               ('matinees', out)])
     write(map_out(M, 'streets_matinee.json'), rep)

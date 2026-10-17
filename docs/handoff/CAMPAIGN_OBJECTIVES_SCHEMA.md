@@ -26,8 +26,11 @@ for the campaign HUD.
 **Field notes:**
 - **`key` vs `key_raw`:** `key` is the trimmed authored key, and all matching uses it. `key_raw` is the key exactly as authored. One bank
   entry carries a trailing space (A4 `"A4_OBJ_OBJ10 "`); the .int keys never do.
-- **`clears_objective`:** the setter's Description is empty or blank (A1 uses `" "`). Read as "clear the current objective"
-  (PROVISIONAL: inferred from the data, not checked in RE's doc).
+- **`clears_objective`:** true only for an EMPTY Description; it clears the current objective (CONFIRMED, RE
+  CAMPAIGN_PROVISIONALS_CLOSED_RE.md 2d2a231: the script tests `!= ""`).
+- **`whitespace_noop`:** true for a whitespace-only Description (A1's 7 `" "` setters). It localizes to
+  `<?INT?TransGame.Objectives. ?>`, which is not in the bank, so nothing changes at runtime (CONFIRMED, same source). The 2026-10-18
+  first version counted these as clears.
 - **`text.int`:** the first value of the key in `[Objectives]`. `int_all` / `fra_all` list every value when a key repeats.
 - **`fired_by_events`:** the same Kismet back-walk as the other manifests (e.g. D5 remote event `Set_Objective_DestroyTurrets`).
 
