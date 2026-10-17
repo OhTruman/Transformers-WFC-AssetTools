@@ -61,7 +61,12 @@ MODULE_DISTS = {
     # no distributions in the compiled stream (census: every LOD whose only unlayouted module is this one has
     # zero leftover float/vector entries: Gravity 392 LODs, ColorByParameter 561, Unknown 106, LocationEmitter 20)
     'PMI_Gravity': ([], []), 'PMI_ColorByParameter': ([], []), 'PMI_Unknown': ([], []), 'PMI_LocationEmitter': ([], []),
+    # order CONFIRMED by RE from the runner (2026-10-18, batch 2): floats StartRadius, StartHeight, VelocityScale; vector StartLocation
+    'PMI_LocationPrimitiveCylinder': (['StartRadius', 'StartHeight', 'VelocityScale'], ['StartLocation']),
 }
+# order NOT read from the runner but taken from the runner's option order (PROVISIONAL): Orbit's options are read Offset (@4),
+# Rotation (@0x10), RotationRate (@0x1C) in that order (RE 2026-10-18), so the three vector distributions are named in that order
+ORDER_PROVISIONAL = {'PMI_Orbit': ([], ['OffsetAmount', 'RotationAmount', 'RotationRateAmount'])}
 # census-proven distribution COUNTS whose property order inside the module is not proven
 MULTI_UNPROVEN_EXTRA = {
     'PMI_DynamicParameter': (['DynamicParams[0].ParamValue', 'DynamicParams[1].ParamValue',
@@ -73,7 +78,6 @@ CENSUS_COUNTS = {'PMI_LocationDirect': (0, 3)}
 # modules owning >1 float distribution whose internal order is not proven: values are assigned to the
 # module, the property only when every candidate carries the identical value
 MULTI_UNPROVEN = {
-    'PMI_LocationPrimitiveCylinder': (['StartRadius', 'StartHeight', 'VelocityScale'], ['StartLocation']),
     'PMI_LocationPrimitiveSphere': (['StartRadius', 'VelocityScale'], ['StartLocation']),
     # Engine.ParticleModuleOrbit schema (class default object): three RawDistributionVector, no floats. Count proven by the
     # LODs where it is the only unlayouted module (assignment then completes exactly); order inside the group unproven.
@@ -153,6 +157,11 @@ def assign(parsed):
                     if not q: ok = False; break
                     out.append({'module_index': r['index'], 'module': m, 'property': prop, 'dist': q.pop(0),
                                 'confidence': 'CONFIRMED'})
+            elif m in ORDER_PROVISIONAL:
+                for prop in ORDER_PROVISIONAL[m][gi]:
+                    if not q: ok = False; break
+                    out.append({'module_index': r['index'], 'module': m, 'property': prop, 'dist': q.pop(0), 'confidence': 'PROVISIONAL',
+                                'note': 'distribution order taken from the runner option order (Offset, Rotation, RotationRate); not read from the runner'})
             elif m in MULTI_UNPROVEN:
                 props = MULTI_UNPROVEN[m][gi]
                 n = CENSUS_COUNTS[m][gi] if m in CENSUS_COUNTS else len(props)
@@ -227,13 +236,18 @@ BLOCKS = {
     'PMI_Orbit': [('ChainMode (H, not read by the runners)', _I)] + [(f'{a}.{b}', _I) for a in ('OffsetOptions', 'RotationOptions', 'RotationRateOptions')
                                                                        for b in ('bProcessDuringSpawn', 'bProcessDuringUpdate', 'bUseEmitterTime')],
     'PMI_LocationEmitterDirect': [('EmitterName (H)', _N)],
+    # named by RE from the runners (2026-10-18; sizes from the AssetTools census)
+    'PMI_MeshRotation': [('bInheritParent', _I)],
+    'PMI_VelocityOverLife': [('Absolute', _I)],
+    'PMI_SizeMultiplyVelocity': [('MultiplyX', _I), ('MultiplyY', _I), ('MultiplyZ', _I)],
+    'PMI_SizeScale': [('EnableX', _I), ('EnableY', _I), ('EnableZ', _I)],
 }
 ZERO_BLOCK = {'PMI_Lifetime', 'PMI_Size', 'PMI_Velocity', 'PMI_LocationDirect', 'PMI_VelocityInheritParent', 'PMI_AccelerationOverLife'}
 # block sizes SOLVED by the census (pstream_blob_census.py: LODs where the module is the only unknown, SIZE - known = constant);
 # their field layout is not from RE, so values are emitted as raw big-endian int32 words 'raw[k]' (UNNAMED) for RE to name
 CENSUS_SIZES = {'PMI_Color': 0, 'PMI_Location': 0, 'PMI_Rotation': 0, 'PMI_SubUV': 0, 'PMI_Unknown': 0,
-                'PMI_MeshRotation': 4, 'PMI_VelocityOverLife': 4, 'PMI_ColorOverLife': 0, 'PMI_MeshRotationRate': 0, 'PMI_RotationRate': 0,
-                'PMI_SubUVDirect': 0, 'PMI_SizeScale': 12, 'PMI_SizeMultiplyVelocity': 12, 'PMI_Acceleration': 0}
+                'PMI_ColorOverLife': 0, 'PMI_MeshRotationRate': 0, 'PMI_RotationRate': 0,
+                'PMI_SubUVDirect': 0, 'PMI_Acceleration': 0}
 def block_size(m):
     if m in ZERO_BLOCK: return 0
     if m in BLOCKS: return 4 * len(BLOCKS[m])
@@ -295,7 +309,7 @@ def param_blob(pr, p=None):
                 if typ == _N: v = names[v] if 0 <= v < len(names) else {'name_index': v}
                 elif typ.startswith('enum:'):
                     opts = typ[5:].split(','); v = opts[v] if 0 <= v < len(opts) else (opts[-1] if 'HEIGHTAXIS' in typ else v)
-                elif name in [a for a, _ in _AX] or name.startswith(('b', 'Surface', 'Velocity', 'Radial', 'Offset', 'Rotation', 'Multiply')):
+                elif name in [a for a, _ in _AX] or name.startswith(('b', 'Surface', 'Velocity', 'Radial', 'Offset', 'Rotation', 'Multiply', 'Enable', 'Absolute')):
                     v = bool(v) if v in (0, 1) else v
             f[name] = v
         blocks[r['index']] = f; b += s
@@ -335,9 +349,10 @@ def system(ps, pkg=None):
                         if cls == 'ParticleModuleCollision': props.setdefault('CollisionCompletionOption', 'EPCC_Kill (default, enum 0)')
                         if cls == 'ParticleModuleSwitchableColorScaleOverLife': props.setdefault('ChannelSwitch', 'PMC_A (default)')
                 if name == 'PMI_VelocityOverLife':
-                    # Absolute (bool) is not in the compiled stream; Engine.Default__ParticleModuleVelocityOverLifetime does not
-                    # set it, so the class default False applies: velocity *= VelOverLife(t) (UE3). PROVISIONAL per instance
-                    vol_props = {'Absolute': False}
+                    # Absolute: the compiled parameter blob carries it (RE 2026-10-18: VelocityOverLife block = int Absolute); else the class
+                    # default False (Engine.Default__ParticleModuleVelocityOverLifetime does not set it): velocity *= VelOverLife(t) (UE3)
+                    blk = (pb.get('blocks') or {}).get(r['index']) or {}
+                    vol_props = {'Absolute': bool(blk['Absolute'])} if 'Absolute' in blk else {'Absolute': False}
                 mods.append({'index': r['index'], 'module': name, 'module_id': r['module_id'],
                              **({'module_enum': r['module'], 'module_object': obj, 'module_class': cls,
                                  'module_properties (authored, defaults filled)': props} if props is not None else {}),
