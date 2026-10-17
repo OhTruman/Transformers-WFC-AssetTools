@@ -5,6 +5,8 @@ setlocal enabledelayedexpansion
 cd /d "F:\Transformers Rebuild\AssetTools"
 call scripts\wfc\f_env.cmd
 set "WFC_VS_ROOT=F:\Transformers Rebuild\AssetTools\work\campaign_pilot\VerticalSlice"
+rem campaign setting as in run_st / run_sa / run_diag: structure audit at a 2 m cell (1 m exceeds the 10 GB cap on large chapters)
+set "WFC_AUDIT_CELL=2"
 set "CAP=%~2"
 if "%CAP%"=="" set "CAP=6"
 set "M=%1"

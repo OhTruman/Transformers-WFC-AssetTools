@@ -26,23 +26,23 @@ Run: `start Fri 10/16/2026 10:53:39.65 cap 10 pkgcache 10`; package cache WFC_PK
 | vs_mapfx | OK | 5.2 s | 1.25 |
 | m04_inventory | OK | 66.2 s | 1.37 |
 | validate_smca_transforms | OK | 8.1 s | 1.18 |
-| vs_validate | OK | 51.4 s | 2.64 |
+| vs_validate | OK | 48.6 s | 2.64 |
 | m04_bsp | OK | 2.7 s | 1.11 |
 | m05_bsp_default_faces | OK | 999.9 s | 3.06 |
 | m04_kismet | OK | 3.5 s | 0.85 |
 | vs_pickups | OK | 1.4 s | 0.91 |
 | vs_destructibles | OK | 100.2 s | 1.67 |
 | vs_surface_audio | OK | 2.3 s | 1.06 |
-| map_structure_audit | OK | 164.0 s | 8.96 |
-| map_complete | OK | 8.6 s | 1.86 |
+| map_structure_audit | OK | 189.0 s | 9.23 |
+| map_complete | OK | 9.5 s | 1.86 |
 | map_render_index | OK | 3.3 s | 1.62 |
 | vs_streaming | OK | 1.3 s | 1.00 |
 
-Total wall 29.5 min; peak 8.96 GB. Stage failures: none.
+Total wall 29.9 min; peak 9.23 GB. Stage failures: none.
 
 ## 2. Export and completeness
 
-- Completeness **INCOMPLETE**: 46 checks, 34 COMPLETE, 4 MISSING, 3 EXPORTED, 3 AUTHORED, 2 PASS.
+- Completeness **INCOMPLETE**: 46 checks, 32 COMPLETE, 4 MISSING, 3 EXPORTED, 3 AUTHORED, 3 ATTENTION, 1 PASS.
   - decals: EXPORTED {"decals": 13}
   - map_fx: EXPORTED {"particle_components": 1289, "systems": 112}
   - movers: AUTHORED {"count": 1323, "physics": {"PHYS_Rotating": 164, "PHYS_Interpolating": 1158, "PHYS_None": 1}, "matinee": 0}
@@ -53,6 +53,9 @@ Total wall 29.5 min; peak 8.96 GB. Stage failures: none.
   - bsp_default_material_faces: AUTHORED {"nodes": 2362, "surfaces": 518, "brushes": 236, "by_verdict": {"exposed": 1776, "partial": 512, "hidden": 74}, "area_m2_by_verdict": {"exposed": 1208587.79, "partial": 102889.9, "hidden": 1748.99}, "
   - particles: EXPORTED {"components": 1289, "emitter_actors": 1261}
   - moving_scenery: AUTHORED {"movers": 1323, "in_world_glb_missing": []}
+  - playable_space: ATTENTION {"player_starts": 25, "starts_on_reachable_floor": 18, "walk_graph_area_m2": 2626980.0, "bounds": {"x_m": [-3276.0, 1646.0], "z_m": [-1890.0, 2502.0], "floor_height_m": [-1579.1, 2101.4]}, "placement_
+  - collision_vs_visible: ATTENTION {"agreement_pct": 68.5, "agreement_pct_excluding_volume_tops": 74.1, "blocking_gaps_explained": [{"actor": "StaticInterpActor_10003", "component": "", "mesh": "ENV_ORB_CybertronPlanet_p.MATTE.Cybertro
+  - structure_audit: ATTENTION {"status": "ATTENTION", "failures": ["player starts off walk graph"]}
 - 47 levels (20 design, 18 art, 5 cine, 2 audio, 1 base, 1 music); 12686 placed meshes (1415 unique, 0 without mesh); 25047 BSP triangles; 143 lights; 887 volumes; 1261 emitters.
 - Gameplay points: {"DynamicTriggerVolume": 24, "TnObjectiveMarkerPoint": 45, "TriggerVolume": 171, "TnCampaignPlayerStart": 2, "TnForcedDirVolume": 38, "TnAmmoCratePickupFactory": 8, "TnHealthPickupFactory": 8, "TnWeaponPickupFactory": 6, "TnMatineePreviewSpawnPoint": 2, "TnPickupFactory": 2}.
 - Navigation: 4674 nodes, 39324 edges.
@@ -65,3 +68,5 @@ Total wall 29.5 min; peak 8.96 GB. Stage failures: none.
 3. **FaceFX / dialog**: 7 FaceFXAsset, 3 InterpTrackFaceFX, 351 HmAnimNotify_Dialog, 52 HmSoundEventDialogGroup, 2437 SoundCue.
 4. **Materials for Rendering** (`work/campaign_pilot/A4_ORB_materials_for_rendering.json`): 404 materials, 242 with `.mat`, 218 compiled somewhere -> **186 need a matc pass**.
 5. **Pending diagnostics**: none: m05 and the structure audit both ran.
+6. **Starts and walk graph** (`manifests/next_map/campaign_starts_report.json`, backlog 5): 25 starts (2 campaign starts + 23 checkpoints), 18 / 25 on reachable floor; walk graph 2,626,980 m2 (audit ATTENTION); pickups on reachable floor 13 / 24; vs_validate ground check (reported only) 2 grounded / 0 airborne of the 2 it checks.
+   - Triage of what is off the walk graph (categories in `campaign_starts_report.py`): starts: 5 airborne_by_design, 1 no_floor_below, 1 unclassified; pickups: 2 on_mover, 9 unclassified. airborne_by_design = real level data (fly-only reach specs, PROVISIONAL flag meaning); on_mover = audit limit (no mover collision in the walk graph); no_floor_below = UNKNOWN; unclassified = walk-rule limit (no jump / transform) or an unconnected floor, per-actor look needed.

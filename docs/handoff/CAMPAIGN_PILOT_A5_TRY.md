@@ -26,19 +26,19 @@ Run: `start Fri 10/16/2026  7:39:14.54 cap 10`; package cache WFC_PKG_CACHE = 16
 | vs_mapfx | OK | 2.0 s | 1.28 |
 | m04_inventory | OK | 12.5 s | 1.16 |
 | validate_smca_transforms | OK | 2.2 s | 1.12 |
-| vs_validate | OK | 22.4 s | 1.54 |
+| vs_validate | OK | 20.2 s | 1.54 |
 | m04_bsp | OK | 0.8 s | 1.10 |
 | m05_bsp_default_faces | OK | 40.7 s | 1.75 |
 | m04_kismet | OK | 2.0 s | 0.80 |
 | vs_pickups | OK | 1.3 s | 0.89 |
 | vs_destructibles | OK | 13.6 s | 1.42 |
 | vs_surface_audio | OK | 2.1 s | 1.13 |
-| map_structure_audit | OK | 50.0 s | 1.93 |
-| map_complete | OK | 3.0 s | 1.22 |
+| map_structure_audit | OK | 61.5 s | 2.05 |
+| map_complete | OK | 3.3 s | 1.22 |
 | map_render_index | OK | 1.6 s | 1.34 |
 | vs_streaming | OK | 1.0 s | 0.87 |
 
-Total wall 3.7 min; peak 3.49 GB. Stage failures: none.
+Total wall 3.8 min; peak 3.49 GB. Stage failures: none.
 
 ## 2. Export and completeness
 
@@ -65,3 +65,5 @@ Total wall 3.7 min; peak 3.49 GB. Stage failures: none.
 3. **FaceFX / dialog**: 8 FaceFXAsset, 5 InterpTrackFaceFX, 171 HmAnimNotify_Dialog, 20 HmSoundEventDialogGroup, 1132 SoundCue.
 4. **Materials for Rendering** (`work/campaign_pilot/A5_TRY_materials_for_rendering.json`): 172 materials, 124 with `.mat`, 134 compiled somewhere -> **38 need a matc pass**.
 5. **Pending diagnostics**: none: m05 and the structure audit both ran.
+6. **Starts and walk graph** (`manifests/next_map/campaign_starts_report.json`, backlog 5): 7 starts (3 campaign starts + 4 checkpoints), 7 / 7 on reachable floor; walk graph 1,297,548 m2 (audit PASS); pickups on reachable floor 27 / 30; vs_validate ground check (reported only) 3 grounded / 0 airborne of the 3 it checks.
+   - Triage of what is off the walk graph (categories in `campaign_starts_report.py`): starts: none; pickups: 1 on_mover, 2 unclassified. airborne_by_design = real level data (fly-only reach specs, PROVISIONAL flag meaning); on_mover = audit limit (no mover collision in the walk graph); no_floor_below = UNKNOWN; unclassified = walk-rule limit (no jump / transform) or an unconnected floor, per-actor look needed.

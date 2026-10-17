@@ -99,6 +99,19 @@ def main(M, notes=None):
                                                  sum(not r['compiled_somewhere'] for r in rows)))
     pend = [s for s in ('m05_bsp_default_faces', 'map_structure_audit') if s not in S or S[s][0] != 0]   # failed, or skipped (WFC_SKIP_STAGES)
     a('5. **Pending diagnostics**: %s.' % (', '.join(pend) + ' (grid fix later, Streets byte-identical as the gate)' if pend else 'none: m05 and the structure audit both ran'))
+    sr = os.path.join(AT, 'manifests', 'next_map', 'campaign_starts_report.json')
+    r = next((x for x in json.load(open(sr, encoding='utf-8'))['chapters'] if x['map'] == M), None) if os.path.exists(sr) else None
+    if r:
+        tri = r['off_walk_graph_triage']; fmt = lambda d: ', '.join('%d %s' % (v, k) for k, v in sorted(d.items())) or 'none'
+        a('6. **Starts and walk graph** (`manifests/next_map/campaign_starts_report.json`, backlog 5): %d starts (%d campaign starts + %d checkpoints), '
+          '%d / %d on reachable floor; walk graph %s m2 (audit %s); pickups on reachable floor %s / %s; vs_validate ground check (reported only) '
+          '%d grounded / %d airborne of the %d it checks.' % (r['starts'], r['campaign_player_starts'], r['checkpoints'], r['starts_on_reachable_floor'] or 0,
+          r['starts'], '{:,.0f}'.format(r['walk_graph_area_m2'] or 0), r['structure_audit'], r['pickups_on_reachable_floor'], r['pickups'],
+          r['ground_check']['grounded'], r['ground_check']['airborne'], r['ground_check']['checked']))
+        a('   - Triage of what is off the walk graph (categories in `campaign_starts_report.py`): starts: %s; pickups: %s. airborne_by_design = real '
+          'level data (fly-only reach specs, PROVISIONAL flag meaning); on_mover = audit limit (no mover collision in the walk graph); '
+          'no_floor_below = UNKNOWN; unclassified = walk-rule limit (no jump / transform) or an unconnected floor, per-actor look needed.' % (
+          fmt(tri.get('start', {})), fmt(tri.get('pickup', {}))))
     if notes and os.path.exists(notes): a('\n## 4. Notes\n\n' + open(notes, encoding='utf-8').read().strip())
     out = os.path.join(AT, 'docs', 'handoff', 'CAMPAIGN_PILOT_%s.md' % M)
     open(out, 'w', encoding='utf-8').write('\n'.join(L) + '\n'); print(out, '%.1f min, peak %.2f GB' % (total / 60, peak))

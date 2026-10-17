@@ -21,24 +21,24 @@ Run: `start Fri 10/16/2026 11:57:56.84 cap 10 pkgcache 10`; package cache WFC_PK
 | vs_props | OK | 64.2 s | 1.17 |
 | vs_collision | OK | 0.7 s | 0.84 |
 | vs_physics | OK | 44.5 s | 1.26 |
-| vs_gameplay | OK | 5.1 s | 0.80 |
+| vs_gameplay | OK | 5.9 s | 0.80 |
 | vs_audio | OK | 2.8 s | 0.81 |
 | vs_mapfx | OK | 5.9 s | 1.28 |
 | m04_inventory | OK | 83.4 s | 1.36 |
 | validate_smca_transforms | OK | 8.6 s | 1.17 |
-| vs_validate | OK | 57.6 s | 3.16 |
+| vs_validate | OK | 53.0 s | 3.15 |
 | m04_bsp | OK | 2.8 s | 1.07 |
 | m05_bsp_default_faces | OK | 942.1 s | 3.25 |
 | m04_kismet | OK | 5.7 s | 0.90 |
 | vs_pickups | OK | 1.4 s | 0.91 |
 | vs_destructibles | OK | 123.7 s | 2.00 |
 | vs_surface_audio | OK | 2.3 s | 1.05 |
-| map_structure_audit | OK | 162.0 s | 5.66 |
+| map_structure_audit | OK | 182.5 s | 5.99 |
 | map_complete | OK | 9.9 s | 2.21 |
 | map_render_index | OK | 5.3 s | 1.98 |
 | vs_streaming | OK | 1.4 s | 1.03 |
 
-Total wall 29.9 min; peak 5.66 GB. Stage failures: none.
+Total wall 30.2 min; peak 5.99 GB. Stage failures: none.
 
 ## 2. Export and completeness
 
@@ -67,3 +67,5 @@ Total wall 29.9 min; peak 5.66 GB. Stage failures: none.
 3. **FaceFX / dialog**: 13 FaceFXAsset, 14 InterpTrackFaceFX, 498 HmAnimNotify_Dialog, 79 HmSoundEventDialogGroup, 2690 SoundCue.
 4. **Materials for Rendering** (`work/campaign_pilot/D3A_IAC_materials_for_rendering.json`): 426 materials, 245 with `.mat`, 256 compiled somewhere -> **170 need a matc pass**.
 5. **Pending diagnostics**: none: m05 and the structure audit both ran.
+6. **Starts and walk graph** (`manifests/next_map/campaign_starts_report.json`, backlog 5): 31 starts (3 campaign starts + 28 checkpoints), 31 / 31 on reachable floor; walk graph 3,863,292 m2 (audit PASS); pickups on reachable floor 44 / 47; vs_validate ground check (reported only) 3 grounded / 0 airborne of the 3 it checks.
+   - Triage of what is off the walk graph (categories in `campaign_starts_report.py`): starts: none; pickups: 3 unclassified. airborne_by_design = real level data (fly-only reach specs, PROVISIONAL flag meaning); on_mover = audit limit (no mover collision in the walk graph); no_floor_below = UNKNOWN; unclassified = walk-rule limit (no jump / transform) or an unconnected floor, per-actor look needed.
