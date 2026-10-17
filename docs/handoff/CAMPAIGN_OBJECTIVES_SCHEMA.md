@@ -33,7 +33,7 @@ for the campaign HUD.
 
 ## Results (10 chapters)
 
-- 98 bank keys and 179 setters. Every setter has a firing event; 45 setters clear the objective.
+- 88 bank keys and 179 setters. Every setter has a firing event; 41 setters clear the objective.
 - Every bank key is set at least once, and every key has INT and FRA text.
 - **One key is set but missing from its bank:** D1 `D1_ORB_OBJ08` ("Confront Starscream"). It has text in `[Objectives]`.
   - Whether the original HUD shows a key that isn't banked is UNKNOWN; RE says Description is a key *from* the bank. Treat it as
