@@ -1,0 +1,2818 @@
+{
+ "map": "A5_TRY",
+ "generated_by": "AssetTools/scripts/wfc/campaign_pawn_factories.py",
+ "source": "manifests/authored.db (Kismet ops of every exported sublevel)",
+ "counts": {
+  "pawn_factories": 29,
+  "by_factory_class": {
+   "TnActorFactoryAI": 29
+  },
+  "by_archetype": {
+   "Spider_AICD": 27,
+   "Soldier_MachineGun_Autobot_AICD": 1,
+   "Trypticon_AICD": 1
+  },
+  "by_faction": {
+   "TnFactionTeamAutobots": 1,
+   "TnFactionTeamDecepticons": 28
+  },
+  "with_spawn_points": 29,
+  "with_firing_event": 29,
+  "with_direct_input": 29,
+  "TnSeqVar_Character_in_levels": 70,
+  "TnSeqVar_Character_linked_to_factories": 0
+ },
+ "pawn_factories": [
+  {
+   "action": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_ENDDEATH.SeqAct_TnPawnFactory_10453",
+   "sublevel": "A5_TRY_DSN_m",
+   "sequence": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_ENDDEATH",
+   "comment": null,
+   "factory": {
+    "object": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_ENDDEATH.SeqAct_TnPawnFactory_10453.TnActorFactoryAI_3131",
+    "class": "TnActorFactoryAI",
+    "AiCharacterDefinitionTemplate": "TR_AiCharacterDefinition_p.Soldier_MachineGun_Autobot_AICD",
+    "FactionTeam": "TransGame.TnFactionTeamAutobots",
+    "StartingFormOverride": "TF_Robot",
+    "AlertToPlayer": true,
+    "PlaySpawnAnimation": true,
+    "PawnClass": "TransGame.TnAiPawn",
+    "ControllerClass": "TransGame.TnAiController",
+    "TeamIndex": 255,
+    "NewActorClass": "Engine.Actor",
+    "archetype": "TR_AiCharacterDefinition_p.Soldier_MachineGun_Autobot_AICD"
+   },
+   "spawn_points": [
+    {
+     "object": "A5_TRY_DSN_m.TheWorld.PersistentLevel.PathNode_11010",
+     "class": "PathNode",
+     "location_ue": [
+      -4736.0,
+      8576.0,
+      691.00390625
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": null,
+   "outputs": [],
+   "spawned_variable": null,
+   "character_variables": [],
+   "fired_by_direct": [
+    {
+     "op": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_ENDDEATH.SeqEvent_RemoteEvent_1849",
+     "class": "SeqEvent_RemoteEvent",
+     "output": "Out"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_ENDDEATH.SeqEvent_RemoteEvent_1849",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "Dialog_PlayBackIsDestroyedLine",
+     "Originator": null,
+     "ObjComment": "Dialog_PlayBackIsDestroyedLine",
+     "MaxTriggerCount": 1,
+     "depth": 1
+    }
+   ]
+  },
+  {
+   "action": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_0.SeqAct_TnPawnFactory_7310",
+   "sublevel": "A5_TRY_DSN_m",
+   "sequence": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_0",
+   "comment": "SPIDER A",
+   "factory": {
+    "object": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_0.SeqAct_TnPawnFactory_7310.TnActorFactoryAI_6974",
+    "class": "TnActorFactoryAI",
+    "AiCharacterDefinitionTemplate": "TR_SpiderDec_AI_p.Spider_AICD",
+    "FactionTeam": "TransGame.TnFactionTeamDecepticons",
+    "StartingFormOverride": "TF_Invalid",
+    "AlertToPlayer": true,
+    "PlaySpawnAnimation": true,
+    "PawnClass": "TransGame.TnAiPawn",
+    "ControllerClass": "TransGame.TnAiController",
+    "TeamIndex": 255,
+    "NewActorClass": "Engine.Actor",
+    "archetype": "TR_SpiderDec_AI_p.Spider_AICD"
+   },
+   "spawn_points": [
+    {
+     "object": "A5_TRY_DSN_m.TheWorld.PersistentLevel.PathNode_4607",
+     "class": "PathNode",
+     "location_ue": [
+      1919.999755859375,
+      512.0,
+      179.0
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": null,
+   "outputs": [
+    {
+     "output": "All Pawns Killed",
+     "to": [
+      "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_0.SeqAct_Gate_4256"
+     ]
+    }
+   ],
+   "spawned_variable": null,
+   "character_variables": [],
+   "fired_by_direct": [
+    {
+     "op": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_0.SeqAct_Gate_4256",
+     "class": "SeqAct_Gate",
+     "output": "Out"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_0.SeqEvent_HmDestructibleStateNotification_14423",
+     "class": "SeqEvent_HmDestructibleStateNotification",
+     "EventName": null,
+     "Originator": "A5_TRY_DSN_m.TheWorld.PersistentLevel.TnStaticDestructibleActor_11809",
+     "ObjComment": "PLAYER DESTROYED; DONT SPAWN SPIDER",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_0.SeqEvent_RemoteEvent_11309",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE2_CenterDamageSpiders",
+     "Originator": null,
+     "ObjComment": "STAGE2_CenterDamageSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_0.SeqEvent_RemoteEvent_6946",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "FX_CenterTailSpike",
+     "Originator": null,
+     "ObjComment": "FX_CenterTailSpike",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_0.SeqEvent_RemoteEvent_8079",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE2_CenterKillSpiders",
+     "Originator": null,
+     "ObjComment": "STAGE2_CenterKillSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_0.SeqEvent_RemoteEvent_1546",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "CENTER_SpawnSpiders",
+     "Originator": null,
+     "ObjComment": "CENTER_SpawnSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 3
+    }
+   ]
+  },
+  {
+   "action": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_1.SeqAct_TnPawnFactory_7310",
+   "sublevel": "A5_TRY_DSN_m",
+   "sequence": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_1",
+   "comment": "SPIDER A",
+   "factory": {
+    "object": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_1.SeqAct_TnPawnFactory_7310.TnActorFactoryAI_6974",
+    "class": "TnActorFactoryAI",
+    "AiCharacterDefinitionTemplate": "TR_SpiderDec_AI_p.Spider_AICD",
+    "FactionTeam": "TransGame.TnFactionTeamDecepticons",
+    "StartingFormOverride": "TF_Invalid",
+    "AlertToPlayer": true,
+    "PlaySpawnAnimation": true,
+    "PawnClass": "TransGame.TnAiPawn",
+    "ControllerClass": "TransGame.TnAiController",
+    "TeamIndex": 255,
+    "NewActorClass": "Engine.Actor",
+    "archetype": "TR_SpiderDec_AI_p.Spider_AICD"
+   },
+   "spawn_points": [
+    {
+     "object": "A5_TRY_DSN_m.TheWorld.PersistentLevel.PathNode_3511",
+     "class": "PathNode",
+     "location_ue": [
+      3199.999755859375,
+      512.0,
+      179.0
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": null,
+   "outputs": [
+    {
+     "output": "All Pawns Killed",
+     "to": [
+      "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_1.SeqAct_Gate_4256"
+     ]
+    }
+   ],
+   "spawned_variable": null,
+   "character_variables": [],
+   "fired_by_direct": [
+    {
+     "op": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_1.SeqAct_Gate_4256",
+     "class": "SeqAct_Gate",
+     "output": "Out"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_1.SeqEvent_HmDestructibleStateNotification_14423",
+     "class": "SeqEvent_HmDestructibleStateNotification",
+     "EventName": null,
+     "Originator": "A5_TRY_DSN_m.TheWorld.PersistentLevel.TnStaticDestructibleActor_942",
+     "ObjComment": "PLAYER DESTROYED; DONT SPAWN SPIDER",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_1.SeqEvent_RemoteEvent_11309",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE2_CenterDamageSpiders",
+     "Originator": null,
+     "ObjComment": "STAGE2_CenterDamageSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_1.SeqEvent_RemoteEvent_14671",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE2_CenterKillSpiders",
+     "Originator": null,
+     "ObjComment": "STAGE2_CenterKillSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_1.SeqEvent_RemoteEvent_6946",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "FX_CenterTailSpike",
+     "Originator": null,
+     "ObjComment": "FX_CenterTailSpike",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_1.SeqEvent_RemoteEvent_1546",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "CENTER_SpawnSpiders",
+     "Originator": null,
+     "ObjComment": "CENTER_SpawnSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 3
+    }
+   ]
+  },
+  {
+   "action": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_2.SeqAct_TnPawnFactory_7310",
+   "sublevel": "A5_TRY_DSN_m",
+   "sequence": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_2",
+   "comment": "SPIDER A",
+   "factory": {
+    "object": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_2.SeqAct_TnPawnFactory_7310.TnActorFactoryAI_6974",
+    "class": "TnActorFactoryAI",
+    "AiCharacterDefinitionTemplate": "TR_SpiderDec_AI_p.Spider_AICD",
+    "FactionTeam": "TransGame.TnFactionTeamDecepticons",
+    "StartingFormOverride": "TF_Invalid",
+    "AlertToPlayer": true,
+    "PlaySpawnAnimation": true,
+    "PawnClass": "TransGame.TnAiPawn",
+    "ControllerClass": "TransGame.TnAiController",
+    "TeamIndex": 255,
+    "NewActorClass": "Engine.Actor",
+    "archetype": "TR_SpiderDec_AI_p.Spider_AICD"
+   },
+   "spawn_points": [
+    {
+     "object": "A5_TRY_DSN_m.TheWorld.PersistentLevel.PathNode_188",
+     "class": "PathNode",
+     "location_ue": [
+      255.99960327148438,
+      640.0000610351562,
+      179.0
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": null,
+   "outputs": [
+    {
+     "output": "All Pawns Killed",
+     "to": [
+      "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_2.SeqAct_Gate_4256"
+     ]
+    }
+   ],
+   "spawned_variable": null,
+   "character_variables": [],
+   "fired_by_direct": [
+    {
+     "op": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_2.SeqAct_Gate_4256",
+     "class": "SeqAct_Gate",
+     "output": "Out"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_2.SeqEvent_HmDestructibleStateNotification_14423",
+     "class": "SeqEvent_HmDestructibleStateNotification",
+     "EventName": null,
+     "Originator": "A5_TRY_DSN_m.TheWorld.PersistentLevel.TnStaticDestructibleActor_7605",
+     "ObjComment": "PLAYER DESTROYED; DONT SPAWN SPIDER",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_2.SeqEvent_RemoteEvent_11309",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE2_CenterDamageSpiders",
+     "Originator": null,
+     "ObjComment": "STAGE2_CenterDamageSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_2.SeqEvent_RemoteEvent_6946",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "FX_CenterTailSpike",
+     "Originator": null,
+     "ObjComment": "FX_CenterTailSpike",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_2.SeqEvent_RemoteEvent_9349",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE2_CenterKillSpiders",
+     "Originator": null,
+     "ObjComment": "STAGE2_CenterKillSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_2.SeqEvent_RemoteEvent_1546",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "CENTER_SpawnSpiders",
+     "Originator": null,
+     "ObjComment": "CENTER_SpawnSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 3
+    }
+   ]
+  },
+  {
+   "action": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_3.SeqAct_TnPawnFactory_7310",
+   "sublevel": "A5_TRY_DSN_m",
+   "sequence": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_3",
+   "comment": "SPIDER A",
+   "factory": {
+    "object": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_3.SeqAct_TnPawnFactory_7310.TnActorFactoryAI_6974",
+    "class": "TnActorFactoryAI",
+    "AiCharacterDefinitionTemplate": "TR_SpiderDec_AI_p.Spider_AICD",
+    "FactionTeam": "TransGame.TnFactionTeamDecepticons",
+    "StartingFormOverride": "TF_Invalid",
+    "AlertToPlayer": true,
+    "PlaySpawnAnimation": true,
+    "PawnClass": "TransGame.TnAiPawn",
+    "ControllerClass": "TransGame.TnAiController",
+    "TeamIndex": 255,
+    "NewActorClass": "Engine.Actor",
+    "archetype": "TR_SpiderDec_AI_p.Spider_AICD"
+   },
+   "spawn_points": [
+    {
+     "object": "A5_TRY_DSN_m.TheWorld.PersistentLevel.PathNode_12822",
+     "class": "PathNode",
+     "location_ue": [
+      5247.99951171875,
+      1024.0,
+      179.0
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": null,
+   "outputs": [
+    {
+     "output": "All Pawns Killed",
+     "to": [
+      "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_3.SeqAct_Gate_4256"
+     ]
+    }
+   ],
+   "spawned_variable": null,
+   "character_variables": [],
+   "fired_by_direct": [
+    {
+     "op": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_3.SeqAct_Gate_4256",
+     "class": "SeqAct_Gate",
+     "output": "Out"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_3.SeqEvent_HmDestructibleStateNotification_14423",
+     "class": "SeqEvent_HmDestructibleStateNotification",
+     "EventName": null,
+     "Originator": "A5_TRY_DSN_m.TheWorld.PersistentLevel.TnStaticDestructibleActor_14650",
+     "ObjComment": "PLAYER DESTROYED; DONT SPAWN SPIDER",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_3.SeqEvent_RemoteEvent_11309",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE2_CenterDamageSpiders",
+     "Originator": null,
+     "ObjComment": "STAGE2_CenterDamageSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_3.SeqEvent_RemoteEvent_5207",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE2_CenterKillSpiders",
+     "Originator": null,
+     "ObjComment": "STAGE2_CenterKillSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_3.SeqEvent_RemoteEvent_6946",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "FX_CenterTailSpike",
+     "Originator": null,
+     "ObjComment": "FX_CenterTailSpike",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_3.SeqEvent_RemoteEvent_1546",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "CENTER_SpawnSpiders",
+     "Originator": null,
+     "ObjComment": "CENTER_SpawnSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 3
+    }
+   ]
+  },
+  {
+   "action": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_4.SeqAct_TnPawnFactory_7310",
+   "sublevel": "A5_TRY_DSN_m",
+   "sequence": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_4",
+   "comment": "SPIDER A",
+   "factory": {
+    "object": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_4.SeqAct_TnPawnFactory_7310.TnActorFactoryAI_6974",
+    "class": "TnActorFactoryAI",
+    "AiCharacterDefinitionTemplate": "TR_SpiderDec_AI_p.Spider_AICD",
+    "FactionTeam": "TransGame.TnFactionTeamDecepticons",
+    "StartingFormOverride": "TF_Invalid",
+    "AlertToPlayer": true,
+    "PlaySpawnAnimation": true,
+    "PawnClass": "TransGame.TnAiPawn",
+    "ControllerClass": "TransGame.TnAiController",
+    "TeamIndex": 255,
+    "NewActorClass": "Engine.Actor",
+    "archetype": "TR_SpiderDec_AI_p.Spider_AICD"
+   },
+   "spawn_points": [
+    {
+     "object": "A5_TRY_DSN_m.TheWorld.PersistentLevel.PathNode_5480",
+     "class": "PathNode",
+     "location_ue": [
+      4863.99951171875,
+      -255.99996948242188,
+      179.0
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": null,
+   "outputs": [
+    {
+     "output": "All Pawns Killed",
+     "to": [
+      "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_4.SeqAct_Gate_4256"
+     ]
+    }
+   ],
+   "spawned_variable": null,
+   "character_variables": [],
+   "fired_by_direct": [
+    {
+     "op": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_4.SeqAct_Gate_4256",
+     "class": "SeqAct_Gate",
+     "output": "Out"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_4.SeqEvent_HmDestructibleStateNotification_14423",
+     "class": "SeqEvent_HmDestructibleStateNotification",
+     "EventName": null,
+     "Originator": "A5_TRY_DSN_m.TheWorld.PersistentLevel.TnStaticDestructibleActor_5480",
+     "ObjComment": "PLAYER DESTROYED; DONT SPAWN SPIDER",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_4.SeqEvent_RemoteEvent_11309",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE2_CenterDamageSpiders",
+     "Originator": null,
+     "ObjComment": "STAGE2_CenterDamageSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_4.SeqEvent_RemoteEvent_6932",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE2_CenterKillSpiders",
+     "Originator": null,
+     "ObjComment": "STAGE2_CenterKillSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_4.SeqEvent_RemoteEvent_6946",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "FX_CenterTailSpike",
+     "Originator": null,
+     "ObjComment": "FX_CenterTailSpike",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_4.SeqEvent_RemoteEvent_1546",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "CENTER_SpawnSpiders",
+     "Originator": null,
+     "ObjComment": "CENTER_SpawnSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 3
+    }
+   ]
+  },
+  {
+   "action": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_5.SeqAct_TnPawnFactory_7310",
+   "sublevel": "A5_TRY_DSN_m",
+   "sequence": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_5",
+   "comment": "SPIDER A",
+   "factory": {
+    "object": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_5.SeqAct_TnPawnFactory_7310.TnActorFactoryAI_6974",
+    "class": "TnActorFactoryAI",
+    "AiCharacterDefinitionTemplate": "TR_SpiderDec_AI_p.Spider_AICD",
+    "FactionTeam": "TransGame.TnFactionTeamDecepticons",
+    "StartingFormOverride": "TF_Invalid",
+    "AlertToPlayer": true,
+    "PlaySpawnAnimation": true,
+    "PawnClass": "TransGame.TnAiPawn",
+    "ControllerClass": "TransGame.TnAiController",
+    "TeamIndex": 255,
+    "NewActorClass": "Engine.Actor",
+    "archetype": "TR_SpiderDec_AI_p.Spider_AICD"
+   },
+   "spawn_points": [
+    {
+     "object": "A5_TRY_DSN_m.TheWorld.PersistentLevel.PathNode_14071",
+     "class": "PathNode",
+     "location_ue": [
+      5247.99951171875,
+      -1407.9998779296875,
+      179.0
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": null,
+   "outputs": [
+    {
+     "output": "All Pawns Killed",
+     "to": [
+      "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_5.SeqAct_Gate_4256"
+     ]
+    }
+   ],
+   "spawned_variable": null,
+   "character_variables": [],
+   "fired_by_direct": [
+    {
+     "op": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_5.SeqAct_Gate_4256",
+     "class": "SeqAct_Gate",
+     "output": "Out"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_5.SeqEvent_HmDestructibleStateNotification_14423",
+     "class": "SeqEvent_HmDestructibleStateNotification",
+     "EventName": null,
+     "Originator": "A5_TRY_DSN_m.TheWorld.PersistentLevel.TnStaticDestructibleActor_5121",
+     "ObjComment": "PLAYER DESTROYED; DONT SPAWN SPIDER",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_5.SeqEvent_RemoteEvent_11309",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE2_CenterDamageSpiders",
+     "Originator": null,
+     "ObjComment": "STAGE2_CenterDamageSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_5.SeqEvent_RemoteEvent_2623",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE2_CenterKillSpiders",
+     "Originator": null,
+     "ObjComment": "STAGE2_CenterKillSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_5.SeqEvent_RemoteEvent_6946",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "FX_CenterTailSpike",
+     "Originator": null,
+     "ObjComment": "FX_CenterTailSpike",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_5.SeqEvent_RemoteEvent_1546",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "CENTER_SpawnSpiders",
+     "Originator": null,
+     "ObjComment": "CENTER_SpawnSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 3
+    }
+   ]
+  },
+  {
+   "action": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_6.SeqAct_TnPawnFactory_7310",
+   "sublevel": "A5_TRY_DSN_m",
+   "sequence": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_6",
+   "comment": "SPIDER A",
+   "factory": {
+    "object": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_6.SeqAct_TnPawnFactory_7310.TnActorFactoryAI_6974",
+    "class": "TnActorFactoryAI",
+    "AiCharacterDefinitionTemplate": "TR_SpiderDec_AI_p.Spider_AICD",
+    "FactionTeam": "TransGame.TnFactionTeamDecepticons",
+    "StartingFormOverride": "TF_Invalid",
+    "AlertToPlayer": true,
+    "PlaySpawnAnimation": true,
+    "PawnClass": "TransGame.TnAiPawn",
+    "ControllerClass": "TransGame.TnAiController",
+    "TeamIndex": 255,
+    "NewActorClass": "Engine.Actor",
+    "archetype": "TR_SpiderDec_AI_p.Spider_AICD"
+   },
+   "spawn_points": [
+    {
+     "object": "A5_TRY_DSN_m.TheWorld.PersistentLevel.PathNode_11056",
+     "class": "PathNode",
+     "location_ue": [
+      2815.99951171875,
+      -1023.9998779296875,
+      179.0
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": null,
+   "outputs": [
+    {
+     "output": "All Pawns Killed",
+     "to": [
+      "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_6.SeqAct_Gate_4256"
+     ]
+    }
+   ],
+   "spawned_variable": null,
+   "character_variables": [],
+   "fired_by_direct": [
+    {
+     "op": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_6.SeqAct_Gate_4256",
+     "class": "SeqAct_Gate",
+     "output": "Out"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_6.SeqEvent_HmDestructibleStateNotification_14423",
+     "class": "SeqEvent_HmDestructibleStateNotification",
+     "EventName": null,
+     "Originator": "A5_TRY_DSN_m.TheWorld.PersistentLevel.TnStaticDestructibleActor_8726",
+     "ObjComment": "PLAYER DESTROYED; DONT SPAWN SPIDER",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_6.SeqEvent_RemoteEvent_11309",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE2_CenterDamageSpiders",
+     "Originator": null,
+     "ObjComment": "STAGE2_CenterDamageSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_6.SeqEvent_RemoteEvent_14786",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE2_CenterKillSpiders",
+     "Originator": null,
+     "ObjComment": "STAGE2_CenterKillSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_6.SeqEvent_RemoteEvent_6946",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "FX_CenterTailSpike",
+     "Originator": null,
+     "ObjComment": "FX_CenterTailSpike",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_6.SeqEvent_RemoteEvent_1546",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "CENTER_SpawnSpiders",
+     "Originator": null,
+     "ObjComment": "CENTER_SpawnSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 3
+    }
+   ]
+  },
+  {
+   "action": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_7.SeqAct_TnPawnFactory_7310",
+   "sublevel": "A5_TRY_DSN_m",
+   "sequence": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_7",
+   "comment": "SPIDER A",
+   "factory": {
+    "object": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_7.SeqAct_TnPawnFactory_7310.TnActorFactoryAI_6974",
+    "class": "TnActorFactoryAI",
+    "AiCharacterDefinitionTemplate": "TR_SpiderDec_AI_p.Spider_AICD",
+    "FactionTeam": "TransGame.TnFactionTeamDecepticons",
+    "StartingFormOverride": "TF_Invalid",
+    "AlertToPlayer": true,
+    "PlaySpawnAnimation": true,
+    "PawnClass": "TransGame.TnAiPawn",
+    "ControllerClass": "TransGame.TnAiController",
+    "TeamIndex": 255,
+    "NewActorClass": "Engine.Actor",
+    "archetype": "TR_SpiderDec_AI_p.Spider_AICD"
+   },
+   "spawn_points": [
+    {
+     "object": "A5_TRY_DSN_m.TheWorld.PersistentLevel.PathNode_15261",
+     "class": "PathNode",
+     "location_ue": [
+      -2688.000244140625,
+      -3071.999755859375,
+      2408.93017578125
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": null,
+   "outputs": [
+    {
+     "output": "All Pawns Killed",
+     "to": [
+      "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_7.SeqAct_Gate_4256"
+     ]
+    }
+   ],
+   "spawned_variable": null,
+   "character_variables": [],
+   "fired_by_direct": [
+    {
+     "op": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_7.SeqAct_Gate_4256",
+     "class": "SeqAct_Gate",
+     "output": "Out"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_7.SeqEvent_HmDestructibleStateNotification_14423",
+     "class": "SeqEvent_HmDestructibleStateNotification",
+     "EventName": null,
+     "Originator": "A5_TRY_DSN_m.TheWorld.PersistentLevel.TnStaticDestructibleActor_11363",
+     "ObjComment": "PLAYER DESTROYED; DONT SPAWN SPIDER",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_7.SeqEvent_RemoteEvent_10938",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE2_CenterKillSpiders",
+     "Originator": null,
+     "ObjComment": "STAGE2_CenterKillSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_7.SeqEvent_RemoteEvent_11309",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE2_CenterDamageSpiders",
+     "Originator": null,
+     "ObjComment": "STAGE2_CenterDamageSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_7.SeqEvent_RemoteEvent_6946",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "FX_CenterTailSpike",
+     "Originator": null,
+     "ObjComment": "FX_CenterTailSpike",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_7.SeqEvent_RemoteEvent_1546",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "CENTER_SpawnSpiders",
+     "Originator": null,
+     "ObjComment": "CENTER_SpawnSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 3
+    }
+   ]
+  },
+  {
+   "action": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_8.SeqAct_TnPawnFactory_7310",
+   "sublevel": "A5_TRY_DSN_m",
+   "sequence": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_8",
+   "comment": "SPIDER A",
+   "factory": {
+    "object": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_8.SeqAct_TnPawnFactory_7310.TnActorFactoryAI_6974",
+    "class": "TnActorFactoryAI",
+    "AiCharacterDefinitionTemplate": "TR_SpiderDec_AI_p.Spider_AICD",
+    "FactionTeam": "TransGame.TnFactionTeamDecepticons",
+    "StartingFormOverride": "TF_Invalid",
+    "AlertToPlayer": true,
+    "PlaySpawnAnimation": true,
+    "PawnClass": "TransGame.TnAiPawn",
+    "ControllerClass": "TransGame.TnAiController",
+    "TeamIndex": 255,
+    "NewActorClass": "Engine.Actor",
+    "archetype": "TR_SpiderDec_AI_p.Spider_AICD"
+   },
+   "spawn_points": [
+    {
+     "object": "A5_TRY_DSN_m.TheWorld.PersistentLevel.PathNode_9009",
+     "class": "PathNode",
+     "location_ue": [
+      -3584.000244140625,
+      -1791.9998779296875,
+      2408.93017578125
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": null,
+   "outputs": [
+    {
+     "output": "All Pawns Killed",
+     "to": [
+      "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_8.SeqAct_Gate_4256"
+     ]
+    }
+   ],
+   "spawned_variable": null,
+   "character_variables": [],
+   "fired_by_direct": [
+    {
+     "op": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_8.SeqAct_Gate_4256",
+     "class": "SeqAct_Gate",
+     "output": "Out"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_8.SeqEvent_HmDestructibleStateNotification_14423",
+     "class": "SeqEvent_HmDestructibleStateNotification",
+     "EventName": null,
+     "Originator": "A5_TRY_DSN_m.TheWorld.PersistentLevel.TnStaticDestructibleActor_4785",
+     "ObjComment": "PLAYER DESTROYED; DONT SPAWN SPIDER",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_8.SeqEvent_RemoteEvent_11309",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE2_CenterDamageSpiders",
+     "Originator": null,
+     "ObjComment": "STAGE2_CenterDamageSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_8.SeqEvent_RemoteEvent_6946",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "FX_CenterTailSpike",
+     "Originator": null,
+     "ObjComment": "FX_CenterTailSpike",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_8.SeqEvent_RemoteEvent_7782",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE2_CenterKillSpiders",
+     "Originator": null,
+     "ObjComment": "STAGE2_CenterKillSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_CENTER_CorruptorSpider_8.SeqEvent_RemoteEvent_1546",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "CENTER_SpawnSpiders",
+     "Originator": null,
+     "ObjComment": "CENTER_SpawnSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 3
+    }
+   ]
+  },
+  {
+   "action": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_0.SeqAct_TnPawnFactory_7310",
+   "sublevel": "A5_TRY_DSN_m",
+   "sequence": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_0",
+   "comment": "SPIDER A",
+   "factory": {
+    "object": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_0.SeqAct_TnPawnFactory_7310.TnActorFactoryAI_6974",
+    "class": "TnActorFactoryAI",
+    "AiCharacterDefinitionTemplate": "TR_SpiderDec_AI_p.Spider_AICD",
+    "FactionTeam": "TransGame.TnFactionTeamDecepticons",
+    "StartingFormOverride": "TF_Invalid",
+    "AlertToPlayer": true,
+    "PlaySpawnAnimation": true,
+    "PawnClass": "TransGame.TnAiPawn",
+    "ControllerClass": "TransGame.TnAiController",
+    "TeamIndex": 255,
+    "NewActorClass": "Engine.Actor",
+    "archetype": "TR_SpiderDec_AI_p.Spider_AICD"
+   },
+   "spawn_points": [
+    {
+     "object": "A5_TRY_DSN_m.TheWorld.PersistentLevel.PathNode_5875",
+     "class": "PathNode",
+     "location_ue": [
+      639.9999389648438,
+      3200.0,
+      179.00064086914062
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": null,
+   "outputs": [
+    {
+     "output": "All Pawns Killed",
+     "to": [
+      "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_0.SeqAct_Gate_4256"
+     ]
+    }
+   ],
+   "spawned_variable": null,
+   "character_variables": [],
+   "fired_by_direct": [
+    {
+     "op": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_0.SeqAct_Gate_4256",
+     "class": "SeqAct_Gate",
+     "output": "Out"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_0.SeqEvent_HmDestructibleStateNotification_14423",
+     "class": "SeqEvent_HmDestructibleStateNotification",
+     "EventName": null,
+     "Originator": "A5_TRY_DSN_m.TheWorld.PersistentLevel.TnStaticDestructibleActor_9081",
+     "ObjComment": "PLAYER DESTROYED; DONT SPAWN SPIDER",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_0.SeqEvent_RemoteEvent_11309",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE2_LeftDamageSpiders",
+     "Originator": null,
+     "ObjComment": "STAGE2_LeftDamageSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_0.SeqEvent_RemoteEvent_16228",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE2_LeftKillSpiders",
+     "Originator": null,
+     "ObjComment": "STAGE2_LeftKillSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_0.SeqEvent_RemoteEvent_6946",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "FX_LeftTailSpike",
+     "Originator": null,
+     "ObjComment": "FX_LeftTailSpike",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_0.SeqEvent_RemoteEvent_1546",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "LEFT_SpawnSpiders",
+     "Originator": null,
+     "ObjComment": "LEFT_SpawnSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 3
+    }
+   ]
+  },
+  {
+   "action": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_1.SeqAct_TnPawnFactory_7310",
+   "sublevel": "A5_TRY_DSN_m",
+   "sequence": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_1",
+   "comment": "SPIDER B",
+   "factory": {
+    "object": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_1.SeqAct_TnPawnFactory_7310.TnActorFactoryAI_6974",
+    "class": "TnActorFactoryAI",
+    "AiCharacterDefinitionTemplate": "TR_SpiderDec_AI_p.Spider_AICD",
+    "FactionTeam": "TransGame.TnFactionTeamDecepticons",
+    "StartingFormOverride": "TF_Invalid",
+    "AlertToPlayer": true,
+    "PlaySpawnAnimation": true,
+    "PawnClass": "TransGame.TnAiPawn",
+    "ControllerClass": "TransGame.TnAiController",
+    "TeamIndex": 255,
+    "NewActorClass": "Engine.Actor",
+    "archetype": "TR_SpiderDec_AI_p.Spider_AICD"
+   },
+   "spawn_points": [
+    {
+     "object": "A5_TRY_DSN_m.TheWorld.PersistentLevel.PathNode_9669",
+     "class": "PathNode",
+     "location_ue": [
+      2815.999755859375,
+      3456.0,
+      178.99990844726562
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": null,
+   "outputs": [
+    {
+     "output": "All Pawns Killed",
+     "to": [
+      "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_1.SeqAct_Gate_4256"
+     ]
+    }
+   ],
+   "spawned_variable": null,
+   "character_variables": [],
+   "fired_by_direct": [
+    {
+     "op": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_1.SeqAct_Gate_4256",
+     "class": "SeqAct_Gate",
+     "output": "Out"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_1.SeqEvent_HmDestructibleStateNotification_14423",
+     "class": "SeqEvent_HmDestructibleStateNotification",
+     "EventName": null,
+     "Originator": "A5_TRY_DSN_m.TheWorld.PersistentLevel.TnStaticDestructibleActor_8778",
+     "ObjComment": "PLAYER DESTROYED; DONT SPAWN SPIDER",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_1.SeqEvent_RemoteEvent_11309",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE2_LeftDamageSpiders",
+     "Originator": null,
+     "ObjComment": "STAGE2_LeftDamageSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_1.SeqEvent_RemoteEvent_15194",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE2_LeftKillSpiders",
+     "Originator": null,
+     "ObjComment": "STAGE2_LeftKillSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_1.SeqEvent_RemoteEvent_6946",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "FX_LeftTailSpike",
+     "Originator": null,
+     "ObjComment": "FX_LeftTailSpike",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_1.SeqEvent_RemoteEvent_1546",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "LEFT_SpawnSpiders",
+     "Originator": null,
+     "ObjComment": "LEFT_SpawnSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 3
+    }
+   ]
+  },
+  {
+   "action": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_2.SeqAct_TnPawnFactory_7310",
+   "sublevel": "A5_TRY_DSN_m",
+   "sequence": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_2",
+   "comment": "SPIDER C",
+   "factory": {
+    "object": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_2.SeqAct_TnPawnFactory_7310.TnActorFactoryAI_6974",
+    "class": "TnActorFactoryAI",
+    "AiCharacterDefinitionTemplate": "TR_SpiderDec_AI_p.Spider_AICD",
+    "FactionTeam": "TransGame.TnFactionTeamDecepticons",
+    "StartingFormOverride": "TF_Invalid",
+    "AlertToPlayer": true,
+    "PlaySpawnAnimation": true,
+    "PawnClass": "TransGame.TnAiPawn",
+    "ControllerClass": "TransGame.TnAiController",
+    "TeamIndex": 255,
+    "NewActorClass": "Engine.Actor",
+    "archetype": "TR_SpiderDec_AI_p.Spider_AICD"
+   },
+   "spawn_points": [
+    {
+     "object": "A5_TRY_DSN_m.TheWorld.PersistentLevel.PathNode_15848",
+     "class": "PathNode",
+     "location_ue": [
+      2813.73583984375,
+      7165.736328125,
+      2057.06640625
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": null,
+   "outputs": [
+    {
+     "output": "All Pawns Killed",
+     "to": [
+      "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_2.SeqAct_Gate_4256"
+     ]
+    }
+   ],
+   "spawned_variable": null,
+   "character_variables": [],
+   "fired_by_direct": [
+    {
+     "op": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_2.SeqAct_Gate_4256",
+     "class": "SeqAct_Gate",
+     "output": "Out"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_2.SeqEvent_HmDestructibleStateNotification_14423",
+     "class": "SeqEvent_HmDestructibleStateNotification",
+     "EventName": null,
+     "Originator": "A5_TRY_DSN_m.TheWorld.PersistentLevel.TnStaticDestructibleActor_4200",
+     "ObjComment": "PLAYER DESTROYED; DONT SPAWN SPIDER",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_2.SeqEvent_RemoteEvent_11309",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE2_LeftDamageSpiders",
+     "Originator": null,
+     "ObjComment": "STAGE2_LeftDamageSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_2.SeqEvent_RemoteEvent_16293",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE2_LeftKillSpiders",
+     "Originator": null,
+     "ObjComment": "STAGE2_LeftKillSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_2.SeqEvent_RemoteEvent_6946",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "FX_LeftTailSpike",
+     "Originator": null,
+     "ObjComment": "FX_LeftTailSpike",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_2.SeqEvent_RemoteEvent_1546",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "LEFT_SpawnSpiders",
+     "Originator": null,
+     "ObjComment": "LEFT_SpawnSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 3
+    }
+   ]
+  },
+  {
+   "action": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_3.SeqAct_TnPawnFactory_7310",
+   "sublevel": "A5_TRY_DSN_m",
+   "sequence": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_3",
+   "comment": "SPIDER D",
+   "factory": {
+    "object": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_3.SeqAct_TnPawnFactory_7310.TnActorFactoryAI_6974",
+    "class": "TnActorFactoryAI",
+    "AiCharacterDefinitionTemplate": "TR_SpiderDec_AI_p.Spider_AICD",
+    "FactionTeam": "TransGame.TnFactionTeamDecepticons",
+    "StartingFormOverride": "TF_Invalid",
+    "AlertToPlayer": true,
+    "PlaySpawnAnimation": true,
+    "PawnClass": "TransGame.TnAiPawn",
+    "ControllerClass": "TransGame.TnAiController",
+    "TeamIndex": 255,
+    "NewActorClass": "Engine.Actor",
+    "archetype": "TR_SpiderDec_AI_p.Spider_AICD"
+   },
+   "spawn_points": [
+    {
+     "object": "A5_TRY_DSN_m.TheWorld.PersistentLevel.PathNode_3822",
+     "class": "PathNode",
+     "location_ue": [
+      1535.999755859375,
+      7040.0,
+      2277.55419921875
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": null,
+   "outputs": [
+    {
+     "output": "All Pawns Killed",
+     "to": [
+      "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_3.SeqAct_Gate_4256"
+     ]
+    }
+   ],
+   "spawned_variable": null,
+   "character_variables": [],
+   "fired_by_direct": [
+    {
+     "op": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_3.SeqAct_Gate_4256",
+     "class": "SeqAct_Gate",
+     "output": "Out"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_3.SeqEvent_HmDestructibleStateNotification_14423",
+     "class": "SeqEvent_HmDestructibleStateNotification",
+     "EventName": null,
+     "Originator": "A5_TRY_DSN_m.TheWorld.PersistentLevel.TnStaticDestructibleActor_6463",
+     "ObjComment": "PLAYER DESTROYED; DONT SPAWN SPIDER",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_3.SeqEvent_RemoteEvent_11309",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE2_LeftDamageSpiders",
+     "Originator": null,
+     "ObjComment": "STAGE2_LeftDamageSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_3.SeqEvent_RemoteEvent_6946",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "FX_LeftTailSpike",
+     "Originator": null,
+     "ObjComment": "FX_LeftTailSpike",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_3.SeqEvent_RemoteEvent_8381",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE2_LeftKillSpiders",
+     "Originator": null,
+     "ObjComment": "STAGE2_LeftKillSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_3.SeqEvent_RemoteEvent_1546",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "LEFT_SpawnSpiders",
+     "Originator": null,
+     "ObjComment": "LEFT_SpawnSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 3
+    }
+   ]
+  },
+  {
+   "action": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_4.SeqAct_TnPawnFactory_7310",
+   "sublevel": "A5_TRY_DSN_m",
+   "sequence": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_4",
+   "comment": "SPIDER E",
+   "factory": {
+    "object": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_4.SeqAct_TnPawnFactory_7310.TnActorFactoryAI_6974",
+    "class": "TnActorFactoryAI",
+    "AiCharacterDefinitionTemplate": "TR_SpiderDec_AI_p.Spider_AICD",
+    "FactionTeam": "TransGame.TnFactionTeamDecepticons",
+    "StartingFormOverride": "TF_Invalid",
+    "AlertToPlayer": true,
+    "PlaySpawnAnimation": true,
+    "PawnClass": "TransGame.TnAiPawn",
+    "ControllerClass": "TransGame.TnAiController",
+    "TeamIndex": 255,
+    "NewActorClass": "Engine.Actor",
+    "archetype": "TR_SpiderDec_AI_p.Spider_AICD"
+   },
+   "spawn_points": [
+    {
+     "object": "A5_TRY_DSN_m.TheWorld.PersistentLevel.PathNode_5415",
+     "class": "PathNode",
+     "location_ue": [
+      -768.0001220703125,
+      6144.0,
+      2433.182373046875
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": null,
+   "outputs": [
+    {
+     "output": "All Pawns Killed",
+     "to": [
+      "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_4.SeqAct_Gate_4256"
+     ]
+    }
+   ],
+   "spawned_variable": null,
+   "character_variables": [],
+   "fired_by_direct": [
+    {
+     "op": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_4.SeqAct_Gate_4256",
+     "class": "SeqAct_Gate",
+     "output": "Out"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_4.SeqEvent_HmDestructibleStateNotification_14423",
+     "class": "SeqEvent_HmDestructibleStateNotification",
+     "EventName": null,
+     "Originator": "A5_TRY_DSN_m.TheWorld.PersistentLevel.TnStaticDestructibleActor_14916",
+     "ObjComment": "PLAYER DESTROYED; DONT SPAWN SPIDER",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_4.SeqEvent_RemoteEvent_11309",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE2_LeftDamageSpiders",
+     "Originator": null,
+     "ObjComment": "STAGE2_LeftDamageSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_4.SeqEvent_RemoteEvent_12627",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE2_LeftKillSpiders",
+     "Originator": null,
+     "ObjComment": "STAGE2_LeftKillSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_4.SeqEvent_RemoteEvent_6946",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "FX_LeftTailSpike",
+     "Originator": null,
+     "ObjComment": "FX_LeftTailSpike",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_4.SeqEvent_RemoteEvent_1546",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "LEFT_SpawnSpiders",
+     "Originator": null,
+     "ObjComment": "LEFT_SpawnSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 3
+    }
+   ]
+  },
+  {
+   "action": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_5.SeqAct_TnPawnFactory_7310",
+   "sublevel": "A5_TRY_DSN_m",
+   "sequence": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_5",
+   "comment": "SPIDER F",
+   "factory": {
+    "object": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_5.SeqAct_TnPawnFactory_7310.TnActorFactoryAI_6974",
+    "class": "TnActorFactoryAI",
+    "AiCharacterDefinitionTemplate": "TR_SpiderDec_AI_p.Spider_AICD",
+    "FactionTeam": "TransGame.TnFactionTeamDecepticons",
+    "StartingFormOverride": "TF_Invalid",
+    "AlertToPlayer": true,
+    "PlaySpawnAnimation": true,
+    "PawnClass": "TransGame.TnAiPawn",
+    "ControllerClass": "TransGame.TnAiController",
+    "TeamIndex": 255,
+    "NewActorClass": "Engine.Actor",
+    "archetype": "TR_SpiderDec_AI_p.Spider_AICD"
+   },
+   "spawn_points": [
+    {
+     "object": "A5_TRY_DSN_m.TheWorld.PersistentLevel.PathNode_2349",
+     "class": "PathNode",
+     "location_ue": [
+      -1536.0001220703125,
+      5120.0,
+      2412.337890625
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": null,
+   "outputs": [
+    {
+     "output": "All Pawns Killed",
+     "to": [
+      "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_5.SeqAct_Gate_4256"
+     ]
+    }
+   ],
+   "spawned_variable": null,
+   "character_variables": [],
+   "fired_by_direct": [
+    {
+     "op": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_5.SeqAct_Gate_4256",
+     "class": "SeqAct_Gate",
+     "output": "Out"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_5.SeqEvent_HmDestructibleStateNotification_14423",
+     "class": "SeqEvent_HmDestructibleStateNotification",
+     "EventName": null,
+     "Originator": "A5_TRY_DSN_m.TheWorld.PersistentLevel.TnStaticDestructibleActor_159",
+     "ObjComment": "PLAYER DESTROYED; DONT SPAWN SPIDER",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_5.SeqEvent_RemoteEvent_11309",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE2_LeftDamageSpiders",
+     "Originator": null,
+     "ObjComment": "STAGE2_LeftDamageSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_5.SeqEvent_RemoteEvent_6662",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE2_LeftKillSpiders",
+     "Originator": null,
+     "ObjComment": "STAGE2_LeftKillSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_5.SeqEvent_RemoteEvent_6946",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "FX_LeftTailSpike",
+     "Originator": null,
+     "ObjComment": "FX_LeftTailSpike",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_5.SeqEvent_RemoteEvent_1546",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "LEFT_SpawnSpiders",
+     "Originator": null,
+     "ObjComment": "LEFT_SpawnSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 3
+    }
+   ]
+  },
+  {
+   "action": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_6.SeqAct_TnPawnFactory_7310",
+   "sublevel": "A5_TRY_DSN_m",
+   "sequence": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_6",
+   "comment": "SPIDER G",
+   "factory": {
+    "object": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_6.SeqAct_TnPawnFactory_7310.TnActorFactoryAI_6974",
+    "class": "TnActorFactoryAI",
+    "AiCharacterDefinitionTemplate": "TR_SpiderDec_AI_p.Spider_AICD",
+    "FactionTeam": "TransGame.TnFactionTeamDecepticons",
+    "StartingFormOverride": "TF_Invalid",
+    "AlertToPlayer": true,
+    "PlaySpawnAnimation": true,
+    "PawnClass": "TransGame.TnAiPawn",
+    "ControllerClass": "TransGame.TnAiController",
+    "TeamIndex": 255,
+    "NewActorClass": "Engine.Actor",
+    "archetype": "TR_SpiderDec_AI_p.Spider_AICD"
+   },
+   "spawn_points": [
+    {
+     "object": "A5_TRY_DSN_m.TheWorld.PersistentLevel.PathNode_3455",
+     "class": "PathNode",
+     "location_ue": [
+      -1920.0,
+      4096.0,
+      2357.149169921875
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": null,
+   "outputs": [
+    {
+     "output": "All Pawns Killed",
+     "to": [
+      "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_6.SeqAct_Gate_4256"
+     ]
+    }
+   ],
+   "spawned_variable": null,
+   "character_variables": [],
+   "fired_by_direct": [
+    {
+     "op": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_6.SeqAct_Gate_4256",
+     "class": "SeqAct_Gate",
+     "output": "Out"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_6.SeqEvent_HmDestructibleStateNotification_14423",
+     "class": "SeqEvent_HmDestructibleStateNotification",
+     "EventName": null,
+     "Originator": "A5_TRY_DSN_m.TheWorld.PersistentLevel.TnStaticDestructibleActor_9812",
+     "ObjComment": "PLAYER DESTROYED; DONT SPAWN SPIDER",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_6.SeqEvent_RemoteEvent_11309",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE2_LeftDamageSpiders",
+     "Originator": null,
+     "ObjComment": "STAGE2_LeftDamageSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_6.SeqEvent_RemoteEvent_3909",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE2_LeftKillSpiders",
+     "Originator": null,
+     "ObjComment": "STAGE2_LeftKillSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_6.SeqEvent_RemoteEvent_6946",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "FX_LeftTailSpike",
+     "Originator": null,
+     "ObjComment": "FX_LeftTailSpike",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_6.SeqEvent_RemoteEvent_1546",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "LEFT_SpawnSpiders",
+     "Originator": null,
+     "ObjComment": "LEFT_SpawnSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 3
+    }
+   ]
+  },
+  {
+   "action": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_7.SeqAct_TnPawnFactory_7310",
+   "sublevel": "A5_TRY_DSN_m",
+   "sequence": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_7",
+   "comment": "SPIDER H",
+   "factory": {
+    "object": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_7.SeqAct_TnPawnFactory_7310.TnActorFactoryAI_6974",
+    "class": "TnActorFactoryAI",
+    "AiCharacterDefinitionTemplate": "TR_SpiderDec_AI_p.Spider_AICD",
+    "FactionTeam": "TransGame.TnFactionTeamDecepticons",
+    "StartingFormOverride": "TF_Invalid",
+    "AlertToPlayer": true,
+    "PlaySpawnAnimation": true,
+    "PawnClass": "TransGame.TnAiPawn",
+    "ControllerClass": "TransGame.TnAiController",
+    "TeamIndex": 255,
+    "NewActorClass": "Engine.Actor",
+    "archetype": "TR_SpiderDec_AI_p.Spider_AICD"
+   },
+   "spawn_points": [
+    {
+     "object": "A5_TRY_DSN_m.TheWorld.PersistentLevel.PathNode_5366",
+     "class": "PathNode",
+     "location_ue": [
+      -3311.026123046875,
+      3816.953857421875,
+      2466.742919921875
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": null,
+   "outputs": [
+    {
+     "output": "All Pawns Killed",
+     "to": [
+      "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_7.SeqAct_Gate_4256"
+     ]
+    }
+   ],
+   "spawned_variable": null,
+   "character_variables": [],
+   "fired_by_direct": [
+    {
+     "op": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_7.SeqAct_Gate_4256",
+     "class": "SeqAct_Gate",
+     "output": "Out"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_7.SeqEvent_HmDestructibleStateNotification_14423",
+     "class": "SeqEvent_HmDestructibleStateNotification",
+     "EventName": null,
+     "Originator": "A5_TRY_DSN_m.TheWorld.PersistentLevel.TnStaticDestructibleActor_1193",
+     "ObjComment": "PLAYER DESTROYED; DONT SPAWN SPIDER",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_7.SeqEvent_RemoteEvent_11309",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE2_LeftDamageSpiders",
+     "Originator": null,
+     "ObjComment": "STAGE2_LeftDamageSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_7.SeqEvent_RemoteEvent_4775",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE2_LeftKillSpiders",
+     "Originator": null,
+     "ObjComment": "STAGE2_LeftKillSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_7.SeqEvent_RemoteEvent_6946",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "FX_LeftTailSpike",
+     "Originator": null,
+     "ObjComment": "FX_LeftTailSpike",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_7.SeqEvent_RemoteEvent_1546",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "LEFT_SpawnSpiders",
+     "Originator": null,
+     "ObjComment": "LEFT_SpawnSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 3
+    }
+   ]
+  },
+  {
+   "action": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_8.SeqAct_TnPawnFactory_7310",
+   "sublevel": "A5_TRY_DSN_m",
+   "sequence": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_8",
+   "comment": "SPIDER I",
+   "factory": {
+    "object": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_8.SeqAct_TnPawnFactory_7310.TnActorFactoryAI_6974",
+    "class": "TnActorFactoryAI",
+    "AiCharacterDefinitionTemplate": "TR_SpiderDec_AI_p.Spider_AICD",
+    "FactionTeam": "TransGame.TnFactionTeamDecepticons",
+    "StartingFormOverride": "TF_Invalid",
+    "AlertToPlayer": true,
+    "PlaySpawnAnimation": true,
+    "PawnClass": "TransGame.TnAiPawn",
+    "ControllerClass": "TransGame.TnAiController",
+    "TeamIndex": 255,
+    "NewActorClass": "Engine.Actor",
+    "archetype": "TR_SpiderDec_AI_p.Spider_AICD"
+   },
+   "spawn_points": [
+    {
+     "object": "A5_TRY_DSN_m.TheWorld.PersistentLevel.PathNode_1633",
+     "class": "PathNode",
+     "location_ue": [
+      5503.99951171875,
+      4608.0,
+      896.0849609375
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": null,
+   "outputs": [
+    {
+     "output": "All Pawns Killed",
+     "to": [
+      "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_8.SeqAct_Gate_4256"
+     ]
+    }
+   ],
+   "spawned_variable": null,
+   "character_variables": [],
+   "fired_by_direct": [
+    {
+     "op": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_8.SeqAct_Gate_4256",
+     "class": "SeqAct_Gate",
+     "output": "Out"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_8.SeqEvent_HmDestructibleStateNotification_14423",
+     "class": "SeqEvent_HmDestructibleStateNotification",
+     "EventName": null,
+     "Originator": "A5_TRY_DSN_m.TheWorld.PersistentLevel.TnStaticDestructibleActor_8100",
+     "ObjComment": "PLAYER DESTROYED; DONT SPAWN SPIDER",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_8.SeqEvent_RemoteEvent_11309",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE2_LeftDamageSpiders",
+     "Originator": null,
+     "ObjComment": "STAGE2_LeftDamageSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_8.SeqEvent_RemoteEvent_2900",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE2_LeftKillSpiders",
+     "Originator": null,
+     "ObjComment": "STAGE2_LeftKillSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_8.SeqEvent_RemoteEvent_6946",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "FX_LeftTailSpike",
+     "Originator": null,
+     "ObjComment": "FX_LeftTailSpike",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_LEFT_CorruptorSpider_8.SeqEvent_RemoteEvent_1546",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "LEFT_SpawnSpiders",
+     "Originator": null,
+     "ObjComment": "LEFT_SpawnSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 3
+    }
+   ]
+  },
+  {
+   "action": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_0.SeqAct_TnPawnFactory_7310",
+   "sublevel": "A5_TRY_DSN_m",
+   "sequence": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_0",
+   "comment": "SPIDER A",
+   "factory": {
+    "object": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_0.SeqAct_TnPawnFactory_7310.TnActorFactoryAI_6974",
+    "class": "TnActorFactoryAI",
+    "AiCharacterDefinitionTemplate": "TR_SpiderDec_AI_p.Spider_AICD",
+    "FactionTeam": "TransGame.TnFactionTeamDecepticons",
+    "StartingFormOverride": "TF_Invalid",
+    "AlertToPlayer": true,
+    "PlaySpawnAnimation": true,
+    "PawnClass": "TransGame.TnAiPawn",
+    "ControllerClass": "TransGame.TnAiController",
+    "TeamIndex": 255,
+    "NewActorClass": "Engine.Actor",
+    "archetype": "TR_SpiderDec_AI_p.Spider_AICD"
+   },
+   "spawn_points": [
+    {
+     "object": "A5_TRY_DSN_m.TheWorld.PersistentLevel.PathNode_2533",
+     "class": "PathNode",
+     "location_ue": [
+      5503.99951171875,
+      -3199.999755859375,
+      179.0
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": null,
+   "outputs": [
+    {
+     "output": "All Pawns Killed",
+     "to": [
+      "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_0.SeqAct_Gate_4256"
+     ]
+    }
+   ],
+   "spawned_variable": null,
+   "character_variables": [],
+   "fired_by_direct": [
+    {
+     "op": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_0.SeqAct_Gate_4256",
+     "class": "SeqAct_Gate",
+     "output": "Out"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_0.SeqEvent_HmDestructibleStateNotification_14423",
+     "class": "SeqEvent_HmDestructibleStateNotification",
+     "EventName": null,
+     "Originator": "A5_TRY_DSN_m.TheWorld.PersistentLevel.TnStaticDestructibleActor_10518",
+     "ObjComment": "PLAYER DESTROYED; DONT SPAWN SPIDER",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_0.SeqEvent_RemoteEvent_11309",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE2_RightDamageSpiders",
+     "Originator": null,
+     "ObjComment": "STAGE2_RightDamageSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_0.SeqEvent_RemoteEvent_4611",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE2_RightKillSpiders",
+     "Originator": null,
+     "ObjComment": "STAGE2_RightKillSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_0.SeqEvent_RemoteEvent_6946",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "FX_RightTailSpike",
+     "Originator": null,
+     "ObjComment": "FX_RightTailSpike",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_0.SeqEvent_RemoteEvent_1546",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "RIGHT_SpawnSpiders",
+     "Originator": null,
+     "ObjComment": "RIGHT_SpawnSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 3
+    }
+   ]
+  },
+  {
+   "action": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_1.SeqAct_TnPawnFactory_7310",
+   "sublevel": "A5_TRY_DSN_m",
+   "sequence": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_1",
+   "comment": "SPIDER A",
+   "factory": {
+    "object": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_1.SeqAct_TnPawnFactory_7310.TnActorFactoryAI_6974",
+    "class": "TnActorFactoryAI",
+    "AiCharacterDefinitionTemplate": "TR_SpiderDec_AI_p.Spider_AICD",
+    "FactionTeam": "TransGame.TnFactionTeamDecepticons",
+    "StartingFormOverride": "TF_Invalid",
+    "AlertToPlayer": true,
+    "PlaySpawnAnimation": true,
+    "PawnClass": "TransGame.TnAiPawn",
+    "ControllerClass": "TransGame.TnAiController",
+    "TeamIndex": 255,
+    "NewActorClass": "Engine.Actor",
+    "archetype": "TR_SpiderDec_AI_p.Spider_AICD"
+   },
+   "spawn_points": [
+    {
+     "object": "A5_TRY_DSN_m.TheWorld.PersistentLevel.PathNode_3439",
+     "class": "PathNode",
+     "location_ue": [
+      3455.99951171875,
+      -3199.999755859375,
+      178.99990844726562
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": null,
+   "outputs": [
+    {
+     "output": "All Pawns Killed",
+     "to": [
+      "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_1.SeqAct_Gate_4256"
+     ]
+    }
+   ],
+   "spawned_variable": null,
+   "character_variables": [],
+   "fired_by_direct": [
+    {
+     "op": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_1.SeqAct_Gate_4256",
+     "class": "SeqAct_Gate",
+     "output": "Out"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_1.SeqEvent_HmDestructibleStateNotification_14423",
+     "class": "SeqEvent_HmDestructibleStateNotification",
+     "EventName": null,
+     "Originator": "A5_TRY_DSN_m.TheWorld.PersistentLevel.TnStaticDestructibleActor_6147",
+     "ObjComment": "PLAYER DESTROYED; DONT SPAWN SPIDER",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_1.SeqEvent_RemoteEvent_11309",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE2_RightDamageSpiders",
+     "Originator": null,
+     "ObjComment": "STAGE2_RightDamageSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_1.SeqEvent_RemoteEvent_5815",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE2_RightKillSpiders",
+     "Originator": null,
+     "ObjComment": "STAGE2_RightKillSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_1.SeqEvent_RemoteEvent_6946",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "FX_RightTailSpike",
+     "Originator": null,
+     "ObjComment": "FX_RightTailSpike",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_1.SeqEvent_RemoteEvent_1546",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "RIGHT_SpawnSpiders",
+     "Originator": null,
+     "ObjComment": "RIGHT_SpawnSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 3
+    }
+   ]
+  },
+  {
+   "action": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_2.SeqAct_TnPawnFactory_7310",
+   "sublevel": "A5_TRY_DSN_m",
+   "sequence": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_2",
+   "comment": "SPIDER A",
+   "factory": {
+    "object": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_2.SeqAct_TnPawnFactory_7310.TnActorFactoryAI_6974",
+    "class": "TnActorFactoryAI",
+    "AiCharacterDefinitionTemplate": "TR_SpiderDec_AI_p.Spider_AICD",
+    "FactionTeam": "TransGame.TnFactionTeamDecepticons",
+    "StartingFormOverride": "TF_Invalid",
+    "AlertToPlayer": true,
+    "PlaySpawnAnimation": true,
+    "PawnClass": "TransGame.TnAiPawn",
+    "ControllerClass": "TransGame.TnAiController",
+    "TeamIndex": 255,
+    "NewActorClass": "Engine.Actor",
+    "archetype": "TR_SpiderDec_AI_p.Spider_AICD"
+   },
+   "spawn_points": [
+    {
+     "object": "A5_TRY_DSN_m.TheWorld.PersistentLevel.PathNode_7956",
+     "class": "PathNode",
+     "location_ue": [
+      2047.99951171875,
+      -3839.999755859375,
+      178.99990844726562
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": null,
+   "outputs": [
+    {
+     "output": "All Pawns Killed",
+     "to": [
+      "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_2.SeqAct_Gate_4256"
+     ]
+    }
+   ],
+   "spawned_variable": null,
+   "character_variables": [],
+   "fired_by_direct": [
+    {
+     "op": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_2.SeqAct_Gate_4256",
+     "class": "SeqAct_Gate",
+     "output": "Out"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_2.SeqEvent_HmDestructibleStateNotification_14423",
+     "class": "SeqEvent_HmDestructibleStateNotification",
+     "EventName": null,
+     "Originator": "A5_TRY_DSN_m.TheWorld.PersistentLevel.TnStaticDestructibleActor_14064",
+     "ObjComment": "PLAYER DESTROYED; DONT SPAWN SPIDER",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_2.SeqEvent_RemoteEvent_11309",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE2_RightDamageSpiders",
+     "Originator": null,
+     "ObjComment": "STAGE2_RightDamageSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_2.SeqEvent_RemoteEvent_12926",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE2_RightKillSpiders",
+     "Originator": null,
+     "ObjComment": "STAGE2_RightKillSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_2.SeqEvent_RemoteEvent_6946",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "FX_RightTailSpike",
+     "Originator": null,
+     "ObjComment": "FX_RightTailSpike",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_2.SeqEvent_RemoteEvent_1546",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "RIGHT_SpawnSpiders",
+     "Originator": null,
+     "ObjComment": "RIGHT_SpawnSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 3
+    }
+   ]
+  },
+  {
+   "action": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_3.SeqAct_TnPawnFactory_7310",
+   "sublevel": "A5_TRY_DSN_m",
+   "sequence": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_3",
+   "comment": "SPIDER A",
+   "factory": {
+    "object": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_3.SeqAct_TnPawnFactory_7310.TnActorFactoryAI_6974",
+    "class": "TnActorFactoryAI",
+    "AiCharacterDefinitionTemplate": "TR_SpiderDec_AI_p.Spider_AICD",
+    "FactionTeam": "TransGame.TnFactionTeamDecepticons",
+    "StartingFormOverride": "TF_Invalid",
+    "AlertToPlayer": true,
+    "PlaySpawnAnimation": true,
+    "PawnClass": "TransGame.TnAiPawn",
+    "ControllerClass": "TransGame.TnAiController",
+    "TeamIndex": 255,
+    "NewActorClass": "Engine.Actor",
+    "archetype": "TR_SpiderDec_AI_p.Spider_AICD"
+   },
+   "spawn_points": [
+    {
+     "object": "A5_TRY_DSN_m.TheWorld.PersistentLevel.PathNode_9792",
+     "class": "PathNode",
+     "location_ue": [
+      127.99951934814453,
+      -3583.999755859375,
+      178.99990844726562
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": null,
+   "outputs": [
+    {
+     "output": "All Pawns Killed",
+     "to": [
+      "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_3.SeqAct_Gate_4256"
+     ]
+    }
+   ],
+   "spawned_variable": null,
+   "character_variables": [],
+   "fired_by_direct": [
+    {
+     "op": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_3.SeqAct_Gate_4256",
+     "class": "SeqAct_Gate",
+     "output": "Out"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_3.SeqEvent_HmDestructibleStateNotification_14423",
+     "class": "SeqEvent_HmDestructibleStateNotification",
+     "EventName": null,
+     "Originator": "A5_TRY_DSN_m.TheWorld.PersistentLevel.TnStaticDestructibleActor_4542",
+     "ObjComment": "PLAYER DESTROYED; DONT SPAWN SPIDER",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_3.SeqEvent_RemoteEvent_11309",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE2_RightDamageSpiders",
+     "Originator": null,
+     "ObjComment": "STAGE2_RightDamageSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_3.SeqEvent_RemoteEvent_15080",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE2_RightKillSpiders",
+     "Originator": null,
+     "ObjComment": "STAGE2_RightKillSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_3.SeqEvent_RemoteEvent_6946",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "FX_RightTailSpike",
+     "Originator": null,
+     "ObjComment": "FX_RightTailSpike",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_3.SeqEvent_RemoteEvent_1546",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "RIGHT_SpawnSpiders",
+     "Originator": null,
+     "ObjComment": "RIGHT_SpawnSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 3
+    }
+   ]
+  },
+  {
+   "action": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_4.SeqAct_TnPawnFactory_7310",
+   "sublevel": "A5_TRY_DSN_m",
+   "sequence": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_4",
+   "comment": "SPIDER A",
+   "factory": {
+    "object": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_4.SeqAct_TnPawnFactory_7310.TnActorFactoryAI_6974",
+    "class": "TnActorFactoryAI",
+    "AiCharacterDefinitionTemplate": "TR_SpiderDec_AI_p.Spider_AICD",
+    "FactionTeam": "TransGame.TnFactionTeamDecepticons",
+    "StartingFormOverride": "TF_Invalid",
+    "AlertToPlayer": true,
+    "PlaySpawnAnimation": true,
+    "PawnClass": "TransGame.TnAiPawn",
+    "ControllerClass": "TransGame.TnAiController",
+    "TeamIndex": 255,
+    "NewActorClass": "Engine.Actor",
+    "archetype": "TR_SpiderDec_AI_p.Spider_AICD"
+   },
+   "spawn_points": [
+    {
+     "object": "A5_TRY_DSN_m.TheWorld.PersistentLevel.PathNode_12263",
+     "class": "PathNode",
+     "location_ue": [
+      2559.99951171875,
+      -6015.99951171875,
+      178.99990844726562
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": null,
+   "outputs": [
+    {
+     "output": "All Pawns Killed",
+     "to": [
+      "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_4.SeqAct_Gate_4256"
+     ]
+    }
+   ],
+   "spawned_variable": null,
+   "character_variables": [],
+   "fired_by_direct": [
+    {
+     "op": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_4.SeqAct_Gate_4256",
+     "class": "SeqAct_Gate",
+     "output": "Out"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_4.SeqEvent_HmDestructibleStateNotification_14423",
+     "class": "SeqEvent_HmDestructibleStateNotification",
+     "EventName": null,
+     "Originator": "A5_TRY_DSN_m.TheWorld.PersistentLevel.TnStaticDestructibleActor_8989",
+     "ObjComment": "PLAYER DESTROYED; DONT SPAWN SPIDER",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_4.SeqEvent_RemoteEvent_11309",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE2_RightDamageSpiders",
+     "Originator": null,
+     "ObjComment": "STAGE2_RightDamageSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_4.SeqEvent_RemoteEvent_4943",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE2_RightKillSpiders",
+     "Originator": null,
+     "ObjComment": "STAGE2_RightKillSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_4.SeqEvent_RemoteEvent_6946",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "FX_RightTailSpike",
+     "Originator": null,
+     "ObjComment": "FX_RightTailSpike",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_4.SeqEvent_RemoteEvent_1546",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "RIGHT_SpawnSpiders",
+     "Originator": null,
+     "ObjComment": "RIGHT_SpawnSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 3
+    }
+   ]
+  },
+  {
+   "action": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_5.SeqAct_TnPawnFactory_7310",
+   "sublevel": "A5_TRY_DSN_m",
+   "sequence": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_5",
+   "comment": "SPIDER A",
+   "factory": {
+    "object": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_5.SeqAct_TnPawnFactory_7310.TnActorFactoryAI_6974",
+    "class": "TnActorFactoryAI",
+    "AiCharacterDefinitionTemplate": "TR_SpiderDec_AI_p.Spider_AICD",
+    "FactionTeam": "TransGame.TnFactionTeamDecepticons",
+    "StartingFormOverride": "TF_Invalid",
+    "AlertToPlayer": true,
+    "PlaySpawnAnimation": true,
+    "PawnClass": "TransGame.TnAiPawn",
+    "ControllerClass": "TransGame.TnAiController",
+    "TeamIndex": 255,
+    "NewActorClass": "Engine.Actor",
+    "archetype": "TR_SpiderDec_AI_p.Spider_AICD"
+   },
+   "spawn_points": [
+    {
+     "object": "A5_TRY_DSN_m.TheWorld.PersistentLevel.PathNode_9855",
+     "class": "PathNode",
+     "location_ue": [
+      1535.99951171875,
+      -7551.99951171875,
+      178.99990844726562
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": null,
+   "outputs": [
+    {
+     "output": "All Pawns Killed",
+     "to": [
+      "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_5.SeqAct_Gate_4256"
+     ]
+    }
+   ],
+   "spawned_variable": null,
+   "character_variables": [],
+   "fired_by_direct": [
+    {
+     "op": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_5.SeqAct_Gate_4256",
+     "class": "SeqAct_Gate",
+     "output": "Out"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_5.SeqEvent_HmDestructibleStateNotification_14423",
+     "class": "SeqEvent_HmDestructibleStateNotification",
+     "EventName": null,
+     "Originator": "A5_TRY_DSN_m.TheWorld.PersistentLevel.TnStaticDestructibleActor_13599",
+     "ObjComment": "PLAYER DESTROYED; DONT SPAWN SPIDER",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_5.SeqEvent_RemoteEvent_1005",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE2_RightKillSpiders",
+     "Originator": null,
+     "ObjComment": "STAGE2_RightKillSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_5.SeqEvent_RemoteEvent_11309",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE2_RightDamageSpiders",
+     "Originator": null,
+     "ObjComment": "STAGE2_RightDamageSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_5.SeqEvent_RemoteEvent_6946",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "FX_RightTailSpike",
+     "Originator": null,
+     "ObjComment": "FX_RightTailSpike",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_5.SeqEvent_RemoteEvent_1546",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "RIGHT_SpawnSpiders",
+     "Originator": null,
+     "ObjComment": "RIGHT_SpawnSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 3
+    }
+   ]
+  },
+  {
+   "action": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_6.SeqAct_TnPawnFactory_7310",
+   "sublevel": "A5_TRY_DSN_m",
+   "sequence": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_6",
+   "comment": "SPIDER A",
+   "factory": {
+    "object": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_6.SeqAct_TnPawnFactory_7310.TnActorFactoryAI_6974",
+    "class": "TnActorFactoryAI",
+    "AiCharacterDefinitionTemplate": "TR_SpiderDec_AI_p.Spider_AICD",
+    "FactionTeam": "TransGame.TnFactionTeamDecepticons",
+    "StartingFormOverride": "TF_Invalid",
+    "AlertToPlayer": true,
+    "PlaySpawnAnimation": true,
+    "PawnClass": "TransGame.TnAiPawn",
+    "ControllerClass": "TransGame.TnAiController",
+    "TeamIndex": 255,
+    "NewActorClass": "Engine.Actor",
+    "archetype": "TR_SpiderDec_AI_p.Spider_AICD"
+   },
+   "spawn_points": [
+    {
+     "object": "A5_TRY_DSN_m.TheWorld.PersistentLevel.PathNode_11926",
+     "class": "PathNode",
+     "location_ue": [
+      3327.99951171875,
+      -10367.9990234375,
+      1935.280029296875
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": null,
+   "outputs": [
+    {
+     "output": "All Pawns Killed",
+     "to": [
+      "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_6.SeqAct_Gate_4256"
+     ]
+    }
+   ],
+   "spawned_variable": null,
+   "character_variables": [],
+   "fired_by_direct": [
+    {
+     "op": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_6.SeqAct_Gate_4256",
+     "class": "SeqAct_Gate",
+     "output": "Out"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_6.SeqEvent_HmDestructibleStateNotification_14027",
+     "class": "SeqEvent_HmDestructibleStateNotification",
+     "EventName": null,
+     "Originator": "A5_TRY_DSN_m.TheWorld.PersistentLevel.TnStaticDestructibleActor_1333",
+     "ObjComment": "PLAYER DESTROYED; DONT SPAWN SPIDER",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_6.SeqEvent_RemoteEvent_11309",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE2_RightDamageSpiders",
+     "Originator": null,
+     "ObjComment": "STAGE2_RightDamageSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_6.SeqEvent_RemoteEvent_6946",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "FX_RightTailSpike",
+     "Originator": null,
+     "ObjComment": "FX_RightTailSpike",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_6.SeqEvent_RemoteEvent_839",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE2_RightKillSpiders",
+     "Originator": null,
+     "ObjComment": "STAGE2_RightKillSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_6.SeqEvent_RemoteEvent_1546",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "RIGHT_SpawnSpiders",
+     "Originator": null,
+     "ObjComment": "RIGHT_SpawnSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 3
+    }
+   ]
+  },
+  {
+   "action": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_7.SeqAct_TnPawnFactory_7310",
+   "sublevel": "A5_TRY_DSN_m",
+   "sequence": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_7",
+   "comment": "SPIDER A",
+   "factory": {
+    "object": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_7.SeqAct_TnPawnFactory_7310.TnActorFactoryAI_6974",
+    "class": "TnActorFactoryAI",
+    "AiCharacterDefinitionTemplate": "TR_SpiderDec_AI_p.Spider_AICD",
+    "FactionTeam": "TransGame.TnFactionTeamDecepticons",
+    "StartingFormOverride": "TF_Invalid",
+    "AlertToPlayer": true,
+    "PlaySpawnAnimation": true,
+    "PawnClass": "TransGame.TnAiPawn",
+    "ControllerClass": "TransGame.TnAiController",
+    "TeamIndex": 255,
+    "NewActorClass": "Engine.Actor",
+    "archetype": "TR_SpiderDec_AI_p.Spider_AICD"
+   },
+   "spawn_points": [
+    {
+     "object": "A5_TRY_DSN_m.TheWorld.PersistentLevel.PathNode_7729",
+     "class": "PathNode",
+     "location_ue": [
+      -2816.000244140625,
+      -9343.9990234375,
+      2405.83935546875
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": null,
+   "outputs": [
+    {
+     "output": "All Pawns Killed",
+     "to": [
+      "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_7.SeqAct_Gate_4256"
+     ]
+    }
+   ],
+   "spawned_variable": null,
+   "character_variables": [],
+   "fired_by_direct": [
+    {
+     "op": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_7.SeqAct_Gate_4256",
+     "class": "SeqAct_Gate",
+     "output": "Out"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_7.SeqEvent_HmDestructibleStateNotification_14423",
+     "class": "SeqEvent_HmDestructibleStateNotification",
+     "EventName": null,
+     "Originator": "A5_TRY_DSN_m.TheWorld.PersistentLevel.TnStaticDestructibleActor_12382",
+     "ObjComment": "PLAYER DESTROYED; DONT SPAWN SPIDER",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_7.SeqEvent_RemoteEvent_11309",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE2_RightDamageSpiders",
+     "Originator": null,
+     "ObjComment": "STAGE2_RightDamageSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_7.SeqEvent_RemoteEvent_5832",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE2_RightKillSpiders",
+     "Originator": null,
+     "ObjComment": "STAGE2_RightKillSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_7.SeqEvent_RemoteEvent_6946",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "FX_RightTailSpike",
+     "Originator": null,
+     "ObjComment": "FX_RightTailSpike",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_7.SeqEvent_RemoteEvent_1546",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "RIGHT_SpawnSpiders",
+     "Originator": null,
+     "ObjComment": "RIGHT_SpawnSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 3
+    }
+   ]
+  },
+  {
+   "action": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_8.SeqAct_TnPawnFactory_7310",
+   "sublevel": "A5_TRY_DSN_m",
+   "sequence": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_8",
+   "comment": "SPIDER A",
+   "factory": {
+    "object": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_8.SeqAct_TnPawnFactory_7310.TnActorFactoryAI_6974",
+    "class": "TnActorFactoryAI",
+    "AiCharacterDefinitionTemplate": "TR_SpiderDec_AI_p.Spider_AICD",
+    "FactionTeam": "TransGame.TnFactionTeamDecepticons",
+    "StartingFormOverride": "TF_Invalid",
+    "AlertToPlayer": true,
+    "PlaySpawnAnimation": true,
+    "PawnClass": "TransGame.TnAiPawn",
+    "ControllerClass": "TransGame.TnAiController",
+    "TeamIndex": 255,
+    "NewActorClass": "Engine.Actor",
+    "archetype": "TR_SpiderDec_AI_p.Spider_AICD"
+   },
+   "spawn_points": [
+    {
+     "object": "A5_TRY_DSN_m.TheWorld.PersistentLevel.PathNode_11058",
+     "class": "PathNode",
+     "location_ue": [
+      -3328.000244140625,
+      -3839.9990234375,
+      2401.5400390625
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": null,
+   "outputs": [
+    {
+     "output": "All Pawns Killed",
+     "to": [
+      "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_8.SeqAct_Gate_4256"
+     ]
+    }
+   ],
+   "spawned_variable": null,
+   "character_variables": [],
+   "fired_by_direct": [
+    {
+     "op": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_8.SeqAct_Gate_4256",
+     "class": "SeqAct_Gate",
+     "output": "Out"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_8.SeqEvent_HmDestructibleStateNotification_14423",
+     "class": "SeqEvent_HmDestructibleStateNotification",
+     "EventName": null,
+     "Originator": "A5_TRY_DSN_m.TheWorld.PersistentLevel.TnStaticDestructibleActor_671",
+     "ObjComment": "PLAYER DESTROYED; DONT SPAWN SPIDER",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_8.SeqEvent_RemoteEvent_11309",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE2_RightDamageSpiders",
+     "Originator": null,
+     "ObjComment": "STAGE2_RightDamageSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_8.SeqEvent_RemoteEvent_13021",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE2_RightKillSpiders",
+     "Originator": null,
+     "ObjComment": "STAGE2_RightKillSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_8.SeqEvent_RemoteEvent_6946",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "FX_RightTailSpike",
+     "Originator": null,
+     "ObjComment": "FX_RightTailSpike",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.STAGE2_SPIDERS.STAGE2_RIGHT_CorruptorSpider_8.SeqEvent_RemoteEvent_1546",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "RIGHT_SpawnSpiders",
+     "Originator": null,
+     "ObjComment": "RIGHT_SpawnSpiders",
+     "MaxTriggerCount": 0,
+     "depth": 3
+    }
+   ]
+  },
+  {
+   "action": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_TnPawnFactory_6289",
+   "sublevel": "A5_TRY_DSN_m",
+   "sequence": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence",
+   "comment": "Spawn Trypticon with Stage 1 ActionSet",
+   "factory": {
+    "object": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_TnPawnFactory_6289.TnActorFactoryAI_4539",
+    "class": "TnActorFactoryAI",
+    "AiCharacterDefinitionTemplate": "TR_Trypticon_AI_p.Trypticon_AICD",
+    "FactionTeam": "TransGame.TnFactionTeamDecepticons",
+    "StartingFormOverride": "TF_Invalid",
+    "AlertToPlayer": true,
+    "PlaySpawnAnimation": true,
+    "PawnClass": "TransContent.TnTrypticonPawnContent",
+    "ControllerClass": "TransGame.TnAiController",
+    "TeamIndex": 255,
+    "NewActorClass": "Engine.Actor",
+    "archetype": "TR_Trypticon_AI_p.Trypticon_AICD"
+   },
+   "spawn_points": [
+    {
+     "object": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Trigger_6021",
+     "class": "Trigger",
+     "location_ue": [
+      17408.0,
+      0.0,
+      32896.0
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": null,
+   "outputs": [
+    {
+     "output": "Spawned",
+     "to": [
+      "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_HmSetAiGoalSet_11477",
+      "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Switch_14700"
+     ]
+    }
+   ],
+   "spawned_variable": "Trypticon",
+   "character_variables": [],
+   "fired_by_direct": [
+    {
+     "op": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_RemoteEvent_12623",
+     "class": "SeqEvent_RemoteEvent",
+     "output": "Out"
+    },
+    {
+     "op": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_RemoteEvent_14462",
+     "class": "SeqEvent_RemoteEvent",
+     "output": "Out"
+    },
+    {
+     "op": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_RemoteEvent_15118",
+     "class": "SeqEvent_RemoteEvent",
+     "output": "Out"
+    },
+    {
+     "op": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_RemoteEvent_3145",
+     "class": "SeqEvent_RemoteEvent",
+     "output": "Out"
+    },
+    {
+     "op": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_RemoteEvent_4596",
+     "class": "SeqEvent_RemoteEvent",
+     "output": "Out"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_RemoteEvent_12623",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "Checkpoint_03",
+     "Originator": null,
+     "ObjComment": "Checkpoint_03",
+     "MaxTriggerCount": 1,
+     "depth": 1
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_RemoteEvent_14462",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "Checkpoint_04",
+     "Originator": null,
+     "ObjComment": "Checkpoint_04",
+     "MaxTriggerCount": 1,
+     "depth": 1
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_RemoteEvent_15118",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "PreGameplaySetup_SpawnTrypticon",
+     "Originator": null,
+     "ObjComment": "PreGameplaySetup_SpawnTrypticon",
+     "MaxTriggerCount": 1,
+     "depth": 1
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_RemoteEvent_3145",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "Checkpoint_01",
+     "Originator": null,
+     "ObjComment": "Checkpoint_01",
+     "MaxTriggerCount": 1,
+     "depth": 1
+    },
+    {
+     "event": "A5_TRY_DSN_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_RemoteEvent_4596",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "Checkpoint_02",
+     "Originator": null,
+     "ObjComment": "Checkpoint_02",
+     "MaxTriggerCount": 1,
+     "depth": 1
+    }
+   ]
+  }
+ ]
+}

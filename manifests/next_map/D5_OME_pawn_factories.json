@@ -1,0 +1,2289 @@
+{
+ "map": "D5_OME",
+ "generated_by": "AssetTools/scripts/wfc/campaign_pawn_factories.py",
+ "source": "manifests/authored.db (Kismet ops of every exported sublevel)",
+ "counts": {
+  "pawn_factories": 30,
+  "by_factory_class": {
+   "TnActorFactoryOmegaBatteryDestructible": 4,
+   "TnActorFactoryAI": 26
+  },
+  "by_archetype": {
+   "Soldier_Jet_Autobot_AICD": 24,
+   "DES_OmegaRobotBattery": 4,
+   "OmegaSupreme_AICD": 2
+  },
+  "by_faction": {
+   "-": 4,
+   "TnFactionTeamAutobots": 26
+  },
+  "with_spawn_points": 30,
+  "with_firing_event": 30,
+  "with_direct_input": 30,
+  "TnSeqVar_Character_in_levels": 52,
+  "TnSeqVar_Character_linked_to_factories": 0
+ },
+ "pawn_factories": [
+  {
+   "action": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_01.SeqAct_TnPawnFactory_10184",
+   "sublevel": "D5_OME_DSN_m",
+   "sequence": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_01",
+   "comment": null,
+   "factory": {
+    "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_01.SeqAct_TnPawnFactory_10184.TnActorFactoryOmegaBatteryDestructible_15947",
+    "class": "TnActorFactoryOmegaBatteryDestructible",
+    "NewActorClass": "TransGame.TnOmegaBatteryDestructibleActor",
+    "Blueprint": "DES_NEU_Battery_p.DES_OmegaRobotBattery",
+    "archetype": "DES_NEU_Battery_p.DES_OmegaRobotBattery"
+   },
+   "spawn_points": [
+    {
+     "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.Trigger_9724",
+     "class": "Trigger",
+     "location_ue": [
+      120064.0,
+      71552.0,
+      38212.0
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": null,
+   "outputs": [
+    {
+     "output": "All Pawns Spawned",
+     "to": [
+      "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_01.SeqAct_Gate_1357"
+     ]
+    }
+   ],
+   "spawned_variable": null,
+   "character_variables": [],
+   "fired_by_direct": [
+    {
+     "op": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_01.SeqAct_Interp_6653",
+     "class": "SeqAct_Interp",
+     "output": "Completed"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_01.SeqEvent_SequenceActivated_12106",
+     "class": "SeqEvent_SequenceActivated",
+     "EventName": null,
+     "Originator": null,
+     "ObjComment": "Wounded Spawn Battery",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    }
+   ]
+  },
+  {
+   "action": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_01.SeqAct_TnPawnFactory_11735",
+   "sublevel": "D5_OME_DSN_m",
+   "sequence": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_01",
+   "comment": "Spawn Jet 1B",
+   "factory": {
+    "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_01.SeqAct_TnPawnFactory_11735.TnActorFactoryAI_11066",
+    "class": "TnActorFactoryAI",
+    "AiCharacterDefinitionTemplate": "TR_AiCharacterDefinition_p.Soldier_Jet_Autobot_AICD",
+    "FactionTeam": "TransGame.TnFactionTeamAutobots",
+    "StartingFormOverride": "TF_Vehicle",
+    "AlertToPlayer": true,
+    "PlaySpawnAnimation": true,
+    "PawnClass": "TransGame.TnAiPawn",
+    "ControllerClass": "TransGame.TnAiController",
+    "TeamIndex": 255,
+    "NewActorClass": "Engine.Actor",
+    "archetype": "TR_AiCharacterDefinition_p.Soldier_Jet_Autobot_AICD"
+   },
+   "spawn_points": [
+    {
+     "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.AirPathNode_10413",
+     "class": "AirPathNode",
+     "location_ue": [
+      119680.0,
+      65024.0,
+      41472.0
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": 15,
+   "outputs": [
+    {
+     "output": "All Pawns Spawned",
+     "to": [
+      "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_01.SeqAct_Delay_4265"
+     ]
+    }
+   ],
+   "spawned_variable": "Jet 1B",
+   "character_variables": [],
+   "fired_by_direct": [
+    {
+     "op": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_01.SeqAct_Delay_13146",
+     "class": "SeqAct_Delay",
+     "output": "Finished"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_01.SeqEvent_RemoteEvent_2245",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "COOP_False",
+     "Originator": null,
+     "ObjComment": "COOP_False",
+     "MaxTriggerCount": 1,
+     "depth": 3
+    },
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_01.SeqEvent_RemoteEvent_4248",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE1_OpenJetMinionGates",
+     "Originator": null,
+     "ObjComment": "STAGE1_OpenJetMinionGates",
+     "MaxTriggerCount": 0,
+     "depth": 4
+    },
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_01.SeqEvent_SequenceActivated_12106",
+     "class": "SeqEvent_SequenceActivated",
+     "EventName": null,
+     "Originator": null,
+     "ObjComment": "Wounded Spawn Battery",
+     "MaxTriggerCount": 0,
+     "depth": 4
+    }
+   ]
+  },
+  {
+   "action": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_01.SeqAct_TnPawnFactory_11885",
+   "sublevel": "D5_OME_DSN_m",
+   "sequence": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_01",
+   "comment": "Spawn Jet 1AA",
+   "factory": {
+    "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_01.SeqAct_TnPawnFactory_11885.TnActorFactoryAI_11066",
+    "class": "TnActorFactoryAI",
+    "AiCharacterDefinitionTemplate": "TR_AiCharacterDefinition_p.Soldier_Jet_Autobot_AICD",
+    "FactionTeam": "TransGame.TnFactionTeamAutobots",
+    "StartingFormOverride": "TF_Vehicle",
+    "AlertToPlayer": true,
+    "PlaySpawnAnimation": true,
+    "PawnClass": "TransGame.TnAiPawn",
+    "ControllerClass": "TransGame.TnAiController",
+    "TeamIndex": 255,
+    "NewActorClass": "Engine.Actor",
+    "archetype": "TR_AiCharacterDefinition_p.Soldier_Jet_Autobot_AICD"
+   },
+   "spawn_points": [
+    {
+     "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.AirPathNode_15816",
+     "class": "AirPathNode",
+     "location_ue": [
+      119680.0,
+      62976.0,
+      41472.0
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": 15,
+   "outputs": [
+    {
+     "output": "All Pawns Spawned",
+     "to": [
+      "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_01.SeqAct_Delay_10676"
+     ]
+    }
+   ],
+   "spawned_variable": "Jet 1AA",
+   "character_variables": [],
+   "fired_by_direct": [
+    {
+     "op": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_01.SeqAct_Delay_3128",
+     "class": "SeqAct_Delay",
+     "output": "Finished"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_01.SeqEvent_RemoteEvent_2835",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "COOP_True",
+     "Originator": null,
+     "ObjComment": "COOP_True",
+     "MaxTriggerCount": 1,
+     "depth": 3
+    },
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_01.SeqEvent_RemoteEvent_7441",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE1_OpenJetMinionGates",
+     "Originator": null,
+     "ObjComment": "STAGE1_OpenJetMinionGates",
+     "MaxTriggerCount": 0,
+     "depth": 4
+    },
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_01.SeqEvent_SequenceActivated_12106",
+     "class": "SeqEvent_SequenceActivated",
+     "EventName": null,
+     "Originator": null,
+     "ObjComment": "Wounded Spawn Battery",
+     "MaxTriggerCount": 0,
+     "depth": 4
+    }
+   ]
+  },
+  {
+   "action": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_01.SeqAct_TnPawnFactory_14044",
+   "sublevel": "D5_OME_DSN_m",
+   "sequence": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_01",
+   "comment": "Spawn Jet 1BB",
+   "factory": {
+    "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_01.SeqAct_TnPawnFactory_14044.TnActorFactoryAI_11066",
+    "class": "TnActorFactoryAI",
+    "AiCharacterDefinitionTemplate": "TR_AiCharacterDefinition_p.Soldier_Jet_Autobot_AICD",
+    "FactionTeam": "TransGame.TnFactionTeamAutobots",
+    "StartingFormOverride": "TF_Vehicle",
+    "AlertToPlayer": true,
+    "PlaySpawnAnimation": true,
+    "PawnClass": "TransGame.TnAiPawn",
+    "ControllerClass": "TransGame.TnAiController",
+    "TeamIndex": 255,
+    "NewActorClass": "Engine.Actor",
+    "archetype": "TR_AiCharacterDefinition_p.Soldier_Jet_Autobot_AICD"
+   },
+   "spawn_points": [
+    {
+     "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.AirPathNode_12946",
+     "class": "AirPathNode",
+     "location_ue": [
+      118912.0,
+      62976.0,
+      41472.0
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": 15,
+   "outputs": [
+    {
+     "output": "All Pawns Spawned",
+     "to": [
+      "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_01.SeqAct_Delay_12395"
+     ]
+    }
+   ],
+   "spawned_variable": "Jet 1BB",
+   "character_variables": [],
+   "fired_by_direct": [
+    {
+     "op": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_01.SeqAct_Delay_14464",
+     "class": "SeqAct_Delay",
+     "output": "Finished"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_01.SeqEvent_RemoteEvent_2835",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "COOP_True",
+     "Originator": null,
+     "ObjComment": "COOP_True",
+     "MaxTriggerCount": 1,
+     "depth": 3
+    },
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_01.SeqEvent_RemoteEvent_7441",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE1_OpenJetMinionGates",
+     "Originator": null,
+     "ObjComment": "STAGE1_OpenJetMinionGates",
+     "MaxTriggerCount": 0,
+     "depth": 4
+    },
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_01.SeqEvent_SequenceActivated_12106",
+     "class": "SeqEvent_SequenceActivated",
+     "EventName": null,
+     "Originator": null,
+     "ObjComment": "Wounded Spawn Battery",
+     "MaxTriggerCount": 0,
+     "depth": 4
+    }
+   ]
+  },
+  {
+   "action": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_01.SeqAct_TnPawnFactory_14160",
+   "sublevel": "D5_OME_DSN_m",
+   "sequence": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_01",
+   "comment": "Spawn Jet 1B",
+   "factory": {
+    "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_01.SeqAct_TnPawnFactory_14160.TnActorFactoryAI_11066",
+    "class": "TnActorFactoryAI",
+    "AiCharacterDefinitionTemplate": "TR_AiCharacterDefinition_p.Soldier_Jet_Autobot_AICD",
+    "FactionTeam": "TransGame.TnFactionTeamAutobots",
+    "StartingFormOverride": "TF_Vehicle",
+    "AlertToPlayer": true,
+    "PlaySpawnAnimation": true,
+    "PawnClass": "TransGame.TnAiPawn",
+    "ControllerClass": "TransGame.TnAiController",
+    "TeamIndex": 255,
+    "NewActorClass": "Engine.Actor",
+    "archetype": "TR_AiCharacterDefinition_p.Soldier_Jet_Autobot_AICD"
+   },
+   "spawn_points": [
+    {
+     "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.AirPathNode_14982",
+     "class": "AirPathNode",
+     "location_ue": [
+      118912.0,
+      65024.0,
+      41472.0
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": 15,
+   "outputs": [
+    {
+     "output": "All Pawns Spawned",
+     "to": [
+      "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_01.SeqAct_Delay_16039"
+     ]
+    }
+   ],
+   "spawned_variable": "Jet 1B",
+   "character_variables": [],
+   "fired_by_direct": [
+    {
+     "op": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_01.SeqAct_Delay_8336",
+     "class": "SeqAct_Delay",
+     "output": "Finished"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_01.SeqEvent_RemoteEvent_2835",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "COOP_True",
+     "Originator": null,
+     "ObjComment": "COOP_True",
+     "MaxTriggerCount": 1,
+     "depth": 3
+    },
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_01.SeqEvent_RemoteEvent_7441",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE1_OpenJetMinionGates",
+     "Originator": null,
+     "ObjComment": "STAGE1_OpenJetMinionGates",
+     "MaxTriggerCount": 0,
+     "depth": 4
+    },
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_01.SeqEvent_SequenceActivated_12106",
+     "class": "SeqEvent_SequenceActivated",
+     "EventName": null,
+     "Originator": null,
+     "ObjComment": "Wounded Spawn Battery",
+     "MaxTriggerCount": 0,
+     "depth": 4
+    }
+   ]
+  },
+  {
+   "action": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_01.SeqAct_TnPawnFactory_15896",
+   "sublevel": "D5_OME_DSN_m",
+   "sequence": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_01",
+   "comment": "Spawn Jet 1A",
+   "factory": {
+    "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_01.SeqAct_TnPawnFactory_15896.TnActorFactoryAI_11066",
+    "class": "TnActorFactoryAI",
+    "AiCharacterDefinitionTemplate": "TR_AiCharacterDefinition_p.Soldier_Jet_Autobot_AICD",
+    "FactionTeam": "TransGame.TnFactionTeamAutobots",
+    "StartingFormOverride": "TF_Vehicle",
+    "AlertToPlayer": true,
+    "PlaySpawnAnimation": true,
+    "PawnClass": "TransGame.TnAiPawn",
+    "ControllerClass": "TransGame.TnAiController",
+    "TeamIndex": 255,
+    "NewActorClass": "Engine.Actor",
+    "archetype": "TR_AiCharacterDefinition_p.Soldier_Jet_Autobot_AICD"
+   },
+   "spawn_points": [
+    {
+     "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.AirPathNode_14982",
+     "class": "AirPathNode",
+     "location_ue": [
+      118912.0,
+      65024.0,
+      41472.0
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": 15,
+   "outputs": [
+    {
+     "output": "All Pawns Spawned",
+     "to": [
+      "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_01.SeqAct_Delay_8614"
+     ]
+    }
+   ],
+   "spawned_variable": "Jet 1A",
+   "character_variables": [],
+   "fired_by_direct": [
+    {
+     "op": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_01.SeqAct_Delay_12513",
+     "class": "SeqAct_Delay",
+     "output": "Finished"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_01.SeqEvent_RemoteEvent_2245",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "COOP_False",
+     "Originator": null,
+     "ObjComment": "COOP_False",
+     "MaxTriggerCount": 1,
+     "depth": 3
+    },
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_01.SeqEvent_RemoteEvent_4248",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE1_OpenJetMinionGates",
+     "Originator": null,
+     "ObjComment": "STAGE1_OpenJetMinionGates",
+     "MaxTriggerCount": 0,
+     "depth": 4
+    },
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_01.SeqEvent_SequenceActivated_12106",
+     "class": "SeqEvent_SequenceActivated",
+     "EventName": null,
+     "Originator": null,
+     "ObjComment": "Wounded Spawn Battery",
+     "MaxTriggerCount": 0,
+     "depth": 4
+    }
+   ]
+  },
+  {
+   "action": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_01.SeqAct_TnPawnFactory_4687",
+   "sublevel": "D5_OME_DSN_m",
+   "sequence": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_01",
+   "comment": "Spawn Jet 1A",
+   "factory": {
+    "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_01.SeqAct_TnPawnFactory_4687.TnActorFactoryAI_11066",
+    "class": "TnActorFactoryAI",
+    "AiCharacterDefinitionTemplate": "TR_AiCharacterDefinition_p.Soldier_Jet_Autobot_AICD",
+    "FactionTeam": "TransGame.TnFactionTeamAutobots",
+    "StartingFormOverride": "TF_Vehicle",
+    "AlertToPlayer": true,
+    "PlaySpawnAnimation": true,
+    "PawnClass": "TransGame.TnAiPawn",
+    "ControllerClass": "TransGame.TnAiController",
+    "TeamIndex": 255,
+    "NewActorClass": "Engine.Actor",
+    "archetype": "TR_AiCharacterDefinition_p.Soldier_Jet_Autobot_AICD"
+   },
+   "spawn_points": [
+    {
+     "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.AirPathNode_10413",
+     "class": "AirPathNode",
+     "location_ue": [
+      119680.0,
+      65024.0,
+      41472.0
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": 15,
+   "outputs": [
+    {
+     "output": "All Pawns Spawned",
+     "to": [
+      "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_01.SeqAct_Delay_216"
+     ]
+    }
+   ],
+   "spawned_variable": "Jet 1A",
+   "character_variables": [],
+   "fired_by_direct": [
+    {
+     "op": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_01.SeqAct_Delay_8962",
+     "class": "SeqAct_Delay",
+     "output": "Finished"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_01.SeqEvent_RemoteEvent_2835",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "COOP_True",
+     "Originator": null,
+     "ObjComment": "COOP_True",
+     "MaxTriggerCount": 1,
+     "depth": 3
+    },
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_01.SeqEvent_RemoteEvent_7441",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE1_OpenJetMinionGates",
+     "Originator": null,
+     "ObjComment": "STAGE1_OpenJetMinionGates",
+     "MaxTriggerCount": 0,
+     "depth": 4
+    },
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_01.SeqEvent_SequenceActivated_12106",
+     "class": "SeqEvent_SequenceActivated",
+     "EventName": null,
+     "Originator": null,
+     "ObjComment": "Wounded Spawn Battery",
+     "MaxTriggerCount": 0,
+     "depth": 4
+    }
+   ]
+  },
+  {
+   "action": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_02.SeqAct_TnPawnFactory_10184",
+   "sublevel": "D5_OME_DSN_m",
+   "sequence": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_02",
+   "comment": null,
+   "factory": {
+    "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_02.SeqAct_TnPawnFactory_10184.TnActorFactoryOmegaBatteryDestructible_15947",
+    "class": "TnActorFactoryOmegaBatteryDestructible",
+    "NewActorClass": "TransGame.TnOmegaBatteryDestructibleActor",
+    "Blueprint": "DES_NEU_Battery_p.DES_OmegaRobotBattery",
+    "archetype": "DES_NEU_Battery_p.DES_OmegaRobotBattery"
+   },
+   "spawn_points": [
+    {
+     "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.Trigger_7259",
+     "class": "Trigger",
+     "location_ue": [
+      120064.0,
+      81024.0,
+      38212.0
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": null,
+   "outputs": [
+    {
+     "output": "All Pawns Spawned",
+     "to": [
+      "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_02.SeqAct_Gate_15610"
+     ]
+    }
+   ],
+   "spawned_variable": null,
+   "character_variables": [],
+   "fired_by_direct": [
+    {
+     "op": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_02.SeqAct_Interp_11315",
+     "class": "SeqAct_Interp",
+     "output": "Completed"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_02.SeqEvent_SequenceActivated_1711",
+     "class": "SeqEvent_SequenceActivated",
+     "EventName": null,
+     "Originator": null,
+     "ObjComment": "Wounded Spawn Battery",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    }
+   ]
+  },
+  {
+   "action": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_02.SeqAct_TnPawnFactory_15137",
+   "sublevel": "D5_OME_DSN_m",
+   "sequence": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_02",
+   "comment": "Spawn Jet 2B",
+   "factory": {
+    "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_02.SeqAct_TnPawnFactory_15137.TnActorFactoryAI_11066",
+    "class": "TnActorFactoryAI",
+    "AiCharacterDefinitionTemplate": "TR_AiCharacterDefinition_p.Soldier_Jet_Autobot_AICD",
+    "FactionTeam": "TransGame.TnFactionTeamAutobots",
+    "StartingFormOverride": "TF_Vehicle",
+    "AlertToPlayer": true,
+    "PlaySpawnAnimation": true,
+    "PawnClass": "TransGame.TnAiPawn",
+    "ControllerClass": "TransGame.TnAiController",
+    "TeamIndex": 255,
+    "NewActorClass": "Engine.Actor",
+    "archetype": "TR_AiCharacterDefinition_p.Soldier_Jet_Autobot_AICD"
+   },
+   "spawn_points": [
+    {
+     "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.AirPathNode_14756",
+     "class": "AirPathNode",
+     "location_ue": [
+      119936.0,
+      90112.0,
+      41984.0
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": 15,
+   "outputs": [
+    {
+     "output": "All Pawns Spawned",
+     "to": [
+      "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_02.SeqAct_Delay_4145"
+     ]
+    }
+   ],
+   "spawned_variable": "Jet 2B",
+   "character_variables": [],
+   "fired_by_direct": [
+    {
+     "op": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_02.SeqAct_Delay_6416",
+     "class": "SeqAct_Delay",
+     "output": "Finished"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_02.SeqEvent_RemoteEvent_2895",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "COOP_True",
+     "Originator": null,
+     "ObjComment": "COOP_True",
+     "MaxTriggerCount": 1,
+     "depth": 3
+    },
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_02.SeqEvent_RemoteEvent_8014",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE1_OpenJetMinionGates",
+     "Originator": null,
+     "ObjComment": "STAGE1_OpenJetMinionGates",
+     "MaxTriggerCount": 0,
+     "depth": 4
+    },
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_02.SeqEvent_SequenceActivated_1711",
+     "class": "SeqEvent_SequenceActivated",
+     "EventName": null,
+     "Originator": null,
+     "ObjComment": "Wounded Spawn Battery",
+     "MaxTriggerCount": 0,
+     "depth": 4
+    }
+   ]
+  },
+  {
+   "action": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_02.SeqAct_TnPawnFactory_15151",
+   "sublevel": "D5_OME_DSN_m",
+   "sequence": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_02",
+   "comment": "Spawn Jet 2A",
+   "factory": {
+    "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_02.SeqAct_TnPawnFactory_15151.TnActorFactoryAI_11066",
+    "class": "TnActorFactoryAI",
+    "AiCharacterDefinitionTemplate": "TR_AiCharacterDefinition_p.Soldier_Jet_Autobot_AICD",
+    "FactionTeam": "TransGame.TnFactionTeamAutobots",
+    "StartingFormOverride": "TF_Vehicle",
+    "AlertToPlayer": true,
+    "PlaySpawnAnimation": true,
+    "PawnClass": "TransGame.TnAiPawn",
+    "ControllerClass": "TransGame.TnAiController",
+    "TeamIndex": 255,
+    "NewActorClass": "Engine.Actor",
+    "archetype": "TR_AiCharacterDefinition_p.Soldier_Jet_Autobot_AICD"
+   },
+   "spawn_points": [
+    {
+     "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.AirPathNode_8482",
+     "class": "AirPathNode",
+     "location_ue": [
+      119168.0,
+      90112.0,
+      41984.0
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": 15,
+   "outputs": [
+    {
+     "output": "All Pawns Spawned",
+     "to": [
+      "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_02.SeqAct_Delay_6178"
+     ]
+    }
+   ],
+   "spawned_variable": "Jet 2A",
+   "character_variables": [],
+   "fired_by_direct": [
+    {
+     "op": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_02.SeqAct_Delay_13139",
+     "class": "SeqAct_Delay",
+     "output": "Finished"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_02.SeqEvent_RemoteEvent_2835",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "COOP_False",
+     "Originator": null,
+     "ObjComment": "COOP_False",
+     "MaxTriggerCount": 1,
+     "depth": 3
+    },
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_02.SeqEvent_RemoteEvent_1644",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE1_OpenJetMinionGates",
+     "Originator": null,
+     "ObjComment": "STAGE1_OpenJetMinionGates",
+     "MaxTriggerCount": 0,
+     "depth": 4
+    },
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_02.SeqEvent_SequenceActivated_1711",
+     "class": "SeqEvent_SequenceActivated",
+     "EventName": null,
+     "Originator": null,
+     "ObjComment": "Wounded Spawn Battery",
+     "MaxTriggerCount": 0,
+     "depth": 4
+    }
+   ]
+  },
+  {
+   "action": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_02.SeqAct_TnPawnFactory_15979",
+   "sublevel": "D5_OME_DSN_m",
+   "sequence": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_02",
+   "comment": "Spawn Jet 2A",
+   "factory": {
+    "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_02.SeqAct_TnPawnFactory_15979.TnActorFactoryAI_11066",
+    "class": "TnActorFactoryAI",
+    "AiCharacterDefinitionTemplate": "TR_AiCharacterDefinition_p.Soldier_Jet_Autobot_AICD",
+    "FactionTeam": "TransGame.TnFactionTeamAutobots",
+    "StartingFormOverride": "TF_Vehicle",
+    "AlertToPlayer": true,
+    "PlaySpawnAnimation": true,
+    "PawnClass": "TransGame.TnAiPawn",
+    "ControllerClass": "TransGame.TnAiController",
+    "TeamIndex": 255,
+    "NewActorClass": "Engine.Actor",
+    "archetype": "TR_AiCharacterDefinition_p.Soldier_Jet_Autobot_AICD"
+   },
+   "spawn_points": [
+    {
+     "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.AirPathNode_8482",
+     "class": "AirPathNode",
+     "location_ue": [
+      119168.0,
+      90112.0,
+      41984.0
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": 15,
+   "outputs": [
+    {
+     "output": "All Pawns Spawned",
+     "to": [
+      "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_02.SeqAct_Delay_11662"
+     ]
+    }
+   ],
+   "spawned_variable": "Jet 2A",
+   "character_variables": [],
+   "fired_by_direct": [
+    {
+     "op": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_02.SeqAct_Delay_13662",
+     "class": "SeqAct_Delay",
+     "output": "Finished"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_02.SeqEvent_RemoteEvent_2895",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "COOP_True",
+     "Originator": null,
+     "ObjComment": "COOP_True",
+     "MaxTriggerCount": 1,
+     "depth": 3
+    },
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_02.SeqEvent_RemoteEvent_8014",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE1_OpenJetMinionGates",
+     "Originator": null,
+     "ObjComment": "STAGE1_OpenJetMinionGates",
+     "MaxTriggerCount": 0,
+     "depth": 4
+    },
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_02.SeqEvent_SequenceActivated_1711",
+     "class": "SeqEvent_SequenceActivated",
+     "EventName": null,
+     "Originator": null,
+     "ObjComment": "Wounded Spawn Battery",
+     "MaxTriggerCount": 0,
+     "depth": 4
+    }
+   ]
+  },
+  {
+   "action": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_02.SeqAct_TnPawnFactory_1697",
+   "sublevel": "D5_OME_DSN_m",
+   "sequence": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_02",
+   "comment": "Spawn Jet 2BB",
+   "factory": {
+    "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_02.SeqAct_TnPawnFactory_1697.TnActorFactoryAI_11066",
+    "class": "TnActorFactoryAI",
+    "AiCharacterDefinitionTemplate": "TR_AiCharacterDefinition_p.Soldier_Jet_Autobot_AICD",
+    "FactionTeam": "TransGame.TnFactionTeamAutobots",
+    "StartingFormOverride": "TF_Vehicle",
+    "AlertToPlayer": true,
+    "PlaySpawnAnimation": true,
+    "PawnClass": "TransGame.TnAiPawn",
+    "ControllerClass": "TransGame.TnAiController",
+    "TeamIndex": 255,
+    "NewActorClass": "Engine.Actor",
+    "archetype": "TR_AiCharacterDefinition_p.Soldier_Jet_Autobot_AICD"
+   },
+   "spawn_points": [
+    {
+     "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.AirPathNode_11943",
+     "class": "AirPathNode",
+     "location_ue": [
+      119936.0,
+      92160.0,
+      41984.0
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": 15,
+   "outputs": [
+    {
+     "output": "All Pawns Spawned",
+     "to": [
+      "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_02.SeqAct_Delay_14947"
+     ]
+    }
+   ],
+   "spawned_variable": "Jet 2BB",
+   "character_variables": [],
+   "fired_by_direct": [
+    {
+     "op": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_02.SeqAct_Delay_2",
+     "class": "SeqAct_Delay",
+     "output": "Finished"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_02.SeqEvent_RemoteEvent_2895",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "COOP_True",
+     "Originator": null,
+     "ObjComment": "COOP_True",
+     "MaxTriggerCount": 1,
+     "depth": 3
+    },
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_02.SeqEvent_RemoteEvent_8014",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE1_OpenJetMinionGates",
+     "Originator": null,
+     "ObjComment": "STAGE1_OpenJetMinionGates",
+     "MaxTriggerCount": 0,
+     "depth": 4
+    },
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_02.SeqEvent_SequenceActivated_1711",
+     "class": "SeqEvent_SequenceActivated",
+     "EventName": null,
+     "Originator": null,
+     "ObjComment": "Wounded Spawn Battery",
+     "MaxTriggerCount": 0,
+     "depth": 4
+    }
+   ]
+  },
+  {
+   "action": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_02.SeqAct_TnPawnFactory_5603",
+   "sublevel": "D5_OME_DSN_m",
+   "sequence": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_02",
+   "comment": "Spawn Jet 2AA",
+   "factory": {
+    "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_02.SeqAct_TnPawnFactory_5603.TnActorFactoryAI_11066",
+    "class": "TnActorFactoryAI",
+    "AiCharacterDefinitionTemplate": "TR_AiCharacterDefinition_p.Soldier_Jet_Autobot_AICD",
+    "FactionTeam": "TransGame.TnFactionTeamAutobots",
+    "StartingFormOverride": "TF_Vehicle",
+    "AlertToPlayer": true,
+    "PlaySpawnAnimation": true,
+    "PawnClass": "TransGame.TnAiPawn",
+    "ControllerClass": "TransGame.TnAiController",
+    "TeamIndex": 255,
+    "NewActorClass": "Engine.Actor",
+    "archetype": "TR_AiCharacterDefinition_p.Soldier_Jet_Autobot_AICD"
+   },
+   "spawn_points": [
+    {
+     "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.AirPathNode_9385",
+     "class": "AirPathNode",
+     "location_ue": [
+      119168.0,
+      92160.0,
+      41984.0
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": 15,
+   "outputs": [
+    {
+     "output": "All Pawns Spawned",
+     "to": [
+      "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_02.SeqAct_Delay_13977"
+     ]
+    }
+   ],
+   "spawned_variable": "Jet 2AA",
+   "character_variables": [],
+   "fired_by_direct": [
+    {
+     "op": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_02.SeqAct_Delay_7297",
+     "class": "SeqAct_Delay",
+     "output": "Finished"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_02.SeqEvent_RemoteEvent_2895",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "COOP_True",
+     "Originator": null,
+     "ObjComment": "COOP_True",
+     "MaxTriggerCount": 1,
+     "depth": 3
+    },
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_02.SeqEvent_RemoteEvent_8014",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE1_OpenJetMinionGates",
+     "Originator": null,
+     "ObjComment": "STAGE1_OpenJetMinionGates",
+     "MaxTriggerCount": 0,
+     "depth": 4
+    },
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_02.SeqEvent_SequenceActivated_1711",
+     "class": "SeqEvent_SequenceActivated",
+     "EventName": null,
+     "Originator": null,
+     "ObjComment": "Wounded Spawn Battery",
+     "MaxTriggerCount": 0,
+     "depth": 4
+    }
+   ]
+  },
+  {
+   "action": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_02.SeqAct_TnPawnFactory_9495",
+   "sublevel": "D5_OME_DSN_m",
+   "sequence": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_02",
+   "comment": "Spawn Jet 2B",
+   "factory": {
+    "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_02.SeqAct_TnPawnFactory_9495.TnActorFactoryAI_11066",
+    "class": "TnActorFactoryAI",
+    "AiCharacterDefinitionTemplate": "TR_AiCharacterDefinition_p.Soldier_Jet_Autobot_AICD",
+    "FactionTeam": "TransGame.TnFactionTeamAutobots",
+    "StartingFormOverride": "TF_Vehicle",
+    "AlertToPlayer": true,
+    "PlaySpawnAnimation": true,
+    "PawnClass": "TransGame.TnAiPawn",
+    "ControllerClass": "TransGame.TnAiController",
+    "TeamIndex": 255,
+    "NewActorClass": "Engine.Actor",
+    "archetype": "TR_AiCharacterDefinition_p.Soldier_Jet_Autobot_AICD"
+   },
+   "spawn_points": [
+    {
+     "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.AirPathNode_14756",
+     "class": "AirPathNode",
+     "location_ue": [
+      119936.0,
+      90112.0,
+      41984.0
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": 15,
+   "outputs": [
+    {
+     "output": "All Pawns Spawned",
+     "to": [
+      "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_02.SeqAct_Delay_14327"
+     ]
+    }
+   ],
+   "spawned_variable": "Jet 2B",
+   "character_variables": [],
+   "fired_by_direct": [
+    {
+     "op": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_02.SeqAct_Delay_4396",
+     "class": "SeqAct_Delay",
+     "output": "Finished"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_02.SeqEvent_RemoteEvent_2835",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "COOP_False",
+     "Originator": null,
+     "ObjComment": "COOP_False",
+     "MaxTriggerCount": 1,
+     "depth": 3
+    },
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_02.SeqEvent_RemoteEvent_1644",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE1_OpenJetMinionGates",
+     "Originator": null,
+     "ObjComment": "STAGE1_OpenJetMinionGates",
+     "MaxTriggerCount": 0,
+     "depth": 4
+    },
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_02.SeqEvent_SequenceActivated_1711",
+     "class": "SeqEvent_SequenceActivated",
+     "EventName": null,
+     "Originator": null,
+     "ObjComment": "Wounded Spawn Battery",
+     "MaxTriggerCount": 0,
+     "depth": 4
+    }
+   ]
+  },
+  {
+   "action": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_03.SeqAct_TnPawnFactory_10184",
+   "sublevel": "D5_OME_DSN_m",
+   "sequence": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_03",
+   "comment": null,
+   "factory": {
+    "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_03.SeqAct_TnPawnFactory_10184.TnActorFactoryOmegaBatteryDestructible_15947",
+    "class": "TnActorFactoryOmegaBatteryDestructible",
+    "NewActorClass": "TransGame.TnOmegaBatteryDestructibleActor",
+    "Blueprint": "DES_NEU_Battery_p.DES_OmegaRobotBattery",
+    "archetype": "DES_NEU_Battery_p.DES_OmegaRobotBattery"
+   },
+   "spawn_points": [
+    {
+     "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.Trigger_10130",
+     "class": "Trigger",
+     "location_ue": [
+      105472.0,
+      82944.0,
+      39492.0
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": null,
+   "outputs": [
+    {
+     "output": "All Pawns Spawned",
+     "to": [
+      "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_03.SeqAct_Gate_13339"
+     ]
+    }
+   ],
+   "spawned_variable": null,
+   "character_variables": [],
+   "fired_by_direct": [
+    {
+     "op": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_03.SeqAct_Interp_6653",
+     "class": "SeqAct_Interp",
+     "output": "Completed"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_03.SeqEvent_SequenceActivated_15071",
+     "class": "SeqEvent_SequenceActivated",
+     "EventName": null,
+     "Originator": null,
+     "ObjComment": "Wounded Spawn Battery",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    }
+   ]
+  },
+  {
+   "action": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_03.SeqAct_TnPawnFactory_11735",
+   "sublevel": "D5_OME_DSN_m",
+   "sequence": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_03",
+   "comment": "Spawn Jet 3B",
+   "factory": {
+    "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_03.SeqAct_TnPawnFactory_11735.TnActorFactoryAI_11066",
+    "class": "TnActorFactoryAI",
+    "AiCharacterDefinitionTemplate": "TR_AiCharacterDefinition_p.Soldier_Jet_Autobot_AICD",
+    "FactionTeam": "TransGame.TnFactionTeamAutobots",
+    "StartingFormOverride": "TF_Vehicle",
+    "AlertToPlayer": true,
+    "PlaySpawnAnimation": true,
+    "PawnClass": "TransGame.TnAiPawn",
+    "ControllerClass": "TransGame.TnAiController",
+    "TeamIndex": 255,
+    "NewActorClass": "Engine.Actor",
+    "archetype": "TR_AiCharacterDefinition_p.Soldier_Jet_Autobot_AICD"
+   },
+   "spawn_points": [
+    {
+     "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.AirPathNode_4701",
+     "class": "AirPathNode",
+     "location_ue": [
+      104448.0,
+      90112.0,
+      41984.0
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": 15,
+   "outputs": [
+    {
+     "output": "All Pawns Spawned",
+     "to": [
+      "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_03.SeqAct_Delay_4265"
+     ]
+    }
+   ],
+   "spawned_variable": "Jet 3B",
+   "character_variables": [],
+   "fired_by_direct": [
+    {
+     "op": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_03.SeqAct_Delay_13146",
+     "class": "SeqAct_Delay",
+     "output": "Finished"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_03.SeqEvent_RemoteEvent_2245",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "COOP_False",
+     "Originator": null,
+     "ObjComment": "COOP_False",
+     "MaxTriggerCount": 1,
+     "depth": 3
+    },
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_03.SeqEvent_RemoteEvent_4248",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE1_OpenJetMinionGates",
+     "Originator": null,
+     "ObjComment": "STAGE1_OpenJetMinionGates",
+     "MaxTriggerCount": 0,
+     "depth": 4
+    },
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_03.SeqEvent_SequenceActivated_15071",
+     "class": "SeqEvent_SequenceActivated",
+     "EventName": null,
+     "Originator": null,
+     "ObjComment": "Wounded Spawn Battery",
+     "MaxTriggerCount": 0,
+     "depth": 4
+    }
+   ]
+  },
+  {
+   "action": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_03.SeqAct_TnPawnFactory_11885",
+   "sublevel": "D5_OME_DSN_m",
+   "sequence": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_03",
+   "comment": "Spawn Jet 3AA",
+   "factory": {
+    "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_03.SeqAct_TnPawnFactory_11885.TnActorFactoryAI_11066",
+    "class": "TnActorFactoryAI",
+    "AiCharacterDefinitionTemplate": "TR_AiCharacterDefinition_p.Soldier_Jet_Autobot_AICD",
+    "FactionTeam": "TransGame.TnFactionTeamAutobots",
+    "StartingFormOverride": "TF_Vehicle",
+    "AlertToPlayer": true,
+    "PlaySpawnAnimation": true,
+    "PawnClass": "TransGame.TnAiPawn",
+    "ControllerClass": "TransGame.TnAiController",
+    "TeamIndex": 255,
+    "NewActorClass": "Engine.Actor",
+    "archetype": "TR_AiCharacterDefinition_p.Soldier_Jet_Autobot_AICD"
+   },
+   "spawn_points": [
+    {
+     "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.AirPathNode_8857",
+     "class": "AirPathNode",
+     "location_ue": [
+      105216.0,
+      92160.0,
+      41984.0
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": 15,
+   "outputs": [
+    {
+     "output": "All Pawns Spawned",
+     "to": [
+      "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_03.SeqAct_Delay_10676"
+     ]
+    }
+   ],
+   "spawned_variable": "Jet 3AA",
+   "character_variables": [],
+   "fired_by_direct": [
+    {
+     "op": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_03.SeqAct_Delay_3128",
+     "class": "SeqAct_Delay",
+     "output": "Finished"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_03.SeqEvent_RemoteEvent_2835",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "COOP_True",
+     "Originator": null,
+     "ObjComment": "COOP_True",
+     "MaxTriggerCount": 1,
+     "depth": 3
+    },
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_03.SeqEvent_RemoteEvent_7441",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE1_OpenJetMinionGates",
+     "Originator": null,
+     "ObjComment": "STAGE1_OpenJetMinionGates",
+     "MaxTriggerCount": 0,
+     "depth": 4
+    },
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_03.SeqEvent_SequenceActivated_15071",
+     "class": "SeqEvent_SequenceActivated",
+     "EventName": null,
+     "Originator": null,
+     "ObjComment": "Wounded Spawn Battery",
+     "MaxTriggerCount": 0,
+     "depth": 4
+    }
+   ]
+  },
+  {
+   "action": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_03.SeqAct_TnPawnFactory_14044",
+   "sublevel": "D5_OME_DSN_m",
+   "sequence": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_03",
+   "comment": "Spawn Jet 3BB",
+   "factory": {
+    "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_03.SeqAct_TnPawnFactory_14044.TnActorFactoryAI_11066",
+    "class": "TnActorFactoryAI",
+    "AiCharacterDefinitionTemplate": "TR_AiCharacterDefinition_p.Soldier_Jet_Autobot_AICD",
+    "FactionTeam": "TransGame.TnFactionTeamAutobots",
+    "StartingFormOverride": "TF_Vehicle",
+    "AlertToPlayer": true,
+    "PlaySpawnAnimation": true,
+    "PawnClass": "TransGame.TnAiPawn",
+    "ControllerClass": "TransGame.TnAiController",
+    "TeamIndex": 255,
+    "NewActorClass": "Engine.Actor",
+    "archetype": "TR_AiCharacterDefinition_p.Soldier_Jet_Autobot_AICD"
+   },
+   "spawn_points": [
+    {
+     "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.AirPathNode_10474",
+     "class": "AirPathNode",
+     "location_ue": [
+      104448.0,
+      92160.0,
+      41984.0
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": 15,
+   "outputs": [
+    {
+     "output": "All Pawns Spawned",
+     "to": [
+      "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_03.SeqAct_Delay_12395"
+     ]
+    }
+   ],
+   "spawned_variable": "Jet 3BB",
+   "character_variables": [],
+   "fired_by_direct": [
+    {
+     "op": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_03.SeqAct_Delay_14464",
+     "class": "SeqAct_Delay",
+     "output": "Finished"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_03.SeqEvent_RemoteEvent_2835",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "COOP_True",
+     "Originator": null,
+     "ObjComment": "COOP_True",
+     "MaxTriggerCount": 1,
+     "depth": 3
+    },
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_03.SeqEvent_RemoteEvent_7441",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE1_OpenJetMinionGates",
+     "Originator": null,
+     "ObjComment": "STAGE1_OpenJetMinionGates",
+     "MaxTriggerCount": 0,
+     "depth": 4
+    },
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_03.SeqEvent_SequenceActivated_15071",
+     "class": "SeqEvent_SequenceActivated",
+     "EventName": null,
+     "Originator": null,
+     "ObjComment": "Wounded Spawn Battery",
+     "MaxTriggerCount": 0,
+     "depth": 4
+    }
+   ]
+  },
+  {
+   "action": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_03.SeqAct_TnPawnFactory_14160",
+   "sublevel": "D5_OME_DSN_m",
+   "sequence": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_03",
+   "comment": "Spawn Jet 3B",
+   "factory": {
+    "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_03.SeqAct_TnPawnFactory_14160.TnActorFactoryAI_11066",
+    "class": "TnActorFactoryAI",
+    "AiCharacterDefinitionTemplate": "TR_AiCharacterDefinition_p.Soldier_Jet_Autobot_AICD",
+    "FactionTeam": "TransGame.TnFactionTeamAutobots",
+    "StartingFormOverride": "TF_Vehicle",
+    "AlertToPlayer": true,
+    "PlaySpawnAnimation": true,
+    "PawnClass": "TransGame.TnAiPawn",
+    "ControllerClass": "TransGame.TnAiController",
+    "TeamIndex": 255,
+    "NewActorClass": "Engine.Actor",
+    "archetype": "TR_AiCharacterDefinition_p.Soldier_Jet_Autobot_AICD"
+   },
+   "spawn_points": [
+    {
+     "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.AirPathNode_4701",
+     "class": "AirPathNode",
+     "location_ue": [
+      104448.0,
+      90112.0,
+      41984.0
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": 15,
+   "outputs": [
+    {
+     "output": "All Pawns Spawned",
+     "to": [
+      "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_03.SeqAct_Delay_16039"
+     ]
+    }
+   ],
+   "spawned_variable": "Jet 3B",
+   "character_variables": [],
+   "fired_by_direct": [
+    {
+     "op": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_03.SeqAct_Delay_8336",
+     "class": "SeqAct_Delay",
+     "output": "Finished"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_03.SeqEvent_RemoteEvent_2835",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "COOP_True",
+     "Originator": null,
+     "ObjComment": "COOP_True",
+     "MaxTriggerCount": 1,
+     "depth": 3
+    },
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_03.SeqEvent_RemoteEvent_7441",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE1_OpenJetMinionGates",
+     "Originator": null,
+     "ObjComment": "STAGE1_OpenJetMinionGates",
+     "MaxTriggerCount": 0,
+     "depth": 4
+    },
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_03.SeqEvent_SequenceActivated_15071",
+     "class": "SeqEvent_SequenceActivated",
+     "EventName": null,
+     "Originator": null,
+     "ObjComment": "Wounded Spawn Battery",
+     "MaxTriggerCount": 0,
+     "depth": 4
+    }
+   ]
+  },
+  {
+   "action": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_03.SeqAct_TnPawnFactory_15896",
+   "sublevel": "D5_OME_DSN_m",
+   "sequence": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_03",
+   "comment": "Spawn Jet 3A",
+   "factory": {
+    "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_03.SeqAct_TnPawnFactory_15896.TnActorFactoryAI_11066",
+    "class": "TnActorFactoryAI",
+    "AiCharacterDefinitionTemplate": "TR_AiCharacterDefinition_p.Soldier_Jet_Autobot_AICD",
+    "FactionTeam": "TransGame.TnFactionTeamAutobots",
+    "StartingFormOverride": "TF_Vehicle",
+    "AlertToPlayer": true,
+    "PlaySpawnAnimation": true,
+    "PawnClass": "TransGame.TnAiPawn",
+    "ControllerClass": "TransGame.TnAiController",
+    "TeamIndex": 255,
+    "NewActorClass": "Engine.Actor",
+    "archetype": "TR_AiCharacterDefinition_p.Soldier_Jet_Autobot_AICD"
+   },
+   "spawn_points": [
+    {
+     "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.AirPathNode_11225",
+     "class": "AirPathNode",
+     "location_ue": [
+      105216.0,
+      90112.0,
+      41984.0
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": 15,
+   "outputs": [
+    {
+     "output": "All Pawns Spawned",
+     "to": [
+      "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_03.SeqAct_Delay_8614"
+     ]
+    }
+   ],
+   "spawned_variable": "Jet 3A",
+   "character_variables": [],
+   "fired_by_direct": [
+    {
+     "op": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_03.SeqAct_Delay_12513",
+     "class": "SeqAct_Delay",
+     "output": "Finished"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_03.SeqEvent_RemoteEvent_2245",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "COOP_False",
+     "Originator": null,
+     "ObjComment": "COOP_False",
+     "MaxTriggerCount": 1,
+     "depth": 3
+    },
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_03.SeqEvent_RemoteEvent_4248",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE1_OpenJetMinionGates",
+     "Originator": null,
+     "ObjComment": "STAGE1_OpenJetMinionGates",
+     "MaxTriggerCount": 0,
+     "depth": 4
+    },
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_03.SeqEvent_SequenceActivated_15071",
+     "class": "SeqEvent_SequenceActivated",
+     "EventName": null,
+     "Originator": null,
+     "ObjComment": "Wounded Spawn Battery",
+     "MaxTriggerCount": 0,
+     "depth": 4
+    }
+   ]
+  },
+  {
+   "action": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_03.SeqAct_TnPawnFactory_4687",
+   "sublevel": "D5_OME_DSN_m",
+   "sequence": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_03",
+   "comment": "Spawn Jet 3A",
+   "factory": {
+    "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_03.SeqAct_TnPawnFactory_4687.TnActorFactoryAI_11066",
+    "class": "TnActorFactoryAI",
+    "AiCharacterDefinitionTemplate": "TR_AiCharacterDefinition_p.Soldier_Jet_Autobot_AICD",
+    "FactionTeam": "TransGame.TnFactionTeamAutobots",
+    "StartingFormOverride": "TF_Vehicle",
+    "AlertToPlayer": true,
+    "PlaySpawnAnimation": true,
+    "PawnClass": "TransGame.TnAiPawn",
+    "ControllerClass": "TransGame.TnAiController",
+    "TeamIndex": 255,
+    "NewActorClass": "Engine.Actor",
+    "archetype": "TR_AiCharacterDefinition_p.Soldier_Jet_Autobot_AICD"
+   },
+   "spawn_points": [
+    {
+     "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.AirPathNode_11225",
+     "class": "AirPathNode",
+     "location_ue": [
+      105216.0,
+      90112.0,
+      41984.0
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": 15,
+   "outputs": [
+    {
+     "output": "All Pawns Spawned",
+     "to": [
+      "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_03.SeqAct_Delay_216"
+     ]
+    }
+   ],
+   "spawned_variable": "Jet 3A",
+   "character_variables": [],
+   "fired_by_direct": [
+    {
+     "op": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_03.SeqAct_Delay_8962",
+     "class": "SeqAct_Delay",
+     "output": "Finished"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_03.SeqEvent_RemoteEvent_2835",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "COOP_True",
+     "Originator": null,
+     "ObjComment": "COOP_True",
+     "MaxTriggerCount": 1,
+     "depth": 3
+    },
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_03.SeqEvent_RemoteEvent_7441",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE1_OpenJetMinionGates",
+     "Originator": null,
+     "ObjComment": "STAGE1_OpenJetMinionGates",
+     "MaxTriggerCount": 0,
+     "depth": 4
+    },
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_03.SeqEvent_SequenceActivated_15071",
+     "class": "SeqEvent_SequenceActivated",
+     "EventName": null,
+     "Originator": null,
+     "ObjComment": "Wounded Spawn Battery",
+     "MaxTriggerCount": 0,
+     "depth": 4
+    }
+   ]
+  },
+  {
+   "action": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_04.SeqAct_TnPawnFactory_10184",
+   "sublevel": "D5_OME_DSN_m",
+   "sequence": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_04",
+   "comment": null,
+   "factory": {
+    "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_04.SeqAct_TnPawnFactory_10184.TnActorFactoryOmegaBatteryDestructible_15947",
+    "class": "TnActorFactoryOmegaBatteryDestructible",
+    "NewActorClass": "TransGame.TnOmegaBatteryDestructibleActor",
+    "Blueprint": "DES_NEU_Battery_p.DES_OmegaRobotBattery",
+    "archetype": "DES_NEU_Battery_p.DES_OmegaRobotBattery"
+   },
+   "spawn_points": [
+    {
+     "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.Trigger_6546",
+     "class": "Trigger",
+     "location_ue": [
+      105472.0,
+      69632.0,
+      39492.0
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": null,
+   "outputs": [
+    {
+     "output": "All Pawns Spawned",
+     "to": [
+      "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_04.SeqAct_Gate_3081"
+     ]
+    }
+   ],
+   "spawned_variable": null,
+   "character_variables": [],
+   "fired_by_direct": [
+    {
+     "op": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_04.SeqAct_Interp_6653",
+     "class": "SeqAct_Interp",
+     "output": "Completed"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_04.SeqEvent_SequenceActivated_11980",
+     "class": "SeqEvent_SequenceActivated",
+     "EventName": null,
+     "Originator": null,
+     "ObjComment": "Wounded Spawn Battery",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    }
+   ]
+  },
+  {
+   "action": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_04.SeqAct_TnPawnFactory_11735",
+   "sublevel": "D5_OME_DSN_m",
+   "sequence": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_04",
+   "comment": "Spawn Jet 4B",
+   "factory": {
+    "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_04.SeqAct_TnPawnFactory_11735.TnActorFactoryAI_11066",
+    "class": "TnActorFactoryAI",
+    "AiCharacterDefinitionTemplate": "TR_AiCharacterDefinition_p.Soldier_Jet_Autobot_AICD",
+    "FactionTeam": "TransGame.TnFactionTeamAutobots",
+    "StartingFormOverride": "TF_Vehicle",
+    "AlertToPlayer": true,
+    "PlaySpawnAnimation": true,
+    "PawnClass": "TransGame.TnAiPawn",
+    "ControllerClass": "TransGame.TnAiController",
+    "TeamIndex": 255,
+    "NewActorClass": "Engine.Actor",
+    "archetype": "TR_AiCharacterDefinition_p.Soldier_Jet_Autobot_AICD"
+   },
+   "spawn_points": [
+    {
+     "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.AirPathNode_12040",
+     "class": "AirPathNode",
+     "location_ue": [
+      104448.0,
+      65024.0,
+      41472.0
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": 15,
+   "outputs": [
+    {
+     "output": "All Pawns Spawned",
+     "to": [
+      "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_04.SeqAct_Delay_4265"
+     ]
+    }
+   ],
+   "spawned_variable": "Jet 4B",
+   "character_variables": [],
+   "fired_by_direct": [
+    {
+     "op": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_04.SeqAct_Delay_13146",
+     "class": "SeqAct_Delay",
+     "output": "Finished"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_04.SeqEvent_RemoteEvent_2245",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "COOP_False",
+     "Originator": null,
+     "ObjComment": "COOP_False",
+     "MaxTriggerCount": 1,
+     "depth": 3
+    },
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_04.SeqEvent_RemoteEvent_4248",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE1_OpenJetMinionGates",
+     "Originator": null,
+     "ObjComment": "STAGE1_OpenJetMinionGates",
+     "MaxTriggerCount": 0,
+     "depth": 4
+    },
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_04.SeqEvent_SequenceActivated_11980",
+     "class": "SeqEvent_SequenceActivated",
+     "EventName": null,
+     "Originator": null,
+     "ObjComment": "Wounded Spawn Battery",
+     "MaxTriggerCount": 0,
+     "depth": 4
+    }
+   ]
+  },
+  {
+   "action": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_04.SeqAct_TnPawnFactory_11885",
+   "sublevel": "D5_OME_DSN_m",
+   "sequence": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_04",
+   "comment": "Spawn Jet 4AA",
+   "factory": {
+    "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_04.SeqAct_TnPawnFactory_11885.TnActorFactoryAI_11066",
+    "class": "TnActorFactoryAI",
+    "AiCharacterDefinitionTemplate": "TR_AiCharacterDefinition_p.Soldier_Jet_Autobot_AICD",
+    "FactionTeam": "TransGame.TnFactionTeamAutobots",
+    "StartingFormOverride": "TF_Vehicle",
+    "AlertToPlayer": true,
+    "PlaySpawnAnimation": true,
+    "PawnClass": "TransGame.TnAiPawn",
+    "ControllerClass": "TransGame.TnAiController",
+    "TeamIndex": 255,
+    "NewActorClass": "Engine.Actor",
+    "archetype": "TR_AiCharacterDefinition_p.Soldier_Jet_Autobot_AICD"
+   },
+   "spawn_points": [
+    {
+     "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.AirPathNode_1579",
+     "class": "AirPathNode",
+     "location_ue": [
+      105216.0,
+      62976.0,
+      41472.0
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": 15,
+   "outputs": [
+    {
+     "output": "All Pawns Spawned",
+     "to": [
+      "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_04.SeqAct_Delay_10676"
+     ]
+    }
+   ],
+   "spawned_variable": "Jet 4AA",
+   "character_variables": [],
+   "fired_by_direct": [
+    {
+     "op": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_04.SeqAct_Delay_3128",
+     "class": "SeqAct_Delay",
+     "output": "Finished"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_04.SeqEvent_RemoteEvent_2835",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "COOP_True",
+     "Originator": null,
+     "ObjComment": "COOP_True",
+     "MaxTriggerCount": 1,
+     "depth": 3
+    },
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_04.SeqEvent_RemoteEvent_7441",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE1_OpenJetMinionGates",
+     "Originator": null,
+     "ObjComment": "STAGE1_OpenJetMinionGates",
+     "MaxTriggerCount": 0,
+     "depth": 4
+    },
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_04.SeqEvent_SequenceActivated_11980",
+     "class": "SeqEvent_SequenceActivated",
+     "EventName": null,
+     "Originator": null,
+     "ObjComment": "Wounded Spawn Battery",
+     "MaxTriggerCount": 0,
+     "depth": 4
+    }
+   ]
+  },
+  {
+   "action": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_04.SeqAct_TnPawnFactory_14044",
+   "sublevel": "D5_OME_DSN_m",
+   "sequence": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_04",
+   "comment": "Spawn Jet 4BB",
+   "factory": {
+    "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_04.SeqAct_TnPawnFactory_14044.TnActorFactoryAI_11066",
+    "class": "TnActorFactoryAI",
+    "AiCharacterDefinitionTemplate": "TR_AiCharacterDefinition_p.Soldier_Jet_Autobot_AICD",
+    "FactionTeam": "TransGame.TnFactionTeamAutobots",
+    "StartingFormOverride": "TF_Vehicle",
+    "AlertToPlayer": true,
+    "PlaySpawnAnimation": true,
+    "PawnClass": "TransGame.TnAiPawn",
+    "ControllerClass": "TransGame.TnAiController",
+    "TeamIndex": 255,
+    "NewActorClass": "Engine.Actor",
+    "archetype": "TR_AiCharacterDefinition_p.Soldier_Jet_Autobot_AICD"
+   },
+   "spawn_points": [
+    {
+     "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.AirPathNode_8677",
+     "class": "AirPathNode",
+     "location_ue": [
+      104448.0,
+      62976.0,
+      41472.0
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": 15,
+   "outputs": [
+    {
+     "output": "All Pawns Spawned",
+     "to": [
+      "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_04.SeqAct_Delay_12395"
+     ]
+    }
+   ],
+   "spawned_variable": "Jet 4BB",
+   "character_variables": [],
+   "fired_by_direct": [
+    {
+     "op": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_04.SeqAct_Delay_14464",
+     "class": "SeqAct_Delay",
+     "output": "Finished"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_04.SeqEvent_RemoteEvent_2835",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "COOP_True",
+     "Originator": null,
+     "ObjComment": "COOP_True",
+     "MaxTriggerCount": 1,
+     "depth": 3
+    },
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_04.SeqEvent_RemoteEvent_7441",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE1_OpenJetMinionGates",
+     "Originator": null,
+     "ObjComment": "STAGE1_OpenJetMinionGates",
+     "MaxTriggerCount": 0,
+     "depth": 4
+    },
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_04.SeqEvent_SequenceActivated_11980",
+     "class": "SeqEvent_SequenceActivated",
+     "EventName": null,
+     "Originator": null,
+     "ObjComment": "Wounded Spawn Battery",
+     "MaxTriggerCount": 0,
+     "depth": 4
+    }
+   ]
+  },
+  {
+   "action": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_04.SeqAct_TnPawnFactory_14160",
+   "sublevel": "D5_OME_DSN_m",
+   "sequence": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_04",
+   "comment": "Spawn Jet 4B",
+   "factory": {
+    "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_04.SeqAct_TnPawnFactory_14160.TnActorFactoryAI_11066",
+    "class": "TnActorFactoryAI",
+    "AiCharacterDefinitionTemplate": "TR_AiCharacterDefinition_p.Soldier_Jet_Autobot_AICD",
+    "FactionTeam": "TransGame.TnFactionTeamAutobots",
+    "StartingFormOverride": "TF_Vehicle",
+    "AlertToPlayer": true,
+    "PlaySpawnAnimation": true,
+    "PawnClass": "TransGame.TnAiPawn",
+    "ControllerClass": "TransGame.TnAiController",
+    "TeamIndex": 255,
+    "NewActorClass": "Engine.Actor",
+    "archetype": "TR_AiCharacterDefinition_p.Soldier_Jet_Autobot_AICD"
+   },
+   "spawn_points": [
+    {
+     "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.AirPathNode_12040",
+     "class": "AirPathNode",
+     "location_ue": [
+      104448.0,
+      65024.0,
+      41472.0
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": 15,
+   "outputs": [
+    {
+     "output": "All Pawns Spawned",
+     "to": [
+      "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_04.SeqAct_Delay_16039"
+     ]
+    }
+   ],
+   "spawned_variable": "Jet 4B",
+   "character_variables": [],
+   "fired_by_direct": [
+    {
+     "op": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_04.SeqAct_Delay_8336",
+     "class": "SeqAct_Delay",
+     "output": "Finished"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_04.SeqEvent_RemoteEvent_2835",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "COOP_True",
+     "Originator": null,
+     "ObjComment": "COOP_True",
+     "MaxTriggerCount": 1,
+     "depth": 3
+    },
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_04.SeqEvent_RemoteEvent_7441",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE1_OpenJetMinionGates",
+     "Originator": null,
+     "ObjComment": "STAGE1_OpenJetMinionGates",
+     "MaxTriggerCount": 0,
+     "depth": 4
+    },
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_04.SeqEvent_SequenceActivated_11980",
+     "class": "SeqEvent_SequenceActivated",
+     "EventName": null,
+     "Originator": null,
+     "ObjComment": "Wounded Spawn Battery",
+     "MaxTriggerCount": 0,
+     "depth": 4
+    }
+   ]
+  },
+  {
+   "action": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_04.SeqAct_TnPawnFactory_15896",
+   "sublevel": "D5_OME_DSN_m",
+   "sequence": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_04",
+   "comment": "Spawn Jet 4A",
+   "factory": {
+    "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_04.SeqAct_TnPawnFactory_15896.TnActorFactoryAI_11066",
+    "class": "TnActorFactoryAI",
+    "AiCharacterDefinitionTemplate": "TR_AiCharacterDefinition_p.Soldier_Jet_Autobot_AICD",
+    "FactionTeam": "TransGame.TnFactionTeamAutobots",
+    "StartingFormOverride": "TF_Vehicle",
+    "AlertToPlayer": true,
+    "PlaySpawnAnimation": true,
+    "PawnClass": "TransGame.TnAiPawn",
+    "ControllerClass": "TransGame.TnAiController",
+    "TeamIndex": 255,
+    "NewActorClass": "Engine.Actor",
+    "archetype": "TR_AiCharacterDefinition_p.Soldier_Jet_Autobot_AICD"
+   },
+   "spawn_points": [
+    {
+     "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.AirPathNode_4393",
+     "class": "AirPathNode",
+     "location_ue": [
+      105216.0,
+      65024.0,
+      41472.0
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": 15,
+   "outputs": [
+    {
+     "output": "All Pawns Spawned",
+     "to": [
+      "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_04.SeqAct_Delay_8614"
+     ]
+    }
+   ],
+   "spawned_variable": "Jet 4A",
+   "character_variables": [],
+   "fired_by_direct": [
+    {
+     "op": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_04.SeqAct_Delay_12513",
+     "class": "SeqAct_Delay",
+     "output": "Finished"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_04.SeqEvent_RemoteEvent_2245",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "COOP_False",
+     "Originator": null,
+     "ObjComment": "COOP_False",
+     "MaxTriggerCount": 1,
+     "depth": 3
+    },
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_04.SeqEvent_RemoteEvent_4248",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE1_OpenJetMinionGates",
+     "Originator": null,
+     "ObjComment": "STAGE1_OpenJetMinionGates",
+     "MaxTriggerCount": 0,
+     "depth": 4
+    },
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_04.SeqEvent_SequenceActivated_11980",
+     "class": "SeqEvent_SequenceActivated",
+     "EventName": null,
+     "Originator": null,
+     "ObjComment": "Wounded Spawn Battery",
+     "MaxTriggerCount": 0,
+     "depth": 4
+    }
+   ]
+  },
+  {
+   "action": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_04.SeqAct_TnPawnFactory_4687",
+   "sublevel": "D5_OME_DSN_m",
+   "sequence": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_04",
+   "comment": "Spawn Jet 4A",
+   "factory": {
+    "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_04.SeqAct_TnPawnFactory_4687.TnActorFactoryAI_11066",
+    "class": "TnActorFactoryAI",
+    "AiCharacterDefinitionTemplate": "TR_AiCharacterDefinition_p.Soldier_Jet_Autobot_AICD",
+    "FactionTeam": "TransGame.TnFactionTeamAutobots",
+    "StartingFormOverride": "TF_Vehicle",
+    "AlertToPlayer": true,
+    "PlaySpawnAnimation": true,
+    "PawnClass": "TransGame.TnAiPawn",
+    "ControllerClass": "TransGame.TnAiController",
+    "TeamIndex": 255,
+    "NewActorClass": "Engine.Actor",
+    "archetype": "TR_AiCharacterDefinition_p.Soldier_Jet_Autobot_AICD"
+   },
+   "spawn_points": [
+    {
+     "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.AirPathNode_4393",
+     "class": "AirPathNode",
+     "location_ue": [
+      105216.0,
+      65024.0,
+      41472.0
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": 15,
+   "outputs": [
+    {
+     "output": "All Pawns Spawned",
+     "to": [
+      "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_04.SeqAct_Delay_216"
+     ]
+    }
+   ],
+   "spawned_variable": "Jet 4A",
+   "character_variables": [],
+   "fired_by_direct": [
+    {
+     "op": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_04.SeqAct_Delay_8962",
+     "class": "SeqAct_Delay",
+     "output": "Finished"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_04.SeqEvent_RemoteEvent_2835",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "COOP_True",
+     "Originator": null,
+     "ObjComment": "COOP_True",
+     "MaxTriggerCount": 1,
+     "depth": 3
+    },
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_04.SeqEvent_RemoteEvent_7441",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "STAGE1_OpenJetMinionGates",
+     "Originator": null,
+     "ObjComment": "STAGE1_OpenJetMinionGates",
+     "MaxTriggerCount": 0,
+     "depth": 4
+    },
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_04.SeqEvent_SequenceActivated_11980",
+     "class": "SeqEvent_SequenceActivated",
+     "EventName": null,
+     "Originator": null,
+     "ObjComment": "Wounded Spawn Battery",
+     "MaxTriggerCount": 0,
+     "depth": 4
+    }
+   ]
+  },
+  {
+   "action": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_TnPawnFactory_10736",
+   "sublevel": "D5_OME_DSN_m",
+   "sequence": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence",
+   "comment": "Spawn Omega Supreme At Checkpoint 2",
+   "factory": {
+    "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_TnPawnFactory_10736.TnActorFactoryAI_11066",
+    "class": "TnActorFactoryAI",
+    "AiCharacterDefinitionTemplate": "TR_OmegaSupreme_Ai_p.OmegaSupreme_AICD",
+    "FactionTeam": "TransGame.TnFactionTeamAutobots",
+    "StartingFormOverride": "TF_Invalid",
+    "AlertToPlayer": true,
+    "PlaySpawnAnimation": true,
+    "PawnClass": "TransGame.TnOmegaSupremePawn",
+    "ControllerClass": "TransGame.TnAiController",
+    "TeamIndex": 255,
+    "NewActorClass": "Engine.Actor",
+    "archetype": "TR_OmegaSupreme_Ai_p.OmegaSupreme_AICD"
+   },
+   "spawn_points": [
+    {
+     "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.Trigger_322",
+     "class": "Trigger",
+     "location_ue": [
+      113664.0,
+      76288.0,
+      36816.0
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": null,
+   "outputs": [
+    {
+     "output": "Finished",
+     "to": [
+      "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_ToggleGodMode_9065"
+     ]
+    },
+    {
+     "output": "All Pawns Spawned",
+     "to": [
+      "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_ActivateRemoteEvent_3929"
+     ]
+    }
+   ],
+   "spawned_variable": "Omega Supreme",
+   "character_variables": [],
+   "fired_by_direct": [
+    {
+     "op": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_RemoteEvent_11429",
+     "class": "SeqEvent_RemoteEvent",
+     "output": "Out"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_RemoteEvent_11429",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "Checkpoint_02",
+     "Originator": null,
+     "ObjComment": "Checkpoint_02",
+     "MaxTriggerCount": 1,
+     "depth": 1
+    }
+   ]
+  },
+  {
+   "action": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_TnPawnFactory_4646",
+   "sublevel": "D5_OME_DSN_m",
+   "sequence": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence",
+   "comment": "Spawn Omega Supreme",
+   "factory": {
+    "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_TnPawnFactory_4646.TnActorFactoryAI_11066",
+    "class": "TnActorFactoryAI",
+    "AiCharacterDefinitionTemplate": "TR_OmegaSupreme_Ai_p.OmegaSupreme_AICD",
+    "FactionTeam": "TransGame.TnFactionTeamAutobots",
+    "StartingFormOverride": "TF_Invalid",
+    "AlertToPlayer": true,
+    "PlaySpawnAnimation": true,
+    "PawnClass": "TransGame.TnOmegaSupremePawn",
+    "ControllerClass": "TransGame.TnAiController",
+    "TeamIndex": 255,
+    "NewActorClass": "Engine.Actor",
+    "archetype": "TR_OmegaSupreme_Ai_p.OmegaSupreme_AICD"
+   },
+   "spawn_points": [
+    {
+     "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.Trigger_14613",
+     "class": "Trigger",
+     "location_ue": [
+      113664.0,
+      76288.0,
+      36816.0
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": null,
+   "outputs": [
+    {
+     "output": "Finished",
+     "to": [
+      "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_ToggleGodMode_9065"
+     ]
+    },
+    {
+     "output": "All Pawns Spawned",
+     "to": [
+      "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_ActivateRemoteEvent_3929",
+      "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Switch_9368"
+     ]
+    }
+   ],
+   "spawned_variable": "Omega Supreme",
+   "character_variables": [],
+   "fired_by_direct": [
+    {
+     "op": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_RemoteEvent_5017",
+     "class": "SeqEvent_RemoteEvent",
+     "output": "Out"
+    },
+    {
+     "op": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_RemoteEvent_6178",
+     "class": "SeqEvent_RemoteEvent",
+     "output": "Out"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_RemoteEvent_5017",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "Checkpoint_01",
+     "Originator": null,
+     "ObjComment": "Checkpoint_01",
+     "MaxTriggerCount": 1,
+     "depth": 1
+    },
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_RemoteEvent_6178",
+     "class": "SeqEvent_RemoteEvent",
+     "EventName": "PreGameplaySetup_SpawnOmega",
+     "Originator": null,
+     "ObjComment": "PreGameplaySetup_SpawnOmega",
+     "MaxTriggerCount": 1,
+     "depth": 1
+    }
+   ]
+  }
+ ]
+}
