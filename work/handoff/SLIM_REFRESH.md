@@ -1,6 +1,6 @@
 # Slim list refresh (staged; Systems adopts at the package step)
 
-Measured 2026-10-17 13:50. Live `out/package/slim_files.tsv` untouched; refreshed copy `out/package/slim_files.refresh.tsv` (same rows, order, columns, line endings; only the bytes column of keep / xpr rows re-measured). Generator `scripts/wfc/slim_refresh.py` (rerun at the head).
+Measured 2026-10-17 15:16. Live `out/package/slim_files.tsv` untouched; refreshed copy `out/package/slim_files.refresh.tsv` (same rows, order, columns, line endings; only the bytes column of keep / xpr rows re-measured). Generator `scripts/wfc/slim_refresh.py` (rerun at the head).
 
 | | value |
 |---|---|
@@ -9,7 +9,7 @@ Measured 2026-10-17 13:50. Live `out/package/slim_files.tsv` untouched; refreshe
 | rows added | 0 |
 | line endings | live: 101021 CRLF + 11 LF-only rows (the LF ones are AssetTools appends of 2026-10-18); refresh: all CRLF |
 | rows whose source is missing (kept) | 0 |
-| keep / xpr bytes | 12,945,073,330 -> 12,976,812,151 (+31738821) |
+| keep / xpr bytes | 12,945,073,330 -> 12,976,893,227 (+31819897) |
 
 ## Changed rows
 
@@ -19,21 +19,21 @@ Measured 2026-10-17 13:50. Live `out/package/slim_files.tsv` untouched; refreshe
 | `Rebuild/data/frontend/graphics_presets.json` | 2,789 | 2,688 | -101 | 2026-10-12 22:51 |
 | `Rebuild/data/frontend/pc_strings.int` | 1,991 | 2,471 | +480 | 2026-10-17 12:36 |
 | `Rebuild/work/render/MP_ESC_BrokenHope/decals.glb` | 264,584 | 352,104 | +87520 | 2026-10-12 21:20 |
-| `Rebuild/work/render/MP_ESC_BrokenHope/lighting.json` | 2,735,657 | 2,739,587 | +3930 | 2026-10-17 11:18 |
+| `Rebuild/work/render/MP_ESC_BrokenHope/lighting.json` | 2,735,657 | 2,755,360 | +19703 | 2026-10-17 14:13 |
 | `Rebuild/work/render/MP_ESC_BrokenHope/map_fx_runtime.json` | 18,879,871 | 21,969,999 | +3090128 | 2026-10-17 13:47 |
-| `Rebuild/work/render/MP_ESC_BrokenHope/materials_glsl.json` | 3,668,106 | 4,115,972 | +447866 | 2026-10-17 11:29 |
+| `Rebuild/work/render/MP_ESC_BrokenHope/materials_glsl.json` | 3,668,106 | 4,132,838 | +464732 | 2026-10-17 14:13 |
 | `Rebuild/work/render/MP_ESC_Remnant/decals.glb` | 1,017,648 | 1,247,444 | +229796 | 2026-10-12 21:20 |
-| `Rebuild/work/render/MP_ESC_Remnant/lighting.json` | 3,246,458 | 3,261,186 | +14728 | 2026-10-17 11:18 |
+| `Rebuild/work/render/MP_ESC_Remnant/lighting.json` | 3,246,458 | 3,272,992 | +26534 | 2026-10-17 14:13 |
 | `Rebuild/work/render/MP_ESC_Remnant/map_fx_runtime.json` | 17,339,559 | 20,275,331 | +2935772 | 2026-10-17 13:47 |
-| `Rebuild/work/render/MP_ESC_Remnant/materials_glsl.json` | 3,617,651 | 4,065,127 | +447476 | 2026-10-17 11:29 |
+| `Rebuild/work/render/MP_ESC_Remnant/materials_glsl.json` | 3,617,651 | 4,081,562 | +463911 | 2026-10-17 14:13 |
 | `Rebuild/work/render/MP_IAC_Berth/decals.glb` | 167,836 | 182,032 | +14196 | 2026-10-12 21:20 |
 | `Rebuild/work/render/MP_IAC_Berth/lighting.json` | 2,549,217 | 2,553,710 | +4493 | 2026-10-17 11:18 |
 | `Rebuild/work/render/MP_IAC_Berth/map_fx_runtime.json` | 14,808,889 | 17,323,246 | +2514357 | 2026-10-17 13:47 |
 | `Rebuild/work/render/MP_IAC_Berth/materials_glsl.json` | 3,459,466 | 3,904,339 | +444873 | 2026-10-17 11:29 |
 | `Rebuild/work/render/MP_IAC_Rust/decals.glb` | 182,744 | 210,672 | +27928 | 2026-10-12 21:19 |
-| `Rebuild/work/render/MP_IAC_Rust/lighting.json` | 19,343,360 | 19,357,973 | +14613 | 2026-10-17 11:18 |
+| `Rebuild/work/render/MP_IAC_Rust/lighting.json` | 19,343,360 | 19,359,501 | +16141 | 2026-10-17 14:13 |
 | `Rebuild/work/render/MP_IAC_Rust/map_fx_runtime.json` | 14,788,473 | 17,300,662 | +2512189 | 2026-10-17 13:47 |
-| `Rebuild/work/render/MP_IAC_Rust/materials_glsl.json` | 4,024,421 | 4,472,014 | +447593 | 2026-10-17 11:29 |
+| `Rebuild/work/render/MP_IAC_Rust/materials_glsl.json` | 4,024,421 | 4,490,682 | +466261 | 2026-10-17 14:13 |
 | `Rebuild/work/render/MP_IAC_Seed/decals.glb` | 761,680 | 868,624 | +106944 | 2026-10-12 21:20 |
 | `Rebuild/work/render/MP_IAC_Seed/lighting.json` | 6,708,592 | 6,727,121 | +18529 | 2026-10-17 11:18 |
 | `Rebuild/work/render/MP_IAC_Seed/map_fx_runtime.json` | 16,062,463 | 18,735,672 | +2673209 | 2026-10-17 13:47 |
