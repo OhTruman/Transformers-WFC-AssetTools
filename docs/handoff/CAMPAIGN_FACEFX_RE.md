@@ -12,7 +12,7 @@ file lands on the same next structure.
 | class table | **u32 nBuckets (10)**; per bucket: **u32 hash, u32 n, n × (str className, u16 classVersion)**. A name hash table: FxAnimCurve and FxPhonemeMap share bucket 109. Class versions: FxActor 3, FxAnim 6, FxMasterBoneList 2, FxName 1, FxAnimCurve 1, the others 0 |
 | name table | **u32 nNames, nNames × str** (Trypticon 124 names, ending at 0xA60 exactly). Name indices everywhere below index this table |
 | actor header | u32 0, u32 0 (all 22) |
-| master bone list | **u32 nBones (14, or 33 for the KON faces)**; per bone: u32 nameIdx, f32 restPos[3], f32 restRot[4] (w,x,y,z), f32 restScale[3], f32 invRestRot[4] (the conjugate of restRot), u32 skeletonBoneIndex (0x7FFFFFFF = unresolved; Trypticon, Omega), f32 weight (1.0 in all 346 bones), u32 nLinks, then nLinks × {u32 nodeNameIdx, u32 boneIndex+1 (all 346 bones), f32 dPos[3], f32 rot[4], f32 dScale[3]}: the per-node bone pose of every face-graph node that moves this bone |
+| master bone list | **u32 nBones (14, or 33 for the KON faces)**; per bone: u32 nameIdx, f32 restPos[3], f32 restRot[4] (w,x,y,z), f32 restScale[3], f32 invRestRot[4] (the conjugate of restRot), u32 skeletonBoneIndex (0x7FFFFFFF = unresolved; Trypticon, Omega), f32 weight (1.0 in all 346 bones), u32 nLinks, then nLinks × {**u32 faceGraphNodeIndex** (an index into the compiled face graph's node list, not the name table: 5,281 / 5,281 in range, and the jaw resolves to Eat, Church, Jaw_Open, Jaw_Forward …), u32 boneIndex+1 (all 346 bones), f32 dPos[3] (a delta), f32 rot[4] (the bone's absolute rotation at node value 1; the delta from rest is conj(rest)·rot), f32 dScale[3]}: the bone pose of every face-graph node that moves this bone |
 
 str = u32 length + bytes, no terminator; everything big-endian.
 
@@ -44,6 +44,22 @@ and **value = i8 / 127 × b**; the header float `b` (never below 1.0, median 1.1
 
 None left: every byte of all 22 files is accounted for by the layout above. Still undecoded in meaning: the node float roles,
 `b`, the extra f32 of slope animations, and the phonemeId table.
+
+## Visual proof, first results (tool `work/fxa/fxa_proof.py`: 30 Hz bone CSVs, jaw vs voice)
+
+- **Timing CONFIRMED:**
+  - The summed phoneme-node activity, curves only with no bone math, correlates with the voice RMS envelope at the best lag within
+    ±10 frames: median 0.48 (Optimus, 34 lines), 0.43 (BumbleBee, 27), 0.38 (Ratchet, 30).
+  - Median best lag −1 / 0 / +1 frame, so curve time 0 is the wave's start and the curve clock runs with the voice.
+  - The correlation is moderate because phoneme shapes are not loudness.
+- **Bone blend HYPOTHESIS:**
+  - Rest ⊕ Σ value × (dPos, slerp(identity, conj(rest)·rot)) moves the jaw by up to 36° (linear) / 49° (Hermite derived slopes)
+    on Trypticon LK004350.
+  - Jaw angle against the voice: median 0.22 over 21 Optimus lines. Weaker than the curve activity, so the blend (additive
+    rotations, sign, clamp) is not yet right.
+  - Next: blend rotations as normalised weighted sums (FaceFX bone-pose blending) and compare.
+- **Interpolation:** linear and derived-Hermite give similar correlation (0.22 vs 0.18). The data can't separate them; the visual
+  look (smoothness) decides.
 
 ## Visual-proof plan (headless, no game code)
 

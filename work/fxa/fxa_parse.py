@@ -51,7 +51,8 @@ def parse(path):
         links = []
         for _ in range(r.u32()):
             ni = r.u32(); flag = r.u32()
-            links.append({'node': names[ni], 'flag': flag, 'dpos': r.f32(3), 'rot': r.f32(4), 'dscale': r.f32(3)})
+            # ni indexes the compiled face graph's node list (resolved to a name in parse_full), not the name table
+            links.append({'node_index': ni, 'flag': flag, 'dpos': r.f32(3), 'rot': r.f32(4), 'dscale': r.f32(3)})
         b['links'] = links; bones.append(b)
     out['bones'] = bones; out['bones_end'] = r.o
     out['after_bones_hex'] = d[r.o:r.o + 64].hex(' ')
@@ -95,6 +96,8 @@ def parse_full(path):
     for _ in range(r.u32()):
         r.u32()
         for _ in range(r.u32()): k = r.s(); lut[k] = r.u32()
+    for b in x['bones']:
+        for l in b['links']: l['node'] = nodes[l['node_index']]['name'] if l['node_index'] < len(nodes) else None
     x['nodes'] = nodes; x['node_lookup_ok'] = len(lut) == len(nodes) and all(nodes[v]['name'] == k for k, v in lut.items())
     x['groups_at'] = r.o
     return x, d, N, r
