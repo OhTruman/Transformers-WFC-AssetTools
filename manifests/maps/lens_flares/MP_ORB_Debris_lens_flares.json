@@ -1,0 +1,1671 @@
+{
+ "map": "MP_ORB_Debris",
+ "generated_by": "AssetTools/scripts/wfc/lens_flares.py",
+ "semantics": "RE-Workspace/work/handoff/LENS_FLARE_RE.md (RE) for how the runtime uses each field / curve input",
+ "distribution_layout": "constant: value; constant curve: range = output min/max, start, time_scale, samples at start + i / time_scale (pstream DIST_LAYOUT); raw lookup table kept as \"raw\"",
+ "count": 1,
+ "lens_flares": [
+  {
+   "actor": "MP_ORB_Art_m.TheWorld.PersistentLevel.LensFlareSource_4136",
+   "level_package": "MP_ORB_Art_m",
+   "component": "MP_ORB_Art_m.TheWorld.PersistentLevel.LensFlareSource_4136.LensFlareComponent_5510",
+   "location_ue": {
+    "X": -311096.0,
+    "Y": -308768.0,
+    "Z": 20576.0
+   },
+   "rotation_ue": {
+    "Pitch": 0,
+    "Yaw": 0,
+    "Roll": 0
+   },
+   "draw_scale": 1.0,
+   "draw_scale3d": {
+    "X": 1.0,
+    "Y": 1.0,
+    "Z": 1.0
+   },
+   "group": null,
+   "tag": "World",
+   "component_props": {
+    "DepthPriorityGroup": "SDPG_Foreground",
+    "LightingChannels": {
+     "bInitialized": true,
+     "Dynamic": true
+    },
+    "PreviewInnerCone": null,
+    "PreviewOuterCone": null,
+    "PreviewRadius": null,
+    "SourceColor": {
+     "R": 1.0,
+     "G": 1.0,
+     "B": 1.0,
+     "A": 1.0
+    },
+    "Template": "ENV_ORB_Effects_p.Materials.ORB_LensFlare_FINAL02_SmallBound",
+    "TickGroup": "TG_PostAsyncWork",
+    "bAcceptsDynamicLights": false,
+    "bAllowApproximateOcclusion": false,
+    "bAutoActivate": true,
+    "bTickInEditor": true
+   },
+   "component_props_from_class_default": [
+    "SourceColor",
+    "TickGroup",
+    "bAcceptsDynamicLights",
+    "bAllowApproximateOcclusion",
+    "bAutoActivate",
+    "bTickInEditor"
+   ],
+   "template": "ENV_ORB_Effects_p.Materials.ORB_LensFlare_FINAL02_SmallBound",
+   "template_props": {
+    "Radius": null,
+    "ConeFudgeFactor": 0.5,
+    "InnerCone": null,
+    "OuterCone": null,
+    "SourceDPG": "SDPG_World",
+    "ReflectionsDPG": "SDPG_Foreground",
+    "ScreenPercentageMap": {
+     "type": 2,
+     "op": 1,
+     "raw": [
+      0.0,
+      1.0,
+      0.0,
+      40.0,
+      0.0,
+      1.0
+     ],
+     "kind": "constant curve",
+     "range": [
+      0.0,
+      1.0
+     ],
+     "start": 0.0,
+     "time_scale": 40.0,
+     "samples": [
+      0.0,
+      1.0
+     ],
+     "sample_inputs": [
+      0.0,
+      0.025
+     ]
+    },
+    "bUseFixedRelativeBoundingBox": true,
+    "FixedRelativeBoundingBox": [
+     0.0,
+     0.0,
+     0.0,
+     50000.0,
+     50000.0,
+     50000.0,
+     0
+    ],
+    "SourceMesh": null
+   },
+   "template_props_from_class_default": [
+    "ConeFudgeFactor",
+    "InnerCone",
+    "OuterCone",
+    "Radius",
+    "ReflectionsDPG",
+    "ScreenPercentageMap",
+    "SourceDPG",
+    "SourceMesh"
+   ],
+   "source_element": {
+    "RayDistance": 100000.0,
+    "bIsEnabled": false,
+    "bUseSourceDistance": true,
+    "bNormalizeRadialDistance": true,
+    "Size": {
+     "X": 1.0,
+     "Y": 1.0,
+     "Z": 0.0
+    },
+    "LFMaterials": [
+     "ENV_ORB_Effects_p.Materials.ORB_LensFlare_BASE"
+    ],
+    "Alpha": {
+     "type": 1,
+     "op": 1,
+     "raw": [
+      1.0
+     ],
+     "kind": "constant",
+     "value": 1.0
+    },
+    "AxisScaling": {
+     "type": 7,
+     "op": 1,
+     "raw": [
+      1.0,
+      1.0,
+      0.0
+     ],
+     "kind": "constant",
+     "value": [
+      1.0,
+      1.0,
+      0.0
+     ]
+    },
+    "Color": {
+     "type": 7,
+     "op": 1,
+     "raw": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "kind": "constant",
+     "value": [
+      1.0,
+      1.0,
+      1.0
+     ]
+    },
+    "DistMap_Alpha": {
+     "type": 1,
+     "op": 1,
+     "raw": [
+      1.0
+     ],
+     "kind": "constant",
+     "value": 1.0
+    },
+    "DistMap_Color": {
+     "type": 7,
+     "op": 1,
+     "raw": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "kind": "constant",
+     "value": [
+      1.0,
+      1.0,
+      1.0
+     ]
+    },
+    "DistMap_Scale": {
+     "type": 7,
+     "op": 1,
+     "raw": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "kind": "constant",
+     "value": [
+      1.0,
+      1.0,
+      1.0
+     ]
+    },
+    "ElementName": "Source",
+    "LFMaterialIndex": {
+     "type": 1,
+     "op": 1,
+     "raw": [
+      0.0
+     ],
+     "kind": "constant",
+     "value": 0.0
+    },
+    "OcclusionScaling": {
+     "type": 1,
+     "op": 1,
+     "raw": [
+      1.0
+     ],
+     "kind": "constant",
+     "value": 1.0
+    },
+    "Offset": {
+     "type": 7,
+     "op": 1,
+     "raw": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "kind": "constant",
+     "value": [
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "Rotation": {
+     "type": 1,
+     "op": 1,
+     "raw": [
+      0.0
+     ],
+     "kind": "constant",
+     "value": 0.0
+    },
+    "Scaling": {
+     "type": 1,
+     "op": 1,
+     "raw": [
+      1.0
+     ],
+     "kind": "constant",
+     "value": 1.0
+    },
+    "bModulateColorBySource": false,
+    "_from_class_default": [
+     "Alpha",
+     "AxisScaling",
+     "Color",
+     "DistMap_Alpha",
+     "DistMap_Color",
+     "DistMap_Scale",
+     "ElementName",
+     "LFMaterialIndex",
+     "OcclusionScaling",
+     "Offset",
+     "Rotation",
+     "Scaling",
+     "bModulateColorBySource"
+    ],
+    "_materials": [
+     {
+      "material": "ENV_ORB_Effects_p.Materials.ORB_LensFlare_BASE",
+      "class": "Material",
+      "textures": [
+       {
+        "texture": "ENV_ORB_Effects_p.Materials.LensFlare_Base",
+        "extracted": true,
+        "file": "AssetTools/out/lens_flares/ENV_ORB_Effects_p__Materials__LensFlare_Base.png",
+        "size": [
+         512,
+         512
+        ],
+        "mode": "RGB"
+       }
+      ]
+     }
+    ]
+   },
+   "reflections": [
+    {
+     "ElementName": "Base_SUN",
+     "RayDistance": 0.0,
+     "bIsEnabled": true,
+     "bUseSourceDistance": false,
+     "bNormalizeRadialDistance": true,
+     "bModulateColorBySource": true,
+     "Size": {
+      "X": 8.0,
+      "Y": 8.0,
+      "Z": 8.0
+     },
+     "LFMaterials": [
+      "ENV_ORB_Effects_p.Materials.ORB_LensFlare_REF01"
+     ],
+     "LFMaterialIndex": {
+      "type": 1,
+      "op": 1,
+      "raw": [
+       0.0
+      ],
+      "kind": "constant",
+      "value": 0.0
+     },
+     "Scaling": {
+      "type": 1,
+      "op": 1,
+      "raw": [
+       1.0
+      ],
+      "kind": "constant",
+      "value": 1.0
+     },
+     "OcclusionScaling": {
+      "type": 2,
+      "op": 1,
+      "raw": [
+       0.0,
+       1.0,
+       0.0,
+       1.0,
+       0.0,
+       1.0
+      ],
+      "kind": "constant curve",
+      "range": [
+       0.0,
+       1.0
+      ],
+      "start": 0.0,
+      "time_scale": 1.0,
+      "samples": [
+       0.0,
+       1.0
+      ],
+      "sample_inputs": [
+       0.0,
+       1.0
+      ]
+     },
+     "AxisScaling": {
+      "type": 7,
+      "op": 1,
+      "raw": [
+       1.0,
+       1.0,
+       1.0
+      ],
+      "kind": "constant",
+      "value": [
+       1.0,
+       1.0,
+       1.0
+      ]
+     },
+     "Rotation": {
+      "type": 1,
+      "op": 1,
+      "raw": [
+       0.0
+      ],
+      "kind": "constant",
+      "value": 0.0
+     },
+     "Color": {
+      "type": 7,
+      "op": 1,
+      "raw": [
+       2.450000047683716,
+       0.5,
+       0.5
+      ],
+      "kind": "constant",
+      "value": [
+       2.450000047683716,
+       0.5,
+       0.5
+      ]
+     },
+     "Alpha": {
+      "type": 1,
+      "op": 1,
+      "raw": [
+       0.10000000149011612
+      ],
+      "kind": "constant",
+      "value": 0.10000000149011612
+     },
+     "Offset": {
+      "type": 7,
+      "op": 1,
+      "raw": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "kind": "constant",
+      "value": [
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     "DistMap_Scale": {
+      "type": 7,
+      "op": 1,
+      "raw": [
+       1.0,
+       1.0,
+       1.0
+      ],
+      "kind": "constant",
+      "value": [
+       1.0,
+       1.0,
+       1.0
+      ]
+     },
+     "DistMap_Color": {
+      "type": 8,
+      "op": 1,
+      "raw": [
+       0.0,
+       4.0,
+       0.0,
+       1.0,
+       0.30000001192092896,
+       0.0,
+       4.0,
+       0.0,
+       0.0,
+       2.450000047683716
+      ],
+      "kind": "constant curve",
+      "range": [
+       0.0,
+       4.0
+      ],
+      "start": 0.0,
+      "time_scale": 1.0,
+      "samples": [
+       [
+        0.30000001192092896,
+        0.0,
+        4.0
+       ],
+       [
+        0.0,
+        0.0,
+        2.450000047683716
+       ]
+      ],
+      "sample_inputs": [
+       0.0,
+       1.0
+      ]
+     },
+     "DistMap_Alpha": {
+      "type": 1,
+      "op": 1,
+      "raw": [
+       1.0
+      ],
+      "kind": "constant",
+      "value": 1.0
+     },
+     "_from_class_default": [],
+     "_materials": [
+      {
+       "material": "ENV_ORB_Effects_p.Materials.ORB_LensFlare_REF01",
+       "class": "Material",
+       "textures": [
+        {
+         "texture": "ENV_ORB_Effects_p.Materials.LensFlare_01",
+         "extracted": true,
+         "file": "AssetTools/out/lens_flares/ENV_ORB_Effects_p__Materials__LensFlare_01.png",
+         "size": [
+          256,
+          256
+         ],
+         "mode": "RGB"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "ElementName": "Reflection_01",
+     "RayDistance": 0.009999999776482582,
+     "bIsEnabled": true,
+     "bUseSourceDistance": false,
+     "bNormalizeRadialDistance": true,
+     "bModulateColorBySource": false,
+     "Size": {
+      "X": 0.800000011920929,
+      "Y": 0.800000011920929,
+      "Z": 0.0
+     },
+     "LFMaterials": [
+      "ENV_ORB_Effects_p.Materials.ORB_LensFlare_BASE"
+     ],
+     "LFMaterialIndex": {
+      "type": 1,
+      "op": 1,
+      "raw": [
+       0.0
+      ],
+      "kind": "constant",
+      "value": 0.0
+     },
+     "Scaling": {
+      "type": 1,
+      "op": 1,
+      "raw": [
+       1.0
+      ],
+      "kind": "constant",
+      "value": 1.0
+     },
+     "OcclusionScaling": {
+      "type": 1,
+      "op": 1,
+      "raw": [
+       1.0
+      ],
+      "kind": "constant",
+      "value": 1.0
+     },
+     "AxisScaling": {
+      "type": 7,
+      "op": 1,
+      "raw": [
+       1.0,
+       1.0,
+       0.0
+      ],
+      "kind": "constant",
+      "value": [
+       1.0,
+       1.0,
+       0.0
+      ]
+     },
+     "Rotation": {
+      "type": 1,
+      "op": 1,
+      "raw": [
+       0.0
+      ],
+      "kind": "constant",
+      "value": 0.0
+     },
+     "Color": {
+      "type": 7,
+      "op": 1,
+      "raw": [
+       1.0,
+       1.0,
+       1.0
+      ],
+      "kind": "constant",
+      "value": [
+       1.0,
+       1.0,
+       1.0
+      ]
+     },
+     "Alpha": {
+      "type": 1,
+      "op": 1,
+      "raw": [
+       1.0
+      ],
+      "kind": "constant",
+      "value": 1.0
+     },
+     "Offset": {
+      "type": 7,
+      "op": 1,
+      "raw": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "kind": "constant",
+      "value": [
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     "DistMap_Scale": {
+      "type": 7,
+      "op": 1,
+      "raw": [
+       1.0,
+       1.0,
+       1.0
+      ],
+      "kind": "constant",
+      "value": [
+       1.0,
+       1.0,
+       1.0
+      ]
+     },
+     "DistMap_Color": {
+      "type": 7,
+      "op": 1,
+      "raw": [
+       1.0,
+       1.0,
+       1.0
+      ],
+      "kind": "constant",
+      "value": [
+       1.0,
+       1.0,
+       1.0
+      ]
+     },
+     "DistMap_Alpha": {
+      "type": 2,
+      "op": 1,
+      "raw": [
+       1.0,
+       1.0,
+       10.0,
+       0.0,
+       1.0,
+       1.0
+      ],
+      "kind": "constant curve",
+      "range": [
+       1.0,
+       1.0
+      ],
+      "start": 10.0,
+      "time_scale": 0.0,
+      "samples": [
+       1.0,
+       1.0
+      ],
+      "sample_inputs": null
+     },
+     "_from_class_default": [],
+     "_materials": [
+      {
+       "material": "ENV_ORB_Effects_p.Materials.ORB_LensFlare_BASE",
+       "class": "Material",
+       "textures": [
+        {
+         "texture": "ENV_ORB_Effects_p.Materials.LensFlare_Base",
+         "extracted": true,
+         "file": "AssetTools/out/lens_flares/ENV_ORB_Effects_p__Materials__LensFlare_Base.png",
+         "size": [
+          512,
+          512
+         ],
+         "mode": "RGB"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "ElementName": "01",
+     "RayDistance": 0.25,
+     "bIsEnabled": true,
+     "bUseSourceDistance": false,
+     "bNormalizeRadialDistance": true,
+     "bModulateColorBySource": false,
+     "Size": {
+      "X": 1.7000000476837158,
+      "Y": 1.7000000476837158,
+      "Z": 0.0
+     },
+     "LFMaterials": [
+      "ENV_ORB_Effects_p.Materials.ORB_LensFlare_REF02"
+     ],
+     "LFMaterialIndex": {
+      "type": 1,
+      "op": 1,
+      "raw": [
+       0.0
+      ],
+      "kind": "constant",
+      "value": 0.0
+     },
+     "Scaling": {
+      "type": 1,
+      "op": 1,
+      "raw": [
+       1.0
+      ],
+      "kind": "constant",
+      "value": 1.0
+     },
+     "OcclusionScaling": {
+      "type": 2,
+      "op": 1,
+      "raw": [
+       0.30000001192092896,
+       1.0,
+       0.30000001192092896,
+       1.4285714626312256,
+       0.30000001192092896,
+       1.0
+      ],
+      "kind": "constant curve",
+      "range": [
+       0.30000001192092896,
+       1.0
+      ],
+      "start": 0.30000001192092896,
+      "time_scale": 1.4285714626312256,
+      "samples": [
+       0.30000001192092896,
+       1.0
+      ],
+      "sample_inputs": [
+       0.30000001192092896,
+       0.9999999952316289
+      ]
+     },
+     "AxisScaling": {
+      "type": 7,
+      "op": 1,
+      "raw": [
+       1.0,
+       1.0,
+       1.0
+      ],
+      "kind": "constant",
+      "value": [
+       1.0,
+       1.0,
+       1.0
+      ]
+     },
+     "Rotation": {
+      "type": 1,
+      "op": 1,
+      "raw": [
+       0.0
+      ],
+      "kind": "constant",
+      "value": 0.0
+     },
+     "Color": {
+      "type": 7,
+      "op": 1,
+      "raw": [
+       1.0,
+       1.0,
+       1.0
+      ],
+      "kind": "constant",
+      "value": [
+       1.0,
+       1.0,
+       1.0
+      ]
+     },
+     "Alpha": {
+      "type": 1,
+      "op": 1,
+      "raw": [
+       0.30000001192092896
+      ],
+      "kind": "constant",
+      "value": 0.30000001192092896
+     },
+     "Offset": {
+      "type": 7,
+      "op": 1,
+      "raw": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "kind": "constant",
+      "value": [
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     "DistMap_Scale": {
+      "type": 7,
+      "op": 1,
+      "raw": [
+       1.0,
+       1.0,
+       1.0
+      ],
+      "kind": "constant",
+      "value": [
+       1.0,
+       1.0,
+       1.0
+      ]
+     },
+     "DistMap_Color": {
+      "type": 7,
+      "op": 1,
+      "raw": [
+       1.0,
+       1.0,
+       1.0
+      ],
+      "kind": "constant",
+      "value": [
+       1.0,
+       1.0,
+       1.0
+      ]
+     },
+     "DistMap_Alpha": {
+      "type": 1,
+      "op": 1,
+      "raw": [
+       1.0
+      ],
+      "kind": "constant",
+      "value": 1.0
+     },
+     "_from_class_default": [],
+     "_materials": [
+      {
+       "material": "ENV_ORB_Effects_p.Materials.ORB_LensFlare_REF02",
+       "class": "Material",
+       "textures": [
+        {
+         "texture": "ENV_ORB_Effects_p.Materials.LensFlare_02",
+         "extracted": true,
+         "file": "AssetTools/out/lens_flares/ENV_ORB_Effects_p__Materials__LensFlare_02.png",
+         "size": [
+          512,
+          512
+         ],
+         "mode": "RGB"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "ElementName": "02",
+     "RayDistance": 0.550000011920929,
+     "bIsEnabled": true,
+     "bUseSourceDistance": false,
+     "bNormalizeRadialDistance": true,
+     "bModulateColorBySource": false,
+     "Size": {
+      "X": 1.399999976158142,
+      "Y": 1.399999976158142,
+      "Z": 0.0
+     },
+     "LFMaterials": [
+      "ENV_ORB_Effects_p.Materials.ORB_LensFlare_REF02"
+     ],
+     "LFMaterialIndex": {
+      "type": 1,
+      "op": 1,
+      "raw": [
+       0.0
+      ],
+      "kind": "constant",
+      "value": 0.0
+     },
+     "Scaling": {
+      "type": 1,
+      "op": 1,
+      "raw": [
+       1.0
+      ],
+      "kind": "constant",
+      "value": 1.0
+     },
+     "OcclusionScaling": {
+      "type": 2,
+      "op": 1,
+      "raw": [
+       0.30000001192092896,
+       1.0,
+       0.30000001192092896,
+       18.571428298950195,
+       0.30000001192092896,
+       0.371870756149292,
+       0.4347291886806488,
+       0.49021393060684204,
+       0.5399636030197144,
+       0.5856167674064636,
+       0.6288120150566101,
+       0.6711879968643188,
+       0.7143833041191101,
+       0.7600364089012146,
+       0.8097861409187317,
+       0.8652709126472473,
+       0.9281293749809265,
+       1.0
+      ],
+      "kind": "constant curve",
+      "range": [
+       0.30000001192092896,
+       1.0
+      ],
+      "start": 0.30000001192092896,
+      "time_scale": 18.571428298950195,
+      "samples": [
+       0.30000001192092896,
+       0.371870756149292,
+       0.4347291886806488,
+       0.49021393060684204,
+       0.5399636030197144,
+       0.5856167674064636,
+       0.6288120150566101,
+       0.6711879968643188,
+       0.7143833041191101,
+       0.7600364089012146,
+       0.8097861409187317,
+       0.8652709126472473,
+       0.9281293749809265,
+       1.0
+      ],
+      "sample_inputs": [
+       0.30000001192092896,
+       0.3538461665571089,
+       0.4076923211932888,
+       0.4615384758294687,
+       0.5153846304656486,
+       0.5692307851018286,
+       0.6230769397380085,
+       0.6769230943741884,
+       0.7307692490103683,
+       0.7846154036465482,
+       0.8384615582827282,
+       0.8923077129189081,
+       0.946153867555088,
+       1.000000022191268
+      ]
+     },
+     "AxisScaling": {
+      "type": 7,
+      "op": 1,
+      "raw": [
+       1.0,
+       1.0,
+       1.0
+      ],
+      "kind": "constant",
+      "value": [
+       1.0,
+       1.0,
+       1.0
+      ]
+     },
+     "Rotation": {
+      "type": 1,
+      "op": 1,
+      "raw": [
+       0.0
+      ],
+      "kind": "constant",
+      "value": 0.0
+     },
+     "Color": {
+      "type": 7,
+      "op": 1,
+      "raw": [
+       1.0,
+       1.0,
+       1.0
+      ],
+      "kind": "constant",
+      "value": [
+       1.0,
+       1.0,
+       1.0
+      ]
+     },
+     "Alpha": {
+      "type": 1,
+      "op": 1,
+      "raw": [
+       0.5
+      ],
+      "kind": "constant",
+      "value": 0.5
+     },
+     "Offset": {
+      "type": 7,
+      "op": 1,
+      "raw": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "kind": "constant",
+      "value": [
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     "DistMap_Scale": {
+      "type": 8,
+      "op": 1,
+      "raw": [
+       0.0,
+       5.0,
+       0.0,
+       20.0,
+       0.0,
+       0.0,
+       0.0,
+       0.026750002056360245,
+       0.019500000402331352,
+       0.026624999940395355,
+       0.10400000214576721,
+       0.07600000500679016,
+       0.10300000011920929,
+       0.22725000977516174,
+       0.1665000021457672,
+       0.2238750010728836,
+       0.3919999599456787,
+       0.2879999876022339,
+       0.3840000033378601,
+       0.59375,
+       0.4375,
+       0.578125,
+       0.8280000686645508,
+       0.6119999885559082,
+       0.8009999990463257,
+       1.09024977684021,
+       0.8084998726844788,
+       1.0473748445510864,
+       1.375999927520752,
+       1.0239999294281006,
+       1.312000036239624,
+       1.6807502508163452,
+       1.2555001974105835,
+       1.5896252393722534,
+       2.0,
+       1.5,
+       1.875,
+       2.329249858856201,
+       1.7545000314712524,
+       2.162874937057495,
+       2.6640000343322754,
+       2.0160000324249268,
+       2.447999954223633,
+       2.9997503757476807,
+       2.2815003395080566,
+       2.725125312805176,
+       3.3319997787475586,
+       2.547999858856201,
+       2.988999605178833,
+       3.65625,
+       2.8125,
+       3.234375,
+       3.9679999351501465,
+       3.072000026702881,
+       3.4560000896453857,
+       4.262749671936035,
+       3.323499917984009,
+       3.648624897003174,
+       4.536000728607178,
+       3.5640006065368652,
+       3.8070006370544434,
+       4.783250331878662,
+       3.7905001640319824,
+       3.925875186920166,
+       5.0,
+       4.0,
+       4.0
+      ],
+      "kind": "constant curve",
+      "range": [
+       0.0,
+       5.0
+      ],
+      "start": 0.0,
+      "time_scale": 20.0,
+      "samples": [
+       [
+        0.0,
+        0.0,
+        0.0
+       ],
+       [
+        0.026750002056360245,
+        0.019500000402331352,
+        0.026624999940395355
+       ],
+       [
+        0.10400000214576721,
+        0.07600000500679016,
+        0.10300000011920929
+       ],
+       [
+        0.22725000977516174,
+        0.1665000021457672,
+        0.2238750010728836
+       ],
+       [
+        0.3919999599456787,
+        0.2879999876022339,
+        0.3840000033378601
+       ],
+       [
+        0.59375,
+        0.4375,
+        0.578125
+       ],
+       [
+        0.8280000686645508,
+        0.6119999885559082,
+        0.8009999990463257
+       ],
+       [
+        1.09024977684021,
+        0.8084998726844788,
+        1.0473748445510864
+       ],
+       [
+        1.375999927520752,
+        1.0239999294281006,
+        1.312000036239624
+       ],
+       [
+        1.6807502508163452,
+        1.2555001974105835,
+        1.5896252393722534
+       ],
+       [
+        2.0,
+        1.5,
+        1.875
+       ],
+       [
+        2.329249858856201,
+        1.7545000314712524,
+        2.162874937057495
+       ],
+       [
+        2.6640000343322754,
+        2.0160000324249268,
+        2.447999954223633
+       ],
+       [
+        2.9997503757476807,
+        2.2815003395080566,
+        2.725125312805176
+       ],
+       [
+        3.3319997787475586,
+        2.547999858856201,
+        2.988999605178833
+       ],
+       [
+        3.65625,
+        2.8125,
+        3.234375
+       ],
+       [
+        3.9679999351501465,
+        3.072000026702881,
+        3.4560000896453857
+       ],
+       [
+        4.262749671936035,
+        3.323499917984009,
+        3.648624897003174
+       ],
+       [
+        4.536000728607178,
+        3.5640006065368652,
+        3.8070006370544434
+       ],
+       [
+        4.783250331878662,
+        3.7905001640319824,
+        3.925875186920166
+       ],
+       [
+        5.0,
+        4.0,
+        4.0
+       ]
+      ],
+      "sample_inputs": [
+       0.0,
+       0.05,
+       0.1,
+       0.15,
+       0.2,
+       0.25,
+       0.3,
+       0.35,
+       0.4,
+       0.45,
+       0.5,
+       0.55,
+       0.6,
+       0.65,
+       0.7,
+       0.75,
+       0.8,
+       0.85,
+       0.9,
+       0.95,
+       1.0
+      ]
+     },
+     "DistMap_Color": {
+      "type": 7,
+      "op": 1,
+      "raw": [
+       2.0,
+       0.5,
+       0.5
+      ],
+      "kind": "constant",
+      "value": [
+       2.0,
+       0.5,
+       0.5
+      ]
+     },
+     "DistMap_Alpha": {
+      "type": 1,
+      "op": 1,
+      "raw": [
+       1.0
+      ],
+      "kind": "constant",
+      "value": 1.0
+     },
+     "_from_class_default": [],
+     "_materials": [
+      {
+       "material": "ENV_ORB_Effects_p.Materials.ORB_LensFlare_REF02",
+       "class": "Material",
+       "textures": [
+        {
+         "texture": "ENV_ORB_Effects_p.Materials.LensFlare_02",
+         "extracted": true,
+         "file": "AssetTools/out/lens_flares/ENV_ORB_Effects_p__Materials__LensFlare_02.png",
+         "size": [
+          512,
+          512
+         ],
+         "mode": "RGB"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "ElementName": "Ring",
+     "RayDistance": 0.8999999761581421,
+     "bIsEnabled": true,
+     "bUseSourceDistance": false,
+     "bNormalizeRadialDistance": true,
+     "bModulateColorBySource": false,
+     "Size": {
+      "X": 1.0,
+      "Y": 1.0,
+      "Z": 1.0
+     },
+     "LFMaterials": [
+      "ENV_ORB_Effects_p.Materials.ORB_LensFlare_RING"
+     ],
+     "LFMaterialIndex": {
+      "type": 1,
+      "op": 1,
+      "raw": [
+       0.0
+      ],
+      "kind": "constant",
+      "value": 0.0
+     },
+     "Scaling": {
+      "type": 1,
+      "op": 1,
+      "raw": [
+       1.0
+      ],
+      "kind": "constant",
+      "value": 1.0
+     },
+     "OcclusionScaling": {
+      "type": 2,
+      "op": 1,
+      "raw": [
+       0.30000001192092896,
+       1.0,
+       0.30000001192092896,
+       18.571428298950195,
+       0.30000001192092896,
+       0.371870756149292,
+       0.4347291886806488,
+       0.49021393060684204,
+       0.5399636030197144,
+       0.5856167674064636,
+       0.6288120150566101,
+       0.6711879968643188,
+       0.7143833041191101,
+       0.7600364089012146,
+       0.8097861409187317,
+       0.8652709126472473,
+       0.9281293749809265,
+       1.0
+      ],
+      "kind": "constant curve",
+      "range": [
+       0.30000001192092896,
+       1.0
+      ],
+      "start": 0.30000001192092896,
+      "time_scale": 18.571428298950195,
+      "samples": [
+       0.30000001192092896,
+       0.371870756149292,
+       0.4347291886806488,
+       0.49021393060684204,
+       0.5399636030197144,
+       0.5856167674064636,
+       0.6288120150566101,
+       0.6711879968643188,
+       0.7143833041191101,
+       0.7600364089012146,
+       0.8097861409187317,
+       0.8652709126472473,
+       0.9281293749809265,
+       1.0
+      ],
+      "sample_inputs": [
+       0.30000001192092896,
+       0.3538461665571089,
+       0.4076923211932888,
+       0.4615384758294687,
+       0.5153846304656486,
+       0.5692307851018286,
+       0.6230769397380085,
+       0.6769230943741884,
+       0.7307692490103683,
+       0.7846154036465482,
+       0.8384615582827282,
+       0.8923077129189081,
+       0.946153867555088,
+       1.000000022191268
+      ]
+     },
+     "AxisScaling": {
+      "type": 7,
+      "op": 1,
+      "raw": [
+       1.0,
+       1.0,
+       1.0
+      ],
+      "kind": "constant",
+      "value": [
+       1.0,
+       1.0,
+       1.0
+      ]
+     },
+     "Rotation": {
+      "type": 1,
+      "op": 1,
+      "raw": [
+       0.0
+      ],
+      "kind": "constant",
+      "value": 0.0
+     },
+     "Color": {
+      "type": 7,
+      "op": 1,
+      "raw": [
+       1.0,
+       1.0,
+       1.0
+      ],
+      "kind": "constant",
+      "value": [
+       1.0,
+       1.0,
+       1.0
+      ]
+     },
+     "Alpha": {
+      "type": 1,
+      "op": 1,
+      "raw": [
+       0.10000000149011612
+      ],
+      "kind": "constant",
+      "value": 0.10000000149011612
+     },
+     "Offset": {
+      "type": 7,
+      "op": 1,
+      "raw": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "kind": "constant",
+      "value": [
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     "DistMap_Scale": {
+      "type": 7,
+      "op": 1,
+      "raw": [
+       1.0,
+       1.0,
+       1.0
+      ],
+      "kind": "constant",
+      "value": [
+       1.0,
+       1.0,
+       1.0
+      ]
+     },
+     "DistMap_Color": {
+      "type": 7,
+      "op": 1,
+      "raw": [
+       1.0,
+       1.0,
+       1.0
+      ],
+      "kind": "constant",
+      "value": [
+       1.0,
+       1.0,
+       1.0
+      ]
+     },
+     "DistMap_Alpha": {
+      "type": 1,
+      "op": 1,
+      "raw": [
+       1.0
+      ],
+      "kind": "constant",
+      "value": 1.0
+     },
+     "_from_class_default": [],
+     "_materials": [
+      {
+       "material": "ENV_ORB_Effects_p.Materials.ORB_LensFlare_RING",
+       "class": "Material",
+       "textures": [
+        {
+         "texture": "ENV_ORB_Effects_p.Materials.LensFlare_Ring",
+         "extracted": true,
+         "file": "AssetTools/out/lens_flares/ENV_ORB_Effects_p__Materials__LensFlare_Ring.png",
+         "size": [
+          512,
+          512
+         ],
+         "mode": "RGB"
+        },
+        {
+         "texture": "ENV_ORB_Effects_p.Materials.LensFlare_02",
+         "extracted": true,
+         "file": "AssetTools/out/lens_flares/ENV_ORB_Effects_p__Materials__LensFlare_02.png",
+         "size": [
+          512,
+          512
+         ],
+         "mode": "RGB"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "ElementName": "Thin line",
+     "RayDistance": 0.0,
+     "bIsEnabled": true,
+     "bUseSourceDistance": false,
+     "bNormalizeRadialDistance": true,
+     "bModulateColorBySource": false,
+     "Size": {
+      "X": 0.20000000298023224,
+      "Y": 0.20000000298023224,
+      "Z": 0.0
+     },
+     "LFMaterials": [
+      "ENV_ORB_Effects_p.Materials.ORB_LensFlare_REF01"
+     ],
+     "LFMaterialIndex": {
+      "type": 1,
+      "op": 1,
+      "raw": [
+       0.0
+      ],
+      "kind": "constant",
+      "value": 0.0
+     },
+     "Scaling": {
+      "type": 1,
+      "op": 1,
+      "raw": [
+       1.0
+      ],
+      "kind": "constant",
+      "value": 1.0
+     },
+     "OcclusionScaling": {
+      "type": 1,
+      "op": 1,
+      "raw": [
+       1.0
+      ],
+      "kind": "constant",
+      "value": 1.0
+     },
+     "AxisScaling": {
+      "type": 7,
+      "op": 1,
+      "raw": [
+       20.0,
+       0.30000001192092896,
+       1.0
+      ],
+      "kind": "constant",
+      "value": [
+       20.0,
+       0.30000001192092896,
+       1.0
+      ]
+     },
+     "Rotation": {
+      "type": 1,
+      "op": 1,
+      "raw": [
+       0.0
+      ],
+      "kind": "constant",
+      "value": 0.0
+     },
+     "Color": {
+      "type": 7,
+      "op": 1,
+      "raw": [
+       1.0,
+       1.0,
+       1.0
+      ],
+      "kind": "constant",
+      "value": [
+       1.0,
+       1.0,
+       1.0
+      ]
+     },
+     "Alpha": {
+      "type": 1,
+      "op": 1,
+      "raw": [
+       0.5
+      ],
+      "kind": "constant",
+      "value": 0.5
+     },
+     "Offset": {
+      "type": 7,
+      "op": 1,
+      "raw": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "kind": "constant",
+      "value": [
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     "DistMap_Scale": {
+      "type": 7,
+      "op": 1,
+      "raw": [
+       1.0,
+       1.0,
+       1.0
+      ],
+      "kind": "constant",
+      "value": [
+       1.0,
+       1.0,
+       1.0
+      ]
+     },
+     "DistMap_Color": {
+      "type": 7,
+      "op": 1,
+      "raw": [
+       1.0,
+       1.0,
+       1.0
+      ],
+      "kind": "constant",
+      "value": [
+       1.0,
+       1.0,
+       1.0
+      ]
+     },
+     "DistMap_Alpha": {
+      "type": 1,
+      "op": 1,
+      "raw": [
+       1.0
+      ],
+      "kind": "constant",
+      "value": 1.0
+     },
+     "_from_class_default": [],
+     "_materials": [
+      {
+       "material": "ENV_ORB_Effects_p.Materials.ORB_LensFlare_REF01",
+       "class": "Material",
+       "textures": [
+        {
+         "texture": "ENV_ORB_Effects_p.Materials.LensFlare_01",
+         "extracted": true,
+         "file": "AssetTools/out/lens_flares/ENV_ORB_Effects_p__Materials__LensFlare_01.png",
+         "size": [
+          256,
+          256
+         ],
+         "mode": "RGB"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
