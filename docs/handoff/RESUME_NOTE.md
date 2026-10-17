@@ -49,7 +49,11 @@
     map_fx_runtime.json.
 - **Open:**
   - Standing by for Systems' package-7 build data list (overlay files, material sets).
-  - RE to name the census-sized particle blocks (SizeScale, SizeMultiplyVelocity, MeshRotation, VelocityOverLife).
+  - Integration will ask for a rerun of `work/matB_review/review.py` on the frozen live tree before the material (B) switch.
+- **pstream state (2026-10-18):**
+  - All 2,736 MP LODs decode the parameter blob and assign every distribution (31,842 CONFIRMED, 4 PROVISIONAL for SubUVDirect).
+  - Sphere and Cylinder floats are base-class-first (VelocityScale first): RE 178abb0, pstream 3470a25.
+  - The census-sized blocks are named by RE (e9d39dd).
   - The airborne exemption rests on reachFlags 2 = R_FLY: PROVISIONAL until RE confirms the enum.
   - Matinee: 165 groups are unresolved (empty variables in the cook), listed in CAMPAIGN_MATINEE_SCHEMA.md §3b.
   - Trypticon's low jaw-voice correlation is not explained by the blend rule (product and nlerp differ <= 0.47 deg).
