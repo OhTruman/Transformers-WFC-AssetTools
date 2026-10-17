@@ -1,0 +1,1986 @@
+{
+ "generated_by": "AssetTools/scripts/wfc/escalation_data.py",
+ "rule": "Escalation asks for DesiredWeaponDataType 4 (SurvivalData) [RE MP_ESCALATION_RE.md section 1]. GetWeaponDataByType(4) returns SurvivalData with no fallback inside; TnWeapon.GivenTo falls back for a player pawn to type 1 = PlayerData (the campaign tuning, NOT MultiplayerData); AI holders always use AiData [RE section 7.4, CONFIRMED]. escalation_player_data / escalation_ai_data apply that rule per class. diff = SurvivalData vs PlayerData, tagged properties only (a field the SV object leaves unset inherits from its archetype, so it appears as a difference with survival = null).",
+ "counts": {
+  "weapon_classes": 125,
+  "with_survival_data": 6,
+  "player_data_fallback": 72,
+  "no_player_data_at_all": 47
+ },
+ "weapons": [
+  {
+   "weapon_class": "TnWeaponAssaultRifle",
+   "cdo": "TransContent.Default__TnWeaponAssaultRifle",
+   "MultiplayerData": null,
+   "PlayerData": "WEP_AssaultRifle_p.AssaultRifle_WEPDATA",
+   "AiData": "WEP_AssaultRifle_AI_p.AssaultRifle_AI_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_AssaultRifle_p.AssaultRifle_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_AssaultRifle_AI_p.AssaultRifle_AI_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponAssaultRiflePlane",
+   "cdo": "TransContent.Default__TnWeaponAssaultRiflePlane",
+   "MultiplayerData": "WEP_AssaultRifleVH_p.AssaultRifle_Plane_WEPDATA",
+   "PlayerData": "WEP_AssaultRifleVH_p.AssaultRifle_Plane_SP_WEPDATA",
+   "AiData": "WEP_AssaultRifleVH_p.AssaultRifle_Vehicle_AI_WEPDATA",
+   "SurvivalData": "WEP_AssaultRifleVH_p.AssaultRifle_Plane_SV_WEPDATA",
+   "escalation_player_data": "WEP_AssaultRifleVH_p.AssaultRifle_Plane_SV_WEPDATA",
+   "escalation_player_data_source": "SurvivalData",
+   "escalation_ai_data": "WEP_AssaultRifleVH_p.AssaultRifle_Vehicle_AI_WEPDATA",
+   "survival_data_values": {
+    "DefaultPickupAmount": 400,
+    "RecoilCameraParams": {
+     "RecoilTime": 0.05000000074505806,
+     "RecoilDelay": 0.25
+    },
+    "CameraShakeParams": {
+     "Intensity": 0.10000000149011612,
+     "Roll": 0.10000000149011612,
+     "RollFalloffDuration": 0.10000000149011612,
+     "ShakeFalloffDuration": 0.10000000149011612
+    },
+    "FireIntervalModifier": {
+     "IntervalRange": {
+      "Min": 0.06499999761581421,
+      "Max": 0.06499999761581421
+     },
+     "RampTime": 0.0
+    },
+    "FireFFWaveform": "WEP_AssaultRifleVH_p.AssaultRifle_Plane_SV_WEPDATA.ForceFeedbackWaveform_2144",
+    "TargetSnapRange": {
+     "Min": 1000.0,
+     "Max": 10000.0
+    },
+    "PerShotSpreadModifier": {
+     "Modifier": {
+      "Min": 0.019999999552965164,
+      "Max": 0.05999999865889549
+     },
+     "ModifierChangePerShot": 0.004999999888241291,
+     "Cooldown": 2.0
+    },
+    "FineAimSpreadModifier": 0.5,
+    "HeatProperties": {
+     "HeatMax": 0.0,
+     "Modifiers": [
+      "WEP_AssaultRifleVH_p.AssaultRifle_Plane_SV_WEPDATA.TnPerShotHeatModifier_7837",
+      "WEP_AssaultRifleVH_p.AssaultRifle_Plane_SV_WEPDATA.TnLoseHeatModifier_14224",
+      "WEP_AssaultRifleVH_p.AssaultRifle_Plane_SV_WEPDATA.TnOverheatHeatModifier_10724"
+     ]
+    },
+    "InitialReserveAmmoCount": 400,
+    "MaxAmmoCount": 400,
+    "MaxAmmoClipCount": 60,
+    "WeaponReloadAnimTime": 1.5,
+    "DetachDelay": 0.20000000298023224,
+    "SoundRadius": 6000.0,
+    "NearlyShotDistance": 1000.0,
+    "InstantHitDamage": [
+     4.0
+    ],
+    "InstantHitDamageTypes": [
+     "TransGame.TnDamageTypeAssaultRifle"
+    ],
+    "EquipTime": 0.20000000298023224,
+    "PutDownTime": 0.20000000298023224,
+    "WeaponRange": 30000.0
+   },
+   "diff_vs": "WEP_AssaultRifleVH_p.AssaultRifle_Plane_SP_WEPDATA",
+   "diff": {
+    "FireFFWaveform": {
+     "survival": "WEP_AssaultRifleVH_p.AssaultRifle_Plane_SV_WEPDATA.ForceFeedbackWaveform_2144",
+     "base": "WEP_AssaultRifleVH_p.AssaultRifle_Plane_SP_WEPDATA.ForceFeedbackWaveform_2144"
+    },
+    "HeatProperties": {
+     "survival": {
+      "HeatMax": 0.0,
+      "Modifiers": [
+       "WEP_AssaultRifleVH_p.AssaultRifle_Plane_SV_WEPDATA.TnPerShotHeatModifier_7837",
+       "WEP_AssaultRifleVH_p.AssaultRifle_Plane_SV_WEPDATA.TnLoseHeatModifier_14224",
+       "WEP_AssaultRifleVH_p.AssaultRifle_Plane_SV_WEPDATA.TnOverheatHeatModifier_10724"
+      ]
+     },
+     "base": {
+      "HeatMax": 0.0,
+      "Modifiers": [
+       "WEP_AssaultRifleVH_p.AssaultRifle_Plane_SP_WEPDATA.TnPerShotHeatModifier_7837",
+       "WEP_AssaultRifleVH_p.AssaultRifle_Plane_SP_WEPDATA.TnLoseHeatModifier_14224",
+       "WEP_AssaultRifleVH_p.AssaultRifle_Plane_SP_WEPDATA.TnOverheatHeatModifier_10724"
+      ]
+     }
+    },
+    "InstantHitDamage": {
+     "survival": [
+      4.0
+     ],
+     "base": [
+      9.0
+     ]
+    },
+    "bHasUnlimitedReserveAmmo": {
+     "survival": null,
+     "base": true
+    }
+   }
+  },
+  {
+   "weapon_class": "TnWeaponAssaultRifleVehicle",
+   "cdo": "TransContent.Default__TnWeaponAssaultRifleVehicle",
+   "MultiplayerData": "WEP_AssaultRifleVH_p.AssaultRifle_Vehicle_WEPDATA",
+   "PlayerData": "WEP_AssaultRifleVH_p.AssaultRifle_Vehicle_SP_WEPDATA",
+   "AiData": "WEP_AssaultRifleVH_p.AssaultRifle_Vehicle_AI_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_AssaultRifleVH_p.AssaultRifle_Vehicle_SP_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_AssaultRifleVH_p.AssaultRifle_Vehicle_AI_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponAudioBlast",
+   "cdo": "TransContent.Default__TnWeaponAudioBlast",
+   "MultiplayerData": null,
+   "PlayerData": "WEP_AudioBlast_p.AudioBlast_AI_WEPDATA",
+   "AiData": "WEP_AudioBlast_p.AudioBlast_AI_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_AudioBlast_p.AudioBlast_AI_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_AudioBlast_p.AudioBlast_AI_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponAxe",
+   "cdo": "TransContent.Default__TnWeaponAxe",
+   "MultiplayerData": null,
+   "PlayerData": "WEP_Axe_p.Axe_WEPDATA",
+   "AiData": "WEP_Axe_p.Axe_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_Axe_p.Axe_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_Axe_p.Axe_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponBazooka",
+   "cdo": "TransContent.Default__TnWeaponBazooka",
+   "MultiplayerData": "WEP_Bazooka_p.Bazooka_WEPDATA",
+   "PlayerData": "WEP_Bazooka_p.Bazooka_SP_WEPDATA",
+   "AiData": "WEP_Bazooka_AI_p.Bazooka_AI_WEPDATA",
+   "SurvivalData": "WEP_Bazooka_p.Bazooka_SV_WEPDATA",
+   "escalation_player_data": "WEP_Bazooka_p.Bazooka_SV_WEPDATA",
+   "escalation_player_data_source": "SurvivalData",
+   "escalation_ai_data": "WEP_Bazooka_AI_p.Bazooka_AI_WEPDATA",
+   "survival_data_values": {
+    "DefaultPickupAmount": 10,
+    "RangeDamageModifiers": [
+     {
+      "Range": 10000.0,
+      "Modifier": 1.0
+     },
+     {
+      "Range": 30000.0,
+      "Modifier": 0.5
+     }
+    ],
+    "RecoilCameraParams": {
+     "FovAdjustment": -2.0,
+     "PitchAdjustmentDeg": 0.75,
+     "RecoilTime": 0.6000000238418579,
+     "RecoilDelay": 0.25
+    },
+    "CameraShakeParams": {
+     "Intensity": 0.44999998807907104,
+     "Roll": 0.44999998807907104,
+     "RollFalloffDuration": 0.4000000059604645,
+     "ShakeFalloffDuration": 0.4000000059604645
+    },
+    "FireIntervalModifier": {
+     "IntervalRange": {
+      "Min": 0.800000011920929,
+      "Max": 0.800000011920929
+     },
+     "RampTime": 0.0
+    },
+    "FireFFWaveform": "WEP_Bazooka_p.Bazooka_SV_WEPDATA.ForceFeedbackWaveform_15198",
+    "TargetSnapRange": {
+     "Min": 1000.0,
+     "Max": 10000.0
+    },
+    "PerShotSpreadModifier": {
+     "Modifier": {
+      "Min": 0.019999999552965164,
+      "Max": 0.05999999865889549
+     },
+     "ModifierChangePerShot": 0.019999999552965164,
+     "Cooldown": 3.0
+    },
+    "FineAimSpreadModifier": 0.75,
+    "HeatProperties": {
+     "HeatMax": 0.0,
+     "Modifiers": [
+      "WEP_Bazooka_p.Bazooka_SV_WEPDATA.TnPerShotHeatModifier_7837",
+      "WEP_Bazooka_p.Bazooka_SV_WEPDATA.TnLoseHeatModifier_14224",
+      "WEP_Bazooka_p.Bazooka_SV_WEPDATA.TnOverheatHeatModifier_3609"
+     ]
+    },
+    "OwnerAnimations": "WEP_Bazooka_p.Bazooka_SV_WEPDATA.TnWeaponOwnerAnimator_13835",
+    "InitialReserveAmmoCount": 15,
+    "MaxAmmoCount": 15,
+    "MaxAmmoClipCount": 5,
+    "WeaponReloadAnimTime": 2.5,
+    "DetachDelay": 0.5,
+    "SoundRadius": 6000.0,
+    "NearlyShotDistance": 1000.0,
+    "WeaponFireTypes": [
+     "EWFT_Projectile",
+     "EWFT_Projectile"
+    ],
+    "WeaponProjectiles": [
+     "TransContent.TnProjectileBazooka",
+     "TransContent.TnProjectileBazooka"
+    ],
+    "InstantHitDamage": [
+     60.0
+    ],
+    "InstantHitDamageTypes": [
+     "TransGame.TnDamageTypeHeavyPistol"
+    ],
+    "EquipTime": 0.20000000298023224,
+    "PutDownTime": 0.5,
+    "WeaponRange": 30000.0
+   },
+   "diff_vs": "WEP_Bazooka_p.Bazooka_SP_WEPDATA",
+   "diff": {
+    "CanDrop": {
+     "survival": null,
+     "base": false
+    },
+    "FireFFWaveform": {
+     "survival": "WEP_Bazooka_p.Bazooka_SV_WEPDATA.ForceFeedbackWaveform_15198",
+     "base": "WEP_Bazooka_p.Bazooka_SP_WEPDATA.ForceFeedbackWaveform_15198"
+    },
+    "HeatProperties": {
+     "survival": {
+      "HeatMax": 0.0,
+      "Modifiers": [
+       "WEP_Bazooka_p.Bazooka_SV_WEPDATA.TnPerShotHeatModifier_7837",
+       "WEP_Bazooka_p.Bazooka_SV_WEPDATA.TnLoseHeatModifier_14224",
+       "WEP_Bazooka_p.Bazooka_SV_WEPDATA.TnOverheatHeatModifier_3609"
+      ]
+     },
+     "base": {
+      "HeatMax": 0.0,
+      "Modifiers": [
+       "WEP_Bazooka_p.Bazooka_SP_WEPDATA.TnPerShotHeatModifier_7837",
+       "WEP_Bazooka_p.Bazooka_SP_WEPDATA.TnLoseHeatModifier_14224",
+       "WEP_Bazooka_p.Bazooka_SP_WEPDATA.TnOverheatHeatModifier_3609"
+      ]
+     }
+    },
+    "OwnerAnimations": {
+     "survival": "WEP_Bazooka_p.Bazooka_SV_WEPDATA.TnWeaponOwnerAnimator_13835",
+     "base": "WEP_Bazooka_p.Bazooka_SP_WEPDATA.TnWeaponOwnerAnimator_13835"
+    }
+   }
+  },
+  {
+   "weapon_class": "TnWeaponBeatDownClub",
+   "cdo": "TransContent.Default__TnWeaponBeatDownClub",
+   "MultiplayerData": null,
+   "PlayerData": "WEP_BeatDownClub_p.BeatDownClub_WEPDATA",
+   "AiData": "WEP_BeatDownClub_p.BeatDownClub_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_BeatDownClub_p.BeatDownClub_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_BeatDownClub_p.BeatDownClub_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponBomb",
+   "cdo": "TransContent.Default__TnWeaponBomb",
+   "MultiplayerData": null,
+   "PlayerData": "WEP_MPBomb_p.MPBomb_WEPDATA",
+   "AiData": "WEP_MPBomb_p.MPBomb_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_MPBomb_p.MPBomb_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_MPBomb_p.MPBomb_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponBombingRunLaser",
+   "cdo": "TransContent.Default__TnWeaponBombingRunLaser",
+   "MultiplayerData": null,
+   "PlayerData": "WEP_BombingRunLaser_p.BombingRunLaser_WEPDATA",
+   "AiData": "WEP_BombingRunLaser_p.BombingRunLaser_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_BombingRunLaser_p.BombingRunLaser_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_BombingRunLaser_p.BombingRunLaser_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponBombingRunVehicle",
+   "cdo": "TransContent.Default__TnWeaponBombingRunVehicle",
+   "MultiplayerData": null,
+   "PlayerData": "WEP_Rocket_p.Rocket_Vehicle_WEPDATA",
+   "AiData": "WEP_Rocket_AI_p.BombingRun_Vehicle_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_Rocket_p.Rocket_Vehicle_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_Rocket_AI_p.BombingRun_Vehicle_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponBossRepairRay",
+   "cdo": "TransContent.Default__TnWeaponBossRepairRay",
+   "MultiplayerData": null,
+   "PlayerData": null,
+   "AiData": "WEP_RepairBeam_AI_p.RepairBeam_Boss_AI_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": null,
+   "escalation_player_data_source": "none set on the class",
+   "escalation_ai_data": "WEP_RepairBeam_AI_p.RepairBeam_Boss_AI_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponBroadSword",
+   "cdo": "TransContent.Default__TnWeaponBroadSword",
+   "MultiplayerData": null,
+   "PlayerData": "WEP_BroadSword_p.BroadSword_WEPDATA",
+   "AiData": "WEP_BroadSword_p.BroadSword_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_BroadSword_p.BroadSword_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_BroadSword_p.BroadSword_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponBruteRocketLauncher",
+   "cdo": "TransContent.Default__TnWeaponBruteRocketLauncher",
+   "MultiplayerData": "WEP_RocketLauncher_p.RocketLauncher_WEPDATA",
+   "PlayerData": "WEP_RocketLauncher_p.RocketLauncher_SP_WEPDATA",
+   "AiData": "WEP_RocketLauncher_AI_p.BruteRocketLauncher_AI_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_RocketLauncher_p.RocketLauncher_SP_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_RocketLauncher_AI_p.BruteRocketLauncher_AI_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponBurstRifle",
+   "cdo": "TransContent.Default__TnWeaponBurstRifle",
+   "MultiplayerData": null,
+   "PlayerData": "WEP_BurstRifle_p.BurstRifle_WEPDATA",
+   "AiData": "WEP_BurstRifle_AI_p.BurstRifle_AI_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_BurstRifle_p.BurstRifle_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_BurstRifle_AI_p.BurstRifle_AI_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponButterflyAxe",
+   "cdo": "TransContent.Default__TnWeaponButterflyAxe",
+   "MultiplayerData": null,
+   "PlayerData": "WEP_ButterflyAxe_p.ButterflyAxe_WEPDATA",
+   "AiData": "WEP_ButterflyAxe_p.ButterflyAxe_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_ButterflyAxe_p.ButterflyAxe_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_ButterflyAxe_p.ButterflyAxe_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponCeremonialStaff",
+   "cdo": "TransContent.Default__TnWeaponCeremonialStaff",
+   "MultiplayerData": null,
+   "PlayerData": "WEP_CeremonialStaff_p.CeremonialStaff_WEPDATA",
+   "AiData": "WEP_CeremonialStaff_p.CeremonialStaff_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_CeremonialStaff_p.CeremonialStaff_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_CeremonialStaff_p.CeremonialStaff_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponCeremonialStaffHolo",
+   "cdo": "TransContent.Default__TnWeaponCeremonialStaffHolo",
+   "MultiplayerData": null,
+   "PlayerData": "WEP_CeremonialStaff_p.CeremonialStaff_WEPDATA",
+   "AiData": "WEP_CeremonialStaff_p.CeremonialStaff_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_CeremonialStaff_p.CeremonialStaff_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_CeremonialStaff_p.CeremonialStaff_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponDataPlasmaCannon",
+   "cdo": "TransContent.Default__TnWeaponDataPlasmaCannon",
+   "MultiplayerData": null,
+   "PlayerData": null,
+   "AiData": null,
+   "SurvivalData": null,
+   "escalation_player_data": null,
+   "escalation_player_data_source": "none set on the class",
+   "escalation_ai_data": null
+  },
+  {
+   "weapon_class": "TnWeaponEmpShotgun",
+   "cdo": "TransContent.Default__TnWeaponEmpShotgun",
+   "MultiplayerData": null,
+   "PlayerData": "WEP_EMPShotgun_p.EMPShotgun_WEPDATA",
+   "AiData": "WEP_EMPShotgun_AI_p.EMPShotgun_AI_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_EMPShotgun_p.EMPShotgun_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_EMPShotgun_AI_p.EMPShotgun_AI_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponFightingStaff",
+   "cdo": "TransContent.Default__TnWeaponFightingStaff",
+   "MultiplayerData": null,
+   "PlayerData": "WEP_FightingStaff_p.FightingStaff_WEPDATA",
+   "AiData": "WEP_FightingStaff_p.FightingStaff_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_FightingStaff_p.FightingStaff_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_FightingStaff_p.FightingStaff_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponFlag",
+   "cdo": "TransContent.Default__TnWeaponFlag",
+   "MultiplayerData": null,
+   "PlayerData": "WEP_CodeOfPower_p.CodeOfPower_WEPDATA",
+   "AiData": "WEP_CodeOfPower_p.CodeOfPower_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_CodeOfPower_p.CodeOfPower_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_CodeOfPower_p.CodeOfPower_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponFlag1Hand",
+   "cdo": "TransContent.Default__TnWeaponFlag1Hand",
+   "MultiplayerData": null,
+   "PlayerData": "WEP_CodeOfPower_p.CodeOfPower_WEPDATA",
+   "AiData": "WEP_CodeOfPower_p.CodeOfPower_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_CodeOfPower_p.CodeOfPower_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_CodeOfPower_p.CodeOfPower_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponFlakGrenades",
+   "cdo": "TransContent.Default__TnWeaponFlakGrenades",
+   "MultiplayerData": "WEP_Grenade_p.FlakGrenades_WEPDATA",
+   "PlayerData": "WEP_Grenade_p.FlakGrenades_SP_WEPDATA",
+   "AiData": "WEP_Grenade_AI_p.FlakGrenades_AI_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_Grenade_p.FlakGrenades_SP_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_Grenade_AI_p.FlakGrenades_AI_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponFlashBangs",
+   "cdo": "TransContent.Default__TnWeaponFlashBangs",
+   "MultiplayerData": "WEP_FlashBangs_p.FlashBangs_WEPDATA",
+   "PlayerData": "WEP_FlashBangs_p.FlashBangs_SP_WEPDATA",
+   "AiData": "WEP_FlashBangs_AI_p.FlashBangs_AI_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_FlashBangs_p.FlashBangs_SP_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_FlashBangs_AI_p.FlashBangs_AI_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponGatlingGun",
+   "cdo": "TransContent.Default__TnWeaponGatlingGun",
+   "MultiplayerData": "WEP_TurretIonGun_p.IonicDisplacer_WEPDATA",
+   "PlayerData": "WEP_TurretIonGun_p.IonicDisplacer_SP_WEPDATA",
+   "AiData": "WEP_TurretIonGun_AI_p.TurretIonGun_AI_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_TurretIonGun_p.IonicDisplacer_SP_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_TurretIonGun_AI_p.TurretIonGun_AI_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponGrenadeLauncher",
+   "cdo": "TransContent.Default__TnWeaponGrenadeLauncher",
+   "MultiplayerData": "WEP_GrenadeLauncher_p.GrenadeLauncher_WEPDATA",
+   "PlayerData": "WEP_GrenadeLauncher_p.GrenadeLauncher_SP_WEPDATA",
+   "AiData": "WEP_GrenadeLauncher_AI_p.GrenadeLauncher_AI_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_GrenadeLauncher_p.GrenadeLauncher_SP_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_GrenadeLauncher_AI_p.GrenadeLauncher_AI_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponHalberdAxe",
+   "cdo": "TransContent.Default__TnWeaponHalberdAxe",
+   "MultiplayerData": null,
+   "PlayerData": "WEP_HalberdAxe_p.HalberdAxe_WEPDATA",
+   "AiData": "WEP_HalberdAxe_p.HalberdAxe_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_HalberdAxe_p.HalberdAxe_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_HalberdAxe_p.HalberdAxe_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponHammer",
+   "cdo": "TransContent.Default__TnWeaponHammer",
+   "MultiplayerData": null,
+   "PlayerData": "WEP_Hammer_p.Hammer_WEPDATA",
+   "AiData": "WEP_Hammer_p.Hammer_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_Hammer_p.Hammer_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_Hammer_p.Hammer_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponHealGrenades",
+   "cdo": "TransContent.Default__TnWeaponHealGrenades",
+   "MultiplayerData": "WEP_HealGrenades_p.HealGrenades_WEPDATA",
+   "PlayerData": "WEP_HealGrenades_p.HealGrenades_SP_WEPDATA",
+   "AiData": "WEP_HealGrenades_p.HealGrenades_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_HealGrenades_p.HealGrenades_SP_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_HealGrenades_p.HealGrenades_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponHeavyMG",
+   "cdo": "TransContent.Default__TnWeaponHeavyMG",
+   "MultiplayerData": null,
+   "PlayerData": "WEP_HeavyMG_p.HeavyMG_WEPDATA",
+   "AiData": "WEP_HeavyMG_AI_p.HeavyMG_AI_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_HeavyMG_p.HeavyMG_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_HeavyMG_AI_p.HeavyMG_AI_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponHeavyMGAIHover",
+   "cdo": "TransContent.Default__TnWeaponHeavyMGAIHover",
+   "MultiplayerData": null,
+   "PlayerData": null,
+   "AiData": "WEP_HeavyMG_AI_p.HeavyMG_AI_Hover_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": null,
+   "escalation_player_data_source": "none set on the class",
+   "escalation_ai_data": "WEP_HeavyMG_AI_p.HeavyMG_AI_Hover_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponHeavyPistol",
+   "cdo": "TransContent.Default__TnWeaponHeavyPistol",
+   "MultiplayerData": "WEP_HeavyPistol_p.HeavyPistol_MP_WEPDATA",
+   "PlayerData": "WEP_HeavyPistol_p.HeavyPistol_WEPDATA",
+   "AiData": "WEP_HeavyPistol_AI_p.HeavyPistol_AI_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_HeavyPistol_p.HeavyPistol_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_HeavyPistol_AI_p.HeavyPistol_AI_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponHeavyRepairRay",
+   "cdo": "TransContent.Default__TnWeaponHeavyRepairRay",
+   "MultiplayerData": null,
+   "PlayerData": "WEP_TurretRepairRay_p.HeavyRepairRay_WEPDATA",
+   "AiData": "WEP_TurretRepairRay_p.HeavyRepairRay_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_TurretRepairRay_p.HeavyRepairRay_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_TurretRepairRay_p.HeavyRepairRay_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponHeavyRocketTurret",
+   "cdo": "TransContent.Default__TnWeaponHeavyRocketTurret",
+   "MultiplayerData": "WEP_TurretRocket_p.HeavyTurret_Rocket_WEPDATA",
+   "PlayerData": "WEP_TurretRocket_p.HeavyTurret_Rocket_SP_WEPDATA",
+   "AiData": "WEP_TurretRocket_p.HeavyTurret_Rocket_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_TurretRocket_p.HeavyTurret_Rocket_SP_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_TurretRocket_p.HeavyTurret_Rocket_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponHomingRocketVehicle",
+   "cdo": "TransContent.Default__TnWeaponHomingRocketVehicle",
+   "MultiplayerData": "WEP_HomingRocketVh_p.HomingRocket_Vehicle_WEPDATA",
+   "PlayerData": "WEP_HomingRocketVh_p.HomingRocket_Vehicle_SP_WEPDATA",
+   "AiData": "WEP_HomingRocketVh_p.HomingRocket_Vehicle_AI_WEPDATA",
+   "SurvivalData": "WEP_HomingRocketVh_p.HomingRocket_Vehicle_SV_WEPDATA",
+   "escalation_player_data": "WEP_HomingRocketVh_p.HomingRocket_Vehicle_SV_WEPDATA",
+   "escalation_player_data_source": "SurvivalData",
+   "escalation_ai_data": "WEP_HomingRocketVh_p.HomingRocket_Vehicle_AI_WEPDATA",
+   "survival_data_values": {
+    "LockOnTime": 0.30000001192092896,
+    "HoldLockOnTime": 1.0,
+    "CanLockOnToRobots": false,
+    "DefaultPickupAmount": 16,
+    "RecoilCameraParams": {
+     "FovAdjustment": 1.0,
+     "RecoilTime": 0.6000000238418579,
+     "RecoilDelay": 0.25
+    },
+    "CameraShakeParams": {
+     "Intensity": 0.30000001192092896,
+     "Roll": 0.20000000298023224,
+     "RollFalloffDuration": 0.15000000596046448,
+     "ShakeFalloffDuration": 0.20000000298023224
+    },
+    "FireIntervalModifier": {
+     "IntervalRange": {
+      "Min": 1.25,
+      "Max": 1.25
+     }
+    },
+    "FireFFWaveform": "WEP_HomingRocketVh_p.HomingRocket_Vehicle_SV_WEPDATA.ForceFeedbackWaveform_6955",
+    "TargetSnapRange": {
+     "Max": 16852.0
+    },
+    "PerShotSpreadModifier": {
+     "Modifier": {
+      "Min": 0.019999999552965164,
+      "Max": 0.07999999821186066
+     },
+     "ModifierChangePerShot": 0.019999999552965164,
+     "Cooldown": 4.0
+    },
+    "FineAimSpreadModifier": 0.5,
+    "HeatProperties": {
+     "HeatMax": 0.0,
+     "Modifiers": [
+      "WEP_HomingRocketVh_p.HomingRocket_Vehicle_SV_WEPDATA.TnLoseHeatModifier_7259",
+      "WEP_HomingRocketVh_p.HomingRocket_Vehicle_SV_WEPDATA.TnOverheatHeatModifier_4129",
+      "WEP_HomingRocketVh_p.HomingRocket_Vehicle_SV_WEPDATA.TnPerShotHeatModifier_8257"
+     ]
+    },
+    "InitialReserveAmmoCount": 20,
+    "MaxAmmoCount": 28,
+    "MaxAmmoClipCount": 4,
+    "WeaponReloadAnimTime": 2.0,
+    "DetachDelay": 0.20000000298023224,
+    "SoundRadius": 10000.0,
+    "NearlyShotDistance": 1000.0,
+    "WeaponFireTypes": [
+     "EWFT_Projectile",
+     "EWFT_Projectile"
+    ],
+    "WeaponProjectiles": [
+     "TransContent.TnProjectileHomingRocketVehicle",
+     null
+    ],
+    "EquipTime": 0.20000000298023224,
+    "PutDownTime": 0.20000000298023224,
+    "WeaponRange": 60000.0
+   },
+   "diff_vs": "WEP_HomingRocketVh_p.HomingRocket_Vehicle_SP_WEPDATA",
+   "diff": {
+    "DefaultPickupAmount": {
+     "survival": 16,
+     "base": 10
+    },
+    "FireFFWaveform": {
+     "survival": "WEP_HomingRocketVh_p.HomingRocket_Vehicle_SV_WEPDATA.ForceFeedbackWaveform_6955",
+     "base": "WEP_HomingRocketVh_p.HomingRocket_Vehicle_SP_WEPDATA.ForceFeedbackWaveform_6955"
+    },
+    "HeatProperties": {
+     "survival": {
+      "HeatMax": 0.0,
+      "Modifiers": [
+       "WEP_HomingRocketVh_p.HomingRocket_Vehicle_SV_WEPDATA.TnLoseHeatModifier_7259",
+       "WEP_HomingRocketVh_p.HomingRocket_Vehicle_SV_WEPDATA.TnOverheatHeatModifier_4129",
+       "WEP_HomingRocketVh_p.HomingRocket_Vehicle_SV_WEPDATA.TnPerShotHeatModifier_8257"
+      ]
+     },
+     "base": {
+      "HeatMax": 0.0,
+      "Modifiers": [
+       "WEP_HomingRocketVh_p.HomingRocket_Vehicle_SP_WEPDATA.TnLoseHeatModifier_7259",
+       "WEP_HomingRocketVh_p.HomingRocket_Vehicle_SP_WEPDATA.TnOverheatHeatModifier_4129",
+       "WEP_HomingRocketVh_p.HomingRocket_Vehicle_SP_WEPDATA.TnPerShotHeatModifier_8257"
+      ]
+     }
+    },
+    "InitialReserveAmmoCount": {
+     "survival": 20,
+     "base": 15
+    },
+    "MaxAmmoClipCount": {
+     "survival": 4,
+     "base": 5
+    },
+    "MaxAmmoCount": {
+     "survival": 28,
+     "base": 15
+    },
+    "bHasUnlimitedReserveAmmo": {
+     "survival": null,
+     "base": true
+    }
+   }
+  },
+  {
+   "weapon_class": "TnWeaponHuntingDagger",
+   "cdo": "TransContent.Default__TnWeaponHuntingDagger",
+   "MultiplayerData": null,
+   "PlayerData": "WEP_HuntingDagger_p.HuntingDagger_WEPDATA",
+   "AiData": "WEP_HuntingDagger_p.HuntingDagger_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_HuntingDagger_p.HuntingDagger_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_HuntingDagger_p.HuntingDagger_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponIonBlaster",
+   "cdo": "TransContent.Default__TnWeaponIonBlaster",
+   "MultiplayerData": "WEP_IonBlaster_p.IonBlaster_WEPDATA",
+   "PlayerData": "WEP_IonBlaster_p.IonBlaster_SP_WEPDATA",
+   "AiData": "WEP_IonBlaster_AI_p.IonBlaster_AI_WEPDATA",
+   "SurvivalData": "WEP_IonBlaster_p.IonBlaster_SV_WEPDATA",
+   "escalation_player_data": "WEP_IonBlaster_p.IonBlaster_SV_WEPDATA",
+   "escalation_player_data_source": "SurvivalData",
+   "escalation_ai_data": "WEP_IonBlaster_AI_p.IonBlaster_AI_WEPDATA",
+   "survival_data_values": {
+    "DefaultPickupAmount": 200,
+    "RangeDamageModifiers": [
+     {
+      "Range": 7500.0,
+      "Modifier": 1.0
+     },
+     {
+      "Range": 30000.0,
+      "Modifier": 0.5
+     }
+    ],
+    "RecoilCameraParams": {
+     "FovAdjustment": 0.08500000089406967,
+     "PitchAdjustmentDeg": 0.10000000149011612,
+     "RecoilTime": 0.05000000074505806,
+     "RecoilDelay": 0.25
+    },
+    "CameraShakeParams": {
+     "Intensity": 0.17000000178813934,
+     "Roll": 0.15000000596046448,
+     "RollFalloffDuration": 0.10000000149011612,
+     "ShakeFalloffDuration": 0.05999999865889549
+    },
+    "FireIntervalModifier": {
+     "IntervalRange": {
+      "Min": 0.06499999761581421,
+      "Max": 0.06499999761581421
+     },
+     "RampTime": 0.0
+    },
+    "FireFFWaveform": "WEP_IonBlaster_p.IonBlaster_SV_WEPDATA.ForceFeedbackWaveform_2144",
+    "TargetSnapRange": {
+     "Min": 1000.0,
+     "Max": 10000.0
+    },
+    "PerShotSpreadModifier": {
+     "Modifier": {
+      "Min": 0.09000000357627869,
+      "Max": 0.1899999976158142
+     },
+     "ModifierChangePerShot": 0.004999999888241291,
+     "Cooldown": 2.0
+    },
+    "FineAimSpreadModifier": 0.5,
+    "HeatProperties": {
+     "HeatMax": 0.0,
+     "Modifiers": [
+      "WEP_IonBlaster_p.IonBlaster_SV_WEPDATA.TnPerShotHeatModifier_7837",
+      "WEP_IonBlaster_p.IonBlaster_SV_WEPDATA.TnLoseHeatModifier_14224",
+      "WEP_IonBlaster_p.IonBlaster_SV_WEPDATA.TnOverheatHeatModifier_10724"
+     ]
+    },
+    "OwnerAnimations": "WEP_IonBlaster_p.IonBlaster_SV_WEPDATA.TnWeaponOwnerAnimator_10029",
+    "InitialReserveAmmoCount": 200,
+    "MaxAmmoCount": 250,
+    "MaxAmmoClipCount": 50,
+    "WeaponReloadAnimTime": 1.5,
+    "DetachDelay": 0.5,
+    "SoundRadius": 6000.0,
+    "NearlyShotDistance": 1000.0,
+    "InstantHitDamage": [
+     12.0
+    ],
+    "InstantHitDamageTypes": [
+     "TransGame.TnDamageTypeIonBlaster"
+    ],
+    "EquipTime": 0.20000000298023224,
+    "PutDownTime": 0.5,
+    "WeaponRange": 30000.0
+   },
+   "diff_vs": "WEP_IonBlaster_p.IonBlaster_SP_WEPDATA",
+   "diff": {
+    "CanDrop": {
+     "survival": null,
+     "base": false
+    },
+    "FireFFWaveform": {
+     "survival": "WEP_IonBlaster_p.IonBlaster_SV_WEPDATA.ForceFeedbackWaveform_2144",
+     "base": "WEP_IonBlaster_p.IonBlaster_SP_WEPDATA.ForceFeedbackWaveform_2144"
+    },
+    "HeatProperties": {
+     "survival": {
+      "HeatMax": 0.0,
+      "Modifiers": [
+       "WEP_IonBlaster_p.IonBlaster_SV_WEPDATA.TnPerShotHeatModifier_7837",
+       "WEP_IonBlaster_p.IonBlaster_SV_WEPDATA.TnLoseHeatModifier_14224",
+       "WEP_IonBlaster_p.IonBlaster_SV_WEPDATA.TnOverheatHeatModifier_10724"
+      ]
+     },
+     "base": {
+      "HeatMax": 0.0,
+      "Modifiers": [
+       "WEP_IonBlaster_p.IonBlaster_SP_WEPDATA.TnPerShotHeatModifier_7837",
+       "WEP_IonBlaster_p.IonBlaster_SP_WEPDATA.TnLoseHeatModifier_14224",
+       "WEP_IonBlaster_p.IonBlaster_SP_WEPDATA.TnOverheatHeatModifier_10724"
+      ]
+     }
+    },
+    "InstantHitDamage": {
+     "survival": [
+      12.0
+     ],
+     "base": [
+      14.0
+     ]
+    },
+    "OwnerAnimations": {
+     "survival": "WEP_IonBlaster_p.IonBlaster_SV_WEPDATA.TnWeaponOwnerAnimator_10029",
+     "base": "WEP_IonBlaster_p.IonBlaster_SP_WEPDATA.TnWeaponOwnerAnimator_10029"
+    }
+   }
+  },
+  {
+   "weapon_class": "TnWeaponKamikazeMines",
+   "cdo": "TransContent.Default__TnWeaponKamikazeMines",
+   "MultiplayerData": "WEP_KamikazeMine_p.KamikazeMines_WEPDATA",
+   "PlayerData": "WEP_KamikazeMine_p.KamikazeMines_SP_WEPDATA",
+   "AiData": "WEP_KamikazeMine_AI_p.KamikazeMines_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_KamikazeMine_p.KamikazeMines_SP_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_KamikazeMine_AI_p.KamikazeMines_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponLancingSpear",
+   "cdo": "TransContent.Default__TnWeaponLancingSpear",
+   "MultiplayerData": null,
+   "PlayerData": "WEP_LancingSpear_p.LancingSpear_WEPDATA",
+   "AiData": "WEP_LancingSpear_p.LancingSpear_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_LancingSpear_p.LancingSpear_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_LancingSpear_p.LancingSpear_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponLaserVehicle",
+   "cdo": "TransContent.Default__TnWeaponLaserVehicle",
+   "MultiplayerData": null,
+   "PlayerData": "WEP_Laser_Vehicle_AI_p.Laser_Vehicle_WEPDATA",
+   "AiData": "WEP_Laser_Vehicle_AI_p.Laser_Vehicle_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_Laser_Vehicle_AI_p.Laser_Vehicle_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_Laser_Vehicle_AI_p.Laser_Vehicle_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponLongSword",
+   "cdo": "TransContent.Default__TnWeaponLongSword",
+   "MultiplayerData": null,
+   "PlayerData": "WEP_LongSword_p.LongSword_WEPDATA",
+   "AiData": "WEP_LongSword_p.LongSword_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_LongSword_p.LongSword_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_LongSword_p.LongSword_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponMaul",
+   "cdo": "TransContent.Default__TnWeaponMaul",
+   "MultiplayerData": null,
+   "PlayerData": "WEP_Maul_p.Maul_WEPDATA",
+   "AiData": "WEP_Maul_p.Maul_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_Maul_p.Maul_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_Maul_p.Maul_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponMinionEmpShotgun",
+   "cdo": "TransContent.Default__TnWeaponMinionEmpShotgun",
+   "MultiplayerData": null,
+   "PlayerData": null,
+   "AiData": "WEP_Minion_EMPShotgun_AI_p.Minion_EMPShotgun_AI_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": null,
+   "escalation_player_data_source": "none set on the class",
+   "escalation_ai_data": "WEP_Minion_EMPShotgun_AI_p.Minion_EMPShotgun_AI_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponMinionHeavyPistol",
+   "cdo": "TransContent.Default__TnWeaponMinionHeavyPistol",
+   "MultiplayerData": null,
+   "PlayerData": null,
+   "AiData": "WEP_Minion_HeavyPistol_AI_p.Minion_HeavyPistol_AI_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": null,
+   "escalation_player_data_source": "none set on the class",
+   "escalation_ai_data": "WEP_Minion_HeavyPistol_AI_p.Minion_HeavyPistol_AI_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponMountedHeavyIonBlaster",
+   "cdo": "TransContent.Default__TnWeaponMountedHeavyIonBlaster",
+   "MultiplayerData": "WEP_TurretIonGun_p.TurretIonGun_WEPDATA",
+   "PlayerData": "WEP_TurretIonGun_p.TurretIonGun_SP_WEPDATA",
+   "AiData": "WEP_TurretIonGun_AI_p.TurretIonGun_AI_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_TurretIonGun_p.TurretIonGun_SP_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_TurretIonGun_AI_p.TurretIonGun_AI_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponMountedRepairRay",
+   "cdo": "TransContent.Default__TnWeaponMountedRepairRay",
+   "MultiplayerData": null,
+   "PlayerData": "WEP_TurretRepairRay_p.MountedRepairRay_WEPDATA",
+   "AiData": "WEP_TurretRepairRay_p.MountedRepairRay_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_TurretRepairRay_p.MountedRepairRay_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_TurretRepairRay_p.MountedRepairRay_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponMountedRocketTurret",
+   "cdo": "TransContent.Default__TnWeaponMountedRocketTurret",
+   "MultiplayerData": "WEP_TurretRocket_p.MountedTurret_Rocket_WEPDATA",
+   "PlayerData": "WEP_TurretRocket_p.MountedTurret_Rocket_SP_WEPDATA",
+   "AiData": "WEP_TurretRocket_AI_p.MountedTurret_Rocket_AI_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_TurretRocket_p.MountedTurret_Rocket_SP_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_TurretRocket_AI_p.MountedTurret_Rocket_AI_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponOmegaRocketArm",
+   "cdo": "TransContent.Default__TnWeaponOmegaRocketArm",
+   "MultiplayerData": null,
+   "PlayerData": "WEP_Omega_AI_p.OMEGA_Arm_AI_WEPDATA",
+   "AiData": "WEP_Omega_AI_p.OMEGA_Arm_AI_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_Omega_AI_p.OMEGA_Arm_AI_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_Omega_AI_p.OMEGA_Arm_AI_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponOmegaShipMG",
+   "cdo": "TransContent.Default__TnWeaponOmegaShipMG",
+   "MultiplayerData": null,
+   "PlayerData": null,
+   "AiData": "WEP_OmegaShip_p.OmegaMGSentry_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": null,
+   "escalation_player_data_source": "none set on the class",
+   "escalation_ai_data": "WEP_OmegaShip_p.OmegaMGSentry_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponOmegaShipRocket",
+   "cdo": "TransContent.Default__TnWeaponOmegaShipRocket",
+   "MultiplayerData": null,
+   "PlayerData": null,
+   "AiData": "WEP_OmegaShip_p.OmegaRocketSentry_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": null,
+   "escalation_player_data_source": "none set on the class",
+   "escalation_ai_data": "WEP_OmegaShip_p.OmegaRocketSentry_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponOmegaShootingFrenzyArm",
+   "cdo": "TransContent.Default__TnWeaponOmegaShootingFrenzyArm",
+   "MultiplayerData": null,
+   "PlayerData": "WEP_Omega_AI_p.Omega_ShootingFrenzy_AI_WEPDATA",
+   "AiData": "WEP_Omega_AI_p.Omega_ShootingFrenzy_AI_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_Omega_AI_p.Omega_ShootingFrenzy_AI_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_Omega_AI_p.Omega_ShootingFrenzy_AI_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponOmegaTractorBeamArm",
+   "cdo": "TransContent.Default__TnWeaponOmegaTractorBeamArm",
+   "MultiplayerData": null,
+   "PlayerData": "WEP_Omega_AI_p.OMEGA_Arm_AI_WEPDATA",
+   "AiData": "WEP_Omega_AI_p.OMEGA_Arm_AI_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_Omega_AI_p.OMEGA_Arm_AI_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_Omega_AI_p.OMEGA_Arm_AI_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponOmegaTurret",
+   "cdo": "TransContent.Default__TnWeaponOmegaTurret",
+   "MultiplayerData": null,
+   "PlayerData": "WEP_OmegaTurret_p.OmegaSupremeTurret_WEPDATA",
+   "AiData": "WEP_OmegaTurret_p.OmegaSupremeTurret_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_OmegaTurret_p.OmegaSupremeTurret_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_OmegaTurret_p.OmegaSupremeTurret_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponPlaneMachineGun",
+   "cdo": "TransContent.Default__TnWeaponPlaneMachineGun",
+   "MultiplayerData": "WEP_PlaneMachineGun_p.PlaneMachineGun_WEPDATA",
+   "PlayerData": "WEP_PlaneMachineGun_p.PlaneMachineGun_SP_WEPDATA",
+   "AiData": "WEP_PlaneMachineGun_AI_p.PlaneMachineGun_AI_WEPDATA",
+   "SurvivalData": "WEP_PlaneMachineGun_p.PlaneMachineGun_SV_WEPDATA",
+   "escalation_player_data": "WEP_PlaneMachineGun_p.PlaneMachineGun_SV_WEPDATA",
+   "escalation_player_data_source": "SurvivalData",
+   "escalation_ai_data": "WEP_PlaneMachineGun_AI_p.PlaneMachineGun_AI_WEPDATA",
+   "survival_data_values": {
+    "DefaultPickupAmount": 400,
+    "RecoilCameraParams": {
+     "RecoilTime": 0.05000000074505806,
+     "RecoilDelay": 0.25
+    },
+    "CameraShakeParams": {
+     "Intensity": 0.10000000149011612,
+     "Roll": 0.10000000149011612,
+     "RollFalloffDuration": 0.10000000149011612,
+     "ShakeFalloffDuration": 0.10000000149011612
+    },
+    "FireIntervalModifier": {
+     "IntervalRange": {
+      "Min": 0.05999999865889549,
+      "Max": 0.05999999865889549
+     },
+     "RampTime": 0.0
+    },
+    "FireFFWaveform": "WEP_PlaneMachineGun_p.PlaneMachineGun_SV_WEPDATA.ForceFeedbackWaveform_2144",
+    "TargetSnapRange": {
+     "Min": 1000.0,
+     "Max": 10000.0
+    },
+    "PerShotSpreadModifier": {
+     "Modifier": {
+      "Min": 0.019999999552965164,
+      "Max": 0.07999999821186066
+     },
+     "ModifierChangePerShot": 0.004999999888241291,
+     "Cooldown": 2.0
+    },
+    "FineAimSpreadModifier": 0.5,
+    "HeatProperties": {
+     "HeatMax": 0.0,
+     "Modifiers": [
+      "WEP_PlaneMachineGun_p.PlaneMachineGun_SV_WEPDATA.TnPerShotHeatModifier_7837",
+      "WEP_PlaneMachineGun_p.PlaneMachineGun_SV_WEPDATA.TnLoseHeatModifier_14224",
+      "WEP_PlaneMachineGun_p.PlaneMachineGun_SV_WEPDATA.TnOverheatHeatModifier_10724"
+     ]
+    },
+    "OwnerAnimations": "WEP_PlaneMachineGun_p.PlaneMachineGun_SV_WEPDATA.TnWeaponOwnerAnimator_166",
+    "InitialReserveAmmoCount": 400,
+    "bHasUnlimitedReserveAmmo": true,
+    "MaxAmmoCount": 400,
+    "MaxAmmoClipCount": 80,
+    "WeaponReloadAnimTime": 2.5,
+    "DetachDelay": 0.10000000149011612,
+    "NearlyShotDistance": 1000.0,
+    "InstantHitDamage": [
+     10.0
+    ],
+    "InstantHitDamageTypes": [
+     "TransGame.TnDamageTypeAssaultRifle"
+    ],
+    "EquipTime": 0.10000000149011612,
+    "PutDownTime": 0.10000000149011612,
+    "WeaponRange": 30000.0
+   },
+   "diff_vs": "WEP_PlaneMachineGun_p.PlaneMachineGun_SP_WEPDATA",
+   "diff": {
+    "FireFFWaveform": {
+     "survival": "WEP_PlaneMachineGun_p.PlaneMachineGun_SV_WEPDATA.ForceFeedbackWaveform_2144",
+     "base": "WEP_PlaneMachineGun_p.PlaneMachineGun_SP_WEPDATA.ForceFeedbackWaveform_2144"
+    },
+    "HeatProperties": {
+     "survival": {
+      "HeatMax": 0.0,
+      "Modifiers": [
+       "WEP_PlaneMachineGun_p.PlaneMachineGun_SV_WEPDATA.TnPerShotHeatModifier_7837",
+       "WEP_PlaneMachineGun_p.PlaneMachineGun_SV_WEPDATA.TnLoseHeatModifier_14224",
+       "WEP_PlaneMachineGun_p.PlaneMachineGun_SV_WEPDATA.TnOverheatHeatModifier_10724"
+      ]
+     },
+     "base": {
+      "HeatMax": 0.0,
+      "Modifiers": [
+       "WEP_PlaneMachineGun_p.PlaneMachineGun_SP_WEPDATA.TnPerShotHeatModifier_7837",
+       "WEP_PlaneMachineGun_p.PlaneMachineGun_SP_WEPDATA.TnLoseHeatModifier_14224",
+       "WEP_PlaneMachineGun_p.PlaneMachineGun_SP_WEPDATA.TnOverheatHeatModifier_10724"
+      ]
+     }
+    },
+    "OwnerAnimations": {
+     "survival": "WEP_PlaneMachineGun_p.PlaneMachineGun_SV_WEPDATA.TnWeaponOwnerAnimator_166",
+     "base": "WEP_PlaneMachineGun_p.PlaneMachineGun_SP_WEPDATA.TnWeaponOwnerAnimator_166"
+    },
+    "bHasUnlimitedReserveAmmo": {
+     "survival": true,
+     "base": null
+    }
+   }
+  },
+  {
+   "weapon_class": "TnWeaponPlaneStrafingRun",
+   "cdo": "TransContent.Default__TnWeaponPlaneStrafingRun",
+   "MultiplayerData": "WEP_PlaneMachineGun_p.PlaneMachineGun_WEPDATA",
+   "PlayerData": "WEP_PlaneMachineGun_p.PlaneMachineGun_SP_WEPDATA",
+   "AiData": "WEP_PlaneMachineGun_AI_p.PlaneStrafingRun_AI_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_PlaneMachineGun_p.PlaneMachineGun_SP_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_PlaneMachineGun_AI_p.PlaneStrafingRun_AI_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponPlasmaCannon",
+   "cdo": "TransContent.Default__TnWeaponPlasmaCannon",
+   "MultiplayerData": "WEP_PlasmaCannon_p.PlasmaCannon_WEPDATA",
+   "PlayerData": "WEP_PlasmaCannon_p.PlasmaCannon_SP_WEPDATA",
+   "AiData": "WEP_PlasmaCannon_AI_p.PlasmaCannon_AI_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_PlasmaCannon_p.PlasmaCannon_SP_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_PlasmaCannon_AI_p.PlasmaCannon_AI_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponPoke",
+   "cdo": "TransContent.Default__TnWeaponPoke",
+   "MultiplayerData": null,
+   "PlayerData": "WEP_Poke_p.Poke_WEPDATA",
+   "AiData": null,
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_Poke_p.Poke_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": null
+  },
+  {
+   "weapon_class": "TnWeaponProngDagger",
+   "cdo": "TransContent.Default__TnWeaponProngDagger",
+   "MultiplayerData": null,
+   "PlayerData": "WEP_ProngDagger_p.ProngDagger_WEPDATA",
+   "AiData": "WEP_ProngDagger_p.ProngDagger_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_ProngDagger_p.ProngDagger_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_ProngDagger_p.ProngDagger_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponRepairRay",
+   "cdo": "TransContent.Default__TnWeaponRepairRay",
+   "MultiplayerData": null,
+   "PlayerData": "WEP_RepairBeam_p.RepairBeam_WEPDATA",
+   "AiData": "WEP_RepairBeam_AI_p.RepairBeam_AI_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_RepairBeam_p.RepairBeam_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_RepairBeam_AI_p.RepairBeam_AI_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponRocketLauncher",
+   "cdo": "TransContent.Default__TnWeaponRocketLauncher",
+   "MultiplayerData": "WEP_RocketLauncher_p.RocketLauncher_WEPDATA",
+   "PlayerData": "WEP_RocketLauncher_p.RocketLauncher_SP_WEPDATA",
+   "AiData": "WEP_RocketLauncher_AI_p.RocketLauncher_AI_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_RocketLauncher_p.RocketLauncher_SP_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_RocketLauncher_AI_p.RocketLauncher_AI_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponRocketPlane",
+   "cdo": "TransContent.Default__TnWeaponRocketPlane",
+   "MultiplayerData": "WEP_RocketVh_p.Rocket_Plane_WEPDATA",
+   "PlayerData": "WEP_RocketVh_p.Rocket_Plane_SP_WEPDATA",
+   "AiData": "WEP_RocketVh_p.Rocket_Vehicle_AI_WEPDATA",
+   "SurvivalData": "WEP_RocketVh_p.Rocket_Plane_SV_WEPDATA",
+   "escalation_player_data": "WEP_RocketVh_p.Rocket_Plane_SV_WEPDATA",
+   "escalation_player_data_source": "SurvivalData",
+   "escalation_ai_data": "WEP_RocketVh_p.Rocket_Vehicle_AI_WEPDATA",
+   "survival_data_values": {
+    "ShotsPerBurst": 4,
+    "BurstDelay": 0.75,
+    "DefaultPickupAmount": 72,
+    "RecoilCameraParams": {
+     "RecoilTime": 0.3499999940395355,
+     "RecoilDelay": 0.05000000074505806
+    },
+    "CameraShakeParams": {
+     "Intensity": 0.15000000596046448,
+     "Roll": 0.20000000298023224,
+     "RollFalloffDuration": 0.15000000596046448,
+     "ShakeFalloffDuration": 0.25
+    },
+    "FireIntervalModifier": {
+     "IntervalRange": {
+      "Min": 0.15000000596046448,
+      "Max": 0.15000000596046448
+     }
+    },
+    "FireFFWaveform": "WEP_RocketVh_p.Rocket_Plane_SV_WEPDATA.ForceFeedbackWaveform_11275",
+    "PerShotSpreadModifier": {
+     "Modifier": {
+      "Min": 0.05000000074505806,
+      "Max": 0.05000000074505806
+     }
+    },
+    "FineAimSpreadModifier": 0.5,
+    "HeatProperties": {
+     "HeatMax": 0.0,
+     "Modifiers": [
+      "WEP_RocketVh_p.Rocket_Plane_SV_WEPDATA.TnPerShotHeatModifier_5336",
+      "WEP_RocketVh_p.Rocket_Plane_SV_WEPDATA.TnLoseHeatModifier_7763",
+      "WEP_RocketVh_p.Rocket_Plane_SV_WEPDATA.TnOverheatHeatModifier_14371"
+     ]
+    },
+    "InitialReserveAmmoCount": 72,
+    "bAutoFire": false,
+    "MaxAmmoCount": 96,
+    "MaxAmmoClipCount": 24,
+    "WeaponReloadAnimTime": 1.5,
+    "DetachDelay": 0.33000001311302185,
+    "SoundRadius": 10000.0,
+    "NearlyShotDistance": 400.0,
+    "WeaponFireTypes": [
+     "EWFT_Projectile"
+    ],
+    "WeaponProjectiles": [
+     "TransContent.TnProjectilePlaneRocketTemp"
+    ],
+    "WeaponRange": 30000.0
+   },
+   "diff_vs": "WEP_RocketVh_p.Rocket_Plane_SP_WEPDATA",
+   "diff": {
+    "FireFFWaveform": {
+     "survival": "WEP_RocketVh_p.Rocket_Plane_SV_WEPDATA.ForceFeedbackWaveform_11275",
+     "base": "WEP_RocketVh_p.Rocket_Plane_SP_WEPDATA.ForceFeedbackWaveform_11275"
+    },
+    "HeatProperties": {
+     "survival": {
+      "HeatMax": 0.0,
+      "Modifiers": [
+       "WEP_RocketVh_p.Rocket_Plane_SV_WEPDATA.TnPerShotHeatModifier_5336",
+       "WEP_RocketVh_p.Rocket_Plane_SV_WEPDATA.TnLoseHeatModifier_7763",
+       "WEP_RocketVh_p.Rocket_Plane_SV_WEPDATA.TnOverheatHeatModifier_14371"
+      ]
+     },
+     "base": {
+      "HeatMax": 0.0,
+      "Modifiers": [
+       "WEP_RocketVh_p.Rocket_Plane_SP_WEPDATA.TnPerShotHeatModifier_5336",
+       "WEP_RocketVh_p.Rocket_Plane_SP_WEPDATA.TnLoseHeatModifier_7763",
+       "WEP_RocketVh_p.Rocket_Plane_SP_WEPDATA.TnOverheatHeatModifier_14371"
+      ]
+     }
+    },
+    "bHasUnlimitedReserveAmmo": {
+     "survival": null,
+     "base": true
+    }
+   }
+  },
+  {
+   "weapon_class": "TnWeaponRocketTemp",
+   "cdo": "TransContent.Default__TnWeaponRocketTemp",
+   "MultiplayerData": null,
+   "PlayerData": "WEP_Rocket_p.Rocket_WEPDATA",
+   "AiData": "WEP_Rocket_AI_p.Rocket_AI_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_Rocket_p.Rocket_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_Rocket_AI_p.Rocket_AI_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponRocketTurretKillStreak",
+   "cdo": "TransContent.Default__TnWeaponRocketTurretKillStreak",
+   "MultiplayerData": null,
+   "PlayerData": null,
+   "AiData": null,
+   "SurvivalData": null,
+   "escalation_player_data": null,
+   "escalation_player_data_source": "none set on the class",
+   "escalation_ai_data": null
+  },
+  {
+   "weapon_class": "TnWeaponRocketVehicle",
+   "cdo": "TransContent.Default__TnWeaponRocketVehicle",
+   "MultiplayerData": "WEP_RocketVh_p.Rocket_Vehicle_WEPDATA",
+   "PlayerData": "WEP_RocketVh_p.Rocket_Vehicle_SP_WEPDATA",
+   "AiData": "WEP_RocketVh_p.Rocket_Vehicle_AI_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_RocketVh_p.Rocket_Vehicle_SP_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_RocketVh_p.Rocket_Vehicle_AI_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponSentryDeathBeam",
+   "cdo": "TransContent.Default__TnWeaponSentryDeathBeam",
+   "MultiplayerData": null,
+   "PlayerData": null,
+   "AiData": "WEP_SentryBlaster01_p.DeathBeamSentry_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": null,
+   "escalation_player_data_source": "none set on the class",
+   "escalation_ai_data": "WEP_SentryBlaster01_p.DeathBeamSentry_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponSentryHomingRocket",
+   "cdo": "TransContent.Default__TnWeaponSentryHomingRocket",
+   "MultiplayerData": null,
+   "PlayerData": null,
+   "AiData": "WEP_SentryBlaster01_p.HomingRocketSentry_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": null,
+   "escalation_player_data_source": "none set on the class",
+   "escalation_ai_data": "WEP_SentryBlaster01_p.HomingRocketSentry_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponSentryLight",
+   "cdo": "TransContent.Default__TnWeaponSentryLight",
+   "MultiplayerData": null,
+   "PlayerData": null,
+   "AiData": "WEP_SentryBlaster01_p.LightSentry_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": null,
+   "escalation_player_data_source": "none set on the class",
+   "escalation_ai_data": "WEP_SentryBlaster01_p.LightSentry_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponSentryRepair",
+   "cdo": "TransContent.Default__TnWeaponSentryRepair",
+   "MultiplayerData": null,
+   "PlayerData": null,
+   "AiData": "WEP_SentryBlaster01_p.RepairSentry_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": null,
+   "escalation_player_data_source": "none set on the class",
+   "escalation_ai_data": "WEP_SentryBlaster01_p.RepairSentry_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponSentryRocket",
+   "cdo": "TransContent.Default__TnWeaponSentryRocket",
+   "MultiplayerData": null,
+   "PlayerData": null,
+   "AiData": "WEP_SentryBlaster01_p.RocketSentry_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": null,
+   "escalation_player_data_source": "none set on the class",
+   "escalation_ai_data": "WEP_SentryBlaster01_p.RocketSentry_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponSerratedBlade",
+   "cdo": "TransContent.Default__TnWeaponSerratedBlade",
+   "MultiplayerData": null,
+   "PlayerData": "WEP_SerratedBlade_p.SerratedBlade_WEPDATA",
+   "AiData": "WEP_SerratedBlade_p.SerratedBlade_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_SerratedBlade_p.SerratedBlade_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_SerratedBlade_p.SerratedBlade_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponShortSword",
+   "cdo": "TransContent.Default__TnWeaponShortSword",
+   "MultiplayerData": null,
+   "PlayerData": "WEP_ShortSword_p.ShortSword_WEPDATA",
+   "AiData": "WEP_ShortSword_p.ShortSword_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_ShortSword_p.ShortSword_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_ShortSword_p.ShortSword_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponShotgun",
+   "cdo": "TransContent.Default__TnWeaponShotgun",
+   "MultiplayerData": null,
+   "PlayerData": "WEP_Shotgun_p.Shotgun_WEPDATA",
+   "AiData": "WEP_Shotgun_p.Shotgun_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_Shotgun_p.Shotgun_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_Shotgun_p.Shotgun_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponSniperRifle",
+   "cdo": "TransContent.Default__TnWeaponSniperRifle",
+   "MultiplayerData": "WEP_SniperRifle_p.SniperRifle_MP_WEPDATA",
+   "PlayerData": "WEP_SniperRifle_p.SniperRifle_WEPDATA",
+   "AiData": "WEP_SniperRifle_AI_p.SniperRifle_AI_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_SniperRifle_p.SniperRifle_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_SniperRifle_AI_p.SniperRifle_AI_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponSpikedBat",
+   "cdo": "TransContent.Default__TnWeaponSpikedBat",
+   "MultiplayerData": null,
+   "PlayerData": "WEP_SpikedBat_p.SpikedBat_WEPDATA",
+   "AiData": "WEP_SpikedBat_p.SpikedBat_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_SpikedBat_p.SpikedBat_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_SpikedBat_p.SpikedBat_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponSpikedMace",
+   "cdo": "TransContent.Default__TnWeaponSpikedMace",
+   "MultiplayerData": null,
+   "PlayerData": "WEP_SpikedMace_p.SpikedMace_WEPDATA",
+   "AiData": "WEP_SpikedMace_p.SpikedMace_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_SpikedMace_p.SpikedMace_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_SpikedMace_p.SpikedMace_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponStarscreamRocketVehicle",
+   "cdo": "TransContent.Default__TnWeaponStarscreamRocketVehicle",
+   "MultiplayerData": "WEP_RocketVh_p.Rocket_Vehicle_WEPDATA",
+   "PlayerData": "WEP_RocketVh_p.Rocket_Vehicle_SP_WEPDATA",
+   "AiData": "WEP_Starscream_AI_p.Starscream_HoverRockets_AI_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_RocketVh_p.Rocket_Vehicle_SP_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_Starscream_AI_p.Starscream_HoverRockets_AI_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponStarscreamShotgun",
+   "cdo": "TransContent.Default__TnWeaponStarscreamShotgun",
+   "MultiplayerData": null,
+   "PlayerData": "WEP_Starscream_AI_p.Starscream_EMPShotgun_AI_WEPDATA",
+   "AiData": "WEP_Starscream_AI_p.Starscream_EMPShotgun_AI_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_Starscream_AI_p.Starscream_EMPShotgun_AI_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_Starscream_AI_p.Starscream_EMPShotgun_AI_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponTankCannon",
+   "cdo": "TransContent.Default__TnWeaponTankCannon",
+   "MultiplayerData": "WEP_TankCannon_p.TankCannon_WEPDATA",
+   "PlayerData": "WEP_TankCannon_p.TankCannon_SP_WEPDATA",
+   "AiData": "WEP_TankCannon_AI_p.TankCannon_AI_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_TankCannon_p.TankCannon_SP_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_TankCannon_AI_p.TankCannon_AI_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponTankCannonHeavy",
+   "cdo": "TransContent.Default__TnWeaponTankCannonHeavy",
+   "MultiplayerData": null,
+   "PlayerData": "WEP_TankCannon_AI_p.TankVehicleCannonHeavy_AI_WEPDATA",
+   "AiData": "WEP_TankCannon_AI_p.TankVehicleCannonHeavy_AI_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_TankCannon_AI_p.TankVehicleCannonHeavy_AI_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_TankCannon_AI_p.TankVehicleCannonHeavy_AI_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponTankMachineGun",
+   "cdo": "TransContent.Default__TnWeaponTankMachineGun",
+   "MultiplayerData": null,
+   "PlayerData": "WEP_SoldierTank_p.TankVehicleMG_AI_WEPDATA",
+   "AiData": "WEP_SoldierTank_p.TankVehicleMG_AI_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_SoldierTank_p.TankVehicleMG_AI_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_SoldierTank_p.TankVehicleMG_AI_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponTankRobotCannonHeavyAutobot",
+   "cdo": "TransContent.Default__TnWeaponTankRobotCannonHeavyAutobot",
+   "MultiplayerData": null,
+   "PlayerData": "WEP_SoldierTank_p.TankRobotAutHeavyCannon_AI_WEPDATA",
+   "AiData": "WEP_SoldierTank_p.TankRobotAutHeavyCannon_AI_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_SoldierTank_p.TankRobotAutHeavyCannon_AI_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_SoldierTank_p.TankRobotAutHeavyCannon_AI_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponTankRobotCannonHeavyDecepticon",
+   "cdo": "TransContent.Default__TnWeaponTankRobotCannonHeavyDecepticon",
+   "MultiplayerData": null,
+   "PlayerData": "WEP_SoldierTank_p.TankRobotDecHeavyCannon_AI_WEPDATA",
+   "AiData": "WEP_SoldierTank_p.TankRobotDecHeavyCannon_AI_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_SoldierTank_p.TankRobotDecHeavyCannon_AI_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_SoldierTank_p.TankRobotDecHeavyCannon_AI_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponTankRobotGatlingGunAutobot",
+   "cdo": "TransContent.Default__TnWeaponTankRobotGatlingGunAutobot",
+   "MultiplayerData": null,
+   "PlayerData": "WEP_SoldierTank_p.SoldierTankAutGatling_AI_WEPDATA",
+   "AiData": "WEP_SoldierTank_p.SoldierTankAutGatling_AI_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_SoldierTank_p.SoldierTankAutGatling_AI_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_SoldierTank_p.SoldierTankAutGatling_AI_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponTankRobotGatlingGunDecepticon",
+   "cdo": "TransContent.Default__TnWeaponTankRobotGatlingGunDecepticon",
+   "MultiplayerData": null,
+   "PlayerData": "WEP_SoldierTank_p.SoldierTankDecGatling_AI_WEPDATA",
+   "AiData": "WEP_SoldierTank_p.SoldierTankDecGatling_AI_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_SoldierTank_p.SoldierTankDecGatling_AI_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_SoldierTank_p.SoldierTankDecGatling_AI_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponTortureSword",
+   "cdo": "TransContent.Default__TnWeaponTortureSword",
+   "MultiplayerData": null,
+   "PlayerData": "WEP_TortureSword_p.TortureSword_WEPDATA",
+   "AiData": "WEP_TortureSword_p.TortureSword_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_TortureSword_p.TortureSword_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_TortureSword_p.TortureSword_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponTrypticonShoulderCannon",
+   "cdo": "TransContent.Default__TnWeaponTrypticonShoulderCannon",
+   "MultiplayerData": null,
+   "PlayerData": "WEP_TrypticonShoulderCannon_p.TrypticonShoulderCannon_WEPDATA",
+   "AiData": "WEP_TrypticonShoulderCannon_p.TrypticonShoulderCannon_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_TrypticonShoulderCannon_p.TrypticonShoulderCannon_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_TrypticonShoulderCannon_p.TrypticonShoulderCannon_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponTrypticonTailRocketSentry",
+   "cdo": "TransContent.Default__TnWeaponTrypticonTailRocketSentry",
+   "MultiplayerData": null,
+   "PlayerData": null,
+   "AiData": "WEP_TrypticonTailSentry_p.TrypticonTailRocketSentry_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": null,
+   "escalation_player_data_source": "none set on the class",
+   "escalation_ai_data": "WEP_TrypticonTailSentry_p.TrypticonTailRocketSentry_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponViciousAxe",
+   "cdo": "TransContent.Default__TnWeaponViciousAxe",
+   "MultiplayerData": null,
+   "PlayerData": "WEP_ViciousAxe_p.ViciousAxe_WEPDATA",
+   "AiData": "WEP_ViciousAxe_p.ViciousAxe_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_ViciousAxe_p.ViciousAxe_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_ViciousAxe_p.ViciousAxe_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponWarHammer",
+   "cdo": "TransContent.Default__TnWeaponWarHammer",
+   "MultiplayerData": null,
+   "PlayerData": "WEP_WarHammer_p.WarHammer_WEPDATA",
+   "AiData": "WEP_WarHammer_p.WarHammer_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_WarHammer_p.WarHammer_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_WarHammer_p.WarHammer_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponWarshipHomingRocketSentry",
+   "cdo": "TransContent.Default__TnWeaponWarshipHomingRocketSentry",
+   "MultiplayerData": null,
+   "PlayerData": null,
+   "AiData": "WEP_SentryBlaster01_p.WarshipHomingRocketSentry_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": null,
+   "escalation_player_data_source": "none set on the class",
+   "escalation_ai_data": "WEP_SentryBlaster01_p.WarshipHomingRocketSentry_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeapon",
+   "cdo": "TransGame.Default__TnWeapon",
+   "MultiplayerData": null,
+   "PlayerData": null,
+   "AiData": null,
+   "SurvivalData": null,
+   "escalation_player_data": null,
+   "escalation_player_data_source": "none set on the class",
+   "escalation_ai_data": null
+  },
+  {
+   "weapon_class": "TnWeaponAnimChooser",
+   "cdo": "TransGame.Default__TnWeaponAnimChooser",
+   "MultiplayerData": null,
+   "PlayerData": null,
+   "AiData": null,
+   "SurvivalData": null,
+   "escalation_player_data": null,
+   "escalation_player_data_source": "none set on the class",
+   "escalation_ai_data": null
+  },
+  {
+   "weapon_class": "TnWeaponBasedThreatLevelEvaluator",
+   "cdo": "TransGame.Default__TnWeaponBasedThreatLevelEvaluator",
+   "MultiplayerData": null,
+   "PlayerData": null,
+   "AiData": null,
+   "SurvivalData": null,
+   "escalation_player_data": null,
+   "escalation_player_data_source": "none set on the class",
+   "escalation_ai_data": null
+  },
+  {
+   "weapon_class": "TnWeaponBeam",
+   "cdo": "TransGame.Default__TnWeaponBeam",
+   "MultiplayerData": null,
+   "PlayerData": null,
+   "AiData": null,
+   "SurvivalData": null,
+   "escalation_player_data": null,
+   "escalation_player_data_source": "none set on the class",
+   "escalation_ai_data": null
+  },
+  {
+   "weapon_class": "TnWeaponBombBase",
+   "cdo": "TransGame.Default__TnWeaponBombBase",
+   "MultiplayerData": null,
+   "PlayerData": null,
+   "AiData": null,
+   "SurvivalData": null,
+   "escalation_player_data": null,
+   "escalation_player_data_source": "none set on the class",
+   "escalation_ai_data": null
+  },
+  {
+   "weapon_class": "TnWeaponData",
+   "cdo": "TransGame.Default__TnWeaponData",
+   "MultiplayerData": null,
+   "PlayerData": null,
+   "AiData": null,
+   "SurvivalData": null,
+   "escalation_player_data": null,
+   "escalation_player_data_source": "none set on the class",
+   "escalation_ai_data": null
+  },
+  {
+   "weapon_class": "TnWeaponDataBeam",
+   "cdo": "TransGame.Default__TnWeaponDataBeam",
+   "MultiplayerData": null,
+   "PlayerData": null,
+   "AiData": null,
+   "SurvivalData": null,
+   "escalation_player_data": null,
+   "escalation_player_data_source": "none set on the class",
+   "escalation_ai_data": null
+  },
+  {
+   "weapon_class": "TnWeaponDataGrenadeBag",
+   "cdo": "TransGame.Default__TnWeaponDataGrenadeBag",
+   "MultiplayerData": null,
+   "PlayerData": null,
+   "AiData": null,
+   "SurvivalData": null,
+   "escalation_player_data": null,
+   "escalation_player_data_source": "none set on the class",
+   "escalation_ai_data": null
+  },
+  {
+   "weapon_class": "TnWeaponDataGrenadeLauncher",
+   "cdo": "TransGame.Default__TnWeaponDataGrenadeLauncher",
+   "MultiplayerData": null,
+   "PlayerData": null,
+   "AiData": null,
+   "SurvivalData": null,
+   "escalation_player_data": null,
+   "escalation_player_data_source": "none set on the class",
+   "escalation_ai_data": null
+  },
+  {
+   "weapon_class": "TnWeaponDataHoming",
+   "cdo": "TransGame.Default__TnWeaponDataHoming",
+   "MultiplayerData": null,
+   "PlayerData": null,
+   "AiData": null,
+   "SurvivalData": null,
+   "escalation_player_data": null,
+   "escalation_player_data_source": "none set on the class",
+   "escalation_ai_data": null
+  },
+  {
+   "weapon_class": "TnWeaponDataRepair",
+   "cdo": "TransGame.Default__TnWeaponDataRepair",
+   "MultiplayerData": null,
+   "PlayerData": null,
+   "AiData": null,
+   "SurvivalData": null,
+   "escalation_player_data": null,
+   "escalation_player_data_source": "none set on the class",
+   "escalation_ai_data": null
+  },
+  {
+   "weapon_class": "TnWeaponDataTankCannonHeavy",
+   "cdo": "TransGame.Default__TnWeaponDataTankCannonHeavy",
+   "MultiplayerData": null,
+   "PlayerData": null,
+   "AiData": null,
+   "SurvivalData": null,
+   "escalation_player_data": null,
+   "escalation_player_data_source": "none set on the class",
+   "escalation_ai_data": null
+  },
+  {
+   "weapon_class": "TnWeaponDefaultSentryAbility",
+   "cdo": "TransGame.Default__TnWeaponDefaultSentryAbility",
+   "MultiplayerData": null,
+   "PlayerData": "WEP_SentryAbility_p.Default_WEPDATA",
+   "AiData": "WEP_SentryAbility_p.Default_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_SentryAbility_p.Default_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_SentryAbility_p.Default_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponEffectsType",
+   "cdo": "TransGame.Default__TnWeaponEffectsType",
+   "MultiplayerData": null,
+   "PlayerData": null,
+   "AiData": null,
+   "SurvivalData": null,
+   "escalation_player_data": null,
+   "escalation_player_data_source": "none set on the class",
+   "escalation_ai_data": null
+  },
+  {
+   "weapon_class": "TnWeaponEffectsTypeBullet",
+   "cdo": "TransGame.Default__TnWeaponEffectsTypeBullet",
+   "MultiplayerData": null,
+   "PlayerData": null,
+   "AiData": null,
+   "SurvivalData": null,
+   "escalation_player_data": null,
+   "escalation_player_data_source": "none set on the class",
+   "escalation_ai_data": null
+  },
+  {
+   "weapon_class": "TnWeaponEffectsTypeEnergy",
+   "cdo": "TransGame.Default__TnWeaponEffectsTypeEnergy",
+   "MultiplayerData": null,
+   "PlayerData": null,
+   "AiData": null,
+   "SurvivalData": null,
+   "escalation_player_data": null,
+   "escalation_player_data_source": "none set on the class",
+   "escalation_ai_data": null
+  },
+  {
+   "weapon_class": "TnWeaponEffectsTypeExplosive",
+   "cdo": "TransGame.Default__TnWeaponEffectsTypeExplosive",
+   "MultiplayerData": null,
+   "PlayerData": null,
+   "AiData": null,
+   "SurvivalData": null,
+   "escalation_player_data": null,
+   "escalation_player_data_source": "none set on the class",
+   "escalation_ai_data": null
+  },
+  {
+   "weapon_class": "TnWeaponEffectsTypeHealRay",
+   "cdo": "TransGame.Default__TnWeaponEffectsTypeHealRay",
+   "MultiplayerData": null,
+   "PlayerData": null,
+   "AiData": null,
+   "SurvivalData": null,
+   "escalation_player_data": null,
+   "escalation_player_data_source": "none set on the class",
+   "escalation_ai_data": null
+  },
+  {
+   "weapon_class": "TnWeaponEmpty",
+   "cdo": "TransGame.Default__TnWeaponEmpty",
+   "MultiplayerData": "TransGame.Default__TnWeaponEmpty.EmptyWeaponData",
+   "PlayerData": null,
+   "AiData": "TransGame.Default__TnWeaponEmpty.EmptyWeaponData",
+   "SurvivalData": null,
+   "escalation_player_data": null,
+   "escalation_player_data_source": "none set on the class",
+   "escalation_ai_data": "TransGame.Default__TnWeaponEmpty.EmptyWeaponData"
+  },
+  {
+   "weapon_class": "TnWeaponFireDestructionTrigger",
+   "cdo": "TransGame.Default__TnWeaponFireDestructionTrigger",
+   "MultiplayerData": null,
+   "PlayerData": null,
+   "AiData": null,
+   "SurvivalData": null,
+   "escalation_player_data": null,
+   "escalation_player_data_source": "none set on the class",
+   "escalation_ai_data": null
+  },
+  {
+   "weapon_class": "TnWeaponFlagBase",
+   "cdo": "TransGame.Default__TnWeaponFlagBase",
+   "MultiplayerData": null,
+   "PlayerData": null,
+   "AiData": null,
+   "SurvivalData": null,
+   "escalation_player_data": null,
+   "escalation_player_data_source": "none set on the class",
+   "escalation_ai_data": null
+  },
+  {
+   "weapon_class": "TnWeaponGrenadeLauncherBase",
+   "cdo": "TransGame.Default__TnWeaponGrenadeLauncherBase",
+   "MultiplayerData": null,
+   "PlayerData": null,
+   "AiData": null,
+   "SurvivalData": null,
+   "escalation_player_data": null,
+   "escalation_player_data_source": "none set on the class",
+   "escalation_ai_data": null
+  },
+  {
+   "weapon_class": "TnWeaponHeat",
+   "cdo": "TransGame.Default__TnWeaponHeat",
+   "MultiplayerData": null,
+   "PlayerData": null,
+   "AiData": null,
+   "SurvivalData": null,
+   "escalation_player_data": null,
+   "escalation_player_data_source": "none set on the class",
+   "escalation_ai_data": null
+  },
+  {
+   "weapon_class": "TnWeaponHoming",
+   "cdo": "TransGame.Default__TnWeaponHoming",
+   "MultiplayerData": null,
+   "PlayerData": null,
+   "AiData": null,
+   "SurvivalData": null,
+   "escalation_player_data": null,
+   "escalation_player_data_source": "none set on the class",
+   "escalation_ai_data": null
+  },
+  {
+   "weapon_class": "TnWeaponIKController",
+   "cdo": "TransGame.Default__TnWeaponIKController",
+   "MultiplayerData": null,
+   "PlayerData": null,
+   "AiData": null,
+   "SurvivalData": null,
+   "escalation_player_data": null,
+   "escalation_player_data_source": "none set on the class",
+   "escalation_ai_data": null
+  },
+  {
+   "weapon_class": "TnWeaponMesh",
+   "cdo": "TransGame.Default__TnWeaponMesh",
+   "MultiplayerData": null,
+   "PlayerData": null,
+   "AiData": null,
+   "SurvivalData": null,
+   "escalation_player_data": null,
+   "escalation_player_data_source": "none set on the class",
+   "escalation_ai_data": null
+  },
+  {
+   "weapon_class": "TnWeaponMeshVehicle",
+   "cdo": "TransGame.Default__TnWeaponMeshVehicle",
+   "MultiplayerData": null,
+   "PlayerData": null,
+   "AiData": null,
+   "SurvivalData": null,
+   "escalation_player_data": null,
+   "escalation_player_data_source": "none set on the class",
+   "escalation_ai_data": null
+  },
+  {
+   "weapon_class": "TnWeaponOwnerAnimator",
+   "cdo": "TransGame.Default__TnWeaponOwnerAnimator",
+   "MultiplayerData": null,
+   "PlayerData": null,
+   "AiData": null,
+   "SurvivalData": null,
+   "escalation_player_data": null,
+   "escalation_player_data_source": "none set on the class",
+   "escalation_ai_data": null
+  },
+  {
+   "weapon_class": "TnWeaponPickupFactory",
+   "cdo": "TransGame.Default__TnWeaponPickupFactory",
+   "MultiplayerData": null,
+   "PlayerData": null,
+   "AiData": null,
+   "SurvivalData": null,
+   "escalation_player_data": null,
+   "escalation_player_data_source": "none set on the class",
+   "escalation_ai_data": null
+  },
+  {
+   "weapon_class": "TnWeaponPoseSlotLogic",
+   "cdo": "TransGame.Default__TnWeaponPoseSlotLogic",
+   "MultiplayerData": null,
+   "PlayerData": null,
+   "AiData": null,
+   "SurvivalData": null,
+   "escalation_player_data": null,
+   "escalation_player_data_source": "none set on the class",
+   "escalation_ai_data": null
+  },
+  {
+   "weapon_class": "TnWeaponRepair",
+   "cdo": "TransGame.Default__TnWeaponRepair",
+   "MultiplayerData": null,
+   "PlayerData": null,
+   "AiData": null,
+   "SurvivalData": null,
+   "escalation_player_data": null,
+   "escalation_player_data_source": "none set on the class",
+   "escalation_ai_data": null
+  },
+  {
+   "weapon_class": "TnWeaponRepairSentryAbility",
+   "cdo": "TransGame.Default__TnWeaponRepairSentryAbility",
+   "MultiplayerData": null,
+   "PlayerData": "WEP_SentryAbility_p.Repair_WEPDATA",
+   "AiData": "WEP_SentryAbility_p.Repair_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_SentryAbility_p.Repair_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_SentryAbility_p.Repair_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponRocketSentryAbility",
+   "cdo": "TransGame.Default__TnWeaponRocketSentryAbility",
+   "MultiplayerData": null,
+   "PlayerData": "WEP_SentryAbility_p.Rocket_WEPDATA",
+   "AiData": "WEP_SentryAbility_p.Rocket_WEPDATA",
+   "SurvivalData": null,
+   "escalation_player_data": "WEP_SentryAbility_p.Rocket_WEPDATA",
+   "escalation_player_data_source": "PlayerData (GivenTo fallback)",
+   "escalation_ai_data": "WEP_SentryAbility_p.Rocket_WEPDATA"
+  },
+  {
+   "weapon_class": "TnWeaponService",
+   "cdo": "TransGame.Default__TnWeaponService",
+   "MultiplayerData": null,
+   "PlayerData": null,
+   "AiData": null,
+   "SurvivalData": null,
+   "escalation_player_data": null,
+   "escalation_player_data_source": "none set on the class",
+   "escalation_ai_data": null
+  },
+  {
+   "weapon_class": "TnWeaponSpreadModifier",
+   "cdo": "TransGame.Default__TnWeaponSpreadModifier",
+   "MultiplayerData": null,
+   "PlayerData": null,
+   "AiData": null,
+   "SurvivalData": null,
+   "escalation_player_data": null,
+   "escalation_player_data_source": "none set on the class",
+   "escalation_ai_data": null
+  }
+ ]
+}
