@@ -13,7 +13,9 @@ world. The GLB is unchanged; `glb_sha256` ties the file to the exact GLB it desc
   physmats: ["", ...],                                   # 0 = none (the engine default applies)
   meshes: { "<glb mesh index>": { name, kind, source_mesh | level | volume, triangles,
                                   runs: [[first_tri, count, physmat_index, rule], ...], coverage_ok } },
-  node_overrides: { "<glb node index>": physmat_index },  # component PhysMaterialOverride (wins in UE3); none authored on the 10 maps
+  node_overrides: { "<glb node index>": physmat_index },  # replaces the mesh's runs for that node
+  node_override_rules: { "<glb node index>": "component_override" | "first_material" },
+  hull_nodes_by_owner_class: { "<class> (IsA StaticMeshActor | not a StaticMeshActor)": {nodes, triangles, with_first_material} },
   unresolved: [ { mesh, first_tri, count, rule, material | volume | source_mesh } ],   # these get the engine default
   checks: { meshes, coverage_ok, bsp{level: replayed / glb triangles, positions_match}, triangles, triangles_unresolved, runs_by_rule } }
 ```
@@ -28,7 +30,8 @@ world. The GLB is unchanged; `glb_sha256` ties the file to the exact GLB it desc
 |---|---|
 | section_material | per-poly mesh: the section material's PhysMaterial through the MIC parent chain (physics.json sections; the triangle order replays vs_physics' primitive walk) |
 | body_setup | simple hull: the StaticMesh BodySetup's PhysMaterial |
-| first_material (PROVISIONAL hull rule) | simple hull without a BodySetup PhysMaterial: the first section material's PhysMaterial |
+| hull_default | simple hull without a BodySetup PhysMaterial: the mesh-level run, physmat 0 = engine default. CONFIRMED for every owner that is NOT a StaticMeshActor (StaticMeshCollectionActor members, StaticInterpActor, InterpActor): the resolver has no material fallback for them (RE CAMPAIGN_PROVISIONALS_CLOSED_RE.md a509740, 0x82C88168) |
+| first_material (node override) | the same hulls placed by an owner that IsA StaticMeshActor: the first material slot WITH a PhysMaterial (CONFIRMED, same source). Carried in `node_overrides` with `node_override_rules[node] = "first_material"`, because the fallback depends on the owner class, not the mesh |
 | bsp_surface_material | BSP: the surface material's PhysMaterial |
 | volume | blocking volume: the volume's PhysMaterial (none authored: the 126 that carry the field all say None) |
 | none / none (section not decoded in physics.json) | nothing authored -> engine default; listed in `unresolved` |
@@ -40,8 +43,12 @@ BSPCollision mesh. They match on all 10 maps.
 ## Results (10 MP maps)
 
 **Triangles:** 243,682 weapon-collision triangles.
-- 65,842 use the PROVISIONAL hull rule.
-- 51,500 have no authored PhysMaterial: e.g. `DarkEnergonCrystal_MATINST`, `DeadBodies_Mat_INST`, `FogSheet` and
+- **Hull rule (corrected 2026-10-18 per RE a509740):** the 65,842 hull triangles that had a "first material" PhysMaterial now split by
+  owner.
+  - StaticMeshActor owners keep it: 53 nodes, as node overrides.
+  - Every other owner falls to the engine default: 17,191 StaticMeshCollectionActor + 15 mover nodes.
+  - Instanced counts are in `hull_nodes_by_owner_class`.
+- At mesh level, 51,500 have no authored PhysMaterial: e.g. `DarkEnergonCrystal_MATINST`, `DeadBodies_Mat_INST`, `FogSheet` and
   `EngineMaterials.DefaultMaterial` BSP faces. They are listed in `unresolved` and get the engine default (Metal).
 
 **Physmats used:**

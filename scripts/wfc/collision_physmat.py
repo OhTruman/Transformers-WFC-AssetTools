@@ -9,7 +9,11 @@ AssetTools/manifests/maps/<MAP>/collision_weapon_physmat.json:
 Every triangle of every mesh is covered by exactly one run (checked). Rules (the `rule` field per run):
   section_material      per-poly mesh: the section material's PhysMaterial through the MIC parent chain (physics.json sections)
   body_setup            simple hull: the StaticMesh BodySetup's PhysMaterial
-  first_material        simple hull without a BodySetup PhysMaterial: the first section material's (PROVISIONAL hull rule)
+  first_material        simple hull without a BodySetup PhysMaterial, owner IsA StaticMeshActor: the first material slot WITH a
+                        PhysMaterial (CONFIRMED, RE CAMPAIGN_PROVISIONALS_CLOSED_RE.md a509740, resolver 0x82C88168). Applied as a NODE
+                        OVERRIDE, because the fallback depends on the owner class, not the mesh
+  hull_default          simple hull without a BodySetup PhysMaterial whose owner is NOT a StaticMeshActor (StaticMeshCollectionActor
+                        members, movers ...): no fallback -> engine default (CONFIRMED, same source). The mesh-level run for such hulls
   bsp_surface_material  BSP: the surface material's PhysMaterial; triangle order replayed from vs_map's polygon walk and checked
                         position-for-position against the shipped BSPCollision mesh
   volume                blocking volume: the volume's own PhysMaterial if authored, else none
@@ -73,7 +77,7 @@ def run(M, world='weapon'):
     for ni, n in enumerate(j['nodes']):
         if 'mesh' in n: mesh_src.setdefault(n['mesh'], (n.get('name'), n.get('extras') or {}))
     vols = {v['actor']: v for v in phys.get('volumes') or []}
-    out = {}; unresolved = []; bsp_checks = {}
+    out = {}; unresolved = []; bsp_checks = {}; hull_fm = {}
     for mi, m in enumerate(j['meshes']):
         pr = m['primitives'][0]
         P = accessor(j, bins, pr['attributes']['POSITION'])
@@ -102,9 +106,12 @@ def run(M, world='weapon'):
                 bs = (src.get('simple') or {}).get('phys_material')
                 if bs: runs.append([0, ntri, pidx(bs), 'body_setup'])
                 else:
+                    # mesh-level run = the non-StaticMeshActor result (engine default); StaticMeshActor owners get first_material via
+                    # node_overrides (below)
                     fm = next((s.get('phys_material') for s in secs if s.get('phys_material')), None)
-                    runs.append([0, ntri, pidx(fm), 'first_material (PROVISIONAL hull rule)' if fm else 'none'])
-                    if not fm: unresolved.append({'mesh': mi, 'first_tri': 0, 'count': ntri, 'rule': 'simple', 'source_mesh': ex.get('mesh')})
+                    runs.append([0, ntri, 0, 'hull_default'])
+                    rec['first_material_physmat'] = fm
+                    hull_fm[mi] = fm
             else:
                 # replay vs_physics: the umodel glTF's primitives in order, skipping sections with EnableCollision false; a primitive's
                 # material index is the section index
@@ -131,19 +138,43 @@ def run(M, world='weapon'):
         rec['runs'] = runs; rec['coverage_ok'] = cov == ntri
         if cov != ntri: rec['coverage'] = cov
         out[str(mi)] = rec
-    overrides = {}
+    overrides = {}; override_rules = {}
+    # owner class of each prop node (props.json: actor -> class) and IsA StaticMeshActor through the authored class chain
+    pj = os.path.join(md, 'props.json')
+    owner = {p['actor']: (p['class'], p.get('component')) for p in json.load(open(pj, encoding='utf-8'))['props']} if os.path.exists(pj) else {}
+    isa_cache = {}
+    def isa_sma(actor):
+        cls, comp = owner.get(actor, (None, None))
+        if cls not in isa_cache:
+            chain = A.chain(comp.rsplit('.', 1)[0]) if comp and cls != 'StaticMeshCollectionActor' else []
+            isa_cache[cls] = any(c.get('class') == 'StaticMeshActor' for c in chain or []) or cls == 'StaticMeshActor'
+        return isa_cache[cls], cls
+    by_owner = {}
     for ni, n in enumerate(j['nodes']):
         ex = n.get('extras') or {}
         if not ex.get('mesh'): continue
+        done = False
         for p in phys.get('props') or []:
             if p.get('actor') == n.get('name') and p.get('mesh') == ex['mesh'] and (p.get('flags') or {}).get('PhysMaterialOverride'):
-                overrides[str(ni)] = pidx(p['flags']['PhysMaterialOverride']); break
+                overrides[str(ni)] = pidx(p['flags']['PhysMaterialOverride']); override_rules[str(ni)] = 'component_override'; done = True; break
+        if done or n.get('mesh') not in hull_fm: continue
+        sma, cls = isa_sma(n.get('name'))
+        ntri = out[str(n['mesh'])]['triangles']; fm = hull_fm[n['mesh']]
+        key = '%s (%s)' % (cls, 'IsA StaticMeshActor' if sma else 'not a StaticMeshActor')
+        b = by_owner.setdefault(key, {'nodes': 0, 'triangles': 0, 'with_first_material': 0}); b['nodes'] += 1; b['triangles'] += ntri
+        if sma and fm:
+            overrides[str(ni)] = pidx(fm); override_rules[str(ni)] = 'first_material'; b['with_first_material'] += 1
+        else:
+            unresolved.append({'node': ni, 'mesh': n['mesh'], 'first_tri': 0, 'count': ntri, 'rule': 'hull_default', 'owner_class': cls,
+                               'first_material_physmat_not_applied': fm})
     rep = {'map': M, 'generated_by': 'AssetTools/scripts/wfc/collision_physmat.py', 'glb': os.path.relpath(gp, os.path.dirname(AT)).replace(os.sep, '/'),
-           'glb_sha256': sha, 'engine_default_physmat': default, 'physmats': table, 'meshes': out, 'node_overrides': overrides,
+           'glb_sha256': sha, 'engine_default_physmat': default, 'physmats': table, 'meshes': out, 'node_overrides': overrides, 'node_override_rules': override_rules,
+           'hull_nodes_by_owner_class': by_owner,
            'unresolved': unresolved,
            'checks': {'meshes': len(out), 'coverage_ok': sum(1 for r in out.values() if r['coverage_ok']), 'bsp': bsp_checks,
                       'triangles': sum(r['triangles'] for r in out.values()),
-                      'triangles_unresolved': sum(u['count'] for u in unresolved),
+                      'triangles_unresolved': sum(u['count'] for u in unresolved if 'node' not in u),        # per mesh (runs)
+                      'hull_default_node_triangles': sum(u['count'] for u in unresolved if 'node' in u),   # per placed node (instanced)
                       'runs_by_rule': {}}}
     for r in out.values():
         for x in r['runs']: rep['checks']['runs_by_rule'][x[3]] = rep['checks']['runs_by_rule'].get(x[3], 0) + x[1]
