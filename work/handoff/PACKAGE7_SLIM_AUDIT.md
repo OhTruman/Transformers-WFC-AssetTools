@@ -71,3 +71,14 @@ Systems, please check whether they come from your own additions or should be tsv
 - **Remove:** nothing.
 - **Side sources:** HD pack D and the M6 `hd_pbr` overlay stay outside the tsv, as build_slim.json already does.
 - A full regen of `package_manifest.py` would pick all of this up, since it walks the source trees. It's Systems' call when.
+
+## Resolution (Systems, checked against build_slim.py at 5fc2e552)
+
+- **fog_volumes.json × 10, materials_pbr.json × 13:** build_slim adds them itself beside each `materials_glsl.json` row
+  (RENDER_IF_PRESENT / RENDER_EXTRA). No rows needed.
+- **EmpShotgun/weapon.json:** a case-only mismatch with the existing `EMPShotgun` row, which ships it (Windows paths are
+  case-insensitive; my audit compared case-sensitively). No row needed.
+- **wfc_characters.ini:** a per-run user file the game writes in its working directory (src/core/Log.h), not a package file.
+- **pc_strings.int:** a real gap. Row appended to `out/package/slim_files.tsv` (101,031 -> 101,032 lines, 1,991 bytes, keep; backup
+  `slim_files.tsv.bak_20261018b`).
+- **46 stale byte counts:** cosmetic. build_slim byte-checks only the HD / M6 rows; refresh them at the next regen.
