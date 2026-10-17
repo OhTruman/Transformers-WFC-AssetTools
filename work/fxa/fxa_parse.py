@@ -129,3 +129,12 @@ def parse_anims(path):
         g = {'name': N[r.u32()], 'n': r.u32()}; groups.append(g)
         for _ in range(g['n']): a = read_anim(r, N); a['group'] = g['name']; anims.append(a)
     return x, groups, anims, r.o, len(d)
+
+def parse_all(path):
+    """the whole file: ... animations, then the phoneme map (u32 n, n x {u32 phonemeId, u32 targetNameIdx, f32 weight},
+    u32 nTargets, nTargets x u32 targetNameIdx); returns (actor, groups, anims, phoneme_map, end offset, file length)"""
+    x, groups, anims, end, L = parse_anims(path)
+    d = open(path, 'rb').read(); N = parse(path)['_names']; r = R(d, end)
+    pm = [{'phoneme': r.u32(), 'target': N[r.u32()], 'weight': r.f32()} for _ in range(r.u32())]
+    targets = [N[r.u32()] for _ in range(r.u32())]
+    return x, groups, anims, {'map': pm, 'targets': targets}, r.o, L
