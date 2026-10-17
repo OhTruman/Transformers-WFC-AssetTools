@@ -78,12 +78,24 @@ def main(M):
                      ('world_glb_nodes', per.get(lv, 0)),
                      ('in_states', [states[s]['name'] for s in states if any((l['level'] or '').lower() == lv.lower() for l in states[s]['levels'])]),
                      ('in_initial_state', bool(initial and any((l['level'] or '').lower() == lv.lower() for l in states.get(initial, {}).get('levels', [])))),
-                     ('hidden_outside_matinee', k == 'cine'), ('matinees_in_level', interp.get(lv, 0))])
+                     ('hidden_outside_matinee', k == 'cine'), ('matinees_in_level', interp.get(lv, 0)),
+                     # RE (CAMPAIGN_STREAMING_RE.md, b68e7aa): an in-place checkpoint restart reloads every level that is NOT
+                     # bIsFullyStatic; fully-static levels in the checkpoint's state are kept
+                     ('fully_static', bool(((A.get(lsk.get(lv.lower())) or {}).get('props') or {}).get('bIsFullyStatic')) if lsk.get(lv.lower()) else None)])
+    # checkpoint -> the StreamingState it restores (start-from-checkpoint and restart use it instead of InitialStreamingState; RE b68e7aa)
+    cps = []
+    for o in sorted(A.find(base + '.TheWorld.PersistentLevel.%', 'Checkpoint'), key=lambda o: o['opath']):
+        if o['opath'].count('.') != 3: continue
+        v = A.values(o['opath']) or {}
+        cps.append(OD([('checkpoint', o['opath']), ('tag', v.get('Tag')), ('display_order', v.get('DisplayOrder')),
+                       ('streaming_state', v.get('StreamingState')),
+                       ('streaming_state_name', (v.get('StreamingState') or '').rsplit('.', 1)[-1] or None),
+                       ('auxilliary_spawn_points', v.get('AuxilliarySpawnPoints') or [])]))
     out = OD([('map', M), ('generated_by', 'AssetTools/scripts/wfc/vs_streaming.py'),
               ('sources', 'authored DB (LevelStreamingKismet, LevelStreamingState, TnWorldInfo, Checkpoint, SeqAct_SetStreamingState); '
                           'RE decomp Engine.LevelStreamingState, TransGame.TnWorldInfo, Engine.Checkpoint (StreamingState)'),
               ('persistent_level', base), ('initial_state', initial), ('sublevels', sl), ('states', list(states.values())),
-              ('flush_actions', len(A.find(base + '.%', 'SeqAct_FlushLevelStreaming'))),
+              ('flush_actions', len(A.find(base + '.%', 'SeqAct_FlushLevelStreaming'))), ('checkpoints', cps),
               ('node_sublevel', nodes), ('nodes_ambiguous_or_unassigned', amb)])
     json.dump(out, open(os.path.join(md, 'streaming.json'), 'w', encoding='utf-8'), indent=1)
     print(M, len(sl), 'sublevels', len(states), 'states, initial', initial, '|', len(nodes), 'nodes tagged,', amb, 'ambiguous/unassigned', flush=True)

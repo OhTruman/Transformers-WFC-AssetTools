@@ -9,20 +9,25 @@ What the engine must do with each chapter's `streaming.json` (written by `script
 - The read-only RE decomp (`RE-Workspace/work/script/decomp`): Engine.LevelStreamingState, Engine.Checkpoint,
   HM_Engine.CheckpointManager, HM_Engine.SeqAct_SetActiveCheckpoint / RestartFromActiveCheckpoint.
 
-**Native gap:** the UnrealScript side of LevelStreamingState is native stubs only (AddLevel, RemoveLevel, GetLevelTargetState,
-PreActivate, Activate, IsTargetState, IsCurrentState), and so are CheckpointManager.RestartFromActiveCheckpoint / GenerateCheckpointData.
-Their exact native behaviour is **UNKNOWN** until the exe is read; the rules below marked (inferred) come from the authored data and
-UE3 conventions.
+**Revision 2026-10-18:** the six RE corrections are folded in, and §2 now follows the native code.
+- **Source:** `RE-Workspace/work/handoff/CAMPAIGN_STREAMING_RE.md` (RE lane, b68e7aa; on integration as
+  `docs/handoff/CAMPAIGN_STREAMING_RE.md`).
+- §2 rules are CONFIRMED native unless marked otherwise. The earlier "(inferred)" rules on activation order, Finished, loaded-hidden
+  levels, restart and save data were wrong in the places listed in RE §6.
+- streaming.json gained two sibling keys; no key was renamed:
+  - `sublevels[*].fully_static`: `bIsFullyStatic` (126 of 430 sublevels);
+  - `checkpoints`: per checkpoint, its `streaming_state`, tag, display order and auxiliary spawn points (211 checkpoints, all with
+    a state).
 
 ## 1. Data model (CONFIRMED from authored data)
 
 | object | authored fields | in streaming.json |
 |---|---|---|
 | persistent level `<chapter>_Base_m` | TnWorldInfo: `StreamingLevels` (the LevelStreamingKismet list), `StreamingStates`, `InitialStreamingState`, `StreamingLevelLayout` (editor grouping only) | `persistent_level`, `initial_state` |
-| LevelStreamingKismet | `PackageName`, `bIsFullyStatic` (34 of 97 in A1 / D3A), DrawColor | `sublevels[*].streaming_object` |
+| LevelStreamingKismet | `PackageName`, `bIsFullyStatic` (126 of 430 sublevels), DrawColor | `sublevels[*].streaming_object`, `sublevels[*].fully_static` |
 | LevelStreamingState (High Moon) | `Levels: [{LevelName, LevelVisible}]` | `states[*].levels` |
-| Checkpoint (NavigationPoint) | `StreamingState`, `AuxilliarySpawnPoints`, `DisplayOrder`, `Tag` (display name, e.g. "14 - Decagon Plaza") | `states[*].checkpoints` |
-| SeqAct_SetStreamingState | `StreamingState`; latent (`bLatentExecution`), outputs `Started` / `Finished`; usually fired by a SeqEvent_RemoteEvent | `states[*].set_by` (action + triggering events with EventName) |
+| Checkpoint (NavigationPoint) | `StreamingState`, `AuxilliarySpawnPoints`, `DisplayOrder`, `Tag` (display name, e.g. "14 - Decagon Plaza") | `states[*].checkpoints`, `checkpoints[*]` |
+| SeqAct_SetStreamingState | `StreamingState`; latent (`bLatentExecution`), outputs `Started` / `Finished` / `Aborted`; usually fired by a SeqEvent_RemoteEvent | `states[*].set_by` (action + triggering events with EventName) |
 | SeqAct_FlushLevelStreaming | input `Flush`, output `Finished` | `flush_actions` |
 
 Over the 10 chapters:
@@ -31,34 +36,53 @@ Over the 10 chapters:
 - 200 SetStreamingState actions, 211 checkpoints, 42 flush actions.
 - Every sublevel belongs to at least one state.
 
-## 2. Runtime rules
+## 2. Runtime rules (CONFIRMED native per RE b68e7aa, unless marked)
 
 1. **Load the persistent level.** It is always loaded and never in a state. It holds the chapter's Kismet, checkpoints, objectives and
    the TnCampaignPlayerStart(s).
-2. **Initial state** (inferred): on level start, activate `TnWorldInfo.InitialStreamingState`. Every listed level is loaded, and made
-   visible when `LevelVisible` is true; every sublevel not listed stays unloaded. For example, A1 starts in `LevelStart`, D3B in
-   `IntroCine`, A2 in `Start_State`.
-   - When the game starts from a checkpoint (`CheckpointManager.OnStartingFromCheckpoint` → `StartCheckpoint.ProcessActions()`),
-     the checkpoint's own `StreamingState` replaces the initial one (inferred from the authored link `Checkpoint.StreamingState`,
-     which `Checkpoint.CheckForErrors` requires: "Checkpoint missing streaming state.").
-3. **Activating a state** (inferred, UE3 LevelStreaming semantics):
-   - Target set = the state's levels. Load the targets not loaded yet. Then set visibility per `LevelVisible`.
-   - Then make levels that are loaded but not in the target set invisible, and unload them.
-   - Gameplay keeps running while loads proceed. The latent SeqAct_SetStreamingState fires `Started` at once and `Finished` when every
-     target level is loaded and its visibility applied (the `IsTargetState` / `IsCurrentState` pair suggests a polled target).
-4. **Flush:** SeqAct_FlushLevelStreaming blocks until every pending load / visibility change is done, then fires `Finished`. In a
-   rebuild, all pending work is completed synchronously.
+2. **Level start** (CONFIRMED):
+   - Starting from a checkpoint of this map activates that checkpoint's `StreamingState` (`checkpoints[*].streaming_state`).
+   - Otherwise `TnWorldInfo.InitialStreamingState` is activated (`initial_state`; e.g. A1 `LevelStart`, D3B `IntroCine`, A2
+     `Start_State`), unless the URL carries `?DontLoadInitialStreamingState` (set by restarts and save loads).
+   - Then a **blocking flush** runs before play, behind the loading screen: the start state's levels are fully loaded and added.
+3. **Activating a state** (`SeqAct_SetStreamingState` → `LevelStreamingState.Activate`):
+   - It only **sets a target per level**: listed with `visible: true` → Visible; listed with `visible: false` → Loaded; not listed →
+     Unloaded. No I/O happens at activation.
+   - **Levels whose target does not change are not touched.**
+   - The streaming tick then works through the levels **in StreamingLevels order**, one level at a time: async load, AddToWorld over
+     several frames, or the unload stages. Loads and unloads interleave; there is no "load all, then unload all". Gameplay keeps
+     running.
+   - Outputs: `Started` at once. `Finished` once **every** level is exactly at its target, unloads included. `Aborted` if another
+     SetStreamingState replaces the target first.
+   - Rebuild: switch only the levels whose target changed, then fire `Finished` when all have switched. `Aborted` only matters if two
+     state changes overlap.
+4. **Flush:** SeqAct_FlushLevelStreaming is blocking. It ticks streaming until nothing is pending, ticking the loading screen
+   between passes, with an optional GC; then it fires `Finished`. Rebuild: complete all pending switches synchronously.
 5. **Checkpoints:**
-   - SeqAct_SetActiveCheckpoint stores the checkpoint as active (CheckpointManager.SetActiveCheckpoint) and saves it.
-   - SeqAct_RestartFromActiveCheckpoint reloads it: activate the checkpoint's StreamingState, then spawn at
-     `Checkpoint.GetStartSpotForPlayer`, which is the checkpoint itself for the local player and rotates through
-     `AuxilliarySpawnPoints` for co-op clients. Then `TeleportPlayerToCheckpoint`.
-6. **Visibility vs collision** (inferred): a loaded-hidden level is neither drawn nor collidable; only visible levels add geometry,
-   collision, nav and actors. Its Kismet should still run once loaded (UE3 behaviour; UNKNOWN for High Moon).
+   - **Set:** SeqAct_SetActiveCheckpoint stores the active checkpoint; SeqAct_SaveActiveCheckpoint writes the save.
+   - **Save data is player-only:** character, health, ability resource, weapons with clip and reserve ammo, plus the checkpoint and map
+     path. Kismet state, pickups and destructibles are **not** saved.
+   - **Restart, checkpoint on this map** (in place, blocking):
+     1. The checkpoint's actions run (e.g. `TnStartingFormOverrideCheckpointAction`).
+     2. AI controllers and pawns, and the player pawns, are destroyed. Music stops.
+     3. `ResetLevel`: `Reset()` on every resettable actor; the game Kismet sequence resets; every `SeqEvent_SequenceActivated` re-fires.
+     4. **Every level that is not `fully_static` is unloaded and reloaded fresh** from its package, so its actors, pickups,
+        destructibles and Kismet return to their authored state. Fully-static levels in the checkpoint's state are kept.
+     5. The checkpoint's state is activated with a blocking flush.
+     6. Players respawn at `GetStartSpotForPlayer`: the checkpoint itself for the local player, `AuxilliarySpawnPoints` in rotation
+        for others, then `TeleportPlayerToCheckpoint`. Their saved data is restored.
+   - **Restart, checkpoint not on this map** (or loading a save from the menu): URL travel with `?LoadCheckpoint` and
+     `?DontLoadInitialStreamingState` (a full map load), then the same restore.
+   - Rebuild: reset each non-static sublevel to its authored state, reset the persistent level's actors and Kismet, apply the
+     checkpoint's state, then respawn the players.
+6. **Visible vs loaded** (CONFIRMED):
+   - Visible = added to the world: render, collision, nav, actors, the level's Kismet begun.
+   - **Loaded but not visible = not in the world**: no actors, no collision, no ticking and **no Kismet**. The rebuild treats it as
+     absent.
 7. **CINE sublevels:** they appear in states like any other level (A1 `Thumper_Cine`, A3 6, A4 5, D3B 3…). streaming.json tags them
-   `hidden_outside_matinee` as an export default.
-   - Until a matinee player exists, keep them unloaded, or loaded-hidden, even when a state lists them visible.
-   - With a matinee player, follow the state (the authored data makes them visible when the cutscene's state is active).
+   `hidden_outside_matinee` as an export default (not a native rule).
+   - Until a matinee player exists, keep them absent, even when a state lists them visible.
+   - With a matinee player, follow the state.
 
 ## 3. Using the export
 
@@ -70,14 +94,11 @@ Over the 10 chapters:
 - Lightmaps, collision (`collision*.glb`), nav (`navigation.json`), audio and FX already carry the level per item or per node, so
   the same per-level toggle applies to them.
 
-## 4. Open points (need the exe or a test)
+## 4. Open points
 
-1. The native `LevelStreamingState.Activate` order (unload before load? all at once?) and whether `LevelVisible: false` levels tick.
-2. Whether `Finished` waits for visibility or only for loading.
-3. Checkpoint save data (`GenerateCheckpointData` is native): what besides the streaming state is restored (Kismet state, pickups,
-   destructibles).
-4. Co-op: `AuxilliarySpawnPoints` rotation is in script (CONFIRMED); remote-player streaming is not covered.
+The four earlier open points (activation order, `Finished`, save data, co-op spawn rotation) are answered by RE (b68e7aa), and
+§2 follows that. Still open:
 
-Order of implementation: (1) initial state + per-level visibility toggles on the merged chapter; (2) SetStreamingState with Started /
-Finished from RemoteEvents (needs the core Kismet set); (3) checkpoints (start-from and restart); (4) flush; (5) CINE handling with the
-matinee player.
+1. Co-op: remote-player streaming (RE: the state change is sent to clients through H `ClientUpdateLevelStreamingState`; not decoded).
+2. The native `GenerateCheckpointData` body (RE: PARTIAL, but no non-player data appears anywhere in the save path).
+3. The loading-screen phases (native notify ids 0x32–0x38: H).
