@@ -76,3 +76,48 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+# ---------------------------------------------------------------- compiled face graph + animation groups (2026-10-16 night)
+def parse_full(path):
+    """header .. bones (parse), then: face graph nodes, node lookup, groups / animations; returns dict + end offset"""
+    x = parse(path); d = open(path, 'rb').read(); N = x['_names']; r = R(d, x['bones_end'])
+    nodes = []
+    for _ in range(r.u32()):
+        t = r.u32(); ni = r.u32(); fl = r.f32(4); tail = (r.u32(), r.u32(), r.u32())
+        nodes.append({'type': t, 'name': N[ni], 'f': fl, 'tail': tail})
+    lut = {}
+    for _ in range(r.u32()):
+        r.u32()
+        for _ in range(r.u32()): k = r.s(); lut[k] = r.u32()
+    x['nodes'] = nodes; x['node_lookup_ok'] = len(lut) == len(nodes) and all(nodes[v]['name'] == k for k, v in lut.items())
+    x['groups_at'] = r.o
+    return x, d, N, r
+
+def read_anim(r, N):
+    a = {'name': N[r.u32()]}
+    nc = r.u32(); a['curves'] = []
+    for _ in range(nc):
+        ni = r.u32(); z = r.u32(); a['curves'].append(N[ni])
+        if z != 0: raise ValueError('curve pad %d' % z)
+    k = -r.i32(); a['start'], a['end'] = r.f32(), r.f32()
+    n2 = r.u32(); a['flag'] = r.u32(); a['end2'], a['b'] = r.f32(), r.f32()
+    a['extra'] = [r.f32() for _ in range(a['flag'])]                  # flag = count of extra floats (ZetaPrime CINE_A2_Zeta_Grunt: 1)
+    if n2 != nc: raise ValueError('curve count %d / %d at 0x%x' % (n2, nc, r.o))
+    counts = struct.unpack_from('>%dH' % nc, r.d, r.o); r.o += 2 * nc
+    if sum(counts) != k: raise ValueError('key counts %d != K %d' % (sum(counts), k))
+    a['times'] = struct.unpack_from('>%dh' % k, r.d, r.o); r.o += 2 * k
+    a['values'] = struct.unpack_from('>%db' % k, r.d, r.o); r.o += k
+    a['counts'] = counts; a['K'] = k
+    a['blend_in'], a['blend_out'] = r.f32(), r.f32(); a['t_pad'] = r.u32()
+    a['cue'] = r.s(); a['name2'] = r.s(); a['t_pad2'] = r.u32()
+    return a
+
+def parse_anims(path):
+    x, d, N, r = parse_full(path)
+    groups = []
+    g0 = {'name': N[r.u32()], 'n': r.u32(), 'x': r.u32()}
+    groups.append(g0); anims = []
+    for _ in range(1):
+        g = {'name': N[r.u32()], 'n': r.u32()}; groups.append(g)
+        for _ in range(g['n']): a = read_anim(r, N); a['group'] = g['name']; anims.append(a)
+    return x, groups, anims, r.o, len(d)
