@@ -65,14 +65,18 @@ def wave_rec(key, rel, dc=None):
     s = subtitles().get(key) or {}; it = s.get('INT') or {}; fr = s.get('FRA') or {}
     name = key.split('.', 1)[1]; m = re.match(r'(?:DX|VO)_([A-Z0-9]+)_', name)
     fx = facefx_index().get(name) or []
-    loc = lambda lang: ('content/_LOC/%s/%s' % (lang, rel.split('content/', 1)[-1])) if rel and os.path.exists(os.path.join(ROOT, 'content', '_LOC', lang, rel.split('content/', 1)[-1])) else None
+    # language twins: content/_LOC/<lang>/<bank>/<wave>.wav (the runtime reads these first). Derived from the wave key when the cue tree
+    # has no merged content/<bank>/ path (52 waves: twins exist, merged copy absent)
+    base = rel.split('content/', 1)[-1] if rel else '%s/%s.wav' % tuple(key.split('.', 1))
+    loc = lambda lang: ('content/_LOC/%s/%s' % (lang, base)) if os.path.exists(os.path.join(ROOT, 'content', '_LOC', lang, base)) else None
     return OD([('wave', key), ('dialog_character', dc), ('speaker_code', m.group(1) if m else None),
                ('speaker_facefx_actor', fx[0][0].rsplit('/', 1)[-1].replace('_FaceFX.fxa', '').replace('RB_', '') if fx else None),
                ('duration', it.get('duration')), ('subtitles', it.get('subtitles')),
                ('duration_fra', fr.get('duration')), ('subtitles_fra', fr.get('subtitles')),
                ('wav', rel), ('wav_int', loc('int')), ('wav_fra', loc('FRA')),
                ('facefx', [OD([('fxa', f), ('group', g), ('anim', name)]) for f, g in fx]),
-               ('subtitle_source', 'INT' if it else ('FRA only' if fr else 'none')), ('wav_extracted', bool(rel))])
+               ('subtitle_source', 'INT' if it else ('FRA only' if fr else 'none')),
+               ('wav_extracted', bool(rel or loc('int') or loc('FRA'))), ('merged_wav_missing', not rel)])
 
 def chapter(M):
     if not is_campaign(M): sys.exit('vs_dialog: campaign chapters only (%s is MP / UI)' % M)

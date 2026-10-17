@@ -94,3 +94,26 @@ Total wall 28.9 min; peak 5.30 GB. Stage failures: none.
 - Its restart sets OBJ1 "Destroy the Autobot Dropship" and fires the dropship scene (hatches, side doors, vignettes). Nothing in it
   teleports or attaches the player.
 - The nearest dropship actor is 160 m away.
+
+**The 3 unclassified starts (2026-10-18): one site, "Guardian Chamber"** (`Checkpoint_8567` + its auxiliary
+`TnCampaignPlayerStart_3766` / `_9617`, glTF ≈ (1050, −250, 1112), in D2_COR_Chamber_Design_m / Chamber_Art_m).
+
+**Verdict: UNKNOWN, a missing floor; NOT level design.**
+
+**Evidence that the original had floor there:**
+- `TnTacticalPathNode_3036`, a *ground* tactical node, sits 1.7 m from the checkpoint and 4.7 m below it (y ≈ −258.4).
+- The two starts have walk reach specs to the checkpoint, and the checkpoint has a walk spec out of the cluster. So it is not an
+  airborne cluster.
+
+**What our export has:**
+- Neither world.glb nor collision_pawn.glb has any geometry within 15 m horizontally between y −273 and −246, except pillar tops
+  (`SideSuppPillar_STAT`) and walls starting at y ≈ −262 and lower. There is no BSP there.
+
+**Ruled out:**
+- No InterpActor / matinee mover passes under the site: all D2 Move tracks were checked.
+- No destructible, skeletal floor or spawned pawn is there. The two SkeletalMeshActors 22 m away are COR_InteriorDoor.
+- No prop within 80 m failed to export. Both Chamber levels are exported.
+
+**Code / data item:** the Guardian Chamber floor slab at y ≈ −259 (resting on the support pillars) is absent from the export. Next step:
+look for the floor mesh in the cooked Chamber packages (props_missing_mesh, an unhandled actor class, or a component the exporter
+skips).

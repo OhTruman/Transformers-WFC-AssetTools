@@ -38,7 +38,7 @@ for the campaign HUD.
 - **One key is set but missing from its bank:** D1 `D1_ORB_OBJ08` ("Confront Starscream"). It has text in `[Objectives]`.
   - Whether the original HUD shows a key that isn't banked is UNKNOWN; RE says Description is a key *from* the bank. Treat it as
     PROVISIONAL.
-  - Rebuild: show the localized text by key.
+  - Frontend (2026-10-18): the original's SetCurrentObjective logs an unknown (unbanked) objective as an error and shows nothing; Frontend keeps that refusal.
 
 ## MP gate
 

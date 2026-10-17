@@ -54,7 +54,7 @@ dialog runtime (design: Systems' `CAMPAIGN_AUDIO_DIALOG.md`).
 - authored.db holds only one language per wave path (the twins share the path), so its row can be the French one. Do not use it for
   subtitles.
 - `subtitles[*].use` is `UseSubtitles` as authored. Many lines are false, which suggests the HUD shows only flagged lines (PROVISIONAL).
-- `wav_int` / `wav_fra` are the language twins in `ExtractedAssets/content/_LOC/{int,FRA}`. The merged `content/<bank>/` wave is one of
+- `wav_int` / `wav_fra` are the language twins in `ExtractedAssets/content/_LOC/{int,FRA}`. `merged_wav_missing` is true when only the twins exist. The merged `content/<bank>/` wave is one of
   the two, not always INT; for Trypticon it is FRA (CAMPAIGN_FACEFX_RE.md).
 
 ### Speaker naming
@@ -130,8 +130,11 @@ dialog runtime (design: Systems' `CAMPAIGN_AUDIO_DIALOG.md`).
   VarName exists in no exported level; they are listed, not guessed.
 - **Waves:** 1,603 waves, all with INT and FRA subtitles. 1,403 have a FaceFX animation of the same name.
   - One line has an empty SoundCue in the data.
-  - 56 waves are in their cues but were never extracted to ExtractedAssets (e.g. Ironhide `DX_IRNHDE_*`); `wav_extracted: false`.
-    Their subtitles and duration come from the cook.
+  - 52 distinct waves (56 per-line uses) have no *merged* `content/<bank>/<wave>.wav`, but both language twins exist in
+    `ExtractedAssets/content/_LOC/{int,FRA}/<bank>/` (wav + fsb). The runtime reads the twins first, so nothing is missing.
+    - They are flagged `merged_wav_missing: true`, with `wav_int` / `wav_fra` filled.
+    - The list, with cue and chapter: `work/dialog/merged_wav_missing.json`.
+    - (Corrected 2026-10-18: an earlier version called them "not extracted"; that was the exporter not looking up the twins.)
 
 **Anim notifies:**
 - 3,702 copies cooked into the chapters, all matched to their parsed originals (0 unmatched); 2,101 distinct per chapter.
