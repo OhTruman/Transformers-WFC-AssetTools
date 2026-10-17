@@ -107,6 +107,13 @@ def main():
                'semantics': 'RE-Workspace/work/handoff/LENS_FLARE_RE.md (RE) for how the runtime uses each field / curve input',
                'distribution_layout': 'constant: value; constant curve: range = output min/max, start, time_scale, samples at start + i / '
                                       'time_scale (pstream DIST_LAYOUT); raw lookup table kept as "raw"',
+               'curve_inputs (RE LENS_FLARE_RE.md d16db1c; HIGH, stock UE3)': {
+                   'Scaling / Color / Alpha / AxisScaling / Rotation / Offset': "the element's normalised radial screen distance",
+                   'OcclusionScaling': 'visibility (0..1)',
+                   'ScreenPercentageMap': 'occlusion coverage (visible pixels / projected box pixels) -> visibility',
+                   'DistMap_Scale / DistMap_Color / DistMap_Alpha': 'the source-ratio / distance term',
+                   'Radius / OuterCone = 0': 'no distance fade / cull, no cone attenuation',
+                   'ScreenPercentageMap without Type': 'curve (the class default Type 2; RE confirms the decode)'},
                'count': len(flares), 'lens_flares': flares}
         os.makedirs(os.path.join(ROOT, 'manifests', 'maps', 'lens_flares'), exist_ok=True)
         json.dump(doc, open(os.path.join(ROOT, 'manifests', 'maps', 'lens_flares', mp + '_lens_flares.json'), 'w', encoding='utf-8'), indent=1)
