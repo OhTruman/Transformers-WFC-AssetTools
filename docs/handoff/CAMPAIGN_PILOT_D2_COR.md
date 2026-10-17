@@ -70,4 +70,23 @@ Total wall 28.5 min; peak 5.29 GB. Stage failures: none.
 4. **Materials for Rendering** (`work/campaign_pilot/D2_COR_materials_for_rendering.json`): 280 materials, 174 with `.mat`, 174 compiled somewhere -> **106 need a matc pass**.
 5. **Pending diagnostics**: none: m05 and the structure audit both ran.
 6. **Starts and walk graph** (`manifests/next_map/campaign_starts_report.json`, backlog 5): 52 starts (30 campaign starts + 22 checkpoints), 31 / 52 on reachable floor; walk graph 3,395,048 m2 (audit ATTENTION); pickups on reachable floor 32 / 45; vs_validate ground check (reported only) 15 grounded / 15 airborne of the 30 it checks.
-   - Triage of what is off the walk graph (categories in `campaign_starts_report.py`): starts: 12 airborne_by_design, 5 no_floor_below, 4 unclassified; pickups: 5 on_mover, 8 unclassified. airborne_by_design = real level data (fly-only reach specs, PROVISIONAL flag meaning); on_mover = audit limit (no mover collision in the walk graph); no_floor_below = UNKNOWN; unclassified = walk-rule limit (no jump / transform) or an unconnected floor, per-actor look needed.
+   - Triage of what is off the walk graph (categories in `campaign_starts_report.py`): starts: 18 airborne_by_design, 3 unclassified; pickups: 5 on_mover, 8 unclassified. airborne_by_design = real level data (fly-only reach specs, PROVISIONAL flag meaning); on_mover = audit limit (no mover collision in the walk graph); no_floor_below = UNKNOWN; unclassified = walk-rule limit (no jump / transform) or an unconnected floor, per-actor look needed.
+
+## 4. Notes
+
+**Starts with no floor below (backlog 5 follow-up, 2026-10-17): verdict per actor.**
+- Ruled out for this chapter: every D2 level is exported, so no streaming sublevel is missing, and no mover sits in any of these
+  columns (within 40 m horizontally, at any height).
+- All verdicts are PROVISIONAL because they read reachFlags 2 as R_FLY.
+
+**Shaft cluster** at glTF (1100, -315, 1250): **truly air, by design.** Floor is about 60 m above and about 220 m below.
+- `TnCampaignPlayerStart_3993` and `TnCampaignPlayerStart_9817`: auxiliary spawn points of the two checkpoints below.
+- `Checkpoint_14292` ("Berserker"; restart sets OBJ9 "Destroy the Energon Bridge").
+- `Checkpoint_14650` ("Uncaged Power").
+- Each has 9-11 fly-only reach specs. Their 3 walk specs each link only these four starts to each other, so every way out is flying.
+
+**`Checkpoint_11675`** ("Drop Ship Entrance"): **truly air, by design.**
+- It has no paths. Its only neighbours (about 10 m away) are `TnCampaignPlayerStart_8098` / `_9089`, both fly-only.
+- Its restart sets OBJ1 "Destroy the Autobot Dropship" and fires the dropship scene (hatches, side doors, vignettes). Nothing in it
+  teleports or attaches the player.
+- The nearest dropship actor is 160 m away.

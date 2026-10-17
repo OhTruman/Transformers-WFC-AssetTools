@@ -4,8 +4,9 @@ graph (area, starts on reachable floor) and pickups on reachable floor. Read onl
 manifests/next_map/campaign_starts_report.json and prints a markdown table.
 
 Triage of every start / pickup off the walk graph (Integration: real level data vs audit limits):
-  airborne_by_design  start whose navigation reach specs are all reachFlags 2 (stock UE3 EReachSpecFlags R_FLY, flying-only paths;
-                      PROVISIONAL: the enum is engine-native, not in the RE script decomp) -> real level data
+  airborne_by_design  the start's navigation says airborne (fly_only(): fly-only paths / an airborne cluster / no paths but only air
+                      navigation within 30 m); reachFlags 2 = stock UE3 EReachSpecFlags R_FLY (PROVISIONAL: the enum is
+                      engine-native, not in the RE script decomp) -> real level data
   on_mover            a mover (InterpActor / StaticInterpActor / KActor ...) within 8 m horizontally and 0-30 m below -> audit limit:
                       the walk graph has no mover collision (lift / platform pose)
   no_floor_below      start with no collision layer within 30 m below its cell -> UNKNOWN (missing collision, streaming, or airborne)
@@ -22,12 +23,35 @@ from campaign_summary import CHAPTERS, AT, VSR  # noqa: E402
 import authored as A  # noqa: E402
 
 def fly_only(M):
-    """start / checkpoint actor -> True when every reach spec in its PathList is reachFlags 2 (R_FLY)"""
-    out = {}
+    """start / checkpoint actor -> reason string when its navigation says airborne, else None:
+       'fly-only paths'     every reach spec in its PathList is reachFlags 2 (R_FLY)
+       'airborne cluster'   it has fly specs, and its walk specs end only at other starts of such a cluster (a group of
+                            airborne starts linked to each other; every way out is flying)
+       'air-only nav near'  no paths of its own, and every navigation point within 30 m is an AirPathNode or a fly-only start"""
+    specs, loc = {}, {}
     for c in ('TnCampaignPlayerStart', 'Checkpoint'):
         for r in A.find(M + '%.TheWorld.PersistentLevel.%', c):
-            fl = {((A.get(p) or {}).get('props') or {}).get('reachFlags') for p in (r['props'] or {}).get('PathList') or []}
-            out[r['opath'].rsplit('.', 1)[-1]] = fl == {2}
+            a = r['opath'].rsplit('.', 1)[-1]; p = r['props'] or {}
+            specs[a] = [((A.get(x) or {}).get('props') or {}) for x in p.get('PathList') or []]
+            L = p.get('Location'); loc[a] = (L['X'], L['Y'], L['Z']) if isinstance(L, dict) else None
+    end = lambda s: (s.get('End') or {}).get('Nav', '').rsplit('.', 1)[-1] if isinstance(s.get('End'), dict) else ''
+    out = {a: 'fly-only paths' for a, ss in specs.items() if ss and {s.get('reachFlags') for s in ss} == {2}}
+    cand = {a for a, ss in specs.items() if a not in out and any(s.get('reachFlags') == 2 for s in ss)}
+    changed = True
+    while changed:                                            # drop candidates whose walk specs leave the candidate set
+        changed = False
+        for a in sorted(cand):
+            if any(s.get('reachFlags') != 2 and end(s) not in cand and end(s) not in out for s in specs[a]):
+                cand.discard(a); changed = True
+    out.update({a: 'airborne cluster' for a in cand})
+    nav = None
+    for a, ss in specs.items():
+        if ss or a in out or not loc[a]: continue
+        if nav is None:
+            nav = [(r['class'], r['opath'].rsplit('.', 1)[-1], (r['props'] or {}).get('Location')) for r in A.find(M + '%.TheWorld.PersistentLevel.%')
+                   if r['opath'].count('.') == 3 and 'NavGuid' in (r['props'] or {}) and isinstance((r['props'] or {}).get('Location'), dict)]
+        near = [(c, n) for c, n, L in nav if n != a and math.dist((L['X'], L['Y'], L['Z']), loc[a]) < 3000]
+        if near and all(c == 'AirPathNode' or out.get(n) == 'fly-only paths' for c, n in near): out[a] = 'air-only nav near'
     return out
 
 def triage(M, g, ps):
@@ -45,11 +69,12 @@ def triage(M, g, ps):
                     if math.hypot(t[0] - L[0], t[2] - L[2]) < 8 and -30 < t[1] - L[1] < 3)
         below = [q - L[1] for q in (diag.get(x['actor']) or {}).get('collision_layers_here', [])]
         if kind == 'start' and fly.get(x['actor']): cat = 'airborne_by_design'
+        
         elif mv: cat = 'on_mover'
         elif kind == 'start' and not any(-30 < d <= 0 for d in below): cat = 'no_floor_below'
         else: cat = 'unclassified'
         out.append({'kind': kind, 'actor': x['actor'], 'class': x.get('class') or x.get('start_kind'), 'sublevel': x.get('sublevel'),
-                    'category': cat, 'mover': {'class': mv[0][1], 'actor': mv[0][2], 'dy_m': mv[0][3]} if mv else None})
+                    'category': cat, 'airborne_reason': fly.get(x['actor']) if cat == 'airborne_by_design' else None, 'mover': {'class': mv[0][1], 'actor': mv[0][2], 'dy_m': mv[0][3]} if mv else None})
     return out
 
 def main():
