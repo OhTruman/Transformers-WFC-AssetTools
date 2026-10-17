@@ -66,7 +66,8 @@ def rest_pose(mesh_gltf):
     return {n.get('name'): n for n in g.get('nodes', [])}
 
 def convert(args):
-    psa, mesh_gltf = args
+    psa, mesh_gltf = args[:2]
+    out_base = args[2] if len(args) > 2 else None     # optional: write <out_base>.anim.gltf/.bin elsewhere (default: next to the .psa)
     bones, seqs, keys = read_psa(psa)
     nb = len(bones)
     P, Q = to_gltf_space(keys, nb)
@@ -131,7 +132,7 @@ def convert(args):
                 channels.append({'sampler': len(samplers) - 1, 'target': {'node': bi, 'path': 'rotation'}})
         if channels:
             anims.append({'name': s['name'], 'samplers': samplers, 'channels': channels})
-    base = psa[:-4] + '.anim'
+    base = (out_base or psa[:-4]) + '.anim'
     g = {'asset': {'version': '2.0', 'generator': 'AssetTools psa2gltf (umodel glTF conventions)'},
          'scene': 0, 'scenes': [{'nodes': [0]}], 'nodes': nodes, 'animations': anims,
          'buffers': [{'uri': os.path.basename(base) + '.bin', 'byteLength': len(blob)}],

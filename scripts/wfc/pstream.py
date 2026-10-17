@@ -73,11 +73,14 @@ MODULE_DISTS = {
     'PMI_LocationEmitterDirect': ([], []),                          # case 0x14: no compiled distributions (param block only)
     'PMI_DynamicParameter': (['DynamicParams[0].ParamValue', 'DynamicParams[1].ParamValue',   # case 0x1D: k = slot index
                               'DynamicParams[2].ParamValue', 'DynamicParams[3].ParamValue'], []),
+    # RE update runner 0x83039A18 case 0x21 (call site 0x8303DFD0..DFF0, 2026-10-18): vector k=0 -> payload +4/+8, k=1 -> +0x10/+0x14
+    # (CONFIRMED); naming k=0 SubUVPosition, k=1 SubUVSize by class declaration order, as for every other module (RE: HIGH)
+    'PMI_SubUVDirect': ([], ['SubUVPosition', 'SubUVSize']),
 }
 # order NOT read from the runner but taken from the runner's option order (PROVISIONAL): Orbit's options are read Offset (@4),
 # Rotation (@0x10), RotationRate (@0x1C) in that order (RE 2026-10-18), so the three vector distributions are named in that order
-# SubUVDirect: RE rates k=0 SubUVPosition, k=1 SubUVSize HIGH (update worker 0x83018C90; pointers not visible in the decompile)
-ORDER_PROVISIONAL = {'PMI_SubUVDirect': ([], ['SubUVPosition', 'SubUVSize'])}
+# (SubUVDirect resolved by RE 2026-10-18: now in MODULE_DISTS)
+ORDER_PROVISIONAL = {}
 # census-proven distribution COUNTS whose property order inside the module is not proven
 MULTI_UNPROVEN_EXTRA = {
 }
