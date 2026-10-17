@@ -32,9 +32,37 @@ def level_objects(pkgs, cls):
             if o.count('.') == 3: out[short(o)] = (o, json.loads(p or '{}'))
     return out
 
+def setup_toggles(pkgs, max_depth=8):
+    """cells toggled at match setup: walk forward from every SeqEvent_PreGameplaySetup through OutputLinks (up to max_depth ops);
+    for each SeqAct_Toggle reached, its input name (Turn On / Turn Off / Toggle) and its Target object variables' ObjValue
+    (RE MP_ESCALATION_RE.md section 7.5: BrokenHope's door / bridge cells are turned off this way at setup)"""
+    def props(o):
+        r = DB.execute('select class, props from objects where opath=?', (o,)).fetchone()
+        return (r[0], json.loads(r[1] or '{}')) if r else (None, {})
+    off, on = defaultdict(set), defaultdict(set)
+    for pk in pkgs:
+        for ev, in DB.execute("select opath from objects where package=? and class='SeqEvent_PreGameplaySetup'", (pk,)):
+            frontier, seen = [(ev, None, 0)], set()
+            while frontier:
+                op, idx, dep = frontier.pop()
+                if (op, idx) in seen or dep > max_depth: continue
+                seen.add((op, idx)); cls, p = props(op)
+                if cls == 'SeqAct_Toggle' and idx is not None:
+                    name = ((p.get('InputLinks') or [{}] * (idx + 1))[idx] or {}).get('LinkDesc')
+                    tg = [short((props(v)[1] or {}).get('ObjValue')) for vl in p.get('VariableLinks') or [] if vl.get('LinkDesc') == 'Target'
+                          for v in vl.get('LinkedVariables') or []]
+                    for t in tg:
+                        if t and t.startswith('NavigationCell'):
+                            (off if name == 'Turn Off' else on)[t].add('%s -> %s (%s)' % (short(ev), short(op), name))
+                for ol in p.get('OutputLinks') or []:
+                    for ln in ol.get('Links') or []:
+                        if ln.get('LinkedOp'): frontier.append((ln['LinkedOp'], ln.get('InputLinkIdx', 0), dep + 1))
+    return off, on
+
 def navmesh(m, pkgs, enabled_by):
     cells = level_objects(pkgs, 'NavigationCell')
     ids = {k: i for i, k in enumerate(sorted(cells, key=lambda x: int(x.rsplit('_', 1)[1])))}
+    setup_off, setup_on = setup_toggles(pkgs)
     out = []
     for name in sorted(ids, key=ids.get):
         o, p = cells[name]
@@ -52,7 +80,10 @@ def navmesh(m, pkgs, enabled_by):
                        ('location_ue', ue(p['Location'])) if p.get('Location') else ('location_ue', None),
                        ('normal_ue', ue(p['_Normal'])) if p.get('_Normal') else ('normal_ue', None),
                        ('tactical', bool(p.get('_IsTacticalCell'))),
-                       ('blocked_at_start', bool(p.get('bBlocked'))),
+                       ('blocked_at_start', bool(p.get('bBlocked')) or name in setup_off),
+                       ('blocked_cooked', bool(p.get('bBlocked'))),
+                       ('blocked_by_setup', sorted(setup_off.get(name, []))),
+                       ('enabled_by_setup', sorted(setup_on.get(name, []))),
                        ('enabled_by_generators', sorted(enabled_by.get(name, []))),
                        ('base', short(p.get('Base'))), ('nav_guid', p.get('NavGuid')), ('network_id', p.get('NetworkID')),
                        ('max_path_size', p.get('MaxPathSize')), ('path_list', [short(x) for x in p.get('PathList') or []]),
@@ -66,7 +97,7 @@ def navmesh(m, pkgs, enabled_by):
                           ('props', {kk: vv for kk, vv in p.items() if kk not in ('Location', 'PathList', 'CylinderComponent',
                                                                               'CollisionComponent', 'Components')})])
                       for k, (o, p) in sorted(objs.items(), key=lambda kv: int(kv[0].rsplit('_', 1)[1]))]
-    return out, nodes
+    return out, nodes, setup_off
 
 def main():
     os.makedirs(os.path.join(ROOT, 'manifests', 'escalation'), exist_ok=True)
@@ -130,20 +161,20 @@ def main():
                                ('other_events', len(other)), ('zones', len(zones))])),
                 ('generators', gens), ('other_events', other), ('zones', zones)])
         json.dump(A, open(os.path.join(ROOT, 'manifests', 'maps', m, 'escalation_geometry.json'), 'w', encoding='utf-8'), indent=1)
-        cells, nodes = navmesh(m, pkgs, enabled_by)
+        cells, nodes, setup_off = navmesh(m, pkgs, enabled_by)
         on = {k for k in enabled_by}; blocked = {c['actor'] for c in cells if c['blocked_at_start']}
+        cooked = {c['actor'] for c in cells if c['blocked_cooked']}
         B = OD([('map', m), ('generated_by', 'AssetTools/scripts/wfc/escalation_data.py'),
                 ('status', 'ORIGINAL cooked Escalation nav mesh (NavigationCell actors; Escalation NavigationCell schema, RE MP note addendum 1)'),
                 ('units', 'gltf metres Y-up = 0.01 * (x, z, y)_UE; ue centimetres Z-up'),
                 ('start_state', OD([
-                    ('rule', 'blocked_at_start = the cooked NavigationCell.bBlocked flag (CONFIRMED value); enabled_by_generators = the '
-                             'generators whose event fires SeqAct_Toggle "Turn On" on the cell (RE export)'),
-                    ('cells_blocked_at_start', len(blocked)), ('cells_turned_on_by_generators', len(on)),
-                    ('blocked_and_turned_on', len(on & blocked)), ('turned_on_but_not_blocked', sorted(on - blocked)),
-                    ('blocked_but_never_turned_on', sorted(blocked - on)),
-                    ('note', 'where every generator-enabled cell is also cooked bBlocked the start state is CONFIRMED by the flag; '
-                             'cells a generator turns on that are NOT cooked blocked start enabled per the cook - whether something else '
-                             'blocks them at runtime is UNKNOWN (for RE)')])),
+                    ('rule', 'blocked_at_start = cooked NavigationCell.bBlocked OR turned off by a SeqEvent_PreGameplaySetup chain '
+                             '(SeqAct_Toggle "Turn Off" at match setup) - RE MP_ESCALATION_RE.md section 7.5, CONFIRMED. '
+                             'enabled_by_generators = the generators whose event fires SeqAct_Toggle "Turn On" on the cell (RE export).'),
+                    ('cells_blocked_at_start', len(blocked)), ('blocked_cooked', len(cooked)),
+                    ('blocked_by_setup_only', len(blocked - cooked)), ('setup_turn_off_cells', len(setup_off)),
+                    ('cells_turned_on_by_generators', len(on)), ('blocked_and_turned_on', len(on & blocked)),
+                    ('turned_on_but_not_blocked', sorted(on - blocked)), ('blocked_but_never_turned_on', sorted(blocked - on))])),
                 ('counts', OD([('cells', len(cells)), ('tactical_cells', sum(c['tactical'] for c in cells)),
                                ('TnTacticalPathNode', len(nodes['TnTacticalPathNode'])), ('PathNode', len(nodes['PathNode']))])),
                 ('cells', cells), ('nodes', nodes)])

@@ -4,44 +4,15 @@
  "status": "ORIGINAL cooked Escalation nav mesh (NavigationCell actors; Escalation NavigationCell schema, RE MP note addendum 1)",
  "units": "gltf metres Y-up = 0.01 * (x, z, y)_UE; ue centimetres Z-up",
  "start_state": {
-  "rule": "blocked_at_start = the cooked NavigationCell.bBlocked flag (CONFIRMED value); enabled_by_generators = the generators whose event fires SeqAct_Toggle \"Turn On\" on the cell (RE export)",
-  "cells_blocked_at_start": 2,
+  "rule": "blocked_at_start = cooked NavigationCell.bBlocked OR turned off by a SeqEvent_PreGameplaySetup chain (SeqAct_Toggle \"Turn Off\" at match setup) - RE MP_ESCALATION_RE.md section 7.5, CONFIRMED. enabled_by_generators = the generators whose event fires SeqAct_Toggle \"Turn On\" on the cell (RE export).",
+  "cells_blocked_at_start": 32,
+  "blocked_cooked": 2,
+  "blocked_by_setup_only": 30,
+  "setup_turn_off_cells": 32,
   "cells_turned_on_by_generators": 32,
-  "blocked_and_turned_on": 2,
-  "turned_on_but_not_blocked": [
-   "NavigationCell_10091",
-   "NavigationCell_10723",
-   "NavigationCell_11080",
-   "NavigationCell_13225",
-   "NavigationCell_13746",
-   "NavigationCell_14380",
-   "NavigationCell_14628",
-   "NavigationCell_14841",
-   "NavigationCell_15168",
-   "NavigationCell_15495",
-   "NavigationCell_15680",
-   "NavigationCell_15889",
-   "NavigationCell_16181",
-   "NavigationCell_3237",
-   "NavigationCell_3295",
-   "NavigationCell_3452",
-   "NavigationCell_3667",
-   "NavigationCell_3686",
-   "NavigationCell_6008",
-   "NavigationCell_6269",
-   "NavigationCell_8095",
-   "NavigationCell_8677",
-   "NavigationCell_8719",
-   "NavigationCell_9073",
-   "NavigationCell_9139",
-   "NavigationCell_9351",
-   "NavigationCell_9411",
-   "NavigationCell_9486",
-   "NavigationCell_9516",
-   "NavigationCell_9937"
-  ],
-  "blocked_but_never_turned_on": [],
-  "note": "where every generator-enabled cell is also cooked bBlocked the start state is CONFIRMED by the flag; cells a generator turns on that are NOT cooked blocked start enabled per the cook - whether something else blocks them at runtime is UNKNOWN (for RE)"
+  "blocked_and_turned_on": 32,
+  "turned_on_but_not_blocked": [],
+  "blocked_but_never_turned_on": []
  },
  "counts": {
   "cells": 469,
@@ -105,6 +76,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -289,6 +263,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -467,6 +444,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -645,6 +625,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -823,6 +806,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -1000,6 +986,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -1172,6 +1161,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -1350,6 +1342,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -1522,6 +1517,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -1694,6 +1692,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -1872,6 +1873,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -2056,6 +2060,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -2240,6 +2247,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -2423,6 +2433,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -2601,6 +2614,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -2785,6 +2801,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -2963,6 +2982,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -3141,6 +3163,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -3319,6 +3344,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -3505,6 +3533,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -3683,6 +3714,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -3866,6 +3900,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -4044,6 +4081,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -4223,6 +4263,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -4402,6 +4445,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -4588,6 +4634,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -4766,6 +4815,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -4949,6 +5001,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -5127,6 +5182,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "BlockingVolume_13818",
    "nav_guid": {
@@ -5316,6 +5374,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -5505,6 +5566,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -5683,6 +5747,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -5861,6 +5928,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -6046,6 +6116,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -6224,6 +6297,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -6402,6 +6478,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -6586,6 +6665,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -6764,6 +6846,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -6946,6 +7031,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -7124,6 +7212,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -7308,6 +7399,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -7493,6 +7587,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -7671,6 +7768,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -7866,6 +7966,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -8045,6 +8148,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -8230,6 +8336,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -8414,6 +8523,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -8592,6 +8704,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -8770,6 +8885,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -8953,6 +9071,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -9131,6 +9252,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -9309,6 +9433,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -9493,6 +9620,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -9671,6 +9801,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -9843,6 +9976,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "BlockingVolume_10635",
    "nav_guid": {
@@ -10022,6 +10158,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -10200,6 +10339,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -10378,6 +10520,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "BlockingVolume_13818",
    "nav_guid": {
@@ -10566,6 +10711,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -10744,6 +10892,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -10922,6 +11073,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -11106,6 +11260,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -11284,6 +11441,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -11462,6 +11622,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -11640,6 +11803,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -11824,6 +11990,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -12008,6 +12177,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -12192,6 +12364,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -12380,6 +12555,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -12558,6 +12736,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -12743,6 +12924,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -12923,6 +13107,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "BlockingVolume_13818",
    "nav_guid": {
@@ -13110,6 +13297,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -13288,6 +13478,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -13476,6 +13669,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -13654,6 +13850,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -13832,6 +14031,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -14010,6 +14212,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -14191,6 +14396,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -14363,6 +14571,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -14547,6 +14758,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -14725,6 +14939,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -14909,6 +15126,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -15088,6 +15308,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -15266,6 +15489,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -15444,6 +15670,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -15622,6 +15851,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -15799,7 +16031,12 @@
     0.9999816417694092
    ],
    "tactical": false,
-   "blocked_at_start": false,
+   "blocked_at_start": true,
+   "blocked_cooked": false,
+   "blocked_by_setup": [
+    "SeqEvent_PreGameplaySetup_3227 -> SeqAct_Toggle_5486 (Turn Off)"
+   ],
+   "enabled_by_setup": [],
    "enabled_by_generators": [
     "TnSurvivalGenerator_14319"
    ],
@@ -15983,7 +16220,13 @@
     1.0
    ],
    "tactical": false,
-   "blocked_at_start": false,
+   "blocked_at_start": true,
+   "blocked_cooked": false,
+   "blocked_by_setup": [
+    "SeqEvent_PreGameplaySetup_3227 -> SeqAct_Toggle_5486 (Turn Off)",
+    "SeqEvent_PreGameplaySetup_9489 -> SeqAct_Toggle_2189 (Turn Off)"
+   ],
+   "enabled_by_setup": [],
    "enabled_by_generators": [
     "TnSurvivalGenerator_12789",
     "TnSurvivalGenerator_13243"
@@ -16165,6 +16408,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -16348,6 +16594,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -16525,7 +16774,12 @@
     0.9661002159118652
    ],
    "tactical": true,
-   "blocked_at_start": false,
+   "blocked_at_start": true,
+   "blocked_cooked": false,
+   "blocked_by_setup": [
+    "SeqEvent_PreGameplaySetup_1232 -> SeqAct_Toggle_8301 (Turn Off)"
+   ],
+   "enabled_by_setup": [],
    "enabled_by_generators": [
     "TnSurvivalGenerator_12564"
    ],
@@ -16706,6 +16960,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -16885,6 +17142,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "BlockingVolume_13818",
    "nav_guid": {
@@ -17074,6 +17334,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -17252,6 +17515,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -17430,6 +17696,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -17613,7 +17882,12 @@
     0.9964696168899536
    ],
    "tactical": false,
-   "blocked_at_start": false,
+   "blocked_at_start": true,
+   "blocked_cooked": false,
+   "blocked_by_setup": [
+    "SeqEvent_PreGameplaySetup_14891 -> SeqAct_Toggle_11121 (Turn Off)"
+   ],
+   "enabled_by_setup": [],
    "enabled_by_generators": [
     "TnSurvivalGenerator_11282",
     "TnSurvivalGenerator_7839"
@@ -17795,6 +18069,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "BlockingVolume_13818",
    "nav_guid": {
@@ -17983,7 +18260,12 @@
     0.9820335507392883
    ],
    "tactical": false,
-   "blocked_at_start": false,
+   "blocked_at_start": true,
+   "blocked_cooked": false,
+   "blocked_by_setup": [
+    "SeqEvent_PreGameplaySetup_9489 -> SeqAct_Toggle_2189 (Turn Off)"
+   ],
+   "enabled_by_setup": [],
    "enabled_by_generators": [
     "TnSurvivalGenerator_12789",
     "TnSurvivalGenerator_13243"
@@ -18166,6 +18448,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -18344,6 +18629,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -18529,6 +18817,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -18707,6 +18998,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -18885,6 +19179,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -19066,6 +19363,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -19251,6 +19551,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -19429,6 +19732,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -19611,6 +19917,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -19789,6 +20098,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -19967,6 +20279,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -20147,6 +20462,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -20341,6 +20659,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -20528,6 +20849,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -20706,6 +21030,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -20886,6 +21213,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -21074,6 +21404,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -21252,6 +21585,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -21430,6 +21766,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -21608,6 +21947,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -21799,6 +22141,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -21984,6 +22329,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -22163,6 +22511,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -22347,6 +22698,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -22525,6 +22879,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -22703,6 +23060,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -22881,6 +23241,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -23053,6 +23416,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "BlockingVolume_13818",
    "nav_guid": {
@@ -23241,6 +23607,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "BlockingVolume_10635",
    "nav_guid": {
@@ -23419,6 +23788,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -23603,6 +23975,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -23778,6 +24153,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -23963,6 +24341,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -24141,6 +24522,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -24319,6 +24703,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -24500,6 +24887,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -24672,6 +25062,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -24850,6 +25243,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -25028,6 +25424,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -25206,6 +25605,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -25385,6 +25787,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -25563,6 +25968,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -25735,6 +26143,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -25913,6 +26324,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -26092,6 +26506,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -26270,6 +26687,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -26448,6 +26868,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -26626,6 +27049,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -26804,6 +27230,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -26982,6 +27411,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -27166,6 +27598,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -27344,6 +27779,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -27520,6 +27958,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -27698,6 +28139,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -27882,6 +28326,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -28062,6 +28509,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -28246,6 +28696,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -28424,6 +28877,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -28596,6 +29052,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -28774,6 +29233,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -28953,6 +29415,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -29137,6 +29602,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -29323,6 +29791,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -29511,6 +29982,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -29689,6 +30163,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -29867,6 +30344,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "BlockingVolume_12476",
    "nav_guid": {
@@ -30045,6 +30525,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -30223,6 +30706,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -30401,6 +30887,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -30579,6 +31068,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -30757,6 +31249,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -30936,6 +31431,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -31121,6 +31619,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -31306,6 +31807,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -31484,6 +31988,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -31662,7 +32169,12 @@
     0.9999926090240479
    ],
    "tactical": false,
-   "blocked_at_start": false,
+   "blocked_at_start": true,
+   "blocked_cooked": false,
+   "blocked_by_setup": [
+    "SeqEvent_PreGameplaySetup_12708 -> SeqAct_Toggle_7257 (Turn Off)"
+   ],
+   "enabled_by_setup": [],
    "enabled_by_generators": [
     "TnSurvivalGenerator_2813",
     "TnSurvivalGenerator_8540"
@@ -31845,6 +32357,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -32023,6 +32538,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "BlockingVolume_12476",
    "nav_guid": {
@@ -32203,6 +32721,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -32381,6 +32902,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -32560,6 +33084,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "BlockingVolume_13818",
    "nav_guid": {
@@ -32748,6 +33275,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -32926,6 +33456,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -33104,6 +33637,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "BlockingVolume_13818",
    "nav_guid": {
@@ -33292,6 +33828,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -33474,6 +34013,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -33651,7 +34193,12 @@
     0.999995231628418
    ],
    "tactical": false,
-   "blocked_at_start": false,
+   "blocked_at_start": true,
+   "blocked_cooked": false,
+   "blocked_by_setup": [
+    "SeqEvent_PreGameplaySetup_3227 -> SeqAct_Toggle_5486 (Turn Off)"
+   ],
+   "enabled_by_setup": [],
    "enabled_by_generators": [
     "TnSurvivalGenerator_8025"
    ],
@@ -33844,6 +34391,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -34026,6 +34576,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -34204,6 +34757,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -34382,6 +34938,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -34560,6 +35119,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -34744,6 +35306,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -34922,6 +35487,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -35100,6 +35668,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -35279,6 +35850,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -35457,6 +36031,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -35641,6 +36218,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -35819,6 +36399,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -35997,6 +36580,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -36188,6 +36774,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -36370,6 +36959,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -36548,6 +37140,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -36726,6 +37321,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -36909,6 +37507,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -37087,6 +37688,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -37271,6 +37875,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "BlockingVolume_13818",
    "nav_guid": {
@@ -37460,6 +38067,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -37638,6 +38248,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "BlockingVolume_13818",
    "nav_guid": {
@@ -37828,6 +38441,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -38006,6 +38622,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -38185,6 +38804,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -38365,6 +38987,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -38549,6 +39174,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -38727,6 +39355,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -38907,6 +39538,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -39091,6 +39725,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -39269,6 +39906,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -39447,6 +40087,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -39625,6 +40268,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -39808,6 +40454,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -39996,6 +40645,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -40174,6 +40826,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -40358,6 +41013,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -40536,6 +41194,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -40714,6 +41375,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -40892,6 +41556,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -41079,6 +41746,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -41257,6 +41927,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -41435,6 +42108,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -41613,6 +42289,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -41790,6 +42469,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -41979,6 +42661,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -42157,6 +42842,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -42340,6 +43028,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -42518,6 +43209,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -42703,6 +43397,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -42882,6 +43579,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -43060,6 +43760,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -43240,6 +43943,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -43418,6 +44124,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -43596,6 +44305,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -43774,6 +44486,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -43953,6 +44668,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -44137,7 +44855,12 @@
     0.9417915344238281
    ],
    "tactical": true,
-   "blocked_at_start": false,
+   "blocked_at_start": true,
+   "blocked_cooked": false,
+   "blocked_by_setup": [
+    "SeqEvent_PreGameplaySetup_9557 -> SeqAct_Toggle_11075 (Turn Off)"
+   ],
+   "enabled_by_setup": [],
    "enabled_by_generators": [
     "TnSurvivalGenerator_866"
    ],
@@ -44318,6 +45041,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -44496,6 +45222,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -44668,6 +45397,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -44846,6 +45578,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -45025,6 +45760,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -45203,6 +45941,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -45381,6 +46122,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -45562,6 +46306,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -45740,6 +46487,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -45918,6 +46668,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -46096,6 +46849,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -46274,6 +47030,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -46446,6 +47205,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -46624,6 +47386,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -46804,6 +47569,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -46981,7 +47749,12 @@
     1.0
    ],
    "tactical": false,
-   "blocked_at_start": false,
+   "blocked_at_start": true,
+   "blocked_cooked": false,
+   "blocked_by_setup": [
+    "SeqEvent_PreGameplaySetup_3348 -> SeqAct_Toggle_406 (Turn Off)"
+   ],
+   "enabled_by_setup": [],
    "enabled_by_generators": [
     "TnSurvivalGenerator_8025"
    ],
@@ -47162,7 +47935,12 @@
     0.9999808073043823
    ],
    "tactical": false,
-   "blocked_at_start": false,
+   "blocked_at_start": true,
+   "blocked_cooked": false,
+   "blocked_by_setup": [
+    "SeqEvent_PreGameplaySetup_3227 -> SeqAct_Toggle_5486 (Turn Off)"
+   ],
+   "enabled_by_setup": [],
    "enabled_by_generators": [
     "TnSurvivalGenerator_2813",
     "TnSurvivalGenerator_8540"
@@ -47347,6 +48125,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -47535,6 +48316,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -47713,6 +48497,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -47892,6 +48679,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -48070,6 +48860,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -48243,6 +49036,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -48420,7 +49216,12 @@
     0.9385228157043457
    ],
    "tactical": true,
-   "blocked_at_start": false,
+   "blocked_at_start": true,
+   "blocked_cooked": false,
+   "blocked_by_setup": [
+    "SeqEvent_PreGameplaySetup_9557 -> SeqAct_Toggle_11075 (Turn Off)"
+   ],
+   "enabled_by_setup": [],
    "enabled_by_generators": [
     "TnSurvivalGenerator_866"
    ],
@@ -48600,7 +49401,12 @@
     0.9997817277908325
    ],
    "tactical": false,
-   "blocked_at_start": false,
+   "blocked_at_start": true,
+   "blocked_cooked": false,
+   "blocked_by_setup": [
+    "SeqEvent_PreGameplaySetup_1232 -> SeqAct_Toggle_8301 (Turn Off)"
+   ],
+   "enabled_by_setup": [],
    "enabled_by_generators": [
     "TnSurvivalGenerator_12564"
    ],
@@ -48781,6 +49587,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -48959,6 +49768,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -49137,6 +49949,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -49321,6 +50136,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -49499,6 +50317,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -49676,7 +50497,12 @@
     0.9999328851699829
    ],
    "tactical": false,
-   "blocked_at_start": false,
+   "blocked_at_start": true,
+   "blocked_cooked": false,
+   "blocked_by_setup": [
+    "SeqEvent_PreGameplaySetup_3227 -> SeqAct_Toggle_5486 (Turn Off)"
+   ],
+   "enabled_by_setup": [],
    "enabled_by_generators": [
     "TnSurvivalGenerator_8025"
    ],
@@ -49866,7 +50692,12 @@
     0.9999999403953552
    ],
    "tactical": false,
-   "blocked_at_start": false,
+   "blocked_at_start": true,
+   "blocked_cooked": false,
+   "blocked_by_setup": [
+    "SeqEvent_PreGameplaySetup_3227 -> SeqAct_Toggle_5486 (Turn Off)"
+   ],
+   "enabled_by_setup": [],
    "enabled_by_generators": [
     "TnSurvivalGenerator_14319"
    ],
@@ -50051,6 +50882,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -50231,6 +51065,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -50408,7 +51245,12 @@
     1.0
    ],
    "tactical": false,
-   "blocked_at_start": false,
+   "blocked_at_start": true,
+   "blocked_cooked": false,
+   "blocked_by_setup": [
+    "SeqEvent_PreGameplaySetup_3348 -> SeqAct_Toggle_406 (Turn Off)"
+   ],
+   "enabled_by_setup": [],
    "enabled_by_generators": [
     "TnSurvivalGenerator_8025"
    ],
@@ -50591,6 +51433,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -50769,6 +51614,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -50949,6 +51797,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -51132,6 +51983,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -51317,7 +52171,12 @@
     0.9886667132377625
    ],
    "tactical": false,
-   "blocked_at_start": false,
+   "blocked_at_start": true,
+   "blocked_cooked": false,
+   "blocked_by_setup": [
+    "SeqEvent_PreGameplaySetup_5014 -> SeqAct_Toggle_2049 (Turn Off)"
+   ],
+   "enabled_by_setup": [],
    "enabled_by_generators": [
     "TnSurvivalGenerator_13385",
     "TnSurvivalGenerator_4199"
@@ -51499,6 +52358,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -51681,6 +52543,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -51859,6 +52724,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "BlockingVolume_13818",
    "nav_guid": {
@@ -52041,6 +52909,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -52226,6 +53097,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -52404,6 +53278,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -52582,6 +53459,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -52765,6 +53645,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -52943,6 +53826,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -53121,6 +54007,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -53301,6 +54190,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "BlockingVolume_13818",
    "nav_guid": {
@@ -53488,7 +54380,12 @@
     1.0
    ],
    "tactical": true,
-   "blocked_at_start": false,
+   "blocked_at_start": true,
+   "blocked_cooked": false,
+   "blocked_by_setup": [
+    "SeqEvent_PreGameplaySetup_12708 -> SeqAct_Toggle_7257 (Turn Off)"
+   ],
+   "enabled_by_setup": [],
    "enabled_by_generators": [
     "TnSurvivalGenerator_2813",
     "TnSurvivalGenerator_8540"
@@ -53670,6 +54567,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -53854,6 +54754,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -54031,7 +54934,12 @@
     0.9999998807907104
    ],
    "tactical": false,
-   "blocked_at_start": false,
+   "blocked_at_start": true,
+   "blocked_cooked": false,
+   "blocked_by_setup": [
+    "SeqEvent_PreGameplaySetup_11944 -> SeqAct_Toggle_5486 (Turn Off)"
+   ],
+   "enabled_by_setup": [],
    "enabled_by_generators": [
     "TnSurvivalGenerator_14319"
    ],
@@ -54212,6 +55120,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -54401,6 +55312,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -54579,6 +55493,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -54757,6 +55674,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -54948,6 +55868,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -55126,6 +56049,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -55304,6 +56230,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -55482,6 +56411,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -55654,6 +56586,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -55832,6 +56767,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -56011,6 +56949,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -56195,7 +57136,12 @@
     0.9999999403953552
    ],
    "tactical": false,
-   "blocked_at_start": false,
+   "blocked_at_start": true,
+   "blocked_cooked": false,
+   "blocked_by_setup": [
+    "SeqEvent_PreGameplaySetup_11944 -> SeqAct_Toggle_5486 (Turn Off)"
+   ],
+   "enabled_by_setup": [],
    "enabled_by_generators": [
     "TnSurvivalGenerator_14319"
    ],
@@ -56376,6 +57322,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -56554,6 +57503,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -56732,6 +57684,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -56908,6 +57863,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -57086,6 +58044,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -57264,6 +58225,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -57442,6 +58406,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -57619,7 +58586,12 @@
     0.99997878074646
    ],
    "tactical": false,
-   "blocked_at_start": false,
+   "blocked_at_start": true,
+   "blocked_cooked": false,
+   "blocked_by_setup": [
+    "SeqEvent_PreGameplaySetup_12708 -> SeqAct_Toggle_7257 (Turn Off)"
+   ],
+   "enabled_by_setup": [],
    "enabled_by_generators": [
     "TnSurvivalGenerator_2813",
     "TnSurvivalGenerator_8540"
@@ -57801,6 +58773,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -57979,6 +58954,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -58151,6 +59129,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -58329,6 +59310,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -58507,6 +59491,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -58691,6 +59678,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -58869,6 +59859,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -59042,6 +60035,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -59236,6 +60232,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -59414,6 +60413,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -59597,6 +60599,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -59775,6 +60780,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -59953,6 +60961,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -60131,6 +61142,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -60315,6 +61329,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -60493,6 +61510,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -60671,6 +61691,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -60849,6 +61872,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -61041,6 +62067,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -61219,6 +62248,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -61397,6 +62429,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -61577,6 +62612,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -61755,6 +62793,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -61933,6 +62974,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -62111,6 +63155,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -62295,6 +63342,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -62476,6 +63526,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -62654,6 +63707,11 @@
    ],
    "tactical": false,
    "blocked_at_start": true,
+   "blocked_cooked": true,
+   "blocked_by_setup": [
+    "SeqEvent_PreGameplaySetup_14891 -> SeqAct_Toggle_11121 (Turn Off)"
+   ],
+   "enabled_by_setup": [],
    "enabled_by_generators": [
     "TnSurvivalGenerator_11282",
     "TnSurvivalGenerator_7839"
@@ -62835,6 +63893,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -63013,6 +64074,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -63192,6 +64256,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -63381,6 +64448,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -63553,6 +64623,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "BlockingVolume_12476",
    "nav_guid": {
@@ -63737,6 +64810,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -63909,6 +64985,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -64087,6 +65166,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -64268,6 +65350,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -64446,6 +65531,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -64624,6 +65712,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -64802,6 +65893,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -64988,6 +66082,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -65166,6 +66263,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -65344,6 +66444,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -65522,6 +66625,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -65700,6 +66806,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -65878,6 +66987,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -66062,6 +67174,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -66240,6 +67355,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -66420,6 +67538,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -66598,6 +67719,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -66772,6 +67896,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -66961,6 +68088,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -67149,6 +68279,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -67322,6 +68455,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -67506,6 +68642,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -67684,6 +68823,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -67855,7 +68997,12 @@
     0.9999985098838806
    ],
    "tactical": false,
-   "blocked_at_start": false,
+   "blocked_at_start": true,
+   "blocked_cooked": false,
+   "blocked_by_setup": [
+    "SeqEvent_PreGameplaySetup_3227 -> SeqAct_Toggle_5486 (Turn Off)"
+   ],
+   "enabled_by_setup": [],
    "enabled_by_generators": [
     "TnSurvivalGenerator_2813",
     "TnSurvivalGenerator_8540"
@@ -68038,6 +69185,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -68210,6 +69360,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -68388,6 +69541,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -68571,6 +69727,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -68749,6 +69908,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -68927,6 +70089,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -69117,6 +70282,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -69299,6 +70467,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -69471,6 +70642,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -69649,6 +70823,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -69828,6 +71005,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -70006,6 +71186,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -70184,6 +71367,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -70361,7 +71547,12 @@
     0.9841110706329346
    ],
    "tactical": false,
-   "blocked_at_start": false,
+   "blocked_at_start": true,
+   "blocked_cooked": false,
+   "blocked_by_setup": [
+    "SeqEvent_PreGameplaySetup_9489 -> SeqAct_Toggle_2189 (Turn Off)"
+   ],
+   "enabled_by_setup": [],
    "enabled_by_generators": [
     "TnSurvivalGenerator_12789",
     "TnSurvivalGenerator_13243"
@@ -70543,6 +71734,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -70724,6 +71918,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -70902,6 +72099,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -71074,6 +72274,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -71247,6 +72450,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -71425,6 +72631,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -71597,6 +72806,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -71775,6 +72987,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -71954,6 +73169,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "BlockingVolume_12476",
    "nav_guid": {
@@ -72132,6 +73350,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -72310,6 +73531,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -72488,6 +73712,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -72671,7 +73898,12 @@
     0.9999947547912598
    ],
    "tactical": true,
-   "blocked_at_start": false,
+   "blocked_at_start": true,
+   "blocked_cooked": false,
+   "blocked_by_setup": [
+    "SeqEvent_PreGameplaySetup_12708 -> SeqAct_Toggle_7257 (Turn Off)"
+   ],
+   "enabled_by_setup": [],
    "enabled_by_generators": [
     "TnSurvivalGenerator_2813",
     "TnSurvivalGenerator_8540"
@@ -72853,6 +74085,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -73031,6 +74266,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -73209,6 +74447,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -73381,6 +74622,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -73559,6 +74803,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -73731,6 +74978,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -73909,6 +75159,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -74081,6 +75334,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -74270,6 +75526,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "BlockingVolume_10635",
    "nav_guid": {
@@ -74452,6 +75711,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "BlockingVolume_13818",
    "nav_guid": {
@@ -74639,6 +75901,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -74825,7 +76090,12 @@
     0.9725947976112366
    ],
    "tactical": true,
-   "blocked_at_start": false,
+   "blocked_at_start": true,
+   "blocked_cooked": false,
+   "blocked_by_setup": [
+    "SeqEvent_PreGameplaySetup_1232 -> SeqAct_Toggle_8301 (Turn Off)"
+   ],
+   "enabled_by_setup": [],
    "enabled_by_generators": [
     "TnSurvivalGenerator_12564"
    ],
@@ -75006,6 +76276,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -75196,6 +76469,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -75380,6 +76656,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -75559,6 +76838,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -75737,6 +77019,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -75920,6 +77205,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "BlockingVolume_13818",
    "nav_guid": {
@@ -76109,6 +77397,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "BlockingVolume_12476",
    "nav_guid": {
@@ -76298,6 +77589,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -76474,6 +77768,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "BlockingVolume_10635",
    "nav_guid": {
@@ -76646,7 +77943,12 @@
     0.9805896878242493
    ],
    "tactical": false,
-   "blocked_at_start": false,
+   "blocked_at_start": true,
+   "blocked_cooked": false,
+   "blocked_by_setup": [
+    "SeqEvent_PreGameplaySetup_5014 -> SeqAct_Toggle_2049 (Turn Off)"
+   ],
+   "enabled_by_setup": [],
    "enabled_by_generators": [
     "TnSurvivalGenerator_13385",
     "TnSurvivalGenerator_4199"
@@ -76828,6 +78130,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -77006,6 +78311,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -77184,6 +78492,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -77363,6 +78674,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -77541,6 +78855,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -77730,6 +79047,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -77919,6 +79239,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -78099,6 +79422,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -78279,6 +79605,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -78456,7 +79785,12 @@
     0.9999999403953552
    ],
    "tactical": true,
-   "blocked_at_start": false,
+   "blocked_at_start": true,
+   "blocked_cooked": false,
+   "blocked_by_setup": [
+    "SeqEvent_PreGameplaySetup_5014 -> SeqAct_Toggle_2049 (Turn Off)"
+   ],
+   "enabled_by_setup": [],
    "enabled_by_generators": [
     "TnSurvivalGenerator_13385",
     "TnSurvivalGenerator_4199"
@@ -78638,6 +79972,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -78816,6 +80153,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -78998,6 +80338,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -79177,6 +80520,11 @@
    ],
    "tactical": false,
    "blocked_at_start": true,
+   "blocked_cooked": true,
+   "blocked_by_setup": [
+    "SeqEvent_PreGameplaySetup_14891 -> SeqAct_Toggle_11121 (Turn Off)"
+   ],
+   "enabled_by_setup": [],
    "enabled_by_generators": [
     "TnSurvivalGenerator_11282",
     "TnSurvivalGenerator_7839"
@@ -79358,6 +80706,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -79536,6 +80887,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -79713,7 +81067,13 @@
     0.9999998807907104
    ],
    "tactical": false,
-   "blocked_at_start": false,
+   "blocked_at_start": true,
+   "blocked_cooked": false,
+   "blocked_by_setup": [
+    "SeqEvent_PreGameplaySetup_3227 -> SeqAct_Toggle_5486 (Turn Off)",
+    "SeqEvent_PreGameplaySetup_9489 -> SeqAct_Toggle_2189 (Turn Off)"
+   ],
+   "enabled_by_setup": [],
    "enabled_by_generators": [
     "TnSurvivalGenerator_12789",
     "TnSurvivalGenerator_13243"
@@ -79895,6 +81255,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -80073,6 +81436,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -80245,6 +81611,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -80424,6 +81793,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -80607,7 +81979,12 @@
     0.9993988871574402
    ],
    "tactical": false,
-   "blocked_at_start": false,
+   "blocked_at_start": true,
+   "blocked_cooked": false,
+   "blocked_by_setup": [
+    "SeqEvent_PreGameplaySetup_1232 -> SeqAct_Toggle_8301 (Turn Off)"
+   ],
+   "enabled_by_setup": [],
    "enabled_by_generators": [
     "TnSurvivalGenerator_12564"
    ],
@@ -80788,6 +82165,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -80966,6 +82346,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -81144,6 +82527,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -81324,6 +82710,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -81496,6 +82885,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -81673,7 +83065,12 @@
     0.9964801073074341
    ],
    "tactical": false,
-   "blocked_at_start": false,
+   "blocked_at_start": true,
+   "blocked_cooked": false,
+   "blocked_by_setup": [
+    "SeqEvent_PreGameplaySetup_14891 -> SeqAct_Toggle_11121 (Turn Off)"
+   ],
+   "enabled_by_setup": [],
    "enabled_by_generators": [
     "TnSurvivalGenerator_11282",
     "TnSurvivalGenerator_7839"
@@ -81855,6 +83252,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -82033,6 +83433,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -82205,6 +83608,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -82377,6 +83783,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -82555,6 +83964,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -82727,6 +84139,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -82906,6 +84321,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "BlockingVolume_13818",
    "nav_guid": {
@@ -83084,6 +84502,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -83266,6 +84687,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -83444,6 +84868,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -83633,6 +85060,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -83812,6 +85242,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -83989,7 +85422,12 @@
     0.9999999403953552
    ],
    "tactical": true,
-   "blocked_at_start": false,
+   "blocked_at_start": true,
+   "blocked_cooked": false,
+   "blocked_by_setup": [
+    "SeqEvent_PreGameplaySetup_5014 -> SeqAct_Toggle_2049 (Turn Off)"
+   ],
+   "enabled_by_setup": [],
    "enabled_by_generators": [
     "TnSurvivalGenerator_13385",
     "TnSurvivalGenerator_4199"
@@ -84171,6 +85609,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {
@@ -84349,6 +85790,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_5364",
    "nav_guid": {

@@ -4,13 +4,15 @@
  "status": "ORIGINAL cooked Escalation nav mesh (NavigationCell actors; Escalation NavigationCell schema, RE MP note addendum 1)",
  "units": "gltf metres Y-up = 0.01 * (x, z, y)_UE; ue centimetres Z-up",
  "start_state": {
-  "rule": "blocked_at_start = the cooked NavigationCell.bBlocked flag (CONFIRMED value); enabled_by_generators = the generators whose event fires SeqAct_Toggle \"Turn On\" on the cell (RE export)",
+  "rule": "blocked_at_start = cooked NavigationCell.bBlocked OR turned off by a SeqEvent_PreGameplaySetup chain (SeqAct_Toggle \"Turn Off\" at match setup) - RE MP_ESCALATION_RE.md section 7.5, CONFIRMED. enabled_by_generators = the generators whose event fires SeqAct_Toggle \"Turn On\" on the cell (RE export).",
   "cells_blocked_at_start": 28,
+  "blocked_cooked": 28,
+  "blocked_by_setup_only": 0,
+  "setup_turn_off_cells": 0,
   "cells_turned_on_by_generators": 28,
   "blocked_and_turned_on": 28,
   "turned_on_but_not_blocked": [],
-  "blocked_but_never_turned_on": [],
-  "note": "where every generator-enabled cell is also cooked bBlocked the start state is CONFIRMED by the flag; cells a generator turns on that are NOT cooked blocked start enabled per the cook - whether something else blocks them at runtime is UNKNOWN (for RE)"
+  "blocked_but_never_turned_on": []
  },
  "counts": {
   "cells": 625,
@@ -74,6 +76,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -252,6 +257,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -432,6 +440,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -605,6 +616,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -777,6 +791,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -955,6 +972,9 @@
    ],
    "tactical": true,
    "blocked_at_start": true,
+   "blocked_cooked": true,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [
     "TnSurvivalGenerator_8219"
    ],
@@ -1135,6 +1155,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -1321,6 +1344,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -1500,6 +1526,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -1678,6 +1707,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -1857,6 +1889,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -2035,6 +2070,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -2213,6 +2251,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -2398,6 +2439,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -2576,6 +2620,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -2754,6 +2801,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -2940,6 +2990,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -3121,6 +3174,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -3305,6 +3361,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -3477,6 +3536,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -3649,6 +3711,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -3827,6 +3892,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -4005,6 +4073,9 @@
    ],
    "tactical": false,
    "blocked_at_start": true,
+   "blocked_cooked": true,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [
     "TnSurvivalGenerator_9525"
    ],
@@ -4187,6 +4258,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -4366,6 +4440,9 @@
    ],
    "tactical": true,
    "blocked_at_start": true,
+   "blocked_cooked": true,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [
     "TnSurvivalGenerator_10858"
    ],
@@ -4548,6 +4625,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -4733,6 +4813,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -4912,6 +4995,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -5096,6 +5182,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -5274,6 +5363,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -5456,6 +5548,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -5637,6 +5732,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -5817,6 +5915,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -5995,6 +6096,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -6173,6 +6277,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -6352,6 +6459,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -6534,6 +6644,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -6714,6 +6827,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -6899,6 +7015,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -7081,6 +7200,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -7265,6 +7387,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -7437,6 +7562,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -7617,6 +7745,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -7795,6 +7926,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -7974,6 +8108,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -8152,6 +8289,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -8330,6 +8470,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -8508,6 +8651,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -8686,6 +8832,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -8864,6 +9013,9 @@
    ],
    "tactical": true,
    "blocked_at_start": true,
+   "blocked_cooked": true,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [
     "TnSurvivalGenerator_1189"
    ],
@@ -9044,6 +9196,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -9217,6 +9372,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -9401,6 +9559,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -9574,6 +9735,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -9760,6 +9924,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -9943,6 +10110,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -10123,6 +10293,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -10304,6 +10477,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -10483,6 +10659,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -10662,6 +10841,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -10840,6 +11022,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -11020,6 +11205,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -11204,6 +11392,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -11390,6 +11581,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -11565,6 +11759,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -11744,6 +11941,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -11917,6 +12117,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -12096,6 +12299,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -12277,6 +12483,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -12462,6 +12671,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -12644,6 +12856,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -12824,6 +13039,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -13008,6 +13226,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -13186,6 +13407,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -13364,6 +13588,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -13544,6 +13771,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -13728,6 +13958,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -13912,6 +14145,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -14090,6 +14326,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -14270,6 +14509,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -14449,6 +14691,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -14628,6 +14873,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -14807,6 +15055,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -14985,6 +15236,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -15169,6 +15423,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -15347,6 +15604,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -15525,6 +15785,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -15705,6 +15968,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -15884,6 +16150,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -16068,6 +16337,9 @@
    ],
    "tactical": false,
    "blocked_at_start": true,
+   "blocked_cooked": true,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [
     "TnSurvivalGenerator_9525"
    ],
@@ -16244,6 +16516,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -16427,6 +16702,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -16606,6 +16884,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -16787,6 +17068,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -16975,6 +17259,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -17157,6 +17444,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -17329,6 +17619,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -17508,6 +17801,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -17687,6 +17983,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -17865,6 +18164,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -18044,6 +18346,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -18222,6 +18527,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -18402,6 +18710,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -18582,6 +18893,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -18760,6 +19074,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -18946,6 +19263,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -19118,6 +19438,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -19297,6 +19620,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -19477,6 +19803,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -19655,6 +19984,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -19834,6 +20166,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -20014,6 +20349,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -20193,6 +20531,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -20371,6 +20712,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -20549,6 +20893,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -20732,6 +21079,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -20913,6 +21263,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -21095,6 +21448,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -21273,6 +21629,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -21451,6 +21810,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -21630,6 +21992,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -21814,6 +22179,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -21999,6 +22367,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -22183,6 +22554,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -22367,6 +22741,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -22551,6 +22928,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -22729,6 +23109,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -22913,6 +23296,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -23091,6 +23477,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -23271,6 +23660,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -23451,6 +23843,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -23623,6 +24018,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -23801,6 +24199,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -23979,6 +24380,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -24158,6 +24562,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -24338,6 +24745,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -24518,6 +24928,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -24697,6 +25110,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -24876,6 +25292,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -25056,6 +25475,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -25228,6 +25650,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -25406,6 +25831,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -25584,6 +26012,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -25763,6 +26194,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -25944,6 +26378,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -26129,6 +26566,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -26307,6 +26747,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -26486,6 +26929,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -26667,6 +27113,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -26848,6 +27297,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -27020,6 +27472,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -27198,6 +27653,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -27377,6 +27835,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -27562,6 +28023,9 @@
    ],
    "tactical": false,
    "blocked_at_start": true,
+   "blocked_cooked": true,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [
     "TnSurvivalGenerator_8829"
    ],
@@ -27744,6 +28208,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -27923,6 +28390,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -28101,6 +28571,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -28287,6 +28760,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -28462,6 +28938,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -28642,6 +29121,9 @@
    ],
    "tactical": true,
    "blocked_at_start": true,
+   "blocked_cooked": true,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [
     "TnSurvivalGenerator_1189"
    ],
@@ -28822,6 +29304,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -29000,6 +29485,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -29186,6 +29674,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -29367,6 +29858,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -29547,6 +30041,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -29725,6 +30222,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -29898,6 +30398,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -30085,6 +30588,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -30271,6 +30777,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "BlockingVolume_15798",
    "nav_guid": {
@@ -30453,6 +30962,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -30633,6 +31145,9 @@
    ],
    "tactical": false,
    "blocked_at_start": true,
+   "blocked_cooked": true,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [
     "TnSurvivalGenerator_8829"
    ],
@@ -30816,6 +31331,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -30989,6 +31507,9 @@
    ],
    "tactical": false,
    "blocked_at_start": true,
+   "blocked_cooked": true,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [
     "TnSurvivalGenerator_1189"
    ],
@@ -31170,6 +31691,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -31354,6 +31878,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -31533,6 +32060,9 @@
    ],
    "tactical": true,
    "blocked_at_start": true,
+   "blocked_cooked": true,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [
     "TnSurvivalGenerator_9525"
    ],
@@ -31714,6 +32244,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -31892,6 +32425,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -32066,6 +32602,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -32243,6 +32782,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -32422,6 +32964,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -32595,6 +33140,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -32773,6 +33321,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -32951,6 +33502,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -33124,6 +33678,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -33302,6 +33859,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -33487,6 +34047,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -33665,6 +34228,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -33843,6 +34409,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -34021,6 +34590,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -34201,6 +34773,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -34385,6 +34960,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -34564,6 +35142,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -34745,6 +35326,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -34917,6 +35501,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -35095,6 +35682,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -35274,6 +35864,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -35453,6 +36046,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -35632,6 +36228,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -35816,6 +36415,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -35994,6 +36596,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -36172,6 +36777,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -36352,6 +36960,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -36537,6 +37148,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -36720,6 +37334,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -36904,6 +37521,9 @@
    ],
    "tactical": true,
    "blocked_at_start": true,
+   "blocked_cooked": true,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [
     "TnSurvivalGenerator_11149"
    ],
@@ -37084,6 +37704,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -37268,6 +37891,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -37441,6 +38067,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -37621,6 +38250,9 @@
    ],
    "tactical": false,
    "blocked_at_start": true,
+   "blocked_cooked": true,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [
     "TnSurvivalGenerator_10858"
    ],
@@ -37798,6 +38430,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -37976,6 +38611,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "BlockingVolume_6759",
    "nav_guid": {
@@ -38160,6 +38798,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -38341,6 +38982,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -38521,6 +39165,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -38699,6 +39346,9 @@
    ],
    "tactical": false,
    "blocked_at_start": true,
+   "blocked_cooked": true,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [
     "TnSurvivalGenerator_10858"
    ],
@@ -38880,6 +39530,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -39058,6 +39711,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -39236,6 +39892,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -39414,6 +40073,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -39599,6 +40261,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -39778,6 +40443,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -39956,6 +40624,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -40135,6 +40806,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -40313,6 +40987,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -40485,6 +41162,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -40669,6 +41349,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -40850,6 +41533,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -41030,6 +41716,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -41211,6 +41900,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -41389,6 +42081,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "BlockingVolume_6759",
    "nav_guid": {
@@ -41569,6 +42264,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -41747,6 +42445,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -41931,6 +42632,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -42103,6 +42807,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -42291,6 +42998,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -42470,6 +43180,9 @@
    ],
    "tactical": true,
    "blocked_at_start": true,
+   "blocked_cooked": true,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [
     "TnSurvivalGenerator_8829"
    ],
@@ -42650,6 +43363,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -42828,6 +43544,9 @@
    ],
    "tactical": true,
    "blocked_at_start": true,
+   "blocked_cooked": true,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [
     "TnSurvivalGenerator_10858"
    ],
@@ -43008,6 +43727,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -43187,6 +43909,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -43365,6 +44090,9 @@
    ],
    "tactical": false,
    "blocked_at_start": true,
+   "blocked_cooked": true,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [
     "TnSurvivalGenerator_9849"
    ],
@@ -43541,6 +44269,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -43721,6 +44452,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -43900,6 +44634,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -44080,6 +44817,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -44252,6 +44992,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -44431,6 +45174,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -44615,6 +45361,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -44793,6 +45542,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -44977,6 +45729,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -45162,6 +45917,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -45340,6 +46098,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -45518,6 +46279,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -45690,6 +46454,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -45870,6 +46637,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -46056,6 +46826,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -46237,6 +47010,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -46415,6 +47191,9 @@
    ],
    "tactical": true,
    "blocked_at_start": true,
+   "blocked_cooked": true,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [
     "TnSurvivalGenerator_11149"
    ],
@@ -46595,6 +47374,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -46773,6 +47555,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -46952,6 +47737,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -47130,6 +47918,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -47310,6 +48101,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -47495,6 +48289,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -47667,6 +48464,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -47850,6 +48650,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -48028,6 +48831,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -48212,6 +49018,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -48396,6 +49205,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -48574,6 +49386,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -48755,6 +49570,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -48940,6 +49758,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -49119,6 +49940,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -49291,6 +50115,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -49471,6 +50298,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -49649,6 +50479,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -49827,6 +50660,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -50007,6 +50843,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -50192,6 +51031,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -50364,6 +51206,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -50549,6 +51394,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -50728,6 +51576,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -50912,6 +51763,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -51097,6 +51951,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -51275,6 +52132,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -51454,6 +52314,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -51637,6 +52500,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -51817,6 +52683,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -51995,6 +52864,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -52175,6 +53047,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -52349,6 +53224,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -52527,6 +53405,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -52714,6 +53595,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -52896,6 +53780,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -53074,6 +53961,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -53254,6 +54144,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -53441,6 +54334,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -53614,6 +54510,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -53798,6 +54697,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -53970,6 +54872,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -54142,6 +55047,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -54322,6 +55230,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -54500,6 +55411,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -54679,6 +55593,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -54853,6 +55770,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -55032,6 +55952,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -55216,6 +56139,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -55395,6 +56321,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -55574,6 +56503,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -55758,6 +56690,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -55938,6 +56873,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -56118,6 +57056,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -56296,6 +57237,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -56475,6 +57419,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -56653,6 +57600,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -56831,6 +57781,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -57016,6 +57969,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -57204,6 +58160,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -57382,6 +58341,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -57564,6 +58526,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -57743,6 +58708,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -57921,6 +58889,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -58100,6 +59071,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -58284,6 +59258,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -58468,6 +59445,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -58646,6 +59626,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -58825,6 +59808,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -59005,6 +59991,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -59183,6 +60172,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "BlockingVolume_6759",
    "nav_guid": {
@@ -59362,6 +60354,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -59544,6 +60539,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "BlockingVolume_15798",
    "nav_guid": {
@@ -59724,6 +60722,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -59912,6 +60913,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -60091,6 +61095,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -60269,6 +61276,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -60447,6 +61457,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -60631,6 +61644,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -60815,6 +61831,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -60994,6 +62013,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "BlockingVolume_15798",
    "nav_guid": {
@@ -61174,6 +62196,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -61352,6 +62377,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -61538,6 +62566,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -61716,6 +62747,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -61895,6 +62929,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -62075,6 +63112,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -62259,6 +63299,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -62437,6 +63480,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -62617,6 +63663,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -62802,6 +63851,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -62980,6 +64032,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "BlockingVolume_6759",
    "nav_guid": {
@@ -63153,6 +64208,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -63332,6 +64390,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -63511,6 +64572,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -63690,6 +64754,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -63868,6 +64935,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -64052,6 +65122,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -64226,6 +65299,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -64404,6 +65480,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -64582,6 +65661,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -64760,6 +65842,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -64940,6 +66025,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -65113,6 +66201,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -65285,6 +66376,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -65464,6 +66558,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -65645,6 +66742,9 @@
    ],
    "tactical": true,
    "blocked_at_start": true,
+   "blocked_cooked": true,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [
     "TnSurvivalGenerator_8219"
    ],
@@ -65825,6 +66925,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -66005,6 +67108,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -66184,6 +67290,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -66369,6 +67478,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -66549,6 +67661,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -66721,6 +67836,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -66901,6 +68019,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -67080,6 +68201,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -67258,6 +68382,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -67439,6 +68566,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -67611,6 +68741,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -67789,6 +68922,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -67977,6 +69113,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -68155,6 +69294,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -68342,6 +69484,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -68515,6 +69660,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -68697,6 +69845,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -68876,6 +70027,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -69054,6 +70208,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -69241,6 +70398,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -69420,6 +70580,9 @@
    ],
    "tactical": false,
    "blocked_at_start": true,
+   "blocked_cooked": true,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [
     "TnSurvivalGenerator_8219"
    ],
@@ -69596,6 +70759,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -69783,6 +70949,9 @@
    ],
    "tactical": false,
    "blocked_at_start": true,
+   "blocked_cooked": true,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [
     "TnSurvivalGenerator_8219"
    ],
@@ -69966,6 +71135,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -70144,6 +71316,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -70322,6 +71497,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -70507,6 +71685,9 @@
    ],
    "tactical": true,
    "blocked_at_start": true,
+   "blocked_cooked": true,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [
     "TnSurvivalGenerator_8829"
    ],
@@ -70687,6 +71868,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -70867,6 +72051,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -71045,6 +72232,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -71224,6 +72414,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -71402,6 +72595,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -71590,6 +72786,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -71768,6 +72967,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -71948,6 +73150,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -72126,6 +73331,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -72305,6 +73513,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -72484,6 +73695,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -72662,6 +73876,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -72840,6 +74057,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -73026,6 +74246,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -73204,6 +74427,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -73382,6 +74608,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -73563,6 +74792,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -73748,6 +74980,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -73927,6 +75162,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -74105,6 +75343,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -74286,6 +75527,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -74466,6 +75710,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -74645,6 +75892,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -74826,6 +76076,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -75004,6 +76257,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -75188,6 +76444,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -75369,6 +76628,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -75547,6 +76809,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -75727,6 +76992,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -75906,6 +77174,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -76085,6 +77356,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -76257,6 +77531,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -76436,6 +77713,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -76614,6 +77894,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -76792,6 +78075,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -76971,6 +78257,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -77149,6 +78438,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -77327,6 +78619,9 @@
    ],
    "tactical": true,
    "blocked_at_start": true,
+   "blocked_cooked": true,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [
     "TnSurvivalGenerator_9533"
    ],
@@ -77507,6 +78802,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -77685,6 +78983,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -77864,6 +79165,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -78042,6 +79346,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -78214,6 +79521,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -78392,6 +79702,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -78566,6 +79879,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -78751,6 +80067,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -78932,6 +80251,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -79104,6 +80426,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -79276,6 +80601,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -79454,6 +80782,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -79635,6 +80966,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -79813,6 +81147,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -79991,6 +81328,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -80172,6 +81512,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -80351,6 +81694,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -80529,6 +81875,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -80709,6 +82058,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -80887,6 +82239,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -81066,6 +82421,9 @@
    ],
    "tactical": true,
    "blocked_at_start": true,
+   "blocked_cooked": true,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [
     "TnSurvivalGenerator_9525"
    ],
@@ -81246,6 +82604,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -81418,6 +82779,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -81596,6 +82960,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -81774,6 +83141,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -81959,6 +83329,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -82137,6 +83510,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -82310,6 +83686,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -82488,6 +83867,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -82667,6 +84049,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -82845,6 +84230,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -83023,6 +84411,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -83203,6 +84594,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -83382,6 +84776,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -83562,6 +84959,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -83736,6 +85136,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -83923,6 +85326,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -84102,6 +85508,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -84274,6 +85683,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -84452,6 +85864,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -84636,6 +86051,9 @@
    ],
    "tactical": false,
    "blocked_at_start": true,
+   "blocked_cooked": true,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [
     "TnSurvivalGenerator_9849"
    ],
@@ -84817,6 +86235,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -85003,6 +86424,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -85181,6 +86605,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -85369,6 +86796,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -85554,6 +86984,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -85732,6 +87165,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -85911,6 +87347,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -86089,6 +87528,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -86268,6 +87710,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -86446,6 +87891,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -86630,6 +88078,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -86814,6 +88265,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -86993,6 +88447,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -87172,6 +88629,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -87350,6 +88810,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -87529,6 +88992,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -87707,6 +89173,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -87887,6 +89356,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -88066,6 +89538,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -88250,6 +89725,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -88428,6 +89906,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -88610,6 +90091,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -88789,6 +90273,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -88967,6 +90454,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -89146,6 +90636,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -89320,6 +90813,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -89499,6 +90995,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -89677,6 +91176,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -89862,6 +91364,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -90048,6 +91553,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -90228,6 +91736,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -90406,6 +91917,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -90579,6 +92093,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -90757,6 +92274,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -90936,6 +92456,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -91108,6 +92631,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -91287,6 +92813,9 @@
    ],
    "tactical": true,
    "blocked_at_start": true,
+   "blocked_cooked": true,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [
     "TnSurvivalGenerator_9849"
    ],
@@ -91469,6 +92998,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -91651,6 +93183,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -91830,6 +93365,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -92008,6 +93546,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -92187,6 +93728,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -92359,6 +93903,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -92542,6 +94089,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -92720,6 +94270,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -92905,6 +94458,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -93084,6 +94640,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -93268,6 +94827,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -93447,6 +95009,9 @@
    ],
    "tactical": true,
    "blocked_at_start": true,
+   "blocked_cooked": true,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [
     "TnSurvivalGenerator_9533"
    ],
@@ -93627,6 +95192,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -93805,6 +95373,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -93983,6 +95554,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -94161,6 +95735,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -94340,6 +95917,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -94524,6 +96104,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -94705,6 +96288,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -94883,6 +96469,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -95071,6 +96660,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -95249,6 +96841,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -95428,6 +97023,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -95606,6 +97204,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -95793,6 +97394,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -95973,6 +97577,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -96153,6 +97760,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -96332,6 +97942,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -96517,6 +98130,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -96697,6 +98313,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -96877,6 +98496,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -97057,6 +98679,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -97229,6 +98854,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -97408,6 +99036,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -97592,6 +99223,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -97770,6 +99404,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -97950,6 +99587,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -98128,6 +99768,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -98302,6 +99945,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -98486,6 +100132,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -98670,6 +100319,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -98848,6 +100500,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -99026,6 +100681,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -99205,6 +100863,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -99383,6 +101044,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -99564,6 +101228,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -99742,6 +101409,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -99921,6 +101591,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -100100,6 +101773,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -100275,6 +101951,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -100453,6 +102132,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -100631,6 +102313,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -100815,6 +102500,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -100993,6 +102681,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -101172,6 +102863,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -101350,6 +103044,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -101522,6 +103219,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -101708,6 +103408,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -101893,6 +103596,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -102074,6 +103780,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -102252,6 +103961,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -102431,6 +104143,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -102611,6 +104326,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -102791,6 +104509,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -102975,6 +104696,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "BlockingVolume_6759",
    "nav_guid": {
@@ -103154,6 +104878,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -103337,6 +105064,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -103515,6 +105245,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -103693,6 +105426,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -103871,6 +105607,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -104051,6 +105790,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -104232,6 +105974,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -104410,6 +106155,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -104588,6 +106336,9 @@
    ],
    "tactical": false,
    "blocked_at_start": true,
+   "blocked_cooked": true,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [
     "TnSurvivalGenerator_1189"
    ],
@@ -104769,6 +106520,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -104954,6 +106708,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -105135,6 +106892,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -105316,6 +107076,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -105494,6 +107257,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -105672,6 +107438,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -105850,6 +107619,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -106028,6 +107800,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -106213,6 +107988,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -106397,6 +108175,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -106581,6 +108362,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -106761,6 +108545,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -106939,6 +108726,9 @@
    ],
    "tactical": true,
    "blocked_at_start": true,
+   "blocked_cooked": true,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [
     "TnSurvivalGenerator_9849"
    ],
@@ -107119,6 +108909,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -107291,6 +109084,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -107477,6 +109273,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "BlockingVolume_15798",
    "nav_guid": {
@@ -107657,6 +109456,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -107840,6 +109642,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -108022,6 +109827,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -108200,6 +110008,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -108382,6 +110193,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -108560,6 +110374,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -108746,6 +110563,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -108924,6 +110744,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -109102,6 +110925,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -109275,6 +111101,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -109453,6 +111282,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -109631,6 +111463,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -109809,6 +111644,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -109989,6 +111827,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -110167,6 +112008,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "BlockingVolume_6759",
    "nav_guid": {
@@ -110349,6 +112193,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -110523,6 +112370,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -110703,6 +112553,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -110881,6 +112734,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -111065,6 +112921,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -111239,6 +113098,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -111425,6 +113287,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -111603,6 +113468,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -111788,6 +113656,9 @@
    ],
    "tactical": true,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
@@ -111970,6 +113841,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": "TnWorldInfo_4804",
    "nav_guid": {
@@ -112142,6 +114016,9 @@
    ],
    "tactical": false,
    "blocked_at_start": false,
+   "blocked_cooked": false,
+   "blocked_by_setup": [],
+   "enabled_by_setup": [],
    "enabled_by_generators": [],
    "base": null,
    "nav_guid": {
