@@ -23,17 +23,49 @@ str = u32 length + bytes, no terminator; everything big-endian.
 
 **Walk proof: all 22 files** are walked from the header through every group and animation to the 572-byte tail: **3,616 animations** (3,557 compressed dialog curves + 59 cinematic curves with stored slopes), every K equal to the sum of its key counts. Systems' blocks started at the trailer of the previous animation, so their undecoded "X" is the *next* animation's name index, and their "−K / a == end / b" fields are the header above. Their 74 exceptions are the slope variant and the group breaks.
 
-**Value scale (HYPOTHESIS, strong):** phoneme, blink and eyebrow curves use i8 0..127, head / gaze curves −127..127, so value = i8 /
-127 × the node's range (phonemes 0..1; Gaze_Eye_Yaw node range ±10).
+**Node floats (PROVEN, 1,145 / 1,145 nodes):** (min, 1/min, max, 1/max), with 1 stored where a bound is 0. Phoneme / expression nodes
+0..1; head / gaze nodes symmetric (±2, ±2.5, ±4, ±10; −3..5).
+
+**Value scale (PROVEN):** in every one of the 3,616 animations the largest |i8| is exactly 127. Curves are normalised per animation
+and **value = i8 / 127 × b**; the header float `b` (never below 1.0, median 1.19) is the animation's peak curve magnitude.
+
+**Timing (measured on 728 dialog lines against their wave durations from the cue tree):**
+- `end` ≈ the line's duration (median +0.20 s, p10 −0.14, p90 +0.67: probably the blend-out tail).
+- `start` is a lead-in (median −0.27 s; 0 at most).
+- Key times are t = i16 × end / 32767 (Systems), so the animation spans [start, end] on the voice's clock, starting with the line.
+
+**Interpolation (open):**
+- The 3,557 dialog animations store no slopes. FaceFX 1.7 curves are Hermite, so for them the slopes are derived at load / run
+  time; linear vs derived Hermite can't be proven from the data alone.
+- The 59 cinematic curves store i8 slopeIn / slopeOut per key; their scale (presumably × b / time unit) is still to determine.
+- Proposal: evaluate with Hermite and Catmull-Rom-style derived slopes, compare against linear in the visual proof, and pick by eye.
 
 ## Exceptions
 
 None left: every byte of all 22 files is accounted for by the layout above. Still undecoded in meaning: the node float roles,
 `b`, the extra f32 of slope animations, and the phonemeId table.
 
+## Visual-proof plan (headless, no game code)
+
+1. **Pick a line:** Trypticon `DX_TRPTCN_LK004350` (25 curves, 8.61 s; wave `content/WL_DX_TRPTCN/DX_TRPTCN_LK004350.wav`, 8.76 s).
+2. **Curves:** for each curve, decode keys (t = i16 × end / 32767, v = i8 / 127 × b) and sample at 30 Hz from start to end. Do it
+   twice, linear and derived Hermite.
+3. **Face graph:** node value = curve value, clamped to [min, max]. Nodes with input links (none in the robots' dialog set, except
+   Omega / KON) get Σ linkFn(input); fn 1 = m·x + b.
+4. **Bone poses:** for each of the 14 face bones, pose = rest ⊕ Σ over the bone's links (node value × the link's dPos / rot / dScale).
+   Translation and scale add; rotation is slerped from identity by the node value. That's the standard FaceFX bone-pose blend
+   (HYPOTHESIS until it looks right).
+5. **Output:** a CSV per frame (time, 14 bones × pos / quat) plus a plot of jaw-open (C_Face01_Jaw_XF2 rotation) against the wave's
+   RMS envelope.
+6. **Pass criteria:** the jaw opens when the voice is loud (correlation of jaw angle and envelope > 0.5); silence at the start
+   (lead-in) and end; total duration within 0.3 s of the wave.
+7. **Then:** Gameplay applies the same evaluation in the skinned pose (after the body anim, override the 14 face bones), and Systems
+   syncs the curve clock to the voice playback position.
+
 ## Next
 
-1. The node float roles (min / max per node) to prove the value scale; `b`; the phonemeId table.
+1. The visual proof above (a CSV + plot tool in work/fxa).
+2. The cinematic slope scale; the phonemeId table.
 3. Interpolation: no slopes are stored except the ZetaPrime case. Compare FaceFX 1.7 Hermite with derived slopes against linear on
    curve shapes; a visual proof on one line (DX_TRPTCN_LK004350).
 4. Bone-pose application: rest pose plus the weighted sum of the node deltas from the master bone list links.
