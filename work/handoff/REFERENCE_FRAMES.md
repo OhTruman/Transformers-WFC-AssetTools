@@ -14,7 +14,7 @@ haze, but NOT the far canyon, so there is no shipped reference for the far-canyo
 | MP_IAC_Rust | `UI_LevelThumbnails_p.MP_Rust` | 512 × 256 RGB, 155,120 B | in-engine render (map-select thumbnail; bound to MP_IAC_Rust_BASE_m) | `refs/MP_IAC_Rust_thumbnail_UI_LevelThumbnails_p.png` |
 
 **Caveats:**
-- Small, JPEG-like (DXT) compressed, and probably an editor capture with its own post settings. Use them for haze colour and density
+- Small and block-compressed in the cook. How they were captured (camera, post settings) is UNKNOWN. Use them for haze colour and density
   read, not exact values.
 - The camera positions aren't recorded anywhere, so a matching rebuild frame has to be found by eye.
 - Gorge thumbnail: dark interior with blue-grey haze toward the back wall; no sky or canyon.
