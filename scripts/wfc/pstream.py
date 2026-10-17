@@ -61,8 +61,9 @@ MODULE_DISTS = {
     # no distributions in the compiled stream (census: every LOD whose only unlayouted module is this one has
     # zero leftover float/vector entries: Gravity 392 LODs, ColorByParameter 561, Unknown 106, LocationEmitter 20)
     'PMI_Gravity': ([], []), 'PMI_ColorByParameter': ([], []), 'PMI_Unknown': ([], []), 'PMI_LocationEmitter': ([], []),
-    # order CONFIRMED by RE from the runner (2026-10-18, batch 2): floats StartRadius, StartHeight, VelocityScale; vector StartLocation
-    'PMI_LocationPrimitiveCylinder': (['StartRadius', 'StartHeight', 'VelocityScale'], ['StartLocation']),
+    # RE spawn runner case 0x15 (2026-10-18 addendum, 178abb0), CONFIRMED: base-class-first like the Sphere -> floats VelocityScale,
+    # StartRadius (planar), StartHeight; vector StartLocation. (The first batch-2 note had StartRadius first: corrected.)
+    'PMI_LocationPrimitiveCylinder': (['VelocityScale', 'StartRadius', 'StartHeight'], ['StartLocation']),
     # orders CONFIRMED by RE from the runners (spawn 0x8303E288 / update 0x83039A18, 2026-10-18): distribution k of the module
     'PMI_Orbit': ([], ['OffsetAmount', 'RotationAmount', 'RotationRateAmount']),
     'PMI_LocationDirect': ([], ['Location', 'LocationOffset', 'ScaleFactor']),     # Direction is not compiled (no runner reads it)
