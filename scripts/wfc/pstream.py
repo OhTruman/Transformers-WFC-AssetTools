@@ -133,7 +133,9 @@ def parse(t):
     n = t[24]; i = 35; recs = []
     for m in range(n):
         b = t[i:i + 10]
+        pre = t[i - 7:i]       # RE 2026-10-18 (CONFIRMED, both runners): the record's own distribution base indices, u16 LE
         recs.append({'index': m, 'module_id': b[0], 'module': ids[b[0]] if b[0] < len(ids) else 'PMI_?%d' % b[0],
+                     'float_base': struct.unpack_from('<H', pre, 0)[0], 'vector_base': struct.unpack_from('<H', pre, 2)[0],
                      'flagA': b[1], 'flagB': b[2], 'payload_offset': b[8] | (b[9] << 8),
                      # bytes 3..6 of the record: BE export index of the module object (non-zero on module classes without a
                      # compiled ModuleId, e.g. ParticleModuleCollision / ParticleModuleSwitchableColorScaleOverLife)
@@ -150,7 +152,45 @@ def parse(t):
                 'raw_between_list_and_groups': t[i:j].hex(' '), 'raw_trailing': t[g2[1]:].hex(' ')}
     raise ValueError('distribution groups not found')
 
-def assign(parsed):
+# id-0 records (no compiled ModuleId; the module object runs itself) whose object is a LocationPrimitive* subclass: table entries at the
+# record's own base that no compiled module owns are its ParticleModuleLocationPrimitiveBase distributions (ownership by base index
+# CONFIRMED; property names by base-class declaration order HIGH, RE 2026-10-18 - PowerCell_Voltage_FX the only cooked case)
+ID0_OBJECT_DISTS = {'ParticleModuleLocationPrimitive': (['VelocityScale'], ['StartLocation'])}
+
+def assign(parsed, package=None):
+    """Distribution k of a record = table[record base + k] (RE: the runner reads base + k, never counts records)."""
+    res = {}
+    for g, key, gi in (('float', 'float_group', 0), ('vector', 'vector_group', 1)):
+        tab = parsed[key]; owned = {}; ok = True
+        for r in parsed['records']:
+            m = r['module']; base = r['float_base' if gi == 0 else 'vector_base']
+            if m in MODULE_DISTS: props, conf = MODULE_DISTS[m][gi], 'CONFIRMED'
+            elif m in ORDER_PROVISIONAL: props, conf = ORDER_PROVISIONAL[m][gi], 'PROVISIONAL'
+            else: continue
+            for k, prop in enumerate(props):
+                j = base + k
+                if j >= len(tab): ok = False; continue
+                owned[j] = {'module_index': r['index'], 'module': m, 'property': prop, 'dist': tab[j], 'confidence': conf}
+                if conf == 'PROVISIONAL': owned[j]['note'] = 'order rated HIGH by RE (not read directly from the runner)'
+        for r in parsed['records']:            # id-0 records with a module object
+            if r['module_id'] != 0 or package is None or not 0 < r.get('object_ref', 0) <= len(package.exports): continue
+            cls = package.class_name(package.exports[r['object_ref'] - 1])
+            spec = next((v for kk, v in ID0_OBJECT_DISTS.items() if cls.startswith(kk)), None)
+            if not spec: continue
+            base = r['float_base' if gi == 0 else 'vector_base']
+            for k, prop in enumerate(spec[gi]):
+                j = base + k
+                if j < len(tab) and j not in owned:
+                    owned[j] = {'module_index': r['index'], 'module': 'PMI_Unknown', 'module_object_class': cls, 'property': prop,
+                                'dist': tab[j], 'confidence': 'CONFIRMED', 'property_confidence': 'HIGH',
+                                'note': 'owner by the record base index (CONFIRMED); property name by base-class order (HIGH)'}
+        res[g] = [owned[j] for j in sorted(owned)]
+        res[g + '_unassigned'] = [tab[j] for j in range(len(tab)) if j not in owned]
+        res[g + '_complete'] = ok and len(owned) == len(tab)
+    return res
+
+def assign_sequential(parsed):
+    """pre-2026-10-18 assignment (module order, counted), kept for regression checks only"""
     res = {}
     for g, key, gi in (('float', 'float_group', 0), ('vector', 'vector_group', 1)):
         q = list(parsed[key]); ok = True; out = []
@@ -338,7 +378,7 @@ def system(ps, pkg=None):
                 pr = parse(lod_tail(p, p._idx[L['lod'].lower()]))
             except Exception as ex:
                 L['compiled_modules_error'] = str(ex); continue
-            a = assign(pr)
+            a = assign(pr, p)
             pb = param_blob(pr, p)
             L['parameter_blob'] = {k: v for k, v in pb.items() if k != 'blocks'}
             mods = []
@@ -370,6 +410,7 @@ def system(ps, pkg=None):
                              'distributions': [{'property': x['property'], 'property_candidates': x.get('property_candidates'),
                                                 'kind': x['dist']['kind'], 'op': x['dist']['op'],
                                                 'values': x['dist']['values'], 'confidence': x['confidence'],
+                                                **({'property_confidence': x['property_confidence']} if x.get('property_confidence') else {}),
                                                 **({'note': x['note']} if x.get('note') else {})}
                                                for x in a['float'] + a['vector'] if x['module_index'] == r['index']]})
             L['compiled_modules'] = mods

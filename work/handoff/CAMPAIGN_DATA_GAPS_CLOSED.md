@@ -9,7 +9,7 @@ read-only for this lane, so every new file goes under `AssetTools/out/` (gitigno
 |---|---|---|---|---|---|---|---|---|
 | A1_IAC | 18 | 15 | 2 | 1 | 3 | 3 | 0 | 2 → 0 |
 | A2_KON | 16 | 14 | 1 | 1 | 4 | 3 | 1 | 2 → 0 |
-| A3_COR | 20 | 17 | 2 | 1 | 3 | 3 | 0 | 2 → 1 |
+| A3_COR | 20 | 17 | 2 | 1 | 3 | 3 | 0 | 2 → 0 |
 | A4_ORB | 17 | 14 | 2 | 1 | 3 | 3 | 0 | 1 → 0 |
 | A5_TRY | 14 | 11 | 2 | 1 | 2 | 2 | 0 | 1 → 0 |
 | D1_ORB | 18 | 15 | 2 | 1 | 3 | 3 | 0 | 1 → 0 |
@@ -21,7 +21,7 @@ read-only for this lane, so every new file goes under `AssetTools/out/` (gitigno
 Totals (distinct across chapters):
 - 20 textures: 17 cube maps + 2 Texture2D decoded, 1 runtime-only.
 - 9 anim sets: 8 converted, 1 without data.
-- PARTIAL FX: 3 → 1.
+- PARTIAL FX: 3 → 0.
 
 ## 1. Textures (`scripts/wfc/campaign_texture_gaps.py` → `manifests/campaign/texture_gaps.json`, files in `out/campaign_textures/`)
 
@@ -65,13 +65,18 @@ umodel glTF axes, rest pose and hierarchy from the AnimSet's preview skeletal me
   `pstream.py` now names it in MODULE_DISTS.
   - `H2H_Punch01_FX` (all 10 chapters) and `Transforming_Impact_Sm_FX` (A1, A2) are COMPLETE.
   - No stored manifest carried the old provisional label (checked).
-- **`PowerCell_Voltage_FX` (A3) stays PARTIAL:**
-  - Its LOD has an id-0 record whose object is a LocationPrimitiveCylinder. It leaves 1 float + 1 vector unassigned, and the
-    sequential assignment after that record is then likely shifted by one.
-  - RE's HIGH fit has the id-0 Cylinder owning VelocityScale + StartLocation, which closes this LOD exactly.
-  - But the census over all 7,351 cooked LODs (`work/pstream_id0/id0_census.py`) shows the other 12 id-0 Cylinder LODs balance with the
-    Cylinder owning nothing. Those 12 have it as the first record; PowerCell has it as record 3.
-  - Back with RE. Not applied.
+- **`PowerCell_Voltage_FX` (A3): COMPLETE**, through a decoder fix rather than a per-LOD rule.
+  - RE (CONFIRMED in both runners): each compiled module record carries its own float / vector distribution base index, and the runner
+    reads distribution k at base + k without counting records.
+  - In the cooked LOD tail they sit in the 7 bytes before each 10-byte record block, as u16 LE (float at +0, vector at +2).
+  - `pstream.assign` now assigns by base index. The old sequential pass stays as `assign_sequential`, for regression checks only.
+  - **Regression over all 7,350 parsed cooked LODs** (`work/pstream_id0/assign_regression.py`): 7,348 / 7,348 previously complete LODs
+    are identical (owner, module, property, distribution, confidence). The only change is PowerCell, incomplete → complete.
+  - So no MP or campaign output that uses pstream changes anywhere else. One LOD fails to parse; that predates this change.
+  - In PowerCell, Color / SubUV / ColorScaleOverLife had each been shifted by one entry under the sequential pass. Its id-0 record (a
+    LocationPrimitiveCylinder object, no compiled ModuleId) owns float[2] / vector[2] by its own base index (CONFIRMED). They are named
+    VelocityScale = 0.022 and StartLocation = (0, 0, −400) by base-class order (property_confidence HIGH).
+  - The 12 other id-0 Cylinder LODs own no entries (their base equals the next record's).
 
 ## Not changed
 
