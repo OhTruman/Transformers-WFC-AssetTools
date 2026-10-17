@@ -27,18 +27,18 @@ Run: `start Fri 10/16/2026 11:57:56.84 cap 10 pkgcache 10`; package cache WFC_PK
 | m04_inventory | OK | 83.4 s | 1.36 |
 | validate_smca_transforms | OK | 8.6 s | 1.17 |
 | vs_validate | OK | 57.6 s | 3.16 |
-| m04_bsp | OK | 2.5 s | 1.07 |
+| m04_bsp | OK | 2.8 s | 1.07 |
 | m05_bsp_default_faces | OK | 942.1 s | 3.25 |
 | m04_kismet | OK | 5.7 s | 0.90 |
 | vs_pickups | OK | 1.4 s | 0.91 |
 | vs_destructibles | OK | 123.7 s | 2.00 |
 | vs_surface_audio | OK | 2.3 s | 1.05 |
-| map_structure_audit | OK | 173.5 s | 5.66 |
-| map_complete | OK | 9.8 s | 2.21 |
+| map_structure_audit | OK | 162.0 s | 5.66 |
+| map_complete | OK | 9.9 s | 2.21 |
 | map_render_index | OK | 5.3 s | 1.98 |
 | vs_streaming | OK | 1.4 s | 1.03 |
 
-Total wall 30.1 min; peak 5.66 GB. Stage failures: none.
+Total wall 29.9 min; peak 5.66 GB. Stage failures: none.
 
 ## 2. Export and completeness
 

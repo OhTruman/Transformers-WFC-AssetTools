@@ -178,7 +178,9 @@ def main():
                 surplus -= 1
                 ovs, mg = phys_stats.get('props_oversize_skipped') or 0, phys_stats.get('props_missing_geometry') or 0
                 secs = (phys_meshes.get(mesh) or {}).get('sections') or []
-                if ch == 'per_poly' and secs and not any(x.get('enable_collision') for x in secs):
+                if mesh is None:
+                    reason = 'component has no StaticMesh (none authored, even through its archetype) -> no geometry to collide with'
+                elif ch == 'per_poly' and secs and not any(x.get('enable_collision') for x in secs):
                     reason = 'per-poly but every section has EnableCollision=false (authored) -> no collision geometry, as in UE3'
                 else: reason = (('%s collision expected but vs_physics wrote no node: physics.json pawn stats oversize_skipped=%d '
                            '(>2 km shells), missing_geometry=%d (render mesh / hull not available)') % (ch, ovs, mg)) if (ovs or mg) else 'UNEXPLAINED'

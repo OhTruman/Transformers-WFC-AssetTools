@@ -27,22 +27,22 @@ Run: `start Fri 10/16/2026 12:12:22.97 cap 10 pkgcache 10`; package cache WFC_PK
 | m04_inventory | OK | 81.6 s | 1.38 |
 | validate_smca_transforms | OK | 11.8 s | 1.19 |
 | vs_validate | OK | 78.9 s | 4.91 |
-| m04_bsp | OK | 3.2 s | 1.05 |
+| m04_bsp | OK | 2.9 s | 1.05 |
 | m05_bsp_default_faces | OK | 1454.8 s | 6.09 |
 | m04_kismet | OK | 3.4 s | 0.83 |
 | vs_pickups | OK | 1.3 s | 0.90 |
 | vs_destructibles | OK | 32.2 s | 1.36 |
 | vs_surface_audio | OK | 2.2 s | 1.03 |
-| map_structure_audit | OK | 280.8 s | 7.31 |
+| map_structure_audit | OK | 258.1 s | 7.31 |
 | map_complete | OK | 8.0 s | 1.39 |
 | map_render_index | OK | 1.6 s | 1.29 |
 | vs_streaming | OK | 1.5 s | 1.07 |
 
-Total wall 39.5 min; peak 7.31 GB. Stage failures: none.
+Total wall 39.1 min; peak 7.31 GB. Stage failures: none.
 
 ## 2. Export and completeness
 
-- Completeness **INCOMPLETE**: 46 checks, 30 COMPLETE, 4 MISSING, 3 EXPORTED, 3 AUTHORED, 3 ATTENTION, 1 PARTIAL, 1 NONE, 1 PASS.
+- Completeness **INCOMPLETE**: 46 checks, 32 COMPLETE, 4 MISSING, 3 EXPORTED, 3 AUTHORED, 2 PASS, 1 PARTIAL, 1 NONE.
   - placed_meshes: PARTIAL {"placed": 19236, "unique": 1141, "missing_mesh": 125}
   - decals: EXPORTED {"decals": 165}
   - fog: NONE {"HeightFog_actors": 0, "height_fogs_in_lighting_json": 0, "FogVolumeConstantDensityInfo": 0}
@@ -55,9 +55,6 @@ Total wall 39.5 min; peak 7.31 GB. Stage failures: none.
   - bsp_default_material_faces: AUTHORED {"nodes": 939, "surfaces": 136, "brushes": 47, "by_verdict": {"exposed": 772, "partial": 154, "hidden": 13}, "area_m2_by_verdict": {"exposed": 616013.94, "partial": 36431.99, "hidden": 1423.48}, "visi
   - particles: EXPORTED {"components": 476, "emitter_actors": 431}
   - moving_scenery: AUTHORED {"movers": 687, "in_world_glb_missing": []}
-  - playable_space: ATTENTION {"player_starts": 0, "starts_on_reachable_floor": 0, "walk_graph_area_m2": 0.0, "bounds": null, "placement_checks": {"pickups": {"count": 0, "on_walkable_reachable_floor": 0, "not_on_walk_graph": []},
-  - collision_vs_visible: ATTENTION {"agreement_pct": 0.0, "agreement_pct_excluding_volume_tops": 0.0, "blocking_gaps_explained": [{"actor": "StaticMeshCollectionActor_10261", "component": "StaticMeshActor_7927_SMC", "mesh": "ENV_KON_De
-  - structure_audit: ATTENTION {"status": "ATTENTION", "failures": ["unexplained collision gap"]}
 - 56 levels (30 design, 21 art, 2 audio, 1 base, 1 cine, 1 music); 19236 placed meshes (1141 unique, 125 without mesh); 61163 BSP triangles; 539 lights; 641 volumes; 431 emitters.
 - Gameplay points: {"TriggerVolume": 255, "TnMatineePreviewSpawnPoint": 201, "TnObjectiveMarkerPoint": 40, "TnPickupFactory": 11, "TnWeaponPickupFactory": 21, "PlayerStart": 8, "TnCampaignPlayerStart": 62, "TnAmmoCratePickupFactory": 11, "TnHealthPickupFactory": 2}.
 - Navigation: 5813 nodes, 12137 edges.
@@ -70,3 +67,12 @@ Total wall 39.5 min; peak 7.31 GB. Stage failures: none.
 3. **FaceFX / dialog**: 11 FaceFXAsset, 24 InterpTrackFaceFX, 389 HmAnimNotify_Dialog, 79 HmSoundEventDialogGroup, 2406 SoundCue.
 4. **Materials for Rendering** (`work/campaign_pilot/A2_KON_materials_for_rendering.json`): 276 materials, 173 with `.mat`, 121 compiled somewhere -> **155 need a matc pass**.
 5. **Pending diagnostics**: none: m05 and the structure audit both ran.
+
+## 4. Notes
+
+- **Collision gap at StaticMeshCollectionActor_10261 (structure audit, 2026-10-17): explained, not a hole.** Its 5 components
+  (WallDeco_01, 4 × BridgeArchTop) are meshes with no simple collision and no per-poly flag, so they have no pawn collision in UE3
+  either. The audit's former ATTENTION came from the 125 mesh-less Courtyard components (no StaticMesh, so nothing to collide with),
+  which are now classified as explained; the audit PASSes.
+- The audit's walk-graph checks (playable space, collision vs visible) seed from MP player-start classes, which the campaign doesn't
+  use (TnCampaignPlayerStart), so they are empty for every chapter. Tied to the player-start relaxation (backlog 5).

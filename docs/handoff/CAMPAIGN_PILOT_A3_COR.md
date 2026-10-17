@@ -33,12 +33,12 @@ Run: `start Fri 10/16/2026 10:32:36.50 cap 10 pkgcache 10`; package cache WFC_PK
 | vs_pickups | OK | 1.4 s | 0.90 |
 | vs_destructibles | OK | 142.7 s | 2.16 |
 | vs_surface_audio | OK | 2.1 s | 1.01 |
-| map_structure_audit | OK | 298.8 s | 3.58 |
-| map_complete | OK | 12.1 s | 2.96 |
+| map_structure_audit | OK | 276.1 s | 3.58 |
+| map_complete | OK | 12.3 s | 2.96 |
 | map_render_index | OK | 8.3 s | 2.70 |
 | vs_streaming | OK | 1.5 s | 1.06 |
 
-Total wall 35.7 min; peak 6.54 GB. Stage failures: none.
+Total wall 35.3 min; peak 6.54 GB. Stage failures: none.
 
 ## 2. Export and completeness
 

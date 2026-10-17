@@ -27,22 +27,22 @@ Run: `start Fri 10/16/2026 10:13:54.84 cap 10 pkgcache 10`; package cache WFC_PK
 | m04_inventory | OK | 68.2 s | 1.47 |
 | validate_smca_transforms | OK | 13.9 s | 1.32 |
 | vs_validate | OK | 64.0 s | 4.97 |
-| m04_bsp | OK | 2.3 s | 1.05 |
+| m04_bsp | OK | 2.5 s | 1.05 |
 | m05_bsp_default_faces | OK | 822.0 s | 4.21 |
 | m04_kismet | OK | 3.6 s | 0.84 |
 | vs_pickups | OK | 1.3 s | 0.90 |
 | vs_destructibles | OK | 53.0 s | 1.54 |
 | vs_surface_audio | OK | 2.0 s | 1.00 |
-| map_structure_audit | OK | 287.5 s | 4.98 |
+| map_structure_audit | OK | 263.3 s | 4.98 |
 | map_complete | OK | 7.5 s | 1.61 |
 | map_render_index | OK | 2.1 s | 1.37 |
 | vs_streaming | OK | 1.5 s | 1.09 |
 
-Total wall 28.5 min; peak 4.98 GB. Stage failures: none.
+Total wall 28.1 min; peak 4.98 GB. Stage failures: none.
 
 ## 2. Export and completeness
 
-- Completeness **INCOMPLETE**: 46 checks, 32 COMPLETE, 4 MISSING, 3 AUTHORED, 2 EXPORTED, 1 PARTIAL, 1 NONE, 1 UNVALIDATED, 1 PASS, 1 NOT RUN / FAIL.
+- Completeness **INCOMPLETE**: 46 checks, 33 COMPLETE, 4 MISSING, 3 AUTHORED, 2 EXPORTED, 1 PARTIAL, 1 NONE, 1 PASS, 1 NOT RUN / FAIL.
   - placed_meshes: PARTIAL {"placed": 24605, "unique": 1232, "missing_mesh": 12}
   - decals: NONE {"decals": 0}
   - map_fx: EXPORTED {"particle_components": 626, "systems": 72}
@@ -51,7 +51,6 @@ Total wall 28.5 min; peak 4.98 GB. Stage failures: none.
   - thumbnail: MISSING null
   - frontend_name: MISSING null
   - mode_compatibility: MISSING null
-  - bsp_alignment: UNVALIDATED {"authored_render_triangles": 19355, "authored_polygon_node_triangles": 21429, "world_glb_bsp_triangles": 21429, "difference": 2074, "unaccounted_nodes": 747, "verdict": "BSP DIFFERENCE - see unaccoun
   - bsp_default_material_faces: AUTHORED {"nodes": 831, "surfaces": 218, "brushes": 245, "by_verdict": {"exposed": 665, "partial": 140, "hidden": 26}, "area_m2_by_verdict": {"exposed": 1867228.09, "partial": 91536.88, "hidden": 2364.56}, "vi
   - particles: EXPORTED {"components": 626, "emitter_actors": 574}
   - moving_scenery: AUTHORED {"movers": 1476, "in_world_glb_missing": []}

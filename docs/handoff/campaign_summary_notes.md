@@ -5,8 +5,11 @@
   - The MP path is unchanged: the single-level untiled default matches the gate on all 10 MP maps, Streets included, and tiled
     output equals untiled on Gorge and BrokenHope.
   - Every chapter is under the 10 GB cap. D1_ORB m05 took 82 min (10,048 faces), the only stage over an hour.
-- **Structure audit:** at a 2 m cell (`WFC_AUDIT_CELL=2`; the MP default stays 1 m); 9 chapters PASS, A2_KON ATTENTION.
-- **bsp_alignment** (D2_COR) is still to be looked at; the audit is the input.
+- **Structure audit:** at a 2 m cell (`WFC_AUDIT_CELL=2`; the MP default stays 1 m). **All 10 chapters PASS** (2026-10-17): mesh-less blocking
+  components are now explained (no StaticMesh, nothing to collide with). A2's StaticMeshCollectionActor_10261 is explained (meshes without
+  collision, as in UE3). The walk-graph checks are empty in the campaign (no MP player starts).
+- **bsp_alignment: COMPLETE on all 10 chapters** (m04_bsp key-search fix: D2_COR_TNL3_Art_m's 212 ModelComponents were unparsed
+  because the tag stream's 'None' index equals the model export index there).
 
 ## 4. Provisional items
 
