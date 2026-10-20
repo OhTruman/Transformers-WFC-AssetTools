@@ -229,16 +229,19 @@ def runtime_colors_common():
                                          'energon = top-level energon_default',
             'energon_defaults': 'manifests/mp_content/energon_defaults.json (energon_defaults.py)'}
 
-def export(cid, ch, preset, A, common):
+def export(cid, ch, preset, A, common, out_dir=None):
     t0 = time.time()
-    out_dir = os.path.join(VS, 'Characters', cid)
+    out_dir = out_dir or os.path.join(VS, 'Characters', cid)   # out_dir: write elsewhere (e.g. AssetTools/out); default unchanged
     os.makedirs(out_dir, exist_ok=True)
     VC.NAME, VC.OUT = cid, out_dir
     iconic = (ch.get('re_identity') or {}).get('UniqueIconicId') or ''
     key = re.sub(r'[^A-Za-z]', '', iconic)
     res = OrderedDict()
     for form in ('robot', 'vehicle'):
-        f = ch[form]; mop = f['skeletal_mesh']
+        f = ch.get(form)
+        if not f:   # a body with no vehicle form (Escalation Spider); every MP chassis has both, so their output is unchanged
+            res[form] = {'skipped': 'no %s form on this chassis' % form}; continue
+        mop = f['skeletal_mesh']
         a = A.get(mop.lower())
         if not a or not any(o.endswith('.gltf') for o in a.get('extracted') or []):
             res[form] = {'error': 'mesh not extracted', 'mesh_object': mop}; continue

@@ -1,0 +1,372 @@
+{
+ "map": "MP_UND_Gorge",
+ "generated_by": "AssetTools/scripts/wfc/map_structure_audit.py",
+ "method": {
+  "cell_m": 1.0,
+  "walk_step_m": 1.25,
+  "walkable_normal_y": 0.7,
+  "huge_triangle_m2": 20000.0,
+  "note": "walk graph is conservative (no jumping / vehicle form / jump pads): unreachable != unplayable"
+ },
+ "transforms": {
+  "smca_nodes_checked": 1752,
+  "smca_world_glb_matrix_mismatch": 0,
+  "examples": [],
+  "rule": "world.glb node matrix == props.json gltf_matrix (component S*R*T x native CachedParentToWorld; Streets lesson)"
+ },
+ "mirrored_instances": {
+  "primitive_instances": {
+   "normal": 1528,
+   "det>0 tris normal-agree": 934895,
+   "det>0 tris normal-oppose": 1635,
+   "mirrored": 447,
+   "det<0 tris normal-agree": 82,
+   "det<0 tris normal-oppose": 286931
+  },
+  "verdict": "CONSISTENT",
+  "rule": "for det<0 nodes the transformed winding opposes the transformed normals; a glTF renderer must flip the front face (glTF 2.0 spec 3.7.4). Exported data is consistent when det<0 tris mostly oppose and det>0 tris mostly agree."
+ },
+ "playable_space": {
+  "player_starts": 115,
+  "starts_on_reachable_floor": 115,
+  "starts_without_floor_below": [],
+  "starts_off_walk_graph_diagnosis": [],
+  "walk_graph_cells": 63111,
+  "walk_graph_layers": 259430,
+  "walk_graph_area_m2": 259430.0,
+  "connected_from_any_start": true,
+  "bounds": {
+   "x_m": [
+    -233.0,
+    -11.0
+   ],
+   "z_m": [
+    -225.0,
+    221.0
+   ],
+   "floor_height_m": [
+    -27.83,
+    38.36
+   ]
+  },
+  "kill_z_ue": [
+   -262143.0,
+   -262143.0,
+   -7500.0
+  ],
+  "placement_checks": {
+   "pickups": {
+    "count": 15,
+    "on_walkable_reachable_floor": 15,
+    "not_on_walk_graph": []
+   },
+   "objectives": {
+    "count": 17,
+    "on_walkable_reachable_floor": 17,
+    "not_on_walk_graph": []
+   }
+  }
+ },
+ "collision_vs_visible": {
+  "reachable_floor_cells_with_visible_floor": 194155,
+  "reachable_floor_cells_without_visible_floor (invisible floor) by collision source": {
+   "StaticMeshCollectionActor": 37982,
+   "BlockingVolume": 27038,
+   "TnTransformerBlockingVolume": 224,
+   "TnForcedDirVolume": 31
+  },
+  "agreement_pct": 74.84,
+  "agreement_pct_excluding_volume_tops": 83.63,
+  "visible_floor_cells_next_to_walk_graph_without_collision (fall-through candidates)": 27606,
+  "fall_through_candidates_by_visible_source (top 25)": {
+   "ENV_CORE_Wall_p.CanyonWalls.ENV_CORE_CanyonWall_A_STAT": 2859,
+   "ENV_CORE_Wall_p.CanyonWalls.ENV_CORE_CliffWall_A_STAT": 2788,
+   "ENV_CORE_Platform_p.Platform.ENV_CORE_GatePlatform_D_STAT": 2233,
+   "ENV_ORB_PowerCorridor_p.StaticMesh.Gantry_Straight_STAT": 1588,
+   "ENV_CORE_Platform_p.Platform.ENV_CORE_PlatformPillar_A_STAT": 1522,
+   "ENV_CORE_Wall_p.Inside_Walls.ENV_CORE_InroomWall_C_STAT": 1321,
+   "ENV_CORE_Platform_p.Platform.ENV_CORE_GatePlatform_2A_STAT": 1068,
+   "ENV_NEU_Structures_p.Big3.Big3_Building3Walkway_1024x1536x4096_STAT": 1035,
+   "ENV_ORB_D1_Debris_p.Meshes.damageChunk_STAT": 935,
+   "ENV_CORE_Floors_p.StaticMesh.OmegaBridge_STAT": 886,
+   "ENV_CORE_Wall_p.CanyonWalls.ENV_CORE_CliffWall_B_STAT": 836,
+   "ENV_CORE_Deco_p.StaticMesh.ENV_CORE_CanyonDeco_D_STAT": 750,
+   "ENV_CORE_Platform_p.Floors.ENV_CORE_CanyonFloor_B_STAT": 728,
+   "ENV_CORE_Wall_p.CanyonWalls.ENV_CORE_CanyonWall_B_STAT": 701,
+   "ENV_CORE_Platform_p.Platform.ENV_CORE_GatePlatform_C_STAT": 671,
+   "ENV_CORE_Wall_p.Inside_Walls.ENV_CORE_InroomWall_F_STAT": 596,
+   "ENV_CORE_Platform_p.Platform.ENV_CORE_GatePlatform_B_STAT": 557,
+   "ENV_CORE_Platform_p.Floors.ENV_CORE_CanyonFloor_C_STAT": 473,
+   "ENV_CORE_Wall_p.CanyonWalls.ENV_CORE_CanyonJunkWall_A_STAT": 463,
+   "ENV_NEU_Structures_p.Big3.Big3_Building3Base1_768x1024x2816_STAT": 341,
+   "ENV_CORE_Wall_p.Inside_Walls.ENV_CORE_InroomWall_D_STAT": 330,
+   "ENV_CORE_Wall_p.CanyonWalls.ENV_CORE_CanyonWall_C_STAT": 322,
+   "ENV_CORE_SupportColumns_p.StaticMesh.COR_TNBundleWireA_STAT": 270,
+   "ENV_CORE_SupportColumns_p.StaticMesh.GS_SupportB_STAT": 253,
+   "ENV_KON_Bridges_p.Bridge1536.Bridge_1536_Straight_2048_STAT": 249
+  },
+  "non_blocking_props_by_mesh (authored bCollideActors/bBlockActors false)": {
+   "ENV_GLB_EnvEffects_p.StaticMesh.LightBeam_Cone_STAT": 83,
+   "ENV_CORE_Platform_p.Floors.ENV_CORE_CanyonFloor_C_STAT": 23,
+   "ENV_IAC_Ground_p.EnergyFence.EngeryFence_02_STAT": 22,
+   "PROP_EnergonSigns_p.DecepticonSign_1_STAT": 19,
+   "ENV_CORE_Wall_p.Waterfall.WaterfallA_STAT": 14,
+   "ENV_KON_Architecture_p.Meshes.FloorTrim_Straight_02_STAT": 12,
+   "ENV_CORE_Wall_p.Inside_Walls.ENV_CORE_InroomSWall_B_STAT": 8,
+   "ENV_CORE_Wall_p.Inside_Walls.ENV_CORE_InroomWall_C_STAT": 5,
+   "ENV_CORE_Floors_p.StaticMesh.OmegaBridge_STAT": 4,
+   "ENV_CORE_Wall_p.Waterfall.WaterfallB_STAT": 4,
+   "ENV_CORE_Deco_p.StaticMesh.ENV_CORE_CanyonDeco_D_STAT": 4,
+   "ENV_ORB_D1_Debris_p.Meshes.damageChunk_STAT": 4,
+   "ENV_CORE_Deco_p.StaticMesh.ENV_CORE_CanyonDeco_A_STAT": 4,
+   "ENV_IAC_Ground_p.EnergyFence.EngeryFence_04_STAT": 4,
+   "ENV_CORE_Wall_p.CanyonWalls.ENV_CORE_CanyonWall_A_STAT": 4,
+   "ENV_GLB_EnvEffects_p.StaticMesh.FogPlane_STAT": 3,
+   "ENV_IAC_Deco_1_p.StaticMesh.DecoDonut01_STAT": 3,
+   "ENV_CORE_Platform_p.Floors.ENV_CORE_CanyonFloor_A_STAT": 2,
+   "ENV_CORE_Platform_p.Floors.ENV_CORE_CanyonFloor_B_STAT": 2,
+   "ENV_CORE_Platform_p.Floors.ENV_CORE_CanyonFloor_D_STAT": 2,
+   "ENV_KON_Architecture_p.Meshes.DoorFrame_01_STAT": 2,
+   "ENV_CORE_Platform_p.Floors.CanyonFloor_A_Connector_STAT": 2,
+   "ENV_CORE_Wall_p.Inside_Walls.ENV_CORE_InroomSWall_A_STAT": 2,
+   "PROP_UND_MechParts_p.StaticMesh.PROP_UND_RepairNodeB_A_STAT": 2,
+   "ENV_CORE_SupportColumns_p.PneumaticPipe.ENV_CORE_PMPipeBend_A_STAT": 1,
+   "ENV_CORE_Platform_p.Platform.ENV_CORE_PlatformPillar_A_STAT": 1,
+   "ENV_ORB_D1_Debris_p.Meshes.TunnelPipeA_Debri_B_EdgeGlow_STAT": 1,
+   "ENV_CORE_SupportColumns_p.StaticMesh.COR_TNBundleWireACurve_STAT": 1,
+   "PROP_NEU_Pickups_p.ObjBases.Base_D": 1,
+   "PROP_NEU_Pickups_p.ObjBases.Base_A": 1
+  },
+  "fall_through_examples_gltf": [
+   [
+    -233.5,
+    6.16,
+    -118.5
+   ],
+   [
+    -232.5,
+    6.16,
+    -115.5
+   ],
+   [
+    -232.5,
+    6.16,
+    111.5
+   ],
+   [
+    -232.5,
+    6.15,
+    112.5
+   ],
+   [
+    -231.5,
+    6.14,
+    -114.5
+   ],
+   [
+    -231.5,
+    -8.44,
+    -74.5
+   ],
+   [
+    -231.5,
+    -8.45,
+    -6.5
+   ],
+   [
+    -231.5,
+    -8.42,
+    -5.5
+   ],
+   [
+    -231.5,
+    -8.43,
+    1.5
+   ],
+   [
+    -231.5,
+    -8.44,
+    2.5
+   ],
+   [
+    -231.5,
+    6.14,
+    108.5
+   ],
+   [
+    -230.5,
+    6.16,
+    -119.5
+   ],
+   [
+    -230.5,
+    7.53,
+    -92.5
+   ],
+   [
+    -230.5,
+    8.0,
+    -92.5
+   ],
+   [
+    -230.5,
+    -8.2,
+    -77.5
+   ],
+   [
+    -230.5,
+    -8.18,
+    -72.5
+   ],
+   [
+    -230.5,
+    8.61,
+    -70.5
+   ],
+   [
+    -230.5,
+    8.64,
+    -69.5
+   ],
+   [
+    -230.5,
+    -8.02,
+    -68.5
+   ],
+   [
+    -230.5,
+    -8.12,
+    -67.5
+   ]
+  ],
+  "blocking_props_without_collision_node": {
+   "StaticMeshCollectionActor_247": 2,
+   "StaticMeshCollectionActor_4931": 2,
+   "StaticMeshCollectionActor_727": 1,
+   "StaticMeshCollectionActor_9051": 1
+  },
+  "blocking_gaps_explained": [
+   {
+    "actor": "StaticMeshCollectionActor_247",
+    "component": "StaticMeshActor_4688_SMC",
+    "mesh": "ENV_IAC_Spacedome_p.BlueNebulae_Card_STAT",
+    "pawn_channel": "per_poly",
+    "gltf_translation_m": [
+     -242.0,
+     587.7,
+     100.3
+    ],
+    "reason": "per_poly collision expected but vs_physics wrote no node: physics.json pawn stats oversize_skipped=3 (>2 km shells), missing_geometry=0 (render mesh / hull not available)"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_247",
+    "component": "StaticMeshActor_14663_SMC",
+    "mesh": "ENV_GLB_EnvEffects_p.StaticMesh.FogVolume_CUBE_STAT",
+    "pawn_channel": "per_poly",
+    "gltf_translation_m": [
+     -84.1,
+     601.2,
+     5.1
+    ],
+    "reason": "per_poly collision expected but vs_physics wrote no node: physics.json pawn stats oversize_skipped=3 (>2 km shells), missing_geometry=0 (render mesh / hull not available)"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_4931",
+    "component": "StaticMeshActor_656_SMC",
+    "mesh": "ENV_IAC_Ground_p.EnergyFence.EngeryFence_04_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -30.9,
+     -7.8,
+     6.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_4931",
+    "component": "StaticMeshActor_12098_SMC",
+    "mesh": "ENV_IAC_Ground_p.EnergyFence.EngeryFence_04_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -133.0,
+     -7.7,
+     -23.3
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_727",
+    "component": "StaticMeshActor_6134_SMC",
+    "mesh": "ENV_ORB_D1_Debris_p.Meshes.TunnelPipeA_Debri_B_EdgeGlow_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     -102.5,
+     13.1,
+     -25.3
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_9051",
+    "component": "StaticMeshActor_329_SMC",
+    "mesh": "ENV_GLB_EnvEffects_p.StaticMesh.FogVolume_CUBE_STAT",
+    "pawn_channel": "per_poly",
+    "gltf_translation_m": [
+     -84.1,
+     -233.2,
+     5.1
+    ],
+    "reason": "per_poly collision expected but vs_physics wrote no node: physics.json pawn stats oversize_skipped=3 (>2 km shells), missing_geometry=0 (render mesh / hull not available)"
+   }
+  ],
+  "collision_nodes_without_blocking_prop": {
+   "TnForcedDirVolume_10955": 1,
+   "TnForcedDirVolume_12547": 1,
+   "TnForcedDirVolume_13869": 1
+  },
+  "collision_node_kinds": {
+   "BSPCollision_MP_UND_Gorge_ART": 1,
+   "BlockingVolume": 80,
+   "TnForcedDirVolume": 3,
+   "TnTransformerBlockingVolume": 28,
+   "InterpActor": 9,
+   "StaticMeshCollectionActor": 142
+  },
+  "oversized_triangles_excluded": {
+   "world": 88,
+   "collision": 53
+  }
+ },
+ "materials": {
+  "default_material_triangles_by_kind": {
+   "bsp": 560
+  },
+  "default_material_area_m2_by_kind": {
+   "bsp": 263793.4
+  },
+  "note": "BSP faces with DefaultMaterial and their in-play visibility: manifests/next_map/<MAP>_bsp_default_faces.json (Streets: streets_bsp_default_faces.json)"
+ },
+ "lightmaps": {
+  "lightmaps_json_props": 1137,
+  "world_glb_nodes_with_lm_atlas": 1137,
+  "of_which_have_TEXCOORD_1": 1137,
+  "atlases_used": 12,
+  "atlases_without_png": [],
+  "binding_ok": true
+ },
+ "actors": {
+  "world_glb_nodes_by_kind": {
+   "bsp": 1,
+   "InterpActor": 13,
+   "StaticMeshCollectionActor": 1752
+  },
+  "non_collection_actors": 13,
+  "non_collection_actors_missing_from_world_glb": [],
+  "mode_gated_targets": 8,
+  "mode_gated_missing_from_world_glb": []
+ },
+ "verdict": {
+  "status": "PASS",
+  "failures": []
+ }
+}

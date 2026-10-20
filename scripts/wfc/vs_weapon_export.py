@@ -130,9 +130,9 @@ def projectile(cls, A):
     rec['other_defaults'] = {k: x for k, x in d.items() if isinstance(x, (int, float)) and k not in rec}
     return rec
 
-def export(pid, w, A, hud_icons, chassis_by_weapon, owner_socket):
+def export(pid, w, A, hud_icons, chassis_by_weapon, owner_socket, out_dir=None):
     t0 = time.time()
-    out_dir = os.path.join(VS, 'Weapons', pid)
+    out_dir = out_dir or os.path.join(VS, 'Weapons', pid)      # out_dir: write elsewhere (e.g. AssetTools/out); default unchanged
     os.makedirs(out_dir, exist_ok=True)
     VC.NAME, VC.OUT = pid, out_dir
     # never overwrite the hand-built slice weapon (vs_weapon.py, loaded by Gameplay): write *_mp files next to it
