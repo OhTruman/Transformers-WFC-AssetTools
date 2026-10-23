@@ -57,7 +57,25 @@ def main(ch):
     pers = next((l for l in levels if l.lower().endswith('_base_m')), None)
     if pers and os.path.isdir(os.path.join(R, CR.outname(pers))) and os.path.exists(os.path.join(D, 'gameplay.json')):
         shutil.copyfile(os.path.join(D, 'gameplay.json'), os.path.join(R, CR.outname(pers), 'gameplay.json'))
+    orphan_physics(ch, D, R, levels, ph)
     _rest(ch, D, R, levels, assign, why, out, split)
+
+def orphan_physics(ch, D=None, R=None, levels=None, ph=None):
+    """<chapter>/physics.json (Gameplay / Integration 2026-10-23): the volumes (and props) of every chapter level WITHOUT a render unit
+    dir (e.g. A1_IAC_Audio_m's 120 TriggerVolumes, the level audio's touch zones), same physics.json schema; levels listed."""
+    D = D or os.path.join(CVS, ch); R = R or os.path.join(CR.OUTR, ch); levels = levels or CR.chapter_levels(ch)
+    ph = ph or json.load(open(os.path.join(D, 'physics.json'), encoding='utf-8'))
+    orphans = [lv for lv in levels if not os.path.isdir(os.path.join(R, CR.outname(lv)))]
+    sp = {k: v for k, v in ph.items() if not isinstance(v, list)}
+    for k in ('props', 'volumes'):
+        sp[k] = [r for lv in orphans for r in (CR.filt(ph.get(k) or [], lv, levels) if (ph.get(k) or []) else [])]
+    used = {p['mesh'] for p in sp['props']}
+    sp['meshes'] = {k: v for k, v in (ph.get('meshes') or {}).items() if k in used}
+    sp.update(sublevels_without_unit=orphans, split_from='physics.json',
+              note='volumes / props of the chapter levels that have no render unit dir (per-unit physics.json covers the rest)')
+    json.dump(sp, open(os.path.join(R, 'physics.json'), 'w', encoding='utf-8'), indent=1, default=str)
+    print('chapter-root physics.json: levels', orphans, 'volumes', len(sp['volumes']), 'props', len(sp['props']))
+    return sp
 
 def split_glb(D, R, ch, levels, gname, prop_lv, vol_lv):
     """split a chapter collision glb by level (BSP by node name, volumes by physics.json actor + sublevel / first vertex, props by actor /
@@ -118,4 +136,5 @@ def _rest(ch, D, R, levels, assign, why, out, split):
     print(json.dumps(rep)[:900])
 
 if __name__ == '__main__':
-    main(sys.argv[1])
+    if len(sys.argv) > 2 and sys.argv[2] == 'orphans': orphan_physics(sys.argv[1])
+    else: main(sys.argv[1])
