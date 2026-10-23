@@ -18,6 +18,8 @@ TILE, PAD = int(os.environ.get("WFC_HD_TILE", "192")), 16   # WFC_HD_TILE: small
 
 def device():
     import torch
+    if os.environ.get('WFC_HD_DEVICE') == 'cpu':      # e.g. a small rerun inside run_bounded's 6 GB cap (DML commit counts against it); unset = DML as before
+        return torch.device('cpu'), 'cpu (WFC_HD_DEVICE)'
     try:
         import torch_directml
         return torch_directml.device(), 'directml:' + torch_directml.device_name(0).strip()

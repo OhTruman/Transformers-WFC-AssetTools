@@ -27,7 +27,9 @@ import hd_v4 as V4  # noqa: E402
 REB = os.path.dirname(H.AT)
 # WFC_HD_PUSH_SET=full: the HD full pass (docs/HD_FULL_PASS_PLAN.md) on out/hd/full/selection.json instead of the Rust pilot
 FULL = os.environ.get('WFC_HD_PUSH_SET') == 'full'
-OUT = os.path.join(H.HD, 'push_full' if FULL else 'push_pilot'); RAW = os.path.join(OUT, '_raw')
+# WFC_HD_PUSH_ROOT (Integration 2026-10-23): a separate work / pack root (e.g. the campaign confirmation of 10 textures); unset = the
+# pack D roots exactly as before
+OUT = os.environ.get('WFC_HD_PUSH_ROOT') or os.path.join(H.HD, 'push_full' if FULL else 'push_pilot'); RAW = os.path.join(OUT, '_raw')
 VARIANTS = ['gen4x', 'gen4x_mid', 'gen4x_mid_nrm', 'gen4x_d']   # D (Integration 2026-10-11, user 'the most amount of details'): stronger than C
 COLOUR_MODEL, MASK_MODEL, NORMAL_MODEL = '4x-Textures-GTAV-rgt-s', '4x-PBRify-RPLKSRd-V3', '4x-Normal-RG0-BC1'
 EXTRA = ['content/TR_BumbleBee_ROBO_p/RB_Bumblebee_GrngCLR.png', 'content/TR_BumbleBee_ROBO_p/RB_Bumblebee_Norm_XY_1024.png',

@@ -39,6 +39,8 @@ The full list with sizes and chapters is in `hd_coverage.json` → `distinct_gap
 
 ## Correction: the real build scope (2026-10-23, later the same day)
 
+**Decision (Integration rebuild-84, 2026-10-23): campaign covered by pack D; the campaign HD pass is closed.** The 10 eligible textures are rerun in a separate root only to confirm the gate outcome. No widening to UI / skybox / tiny textures.
+
 The gap above counts every Texture2D without a pack D row. Under pack D's own rules almost all of them stay original:
 
 | of the 937 distinct gap textures | count | outcome |

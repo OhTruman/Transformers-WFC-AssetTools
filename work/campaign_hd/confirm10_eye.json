@@ -1,0 +1,47 @@
+{
+ "generated_by": "AssetTools eye review 2026-10-23 (sheet out/hd/campaign_push_20261023/sheets/b000_01.png; pack D patterns, hd-eye-review-patterns)",
+ "pipeline": "pack D (hd_push gen + hd_full_push build, same gates); normal model on CPU (WFC_HD_DEVICE=cpu: DML commit exceeds the 6 GB run_bounded cap), colour model on CPU as in pack D",
+ "gate_outcome": {
+  "ORIGINAL": [
+   "DebrisCard_A_NORM",
+   "DebrisCard_B_NORM",
+   "OrganicMetal2_NORM",
+   "ENV_UND_BasePlatform_A_NORM",
+   "FramePillars_NORM",
+   "LightBeam_Falloff_01_CLR",
+   "Rock_Debris_Bump"
+  ],
+  "gen4x_d": [
+   "Ring_CLR",
+   "RingsTrail",
+   "ENV_statue01_NORM"
+  ]
+ },
+ "eye": {
+  "content/FX_Textures_p/Textures/Ring_CLR.png": {
+   "cap": null,
+   "why": "smooth FX glow gradient; HD adds a woven checker texture (pattern: smooth FX gradients -> None)"
+  },
+  "content/FX_Textures_p/Textures/RingsTrail.png": {
+   "cap": null,
+   "why": "soft gradient turns into streaky brush marks (pattern: smooth FX gradients -> None)"
+  },
+  "content/PROP_IAC_Statues_p/Texture/ENV_statue01_NORM.png": {
+   "cap": "gen4x_d",
+   "why": "dithered checker resolves into clean consistent relief; full view reads well; no cells / woven ridges"
+  }
+ },
+ "passes": [
+  {
+   "object_path": "PROP_IAC_Statues_p.Texture.ENV_statue01_NORM",
+   "dds": "content/PROP_IAC_Statues_p/Texture/ENV_statue01_NORM.dds",
+   "level": "gen4x_d",
+   "size": [
+    4096,
+    4096
+   ],
+   "bytes": 11184952,
+   "built": "out/hd/campaign_push_20261023/_enc (hd_full_push build)"
+  }
+ ]
+}
