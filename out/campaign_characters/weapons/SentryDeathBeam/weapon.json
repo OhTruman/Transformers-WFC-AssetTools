@@ -9790,5 +9790,94 @@
  "files": {
   "json": "VerticalSlice/Weapons/SentryDeathBeam/weapon.json",
   "slice_weapon_kept": false
+ },
+ "fire": {
+  "class": "TransContent.TnWeaponSentryDeathBeam",
+  "ai_data": "WEP_SentryBlaster01_p.DeathBeamSentry_WEPDATA",
+  "player_data": null,
+  "kind": "beam",
+  "interval_note": "FireInterval per fire mode; FireIntervalModifier.IntervalRange (Min / Max, RampTime) is the authored AI cadence (how native combines the two: PROVISIONAL)",
+  "data": {
+   "DamagePerSecond": 800.0,
+   "DamageType": "TransGame.TnDamageTypeRepairEnemy",
+   "DesiredFiringRange": "RANGE_Medium",
+   "FineAimTargetFocusParams": {
+    "DOF_BlurKernelSize": 8.0,
+    "DOF_FocusSize": 1000.0,
+    "DOF_FalloffExponent": 1.0,
+    "DOF_MaxNearBlurAmount": 0.6000000238418579,
+    "DOF_MaxFarBlurAmount": 1.0
+   },
+   "FireInterval": [
+    1.0,
+    1.0
+   ],
+   "FireIntervalModifier": {
+    "IntervalRange": {
+     "Min": 0.029999999329447746,
+     "Max": 0.029999999329447746
+    },
+    "RampTime": 1.0
+   },
+   "HeatProperties": {
+    "HeatMax": 0.0,
+    "Modifiers": []
+   },
+   "InitialReserveAmmoCount": 1,
+   "InstantHitDamage": [
+    0.0,
+    0.0
+   ],
+   "InstantHitDamageTypes": [
+    "Engine.DamageType",
+    "Engine.DamageType"
+   ],
+   "MaxAmmoClipCount": 0,
+   "MaxAmmoCount": 1,
+   "MinReloadPct": [
+    0.5,
+    0.5
+   ],
+   "NumShotsToFire": 1,
+   "ShotCost": [
+    0,
+    0
+   ],
+   "Spread": [
+    0.0,
+    0.0
+   ],
+   "TargetStickinessFactor": 1.0,
+   "WeaponFireTypes": [
+    "EWFT_InstantHit",
+    "EWFT_InstantHit"
+   ],
+   "WeaponProjectiles": [
+    null,
+    null
+   ],
+   "WeaponRange": 16384.0,
+   "WeaponReloadAnimTime": 1.0,
+   "bAutoFire": true,
+   "bAutoReload": true
+  },
+  "player_data_values": "same object as AiData",
+  "class_defaults": {
+   "AmmoClipCount": 10,
+   "AmmoMaterialRamper": "TransContent.Default__TnWeaponSentryDeathBeam.AmmoMaterialRamper0",
+   "DamageModifier": "TransGame.Default__TnWeapon.DamageModifier0",
+   "FireIntervalLerper": "TransContent.Default__TnWeaponSentryDeathBeam.Lerper0",
+   "IncreaseAmmoSkill": "TransGame.TnSkillIncreaseAmmoFromClips",
+   "IsEffectedByIncreaseAmmoSkill": true,
+   "ReserveAmmoCount": 40,
+   "ShotStatId": -1,
+   "ShouldFireOnRelease": [
+    0,
+    0
+   ],
+   "WeaponHeat": "TransContent.Default__TnWeaponSentryDeathBeam.WeaponHeat0"
+  },
+  "projectiles": [],
+  "note": "authored effective values (UE units: cm, s); native combination (homing, beam tick, repair) PROVISIONAL"
  }
 }

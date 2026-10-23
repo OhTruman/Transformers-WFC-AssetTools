@@ -1,0 +1,115 @@
+{
+ "generated_by": "AssetTools/work/campaign_characters/campaign_destructibles.py --blueprints",
+ "source": "manifests/authored.db + cooked StaticMesh sections + compiled particle streams (vs_destructibles helpers)",
+ "used_by_turretdefs": [
+  "WEP_SentryBlaster01_p.WarshipHomingRocket_TURRETDEF",
+  "WEP_OmegaShip_p.OmegaMGSentry_TURRETDEF",
+  "WEP_OmegaShip_p.OmegaRocketSentry_TURRETDEF"
+ ],
+ "blueprint": "WEP_SentryBall_p.WEP_SentryBallWarship_DSYS",
+ "class": "HmDestructibleBlueprint",
+ "BlueprintVersion": 54,
+ "blueprint_defaults (inherited)": {
+  "DamageAngle": {
+   "value": 180.0,
+   "source_package": "HM_Engine",
+   "object": "HM_Engine.Default__HmDestructibleBlueprint",
+   "class": "HmDestructibleBlueprint",
+   "property": "DamageAngle",
+   "origin": "inherited from HM_Engine.Default__HmDestructibleBlueprint",
+   "confidence": "CONFIRMED AUTHORED DATA"
+  },
+  "AIDamageModifier": {
+   "value": 1.0,
+   "source_package": "HM_Engine",
+   "object": "HM_Engine.Default__HmDestructibleBlueprint",
+   "class": "HmDestructibleBlueprint",
+   "property": "AIDamageModifier",
+   "origin": "inherited from HM_Engine.Default__HmDestructibleBlueprint",
+   "confidence": "CONFIRMED AUTHORED DATA"
+  },
+  "RadiusDamageModifier": {
+   "value": 1.0,
+   "source_package": "HM_Engine",
+   "object": "HM_Engine.Default__HmDestructibleBlueprint",
+   "class": "HmDestructibleBlueprint",
+   "property": "RadiusDamageModifier",
+   "origin": "inherited from HM_Engine.Default__HmDestructibleBlueprint",
+   "confidence": "CONFIRMED AUTHORED DATA"
+  },
+  "MinRadiusDamageDistanceForModifier": {
+   "value": 50.0,
+   "source_package": "HM_Engine",
+   "object": "HM_Engine.Default__HmDestructibleBlueprint",
+   "class": "HmDestructibleBlueprint",
+   "property": "MinRadiusDamageDistanceForModifier",
+   "origin": "inherited from HM_Engine.Default__HmDestructibleBlueprint",
+   "confidence": "CONFIRMED AUTHORED DATA"
+  }
+ },
+ "pieces": [
+  {
+   "object": "WEP_SentryBall_p.WEP_SentryBallWarship_DSYS.HmDestructiblePieceBlueprint_2593",
+   "PieceName": "Turret",
+   "Transform": null,
+   "states": [
+    {
+     "handle": 0,
+     "object": "WEP_SentryBall_p.WEP_SentryBallWarship_DSYS.HmDestructiblePieceBlueprint_2593.HmDestructionStateBlueprint_2740",
+     "StateName": {
+      "value": "Healthy",
+      "source_package": "A1_IAC_Intr1_Vig_m",
+      "object": "WEP_SentryBall_p.WEP_SentryBallWarship_DSYS.HmDestructiblePieceBlueprint_2593.HmDestructionStateBlueprint_2740",
+      "class": "HmDestructionStateBlueprint",
+      "property": "StateName",
+      "origin": "authored on object",
+      "confidence": "CONFIRMED AUTHORED DATA"
+     },
+     "InitialHealth": {
+      "value": 10000,
+      "source_package": "A1_IAC_Intr1_Vig_m",
+      "object": "WEP_SentryBall_p.WEP_SentryBallWarship_DSYS.HmDestructiblePieceBlueprint_2593.HmDestructionStateBlueprint_2740",
+      "class": "HmDestructionStateBlueprint",
+      "property": "InitialHealth",
+      "origin": "authored on object",
+      "confidence": "CONFIRMED AUTHORED DATA"
+     },
+     "AutomaticTransitionTime": {
+      "value": 0.0,
+      "source_package": "A1_IAC_Intr1_Vig_m",
+      "object": "WEP_SentryBall_p.WEP_SentryBallWarship_DSYS.HmDestructiblePieceBlueprint_2593.HmDestructionStateBlueprint_2740",
+      "class": "HmDestructionStateBlueprint",
+      "property": "AutomaticTransitionTime",
+      "origin": "unset in whole chain -> property zero/None default",
+      "confidence": "CONFIRMED AUTHORED DATA"
+     },
+     "effects": [
+      {
+       "object": "WEP_SentryBall_p.WEP_SentryBallWarship_DSYS.HmDestructiblePieceBlueprint_2593.HmDestructionStateBlueprint_2740.HmAnimatedMeshDestructionEffectFactory_13954",
+       "class": "HmAnimatedMeshDestructionEffectFactory",
+       "authored": {
+        "ComponentTemplate": "WEP_SentryBall_p.WEP_SentryBallWarship_DSYS.HmDestructiblePieceBlueprint_2593.HmDestructionStateBlueprint_2740.HmAnimatedMeshDestructionEffectFactory_13954.SkeletalMeshComponent_14861",
+        "SequenceNode": null
+       },
+       "effective": {
+        "ComponentTemplate": "WEP_SentryBall_p.WEP_SentryBallWarship_DSYS.HmDestructiblePieceBlueprint_2593.HmDestructionStateBlueprint_2740.HmAnimatedMeshDestructionEffectFactory_13954.SkeletalMeshComponent_14861",
+        "SequenceNode": null
+       }
+      }
+     ],
+     "links": []
+    }
+   ]
+  }
+ ],
+ "state_graph": {
+  "edges": [],
+  "initial_state": {
+   "value": 0,
+   "note": "handle 0 = first StateBlueprints entry (HmDestructibleComponent convention, as for the MP destructibles; native confirmation pending)"
+  }
+ },
+ "meshes": {},
+ "particle_systems": {},
+ "sound_cues": {}
+}

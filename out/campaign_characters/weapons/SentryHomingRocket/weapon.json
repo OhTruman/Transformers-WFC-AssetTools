@@ -696,5 +696,155 @@
  "files": {
   "json": "VerticalSlice/Weapons/SentryHomingRocket/weapon.json",
   "slice_weapon_kept": false
+ },
+ "fire": {
+  "class": "TransContent.TnWeaponSentryHomingRocket",
+  "ai_data": "WEP_SentryBlaster01_p.HomingRocketSentry_WEPDATA",
+  "player_data": null,
+  "kind": "projectile",
+  "interval_note": "FireInterval per fire mode; FireIntervalModifier.IntervalRange (Min / Max, RampTime) is the authored AI cadence (how native combines the two: PROVISIONAL)",
+  "data": {
+   "CanLockOnToRobots": true,
+   "DesiredFiringRange": "RANGE_Medium",
+   "FineAimSpreadModifier": 0.5,
+   "FineAimTargetFocusParams": {
+    "DOF_BlurKernelSize": 8.0,
+    "DOF_FocusSize": 1000.0,
+    "DOF_FalloffExponent": 1.0,
+    "DOF_MaxNearBlurAmount": 0.6000000238418579,
+    "DOF_MaxFarBlurAmount": 1.0
+   },
+   "FireFFWaveform": "WEP_SentryBlaster01_p.HomingRocketSentry_WEPDATA.ForceFeedbackWaveform_6955",
+   "FireInterval": [
+    1.0,
+    1.0
+   ],
+   "FireIntervalModifier": {
+    "IntervalRange": {
+     "Min": 2.75,
+     "Max": 2.75
+    },
+    "RampTime": 1.0
+   },
+   "HeatProperties": {
+    "HeatMax": 0.0,
+    "Modifiers": [
+     "WEP_SentryBlaster01_p.HomingRocketSentry_WEPDATA.TnOverheatHeatModifier_4129",
+     "WEP_SentryBlaster01_p.HomingRocketSentry_WEPDATA.TnPerShotHeatModifier_8257"
+    ]
+   },
+   "HoldLockOnTime": 1.0,
+   "InitialReserveAmmoCount": 999,
+   "InstantHitDamage": [
+    0.0,
+    0.0
+   ],
+   "InstantHitDamageTypes": [
+    "Engine.DamageType",
+    "Engine.DamageType"
+   ],
+   "LockOnTime": 0.25,
+   "MaxAmmoClipCount": 5,
+   "MaxAmmoCount": 999,
+   "MinReloadPct": [
+    0.5,
+    0.5
+   ],
+   "NearlyShotDistance": 1000.0,
+   "NumShotsToFire": 1,
+   "PerShotSpreadModifier": {
+    "Start": "DWWS_StartHigh",
+    "Modifier": {
+     "Min": 0.03999999910593033,
+     "Max": 0.18000000715255737
+    },
+    "ModifierChangePerShot": 0.03999999910593033,
+    "Cooldown": 100.0
+   },
+   "ShotCost": [
+    1,
+    1
+   ],
+   "Spread": [
+    0.0,
+    0.0
+   ],
+   "TargetSnapRange": {
+    "Max": 16852.0
+   },
+   "TargetStickinessFactor": 1.0,
+   "WeaponFireTypes": [
+    "EWFT_Projectile",
+    "EWFT_InstantHit"
+   ],
+   "WeaponProjectiles": [
+    "TransContent.TnProjectileSentryHomingRocket",
+    null
+   ],
+   "WeaponRange": 15000.0,
+   "WeaponReloadAnimTime": 5.0,
+   "bAutoFire": false,
+   "bAutoReload": true,
+   "bHasUnlimitedReserveAmmo": true
+  },
+  "player_data_values": "same object as AiData",
+  "class_defaults": {
+   "AmmoClipCount": 10,
+   "AmmoMaterialRamper": "TransContent.Default__TnWeaponSentryHomingRocket.AmmoMaterialRamper0",
+   "DamageModifier": "TransGame.Default__TnWeapon.DamageModifier0",
+   "FireIntervalLerper": "TransContent.Default__TnWeaponSentryHomingRocket.Lerper0",
+   "IncreaseAmmoSkill": "TransGame.TnSkillIncreaseAmmoFromClips",
+   "IsEffectedByIncreaseAmmoSkill": true,
+   "ReserveAmmoCount": 40,
+   "ShotStatId": -1,
+   "ShouldFireOnRelease": [
+    0,
+    0
+   ],
+   "WeaponHeat": "TransContent.Default__TnWeaponSentryHomingRocket.WeaponHeat0"
+  },
+  "projectiles": [
+   {
+    "class": "TransContent.TnProjectileSentryHomingRocket",
+    "found": true,
+    "class_chain": [
+     "TransContent.Default__TnProjectileSentryHomingRocket",
+     "TransGame.Default__TnProjectileHoming",
+     "TransGame.Default__TnProjectile",
+     "HM_Engine.Default__HmProjectile"
+    ],
+    "values": {
+     "DamageModifier": "TransGame.Default__TnProjectileHoming.DamageModifier0",
+     "DamageRadiusModifier": "TransGame.Default__TnProjectile.DamageRadiusModifier0",
+     "LifeSpan": 4.0,
+     "Physics": "PHYS_Projectile",
+     "bBlockedByInstigator": false,
+     "bBounce": true,
+     "bCanBeDamaged": true,
+     "bRotationFollowsVelocity": true,
+     "bUpdatePhysicsWhenNotRendered": true
+    },
+    "data_objects": {
+     "AiData": "WEP_SentryBlaster01_p.HomingRocketSentry_PROJDATA",
+     "Data": "WEP_SentryBlaster01_p.HomingRocketSentry_PROJDATA"
+    },
+    "data": {
+     "CanLockOnToRobots": true,
+     "ClosingDistance": 2000.0,
+     "ClosingForce": 20000.0,
+     "ClosingTime": 0.5,
+     "Damage": 75.0,
+     "DamageRadius": 500.0,
+     "DamageType": "TransGame.TnDamageTypeHomingRocket",
+     "EditVersion": 20,
+     "HomingForce": 20000.0,
+     "InitialSpeed": 5000.0,
+     "MaxSpeed": 5000.0,
+     "MomentumTransfer": 1.0
+    },
+    "data_other": null
+   }
+  ],
+  "note": "authored effective values (UE units: cm, s); native combination (homing, beam tick, repair) PROVISIONAL"
  }
 }

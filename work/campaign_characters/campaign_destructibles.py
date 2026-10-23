@@ -98,5 +98,30 @@ def main():
     json.dump(OD([('generated_by', 'AssetTools/work/campaign_characters/campaign_destructibles.py'), ('blueprints', idx)]),
               open(os.path.join(OUT, 'index.json'), 'w', encoding='utf-8'), indent=1, default=str)
 
+def extra(bps):
+    """--blueprints <opath> ... (Gameplay 2026-10-23: the sentries' Destructible blueprints): the same decode, no factories; used_by = the
+    TnSentry TURRETDEFs (spawnables.json) whose effective values name the blueprint. Adds them to destructibles/index.json."""
+    os.makedirs(OUT, exist_ok=True)
+    sp = os.path.join(AT, 'out', 'campaign_characters', 'spawnables.json')
+    tdefs = [s['turretdef'] for s in json.load(open(sp, encoding='utf-8'))['sentries']] if os.path.exists(sp) else []
+    ip = os.path.join(OUT, 'index.json')
+    idx = json.load(open(ip, encoding='utf-8'), object_pairs_hook=OD) if os.path.exists(ip) else OD([('blueprints', OD())])
+    for bp in bps:
+        used = [t for t in tdefs if bp in json.dumps(A.values(t), default=str)]
+        rec = blueprint(bp, [])
+        rec = OD([('generated_by', 'AssetTools/work/campaign_characters/campaign_destructibles.py --blueprints'),
+                  ('source', 'manifests/authored.db + cooked StaticMesh sections + compiled particle streams (vs_destructibles helpers)'),
+                  ('used_by_turretdefs', used)] + list(rec.items()))
+        name = bp.split('.')[-1]
+        json.dump(rec, open(os.path.join(OUT, name + '.json'), 'w', encoding='utf-8'), indent=1, default=str)
+        idx['blueprints'][name] = OD([('blueprint', bp), ('file', 'out/campaign_characters/destructibles/%s.json' % name), ('used_by_turretdefs', used),
+                                      ('states', [(s['handle'], (s['StateName'] or {}).get('value'), (s['InitialHealth'] or {}).get('value'),
+                                                   (s['AutomaticTransitionTime'] or {}).get('value'), len(s['effects']), len(s['links']))
+                                                  for p in rec['pieces'] for s in p['states']]),
+                                      ('meshes', {m: v.get('gltf') for m, v in rec['meshes'].items()})])
+        print(name, 'used by', [u.split('.')[-1] for u in used], json.dumps(idx['blueprints'][name]['states'])[:300], '| meshes', len(rec['meshes']))
+    json.dump(idx, open(ip, 'w', encoding='utf-8'), indent=1, default=str)
+
 if __name__ == '__main__':
-    main()
+    if '--blueprints' in sys.argv: extra(sys.argv[sys.argv.index('--blueprints') + 1:])
+    else: main()
