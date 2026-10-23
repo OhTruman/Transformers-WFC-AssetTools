@@ -123,8 +123,21 @@ def chapter(ch):
     out = OD([('chapter', ch), ('generated_by', 'AssetTools/work/campaign_render/add_transforming_actors.py'), ('counts', dict(why)),
               ('materials_used', used), ('materials_added_to_render_list', new),
               ('units_to_rerun_materials', [lv for lv, l in rep.items() if isinstance(l, dict) and l['unit'] in units]), ('levels', rep)])
+    if '--rerun-materials' in sys.argv:
+        import subprocess
+        PY = sys.executable; RB = os.path.join(AT, 'scripts', 'wfc', 'run_bounded.py'); reran = []
+        for lv, l in rep.items():
+            if not isinstance(l, dict): continue
+            mg = os.path.join(R, l['unit'], 'materials_glsl.json')
+            keys = set(json.load(open(mg, encoding='utf-8')).keys()) if os.path.exists(mg) else set()
+            if not {m for a in l['actors'] for m in a.get('materials') or [] if m} - keys: continue
+            subprocess.run([PY, RB, '--cap-gb', '6', '--log', os.path.join(R, l['unit'], '_status', 'materials_rerun.log'),
+                            os.path.join(HERE, 'campaign_render.py'), 'step', ch, lv, 'materials'], env=dict(os.environ, PYTHONDONTWRITEBYTECODE='1'),
+                           stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            reran.append(l['unit'])
+        out['materials_step_rerun_for'] = reran
     json.dump(out, open(os.path.join(R, 'transforming_actors.json'), 'w', encoding='utf-8'), indent=1, default=str)
-    print(ch, json.dumps(out['counts']))
+    print(ch, json.dumps(out['counts']), 'materials rerun', out.get('materials_step_rerun_for'))
 
 if __name__ == '__main__':
-    for ch in sys.argv[1:]: chapter(ch)
+    for ch in [a for a in sys.argv[1:] if not a.startswith('--')]: chapter(ch)
