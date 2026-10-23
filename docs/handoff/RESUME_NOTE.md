@@ -1,5 +1,19 @@
 # AssetTools resume note (2026-10-18)
 
+## 2026-10-23 evening: campaign chain complete (commit 2cabbb4)
+
+- All 10 chapters in out/campaign_render/<CH>/: render data + inputs (collision, physics incl. chapter-root non-unit volumes, floor-level
+  bot_nav with fill / mover cells), actors.json (props.bHidden + hidden), destructibles.json, matinee_skeletal.json, checkpoint_spawns,
+  postprocess_volumes, transforming actors (world.glb nodes + transforming_actors_gameplay.json in the MP schema), chapter lightmaps
+  (package-correct dedupe), extras.actor_path on every world.glb actor node, BASE / streamed units added by add_units.sh.
+- Campaign AI: out/campaign_characters (57 bodies, AI weapons with fire blocks, destructibles incl. sentries, spawnables.json).
+- Outside-render list: manifests/campaign/campaign_assets_outside_render.tsv (8,678 files, 2.98 GB, 0 missing).
+- PENDING: air nav queue (work/campaign_render/air_queue.sh, detached, PERF_HOLD-aware, markers lanes/air_done_<CH>): A2 / A3 redo,
+  A4 / D1 / D3A / D2 / D3B at 8 m; files ship as they land (Integration cut rule). After a reboot: powershell -File
+  work/campaign_render/resume_lanes.ps1 (relaunches the air queue; lanes are done).
+- Tools: run_lane.sh, add_units.sh, add_transforming_actors.py (--rerun-materials, extra_skeletal_actors.json), dedupe_lightmaps.py,
+  campaign_nav_fill.py (per-seed, 60 m bound), mp_transforming_actors.py --campaign, check_actor_path.py.
+
 ## 2026-10-23 (Integration rebuild-84; Gameplay rebuild-gameplay-b9; Rendering rebuild-rendering-56)
 
 - Escalation horde packaging: 14 bodies + 7 AI weapons in out/escalation_characters (0c1f00e); index copied to
