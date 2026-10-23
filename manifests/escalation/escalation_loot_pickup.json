@@ -1,0 +1,4989 @@
+{
+ "generated_by": "AssetTools/work/escalation_characters/escalation_loot.py",
+ "source": "manifests/authored.db: class defaults (effective = authored + parents) + compiled particle stream",
+ "units": "UE: cm, seconds (gltf metres = 0.01 x)",
+ "pickup": {
+  "class": "TransContent.TnAbilityResourcePickup",
+  "class_chain": [
+   "TransContent.Default__TnAbilityResourcePickup",
+   "Engine.Default__Inventory",
+   "Engine.Default__Actor",
+   "Engine.Default__ReplicatedObject",
+   "Core.Default__StateFullObject",
+   "Core.Default__Object"
+  ],
+  "values": {
+   "AddedResource": 3.0,
+   "CollisionPreset": "COLLIDE_CustomDefault",
+   "DroppedPickupClass": "TransContent.TnAbilityResourceDroppedPickup",
+   "DroppedPickupParticles": "TransContent.Default__TnAbilityResourcePickup.PSC0",
+   "MaxDesireability": 0.10000000149011612,
+   "MessageClass": "Engine.LocalMessage",
+   "PickupMessage": "Snagged an item.",
+   "PickupSound": "BL_PICKUPS.PICKUP_ENERGON_SHARD",
+   "ReplicatedCollisionPreset": "None",
+   "bHidden": true,
+   "bNoCylinderCollision": true,
+   "bPickupWhenTouched": true,
+   "bPlayerPickupOnly": true
+  }
+ },
+ "dropped_pickup": {
+  "class": "TransContent.TnAbilityResourceDroppedPickup",
+  "class_chain": [
+   "TransContent.Default__TnAbilityResourceDroppedPickup",
+   "TransGame.Default__TnDroppedPickup",
+   "HM_Engine.Default__HmDroppedPickup",
+   "Engine.Default__DroppedPickup",
+   "Engine.Default__Actor",
+   "Engine.Default__ReplicatedObject",
+   "Core.Default__StateFullObject",
+   "Core.Default__Object"
+  ],
+  "values": {
+   "CollisionComponent": "TransContent.Default__TnAbilityResourceDroppedPickup.CollisionCylinder",
+   "CollisionPreset": "COLLIDE_CustomDefault",
+   "DesiredRotation": {
+    "Pitch": 0,
+    "Yaw": 30000,
+    "Roll": 0
+   },
+   "ImpactSoundRetriggerDelay": 0.25,
+   "ImpactSoundRetriggerTimer": 0.25,
+   "LifeSpan": 10.0,
+   "Lifetime": 60.0,
+   "MessageClass": "Engine.LocalMessage",
+   "ReplicatedCollisionPreset": "None",
+   "SeekRadius": 1500.0,
+   "SeekSpeed": 2500.0,
+   "bNoCylinderCollision": true,
+   "bPickupWhenTouched": false
+  },
+  "collision_cylinder": {
+   "object": "TransContent.Default__TnAbilityResourceDroppedPickup.CollisionCylinder",
+   "CollisionRadius": 100.0,
+   "CollisionHeight": 200.0,
+   "Translation": {
+    "X": 0.0,
+    "Y": 0.0,
+    "Z": 100.0
+   },
+   "CollideActors": true
+  }
+ },
+ "summary": {
+  "AddedResource": 3.0,
+  "LifeSpan_s (actor auto-destroy)": 10.0,
+  "Lifetime_s": 60.0,
+  "SeekRadius_uu": 1500.0,
+  "SeekSpeed_uu_s": 2500.0,
+  "pickup_radius_uu (CollisionCylinder)": 100.0,
+  "pickup_height_uu": 200.0,
+  "PickupSound": "BL_PICKUPS.PICKUP_ENERGON_SHARD",
+  "note": "LifeSpan (10 s) and Lifetime (60 s) are both authored on the dropped pickup; which one ends the drop (HmDroppedPickup / TnDroppedPickup native or script) is RE's to confirm - PROVISIONAL"
+ },
+ "effect": {
+  "component": "TransContent.Default__TnAbilityResourcePickup.PSC0",
+  "template": "FX_Pickups_p.FX.Shard_FX",
+  "translation": {
+   "X": 0.0,
+   "Y": 0.0,
+   "Z": 75.0
+  },
+  "scale3d": {
+   "X": 1.0,
+   "Y": 1.0,
+   "Z": 1.0
+  },
+  "mesh_emitter_meshes": [
+   {
+    "mesh": "FX_Mesh_p.Mesh.PROP_Shard01_STAT",
+    "gltf": "content/FX_Mesh_p/Mesh/PROP_Shard01_STAT.gltf"
+   },
+   {
+    "mesh": "FX_Mesh_p.Mesh.PROP_Shard02_STAT",
+    "gltf": "content/FX_Mesh_p/Mesh/PROP_Shard02_STAT.gltf"
+   }
+  ],
+  "particle_system": {
+   "particle_system": "FX_Pickups_p.FX.Shard_FX",
+   "package": "A1_IAC_Base_m",
+   "props": {
+    "UpdateTime_Delta": 0.01666666753590107,
+    "LODDistances": [
+     0.0,
+     20000.0
+    ]
+   },
+   "emitters": [
+    {
+     "emitter": "FX_Pickups_p.FX.Shard_FX.ParticleSpriteEmitter_11117",
+     "class": "ParticleEmitter",
+     "name": "GlowMod",
+     "props": {
+      "SpriteEmitterRenderMode": "SERM_BestFit",
+      "bLockSpriteEmitterRenderMode": true,
+      "BestFitPolygons": [
+       {
+        "Time": 0.0,
+        "VertexCount": 8,
+        "Vertices": [
+         {
+          "X": 0.8595921397209167,
+          "Y": 0.302298903465271
+         },
+         {
+          "X": 0.6371918320655823,
+          "Y": 0.14137932658195496
+         },
+         {
+          "X": 0.32958200573921204,
+          "Y": 0.13793103396892548
+         },
+         {
+          "X": 0.14308682084083557,
+          "Y": 0.3103448152542114
+         },
+         {
+          "X": 0.1420150101184845,
+          "Y": 0.6931036114692688
+         },
+         {
+          "X": 0.3478028178215027,
+          "Y": 0.867816150188446
+         },
+         {
+          "X": 0.6350482106208801,
+          "Y": 0.8689655065536499
+         },
+         {
+          "X": 0.8590567111968994,
+          "Y": 0.6770115494728088
+         },
+         {
+          "X": 1.1210387714598537e-44,
+          "Y": 9.80908925027372e-45
+         },
+         {
+          "X": 92557279232.0,
+          "Y": 8.93936453165309e-29
+         },
+         {
+          "X": 92557279232.0,
+          "Y": NaN
+         },
+         {
+          "X": 1.41646128878605e-32,
+          "Y": 6.610300404208601e-39
+         }
+        ]
+       }
+      ],
+      "MaxPeakCount": 3
+     },
+     "lods": [
+      {
+       "lod": "FX_Pickups_p.FX.Shard_FX.ParticleSpriteEmitter_11117.ParticleLODLevel_9070",
+       "level": 0,
+       "props": {
+        "PeakActiveParticles": 3
+       },
+       "RequiredModule": {
+        "object": "FX_Pickups_p.FX.Shard_FX.ParticleModuleRequired_3873",
+        "class": "ParticleModuleRequired",
+        "props": {
+         "Material": "FX_Materials_p.Materials.Glow_Mod_Depth_MAT",
+         "bUseLocalSpace": true,
+         "SpawnRate": {
+          "Distribution": null,
+          "LookupTable": [
+           3.0
+          ]
+         },
+         "RandomImageTime": 1.0
+        }
+       },
+       "native_tail_bytes": 574,
+       "parameter_blob": {
+        "size": 44,
+        "names": [
+         "Color"
+        ],
+        "status": "decoded"
+       },
+       "compiled_modules": [
+        {
+         "index": 0,
+         "module": "PMI_Lifetime",
+         "module_id": 1,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          1
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "distributions": [
+          {
+           "property": "Lifetime",
+           "property_candidates": null,
+           "kind": "float uniform",
+           "op": 2,
+           "values": [
+            1.0,
+            0.75
+           ],
+           "confidence": "CONFIRMED"
+          }
+         ]
+        },
+        {
+         "index": 1,
+         "module": "PMI_Size",
+         "module_id": 6,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          1
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "distributions": [
+          {
+           "property": "StartSize",
+           "property_candidates": null,
+           "kind": "vector uniform",
+           "op": 2,
+           "values": [
+            500.0,
+            25.0,
+            25.0,
+            250.0,
+            45.0,
+            45.0
+           ],
+           "confidence": "CONFIRMED"
+          }
+         ]
+        },
+        {
+         "index": 2,
+         "module": "PMI_Velocity",
+         "module_id": 23,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          1
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "distributions": [
+          {
+           "property": "StartVelocityRadial",
+           "property_candidates": null,
+           "kind": "float constant",
+           "op": 1,
+           "values": [
+            0.0
+           ],
+           "confidence": "CONFIRMED"
+          },
+          {
+           "property": "StartVelocity",
+           "property_candidates": null,
+           "kind": "vector uniform",
+           "op": 2,
+           "values": [
+            -50.0,
+            -50.0,
+            -50.0,
+            50.0,
+            50.0,
+            50.0
+           ],
+           "confidence": "CONFIRMED"
+          }
+         ]
+        },
+        {
+         "index": 3,
+         "module": "PMI_AttractorPoint",
+         "module_id": 0,
+         "module_enum": "PMI_Unknown",
+         "module_object": "FX_Pickups_p.FX.Shard_FX.ParticleModuleAttractorPoint_13429",
+         "module_class": "ParticleModuleAttractorPoint",
+         "module_properties (authored, defaults filled)": {
+          "Position": {
+           "Distribution": null,
+           "Type": 8,
+           "Op": 1,
+           "LookupTableNumElements": 1,
+           "LookupTableChunkSize": 3,
+           "LookupTable": [
+            -1.0211961269378662,
+            1.0074810981750488,
+            -0.0019023026106879115,
+            19.289905548095703,
+            -0.9859822988510132,
+            -0.0070427353493869305,
+            0.9998111128807068,
+            -0.9477112293243408,
+            -0.3947005867958069,
+            0.9359405040740967,
+            -0.8244993686676025,
+            -0.9529803991317749,
+            0.7742148041725159,
+            -0.5795015096664429,
+            -0.8833774924278259,
+            0.5296182632446289,
+            -0.21567721664905548,
+            -0.33249014616012573,
+            0.19496263563632965,
+            0.12456835061311722,
+            0.17537476122379303,
+            -0.13481111824512482,
+            0.4474520683288574,
+            0.6894855499267578,
+            -0.46972179412841797,
+            0.7197312116622925,
+            0.9950088858604431,
+            -0.750882625579834,
+            0.8930029273033142,
+            0.7964441776275635,
+            -0.9115735292434692,
+            0.9877501130104065,
+            0.2896362245082855,
+            -0.9841699004173279,
+            1.0045371055603027,
+            -0.18782128393650055,
+            -0.9887413382530212,
+            0.9420719146728516,
+            -0.7252711057662964,
+            -0.9244763255119324,
+            0.7869117259979248,
+            -1.0118862390518188,
+            -0.7727078199386597,
+            0.43846145272254944,
+            -0.5715562701225281,
+            -0.40702030062675476,
+            -0.00821851845830679,
+            -0.002269195858389139,
+            -0.004050982650369406,
+            -0.33682265877723694,
+            0.3951031565666199,
+            0.29232269525527954,
+            -0.623641312122345,
+            0.8655517101287842,
+            0.6079331040382385,
+            -0.811825156211853,
+            0.9490999579429626,
+            0.8107348084449768,
+            -0.9129687547683716,
+            0.6236780285835266,
+            0.9176347255706787,
+            -0.9688262343406677,
+            0.2020794153213501,
+            0.9791979789733887,
+            -0.9859821200370789,
+            -0.0070427353493869305,
+            0.9989381432533264
+           ]
+          },
+          "Range": {
+           "Distribution": null,
+           "Type": 1,
+           "Op": 1,
+           "LookupTableNumElements": 1,
+           "LookupTableChunkSize": 1,
+           "LookupTable": [
+            5000.0
+           ]
+          },
+          "Strength": {
+           "Distribution": null,
+           "Type": 1,
+           "Op": 1,
+           "LookupTableNumElements": 1,
+           "LookupTableChunkSize": 1,
+           "LookupTable": [
+            250.0
+           ]
+          },
+          "StrengthByDistance": false,
+          "bAffectBaseVelocity": true,
+          "bOverrideVelocity": true,
+          "bUpdateModule": true,
+          "bEnabled": true
+         },
+         "in_list_after_records": false,
+         "raw_flags": [
+          1,
+          0
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "distributions": []
+        },
+        {
+         "index": 4,
+         "module": "PMI_ColorByParameter",
+         "module_id": 3,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          0
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "fields": {
+          "ColorParam": "Color",
+          "DefaultColor": {
+           "A": 255,
+           "R": 0,
+           "G": 164,
+           "B": 253
+          }
+         },
+         "fields_source": {
+          "ColorParam": "compiled",
+          "DefaultColor": "compiled"
+         },
+         "distributions": []
+        },
+        {
+         "index": 5,
+         "module": "PMI_AttractorParticle",
+         "module_id": 0,
+         "module_enum": "PMI_Unknown",
+         "module_object": "FX_Pickups_p.FX.Shard_FX.ParticleModuleAttractorParticle_8415",
+         "module_class": "ParticleModuleAttractorParticle",
+         "module_properties (authored, defaults filled)": {
+          "EmitterName": "Shard_3",
+          "Range": {
+           "Distribution": null,
+           "Type": 1,
+           "Op": 1,
+           "LookupTableNumElements": 1,
+           "LookupTableChunkSize": 1,
+           "LookupTable": [
+            5000.0
+           ]
+          },
+          "bRenewSource": true,
+          "Strength": {
+           "Distribution": null,
+           "Type": 1,
+           "Op": 1,
+           "LookupTableNumElements": 1,
+           "LookupTableChunkSize": 1,
+           "LookupTable": [
+            100.0
+           ]
+          },
+          "SelectionMethod": "EAPSM_Sequential",
+          "LastSelIndex": 1,
+          "bStrengthByDistance": true,
+          "bSpawnModule": true,
+          "bUpdateModule": true,
+          "bEnabled": true
+         },
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          0
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "distributions": []
+        },
+        {
+         "index": 6,
+         "module": "PMI_AttractorParticle",
+         "module_id": 0,
+         "module_enum": "PMI_Unknown",
+         "module_object": "FX_Pickups_p.FX.Shard_FX.ParticleModuleAttractorParticle_8281",
+         "module_class": "ParticleModuleAttractorParticle",
+         "module_properties (authored, defaults filled)": {
+          "EmitterName": "Shard_2",
+          "Range": {
+           "Distribution": null,
+           "Type": 1,
+           "Op": 1,
+           "LookupTableNumElements": 1,
+           "LookupTableChunkSize": 1,
+           "LookupTable": [
+            5000.0
+           ]
+          },
+          "bRenewSource": true,
+          "Strength": {
+           "Distribution": null,
+           "Type": 1,
+           "Op": 1,
+           "LookupTableNumElements": 1,
+           "LookupTableChunkSize": 1,
+           "LookupTable": [
+            100.0
+           ]
+          },
+          "SelectionMethod": "EAPSM_Sequential",
+          "LastSelIndex": 1,
+          "bStrengthByDistance": true,
+          "bSpawnModule": true,
+          "bUpdateModule": true,
+          "bEnabled": true
+         },
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          0
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 8,
+         "distributions": []
+        },
+        {
+         "index": 7,
+         "module": "PMI_LocationPrimitiveSphere",
+         "module_id": 22,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          1
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 40,
+         "fields": {
+          "Positive_X": true,
+          "Positive_Y": true,
+          "Positive_Z": true,
+          "Negative_X": true,
+          "Negative_Y": true,
+          "Negative_Z": true,
+          "SurfaceOnly": false,
+          "Velocity": false
+         },
+         "fields_source": {
+          "Positive_X": "compiled",
+          "Positive_Y": "compiled",
+          "Positive_Z": "compiled",
+          "Negative_X": "compiled",
+          "Negative_Y": "compiled",
+          "Negative_Z": "compiled",
+          "SurfaceOnly": "compiled",
+          "Velocity": "compiled"
+         },
+         "distributions": [
+          {
+           "property": "VelocityScale",
+           "property_candidates": null,
+           "kind": "float constant",
+           "op": 1,
+           "values": [
+            1.0
+           ],
+           "confidence": "CONFIRMED"
+          },
+          {
+           "property": "StartRadius",
+           "property_candidates": null,
+           "kind": "float constant",
+           "op": 1,
+           "values": [
+            50.0
+           ],
+           "confidence": "CONFIRMED"
+          },
+          {
+           "property": "StartLocation",
+           "property_candidates": null,
+           "kind": "vector constant",
+           "op": 1,
+           "values": [
+            0.0,
+            0.0,
+            0.0
+           ],
+           "confidence": "CONFIRMED"
+          }
+         ]
+        },
+        {
+         "index": 8,
+         "module": "PMI_ColorScaleOverLife",
+         "module_id": 5,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          1
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "fields": {
+          "bEmitterTime": false
+         },
+         "fields_source": {
+          "bEmitterTime": "compiled"
+         },
+         "distributions": [
+          {
+           "property": "AlphaScaleOverLife",
+           "property_candidates": null,
+           "kind": "float constant curve",
+           "op": 1,
+           "values": [
+            0.0,
+            0.5,
+            0.0,
+            20.0,
+            0.0,
+            0.05,
+            0.1,
+            0.15,
+            0.2,
+            0.25,
+            0.3,
+            0.35,
+            0.4,
+            0.45,
+            0.5,
+            0.45,
+            0.4,
+            0.35,
+            0.3,
+            0.25,
+            0.2,
+            0.15,
+            0.1,
+            0.05,
+            0.0
+           ],
+           "confidence": "CONFIRMED"
+          },
+          {
+           "property": "ColorScaleOverLife",
+           "property_candidates": null,
+           "kind": "vector constant curve",
+           "op": 1,
+           "values": [
+            1.0,
+            10.0,
+            0.0,
+            0.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0,
+            10.0
+           ],
+           "confidence": "CONFIRMED"
+          }
+         ]
+        }
+       ],
+       "assignment_complete": true,
+       "raw_unparsed_hex": {
+        "between_lists_and_groups": "00 00 00 04 03 05 06 08 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 2c 00 00 00 00 ff 00 a4 fd 00 00 00 01 00 00 00 01 00 00 00 01 00 00 00 01 00 00 00 01 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 05 aa 00 00 00 00",
+        "trailing": "00 b0 00 00"
+       }
+      },
+      {
+       "lod": "FX_Pickups_p.FX.Shard_FX.ParticleSpriteEmitter_11117.ParticleLODLevel_6218",
+       "level": 1,
+       "props": {
+        "Level": 1,
+        "LevelSetting": 100,
+        "PeakActiveParticles": 3
+       },
+       "RequiredModule": {
+        "object": "FX_Pickups_p.FX.Shard_FX.ParticleModuleRequired_1531",
+        "class": "ParticleModuleRequired",
+        "props": {
+         "Material": "FX_Materials_p.Materials.Glow_Mod_Depth_MAT",
+         "bUseLocalSpace": true,
+         "SpawnRate": {
+          "Distribution": null,
+          "LookupTable": [
+           3.0
+          ]
+         },
+         "RandomImageTime": 1.0
+        }
+       },
+       "native_tail_bytes": 574,
+       "parameter_blob": {
+        "size": 44,
+        "names": [
+         "Color"
+        ],
+        "status": "decoded"
+       },
+       "compiled_modules": [
+        {
+         "index": 0,
+         "module": "PMI_Lifetime",
+         "module_id": 1,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          1
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "distributions": [
+          {
+           "property": "Lifetime",
+           "property_candidates": null,
+           "kind": "float uniform",
+           "op": 2,
+           "values": [
+            1.0,
+            0.36
+           ],
+           "confidence": "CONFIRMED"
+          }
+         ]
+        },
+        {
+         "index": 1,
+         "module": "PMI_Size",
+         "module_id": 6,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          1
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "distributions": [
+          {
+           "property": "StartSize",
+           "property_candidates": null,
+           "kind": "vector uniform",
+           "op": 2,
+           "values": [
+            500.0,
+            25.0,
+            25.0,
+            250.0,
+            45.0,
+            45.0
+           ],
+           "confidence": "CONFIRMED"
+          }
+         ]
+        },
+        {
+         "index": 2,
+         "module": "PMI_Velocity",
+         "module_id": 23,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          1
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "distributions": [
+          {
+           "property": "StartVelocityRadial",
+           "property_candidates": null,
+           "kind": "float constant",
+           "op": 1,
+           "values": [
+            0.0
+           ],
+           "confidence": "CONFIRMED"
+          },
+          {
+           "property": "StartVelocity",
+           "property_candidates": null,
+           "kind": "vector uniform",
+           "op": 2,
+           "values": [
+            -50.0,
+            -50.0,
+            -50.0,
+            50.0,
+            50.0,
+            50.0
+           ],
+           "confidence": "CONFIRMED"
+          }
+         ]
+        },
+        {
+         "index": 3,
+         "module": "PMI_AttractorPoint",
+         "module_id": 0,
+         "module_enum": "PMI_Unknown",
+         "module_object": "FX_Pickups_p.FX.Shard_FX.ParticleModuleAttractorPoint_5633",
+         "module_class": "ParticleModuleAttractorPoint",
+         "module_properties (authored, defaults filled)": {
+          "Position": {
+           "Distribution": null,
+           "Type": 8,
+           "Op": 1,
+           "LookupTableNumElements": 1,
+           "LookupTableChunkSize": 3,
+           "LookupTable": [
+            -1.0211961269378662,
+            1.0071107149124146,
+            -0.0019023026106879115,
+            19.289905548095703,
+            -0.9859822988510132,
+            -0.0070427353493869305,
+            0.9998111128807068,
+            -0.8881756067276001,
+            -0.43383604288101196,
+            0.8724740147590637,
+            -0.7903689742088318,
+            -0.8606293201446533,
+            0.7451369166374207,
+            -0.5418489575386047,
+            -0.736259937286377,
+            0.49852198362350464,
+            -0.2024306058883667,
+            -0.2794727087020874,
+            0.17996811866760254,
+            0.11898329108953476,
+            0.153472438454628,
+            -0.13231626152992249,
+            0.41379186511039734,
+            0.5511858463287354,
+            -0.4353363513946533,
+            0.7086001634597778,
+            0.9488989114761353,
+            -0.7383561730384827,
+            0.8377277851104736,
+            0.6475988626480103,
+            -0.853222131729126,
+            0.9423919320106506,
+            0.24308639764785767,
+            -0.9403064250946045,
+            0.9713693261146545,
+            -0.16643644869327545,
+            -0.9582341909408569,
+            0.8777204155921936,
+            -0.5840766429901123,
+            -0.864115834236145,
+            0.7840713858604431,
+            -1.001717448234558,
+            -0.7699974179267883,
+            0.3909202814102173,
+            -0.5096337199211121,
+            -0.38888537883758545,
+            -0.00707103731110692,
+            0.0021643531508743763,
+            -0.0028792223893105984,
+            -0.29433202743530273,
+            0.3762023150920868,
+            0.287168025970459,
+            -0.5815930366516113,
+            0.7502402663230896,
+            0.577215313911438,
+            -0.7857622504234314,
+            0.8728307485580444,
+            0.7848613262176514,
+            -0.8525022268295288,
+            0.5795394778251648,
+            0.8562203049659729,
+            -0.9192422032356262,
+            0.28624820709228516,
+            0.9275792837142944,
+            -0.9859821200370789,
+            -0.0070427353493869305,
+            0.9989381432533264
+           ]
+          },
+          "Range": {
+           "Distribution": null,
+           "Type": 1,
+           "Op": 1,
+           "LookupTableNumElements": 1,
+           "LookupTableChunkSize": 1,
+           "LookupTable": [
+            5000.0
+           ]
+          },
+          "Strength": {
+           "Distribution": null,
+           "Type": 1,
+           "Op": 1,
+           "LookupTableNumElements": 1,
+           "LookupTableChunkSize": 1,
+           "LookupTable": [
+            250.0
+           ]
+          },
+          "StrengthByDistance": false,
+          "bAffectBaseVelocity": true,
+          "bOverrideVelocity": true,
+          "bUpdateModule": true,
+          "bEnabled": true
+         },
+         "in_list_after_records": false,
+         "raw_flags": [
+          1,
+          0
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "distributions": []
+        },
+        {
+         "index": 4,
+         "module": "PMI_ColorByParameter",
+         "module_id": 3,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          0
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "fields": {
+          "ColorParam": "Color",
+          "DefaultColor": {
+           "A": 255,
+           "R": 0,
+           "G": 164,
+           "B": 253
+          }
+         },
+         "fields_source": {
+          "ColorParam": "compiled",
+          "DefaultColor": "compiled"
+         },
+         "distributions": []
+        },
+        {
+         "index": 5,
+         "module": "PMI_AttractorParticle",
+         "module_id": 0,
+         "module_enum": "PMI_Unknown",
+         "module_object": "FX_Pickups_p.FX.Shard_FX.ParticleModuleAttractorParticle_12327",
+         "module_class": "ParticleModuleAttractorParticle",
+         "module_properties (authored, defaults filled)": {
+          "EmitterName": "Shard_3",
+          "Range": {
+           "Distribution": null,
+           "Type": 1,
+           "Op": 1,
+           "LookupTableNumElements": 1,
+           "LookupTableChunkSize": 1,
+           "LookupTable": [
+            5000.0
+           ]
+          },
+          "bRenewSource": true,
+          "Strength": {
+           "Distribution": null,
+           "Type": 1,
+           "Op": 1,
+           "LookupTableNumElements": 1,
+           "LookupTableChunkSize": 1,
+           "LookupTable": [
+            100.0
+           ]
+          },
+          "SelectionMethod": "EAPSM_Sequential",
+          "LastSelIndex": 1,
+          "bStrengthByDistance": true,
+          "bSpawnModule": true,
+          "bUpdateModule": true,
+          "bEnabled": true
+         },
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          0
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "distributions": []
+        },
+        {
+         "index": 6,
+         "module": "PMI_AttractorParticle",
+         "module_id": 0,
+         "module_enum": "PMI_Unknown",
+         "module_object": "FX_Pickups_p.FX.Shard_FX.ParticleModuleAttractorParticle_8395",
+         "module_class": "ParticleModuleAttractorParticle",
+         "module_properties (authored, defaults filled)": {
+          "EmitterName": "Shard_2",
+          "Range": {
+           "Distribution": null,
+           "Type": 1,
+           "Op": 1,
+           "LookupTableNumElements": 1,
+           "LookupTableChunkSize": 1,
+           "LookupTable": [
+            5000.0
+           ]
+          },
+          "bRenewSource": true,
+          "Strength": {
+           "Distribution": null,
+           "Type": 1,
+           "Op": 1,
+           "LookupTableNumElements": 1,
+           "LookupTableChunkSize": 1,
+           "LookupTable": [
+            100.0
+           ]
+          },
+          "SelectionMethod": "EAPSM_Sequential",
+          "bStrengthByDistance": true,
+          "bSpawnModule": true,
+          "bUpdateModule": true,
+          "bEnabled": true
+         },
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          0
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 8,
+         "distributions": []
+        },
+        {
+         "index": 7,
+         "module": "PMI_LocationPrimitiveSphere",
+         "module_id": 22,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          1
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 40,
+         "fields": {
+          "Positive_X": true,
+          "Positive_Y": true,
+          "Positive_Z": true,
+          "Negative_X": true,
+          "Negative_Y": true,
+          "Negative_Z": true,
+          "SurfaceOnly": false,
+          "Velocity": false
+         },
+         "fields_source": {
+          "Positive_X": "compiled",
+          "Positive_Y": "compiled",
+          "Positive_Z": "compiled",
+          "Negative_X": "compiled",
+          "Negative_Y": "compiled",
+          "Negative_Z": "compiled",
+          "SurfaceOnly": "compiled",
+          "Velocity": "compiled"
+         },
+         "distributions": [
+          {
+           "property": "VelocityScale",
+           "property_candidates": null,
+           "kind": "float constant",
+           "op": 1,
+           "values": [
+            1.0
+           ],
+           "confidence": "CONFIRMED"
+          },
+          {
+           "property": "StartRadius",
+           "property_candidates": null,
+           "kind": "float constant",
+           "op": 1,
+           "values": [
+            50.0
+           ],
+           "confidence": "CONFIRMED"
+          },
+          {
+           "property": "StartLocation",
+           "property_candidates": null,
+           "kind": "vector constant",
+           "op": 1,
+           "values": [
+            0.0,
+            0.0,
+            0.0
+           ],
+           "confidence": "CONFIRMED"
+          }
+         ]
+        },
+        {
+         "index": 8,
+         "module": "PMI_ColorScaleOverLife",
+         "module_id": 5,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          1
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "fields": {
+          "bEmitterTime": false
+         },
+         "fields_source": {
+          "bEmitterTime": "compiled"
+         },
+         "distributions": [
+          {
+           "property": "AlphaScaleOverLife",
+           "property_candidates": null,
+           "kind": "float constant curve",
+           "op": 1,
+           "values": [
+            0.0,
+            0.5,
+            0.0,
+            20.0,
+            0.0,
+            0.05,
+            0.1,
+            0.15,
+            0.2,
+            0.25,
+            0.3,
+            0.35,
+            0.4,
+            0.45,
+            0.5,
+            0.45,
+            0.4,
+            0.35,
+            0.3,
+            0.25,
+            0.2,
+            0.15,
+            0.1,
+            0.05,
+            0.0
+           ],
+           "confidence": "CONFIRMED"
+          },
+          {
+           "property": "ColorScaleOverLife",
+           "property_candidates": null,
+           "kind": "vector constant curve",
+           "op": 1,
+           "values": [
+            15.0,
+            15.0,
+            0.0,
+            0.0,
+            15.0,
+            15.0,
+            15.0,
+            15.0,
+            15.0,
+            15.0
+           ],
+           "confidence": "CONFIRMED"
+          }
+         ]
+        }
+       ],
+       "assignment_complete": true,
+       "raw_unparsed_hex": {
+        "between_lists_and_groups": "00 00 00 04 03 05 06 08 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 2c 00 00 00 00 ff 00 a4 fd 00 00 00 01 00 00 00 01 00 00 00 01 00 00 00 01 00 00 00 01 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 05 aa 00 00 00 00",
+        "trailing": "00 b0 00 00"
+       }
+      }
+     ]
+    },
+    {
+     "emitter": "FX_Pickups_p.FX.Shard_FX.ParticleSpriteEmitter_2427",
+     "class": "ParticleEmitter",
+     "name": "Shard",
+     "props": {},
+     "lods": [
+      {
+       "lod": "FX_Pickups_p.FX.Shard_FX.ParticleSpriteEmitter_2427.ParticleLODLevel_1694",
+       "level": 0,
+       "props": {
+        "PeakActiveParticles": 1
+       },
+       "RequiredModule": {
+        "object": "FX_Pickups_p.FX.Shard_FX.ParticleModuleRequired_14093",
+        "class": "ParticleModuleRequired",
+        "props": {
+         "Material": "FX_Materials_p.MatInst.PROP_Shard_MATINST",
+         "bUseLocalSpace": true,
+         "bKillOnDeactivate": true,
+         "bKillOnCompleted": true,
+         "bEmitterDurationUseRange": true,
+         "EmitterDurationLow": 1.0,
+         "SpawnRate": {
+          "Distribution": null,
+          "LookupTable": [
+           20.0
+          ]
+         },
+         "RandomImageTime": 1.0
+        }
+       },
+       "TypeDataModule": {
+        "object": "FX_Pickups_p.FX.Shard_FX.ParticleModuleTypeDataMesh_12706",
+        "class": "ParticleModuleTypeDataMesh",
+        "props": {
+         "Mesh": "FX_Mesh_p.Mesh.PROP_Shard01_STAT"
+        }
+       },
+       "mesh": "FX_Mesh_p.Mesh.PROP_Shard01_STAT",
+       "native_tail_bytes": 712,
+       "parameter_blob": {
+        "size": 48,
+        "names": [
+         "Color"
+        ],
+        "status": "decoded"
+       },
+       "compiled_modules": [
+        {
+         "index": 0,
+         "module": "PMI_Lifetime",
+         "module_id": 1,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          1
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "distributions": [
+          {
+           "property": "Lifetime",
+           "property_candidates": null,
+           "kind": "float constant",
+           "op": 1,
+           "values": [
+            0.0
+           ],
+           "confidence": "CONFIRMED"
+          }
+         ]
+        },
+        {
+         "index": 1,
+         "module": "PMI_Size",
+         "module_id": 6,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          1
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "distributions": [
+          {
+           "property": "StartSize",
+           "property_candidates": null,
+           "kind": "vector uniform",
+           "op": 2,
+           "values": [
+            0.4,
+            0.4,
+            0.4,
+            0.5,
+            0.5,
+            0.5
+           ],
+           "confidence": "CONFIRMED"
+          }
+         ]
+        },
+        {
+         "index": 2,
+         "module": "PMI_ColorByParameter",
+         "module_id": 3,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          0
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "fields": {
+          "ColorParam": "Color",
+          "DefaultColor": {
+           "A": 255,
+           "R": 255,
+           "G": 140,
+           "B": 53
+          }
+         },
+         "fields_source": {
+          "ColorParam": "compiled",
+          "DefaultColor": "compiled"
+         },
+         "distributions": []
+        },
+        {
+         "index": 3,
+         "module": "PMI_Velocity",
+         "module_id": 23,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          1
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 8,
+         "distributions": [
+          {
+           "property": "StartVelocityRadial",
+           "property_candidates": null,
+           "kind": "float constant",
+           "op": 1,
+           "values": [
+            0.0
+           ],
+           "confidence": "CONFIRMED"
+          },
+          {
+           "property": "StartVelocity",
+           "property_candidates": null,
+           "kind": "vector uniform",
+           "op": 2,
+           "values": [
+            -50.0,
+            -50.0,
+            -50.0,
+            50.0,
+            50.0,
+            50.0
+           ],
+           "confidence": "CONFIRMED"
+          }
+         ]
+        },
+        {
+         "index": 4,
+         "module": "PMI_MeshRotation",
+         "module_id": 10,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          0
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 12,
+         "fields": {
+          "bInheritParent": false
+         },
+         "fields_source": {
+          "bInheritParent": "compiled"
+         },
+         "distributions": [
+          {
+           "property": "StartRotation",
+           "property_candidates": null,
+           "kind": "vector constant",
+           "op": 1,
+           "values": [
+            0.0,
+            0.01,
+            0.0
+           ],
+           "confidence": "CONFIRMED"
+          }
+         ]
+        },
+        {
+         "index": 5,
+         "module": "PMI_LocationPrimitiveSphere",
+         "module_id": 22,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          1
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "fields": {
+          "Positive_X": true,
+          "Positive_Y": true,
+          "Positive_Z": true,
+          "Negative_X": true,
+          "Negative_Y": true,
+          "Negative_Z": true,
+          "SurfaceOnly": false,
+          "Velocity": false
+         },
+         "fields_source": {
+          "Positive_X": "compiled",
+          "Positive_Y": "compiled",
+          "Positive_Z": "compiled",
+          "Negative_X": "compiled",
+          "Negative_Y": "compiled",
+          "Negative_Z": "compiled",
+          "SurfaceOnly": "compiled",
+          "Velocity": "compiled"
+         },
+         "distributions": [
+          {
+           "property": "VelocityScale",
+           "property_candidates": null,
+           "kind": "float constant",
+           "op": 1,
+           "values": [
+            1.0
+           ],
+           "confidence": "CONFIRMED"
+          },
+          {
+           "property": "StartRadius",
+           "property_candidates": null,
+           "kind": "float constant",
+           "op": 1,
+           "values": [
+            50.0
+           ],
+           "confidence": "CONFIRMED"
+          },
+          {
+           "property": "StartLocation",
+           "property_candidates": null,
+           "kind": "vector constant",
+           "op": 1,
+           "values": [
+            0.0,
+            0.0,
+            0.0
+           ],
+           "confidence": "CONFIRMED"
+          }
+         ]
+        },
+        {
+         "index": 6,
+         "module": "PMI_MeshRotationRate",
+         "module_id": 11,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          0
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 44,
+         "distributions": [
+          {
+           "property": "StartRotationRate",
+           "property_candidates": null,
+           "kind": "vector uniform",
+           "op": 2,
+           "values": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+           ],
+           "confidence": "CONFIRMED"
+          }
+         ]
+        },
+        {
+         "index": 7,
+         "module": "PMI_ColorScaleOverLife",
+         "module_id": 5,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          1
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "fields": {
+          "bEmitterTime": false
+         },
+         "fields_source": {
+          "bEmitterTime": "compiled"
+         },
+         "distributions": [
+          {
+           "property": "AlphaScaleOverLife",
+           "property_candidates": null,
+           "kind": "float constant curve",
+           "op": 1,
+           "values": [
+            0.0,
+            2.0,
+            0.0,
+            20.0,
+            2.0,
+            1.848106,
+            1.645755,
+            1.408335,
+            1.151232,
+            0.889836,
+            0.639532,
+            0.415709,
+            0.233754,
+            0.109054,
+            0.056998,
+            0.046812,
+            0.037495,
+            0.029097,
+            0.021663,
+            0.015242,
+            0.009882,
+            0.00563,
+            0.002534,
+            0.000641,
+            0.0
+           ],
+           "confidence": "CONFIRMED"
+          },
+          {
+           "property": "ColorScaleOverLife",
+           "property_candidates": null,
+           "kind": "vector constant curve",
+           "op": 1,
+           "values": [
+            1.5,
+            1.5,
+            0.0,
+            0.0,
+            1.5,
+            1.5,
+            1.5,
+            1.5,
+            1.5,
+            1.5
+           ],
+           "confidence": "CONFIRMED"
+          }
+         ]
+        },
+        {
+         "index": 8,
+         "module": "PMI_AttractorPoint",
+         "module_id": 0,
+         "module_enum": "PMI_Unknown",
+         "module_object": "FX_Pickups_p.FX.Shard_FX.ParticleModuleAttractorPoint_13429",
+         "module_class": "ParticleModuleAttractorPoint",
+         "module_properties (authored, defaults filled)": {
+          "Position": {
+           "Distribution": null,
+           "Type": 8,
+           "Op": 1,
+           "LookupTableNumElements": 1,
+           "LookupTableChunkSize": 3,
+           "LookupTable": [
+            -1.0211961269378662,
+            1.0074810981750488,
+            -0.0019023026106879115,
+            19.289905548095703,
+            -0.9859822988510132,
+            -0.0070427353493869305,
+            0.9998111128807068,
+            -0.9477112293243408,
+            -0.3947005867958069,
+            0.9359405040740967,
+            -0.8244993686676025,
+            -0.9529803991317749,
+            0.7742148041725159,
+            -0.5795015096664429,
+            -0.8833774924278259,
+            0.5296182632446289,
+            -0.21567721664905548,
+            -0.33249014616012573,
+            0.19496263563632965,
+            0.12456835061311722,
+            0.17537476122379303,
+            -0.13481111824512482,
+            0.4474520683288574,
+            0.6894855499267578,
+            -0.46972179412841797,
+            0.7197312116622925,
+            0.9950088858604431,
+            -0.750882625579834,
+            0.8930029273033142,
+            0.7964441776275635,
+            -0.9115735292434692,
+            0.9877501130104065,
+            0.2896362245082855,
+            -0.9841699004173279,
+            1.0045371055603027,
+            -0.18782128393650055,
+            -0.9887413382530212,
+            0.9420719146728516,
+            -0.7252711057662964,
+            -0.9244763255119324,
+            0.7869117259979248,
+            -1.0118862390518188,
+            -0.7727078199386597,
+            0.43846145272254944,
+            -0.5715562701225281,
+            -0.40702030062675476,
+            -0.00821851845830679,
+            -0.002269195858389139,
+            -0.004050982650369406,
+            -0.33682265877723694,
+            0.3951031565666199,
+            0.29232269525527954,
+            -0.623641312122345,
+            0.8655517101287842,
+            0.6079331040382385,
+            -0.811825156211853,
+            0.9490999579429626,
+            0.8107348084449768,
+            -0.9129687547683716,
+            0.6236780285835266,
+            0.9176347255706787,
+            -0.9688262343406677,
+            0.2020794153213501,
+            0.9791979789733887,
+            -0.9859821200370789,
+            -0.0070427353493869305,
+            0.9989381432533264
+           ]
+          },
+          "Range": {
+           "Distribution": null,
+           "Type": 1,
+           "Op": 1,
+           "LookupTableNumElements": 1,
+           "LookupTableChunkSize": 1,
+           "LookupTable": [
+            5000.0
+           ]
+          },
+          "Strength": {
+           "Distribution": null,
+           "Type": 1,
+           "Op": 1,
+           "LookupTableNumElements": 1,
+           "LookupTableChunkSize": 1,
+           "LookupTable": [
+            250.0
+           ]
+          },
+          "StrengthByDistance": false,
+          "bAffectBaseVelocity": true,
+          "bOverrideVelocity": true,
+          "bUpdateModule": true,
+          "bEnabled": true
+         },
+         "in_list_after_records": false,
+         "raw_flags": [
+          1,
+          0
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "distributions": []
+        },
+        {
+         "index": 9,
+         "module": "PMI_AttractorParticle",
+         "module_id": 0,
+         "module_enum": "PMI_Unknown",
+         "module_object": "FX_Pickups_p.FX.Shard_FX.ParticleModuleAttractorParticle_8415",
+         "module_class": "ParticleModuleAttractorParticle",
+         "module_properties (authored, defaults filled)": {
+          "EmitterName": "Shard_3",
+          "Range": {
+           "Distribution": null,
+           "Type": 1,
+           "Op": 1,
+           "LookupTableNumElements": 1,
+           "LookupTableChunkSize": 1,
+           "LookupTable": [
+            5000.0
+           ]
+          },
+          "bRenewSource": true,
+          "Strength": {
+           "Distribution": null,
+           "Type": 1,
+           "Op": 1,
+           "LookupTableNumElements": 1,
+           "LookupTableChunkSize": 1,
+           "LookupTable": [
+            100.0
+           ]
+          },
+          "SelectionMethod": "EAPSM_Sequential",
+          "LastSelIndex": 1,
+          "bStrengthByDistance": true,
+          "bSpawnModule": true,
+          "bUpdateModule": true,
+          "bEnabled": true
+         },
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          0
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "distributions": []
+        },
+        {
+         "index": 10,
+         "module": "PMI_AttractorParticle",
+         "module_id": 0,
+         "module_enum": "PMI_Unknown",
+         "module_object": "FX_Pickups_p.FX.Shard_FX.ParticleModuleAttractorParticle_8281",
+         "module_class": "ParticleModuleAttractorParticle",
+         "module_properties (authored, defaults filled)": {
+          "EmitterName": "Shard_2",
+          "Range": {
+           "Distribution": null,
+           "Type": 1,
+           "Op": 1,
+           "LookupTableNumElements": 1,
+           "LookupTableChunkSize": 1,
+           "LookupTable": [
+            5000.0
+           ]
+          },
+          "bRenewSource": true,
+          "Strength": {
+           "Distribution": null,
+           "Type": 1,
+           "Op": 1,
+           "LookupTableNumElements": 1,
+           "LookupTableChunkSize": 1,
+           "LookupTable": [
+            100.0
+           ]
+          },
+          "SelectionMethod": "EAPSM_Sequential",
+          "LastSelIndex": 1,
+          "bStrengthByDistance": true,
+          "bSpawnModule": true,
+          "bUpdateModule": true,
+          "bEnabled": true
+         },
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          0
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "distributions": []
+        },
+        {
+         "index": 11,
+         "module": "PMI_MeshRotationRate",
+         "module_id": 11,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          0
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "distributions": [
+          {
+           "property": "StartRotationRate",
+           "property_candidates": null,
+           "kind": "vector uniform",
+           "op": 2,
+           "values": [
+            -0.1,
+            -0.1,
+            -0.1,
+            0.1,
+            0.1,
+            0.1
+           ],
+           "confidence": "CONFIRMED"
+          }
+         ]
+        }
+       ],
+       "assignment_complete": true,
+       "raw_unparsed_hex": {
+        "between_lists_and_groups": "00 00 00 04 07 08 09 0a 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 30 00 00 00 00 ff ff 8c 35 00 00 00 00 00 00 00 01 00 00 00 01 00 00 00 01 00 00 00 01 00 00 00 01 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 05 aa 00 00 00 00",
+        "trailing": "00 d0 00 00"
+       }
+      },
+      {
+       "lod": "FX_Pickups_p.FX.Shard_FX.ParticleSpriteEmitter_2427.ParticleLODLevel_15315",
+       "level": 1,
+       "props": {
+        "Level": 1,
+        "LevelSetting": 100,
+        "PeakActiveParticles": 1
+       },
+       "RequiredModule": {
+        "object": "FX_Pickups_p.FX.Shard_FX.ParticleModuleRequired_9087",
+        "class": "ParticleModuleRequired",
+        "props": {
+         "Material": "FX_Materials_p.MatInst.PROP_Shard_MATINST",
+         "bUseLocalSpace": true,
+         "bKillOnDeactivate": true,
+         "bKillOnCompleted": true,
+         "bEmitterDurationUseRange": true,
+         "EmitterDurationLow": 1.0,
+         "SpawnRate": {
+          "Distribution": null,
+          "LookupTable": [
+           4.0
+          ]
+         },
+         "RandomImageTime": 1.0
+        }
+       },
+       "TypeDataModule": {
+        "object": "FX_Pickups_p.FX.Shard_FX.ParticleModuleTypeDataMesh_14163",
+        "class": "ParticleModuleTypeDataMesh",
+        "props": {
+         "Mesh": "FX_Mesh_p.Mesh.PROP_Shard01_STAT"
+        }
+       },
+       "mesh": "FX_Mesh_p.Mesh.PROP_Shard01_STAT",
+       "native_tail_bytes": 712,
+       "parameter_blob": {
+        "size": 48,
+        "names": [
+         "Color"
+        ],
+        "status": "decoded"
+       },
+       "compiled_modules": [
+        {
+         "index": 0,
+         "module": "PMI_Lifetime",
+         "module_id": 1,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          1
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "distributions": [
+          {
+           "property": "Lifetime",
+           "property_candidates": null,
+           "kind": "float constant",
+           "op": 1,
+           "values": [
+            0.0
+           ],
+           "confidence": "CONFIRMED"
+          }
+         ]
+        },
+        {
+         "index": 1,
+         "module": "PMI_Size",
+         "module_id": 6,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          1
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "distributions": [
+          {
+           "property": "StartSize",
+           "property_candidates": null,
+           "kind": "vector uniform",
+           "op": 2,
+           "values": [
+            0.4,
+            0.4,
+            0.4,
+            0.5,
+            0.5,
+            0.5
+           ],
+           "confidence": "CONFIRMED"
+          }
+         ]
+        },
+        {
+         "index": 2,
+         "module": "PMI_ColorByParameter",
+         "module_id": 3,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          0
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "fields": {
+          "ColorParam": "Color",
+          "DefaultColor": {
+           "A": 255,
+           "R": 255,
+           "G": 140,
+           "B": 53
+          }
+         },
+         "fields_source": {
+          "ColorParam": "compiled",
+          "DefaultColor": "compiled"
+         },
+         "distributions": []
+        },
+        {
+         "index": 3,
+         "module": "PMI_Velocity",
+         "module_id": 23,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          1
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 8,
+         "distributions": [
+          {
+           "property": "StartVelocityRadial",
+           "property_candidates": null,
+           "kind": "float constant",
+           "op": 1,
+           "values": [
+            0.0
+           ],
+           "confidence": "CONFIRMED"
+          },
+          {
+           "property": "StartVelocity",
+           "property_candidates": null,
+           "kind": "vector uniform",
+           "op": 2,
+           "values": [
+            -50.0,
+            -50.0,
+            -50.0,
+            50.0,
+            50.0,
+            50.0
+           ],
+           "confidence": "CONFIRMED"
+          }
+         ]
+        },
+        {
+         "index": 4,
+         "module": "PMI_MeshRotation",
+         "module_id": 10,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          0
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 12,
+         "fields": {
+          "bInheritParent": false
+         },
+         "fields_source": {
+          "bInheritParent": "compiled"
+         },
+         "distributions": [
+          {
+           "property": "StartRotation",
+           "property_candidates": null,
+           "kind": "vector constant",
+           "op": 1,
+           "values": [
+            0.0,
+            0.01,
+            0.0
+           ],
+           "confidence": "CONFIRMED"
+          }
+         ]
+        },
+        {
+         "index": 5,
+         "module": "PMI_LocationPrimitiveSphere",
+         "module_id": 22,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          1
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "fields": {
+          "Positive_X": true,
+          "Positive_Y": true,
+          "Positive_Z": true,
+          "Negative_X": true,
+          "Negative_Y": true,
+          "Negative_Z": true,
+          "SurfaceOnly": false,
+          "Velocity": false
+         },
+         "fields_source": {
+          "Positive_X": "compiled",
+          "Positive_Y": "compiled",
+          "Positive_Z": "compiled",
+          "Negative_X": "compiled",
+          "Negative_Y": "compiled",
+          "Negative_Z": "compiled",
+          "SurfaceOnly": "compiled",
+          "Velocity": "compiled"
+         },
+         "distributions": [
+          {
+           "property": "VelocityScale",
+           "property_candidates": null,
+           "kind": "float constant",
+           "op": 1,
+           "values": [
+            1.0
+           ],
+           "confidence": "CONFIRMED"
+          },
+          {
+           "property": "StartRadius",
+           "property_candidates": null,
+           "kind": "float constant",
+           "op": 1,
+           "values": [
+            50.0
+           ],
+           "confidence": "CONFIRMED"
+          },
+          {
+           "property": "StartLocation",
+           "property_candidates": null,
+           "kind": "vector constant",
+           "op": 1,
+           "values": [
+            0.0,
+            0.0,
+            0.0
+           ],
+           "confidence": "CONFIRMED"
+          }
+         ]
+        },
+        {
+         "index": 6,
+         "module": "PMI_MeshRotationRate",
+         "module_id": 11,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          0
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 44,
+         "distributions": [
+          {
+           "property": "StartRotationRate",
+           "property_candidates": null,
+           "kind": "vector uniform",
+           "op": 2,
+           "values": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+           ],
+           "confidence": "CONFIRMED"
+          }
+         ]
+        },
+        {
+         "index": 7,
+         "module": "PMI_ColorScaleOverLife",
+         "module_id": 5,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          1
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "fields": {
+          "bEmitterTime": false
+         },
+         "fields_source": {
+          "bEmitterTime": "compiled"
+         },
+         "distributions": [
+          {
+           "property": "AlphaScaleOverLife",
+           "property_candidates": null,
+           "kind": "float constant curve",
+           "op": 1,
+           "values": [
+            0.0,
+            2.0,
+            0.0,
+            20.0,
+            2.0,
+            1.945596,
+            1.797928,
+            1.580312,
+            1.316063,
+            1.028499,
+            0.740935,
+            0.476687,
+            0.25907,
+            0.111402,
+            0.056998,
+            0.055402,
+            0.05107,
+            0.044687,
+            0.036935,
+            0.028499,
+            0.020063,
+            0.012312,
+            0.005928,
+            0.001596,
+            0.0
+           ],
+           "confidence": "CONFIRMED"
+          },
+          {
+           "property": "ColorScaleOverLife",
+           "property_candidates": null,
+           "kind": "vector constant curve",
+           "op": 1,
+           "values": [
+            1.5,
+            1.5,
+            0.0,
+            0.0,
+            1.5,
+            1.5,
+            1.5,
+            1.5,
+            1.5,
+            1.5
+           ],
+           "confidence": "CONFIRMED"
+          }
+         ]
+        },
+        {
+         "index": 8,
+         "module": "PMI_AttractorPoint",
+         "module_id": 0,
+         "module_enum": "PMI_Unknown",
+         "module_object": "FX_Pickups_p.FX.Shard_FX.ParticleModuleAttractorPoint_7695",
+         "module_class": "ParticleModuleAttractorPoint",
+         "module_properties (authored, defaults filled)": {
+          "Position": {
+           "Distribution": null,
+           "Type": 8,
+           "Op": 1,
+           "LookupTableNumElements": 1,
+           "LookupTableChunkSize": 3,
+           "LookupTable": [
+            -1.0211961269378662,
+            1.0071107149124146,
+            -0.0019023026106879115,
+            19.289905548095703,
+            -0.9859822988510132,
+            -0.0070427353493869305,
+            0.9998111128807068,
+            -0.8881756067276001,
+            -0.43383604288101196,
+            0.8724740147590637,
+            -0.7903689742088318,
+            -0.8606293201446533,
+            0.7451369166374207,
+            -0.5418489575386047,
+            -0.736259937286377,
+            0.49852198362350464,
+            -0.2024306058883667,
+            -0.2794727087020874,
+            0.17996811866760254,
+            0.11898329108953476,
+            0.153472438454628,
+            -0.13231626152992249,
+            0.41379186511039734,
+            0.5511858463287354,
+            -0.4353363513946533,
+            0.7086001634597778,
+            0.9488989114761353,
+            -0.7383561730384827,
+            0.8377277851104736,
+            0.6475988626480103,
+            -0.853222131729126,
+            0.9423919320106506,
+            0.24308639764785767,
+            -0.9403064250946045,
+            0.9713693261146545,
+            -0.16643644869327545,
+            -0.9582341909408569,
+            0.8777204155921936,
+            -0.5840766429901123,
+            -0.864115834236145,
+            0.7840713858604431,
+            -1.001717448234558,
+            -0.7699974179267883,
+            0.3909202814102173,
+            -0.5096337199211121,
+            -0.38888537883758545,
+            -0.00707103731110692,
+            0.0021643531508743763,
+            -0.0028792223893105984,
+            -0.29433202743530273,
+            0.3762023150920868,
+            0.287168025970459,
+            -0.5815930366516113,
+            0.7502402663230896,
+            0.577215313911438,
+            -0.7857622504234314,
+            0.8728307485580444,
+            0.7848613262176514,
+            -0.8525022268295288,
+            0.5795394778251648,
+            0.8562203049659729,
+            -0.9192422032356262,
+            0.28624820709228516,
+            0.9275792837142944,
+            -0.9859821200370789,
+            -0.0070427353493869305,
+            0.9989381432533264
+           ]
+          },
+          "Range": {
+           "Distribution": null,
+           "Type": 1,
+           "Op": 1,
+           "LookupTableNumElements": 1,
+           "LookupTableChunkSize": 1,
+           "LookupTable": [
+            5000.0
+           ]
+          },
+          "Strength": {
+           "Distribution": null,
+           "Type": 1,
+           "Op": 1,
+           "LookupTableNumElements": 1,
+           "LookupTableChunkSize": 1,
+           "LookupTable": [
+            250.0
+           ]
+          },
+          "StrengthByDistance": false,
+          "bAffectBaseVelocity": true,
+          "bOverrideVelocity": true,
+          "bUpdateModule": true,
+          "bEnabled": true
+         },
+         "in_list_after_records": false,
+         "raw_flags": [
+          1,
+          0
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "distributions": []
+        },
+        {
+         "index": 9,
+         "module": "PMI_AttractorParticle",
+         "module_id": 0,
+         "module_enum": "PMI_Unknown",
+         "module_object": "FX_Pickups_p.FX.Shard_FX.ParticleModuleAttractorParticle_11085",
+         "module_class": "ParticleModuleAttractorParticle",
+         "module_properties (authored, defaults filled)": {
+          "EmitterName": "Shard_3",
+          "Range": {
+           "Distribution": null,
+           "Type": 1,
+           "Op": 1,
+           "LookupTableNumElements": 1,
+           "LookupTableChunkSize": 1,
+           "LookupTable": [
+            5000.0
+           ]
+          },
+          "bRenewSource": true,
+          "Strength": {
+           "Distribution": null,
+           "Type": 1,
+           "Op": 1,
+           "LookupTableNumElements": 1,
+           "LookupTableChunkSize": 1,
+           "LookupTable": [
+            100.0
+           ]
+          },
+          "SelectionMethod": "EAPSM_Sequential",
+          "LastSelIndex": 1,
+          "bStrengthByDistance": true,
+          "bSpawnModule": true,
+          "bUpdateModule": true,
+          "bEnabled": true
+         },
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          0
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "distributions": []
+        },
+        {
+         "index": 10,
+         "module": "PMI_AttractorParticle",
+         "module_id": 0,
+         "module_enum": "PMI_Unknown",
+         "module_object": "FX_Pickups_p.FX.Shard_FX.ParticleModuleAttractorParticle_4671",
+         "module_class": "ParticleModuleAttractorParticle",
+         "module_properties (authored, defaults filled)": {
+          "EmitterName": "Shard_2",
+          "Range": {
+           "Distribution": null,
+           "Type": 1,
+           "Op": 1,
+           "LookupTableNumElements": 1,
+           "LookupTableChunkSize": 1,
+           "LookupTable": [
+            5000.0
+           ]
+          },
+          "bRenewSource": true,
+          "Strength": {
+           "Distribution": null,
+           "Type": 1,
+           "Op": 1,
+           "LookupTableNumElements": 1,
+           "LookupTableChunkSize": 1,
+           "LookupTable": [
+            100.0
+           ]
+          },
+          "SelectionMethod": "EAPSM_Sequential",
+          "bStrengthByDistance": true,
+          "bSpawnModule": true,
+          "bUpdateModule": true,
+          "bEnabled": true
+         },
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          0
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "distributions": []
+        },
+        {
+         "index": 11,
+         "module": "PMI_MeshRotationRate",
+         "module_id": 11,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          0
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "distributions": [
+          {
+           "property": "StartRotationRate",
+           "property_candidates": null,
+           "kind": "vector uniform",
+           "op": 2,
+           "values": [
+            -0.1,
+            -0.1,
+            -0.1,
+            0.1,
+            0.1,
+            0.1
+           ],
+           "confidence": "CONFIRMED"
+          }
+         ]
+        }
+       ],
+       "assignment_complete": true,
+       "raw_unparsed_hex": {
+        "between_lists_and_groups": "00 00 00 04 07 08 09 0a 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 30 00 00 00 00 ff ff 8c 35 00 00 00 00 00 00 00 01 00 00 00 01 00 00 00 01 00 00 00 01 00 00 00 01 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 05 aa 00 00 00 00",
+        "trailing": "00 d0 00 00"
+       }
+      }
+     ]
+    },
+    {
+     "emitter": "FX_Pickups_p.FX.Shard_FX.ParticleSpriteEmitter_12670",
+     "class": "ParticleEmitter",
+     "name": "Shard_2",
+     "props": {},
+     "lods": [
+      {
+       "lod": "FX_Pickups_p.FX.Shard_FX.ParticleSpriteEmitter_12670.ParticleLODLevel_674",
+       "level": 0,
+       "props": {
+        "PeakActiveParticles": 1
+       },
+       "RequiredModule": {
+        "object": "FX_Pickups_p.FX.Shard_FX.ParticleModuleRequired_5446",
+        "class": "ParticleModuleRequired",
+        "props": {
+         "Material": "FX_Materials_p.MatInst.PROP_Shard_MATINST",
+         "bUseLocalSpace": true,
+         "bKillOnDeactivate": true,
+         "bKillOnCompleted": true,
+         "bEmitterDurationUseRange": true,
+         "EmitterDurationLow": 1.0,
+         "SpawnRate": {
+          "Distribution": null
+         },
+         "BurstList": [
+          {
+           "Count": 1,
+           "CountLow": 0,
+           "Time": 0.0
+          }
+         ],
+         "RandomImageTime": 1.0
+        }
+       },
+       "TypeDataModule": {
+        "object": "FX_Pickups_p.FX.Shard_FX.ParticleModuleTypeDataMesh_5119",
+        "class": "ParticleModuleTypeDataMesh",
+        "props": {
+         "Mesh": "FX_Mesh_p.Mesh.PROP_Shard01_STAT"
+        }
+       },
+       "mesh": "FX_Mesh_p.Mesh.PROP_Shard01_STAT",
+       "native_tail_bytes": 798,
+       "parameter_blob": {
+        "size": 88,
+        "names": [
+         "Color"
+        ],
+        "status": "decoded"
+       },
+       "compiled_modules": [
+        {
+         "index": 0,
+         "module": "PMI_Lifetime",
+         "module_id": 1,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          1
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "distributions": [
+          {
+           "property": "Lifetime",
+           "property_candidates": null,
+           "kind": "float constant",
+           "op": 1,
+           "values": [
+            0.0
+           ],
+           "confidence": "CONFIRMED"
+          }
+         ]
+        },
+        {
+         "index": 1,
+         "module": "PMI_ColorByParameter",
+         "module_id": 3,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          0
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 8,
+         "fields": {
+          "ColorParam": "Color",
+          "DefaultColor": {
+           "A": 255,
+           "R": 255,
+           "G": 140,
+           "B": 53
+          }
+         },
+         "fields_source": {
+          "ColorParam": "compiled",
+          "DefaultColor": "compiled"
+         },
+         "distributions": []
+        },
+        {
+         "index": 2,
+         "module": "PMI_MeshRotation",
+         "module_id": 10,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          0
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "fields": {
+          "bInheritParent": false
+         },
+         "fields_source": {
+          "bInheritParent": "compiled"
+         },
+         "distributions": [
+          {
+           "property": "StartRotation",
+           "property_candidates": null,
+           "kind": "vector constant",
+           "op": 1,
+           "values": [
+            0.0,
+            0.01,
+            0.0
+           ],
+           "confidence": "CONFIRMED"
+          }
+         ]
+        },
+        {
+         "index": 3,
+         "module": "PMI_MeshRotationRate",
+         "module_id": 11,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          0
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 12,
+         "distributions": [
+          {
+           "property": "StartRotationRate",
+           "property_candidates": null,
+           "kind": "vector uniform",
+           "op": 2,
+           "values": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+           ],
+           "confidence": "CONFIRMED"
+          }
+         ]
+        },
+        {
+         "index": 4,
+         "module": "PMI_ColorScaleOverLife",
+         "module_id": 5,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          1
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 16,
+         "fields": {
+          "bEmitterTime": false
+         },
+         "fields_source": {
+          "bEmitterTime": "compiled"
+         },
+         "distributions": [
+          {
+           "property": "AlphaScaleOverLife",
+           "property_candidates": null,
+           "kind": "float constant curve",
+           "op": 1,
+           "values": [
+            0.0,
+            2.0,
+            0.0,
+            20.0,
+            2.0,
+            1.848106,
+            1.645755,
+            1.408335,
+            1.151232,
+            0.889836,
+            0.639532,
+            0.415709,
+            0.233754,
+            0.109054,
+            0.056998,
+            0.046812,
+            0.037495,
+            0.029097,
+            0.021663,
+            0.015242,
+            0.009882,
+            0.00563,
+            0.002534,
+            0.000641,
+            0.0
+           ],
+           "confidence": "CONFIRMED"
+          },
+          {
+           "property": "ColorScaleOverLife",
+           "property_candidates": null,
+           "kind": "vector constant curve",
+           "op": 1,
+           "values": [
+            1.5,
+            1.5,
+            0.0,
+            0.0,
+            1.5,
+            1.5,
+            1.5,
+            1.5,
+            1.5,
+            1.5
+           ],
+           "confidence": "CONFIRMED"
+          }
+         ]
+        },
+        {
+         "index": 5,
+         "module": "PMI_Orbit",
+         "module_id": 30,
+         "in_list_after_records": false,
+         "raw_flags": [
+          0,
+          0
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": false,
+         "payload_offset": 0,
+         "fields": {
+          "ChainMode (H, not read by the runners)": 2,
+          "OffsetOptions.bProcessDuringSpawn": true,
+          "OffsetOptions.bProcessDuringUpdate": false,
+          "OffsetOptions.bUseEmitterTime": false,
+          "RotationOptions.bProcessDuringSpawn": true,
+          "RotationOptions.bProcessDuringUpdate": false,
+          "RotationOptions.bUseEmitterTime": false,
+          "RotationRateOptions.bProcessDuringSpawn": true,
+          "RotationRateOptions.bProcessDuringUpdate": false,
+          "RotationRateOptions.bUseEmitterTime": false
+         },
+         "fields_source": {
+          "ChainMode (H, not read by the runners)": "compiled",
+          "OffsetOptions.bProcessDuringSpawn": "compiled",
+          "OffsetOptions.bProcessDuringUpdate": "compiled",
+          "OffsetOptions.bUseEmitterTime": "compiled",
+          "RotationOptions.bProcessDuringSpawn": "compiled",
+          "RotationOptions.bProcessDuringUpdate": "compiled",
+          "RotationOptions.bUseEmitterTime": "compiled",
+          "RotationRateOptions.bProcessDuringSpawn": "compiled",
+          "RotationRateOptions.bProcessDuringUpdate": "compiled",
+          "RotationRateOptions.bUseEmitterTime": "compiled"
+         },
+         "distributions": [
+          {
+           "property": "OffsetAmount",
+           "property_candidates": null,
+           "kind": "vector constant",
+           "op": 1,
+           "values": [
+            0.0,
+            20.0,
+            0.0
+           ],
+           "confidence": "CONFIRMED"
+          },
+          {
+           "property": "RotationAmount",
+           "property_candidates": null,
+           "kind": "vector constant",
+           "op": 1,
+           "values": [
+            0.0,
+            1.0,
+            0.0
+           ],
+           "confidence": "CONFIRMED"
+          },
+          {
+           "property": "RotationRateAmount",
+           "property_candidates": null,
+           "kind": "vector constant",
+           "op": 1,
+           "values": [
+            0.0,
+            0.0,
+            1.0
+           ],
+           "confidence": "CONFIRMED"
+          }
+         ]
+        },
+        {
+         "index": 6,
+         "module": "PMI_Size",
+         "module_id": 6,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          1
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "distributions": [
+          {
+           "property": "StartSize",
+           "property_candidates": null,
+           "kind": "vector uniform",
+           "op": 2,
+           "values": [
+            0.45,
+            0.45,
+            0.45,
+            0.4,
+            0.4,
+            0.4
+           ],
+           "confidence": "CONFIRMED"
+          }
+         ]
+        },
+        {
+         "index": 7,
+         "module": "PMI_AttractorParticle",
+         "module_id": 0,
+         "module_enum": "PMI_Unknown",
+         "module_object": "FX_Pickups_p.FX.Shard_FX.ParticleModuleAttractorParticle_10210",
+         "module_class": "ParticleModuleAttractorParticle",
+         "module_properties (authored, defaults filled)": {
+          "EmitterName": "Shard",
+          "Range": {
+           "Distribution": null,
+           "Type": 1,
+           "Op": 1,
+           "LookupTableNumElements": 1,
+           "LookupTableChunkSize": 1,
+           "LookupTable": [
+            5000.0
+           ]
+          },
+          "bAffectBaseVelocity": true,
+          "bRenewSource": true,
+          "Strength": {
+           "Distribution": null,
+           "Type": 1,
+           "Op": 1,
+           "LookupTableNumElements": 1,
+           "LookupTableChunkSize": 1,
+           "LookupTable": [
+            50.0
+           ]
+          },
+          "SelectionMethod": "EAPSM_Sequential",
+          "LastSelIndex": 1,
+          "bStrengthByDistance": true,
+          "bSpawnModule": true,
+          "bUpdateModule": true,
+          "bEnabled": true
+         },
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          0
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "distributions": []
+        },
+        {
+         "index": 8,
+         "module": "PMI_Velocity",
+         "module_id": 23,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          1
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 56,
+         "distributions": [
+          {
+           "property": "StartVelocityRadial",
+           "property_candidates": null,
+           "kind": "float constant",
+           "op": 1,
+           "values": [
+            0.0
+           ],
+           "confidence": "CONFIRMED"
+          },
+          {
+           "property": "StartVelocity",
+           "property_candidates": null,
+           "kind": "vector constant",
+           "op": 1,
+           "values": [
+            0.0,
+            0.0,
+            0.0
+           ],
+           "confidence": "CONFIRMED"
+          }
+         ]
+        },
+        {
+         "index": 9,
+         "module": "PMI_LocationPrimitiveSphere",
+         "module_id": 22,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          1
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "fields": {
+          "Positive_X": true,
+          "Positive_Y": true,
+          "Positive_Z": true,
+          "Negative_X": true,
+          "Negative_Y": true,
+          "Negative_Z": true,
+          "SurfaceOnly": false,
+          "Velocity": false
+         },
+         "fields_source": {
+          "Positive_X": "compiled",
+          "Positive_Y": "compiled",
+          "Positive_Z": "compiled",
+          "Negative_X": "compiled",
+          "Negative_Y": "compiled",
+          "Negative_Z": "compiled",
+          "SurfaceOnly": "compiled",
+          "Velocity": "compiled"
+         },
+         "distributions": [
+          {
+           "property": "VelocityScale",
+           "property_candidates": null,
+           "kind": "float constant",
+           "op": 1,
+           "values": [
+            1.0
+           ],
+           "confidence": "CONFIRMED"
+          },
+          {
+           "property": "StartRadius",
+           "property_candidates": null,
+           "kind": "float constant",
+           "op": 1,
+           "values": [
+            75.0
+           ],
+           "confidence": "CONFIRMED"
+          },
+          {
+           "property": "StartLocation",
+           "property_candidates": null,
+           "kind": "vector constant",
+           "op": 1,
+           "values": [
+            0.0,
+            0.0,
+            0.0
+           ],
+           "confidence": "CONFIRMED"
+          }
+         ]
+        },
+        {
+         "index": 10,
+         "module": "PMI_AttractorPoint",
+         "module_id": 0,
+         "module_enum": "PMI_Unknown",
+         "module_object": "FX_Pickups_p.FX.Shard_FX.ParticleModuleAttractorPoint_7329",
+         "module_class": "ParticleModuleAttractorPoint",
+         "module_properties (authored, defaults filled)": {
+          "Position": {
+           "Distribution": null,
+           "Type": 8,
+           "Op": 1,
+           "LookupTableNumElements": 1,
+           "LookupTableChunkSize": 3,
+           "LookupTable": [
+            -1.0211961269378662,
+            1.0074810981750488,
+            -0.0019023026106879115,
+            19.289905548095703,
+            -0.9859822988510132,
+            -0.0070427353493869305,
+            0.9998111128807068,
+            -0.9477112293243408,
+            -0.3947005867958069,
+            0.9359405040740967,
+            -0.8244993686676025,
+            -0.9529803991317749,
+            0.7742148041725159,
+            -0.5795015096664429,
+            -0.8833774924278259,
+            0.5296182632446289,
+            -0.21567721664905548,
+            -0.33249014616012573,
+            0.19496263563632965,
+            0.12456835061311722,
+            0.17537476122379303,
+            -0.13481111824512482,
+            0.4474520683288574,
+            0.6894855499267578,
+            -0.46972179412841797,
+            0.7197312116622925,
+            0.9950088858604431,
+            -0.750882625579834,
+            0.8930029273033142,
+            0.7964441776275635,
+            -0.9115735292434692,
+            0.9877501130104065,
+            0.2896362245082855,
+            -0.9841699004173279,
+            1.0045371055603027,
+            -0.18782128393650055,
+            -0.9887413382530212,
+            0.9420719146728516,
+            -0.7252711057662964,
+            -0.9244763255119324,
+            0.7869117259979248,
+            -1.0118862390518188,
+            -0.7727078199386597,
+            0.43846145272254944,
+            -0.5715562701225281,
+            -0.40702030062675476,
+            -0.00821851845830679,
+            -0.002269195858389139,
+            -0.004050982650369406,
+            -0.33682265877723694,
+            0.3951031565666199,
+            0.29232269525527954,
+            -0.623641312122345,
+            0.8655517101287842,
+            0.6079331040382385,
+            -0.811825156211853,
+            0.9490999579429626,
+            0.8107348084449768,
+            -0.9129687547683716,
+            0.6236780285835266,
+            0.9176347255706787,
+            -0.9688262343406677,
+            0.2020794153213501,
+            0.9791979789733887,
+            -0.9859821200370789,
+            -0.0070427353493869305,
+            0.9989381432533264
+           ]
+          },
+          "Range": {
+           "Distribution": null,
+           "Type": 1,
+           "Op": 1,
+           "LookupTableNumElements": 1,
+           "LookupTableChunkSize": 1,
+           "LookupTable": [
+            5000.0
+           ]
+          },
+          "Strength": {
+           "Distribution": null,
+           "Type": 1,
+           "Op": 1,
+           "LookupTableNumElements": 1,
+           "LookupTableChunkSize": 1,
+           "LookupTable": [
+            100.0
+           ]
+          },
+          "StrengthByDistance": false,
+          "bAffectBaseVelocity": true,
+          "bOverrideVelocity": true,
+          "bUpdateModule": true,
+          "bEnabled": true
+         },
+         "in_list_after_records": false,
+         "raw_flags": [
+          1,
+          0
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "distributions": []
+        },
+        {
+         "index": 11,
+         "module": "PMI_MeshRotationRate",
+         "module_id": 11,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          0
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "distributions": [
+          {
+           "property": "StartRotationRate",
+           "property_candidates": null,
+           "kind": "vector uniform",
+           "op": 2,
+           "values": [
+            -0.1,
+            -0.1,
+            -0.1,
+            0.1,
+            0.1,
+            0.1
+           ],
+           "confidence": "CONFIRMED"
+          }
+         ]
+        }
+       ],
+       "assignment_complete": true,
+       "raw_unparsed_hex": {
+        "between_lists_and_groups": "00 00 00 03 04 07 0a 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 58 00 00 00 00 ff ff 8c 35 00 00 00 00 00 00 00 00 00 00 00 02 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00 01 00 00 00 01 00 00 00 01 00 00 00 01 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 01 00 00 05 aa 00 00 00 00",
+        "trailing": "01 00 00 00"
+       }
+      },
+      {
+       "lod": "FX_Pickups_p.FX.Shard_FX.ParticleSpriteEmitter_12670.ParticleLODLevel_750",
+       "level": 1,
+       "props": {
+        "Level": 1,
+        "LevelSetting": 100,
+        "PeakActiveParticles": 1
+       },
+       "RequiredModule": {
+        "object": "FX_Pickups_p.FX.Shard_FX.ParticleModuleRequired_23",
+        "class": "ParticleModuleRequired",
+        "props": {
+         "Material": "FX_Materials_p.MatInst.PROP_Shard_MATINST",
+         "bUseLocalSpace": true,
+         "bKillOnDeactivate": true,
+         "bKillOnCompleted": true,
+         "bEmitterDurationUseRange": true,
+         "EmitterDurationLow": 1.0,
+         "SpawnRate": {
+          "Distribution": null
+         },
+         "BurstList": [
+          {
+           "Count": 1,
+           "CountLow": 0,
+           "Time": 0.0
+          }
+         ],
+         "RandomImageTime": 1.0
+        }
+       },
+       "TypeDataModule": {
+        "object": "FX_Pickups_p.FX.Shard_FX.ParticleModuleTypeDataMesh_13919",
+        "class": "ParticleModuleTypeDataMesh",
+        "props": {
+         "Mesh": "FX_Mesh_p.Mesh.PROP_Shard01_STAT"
+        }
+       },
+       "mesh": "FX_Mesh_p.Mesh.PROP_Shard01_STAT",
+       "native_tail_bytes": 798,
+       "parameter_blob": {
+        "size": 88,
+        "names": [
+         "Color"
+        ],
+        "status": "decoded"
+       },
+       "compiled_modules": [
+        {
+         "index": 0,
+         "module": "PMI_Lifetime",
+         "module_id": 1,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          1
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "distributions": [
+          {
+           "property": "Lifetime",
+           "property_candidates": null,
+           "kind": "float constant",
+           "op": 1,
+           "values": [
+            0.0
+           ],
+           "confidence": "CONFIRMED"
+          }
+         ]
+        },
+        {
+         "index": 1,
+         "module": "PMI_ColorByParameter",
+         "module_id": 3,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          0
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 8,
+         "fields": {
+          "ColorParam": "Color",
+          "DefaultColor": {
+           "A": 255,
+           "R": 255,
+           "G": 140,
+           "B": 53
+          }
+         },
+         "fields_source": {
+          "ColorParam": "compiled",
+          "DefaultColor": "compiled"
+         },
+         "distributions": []
+        },
+        {
+         "index": 2,
+         "module": "PMI_MeshRotation",
+         "module_id": 10,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          0
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "fields": {
+          "bInheritParent": false
+         },
+         "fields_source": {
+          "bInheritParent": "compiled"
+         },
+         "distributions": [
+          {
+           "property": "StartRotation",
+           "property_candidates": null,
+           "kind": "vector constant",
+           "op": 1,
+           "values": [
+            0.0,
+            0.01,
+            0.0
+           ],
+           "confidence": "CONFIRMED"
+          }
+         ]
+        },
+        {
+         "index": 3,
+         "module": "PMI_MeshRotationRate",
+         "module_id": 11,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          0
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 12,
+         "distributions": [
+          {
+           "property": "StartRotationRate",
+           "property_candidates": null,
+           "kind": "vector uniform",
+           "op": 2,
+           "values": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+           ],
+           "confidence": "CONFIRMED"
+          }
+         ]
+        },
+        {
+         "index": 4,
+         "module": "PMI_ColorScaleOverLife",
+         "module_id": 5,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          1
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 16,
+         "fields": {
+          "bEmitterTime": false
+         },
+         "fields_source": {
+          "bEmitterTime": "compiled"
+         },
+         "distributions": [
+          {
+           "property": "AlphaScaleOverLife",
+           "property_candidates": null,
+           "kind": "float constant curve",
+           "op": 1,
+           "values": [
+            0.0,
+            2.0,
+            0.0,
+            20.0,
+            2.0,
+            1.945596,
+            1.797928,
+            1.580312,
+            1.316063,
+            1.028499,
+            0.740935,
+            0.476687,
+            0.25907,
+            0.111402,
+            0.056998,
+            0.055402,
+            0.05107,
+            0.044687,
+            0.036935,
+            0.028499,
+            0.020063,
+            0.012312,
+            0.005928,
+            0.001596,
+            0.0
+           ],
+           "confidence": "CONFIRMED"
+          },
+          {
+           "property": "ColorScaleOverLife",
+           "property_candidates": null,
+           "kind": "vector constant curve",
+           "op": 1,
+           "values": [
+            1.5,
+            1.5,
+            0.0,
+            0.0,
+            1.5,
+            1.5,
+            1.5,
+            1.5,
+            1.5,
+            1.5
+           ],
+           "confidence": "CONFIRMED"
+          }
+         ]
+        },
+        {
+         "index": 5,
+         "module": "PMI_Orbit",
+         "module_id": 30,
+         "in_list_after_records": false,
+         "raw_flags": [
+          0,
+          0
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": false,
+         "payload_offset": 0,
+         "fields": {
+          "ChainMode (H, not read by the runners)": 2,
+          "OffsetOptions.bProcessDuringSpawn": true,
+          "OffsetOptions.bProcessDuringUpdate": false,
+          "OffsetOptions.bUseEmitterTime": false,
+          "RotationOptions.bProcessDuringSpawn": true,
+          "RotationOptions.bProcessDuringUpdate": false,
+          "RotationOptions.bUseEmitterTime": false,
+          "RotationRateOptions.bProcessDuringSpawn": true,
+          "RotationRateOptions.bProcessDuringUpdate": false,
+          "RotationRateOptions.bUseEmitterTime": false
+         },
+         "fields_source": {
+          "ChainMode (H, not read by the runners)": "compiled",
+          "OffsetOptions.bProcessDuringSpawn": "compiled",
+          "OffsetOptions.bProcessDuringUpdate": "compiled",
+          "OffsetOptions.bUseEmitterTime": "compiled",
+          "RotationOptions.bProcessDuringSpawn": "compiled",
+          "RotationOptions.bProcessDuringUpdate": "compiled",
+          "RotationOptions.bUseEmitterTime": "compiled",
+          "RotationRateOptions.bProcessDuringSpawn": "compiled",
+          "RotationRateOptions.bProcessDuringUpdate": "compiled",
+          "RotationRateOptions.bUseEmitterTime": "compiled"
+         },
+         "distributions": [
+          {
+           "property": "OffsetAmount",
+           "property_candidates": null,
+           "kind": "vector constant",
+           "op": 1,
+           "values": [
+            0.0,
+            20.0,
+            0.0
+           ],
+           "confidence": "CONFIRMED"
+          },
+          {
+           "property": "RotationAmount",
+           "property_candidates": null,
+           "kind": "vector constant",
+           "op": 1,
+           "values": [
+            0.0,
+            1.0,
+            0.0
+           ],
+           "confidence": "CONFIRMED"
+          },
+          {
+           "property": "RotationRateAmount",
+           "property_candidates": null,
+           "kind": "vector constant",
+           "op": 1,
+           "values": [
+            0.0,
+            0.0,
+            1.0
+           ],
+           "confidence": "CONFIRMED"
+          }
+         ]
+        },
+        {
+         "index": 6,
+         "module": "PMI_Size",
+         "module_id": 6,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          1
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "distributions": [
+          {
+           "property": "StartSize",
+           "property_candidates": null,
+           "kind": "vector uniform",
+           "op": 2,
+           "values": [
+            0.45,
+            0.45,
+            0.45,
+            0.4,
+            0.4,
+            0.4
+           ],
+           "confidence": "CONFIRMED"
+          }
+         ]
+        },
+        {
+         "index": 7,
+         "module": "PMI_AttractorParticle",
+         "module_id": 0,
+         "module_enum": "PMI_Unknown",
+         "module_object": "FX_Pickups_p.FX.Shard_FX.ParticleModuleAttractorParticle_9454",
+         "module_class": "ParticleModuleAttractorParticle",
+         "module_properties (authored, defaults filled)": {
+          "EmitterName": "Shard",
+          "Range": {
+           "Distribution": null,
+           "Type": 1,
+           "Op": 1,
+           "LookupTableNumElements": 1,
+           "LookupTableChunkSize": 1,
+           "LookupTable": [
+            5000.0
+           ]
+          },
+          "bAffectBaseVelocity": true,
+          "bRenewSource": true,
+          "Strength": {
+           "Distribution": null,
+           "Type": 1,
+           "Op": 1,
+           "LookupTableNumElements": 1,
+           "LookupTableChunkSize": 1,
+           "LookupTable": [
+            50.0
+           ]
+          },
+          "SelectionMethod": "EAPSM_Sequential",
+          "bStrengthByDistance": true,
+          "bSpawnModule": true,
+          "bUpdateModule": true,
+          "bEnabled": true
+         },
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          0
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "distributions": []
+        },
+        {
+         "index": 8,
+         "module": "PMI_Velocity",
+         "module_id": 23,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          1
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 56,
+         "distributions": [
+          {
+           "property": "StartVelocityRadial",
+           "property_candidates": null,
+           "kind": "float constant",
+           "op": 1,
+           "values": [
+            0.0
+           ],
+           "confidence": "CONFIRMED"
+          },
+          {
+           "property": "StartVelocity",
+           "property_candidates": null,
+           "kind": "vector constant",
+           "op": 1,
+           "values": [
+            0.0,
+            0.0,
+            0.0
+           ],
+           "confidence": "CONFIRMED"
+          }
+         ]
+        },
+        {
+         "index": 9,
+         "module": "PMI_LocationPrimitiveSphere",
+         "module_id": 22,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          1
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "fields": {
+          "Positive_X": true,
+          "Positive_Y": true,
+          "Positive_Z": true,
+          "Negative_X": true,
+          "Negative_Y": true,
+          "Negative_Z": true,
+          "SurfaceOnly": false,
+          "Velocity": false
+         },
+         "fields_source": {
+          "Positive_X": "compiled",
+          "Positive_Y": "compiled",
+          "Positive_Z": "compiled",
+          "Negative_X": "compiled",
+          "Negative_Y": "compiled",
+          "Negative_Z": "compiled",
+          "SurfaceOnly": "compiled",
+          "Velocity": "compiled"
+         },
+         "distributions": [
+          {
+           "property": "VelocityScale",
+           "property_candidates": null,
+           "kind": "float constant",
+           "op": 1,
+           "values": [
+            1.0
+           ],
+           "confidence": "CONFIRMED"
+          },
+          {
+           "property": "StartRadius",
+           "property_candidates": null,
+           "kind": "float constant",
+           "op": 1,
+           "values": [
+            75.0
+           ],
+           "confidence": "CONFIRMED"
+          },
+          {
+           "property": "StartLocation",
+           "property_candidates": null,
+           "kind": "vector constant",
+           "op": 1,
+           "values": [
+            0.0,
+            0.0,
+            0.0
+           ],
+           "confidence": "CONFIRMED"
+          }
+         ]
+        },
+        {
+         "index": 10,
+         "module": "PMI_AttractorPoint",
+         "module_id": 0,
+         "module_enum": "PMI_Unknown",
+         "module_object": "FX_Pickups_p.FX.Shard_FX.ParticleModuleAttractorPoint_4974",
+         "module_class": "ParticleModuleAttractorPoint",
+         "module_properties (authored, defaults filled)": {
+          "Position": {
+           "Distribution": null,
+           "Type": 8,
+           "Op": 1,
+           "LookupTableNumElements": 1,
+           "LookupTableChunkSize": 3,
+           "LookupTable": [
+            -1.0211961269378662,
+            1.0071107149124146,
+            -0.0019023026106879115,
+            19.289905548095703,
+            -0.9859822988510132,
+            -0.0070427353493869305,
+            0.9998111128807068,
+            -0.8881756067276001,
+            -0.43383604288101196,
+            0.8724740147590637,
+            -0.7903689742088318,
+            -0.8606293201446533,
+            0.7451369166374207,
+            -0.5418489575386047,
+            -0.736259937286377,
+            0.49852198362350464,
+            -0.2024306058883667,
+            -0.2794727087020874,
+            0.17996811866760254,
+            0.11898329108953476,
+            0.153472438454628,
+            -0.13231626152992249,
+            0.41379186511039734,
+            0.5511858463287354,
+            -0.4353363513946533,
+            0.7086001634597778,
+            0.9488989114761353,
+            -0.7383561730384827,
+            0.8377277851104736,
+            0.6475988626480103,
+            -0.853222131729126,
+            0.9423919320106506,
+            0.24308639764785767,
+            -0.9403064250946045,
+            0.9713693261146545,
+            -0.16643644869327545,
+            -0.9582341909408569,
+            0.8777204155921936,
+            -0.5840766429901123,
+            -0.864115834236145,
+            0.7840713858604431,
+            -1.001717448234558,
+            -0.7699974179267883,
+            0.3909202814102173,
+            -0.5096337199211121,
+            -0.38888537883758545,
+            -0.00707103731110692,
+            0.0021643531508743763,
+            -0.0028792223893105984,
+            -0.29433202743530273,
+            0.3762023150920868,
+            0.287168025970459,
+            -0.5815930366516113,
+            0.7502402663230896,
+            0.577215313911438,
+            -0.7857622504234314,
+            0.8728307485580444,
+            0.7848613262176514,
+            -0.8525022268295288,
+            0.5795394778251648,
+            0.8562203049659729,
+            -0.9192422032356262,
+            0.28624820709228516,
+            0.9275792837142944,
+            -0.9859821200370789,
+            -0.0070427353493869305,
+            0.9989381432533264
+           ]
+          },
+          "Range": {
+           "Distribution": null,
+           "Type": 1,
+           "Op": 1,
+           "LookupTableNumElements": 1,
+           "LookupTableChunkSize": 1,
+           "LookupTable": [
+            5000.0
+           ]
+          },
+          "Strength": {
+           "Distribution": null,
+           "Type": 1,
+           "Op": 1,
+           "LookupTableNumElements": 1,
+           "LookupTableChunkSize": 1,
+           "LookupTable": [
+            100.0
+           ]
+          },
+          "StrengthByDistance": false,
+          "bAffectBaseVelocity": true,
+          "bOverrideVelocity": true,
+          "bUpdateModule": true,
+          "bEnabled": true
+         },
+         "in_list_after_records": false,
+         "raw_flags": [
+          1,
+          0
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "distributions": []
+        },
+        {
+         "index": 11,
+         "module": "PMI_MeshRotationRate",
+         "module_id": 11,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          0
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "distributions": [
+          {
+           "property": "StartRotationRate",
+           "property_candidates": null,
+           "kind": "vector uniform",
+           "op": 2,
+           "values": [
+            -0.1,
+            -0.1,
+            -0.1,
+            0.1,
+            0.1,
+            0.1
+           ],
+           "confidence": "CONFIRMED"
+          }
+         ]
+        }
+       ],
+       "assignment_complete": true,
+       "raw_unparsed_hex": {
+        "between_lists_and_groups": "00 00 00 03 04 07 0a 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 58 00 00 00 00 ff ff 8c 35 00 00 00 00 00 00 00 00 00 00 00 02 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00 01 00 00 00 01 00 00 00 01 00 00 00 01 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 01 00 00 05 aa 00 00 00 00",
+        "trailing": "01 00 00 00"
+       }
+      }
+     ]
+    },
+    {
+     "emitter": "FX_Pickups_p.FX.Shard_FX.ParticleSpriteEmitter_1037",
+     "class": "ParticleEmitter",
+     "name": "Shard_3",
+     "props": {},
+     "lods": [
+      {
+       "lod": "FX_Pickups_p.FX.Shard_FX.ParticleSpriteEmitter_1037.ParticleLODLevel_5014",
+       "level": 0,
+       "props": {
+        "PeakActiveParticles": 1
+       },
+       "RequiredModule": {
+        "object": "FX_Pickups_p.FX.Shard_FX.ParticleModuleRequired_787",
+        "class": "ParticleModuleRequired",
+        "props": {
+         "Material": "FX_Materials_p.MatInst.PROP_Shard_MATINST",
+         "bUseLocalSpace": true,
+         "bKillOnDeactivate": true,
+         "bKillOnCompleted": true,
+         "bEmitterDurationUseRange": true,
+         "EmitterDurationLow": 1.0,
+         "SpawnRate": {
+          "Distribution": null,
+          "LookupTable": [
+           20.0
+          ]
+         },
+         "RandomImageTime": 1.0
+        }
+       },
+       "TypeDataModule": {
+        "object": "FX_Pickups_p.FX.Shard_FX.ParticleModuleTypeDataMesh_10656",
+        "class": "ParticleModuleTypeDataMesh",
+        "props": {
+         "Mesh": "FX_Mesh_p.Mesh.PROP_Shard02_STAT"
+        }
+       },
+       "mesh": "FX_Mesh_p.Mesh.PROP_Shard02_STAT",
+       "native_tail_bytes": 669,
+       "parameter_blob": {
+        "size": 48,
+        "names": [
+         "Color"
+        ],
+        "status": "decoded"
+       },
+       "compiled_modules": [
+        {
+         "index": 0,
+         "module": "PMI_Lifetime",
+         "module_id": 1,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          1
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "distributions": [
+          {
+           "property": "Lifetime",
+           "property_candidates": null,
+           "kind": "float constant",
+           "op": 1,
+           "values": [
+            0.0
+           ],
+           "confidence": "CONFIRMED"
+          }
+         ]
+        },
+        {
+         "index": 1,
+         "module": "PMI_ColorByParameter",
+         "module_id": 3,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          0
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 8,
+         "fields": {
+          "ColorParam": "Color",
+          "DefaultColor": {
+           "A": 255,
+           "R": 255,
+           "G": 140,
+           "B": 53
+          }
+         },
+         "fields_source": {
+          "ColorParam": "compiled",
+          "DefaultColor": "compiled"
+         },
+         "distributions": []
+        },
+        {
+         "index": 2,
+         "module": "PMI_MeshRotation",
+         "module_id": 10,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          0
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "fields": {
+          "bInheritParent": false
+         },
+         "fields_source": {
+          "bInheritParent": "compiled"
+         },
+         "distributions": [
+          {
+           "property": "StartRotation",
+           "property_candidates": null,
+           "kind": "vector constant",
+           "op": 1,
+           "values": [
+            0.0,
+            0.01,
+            0.0
+           ],
+           "confidence": "CONFIRMED"
+          }
+         ]
+        },
+        {
+         "index": 3,
+         "module": "PMI_MeshRotationRate",
+         "module_id": 11,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          0
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 12,
+         "distributions": [
+          {
+           "property": "StartRotationRate",
+           "property_candidates": null,
+           "kind": "vector uniform",
+           "op": 2,
+           "values": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+           ],
+           "confidence": "CONFIRMED"
+          }
+         ]
+        },
+        {
+         "index": 4,
+         "module": "PMI_ColorScaleOverLife",
+         "module_id": 5,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          1
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "fields": {
+          "bEmitterTime": false
+         },
+         "fields_source": {
+          "bEmitterTime": "compiled"
+         },
+         "distributions": [
+          {
+           "property": "AlphaScaleOverLife",
+           "property_candidates": null,
+           "kind": "float constant curve",
+           "op": 1,
+           "values": [
+            0.0,
+            2.0,
+            0.0,
+            20.0,
+            2.0,
+            1.848106,
+            1.645755,
+            1.408335,
+            1.151232,
+            0.889836,
+            0.639532,
+            0.415709,
+            0.233754,
+            0.109054,
+            0.056998,
+            0.046812,
+            0.037495,
+            0.029097,
+            0.021663,
+            0.015242,
+            0.009882,
+            0.00563,
+            0.002534,
+            0.000641,
+            0.0
+           ],
+           "confidence": "CONFIRMED"
+          },
+          {
+           "property": "ColorScaleOverLife",
+           "property_candidates": null,
+           "kind": "vector constant curve",
+           "op": 1,
+           "values": [
+            1.5,
+            1.5,
+            0.0,
+            0.0,
+            1.5,
+            1.5,
+            1.5,
+            1.5,
+            1.5,
+            1.5
+           ],
+           "confidence": "CONFIRMED"
+          }
+         ]
+        },
+        {
+         "index": 5,
+         "module": "PMI_Size",
+         "module_id": 6,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          1
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "distributions": [
+          {
+           "property": "StartSize",
+           "property_candidates": null,
+           "kind": "vector constant",
+           "op": 1,
+           "values": [
+            0.1,
+            0.1,
+            0.1
+           ],
+           "confidence": "CONFIRMED"
+          }
+         ]
+        },
+        {
+         "index": 6,
+         "module": "PMI_Velocity",
+         "module_id": 23,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          1
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "distributions": [
+          {
+           "property": "StartVelocityRadial",
+           "property_candidates": null,
+           "kind": "float constant",
+           "op": 1,
+           "values": [
+            0.0
+           ],
+           "confidence": "CONFIRMED"
+          },
+          {
+           "property": "StartVelocity",
+           "property_candidates": null,
+           "kind": "vector constant",
+           "op": 1,
+           "values": [
+            0.0,
+            0.0,
+            0.0
+           ],
+           "confidence": "CONFIRMED"
+          }
+         ]
+        },
+        {
+         "index": 7,
+         "module": "PMI_AttractorParticle",
+         "module_id": 0,
+         "module_enum": "PMI_Unknown",
+         "module_object": "FX_Pickups_p.FX.Shard_FX.ParticleModuleAttractorParticle_10210",
+         "module_class": "ParticleModuleAttractorParticle",
+         "module_properties (authored, defaults filled)": {
+          "EmitterName": "Shard",
+          "Range": {
+           "Distribution": null,
+           "Type": 1,
+           "Op": 1,
+           "LookupTableNumElements": 1,
+           "LookupTableChunkSize": 1,
+           "LookupTable": [
+            5000.0
+           ]
+          },
+          "bAffectBaseVelocity": true,
+          "bRenewSource": true,
+          "Strength": {
+           "Distribution": null,
+           "Type": 1,
+           "Op": 1,
+           "LookupTableNumElements": 1,
+           "LookupTableChunkSize": 1,
+           "LookupTable": [
+            50.0
+           ]
+          },
+          "SelectionMethod": "EAPSM_Sequential",
+          "LastSelIndex": 1,
+          "bStrengthByDistance": true,
+          "bSpawnModule": true,
+          "bUpdateModule": true,
+          "bEnabled": true
+         },
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          0
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 16,
+         "distributions": []
+        },
+        {
+         "index": 8,
+         "module": "PMI_LocationPrimitiveSphere",
+         "module_id": 22,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          1
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "fields": {
+          "Positive_X": true,
+          "Positive_Y": true,
+          "Positive_Z": true,
+          "Negative_X": true,
+          "Negative_Y": true,
+          "Negative_Z": true,
+          "SurfaceOnly": false,
+          "Velocity": false
+         },
+         "fields_source": {
+          "Positive_X": "compiled",
+          "Positive_Y": "compiled",
+          "Positive_Z": "compiled",
+          "Negative_X": "compiled",
+          "Negative_Y": "compiled",
+          "Negative_Z": "compiled",
+          "SurfaceOnly": "compiled",
+          "Velocity": "compiled"
+         },
+         "distributions": [
+          {
+           "property": "VelocityScale",
+           "property_candidates": null,
+           "kind": "float constant",
+           "op": 1,
+           "values": [
+            1.0
+           ],
+           "confidence": "CONFIRMED"
+          },
+          {
+           "property": "StartRadius",
+           "property_candidates": null,
+           "kind": "float constant",
+           "op": 1,
+           "values": [
+            75.0
+           ],
+           "confidence": "CONFIRMED"
+          },
+          {
+           "property": "StartLocation",
+           "property_candidates": null,
+           "kind": "vector constant",
+           "op": 1,
+           "values": [
+            0.0,
+            0.0,
+            0.0
+           ],
+           "confidence": "CONFIRMED"
+          }
+         ]
+        },
+        {
+         "index": 9,
+         "module": "PMI_AttractorPoint",
+         "module_id": 0,
+         "module_enum": "PMI_Unknown",
+         "module_object": "FX_Pickups_p.FX.Shard_FX.ParticleModuleAttractorPoint_7329",
+         "module_class": "ParticleModuleAttractorPoint",
+         "module_properties (authored, defaults filled)": {
+          "Position": {
+           "Distribution": null,
+           "Type": 8,
+           "Op": 1,
+           "LookupTableNumElements": 1,
+           "LookupTableChunkSize": 3,
+           "LookupTable": [
+            -1.0211961269378662,
+            1.0074810981750488,
+            -0.0019023026106879115,
+            19.289905548095703,
+            -0.9859822988510132,
+            -0.0070427353493869305,
+            0.9998111128807068,
+            -0.9477112293243408,
+            -0.3947005867958069,
+            0.9359405040740967,
+            -0.8244993686676025,
+            -0.9529803991317749,
+            0.7742148041725159,
+            -0.5795015096664429,
+            -0.8833774924278259,
+            0.5296182632446289,
+            -0.21567721664905548,
+            -0.33249014616012573,
+            0.19496263563632965,
+            0.12456835061311722,
+            0.17537476122379303,
+            -0.13481111824512482,
+            0.4474520683288574,
+            0.6894855499267578,
+            -0.46972179412841797,
+            0.7197312116622925,
+            0.9950088858604431,
+            -0.750882625579834,
+            0.8930029273033142,
+            0.7964441776275635,
+            -0.9115735292434692,
+            0.9877501130104065,
+            0.2896362245082855,
+            -0.9841699004173279,
+            1.0045371055603027,
+            -0.18782128393650055,
+            -0.9887413382530212,
+            0.9420719146728516,
+            -0.7252711057662964,
+            -0.9244763255119324,
+            0.7869117259979248,
+            -1.0118862390518188,
+            -0.7727078199386597,
+            0.43846145272254944,
+            -0.5715562701225281,
+            -0.40702030062675476,
+            -0.00821851845830679,
+            -0.002269195858389139,
+            -0.004050982650369406,
+            -0.33682265877723694,
+            0.3951031565666199,
+            0.29232269525527954,
+            -0.623641312122345,
+            0.8655517101287842,
+            0.6079331040382385,
+            -0.811825156211853,
+            0.9490999579429626,
+            0.8107348084449768,
+            -0.9129687547683716,
+            0.6236780285835266,
+            0.9176347255706787,
+            -0.9688262343406677,
+            0.2020794153213501,
+            0.9791979789733887,
+            -0.9859821200370789,
+            -0.0070427353493869305,
+            0.9989381432533264
+           ]
+          },
+          "Range": {
+           "Distribution": null,
+           "Type": 1,
+           "Op": 1,
+           "LookupTableNumElements": 1,
+           "LookupTableChunkSize": 1,
+           "LookupTable": [
+            5000.0
+           ]
+          },
+          "Strength": {
+           "Distribution": null,
+           "Type": 1,
+           "Op": 1,
+           "LookupTableNumElements": 1,
+           "LookupTableChunkSize": 1,
+           "LookupTable": [
+            100.0
+           ]
+          },
+          "StrengthByDistance": false,
+          "bAffectBaseVelocity": true,
+          "bOverrideVelocity": true,
+          "bUpdateModule": true,
+          "bEnabled": true
+         },
+         "in_list_after_records": false,
+         "raw_flags": [
+          1,
+          0
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "distributions": []
+        },
+        {
+         "index": 10,
+         "module": "PMI_MeshRotationRate",
+         "module_id": 11,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          0
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "distributions": [
+          {
+           "property": "StartRotationRate",
+           "property_candidates": null,
+           "kind": "vector uniform",
+           "op": 2,
+           "values": [
+            -0.1,
+            -0.1,
+            -0.1,
+            0.1,
+            0.1,
+            0.1
+           ],
+           "confidence": "CONFIRMED"
+          }
+         ]
+        }
+       ],
+       "assignment_complete": true,
+       "raw_unparsed_hex": {
+        "between_lists_and_groups": "00 00 00 03 04 07 09 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 30 00 00 00 00 ff ff 8c 35 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00 01 00 00 00 01 00 00 00 01 00 00 00 01 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 01 00 00 05 aa 00 00 00 00",
+        "trailing": "00 c0 00 00"
+       }
+      },
+      {
+       "lod": "FX_Pickups_p.FX.Shard_FX.ParticleSpriteEmitter_1037.ParticleLODLevel_2431",
+       "level": 1,
+       "props": {
+        "Level": 1,
+        "LevelSetting": 100,
+        "PeakActiveParticles": 1
+       },
+       "RequiredModule": {
+        "object": "FX_Pickups_p.FX.Shard_FX.ParticleModuleRequired_14673",
+        "class": "ParticleModuleRequired",
+        "props": {
+         "Material": "FX_Materials_p.MatInst.PROP_Shard_MATINST",
+         "bUseLocalSpace": true,
+         "bKillOnDeactivate": true,
+         "bKillOnCompleted": true,
+         "bEmitterDurationUseRange": true,
+         "EmitterDurationLow": 1.0,
+         "SpawnRate": {
+          "Distribution": null,
+          "LookupTable": [
+           4.0
+          ]
+         },
+         "RandomImageTime": 1.0
+        }
+       },
+       "TypeDataModule": {
+        "object": "FX_Pickups_p.FX.Shard_FX.ParticleModuleTypeDataMesh_13229",
+        "class": "ParticleModuleTypeDataMesh",
+        "props": {
+         "Mesh": "FX_Mesh_p.Mesh.PROP_Shard02_STAT"
+        }
+       },
+       "mesh": "FX_Mesh_p.Mesh.PROP_Shard02_STAT",
+       "native_tail_bytes": 669,
+       "parameter_blob": {
+        "size": 48,
+        "names": [
+         "Color"
+        ],
+        "status": "decoded"
+       },
+       "compiled_modules": [
+        {
+         "index": 0,
+         "module": "PMI_Lifetime",
+         "module_id": 1,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          1
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "distributions": [
+          {
+           "property": "Lifetime",
+           "property_candidates": null,
+           "kind": "float constant",
+           "op": 1,
+           "values": [
+            0.0
+           ],
+           "confidence": "CONFIRMED"
+          }
+         ]
+        },
+        {
+         "index": 1,
+         "module": "PMI_ColorByParameter",
+         "module_id": 3,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          0
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 8,
+         "fields": {
+          "ColorParam": "Color",
+          "DefaultColor": {
+           "A": 255,
+           "R": 255,
+           "G": 140,
+           "B": 53
+          }
+         },
+         "fields_source": {
+          "ColorParam": "compiled",
+          "DefaultColor": "compiled"
+         },
+         "distributions": []
+        },
+        {
+         "index": 2,
+         "module": "PMI_MeshRotation",
+         "module_id": 10,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          0
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "fields": {
+          "bInheritParent": false
+         },
+         "fields_source": {
+          "bInheritParent": "compiled"
+         },
+         "distributions": [
+          {
+           "property": "StartRotation",
+           "property_candidates": null,
+           "kind": "vector constant",
+           "op": 1,
+           "values": [
+            0.0,
+            0.01,
+            0.0
+           ],
+           "confidence": "CONFIRMED"
+          }
+         ]
+        },
+        {
+         "index": 3,
+         "module": "PMI_MeshRotationRate",
+         "module_id": 11,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          0
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 12,
+         "distributions": [
+          {
+           "property": "StartRotationRate",
+           "property_candidates": null,
+           "kind": "vector uniform",
+           "op": 2,
+           "values": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+           ],
+           "confidence": "CONFIRMED"
+          }
+         ]
+        },
+        {
+         "index": 4,
+         "module": "PMI_ColorScaleOverLife",
+         "module_id": 5,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          1
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "fields": {
+          "bEmitterTime": false
+         },
+         "fields_source": {
+          "bEmitterTime": "compiled"
+         },
+         "distributions": [
+          {
+           "property": "AlphaScaleOverLife",
+           "property_candidates": null,
+           "kind": "float constant curve",
+           "op": 1,
+           "values": [
+            0.0,
+            2.0,
+            0.0,
+            20.0,
+            2.0,
+            1.945596,
+            1.797928,
+            1.580312,
+            1.316063,
+            1.028499,
+            0.740935,
+            0.476687,
+            0.25907,
+            0.111402,
+            0.056998,
+            0.055402,
+            0.05107,
+            0.044687,
+            0.036935,
+            0.028499,
+            0.020063,
+            0.012312,
+            0.005928,
+            0.001596,
+            0.0
+           ],
+           "confidence": "CONFIRMED"
+          },
+          {
+           "property": "ColorScaleOverLife",
+           "property_candidates": null,
+           "kind": "vector constant curve",
+           "op": 1,
+           "values": [
+            1.5,
+            1.5,
+            0.0,
+            0.0,
+            1.5,
+            1.5,
+            1.5,
+            1.5,
+            1.5,
+            1.5
+           ],
+           "confidence": "CONFIRMED"
+          }
+         ]
+        },
+        {
+         "index": 5,
+         "module": "PMI_Size",
+         "module_id": 6,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          1
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "distributions": [
+          {
+           "property": "StartSize",
+           "property_candidates": null,
+           "kind": "vector constant",
+           "op": 1,
+           "values": [
+            0.1,
+            0.1,
+            0.1
+           ],
+           "confidence": "CONFIRMED"
+          }
+         ]
+        },
+        {
+         "index": 6,
+         "module": "PMI_Velocity",
+         "module_id": 23,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          1
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "distributions": [
+          {
+           "property": "StartVelocityRadial",
+           "property_candidates": null,
+           "kind": "float constant",
+           "op": 1,
+           "values": [
+            0.0
+           ],
+           "confidence": "CONFIRMED"
+          },
+          {
+           "property": "StartVelocity",
+           "property_candidates": null,
+           "kind": "vector constant",
+           "op": 1,
+           "values": [
+            0.0,
+            0.0,
+            0.0
+           ],
+           "confidence": "CONFIRMED"
+          }
+         ]
+        },
+        {
+         "index": 7,
+         "module": "PMI_AttractorParticle",
+         "module_id": 0,
+         "module_enum": "PMI_Unknown",
+         "module_object": "FX_Pickups_p.FX.Shard_FX.ParticleModuleAttractorParticle_7267",
+         "module_class": "ParticleModuleAttractorParticle",
+         "module_properties (authored, defaults filled)": {
+          "EmitterName": "Shard",
+          "Range": {
+           "Distribution": null,
+           "Type": 1,
+           "Op": 1,
+           "LookupTableNumElements": 1,
+           "LookupTableChunkSize": 1,
+           "LookupTable": [
+            5000.0
+           ]
+          },
+          "bAffectBaseVelocity": true,
+          "bRenewSource": true,
+          "Strength": {
+           "Distribution": null,
+           "Type": 1,
+           "Op": 1,
+           "LookupTableNumElements": 1,
+           "LookupTableChunkSize": 1,
+           "LookupTable": [
+            50.0
+           ]
+          },
+          "SelectionMethod": "EAPSM_Sequential",
+          "bStrengthByDistance": true,
+          "bSpawnModule": true,
+          "bUpdateModule": true,
+          "bEnabled": true
+         },
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          0
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 16,
+         "distributions": []
+        },
+        {
+         "index": 8,
+         "module": "PMI_LocationPrimitiveSphere",
+         "module_id": 22,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          1
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "fields": {
+          "Positive_X": true,
+          "Positive_Y": true,
+          "Positive_Z": true,
+          "Negative_X": true,
+          "Negative_Y": true,
+          "Negative_Z": true,
+          "SurfaceOnly": false,
+          "Velocity": false
+         },
+         "fields_source": {
+          "Positive_X": "compiled",
+          "Positive_Y": "compiled",
+          "Positive_Z": "compiled",
+          "Negative_X": "compiled",
+          "Negative_Y": "compiled",
+          "Negative_Z": "compiled",
+          "SurfaceOnly": "compiled",
+          "Velocity": "compiled"
+         },
+         "distributions": [
+          {
+           "property": "VelocityScale",
+           "property_candidates": null,
+           "kind": "float constant",
+           "op": 1,
+           "values": [
+            1.0
+           ],
+           "confidence": "CONFIRMED"
+          },
+          {
+           "property": "StartRadius",
+           "property_candidates": null,
+           "kind": "float constant",
+           "op": 1,
+           "values": [
+            75.0
+           ],
+           "confidence": "CONFIRMED"
+          },
+          {
+           "property": "StartLocation",
+           "property_candidates": null,
+           "kind": "vector constant",
+           "op": 1,
+           "values": [
+            0.0,
+            0.0,
+            0.0
+           ],
+           "confidence": "CONFIRMED"
+          }
+         ]
+        },
+        {
+         "index": 9,
+         "module": "PMI_AttractorPoint",
+         "module_id": 0,
+         "module_enum": "PMI_Unknown",
+         "module_object": "FX_Pickups_p.FX.Shard_FX.ParticleModuleAttractorPoint_10173",
+         "module_class": "ParticleModuleAttractorPoint",
+         "module_properties (authored, defaults filled)": {
+          "Position": {
+           "Distribution": null,
+           "Type": 8,
+           "Op": 1,
+           "LookupTableNumElements": 1,
+           "LookupTableChunkSize": 3,
+           "LookupTable": [
+            -1.0211961269378662,
+            1.0071107149124146,
+            -0.0019023026106879115,
+            19.289905548095703,
+            -0.9859822988510132,
+            -0.0070427353493869305,
+            0.9998111128807068,
+            -0.8881756067276001,
+            -0.43383604288101196,
+            0.8724740147590637,
+            -0.7903689742088318,
+            -0.8606293201446533,
+            0.7451369166374207,
+            -0.5418489575386047,
+            -0.736259937286377,
+            0.49852198362350464,
+            -0.2024306058883667,
+            -0.2794727087020874,
+            0.17996811866760254,
+            0.11898329108953476,
+            0.153472438454628,
+            -0.13231626152992249,
+            0.41379186511039734,
+            0.5511858463287354,
+            -0.4353363513946533,
+            0.7086001634597778,
+            0.9488989114761353,
+            -0.7383561730384827,
+            0.8377277851104736,
+            0.6475988626480103,
+            -0.853222131729126,
+            0.9423919320106506,
+            0.24308639764785767,
+            -0.9403064250946045,
+            0.9713693261146545,
+            -0.16643644869327545,
+            -0.9582341909408569,
+            0.8777204155921936,
+            -0.5840766429901123,
+            -0.864115834236145,
+            0.7840713858604431,
+            -1.001717448234558,
+            -0.7699974179267883,
+            0.3909202814102173,
+            -0.5096337199211121,
+            -0.38888537883758545,
+            -0.00707103731110692,
+            0.0021643531508743763,
+            -0.0028792223893105984,
+            -0.29433202743530273,
+            0.3762023150920868,
+            0.287168025970459,
+            -0.5815930366516113,
+            0.7502402663230896,
+            0.577215313911438,
+            -0.7857622504234314,
+            0.8728307485580444,
+            0.7848613262176514,
+            -0.8525022268295288,
+            0.5795394778251648,
+            0.8562203049659729,
+            -0.9192422032356262,
+            0.28624820709228516,
+            0.9275792837142944,
+            -0.9859821200370789,
+            -0.0070427353493869305,
+            0.9989381432533264
+           ]
+          },
+          "Range": {
+           "Distribution": null,
+           "Type": 1,
+           "Op": 1,
+           "LookupTableNumElements": 1,
+           "LookupTableChunkSize": 1,
+           "LookupTable": [
+            5000.0
+           ]
+          },
+          "Strength": {
+           "Distribution": null,
+           "Type": 1,
+           "Op": 1,
+           "LookupTableNumElements": 1,
+           "LookupTableChunkSize": 1,
+           "LookupTable": [
+            100.0
+           ]
+          },
+          "StrengthByDistance": false,
+          "bAffectBaseVelocity": true,
+          "bOverrideVelocity": true,
+          "bUpdateModule": true,
+          "bEnabled": true
+         },
+         "in_list_after_records": false,
+         "raw_flags": [
+          1,
+          0
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "distributions": []
+        },
+        {
+         "index": 10,
+         "module": "PMI_MeshRotationRate",
+         "module_id": 11,
+         "in_list_after_records": true,
+         "raw_flags": [
+          1,
+          0
+         ],
+         "enabled (flagA; HIGH - particle_flag_census.json)": true,
+         "payload_offset": 0,
+         "distributions": [
+          {
+           "property": "StartRotationRate",
+           "property_candidates": null,
+           "kind": "vector uniform",
+           "op": 2,
+           "values": [
+            -0.1,
+            -0.1,
+            -0.1,
+            0.1,
+            0.1,
+            0.1
+           ],
+           "confidence": "CONFIRMED"
+          }
+         ]
+        }
+       ],
+       "assignment_complete": true,
+       "raw_unparsed_hex": {
+        "between_lists_and_groups": "00 00 00 03 04 07 09 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 30 00 00 00 00 ff ff 8c 35 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00 01 00 00 00 01 00 00 00 01 00 00 00 01 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 01 00 00 05 aa 00 00 00 00",
+        "trailing": "00 c0 00 00"
+       }
+      }
+     ]
+    }
+   ],
+   "provenance": "tagged props (ParticleSystem / Emitter / LOD / RequiredModule / TypeData): CONFIRMED AUTHORED DATA; compiled modules: ModuleId from the cooked EParticleModuleId enum + distributions assigned by pstream.assign (module order; per-class property order) - CONFIRMED where \"complete\" is true",
+   "materials": {
+    "FX_Materials_p.Materials.Glow_Mod_Depth_MAT": {
+     "material": "FX_Materials_p.Materials.Glow_Mod_Depth_MAT",
+     "class": "Material",
+     "BlendMode": "BLEND_Modulate",
+     "LightingModel": "MLM_Unlit",
+     "TwoSided": true,
+     "bUsedWithParticleSprites": true,
+     "bUsedWithBeamTrails": true,
+     "textures": [
+      "FX_Textures_p.Textures.Spot_CLR"
+     ],
+     "parameters": [
+      {
+       "class": "MaterialExpressionScalarParameter",
+       "name": "IntersectGlowScale",
+       "default": 3000.0
+      },
+      {
+       "class": "MaterialExpressionScalarParameter",
+       "name": "DepthBiasScale",
+       "default": 300.0
+      }
+     ]
+    },
+    "FX_Materials_p.MatInst.PROP_Shard_MATINST": {
+     "material": "FX_Materials_p.MatInst.PROP_Shard_MATINST",
+     "class": "MaterialInstanceConstant",
+     "parent": "PROP_NEU_EnergonCube_p.PROP_NEU_EnergonCube_MAT",
+     "ScalarParameterValues": [
+      {
+       "ParameterName": "Frame_Opacity",
+       "ParameterValue": 1.0,
+       "ExpressionGUID": {
+        "A": 3780318615,
+        "B": 1119667392,
+        "C": 882117557,
+        "D": 2603885237
+       }
+      }
+     ],
+     "VectorParameterValues": [
+      {
+       "ParameterName": "Core_Color_Intensity",
+       "ParameterValue": {
+        "R": 0.0,
+        "G": 0.0,
+        "B": 0.0,
+        "A": 15.0
+       },
+       "ExpressionGUID": {
+        "A": 46532232,
+        "B": 1305252667,
+        "C": 1851126172,
+        "D": 1184833839
+       }
+      },
+      {
+       "ParameterName": "Sides_Color_Intensity",
+       "ParameterValue": {
+        "R": 0.5668100118637085,
+        "G": 0.19397200644016266,
+        "B": 0.0029319999739527702,
+        "A": 1.0
+       },
+       "ExpressionGUID": {
+        "A": 2122202236,
+        "B": 1210584765,
+        "C": 1768397478,
+        "D": 253863287
+       }
+      }
+     ],
+     "parent_summary": {
+      "material": "PROP_NEU_EnergonCube_p.PROP_NEU_EnergonCube_MAT",
+      "class": "Material",
+      "BlendMode": "BLEND_Additive",
+      "LightingModel": "MLM_Unlit",
+      "textures": [
+       "PROP_NEU_EnergonCube_p.PROP_NEU_EnergonCube_MASK",
+       "TR_AllShader_p.Textures.PistonChamber_EMISS"
+      ],
+      "parameters": [
+       {
+        "class": "MaterialExpressionScalarParameter",
+        "name": "Frame_Opacity",
+        "default": 0.8999999761581421
+       },
+       {
+        "class": "MaterialExpressionScalarParameter",
+        "name": "Core_Opacity",
+        "default": 0.800000011920929
+       },
+       {
+        "class": "MaterialExpressionScalarParameter",
+        "name": "EmissivePanner_DarknessOffset",
+        "default": 0.699999988079071
+       },
+       {
+        "class": "MaterialExpressionScalarParameter",
+        "name": "Sides_Opacity",
+        "default": 0.800000011920929
+       },
+       {
+        "class": "MaterialExpressionScalarParameter",
+        "name": "Emissive_Pan2_Speed",
+        "default": 1.0
+       },
+       {
+        "class": "MaterialExpressionScalarParameter",
+        "name": "Emissive_Pan1_Speed",
+        "default": -1.0
+       },
+       {
+        "class": "MaterialExpressionVectorParameter",
+        "name": "Core_Color_Intensity",
+        "default": {
+         "R": 1.0,
+         "G": 0.34402599930763245,
+         "B": 1.0,
+         "A": 15.0
+        }
+       },
+       {
+        "class": "MaterialExpressionVectorParameter",
+        "name": "Sides_Color_Intensity",
+        "default": {
+         "R": 1.0,
+         "G": 0.34402599930763245,
+         "B": 1.0,
+         "A": 1.0
+        }
+       },
+       {
+        "class": "MaterialExpressionVectorParameter",
+        "name": "Frame_Color_Intensity",
+        "default": {
+         "R": 0.0,
+         "G": 0.5,
+         "B": 1.0,
+         "A": 2.0
+        }
+       }
+      ]
+     }
+    }
+   },
+   "distribution_layout": {
+    "constant (types 1/7)": "values = the value (1 float / 3 floats)",
+    "uniform (types 3/9)": "values = two endpoints A then B (1 or 3 floats each); per-particle value = lerp(A, B, random). Endpoint order is as stored; uniform sampling makes it irrelevant",
+    "constant curve (types 2/8)": "values[0:2] = output range min/max, values[2] = start time, values[3] = time scale (samples per unit time); then N samples of 1 (float) or 3 (vector) floats, sample i at t = start + i / time_scale, linear between samples (UE3 FRawDistribution baking)",
+    "uniform curve (types 4/10)": "same header; each sample holds two endpoints (2 or 6 floats)",
+    "op": "1 = constant/curve, 2 = random between endpoints (UE3 ERawDistributionOperation)",
+    "Lifetime 0": "UE3: particle lives until killed by the emitter (no expiry)",
+    "provenance": "header/sample layout from the Systems lodscan notes, consistent with every decoded table (sample count = time_scale + 1 for 0..1 curves)"
+   },
+   "cooked_in_streets": []
+  }
+ },
+ "mesh": "none: neither class authors a StaticMesh / SkeletalMesh component; the drop is drawn by its particle system"
+}
