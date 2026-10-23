@@ -15,8 +15,9 @@ from collections import OrderedDict as OD
 sys.dont_write_bytecode = False
 HERE = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.abspath(os.path.join(HERE, '..', '..'))
 sys.path.insert(0, os.path.join(ROOT, 'scripts', 'wfc'))
-OUT = os.path.join(ROOT, 'out', 'escalation_characters')
-ROSTER = json.load(open(os.path.join(HERE, '..', 'escalation_roster', 'roster.json'), encoding='utf-8'))
+# opt-in (campaign characters, 2026-10-23): WFC_CHAR_OUT / WFC_ROSTER_JSON redirect the output root / roster; unset = Escalation as before
+OUT = os.environ.get('WFC_CHAR_OUT') or os.path.join(ROOT, 'out', 'escalation_characters')
+ROSTER = json.load(open(os.environ.get('WFC_ROSTER_JSON') or os.path.join(HERE, '..', 'escalation_roster', 'roster.json'), encoding='utf-8'))
 
 WEAPONS = ['TransContent.TnWeaponCeremonialStaffHolo', 'TransContent.TnWeaponBombingRunVehicle', 'TransContent.TnWeaponHeavyMGAIHover',
            'TransContent.TnWeaponPlaneStrafingRun', 'TransContent.TnWeaponTankCannonHeavy',
@@ -64,7 +65,7 @@ def weapon_record(cls):
 
 def character_entry(tpl):
     import mp_roster as M, authored as A
-    t = next(x for x in ROSTER['templates'] if x['template'].split('.')[-1] == tpl)
+    t = next(x for x in ROSTER['templates'] if x['template'] == tpl or x['template'].split('.')[-1] == tpl)   # full opath or bare name
     robo = t['chassis']; veh = t['vehicle_form']
     robot = M.form_record(robo, 'SkelMesh', 'robot')
     vehicle = M.form_record(veh, 'SkeletalMesh', 'vehicle') if veh else None
@@ -79,7 +80,7 @@ def character_entry(tpl):
             r = M.animset(a)
             for seq in (r.get('by_category') or {}).get('transform', []):
                 if seq.startswith('Transform_To'): trans[key].append({'clip': seq, 'anim_set': a, 'gltf': r.get('gltf_anim')})
-    fac = 'Autobot' if '_Autobot' in tpl or 'Aut_' in tpl else 'Decepticon'
+    fac = 'Autobot' if '_Autobot' in tpl or 'Aut_' in tpl else ('Neutral' if '_Neutral' in tpl or 'NeutraD' in tpl else 'Decepticon')
     return OD([('re_identity', {'UniqueIconicId': tpl}), ('display', {'iconic': {'INT': tpl}}), ('faction', fac),
                ('class', None), ('availability', 'Escalation horde (AI only)'), ('mp_status', 'Escalation AI template (not a player chassis)'),
                ('locks', None), ('robot', robot), ('vehicle', vehicle), ('animation_compat', compat), ('transform_clips', trans),
@@ -97,7 +98,7 @@ def main():
         print(pid, json.dumps(m['validation'])[:300])
     elif mode == 'character':
         import vs_roster_export as R
-        cid = arg.replace('_AICD', '')
+        cid = os.environ.get('WFC_CHAR_ID') or arg.split('.')[-1].replace('_AICD', '')
         # AnimSets that ExtractedAssets holds only as raw .psa were converted into AssetTools/out/campaign_anims (campaign_anim_gaps.py,
         # same conventions); fall back to that copy when the content glTF is absent (path relative to the exporter's ROOT)
         orig_set_gltf = R.set_gltf
