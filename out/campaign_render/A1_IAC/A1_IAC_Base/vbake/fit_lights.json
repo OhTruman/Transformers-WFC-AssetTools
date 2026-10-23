@@ -1,0 +1,1625 @@
+{
+ "map": "A1_IAC_Intr1_Art_m",
+ "generated_by": "tools/systems/vbake/vbake_lights_fit.py",
+ "samples": 81621,
+ "trace": {
+  "stride": 4,
+  "sky_rays": 64,
+  "light_range": 1.5
+ },
+ "conventions": "lightmap decode as fit.json (sRGB-decoded page x the component scale vector, HL2 basis, tangent y sign from fit.json); distances in metres; light colour = sRGB-decoded LightColor x Brightness (as sun_linear); a coefficient share = scale x b x col x F(d) x cone^2 (spots) x V x max(B_i . L_t, 0)^p (p from fit.json)",
+ "sun": {
+  "k": 0.6850246479163437,
+  "p": 1.0,
+  "tangent_y_sign": 1.0,
+  "from_fit_json": true
+ },
+ "sky": {
+  "color_linear": [
+   0.07223317040079917,
+   0.07606806108870429,
+   0.056268125413731225
+  ],
+  "definition": "coefficient i share = color_linear x S_i, S_i = (1/pi) integral over the visible sky (above the horizon, unoccluded) of max(B_i . w, 0) dw",
+  "open_sky_samples": 1530
+ },
+ "point": {
+  "scale": 0.997901874622148,
+  "falloff": "ue3",
+  "exp": "per light FalloffExponent",
+  "range_clamp": null,
+  "fit_q": 2.702099087781904,
+  "n_texels": 15575
+ },
+ "spot": {
+  "scale": 0.7878814830400911,
+  "falloff": "ue3",
+  "exp": "per light FalloffExponent",
+  "range_clamp": null,
+  "cone": "UE3: saturate((cos - cos O) / (cos I - cos O))^2",
+  "fit_q": 2.702099087781904,
+  "n_texels": 1562
+ },
+ "falloff_forms": {
+  "ue3": {
+   "sky": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "s_point": 0.997901874622148,
+   "s_spot": 0.7878814830400911,
+   "median_ratio_spread": 2.702099087781904,
+   "lights_with_ratio": 105,
+   "sky_samples": 815,
+   "mean_share": {
+    "sky": 0.0,
+    "local": 0.20166139591821136,
+    "local_on_lit_set": 0.6320357520844339,
+    "ambient": 0.0
+   }
+  },
+  "invsq": {
+   "sky": [
+    0.10896523558212519,
+    0.08112672515280389,
+    0.04263295062220734
+   ],
+   "s_point": 539.2191650944364,
+   "s_spot": 1966.0541715999034,
+   "median_ratio_spread": 2.983635581393065,
+   "lights_with_ratio": 96,
+   "sky_samples": 1145,
+   "mean_share": {
+    "sky": 0.0034630600049849482,
+    "local": 2.462103247661702,
+    "local_on_lit_set": 7.716584876148135,
+    "ambient": 0.0
+   }
+  },
+  "invsq_w": {
+   "sky": [
+    0.10544899170564132,
+    0.07605844597878193,
+    0.03447740256318502
+   ],
+   "s_point": 1511.8641240087038,
+   "s_spot": 1241.35113825893,
+   "median_ratio_spread": 3.2001552255936705,
+   "lights_with_ratio": 96,
+   "sky_samples": 1186,
+   "mean_share": {
+    "sky": 0.0032591701161736823,
+    "local": 6.014778775761393,
+    "local_on_lit_set": 18.851179770180973,
+    "ambient": 0.0
+   }
+  },
+  "ue3_e1": {
+   "sky": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "s_point": 0.585015301842865,
+   "s_spot": 0.7815923053596463,
+   "median_ratio_spread": 2.9094534129299996,
+   "lights_with_ratio": 92,
+   "sky_samples": 770,
+   "mean_share": {
+    "sky": 0.0,
+    "local": 0.24433782655864916,
+    "local_on_lit_set": 0.7657898095394751,
+    "ambient": 0.0
+   }
+  },
+  "linear": {
+   "sky": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "s_point": 0.8501583680340193,
+   "s_spot": 0.8875321701276301,
+   "median_ratio_spread": 2.8624077160910146,
+   "lights_with_ratio": 93,
+   "sky_samples": 782,
+   "mean_share": {
+    "sky": 0.0,
+    "local": 0.23858735656733687,
+    "local_on_lit_set": 0.7477670114265825,
+    "ambient": 0.0
+   }
+  },
+  "const": {
+   "sky": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "s_point": 0.5295805415802746,
+   "s_spot": 0.9430329988045826,
+   "median_ratio_spread": 2.7985260215394074,
+   "lights_with_ratio": 86,
+   "sky_samples": 760,
+   "mean_share": {
+    "sky": 0.0,
+    "local": 0.4057794255018625,
+    "local_on_lit_set": 1.271770946589478,
+    "ambient": 0.0
+   }
+  }
+ },
+ "fit_q_definition": "median over lights of the spread (q75 - q25) / q50 of the per-texel ratio (lightmap - sky) / unit term on texels where that light gives >= 80 % of the local light: a falloff that matches the bake keeps the ratio flat over distance and angle; lower is better",
+ "estimator": "scale = median over lights of each light's q25 ratio (the lower envelope: the bake's bounce only adds); sky = q25 of lightmap / sky integral per channel on texels no local light reaches (< 2 %) with S > 0.1",
+ "overrides": {
+  "PointLight_1255_LC": {
+   "scale": 2.032889168039301,
+   "ratio_to_class": 2.037163392251415,
+   "n_texels": 32,
+   "spread": 1.369991056594266
+  },
+  "SpotLight_3079_LC": {
+   "scale": 2.3559418834599173,
+   "ratio_to_class": 2.990223700104443,
+   "n_texels": 69,
+   "spread": 1.097749103175998
+  },
+  "PointLight_14814_LC": {
+   "scale": 0.43343086589386265,
+   "ratio_to_class": 0.4343421702238807,
+   "n_texels": 34,
+   "spread": 0.27692788945236246
+  },
+  "PointLight_14094_LC": {
+   "scale": 3.4989101645911527,
+   "ratio_to_class": 3.506266751844717,
+   "n_texels": 32,
+   "spread": 0.9565771628512223
+  },
+  "PointLight_7118_LC": {
+   "scale": 2.158330788652722,
+   "ratio_to_class": 2.1628687584838606,
+   "n_texels": 49,
+   "spread": 0.6756343342387564
+  }
+ },
+ "overrides_unreliable": {
+  "PointLight_1383_LC": {
+   "q25": 2.1793334870727747,
+   "spread": 2.629272233285158,
+   "n_texels": 143
+  },
+  "PointLight_8972_LC": {
+   "q25": 0.0,
+   "spread": 3.246777961158159,
+   "n_texels": 200
+  },
+  "PointLight_14134_LC": {
+   "q25": 0.27948607106566226,
+   "spread": 1.864893339053331,
+   "n_texels": 48
+  },
+  "PointLight_5428_LC": {
+   "q25": 0.46011765315884057,
+   "spread": 2.3023693516778434,
+   "n_texels": 35
+  },
+  "PointLight_3934_LC": {
+   "q25": 0.0,
+   "spread": 13.245960180876414,
+   "n_texels": 107
+  },
+  "PointLight_14238_LC": {
+   "q25": 0.0,
+   "spread": 2.8956381714808153,
+   "n_texels": 149
+  },
+  "PointLight_13442_LC": {
+   "q25": 2.3361191748436507,
+   "spread": 1.610459565351995,
+   "n_texels": 38
+  },
+  "PointLight_9418_LC": {
+   "q25": 4.1392340537312755,
+   "spread": 2.470976988944188,
+   "n_texels": 64
+  },
+  "PointLight_13227_LC": {
+   "q25": 0.0,
+   "spread": 2.701523903549514,
+   "n_texels": 33
+  },
+  "PointLight_13108_LC": {
+   "q25": 0.0,
+   "spread": 6.527362960831103,
+   "n_texels": 38
+  },
+  "SpotLight_8805_LC": {
+   "q25": 0.014248318816519768,
+   "spread": 1.8177983617395472,
+   "n_texels": 84
+  },
+  "PointLight_416_LC": {
+   "q25": 2.2746891104519484,
+   "spread": 2.4558585132719126,
+   "n_texels": 30
+  },
+  "PointLight_11067_LC": {
+   "q25": 0.01624635597268978,
+   "spread": 12.514794179399807,
+   "n_texels": 35
+  },
+  "PointLight_11618_LC": {
+   "q25": 0.0,
+   "spread": 16.580681564666683,
+   "n_texels": 217
+  },
+  "PointLight_9151_LC": {
+   "q25": 0.0,
+   "spread": 12.295404585823388,
+   "n_texels": 53
+  },
+  "PointLight_10144_LC": {
+   "q25": 5.379787869719592,
+   "spread": 5.540284573373729,
+   "n_texels": 59
+  },
+  "PointLight_15663_LC": {
+   "q25": 5.2440245221048745,
+   "spread": 10.022346914480677,
+   "n_texels": 49
+  },
+  "PointLight_1113_LC": {
+   "q25": 0.3750694205023861,
+   "spread": 9.29274386675963,
+   "n_texels": 60
+  },
+  "PointLight_13561_LC": {
+   "q25": 19.899446017166266,
+   "spread": 9.799976628870368,
+   "n_texels": 38
+  },
+  "PointLight_10556_LC": {
+   "q25": 3.149626951478573,
+   "spread": 5.515510073290476,
+   "n_texels": 35
+  },
+  "PointLight_3187_LC": {
+   "q25": 10.699944716876775,
+   "spread": 2.2344861132162537,
+   "n_texels": 43
+  },
+  "PointLight_16220_LC": {
+   "q25": 0.0,
+   "spread": 1334651964.2912197,
+   "n_texels": 96
+  },
+  "PointLight_10957_LC": {
+   "q25": 0.0,
+   "spread": 22.21312124532695,
+   "n_texels": 60
+  },
+  "PointLight_12980_LC": {
+   "q25": 0.0,
+   "spread": 134.11047744951063,
+   "n_texels": 300
+  },
+  "SpotLight_13308_LC": {
+   "q25": 0.05313785985976353,
+   "spread": 2.0079741882156914,
+   "n_texels": 61
+  },
+  "PointLight_10286_LC": {
+   "q25": 0.4405675356166602,
+   "spread": 6.618483352580338,
+   "n_texels": 64
+  },
+  "PointLight_14591_LC": {
+   "q25": 0.0,
+   "spread": 3.867273942513375,
+   "n_texels": 47
+  },
+  "PointLight_16140_LC": {
+   "q25": 0.04906764974039504,
+   "spread": 3.216339349433973,
+   "n_texels": 101
+  },
+  "PointLight_1326_LC": {
+   "q25": 0.06943596948481644,
+   "spread": 1.79692428298985,
+   "n_texels": 64
+  },
+  "PointLight_15671_LC": {
+   "q25": 0.07841479624473675,
+   "spread": 3.8112755701243906,
+   "n_texels": 158
+  },
+  "PointLight_136_LC": {
+   "q25": 0.0,
+   "spread": 2.9281041440859834,
+   "n_texels": 118
+  },
+  "PointLight_14949_LC": {
+   "q25": 0.1411076099383382,
+   "spread": 4.208326260547439,
+   "n_texels": 38
+  },
+  "PointLight_7386_LC": {
+   "q25": 0.0,
+   "spread": 45.87970878705351,
+   "n_texels": 81
+  },
+  "PointLight_14261_LC": {
+   "q25": 0.0,
+   "spread": 8.333411161192018,
+   "n_texels": 53
+  },
+  "PointLight_2494_LC": {
+   "q25": 0.24402614677944304,
+   "spread": 7.3841960703100336,
+   "n_texels": 245
+  },
+  "PointLight_15840_LC": {
+   "q25": 0.0,
+   "spread": 8.660670790131638,
+   "n_texels": 107
+  },
+  "PointLight_14369_LC": {
+   "q25": 0.14624624703008843,
+   "spread": 2.6603465856870305,
+   "n_texels": 94
+  },
+  "PointLight_10928_LC": {
+   "q25": 0.0,
+   "spread": 128.34383586580626,
+   "n_texels": 86
+  },
+  "PointLight_14042_LC": {
+   "q25": 0.0,
+   "spread": 0.0,
+   "n_texels": 37
+  },
+  "PointLight_9491_LC": {
+   "q25": 0.0,
+   "spread": 0.0,
+   "n_texels": 41
+  },
+  "PointLight_12856_LC": {
+   "q25": 0.0,
+   "spread": 0.0,
+   "n_texels": 108
+  },
+  "PointLight_6383_LC": {
+   "q25": 2.059332643584199,
+   "spread": 57.697074926894786,
+   "n_texels": 57
+  },
+  "PointLight_8376_LC": {
+   "q25": 0.0,
+   "spread": 8196738652.846746,
+   "n_texels": 415
+  },
+  "PointLight_7108_LC": {
+   "q25": 0.0,
+   "spread": 26.60522639047099,
+   "n_texels": 41
+  },
+  "PointLight_12051_LC": {
+   "q25": 0.0,
+   "spread": 2193392252.1271033,
+   "n_texels": 47
+  },
+  "PointLight_14543_LC": {
+   "q25": 0.0,
+   "spread": 11.982753245237989,
+   "n_texels": 34
+  },
+  "PointLight_14257_LC": {
+   "q25": 0.08407226363027291,
+   "spread": 5.425533246945028,
+   "n_texels": 89
+  },
+  "PointLight_10604_LC": {
+   "q25": 0.0,
+   "spread": 10.289734154715742,
+   "n_texels": 72
+  },
+  "PointLight_5286_LC": {
+   "q25": 0.0,
+   "spread": 4.954279718126846,
+   "n_texels": 266
+  },
+  "PointLight_927_LC": {
+   "q25": 0.0,
+   "spread": 7.227108853355125,
+   "n_texels": 63
+  },
+  "PointLight_4640_LC": {
+   "q25": 0.0,
+   "spread": 28.1300553331521,
+   "n_texels": 39
+  },
+  "PointLight_10698_LC": {
+   "q25": 0.4055792676405519,
+   "spread": 2.6776431629167887,
+   "n_texels": 82
+  },
+  "PointLight_15695_LC": {
+   "q25": 0.0,
+   "spread": 115.52731420831853,
+   "n_texels": 50
+  },
+  "SpotLight_3382_LC": {
+   "q25": 0.0,
+   "spread": 256.5726025659816,
+   "n_texels": 49
+  },
+  "SpotLight_1860_LC": {
+   "q25": 0.23306894522569832,
+   "spread": 1.6353366442326054,
+   "n_texels": 32
+  },
+  "SpotLight_2481_LC": {
+   "q25": 0.25245482918571754,
+   "spread": 2.1582911996165595,
+   "n_texels": 32
+  },
+  "SpotLight_7032_LC": {
+   "q25": 0.008498167841764895,
+   "spread": 2.6481211144415093,
+   "n_texels": 34
+  },
+  "PointLight_6352_LC": {
+   "q25": 0.0,
+   "spread": 0.0,
+   "n_texels": 30
+  },
+  "PointLight_15709_LC": {
+   "q25": 0.0295339884780897,
+   "spread": 8.271353545087475,
+   "n_texels": 502
+  },
+  "PointLight_7976_LC": {
+   "q25": 0.0,
+   "spread": 7393166.578123593,
+   "n_texels": 103
+  },
+  "PointLight_7590_LC": {
+   "q25": 0.0,
+   "spread": 16.98214647583644,
+   "n_texels": 59
+  },
+  "PointLight_3890_LC": {
+   "q25": 0.0,
+   "spread": 0.0,
+   "n_texels": 72
+  },
+  "PointLight_5044_LC": {
+   "q25": 0.0,
+   "spread": 0.0,
+   "n_texels": 32
+  },
+  "PointLight_2937_LC": {
+   "q25": 0.0,
+   "spread": 2.702099087781904,
+   "n_texels": 97
+  },
+  "PointLight_10555_LC": {
+   "q25": 0.0,
+   "spread": 375.24624333662894,
+   "n_texels": 100
+  }
+ },
+ "channels": "records dropped where the light's lighting channel excludes the receiver (BSP channel for BSP elements, Static for static meshes), as UE3 lights only reach overlapping channels",
+ "bounce_residual_mean": [
+  0.10181429711003931,
+  0.10245757050194464,
+  0.10634853376712508
+ ],
+ "bounce_residual_fraction": 0.9173268764264423,
+ "model_over_bake_fraction": 0.13715185777293262,
+ "exclude": [
+  {
+   "name": "SpotLight_8129_LC",
+   "class": "SpotLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "SpotLight_14844_LC",
+   "class": "SpotLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_5609_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_10125_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "SpotLight_16299_LC",
+   "class": "SpotLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "SpotLight_3729_LC",
+   "class": "SpotLightComponent",
+   "built_into_lightmap": false,
+   "enabled": false,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_4321_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "SpotLight_11920_LC",
+   "class": "SpotLightComponent",
+   "built_into_lightmap": false,
+   "enabled": false,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "SpotLight_8997_LC",
+   "class": "SpotLightComponent",
+   "built_into_lightmap": false,
+   "enabled": false,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_9946_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_5513_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "SpotLight_2042_LC",
+   "class": "SpotLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "SpotLight_8534_LC",
+   "class": "SpotLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "SpotLight_6446_LC",
+   "class": "SpotLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "SkyLight_2197_LC",
+   "class": "SkyLightComponent",
+   "built_into_lightmap": false,
+   "enabled": false,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "SpotLight_12373_LC",
+   "class": "SpotLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "SpotLight_5111_LC",
+   "class": "SpotLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_3626_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_10397_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_7834_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_6862_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_852_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_9355_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_9512_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_3077_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_14610_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_14410_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "SpotLight_10710_LC",
+   "class": "SpotLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_5209_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_8794_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_15058_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "SpotLight_5269_LC",
+   "class": "SpotLightComponent",
+   "built_into_lightmap": false,
+   "enabled": false,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "SpotLight_11196_LC",
+   "class": "SpotLightComponent",
+   "built_into_lightmap": false,
+   "enabled": false,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "SpotLight_3330_LC",
+   "class": "SpotLightComponent",
+   "built_into_lightmap": false,
+   "enabled": false,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_12564_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_7695_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_10756_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_9778_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_12904_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_14917_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_10939_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_329_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_2567_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_13695_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_13327_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_12459_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_4394_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_1014_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_16213_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLightComponent_15899",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "SpotLight_5989_LC",
+   "class": "SpotLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "SpotLight_8607_LC",
+   "class": "SpotLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "SpotLight_9545_LC",
+   "class": "SpotLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "SpotLight_1946_LC",
+   "class": "SpotLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "SpotLight_10541_LC",
+   "class": "SpotLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "SpotLight_5890_LC",
+   "class": "SpotLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "SpotLight_1808_LC",
+   "class": "SpotLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "SpotLight_11127_LC",
+   "class": "SpotLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_6676_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_4294_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_7325_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_5372_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_14743_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_15500_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLightComponent_3155",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_7733_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_9835_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "SpotLight_184_LC",
+   "class": "SpotLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "SpotLight_5033_LC",
+   "class": "SpotLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "SpotLight_9388_LC",
+   "class": "SpotLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLightComponent_7328",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "SpotLightComponent_14058",
+   "class": "SpotLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_1919_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "SpotLight_13390_LC",
+   "class": "SpotLightComponent",
+   "built_into_lightmap": false,
+   "enabled": false,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "SpotLight_14250_LC",
+   "class": "SpotLightComponent",
+   "built_into_lightmap": false,
+   "enabled": false,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "SpotLight_6412_LC",
+   "class": "SpotLightComponent",
+   "built_into_lightmap": false,
+   "enabled": false,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "SpotLight_14344_LC",
+   "class": "SpotLightComponent",
+   "built_into_lightmap": false,
+   "enabled": false,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "SpotLight_6408_LC",
+   "class": "SpotLightComponent",
+   "built_into_lightmap": false,
+   "enabled": false,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "SpotLight_3796_LC",
+   "class": "SpotLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "SpotLight_4905_LC",
+   "class": "SpotLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "SpotLight_15690_LC",
+   "class": "SpotLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "SpotLight_2410_LC",
+   "class": "SpotLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "SpotLight_1828_LC",
+   "class": "SpotLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "SpotLight_2622_LC",
+   "class": "SpotLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "SpotLight_12362_LC",
+   "class": "SpotLightComponent",
+   "built_into_lightmap": false,
+   "enabled": false,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "SpotLight_15626_LC",
+   "class": "SpotLightComponent",
+   "built_into_lightmap": false,
+   "enabled": false,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "SpotLight_13355_LC",
+   "class": "SpotLightComponent",
+   "built_into_lightmap": false,
+   "enabled": false,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "SpotLight_3270_LC",
+   "class": "SpotLightComponent",
+   "built_into_lightmap": false,
+   "enabled": false,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "SpotLight_14845_LC",
+   "class": "SpotLightComponent",
+   "built_into_lightmap": false,
+   "enabled": false,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "SpotLight_7953_LC",
+   "class": "SpotLightComponent",
+   "built_into_lightmap": false,
+   "enabled": false,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_9119_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_10075_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_12520_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_4867_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_5604_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_10219_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "SpotLight_6977_LC",
+   "class": "SpotLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_10262_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_3518_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_835_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "SpotLight_4514_LC",
+   "class": "SpotLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_5822_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_1010_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_3639_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_9076_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_9882_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_2989_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_8138_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_6014_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "SpotLight_4911_LC",
+   "class": "SpotLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_4053_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_1610_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_15411_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_9216_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_11356_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_5441_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "SpotLight_15131_LC",
+   "class": "SpotLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "SpotLight_14197_LC",
+   "class": "SpotLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "SpotLight_4881_LC",
+   "class": "SpotLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLightComponent_9694",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": false,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_1293_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "SpotLight_344_LC",
+   "class": "SpotLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_2905_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_13216_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_1196_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_1399_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_9942_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_11228_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_2044_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_10605_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_7141_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_6485_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_14169_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_4142_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_1212_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_5140_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_3228_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_5566_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_16222_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_9641_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_6668_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_16273_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_1894_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_4154_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_9974_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_4766_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_6920_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_12622_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_11130_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_12523_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_14601_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_8451_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_914_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_12195_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_3471_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_5637_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  },
+  {
+   "name": "PointLight_3254_LC",
+   "class": "PointLightComponent",
+   "built_into_lightmap": false,
+   "enabled": true,
+   "reason": "never built into a lightmap"
+  }
+ ],
+ "extra": [],
+ "chapter_note": "chapter lights fit from A1_IAC_Intr1_Art; sky from A1_IAC_DecoInt_Art (A1_IAC_Intr1_Art found no open sky)"
+}

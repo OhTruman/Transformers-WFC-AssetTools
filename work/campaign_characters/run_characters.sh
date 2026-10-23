@@ -8,11 +8,13 @@ export WFC_ROSTER_JSON="F:\\Transformers Rebuild\\AssetTools\\work\\campaign_cha
 $PY $RB --cap-gb 6 --log $W/logs/roster.log $W/roster.py >/dev/null 2>&1
 grep -o '"template": "[^"]*_AICD", *$\|"id": "[^"]*"' $W/roster.json > /dev/null
 $PY -c "import json;[print(r['template'],r['id']) for r in json.load(open(r'$W/roster.json',encoding='utf-8'))['templates'] if r.get('chassis')]" > $W/logs/todo.txt
-while read -r T ID; do
+mapfile -t TODO < <(tr -d '\r' < $W/logs/todo.txt)   # Windows python writes CRLF; list read up front, python stdin = /dev/null
+for LINE in "${TODO[@]}"; do
+  T=${LINE%% *}; ID=${LINE##* }
   if ls "/f/Transformers Rebuild/"*/work/PERF_HOLD >/dev/null 2>&1; then echo "PERF_HOLD: stopping before $ID"; exit 75; fi
-  WFC_CHAR_ID=$ID $PY $RB --cap-gb 6 --log $W/logs/c_$ID.log work/escalation_characters/build.py character "$T" >/dev/null 2>&1
+  WFC_CHAR_ID=$ID $PY $RB --cap-gb 6 --log $W/logs/c_$ID.log work/escalation_characters/build.py character "$T" </dev/null >/dev/null 2>&1
   echo "$ID $(grep -o 'rc=[0-9]*' $W/logs/c_$ID.log)"
-done < $W/logs/todo.txt
+done
 # the AI weapons (action set + overrides) not already exported as an MP weapon (ExtractedAssets/VerticalSlice/Weapons) or an Escalation one
 $PY -c "
 import json, os
@@ -24,12 +26,14 @@ have = set(os.listdir(r'F:/Transformers Rebuild/ExtractedAssets/VerticalSlice/We
 for w in ws:
     pid = w.split('.')[-1].replace('TnWeapon', '')
     if pid not in have: print(w, pid)" > $W/logs/weapons_todo.txt
-while read -r WC PID; do
+mapfile -t WTODO < <(tr -d '\r' < $W/logs/weapons_todo.txt)
+for LINE in "${WTODO[@]}"; do
+  WC=${LINE%% *}; PID=${LINE##* }
   if ls "/f/Transformers Rebuild/"*/work/PERF_HOLD >/dev/null 2>&1; then echo "PERF_HOLD: stopping before $PID"; exit 75; fi
   [ -f "out/campaign_characters/weapons/$PID/weapon.json" ] && { echo "w $PID exists"; continue; }
-  $PY $RB --cap-gb 6 --log $W/logs/w_$PID.log work/escalation_characters/build.py weapon "$WC" >/dev/null 2>&1
+  $PY $RB --cap-gb 6 --log $W/logs/w_$PID.log work/escalation_characters/build.py weapon "$WC" </dev/null >/dev/null 2>&1
   echo "w $PID $(grep -o 'rc=[0-9]*' $W/logs/w_$PID.log)"
-done < $W/logs/weapons_todo.txt
+done
 $PY $RB --cap-gb 6 --log $W/logs/campaign_weapons.log $W/campaign_weapons.py >/dev/null 2>&1
 $PY $RB --cap-gb 6 --log $W/logs/index.log work/escalation_characters/build.py index >/dev/null 2>&1
 echo "no chassis: $($PY -c "import json;print([r['template'] for r in json.load(open(r'$W/roster.json',encoding='utf-8'))['templates'] if not r.get('chassis')])")"

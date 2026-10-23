@@ -116,7 +116,7 @@ def main():
         idx = OD()
         for d in sorted(os.listdir(OUT)):
             p = os.path.join(OUT, d)
-            if d == 'weapons' or not os.path.isdir(p): continue
+            if d in ('weapons', 'destructibles') or not os.path.isdir(p): continue
             cj = os.path.join(p, 'character.json'); c = json.load(open(cj, encoding='utf-8')) if os.path.exists(cj) else {}
             files = {f: os.path.getsize(os.path.join(p, f)) for f in ('robot.glb', 'vehicle.glb', 'character.json') if os.path.exists(os.path.join(p, f))}
             tex = sum(os.path.getsize(os.path.join(r, f)) for r, _, fs in os.walk(os.path.join(p, 'textures')) for f in fs)
