@@ -1,9 +1,9 @@
 """Chapter actor table (Gameplay 2026-10-23: the campaign AI ops - MoveToActor, SetMoveToObjective, UseInteract, ShootAtActor, UseTurret -
 name actors by object path; navigation.json only covers NavigationPoints). One row per actor of the chapter's levels (every
-<level>.TheWorld.PersistentLevel.<actor> export), read only from manifests/inventory.db + authored.db:
+<level>.TheWorld.PersistentLevel.<actor> export, not the level's components / Model / Polys), read only from manifests/inventory.db + authored.db:
   object (path), class, sublevel, location_ue / location_gltf (0.01 * (X, Z, Y)), rotation_ue (UE rotator units) + rotation_deg
   (yaw / pitch / roll = units * 360 / 65536, UE sign conventions, not converted), DrawScale / DrawScale3D when authored,
-  base (Base actor) + base_bone (BaseBoneName) when attached, referenced_by_kismet (a SeqVar_Object / op property names it),
+  base (Base actor) + base_bone (BaseBoneName) when attached, referenced_by_kismet (a Kismet object under Main_Sequence names it),
   props: for TnInteract* / turrets / pickups / factories, the authored properties (radius, duration, weapon ... as authored).
 Authored values only: an actor with no authored Location has location null (class default = origin; flagged location_default).
     python campaign_actors.py <CH>   -> out/campaign_render/<CH>/actors.json
@@ -20,12 +20,13 @@ DEG = 360.0 / 65536.0
 def main(ch):
     levels = CR.chapter_levels(ch); ph = ','.join('?' * len(levels))
     exports = INV.execute("select distinct opath, class from exports where package in (%s)" % ph, levels).fetchall()
-    actors = [(o, c) for o, c in exports if o.count('.') == 3 and '.TheWorld.PersistentLevel.' in o]
+    actors = [(o, c) for o, c in exports if o.count('.') == 3 and '.TheWorld.PersistentLevel.' in o
+              and not (c.endswith('Component') or c in ('Model', 'Polys', 'Sequence', 'Level', 'World'))]   # level-owned objects, not actors
     names = {o.rsplit('.', 1)[-1]: o for o, _ in actors}
-    # Kismet references: any authored property of a non-actor object in these levels naming an actor
+    # Kismet references: an authored property of a Kismet object (under a level's Main_Sequence) naming an actor
     refd = set()
     for o, _ in exports:
-        if o.count('.') <= 3: continue
+        if '.PersistentLevel.Main_Sequence' not in o: continue
         r = DB.execute('select props from objects where opath=?', (o,)).fetchone()
         if not r or not r[0]: continue
         for m in re.findall(r'PersistentLevel\.([A-Za-z0-9_]+)', r[0]):
