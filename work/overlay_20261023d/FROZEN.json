@@ -1,0 +1,710 @@
+{
+ "frozen": "2026-10-23 02:41",
+ "name": "push_overlay_20261023d",
+ "commit": "bc66720",
+ "supersedes": "push_overlay_20261023c",
+ "maps_collision": [
+  "MP_ESC_BrokenHope",
+  "MP_ESC_Remnant",
+  "MP_IAC_Berth",
+  "MP_IAC_Rust",
+  "MP_IAC_Seed",
+  "MP_IAC_Streets",
+  "MP_KON_Molten",
+  "MP_ORB_Debris",
+  "MP_UND_Complex",
+  "MP_UND_Gorge"
+ ],
+ "maps_rebuilt_nav": [
+  "MP_ESC_BrokenHope",
+  "MP_ESC_Remnant",
+  "MP_IAC_Seed"
+ ],
+ "note": "FROZEN overlay for build_slim --overlay and Gameplay WFC_OVERLAY_ROOT: push_gltf_wfcmat_20261016 (85, unchanged) + PC-adapted pawn collision / physics of the 10 versus maps; rebuilt bot nav only for BrokenHope, Remnant and Seed (Gameplay three-arm test, Integration 2026-10-23); every other map keeps its shipped nav. Never rewritten.",
+ "files": [
+  {
+   "path": "content/PROP_COR_Design_p/Flashbang_SKEL.gltf",
+   "bytes": 15753,
+   "sha256": "a398f6c546e80b727b9a70e1438aa30fe0369af97b8a145cae8db418d71fbf5f",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/PROP_HeartCrystal_p/IAC_HeartCrystal_SKEL.gltf",
+   "bytes": 5856,
+   "sha256": "60d296528e71a721fc931df736cbc557e1bbfef06c8ebc74afd050a8d9ca986c",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/PROP_IAC_HospitalProps_p/IAC_HospitalChemTank_SKEL.gltf",
+   "bytes": 8330,
+   "sha256": "699aa9f09468074a24169fb47f3ee0492ee219035e9ba0282e103365829f84fb",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/PROP_NEU_Barricade_p/AP_Barricade_SKEL.gltf",
+   "bytes": 25903,
+   "sha256": "f357e119a5a4ccd168fa726f4a5de75f5bce42dd143663381d6c325cd6df9ee4",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/PROP_NEU_Barricade_p/AP_ShieldPosition_SKEL.gltf",
+   "bytes": 16966,
+   "sha256": "9d9981752a8981a82c7ca54402479f9c3ac5738591bbda379ca8be8398166aa0",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/PROP_NEU_Barricade_p/NEU_Barricade2_SKEL.gltf",
+   "bytes": 12569,
+   "sha256": "16cdb77b8d03b6d82dffc2f2ed64c71bf820a359bd6701714a0b57ac26fa8134",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/PROP_NEU_BatteryOS_p/NEU_BatterySpikes_SKEL.gltf",
+   "bytes": 17151,
+   "sha256": "de37ef96632046709fd849a0e8bc14227675891498698512563972498b2554f0",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/PROP_NEU_BatteryOS_p/NEU_Battery_SKEL.gltf",
+   "bytes": 11535,
+   "sha256": "672de02b46188d1912a5969a6ced27a6a21bca3c36b122e6546122d260a9bbb6",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/PROP_NEU_Battery_p/NEU_BatteryCorrupted_SKEL.gltf",
+   "bytes": 9918,
+   "sha256": "8889ea72858c54a667af48a7a344ff161eebca08f5f5c254a2dccb864827c5c7",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/PROP_NEU_Interacts_p/AP_ButtonInteract_SKEL.gltf",
+   "bytes": 16017,
+   "sha256": "0aca8dc727333e1298f213b8cd43d35d162ecc0433e431d0349db1f500059618",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/PROP_NEU_Interacts_p/InteractConsole01_SKEL.gltf",
+   "bytes": 24830,
+   "sha256": "3a91ecff94b8749578fa2404bb013c49e6b5790171fe97a71197884f2bcd2859",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/PROP_NEU_Interacts_p/RallyTotemInteract_SKEL.gltf",
+   "bytes": 16020,
+   "sha256": "afa105672412d8f7ec0c7eb849f9454f481ab4e1cfe886a11064f75177b51fc3",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/PROP_NEU_Pickups_p/EnergonTotem/NEU_EnergonTotem_SKEL.gltf",
+   "bytes": 13573,
+   "sha256": "b35698c744983e688331213d73065aa0c453f1177a44ff3bbf5f489e9ee2bbee",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/PROP_NEU_Pickups_p/MPBomb/NEU_MPBombExplode_SKEL.gltf",
+   "bytes": 11156,
+   "sha256": "eef3b3c158ba836f063ba0bbe122f22dabce7b8b3c6106597ef37caba18ed4f2",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/PROP_NEU_Pickups_p/MPBomb/NEU_MPBomb_SKEL.gltf",
+   "bytes": 8326,
+   "sha256": "baebe8a38e39f473955ab9fc6d3705c2619a3ce7497900be6c7e93b8c56b9441",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/PROP_NEU_Pickups_p/RallyTotem/NEU_RallyTotem_SKEL.gltf",
+   "bytes": 16018,
+   "sha256": "8ed7c6d902c537391cf700e516a31512c189f025ca5c2dc43633e2505ae440d9",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/PROP_NEU_WreckedBodies_p/RB_DeadSoldier_SKEL.gltf",
+   "bytes": 10150,
+   "sha256": "ac910957d2fdd363356ff0aba4d1ee8b56aa995a644004ac32ab0dd300f78435",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/PROP_VendingMachine_p/AP_VendingMachine_SKEL.gltf",
+   "bytes": 9448,
+   "sha256": "3cb9726c7ea407776bc79b1f0b987c00db2735cd2586519fe386c89dccce53d1",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/PROP_VendingMachine_p/Ammo/AP_VendingMachineAmmo_SKEL.gltf",
+   "bytes": 9444,
+   "sha256": "cc71bff6f0a80f4a465ba5af9ce280d86b466006373c15642bcbe71045c0191f",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/PROP_VendingMachine_p/WallSwitch/AP_WallSwitch_SKEL.gltf",
+   "bytes": 6868,
+   "sha256": "560c4e6387fe88c47d9811eafd1b13d70e01e13dedc1909eac1b8d2f92fe3330",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/PROP_dropship_dec_p/CP_DropShip_SKEL.gltf",
+   "bytes": 7805,
+   "sha256": "974eb963d5f3c61acdd738e37e72f06790a9779c976956c6387d1c19cd1613ba",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_AssaultRifle_p/WEP_AssaultRifle_SKEL.gltf",
+   "bytes": 11027,
+   "sha256": "60310db6887887c3a99303e4c100ba59b2974f94169ba89ff8968bc9f1ec256e",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_Axe_p/Autobot/WEP_Axe_SKEL.gltf",
+   "bytes": 10535,
+   "sha256": "7206b0397d531fb2853b442d60c87a87023761531d6e1f1ee0090243cd095f23",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_BazookaTemp1_p/WEP_Bazooka_SKEL.gltf",
+   "bytes": 10078,
+   "sha256": "8469a3e5e09c7d93f6a476b2fb32684b76d1b2b23ca29736a7c05efa24d2eac9",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_BeatDownClub_p/WEP_BeatDownClub_SKEL.gltf",
+   "bytes": 5839,
+   "sha256": "8463f77ae9cb430d1b888574377828ae8299436e752751eeb5f4be9aabdda4a5",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_BroadSword_p/WEP_BroadSword_SKEL.gltf",
+   "bytes": 9172,
+   "sha256": "820c8c420d140cb2bade121f64589dbdb2b7b98756e384d8ed0d229cdb96b122",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_BurstRifle_p/WEP_BurstRifle_SKEL.gltf",
+   "bytes": 8353,
+   "sha256": "7a6c488f95b62e16d12d0282b08a2ae495de3ceda49a5247bea0a6a70720310b",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_ButterflyAxe_p/WEP_ButterflyAxe_SKEL.gltf",
+   "bytes": 10648,
+   "sha256": "803d8dfeee2708adac85e23872ec211116b268a046949a21ce809d74b65584e6",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_CeremonialStaff_p/WEP_CeremonialStaff_SKEL.gltf",
+   "bytes": 8345,
+   "sha256": "b033c18a06dfd30399fe32cd732fa8b422bd16c6fc37e4e4b979db37ff8f249d",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_CodeOfPower_p/WEP_CodeOfPower1H_SKEL.gltf",
+   "bytes": 6127,
+   "sha256": "849134eb4fecbb85f8b22fc13c9cfe4710559a533cde05aa6b469307a31b7d1e",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_CodeOfPower_p/WEP_CodeOfPower2H_SKEL.gltf",
+   "bytes": 6128,
+   "sha256": "4dead6134bbc5b3319d435e463329d7f0dd9d03a0b191ca3280185e4e72578c6",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_DetPack_p/AP_DetPack_SKEL.gltf",
+   "bytes": 9216,
+   "sha256": "9a21e4343cc57fd580330b58abe630db9de9fcfacedbf16ec3edf8cc408e46c5",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_EMPShotgun_p/WEP_EMPShotgun_SKEL.gltf",
+   "bytes": 7308,
+   "sha256": "0ae13f01c7a97e3be37fef497acd70c4981224ccc25709f2c71176ddcac3596d",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_FightingStaff_p/WEP_FightingStaff_SKEL.gltf",
+   "bytes": 10521,
+   "sha256": "4be46caeb6bbc469f68150a1b6d43e6de93766dd7d79cbdf6968aaab06c5b08d",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_GrenadeLauncher_p/WEP_GrenadeLauncher_SKEL.gltf",
+   "bytes": 13813,
+   "sha256": "34261528ae541094228574ca0fa6a2660da813cb01cafb88ef75d26755c2e4d1",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_HalberdAxe_p/WEP_HalberdAxe_SKEL.gltf",
+   "bytes": 8283,
+   "sha256": "ab8db9e0afb8aecdd8f13bab86f6e745c4ab8a289774f69a71f45927523c51ba",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_Hammer_p/WEP_Hammer_SKEL.gltf",
+   "bytes": 9087,
+   "sha256": "dba0627028a80c22ac574393dff3b60bc8c859cee6248b1fd26fe1828ff1df8f",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_HeavyMG_p/WEP_HeavyMG_SKEL.gltf",
+   "bytes": 14476,
+   "sha256": "e92bde729f8dd225a8756cebcb3d45d745eda8815a29c9790644a91d6aef2aec",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_HeavyPistol_p/WEP_HeavyPistol_SKEL.gltf",
+   "bytes": 8540,
+   "sha256": "13d71ac7788ebf37b89bf7b78c4107697a9544ae36ee16464370af458337afc3",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_HuntingDagger_p/WEP_HuntingDagger_SKEL.gltf",
+   "bytes": 7105,
+   "sha256": "269af72ada66d1801023eb58f5377c56a73a16f72abc000d755c7aa5731383e9",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_IonBlaster_p/WEP_IonBlaster_SKEL.gltf",
+   "bytes": 12204,
+   "sha256": "b6f1780f4857dea257609c501448b1bfa437ea446588c0d8ad0ec413d25d2b4a",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_KamikazeMine_p/WEP_KamikazeMine_SKEL.gltf",
+   "bytes": 6291,
+   "sha256": "945ab1cc38552ed03eb2c98f9f551c85d6b7f08711e50c877351a12ead334580",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_LancingSpear_p/WEP_LancingSpear_SKEL.gltf",
+   "bytes": 9508,
+   "sha256": "7287816d821a09249e80ada664a375e55ba151f5256a59ce9f069a5fe07153fb",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_LongSword_p/WEP_LongSword_SKEL.gltf",
+   "bytes": 8239,
+   "sha256": "b69f2751b0f851709306e16c117221ecbf7ad8918b3f9b67630da74dae6c1185",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_MPBomb_p/NEU_MPBomb_SKEL.gltf",
+   "bytes": 8311,
+   "sha256": "8bd4c50da1fb0a5a3e610d53ce92480d1a0c900227ab11333f514b40e8d73dc1",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_Maul_p/WEP_Maul_SKEL.gltf",
+   "bytes": 7830,
+   "sha256": "6458af22c446e1938ee271dbff9e5a7bf501f183072b46d4b1138dee8702ecae",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_PlasmaCannon_p/WEP_PlasmaCannon_SKEL.gltf",
+   "bytes": 7673,
+   "sha256": "7f4289815f5b144fc1e5672b4bb59032404011a66bc6ee3c759c17f684a07b68",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_ProngDagger_p/WEP_ProngDagger_SKEL.gltf",
+   "bytes": 7856,
+   "sha256": "63304c868b22c7d56a8ffee6a748062200cf7ba814756ebbeac9cf6164a5a430",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_RepairBeam_p/WEP_RepairBeam_SKEL.gltf",
+   "bytes": 10816,
+   "sha256": "f8bcba3c6955337b5520aacf86b8d61b3510107df3af46905982b5fe76387008",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_RocketLauncher_p/WEP_RocketLauncher_SKEL.gltf",
+   "bytes": 12339,
+   "sha256": "9d40474db16bb1f5a1036757415b4aef2df2811940beb1238b1e03f9a15da9a7",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_Rocket_p/WEP_IonCannon_A_SKEL.gltf",
+   "bytes": 3952,
+   "sha256": "7ac244ed70c2f450e8ec3a0f4bd0fb67e553fbbad702b33280eaaf89f3e55875",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_SentryAbility_p/WEP_SentryDeploy_SKEL.gltf",
+   "bytes": 10853,
+   "sha256": "773c977a989eabc913d07f3a488444da58b8044fd54b6a224ea21b3c16e58486",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_SentryBall_p/WEP_SentryBall_Invis_SKEL.gltf",
+   "bytes": 4446,
+   "sha256": "e86bb77a08ed267ad8c862071fdd34fa053641e87a5b006ae7cce7ea8f836466",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_SentryBall_p/WEP_SentryBall_Lrg_SKEL.gltf",
+   "bytes": 4433,
+   "sha256": "a21860dabe7afa3d0609ef9ce394c4d9ff01030809be920026a2b6af42798eca",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_SentryBall_p/WEP_SentryBall_SKEL.gltf",
+   "bytes": 4426,
+   "sha256": "4c1d45fd30f2d6f5c493664c3454c2a0d4bd1c4bb25a7d7d7aac4649a8f53564",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_SentryBlaster01_p/SentryBlaster/WEP_SentryBlaster_SKEL.gltf",
+   "bytes": 21864,
+   "sha256": "02b7b0b23dd239d85a69c181dd3286b2273ff2f3555dcaeaca8096431763538e",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_SentryBlaster01_p/SentryRepair/WEP_SentryRepair_SKEL.gltf",
+   "bytes": 22429,
+   "sha256": "3624eb94f7b56294570b701efa9c31303fad76289ced30101db57de1b81bfee3",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_SentryBlaster01_p/SentryRocket/WEP_SentryRocket_SKEL.gltf",
+   "bytes": 25090,
+   "sha256": "0cfefaf3c2139ea0bdf49c1579caf9f50651b3fb8430c999e2d14de754a417b3",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_SentryBlaster01_p/WEP_SentryBlaster01_SKEL.gltf",
+   "bytes": 9671,
+   "sha256": "c931b6fb93b5db440f7c2114f45d6ce58def2adb0c524bf1e03064dcb298519f",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_SerratedBlade_p/WEP_SerratedBlade_SKEL.gltf",
+   "bytes": 9225,
+   "sha256": "9a18ce028900d049122c0a4bc7515046b1edb678256a0da141a991b83423d34f",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_Shield_p/Autobot/WEP_ShieldBruteA_Lrg_SKEL.gltf",
+   "bytes": 18699,
+   "sha256": "e3118e9f43ac6d88b9b0b1e051c351f0b06beb565c8eb9439499529a26c8694f",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_Shield_p/Autobot/WEP_ShieldBruteA_SKEL.gltf",
+   "bytes": 18737,
+   "sha256": "c06cc6ad259a4195975f4a23c2893f8a1ecc02031aa198152817a9eabb41c302",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_Shield_p/Barrier/WEP_Barrier_SKEL.gltf",
+   "bytes": 4813,
+   "sha256": "3871ba896751f284d4c94380cd58ddf7a75012f91abff9caebf53ac2a3e62b0e",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_Shield_p/Decepticon/WEP_ShieldBruteD_Lrg_SKEL.gltf",
+   "bytes": 15128,
+   "sha256": "7c005d039f72f6a4bb1fa7b126f28eb4576e5a15e093a6374f3e1cafa0d05922",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_Shield_p/Decepticon/WEP_ShieldBruteD_SKEL.gltf",
+   "bytes": 15118,
+   "sha256": "ec903301113f16dcf8e9c145e4193f4bd26afb2d808657411035d2dd9e908158",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_Shield_p/Decepticon/WEP_ShieldHeavy_D_SKEL.gltf",
+   "bytes": 8624,
+   "sha256": "8fad32c5a5b4d6f51c77a542eedd5d529864540af8ef9aff7d5487304e63c569",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_ShortSword_p/WEP_ShortSword_SKEL.gltf",
+   "bytes": 8226,
+   "sha256": "c2789ec8934ff7ef2659e731967f54f06ae3e9a3ed7de857695ce294e7993753",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_Shotgun_p/WEP_Shotgun_SKEL.gltf",
+   "bytes": 8853,
+   "sha256": "0b34997b394e29f401cbeb68eef2e2d90f84c94a54b506c65d1f54a9ad29b499",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_SniperRifle_p/WEP_SniperRifle_SKEL.gltf",
+   "bytes": 9317,
+   "sha256": "c53caaa1735e431ca553bf4fb43db464f46892abe1d62402276650d838d8467a",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_SoldierTank_p/WEP_SoldierTankAut_SKEL.gltf",
+   "bytes": 6278,
+   "sha256": "17e182b4b4efbbc90e61796e2b532cba6e43a046ab66ebe2a1b6d25561b33b2c",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_SoldierTank_p/WEP_SoldierTankDec_SKEL.gltf",
+   "bytes": 7420,
+   "sha256": "1f03b9a0e02eef8d6a0afb7d251eba44d9105821e66a7ba26f5f889836447604",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_SoldierTank_p/WEP_TankVehicleMG_SKEL.gltf",
+   "bytes": 6318,
+   "sha256": "7812b1beeb7094edbbd56f73209d4160841cca72cab9b21abb68ca7c72953403",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_SpikedBat_p/WEP_SpikedBat_SKEL.gltf",
+   "bytes": 9149,
+   "sha256": "2a3add71ed7736dac2325ec9b7e3a7a3f9110ac9ad0bae24ab472c8646c5df75",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_SpikedMace_p/WEP_SpikedMace_SKEL.gltf",
+   "bytes": 10812,
+   "sha256": "9572cf984e470e0bccdde68c67e18f6396abdccc3d957c9050fc6561edce28d8",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_TortureSword_p/WEP_TortureSword_SKEL.gltf",
+   "bytes": 8489,
+   "sha256": "f5a07bc7df303fe4fe0692767b0e430c46fb04f2e8e98d6b802df15fe1123567",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_TrypticonHeadMortar_p/WEP_TrypHeadCannonCover_SKEL.gltf",
+   "bytes": 4485,
+   "sha256": "8509b001f3d0163e4f3643e31c46c5c0e1780228c57f1803dec81fcfc131981a",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_TrypticonHeadMortar_p/WEP_TrypHeadCannon_SKEL.gltf",
+   "bytes": 6833,
+   "sha256": "6a0217442d4f3cafb8d0cf6f908fee1b66c6b9f725978f4982f3508ab3f7362f",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_TrypticonShoulderCannon_p/WEP_TrypShoulderCannon_SKEL.gltf",
+   "bytes": 7153,
+   "sha256": "c215caf711bb20649b1adec5ff17c977dd069b1c4ac058903348baf2927e3581",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_TrypticonTailSentry_p/WEP_TrypTailSentryBall_SKEL.gltf",
+   "bytes": 4708,
+   "sha256": "c20ed73134fa13384092a07fb56d270649bbff5dab245ab7a365e8b5f5a4508a",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_TurretBase_p/WEP_TurretBase01_SKEL.gltf",
+   "bytes": 16480,
+   "sha256": "5cf47ea65d0703f873de3afc51084e9d583eb6dca9d22aef2f4b6fef198cdf06",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_TurretIonGun_p/WEP_TurretIonGun_SKEL.gltf",
+   "bytes": 7379,
+   "sha256": "592caafd45fc9b91b7612dff1503fb809cb826f12fa70908a35b5b989d92df54",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_TurretRepairRay_p/WEP_TurretRepairRay_SKEL.gltf",
+   "bytes": 7412,
+   "sha256": "7e363e01e630d9bf7eb0dfb2360a833ba56d3609af5b4f740e86bbd41aea51bc",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_TurretRocket_p/WEP_TurretRocket_SKEL.gltf",
+   "bytes": 13202,
+   "sha256": "400857dc2514372563c1d35a6ba8c725cbf28b3b0c8a46b0f2b26188a9fbd2ed",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_ViciousAxe_p/WEP_ViciousAxe_SKEL.gltf",
+   "bytes": 9277,
+   "sha256": "b40b3f36b1a8ef11010179c5f6412f2bdd7b84258eecc4e2b84f0551225e22b3",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "content/WEP_WarHammer_p/WEP_WarHammer_SKEL.gltf",
+   "bytes": 7335,
+   "sha256": "cdd3de5473b8512f7878beb833b30ad34cfa9bb7691ee50da24bbeb0f5600c20",
+   "origin": "push_gltf_wfcmat_20261016"
+  },
+  {
+   "path": "VerticalSlice/Maps/MP_ESC_BrokenHope/collision_pawn.glb",
+   "bytes": 2338448,
+   "sha256": "696d98442695bf4e4f8d97725e360d9605a4159a8d5dd60962e3ebc8c30a8c8f",
+   "origin": "pc_adapt MP_ESC_BrokenHope"
+  },
+  {
+   "path": "VerticalSlice/Maps/MP_ESC_BrokenHope/physics.json",
+   "bytes": 3660284,
+   "sha256": "226e867ac090249b23331266ea069884d4355e847ec086e133bf28b685f556b9",
+   "origin": "pc_adapt MP_ESC_BrokenHope"
+  },
+  {
+   "path": "VerticalSlice/Maps/MP_ESC_BrokenHope/bot_nav.json",
+   "bytes": 6383987,
+   "sha256": "f721767b507764bbaca5df8042d19e56efb2504e599e9257479af6167ad73063",
+   "origin": "pc_adapt MP_ESC_BrokenHope"
+  },
+  {
+   "path": "VerticalSlice/Maps/MP_ESC_BrokenHope/bot_nav.glb",
+   "bytes": 355932,
+   "sha256": "bcea0289a3d0e12003d1dc754fffcf35184adbb9a136724d70b51da84eea57af",
+   "origin": "pc_adapt MP_ESC_BrokenHope"
+  },
+  {
+   "path": "VerticalSlice/Maps/MP_ESC_BrokenHope/bot_nav_air.json",
+   "bytes": 94843,
+   "sha256": "481f733996822075415115530ea9aea135dc7d94cd8872a3485b89314b30568a",
+   "origin": "pc_adapt MP_ESC_BrokenHope"
+  },
+  {
+   "path": "VerticalSlice/Maps/MP_ESC_Remnant/collision_pawn.glb",
+   "bytes": 2337892,
+   "sha256": "c08134a4e23940815090021e177e3269419b54331590d8da47e64c8b2e509085",
+   "origin": "pc_adapt MP_ESC_Remnant"
+  },
+  {
+   "path": "VerticalSlice/Maps/MP_ESC_Remnant/physics.json",
+   "bytes": 5993394,
+   "sha256": "455367c2da04c7f61b7ee49f0ab09695091734a4dc10473a2ae6f9717f6d673f",
+   "origin": "pc_adapt MP_ESC_Remnant"
+  },
+  {
+   "path": "VerticalSlice/Maps/MP_ESC_Remnant/bot_nav.json",
+   "bytes": 8540073,
+   "sha256": "91952e71217b338cfa62a89b34eec36f6e759d01409cab553a9bff776f1e8a44",
+   "origin": "pc_adapt MP_ESC_Remnant"
+  },
+  {
+   "path": "VerticalSlice/Maps/MP_ESC_Remnant/bot_nav.glb",
+   "bytes": 482296,
+   "sha256": "1a03ca7cf46cfa7fccfcc7d1a0777b75cf50b7ce82cec86df2fff59d27004032",
+   "origin": "pc_adapt MP_ESC_Remnant"
+  },
+  {
+   "path": "VerticalSlice/Maps/MP_ESC_Remnant/bot_nav_air.json",
+   "bytes": 129284,
+   "sha256": "3e1105157dd9a7da03b1ff23c6fbd6b546cf7d49fb24ea0b64d9309711f1fc50",
+   "origin": "pc_adapt MP_ESC_Remnant"
+  },
+  {
+   "path": "VerticalSlice/Maps/MP_IAC_Berth/collision_pawn.glb",
+   "bytes": 998004,
+   "sha256": "73b8e24bf519e686cdedaf197f094f1a56ddc8007f7675e78c962309eee286bb",
+   "origin": "pc_adapt MP_IAC_Berth"
+  },
+  {
+   "path": "VerticalSlice/Maps/MP_IAC_Berth/physics.json",
+   "bytes": 2164281,
+   "sha256": "cd72de915610f9fea40d273a89bcb34467e590db374a395c9475d1ae0cf07b53",
+   "origin": "pc_adapt MP_IAC_Berth"
+  },
+  {
+   "path": "VerticalSlice/Maps/MP_IAC_Rust/collision_pawn.glb",
+   "bytes": 1537008,
+   "sha256": "fc4ddc98479c6e471d84284f79c3494cc663ee65e561c38e5d8b55809329ca2a",
+   "origin": "pc_adapt MP_IAC_Rust"
+  },
+  {
+   "path": "VerticalSlice/Maps/MP_IAC_Rust/physics.json",
+   "bytes": 3160553,
+   "sha256": "97b3ed885ae2bdde5e3083be13561fec4dad13256527d2d3575756706d3a73d4",
+   "origin": "pc_adapt MP_IAC_Rust"
+  },
+  {
+   "path": "VerticalSlice/Maps/MP_IAC_Seed/collision_pawn.glb",
+   "bytes": 3549256,
+   "sha256": "f89e0a2ad4892111764a5930b7b1b9df301f706402d1d5483879c34927b10fd0",
+   "origin": "pc_adapt MP_IAC_Seed"
+  },
+  {
+   "path": "VerticalSlice/Maps/MP_IAC_Seed/physics.json",
+   "bytes": 3662654,
+   "sha256": "3436f694d6cf7b9f1e4d327cd10e622287bf5e0861b5855a439a4760b3d28fd4",
+   "origin": "pc_adapt MP_IAC_Seed"
+  },
+  {
+   "path": "VerticalSlice/Maps/MP_IAC_Seed/bot_nav.json",
+   "bytes": 13093224,
+   "sha256": "5c2e1967eb6c2aabb0cc1eafe40e9d343d25ea6cf09311549136a3a40a46ceea",
+   "origin": "pc_adapt MP_IAC_Seed"
+  },
+  {
+   "path": "VerticalSlice/Maps/MP_IAC_Seed/bot_nav.glb",
+   "bytes": 729892,
+   "sha256": "3bffa133350e97dc00edaed09c3d056bf9ba65ece6ded402059c88a78f5ac295",
+   "origin": "pc_adapt MP_IAC_Seed"
+  },
+  {
+   "path": "VerticalSlice/Maps/MP_IAC_Seed/bot_nav_air.json",
+   "bytes": 1147076,
+   "sha256": "7ebd2e066edbe051a5bf76d8cefca032bb20a3cceb04fe09a21ca710a8a2f203",
+   "origin": "pc_adapt MP_IAC_Seed"
+  },
+  {
+   "path": "VerticalSlice/Maps/MP_IAC_Streets/collision_pawn.glb",
+   "bytes": 2151400,
+   "sha256": "a384edfc823b575e73a06c95afc21d6f1ebb5ebc55c11ba91b98847aa3f82286",
+   "origin": "pc_adapt MP_IAC_Streets"
+  },
+  {
+   "path": "VerticalSlice/Maps/MP_IAC_Streets/physics.json",
+   "bytes": 2657874,
+   "sha256": "19053ecbe79e755ffca845a0102aedd43a2dd9874693b8eb1dbf8fb95dfdb682",
+   "origin": "pc_adapt MP_IAC_Streets"
+  },
+  {
+   "path": "VerticalSlice/Maps/MP_KON_Molten/collision_pawn.glb",
+   "bytes": 1567360,
+   "sha256": "c16494e26bcd338df7b9042e7aa1a6f90e1596f65d05f8c8ba3e19ca78a52e03",
+   "origin": "pc_adapt MP_KON_Molten"
+  },
+  {
+   "path": "VerticalSlice/Maps/MP_KON_Molten/physics.json",
+   "bytes": 3468673,
+   "sha256": "9c28adc26d650f5e2db6177edd790eb9eaad335f82aa479e4f379640d692db48",
+   "origin": "pc_adapt MP_KON_Molten"
+  },
+  {
+   "path": "VerticalSlice/Maps/MP_ORB_Debris/collision_pawn.glb",
+   "bytes": 2262124,
+   "sha256": "bc91b6cd05584c0128c1eecaae6d8b43e868414e81a1ebeac037724eb278d4a2",
+   "origin": "pc_adapt MP_ORB_Debris"
+  },
+  {
+   "path": "VerticalSlice/Maps/MP_ORB_Debris/physics.json",
+   "bytes": 3064272,
+   "sha256": "292d73eb9deab91f458feaa8e5035efc4724156ac312192ed001e9c9ca3cc9ae",
+   "origin": "pc_adapt MP_ORB_Debris"
+  },
+  {
+   "path": "VerticalSlice/Maps/MP_UND_Complex/collision_pawn.glb",
+   "bytes": 1482824,
+   "sha256": "62b0c54a6edbb7c826ddbc177f10e9d5f391f87ea1454805f69b00f19614db3f",
+   "origin": "pc_adapt MP_UND_Complex"
+  },
+  {
+   "path": "VerticalSlice/Maps/MP_UND_Complex/physics.json",
+   "bytes": 2836569,
+   "sha256": "5eb5b7f71d301f138af5bed9f85f7f520dec85be74f0279bada8f846d06d54b6",
+   "origin": "pc_adapt MP_UND_Complex"
+  },
+  {
+   "path": "VerticalSlice/Maps/MP_UND_Gorge/collision_pawn.glb",
+   "bytes": 1036924,
+   "sha256": "d7be19ee209ee9f908cf43945f5e0b49342362e2f3d0a23b1e0a13c3c12eb221",
+   "origin": "pc_adapt MP_UND_Gorge"
+  },
+  {
+   "path": "VerticalSlice/Maps/MP_UND_Gorge/physics.json",
+   "bytes": 2540447,
+   "sha256": "62c6a517d6e5348dc961550208700bd256e30b037a3fa685a1a4ad0bd3e71eaa",
+   "origin": "pc_adapt MP_UND_Gorge"
+  }
+ ]
+}
