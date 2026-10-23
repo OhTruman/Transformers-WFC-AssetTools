@@ -1,17 +1,37 @@
 {
  "chapter": "D5_OME",
  "generated_by": "AssetTools/work/campaign_render/dedupe_lightmaps.py",
- "rule": "one copy per chapter at <chapter>/lightmaps/<name>.png; a unit's lighting.json lightmaps.atlases names the files it samples",
+ "rule": "conflict-free pages once at <chapter>/lightmaps/<name>.png; a conflicting name stays only in the units (own_copies), so chapter-first-then-unit loading samples what each unit sampled before",
  "counts": {
   "units": 6,
-  "unit_files_scanned": 426,
-  "unit_bytes_scanned": 22334148,
-  "chapter_files": 71,
-  "chapter_bytes": 3722358,
-  "name_conflicts": 0,
-  "unit_copies_removed": 426
+  "unit_files_scanned": 2,
+  "unit_bytes_scanned": 155033,
+  "chapter_files": 70,
+  "chapter_bytes": 3643488,
+  "name_conflicts": 1,
+  "unit_copies_removed": 0,
+  "restored_by_repair": 0,
+  "names_exported_by_several_packages_differently": 1,
+  "unit_pages_set_to_own_package": 2,
+  "atlases_unresolved": 0
  },
- "conflicts (unit keeps its own copy)": {},
+ "conflicts (unit keeps its own copy)": {
+  "LightMapTexture2D_9123.png": [
+   "D5_OME_ART",
+   "D5_OME_GLB_ART"
+  ]
+ },
+ "repair_restored": [],
+ "set_to_own_package": [
+  [
+   "D5_OME_ART",
+   "LightMapTexture2D_9123.png"
+  ],
+  [
+   "D5_OME_GLB_ART",
+   "LightMapTexture2D_9123.png"
+  ]
+ ],
  "units": {
   "D5_OME_ART": {
    "atlases": [
@@ -61,11 +81,15 @@
     "LightMapTexture2D_9123",
     "LightMapTexture2D_9535"
    ],
-   "atlases_missing_in_chapter_set": []
+   "own_copies": [
+    "LightMapTexture2D_9123.png"
+   ],
+   "atlases_unresolved": []
   },
   "D5_OME_BASE": {
    "atlases": [],
-   "atlases_missing_in_chapter_set": []
+   "own_copies": [],
+   "atlases_unresolved": []
   },
   "D5_OME_CINE_LevelIntro": {
    "atlases": [
@@ -73,11 +97,13 @@
     "LightMapTexture2D_16090",
     "LightMapTexture2D_9738"
    ],
-   "atlases_missing_in_chapter_set": []
+   "own_copies": [],
+   "atlases_unresolved": []
   },
   "D5_OME_CINE_Outro": {
    "atlases": [],
-   "atlases_missing_in_chapter_set": []
+   "own_copies": [],
+   "atlases_unresolved": []
   },
   "D5_OME_DSN": {
    "atlases": [
@@ -85,7 +111,8 @@
     "LightMapTexture2D_2669",
     "LightMapTexture2D_3424"
    ],
-   "atlases_missing_in_chapter_set": []
+   "own_copies": [],
+   "atlases_unresolved": []
   },
   "D5_OME_GLB_ART": {
    "atlases": [
@@ -111,7 +138,10 @@
     "LightMapTexture2D_8757",
     "LightMapTexture2D_9123"
    ],
-   "atlases_missing_in_chapter_set": []
+   "own_copies": [
+    "LightMapTexture2D_9123.png"
+   ],
+   "atlases_unresolved": []
   }
  },
  "files": {
@@ -183,7 +213,6 @@
   "LightMapTexture2D_8757.png": "7d32ddf6f84708eb0b6cff3ad33f81163f9aecbc43bba76aea7d37b1742e981f",
   "LightMapTexture2D_8804.png": "79686f1b8836e6b3618039cf580f6410191b4963094f5f824cd1110b0a72e69d",
   "LightMapTexture2D_8905.png": "f7c1caf9ad30a1d9ca085332cce465738e0bfbbfca6721c217ea7f43f0ea5e33",
-  "LightMapTexture2D_9123.png": "2f7fa528a3d933a0ec52c6ca6f61808a9c5895e141742c6fad91035ae3ad8379",
   "LightMapTexture2D_9535.png": "0b24fdd241527216d44cfb49102a5781845a07839986a04288b55d7fa90ff16a",
   "LightMapTexture2D_9738.png": "a19ed46b9f01e228d7aeb319f143df9db4ee762b8804e34799fec5f62e3cad26"
  }
