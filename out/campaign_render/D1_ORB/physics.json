@@ -1,0 +1,4247 @@
+{
+ "map": "D1_ORB",
+ "source": "manifests/authored.db + cooked FStaticMeshElement sections",
+ "meshes": {},
+ "physical_materials": {
+  "ENV_PHYSMAT_p.ForceField_Blue_PHYSMAT": {
+   "uses": 14,
+   "props": {
+    "ImpactEffect": "FX_Hologram_p.FX.ForceField_Squib_Blue_FX",
+    "Friction": 0.699999988079071,
+    "Restitution": 0.30000001192092896,
+    "LinearDamping": 0.009999999776482582,
+    "SleepEnergyThreshold": 0.5,
+    "AudioOcclusionVolume": -6.0,
+    "AudioOcclusionTransitionTime": 0.5
+   },
+   "property_object": null,
+   "property_class": null
+  },
+  "ENV_PHYSMAT_p.ForceField_PHYSMAT": {
+   "uses": 335,
+   "props": {
+    "ImpactEffect": "FX_Hologram_p.FX.ForceField_Squib_FX",
+    "ImpactSound": "BL_SHIELD.FORCE_FIELD_IMPT",
+    "Friction": 0.699999988079071,
+    "Restitution": 0.30000001192092896,
+    "LinearDamping": 0.009999999776482582,
+    "SleepEnergyThreshold": 0.5,
+    "AudioOcclusionVolume": -6.0,
+    "AudioOcclusionTransitionTime": 0.5
+   },
+   "property_object": null,
+   "property_class": null
+  },
+  "ENV_PHYSMAT_p.Ice_PHYSMAT": {
+   "uses": 85,
+   "props": {
+    "Friction": 0.5,
+    "Restitution": 0.10000000149011612,
+    "PhysicalMaterialProperty": "ENV_PHYSMAT_p.Ice_PHYSMAT.TnPhysicalMaterialProperty_11396",
+    "AudioOcclusionVolume": 0.0,
+    "AudioOcclusionTransitionTime": 0.0,
+    "LinearDamping": 0.009999999776482582,
+    "SleepEnergyThreshold": 0.5
+   },
+   "property_object": {
+    "FootstepSounds": {
+     "FootstepWalk": "SoundEvents_Footsteps.FS_DEFAULT_WALK",
+     "FootstepJog": "SoundEvents_Footsteps.FS_DEFAULT_JOG",
+     "FootstepRun": "SoundEvents_Footsteps.FS_DEFAULT_RUN",
+     "FootstepScuff": "SoundEvents_Footsteps.FS_DEFAULT_SCUFF",
+     "FootstepJump": "SoundEvents_Footsteps.FS_DEFAULT_JUMP",
+     "FootstepLand": "SoundEvents_Footsteps.FS_DEFAULT_LAND",
+     "FootstepHardLand": "SoundEvents_Footsteps.FS_DEFAULT_HARD_LAND"
+    },
+    "ApplyRandomRotationToDecal": true
+   },
+   "property_class": "TnPhysicalMaterialProperty"
+  },
+  "ENV_PHYSMAT_p.Metal_PHYSMAT": {
+   "uses": 27411,
+   "props": {
+    "Friction": 0.5,
+    "Restitution": 0.10000000149011612,
+    "PhysicalMaterialProperty": "ENV_PHYSMAT_p.Metal_PHYSMAT.TnPhysicalMaterialProperty_11396",
+    "LinearDamping": 0.009999999776482582,
+    "SleepEnergyThreshold": 0.5,
+    "AudioOcclusionVolume": -6.0,
+    "AudioOcclusionTransitionTime": 0.5
+   },
+   "property_object": {
+    "WeaponTypeSpecificDecals": [
+     {
+      "WeaponTypes": [
+       "TransGame.TnWeaponEffectsTypeBullet"
+      ],
+      "ImpactDecal": [
+       {
+        "Material": "FX_Decals_p.MetalDecal_02_MAT_INST",
+        "MinWidth": 30.0,
+        "MinHeight": 30.0,
+        "WidthRange": 30.0,
+        "HeightRange": 30.0,
+        "Thickness": 30.0,
+        "Lifetime": 30.0,
+        "NoClip": false,
+        "UniformScale": true,
+        "ApplyRandomRotation": true
+       },
+       {
+        "Material": "FX_Decals_p.MetalDecal_03_MAT_INST",
+        "MinWidth": 30.0,
+        "MinHeight": 30.0,
+        "WidthRange": 30.0,
+        "HeightRange": 30.0,
+        "Thickness": 30.0,
+        "Lifetime": 30.0,
+        "NoClip": false,
+        "UniformScale": true,
+        "ApplyRandomRotation": true
+       }
+      ]
+     },
+     {
+      "WeaponTypes": [
+       "TransGame.TnWeaponEffectsTypeEnergy"
+      ],
+      "ImpactDecal": [
+       {
+        "Material": "FX_Decals_p.MetalDecal_02_MAT_INST",
+        "MinWidth": 150.0,
+        "MinHeight": 150.0,
+        "WidthRange": 40.0,
+        "HeightRange": 40.0,
+        "Thickness": 40.0,
+        "Lifetime": 30.0,
+        "NoClip": false,
+        "UniformScale": false,
+        "ApplyRandomRotation": true
+       },
+       {
+        "Material": "FX_Decals_p.MetalDecal_03_MAT_INST",
+        "MinWidth": 150.0,
+        "MinHeight": 150.0,
+        "WidthRange": 40.0,
+        "HeightRange": 40.0,
+        "Thickness": 40.0,
+        "Lifetime": 30.0,
+        "NoClip": false,
+        "UniformScale": false,
+        "ApplyRandomRotation": true
+       }
+      ]
+     },
+     {
+      "WeaponTypes": [
+       "TransGame.TnWeaponEffectsTypeExplosive"
+      ],
+      "ImpactDecal": [
+       {
+        "Material": "FX_Decals_p.MetalDecal_02_MAT_INST",
+        "MinWidth": 300.0,
+        "MinHeight": 300.0,
+        "WidthRange": 30.0,
+        "HeightRange": 30.0,
+        "Thickness": 300.0,
+        "Lifetime": 30.0,
+        "NoClip": false,
+        "UniformScale": false,
+        "ApplyRandomRotation": true
+       },
+       {
+        "Material": "FX_Decals_p.MetalDecal_03_MAT_INST",
+        "MinWidth": 300.0,
+        "MinHeight": 300.0,
+        "WidthRange": 30.0,
+        "HeightRange": 30.0,
+        "Thickness": 300.0,
+        "Lifetime": 30.0,
+        "NoClip": false,
+        "UniformScale": false,
+        "ApplyRandomRotation": true
+       }
+      ]
+     }
+    ],
+    "FootstepSounds": {
+     "FootstepWalk": "SoundEvents_Footsteps.FS_DEFAULT_WALK",
+     "FootstepJog": "SoundEvents_Footsteps.FS_DEFAULT_JOG",
+     "FootstepRun": "SoundEvents_Footsteps.FS_DEFAULT_RUN",
+     "FootstepScuff": "SoundEvents_Footsteps.FS_DEFAULT_SCUFF",
+     "FootstepJump": "SoundEvents_Footsteps.FS_DEFAULT_JUMP",
+     "FootstepLand": "SoundEvents_Footsteps.FS_DEFAULT_LAND",
+     "FootstepHardLand": "SoundEvents_Footsteps.FS_DEFAULT_HARD_LAND"
+    },
+    "ApplyRandomRotationToDecal": true
+   },
+   "property_class": "TnPhysicalMaterialProperty"
+  },
+  "ENV_PHYSMAT_p.Water_Coolant_PHYSMAT": {
+   "uses": 2,
+   "props": {
+    "Friction": 0.5,
+    "Restitution": 0.10000000149011612,
+    "ImpactReFireDelay": 0.5,
+    "ImpactEffect": "FX_Debris_p.FX.Liquid_Impact_Coolant_FX",
+    "PhysicalMaterialProperty": "ENV_PHYSMAT_p.Water_Coolant_PHYSMAT.TnPhysicalMaterialProperty_11396",
+    "LinearDamping": 0.009999999776482582,
+    "SleepEnergyThreshold": 0.5,
+    "AudioOcclusionVolume": -6.0,
+    "AudioOcclusionTransitionTime": 0.5
+   },
+   "property_object": {
+    "NoDecal": true,
+    "ApplyRandomRotationToDecal": false,
+    "FootstepSounds": {
+     "FootstepWalk": "SoundEvents_Footsteps.FS_DEFAULT_WALK",
+     "FootstepJog": "SoundEvents_Footsteps.FS_DEFAULT_JOG",
+     "FootstepRun": "SoundEvents_Footsteps.FS_DEFAULT_RUN",
+     "FootstepScuff": "SoundEvents_Footsteps.FS_DEFAULT_SCUFF",
+     "FootstepJump": "SoundEvents_Footsteps.FS_DEFAULT_JUMP",
+     "FootstepLand": "SoundEvents_Footsteps.FS_DEFAULT_LAND",
+     "FootstepHardLand": "SoundEvents_Footsteps.FS_DEFAULT_HARD_LAND"
+    }
+   },
+   "property_class": "TnPhysicalMaterialProperty"
+  },
+  "ENV_PHYSMAT_p.Water_PHYSMAT": {
+   "uses": 31,
+   "props": {
+    "Friction": 0.5,
+    "Restitution": 0.10000000149011612,
+    "PhysicalMaterialProperty": "ENV_PHYSMAT_p.Water_PHYSMAT.TnPhysicalMaterialProperty_11396",
+    "LinearDamping": 0.009999999776482582,
+    "SleepEnergyThreshold": 0.5,
+    "AudioOcclusionVolume": -6.0,
+    "AudioOcclusionTransitionTime": 0.5
+   },
+   "property_object": {
+    "FootstepSounds": {
+     "FootstepWalk": "SoundEvents_Footsteps.FS_DEFAULT_WALK",
+     "FootstepJog": "SoundEvents_Footsteps.FS_DEFAULT_JOG",
+     "FootstepRun": "SoundEvents_Footsteps.FS_DEFAULT_RUN",
+     "FootstepScuff": "SoundEvents_Footsteps.FS_DEFAULT_SCUFF",
+     "FootstepJump": "SoundEvents_Footsteps.FS_DEFAULT_JUMP",
+     "FootstepLand": "SoundEvents_Footsteps.FS_DEFAULT_LAND",
+     "FootstepHardLand": "SoundEvents_Footsteps.FS_DEFAULT_HARD_LAND"
+    },
+    "ApplyRandomRotationToDecal": true
+   },
+   "property_class": "TnPhysicalMaterialProperty"
+  }
+ },
+ "world": {
+  "D1_ORB_Assmebly1_ART_m": {
+   "bNoDefaultInventoryForPlayer": true,
+   "TimeDilation": 1.0,
+   "StallZ": 1000000.0,
+   "DefaultGravityZ": -2940.0,
+   "RBPhysicsGravityScaling": 0.6600000262260437,
+   "MaxPhysicsDeltaTime": 0.3333333432674408,
+   "PhysicsSceneTiming": {
+    "bFixedTimeStep": true,
+    "TimeStep": 0.01666666753590107,
+    "MaxSubSteps": 5,
+    "RemainingTime": 0.0
+   },
+   "KillZ": -262143.0,
+   "KillZDamageType": "Engine.KillZDamageType",
+   "CustomTimeDilation": 1.0,
+   "bUpdatePhysicsWhenNotRendered": true
+  },
+  "D1_ORB_Assmebly1_DGN_m": {
+   "bNoDefaultInventoryForPlayer": true,
+   "TimeDilation": 1.0,
+   "StallZ": 1000000.0,
+   "DefaultGravityZ": -2940.0,
+   "RBPhysicsGravityScaling": 0.6600000262260437,
+   "MaxPhysicsDeltaTime": 0.3333333432674408,
+   "PhysicsSceneTiming": {
+    "bFixedTimeStep": true,
+    "TimeStep": 0.01666666753590107,
+    "MaxSubSteps": 5,
+    "RemainingTime": 0.0
+   },
+   "KillZ": -262143.0,
+   "KillZDamageType": "Engine.KillZDamageType",
+   "CustomTimeDilation": 1.0,
+   "bUpdatePhysicsWhenNotRendered": true
+  },
+  "D1_ORB_Assmebly2_ART_m": {
+   "bNoDefaultInventoryForPlayer": true,
+   "TimeDilation": 1.0,
+   "StallZ": 1000000.0,
+   "DefaultGravityZ": -2940.0,
+   "RBPhysicsGravityScaling": 0.6600000262260437,
+   "MaxPhysicsDeltaTime": 0.3333333432674408,
+   "PhysicsSceneTiming": {
+    "bFixedTimeStep": true,
+    "TimeStep": 0.01666666753590107,
+    "MaxSubSteps": 5,
+    "RemainingTime": 0.0
+   },
+   "KillZ": -262143.0,
+   "KillZDamageType": "Engine.KillZDamageType",
+   "CustomTimeDilation": 1.0,
+   "bUpdatePhysicsWhenNotRendered": true
+  },
+  "D1_ORB_Assmebly2_DGN_m": {
+   "bNoDefaultInventoryForPlayer": true,
+   "TimeDilation": 1.0,
+   "StallZ": 1000000.0,
+   "DefaultGravityZ": -2940.0,
+   "RBPhysicsGravityScaling": 0.6600000262260437,
+   "MaxPhysicsDeltaTime": 0.3333333432674408,
+   "PhysicsSceneTiming": {
+    "bFixedTimeStep": true,
+    "TimeStep": 0.01666666753590107,
+    "MaxSubSteps": 5,
+    "RemainingTime": 0.0
+   },
+   "KillZ": -262143.0,
+   "KillZDamageType": "Engine.KillZDamageType",
+   "CustomTimeDilation": 1.0,
+   "bUpdatePhysicsWhenNotRendered": true
+  },
+  "D1_ORB_Assmebly_VIG_m": {
+   "bNoDefaultInventoryForPlayer": true,
+   "TimeDilation": 1.0,
+   "StallZ": 1000000.0,
+   "DefaultGravityZ": -2940.0,
+   "RBPhysicsGravityScaling": 0.6600000262260437,
+   "MaxPhysicsDeltaTime": 0.3333333432674408,
+   "PhysicsSceneTiming": {
+    "bFixedTimeStep": true,
+    "TimeStep": 0.01666666753590107,
+    "MaxSubSteps": 5,
+    "RemainingTime": 0.0
+   },
+   "KillZ": -262143.0,
+   "KillZDamageType": "Engine.KillZDamageType",
+   "CustomTimeDilation": 1.0,
+   "bUpdatePhysicsWhenNotRendered": true
+  },
+  "D1_ORB_Audio_m": {
+   "bNoDefaultInventoryForPlayer": true,
+   "TimeDilation": 1.0,
+   "StallZ": 1000000.0,
+   "DefaultGravityZ": -2940.0,
+   "RBPhysicsGravityScaling": 0.6600000262260437,
+   "MaxPhysicsDeltaTime": 0.3333333432674408,
+   "PhysicsSceneTiming": {
+    "bFixedTimeStep": true,
+    "TimeStep": 0.01666666753590107,
+    "MaxSubSteps": 5,
+    "RemainingTime": 0.0
+   },
+   "KillZ": -262143.0,
+   "KillZDamageType": "Engine.KillZDamageType",
+   "CustomTimeDilation": 1.0,
+   "bUpdatePhysicsWhenNotRendered": true
+  },
+  "D1_ORB_Base_m": {
+   "bNoDefaultInventoryForPlayer": true,
+   "TimeDilation": 1.0,
+   "StallZ": 1000000.0,
+   "DefaultGravityZ": -2940.0,
+   "RBPhysicsGravityScaling": 0.6600000262260437,
+   "MaxPhysicsDeltaTime": 0.3333333432674408,
+   "PhysicsSceneTiming": {
+    "bFixedTimeStep": true,
+    "TimeStep": 0.01666666753590107,
+    "MaxSubSteps": 5,
+    "RemainingTime": 0.0
+   },
+   "KillZ": -262143.0,
+   "KillZDamageType": "Engine.KillZDamageType",
+   "CustomTimeDilation": 1.0,
+   "bUpdatePhysicsWhenNotRendered": true
+  },
+  "D1_ORB_Crash1B_ART_m": {
+   "bNoDefaultInventoryForPlayer": true,
+   "TimeDilation": 1.0,
+   "StallZ": 1000000.0,
+   "DefaultGravityZ": -2940.0,
+   "RBPhysicsGravityScaling": 0.6600000262260437,
+   "MaxPhysicsDeltaTime": 0.3333333432674408,
+   "PhysicsSceneTiming": {
+    "bFixedTimeStep": true,
+    "TimeStep": 0.01666666753590107,
+    "MaxSubSteps": 5,
+    "RemainingTime": 0.0
+   },
+   "KillZ": -262143.0,
+   "KillZDamageType": "Engine.KillZDamageType",
+   "CustomTimeDilation": 1.0,
+   "bUpdatePhysicsWhenNotRendered": true
+  },
+  "D1_ORB_Crash1B_DGN_m": {
+   "bNoDefaultInventoryForPlayer": true,
+   "TimeDilation": 1.0,
+   "StallZ": 1000000.0,
+   "DefaultGravityZ": -2940.0,
+   "RBPhysicsGravityScaling": 0.6600000262260437,
+   "MaxPhysicsDeltaTime": 0.3333333432674408,
+   "PhysicsSceneTiming": {
+    "bFixedTimeStep": true,
+    "TimeStep": 0.01666666753590107,
+    "MaxSubSteps": 5,
+    "RemainingTime": 0.0
+   },
+   "KillZ": -262143.0,
+   "KillZDamageType": "Engine.KillZDamageType",
+   "CustomTimeDilation": 1.0,
+   "bUpdatePhysicsWhenNotRendered": true
+  },
+  "D1_ORB_Crash1B_VIG_m": {
+   "bNoDefaultInventoryForPlayer": true,
+   "TimeDilation": 1.0,
+   "StallZ": 1000000.0,
+   "DefaultGravityZ": -2940.0,
+   "RBPhysicsGravityScaling": 0.6600000262260437,
+   "MaxPhysicsDeltaTime": 0.3333333432674408,
+   "PhysicsSceneTiming": {
+    "bFixedTimeStep": true,
+    "TimeStep": 0.01666666753590107,
+    "MaxSubSteps": 5,
+    "RemainingTime": 0.0
+   },
+   "KillZ": -262143.0,
+   "KillZDamageType": "Engine.KillZDamageType",
+   "CustomTimeDilation": 1.0,
+   "bUpdatePhysicsWhenNotRendered": true
+  },
+  "D1_ORB_Crash1_ART_m": {
+   "bNoDefaultInventoryForPlayer": true,
+   "TimeDilation": 1.0,
+   "StallZ": 1000000.0,
+   "DefaultGravityZ": -2940.0,
+   "RBPhysicsGravityScaling": 0.6600000262260437,
+   "MaxPhysicsDeltaTime": 0.3333333432674408,
+   "PhysicsSceneTiming": {
+    "bFixedTimeStep": true,
+    "TimeStep": 0.01666666753590107,
+    "MaxSubSteps": 5,
+    "RemainingTime": 0.0
+   },
+   "KillZ": -262143.0,
+   "KillZDamageType": "Engine.KillZDamageType",
+   "CustomTimeDilation": 1.0,
+   "bUpdatePhysicsWhenNotRendered": true
+  },
+  "D1_ORB_Crash1_DGN_m": {
+   "bNoDefaultInventoryForPlayer": true,
+   "TimeDilation": 1.0,
+   "StallZ": 1000000.0,
+   "DefaultGravityZ": -2940.0,
+   "RBPhysicsGravityScaling": 0.6600000262260437,
+   "MaxPhysicsDeltaTime": 0.3333333432674408,
+   "PhysicsSceneTiming": {
+    "bFixedTimeStep": true,
+    "TimeStep": 0.01666666753590107,
+    "MaxSubSteps": 5,
+    "RemainingTime": 0.0
+   },
+   "KillZ": -262143.0,
+   "KillZDamageType": "Engine.KillZDamageType",
+   "CustomTimeDilation": 1.0,
+   "bUpdatePhysicsWhenNotRendered": true
+  },
+  "D1_ORB_Crash1_VIG_m": {
+   "bNoDefaultInventoryForPlayer": true,
+   "TimeDilation": 1.0,
+   "StallZ": 1000000.0,
+   "DefaultGravityZ": -2940.0,
+   "RBPhysicsGravityScaling": 0.6600000262260437,
+   "MaxPhysicsDeltaTime": 0.3333333432674408,
+   "PhysicsSceneTiming": {
+    "bFixedTimeStep": true,
+    "TimeStep": 0.01666666753590107,
+    "MaxSubSteps": 5,
+    "RemainingTime": 0.0
+   },
+   "KillZ": -262143.0,
+   "KillZDamageType": "Engine.KillZDamageType",
+   "CustomTimeDilation": 1.0,
+   "bUpdatePhysicsWhenNotRendered": true
+  },
+  "D1_ORB_Crash2A_VIG_m": {
+   "bNoDefaultInventoryForPlayer": true,
+   "TimeDilation": 1.0,
+   "StallZ": 1000000.0,
+   "DefaultGravityZ": -2940.0,
+   "RBPhysicsGravityScaling": 0.6600000262260437,
+   "MaxPhysicsDeltaTime": 0.3333333432674408,
+   "PhysicsSceneTiming": {
+    "bFixedTimeStep": true,
+    "TimeStep": 0.01666666753590107,
+    "MaxSubSteps": 5,
+    "RemainingTime": 0.0
+   },
+   "KillZ": -262143.0,
+   "KillZDamageType": "Engine.KillZDamageType",
+   "CustomTimeDilation": 1.0,
+   "bUpdatePhysicsWhenNotRendered": true
+  },
+  "D1_ORB_Crash2B_ART_m": {
+   "bNoDefaultInventoryForPlayer": true,
+   "TimeDilation": 1.0,
+   "StallZ": 1000000.0,
+   "DefaultGravityZ": -2940.0,
+   "RBPhysicsGravityScaling": 0.6600000262260437,
+   "MaxPhysicsDeltaTime": 0.3333333432674408,
+   "PhysicsSceneTiming": {
+    "bFixedTimeStep": true,
+    "TimeStep": 0.01666666753590107,
+    "MaxSubSteps": 5,
+    "RemainingTime": 0.0
+   },
+   "KillZ": -262143.0,
+   "KillZDamageType": "Engine.KillZDamageType",
+   "CustomTimeDilation": 1.0,
+   "bUpdatePhysicsWhenNotRendered": true
+  },
+  "D1_ORB_Crash2B_CINE_m": {
+   "bNoDefaultInventoryForPlayer": true,
+   "TimeDilation": 1.0,
+   "StallZ": 1000000.0,
+   "DefaultGravityZ": -2940.0,
+   "RBPhysicsGravityScaling": 0.6600000262260437,
+   "MaxPhysicsDeltaTime": 0.3333333432674408,
+   "PhysicsSceneTiming": {
+    "bFixedTimeStep": true,
+    "TimeStep": 0.01666666753590107,
+    "MaxSubSteps": 5,
+    "RemainingTime": 0.0
+   },
+   "KillZ": -262143.0,
+   "KillZDamageType": "Engine.KillZDamageType",
+   "CustomTimeDilation": 1.0,
+   "bUpdatePhysicsWhenNotRendered": true
+  },
+  "D1_ORB_Crash2B_DGN_m": {
+   "bNoDefaultInventoryForPlayer": true,
+   "TimeDilation": 1.0,
+   "StallZ": 1000000.0,
+   "DefaultGravityZ": -2940.0,
+   "RBPhysicsGravityScaling": 0.6600000262260437,
+   "MaxPhysicsDeltaTime": 0.3333333432674408,
+   "PhysicsSceneTiming": {
+    "bFixedTimeStep": true,
+    "TimeStep": 0.01666666753590107,
+    "MaxSubSteps": 5,
+    "RemainingTime": 0.0
+   },
+   "KillZ": -262143.0,
+   "KillZDamageType": "Engine.KillZDamageType",
+   "CustomTimeDilation": 1.0,
+   "bUpdatePhysicsWhenNotRendered": true
+  },
+  "D1_ORB_Crash2B_VIG_m": {
+   "bNoDefaultInventoryForPlayer": true,
+   "TimeDilation": 1.0,
+   "StallZ": 1000000.0,
+   "DefaultGravityZ": -2940.0,
+   "RBPhysicsGravityScaling": 0.6600000262260437,
+   "MaxPhysicsDeltaTime": 0.3333333432674408,
+   "PhysicsSceneTiming": {
+    "bFixedTimeStep": true,
+    "TimeStep": 0.01666666753590107,
+    "MaxSubSteps": 5,
+    "RemainingTime": 0.0
+   },
+   "KillZ": -262143.0,
+   "KillZDamageType": "Engine.KillZDamageType",
+   "CustomTimeDilation": 1.0,
+   "bUpdatePhysicsWhenNotRendered": true
+  },
+  "D1_ORB_Crash2C_ART_m": {
+   "bNoDefaultInventoryForPlayer": true,
+   "TimeDilation": 1.0,
+   "StallZ": 1000000.0,
+   "DefaultGravityZ": -2940.0,
+   "RBPhysicsGravityScaling": 0.6600000262260437,
+   "MaxPhysicsDeltaTime": 0.3333333432674408,
+   "PhysicsSceneTiming": {
+    "bFixedTimeStep": true,
+    "TimeStep": 0.01666666753590107,
+    "MaxSubSteps": 5,
+    "RemainingTime": 0.0
+   },
+   "KillZ": -262143.0,
+   "KillZDamageType": "Engine.KillZDamageType",
+   "CustomTimeDilation": 1.0,
+   "bUpdatePhysicsWhenNotRendered": true
+  },
+  "D1_ORB_Crash2D_ART_m": {
+   "bNoDefaultInventoryForPlayer": true,
+   "TimeDilation": 1.0,
+   "StallZ": 1000000.0,
+   "DefaultGravityZ": -2940.0,
+   "RBPhysicsGravityScaling": 0.6600000262260437,
+   "MaxPhysicsDeltaTime": 0.3333333432674408,
+   "PhysicsSceneTiming": {
+    "bFixedTimeStep": true,
+    "TimeStep": 0.01666666753590107,
+    "MaxSubSteps": 5,
+    "RemainingTime": 0.0
+   },
+   "KillZ": -262143.0,
+   "KillZDamageType": "Engine.KillZDamageType",
+   "CustomTimeDilation": 1.0,
+   "bUpdatePhysicsWhenNotRendered": true
+  },
+  "D1_ORB_Crash2E_ART_m": {
+   "bNoDefaultInventoryForPlayer": true,
+   "TimeDilation": 1.0,
+   "StallZ": 1000000.0,
+   "DefaultGravityZ": -2940.0,
+   "RBPhysicsGravityScaling": 0.6600000262260437,
+   "MaxPhysicsDeltaTime": 0.3333333432674408,
+   "PhysicsSceneTiming": {
+    "bFixedTimeStep": true,
+    "TimeStep": 0.01666666753590107,
+    "MaxSubSteps": 5,
+    "RemainingTime": 0.0
+   },
+   "KillZ": -262143.0,
+   "KillZDamageType": "Engine.KillZDamageType",
+   "CustomTimeDilation": 1.0,
+   "bUpdatePhysicsWhenNotRendered": true
+  },
+  "D1_ORB_Crash2_ART_m": {
+   "bNoDefaultInventoryForPlayer": true,
+   "TimeDilation": 1.0,
+   "StallZ": 1000000.0,
+   "DefaultGravityZ": -2940.0,
+   "RBPhysicsGravityScaling": 0.6600000262260437,
+   "MaxPhysicsDeltaTime": 0.3333333432674408,
+   "PhysicsSceneTiming": {
+    "bFixedTimeStep": true,
+    "TimeStep": 0.01666666753590107,
+    "MaxSubSteps": 5,
+    "RemainingTime": 0.0
+   },
+   "KillZ": -262143.0,
+   "KillZDamageType": "Engine.KillZDamageType",
+   "CustomTimeDilation": 1.0,
+   "bUpdatePhysicsWhenNotRendered": true
+  },
+  "D1_ORB_Crash2_DGN_m": {
+   "bNoDefaultInventoryForPlayer": true,
+   "TimeDilation": 1.0,
+   "StallZ": 1000000.0,
+   "DefaultGravityZ": -2940.0,
+   "RBPhysicsGravityScaling": 0.6600000262260437,
+   "MaxPhysicsDeltaTime": 0.3333333432674408,
+   "PhysicsSceneTiming": {
+    "bFixedTimeStep": true,
+    "TimeStep": 0.01666666753590107,
+    "MaxSubSteps": 5,
+    "RemainingTime": 0.0
+   },
+   "KillZ": -262143.0,
+   "KillZDamageType": "Engine.KillZDamageType",
+   "CustomTimeDilation": 1.0,
+   "bUpdatePhysicsWhenNotRendered": true
+  },
+  "D1_ORB_Crash2_VIG_m": {
+   "bNoDefaultInventoryForPlayer": true,
+   "TimeDilation": 1.0,
+   "StallZ": 1000000.0,
+   "DefaultGravityZ": -2940.0,
+   "RBPhysicsGravityScaling": 0.6600000262260437,
+   "MaxPhysicsDeltaTime": 0.3333333432674408,
+   "PhysicsSceneTiming": {
+    "bFixedTimeStep": true,
+    "TimeStep": 0.01666666753590107,
+    "MaxSubSteps": 5,
+    "RemainingTime": 0.0
+   },
+   "KillZ": -262143.0,
+   "KillZDamageType": "Engine.KillZDamageType",
+   "CustomTimeDilation": 1.0,
+   "bUpdatePhysicsWhenNotRendered": true
+  },
+  "D1_ORB_CrashHack_DGN": {
+   "bNoDefaultInventoryForPlayer": true,
+   "TimeDilation": 1.0,
+   "StallZ": 1000000.0,
+   "DefaultGravityZ": -2940.0,
+   "RBPhysicsGravityScaling": 0.6600000262260437,
+   "MaxPhysicsDeltaTime": 0.3333333432674408,
+   "PhysicsSceneTiming": {
+    "bFixedTimeStep": true,
+    "TimeStep": 0.01666666753590107,
+    "MaxSubSteps": 5,
+    "RemainingTime": 0.0
+   },
+   "KillZ": -262143.0,
+   "KillZDamageType": "Engine.KillZDamageType",
+   "CustomTimeDilation": 1.0,
+   "bUpdatePhysicsWhenNotRendered": true
+  },
+  "D1_ORB_Cybertron_ART_m": {
+   "bNoDefaultInventoryForPlayer": true,
+   "TimeDilation": 1.0,
+   "StallZ": 1000000.0,
+   "DefaultGravityZ": -2940.0,
+   "RBPhysicsGravityScaling": 0.6600000262260437,
+   "MaxPhysicsDeltaTime": 0.3333333432674408,
+   "PhysicsSceneTiming": {
+    "bFixedTimeStep": true,
+    "TimeStep": 0.01666666753590107,
+    "MaxSubSteps": 5,
+    "RemainingTime": 0.0
+   },
+   "KillZ": -262143.0,
+   "KillZDamageType": "Engine.KillZDamageType",
+   "CustomTimeDilation": 1.0,
+   "bUpdatePhysicsWhenNotRendered": true
+  },
+  "D1_ORB_DETrans_ART_m": {
+   "bNoDefaultInventoryForPlayer": true,
+   "TimeDilation": 1.0,
+   "StallZ": 1000000.0,
+   "DefaultGravityZ": -2940.0,
+   "RBPhysicsGravityScaling": 0.6600000262260437,
+   "MaxPhysicsDeltaTime": 0.3333333432674408,
+   "PhysicsSceneTiming": {
+    "bFixedTimeStep": true,
+    "TimeStep": 0.01666666753590107,
+    "MaxSubSteps": 5,
+    "RemainingTime": 0.0
+   },
+   "KillZ": -262143.0,
+   "KillZDamageType": "Engine.KillZDamageType",
+   "CustomTimeDilation": 1.0,
+   "bUpdatePhysicsWhenNotRendered": true
+  },
+  "D1_ORB_DETrans_DGN_m": {
+   "bNoDefaultInventoryForPlayer": true,
+   "TimeDilation": 1.0,
+   "StallZ": 1000000.0,
+   "DefaultGravityZ": -2940.0,
+   "RBPhysicsGravityScaling": 0.6600000262260437,
+   "MaxPhysicsDeltaTime": 0.3333333432674408,
+   "PhysicsSceneTiming": {
+    "bFixedTimeStep": true,
+    "TimeStep": 0.01666666753590107,
+    "MaxSubSteps": 5,
+    "RemainingTime": 0.0
+   },
+   "KillZ": -262143.0,
+   "KillZDamageType": "Engine.KillZDamageType",
+   "CustomTimeDilation": 1.0,
+   "bUpdatePhysicsWhenNotRendered": true
+  },
+  "D1_ORB_DarkEnergon_ART_m": {
+   "bNoDefaultInventoryForPlayer": true,
+   "TimeDilation": 1.0,
+   "StallZ": 1000000.0,
+   "DefaultGravityZ": -2940.0,
+   "RBPhysicsGravityScaling": 0.6600000262260437,
+   "MaxPhysicsDeltaTime": 0.3333333432674408,
+   "PhysicsSceneTiming": {
+    "bFixedTimeStep": true,
+    "TimeStep": 0.01666666753590107,
+    "MaxSubSteps": 5,
+    "RemainingTime": 0.0
+   },
+   "KillZ": -262143.0,
+   "KillZDamageType": "Engine.KillZDamageType",
+   "CustomTimeDilation": 1.0,
+   "bUpdatePhysicsWhenNotRendered": true
+  },
+  "D1_ORB_DarkEnergon_CINE_m": {
+   "bNoDefaultInventoryForPlayer": true,
+   "TimeDilation": 1.0,
+   "StallZ": 1000000.0,
+   "DefaultGravityZ": -2940.0,
+   "RBPhysicsGravityScaling": 0.6600000262260437,
+   "MaxPhysicsDeltaTime": 0.3333333432674408,
+   "PhysicsSceneTiming": {
+    "bFixedTimeStep": true,
+    "TimeStep": 0.01666666753590107,
+    "MaxSubSteps": 5,
+    "RemainingTime": 0.0
+   },
+   "KillZ": -262143.0,
+   "KillZDamageType": "Engine.KillZDamageType",
+   "CustomTimeDilation": 1.0,
+   "bUpdatePhysicsWhenNotRendered": true
+  },
+  "D1_ORB_DarkEnergon_DGN_m": {
+   "bNoDefaultInventoryForPlayer": true,
+   "TimeDilation": 1.0,
+   "StallZ": 1000000.0,
+   "DefaultGravityZ": -2940.0,
+   "RBPhysicsGravityScaling": 0.6600000262260437,
+   "MaxPhysicsDeltaTime": 0.3333333432674408,
+   "PhysicsSceneTiming": {
+    "bFixedTimeStep": true,
+    "TimeStep": 0.01666666753590107,
+    "MaxSubSteps": 5,
+    "RemainingTime": 0.0
+   },
+   "KillZ": -262143.0,
+   "KillZDamageType": "Engine.KillZDamageType",
+   "CustomTimeDilation": 1.0,
+   "bUpdatePhysicsWhenNotRendered": true
+  },
+  "D1_ORB_DarkEnergon_VIG_m": {
+   "bNoDefaultInventoryForPlayer": true,
+   "TimeDilation": 1.0,
+   "StallZ": 1000000.0,
+   "DefaultGravityZ": -2940.0,
+   "RBPhysicsGravityScaling": 0.6600000262260437,
+   "MaxPhysicsDeltaTime": 0.3333333432674408,
+   "PhysicsSceneTiming": {
+    "bFixedTimeStep": true,
+    "TimeStep": 0.01666666753590107,
+    "MaxSubSteps": 5,
+    "RemainingTime": 0.0
+   },
+   "KillZ": -262143.0,
+   "KillZDamageType": "Engine.KillZDamageType",
+   "CustomTimeDilation": 1.0,
+   "bUpdatePhysicsWhenNotRendered": true
+  },
+  "D1_ORB_DataCenter2_ART_m": {
+   "bNoDefaultInventoryForPlayer": true,
+   "TimeDilation": 1.0,
+   "StallZ": 1000000.0,
+   "DefaultGravityZ": -2940.0,
+   "RBPhysicsGravityScaling": 0.6600000262260437,
+   "MaxPhysicsDeltaTime": 0.3333333432674408,
+   "PhysicsSceneTiming": {
+    "bFixedTimeStep": true,
+    "TimeStep": 0.01666666753590107,
+    "MaxSubSteps": 5,
+    "RemainingTime": 0.0
+   },
+   "KillZ": -262143.0,
+   "KillZDamageType": "Engine.KillZDamageType",
+   "CustomTimeDilation": 1.0,
+   "bUpdatePhysicsWhenNotRendered": true
+  },
+  "D1_ORB_DataCenter2b_ART_m": {
+   "bNoDefaultInventoryForPlayer": true,
+   "TimeDilation": 1.0,
+   "StallZ": 1000000.0,
+   "DefaultGravityZ": -2940.0,
+   "RBPhysicsGravityScaling": 0.6600000262260437,
+   "MaxPhysicsDeltaTime": 0.3333333432674408,
+   "PhysicsSceneTiming": {
+    "bFixedTimeStep": true,
+    "TimeStep": 0.01666666753590107,
+    "MaxSubSteps": 5,
+    "RemainingTime": 0.0
+   },
+   "KillZ": -262143.0,
+   "KillZDamageType": "Engine.KillZDamageType",
+   "CustomTimeDilation": 1.0,
+   "bUpdatePhysicsWhenNotRendered": true
+  },
+  "D1_ORB_DataCenter3_ART_m": {
+   "bNoDefaultInventoryForPlayer": true,
+   "TimeDilation": 1.0,
+   "StallZ": 1000000.0,
+   "DefaultGravityZ": -2940.0,
+   "RBPhysicsGravityScaling": 0.6600000262260437,
+   "MaxPhysicsDeltaTime": 0.3333333432674408,
+   "PhysicsSceneTiming": {
+    "bFixedTimeStep": true,
+    "TimeStep": 0.01666666753590107,
+    "MaxSubSteps": 5,
+    "RemainingTime": 0.0
+   },
+   "KillZ": -262143.0,
+   "KillZDamageType": "Engine.KillZDamageType",
+   "CustomTimeDilation": 1.0,
+   "bUpdatePhysicsWhenNotRendered": true
+  },
+  "D1_ORB_DataCenter_ART_m": {
+   "bNoDefaultInventoryForPlayer": true,
+   "TimeDilation": 1.0,
+   "StallZ": 1000000.0,
+   "DefaultGravityZ": -2940.0,
+   "RBPhysicsGravityScaling": 0.6600000262260437,
+   "MaxPhysicsDeltaTime": 0.3333333432674408,
+   "PhysicsSceneTiming": {
+    "bFixedTimeStep": true,
+    "TimeStep": 0.01666666753590107,
+    "MaxSubSteps": 5,
+    "RemainingTime": 0.0
+   },
+   "KillZ": -262143.0,
+   "KillZDamageType": "Engine.KillZDamageType",
+   "CustomTimeDilation": 1.0,
+   "bUpdatePhysicsWhenNotRendered": true
+  },
+  "D1_ORB_DataCenter_CINE_m": {
+   "bNoDefaultInventoryForPlayer": true,
+   "TimeDilation": 1.0,
+   "StallZ": 1000000.0,
+   "DefaultGravityZ": -2940.0,
+   "RBPhysicsGravityScaling": 0.6600000262260437,
+   "MaxPhysicsDeltaTime": 0.3333333432674408,
+   "PhysicsSceneTiming": {
+    "bFixedTimeStep": true,
+    "TimeStep": 0.01666666753590107,
+    "MaxSubSteps": 5,
+    "RemainingTime": 0.0
+   },
+   "KillZ": -262143.0,
+   "KillZDamageType": "Engine.KillZDamageType",
+   "CustomTimeDilation": 1.0,
+   "bUpdatePhysicsWhenNotRendered": true
+  },
+  "D1_ORB_DataCenter_DGN_m": {
+   "bNoDefaultInventoryForPlayer": true,
+   "TimeDilation": 1.0,
+   "StallZ": 1000000.0,
+   "DefaultGravityZ": -2940.0,
+   "RBPhysicsGravityScaling": 0.6600000262260437,
+   "MaxPhysicsDeltaTime": 0.3333333432674408,
+   "PhysicsSceneTiming": {
+    "bFixedTimeStep": true,
+    "TimeStep": 0.01666666753590107,
+    "MaxSubSteps": 5,
+    "RemainingTime": 0.0
+   },
+   "KillZ": -262143.0,
+   "KillZDamageType": "Engine.KillZDamageType",
+   "CustomTimeDilation": 1.0,
+   "bUpdatePhysicsWhenNotRendered": true
+  },
+  "D1_ORB_DataCenter_VIG_m": {
+   "bNoDefaultInventoryForPlayer": true,
+   "TimeDilation": 1.0,
+   "StallZ": 1000000.0,
+   "DefaultGravityZ": -2940.0,
+   "RBPhysicsGravityScaling": 0.6600000262260437,
+   "MaxPhysicsDeltaTime": 0.3333333432674408,
+   "PhysicsSceneTiming": {
+    "bFixedTimeStep": true,
+    "TimeStep": 0.01666666753590107,
+    "MaxSubSteps": 5,
+    "RemainingTime": 0.0
+   },
+   "KillZ": -262143.0,
+   "KillZDamageType": "Engine.KillZDamageType",
+   "CustomTimeDilation": 1.0,
+   "bUpdatePhysicsWhenNotRendered": true
+  },
+  "D1_ORB_Exterior1_ART_m": {
+   "bNoDefaultInventoryForPlayer": true,
+   "TimeDilation": 1.0,
+   "StallZ": 1000000.0,
+   "DefaultGravityZ": -2940.0,
+   "RBPhysicsGravityScaling": 0.6600000262260437,
+   "MaxPhysicsDeltaTime": 0.3333333432674408,
+   "PhysicsSceneTiming": {
+    "bFixedTimeStep": true,
+    "TimeStep": 0.01666666753590107,
+    "MaxSubSteps": 5,
+    "RemainingTime": 0.0
+   },
+   "KillZ": -262143.0,
+   "KillZDamageType": "Engine.KillZDamageType",
+   "CustomTimeDilation": 1.0,
+   "bUpdatePhysicsWhenNotRendered": true
+  },
+  "D1_ORB_Exterior1_DGN_m": {
+   "bNoDefaultInventoryForPlayer": true,
+   "TimeDilation": 1.0,
+   "StallZ": 1000000.0,
+   "DefaultGravityZ": -2940.0,
+   "RBPhysicsGravityScaling": 0.6600000262260437,
+   "MaxPhysicsDeltaTime": 0.3333333432674408,
+   "PhysicsSceneTiming": {
+    "bFixedTimeStep": true,
+    "TimeStep": 0.01666666753590107,
+    "MaxSubSteps": 5,
+    "RemainingTime": 0.0
+   },
+   "KillZ": -262143.0,
+   "KillZDamageType": "Engine.KillZDamageType",
+   "CustomTimeDilation": 1.0,
+   "bUpdatePhysicsWhenNotRendered": true
+  },
+  "D1_ORB_Exterior2_ART_m": {
+   "bNoDefaultInventoryForPlayer": true,
+   "TimeDilation": 1.0,
+   "StallZ": 1000000.0,
+   "DefaultGravityZ": -2940.0,
+   "RBPhysicsGravityScaling": 0.6600000262260437,
+   "MaxPhysicsDeltaTime": 0.3333333432674408,
+   "PhysicsSceneTiming": {
+    "bFixedTimeStep": true,
+    "TimeStep": 0.01666666753590107,
+    "MaxSubSteps": 5,
+    "RemainingTime": 0.0
+   },
+   "KillZ": -262143.0,
+   "KillZDamageType": "Engine.KillZDamageType",
+   "CustomTimeDilation": 1.0,
+   "bUpdatePhysicsWhenNotRendered": true
+  },
+  "D1_ORB_Exterior2_DGN_m": {
+   "bNoDefaultInventoryForPlayer": true,
+   "TimeDilation": 1.0,
+   "StallZ": 1000000.0,
+   "DefaultGravityZ": -2940.0,
+   "RBPhysicsGravityScaling": 0.6600000262260437,
+   "MaxPhysicsDeltaTime": 0.3333333432674408,
+   "PhysicsSceneTiming": {
+    "bFixedTimeStep": true,
+    "TimeStep": 0.01666666753590107,
+    "MaxSubSteps": 5,
+    "RemainingTime": 0.0
+   },
+   "KillZ": -262143.0,
+   "KillZDamageType": "Engine.KillZDamageType",
+   "CustomTimeDilation": 1.0,
+   "bUpdatePhysicsWhenNotRendered": true
+  },
+  "D1_ORB_Exterior3_DGN_m": {
+   "bNoDefaultInventoryForPlayer": true,
+   "TimeDilation": 1.0,
+   "StallZ": 1000000.0,
+   "DefaultGravityZ": -2940.0,
+   "RBPhysicsGravityScaling": 0.6600000262260437,
+   "MaxPhysicsDeltaTime": 0.3333333432674408,
+   "PhysicsSceneTiming": {
+    "bFixedTimeStep": true,
+    "TimeStep": 0.01666666753590107,
+    "MaxSubSteps": 5,
+    "RemainingTime": 0.0
+   },
+   "KillZ": -262143.0,
+   "KillZDamageType": "Engine.KillZDamageType",
+   "CustomTimeDilation": 1.0,
+   "bUpdatePhysicsWhenNotRendered": true
+  },
+  "D1_ORB_GLB_Doors_m": {
+   "bNoDefaultInventoryForPlayer": true,
+   "TimeDilation": 1.0,
+   "StallZ": 1000000.0,
+   "DefaultGravityZ": -2940.0,
+   "RBPhysicsGravityScaling": 0.6600000262260437,
+   "MaxPhysicsDeltaTime": 0.3333333432674408,
+   "PhysicsSceneTiming": {
+    "bFixedTimeStep": true,
+    "TimeStep": 0.01666666753590107,
+    "MaxSubSteps": 5,
+    "RemainingTime": 0.0
+   },
+   "KillZ": -262143.0,
+   "KillZDamageType": "Engine.KillZDamageType",
+   "CustomTimeDilation": 1.0,
+   "bUpdatePhysicsWhenNotRendered": true
+  },
+  "D1_ORB_HalfMoon_ART_m": {
+   "bNoDefaultInventoryForPlayer": true,
+   "TimeDilation": 1.0,
+   "StallZ": 1000000.0,
+   "DefaultGravityZ": -2940.0,
+   "RBPhysicsGravityScaling": 0.6600000262260437,
+   "MaxPhysicsDeltaTime": 0.3333333432674408,
+   "PhysicsSceneTiming": {
+    "bFixedTimeStep": true,
+    "TimeStep": 0.01666666753590107,
+    "MaxSubSteps": 5,
+    "RemainingTime": 0.0
+   },
+   "KillZ": -262143.0,
+   "KillZDamageType": "Engine.KillZDamageType",
+   "CustomTimeDilation": 1.0,
+   "bUpdatePhysicsWhenNotRendered": true
+  },
+  "D1_ORB_Music_m": {
+   "bNoDefaultInventoryForPlayer": true,
+   "TimeDilation": 1.0,
+   "StallZ": 1000000.0,
+   "DefaultGravityZ": -2940.0,
+   "RBPhysicsGravityScaling": 0.6600000262260437,
+   "MaxPhysicsDeltaTime": 0.3333333432674408,
+   "PhysicsSceneTiming": {
+    "bFixedTimeStep": true,
+    "TimeStep": 0.01666666753590107,
+    "MaxSubSteps": 5,
+    "RemainingTime": 0.0
+   },
+   "KillZ": -262143.0,
+   "KillZDamageType": "Engine.KillZDamageType",
+   "CustomTimeDilation": 1.0,
+   "bUpdatePhysicsWhenNotRendered": true
+  },
+  "D1_ORB_ScienceLabs_ART_m": {
+   "bNoDefaultInventoryForPlayer": true,
+   "TimeDilation": 1.0,
+   "StallZ": 1000000.0,
+   "DefaultGravityZ": -2940.0,
+   "RBPhysicsGravityScaling": 0.6600000262260437,
+   "MaxPhysicsDeltaTime": 0.3333333432674408,
+   "PhysicsSceneTiming": {
+    "bFixedTimeStep": true,
+    "TimeStep": 0.01666666753590107,
+    "MaxSubSteps": 5,
+    "RemainingTime": 0.0
+   },
+   "KillZ": -262143.0,
+   "KillZDamageType": "Engine.KillZDamageType",
+   "CustomTimeDilation": 1.0,
+   "bUpdatePhysicsWhenNotRendered": true
+  },
+  "D1_ORB_ScienceLabs_CINE_m": {
+   "bNoDefaultInventoryForPlayer": true,
+   "TimeDilation": 1.0,
+   "StallZ": 1000000.0,
+   "DefaultGravityZ": -2940.0,
+   "RBPhysicsGravityScaling": 0.6600000262260437,
+   "MaxPhysicsDeltaTime": 0.3333333432674408,
+   "PhysicsSceneTiming": {
+    "bFixedTimeStep": true,
+    "TimeStep": 0.01666666753590107,
+    "MaxSubSteps": 5,
+    "RemainingTime": 0.0
+   },
+   "KillZ": -262143.0,
+   "KillZDamageType": "Engine.KillZDamageType",
+   "CustomTimeDilation": 1.0,
+   "bUpdatePhysicsWhenNotRendered": true
+  },
+  "D1_ORB_ScienceLabs_DGN_m": {
+   "bNoDefaultInventoryForPlayer": true,
+   "TimeDilation": 1.0,
+   "StallZ": 1000000.0,
+   "DefaultGravityZ": -2940.0,
+   "RBPhysicsGravityScaling": 0.6600000262260437,
+   "MaxPhysicsDeltaTime": 0.3333333432674408,
+   "PhysicsSceneTiming": {
+    "bFixedTimeStep": true,
+    "TimeStep": 0.01666666753590107,
+    "MaxSubSteps": 5,
+    "RemainingTime": 0.0
+   },
+   "KillZ": -262143.0,
+   "KillZDamageType": "Engine.KillZDamageType",
+   "CustomTimeDilation": 1.0,
+   "bUpdatePhysicsWhenNotRendered": true
+  },
+  "D1_ORB_Space_VIG_m": {
+   "bNoDefaultInventoryForPlayer": true,
+   "TimeDilation": 1.0,
+   "StallZ": 1000000.0,
+   "DefaultGravityZ": -2940.0,
+   "RBPhysicsGravityScaling": 0.6600000262260437,
+   "MaxPhysicsDeltaTime": 0.3333333432674408,
+   "PhysicsSceneTiming": {
+    "bFixedTimeStep": true,
+    "TimeStep": 0.01666666753590107,
+    "MaxSubSteps": 5,
+    "RemainingTime": 0.0
+   },
+   "KillZ": -262143.0,
+   "KillZDamageType": "Engine.KillZDamageType",
+   "CustomTimeDilation": 1.0,
+   "bUpdatePhysicsWhenNotRendered": true
+  },
+  "D1_ORB_StationExterior2_ART_m": {
+   "bNoDefaultInventoryForPlayer": true,
+   "TimeDilation": 1.0,
+   "StallZ": 1000000.0,
+   "DefaultGravityZ": -2940.0,
+   "RBPhysicsGravityScaling": 0.6600000262260437,
+   "MaxPhysicsDeltaTime": 0.3333333432674408,
+   "PhysicsSceneTiming": {
+    "bFixedTimeStep": true,
+    "TimeStep": 0.01666666753590107,
+    "MaxSubSteps": 5,
+    "RemainingTime": 0.0
+   },
+   "KillZ": -262143.0,
+   "KillZDamageType": "Engine.KillZDamageType",
+   "CustomTimeDilation": 1.0,
+   "bUpdatePhysicsWhenNotRendered": true
+  },
+  "D1_ORB_StationExterior_ART_m": {
+   "bNoDefaultInventoryForPlayer": true,
+   "TimeDilation": 1.0,
+   "StallZ": 1000000.0,
+   "DefaultGravityZ": -2940.0,
+   "RBPhysicsGravityScaling": 0.6600000262260437,
+   "MaxPhysicsDeltaTime": 0.3333333432674408,
+   "PhysicsSceneTiming": {
+    "bFixedTimeStep": true,
+    "TimeStep": 0.01666666753590107,
+    "MaxSubSteps": 5,
+    "RemainingTime": 0.0
+   },
+   "KillZ": -262143.0,
+   "KillZDamageType": "Engine.KillZDamageType",
+   "CustomTimeDilation": 1.0,
+   "bUpdatePhysicsWhenNotRendered": true
+  },
+  "D1_ORB_Vent1_ART_m": {
+   "bNoDefaultInventoryForPlayer": true,
+   "TimeDilation": 1.0,
+   "StallZ": 1000000.0,
+   "DefaultGravityZ": -2940.0,
+   "RBPhysicsGravityScaling": 0.6600000262260437,
+   "MaxPhysicsDeltaTime": 0.3333333432674408,
+   "PhysicsSceneTiming": {
+    "bFixedTimeStep": true,
+    "TimeStep": 0.01666666753590107,
+    "MaxSubSteps": 5,
+    "RemainingTime": 0.0
+   },
+   "KillZ": -262143.0,
+   "KillZDamageType": "Engine.KillZDamageType",
+   "CustomTimeDilation": 1.0,
+   "bUpdatePhysicsWhenNotRendered": true
+  },
+  "D1_ORB_Vent1_DGN_m": {
+   "bNoDefaultInventoryForPlayer": true,
+   "TimeDilation": 1.0,
+   "StallZ": 1000000.0,
+   "DefaultGravityZ": -2940.0,
+   "RBPhysicsGravityScaling": 0.6600000262260437,
+   "MaxPhysicsDeltaTime": 0.3333333432674408,
+   "PhysicsSceneTiming": {
+    "bFixedTimeStep": true,
+    "TimeStep": 0.01666666753590107,
+    "MaxSubSteps": 5,
+    "RemainingTime": 0.0
+   },
+   "KillZ": -262143.0,
+   "KillZDamageType": "Engine.KillZDamageType",
+   "CustomTimeDilation": 1.0,
+   "bUpdatePhysicsWhenNotRendered": true
+  },
+  "GLB_Audio_m": {
+   "bNoDefaultInventoryForPlayer": true,
+   "TimeDilation": 1.0,
+   "StallZ": 1000000.0,
+   "DefaultGravityZ": -2940.0,
+   "RBPhysicsGravityScaling": 0.6600000262260437,
+   "MaxPhysicsDeltaTime": 0.3333333432674408,
+   "PhysicsSceneTiming": {
+    "bFixedTimeStep": true,
+    "TimeStep": 0.01666666753590107,
+    "MaxSubSteps": 5,
+    "RemainingTime": 0.0
+   },
+   "KillZ": -262143.0,
+   "KillZDamageType": "Engine.KillZDamageType",
+   "CustomTimeDilation": 1.0,
+   "bUpdatePhysicsWhenNotRendered": true
+  }
+ },
+ "characters": {
+  "optimus_robot": {
+   "physics_asset": "TR_Optimus_ROBO_p.RB_Optimus_A_PHYSSYS",
+   "bodies": [
+    {
+     "bone": "C_Spine00_Hips_XB",
+     "fixed": null,
+     "no_collision": null,
+     "block_zero_extent": true,
+     "block_non_zero_extent": true,
+     "mass_scale": null,
+     "phys_material": "TR_Optimus_ROBO_p.RB_Optimus_PHYSMAT",
+     "geometry": {
+      "convex": [],
+      "boxes": [
+       {
+        "X": 109.01908111572266,
+        "Y": 41.012847900390625,
+        "Z": 71.6397933959961,
+        "center_ue": [
+         0.0,
+         -5.25,
+         2.75
+        ]
+       }
+      ],
+      "spheres": [],
+      "sphyls": []
+     }
+    },
+    {
+     "bone": "C_Spine01_Lumbar01_XB",
+     "fixed": null,
+     "no_collision": null,
+     "block_zero_extent": true,
+     "block_non_zero_extent": true,
+     "mass_scale": null,
+     "phys_material": "TR_Optimus_ROBO_p.RB_Optimus_PHYSMAT",
+     "geometry": {
+      "convex": [],
+      "boxes": [],
+      "spheres": [],
+      "sphyls": [
+       {
+        "radius": 15.149999618530273,
+        "length": 15.149999618530273,
+        "center_ue": [
+         0.0,
+         0.0,
+         0.0
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "bone": "C_Spine02_Lumbar02_XB",
+     "fixed": null,
+     "no_collision": null,
+     "block_zero_extent": true,
+     "block_non_zero_extent": true,
+     "mass_scale": null,
+     "phys_material": "TR_Optimus_ROBO_p.RB_Optimus_PHYSMAT",
+     "geometry": {
+      "convex": [],
+      "boxes": [],
+      "spheres": [
+       {
+        "radius": 72.33618927001953,
+        "center_ue": [
+         57.916,
+         0.0,
+         3.161
+        ]
+       },
+       {
+        "radius": 20.00495147705078,
+        "center_ue": [
+         26.0,
+         0.0,
+         -31.0
+        ]
+       }
+      ],
+      "sphyls": []
+     }
+    },
+    {
+     "bone": "C_Spine03_Neck01_XB",
+     "fixed": null,
+     "no_collision": null,
+     "block_zero_extent": true,
+     "block_non_zero_extent": true,
+     "mass_scale": null,
+     "phys_material": "TR_Optimus_ROBO_p.RB_Optimus_PHYSMAT",
+     "geometry": {
+      "convex": [],
+      "boxes": [],
+      "spheres": [],
+      "sphyls": [
+       {
+        "radius": 15.149999618530273,
+        "length": 15.149999618530273,
+        "center_ue": [
+         0.0,
+         0.0,
+         0.0
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "bone": "C_Spine04_Head_XB",
+     "fixed": null,
+     "no_collision": null,
+     "block_zero_extent": true,
+     "block_non_zero_extent": true,
+     "mass_scale": null,
+     "phys_material": "TR_Optimus_ROBO_p.RB_Optimus_PHYSMAT",
+     "geometry": {
+      "convex": [],
+      "boxes": [],
+      "spheres": [
+       {
+        "radius": 42.96956253051758,
+        "center_ue": [
+         19.207,
+         0.0,
+         -1.86
+        ]
+       }
+      ],
+      "sphyls": []
+     }
+    },
+    {
+     "bone": "L_Arm01_Clav_XB",
+     "fixed": null,
+     "no_collision": null,
+     "block_zero_extent": true,
+     "block_non_zero_extent": true,
+     "mass_scale": null,
+     "phys_material": "TR_Optimus_ROBO_p.RB_Optimus_PHYSMAT",
+     "geometry": {
+      "convex": [],
+      "boxes": [],
+      "spheres": [],
+      "sphyls": [
+       {
+        "radius": 35.33463668823242,
+        "length": 22.334287643432617,
+        "center_ue": [
+         15.961,
+         11.577,
+         -0.619
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "bone": "L_Arm02_Shoulder_XB",
+     "fixed": null,
+     "no_collision": null,
+     "block_zero_extent": true,
+     "block_non_zero_extent": true,
+     "mass_scale": null,
+     "phys_material": "TR_Optimus_ROBO_p.RB_Optimus_PHYSMAT",
+     "geometry": {
+      "convex": [],
+      "boxes": [],
+      "spheres": [],
+      "sphyls": [
+       {
+        "radius": 34.22750473022461,
+        "length": 37.416954040527344,
+        "center_ue": [
+         24.974,
+         6.696,
+         -1.213
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "bone": "L_Arm03_Elbow_XB",
+     "fixed": null,
+     "no_collision": null,
+     "block_zero_extent": true,
+     "block_non_zero_extent": true,
+     "mass_scale": null,
+     "phys_material": "TR_Optimus_ROBO_p.RB_Optimus_PHYSMAT",
+     "geometry": {
+      "convex": [],
+      "boxes": [
+       {
+        "X": 78.99767303466797,
+        "Y": 58.49369430541992,
+        "Z": 64.89177703857422,
+        "center_ue": [
+         49.447,
+         0.037,
+         3.487
+        ]
+       }
+      ],
+      "spheres": [],
+      "sphyls": []
+     }
+    },
+    {
+     "bone": "L_Arm04_Hand_XB",
+     "fixed": null,
+     "no_collision": null,
+     "block_zero_extent": true,
+     "block_non_zero_extent": true,
+     "mass_scale": null,
+     "phys_material": "TR_Optimus_ROBO_p.RB_Optimus_PHYSMAT",
+     "geometry": {
+      "convex": [],
+      "boxes": [],
+      "spheres": [],
+      "sphyls": [
+       {
+        "radius": 26.14781951904297,
+        "length": 10.74872875213623,
+        "center_ue": [
+         26.5,
+         -5.25,
+         -0.0
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "bone": "R_Arm01_Clav_XB",
+     "fixed": null,
+     "no_collision": null,
+     "block_zero_extent": true,
+     "block_non_zero_extent": true,
+     "mass_scale": null,
+     "phys_material": "TR_Optimus_ROBO_p.RB_Optimus_PHYSMAT",
+     "geometry": {
+      "convex": [],
+      "boxes": [],
+      "spheres": [],
+      "sphyls": [
+       {
+        "radius": 35.33463668823242,
+        "length": 22.334287643432617,
+        "center_ue": [
+         -15.961,
+         -11.578,
+         0.62
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "bone": "R_Arm02_Shoulder_XB",
+     "fixed": null,
+     "no_collision": null,
+     "block_zero_extent": true,
+     "block_non_zero_extent": true,
+     "mass_scale": null,
+     "phys_material": "TR_Optimus_ROBO_p.RB_Optimus_PHYSMAT",
+     "geometry": {
+      "convex": [],
+      "boxes": [],
+      "spheres": [],
+      "sphyls": [
+       {
+        "radius": 34.22750473022461,
+        "length": 37.416954040527344,
+        "center_ue": [
+         -27.474,
+         -6.696,
+         1.213
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "bone": "R_Arm03_Elbow_XB",
+     "fixed": null,
+     "no_collision": null,
+     "block_zero_extent": true,
+     "block_non_zero_extent": true,
+     "mass_scale": null,
+     "phys_material": "TR_Optimus_ROBO_p.RB_Optimus_PHYSMAT",
+     "geometry": {
+      "convex": [],
+      "boxes": [
+       {
+        "X": 78.99767303466797,
+        "Y": 58.49369430541992,
+        "Z": 64.89177703857422,
+        "center_ue": [
+         -47.956,
+         -0.345,
+         -4.967
+        ]
+       }
+      ],
+      "spheres": [],
+      "sphyls": []
+     }
+    },
+    {
+     "bone": "R_Arm04_Hand_XB",
+     "fixed": null,
+     "no_collision": null,
+     "block_zero_extent": true,
+     "block_non_zero_extent": true,
+     "mass_scale": null,
+     "phys_material": "TR_Optimus_ROBO_p.RB_Optimus_PHYSMAT",
+     "geometry": {
+      "convex": [],
+      "boxes": [],
+      "spheres": [],
+      "sphyls": [
+       {
+        "radius": 26.14781951904297,
+        "length": 10.74872875213623,
+        "center_ue": [
+         -24.75,
+         9.5,
+         0.0
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "bone": "L_Leg01_Thigh_XB",
+     "fixed": null,
+     "no_collision": null,
+     "block_zero_extent": true,
+     "block_non_zero_extent": true,
+     "mass_scale": null,
+     "phys_material": "TR_Optimus_ROBO_p.RB_Optimus_PHYSMAT",
+     "geometry": {
+      "convex": [],
+      "boxes": [
+       {
+        "X": 72.82344055175781,
+        "Y": 39.840118408203125,
+        "Z": 45.63187789916992,
+        "center_ue": [
+         46.25,
+         2.25,
+         -0.0
+        ]
+       }
+      ],
+      "spheres": [],
+      "sphyls": []
+     }
+    },
+    {
+     "bone": "L_Leg02_Knee_XB",
+     "fixed": null,
+     "no_collision": null,
+     "block_zero_extent": true,
+     "block_non_zero_extent": true,
+     "mass_scale": null,
+     "phys_material": "TR_Optimus_ROBO_p.RB_Optimus_PHYSMAT",
+     "geometry": {
+      "convex": [],
+      "boxes": [],
+      "spheres": [],
+      "sphyls": [
+       {
+        "radius": 59.352821350097656,
+        "length": 53.40437698364258,
+        "center_ue": [
+         63.647,
+         -5.326,
+         -1.87
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "bone": "L_Leg03_Ankle_XB",
+     "fixed": null,
+     "no_collision": null,
+     "block_zero_extent": true,
+     "block_non_zero_extent": true,
+     "mass_scale": null,
+     "phys_material": "TR_Optimus_ROBO_p.RB_Optimus_PHYSMAT",
+     "geometry": {
+      "convex": [],
+      "boxes": [],
+      "spheres": [],
+      "sphyls": [
+       {
+        "radius": 34.17897415161133,
+        "length": 72.6554946899414,
+        "center_ue": [
+         23.032,
+         -1.999,
+         6.896
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "bone": "R_Leg01_Thigh_XB",
+     "fixed": null,
+     "no_collision": null,
+     "block_zero_extent": true,
+     "block_non_zero_extent": true,
+     "mass_scale": null,
+     "phys_material": "TR_Optimus_ROBO_p.RB_Optimus_PHYSMAT",
+     "geometry": {
+      "convex": [],
+      "boxes": [
+       {
+        "X": 72.82344055175781,
+        "Y": 39.840118408203125,
+        "Z": 45.63187789916992,
+        "center_ue": [
+         -48.5,
+         2.25,
+         -0.0
+        ]
+       }
+      ],
+      "spheres": [],
+      "sphyls": []
+     }
+    },
+    {
+     "bone": "R_Leg02_Knee_XB",
+     "fixed": null,
+     "no_collision": null,
+     "block_zero_extent": true,
+     "block_non_zero_extent": true,
+     "mass_scale": null,
+     "phys_material": "TR_Optimus_ROBO_p.RB_Optimus_PHYSMAT",
+     "geometry": {
+      "convex": [],
+      "boxes": [],
+      "spheres": [],
+      "sphyls": [
+       {
+        "radius": 59.352821350097656,
+        "length": 53.40437698364258,
+        "center_ue": [
+         -67.147,
+         6.326,
+         3.871
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "bone": "R_Leg03_Ankle_XB",
+     "fixed": null,
+     "no_collision": null,
+     "block_zero_extent": true,
+     "block_non_zero_extent": true,
+     "mass_scale": null,
+     "phys_material": "TR_Optimus_ROBO_p.RB_Optimus_PHYSMAT",
+     "geometry": {
+      "convex": [],
+      "boxes": [],
+      "spheres": [],
+      "sphyls": [
+       {
+        "radius": 34.17897415161133,
+        "length": 72.6554946899414,
+        "center_ue": [
+         -23.03,
+         5.398,
+         -6.895
+        ]
+       }
+      ]
+     }
+    }
+   ],
+   "constraints": [
+    {
+     "JointName": "C_Spine01_Lumbar01_XB",
+     "ConstraintBone1": "C_Spine01_Lumbar01_XB",
+     "ConstraintBone2": "C_Spine00_Hips_XB",
+     "bSwingLimited": true,
+     "bTwistLimited": true,
+     "Swing1LimitAngle": null,
+     "Swing2LimitAngle": 10.0,
+     "TwistLimitAngle": 10.0,
+     "LinearXSetup": {
+      "bLimited": 1,
+      "LimitSize": 0.0
+     },
+     "LinearYSetup": {
+      "bLimited": 1,
+      "LimitSize": 0.0
+     },
+     "LinearZSetup": {
+      "bLimited": 1,
+      "LimitSize": 0.0
+     },
+     "bSwingLimitSoft": null,
+     "bTwistLimitSoft": null,
+     "SwingLimitStiffness": null,
+     "TwistLimitStiffness": null
+    },
+    {
+     "JointName": "C_Spine02_Lumbar02_XB",
+     "ConstraintBone1": "C_Spine02_Lumbar02_XB",
+     "ConstraintBone2": "C_Spine01_Lumbar01_XB",
+     "bSwingLimited": true,
+     "bTwistLimited": true,
+     "Swing1LimitAngle": 5.0,
+     "Swing2LimitAngle": 10.0,
+     "TwistLimitAngle": 10.0,
+     "LinearXSetup": {
+      "bLimited": 1,
+      "LimitSize": 0.0
+     },
+     "LinearYSetup": {
+      "bLimited": 1,
+      "LimitSize": 0.0
+     },
+     "LinearZSetup": {
+      "bLimited": 1,
+      "LimitSize": 0.0
+     },
+     "bSwingLimitSoft": null,
+     "bTwistLimitSoft": null,
+     "SwingLimitStiffness": null,
+     "TwistLimitStiffness": null
+    },
+    {
+     "JointName": "C_Spine03_Neck01_XB",
+     "ConstraintBone1": "C_Spine03_Neck01_XB",
+     "ConstraintBone2": "C_Spine02_Lumbar02_XB",
+     "bSwingLimited": true,
+     "bTwistLimited": true,
+     "Swing1LimitAngle": null,
+     "Swing2LimitAngle": 10.0,
+     "TwistLimitAngle": null,
+     "LinearXSetup": {
+      "bLimited": 1,
+      "LimitSize": 0.0
+     },
+     "LinearYSetup": {
+      "bLimited": 1,
+      "LimitSize": 0.0
+     },
+     "LinearZSetup": {
+      "bLimited": 1,
+      "LimitSize": 0.0
+     },
+     "bSwingLimitSoft": null,
+     "bTwistLimitSoft": null,
+     "SwingLimitStiffness": null,
+     "TwistLimitStiffness": null
+    },
+    {
+     "JointName": "C_Spine04_Head_XB",
+     "ConstraintBone1": "C_Spine04_Head_XB",
+     "ConstraintBone2": "C_Spine03_Neck01_XB",
+     "bSwingLimited": true,
+     "bTwistLimited": true,
+     "Swing1LimitAngle": null,
+     "Swing2LimitAngle": 5.0,
+     "TwistLimitAngle": null,
+     "LinearXSetup": {
+      "bLimited": 1,
+      "LimitSize": 0.0
+     },
+     "LinearYSetup": {
+      "bLimited": 1,
+      "LimitSize": 0.0
+     },
+     "LinearZSetup": {
+      "bLimited": 1,
+      "LimitSize": 0.0
+     },
+     "bSwingLimitSoft": null,
+     "bTwistLimitSoft": null,
+     "SwingLimitStiffness": null,
+     "TwistLimitStiffness": null
+    },
+    {
+     "JointName": "L_Arm01_Clav_XB",
+     "ConstraintBone1": "L_Arm01_Clav_XB",
+     "ConstraintBone2": "C_Spine02_Lumbar02_XB",
+     "bSwingLimited": true,
+     "bTwistLimited": true,
+     "Swing1LimitAngle": 10.0,
+     "Swing2LimitAngle": 20.0,
+     "TwistLimitAngle": null,
+     "LinearXSetup": {
+      "bLimited": 1,
+      "LimitSize": 0.0
+     },
+     "LinearYSetup": {
+      "bLimited": 1,
+      "LimitSize": 0.0
+     },
+     "LinearZSetup": {
+      "bLimited": 1,
+      "LimitSize": 0.0
+     },
+     "bSwingLimitSoft": null,
+     "bTwistLimitSoft": null,
+     "SwingLimitStiffness": null,
+     "TwistLimitStiffness": null
+    },
+    {
+     "JointName": "L_Arm02_Shoulder_XB",
+     "ConstraintBone1": "L_Arm02_Shoulder_XB",
+     "ConstraintBone2": "L_Arm01_Clav_XB",
+     "bSwingLimited": true,
+     "bTwistLimited": true,
+     "Swing1LimitAngle": 20.0,
+     "Swing2LimitAngle": 30.0,
+     "TwistLimitAngle": null,
+     "LinearXSetup": {
+      "bLimited": 1,
+      "LimitSize": 0.0
+     },
+     "LinearYSetup": {
+      "bLimited": 1,
+      "LimitSize": 0.0
+     },
+     "LinearZSetup": {
+      "bLimited": 1,
+      "LimitSize": 0.0
+     },
+     "bSwingLimitSoft": null,
+     "bTwistLimitSoft": null,
+     "SwingLimitStiffness": null,
+     "TwistLimitStiffness": null
+    },
+    {
+     "JointName": "L_Arm03_Elbow_XB",
+     "ConstraintBone1": "L_Arm03_Elbow_XB",
+     "ConstraintBone2": "L_Arm02_Shoulder_XB",
+     "bSwingLimited": true,
+     "bTwistLimited": true,
+     "Swing1LimitAngle": null,
+     "Swing2LimitAngle": 35.0,
+     "TwistLimitAngle": null,
+     "LinearXSetup": {
+      "bLimited": 1,
+      "LimitSize": 0.0
+     },
+     "LinearYSetup": {
+      "bLimited": 1,
+      "LimitSize": 0.0
+     },
+     "LinearZSetup": {
+      "bLimited": 1,
+      "LimitSize": 0.0
+     },
+     "bSwingLimitSoft": null,
+     "bTwistLimitSoft": null,
+     "SwingLimitStiffness": null,
+     "TwistLimitStiffness": null
+    },
+    {
+     "JointName": "L_Arm04_Hand_XB",
+     "ConstraintBone1": "L_Arm04_Hand_XB",
+     "ConstraintBone2": "L_Arm03_Elbow_XB",
+     "bSwingLimited": true,
+     "bTwistLimited": true,
+     "Swing1LimitAngle": 30.0,
+     "Swing2LimitAngle": null,
+     "TwistLimitAngle": null,
+     "LinearXSetup": {
+      "bLimited": 1,
+      "LimitSize": 0.0
+     },
+     "LinearYSetup": {
+      "bLimited": 1,
+      "LimitSize": 0.0
+     },
+     "LinearZSetup": {
+      "bLimited": 1,
+      "LimitSize": 0.0
+     },
+     "bSwingLimitSoft": null,
+     "bTwistLimitSoft": null,
+     "SwingLimitStiffness": null,
+     "TwistLimitStiffness": null
+    },
+    {
+     "JointName": "R_Arm01_Clav_XB",
+     "ConstraintBone1": "R_Arm01_Clav_XB",
+     "ConstraintBone2": "C_Spine02_Lumbar02_XB",
+     "bSwingLimited": true,
+     "bTwistLimited": true,
+     "Swing1LimitAngle": 10.0,
+     "Swing2LimitAngle": 20.0,
+     "TwistLimitAngle": null,
+     "LinearXSetup": {
+      "bLimited": 1,
+      "LimitSize": 0.0
+     },
+     "LinearYSetup": {
+      "bLimited": 1,
+      "LimitSize": 0.0
+     },
+     "LinearZSetup": {
+      "bLimited": 1,
+      "LimitSize": 0.0
+     },
+     "bSwingLimitSoft": null,
+     "bTwistLimitSoft": null,
+     "SwingLimitStiffness": null,
+     "TwistLimitStiffness": null
+    },
+    {
+     "JointName": "R_Arm02_Shoulder_XB",
+     "ConstraintBone1": "R_Arm02_Shoulder_XB",
+     "ConstraintBone2": "R_Arm01_Clav_XB",
+     "bSwingLimited": true,
+     "bTwistLimited": true,
+     "Swing1LimitAngle": 20.0,
+     "Swing2LimitAngle": 30.0,
+     "TwistLimitAngle": null,
+     "LinearXSetup": {
+      "bLimited": 1,
+      "LimitSize": 0.0
+     },
+     "LinearYSetup": {
+      "bLimited": 1,
+      "LimitSize": 0.0
+     },
+     "LinearZSetup": {
+      "bLimited": 1,
+      "LimitSize": 0.0
+     },
+     "bSwingLimitSoft": null,
+     "bTwistLimitSoft": null,
+     "SwingLimitStiffness": null,
+     "TwistLimitStiffness": null
+    },
+    {
+     "JointName": "R_Arm03_Elbow_XB",
+     "ConstraintBone1": "R_Arm03_Elbow_XB",
+     "ConstraintBone2": "R_Arm02_Shoulder_XB",
+     "bSwingLimited": true,
+     "bTwistLimited": true,
+     "Swing1LimitAngle": null,
+     "Swing2LimitAngle": 35.0,
+     "TwistLimitAngle": null,
+     "LinearXSetup": {
+      "bLimited": 1,
+      "LimitSize": 0.0
+     },
+     "LinearYSetup": {
+      "bLimited": 1,
+      "LimitSize": 0.0
+     },
+     "LinearZSetup": {
+      "bLimited": 1,
+      "LimitSize": 0.0
+     },
+     "bSwingLimitSoft": null,
+     "bTwistLimitSoft": null,
+     "SwingLimitStiffness": null,
+     "TwistLimitStiffness": null
+    },
+    {
+     "JointName": "R_Arm04_Hand_XB",
+     "ConstraintBone1": "R_Arm04_Hand_XB",
+     "ConstraintBone2": "R_Arm03_Elbow_XB",
+     "bSwingLimited": true,
+     "bTwistLimited": true,
+     "Swing1LimitAngle": 30.0,
+     "Swing2LimitAngle": null,
+     "TwistLimitAngle": null,
+     "LinearXSetup": {
+      "bLimited": 1,
+      "LimitSize": 0.0
+     },
+     "LinearYSetup": {
+      "bLimited": 1,
+      "LimitSize": 0.0
+     },
+     "LinearZSetup": {
+      "bLimited": 1,
+      "LimitSize": 0.0
+     },
+     "bSwingLimitSoft": null,
+     "bTwistLimitSoft": null,
+     "SwingLimitStiffness": null,
+     "TwistLimitStiffness": null
+    },
+    {
+     "JointName": "L_Leg01_Thigh_XB",
+     "ConstraintBone1": "L_Leg01_Thigh_XB",
+     "ConstraintBone2": "C_Spine00_Hips_XB",
+     "bSwingLimited": true,
+     "bTwistLimited": true,
+     "Swing1LimitAngle": 30.0,
+     "Swing2LimitAngle": 30.0,
+     "TwistLimitAngle": null,
+     "LinearXSetup": {
+      "bLimited": 1,
+      "LimitSize": 0.0
+     },
+     "LinearYSetup": {
+      "bLimited": 1,
+      "LimitSize": 0.0
+     },
+     "LinearZSetup": {
+      "bLimited": 1,
+      "LimitSize": 0.0
+     },
+     "bSwingLimitSoft": null,
+     "bTwistLimitSoft": null,
+     "SwingLimitStiffness": null,
+     "TwistLimitStiffness": null
+    },
+    {
+     "JointName": "L_Leg02_Knee_XB",
+     "ConstraintBone1": "L_Leg02_Knee_XB",
+     "ConstraintBone2": "L_Leg01_Thigh_XB",
+     "bSwingLimited": true,
+     "bTwistLimited": true,
+     "Swing1LimitAngle": 5.0,
+     "Swing2LimitAngle": 50.0,
+     "TwistLimitAngle": null,
+     "LinearXSetup": {
+      "bLimited": 1,
+      "LimitSize": 0.0
+     },
+     "LinearYSetup": {
+      "bLimited": 1,
+      "LimitSize": 0.0
+     },
+     "LinearZSetup": {
+      "bLimited": 1,
+      "LimitSize": 0.0
+     },
+     "bSwingLimitSoft": null,
+     "bTwistLimitSoft": null,
+     "SwingLimitStiffness": null,
+     "TwistLimitStiffness": null
+    },
+    {
+     "JointName": "L_Leg03_Ankle_XB",
+     "ConstraintBone1": "L_Leg03_Ankle_XB",
+     "ConstraintBone2": "L_Leg02_Knee_XB",
+     "bSwingLimited": true,
+     "bTwistLimited": true,
+     "Swing1LimitAngle": 10.0,
+     "Swing2LimitAngle": 20.0,
+     "TwistLimitAngle": null,
+     "LinearXSetup": {
+      "bLimited": 1,
+      "LimitSize": 0.0
+     },
+     "LinearYSetup": {
+      "bLimited": 1,
+      "LimitSize": 0.0
+     },
+     "LinearZSetup": {
+      "bLimited": 1,
+      "LimitSize": 0.0
+     },
+     "bSwingLimitSoft": null,
+     "bTwistLimitSoft": null,
+     "SwingLimitStiffness": null,
+     "TwistLimitStiffness": null
+    },
+    {
+     "JointName": "R_Leg01_Thigh_XB",
+     "ConstraintBone1": "R_Leg01_Thigh_XB",
+     "ConstraintBone2": "C_Spine00_Hips_XB",
+     "bSwingLimited": true,
+     "bTwistLimited": true,
+     "Swing1LimitAngle": 30.0,
+     "Swing2LimitAngle": 30.0,
+     "TwistLimitAngle": null,
+     "LinearXSetup": {
+      "bLimited": 1,
+      "LimitSize": 0.0
+     },
+     "LinearYSetup": {
+      "bLimited": 1,
+      "LimitSize": 0.0
+     },
+     "LinearZSetup": {
+      "bLimited": 1,
+      "LimitSize": 0.0
+     },
+     "bSwingLimitSoft": null,
+     "bTwistLimitSoft": null,
+     "SwingLimitStiffness": null,
+     "TwistLimitStiffness": null
+    },
+    {
+     "JointName": "R_Leg02_Knee_XB",
+     "ConstraintBone1": "R_Leg02_Knee_XB",
+     "ConstraintBone2": "R_Leg01_Thigh_XB",
+     "bSwingLimited": true,
+     "bTwistLimited": true,
+     "Swing1LimitAngle": 5.0,
+     "Swing2LimitAngle": 50.0,
+     "TwistLimitAngle": null,
+     "LinearXSetup": {
+      "bLimited": 1,
+      "LimitSize": 0.0
+     },
+     "LinearYSetup": {
+      "bLimited": 1,
+      "LimitSize": 0.0
+     },
+     "LinearZSetup": {
+      "bLimited": 1,
+      "LimitSize": 0.0
+     },
+     "bSwingLimitSoft": null,
+     "bTwistLimitSoft": null,
+     "SwingLimitStiffness": null,
+     "TwistLimitStiffness": null
+    },
+    {
+     "JointName": "R_Leg03_Ankle_XB",
+     "ConstraintBone1": "R_Leg03_Ankle_XB",
+     "ConstraintBone2": "R_Leg02_Knee_XB",
+     "bSwingLimited": true,
+     "bTwistLimited": true,
+     "Swing1LimitAngle": 10.0,
+     "Swing2LimitAngle": 20.0,
+     "TwistLimitAngle": null,
+     "LinearXSetup": {
+      "bLimited": 1,
+      "LimitSize": 0.0
+     },
+     "LinearYSetup": {
+      "bLimited": 1,
+      "LimitSize": 0.0
+     },
+     "LinearZSetup": {
+      "bLimited": 1,
+      "LimitSize": 0.0
+     },
+     "bSwingLimitSoft": null,
+     "bTwistLimitSoft": null,
+     "SwingLimitStiffness": null,
+     "TwistLimitStiffness": null
+    }
+   ],
+   "default_instance": {
+    "Bodies": [
+     "TR_Optimus_ROBO_p.RB_Optimus_A_PHYSSYS.PhysicsAssetInstance_11465.RB_BodyInstance_1680",
+     "TR_Optimus_ROBO_p.RB_Optimus_A_PHYSSYS.PhysicsAssetInstance_11465.RB_BodyInstance_9218",
+     "TR_Optimus_ROBO_p.RB_Optimus_A_PHYSSYS.PhysicsAssetInstance_11465.RB_BodyInstance_4572",
+     "TR_Optimus_ROBO_p.RB_Optimus_A_PHYSSYS.PhysicsAssetInstance_11465.RB_BodyInstance_16235",
+     "TR_Optimus_ROBO_p.RB_Optimus_A_PHYSSYS.PhysicsAssetInstance_11465.RB_BodyInstance_14501",
+     "TR_Optimus_ROBO_p.RB_Optimus_A_PHYSSYS.PhysicsAssetInstance_11465.RB_BodyInstance_1652",
+     "TR_Optimus_ROBO_p.RB_Optimus_A_PHYSSYS.PhysicsAssetInstance_11465.RB_BodyInstance_3849",
+     "TR_Optimus_ROBO_p.RB_Optimus_A_PHYSSYS.PhysicsAssetInstance_11465.RB_BodyInstance_4212",
+     "TR_Optimus_ROBO_p.RB_Optimus_A_PHYSSYS.PhysicsAssetInstance_11465.RB_BodyInstance_10609",
+     "TR_Optimus_ROBO_p.RB_Optimus_A_PHYSSYS.PhysicsAssetInstance_11465.RB_BodyInstance_7007",
+     "TR_Optimus_ROBO_p.RB_Optimus_A_PHYSSYS.PhysicsAssetInstance_11465.RB_BodyInstance_3868",
+     "TR_Optimus_ROBO_p.RB_Optimus_A_PHYSSYS.PhysicsAssetInstance_11465.RB_BodyInstance_11045",
+     "TR_Optimus_ROBO_p.RB_Optimus_A_PHYSSYS.PhysicsAssetInstance_11465.RB_BodyInstance_3602",
+     "TR_Optimus_ROBO_p.RB_Optimus_A_PHYSSYS.PhysicsAssetInstance_11465.RB_BodyInstance_14149",
+     "TR_Optimus_ROBO_p.RB_Optimus_A_PHYSSYS.PhysicsAssetInstance_11465.RB_BodyInstance_9720",
+     "TR_Optimus_ROBO_p.RB_Optimus_A_PHYSSYS.PhysicsAssetInstance_11465.RB_BodyInstance_10629",
+     "TR_Optimus_ROBO_p.RB_Optimus_A_PHYSSYS.PhysicsAssetInstance_11465.RB_BodyInstance_7437",
+     "TR_Optimus_ROBO_p.RB_Optimus_A_PHYSSYS.PhysicsAssetInstance_11465.RB_BodyInstance_10154",
+     "TR_Optimus_ROBO_p.RB_Optimus_A_PHYSSYS.PhysicsAssetInstance_11465.RB_BodyInstance_4529"
+    ],
+    "Constraints": [
+     "TR_Optimus_ROBO_p.RB_Optimus_A_PHYSSYS.PhysicsAssetInstance_11465.RB_ConstraintInstance_10923",
+     "TR_Optimus_ROBO_p.RB_Optimus_A_PHYSSYS.PhysicsAssetInstance_11465.RB_ConstraintInstance_15507",
+     "TR_Optimus_ROBO_p.RB_Optimus_A_PHYSSYS.PhysicsAssetInstance_11465.RB_ConstraintInstance_6952",
+     "TR_Optimus_ROBO_p.RB_Optimus_A_PHYSSYS.PhysicsAssetInstance_11465.RB_ConstraintInstance_6442",
+     "TR_Optimus_ROBO_p.RB_Optimus_A_PHYSSYS.PhysicsAssetInstance_11465.RB_ConstraintInstance_10225",
+     "TR_Optimus_ROBO_p.RB_Optimus_A_PHYSSYS.PhysicsAssetInstance_11465.RB_ConstraintInstance_6751",
+     "TR_Optimus_ROBO_p.RB_Optimus_A_PHYSSYS.PhysicsAssetInstance_11465.RB_ConstraintInstance_5140",
+     "TR_Optimus_ROBO_p.RB_Optimus_A_PHYSSYS.PhysicsAssetInstance_11465.RB_ConstraintInstance_14560",
+     "TR_Optimus_ROBO_p.RB_Optimus_A_PHYSSYS.PhysicsAssetInstance_11465.RB_ConstraintInstance_2524",
+     "TR_Optimus_ROBO_p.RB_Optimus_A_PHYSSYS.PhysicsAssetInstance_11465.RB_ConstraintInstance_15467",
+     "TR_Optimus_ROBO_p.RB_Optimus_A_PHYSSYS.PhysicsAssetInstance_11465.RB_ConstraintInstance_2789",
+     "TR_Optimus_ROBO_p.RB_Optimus_A_PHYSSYS.PhysicsAssetInstance_11465.RB_ConstraintInstance_4049",
+     "TR_Optimus_ROBO_p.RB_Optimus_A_PHYSSYS.PhysicsAssetInstance_11465.RB_ConstraintInstance_14827",
+     "TR_Optimus_ROBO_p.RB_Optimus_A_PHYSSYS.PhysicsAssetInstance_11465.RB_ConstraintInstance_15069",
+     "TR_Optimus_ROBO_p.RB_Optimus_A_PHYSSYS.PhysicsAssetInstance_11465.RB_ConstraintInstance_12065",
+     "TR_Optimus_ROBO_p.RB_Optimus_A_PHYSSYS.PhysicsAssetInstance_11465.RB_ConstraintInstance_10984",
+     "TR_Optimus_ROBO_p.RB_Optimus_A_PHYSSYS.PhysicsAssetInstance_11465.RB_ConstraintInstance_15719",
+     "TR_Optimus_ROBO_p.RB_Optimus_A_PHYSSYS.PhysicsAssetInstance_11465.RB_ConstraintInstance_6326"
+    ],
+    "LinearSpringScale": 1.0,
+    "LinearDampingScale": 1.0,
+    "LinearForceLimitScale": 1.0,
+    "AngularSpringScale": 1.0,
+    "AngularDampingScale": 1.0,
+    "AngularForceLimitScale": 1.0
+   },
+   "physical_materials": {
+    "TR_Optimus_ROBO_p.RB_Optimus_PHYSMAT": {
+     "Friction": 5.0,
+     "Restitution": 0.20000000298023224,
+     "AngularDamping": 5.0,
+     "LinearDamping": 0.009999999776482582,
+     "SleepEnergyThreshold": 0.5,
+     "AudioOcclusionVolume": -6.0,
+     "AudioOcclusionTransitionTime": 0.5
+    }
+   },
+   "pawn_collision": {
+    "CollisionHeight": 200.0,
+    "CollisionRadius": 200.0
+   }
+  },
+  "optimus_vehicle": {
+   "physics_asset": "TR_Optimus_VEH_p.VH_Optimus_PHYSSYS",
+   "bodies": [
+    {
+     "bone": "C_Reference_XR",
+     "fixed": null,
+     "no_collision": null,
+     "block_zero_extent": true,
+     "block_non_zero_extent": true,
+     "mass_scale": null,
+     "phys_material": "VEH_PHYSMAT_p.VEH_Truck_PHYSMAT",
+     "geometry": {
+      "convex": [
+       {
+        "vertices": 28,
+        "triangles": 52,
+        "elem_box": [
+         -310.20098876953125,
+         -153.53697204589844,
+         -35.472496032714844,
+         338.2709655761719,
+         153.53697204589844,
+         185.22799682617188,
+         1
+        ]
+       }
+      ],
+      "boxes": [
+       {
+        "X": 326.30377197265625,
+        "Y": 452.0992431640625,
+        "Z": 247.5,
+        "center_ue": [
+         452.25,
+         0.0,
+         91.25
+        ]
+       }
+      ],
+      "spheres": [],
+      "sphyls": []
+     }
+    }
+   ],
+   "constraints": [],
+   "default_instance": {
+    "Bodies": [
+     "TR_Optimus_VEH_p.VH_Optimus_PHYSSYS.PhysicsAssetInstance_2430.RB_BodyInstance_2095"
+    ],
+    "LinearSpringScale": 1.0,
+    "LinearDampingScale": 1.0,
+    "LinearForceLimitScale": 1.0,
+    "AngularSpringScale": 1.0,
+    "AngularDampingScale": 1.0,
+    "AngularForceLimitScale": 1.0
+   },
+   "physical_materials": {
+    "VEH_PHYSMAT_p.VEH_Truck_PHYSMAT": {
+     "Friction": 0.20000000298023224,
+     "Restitution": 0.05000000074505806,
+     "AnisoFrictionDir": {
+      "X": 1.0,
+      "Y": 0.0,
+      "Z": 0.0
+     },
+     "AngularDamping": 0.20000000298023224,
+     "MagneticResponse": 1.0,
+     "LinearDamping": 0.009999999776482582,
+     "SleepEnergyThreshold": 0.5,
+     "AudioOcclusionVolume": -6.0,
+     "AudioOcclusionTransitionTime": 0.5
+    }
+   }
+  }
+ },
+ "bsp_material_physmats": {
+  "ENV_CORE_Platform_p.Textures.ENV_CORE_CanyonFloor_A_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_UND_Floors_p.Materials.ENV_UND_BSPFloorTileCLR_A_MATINST_BAT": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_AllShader_p.Release.ENV_ForceField_MATINST": "ENV_PHYSMAT_p.ForceField_PHYSMAT",
+  "EngineMaterials.DefaultMaterial": null,
+  "ENV_ORB_D1_Deco_p.Materials.Conveyor_Auger_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_CORE_SupportColumns_p.Textures.TunnelLargePipeA_cool_MAT": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Deco_p.Materials.RedLight_MATINST": "ENV_PHYSMAT_p.Water_PHYSMAT",
+  "ENV_CORE_Platform_p.Textures.ENV_CORE_CanyonGatel_A_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_CORE_Wall_p.Textures.ENV_COR_MRFloor_A_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "TPRO_COR_AmbientMovers_p.Materials.ENV_COR_EnergonSpiderShield_Mat_INST": null,
+  "ENV_ORB_D1_Architecture_p.Materials.ENV_CustPhongPointLightUnlit_Reflect_Mat_INST": "ENV_PHYSMAT_p.Ice_PHYSMAT",
+  "ENV_ORB_D1_Shader_p.Materials.PistonChamber_NoEmiss_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_Ground_p.Material.Panel_02_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_UND_Floors_p.Materials.ENV_UND_BSPFloorTileCLR_A_MAT": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_AllShader_p.Energon_River.Energon_River_Mat": "ENV_PHYSMAT_p.Water_PHYSMAT",
+  "ENV_CORE_Wall_p.Textures.ENV_CORE_BSPWall_A_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_CleanMaterials_p.Materials.D1_FloorTile2_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_WhiteMaterials_p.Materials.White_CanyonGate_A_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_WhiteMaterials_p.Materials.White_CanyonFloor_A_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_CleanMaterials_p.Materials.D1_FloorTile1_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_CORE_Wall_p.Textures.TunnelGlassBlue_MAT": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_WhiteMaterials_p.Materials.White_InroomCnrWall_B_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_NEU_Variation_p.ENV_cboard_CLR_Mat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Architecture_p.Materials.StationFloor_A_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_WhiteMaterials_p.Materials.White_InroomWall_A_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_NEU_Variation_p.ENV_F_patch_CLR_Mat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Shader_p.CrashLightSource_Warm_MATINST": null,
+  "ENV_ORB_D1_Architecture_p.Materials.ExteriorWall_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_WhiteMaterials_p.Materials.White_CanyonGate_B_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_CORE_Wall_p.Textures.ENV_CORE_InroomWall_B_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_CleanMaterials_p.Materials.ENV_IAC_CleanCorridorFloor_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Architecture_p.Materials.FloorTrim_01_Tiled_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Debris_p.Materials.innerCyberParts_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_WhiteMaterials_p.Materials.White_Panel_02_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_Ground_p.Material.OrganicMetal2_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_Interior_1_p.Materials.Interior_RoundWall_MATInstance": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_KON_Molten_p.Material.ENV_KON_Motlen_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_CORE_Wall_p.Textures.ENV_CORE_BSPWall_C_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_Ground_p.Material.Street_MAT_INST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_WhiteMaterials2_p.Materials.White_ElevatorShaft_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Shader_p.Materials.Street_MAT_INST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_Decagon_p.Materials.DecoPlazaFloor_noEmiss_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Deco_p.Materials.Plasma_DarkEnergon_MATINST": "ENV_PHYSMAT_p.Water_PHYSMAT",
+  "ENV_ORB_WhiteMaterials2_p.Materials.White_TunnelLargePipeA_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_AllShader_p.Special.Energon_CubeB_Mat": "ENV_PHYSMAT_p.Water_PHYSMAT",
+  "ENV_CORE_Floors_p.Materials.ENV_COR_MPFloorY_MAT": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_CORE_Wall_p.Textures.ENV_CORE_InroomWall_A_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_WhiteMaterials_p.Materials.White_BSPWall_D_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_CORE_Floors_p.Materials.ENV_COR_FloorTileBSP_HAVOC_MAT": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_CORE_Floors_p.Materials.ENV_COR_TunnelSlopeStraight_NE_MAT": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_NEU_Variation_p.BlueSteel_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Debris_p.Materials.TubeRoad_OFF_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_CORE_Floors_p.Materials.ENV_CORE_EnergonPlasma_INST": "ENV_PHYSMAT_p.Water_PHYSMAT",
+  "ENV_UND_Floors_p.Materials.ENV_UND_BasePlatform_B_MAT": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Deco_p.Materials.DataCube_GlassOff_MATINST": null,
+  "ENV_ORB_D1_Architecture_p.Materials.WallPanel_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Shader_p.Materials.ORB_D1_VentSurface_MAT_INST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_CORE_Wall_p.Textures.ENV_CORE_BSPWall_D_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_CORE_Platform_p.Textures.ENV_CORE_CanyonGatel_B_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_CORE_Floors_p.Materials.ENV_COR_rustFloor_MAT": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_UND_Walls_p.Materials.ENV_UND_CanyonWall_B_MATIST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_Deco_1_p.Material.DecoBalcony1_MAT_INST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "PROP_UND_MechParts_p.Materials.PROP_UND_SideMachine_B_CLR_MATIST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Deco_p.Materials.TunnelPipeWhiteYellow_MAT": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_CORE_SupportColumns_p.Textures.TunnelPipeA_MAT": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_CORE_SupportColumns_p.Textures.MRColumnA_MAT": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_CORE_Mechparts_p.Materials.ENV_COR_Tracks_MAT": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Shader_p.LightVolumeYellow_MATINST": null,
+  "ENV_GLB_EnvEffects_p.Material.LightVolumeWARM_lessDense_MATINST": null,
+  "ENV_ORB_D1_Architecture_p.Materials.DomeDeco_WhiteYellow_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Deco_p.Materials.LiftLock_WhiteYellow_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Deco_p.Materials.ENV_UND_TunnelArch_WhiteYellow_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Deco_p.Materials.ENV_CORE_Laser_WhiteYellow_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_BLDS_2_p.Materials.BuildingChunkQuarter_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_BLDS_2_p.Materials.TallBuildingONE_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Deco_p.Materials.CanyonDeco_White_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Deco_p.Materials.ENV_Core_WallDecoB_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_UND_Support_p.Materials.FramePillars_CLR_MatINST_BAT": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Deco_p.Materials.Platform_WhiteYellow_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_Deco_1_p.Material.LightFixture_MAT_INST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "PROP_UND_MechParts_p.Materials.PROP_UND_RepairNodeB_B_CLR_MATIST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "PROP_UND_MechParts_p.Materials.PROP_UND_RepairNodeC_B_CLR_MATIST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Deco_p.Materials.SupportPillar_A_MAT": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_LightSources_p.LightPlanes.BlueSmokeDark_MATINST": null,
+  "ENV_IAC_LightSources_p.LightPlanes.BlueGlow_MATINST": null,
+  "ENV_ORB_D1_Deco_p.Materials.ENV_CORE_Wall_WhiteYellow_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "PROP_UND_MechParts_p.Materials.PROP_UND_ReactorCore_B_CLR_MATIST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_CORE_Wall_p.Textures.ENV_CORE_CanyonTopPillar_A_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Deco_p.Materials.ENV_CORE_CanyonWall_WhiteYellow_A_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Architecture_p.Materials.SideSupportPillar_02_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Architecture_p.Materials.ENV_CORE_InroomRndTunnel_A_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_CORE_Deco_p.Textures.ENV_CORE_CanyonDeco_A_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Deco_p.Materials.OrbitalDonutWhiteYellow_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Deco_p.Materials.ENV_CORE_InroomCnrWall_A_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_BLDS_3_p.Texture.RectBld_LoSpec_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_BLDS_2_p.Materials.Pillar01_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_Terminal_p.Materials.TerminalDoor_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Deco_p.Materials.Interiors_NoEmiss_MATInstance": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Deco_p.Materials.TunnelCeilingDecoAYellow_NoEmiss_MAT": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_CORE_Deco_p.Textures.ENV_CORE_CanyonDeco_B_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Deco_p.Materials.FaceDecoWhiteYellow_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_Interior_1_p.Materials.Interiors_MATInstance": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Deco_p.Materials.FaceDecoWhiteYellow_NoEmiss_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Deco_p.Materials.Interiors_WhiteYellow_MATInstance": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Deco_p.Materials.TunnelCeilingDecoAYellow_MAT": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Architecture_p.Materials.FloorTrim_01_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "PROP_UND_MechParts_p.Materials.PROP_UND_RepairNodeA_A_CLR_MATIST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "PROP_UND_MechParts_p.Materials.PROP_UND_CanyonGear_A_CLR_MATIST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "PROP_UND_MechParts_p.Materials.PROP_UND_PistonSet_A_CLR_MATIST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_MegatronCruiser_p.Materials.Ship_FloorPanel_01_NOEMISS_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_UND_Support_p.Materials.PROP_UND_Pipe_A_MATIST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Shader_p.ActButtonBattery_A_MAT": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Deco_p.Materials.CanyonDeco_NoEmiss_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_Interior_1_p.Materials.Interior_Spacers_MATInstance": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_LightSources_p.PinLights.PinLights_Blue_1_MAT_INST": null,
+  "ENV_IAC_TubeRoads_p.Materials.TubeDOOR_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_Interior_1_p.Materials.Interior_WallsCeilings_MATInstance": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_BLDS_2_p.Materials.HalfArchWalls_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_BLDS_2_p.Materials.HalfArchInter_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_BLDS_2_p.Materials.ArchTop01_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Deco_p.Materials.TunnelLargePipeWhiteYellow_NoEmiss_MAT": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Deco_p.Materials.TunnelLargePipeWhiteYellow_MAT": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "PROP_UND_MechParts_p.Materials.IntActButtonBattery_A_MAT": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Deco_p.Materials.ENV_CORE_InroomCnrWall_NoEmiss_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_LightSources_p.LightPlanes.ChasmDepths_MATINST": null,
+  "PROP_FloorStains_p.stains_01_CLR_MatINST_BAT": null,
+  "PROP_UND_MechParts_p.Materials.PROP_UND_SideMachine_E_CLR_MATIST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "PROP_UND_MechParts_p.Materials.PROP_UND_RepairNodeC_A_CLR_MATIST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Deco_p.Materials.RibWall_MAT_INST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_BLDS_3_p.Texture.HemisphereDisc_Detail_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Shader_p.Materials.Pillar01_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_CleanMaterials_p.Materials.ENV_IAC_CleanTerminalFloor_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Architecture_p.Materials.Crate_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Architecture_p.Materials.Crate_V2_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_WhiteMaterials_p.Materials.White_Crate_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_WhiteMaterials_p.Materials.White_DecoDonut01_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "PROP_EnergonSigns_p.EnergonSigns_D1_MATINST": null,
+  "ENV_ORB_WhiteMaterials_p.Materials.White_CanyonTopPillar_A_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_WhiteMaterials2_p.Materials.White_LaserShield_A_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Shader_p.Materials.ENV_CORE_CanyonGatel_B_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "PROP_UND_MechParts_p.Materials.IntActButton_A_MAT": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "PROP_UND_MechParts_p.Materials.PROP_UND_RepairNodeB_C_CLR_MATIST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_BLDS_2_p.Materials.HalfArchNub_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_NEU_Variation_p.ENV_groundblobs_CLR_Mat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_CORE_SupportColumns_p.Textures.TunnelPipeA_noEMISS_MAT": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_NEU_Variation_p.ENV_twisted_CLR_Mat": null,
+  "ENV_IAC_TubeRoads_p.Materials.TubeRoad_OFF_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_LightSources_p.LightPlanes.MachineSmokeCover_MATINST": null,
+  "ENV_ArchiveInterior_p.ArchiveWall_Off_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "PROP_UND_MechParts_p.Materials.PROP_UND_PistonSet_C_CLR_MATIST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Architecture_p.Materials.InroomCnrWall_B_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Debris_p.Materials.DamageChunk_Glow_Orange_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Architecture_p.Materials.DataCenterGlass_MATINST": "ENV_PHYSMAT_p.Ice_PHYSMAT",
+  "ENV_ORB_D1_Deco_p.Materials.PowerCables_01_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_WhiteMaterials2_p.Materials.White_FInCap_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_CORE_Wall_p.Textures.ENV_CORE_Tunnel1Center_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_CORE_Wall_p.Textures.ENV_CORE_CanyonTopPillar_B_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "TPRO_COR_AmbientMovers_p.Materials.COR_RoboArmClaw_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_CORE_Platform_p.Textures.ENV_CORE_PlatformPillar_A_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_CORE_Floors_p.Materials.ENV_CORE_EnergonPlasmaAquaLight_INST": "ENV_PHYSMAT_p.Water_PHYSMAT",
+  "ENV_ORB_D1_Deco_p.Materials.OrbitalDonut_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Architecture_p.Materials.CorruptorKeyHole_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_WhiteMaterials_p.Materials.White_Tracks_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Deco_p.Materials.GasChamber_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_BLDS_1_p.Material.Lift_MAT_INST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "TPRO_KON_Corruptor_p.Materials.KON_Corruptor_HotMetal_Vent_A_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "TPRO_KON_Corruptor_p.Materials.KON_Corruptor_HotMetal_Vent_B_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "TPRO_KON_Corruptor_p.Materials.KON_Corruptor_HotMetal_B_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "TPRO_KON_Corruptor_p.Materials.KON_Corruptor_HotMetal_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "TPRO_KON_Corruptor_p.Materials.KON_Corruptor_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "PROP_EnergonSigns_p.Glow_FIRE_Mat": null,
+  "ENV_GLB_EnvEffects_p.Material.LightCylinder_Rays_MATINST": null,
+  "ENV_IAC_Spacedome_p.Nebulae_wicked_UI_MATISNT": null,
+  "ENV_GLB_EnvEffects_p.Material.SmokeDepth_BLUEandSLOW_MatINST": null,
+  "ENV_ORB_D1_Architecture_p.Materials.Spacedome_NebulaBright_MAT": null,
+  "ENV_NEU_CybertronOrbit_P.Material.GlowSphere_red_MAT": null,
+  "ENV_ORB_D1_Shader_p.GlowSphere_Warm_MATINST": null,
+  "ENV_NEU_CybertronOrbit_P.2D_Planet_Card.Cybertron_2D_Planet_MATINST": null,
+  "ENV_IAC_Spacedome_p.Nebulae_streak_MATISNT": null,
+  "DES_ORB_Asteroids_p.Textures.DebrisCardB_MATINST": null,
+  "ENV_ORB_WhiteMaterials2_p.Materials.White_InteriorWalls_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_CleanMaterials_p.Materials.ENV_IAC_CleanSideSupport_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_WhiteMaterials2_p.Materials.White_InroomWall_A_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_CORE_Wall_p.Textures.ENV_CORE_InroomWall_C_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_WhiteMaterials_p.Materials.White_SideSupp01_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Architecture_p.Materials.MuseumWallSmooth_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Shader_p.Materials.LightRays_V2_yellow_MATINST": null,
+  "ENV_KON_PrisonBarge_p.Materials.DomeDeco_01Blue_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Shader_p.Materials.MaterialInstanceConstant_283": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_WhiteMaterials_p.Materials.White_RoundWall_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_WhiteMaterials_p.Materials.White_CanyonTopPillarOff_A_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_Interior_1_p.Materials.Interiors_blue_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_TubeRoads_p.Materials.FlourescentLight_Yellow_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_WhiteMaterials_p.Materials.White_TunnelPipeA_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_WhiteMaterials_p.Materials.White_CanyonTopPillarBL_A_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_WhiteMaterials2_p.Materials.White_InteriorDoor_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "TPRO_ORB_D1_Doors_p.Materials.InteriorDoor_Inside_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Shader_p.Materials.DecoBalcony1_MAT_INST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_Deco_1_p.Material.Pillar_A__MAT_INST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Architecture_p.Materials.TunnelBundlePipesA_MAT": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_CleanMaterials_p.Materials.ENV_IAC_CleanGiantPillar_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_NEU_Variation_p.fbook_sinewave6_CLR_Mat": null,
+  "ENV_NEU_Variation_p.fbook_sinewave_CLR_Mat": null,
+  "ENV_NEU_Variation_p.fbook_sinewave4_CLR_Mat": null,
+  "ENV_ORB_WhiteMaterials_p.Materials.White_Pillar1_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_WhiteMaterials_p.Materials.White_RectBld_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "TPRO_ORB_D1_Doors_p.Materials.InteriorDoorLock_02_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_WhiteMaterials2_p.Materials.White_BridgeStraight_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Shader_p.Materials.TubeDOOR_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_NEU_Variation_p.esigns_d2_CLR_Mat": null,
+  "ENV_NEU_Variation_p.fbook_readout2_CLR_Mat": null,
+  "ENV_NEU_Variation_p.EnergonSignsD2_ring_CLR_Mat": null,
+  "ENV_GLB_EnvEffects_p.Material.FogSheet_YellowINTENSE_MATINST": null,
+  "ENV_ORB_WhiteMaterials_p.Materials.White_CanyonDeco_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_WhiteMaterials_p.Materials.White_DecoDonut01_NoEmiss_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "PROP_UND_MechParts_p.Materials.PROP_UND_PistonSet_B_CLR_MATIST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_PowerCorridor_p.Materials.TrypPowerTubes_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_BLDS_3_p.Texture.Bld_4096x4096x2048_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_CORE_Wall_p.Textures.ENV_CORE_InroomCnrWall_A_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_MegatronCruiser_p.Materials.Ship_Stern_01_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_MegatronCruiser_p.Materials.Destroy_WallPanel_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_MegatronCruiser_p.Materials.Destroy_WallPanel_B_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Debris_p.Materials.MoltenMetalRing_SLAG_DULL_MATINST": null,
+  "ENV_IAC_LightSources_p.PinLights.PinLights_Red_1_MAT_INST": null,
+  "ENV_CORE_Wall_p.Textures.ENV_CORE_CanyonWall_A_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_Deco_1_p.Material.DecoDonut1_blue_MAT_INST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Shader_p.Materials.StarScreamGlow_MATINST": null,
+  "ENV_ORB_D1_Shader_p.Materials.ENV_Unlit_Emissive_Trans_Splatter_INST": null,
+  "ENV_IAC_LightSources_p.PinLights.PinLights_SupaBlue_MATINST": null,
+  "ENV_IAC_BLDS_2_p.Materials.Pillar01_NOEMISS_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_MegatronShip_p.Materials.PROP_MegatronShip1_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Shader_p.Materials.LightRays_V2_Parent_MAT_INST": null,
+  "ENV_ORB_D1_MegatronCruiser_p.Materials.Ship_FloorPanel_01_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_MegatronCruiser_p.Materials.Ship_WallPanel_01_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_MegatronCruiser_p.Materials.Ship_CeilingPanel_01_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Shader_p.Materials.ENV_COR_Tracks_Orange_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_A1_LowRez_p.Material.ENV_ORB_Wing_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "PROP_FloorStains_p.ENV_Unlit_Emissive_Trans_Splatter_INST": null,
+  "ENV_ORB_WhiteMaterials2_p.Materials.White_CanyonWall_C_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_Ground_p.Material.Crater_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_MegatronCruiser_p.Materials.DestroyCeilingPanel_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_WhiteMaterials_p.Materials.White_GlassFloor_A_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_KON_PrisonBarge_p.Materials.DomeDeco_01_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_CORE_Floors_p.Materials.OmegaBridegeSupport_MAT": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_MegatronShip_p.Materials.PROP_MegatronShip1a_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_MegatronShip_p.Materials.PROP_MegatronShip2b_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_MegatronShip_p.Materials.PROP_MegatronShip2_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_MegatronShip_p.Materials.TurretBase_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_MegatronShip_p.Materials.SpikeDeco_01_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_LightSources_p.PinLights.PinLights_Blue_3_MAT_INST": null,
+  "ENV_ORB_D1_MegatronCruiser_p.Materials.Ship_Cockpit_01_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_Spacedome_p.Nebulae_MAT": null,
+  "ENV_ORB_D1_Shader_p.Materials.DecoCorner01_MAT_INST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_WhiteMaterials2_p.Materials.White_CurveWall_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_BLDS_3_p.Texture.Bld_4096x4096x2048_blue_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_Deco_1_p.Material.DecoDonut1_MAT_INST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_Decagon_p.Materials.DecoPlazaFloor_noEmissLoSpec_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_WhiteMaterials_p.Materials.White_InroomWall_B_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_CORE_Mechparts_p.Materials.ENV_COR_Tracks_NE_MAT": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_CORE_Wall_p.Textures.ENV_CORE_InroomCnrWall_A_Off_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_Spacedome_p.TallNebulae_CLR_Mat": null,
+  "ENV_ORB_D1_MegatronShip_p.Materials.PROP_MegatronShip2a_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_KON_PrisonBarge_p.Materials.DomeDeco_01RedLITE_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "PROP_UND_MechParts_p.Materials.ReactorGear_A_MAT": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Debris_p.Materials.PROP_UND_PistonSet_B_CLR_MATIST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_MegatronCruiser_p.Materials.Ship_Chair_01_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_Decagon_p.Materials.DataCube_MATINST": "ENV_PHYSMAT_p.Ice_PHYSMAT",
+  "ENV_IAC_Decagon_p.Materials.DataCubeFade_MATINST": null,
+  "ENV_CORE_SupportColumns_p.Textures.TunnelFloorPipe_MAT": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Architecture_p.Materials.TubeRoad_Yellow_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_Decagon_p.Materials.Dec_Walls_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_Decagon_p.Materials.DataReceptor_MATINST": null,
+  "ENV_CORE_Wall_p.Textures.ENV_CORE_CanyonWall_C_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Architecture_p.Materials.GS_SupportAB_NoEmiss_MAT": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_BLDS_1_p.Material.RibWall_noEmiss_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_Ground_p.Material.GroundVent_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_Ground_p.Material.ENV_EngergonGlass_MAT_INST": null,
+  "ENV_ORB_WhiteMaterials2_p.Materials.White_RibWall_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Architecture_p.Materials.TunnelBundlePipesB_MAT": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Shader_p.Materials.SphereHalf01_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_CORE_SupportColumns_p.Textures.TunnelLargePipeA_MAT": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "TPRO_ORB_D1_Doors_p.Materials.InteriorDoorLock_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_KON_Prison_p.Materials.GlowSphere_Purple_MATINST": null,
+  "ENV_NEU_Variation_p.ENV_manholes_CLR_Mat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Debris_p.Materials.Interiors_MATInstance": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_WhiteMaterials2_p.Materials.White_InteriorWalls_NoEmiss_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Shader_p.Materials.ENV_CORE_PlatformPillar_A_NoEMIS_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Shader_p.Materials.ForceField_aroundHologram1a_MATINST": "ENV_PHYSMAT_p.ForceField_PHYSMAT",
+  "ENV_IAC_Shader_p.Material.IAC_Glass2_light_MATINST": "ENV_PHYSMAT_p.ForceField_PHYSMAT",
+  "ENV_ORB_WhiteMaterials_p.Materials.White_Platform_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_NEU_Variation_p.ENV_ebarrel_CLR_Mat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "PROP_EnergonSigns_p.EnergonSigns2.BlueEnergonSigns_MATINST": null,
+  "ENV_GLB_EnvEffects_p.Material.LightFlareBiasBright_Parent_MAT_INST": null,
+  "ENV_NEU_Bridges_p.Textures.Bridge_Neutral_Shared_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_WhiteMaterials2_p.Materials.White_BlockBld_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Shader_p.Materials.ForceField_aroundHologram1_MATINST": "ENV_PHYSMAT_p.ForceField_PHYSMAT",
+  "ENV_CORE_Deco_p.Textures.ENV_CORE_SupportDecoB_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_Shader_p.Material.IAC_Glass_Trans_MATINST": "ENV_PHYSMAT_p.ForceField_PHYSMAT",
+  "ENV_ORB_D1_Architecture_p.Materials.WallPanelWarningSign_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Shader_p.Materials.SkylightGlowBright_MATINST": null,
+  "ENV_ORB_WhiteMaterials_p.Materials.White_Nose_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "PROP_EnergonSigns_p.DecepticonGraffiti_brighter_MATISNT": null,
+  "PROP_EnergonSigns_p.EnergonSigns_Decepticon_CLR_Mat": null,
+  "PROP_EnergonSigns_p.DecepticonLogo_MATISNT": null,
+  "TR_BruteDec_ROBO_p.RB_BruteDec_BackPack_MatINST": null,
+  "PROP_EnergonSigns_p.communications.DecepticonMonitor_MATINST": null,
+  "PROP_EnergonSigns_p.DecepticonGraffit.DecepticonMonitor_Mat": null,
+  "PROP_EnergonSigns_p.DecepticonGraffit.DecepticonPrisonerRing_Inactive_Mat": null,
+  "PROP_EnergonSigns_p.decepticonLOGO_CLR_Mat": null,
+  "PROP_EnergonSigns_p.AnimSign5Brighter_Decepticon_CLR_Mat": null,
+  "PROP_EnergonSigns_p.DecepticonGraffit.KONPrisonGlyphs_Mat": null,
+  "ENV_ORB_WhiteMaterials2_p.Materials.White_CenterChamberFloorRails_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "DES_IAC_EnergonTank_p.Material.EnergonTank_01_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "DES_IAC_EnergonTank_p.Material.EnergonTank_01_Panning_MATINST": null,
+  "ENV_ORB_D1_Shader_p.Materials.ENV_racksOrangePulse_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Shader_p.ENV_ForceField_NEU_MATINST": "ENV_PHYSMAT_p.ForceField_PHYSMAT",
+  "TR_Handcuffs_p.handcuffs_CLR_Mat": null,
+  "TR_Handcuffs_p.FBOOK_static_CLR_Mat": null,
+  "ENV_UND_Support_p.Destructible.SupportColumnBase_A_MAT": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_UND_Support_p.Materials.SupportColumnTop_A_MAT": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_UND_Support_p.Materials.SupportColumn_A_MAT": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_KON_Prison_p.Materials.WallLight_02Yellow_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "DES_ORB_WallSocket_01_p.Materials.Wall_Socket_01_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Shader_p.Materials.GlassFloor_Glass_MAT": null,
+  "ENV_IAC_Deco_1_p.Material.SideSupport_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Architecture_p.Materials.ENV_COR_ChamberMainFloorRails3_MAT": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Shader_p.Materials.SkylightGlow_MATINST": null,
+  "ENV_IAC_BLDS_1_p.Material.Arch_MAT_INST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Architecture_p.Materials.ENV_UND_TunnelArch_NoEmiss_MATINST_BAT": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_CORE_Floors_p.Materials.ENV_COR_ChamberFloorNoEmiss_MAT": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_UND_Support_p.Materials.ENV_UND_SupportPillars": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_WhiteMaterials2_p.Materials.White_HemisphereDisk_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_BLDS_3_p.Texture.HemisphereDisc_Detail_Blue_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_BLDS_1_p.Material.RibWall_Blue_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_BLDS_3_p.Texture.RectBld_Off_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Shader_p.Materials.ENV_UND_TunnelArch_A_MATINST_BAT": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_WhiteMaterials2_p.Materials.White_BridgeStraight_noEmiss_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Deco_p.Materials.Capacitor_01_MAT_INST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_WhiteMaterials2_p.Materials.White_VentWall_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_BLDS_1_p.Material.CurvedWall_MAT_INST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_WhiteMaterials_p.Materials.White_CtrFloorDisc_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_Decagon_p.Materials.CtrMainFloorRails_No_EMIS_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_Spacedome_p.Nebulae_blob_MATISNT": null,
+  "ENV_IAC_Spacedome_p.Nebulae_wicked_MATISNT": null,
+  "ENV_ORB_WhiteMaterials_p.Materials.White_ElevatorPodLeg_NoEmiss_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Shader_p.Materials.ENV_CORE_CanyonGatel_NoEmiss_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_Ground_p.Material.Crater_EdgeGlow_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_DecoTrim_p.DefaultGray": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_WhiteMaterials2_p.Materials.White_CanyonWall_A_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_NEU_Variation_p.ENV_powerplug_CLR_Mat": null,
+  "ENV_NEU_Variation_p.ENV_yellowarrows_CLR_Mat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Shader_p.Materials.ENV_CORE_PlatformPillar_A_YellowEMIS_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Deco_p.Materials.PowerTubes_01_NOEMISS_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_KON_Architecture_p.Materials.BuildingSupport_01_C_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_LightSources_p.LightPlanes.IntroVistaSmoke_MATINST": null,
+  "ENV_ORB_WhiteMaterials2_p.Materials.White_RibWall_NoEmiss_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_Spacedome_p.Nebulae_blue_MATISNT": null,
+  "PROP_EnergonSigns_p.AnimSign6_Decepticon_CLR_Mat": null,
+  "PROP_UND_MechParts_p.Materials.PROP_UND_RepairNodeB_A_CLR_MATIST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_Deco_1_p.Material.SphereHalf01_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "PROP_NEU_Battery_p.PROP_NEU_Battery_Blue_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_WhiteMaterials_p.Materials.White_LiftLock2_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "PROP_NEU_Monitors_p.PROP_NEU_Monitor01_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "PROP_EnergonSigns_p.communications.Cloaker_Monitor_MATINST": null,
+  "ENV_GLB_EnvEffects_p.Material.LightRaysV2Warm_SpaceStation_MATINST": null,
+  "ENV_ORB_WhiteMaterials2_p.Materials.White_InroomRndTunnel_A_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_CORE_Floors_p.Materials.ENV_COR_ChamberFloorCenterdisc_MAT": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "PROP_EnergonSigns_p.communications.Starscream_Monitor_MATINST": null,
+  "PROP_EnergonSigns_p.AnimTes_static_CLR_Mat": null,
+  "PROP_EnergonSigns_p.AnimSign4_CLR_Mat": null,
+  "PROP_EnergonSigns_p.AnimSign5_CLR_Mat": null,
+  "TPRO_SecurityCamera_p.PROP_SecurityCamera_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "PROP_EnergonSigns_p.transparent_Mat": null,
+  "ENV_KON_PrisonBarge_p.Materials.DomeDeco_01Warm_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_LightSources_p.PinLights.PinLights_Purple_1_MAT_INST": null,
+  "PROP_EnergonSigns_p.DecepticonGraffit.Kaon_ChevronHolograms_MATINST": null,
+  "PROP_EnergonSigns_p.DecepticonGraffiti_MATISNT": null,
+  "ENV_IAC_Interior_1_p.Materials.Interior_Spacers_Off_MATInstance": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_WhiteMaterials2_p.Materials.White_Dec_Support_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_CORE_SupportColumns_p.Textures.COR_TNBundleWires_MAT": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_BLDS_1_p.Material.Saucer_MAT_INST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_LightSources_p.LightPlanes.BrightSmokeKaon_MATINST": null,
+  "ENV_UND_Floors_p.Materials.ENV_UND_TunnelArch_A_MATINST_BAT": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "PROP_EnergonSigns_p.Material.SideScreen_kaon_MATINST": null,
+  "PROP_EnergonSigns_p.Broken_Screen": null,
+  "PROP_EnergonSigns_p.communications.Soldier_Monitor_MATINST": null,
+  "ENV_NEU_Variation_p.fbook_sinewave2_CLR_Mat": null,
+  "DES_NEU_Barricade_p.Texture.Barricade_MAT": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "PROP_NEU_Barricade_p.BarricadeShield_MAT": "ENV_PHYSMAT_p.ForceField_PHYSMAT",
+  "ENV_IAC_Decagon_p.Materials.IAC_Decagon_GlassPan2_MATINST": "ENV_PHYSMAT_p.ForceField_PHYSMAT",
+  "ENV_ORB_WhiteMaterials_p.Materials.White_LiftLock_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_NEU_Variation_p.fbook_sinewave5_CLR_Mat": null,
+  "ENV_GLB_EnvEffects_p.Material.FogSheet_Purple_MATINST": null,
+  "ENV_IAC_TubeRoads_p.Materials.FlourescentLight_Cool_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_CORE_Wall_p.Textures.ENV_CORE_CanyonWall_C_Off_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_CORE_SupportColumns_p.Textures.TunnelPipeA_Blue_MAT": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_BLDS_1_p.Material.RibWall_MAT_INST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_CORE_Mechparts_p.Materials.ENV_COR_Tracks_Blue_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_LightSources_p.PinLights.PinLights_OrangeBight_MAT_INST": null,
+  "ENV_ORB_WhiteMaterials_p.Materials.White_SideSuppPillar_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_Interior_1_p.Materials.Interiors_NoLights_MATInstance": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_CORE_Wall_p.Textures.ENV_CORE_InroomRndTunnel_A_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Architecture_p.Materials.WallPanelWarningSign_Blue_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_Deco_1_p.Material.SideSupp01_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "WEP_Grenade_p.WEP_Grenade_Flak_MATINST": null,
+  "ENV_ORB_Spacedome_p.Debris.DebrisPlane_MAT": null,
+  "ENV_ORB_CybertronPlanet_p.MATTE.Moon_MAT": null,
+  "ENV_ORB_D1_Deco_p.Materials.GasChamber_DarkEnergon_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "DES_ORB_WallSocket_01_p.Materials.Wall_Socket_DarkEnergon_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "PROP_EnergonSigns_p.PaintedSigns_TEMP_Mat": null,
+  "ENV_ORB_D1_Deco_p.Materials.PowerTubes_DarkEnergon_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Architecture_p.Materials.PillarDarkEnergon_NoEmiss_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_WhiteMaterials_p.Materials.White_Platform_noEmiss_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Deco_p.Materials.GasChamberSubstructure_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Shader_p.Materials.OmegaBridegeSupport_NoEmiss_MAT": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Deco_p.Materials.IntActButtonBattery_WhiteEmissive_MAT": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "TPRO_IAC_Doors_p.TubeDOOR_OFF_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "DES_ORB_WallSocket_01_p.Materials.Wall_Socket_NoEmiss_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_CoolantRoom_p.Material.CoolingCylinder_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_CoolantRoom_p.Material.CoolantForcefield_MATINST": "ENV_PHYSMAT_p.ForceField_PHYSMAT",
+  "ENV_ORB_D1_Deco_p.Materials.GasChamber_noEmiss_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Deco_p.Materials.GasChamberSubstructure_NOEMISS_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_CoolantCorridor_p.Materials.Beam_OuterNoFade_MATINST": null,
+  "ENV_ORB_CoolantCorridor_p.Materials.CoolantPipe_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_CoolantCorridor_p.Materials.Beam_InnerNoFade_MATINST": null,
+  "ENV_ORB_WhiteMaterials_p.Materials.White_AngledSupport_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Architecture_p.Materials.PillarDarkEnergon_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "PROP_NEU_Monitors_p.MonitorScreenActive_MAT_INST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_WhiteMaterials2_p.Materials.White_TunnelFloorStraightPipe_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Deco_p.White_VentWall_noEmiss_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Deco_p.Materials.GasChamberWY_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Deco_p.Materials.FaceDeco_blue_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_WhiteMaterials_p.Materials.White_RoundWall_EmisOFF_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "PROP_EnergonSigns_p.AnimSign6_CLR_Mat": null,
+  "PROP_EnergonSigns_p.AnimSign3_CLR_Mat": null,
+  "ENV_ORB_D1_Deco_p.Materials.OrbitalDonut_DarkEnergon_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Deco_p.White_VentWalBlueEmiss_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_KON_Prison_p.Materials.GlowSphere_Purple2_MATINST": null,
+  "ENV_ORB_D1_Deco_p.Materials.GasChamberSubstructureDarkEnergon_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "PROP_NEU_Monitors_p.MonitorScreenActiveBrightBlue_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_CORE_Floors_p.Materials.OmegaBridegeSupport_Purple_MAT": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "PROP_EnergonSigns_p.EnergonSigns_line_CLR_Mat": null,
+  "PROP_EnergonSigns_p.EnergonSigns_CLR_Mat": null,
+  "PROP_EnergonSigns_p.AnimSign1_CLR_Mat": null,
+  "TR_BruteAut_ROBO_p.RB_BruteNeu_BackPack_MatINST": null,
+  "PROP_EnergonSigns_p.EnergonSigns_ORANGE2_CLR_Mat": null,
+  "ENV_ORB_D1_Shader_p.Materials.ORB_Glass_LowRef_MATINST": "ENV_PHYSMAT_p.Ice_PHYSMAT",
+  "ENV_ORB_D1_Architecture_p.Materials.TubeRoad_Yellow_OFF_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_WhiteMaterials_p.Materials.White_Street_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Deco_p.Materials.DataCube2l_MATInstance": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Deco_p.Materials.DataCube1_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_WhiteMaterials_p.Materials.White_TunnelPipeA_NoEmiss_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Deco_p.Materials.BlueLightSource_01_MAT": null,
+  "ENV_IAC_BLDS_3_p.Texture.RectBld_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Deco_p.Materials.White_FaceDeco1_blueEmiss_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_WhiteMaterials_p.Materials.White_CanyonTopPillarBL_bright_A_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_GLB_EnvEffects_p.Material.LightRaysV2Blue_MATINST": null,
+  "ENV_GLB_EnvEffects_p.Material.GlowSphereBlue_MAT_INST": null,
+  "ENV_NEU_Variation_p.EnergonSignsD2_dot_CLR_Mat": null,
+  "ENV_NEU_Variation_p.EnergonSignsD2_gear_CLR_Mat": null,
+  "TPRO_IAC_ElevatoriPod_p.Material.ElevatorShere_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Shader_p.GlowSphere_WarmLessDense_MATINST": null,
+  "ENV_CORE_Deco_p.Textures.ENV_CORE_CanyonDeco_yellowOrb_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Deco_p.Materials.OrbitalDonut_OFF_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_Deco_1_p.Material.Nose_Dull_NoEmiss_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_CORE_Floors_p.Materials.ENV_COR_ChamberFloorRails_MAT": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_Decagon_p.Materials.CtrFloorDisc_Blue_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_CORE_SupportColumns_p.Textures.ENV_CORE_LaserShield_A_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_BLDS_2_p.Materials.HalfArchInterEmisV2_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_Decagon_p.Materials.CtrFloorDisc_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_BLDS_2_p.Materials.BuildingChunkQuarter_noEmiss_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "DES_IAC_p.Material.LiftLock_MAT_INST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Shader_p.Materials.ForceField_skylight_MATINST": "ENV_PHYSMAT_p.ForceField_PHYSMAT",
+  "ENV_ORB_D1_Architecture_p.Materials.WallPanelWarningSign_NoEmiss_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_CORE_SupportColumns_p.Textures.RoutinglPipeA_MAT": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_WhiteMaterials2_p.Materials.White_BuildingClaw_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_LightSources_p.PinLights.PinLights_Orange_3_MAT_INST": null,
+  "ENV_ORB_WhiteMaterials_p.Materials.White_BSPWall_C_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_CoolantRoom_p.Material.Coolant1_MATINST": "ENV_PHYSMAT_p.Water_Coolant_PHYSMAT",
+  "ENV_GLB_EnvEffects_p.Material.D1_orbGlow_MATINST": null,
+  "ENV_IAC_Interior_1_p.Materials.Interior_WallsCeilings_noEmiss_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_UND_Support_p.Materials.SupportPillar_A_MAT": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_UND_Support_p.Materials.SupportPillar_B_MAT": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_Deco_1_p.Material.DecoDonut1_Off_MAT_INST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_Shader_p.Material.IAC_Glass2_light_thin_MATINST": "ENV_PHYSMAT_p.ForceField_PHYSMAT",
+  "ENV_CORE_Floors_p.Materials.ENV_COR_ChamberMainFloorRails_MAT": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_Spacedome_p.Nebulae_blob2_MATINST": null,
+  "ENV_ORB_D1_Architecture_p.Materials.Station_Mat_INST": "ENV_PHYSMAT_p.Ice_PHYSMAT",
+  "ENV_IAC_HoloMap_p.Material.MapExtras_MATINST": null,
+  "ENV_ORB_A1_LowRez_p.Material.ENV_ORB_Wing_NoEmis_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_NEU_Variation_p.ENV_manholes_red_CLR_Mat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_VIG_Decepticon_p.ENV_VIGSmallShip_MatInst": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_VIG_Autobot_p.MaterialInstanceConstant_Cruiser": null,
+  "ENV_ORB_D1_Shader_p.Materials.DecoPlazaFloor_LowSpec_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_CORE_Floors_p.Materials.ENV_COR_ChamberMainFloorRails2_MAT": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_NEU_Variation_p.ENV_D_pockets2Blue_CLR_Mat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "DES_ORB_Asteroids_p.Textures.Debris_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Shader_p.Materials.TubeRoad_LowSpec_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Architecture_p.Materials.RibWall_NoEmiss_MAT_INST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_A1_LowRez_p.Material.ENV_ORB_Receptor_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Architecture_p.Materials.PinLights_Orange_3_pulse_MATINST": null,
+  "ENV_ORB_D1_Shader_p.Materials.ENV_CORE_EnergonPlasmaOrange_INST": "ENV_PHYSMAT_p.Water_PHYSMAT",
+  "ENV_ORB_D1_Deco_p.Materials.RoutinglPipeA_MAT": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Deco_p.Materials.RoutingPipeAGut_MAT": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_UND_Walls_p.Materials.ENV_UND_Wall_C_MATIST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_WhiteMaterials2_p.Materials.White_Bridge_Cross_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_IAC_Deco_1_p.Material.Spire_MAT_INST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_WhiteMaterials_p.Materials.White_Tracks_Blue_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_VIG_Decepticon_p.ENV_VIGLargelShip_MatInst": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "PROP_WarshipAutobot_p.WarshipAutobot_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_VIG_Decepticon_p.ENV_VIGMedShip_MatInst": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "PROP_EnergonSigns_p.PurpleLines_MATINST": null,
+  "ENV_ORB_D1_Shader_p.Materials.ENV_ForceField_Tile_MATINST": "ENV_PHYSMAT_p.ForceField_PHYSMAT",
+  "ENV_IAC_Ground_p.Material.Platform_noEmiss_Light_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Deco_p.Materials.ENV_CORE_Laser_NoEmiss_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Deco_p.Materials.SupportPillar_NoEmiss_A_MAT": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_CORE_SupportColumns_p.Textures.RoutingPipeAGut_MAT": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Deco_p.Materials.SupportPillar_B_NoEmissive_MAT": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Deco_p.Materials.SupportColumn_A_MAT": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Deco_p.Materials.LiftLock_NoEMIS_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Shader_p.Materials.ENV_Metal_Sphong_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_UND_Support_p.Materials.SupportPillar_C_MAT": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "PROP_UND_MechParts_p.Materials.PROP_UND_SideMachine_D_CLR_MATIST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_GLB_EnvEffects_p.Material.IaconNightGlowl_MATINST": null,
+  "PROP_UND_MechParts_p.Materials.MechTowerBase_A_MAT": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "PROP_UND_MechParts_p.Materials.PROP_UND_ReactorCore_C_CLR_MATIST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "PROP_UND_MechParts_p.Materials.PROP_UND_ReactorCore_D_CLR_MATIST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "PROP_UND_MechParts_p.Materials.PROP_UND_SideMachine_A_CLR_MATIST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_UND_Walls_p.Materials.ENV_UND_Wall_B_MATIST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_UND_Walls_p.Materials.ENV_UND_Wall_A_MATIST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Deco_p.Materials.ENV_CORE_CanyonWall_WhiteYellow_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "ENV_ORB_D1_Shader_p.Materials.Temp_Grey": null,
+  "ENV_ORB_D1_Shader_p.Materials.Manhole_MATINST": "ENV_PHYSMAT_p.Metal_PHYSMAT"
+ },
+ "stats": {
+  "props": 26960,
+  "unique_meshes": 470,
+  "meshes_with_simple_collision": 369,
+  "meshes_with_collision_disabled_sections": 6,
+  "mesh_flags_authored": {
+   "UseSimpleBoxCollision": 3,
+   "UseSimpleLineCollision": 3,
+   "UseSimpleRigidBodyCollision": 3
+  },
+  "props_pawn": {
+   "simple": 17197,
+   "none": 9002,
+   "per_poly": 761
+  },
+  "props_weapon": {
+   "simple": 19189,
+   "none": 6999,
+   "per_poly": 772
+  },
+  "props_rigid_body": {
+   "simple": 16223,
+   "none": 9976,
+   "per_poly": 761
+  },
+  "volumes": {
+   "BeastLightEnvironmentVolume pawn=False weapon=False": 20,
+   "BlockingVolume pawn=True weapon=False": 285,
+   "LightsVisibilitiesVolume pawn=False weapon=False": 81,
+   "PostProcessVolume pawn=False weapon=False": 14,
+   "PhysicsVolume pawn=False weapon=False": 46,
+   "TnTacticalVolume pawn=False weapon=False": 56,
+   "TriggerVolume pawn=False weapon=False": 401,
+   "BlockingVolume pawn=True weapon=True": 198,
+   "DynamicBlockingVolume pawn=False weapon=False": 7,
+   "DynamicBlockingVolume pawn=True weapon=False": 31,
+   "DynamicPhysicsVolume pawn=False weapon=False": 44,
+   "DynamicBlockingVolume pawn=True weapon=True": 49,
+   "HmRoomVolume pawn=False weapon=False": 48,
+   "TnTogethernessVolume pawn=False weapon=False": 23,
+   "HmPlayerOnlyBlockingVolume pawn=True weapon=False": 33,
+   "TnDisableTransformingVolume pawn=False weapon=False": 5,
+   "TnHotSpotVolume pawn=False weapon=False": 6,
+   "TnTeamBlockingVolume pawn=True weapon=False": 1,
+   "DynamicPhysicsVolume pawn=True weapon=True": 20,
+   "DynamicTriggerVolume pawn=False weapon=False": 2,
+   "BlockingVolume pawn=False weapon=False": 2,
+   "TnForcedDirVolume pawn=True weapon=False": 6
+  },
+  "physical_materials": 6,
+  "glb": {
+   "pawn": {
+    "bsp_tris": 60560,
+    "volumes": 622,
+    "props_simple": 17197,
+    "instanced_tris": 1074748,
+    "props_none": 9022,
+    "props_per_poly": 723,
+    "props_missing_geometry": 18,
+    "unique_meshes": 357,
+    "size_mb": 10.56
+   },
+   "weapon": {
+    "bsp_tris": 60560,
+    "volumes": 267,
+    "props_simple": 19189,
+    "instanced_tris": 1181732,
+    "props_none": 7019,
+    "props_per_poly": 734,
+    "props_missing_geometry": 18,
+    "unique_meshes": 370,
+    "size_mb": 10.96
+   }
+  }
+ },
+ "props": [],
+ "volumes": [
+  {
+   "actor": "TriggerVolume_2372",
+   "sublevel": "D1_ORB_Music_m",
+   "class": "TriggerVolume",
+   "actor_flags": {
+    "bCollideActors": true,
+    "bProjTarget": true
+   },
+   "component_flags": {
+    "CollideActors": true,
+    "BlockNonZeroExtent": true
+   },
+   "polygons_gltf": [
+    [
+     [
+      -1735.4891,
+      -2.32,
+      1041.3532
+     ],
+     [
+      -1735.4891,
+      38.64,
+      1041.3532
+     ],
+     [
+      -1733.4709,
+      38.64,
+      1041.3532
+     ],
+     [
+      -1733.4709,
+      -2.32,
+      1041.3532
+     ]
+    ],
+    [
+     [
+      -1733.4709,
+      -2.32,
+      1041.3532
+     ],
+     [
+      -1733.4709,
+      38.64,
+      1041.3532
+     ],
+     [
+      -1733.4709,
+      38.64,
+      988.7185
+     ],
+     [
+      -1733.4709,
+      -2.32,
+      988.7185
+     ]
+    ],
+    [
+     [
+      -1733.4709,
+      -2.32,
+      988.7185
+     ],
+     [
+      -1733.4709,
+      38.64,
+      988.7185
+     ],
+     [
+      -1735.4891,
+      38.64,
+      988.7185
+     ],
+     [
+      -1735.4891,
+      -2.32,
+      988.7185
+     ]
+    ],
+    [
+     [
+      -1735.4891,
+      -2.32,
+      988.7185
+     ],
+     [
+      -1735.4891,
+      38.64,
+      988.7185
+     ],
+     [
+      -1735.4891,
+      38.64,
+      1041.3532
+     ],
+     [
+      -1735.4891,
+      -2.32,
+      1041.3532
+     ]
+    ],
+    [
+     [
+      -1733.4709,
+      38.64,
+      1041.3532
+     ],
+     [
+      -1735.4891,
+      38.64,
+      1041.3532
+     ],
+     [
+      -1735.4891,
+      38.64,
+      988.7185
+     ],
+     [
+      -1733.4709,
+      38.64,
+      988.7185
+     ]
+    ],
+    [
+     [
+      -1735.4891,
+      -2.32,
+      1041.3532
+     ],
+     [
+      -1733.4709,
+      -2.32,
+      1041.3532
+     ],
+     [
+      -1733.4709,
+      -2.32,
+      988.7185
+     ],
+     [
+      -1735.4891,
+      -2.32,
+      988.7185
+     ]
+    ]
+   ],
+   "blocks_pawn": false,
+   "blocks_weapon": false,
+   "authored": {
+    "BRUSH": "D1_ORB_Music_m.TheWorld.PersistentLevel.TriggerVolume_2372.Model_11887",
+    "EditorRotation": {
+     "Pitch": 0,
+     "Yaw": -16384,
+     "Roll": 0
+    }
+   }
+  },
+  {
+   "actor": "TriggerVolume_3343",
+   "sublevel": "D1_ORB_Music_m",
+   "class": "TriggerVolume",
+   "actor_flags": {
+    "bCollideActors": true,
+    "bProjTarget": true
+   },
+   "component_flags": {
+    "CollideActors": true,
+    "BlockNonZeroExtent": true
+   },
+   "polygons_gltf": [
+    [
+     [
+      452.4389,
+      355.928,
+      514.0038
+     ],
+     [
+      452.4389,
+      382.3126,
+      514.0038
+     ],
+     [
+      452.4389,
+      382.3126,
+      546.7962
+     ],
+     [
+      452.4389,
+      355.928,
+      546.7962
+     ]
+    ],
+    [
+     [
+      452.4389,
+      355.928,
+      546.7962
+     ],
+     [
+      452.4389,
+      382.3126,
+      546.7962
+     ],
+     [
+      456.0411,
+      382.3126,
+      546.7962
+     ],
+     [
+      456.0411,
+      355.928,
+      546.7962
+     ]
+    ],
+    [
+     [
+      456.0411,
+      355.928,
+      546.7962
+     ],
+     [
+      456.0411,
+      382.3126,
+      546.7962
+     ],
+     [
+      456.0411,
+      382.3126,
+      514.0038
+     ],
+     [
+      456.0411,
+      355.928,
+      514.0038
+     ]
+    ],
+    [
+     [
+      456.0411,
+      355.928,
+      514.0038
+     ],
+     [
+      456.0411,
+      382.3126,
+      514.0038
+     ],
+     [
+      452.4389,
+      382.3126,
+      514.0038
+     ],
+     [
+      452.4389,
+      355.928,
+      514.0038
+     ]
+    ],
+    [
+     [
+      452.4389,
+      382.3126,
+      546.7962
+     ],
+     [
+      452.4389,
+      382.3126,
+      514.0038
+     ],
+     [
+      456.0411,
+      382.3126,
+      514.0038
+     ],
+     [
+      456.0411,
+      382.3126,
+      546.7962
+     ]
+    ],
+    [
+     [
+      452.4389,
+      355.928,
+      514.0038
+     ],
+     [
+      452.4389,
+      355.928,
+      546.7962
+     ],
+     [
+      456.0411,
+      355.928,
+      546.7962
+     ],
+     [
+      456.0411,
+      355.928,
+      514.0038
+     ]
+    ]
+   ],
+   "blocks_pawn": false,
+   "blocks_weapon": false,
+   "authored": {
+    "BRUSH": "D1_ORB_Music_m.TheWorld.PersistentLevel.TriggerVolume_3343.Model_6118"
+   }
+  },
+  {
+   "actor": "TriggerVolume_4314",
+   "sublevel": "D1_ORB_Music_m",
+   "class": "TriggerVolume",
+   "actor_flags": {
+    "bCollideActors": true,
+    "bProjTarget": true
+   },
+   "component_flags": {
+    "CollideActors": true,
+    "BlockNonZeroExtent": true
+   },
+   "polygons_gltf": [
+    [
+     [
+      -503.3049,
+      -220.588,
+      658.7222
+     ],
+     [
+      -503.3049,
+      -211.6804,
+      658.7222
+     ],
+     [
+      -508.4736,
+      -211.6804,
+      658.7222
+     ],
+     [
+      -508.4736,
+      -220.588,
+      658.7222
+     ]
+    ],
+    [
+     [
+      -508.4736,
+      -220.588,
+      658.7222
+     ],
+     [
+      -508.4736,
+      -211.6804,
+      658.7222
+     ],
+     [
+      -508.4736,
+      -211.6804,
+      675.3425
+     ],
+     [
+      -508.4736,
+      -220.588,
+      675.3425
+     ]
+    ],
+    [
+     [
+      -508.4736,
+      -220.588,
+      675.3425
+     ],
+     [
+      -508.4736,
+      -211.6804,
+      675.3425
+     ],
+     [
+      -503.3049,
+      -211.6804,
+      675.3425
+     ],
+     [
+      -503.3049,
+      -220.588,
+      675.3425
+     ]
+    ],
+    [
+     [
+      -503.3049,
+      -220.588,
+      675.3425
+     ],
+     [
+      -503.3049,
+      -211.6804,
+      675.3425
+     ],
+     [
+      -503.3049,
+      -211.6804,
+      658.7222
+     ],
+     [
+      -503.3049,
+      -220.588,
+      658.7222
+     ]
+    ],
+    [
+     [
+      -508.4736,
+      -211.6804,
+      658.7222
+     ],
+     [
+      -503.3049,
+      -211.6804,
+      658.7222
+     ],
+     [
+      -503.3049,
+      -211.6804,
+      675.3425
+     ],
+     [
+      -508.4736,
+      -211.6804,
+      675.3425
+     ]
+    ],
+    [
+     [
+      -503.3049,
+      -220.588,
+      658.7222
+     ],
+     [
+      -508.4736,
+      -220.588,
+      658.7222
+     ],
+     [
+      -508.4736,
+      -220.588,
+      675.3425
+     ],
+     [
+      -503.3049,
+      -220.588,
+      675.3425
+     ]
+    ]
+   ],
+   "blocks_pawn": false,
+   "blocks_weapon": false,
+   "authored": {
+    "BRUSH": "D1_ORB_Music_m.TheWorld.PersistentLevel.TriggerVolume_4314.Model_10005",
+    "EditorRotation": {
+     "Pitch": 0,
+     "Yaw": 16384,
+     "Roll": 0
+    }
+   }
+  },
+  {
+   "actor": "TriggerVolume_5126",
+   "sublevel": "D1_ORB_Music_m",
+   "class": "TriggerVolume",
+   "actor_flags": {
+    "bCollideActors": true,
+    "bProjTarget": true
+   },
+   "component_flags": {
+    "CollideActors": true,
+    "BlockNonZeroExtent": true
+   },
+   "polygons_gltf": [
+    [
+     [
+      -906.1465,
+      -47.1506,
+      1232.221
+     ],
+     [
+      -906.1465,
+      84.0002,
+      1232.221
+     ],
+     [
+      -906.1465,
+      84.0002,
+      1369.1819
+     ],
+     [
+      -906.1465,
+      -47.1506,
+      1369.1819
+     ]
+    ],
+    [
+     [
+      -906.1465,
+      -47.1506,
+      1369.1819
+     ],
+     [
+      -906.1465,
+      84.0002,
+      1369.1819
+     ],
+     [
+      -903.5865,
+      84.0002,
+      1369.1819
+     ],
+     [
+      -903.5865,
+      -47.1506,
+      1369.1819
+     ]
+    ],
+    [
+     [
+      -903.5865,
+      -47.1506,
+      1369.1819
+     ],
+     [
+      -903.5865,
+      84.0002,
+      1369.1819
+     ],
+     [
+      -903.5865,
+      84.0002,
+      1232.221
+     ],
+     [
+      -903.5865,
+      -47.1506,
+      1232.221
+     ]
+    ],
+    [
+     [
+      -903.5865,
+      -47.1506,
+      1232.221
+     ],
+     [
+      -903.5865,
+      84.0002,
+      1232.221
+     ],
+     [
+      -906.1465,
+      84.0002,
+      1232.221
+     ],
+     [
+      -906.1465,
+      -47.1506,
+      1232.221
+     ]
+    ],
+    [
+     [
+      -906.1465,
+      84.0002,
+      1369.1819
+     ],
+     [
+      -906.1465,
+      84.0002,
+      1232.221
+     ],
+     [
+      -903.5865,
+      84.0002,
+      1232.221
+     ],
+     [
+      -903.5865,
+      84.0002,
+      1369.1819
+     ]
+    ],
+    [
+     [
+      -906.1465,
+      -47.1506,
+      1232.221
+     ],
+     [
+      -906.1465,
+      -47.1506,
+      1369.1819
+     ],
+     [
+      -903.5865,
+      -47.1506,
+      1369.1819
+     ],
+     [
+      -903.5865,
+      -47.1506,
+      1232.221
+     ]
+    ]
+   ],
+   "blocks_pawn": false,
+   "blocks_weapon": false,
+   "authored": {
+    "BRUSH": "D1_ORB_Music_m.TheWorld.PersistentLevel.TriggerVolume_5126.Model_8233"
+   }
+  },
+  {
+   "actor": "TriggerVolume_5186",
+   "sublevel": "D1_ORB_Music_m",
+   "class": "TriggerVolume",
+   "actor_flags": {
+    "bCollideActors": true,
+    "bProjTarget": true
+   },
+   "component_flags": {
+    "CollideActors": true,
+    "BlockNonZeroExtent": true
+   },
+   "polygons_gltf": [
+    [
+     [
+      -341.6,
+      -239.04,
+      1037.12
+     ],
+     [
+      -341.6,
+      -236.48,
+      1037.12
+     ],
+     [
+      -341.6,
+      -236.48,
+      1039.68
+     ],
+     [
+      -341.6,
+      -239.04,
+      1039.68
+     ]
+    ],
+    [
+     [
+      -341.6,
+      -239.04,
+      1039.68
+     ],
+     [
+      -341.6,
+      -236.48,
+      1039.68
+     ],
+     [
+      -339.04,
+      -236.48,
+      1039.68
+     ],
+     [
+      -339.04,
+      -239.04,
+      1039.68
+     ]
+    ],
+    [
+     [
+      -339.04,
+      -239.04,
+      1039.68
+     ],
+     [
+      -339.04,
+      -236.48,
+      1039.68
+     ],
+     [
+      -339.04,
+      -236.48,
+      1037.12
+     ],
+     [
+      -339.04,
+      -239.04,
+      1037.12
+     ]
+    ],
+    [
+     [
+      -339.04,
+      -239.04,
+      1037.12
+     ],
+     [
+      -339.04,
+      -236.48,
+      1037.12
+     ],
+     [
+      -341.6,
+      -236.48,
+      1037.12
+     ],
+     [
+      -341.6,
+      -239.04,
+      1037.12
+     ]
+    ],
+    [
+     [
+      -341.6,
+      -236.48,
+      1039.68
+     ],
+     [
+      -341.6,
+      -236.48,
+      1037.12
+     ],
+     [
+      -339.04,
+      -236.48,
+      1037.12
+     ],
+     [
+      -339.04,
+      -236.48,
+      1039.68
+     ]
+    ],
+    [
+     [
+      -341.6,
+      -239.04,
+      1037.12
+     ],
+     [
+      -341.6,
+      -239.04,
+      1039.68
+     ],
+     [
+      -339.04,
+      -239.04,
+      1039.68
+     ],
+     [
+      -339.04,
+      -239.04,
+      1037.12
+     ]
+    ]
+   ],
+   "blocks_pawn": false,
+   "blocks_weapon": false,
+   "authored": {
+    "BRUSH": "D1_ORB_Music_m.TheWorld.PersistentLevel.TriggerVolume_5186.Model_8910"
+   }
+  },
+  {
+   "actor": "TriggerVolume_5446",
+   "sublevel": "D1_ORB_Music_m",
+   "class": "TriggerVolume",
+   "actor_flags": {
+    "bCollideActors": true,
+    "bProjTarget": true
+   },
+   "component_flags": {
+    "CollideActors": true,
+    "BlockNonZeroExtent": true
+   },
+   "polygons_gltf": [
+    [
+     [
+      258.48,
+      181.52,
+      106.0
+     ],
+     [
+      258.48,
+      195.76,
+      106.0
+     ],
+     [
+      276.56,
+      195.76,
+      106.0
+     ],
+     [
+      276.56,
+      181.52,
+      106.0
+     ]
+    ],
+    [
+     [
+      276.56,
+      181.52,
+      106.0
+     ],
+     [
+      276.56,
+      195.76,
+      106.0
+     ],
+     [
+      276.56,
+      195.76,
+      103.44
+     ],
+     [
+      276.56,
+      181.52,
+      103.44
+     ]
+    ],
+    [
+     [
+      276.56,
+      181.52,
+      103.44
+     ],
+     [
+      276.56,
+      195.76,
+      103.44
+     ],
+     [
+      258.48,
+      195.76,
+      103.44
+     ],
+     [
+      258.48,
+      181.52,
+      103.44
+     ]
+    ],
+    [
+     [
+      258.48,
+      181.52,
+      103.44
+     ],
+     [
+      258.48,
+      195.76,
+      103.44
+     ],
+     [
+      258.48,
+      195.76,
+      106.0
+     ],
+     [
+      258.48,
+      181.52,
+      106.0
+     ]
+    ],
+    [
+     [
+      276.56,
+      195.76,
+      106.0
+     ],
+     [
+      258.48,
+      195.76,
+      106.0
+     ],
+     [
+      258.48,
+      195.76,
+      103.44
+     ],
+     [
+      276.56,
+      195.76,
+      103.44
+     ]
+    ],
+    [
+     [
+      258.48,
+      181.52,
+      106.0
+     ],
+     [
+      276.56,
+      181.52,
+      106.0
+     ],
+     [
+      276.56,
+      181.52,
+      103.44
+     ],
+     [
+      258.48,
+      181.52,
+      103.44
+     ]
+    ]
+   ],
+   "blocks_pawn": false,
+   "blocks_weapon": false,
+   "authored": {
+    "BRUSH": "D1_ORB_Music_m.TheWorld.PersistentLevel.TriggerVolume_5446.Model_299"
+   }
+  },
+  {
+   "actor": "TriggerVolume_6292",
+   "sublevel": "D1_ORB_Music_m",
+   "class": "TriggerVolume",
+   "actor_flags": {
+    "bCollideActors": true,
+    "bProjTarget": true
+   },
+   "component_flags": {
+    "CollideActors": true,
+    "BlockNonZeroExtent": true
+   },
+   "polygons_gltf": [
+    [
+     [
+      -334.3942,
+      -187.5153,
+      1120.9769
+     ],
+     [
+      -367.5754,
+      -187.5153,
+      1120.9769
+     ],
+     [
+      -367.5754,
+      -187.5153,
+      1079.3855
+     ],
+     [
+      -334.3942,
+      -187.5153,
+      1079.3855
+     ]
+    ],
+    [
+     [
+      -334.3942,
+      -187.5153,
+      1079.3855
+     ],
+     [
+      -367.5754,
+      -187.5153,
+      1079.3855
+     ],
+     [
+      -367.5754,
+      -193.231,
+      1079.3855
+     ],
+     [
+      -334.3942,
+      -193.231,
+      1079.3855
+     ]
+    ],
+    [
+     [
+      -334.3942,
+      -193.231,
+      1079.3855
+     ],
+     [
+      -367.5754,
+      -193.231,
+      1079.3855
+     ],
+     [
+      -367.5754,
+      -193.231,
+      1120.9769
+     ],
+     [
+      -334.3942,
+      -193.231,
+      1120.9769
+     ]
+    ],
+    [
+     [
+      -334.3942,
+      -193.231,
+      1120.9769
+     ],
+     [
+      -367.5754,
+      -193.231,
+      1120.9769
+     ],
+     [
+      -367.5754,
+      -187.5153,
+      1120.9769
+     ],
+     [
+      -334.3942,
+      -187.5153,
+      1120.9769
+     ]
+    ],
+    [
+     [
+      -367.5754,
+      -187.5153,
+      1079.3855
+     ],
+     [
+      -367.5754,
+      -187.5153,
+      1120.9769
+     ],
+     [
+      -367.5754,
+      -193.231,
+      1120.9769
+     ],
+     [
+      -367.5754,
+      -193.231,
+      1079.3855
+     ]
+    ],
+    [
+     [
+      -334.3942,
+      -187.5153,
+      1120.9769
+     ],
+     [
+      -334.3942,
+      -187.5153,
+      1079.3855
+     ],
+     [
+      -334.3942,
+      -193.231,
+      1079.3855
+     ],
+     [
+      -334.3942,
+      -193.231,
+      1120.9769
+     ]
+    ]
+   ],
+   "blocks_pawn": false,
+   "blocks_weapon": false,
+   "authored": {
+    "BRUSH": "D1_ORB_Music_m.TheWorld.PersistentLevel.TriggerVolume_6292.Model_121",
+    "SavedSelections": [
+     {
+      "Type": 3,
+      "Index": 1,
+      "SelectionIndex": 0,
+      "SelStrength": 1.0
+     },
+     {
+      "Type": 3,
+      "Index": 2,
+      "SelectionIndex": 1,
+      "SelStrength": 1.0
+     },
+     {
+      "Type": 3,
+      "Index": 4,
+      "SelectionIndex": 2,
+      "SelStrength": 1.0
+     },
+     {
+      "Type": 3,
+      "Index": 6,
+      "SelectionIndex": 3,
+      "SelStrength": 1.0
+     }
+    ]
+   }
+  },
+  {
+   "actor": "TriggerVolume_6559",
+   "sublevel": "D1_ORB_Music_m",
+   "class": "TriggerVolume",
+   "actor_flags": {
+    "bCollideActors": true,
+    "bProjTarget": true
+   },
+   "component_flags": {
+    "CollideActors": true,
+    "BlockNonZeroExtent": true
+   },
+   "polygons_gltf": [
+    [
+     [
+      -331.8428,
+      -220.4588,
+      653.0939
+     ],
+     [
+      -331.8428,
+      -202.3795,
+      653.0939
+     ],
+     [
+      -324.602,
+      -202.3795,
+      645.8712
+     ],
+     [
+      -324.602,
+      -220.4588,
+      645.8712
+     ]
+    ],
+    [
+     [
+      -324.602,
+      -220.4588,
+      645.8712
+     ],
+     [
+      -324.602,
+      -202.3795,
+      645.8712
+     ],
+     [
+      -349.9447,
+      -202.3795,
+      620.592
+     ],
+     [
+      -349.9447,
+      -220.4588,
+      620.592
+     ]
+    ],
+    [
+     [
+      -349.9447,
+      -220.4588,
+      620.592
+     ],
+     [
+      -349.9447,
+      -202.3795,
+      620.592
+     ],
+     [
+      -357.1855,
+      -202.3795,
+      627.8146
+     ],
+     [
+      -357.1855,
+      -220.4588,
+      627.8146
+     ]
+    ],
+    [
+     [
+      -357.1855,
+      -220.4588,
+      627.8146
+     ],
+     [
+      -357.1855,
+      -202.3795,
+      627.8146
+     ],
+     [
+      -331.8428,
+      -202.3795,
+      653.0939
+     ],
+     [
+      -331.8428,
+      -220.4588,
+      653.0939
+     ]
+    ],
+    [
+     [
+      -324.602,
+      -202.3795,
+      645.8712
+     ],
+     [
+      -331.8428,
+      -202.3795,
+      653.0939
+     ],
+     [
+      -357.1855,
+      -202.3795,
+      627.8146
+     ],
+     [
+      -349.9447,
+      -202.3795,
+      620.592
+     ]
+    ],
+    [
+     [
+      -331.8428,
+      -220.4588,
+      653.0939
+     ],
+     [
+      -324.602,
+      -220.4588,
+      645.8712
+     ],
+     [
+      -349.9447,
+      -220.4588,
+      620.592
+     ],
+     [
+      -357.1855,
+      -220.4588,
+      627.8146
+     ]
+    ]
+   ],
+   "blocks_pawn": false,
+   "blocks_weapon": false,
+   "authored": {
+    "BRUSH": "D1_ORB_Music_m.TheWorld.PersistentLevel.TriggerVolume_6559.Model_4518",
+    "EditorRotation": {
+     "Pitch": 0,
+     "Yaw": -8192,
+     "Roll": 0
+    },
+    "SavedSelections": [
+     {
+      "Type": 3,
+      "Index": 1,
+      "SelectionIndex": 0,
+      "SelStrength": 1.0
+     },
+     {
+      "Type": 3,
+      "Index": 2,
+      "SelectionIndex": 1,
+      "SelStrength": 1.0
+     },
+     {
+      "Type": 3,
+      "Index": 4,
+      "SelectionIndex": 2,
+      "SelStrength": 1.0
+     },
+     {
+      "Type": 3,
+      "Index": 6,
+      "SelectionIndex": 3,
+      "SelStrength": 1.0
+     }
+    ]
+   }
+  }
+ ],
+ "sublevels_without_unit": [
+  "D1_ORB_Music_m",
+  "GLB_Audio_m"
+ ],
+ "split_from": "physics.json",
+ "note": "volumes / props of the chapter levels that have no render unit dir (per-unit physics.json covers the rest)"
+}
