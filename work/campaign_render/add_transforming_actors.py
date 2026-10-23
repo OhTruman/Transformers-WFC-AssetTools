@@ -108,7 +108,21 @@ def chapter(ch):
         g.write(dst)
         rep[lv] = OD([('unit', CR.outname(lv)), ('source_sha256', hashlib.sha256(open(src, 'rb').read()).hexdigest()),
                       ('world_glb_sha256', hashlib.sha256(open(dst, 'rb').read()).hexdigest()), ('actors', rows)])
-    out = OD([('chapter', ch), ('generated_by', 'AssetTools/work/campaign_render/add_transforming_actors.py'), ('counts', dict(why)), ('levels', rep)])
+    # the materials the new nodes use go into the chapter's render-material list, which the materials step builds into each unit's
+    # materials_glsl.json (Rendering's loader resolves a sub's material only from that file); rerun that step for these units after
+    used = sorted({m for l in rep.values() if isinstance(l, dict) for a in l['actors'] for m in a.get('materials') or [] if m})
+    lst = os.path.join(AT, 'manifests', 'campaign', 'render_materials', ch + '.txt')
+    have = [x.strip() for x in open(lst, encoding='utf-8')] if os.path.exists(lst) else []
+    new = [m for m in used if m not in have]
+    if new:
+        raw = open(lst, 'rb').read() if os.path.exists(lst) else b''
+        with open(lst, 'ab') as f:
+            if raw and not raw.endswith(b'\n'): f.write(b'\n')
+            f.write(''.join(m + '\n' for m in new).encode('utf-8'))
+    units = sorted({l['unit'] for l in rep.values() if isinstance(l, dict) and any('primitives' in a for a in l['actors'])})
+    out = OD([('chapter', ch), ('generated_by', 'AssetTools/work/campaign_render/add_transforming_actors.py'), ('counts', dict(why)),
+              ('materials_used', used), ('materials_added_to_render_list', new),
+              ('units_to_rerun_materials', [lv for lv, l in rep.items() if isinstance(l, dict) and l['unit'] in units]), ('levels', rep)])
     json.dump(out, open(os.path.join(R, 'transforming_actors.json'), 'w', encoding='utf-8'), indent=1, default=str)
     print(ch, json.dumps(out['counts']))
 
