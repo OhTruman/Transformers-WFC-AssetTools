@@ -18,7 +18,8 @@ ADD = [('Transformers Rebuild/Rebuild/work/render/%s/lens_flares.json' % m, 'Reb
        for m in ('MP_ESC_BrokenHope', 'MP_ESC_Remnant', 'MP_IAC_Rust', 'MP_IAC_Seed', 'MP_ORB_Debris', 'MP_UND_Gorge')]
 
 # Escalation horde runtime packaging (Integration 2026-10-23): every file under these AssetTools dirs ships, same dest form
-ADD_DIRS = ['AssetTools/out/escalation_characters']
+ADD_DIRS = ['AssetTools/out/escalation_characters',
+            'AssetTools/out/campaign_anims']   # the boss tank's robot set glTF (converted .psa) lives here; Integration 2026-10-23
 for _d in ADD_DIRS:
     for _r, _, _fs in os.walk(os.path.join(TR, _d)):
         for _f in sorted(_fs):
