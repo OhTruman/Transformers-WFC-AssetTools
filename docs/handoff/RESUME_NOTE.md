@@ -1,5 +1,18 @@
 # AssetTools resume note (2026-10-18)
 
+## 2026-10-23 (Integration rebuild-84; Gameplay rebuild-gameplay-b9; Rendering rebuild-rendering-56)
+
+- Escalation horde packaging: 14 bodies + 7 AI weapons in out/escalation_characters (0c1f00e); index copied to
+  manifests/escalation/escalation_characters_index.json. Built by work/escalation_characters/build.py.
+- Slim refresh staged: +161 escalation rows, +16 out/campaign_anims rows (the boss tank's robot set), + 6 lens_flares rows
+  (f8bdf55). The live tsv is untouched; the refresh has 101,214 rows.
+- CeremonialStaffHolo HUM / HUM_CHARGED: SILENT AS COOKED (the wave events have no ChildNodes).
+- Playtest 2026-10-23, all sent:
+  - #4: package 6 carries hd_pbr_index.json and all 498 m6 files;
+  - #10 / #13: work/handoff/PLAYTEST_20261023_SEED_COLLISION.md (22bb058);
+  - #14: work/handoff/PLAYTEST_20261023_WATER.md (3e6e4d0).
+- Next: stand by (Systems' package-7 data list; any follow-ups from Gameplay / Rendering on the playtest).
+
 - **Integration session:** now rebuild-07 (same owner as rebuild-9c). Gameplay is rebuild-gameplay-0a. The machine rebooted at 05:41;
   the queue was resumed and finished.
 - **Done 2026-10-18:**
