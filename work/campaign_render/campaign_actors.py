@@ -4,7 +4,8 @@ name actors by object path; navigation.json only covers NavigationPoints). One r
   object (path), class, sublevel, location_ue / location_gltf (0.01 * (X, Z, Y)), rotation_ue (UE rotator units) + rotation_deg
   (yaw / pitch / roll = units * 360 / 65536, UE sign conventions, not converted), DrawScale / DrawScale3D when authored,
   base (Base actor) + base_bone (BaseBoneName) when attached, referenced_by_kismet (a Kismet object under Main_Sequence names it),
-  props: for TnInteract* / turrets / pickups / factories, the authored properties (radius, duration, weapon ... as authored).
+  props: for TnInteract* / turrets / pickups / factories, the authored properties (radius, duration, weapon ... as authored);
+  hidden: the authored effective bHidden of every actor (hidden ones also as props.bHidden).
 Authored values only: an actor with no authored Location has location null (class default = origin; flagged location_default).
     python campaign_actors.py <CH>   -> out/campaign_render/<CH>/actors.json
 """
@@ -13,6 +14,8 @@ from collections import Counter, OrderedDict as OD
 HERE = os.path.dirname(os.path.abspath(__file__)); AT = os.path.abspath(os.path.join(HERE, '..', '..'))
 sys.path.insert(0, HERE)
 import campaign_render as CR  # noqa: E402
+sys.path.insert(0, os.path.join(AT, 'scripts', 'wfc'))
+import authored as A  # noqa: E402
 DB = sqlite3.connect(os.path.join(AT, 'manifests', 'authored.db')); INV = sqlite3.connect(os.path.join(AT, 'manifests', 'inventory.db'))
 KEEP_PROPS = re.compile(r'(Interact|Turret|Pickup|Factory|Weapon|Emote)', re.I)
 DEG = 360.0 / 65536.0
@@ -46,11 +49,17 @@ def main(ch):
         if KEEP_PROPS.search(c):
             row['props'] = {k: v for k, v in p.items() if k not in ('Location', 'Rotation', 'DrawScale', 'DrawScale3D', 'Base', 'BaseBoneName',
                                                                    'Components', 'CollisionComponent', 'Tag', 'Name')}
+        # authored EFFECTIVE bHidden (instance, else archetype / class default) on every row; hidden ones also as props.bHidden, the key
+        # Gameplay's loader reads (Integration 2026-10-23: A2 set dressing started visible)
+        hid = bool(A.values(o).get('bHidden'))
+        row['hidden'] = hid
+        if hid: row.setdefault('props', {})['bHidden'] = True
         rows.append(row); by_cls[c] += 1
     out = OD([('chapter', ch), ('generated_by', 'AssetTools/work/campaign_render/campaign_actors.py'),
               ('source', 'manifests/inventory.db + authored.db (authored values; cooked levels)'),
               ('units', 'location_gltf metres Y-up = 0.01 * (X, Z, Y)_UE; rotation_deg = UE rotator * 360 / 65536 (UE signs)'),
               ('counts', OD([('actors', len(rows)), ('referenced_by_kismet', len(refd)), ('attached', sum(1 for r in rows if r.get('base'))),
+                             ('hidden', sum(1 for r in rows if r.get('hidden'))),
                              ('location_default', sum(1 for r in rows if r.get('location_default')))])),
               ('by_class', OD(by_cls.most_common())), ('actors', rows)])
     json.dump(out, open(os.path.join(CR.OUTR, ch, 'actors.json'), 'w', encoding='utf-8'), indent=1, default=str)
