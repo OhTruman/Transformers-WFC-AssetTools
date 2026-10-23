@@ -15,9 +15,10 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 import authored as A, objtree, gfxscan  # noqa: E402
 from m03_common import write, field, CONF, HIGH, PART, UNK, map_arg, map_out, map_levels# noqa: E402
-from vs_common import ROOT  # noqa: E402
+from vs_common import ROOT, is_campaign  # noqa: E402
 
 MAP = map_arg()                      # positional map name (default MP_IAC_Streets)
+CAMPAIGN = is_campaign(MAP)          # campaign-only export keys (seq_inputs / seq_outputs / inputs_disabled)
 LV_ = map_levels(MAP)
 LEVELS = LV_['all']
 SKIP = ('InputLinks', 'OutputLinks', 'VariableLinks', 'ParentSequence', 'ObjPosX', 'ObjPosY', 'DrawWidth', 'DrawHeight',
@@ -35,8 +36,22 @@ def node(o):
                                         'value': ((A.get(x) or {}).get('props') or {}).get('ObjValue') or
                                                  {k: v for k, v in ((A.get(x) or {}).get('props') or {}).items() if k not in SKIP}} for x in lst]
     ins = [l.get('LinkDesc') for l in A.values(o).get('InputLinks') or []]
-    return {'object': o, 'class': r['class'], 'authored': {k: v for k, v in p.items() if k not in SKIP},
-            'inputs': ins, 'outputs': {k: v for k, v in outs.items() if v}, 'variables': var}
+    rec = {'object': o, 'class': r['class'], 'authored': {k: v for k, v in p.items() if k not in SKIP},
+           'inputs': ins, 'outputs': {k: v for k, v in outs.items() if v}, 'variables': var}
+    if CAMPAIGN:
+        # campaign VM (Gameplay / RE KISMET_VM_CORE_RE section 2, REVIEW K4): a sub-sequence's interface is the Sequence export's own
+        # InputLinks / OutputLinks (array order = the input_index / k the parent's links use). Campaign maps only: MP outputs unchanged.
+        if r['class'] == 'Sequence':
+            if p.get('InputLinks'):
+                rec['seq_inputs'] = [{'index': k, 'label': l.get('LinkDesc'), 'event': l.get('LinkedOp'), 'disabled': bool(l.get('bDisabled'))}
+                                     for k, l in enumerate(p['InputLinks'])]
+            if p.get('OutputLinks'):
+                rec['seq_outputs'] = [{'index': k, 'label': l.get('LinkDesc'), 'finish': l.get('LinkedOp'),
+                                       'links': [{'op': x.get('LinkedOp'), 'input_index': x.get('InputLinkIdx', 0)} for x in l.get('Links') or [] if x.get('LinkedOp')]}
+                                      for k, l in enumerate(p['OutputLinks'])]
+        dis = [k for k, l in enumerate(p.get('InputLinks') or []) if l.get('bDisabled')]
+        if dis: rec['inputs_disabled'] = dis
+    return rec
 
 def walk(seq, acc):
     for o in (A.get(seq)['props'] or {}).get('SequenceObjects') or []:

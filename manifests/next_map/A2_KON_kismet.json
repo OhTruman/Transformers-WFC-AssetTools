@@ -257093,6 +257093,14 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Togetherness_Check",
+      "event": "A2_KON_BASE_m.TheWorld.PersistentLevel.Main_Sequence.Togetherness.AirRaid_Togetherness_0.SeqEvent_SequenceActivated_11804",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_BASE_m.TheWorld.PersistentLevel.Main_Sequence.Togetherness.SeqAct_Gate_3227",
@@ -257425,6 +257433,14 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Togetherness_Check",
+      "event": "A2_KON_BASE_m.TheWorld.PersistentLevel.Main_Sequence.Togetherness.AirRaid_Togetherness_1.SeqEvent_SequenceActivated_11804",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_BASE_m.TheWorld.PersistentLevel.Main_Sequence.Togetherness.SeqAct_Gate_1064",
@@ -257806,6 +257822,14 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Togetherness_Check",
+      "event": "A2_KON_BASE_m.TheWorld.PersistentLevel.Main_Sequence.Togetherness.AirRaid_Togetherness_2.SeqEvent_SequenceActivated_11804",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_BASE_m.TheWorld.PersistentLevel.Main_Sequence.Togetherness.SeqAct_Gate_13126",
@@ -259962,6 +259986,38 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Spawn_AirRaidCell",
+      "event": "A2_KON_BASE_m.TheWorld.PersistentLevel.Main_Sequence.Air_Raid.SeqEvent_SequenceActivated_12337",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Spawn_PrisonCommand",
+      "event": "A2_KON_BASE_m.TheWorld.PersistentLevel.Main_Sequence.Air_Raid.SeqEvent_SequenceActivated_10094",
+      "disabled": false
+     },
+     {
+      "index": 2,
+      "label": "Spawn_Jailbreak",
+      "event": "A2_KON_BASE_m.TheWorld.PersistentLevel.Main_Sequence.Air_Raid.SeqEvent_SequenceActivated_10366",
+      "disabled": false
+     },
+     {
+      "index": 3,
+      "label": "Spawn_Rear_Hangar",
+      "event": "A2_KON_BASE_m.TheWorld.PersistentLevel.Main_Sequence.Air_Raid.SeqEvent_SequenceActivated_11922",
+      "disabled": false
+     },
+     {
+      "index": 4,
+      "label": "Spawn_Forward_Hangar",
+      "event": "A2_KON_BASE_m.TheWorld.PersistentLevel.Main_Sequence.Air_Raid.SeqEvent_SequenceActivated_6333",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_BASE_m.TheWorld.PersistentLevel.Main_Sequence.AirRaid_Triggers",
@@ -261038,6 +261094,63 @@
      ]
     },
     "variables": {},
+    "seq_outputs": [
+     {
+      "index": 0,
+      "label": "AirRaidCell",
+      "finish": "A2_KON_BASE_m.TheWorld.PersistentLevel.Main_Sequence.AirRaid_Triggers.SeqAct_FinishSequence_443",
+      "links": [
+       {
+        "op": "A2_KON_BASE_m.TheWorld.PersistentLevel.Main_Sequence.Air_Raid",
+        "input_index": 0
+       }
+      ]
+     },
+     {
+      "index": 1,
+      "label": "PrisonCommand",
+      "finish": "A2_KON_BASE_m.TheWorld.PersistentLevel.Main_Sequence.AirRaid_Triggers.SeqAct_FinishSequence_2597",
+      "links": [
+       {
+        "op": "A2_KON_BASE_m.TheWorld.PersistentLevel.Main_Sequence.Air_Raid",
+        "input_index": 1
+       }
+      ]
+     },
+     {
+      "index": 2,
+      "label": "Jailbreak",
+      "finish": "A2_KON_BASE_m.TheWorld.PersistentLevel.Main_Sequence.AirRaid_Triggers.SeqAct_FinishSequence_15626",
+      "links": [
+       {
+        "op": "A2_KON_BASE_m.TheWorld.PersistentLevel.Main_Sequence.Air_Raid",
+        "input_index": 2
+       }
+      ]
+     },
+     {
+      "index": 3,
+      "label": "Rear Hangar",
+      "finish": "A2_KON_BASE_m.TheWorld.PersistentLevel.Main_Sequence.AirRaid_Triggers.SeqAct_FinishSequence_8161",
+      "links": [
+       {
+        "op": "A2_KON_BASE_m.TheWorld.PersistentLevel.Main_Sequence.Air_Raid",
+        "input_index": 3
+       }
+      ]
+     },
+     {
+      "index": 4,
+      "label": "Forward Hangar",
+      "finish": "A2_KON_BASE_m.TheWorld.PersistentLevel.Main_Sequence.AirRaid_Triggers.SeqAct_FinishSequence_14647",
+      "links": [
+       {
+        "op": "A2_KON_BASE_m.TheWorld.PersistentLevel.Main_Sequence.Air_Raid",
+        "input_index": 4
+       }
+      ]
+     }
+    ],
     "incoming": []
    },
    {
@@ -269228,6 +269341,20 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "START",
+      "event": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.PRISON_INTRO.CITY.SeqEvent_SequenceActivated_13709",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "STOP",
+      "event": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.PRISON_INTRO.CITY.SeqEvent_SequenceActivated_8087",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.PRISON_INTRO.SeqEvent_RemoteEvent_14405",
@@ -270403,6 +270530,20 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "ENTER",
+      "event": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.PRISON_INTRO.PRISON_ENTRANCE.SeqEvent_SequenceActivated_1862",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "EXIT",
+      "event": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.PRISON_INTRO.PRISON_ENTRANCE.SeqEvent_SequenceActivated_905",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.PRISON_INTRO.SeqEvent_RemoteEvent_14629",
@@ -270614,6 +270755,20 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "ENTER",
+      "event": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.PRISON_INTRO.PITS.SeqEvent_SequenceActivated_6066",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "EXIT",
+      "event": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.PRISON_INTRO.PITS.SeqEvent_SequenceActivated_13610",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.PRISON_INTRO.SeqEvent_RemoteEvent_3870",
@@ -270937,6 +271092,20 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "ENTER",
+      "event": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.PRISON_INTRO.EXECUTION_ROOM.SeqEvent_SequenceActivated_8217",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "EXIT",
+      "event": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.PRISON_INTRO.EXECUTION_ROOM.SeqEvent_SequenceActivated_14146",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.PRISON_INTRO.SeqEvent_RemoteEvent_1968",
@@ -272060,6 +272229,20 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "ENTER",
+      "event": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.Vents.VENTS_BIG_ROOM.SeqEvent_SequenceActivated_8875",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "EXIT",
+      "event": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.Vents.VENTS_BIG_ROOM.SeqEvent_SequenceActivated_576",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.Vents.SeqEvent_RemoteEvent_14954",
@@ -272724,6 +272907,20 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "ENTER",
+      "event": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.Megatron.MEGATRON_ARENA.SeqEvent_SequenceActivated_15941",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "EXIT",
+      "event": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.Megatron.MEGATRON_ARENA.SeqEvent_SequenceActivated_2303",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.Megatron.SeqEvent_RemoteEvent_15133",
@@ -273112,6 +273309,20 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "ENTER",
+      "event": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.Megatron.MEGATRON_HALLWAY.SeqEvent_SequenceActivated_13705",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "EXIT",
+      "event": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.Megatron.MEGATRON_HALLWAY.SeqEvent_SequenceActivated_7023",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.Megatron.SeqEvent_RemoteEvent_10837",
@@ -273326,6 +273537,20 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "ENTER",
+      "event": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.SOUNDWAVE_BOSS_FIGHT.ZETA_PRIME_CHAMBER.SeqEvent_SequenceActivated_13015",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "EXIT",
+      "event": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.SOUNDWAVE_BOSS_FIGHT.ZETA_PRIME_CHAMBER.SeqEvent_SequenceActivated_11554",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.SOUNDWAVE_BOSS_FIGHT.SeqEvent_RemoteEvent_9993",
@@ -274000,6 +274225,20 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "ENTER",
+      "event": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.SOUNDWAVE_BOSS_FIGHT.PRE_SOUNDWAVE_ROOM.SeqEvent_SequenceActivated_1049",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "EXIT",
+      "event": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.SOUNDWAVE_BOSS_FIGHT.PRE_SOUNDWAVE_ROOM.SeqEvent_SequenceActivated_14973",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.SOUNDWAVE_BOSS_FIGHT.SeqEvent_RemoteEvent_4031",
@@ -274441,6 +274680,20 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "ENTER",
+      "event": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.Courtyard.COURTYARD_EXTERIOR.SeqEvent_SequenceActivated_10813",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "EXIT",
+      "event": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.Courtyard.COURTYARD_EXTERIOR.SeqEvent_SequenceActivated_1585",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.Courtyard.SeqEvent_RemoteEvent_14079",
@@ -275104,6 +275357,20 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "ENTER",
+      "event": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.Courtyard.COURTYARD_INT_1.SeqEvent_SequenceActivated_1010",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "EXIT",
+      "event": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.Courtyard.COURTYARD_INT_1.SeqEvent_SequenceActivated_16106",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.Courtyard.SeqEvent_RemoteEvent_5204",
@@ -275311,6 +275578,20 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "ENTER",
+      "event": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.Courtyard.COURTYARD_INT_2.SeqEvent_SequenceActivated_4717",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "EXIT",
+      "event": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.Courtyard.COURTYARD_INT_2.SeqEvent_SequenceActivated_13055",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.Courtyard.SeqEvent_RemoteEvent_14206",
@@ -275601,6 +275882,20 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "ENTER",
+      "event": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.Courtyard.COURTYARD_WALLCRAWLER.SeqEvent_SequenceActivated_1738",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "EXIT",
+      "event": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.Courtyard.COURTYARD_WALLCRAWLER.SeqEvent_SequenceActivated_14713",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.Courtyard.SeqEvent_RemoteEvent_1182",
@@ -276065,6 +276360,20 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "ENTER",
+      "event": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.Dungeons.DUNGEON_CELL.SeqEvent_SequenceActivated_1499",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "EXIT",
+      "event": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.Dungeons.DUNGEON_CELL.SeqEvent_SequenceActivated_16324",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.Dungeons.SeqEvent_RemoteEvent_7922",
@@ -276316,6 +276625,20 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "ENTER",
+      "event": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.Dungeons.DUNGEON_CORRIDOR.SeqEvent_SequenceActivated_15962",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "EXIT",
+      "event": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.Dungeons.DUNGEON_CORRIDOR.SeqEvent_SequenceActivated_4989",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.Dungeons.SeqEvent_RemoteEvent_6010",
@@ -276827,6 +277150,20 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "ENTER",
+      "event": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.Dungeons.SEWER.SeqEvent_SequenceActivated_9612",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "EXIT",
+      "event": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.Dungeons.SEWER.SeqEvent_SequenceActivated_10639",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.Dungeons.SeqEvent_RemoteEvent_2624",
@@ -277077,6 +277414,20 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "ENTER",
+      "event": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.Dungeons.SEWER_HALLWAY.SeqEvent_SequenceActivated_15034",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "EXIT",
+      "event": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.Dungeons.SEWER_HALLWAY.SeqEvent_SequenceActivated_6163",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.Dungeons.SeqEvent_RemoteEvent_6909",
@@ -277257,6 +277608,20 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "ENTER",
+      "event": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.Dungeons.DUNGEON_MAIN_ROOM.SeqEvent_SequenceActivated_12745",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "EXIT",
+      "event": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.Dungeons.DUNGEON_MAIN_ROOM.SeqEvent_SequenceActivated_12608",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.Dungeons.SeqEvent_RemoteEvent_15394",
@@ -277392,6 +277757,20 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "ENTER",
+      "event": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.Dungeons.DUNGEON_HALL_2.SeqEvent_SequenceActivated_7624",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "EXIT",
+      "event": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.Dungeons.DUNGEON_HALL_2.SeqEvent_SequenceActivated_13021",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.Dungeons.SeqEvent_RemoteEvent_9619",
@@ -278898,6 +279277,20 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "ENTER",
+      "event": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.COMMAND_CENTER.COMMAND_ROOM.SeqEvent_SequenceActivated_2733",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "EXIT",
+      "event": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.COMMAND_CENTER.COMMAND_ROOM.SeqEvent_SequenceActivated_14167",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.COMMAND_CENTER.SeqEvent_RemoteEvent_14095",
@@ -279214,6 +279607,20 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "ENTER",
+      "event": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.COMMAND_CENTER.Hangar.SeqEvent_SequenceActivated_12458",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "EXIT",
+      "event": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.COMMAND_CENTER.Hangar.SeqEvent_SequenceActivated_13858",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.COMMAND_CENTER.SeqEvent_RemoteEvent_9175",
@@ -279498,6 +279905,20 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "ENTER",
+      "event": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.COMMAND_CENTER.JAIL_HALL.SeqEvent_SequenceActivated_4343",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "EXIT",
+      "event": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.COMMAND_CENTER.JAIL_HALL.SeqEvent_SequenceActivated_6893",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.COMMAND_CENTER.SeqEvent_RemoteEvent_1797",
@@ -280330,6 +280751,20 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "ENTER",
+      "event": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.WallCrawler.WALLCRAWLER_TRANSITION.SeqEvent_SequenceActivated_8940",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "EXIT",
+      "event": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.WallCrawler.WALLCRAWLER_TRANSITION.SeqEvent_SequenceActivated_11517",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.WallCrawler.SeqEvent_RemoteEvent_4694",
@@ -280871,6 +281306,20 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "ENTER",
+      "event": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.Collapsing_Floors.Collapsing_Floors.SeqEvent_SequenceActivated_12789",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "EXIT",
+      "event": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.Collapsing_Floors.Collapsing_Floors.SeqEvent_SequenceActivated_16199",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.Collapsing_Floors.SeqEvent_RemoteEvent_11802",
@@ -281192,6 +281641,14 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "START_AI_STATES_MUTING",
+      "event": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.AI_STATES_MUTING.SeqEvent_SequenceActivated_372",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_AUDIO_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_GameplayStarted_12665",
@@ -283838,6 +284295,26 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Default Input",
+      "event": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_SequenceActivated_13343",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Default Input",
+      "event": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_SequenceActivated_14089",
+      "disabled": false
+     },
+     {
+      "index": 2,
+      "label": "Default Input",
+      "event": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_SequenceActivated_1920",
+      "disabled": false
+     }
+    ],
     "incoming": []
    },
    {
@@ -284261,6 +284738,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Add_Marker",
+      "event": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.HUD_MArker_Handler_1.SeqEvent_SequenceActivated_9354",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Remove_Marker",
+      "event": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.HUD_MArker_Handler_1.SeqEvent_SequenceActivated_715",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Interp_11660",
@@ -286363,6 +286854,50 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Clamp1",
+      "event": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.AirRaid_Cell_Claw_Clamps.SeqEvent_SequenceActivated_5511",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Clamp2",
+      "event": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.AirRaid_Cell_Claw_Clamps.SeqEvent_SequenceActivated_13657",
+      "disabled": false
+     },
+     {
+      "index": 2,
+      "label": "Clamp3",
+      "event": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.AirRaid_Cell_Claw_Clamps.SeqEvent_SequenceActivated_16270",
+      "disabled": false
+     },
+     {
+      "index": 3,
+      "label": "Clamp4",
+      "event": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.AirRaid_Cell_Claw_Clamps.SeqEvent_SequenceActivated_9402",
+      "disabled": false
+     },
+     {
+      "index": 4,
+      "label": "Clamp5",
+      "event": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.AirRaid_Cell_Claw_Clamps.SeqEvent_SequenceActivated_1982",
+      "disabled": false
+     },
+     {
+      "index": 5,
+      "label": "Clamp6",
+      "event": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.AirRaid_Cell_Claw_Clamps.SeqEvent_SequenceActivated_11593",
+      "disabled": false
+     },
+     {
+      "index": 6,
+      "label": "Clamp7",
+      "event": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.AirRaid_Cell_Claw_Clamps.SeqEvent_SequenceActivated_8348",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_DelaySwitch_9057",
@@ -288839,6 +289374,14 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Default Input",
+      "event": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.Destroy_Cloaker_0.SeqEvent_SequenceActivated_7609",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Interp_1009",
@@ -289083,6 +289626,14 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Default Input",
+      "event": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.Destroy_Cloaker_1.SeqEvent_SequenceActivated_7609",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Interp_5819",
@@ -289327,6 +289878,14 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Default Input",
+      "event": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.Destroy_Cloaker.SeqEvent_SequenceActivated_7609",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Interp_4305",
@@ -291491,6 +292050,14 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Default Input",
+      "event": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.Destroy_AirRaid_Rescue_Minimatic.SeqEvent_SequenceActivated_4764",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Interp_12595",
@@ -295035,6 +295602,20 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Setup_PowerConduit_Puzzle",
+      "event": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.Prefabs.SeqEvent_SequenceActivated_3153",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Unhide_Elements",
+      "event": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.Prefabs.SeqEvent_SequenceActivated_2607",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_Touch_65",
@@ -301342,6 +301923,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Set_Green",
+      "event": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_4.SeqEvent_SequenceActivated_4459",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Set_Red",
+      "event": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_4.SeqEvent_SequenceActivated_9177",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.TnSeqAct_TransformWorldProp_5746",
@@ -301577,6 +302172,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Set_Green",
+      "event": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_5.SeqEvent_SequenceActivated_4459",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Set_Red",
+      "event": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_5.SeqEvent_SequenceActivated_9177",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_SequenceActivated_13343",
@@ -301812,6 +302421,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Set_Green",
+      "event": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_0.SeqEvent_SequenceActivated_4459",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Set_Red",
+      "event": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_0.SeqEvent_SequenceActivated_9177",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_RemoteEvent_7911",
@@ -302070,6 +302693,32 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Play_Unlock_Sound",
+      "event": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_1.SeqEvent_SequenceActivated_125",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Play_Locked_Sound",
+      "event": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_1.SeqEvent_SequenceActivated_15525",
+      "disabled": false
+     },
+     {
+      "index": 2,
+      "label": "Reenable_Locked_Beep",
+      "event": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_1.SeqEvent_SequenceActivated_4525",
+      "disabled": false
+     },
+     {
+      "index": 3,
+      "label": "Disable_Locked_Beep",
+      "event": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_1.SeqEvent_SequenceActivated_1669",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.TnSeqAct_TransformWorldProp_5746",
@@ -302358,6 +303007,32 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Play_Unlock_Sound",
+      "event": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_2.SeqEvent_SequenceActivated_125",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Play_Locked_Sound",
+      "event": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_2.SeqEvent_SequenceActivated_15525",
+      "disabled": false
+     },
+     {
+      "index": 2,
+      "label": "Reenable_Locked_Beep",
+      "event": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_2.SeqEvent_SequenceActivated_4525",
+      "disabled": false
+     },
+     {
+      "index": 3,
+      "label": "Disable_Locked_Beep",
+      "event": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_2.SeqEvent_SequenceActivated_1669",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_RemoteEvent_8666",
@@ -302646,6 +303321,32 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Play_Unlock_Sound",
+      "event": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_0.SeqEvent_SequenceActivated_125",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Play_Locked_Sound",
+      "event": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_0.SeqEvent_SequenceActivated_15525",
+      "disabled": false
+     },
+     {
+      "index": 2,
+      "label": "Reenable_Locked_Beep",
+      "event": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_0.SeqEvent_SequenceActivated_4525",
+      "disabled": false
+     },
+     {
+      "index": 3,
+      "label": "Disable_Locked_Beep",
+      "event": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_0.SeqEvent_SequenceActivated_1669",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_RemoteEvent_7911",
@@ -302954,6 +303655,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Add_Marker",
+      "event": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.HUD_MArker_Handler.SeqEvent_SequenceActivated_9354",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Remove_Marker",
+      "event": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.HUD_MArker_Handler.SeqEvent_SequenceActivated_715",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Toggle_7216",
@@ -303379,6 +304094,20 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Stop",
+      "event": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.AirRaid_Prison_Machine.SeqEvent_SequenceActivated_16216",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Play",
+      "event": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.AirRaid_Prison_Machine.SeqEvent_SequenceActivated_5241",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_RemoteEvent_14637",
@@ -304720,6 +305449,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Add_Marker",
+      "event": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.HUD_MArker_Handler_2.SeqEvent_SequenceActivated_9354",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Remove_Marker",
+      "event": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.HUD_MArker_Handler_2.SeqEvent_SequenceActivated_715",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_Touch_7401",
@@ -304916,6 +305659,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Add_Marker",
+      "event": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.HUD_MArker_Handler_0.SeqEvent_SequenceActivated_9354",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Remove_Marker",
+      "event": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.HUD_MArker_Handler_0.SeqEvent_SequenceActivated_715",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_AirRaid_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_Touch_7064",
@@ -305209,6 +305966,14 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Default Input",
+      "event": "A2_KON_AirRaid_Trans_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_SequenceActivated_7001",
+      "disabled": false
+     }
+    ],
     "incoming": []
    },
    {
@@ -307536,6 +308301,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Add_Marker",
+      "event": "A2_KON_AirRaid_Trans_Design_m.TheWorld.PersistentLevel.Main_Sequence.HUD_MArker_Handler.SeqEvent_SequenceActivated_9354",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Remove_Marker",
+      "event": "A2_KON_AirRaid_Trans_Design_m.TheWorld.PersistentLevel.Main_Sequence.HUD_MArker_Handler.SeqEvent_SequenceActivated_715",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_AirRaid_Trans_Design_m.TheWorld.PersistentLevel.Main_Sequence.TnSeqEvent_Interact_6900",
@@ -307747,6 +308526,32 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Play_Unlock_Sound",
+      "event": "A2_KON_AirRaid_Trans_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_1.SeqEvent_SequenceActivated_125",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Play_Locked_Sound",
+      "event": "A2_KON_AirRaid_Trans_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_1.SeqEvent_SequenceActivated_15525",
+      "disabled": false
+     },
+     {
+      "index": 2,
+      "label": "Reenable_Locked_Beep",
+      "event": "A2_KON_AirRaid_Trans_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_1.SeqEvent_SequenceActivated_4525",
+      "disabled": false
+     },
+     {
+      "index": 3,
+      "label": "Disable_Locked_Beep",
+      "event": "A2_KON_AirRaid_Trans_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_1.SeqEvent_SequenceActivated_1669",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_AirRaid_Trans_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_Touch_9253",
@@ -308017,6 +308822,32 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Play_Unlock_Sound",
+      "event": "A2_KON_AirRaid_Trans_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_0.SeqEvent_SequenceActivated_125",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Play_Locked_Sound",
+      "event": "A2_KON_AirRaid_Trans_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_0.SeqEvent_SequenceActivated_15525",
+      "disabled": false
+     },
+     {
+      "index": 2,
+      "label": "Reenable_Locked_Beep",
+      "event": "A2_KON_AirRaid_Trans_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_0.SeqEvent_SequenceActivated_4525",
+      "disabled": false
+     },
+     {
+      "index": 3,
+      "label": "Disable_Locked_Beep",
+      "event": "A2_KON_AirRaid_Trans_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_0.SeqEvent_SequenceActivated_1669",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_AirRaid_Trans_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_Touch_16023",
@@ -314307,6 +315138,26 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Default Input",
+      "event": "A2_KON_Command_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_SequenceActivated_15318",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Default Input",
+      "event": "A2_KON_Command_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_SequenceActivated_13888",
+      "disabled": false
+     },
+     {
+      "index": 2,
+      "label": "Default Input",
+      "event": "A2_KON_Command_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_SequenceActivated_4416",
+      "disabled": false
+     }
+    ],
     "incoming": []
    },
    {
@@ -314329,6 +315180,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Add_Marker",
+      "event": "A2_KON_Command_Design_m.TheWorld.PersistentLevel.Main_Sequence.HUD_MArker_Handler_0.SeqEvent_SequenceActivated_9354",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Remove_Marker",
+      "event": "A2_KON_Command_Design_m.TheWorld.PersistentLevel.Main_Sequence.HUD_MArker_Handler_0.SeqEvent_SequenceActivated_715",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Command_Design_m.TheWorld.PersistentLevel.Main_Sequence.TnSeqEvent_Interact_13689",
@@ -317915,6 +318780,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Set_Green",
+      "event": "A2_KON_Command_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_1.SeqEvent_SequenceActivated_4459",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Set_Red",
+      "event": "A2_KON_Command_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_1.SeqEvent_SequenceActivated_9177",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Command_Design_m.TheWorld.PersistentLevel.Main_Sequence.TnSeqAct_TransformWorldProp_3840",
@@ -318150,6 +319029,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Set_Green",
+      "event": "A2_KON_Command_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_0.SeqEvent_SequenceActivated_4459",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Set_Red",
+      "event": "A2_KON_Command_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_0.SeqEvent_SequenceActivated_9177",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Command_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_SequenceActivated_15318",
@@ -318402,6 +319295,32 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Play_Unlock_Sound",
+      "event": "A2_KON_Command_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_1.SeqEvent_SequenceActivated_125",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Play_Locked_Sound",
+      "event": "A2_KON_Command_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_1.SeqEvent_SequenceActivated_15525",
+      "disabled": false
+     },
+     {
+      "index": 2,
+      "label": "Reenable_Locked_Beep",
+      "event": "A2_KON_Command_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_1.SeqEvent_SequenceActivated_4525",
+      "disabled": false
+     },
+     {
+      "index": 3,
+      "label": "Disable_Locked_Beep",
+      "event": "A2_KON_Command_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_1.SeqEvent_SequenceActivated_1669",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Command_Design_m.TheWorld.PersistentLevel.Main_Sequence.TnSeqAct_TransformWorldProp_3840",
@@ -318766,6 +319685,32 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Play_Unlock_Sound",
+      "event": "A2_KON_Command_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_0.SeqEvent_SequenceActivated_125",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Play_Locked_Sound",
+      "event": "A2_KON_Command_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_0.SeqEvent_SequenceActivated_15525",
+      "disabled": false
+     },
+     {
+      "index": 2,
+      "label": "Reenable_Locked_Beep",
+      "event": "A2_KON_Command_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_0.SeqEvent_SequenceActivated_4525",
+      "disabled": false
+     },
+     {
+      "index": 3,
+      "label": "Disable_Locked_Beep",
+      "event": "A2_KON_Command_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_0.SeqEvent_SequenceActivated_1669",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Command_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_RemoteEvent_15324",
@@ -319037,6 +319982,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Add_Marker",
+      "event": "A2_KON_Command_Design_m.TheWorld.PersistentLevel.Main_Sequence.HUD_MArker_Handler_1.SeqEvent_SequenceActivated_9354",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Remove_Marker",
+      "event": "A2_KON_Command_Design_m.TheWorld.PersistentLevel.Main_Sequence.HUD_MArker_Handler_1.SeqEvent_SequenceActivated_715",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Command_Design_m.TheWorld.PersistentLevel.Main_Sequence.TnSeqEvent_Interact_2201",
@@ -321240,6 +322199,44 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Default Input",
+      "event": "A2_KON_Courtyard2_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_SequenceActivated_1052",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Default Input",
+      "event": "A2_KON_Courtyard2_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_SequenceActivated_5459",
+      "disabled": false
+     },
+     {
+      "index": 2,
+      "label": "Default Input",
+      "event": "A2_KON_Courtyard2_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_SequenceActivated_14740",
+      "disabled": false
+     },
+     {
+      "index": 3,
+      "label": "Default Input",
+      "event": "A2_KON_Courtyard2_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_SequenceActivated_2934",
+      "disabled": false
+     },
+     {
+      "index": 4,
+      "label": "Default Input",
+      "event": "A2_KON_Courtyard2_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_SequenceActivated_6842",
+      "disabled": false
+     },
+     {
+      "index": 5,
+      "label": "Default Input",
+      "event": "A2_KON_Courtyard2_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_SequenceActivated_3194",
+      "disabled": false
+     }
+    ],
     "incoming": []
    },
    {
@@ -322572,6 +323569,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Add_Marker",
+      "event": "A2_KON_Courtyard2_Design_m.TheWorld.PersistentLevel.Main_Sequence.HUD_MArker_Handler_0.SeqEvent_SequenceActivated_9354",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Remove_Marker",
+      "event": "A2_KON_Courtyard2_Design_m.TheWorld.PersistentLevel.Main_Sequence.HUD_MArker_Handler_0.SeqEvent_SequenceActivated_715",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Courtyard2_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_RemoteEvent_7929",
@@ -322777,6 +323788,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Send_Buddies_To_OBJ",
+      "event": "A2_KON_Courtyard2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Buddy_Objective_Handler_0.SeqEvent_SequenceActivated_9098",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Disable_Buddies_OBJ",
+      "event": "A2_KON_Courtyard2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Buddy_Objective_Handler_0.SeqEvent_SequenceActivated_13848",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Courtyard2_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Delay_8377",
@@ -326036,6 +327061,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Add_Marker",
+      "event": "A2_KON_Courtyard2_Design_m.TheWorld.PersistentLevel.Main_Sequence.HUD_MArker_Handler.SeqEvent_SequenceActivated_9354",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Remove_Marker",
+      "event": "A2_KON_Courtyard2_Design_m.TheWorld.PersistentLevel.Main_Sequence.HUD_MArker_Handler.SeqEvent_SequenceActivated_715",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Courtyard2_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_RemoteEvent_7729",
@@ -326268,6 +327307,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Set_Green",
+      "event": "A2_KON_Courtyard2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_0.SeqEvent_SequenceActivated_4459",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Set_Red",
+      "event": "A2_KON_Courtyard2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_0.SeqEvent_SequenceActivated_9177",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Courtyard2_Design_m.TheWorld.PersistentLevel.Main_Sequence.TnSeqAct_TransformWorldProp_1031",
@@ -326491,6 +327544,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Set_Green",
+      "event": "A2_KON_Courtyard2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors.SeqEvent_SequenceActivated_4459",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Set_Red",
+      "event": "A2_KON_Courtyard2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors.SeqEvent_SequenceActivated_9177",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Courtyard2_Design_m.TheWorld.PersistentLevel.Main_Sequence.TnSeqAct_TransformWorldProp_11119",
@@ -326737,6 +327804,32 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Play_Unlock_Sound",
+      "event": "A2_KON_Courtyard2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_0.SeqEvent_SequenceActivated_125",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Play_Locked_Sound",
+      "event": "A2_KON_Courtyard2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_0.SeqEvent_SequenceActivated_15525",
+      "disabled": false
+     },
+     {
+      "index": 2,
+      "label": "Reenable_Locked_Beep",
+      "event": "A2_KON_Courtyard2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_0.SeqEvent_SequenceActivated_4525",
+      "disabled": false
+     },
+     {
+      "index": 3,
+      "label": "Disable_Locked_Beep",
+      "event": "A2_KON_Courtyard2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_0.SeqEvent_SequenceActivated_1669",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Courtyard2_Design_m.TheWorld.PersistentLevel.Main_Sequence.TnSeqAct_TransformWorldProp_11119",
@@ -327035,6 +328128,32 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Play_Unlock_Sound",
+      "event": "A2_KON_Courtyard2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler.SeqEvent_SequenceActivated_125",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Play_Locked_Sound",
+      "event": "A2_KON_Courtyard2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler.SeqEvent_SequenceActivated_15525",
+      "disabled": false
+     },
+     {
+      "index": 2,
+      "label": "Reenable_Locked_Beep",
+      "event": "A2_KON_Courtyard2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler.SeqEvent_SequenceActivated_4525",
+      "disabled": false
+     },
+     {
+      "index": 3,
+      "label": "Disable_Locked_Beep",
+      "event": "A2_KON_Courtyard2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler.SeqEvent_SequenceActivated_1669",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Courtyard2_Design_m.TheWorld.PersistentLevel.Main_Sequence.TnSeqAct_TransformWorldProp_1031",
@@ -327584,6 +328703,14 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "AutoIn1",
+      "event": "A2_KON_Courtyard2_Design_m.TheWorld.PersistentLevel.Main_Sequence.WallClimber_1st_Shake.SeqEvent_SequenceActivated_291",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Courtyard2_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Delay_11530",
@@ -327785,6 +328912,14 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "AutoIn0",
+      "event": "A2_KON_Courtyard2_Design_m.TheWorld.PersistentLevel.Main_Sequence.WallClimber_2nd_Shake.SeqEvent_SequenceActivated_250",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Courtyard2_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Delay_11530",
@@ -328027,6 +329162,14 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "AutoIn0",
+      "event": "A2_KON_Courtyard2_Design_m.TheWorld.PersistentLevel.Main_Sequence.SentryGuns_Gears_0.SeqEvent_SequenceActivated_11658",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Courtyard2_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_TnPawnFactory_482",
@@ -328971,6 +330114,14 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "AutoIn0",
+      "event": "A2_KON_Courtyard2_Design_m.TheWorld.PersistentLevel.Main_Sequence.SentryGuns_Gears_1.SeqEvent_SequenceActivated_11658",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Courtyard2_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_TnPawnFactory_14923",
@@ -329129,6 +330280,14 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "AutoIn0",
+      "event": "A2_KON_Courtyard2_Design_m.TheWorld.PersistentLevel.Main_Sequence.SentryGuns_Gears_2.SeqEvent_SequenceActivated_11658",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Courtyard2_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_TnPawnFactory_8908",
@@ -329287,6 +330446,14 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "AutoIn0",
+      "event": "A2_KON_Courtyard2_Design_m.TheWorld.PersistentLevel.Main_Sequence.SentryGuns_Gears.SeqEvent_SequenceActivated_11658",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Courtyard2_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_TnPawnFactory_1539",
@@ -330235,6 +331402,20 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Default Input",
+      "event": "A2_KON_Courtyard_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_SequenceActivated_8664",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Default Input",
+      "event": "A2_KON_Courtyard_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_SequenceActivated_10200",
+      "disabled": false
+     }
+    ],
     "incoming": []
    },
    {
@@ -334243,6 +335424,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Add_Marker",
+      "event": "A2_KON_Courtyard_Design_m.TheWorld.PersistentLevel.Main_Sequence.HUD_MArker_Handler_0.SeqEvent_SequenceActivated_9354",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Remove_Marker",
+      "event": "A2_KON_Courtyard_Design_m.TheWorld.PersistentLevel.Main_Sequence.HUD_MArker_Handler_0.SeqEvent_SequenceActivated_715",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Courtyard_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_RemoteEvent_12531",
@@ -334458,6 +335653,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Add_Marker",
+      "event": "A2_KON_Courtyard_Design_m.TheWorld.PersistentLevel.Main_Sequence.HUD_MArker_Handler.SeqEvent_SequenceActivated_9354",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Remove_Marker",
+      "event": "A2_KON_Courtyard_Design_m.TheWorld.PersistentLevel.Main_Sequence.HUD_MArker_Handler.SeqEvent_SequenceActivated_715",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Courtyard_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_TnRemoveMarker_13823",
@@ -334844,6 +336053,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Set_Green",
+      "event": "A2_KON_Courtyard_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_1.SeqEvent_SequenceActivated_4459",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Set_Red",
+      "event": "A2_KON_Courtyard_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_1.SeqEvent_SequenceActivated_9177",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Courtyard_Design_m.TheWorld.PersistentLevel.Main_Sequence.TnSeqAct_TransformWorldProp_10765",
@@ -335067,6 +336290,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Set_Green",
+      "event": "A2_KON_Courtyard_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors.SeqEvent_SequenceActivated_4459",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Set_Red",
+      "event": "A2_KON_Courtyard_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors.SeqEvent_SequenceActivated_9177",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Courtyard_Design_m.TheWorld.PersistentLevel.Main_Sequence.TnSeqAct_TransformWorldProp_16095",
@@ -335353,6 +336590,26 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Play_Unlock_Sound",
+      "event": "A2_KON_Courtyard_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler.SeqEvent_SequenceActivated_125",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Play_Locked_Sound",
+      "event": "A2_KON_Courtyard_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler.SeqEvent_SequenceActivated_15525",
+      "disabled": false
+     },
+     {
+      "index": 2,
+      "label": "Reenable_Locked_Beep",
+      "event": "A2_KON_Courtyard_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler.SeqEvent_SequenceActivated_4525",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Courtyard_Design_m.TheWorld.PersistentLevel.Main_Sequence.TnSeqAct_TransformWorldProp_16095",
@@ -342635,6 +343892,14 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "AutoIn0",
+      "event": "A2_KON_DRIVE3_CINE_m.TheWorld.PersistentLevel.Main_Sequence.teleportplayers.SeqEvent_SequenceActivated_2678",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_DRIVE3_CINE_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Interp_1773",
@@ -342864,6 +344129,14 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "AutoIn0",
+      "event": "A2_KON_DRIVE3_CINE_m.TheWorld.PersistentLevel.Main_Sequence.hideActors.SeqEvent_SequenceActivated_5397",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_DRIVE3_CINE_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Interp_1773",
@@ -343089,6 +344362,14 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "AutoIn0",
+      "event": "A2_KON_DRIVE3_CINE_m.TheWorld.PersistentLevel.Main_Sequence.destroy.SeqEvent_SequenceActivated_14006",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_DRIVE3_CINE_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Interp_10242",
@@ -344063,6 +345344,14 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Default Input",
+      "event": "A2_KON_DRIVE3_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_SequenceActivated_5813",
+      "disabled": false
+     }
+    ],
     "incoming": []
    },
    {
@@ -345047,6 +346336,14 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Default Input",
+      "event": "A2_KON_DRIVE3_Design_m.TheWorld.PersistentLevel.Main_Sequence.Final_Boom.SeqEvent_SequenceActivated_14676",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_DRIVE3_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_Touch_11283",
@@ -348713,6 +350010,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Add_Marker",
+      "event": "A2_KON_DRIVE3_Design_m.TheWorld.PersistentLevel.Main_Sequence.HUD_MArker_Handler_0.SeqEvent_SequenceActivated_9354",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Remove_Marker",
+      "event": "A2_KON_DRIVE3_Design_m.TheWorld.PersistentLevel.Main_Sequence.HUD_MArker_Handler_0.SeqEvent_SequenceActivated_715",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_DRIVE3_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_Touch_7961",
@@ -356169,6 +357480,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Set_Green",
+      "event": "A2_KON_DRIVE3_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_0.SeqEvent_SequenceActivated_4459",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Set_Red",
+      "event": "A2_KON_DRIVE3_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_0.SeqEvent_SequenceActivated_9177",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_DRIVE3_Design_m.TheWorld.PersistentLevel.Main_Sequence.TnSeqAct_TransformWorldProp_11480",
@@ -356415,6 +357740,32 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Play_Unlock_Sound",
+      "event": "A2_KON_DRIVE3_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_0.SeqEvent_SequenceActivated_125",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Play_Locked_Sound",
+      "event": "A2_KON_DRIVE3_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_0.SeqEvent_SequenceActivated_15525",
+      "disabled": false
+     },
+     {
+      "index": 2,
+      "label": "Reenable_Locked_Beep",
+      "event": "A2_KON_DRIVE3_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_0.SeqEvent_SequenceActivated_4525",
+      "disabled": false
+     },
+     {
+      "index": 3,
+      "label": "Disable_Locked_Beep",
+      "event": "A2_KON_DRIVE3_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_0.SeqEvent_SequenceActivated_1669",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_DRIVE3_Design_m.TheWorld.PersistentLevel.Main_Sequence.TnSeqAct_TransformWorldProp_11480",
@@ -356698,6 +358049,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Add_Marker",
+      "event": "A2_KON_DRIVE3_Design_m.TheWorld.PersistentLevel.Main_Sequence.HUD_MArker_Handler_1.SeqEvent_SequenceActivated_9354",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Remove_Marker",
+      "event": "A2_KON_DRIVE3_Design_m.TheWorld.PersistentLevel.Main_Sequence.HUD_MArker_Handler_1.SeqEvent_SequenceActivated_715",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_DRIVE3_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_Touch_7961",
@@ -356883,6 +358248,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Add_Marker",
+      "event": "A2_KON_DRIVE3_Design_m.TheWorld.PersistentLevel.Main_Sequence.HUD_MArker_Handler_2.SeqEvent_SequenceActivated_9354",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Remove_Marker",
+      "event": "A2_KON_DRIVE3_Design_m.TheWorld.PersistentLevel.Main_Sequence.HUD_MArker_Handler_2.SeqEvent_SequenceActivated_715",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_DRIVE3_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_Touch_14466",
@@ -357068,6 +358447,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Add_Marker",
+      "event": "A2_KON_DRIVE3_Design_m.TheWorld.PersistentLevel.Main_Sequence.HUD_MArker_Handler_3.SeqEvent_SequenceActivated_9354",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Remove_Marker",
+      "event": "A2_KON_DRIVE3_Design_m.TheWorld.PersistentLevel.Main_Sequence.HUD_MArker_Handler_3.SeqEvent_SequenceActivated_715",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_DRIVE3_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_Touch_8147",
@@ -357247,6 +358640,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Add_Marker",
+      "event": "A2_KON_DRIVE3_Design_m.TheWorld.PersistentLevel.Main_Sequence.HUD_MArker_Handler_4.SeqEvent_SequenceActivated_9354",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Remove_Marker",
+      "event": "A2_KON_DRIVE3_Design_m.TheWorld.PersistentLevel.Main_Sequence.HUD_MArker_Handler_4.SeqEvent_SequenceActivated_715",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_DRIVE3_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_Touch_4260",
@@ -357432,6 +358839,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Add_Marker",
+      "event": "A2_KON_DRIVE3_Design_m.TheWorld.PersistentLevel.Main_Sequence.HUD_MArker_Handler.SeqEvent_SequenceActivated_9354",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Remove_Marker",
+      "event": "A2_KON_DRIVE3_Design_m.TheWorld.PersistentLevel.Main_Sequence.HUD_MArker_Handler.SeqEvent_SequenceActivated_715",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_DRIVE3_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_Touch_13604",
@@ -359447,6 +360868,14 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Play",
+      "event": "A2_KON_DRIVE3_Design_m.TheWorld.PersistentLevel.Main_Sequence.Megatron_FaceFX_6.SeqEvent_SequenceActivated_6994",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_DRIVE3_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Conversation_8411",
@@ -359707,6 +361136,14 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Default Input",
+      "event": "A2_KON_DRIVE3_Trans_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_SequenceActivated_5813",
+      "disabled": false
+     }
+    ],
     "incoming": []
    },
    {
@@ -359928,6 +361365,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Set_Green",
+      "event": "A2_KON_DRIVE3_Trans_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_0.SeqEvent_SequenceActivated_4459",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Set_Red",
+      "event": "A2_KON_DRIVE3_Trans_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_0.SeqEvent_SequenceActivated_9177",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_DRIVE3_Trans_Design_m.TheWorld.PersistentLevel.Main_Sequence.TnSeqAct_TransformWorldProp_7184",
@@ -360174,6 +361625,32 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Play_Unlock_Sound",
+      "event": "A2_KON_DRIVE3_Trans_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_0.SeqEvent_SequenceActivated_125",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Play_Locked_Sound",
+      "event": "A2_KON_DRIVE3_Trans_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_0.SeqEvent_SequenceActivated_15525",
+      "disabled": false
+     },
+     {
+      "index": 2,
+      "label": "Reenable_Locked_Beep",
+      "event": "A2_KON_DRIVE3_Trans_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_0.SeqEvent_SequenceActivated_4525",
+      "disabled": false
+     },
+     {
+      "index": 3,
+      "label": "Disable_Locked_Beep",
+      "event": "A2_KON_DRIVE3_Trans_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_0.SeqEvent_SequenceActivated_1669",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_DRIVE3_Trans_Design_m.TheWorld.PersistentLevel.Main_Sequence.TnSeqAct_TransformWorldProp_7184",
@@ -360483,6 +361960,32 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Default Input",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_SequenceActivated_11543",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Default Input",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_SequenceActivated_15563",
+      "disabled": false
+     },
+     {
+      "index": 2,
+      "label": "Default Input",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_SequenceActivated_13343",
+      "disabled": false
+     },
+     {
+      "index": 3,
+      "label": "Default Input",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_SequenceActivated_3420",
+      "disabled": false
+     }
+    ],
     "incoming": []
    },
    {
@@ -360505,6 +362008,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Add_Marker",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.HUD_MArker_Handler.SeqEvent_SequenceActivated_9354",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Remove_Marker",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.HUD_MArker_Handler.SeqEvent_SequenceActivated_715",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.TnSeqEvent_Interact_1574",
@@ -361923,6 +363440,27 @@
      ]
     },
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Start",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Prefabs.WarningKlaxon_PFB_Seq.SeqEvent_SequenceActivated_12626",
+      "disabled": false
+     }
+    ],
+    "seq_outputs": [
+     {
+      "index": 0,
+      "label": "Finished",
+      "finish": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Prefabs.WarningKlaxon_PFB_Seq.SeqAct_FinishSequence_11739",
+      "links": [
+       {
+        "op": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Prefabs.SeqAct_ActivateRemoteEvent_5385",
+        "input_index": 0
+       }
+      ]
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Prefabs.SeqEvent_RemoteEvent_7469",
@@ -362284,6 +363822,27 @@
      ]
     },
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Start",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Prefabs.WarningKlaxon_PFB_Seq_0.SeqEvent_SequenceActivated_12626",
+      "disabled": false
+     }
+    ],
+    "seq_outputs": [
+     {
+      "index": 0,
+      "label": "Finished",
+      "finish": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Prefabs.WarningKlaxon_PFB_Seq_0.SeqAct_FinishSequence_11739",
+      "links": [
+       {
+        "op": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Prefabs.SeqAct_ActivateRemoteEvent_6240",
+        "input_index": 0
+       }
+      ]
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Prefabs.SeqEvent_RemoteEvent_15117",
@@ -362651,6 +364210,27 @@
      ]
     },
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Start",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Prefabs.WarningKlaxon_PFB_Seq_1.SeqEvent_SequenceActivated_12626",
+      "disabled": false
+     }
+    ],
+    "seq_outputs": [
+     {
+      "index": 0,
+      "label": "Finished",
+      "finish": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Prefabs.WarningKlaxon_PFB_Seq_1.SeqAct_FinishSequence_11739",
+      "links": [
+       {
+        "op": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Prefabs.SeqAct_ActivateRemoteEvent_8730",
+        "input_index": 0
+       }
+      ]
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Prefabs.SeqEvent_RemoteEvent_4161",
@@ -368520,6 +370100,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Set_Green",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_1.SeqEvent_SequenceActivated_4459",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Set_Red",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_1.SeqEvent_SequenceActivated_9177",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.TnSeqAct_TransformWorldProp_7875",
@@ -368755,6 +370349,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Set_Green",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_2.SeqEvent_SequenceActivated_4459",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Set_Red",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_2.SeqEvent_SequenceActivated_9177",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_SequenceActivated_13343",
@@ -368978,6 +370586,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Set_Green",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_3.SeqEvent_SequenceActivated_4459",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Set_Red",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_3.SeqEvent_SequenceActivated_9177",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_SequenceActivated_13343",
@@ -369201,6 +370823,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Set_Green",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_4.SeqEvent_SequenceActivated_4459",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Set_Red",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_4.SeqEvent_SequenceActivated_9177",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_SequenceActivated_13343",
@@ -369424,6 +371060,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Set_Green",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_5.SeqEvent_SequenceActivated_4459",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Set_Red",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_5.SeqEvent_SequenceActivated_9177",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_SequenceActivated_13343",
@@ -369647,6 +371297,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Set_Green",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_6.SeqEvent_SequenceActivated_4459",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Set_Red",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_6.SeqEvent_SequenceActivated_9177",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_SequenceActivated_13343",
@@ -369870,6 +371534,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Set_Green",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_7.SeqEvent_SequenceActivated_4459",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Set_Red",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_7.SeqEvent_SequenceActivated_9177",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_SequenceActivated_13343",
@@ -370093,6 +371771,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Set_Green",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_8.SeqEvent_SequenceActivated_4459",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Set_Red",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_8.SeqEvent_SequenceActivated_9177",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_SequenceActivated_13343",
@@ -370339,6 +372031,32 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Play_Unlock_Sound",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_0.SeqEvent_SequenceActivated_125",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Play_Locked_Sound",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_0.SeqEvent_SequenceActivated_15525",
+      "disabled": false
+     },
+     {
+      "index": 2,
+      "label": "Reenable_Locked_Beep",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_0.SeqEvent_SequenceActivated_4525",
+      "disabled": false
+     },
+     {
+      "index": 3,
+      "label": "Disable_Locked_Beep",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_0.SeqEvent_SequenceActivated_1669",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.TnSeqAct_TransformWorldProp_7875",
@@ -370707,6 +372425,32 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Play_Unlock_Sound",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_6.SeqEvent_SequenceActivated_125",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Play_Locked_Sound",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_6.SeqEvent_SequenceActivated_15525",
+      "disabled": false
+     },
+     {
+      "index": 2,
+      "label": "Reenable_Locked_Beep",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_6.SeqEvent_SequenceActivated_4525",
+      "disabled": false
+     },
+     {
+      "index": 3,
+      "label": "Disable_Locked_Beep",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_6.SeqEvent_SequenceActivated_1669",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_RemoteEvent_16217",
@@ -371070,6 +372814,32 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Play_Unlock_Sound",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_3.SeqEvent_SequenceActivated_125",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Play_Locked_Sound",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_3.SeqEvent_SequenceActivated_15525",
+      "disabled": false
+     },
+     {
+      "index": 2,
+      "label": "Reenable_Locked_Beep",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_3.SeqEvent_SequenceActivated_4525",
+      "disabled": false
+     },
+     {
+      "index": 3,
+      "label": "Disable_Locked_Beep",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_3.SeqEvent_SequenceActivated_1669",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_RemoteEvent_16217",
@@ -371364,6 +373134,32 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Play_Unlock_Sound",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_4.SeqEvent_SequenceActivated_125",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Play_Locked_Sound",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_4.SeqEvent_SequenceActivated_15525",
+      "disabled": false
+     },
+     {
+      "index": 2,
+      "label": "Reenable_Locked_Beep",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_4.SeqEvent_SequenceActivated_4525",
+      "disabled": false
+     },
+     {
+      "index": 3,
+      "label": "Disable_Locked_Beep",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_4.SeqEvent_SequenceActivated_1669",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_RemoteEvent_11968",
@@ -371652,6 +373448,32 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Play_Unlock_Sound",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_5.SeqEvent_SequenceActivated_125",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Play_Locked_Sound",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_5.SeqEvent_SequenceActivated_15525",
+      "disabled": false
+     },
+     {
+      "index": 2,
+      "label": "Reenable_Locked_Beep",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_5.SeqEvent_SequenceActivated_4525",
+      "disabled": false
+     },
+     {
+      "index": 3,
+      "label": "Disable_Locked_Beep",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_5.SeqEvent_SequenceActivated_1669",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_RemoteEvent_11968",
@@ -371940,6 +373762,32 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Play_Unlock_Sound",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_1.SeqEvent_SequenceActivated_125",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Play_Locked_Sound",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_1.SeqEvent_SequenceActivated_15525",
+      "disabled": false
+     },
+     {
+      "index": 2,
+      "label": "Reenable_Locked_Beep",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_1.SeqEvent_SequenceActivated_4525",
+      "disabled": false
+     },
+     {
+      "index": 3,
+      "label": "Disable_Locked_Beep",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_1.SeqEvent_SequenceActivated_1669",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_RemoteEvent_12786",
@@ -372222,6 +374070,32 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Play_Unlock_Sound",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler.SeqEvent_SequenceActivated_125",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Play_Locked_Sound",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler.SeqEvent_SequenceActivated_15525",
+      "disabled": false
+     },
+     {
+      "index": 2,
+      "label": "Reenable_Locked_Beep",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler.SeqEvent_SequenceActivated_4525",
+      "disabled": false
+     },
+     {
+      "index": 3,
+      "label": "Disable_Locked_Beep",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler.SeqEvent_SequenceActivated_1669",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_RemoteEvent_12786",
@@ -372504,6 +374378,32 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Play_Unlock_Sound",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_2.SeqEvent_SequenceActivated_125",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Play_Locked_Sound",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_2.SeqEvent_SequenceActivated_15525",
+      "disabled": false
+     },
+     {
+      "index": 2,
+      "label": "Reenable_Locked_Beep",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_2.SeqEvent_SequenceActivated_4525",
+      "disabled": false
+     },
+     {
+      "index": 3,
+      "label": "Disable_Locked_Beep",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_2.SeqEvent_SequenceActivated_1669",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_Touch_13478",
@@ -372774,6 +374674,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Set_Green",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_11.SeqEvent_SequenceActivated_4459",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Set_Red",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_11.SeqEvent_SequenceActivated_9177",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_RemoteEvent_14754",
@@ -372997,6 +374911,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Set_Green",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_12.SeqEvent_SequenceActivated_4459",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Set_Red",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_12.SeqEvent_SequenceActivated_9177",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_RemoteEvent_14754",
@@ -373243,6 +375171,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Set_Green",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_9.SeqEvent_SequenceActivated_4459",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Set_Red",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_9.SeqEvent_SequenceActivated_9177",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_RemoteEvent_10961",
@@ -373466,6 +375408,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Set_Green",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_10.SeqEvent_SequenceActivated_4459",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Set_Red",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_10.SeqEvent_SequenceActivated_9177",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_RemoteEvent_10961",
@@ -373712,6 +375668,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Set_Green",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_13.SeqEvent_SequenceActivated_4459",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Set_Red",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_13.SeqEvent_SequenceActivated_9177",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_RemoteEvent_10128",
@@ -373935,6 +375905,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Set_Green",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_0.SeqEvent_SequenceActivated_4459",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Set_Red",
+      "event": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_0.SeqEvent_SequenceActivated_9177",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Dungeons2_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_RemoteEvent_10128",
@@ -381276,6 +383260,14 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Default Input",
+      "event": "A2_KON_Dungeons2_Vig_m.TheWorld.PersistentLevel.Main_Sequence.Destroy_Brutes.SeqEvent_SequenceActivated_9992",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Dungeons2_Vig_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Interp_15754",
@@ -381365,6 +383357,14 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Default Input",
+      "event": "A2_KON_Dungeons2_Vig_m.TheWorld.PersistentLevel.Main_Sequence.Destroy_NorthWest.SeqEvent_SequenceActivated_4330",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Dungeons2_Vig_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Interp_4774",
@@ -381678,6 +383678,14 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Default Input",
+      "event": "A2_KON_Dungeons2_Vig_m.TheWorld.PersistentLevel.Main_Sequence.Destroy_West.SeqEvent_SequenceActivated_2082",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Dungeons2_Vig_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Interp_185",
@@ -381959,6 +383967,14 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Default Input",
+      "event": "A2_KON_Dungeons2_Vig_m.TheWorld.PersistentLevel.Main_Sequence.Destroy_East.SeqEvent_SequenceActivated_7921",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Dungeons2_Vig_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Interp_2400",
@@ -382144,6 +384160,14 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Default Input",
+      "event": "A2_KON_Dungeons2_Vig_m.TheWorld.PersistentLevel.Main_Sequence.Destroy_South.SeqEvent_SequenceActivated_12755",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Dungeons2_Vig_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Interp_13979",
@@ -384509,6 +386533,14 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Default Input",
+      "event": "A2_KON_Dungeons_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_SequenceActivated_5703",
+      "disabled": false
+     }
+    ],
     "incoming": []
    },
    {
@@ -384723,6 +386755,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Add_Marker",
+      "event": "A2_KON_Dungeons_Design_m.TheWorld.PersistentLevel.Main_Sequence.HUD_MArker_Handler.SeqEvent_SequenceActivated_9354",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Remove_Marker",
+      "event": "A2_KON_Dungeons_Design_m.TheWorld.PersistentLevel.Main_Sequence.HUD_MArker_Handler.SeqEvent_SequenceActivated_715",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Dungeons_Design_m.TheWorld.PersistentLevel.Main_Sequence.TnSeqEvent_Interact_6924",
@@ -387898,6 +389944,32 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Play_Unlock_Sound",
+      "event": "A2_KON_Dungeons_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_0.SeqEvent_SequenceActivated_125",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Play_Locked_Sound",
+      "event": "A2_KON_Dungeons_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_0.SeqEvent_SequenceActivated_15525",
+      "disabled": false
+     },
+     {
+      "index": 2,
+      "label": "Reenable_Locked_Beep",
+      "event": "A2_KON_Dungeons_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_0.SeqEvent_SequenceActivated_4525",
+      "disabled": false
+     },
+     {
+      "index": 3,
+      "label": "Disable_Locked_Beep",
+      "event": "A2_KON_Dungeons_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_0.SeqEvent_SequenceActivated_1669",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Dungeons_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_Touch_7297",
@@ -388168,6 +390240,32 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Play_Unlock_Sound",
+      "event": "A2_KON_Dungeons_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler.SeqEvent_SequenceActivated_125",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Play_Locked_Sound",
+      "event": "A2_KON_Dungeons_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler.SeqEvent_SequenceActivated_15525",
+      "disabled": false
+     },
+     {
+      "index": 2,
+      "label": "Reenable_Locked_Beep",
+      "event": "A2_KON_Dungeons_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler.SeqEvent_SequenceActivated_4525",
+      "disabled": false
+     },
+     {
+      "index": 3,
+      "label": "Disable_Locked_Beep",
+      "event": "A2_KON_Dungeons_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler.SeqEvent_SequenceActivated_1669",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Dungeons_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_Touch_284",
@@ -390116,6 +392214,14 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Default Input",
+      "event": "A2_KON_Dungeons_Vig_m.TheWorld.PersistentLevel.Main_Sequence.Destroy_Soundwave/Rumble.SeqEvent_SequenceActivated_9966",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Dungeons_Vig_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Interp_7783",
@@ -390718,6 +392824,14 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Default Input",
+      "event": "A2_KON_GuardRoom_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_SequenceActivated_1332",
+      "disabled": false
+     }
+    ],
     "incoming": []
    },
    {
@@ -392194,6 +394308,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Add_Marker",
+      "event": "A2_KON_GuardRoom_Design_m.TheWorld.PersistentLevel.Main_Sequence.HUD_MArker_Handler.SeqEvent_SequenceActivated_9354",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Remove_Marker",
+      "event": "A2_KON_GuardRoom_Design_m.TheWorld.PersistentLevel.Main_Sequence.HUD_MArker_Handler.SeqEvent_SequenceActivated_715",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_GuardRoom_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_RemoteEvent_7260",
@@ -394238,6 +396366,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Set_Green",
+      "event": "A2_KON_GuardRoom_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors.SeqEvent_SequenceActivated_4459",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Set_Red",
+      "event": "A2_KON_GuardRoom_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors.SeqEvent_SequenceActivated_9177",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_GuardRoom_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_SequenceActivated_1332",
@@ -394509,6 +396651,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Play_Unlock_Sound",
+      "event": "A2_KON_GuardRoom_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_1.SeqEvent_SequenceActivated_125",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Play_Locked_Sound",
+      "event": "A2_KON_GuardRoom_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_1.SeqEvent_SequenceActivated_15525",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_GuardRoom_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_Touch_5305",
@@ -394727,6 +396883,32 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Play_Unlock_Sound",
+      "event": "A2_KON_GuardRoom_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler.SeqEvent_SequenceActivated_125",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Play_Locked_Sound",
+      "event": "A2_KON_GuardRoom_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler.SeqEvent_SequenceActivated_15525",
+      "disabled": false
+     },
+     {
+      "index": 2,
+      "label": "Reenable_Locked_Beep",
+      "event": "A2_KON_GuardRoom_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler.SeqEvent_SequenceActivated_4525",
+      "disabled": false
+     },
+     {
+      "index": 3,
+      "label": "Disable_Locked_Beep",
+      "event": "A2_KON_GuardRoom_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler.SeqEvent_SequenceActivated_1669",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_GuardRoom_Design_m.TheWorld.PersistentLevel.Main_Sequence.TnSeqEvent_Interact_6757",
@@ -395266,6 +397448,20 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Default Input",
+      "event": "A2_KON_Hangar_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_SequenceActivated_9234",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Default Input",
+      "event": "A2_KON_Hangar_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_SequenceActivated_10192",
+      "disabled": false
+     }
+    ],
     "incoming": []
    },
    {
@@ -399960,6 +402156,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Set_Green",
+      "event": "A2_KON_Hangar_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_1.SeqEvent_SequenceActivated_4459",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Set_Red",
+      "event": "A2_KON_Hangar_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_1.SeqEvent_SequenceActivated_9177",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Hangar_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_SequenceActivated_9234",
@@ -400218,6 +402428,32 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Play_Unlock_Sound",
+      "event": "A2_KON_Hangar_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_2.SeqEvent_SequenceActivated_125",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Play_Locked_Sound",
+      "event": "A2_KON_Hangar_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_2.SeqEvent_SequenceActivated_15525",
+      "disabled": false
+     },
+     {
+      "index": 2,
+      "label": "Reenable_Locked_Beep",
+      "event": "A2_KON_Hangar_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_2.SeqEvent_SequenceActivated_4525",
+      "disabled": false
+     },
+     {
+      "index": 3,
+      "label": "Disable_Locked_Beep",
+      "event": "A2_KON_Hangar_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_2.SeqEvent_SequenceActivated_1669",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Hangar_Design_m.TheWorld.PersistentLevel.Main_Sequence.TnSeqEvent_Interact_10573",
@@ -400519,6 +402755,32 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Play_Unlock_Sound",
+      "event": "A2_KON_Hangar_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_0.SeqEvent_SequenceActivated_125",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Play_Locked_Sound",
+      "event": "A2_KON_Hangar_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_0.SeqEvent_SequenceActivated_15525",
+      "disabled": false
+     },
+     {
+      "index": 2,
+      "label": "Reenable_Locked_Beep",
+      "event": "A2_KON_Hangar_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_0.SeqEvent_SequenceActivated_4525",
+      "disabled": false
+     },
+     {
+      "index": 3,
+      "label": "Disable_Locked_Beep",
+      "event": "A2_KON_Hangar_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_0.SeqEvent_SequenceActivated_1669",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Hangar_Design_m.TheWorld.PersistentLevel.Main_Sequence.TnSeqAct_TransformWorldProp_12253",
@@ -400794,6 +403056,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Set_Green",
+      "event": "A2_KON_Hangar_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_0.SeqEvent_SequenceActivated_4459",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Set_Red",
+      "event": "A2_KON_Hangar_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_0.SeqEvent_SequenceActivated_9177",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Hangar_Design_m.TheWorld.PersistentLevel.Main_Sequence.TnSeqAct_TransformWorldProp_12253",
@@ -401032,6 +403308,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Add_Marker",
+      "event": "A2_KON_Hangar_Design_m.TheWorld.PersistentLevel.Main_Sequence.HUD_MArker_Handler_2.SeqEvent_SequenceActivated_9354",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Remove_Marker",
+      "event": "A2_KON_Hangar_Design_m.TheWorld.PersistentLevel.Main_Sequence.HUD_MArker_Handler_2.SeqEvent_SequenceActivated_715",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Hangar_Design_m.TheWorld.PersistentLevel.Main_Sequence.TnSeqEvent_Interact_10573",
@@ -401247,6 +403537,32 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Play_Unlock_Sound",
+      "event": "A2_KON_Hangar_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_3.SeqEvent_SequenceActivated_125",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Play_Locked_Sound",
+      "event": "A2_KON_Hangar_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_3.SeqEvent_SequenceActivated_15525",
+      "disabled": false
+     },
+     {
+      "index": 2,
+      "label": "Reenable_Locked_Beep",
+      "event": "A2_KON_Hangar_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_3.SeqEvent_SequenceActivated_4525",
+      "disabled": false
+     },
+     {
+      "index": 3,
+      "label": "Disable_Locked_Beep",
+      "event": "A2_KON_Hangar_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_3.SeqEvent_SequenceActivated_1669",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Hangar_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_Touch_5373",
@@ -401593,6 +403909,32 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Play_Unlock_Sound",
+      "event": "A2_KON_Hangar_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_1.SeqEvent_SequenceActivated_125",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Play_Locked_Sound",
+      "event": "A2_KON_Hangar_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_1.SeqEvent_SequenceActivated_15525",
+      "disabled": false
+     },
+     {
+      "index": 2,
+      "label": "Reenable_Locked_Beep",
+      "event": "A2_KON_Hangar_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_1.SeqEvent_SequenceActivated_4525",
+      "disabled": false
+     },
+     {
+      "index": 3,
+      "label": "Disable_Locked_Beep",
+      "event": "A2_KON_Hangar_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_1.SeqEvent_SequenceActivated_1669",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Hangar_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_Touch_183",
@@ -405611,6 +407953,14 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Default Input",
+      "event": "A2_KON_IntroEntrance_Vig_m.TheWorld.PersistentLevel.Main_Sequence.Destroy_Walkers_On_Bottom.SeqEvent_SequenceActivated_164",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_IntroEntrance_Vig_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Interp_3379",
@@ -406672,6 +409022,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Send_Buddies_To_OBJ",
+      "event": "A2_KON_IntroPits_Design_m.TheWorld.PersistentLevel.Main_Sequence.Buddy_Objective_Handler_0.SeqEvent_SequenceActivated_13848",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Disable_Buddy_OBJ",
+      "event": "A2_KON_IntroPits_Design_m.TheWorld.PersistentLevel.Main_Sequence.Buddy_Objective_Handler_0.SeqEvent_SequenceActivated_7177",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_IntroPits_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_RemoteEvent_1299",
@@ -407131,6 +409495,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Add_Marker",
+      "event": "A2_KON_IntroPits_Design_m.TheWorld.PersistentLevel.Main_Sequence.HUD_MArker_Handler.SeqEvent_SequenceActivated_9354",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Remove_Marker",
+      "event": "A2_KON_IntroPits_Design_m.TheWorld.PersistentLevel.Main_Sequence.HUD_MArker_Handler.SeqEvent_SequenceActivated_715",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_IntroPits_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_RemoteEvent_1299",
@@ -407652,6 +410030,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Set_Green",
+      "event": "A2_KON_IntroPits_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_1.SeqEvent_SequenceActivated_4459",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Set_Red",
+      "event": "A2_KON_IntroPits_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_1.SeqEvent_SequenceActivated_9177",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_IntroPits_Design_m.TheWorld.PersistentLevel.Main_Sequence.TnSeqAct_TransformWorldProp_1278",
@@ -407875,6 +410267,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Set_Green",
+      "event": "A2_KON_IntroPits_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors.SeqEvent_SequenceActivated_4459",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Set_Red",
+      "event": "A2_KON_IntroPits_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors.SeqEvent_SequenceActivated_9177",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_IntroPits_Design_m.TheWorld.PersistentLevel.Main_Sequence.TnSeqAct_TransformWorldProp_12096",
@@ -408114,6 +410520,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Play_Unlock_Sound",
+      "event": "A2_KON_IntroPits_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_0.SeqEvent_SequenceActivated_125",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Play_Locked_Sound",
+      "event": "A2_KON_IntroPits_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_0.SeqEvent_SequenceActivated_15525",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_IntroPits_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_Touch_1974",
@@ -408332,6 +410752,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Play_Unlock_Sound",
+      "event": "A2_KON_IntroPits_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler.SeqEvent_SequenceActivated_125",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Play_Locked_Sound",
+      "event": "A2_KON_IntroPits_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler.SeqEvent_SequenceActivated_15525",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_IntroPits_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_Touch_5305",
@@ -409811,6 +412245,14 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Default Input",
+      "event": "A2_KON_IntroPits_Vig_m.TheWorld.PersistentLevel.Main_Sequence.Destroy_AirRaid.SeqEvent_SequenceActivated_6282",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_IntroPits_Vig_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Interp_7919",
@@ -412842,6 +415284,14 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Default Input",
+      "event": "A2_KON_IntroWalk_Vig_m.TheWorld.PersistentLevel.Main_Sequence.Unhide_Dropship_Landing.SeqEvent_SequenceActivated_4664",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_IntroWalk_Vig_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Interp_13627",
@@ -414746,6 +417196,14 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Default Input",
+      "event": "A2_KON_IntroWalk_Vig_m.TheWorld.PersistentLevel.Main_Sequence.Destroy_Executed1.SeqEvent_SequenceActivated_211",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_IntroWalk_Vig_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_RemoteEvent_15977",
@@ -414833,6 +417291,14 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Default Input",
+      "event": "A2_KON_IntroWalk_Vig_m.TheWorld.PersistentLevel.Main_Sequence.Destroy_Executed2.SeqEvent_SequenceActivated_211",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_IntroWalk_Vig_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_RemoteEvent_15977",
@@ -414920,6 +417386,14 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Default Input",
+      "event": "A2_KON_IntroWalk_Vig_m.TheWorld.PersistentLevel.Main_Sequence.Destroy_Executed_0.SeqEvent_SequenceActivated_211",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_IntroWalk_Vig_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_RemoteEvent_15977",
@@ -415078,6 +417552,14 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Default Input",
+      "event": "A2_KON_IntroWalk_Vig_m.TheWorld.PersistentLevel.Main_Sequence.Destroy_Brute.SeqEvent_SequenceActivated_211",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_IntroWalk_Vig_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Interp_13627",
@@ -419899,6 +422381,14 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Default Input",
+      "event": "A2_KON_IntroWalk_Vig_m.TheWorld.PersistentLevel.Main_Sequence.Destroy_Talker.SeqEvent_SequenceActivated_2828",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_IntroWalk_Vig_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Interp_13627",
@@ -425018,6 +427508,14 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Default Input",
+      "event": "A2_KON_IntroWalk_Vig_m.TheWorld.PersistentLevel.Main_Sequence.Destroy_Landing_Bay.SeqEvent_SequenceActivated_12223",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_IntroWalk_Vig_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Interp_13627",
@@ -426340,6 +428838,20 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Default Input",
+      "event": "A2_KON_Jailbreak_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_SequenceActivated_6239",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Default Input",
+      "event": "A2_KON_Jailbreak_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_SequenceActivated_9656",
+      "disabled": false
+     }
+    ],
     "incoming": []
    },
    {
@@ -426362,6 +428874,23 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Add_Marker",
+      "event": "A2_KON_Jailbreak_Design_m.TheWorld.PersistentLevel.Main_Sequence.HUD_MArker_Handler_2.SeqEvent_SequenceActivated_9354",
+      "disabled": true
+     },
+     {
+      "index": 1,
+      "label": "Remove_Marker",
+      "event": "A2_KON_Jailbreak_Design_m.TheWorld.PersistentLevel.Main_Sequence.HUD_MArker_Handler_2.SeqEvent_SequenceActivated_715",
+      "disabled": false
+     }
+    ],
+    "inputs_disabled": [
+     0
+    ],
     "incoming": [
      {
       "from": "A2_KON_Jailbreak_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_Touch_2581",
@@ -426543,6 +429072,23 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Add_Marker",
+      "event": "A2_KON_Jailbreak_Design_m.TheWorld.PersistentLevel.Main_Sequence.HUD_MArker_Handler_3.SeqEvent_SequenceActivated_9354",
+      "disabled": true
+     },
+     {
+      "index": 1,
+      "label": "Remove_Marker",
+      "event": "A2_KON_Jailbreak_Design_m.TheWorld.PersistentLevel.Main_Sequence.HUD_MArker_Handler_3.SeqEvent_SequenceActivated_715",
+      "disabled": false
+     }
+    ],
+    "inputs_disabled": [
+     0
+    ],
     "incoming": [
      {
       "from": "A2_KON_Jailbreak_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_Touch_2581",
@@ -430934,6 +433480,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Set_Green",
+      "event": "A2_KON_Jailbreak_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_1.SeqEvent_SequenceActivated_4459",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Set_Red",
+      "event": "A2_KON_Jailbreak_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_1.SeqEvent_SequenceActivated_9177",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Jailbreak_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_SequenceActivated_6239",
@@ -431169,6 +433729,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Set_Green",
+      "event": "A2_KON_Jailbreak_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_0.SeqEvent_SequenceActivated_4459",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Set_Red",
+      "event": "A2_KON_Jailbreak_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_0.SeqEvent_SequenceActivated_9177",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Jailbreak_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_Touch_11009",
@@ -431421,6 +433995,32 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Play_Unlock_Sound",
+      "event": "A2_KON_Jailbreak_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_1.SeqEvent_SequenceActivated_125",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Play_Locked_Sound",
+      "event": "A2_KON_Jailbreak_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_1.SeqEvent_SequenceActivated_15525",
+      "disabled": false
+     },
+     {
+      "index": 2,
+      "label": "Reenable_Locked_Beep",
+      "event": "A2_KON_Jailbreak_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_1.SeqEvent_SequenceActivated_4525",
+      "disabled": false
+     },
+     {
+      "index": 3,
+      "label": "Disable_Locked_Beep",
+      "event": "A2_KON_Jailbreak_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_1.SeqEvent_SequenceActivated_1669",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Jailbreak_Design_m.TheWorld.PersistentLevel.Main_Sequence.TnSeqAct_TransformWorldProp_9754",
@@ -431781,6 +434381,32 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Play_Unlock_Sound",
+      "event": "A2_KON_Jailbreak_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_2.SeqEvent_SequenceActivated_125",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Play_Locked_Sound",
+      "event": "A2_KON_Jailbreak_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_2.SeqEvent_SequenceActivated_15525",
+      "disabled": false
+     },
+     {
+      "index": 2,
+      "label": "Reenable_Locked_Beep",
+      "event": "A2_KON_Jailbreak_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_2.SeqEvent_SequenceActivated_4525",
+      "disabled": false
+     },
+     {
+      "index": 3,
+      "label": "Disable_Locked_Beep",
+      "event": "A2_KON_Jailbreak_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_2.SeqEvent_SequenceActivated_1669",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Jailbreak_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_Touch_15919",
@@ -432051,6 +434677,32 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Play_Unlock_Sound",
+      "event": "A2_KON_Jailbreak_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_3.SeqEvent_SequenceActivated_125",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Play_Locked_Sound",
+      "event": "A2_KON_Jailbreak_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_3.SeqEvent_SequenceActivated_15525",
+      "disabled": false
+     },
+     {
+      "index": 2,
+      "label": "Reenable_Locked_Beep",
+      "event": "A2_KON_Jailbreak_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_3.SeqEvent_SequenceActivated_4525",
+      "disabled": false
+     },
+     {
+      "index": 3,
+      "label": "Disable_Locked_Beep",
+      "event": "A2_KON_Jailbreak_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_3.SeqEvent_SequenceActivated_1669",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Jailbreak_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_Touch_15902",
@@ -432321,6 +434973,32 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Play_Unlock_Sound",
+      "event": "A2_KON_Jailbreak_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_4.SeqEvent_SequenceActivated_125",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Play_Locked_Sound",
+      "event": "A2_KON_Jailbreak_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_4.SeqEvent_SequenceActivated_15525",
+      "disabled": false
+     },
+     {
+      "index": 2,
+      "label": "Reenable_Locked_Beep",
+      "event": "A2_KON_Jailbreak_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_4.SeqEvent_SequenceActivated_4525",
+      "disabled": false
+     },
+     {
+      "index": 3,
+      "label": "Disable_Locked_Beep",
+      "event": "A2_KON_Jailbreak_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_4.SeqEvent_SequenceActivated_1669",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Jailbreak_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_Touch_8101",
@@ -432591,6 +435269,32 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Play_Unlock_Sound",
+      "event": "A2_KON_Jailbreak_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_0.SeqEvent_SequenceActivated_125",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Play_Locked_Sound",
+      "event": "A2_KON_Jailbreak_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_0.SeqEvent_SequenceActivated_15525",
+      "disabled": false
+     },
+     {
+      "index": 2,
+      "label": "Reenable_Locked_Beep",
+      "event": "A2_KON_Jailbreak_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_0.SeqEvent_SequenceActivated_4525",
+      "disabled": false
+     },
+     {
+      "index": 3,
+      "label": "Disable_Locked_Beep",
+      "event": "A2_KON_Jailbreak_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_0.SeqEvent_SequenceActivated_1669",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Jailbreak_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_Touch_16023",
@@ -432827,6 +435531,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Add_Marker",
+      "event": "A2_KON_Jailbreak_Design_m.TheWorld.PersistentLevel.Main_Sequence.HUD_MArker_Handler_1.SeqEvent_SequenceActivated_9354",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Remove_Marker",
+      "event": "A2_KON_Jailbreak_Design_m.TheWorld.PersistentLevel.Main_Sequence.HUD_MArker_Handler_1.SeqEvent_SequenceActivated_715",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Jailbreak_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_RemoteEvent_12672",
@@ -433169,6 +435887,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Add_Marker",
+      "event": "A2_KON_Jailbreak_Design_m.TheWorld.PersistentLevel.Main_Sequence.HUD_MArker_Handler_0.SeqEvent_SequenceActivated_9354",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Remove_Marker",
+      "event": "A2_KON_Jailbreak_Design_m.TheWorld.PersistentLevel.Main_Sequence.HUD_MArker_Handler_0.SeqEvent_SequenceActivated_715",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Jailbreak_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_Touch_14470",
@@ -436321,6 +439053,14 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Default Input",
+      "event": "A2_KON_Jailbreak_Vig_m.TheWorld.PersistentLevel.Main_Sequence.Destroy_Wounded_0.SeqEvent_SequenceActivated_8190",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Jailbreak_Vig_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Interp_8551",
@@ -436533,6 +439273,14 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Default Input",
+      "event": "A2_KON_Jailbreak_Vig_m.TheWorld.PersistentLevel.Main_Sequence.Destroy_Wounded.SeqEvent_SequenceActivated_8190",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Jailbreak_Vig_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Interp_10244",
@@ -440750,6 +443498,14 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Default Input",
+      "event": "A2_KON_Jailbreak_Vig_m.TheWorld.PersistentLevel.Main_Sequence.Destroy_Jailbreak_Minimatic.SeqEvent_SequenceActivated_6989",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Jailbreak_Vig_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Interp_12569",
@@ -446276,6 +449032,32 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Default Input",
+      "event": "A2_KON_Megatron_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_SequenceActivated_9607",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Default Input",
+      "event": "A2_KON_Megatron_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_SequenceActivated_8782",
+      "disabled": false
+     },
+     {
+      "index": 2,
+      "label": "Default Input",
+      "event": "A2_KON_Megatron_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_SequenceActivated_15829",
+      "disabled": false
+     },
+     {
+      "index": 3,
+      "label": "Default Input",
+      "event": "A2_KON_Megatron_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_SequenceActivated_7430",
+      "disabled": false
+     }
+    ],
     "incoming": []
    },
    {
@@ -450359,6 +453141,14 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Default Input",
+      "event": "A2_KON_Megatron_Design_m.TheWorld.PersistentLevel.Main_Sequence.Destroy_Crew_After_MegatronFace.SeqEvent_SequenceActivated_13420",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Megatron_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Interp_10131",
@@ -454606,6 +457396,14 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Play",
+      "event": "A2_KON_Megatron_Design_m.TheWorld.PersistentLevel.Main_Sequence.Megatron_FaceFX_0.SeqEvent_SequenceActivated_6994",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Megatron_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Conversation_12010",
@@ -454837,6 +457635,27 @@
      ]
     },
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Play",
+      "event": "A2_KON_Megatron_Design_m.TheWorld.PersistentLevel.Main_Sequence.Megatron_FaceFX_1.SeqEvent_SequenceActivated_10335",
+      "disabled": false
+     }
+    ],
+    "seq_outputs": [
+     {
+      "index": 0,
+      "label": "Default Output",
+      "finish": "A2_KON_Megatron_Design_m.TheWorld.PersistentLevel.Main_Sequence.Megatron_FaceFX_1.SeqAct_FinishSequence_14144",
+      "links": [
+       {
+        "op": "A2_KON_Megatron_Design_m.TheWorld.PersistentLevel.Main_Sequence.Megatron_FaceFX_2",
+        "input_index": 0
+       }
+      ]
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Megatron_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Conversation_3774",
@@ -455168,6 +457987,27 @@
      ]
     },
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Play",
+      "event": "A2_KON_Megatron_Design_m.TheWorld.PersistentLevel.Main_Sequence.Megatron_FaceFX_2.SeqEvent_SequenceActivated_6994",
+      "disabled": false
+     }
+    ],
+    "seq_outputs": [
+     {
+      "index": 0,
+      "label": "Default Output",
+      "finish": "A2_KON_Megatron_Design_m.TheWorld.PersistentLevel.Main_Sequence.Megatron_FaceFX_2.SeqAct_FinishSequence_14144",
+      "links": [
+       {
+        "op": "A2_KON_Megatron_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Conversation_5358",
+        "input_index": 0
+       }
+      ]
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Megatron_Design_m.TheWorld.PersistentLevel.Main_Sequence.Megatron_FaceFX_1",
@@ -455493,6 +458333,27 @@
      ]
     },
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Play",
+      "event": "A2_KON_Megatron_Design_m.TheWorld.PersistentLevel.Main_Sequence.Megatron_FaceFX_3.SeqEvent_SequenceActivated_6994",
+      "disabled": false
+     }
+    ],
+    "seq_outputs": [
+     {
+      "index": 0,
+      "label": "Default Output",
+      "finish": "A2_KON_Megatron_Design_m.TheWorld.PersistentLevel.Main_Sequence.Megatron_FaceFX_3.SeqAct_FinishSequence_14144",
+      "links": [
+       {
+        "op": "A2_KON_Megatron_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Conversation_5426",
+        "input_index": 0
+       }
+      ]
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Megatron_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Conversation_5358",
@@ -455801,6 +458662,14 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Play",
+      "event": "A2_KON_Megatron_Design_m.TheWorld.PersistentLevel.Main_Sequence.Megatron_FaceFX_4.SeqEvent_SequenceActivated_6994",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Megatron_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Conversation_6824",
@@ -456025,6 +458894,14 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Play",
+      "event": "A2_KON_Megatron_Design_m.TheWorld.PersistentLevel.Main_Sequence.Megatron_FaceFX_5.SeqEvent_SequenceActivated_6994",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Megatron_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Conversation_15579",
@@ -456249,6 +459126,14 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Play",
+      "event": "A2_KON_Megatron_Design_m.TheWorld.PersistentLevel.Main_Sequence.Megatron_FaceFX_6.SeqEvent_SequenceActivated_6994",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Megatron_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Conversation_7884",
@@ -456473,6 +459358,14 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Play",
+      "event": "A2_KON_Megatron_Design_m.TheWorld.PersistentLevel.Main_Sequence.Megatron_FaceFX.SeqEvent_SequenceActivated_6994",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Megatron_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Conversation_10537",
@@ -460057,6 +462950,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Set_Green",
+      "event": "A2_KON_Megatron_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_1.SeqEvent_SequenceActivated_4459",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Set_Red",
+      "event": "A2_KON_Megatron_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_1.SeqEvent_SequenceActivated_9177",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Megatron_Design_m.TheWorld.PersistentLevel.Main_Sequence.TnSeqAct_TransformWorldProp_10493",
@@ -460329,6 +463236,32 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Play_Unlock_Sound",
+      "event": "A2_KON_Megatron_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_0.SeqEvent_SequenceActivated_125",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Play_Locked_Sound",
+      "event": "A2_KON_Megatron_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_0.SeqEvent_SequenceActivated_15525",
+      "disabled": false
+     },
+     {
+      "index": 2,
+      "label": "Reenable_Locked_Beep",
+      "event": "A2_KON_Megatron_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_0.SeqEvent_SequenceActivated_4525",
+      "disabled": false
+     },
+     {
+      "index": 3,
+      "label": "Disable_Locked_Beep",
+      "event": "A2_KON_Megatron_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_0.SeqEvent_SequenceActivated_1669",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Megatron_Design_m.TheWorld.PersistentLevel.Main_Sequence.TnSeqAct_TransformWorldProp_10493",
@@ -464579,6 +467512,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Set_Green",
+      "event": "A2_KON_Megatron_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_0.SeqEvent_SequenceActivated_4459",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Set_Red",
+      "event": "A2_KON_Megatron_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_0.SeqEvent_SequenceActivated_9177",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Megatron_Design_m.TheWorld.PersistentLevel.Main_Sequence.TnSeqAct_TransformWorldProp_11875",
@@ -464825,6 +467772,32 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Play_Unlock_Sound",
+      "event": "A2_KON_Megatron_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler.SeqEvent_SequenceActivated_125",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Play_Locked_Sound",
+      "event": "A2_KON_Megatron_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler.SeqEvent_SequenceActivated_15525",
+      "disabled": false
+     },
+     {
+      "index": 2,
+      "label": "Reenable_Locked_Beep",
+      "event": "A2_KON_Megatron_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler.SeqEvent_SequenceActivated_4525",
+      "disabled": false
+     },
+     {
+      "index": 3,
+      "label": "Disable_Locked_Beep",
+      "event": "A2_KON_Megatron_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler.SeqEvent_SequenceActivated_1669",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Megatron_Design_m.TheWorld.PersistentLevel.Main_Sequence.TnSeqAct_TransformWorldProp_11875",
@@ -465869,6 +468842,20 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Default Input",
+      "event": "A2_KON_Soundwave_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_SequenceActivated_12482",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Default Input",
+      "event": "A2_KON_Soundwave_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_SequenceActivated_3794",
+      "disabled": false
+     }
+    ],
     "incoming": []
    },
    {
@@ -473996,6 +476983,27 @@
      ]
     },
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Spawn",
+      "event": "A2_KON_Soundwave_Design_m.TheWorld.PersistentLevel.Main_Sequence.Sentry_BackRight.SeqEvent_SequenceActivated_15829",
+      "disabled": false
+     }
+    ],
+    "seq_outputs": [
+     {
+      "index": 0,
+      "label": "Calculate",
+      "finish": "A2_KON_Soundwave_Design_m.TheWorld.PersistentLevel.Main_Sequence.Sentry_BackRight.SeqAct_FinishSequence_1208",
+      "links": [
+       {
+        "op": "A2_KON_Soundwave_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Delay_4391",
+        "input_index": 0
+       }
+      ]
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Soundwave_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_RandomSwitch_2223",
@@ -475179,6 +478187,27 @@
      ]
     },
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Spawn",
+      "event": "A2_KON_Soundwave_Design_m.TheWorld.PersistentLevel.Main_Sequence.Sentry_FrontRight.SeqEvent_SequenceActivated_15829",
+      "disabled": false
+     }
+    ],
+    "seq_outputs": [
+     {
+      "index": 0,
+      "label": "Calculate",
+      "finish": "A2_KON_Soundwave_Design_m.TheWorld.PersistentLevel.Main_Sequence.Sentry_FrontRight.SeqAct_FinishSequence_1208",
+      "links": [
+       {
+        "op": "A2_KON_Soundwave_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Delay_4391",
+        "input_index": 0
+       }
+      ]
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Soundwave_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_RandomSwitch_2223",
@@ -476362,6 +479391,27 @@
      ]
     },
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Spawn",
+      "event": "A2_KON_Soundwave_Design_m.TheWorld.PersistentLevel.Main_Sequence.Sentry_FrontLeft.SeqEvent_SequenceActivated_15829",
+      "disabled": false
+     }
+    ],
+    "seq_outputs": [
+     {
+      "index": 0,
+      "label": "Calculate",
+      "finish": "A2_KON_Soundwave_Design_m.TheWorld.PersistentLevel.Main_Sequence.Sentry_FrontLeft.SeqAct_FinishSequence_1208",
+      "links": [
+       {
+        "op": "A2_KON_Soundwave_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Delay_4391",
+        "input_index": 0
+       }
+      ]
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Soundwave_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_RandomSwitch_2223",
@@ -477545,6 +480595,27 @@
      ]
     },
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Spawn",
+      "event": "A2_KON_Soundwave_Design_m.TheWorld.PersistentLevel.Main_Sequence.Sentry_BackLeft.SeqEvent_SequenceActivated_15829",
+      "disabled": false
+     }
+    ],
+    "seq_outputs": [
+     {
+      "index": 0,
+      "label": "Calculate",
+      "finish": "A2_KON_Soundwave_Design_m.TheWorld.PersistentLevel.Main_Sequence.Sentry_BackLeft.SeqAct_FinishSequence_1208",
+      "links": [
+       {
+        "op": "A2_KON_Soundwave_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Delay_4391",
+        "input_index": 0
+       }
+      ]
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Soundwave_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_RandomSwitch_2223",
@@ -482393,6 +485464,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Set_Green",
+      "event": "A2_KON_Soundwave_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_0.SeqEvent_SequenceActivated_4459",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Set_Red",
+      "event": "A2_KON_Soundwave_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_0.SeqEvent_SequenceActivated_9177",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Soundwave_Design_m.TheWorld.PersistentLevel.Main_Sequence.TnSeqAct_TransformWorldProp_8462",
@@ -482759,6 +485844,32 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Play_Unlock_Sound",
+      "event": "A2_KON_Soundwave_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_0.SeqEvent_SequenceActivated_125",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Play_Locked_Sound",
+      "event": "A2_KON_Soundwave_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_0.SeqEvent_SequenceActivated_15525",
+      "disabled": false
+     },
+     {
+      "index": 2,
+      "label": "Reenable_Locked_Beep",
+      "event": "A2_KON_Soundwave_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_0.SeqEvent_SequenceActivated_4525",
+      "disabled": false
+     },
+     {
+      "index": 3,
+      "label": "Disable_Locked_Beep",
+      "event": "A2_KON_Soundwave_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_0.SeqEvent_SequenceActivated_1669",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Soundwave_Design_m.TheWorld.PersistentLevel.Main_Sequence.TnSeqAct_TransformWorldProp_8462",
@@ -484536,6 +487647,26 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Default Input",
+      "event": "A2_KON_Soundwave_Vig_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_SequenceActivated_3078",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Default Input",
+      "event": "A2_KON_Soundwave_Vig_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_SequenceActivated_7217",
+      "disabled": false
+     },
+     {
+      "index": 2,
+      "label": "Default Input",
+      "event": "A2_KON_Soundwave_Vig_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_SequenceActivated_9024",
+      "disabled": false
+     }
+    ],
     "incoming": []
    },
    {
@@ -486468,6 +489599,14 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Default Input",
+      "event": "A2_KON_Soundwave_Vig_m.TheWorld.PersistentLevel.Main_Sequence.Destroy_Actors_0.SeqEvent_SequenceActivated_7186",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Soundwave_Vig_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Interp_3938",
@@ -488188,6 +491327,14 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Default Input",
+      "event": "A2_KON_Soundwave_Vig_m.TheWorld.PersistentLevel.Main_Sequence.Destroy_Boombox.SeqEvent_SequenceActivated_10788",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Soundwave_Vig_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_Console_6919",
@@ -489058,6 +492205,14 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Default Input",
+      "event": "A2_KON_Soundwave_Vig_m.TheWorld.PersistentLevel.Main_Sequence.destroy_Frenzy.SeqEvent_SequenceActivated_15945",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Soundwave_Vig_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Interp_2456",
@@ -489672,6 +492827,14 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Default Input",
+      "event": "A2_KON_Soundwave_Vig_m.TheWorld.PersistentLevel.Main_Sequence.destroy_Rumble.SeqEvent_SequenceActivated_15945",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Soundwave_Vig_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Interp_12800",
@@ -490173,6 +493336,14 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Default Input",
+      "event": "A2_KON_Soundwave_Vig_m.TheWorld.PersistentLevel.Main_Sequence.destroy_Laserbeak.SeqEvent_SequenceActivated_15945",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Soundwave_Vig_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Interp_3512",
@@ -492257,6 +495428,35 @@
      ]
     },
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "AutoIn0",
+      "event": "A2_KON_Soundwave_Vig_m.TheWorld.PersistentLevel.Main_Sequence.SoundwaveIntroSetup.SeqEvent_SequenceActivated_6477",
+      "disabled": false
+     }
+    ],
+    "seq_outputs": [
+     {
+      "index": 0,
+      "label": "AutoOut0",
+      "finish": "A2_KON_Soundwave_Vig_m.TheWorld.PersistentLevel.Main_Sequence.SoundwaveIntroSetup.SeqAct_FinishSequence_12696",
+      "links": [
+       {
+        "op": "A2_KON_Soundwave_Vig_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Interp_3938",
+        "input_index": 0
+       },
+       {
+        "op": "A2_KON_Soundwave_Vig_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_ActivateRemoteEvent_1588",
+        "input_index": 0
+       },
+       {
+        "op": "A2_KON_Soundwave_Vig_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_ActivateRemoteEvent_4572",
+        "input_index": 0
+       }
+      ]
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Soundwave_Vig_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_Console_6919",
@@ -492755,6 +495955,31 @@
      ]
     },
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "AutoIn0",
+      "event": "A2_KON_Soundwave_Vig_m.TheWorld.PersistentLevel.Main_Sequence.FrenzySetup.SeqEvent_SequenceActivated_1052",
+      "disabled": false
+     }
+    ],
+    "seq_outputs": [
+     {
+      "index": 0,
+      "label": "AutoOut0",
+      "finish": "A2_KON_Soundwave_Vig_m.TheWorld.PersistentLevel.Main_Sequence.FrenzySetup.SeqAct_FinishSequence_11034",
+      "links": [
+       {
+        "op": "A2_KON_Soundwave_Vig_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Interp_2456",
+        "input_index": 0
+       },
+       {
+        "op": "A2_KON_Soundwave_Vig_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Mixer_11188",
+        "input_index": 0
+       }
+      ]
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Soundwave_Vig_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_Console_10371",
@@ -493200,6 +496425,31 @@
      ]
     },
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "AutoIn1",
+      "event": "A2_KON_Soundwave_Vig_m.TheWorld.PersistentLevel.Main_Sequence.RumbleSetup.SeqEvent_SequenceActivated_12183",
+      "disabled": false
+     }
+    ],
+    "seq_outputs": [
+     {
+      "index": 0,
+      "label": "AutoOut0",
+      "finish": "A2_KON_Soundwave_Vig_m.TheWorld.PersistentLevel.Main_Sequence.RumbleSetup.SeqAct_FinishSequence_2577",
+      "links": [
+       {
+        "op": "A2_KON_Soundwave_Vig_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Interp_12800",
+        "input_index": 0
+       },
+       {
+        "op": "A2_KON_Soundwave_Vig_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Mixer_12409",
+        "input_index": 0
+       }
+      ]
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Soundwave_Vig_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_Console_15343",
@@ -493691,6 +496941,31 @@
      ]
     },
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "AutoIn0",
+      "event": "A2_KON_Soundwave_Vig_m.TheWorld.PersistentLevel.Main_Sequence.LaserbeakSetup.SeqEvent_SequenceActivated_6210",
+      "disabled": false
+     }
+    ],
+    "seq_outputs": [
+     {
+      "index": 0,
+      "label": "AutoOut0",
+      "finish": "A2_KON_Soundwave_Vig_m.TheWorld.PersistentLevel.Main_Sequence.LaserbeakSetup.SeqAct_FinishSequence_5587",
+      "links": [
+       {
+        "op": "A2_KON_Soundwave_Vig_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Interp_3512",
+        "input_index": 0
+       },
+       {
+        "op": "A2_KON_Soundwave_Vig_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Mixer_8034",
+        "input_index": 0
+       }
+      ]
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Soundwave_Vig_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_Console_92",
@@ -494208,6 +497483,31 @@
      ]
     },
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "AutoIn0",
+      "event": "A2_KON_Soundwave_Vig_m.TheWorld.PersistentLevel.Main_Sequence.OutroSetUp.SeqEvent_SequenceActivated_4006",
+      "disabled": false
+     }
+    ],
+    "seq_outputs": [
+     {
+      "index": 0,
+      "label": "AutoOut0",
+      "finish": "A2_KON_Soundwave_Vig_m.TheWorld.PersistentLevel.Main_Sequence.OutroSetUp.SeqAct_FinishSequence_15863",
+      "links": [
+       {
+        "op": "A2_KON_Soundwave_Vig_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Interp_812",
+        "input_index": 0
+       },
+       {
+        "op": "A2_KON_Soundwave_Vig_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Mixer_5579",
+        "input_index": 0
+       }
+      ]
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Soundwave_Vig_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_Console_7356",
@@ -495647,6 +498947,20 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "unhide",
+      "event": "A2_KON_Soundwave_Vig_m.TheWorld.PersistentLevel.Main_Sequence.Repair.SeqEvent_SequenceActivated_5830",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "destroy",
+      "event": "A2_KON_Soundwave_Vig_m.TheWorld.PersistentLevel.Main_Sequence.Repair.SeqEvent_SequenceActivated_9352",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Soundwave_Vig_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Interp_812",
@@ -495786,6 +499100,20 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "unhide",
+      "event": "A2_KON_Soundwave_Vig_m.TheWorld.PersistentLevel.Main_Sequence.Assault.SeqEvent_SequenceActivated_4442",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "destroy",
+      "event": "A2_KON_Soundwave_Vig_m.TheWorld.PersistentLevel.Main_Sequence.Assault.SeqEvent_SequenceActivated_10211",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Soundwave_Vig_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Interp_812",
@@ -496604,6 +499932,14 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Default Input",
+      "event": "A2_KON_Vents_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_SequenceActivated_15228",
+      "disabled": false
+     }
+    ],
     "incoming": []
    },
    {
@@ -498221,6 +501557,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Send_Buddies_To_OBJ",
+      "event": "A2_KON_Vents_Design_m.TheWorld.PersistentLevel.Main_Sequence.Buddy_Objective_Handler_2.SeqEvent_SequenceActivated_13848",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Disable_Buddy_OBJ",
+      "event": "A2_KON_Vents_Design_m.TheWorld.PersistentLevel.Main_Sequence.Buddy_Objective_Handler_2.SeqEvent_SequenceActivated_7177",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Vents_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_Touch_15605",
@@ -501183,6 +504533,14 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Default Input",
+      "event": "A2_KON_Vents_Vig_m.TheWorld.PersistentLevel.Main_Sequence.Destroy_Scurry_2.SeqEvent_SequenceActivated_3637",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Vents_Vig_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Interp_14152",
@@ -501262,6 +504620,14 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Default Input",
+      "event": "A2_KON_Vents_Vig_m.TheWorld.PersistentLevel.Main_Sequence.Destroy_Spider_Right_Hallway.SeqEvent_SequenceActivated_2141",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Vents_Vig_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Interp_5005",
@@ -501907,6 +505273,14 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Default Input",
+      "event": "A2_KON_Vents_Vig_m.TheWorld.PersistentLevel.Main_Sequence.Destroy_Leaper.SeqEvent_SequenceActivated_11918",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Vents_Vig_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Interp_16035",
@@ -502817,6 +506191,14 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Default Input",
+      "event": "A2_KON_Vents_Vig_m.TheWorld.PersistentLevel.Main_Sequence.Destroy_Spider_and_Friend.SeqEvent_SequenceActivated_12258",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_Vents_Vig_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_RemoteEvent_8901",
@@ -503041,6 +506423,50 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Default Input",
+      "event": "A2_KON_WallCrawler_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_SequenceActivated_10844",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Default Input",
+      "event": "A2_KON_WallCrawler_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_SequenceActivated_12064",
+      "disabled": false
+     },
+     {
+      "index": 2,
+      "label": "Default Input",
+      "event": "A2_KON_WallCrawler_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_SequenceActivated_4982",
+      "disabled": false
+     },
+     {
+      "index": 3,
+      "label": "Default Input",
+      "event": "A2_KON_WallCrawler_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_SequenceActivated_12503",
+      "disabled": false
+     },
+     {
+      "index": 4,
+      "label": "Default Input",
+      "event": "A2_KON_WallCrawler_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_SequenceActivated_672",
+      "disabled": false
+     },
+     {
+      "index": 5,
+      "label": "Default Input",
+      "event": "A2_KON_WallCrawler_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_SequenceActivated_11168",
+      "disabled": false
+     },
+     {
+      "index": 6,
+      "label": "Default Input",
+      "event": "A2_KON_WallCrawler_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_SequenceActivated_6036",
+      "disabled": false
+     }
+    ],
     "incoming": []
    },
    {
@@ -504402,6 +507828,39 @@
      ]
     },
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Open",
+      "event": "A2_KON_WallCrawler_Design_m.TheWorld.PersistentLevel.Main_Sequence.Wallcrawler_Shaft_Shutters.SeqEvent_SequenceActivated_8522",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Close",
+      "event": "A2_KON_WallCrawler_Design_m.TheWorld.PersistentLevel.Main_Sequence.Wallcrawler_Shaft_Shutters.SeqEvent_SequenceActivated_9312",
+      "disabled": false
+     }
+    ],
+    "seq_outputs": [
+     {
+      "index": 0,
+      "label": "Opened",
+      "finish": "A2_KON_WallCrawler_Design_m.TheWorld.PersistentLevel.Main_Sequence.Wallcrawler_Shaft_Shutters.SeqAct_FinishSequence_111",
+      "links": []
+     },
+     {
+      "index": 1,
+      "label": "Closed",
+      "finish": "A2_KON_WallCrawler_Design_m.TheWorld.PersistentLevel.Main_Sequence.Wallcrawler_Shaft_Shutters.SeqAct_FinishSequence_10318",
+      "links": [
+       {
+        "op": "A2_KON_WallCrawler_Design_m.TheWorld.PersistentLevel.Main_Sequence.TnSeqAct_TransformWorldProp_11140",
+        "input_index": 0
+       }
+      ]
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_WallCrawler_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_Touch_8500",
@@ -505937,6 +509396,86 @@
     ],
     "outputs": {},
     "variables": {},
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Turret_01",
+      "event": "A2_KON_WallCrawler_Design_m.TheWorld.PersistentLevel.Main_Sequence.Turrets.SeqEvent_SequenceActivated_2329",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Turret_02",
+      "event": "A2_KON_WallCrawler_Design_m.TheWorld.PersistentLevel.Main_Sequence.Turrets.SeqEvent_SequenceActivated_6089",
+      "disabled": false
+     },
+     {
+      "index": 2,
+      "label": "Turret_03",
+      "event": "A2_KON_WallCrawler_Design_m.TheWorld.PersistentLevel.Main_Sequence.Turrets.SeqEvent_SequenceActivated_6363",
+      "disabled": false
+     },
+     {
+      "index": 3,
+      "label": "Turret_04",
+      "event": "A2_KON_WallCrawler_Design_m.TheWorld.PersistentLevel.Main_Sequence.Turrets.SeqEvent_SequenceActivated_10707",
+      "disabled": false
+     },
+     {
+      "index": 4,
+      "label": "Turret_05",
+      "event": "A2_KON_WallCrawler_Design_m.TheWorld.PersistentLevel.Main_Sequence.Turrets.SeqEvent_SequenceActivated_3159",
+      "disabled": false
+     },
+     {
+      "index": 5,
+      "label": "Turret_06",
+      "event": "A2_KON_WallCrawler_Design_m.TheWorld.PersistentLevel.Main_Sequence.Turrets.SeqEvent_SequenceActivated_2769",
+      "disabled": false
+     },
+     {
+      "index": 6,
+      "label": "Turret_07",
+      "event": "A2_KON_WallCrawler_Design_m.TheWorld.PersistentLevel.Main_Sequence.Turrets.SeqEvent_SequenceActivated_9575",
+      "disabled": false
+     },
+     {
+      "index": 7,
+      "label": "Turret_08",
+      "event": "A2_KON_WallCrawler_Design_m.TheWorld.PersistentLevel.Main_Sequence.Turrets.SeqEvent_SequenceActivated_3009",
+      "disabled": false
+     },
+     {
+      "index": 8,
+      "label": "Turret_09",
+      "event": "A2_KON_WallCrawler_Design_m.TheWorld.PersistentLevel.Main_Sequence.Turrets.SeqEvent_SequenceActivated_9811",
+      "disabled": false
+     },
+     {
+      "index": 9,
+      "label": "Turret_10",
+      "event": "A2_KON_WallCrawler_Design_m.TheWorld.PersistentLevel.Main_Sequence.Turrets.SeqEvent_SequenceActivated_9375",
+      "disabled": false
+     },
+     {
+      "index": 10,
+      "label": "Turret_11",
+      "event": "A2_KON_WallCrawler_Design_m.TheWorld.PersistentLevel.Main_Sequence.Turrets.SeqEvent_SequenceActivated_12211",
+      "disabled": false
+     },
+     {
+      "index": 11,
+      "label": "Turret_12",
+      "event": "A2_KON_WallCrawler_Design_m.TheWorld.PersistentLevel.Main_Sequence.Turrets.SeqEvent_SequenceActivated_1158",
+      "disabled": false
+     },
+     {
+      "index": 12,
+      "label": "Turret_13",
+      "event": "A2_KON_WallCrawler_Design_m.TheWorld.PersistentLevel.Main_Sequence.Turrets.SeqEvent_SequenceActivated_15877",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_WallCrawler_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqEvent_RemoteEvent_10387",
@@ -514930,6 +518469,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Set_Green",
+      "event": "A2_KON_WallCrawler_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_0.SeqEvent_SequenceActivated_4459",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Set_Red",
+      "event": "A2_KON_WallCrawler_Design_m.TheWorld.PersistentLevel.Main_Sequence.Set_Door_Colors_0.SeqEvent_SequenceActivated_9177",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_WallCrawler_Design_m.TheWorld.PersistentLevel.Main_Sequence.TnSeqAct_TransformWorldProp_11140",
@@ -515194,6 +518747,32 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Play_Unlock_Sound",
+      "event": "A2_KON_WallCrawler_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_0.SeqEvent_SequenceActivated_125",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Play_Locked_Sound",
+      "event": "A2_KON_WallCrawler_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_0.SeqEvent_SequenceActivated_15525",
+      "disabled": false
+     },
+     {
+      "index": 2,
+      "label": "Reenable_Locked_Beep",
+      "event": "A2_KON_WallCrawler_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_0.SeqEvent_SequenceActivated_4525",
+      "disabled": false
+     },
+     {
+      "index": 3,
+      "label": "Disable_Locked_Beep",
+      "event": "A2_KON_WallCrawler_Design_m.TheWorld.PersistentLevel.Main_Sequence.Door_Beep_Handler_0.SeqEvent_SequenceActivated_1669",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_WallCrawler_Design_m.TheWorld.PersistentLevel.Main_Sequence.TnSeqAct_TransformWorldProp_11140",
@@ -515504,6 +519083,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Add_Marker",
+      "event": "A2_KON_WallCrawler_Design_m.TheWorld.PersistentLevel.Main_Sequence.HUD_MArker_Handler_1.SeqEvent_SequenceActivated_9354",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Remove_Marker",
+      "event": "A2_KON_WallCrawler_Design_m.TheWorld.PersistentLevel.Main_Sequence.HUD_MArker_Handler_1.SeqEvent_SequenceActivated_715",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_WallCrawler_Design_m.TheWorld.PersistentLevel.Main_Sequence.TnSeqEvent_Interact_811",
@@ -515720,6 +519313,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Add_Marker",
+      "event": "A2_KON_WallCrawler_Design_m.TheWorld.PersistentLevel.Main_Sequence.HUD_MArker_Handler_2.SeqEvent_SequenceActivated_9354",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Remove_Marker",
+      "event": "A2_KON_WallCrawler_Design_m.TheWorld.PersistentLevel.Main_Sequence.HUD_MArker_Handler_2.SeqEvent_SequenceActivated_715",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_WallCrawler_Design_m.TheWorld.PersistentLevel.Main_Sequence.TnSeqEvent_Interact_1095",
@@ -515878,6 +519485,20 @@
       }
      ]
     },
+    "seq_inputs": [
+     {
+      "index": 0,
+      "label": "Add_Marker",
+      "event": "A2_KON_WallCrawler_Design_m.TheWorld.PersistentLevel.Main_Sequence.HUD_MArker_Handler_0.SeqEvent_SequenceActivated_9354",
+      "disabled": false
+     },
+     {
+      "index": 1,
+      "label": "Remove_Marker",
+      "event": "A2_KON_WallCrawler_Design_m.TheWorld.PersistentLevel.Main_Sequence.HUD_MArker_Handler_0.SeqEvent_SequenceActivated_715",
+      "disabled": false
+     }
+    ],
     "incoming": [
      {
       "from": "A2_KON_WallCrawler_Design_m.TheWorld.PersistentLevel.Main_Sequence.SeqAct_Gate_12691",
