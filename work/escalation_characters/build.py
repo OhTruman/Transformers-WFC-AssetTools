@@ -77,6 +77,7 @@ def character_entry(tpl):
                         'anim_sets': {a: M.compat(M.animset(a), joints) for a in f['anim_sets'] or [] if a}}
         key = 'robot (to vehicle / to robot)' if form == 'robot' else 'vehicle (to vehicle / to robot)'
         for a in f['anim_sets'] or []:
+            if not a: continue                      # an empty AnimSets slot (Soldier_MachineGun_Autobot campaign template)
             r = M.animset(a)
             for seq in (r.get('by_category') or {}).get('transform', []):
                 if seq.startswith('Transform_To'): trans[key].append({'clip': seq, 'anim_set': a, 'gltf': r.get('gltf_anim')})

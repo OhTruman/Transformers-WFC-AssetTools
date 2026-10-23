@@ -1,0 +1,1598 @@
+{
+ "generated_by": "AssetTools/scripts/wfc/vs_weapon_export.py",
+ "weapon_id": "AudioBlast",
+ "stable_id_source": "TnDataProvider_Weapon UniqueId (TransWeapons.ini)",
+ "class": "TransContent.TnWeaponAudioBlast",
+ "provider_ids": [],
+ "display_name": {
+  "ItemName": "Missing Weapon, needs entry in TransContent.int"
+ },
+ "description": null,
+ "weapon_type_code": null,
+ "mesh": {
+  "object": null,
+  "weapon_mesh_template": "WEP_AudioBlast_p.AudioBlast_WEPMESH",
+  "glb": null,
+  "source_gltf": null,
+  "mesh_note": "the weapon mesh component authors no SkeletalMesh (fires from sockets) - CONFIRMED absence",
+  "materials": [],
+  "buff_materials": null,
+  "sockets": [],
+  "muzzle_sockets": [
+   "SkillSocket_Primary"
+  ],
+  "reference_bone": "WEP_Reference_XR",
+  "pickup_mesh": null,
+  "pickup_mesh_translation_ue": {
+   "X": 0.0,
+   "Y": 0.0,
+   "Z": 150.0
+  }
+ },
+ "animations": {
+  "anim_sets": [],
+  "clips_in_glb": [],
+  "idle": null,
+  "event_anims (weapon mesh)": [
+   {
+    "WeaponEventType": "WP_Equip",
+    "AnimName": "RepairBeam_Equip"
+   },
+   {
+    "WeaponEventType": "WP_PutDown",
+    "AnimName": "RepairBeam_Drop"
+   },
+   {
+    "WeaponEventType": "WP_Fire",
+    "AnimName": "RepairBeam_Fire"
+   }
+  ],
+  "owner_animations (robot body)": null
+ },
+ "attachment": {
+  "owner_socket (robot)": "WeaponSocket_Primary",
+  "reference_bone": "WEP_Reference_XR",
+  "rule": "weapon reference bone placed at the robot WeaponSocket_Primary (per-chassis socket in Characters/<ChassisId>/character.json robot.sockets); vehicle-form weapons fire from the vehicle sockets"
+ },
+ "recoil (procedural, WEPMESH)": {
+  "SpineRecoil": {
+   "TimeToGo": 0.0,
+   "TimeDuration": 0.699999988079071,
+   "RotAmplitude": {
+    "X": -2000.0,
+    "Y": 150.0,
+    "Z": 0.0
+   },
+   "RotFrequency": {
+    "X": 10.0,
+    "Y": 10.0,
+    "Z": 0.0
+   },
+   "RotSinOffset": {
+    "X": 0.0,
+    "Y": 0.0,
+    "Z": 0.0
+   },
+   "RotParams": {
+    "X": "ERS_Zero",
+    "Y": "ERS_Random",
+    "Z": "ERS_Zero",
+    "Padding": 0
+   },
+   "RotOffset": {
+    "Pitch": 0,
+    "Yaw": 0,
+    "Roll": 0
+   },
+   "LocAmplitude": {
+    "X": 0.0,
+    "Y": 0.0,
+    "Z": 0.0
+   },
+   "LocFrequency": {
+    "X": 0.0,
+    "Y": 0.0,
+    "Z": 0.0
+   },
+   "LocSinOffset": {
+    "X": 0.0,
+    "Y": 0.0,
+    "Z": 0.0
+   },
+   "LocParams": {
+    "X": "ERS_Zero",
+    "Y": "ERS_Zero",
+    "Z": "ERS_Zero",
+    "Padding": 0
+   },
+   "LocOffset": {
+    "X": 0.0,
+    "Y": 0.0,
+    "Z": 0.0
+   }
+  },
+  "RightHandRecoil": {
+   "TimeToGo": 0.0,
+   "TimeDuration": 0.800000011920929,
+   "RotAmplitude": {
+    "X": 2000.0,
+    "Y": 150.0,
+    "Z": 0.0
+   },
+   "RotFrequency": {
+    "X": 10.0,
+    "Y": 20.0,
+    "Z": 0.0
+   },
+   "RotSinOffset": {
+    "X": 0.0,
+    "Y": 0.0,
+    "Z": 0.0
+   },
+   "RotParams": {
+    "X": "ERS_Zero",
+    "Y": "ERS_Random",
+    "Z": "ERS_Zero",
+    "Padding": 0
+   },
+   "RotOffset": {
+    "Pitch": 0,
+    "Yaw": 0,
+    "Roll": 0
+   },
+   "LocAmplitude": {
+    "X": -20.0,
+    "Y": 0.0,
+    "Z": 0.0
+   },
+   "LocFrequency": {
+    "X": 10.0,
+    "Y": 0.0,
+    "Z": 0.0
+   },
+   "LocSinOffset": {
+    "X": 0.0,
+    "Y": 0.0,
+    "Z": 0.0
+   },
+   "LocParams": {
+    "X": "ERS_Zero",
+    "Y": "ERS_Zero",
+    "Z": "ERS_Random",
+    "Padding": 0
+   },
+   "LocOffset": {
+    "X": 0.0,
+    "Y": 0.0,
+    "Z": 0.0
+   }
+  }
+ },
+ "heat": {},
+ "effects": {
+  "authored": {
+   "muzzle_flashes": [
+    {
+     "WeaponEventType": "WP_Looping",
+     "PSTemplate": "FX_SoundWave_p.FX.AudioBeam_MuzzleFlash_FX",
+     "PSLoops": false,
+     "PSComponent": null,
+     "DisableLight": false
+    }
+   ],
+   "tracers": [
+    {
+     "WeaponEventType": "WP_Looping",
+     "TracerTemplate": "FX_SoundWave_p.FX.AudioBeam_Tracer_FX"
+    }
+   ],
+   "default_squib": "FX_SoundWave_p.FX.AudioBeam_Impact_FX",
+   "effects_type": null
+  },
+  "decode_status": {
+   "FX_SoundWave_p.FX.AudioBeam_Impact_FX": {
+    "template": "FX_SoundWave_p.FX.AudioBeam_Impact_FX",
+    "in_dump": true,
+    "emitters": [
+     {
+      "emitter": "GLOW",
+      "type_data": "Sprite (no TypeData)",
+      "type_data_props": null,
+      "material": "FX_Materials_p.Materials.Glow_Mod_MAT",
+      "undecoded_modules (PMI_Unknown)": 0,
+      "resolved_modules (PMI_Unknown slots named by object class)": null,
+      "assignment_complete": true
+     },
+     {
+      "emitter": "GLOW_Dup",
+      "type_data": "Sprite (no TypeData)",
+      "type_data_props": null,
+      "material": "FX_Materials_p.Materials.Glow_Mod_MAT",
+      "undecoded_modules (PMI_Unknown)": 0,
+      "resolved_modules (PMI_Unknown slots named by object class)": null,
+      "assignment_complete": true
+     },
+     {
+      "emitter": "GLOWHole",
+      "type_data": "Sprite (no TypeData)",
+      "type_data_props": null,
+      "material": "FX_Materials_p.Materials.Glow_Mod_MAT",
+      "undecoded_modules (PMI_Unknown)": 0,
+      "resolved_modules (PMI_Unknown slots named by object class)": null,
+      "assignment_complete": true
+     },
+     {
+      "emitter": "Sparks_bolts_Dup",
+      "type_data": "Sprite (no TypeData)",
+      "type_data_props": null,
+      "material": "FX_Materials_p.Materials.Spark_Tail_MAT",
+      "undecoded_modules (PMI_Unknown)": 0,
+      "resolved_modules (PMI_Unknown slots named by object class)": null,
+      "assignment_complete": true
+     },
+     {
+      "emitter": "Smoke_Dup",
+      "type_data": "Sprite (no TypeData)",
+      "type_data_props": null,
+      "material": "FX_Materials_p.Materials.Ring_Distort_Add_MAT",
+      "undecoded_modules (PMI_Unknown)": 0,
+      "resolved_modules (PMI_Unknown slots named by object class)": null,
+      "assignment_complete": true
+     },
+     {
+      "emitter": "Shimmer",
+      "type_data": "Sprite (no TypeData)",
+      "type_data_props": null,
+      "material": "FX_Materials_p.Materials.Distortion_Cloud_01_MAT",
+      "undecoded_modules (PMI_Unknown)": 0,
+      "resolved_modules (PMI_Unknown slots named by object class)": null,
+      "assignment_complete": true
+     }
+    ],
+    "beam_modules (template sub-objects)": null,
+    "beam_modules_note": null
+   },
+   "FX_SoundWave_p.FX.AudioBeam_MuzzleFlash_FX": {
+    "template": "FX_SoundWave_p.FX.AudioBeam_MuzzleFlash_FX",
+    "in_dump": true,
+    "emitters": [
+     {
+      "emitter": "CamerafacingBurst",
+      "type_data": "Sprite (no TypeData)",
+      "type_data_props": null,
+      "material": "FX_Materials_p.Materials.MuzzleFlash_White_Mat",
+      "undecoded_modules (PMI_Unknown)": 0,
+      "resolved_modules (PMI_Unknown slots named by object class)": null,
+      "assignment_complete": true
+     },
+     {
+      "emitter": "Sparks",
+      "type_data": "Sprite (no TypeData)",
+      "type_data_props": null,
+      "material": "FX_Materials_p.Materials.SparksSheet1_MAT",
+      "undecoded_modules (PMI_Unknown)": 0,
+      "resolved_modules (PMI_Unknown slots named by object class)": null,
+      "assignment_complete": true
+     },
+     {
+      "emitter": "CamerafacingBurst_Dup",
+      "type_data": "Sprite (no TypeData)",
+      "type_data_props": null,
+      "material": "FX_Materials_p.Materials.Ring_Distort_Add_MAT",
+      "undecoded_modules (PMI_Unknown)": 0,
+      "resolved_modules (PMI_Unknown slots named by object class)": null,
+      "assignment_complete": true
+     },
+     {
+      "emitter": "SMOKE",
+      "type_data": "Sprite (no TypeData)",
+      "type_data_props": null,
+      "material": "FX_Materials_p.Materials.Distortion_Cloud_01_MAT",
+      "undecoded_modules (PMI_Unknown)": 0,
+      "resolved_modules (PMI_Unknown slots named by object class)": null,
+      "assignment_complete": true
+     }
+    ],
+    "beam_modules (template sub-objects)": null,
+    "beam_modules_note": null
+   },
+   "FX_SoundWave_p.FX.AudioBeam_Tracer_FX": {
+    "template": "FX_SoundWave_p.FX.AudioBeam_Tracer_FX",
+    "in_dump": true,
+    "emitters": [
+     {
+      "emitter": "Particle Emitter_Dup_Dup",
+      "type_data": "ParticleModuleTypeDataBeam2",
+      "type_data_props": {
+       "TaperMethod": "PEBTM_Full",
+       "MaxBeamCount": 1,
+       "Speed": 10000000.0,
+       "InterpolationPoints": 200,
+       "Distance": {
+        "Distribution": null,
+        "LookupTable": [
+         10000.0
+        ]
+       },
+       "TaperFactor": {
+        "Distribution": null,
+        "Type": 2,
+        "LookupTable": [
+         1.0,
+         200.0,
+         0.0,
+         1.0,
+         1.0,
+         200.0
+        ]
+       }
+      },
+      "material": "FX_Materials_p.Materials.Trail_Distort_MOD_01_MAT_INST",
+      "undecoded_modules (PMI_Unknown)": 0,
+      "resolved_modules (PMI_Unknown slots named by object class)": [
+       {
+        "slot": 4,
+        "module": "PMI_BeamSource",
+        "object": "FX_SoundWave_p.FX.AudioBeam_Tracer_FX.ParticleModuleBeamSource_15761",
+        "properties": {
+         "Source": {
+          "Distribution": null,
+          "Type": 7,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 3,
+          "LookupTable": [
+           0.0,
+           0.0,
+           0.0
+          ]
+         },
+         "SourceTangent": {
+          "Distribution": null,
+          "Type": 7,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 3,
+          "LookupTable": [
+           0.0,
+           0.0,
+           0.0
+          ]
+         },
+         "SourceStrength": {
+          "Distribution": null,
+          "Type": 1,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 1,
+          "LookupTable": [
+           25.0
+          ]
+         },
+         "bSpawnModule": true,
+         "bUpdateModule": true,
+         "bEnabled": true
+        }
+       },
+       {
+        "slot": 5,
+        "module": "PMI_BeamTarget",
+        "object": "FX_SoundWave_p.FX.AudioBeam_Tracer_FX.ParticleModuleBeamTarget_1876",
+        "properties": {
+         "TargetMethod": "PEB2STM_UserSet",
+         "TargetName": "TargetLocation",
+         "Target": {
+          "Distribution": null,
+          "Type": 7,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 3,
+          "LookupTable": [
+           10000.0,
+           0.0,
+           0.0
+          ]
+         },
+         "TargetTangent": {
+          "Distribution": null,
+          "Type": 7,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 3,
+          "LookupTable": [
+           1.0,
+           0.0,
+           0.0
+          ]
+         },
+         "TargetStrength": {
+          "Distribution": null,
+          "Type": 1,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 1,
+          "LookupTable": [
+           25.0
+          ]
+         },
+         "LockRadius": 10.0,
+         "bSpawnModule": true,
+         "bUpdateModule": true,
+         "bEnabled": true
+        }
+       },
+       {
+        "slot": 6,
+        "module": "PMI_BeamNoise",
+        "object": "FX_SoundWave_p.FX.AudioBeam_Tracer_FX.ParticleModuleBeamNoise_10944",
+        "properties": {
+         "bLowFreq_Enabled": true,
+         "bNRScaleEmitterTime": true,
+         "bSmooth": true,
+         "bApplyNoiseScale": true,
+         "Frequency": 50,
+         "Frequency_LowRange": 50,
+         "NoiseRange": {
+          "Distribution": null,
+          "Type": 10,
+          "Op": 2,
+          "LookupTableNumElements": 2,
+          "LookupTableChunkSize": 6,
+          "LookupTable": [
+           -500.0,
+           500.0,
+           0.0,
+           20.0,
+           0.0,
+           100.0,
+           100.0,
+           0.0,
+           -100.0,
+           -100.0,
+           0.0,
+           140.0,
+           140.0,
+           0.0,
+           -140.0,
+           -140.0,
+           0.0,
+           180.0,
+           180.0,
+           0.0,
+           -180.0,
+           -180.0,
+           0.0,
+           220.0,
+           220.0,
+           0.0,
+           -220.0,
+           -220.0,
+           0.0,
+           260.0,
+           260.0,
+           0.0,
+           -260.0,
+           -260.0,
+           0.0,
+           300.0,
+           300.0,
+           0.0,
+           -300.0,
+           -300.0,
+           0.0,
+           340.0,
+           340.0,
+           0.0,
+           -340.0,
+           -340.0,
+           0.0,
+           380.0,
+           380.0,
+           0.0,
+           -380.0,
+           -380.0,
+           0.0,
+           420.0,
+           420.0,
+           0.0,
+           -420.0,
+           -420.0,
+           0.0,
+           460.0,
+           460.0,
+           0.0,
+           -460.0,
+           -460.0,
+           0.0,
+           500.0,
+           500.0,
+           0.0,
+           -500.0,
+           -500.0,
+           0.0,
+           450.0,
+           450.0,
+           0.0,
+           -450.0,
+           -450.0,
+           0.0,
+           399.9999694824219,
+           399.9999694824219,
+           0.0,
+           -399.9999694824219,
+           -399.9999694824219,
+           0.0,
+           349.9999694824219,
+           349.9999694824219,
+           0.0,
+           -349.9999694824219,
+           -349.9999694824219,
+           0.0,
+           300.0,
+           300.0,
+           0.0,
+           -300.0,
+           -300.0,
+           0.0,
+           250.0,
+           250.0,
+           0.0,
+           -250.0,
+           -250.0,
+           0.0,
+           200.0,
+           200.0,
+           0.0,
+           -200.0,
+           -200.0,
+           0.0,
+           149.99996948242188,
+           149.99996948242188,
+           0.0,
+           -149.99996948242188,
+           -149.99996948242188,
+           0.0,
+           99.99996948242188,
+           99.99996948242188,
+           0.0,
+           -99.99996948242188,
+           -99.99996948242188,
+           0.0,
+           50.0,
+           50.0,
+           0.0,
+           -50.0,
+           -50.0,
+           0.0,
+           0.0,
+           0.0,
+           0.0,
+           0.0,
+           0.0
+          ]
+         },
+         "NoiseRangeScale": {
+          "Distribution": null,
+          "Type": 2,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 1,
+          "LookupTable": [
+           -4.6100467443466187e-08,
+           0.010700741782784462,
+           -0.00019607839931268245,
+           19.996078491210938,
+           -4.6100467443466187e-08,
+           0.010003887116909027,
+           5.931673854320252e-07,
+           0.0,
+           0.0,
+           0.0,
+           0.0,
+           0.0,
+           0.0,
+           0.0,
+           0.0,
+           0.0,
+           0.0,
+           0.0,
+           0.0,
+           0.0,
+           0.0,
+           0.0,
+           0.0,
+           0.0,
+           0.0
+          ]
+         },
+         "NoiseScale": {
+          "Distribution": null,
+          "Type": 2,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 1,
+          "LookupTable": [
+           100.0,
+           100.0,
+           0.0,
+           1.0,
+           100.0,
+           100.0
+          ]
+         },
+         "NoiseSpeed": {
+          "Distribution": null,
+          "Type": 7,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 3,
+          "LookupTable": [
+           50.0,
+           50.0,
+           50.0
+          ]
+         },
+         "NoiseLockRadius": 1.0,
+         "NoiseTension": 0.5,
+         "NoiseTangentStrength": {
+          "Distribution": null,
+          "Type": 1,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 1,
+          "LookupTable": [
+           250.0
+          ]
+         },
+         "NoiseTessellation": 1,
+         "bSpawnModule": true,
+         "bUpdateModule": true,
+         "bEnabled": true
+        }
+       }
+      ],
+      "assignment_complete": true
+     },
+     {
+      "emitter": "Rings_Dup_Dup",
+      "type_data": "Sprite (no TypeData)",
+      "type_data_props": null,
+      "material": "FX_Materials_p.Materials.Ring_Distort_Add_MAT",
+      "undecoded_modules (PMI_Unknown)": 0,
+      "resolved_modules (PMI_Unknown slots named by object class)": [
+       {
+        "slot": 8,
+        "module": "PMI_Collision",
+        "object": "FX_SoundWave_p.FX.AudioBeam_Tracer_FX.ParticleModuleCollision_9220",
+        "properties": {
+         "DampingFactor": {
+          "Distribution": null,
+          "Type": 7,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 3,
+          "LookupTable": [
+           1.0,
+           1.0,
+           1.0
+          ]
+         },
+         "bDropDetail": false,
+         "DampingFactorRotation": {
+          "Distribution": null,
+          "Type": 7,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 3,
+          "LookupTable": [
+           1.0,
+           1.0,
+           1.0
+          ]
+         },
+         "MaxCollisions": {
+          "Distribution": null,
+          "Type": 1,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 1,
+          "LookupTable": [
+           0.0
+          ]
+         },
+         "ParticleMass": {
+          "Distribution": null,
+          "Type": 1,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 1,
+          "LookupTable": [
+           0.10000000149011612
+          ]
+         },
+         "DirScalar": 3.5,
+         "VerticalFudgeFactor": 0.10000000149011612,
+         "DelayAmount": {
+          "Distribution": null,
+          "Type": 1,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 1,
+          "LookupTable": [
+           0.0
+          ]
+         },
+         "bSpawnModule": true,
+         "bUpdateModule": true,
+         "bEnabled": true,
+         "CollisionCompletionOption": "EPCC_Kill (default, enum 0)"
+        }
+       }
+      ],
+      "assignment_complete": true
+     }
+    ],
+    "beam_modules (template sub-objects)": [
+     {
+      "object": "FX_SoundWave_p.FX.AudioBeam_Tracer_FX.ParticleModuleBeamNoise_10944",
+      "class": "ParticleModuleBeamNoise",
+      "values": {
+       "bLowFreq_Enabled": true,
+       "bNRScaleEmitterTime": true,
+       "bSmooth": true,
+       "bApplyNoiseScale": true,
+       "Frequency": 50,
+       "Frequency_LowRange": 50,
+       "NoiseRange": {
+        "Distribution": null,
+        "Type": 10,
+        "Op": 2,
+        "LookupTableNumElements": 2,
+        "LookupTableChunkSize": 6,
+        "LookupTable": [
+         -500.0,
+         500.0,
+         0.0,
+         20.0,
+         0.0,
+         100.0,
+         100.0,
+         0.0,
+         -100.0,
+         -100.0,
+         0.0,
+         140.0,
+         140.0,
+         0.0,
+         -140.0,
+         -140.0,
+         0.0,
+         180.0,
+         180.0,
+         0.0,
+         -180.0,
+         -180.0,
+         0.0,
+         220.0,
+         220.0,
+         0.0,
+         -220.0,
+         -220.0,
+         0.0,
+         260.0,
+         260.0,
+         0.0,
+         -260.0,
+         -260.0,
+         0.0,
+         300.0,
+         300.0,
+         0.0,
+         -300.0,
+         -300.0,
+         0.0,
+         340.0,
+         340.0,
+         0.0,
+         -340.0,
+         -340.0,
+         0.0,
+         380.0,
+         380.0,
+         0.0,
+         -380.0,
+         -380.0,
+         0.0,
+         420.0,
+         420.0,
+         0.0,
+         -420.0,
+         -420.0,
+         0.0,
+         460.0,
+         460.0,
+         0.0,
+         -460.0,
+         -460.0,
+         0.0,
+         500.0,
+         500.0,
+         0.0,
+         -500.0,
+         -500.0,
+         0.0,
+         450.0,
+         450.0,
+         0.0,
+         -450.0,
+         -450.0,
+         0.0,
+         399.9999694824219,
+         399.9999694824219,
+         0.0,
+         -399.9999694824219,
+         -399.9999694824219,
+         0.0,
+         349.9999694824219,
+         349.9999694824219,
+         0.0,
+         -349.9999694824219,
+         -349.9999694824219,
+         0.0,
+         300.0,
+         300.0,
+         0.0,
+         -300.0,
+         -300.0,
+         0.0,
+         250.0,
+         250.0,
+         0.0,
+         -250.0,
+         -250.0,
+         0.0,
+         200.0,
+         200.0,
+         0.0,
+         -200.0,
+         -200.0,
+         0.0,
+         149.99996948242188,
+         149.99996948242188,
+         0.0,
+         -149.99996948242188,
+         -149.99996948242188,
+         0.0,
+         99.99996948242188,
+         99.99996948242188,
+         0.0,
+         -99.99996948242188,
+         -99.99996948242188,
+         0.0,
+         50.0,
+         50.0,
+         0.0,
+         -50.0,
+         -50.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0
+        ]
+       },
+       "NoiseRangeScale": {
+        "Distribution": null,
+        "Type": 2,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 1,
+        "LookupTable": [
+         -4.6100467443466187e-08,
+         0.010700741782784462,
+         -0.00019607839931268245,
+         19.996078491210938,
+         -4.6100467443466187e-08,
+         0.010003887116909027,
+         5.931673854320252e-07,
+         0.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0
+        ]
+       },
+       "NoiseScale": {
+        "Distribution": null,
+        "Type": 2,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 1,
+        "LookupTable": [
+         100.0,
+         100.0,
+         0.0,
+         1.0,
+         100.0,
+         100.0
+        ]
+       },
+       "NoiseSpeed": {
+        "Distribution": null,
+        "Type": 7,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 3,
+        "LookupTable": [
+         50.0,
+         50.0,
+         50.0
+        ]
+       },
+       "NoiseLockRadius": 1.0,
+       "NoiseTension": 0.5,
+       "NoiseTangentStrength": {
+        "Distribution": null,
+        "Type": 1,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 1,
+        "LookupTable": [
+         250.0
+        ]
+       },
+       "NoiseTessellation": 1,
+       "bSpawnModule": true,
+       "bUpdateModule": true,
+       "bEnabled": true
+      }
+     },
+     {
+      "object": "FX_SoundWave_p.FX.AudioBeam_Tracer_FX.ParticleModuleBeamNoise_15558",
+      "class": "ParticleModuleBeamNoise",
+      "values": {
+       "bLowFreq_Enabled": true,
+       "bNRScaleEmitterTime": true,
+       "bSmooth": true,
+       "bApplyNoiseScale": true,
+       "Frequency": 50,
+       "Frequency_LowRange": 50,
+       "NoiseRange": {
+        "Distribution": null,
+        "Type": 10,
+        "Op": 2,
+        "LookupTableNumElements": 2,
+        "LookupTableChunkSize": 6,
+        "LookupTable": [
+         -500.0,
+         500.0,
+         0.0,
+         20.0,
+         0.0,
+         100.0,
+         100.0,
+         0.0,
+         -100.0,
+         -100.0,
+         0.0,
+         140.0,
+         140.0,
+         0.0,
+         -140.0,
+         -140.0,
+         0.0,
+         180.0,
+         180.0,
+         0.0,
+         -180.0,
+         -180.0,
+         0.0,
+         220.0,
+         220.0,
+         0.0,
+         -220.0,
+         -220.0,
+         0.0,
+         260.0,
+         260.0,
+         0.0,
+         -260.0,
+         -260.0,
+         0.0,
+         300.0,
+         300.0,
+         0.0,
+         -300.0,
+         -300.0,
+         0.0,
+         340.0,
+         340.0,
+         0.0,
+         -340.0,
+         -340.0,
+         0.0,
+         380.0,
+         380.0,
+         0.0,
+         -380.0,
+         -380.0,
+         0.0,
+         420.0,
+         420.0,
+         0.0,
+         -420.0,
+         -420.0,
+         0.0,
+         460.0,
+         460.0,
+         0.0,
+         -460.0,
+         -460.0,
+         0.0,
+         500.0,
+         500.0,
+         0.0,
+         -500.0,
+         -500.0,
+         0.0,
+         450.0,
+         450.0,
+         0.0,
+         -450.0,
+         -450.0,
+         0.0,
+         399.9999694824219,
+         399.9999694824219,
+         0.0,
+         -399.9999694824219,
+         -399.9999694824219,
+         0.0,
+         349.9999694824219,
+         349.9999694824219,
+         0.0,
+         -349.9999694824219,
+         -349.9999694824219,
+         0.0,
+         300.0,
+         300.0,
+         0.0,
+         -300.0,
+         -300.0,
+         0.0,
+         250.0,
+         250.0,
+         0.0,
+         -250.0,
+         -250.0,
+         0.0,
+         200.0,
+         200.0,
+         0.0,
+         -200.0,
+         -200.0,
+         0.0,
+         149.99996948242188,
+         149.99996948242188,
+         0.0,
+         -149.99996948242188,
+         -149.99996948242188,
+         0.0,
+         99.99996948242188,
+         99.99996948242188,
+         0.0,
+         -99.99996948242188,
+         -99.99996948242188,
+         0.0,
+         50.0,
+         50.0,
+         0.0,
+         -50.0,
+         -50.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0
+        ]
+       },
+       "NoiseRangeScale": {
+        "Distribution": null,
+        "Type": 2,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 1,
+        "LookupTable": [
+         -4.6100467443466187e-08,
+         0.010700741782784462,
+         -0.00019607839931268245,
+         19.996078491210938,
+         -4.6100467443466187e-08,
+         0.010003887116909027,
+         5.931673854320252e-07,
+         0.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0
+        ]
+       },
+       "NoiseSpeed": {
+        "Distribution": null,
+        "Type": 7,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 3,
+        "LookupTable": [
+         50.0,
+         50.0,
+         50.0
+        ]
+       },
+       "NoiseTangentStrength": {
+        "Distribution": null,
+        "Type": 1,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 1,
+        "LookupTable": [
+         250.0
+        ]
+       },
+       "NoiseScale": {
+        "Distribution": null,
+        "Type": 2,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 1,
+        "LookupTable": [
+         100.0,
+         100.0,
+         0.0,
+         1.0,
+         100.0,
+         100.0
+        ]
+       },
+       "NoiseLockRadius": 1.0,
+       "NoiseTension": 0.5,
+       "NoiseTessellation": 1,
+       "bSpawnModule": true,
+       "bUpdateModule": true,
+       "bEnabled": true
+      }
+     },
+     {
+      "object": "FX_SoundWave_p.FX.AudioBeam_Tracer_FX.ParticleModuleBeamSource_15761",
+      "class": "ParticleModuleBeamSource",
+      "values": {
+       "Source": {
+        "Distribution": null,
+        "Type": 7,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 3,
+        "LookupTable": [
+         0.0,
+         0.0,
+         0.0
+        ]
+       },
+       "SourceTangent": {
+        "Distribution": null,
+        "Type": 7,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 3,
+        "LookupTable": [
+         0.0,
+         0.0,
+         0.0
+        ]
+       },
+       "SourceStrength": {
+        "Distribution": null,
+        "Type": 1,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 1,
+        "LookupTable": [
+         25.0
+        ]
+       },
+       "bSpawnModule": true,
+       "bUpdateModule": true,
+       "bEnabled": true
+      }
+     },
+     {
+      "object": "FX_SoundWave_p.FX.AudioBeam_Tracer_FX.ParticleModuleBeamSource_5282",
+      "class": "ParticleModuleBeamSource",
+      "values": {
+       "Source": {
+        "Distribution": null,
+        "Type": 7,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 3,
+        "LookupTable": [
+         0.0,
+         0.0,
+         0.0
+        ]
+       },
+       "SourceTangent": {
+        "Distribution": null,
+        "Type": 7,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 3,
+        "LookupTable": [
+         0.0,
+         0.0,
+         0.0
+        ]
+       },
+       "SourceStrength": {
+        "Distribution": null,
+        "Type": 1,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 1,
+        "LookupTable": [
+         25.0
+        ]
+       },
+       "bSpawnModule": true,
+       "bUpdateModule": true,
+       "bEnabled": true
+      }
+     },
+     {
+      "object": "FX_SoundWave_p.FX.AudioBeam_Tracer_FX.ParticleModuleBeamTarget_1876",
+      "class": "ParticleModuleBeamTarget",
+      "values": {
+       "TargetMethod": "PEB2STM_UserSet",
+       "TargetName": "TargetLocation",
+       "Target": {
+        "Distribution": null,
+        "Type": 7,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 3,
+        "LookupTable": [
+         10000.0,
+         0.0,
+         0.0
+        ]
+       },
+       "TargetTangent": {
+        "Distribution": null,
+        "Type": 7,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 3,
+        "LookupTable": [
+         1.0,
+         0.0,
+         0.0
+        ]
+       },
+       "TargetStrength": {
+        "Distribution": null,
+        "Type": 1,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 1,
+        "LookupTable": [
+         25.0
+        ]
+       },
+       "LockRadius": 10.0,
+       "bSpawnModule": true,
+       "bUpdateModule": true,
+       "bEnabled": true
+      }
+     },
+     {
+      "object": "FX_SoundWave_p.FX.AudioBeam_Tracer_FX.ParticleModuleBeamTarget_3265",
+      "class": "ParticleModuleBeamTarget",
+      "values": {
+       "TargetMethod": "PEB2STM_UserSet",
+       "TargetName": "TargetLocation",
+       "Target": {
+        "Distribution": null,
+        "Type": 7,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 3,
+        "LookupTable": [
+         10000.0,
+         0.0,
+         0.0
+        ]
+       },
+       "TargetTangent": {
+        "Distribution": null,
+        "Type": 7,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 3,
+        "LookupTable": [
+         1.0,
+         0.0,
+         0.0
+        ]
+       },
+       "TargetStrength": {
+        "Distribution": null,
+        "Type": 1,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 1,
+        "LookupTable": [
+         25.0
+        ]
+       },
+       "LockRadius": 10.0,
+       "bSpawnModule": true,
+       "bUpdateModule": true,
+       "bEnabled": true
+      }
+     }
+    ],
+    "beam_modules_note": "PMI_Unknown / module_id 0 entries in beam LODs are these modules: ParticleModuleBeamSource, ParticleModuleBeamTarget (TargetMethod PEB2STM_UserSet, TargetName \"TargetLocation\"), and the WFC-specific ParticleModuleBeamSineWave. Emitter / LOD binding comes from the native LOD module list (RE TARGETED_PASS5 raw scan, HIGH)"
+   }
+  },
+  "default_decal": {
+   "Material": null,
+   "MinWidth": 100.0,
+   "MinHeight": 100.0,
+   "WidthRange": 100.0,
+   "HeightRange": 100.0,
+   "Thickness": 10.0,
+   "Lifetime": 30.0,
+   "NoClip": false,
+   "UniformScale": true,
+   "ApplyRandomRotation": true
+  },
+  "muzzle_light": "WEP_AudioBlast_p.AudioBlast_WEPMESH.PointLightComponent_14276",
+  "muzzle_flash_duration": 0.10000000149011612,
+  "impact_squib": {
+   "ImpactSquibPercentage": 1.0,
+   "ImpactSquibMaxCount": 10,
+   "MaxImpactEffectDistance": 2500.0
+  }
+ },
+ "projectiles": null,
+ "sounds": [
+  {
+   "event": "WP_Looping",
+   "cue": "BL_CHR_SOUNDWAVE.AUDIO_BLAST_SHOOT",
+   "class": "SoundCue",
+   "waves": [
+    {
+     "wave": "WL_CHR_SOUNDWAVE.WPN_AUDIO_BLAST_FIRE",
+     "wav": "content/WL_CHR_SOUNDWAVE/WPN_AUDIO_BLAST_FIRE.wav"
+    },
+    {
+     "wave": "WL_CHR_SOUNDWAVE.WPN_AUDIO_BLAST_LOOP",
+     "wav": "content/WL_CHR_SOUNDWAVE/WPN_AUDIO_BLAST_LOOP.wav"
+    }
+   ]
+  },
+  {
+   "event": "WP_LoopingTail",
+   "cue": "BL_CHR_SOUNDWAVE.AUDIO_BLAST_END",
+   "class": "SoundCue",
+   "waves": [
+    {
+     "wave": "WL_CHR_SOUNDWAVE.WPN_AUDIO_BLAST_END",
+     "wav": "content/WL_CHR_SOUNDWAVE/WPN_AUDIO_BLAST_END.wav"
+    }
+   ]
+  },
+  {
+   "event": "WP_Overheat",
+   "cue": "BL_WPN_GUN_DEATH_BEAM.Overheat",
+   "class": "SoundCue",
+   "waves": []
+  }
+ ],
+ "gameplay (versus WEPDATA = MultiplayerData, CONFIRMED)": {},
+ "versus_data_source": {
+  "object": null,
+  "selected_by": "PlayerData (fallback: MultiplayerData unset on the class chain)",
+  "rule": "TnWeapon.GivenTo: TnMultiplayerGame.DesiredWeaponDataType = 3 (Multiplayer); GetWeaponDataByType(3) == none -> WDT 1 PlayerData; no fallback to DefaultTnWeaponData; AI holders use AiData (RE 2026-10-07, CONFIRMED from script)"
+ },
+ "wepdata_objects": {
+  "MultiplayerData (versus)": null,
+  "PlayerData (campaign / SP)": "WEP_AudioBlast_p.AudioBlast_AI_WEPDATA",
+  "SurvivalData (Escalation)": null,
+  "AiData": "WEP_AudioBlast_p.AudioBlast_AI_WEPDATA"
+ },
+ "class_defaults (weapon CDO, sub-objects resolved)": {
+  "FireIntervalLerper": {
+   "object": "TransContent.Default__TnWeaponAudioBlast.Lerper0",
+   "class": "HmValueLerper",
+   "values": {}
+  },
+  "WeaponHeat": {
+   "object": "TransContent.Default__TnWeaponAudioBlast.WeaponHeat0",
+   "class": "TnWeaponHeat",
+   "values": {
+    "HeatProperties": {
+     "HeatMax": 100.0,
+     "Modifiers": []
+    }
+   }
+  },
+  "Defragger": {
+   "object": "TransContent.Default__TnWeaponAudioBlast.Defragger0",
+   "class": "TnDefragger",
+   "values": {
+    "DefragTime": 1.0,
+    "Range": {
+     "Min": 0.0,
+     "Max": 1.0
+    },
+    "DefragShaderParamName": "Defrag",
+    "CurrentValue": -1.0
+   }
+  },
+  "AmmoMaterialRamper": {
+   "object": "TransContent.Default__TnWeaponAudioBlast.AmmoMaterialRamper0",
+   "class": "TnDefragger",
+   "values": {
+    "DefragTime": 0.800000011920929,
+    "Range": {
+     "Min": 1.0,
+     "Max": 80.0
+    },
+    "DefragShaderParamName": "EmissiveIntensity",
+    "CurrentValue": -1.0
+   }
+  },
+  "WeaponMeshTemplate": "WEP_AudioBlast_p.AudioBlast_WEPMESH",
+  "PlayerData": "WEP_AudioBlast_p.AudioBlast_AI_WEPDATA",
+  "AiData": "WEP_AudioBlast_p.AudioBlast_AI_WEPDATA",
+  "PutDownImmediatelyDetachDelay": 0.009999999776482582,
+  "PutDownImmediatelyTime": 0.019999999552965164,
+  "IsEffectedByIncreaseAmmoSkill": true,
+  "ShotStatId": -1,
+  "DamageModifier": "TransGame.Default__TnWeapon.DamageModifier0",
+  "PickupObtainedDialog": "SoundEvents_Dialog.WeaponPickupObtainedDialog",
+  "SpawnOffsetAngle": {
+   "Pitch": 3000,
+   "Yaw": 0,
+   "Roll": 0
+  },
+  "PickupScale": 1.0,
+  "IncreaseAmmoSkill": "TransGame.TnSkillIncreaseAmmoFromClips",
+  "AmmoClipCount": 10,
+  "Data": "TransGame.Default__TnWeapon.DefaultTnWeaponData",
+  "ItemName": "Missing Weapon, needs entry in TransContent.int",
+  "DroppedPickupClass": "TransGame.TnDroppedPickupWeapon",
+  "PickupRating": 1.0,
+  "PickupRotationRate": {
+   "Pitch": 0,
+   "Yaw": 10000,
+   "Roll": 0
+  },
+  "ReserveAmmoCount": 40,
+  "FiringStatesArray": [
+   "WeaponFiring",
+   "WeaponFiring"
+  ],
+  "ShouldFireOnRelease": [
+   0,
+   0
+  ],
+  "MessageClass": "HM_Engine.HmLocalMessage",
+  "DefaultAnimSpeed": 1.0,
+  "RespawnTime": 30.0,
+  "MaxDesireability": 0.10000000149011612,
+  "PickupMessage": "Snagged an item.",
+  "FindLevelStartOffset": {
+   "X": 0.0,
+   "Y": 0.0,
+   "Z": 25.0
+  },
+  "FindLevelEndOffset": {
+   "X": 0.0,
+   "Y": 0.0,
+   "Z": -15000.0
+  },
+  "CollisionPreset": "COLLIDE_CustomDefault",
+  "CustomTimeDilation": 1.0,
+  "DrawScale": 1.0,
+  "DrawScale3D": {
+   "X": 1.0,
+   "Y": 1.0,
+   "Z": 1.0
+  },
+  "ActorIndex": -1,
+  "ReplicatedCollisionPreset": "None"
+ },
+ "fine_aim_camera (OverTheShoulder strategy FOV)": {
+  "weapon_pcs": null,
+  "source": "CAM_Strategies_p.OverTheShoulder_STRATEGY.TnFovCameraBehavior_1013",
+  "fov_default": {
+   "Fov": 80.0,
+   "SmoothTime": 0.4000000059604645
+  },
+  "fov_fine_aim": {
+   "Fov": 45.0,
+   "SmoothTime": 0.10000000149011612
+  },
+  "fov_fine_aim_hovering": {
+   "Fov": 45.0,
+   "SmoothTime": 0.10000000149011612
+  },
+  "rule": "first FOVsByPCS entry whose PlayerCameraStates are all active; weapon adds WeaponPCS, fine aim adds TnPCS_FineAim"
+ },
+ "hud_scope (Hud_GFX ActionScript on NotifyFineAimChanged(1), by weapon class; RE TARGETED_PASS5 CONFIRMED)": null,
+ "gameplay (campaign / SP PlayerData)": {
+  "object": "WEP_AudioBlast_p.AudioBlast_AI_WEPDATA"
+ },
+ "ai_data": {
+  "object": "WEP_AudioBlast_p.AudioBlast_AI_WEPDATA",
+  "DesiredFiringRange": "RANGE_Medium"
+ },
+ "damage_types": {},
+ "restrictions": {},
+ "usable_by_chassis": null,
+ "ui": {
+  "ratings": {},
+  "kill_feed_icon": null,
+  "hud_weapon_icon": null,
+  "loadout_icons (GFx export name == provider id, HIGH)": null,
+  "menu_preview": "weapon glTF (no dedicated preview mesh authored for MP loadouts: INFERRED from absence)"
+ },
+ "mp": {
+  "in_every_mp_map": false,
+  "in_any_mp_map": false,
+  "escalation_ai_weapon": true
+ },
+ "mp_weapons_entry": "manifests/mp_content/mp_weapons.json weapons[\"TransContent.TnWeaponAudioBlast\"]",
+ "validation": {
+  "paths_checked": 3,
+  "missing": [],
+  "glb": false,
+  "clips": 0,
+  "sounds_with_wav": 2,
+  "sounds": 3,
+  "seconds": 2.6
+ },
+ "files": {
+  "json": "VerticalSlice/Weapons/AudioBlast/weapon.json",
+  "slice_weapon_kept": false
+ }
+}

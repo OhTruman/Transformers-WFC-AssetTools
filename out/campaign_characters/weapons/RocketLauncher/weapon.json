@@ -1,0 +1,1082 @@
+{
+ "generated_by": "AssetTools/scripts/wfc/vs_weapon_export.py",
+ "weapon_id": "RocketLauncher",
+ "stable_id_source": "TnDataProvider_Weapon UniqueId (TransWeapons.ini)",
+ "class": "TransContent.TnWeaponRocketLauncher",
+ "provider_ids": [],
+ "display_name": {
+  "ItemName": "Thermo Rocket Launcher (Vehicle Lock-On)"
+ },
+ "description": null,
+ "weapon_type_code": null,
+ "mesh": {
+  "object": "WEP_RocketLauncher_p.WEP_RocketLauncher_SKEL",
+  "weapon_mesh_template": "WEP_RocketLauncher_p.RocketLauncher_WEPMESH",
+  "glb": "../AssetTools/out/campaign_characters/weapons/RocketLauncher/weapon.glb",
+  "source_gltf": "content/WEP_RocketLauncher_p/WEP_RocketLauncher_SKEL.gltf",
+  "mesh_note": null,
+  "materials": [
+   {
+    "slot": 0,
+    "material": "WEP_RocketLauncher_p.WEP_RocketLauncher_MATINST",
+    "textures": {
+     "DiffuseMap": "content/WEP_RocketLauncher_p/WEP_RocketLauncher_CLR.png",
+     "MasksMap": "content/WEP_RocketLauncher_p/WEP_RocketLauncher_MASK.png",
+     "Reflection_Map": null,
+     "NormalMap": "content/WEP_RocketLauncher_p/WEP_RocketLauncher_NORM.png",
+     "MaterialExpressionTextureSample_5337": "content/WEP_Shared_p/Textures/WEP_Defrag_Alphas.png",
+     "MaterialExpressionTextureSample_11050": "content/TR_AllShader_p/Textures/PistonChamber_EMISS.png",
+     "MaterialExpressionTextureSample_7989": "content/TR_AllShader_p/Textures/PistonChamber_EMISS.png"
+    },
+    "roles": {
+     "reflection": {
+      "texture": "ENV_AllShader_p.CubeMaps.ENV_Desaturated_Glass_CUBEMAP",
+      "file": null,
+      "inputs": [
+       "DiffuseColor",
+       "EmissiveColor"
+      ],
+      "channels": [],
+      "graph_depth": 6,
+      "sampler": "Reflection_Map",
+      "role_source": "cubemap"
+     },
+     "normal": {
+      "texture": "WEP_RocketLauncher_p.WEP_RocketLauncher_NORM",
+      "file": "content/WEP_RocketLauncher_p/WEP_RocketLauncher_NORM.png",
+      "inputs": [
+       "Normal",
+       "EmissiveColor"
+      ],
+      "channels": [
+       "B"
+      ],
+      "graph_depth": 2,
+      "sampler": "NormalMap",
+      "role_source": "param_name+graph"
+     },
+     "base_color": {
+      "texture": "WEP_RocketLauncher_p.WEP_RocketLauncher_CLR",
+      "file": "content/WEP_RocketLauncher_p/WEP_RocketLauncher_CLR.png",
+      "inputs": [
+       "DiffuseColor",
+       "EmissiveColor",
+       "SpecularColor"
+      ],
+      "channels": [],
+      "graph_depth": 4,
+      "sampler": "DiffuseMap",
+      "role_source": "param_name+graph"
+     },
+     "emissive": {
+      "texture": "TR_AllShader_p.Textures.PistonChamber_EMISS",
+      "file": "content/TR_AllShader_p/Textures/PistonChamber_EMISS.png",
+      "inputs": [
+       "EmissiveColor"
+      ],
+      "channels": [],
+      "graph_depth": 9,
+      "sampler": "MaterialExpressionTextureSample_11050",
+      "role_source": "param_name+graph"
+     },
+     "opacity": {
+      "texture": "WEP_Shared_p.Textures.WEP_Defrag_Alphas",
+      "file": "content/WEP_Shared_p/Textures/WEP_Defrag_Alphas.png",
+      "inputs": [
+       "EmissiveColor",
+       "OpacityMask"
+      ],
+      "channels": [],
+      "graph_depth": 1,
+      "sampler": "MaterialExpressionTextureSample_5337",
+      "role_source": "param_name+graph"
+     },
+     "mask": {
+      "texture": "WEP_RocketLauncher_p.WEP_RocketLauncher_MASK",
+      "file": "content/WEP_RocketLauncher_p/WEP_RocketLauncher_MASK.png",
+      "inputs": [
+       "DiffuseColor",
+       "EmissiveColor",
+       "SpecularColor",
+       "SpecularPower"
+      ],
+      "channels": [],
+      "graph_depth": 2,
+      "sampler": "MasksMap",
+      "role_source": "name"
+     }
+    },
+    "blend_mode": "BLEND_Masked"
+   }
+  ],
+  "buff_materials": [
+   "WEP_RocketLauncher_p.WEP_RocketLauncher_Overshiled_MATINST"
+  ],
+  "sockets": [
+   {
+    "socket": "Exhaust",
+    "bone": "C_Robo01_XT",
+    "relative_location_ue": [
+     50.640323638916016,
+     10.371774673461914,
+     21.607192993164062
+    ],
+    "relative_rotation_ue": [
+     9102,
+     32768,
+     0
+    ],
+    "relative_location_gltf": [
+     0.5064,
+     0.21607,
+     0.10372
+    ],
+    "relative_scale": 1.0
+   },
+   {
+    "socket": "MuzzleFlash_back",
+    "bone": "C_Robo13_XT",
+    "relative_location_ue": [
+     0.0,
+     -36.076316833496094,
+     0.7476524114608765
+    ],
+    "relative_rotation_ue": [
+     0,
+     -16384,
+     0
+    ],
+    "relative_location_gltf": [
+     0.0,
+     0.00748,
+     -0.36076
+    ],
+    "relative_scale": 1.0
+   },
+   {
+    "socket": "MuzzleFlash",
+    "bone": "C_Robo01_XT",
+    "relative_location_ue": [
+     69.3218002319336,
+     13.234928131103516,
+     -17.25
+    ],
+    "relative_rotation_ue": [
+     0,
+     0,
+     0
+    ],
+    "relative_location_gltf": [
+     0.69322,
+     -0.1725,
+     0.13235
+    ],
+    "relative_scale": 1.0
+   }
+  ],
+  "muzzle_sockets": [
+   "MuzzleFlash"
+  ],
+  "reference_bone": "WEP_Reference_XR",
+  "pickup_mesh": "WEP_RocketLauncher_p.WEP_RocketLauncher_SKEL",
+  "pickup_mesh_translation_ue": {
+   "X": 32.0,
+   "Y": -32.0,
+   "Z": 150.0
+  }
+ },
+ "animations": {
+  "anim_sets": [
+   "WEP_RocketLauncher_p.WEP_RocketLauncher_ANIM"
+  ],
+  "clips_in_glb": [
+   {
+    "name": "RocketLauncher_Drop",
+    "sequence": "RocketLauncher_Drop",
+    "category": "weapon",
+    "source_animset": "WEP_RocketLauncher_p.WEP_RocketLauncher_ANIM",
+    "source_gltf": "content/WEP_RocketLauncher_p/WEP_RocketLauncher_ANIM.anim.gltf",
+    "duration_s": 0.6333,
+    "channels": 53,
+    "unmapped_channels": 0,
+    "additive": false,
+    "provenance": "original"
+   },
+   {
+    "name": "RocketLauncher_Equip",
+    "sequence": "RocketLauncher_Equip",
+    "category": "weapon",
+    "source_animset": "WEP_RocketLauncher_p.WEP_RocketLauncher_ANIM",
+    "source_gltf": "content/WEP_RocketLauncher_p/WEP_RocketLauncher_ANIM.anim.gltf",
+    "duration_s": 0.6333,
+    "channels": 53,
+    "unmapped_channels": 0,
+    "additive": false,
+    "provenance": "original"
+   },
+   {
+    "name": "RocketLauncher_Fire",
+    "sequence": "RocketLauncher_Fire",
+    "category": "weapon",
+    "source_animset": "WEP_RocketLauncher_p.WEP_RocketLauncher_ANIM",
+    "source_gltf": "content/WEP_RocketLauncher_p/WEP_RocketLauncher_ANIM.anim.gltf",
+    "duration_s": 0.6333,
+    "channels": 50,
+    "unmapped_channels": 0,
+    "additive": false,
+    "provenance": "original"
+   },
+   {
+    "name": "RocketLauncher_Idle",
+    "sequence": "RocketLauncher_Idle",
+    "category": "weapon",
+    "source_animset": "WEP_RocketLauncher_p.WEP_RocketLauncher_ANIM",
+    "source_gltf": "content/WEP_RocketLauncher_p/WEP_RocketLauncher_ANIM.anim.gltf",
+    "duration_s": 3.3333,
+    "channels": 45,
+    "unmapped_channels": 0,
+    "additive": false,
+    "provenance": "original"
+   },
+   {
+    "name": "RocketLauncher_Reload",
+    "sequence": "RocketLauncher_Reload",
+    "category": "weapon",
+    "source_animset": "WEP_RocketLauncher_p.WEP_RocketLauncher_ANIM",
+    "source_gltf": "content/WEP_RocketLauncher_p/WEP_RocketLauncher_ANIM.anim.gltf",
+    "duration_s": 2.8333,
+    "channels": 52,
+    "unmapped_channels": 0,
+    "additive": false,
+    "provenance": "original"
+   },
+   {
+    "name": "RocketLauncher_StaticIdle",
+    "sequence": "RocketLauncher_StaticIdle",
+    "category": "weapon",
+    "source_animset": "WEP_RocketLauncher_p.WEP_RocketLauncher_ANIM",
+    "source_gltf": "content/WEP_RocketLauncher_p/WEP_RocketLauncher_ANIM.anim.gltf",
+    "duration_s": 1.0,
+    "channels": 45,
+    "unmapped_channels": 0,
+    "additive": false,
+    "provenance": "original"
+   }
+  ],
+  "idle": "RocketLauncher_IdleGroup",
+  "event_anims (weapon mesh)": [
+   {
+    "WeaponEventType": "WP_Equip",
+    "AnimName": "RocketLauncher_Equip"
+   },
+   {
+    "WeaponEventType": "WP_PutDown",
+    "AnimName": "RocketLauncher_Drop"
+   },
+   {
+    "WeaponEventType": "WP_Fire",
+    "AnimName": "RocketLauncher_Fire"
+   },
+   {
+    "WeaponEventType": "WP_Reload",
+    "AnimName": "RocketLauncher_Reload"
+   }
+  ],
+  "owner_animations (robot body)": null
+ },
+ "attachment": {
+  "owner_socket (robot)": "WeaponSocket_Primary",
+  "reference_bone": "WEP_Reference_XR",
+  "rule": "weapon reference bone placed at the robot WeaponSocket_Primary (per-chassis socket in Characters/<ChassisId>/character.json robot.sockets); vehicle-form weapons fire from the vehicle sockets"
+ },
+ "recoil (procedural, WEPMESH)": {
+  "SpineRecoil": {
+   "TimeToGo": 0.0,
+   "TimeDuration": 1.0,
+   "RotAmplitude": {
+    "X": -4000.0,
+    "Y": 3000.0,
+    "Z": 0.0
+   },
+   "RotFrequency": {
+    "X": 10.0,
+    "Y": 10.0,
+    "Z": 0.0
+   },
+   "RotSinOffset": {
+    "X": 0.0,
+    "Y": 0.0,
+    "Z": 0.0
+   },
+   "RotParams": {
+    "X": "ERS_Zero",
+    "Y": "ERS_Zero",
+    "Z": "ERS_Zero",
+    "Padding": 0
+   },
+   "RotOffset": {
+    "Pitch": 0,
+    "Yaw": 0,
+    "Roll": 0
+   },
+   "LocAmplitude": {
+    "X": -10.0,
+    "Y": 0.0,
+    "Z": 0.0
+   },
+   "LocFrequency": {
+    "X": 10.0,
+    "Y": 0.0,
+    "Z": 0.0
+   },
+   "LocSinOffset": {
+    "X": 0.0,
+    "Y": 0.0,
+    "Z": 0.0
+   },
+   "LocParams": {
+    "X": "ERS_Zero",
+    "Y": "ERS_Zero",
+    "Z": "ERS_Zero",
+    "Padding": 0
+   },
+   "LocOffset": {
+    "X": 0.0,
+    "Y": 0.0,
+    "Z": 0.0
+   }
+  },
+  "RightHandRecoil": {
+   "TimeToGo": 0.0,
+   "TimeDuration": 0.699999988079071,
+   "RotAmplitude": {
+    "X": 8000.0,
+    "Y": 0.0,
+    "Z": 0.0
+   },
+   "RotFrequency": {
+    "X": 10.0,
+    "Y": 0.0,
+    "Z": 0.0
+   },
+   "RotSinOffset": {
+    "X": 0.0,
+    "Y": 0.0,
+    "Z": 0.0
+   },
+   "RotParams": {
+    "X": "ERS_Zero",
+    "Y": "ERS_Random",
+    "Z": "ERS_Zero",
+    "Padding": 0
+   },
+   "RotOffset": {
+    "Pitch": 0,
+    "Yaw": 0,
+    "Roll": 0
+   },
+   "LocAmplitude": {
+    "X": -15.0,
+    "Y": 0.0,
+    "Z": 0.0
+   },
+   "LocFrequency": {
+    "X": 10.0,
+    "Y": 0.0,
+    "Z": 0.0
+   },
+   "LocSinOffset": {
+    "X": 0.0,
+    "Y": 0.0,
+    "Z": 0.0
+   },
+   "LocParams": {
+    "X": "ERS_Zero",
+    "Y": "ERS_Zero",
+    "Z": "ERS_Random",
+    "Padding": 0
+   },
+   "LocOffset": {
+    "X": 0.0,
+    "Y": 0.0,
+    "Z": 0.0
+   }
+  }
+ },
+ "heat": {
+  "HeatPerShot": 0.5,
+  "HeatCooldownTime": 3.0
+ },
+ "effects": {
+  "authored": {
+   "muzzle_flashes": [
+    {
+     "WeaponEventType": "WP_Fire",
+     "PSTemplate": "FX_HomingRocket_p.FX.MuzzleFlash_HomRocket_FX",
+     "PSLoops": false,
+     "PSComponent": null,
+     "DisableLight": false
+    }
+   ],
+   "tracers": [
+    {
+     "WeaponEventType": "WP_Fire",
+     "TracerTemplate": null
+    }
+   ],
+   "default_squib": null,
+   "effects_type": "TransGame.TnWeaponEffectsTypeExplosive"
+  },
+  "decode_status": {
+   "FX_HomingRocket_p.FX.MuzzleFlash_HomRocket_FX": {
+    "template": "FX_HomingRocket_p.FX.MuzzleFlash_HomRocket_FX",
+    "in_dump": true,
+    "emitters": [
+     {
+      "emitter": "Burst_Small_Dup_Dup_Dup",
+      "type_data": "ParticleModuleTypeDataMesh",
+      "type_data_props": {
+       "Mesh": "FX_Weapons_p.StaticMesh.CrossPlanes_STATMESH"
+      },
+      "material": "FX_Weapons_p.Materials.MuzzleFlash_Side_MAT",
+      "undecoded_modules (PMI_Unknown)": 0,
+      "resolved_modules (PMI_Unknown slots named by object class)": null,
+      "assignment_complete": true
+     },
+     {
+      "emitter": "Smoke_Burst_Dup_Dup_Dup",
+      "type_data": "Sprite (no TypeData)",
+      "type_data_props": null,
+      "material": "FX_Materials_p.Materials.SmokeThick_Mat",
+      "undecoded_modules (PMI_Unknown)": 0,
+      "resolved_modules (PMI_Unknown slots named by object class)": null,
+      "assignment_complete": true
+     },
+     {
+      "emitter": "Burst_Small_Dup_Dup_Dup_Dup_Dup",
+      "type_data": "ParticleModuleTypeDataMesh",
+      "type_data_props": {
+       "Mesh": "FX_Mesh_p.Mesh.Bell_STAT",
+       "bOverrideMaterial": true
+      },
+      "material": "FX_Materials_p.Materials.MuzzleFlash_X_Mat",
+      "undecoded_modules (PMI_Unknown)": 0,
+      "resolved_modules (PMI_Unknown slots named by object class)": [
+       {
+        "slot": 5,
+        "module": "PMI_SwitchableColorScaleOverLife",
+        "object": "FX_HomingRocket_p.FX.MuzzleFlash_HomRocket_FX.ParticleModuleSwitchableColorScaleOverLife_14273",
+        "properties": {
+         "ColorScaleOverLifeA": {
+          "Distribution": null,
+          "Type": 8,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 3,
+          "LookupTable": [
+           5.0,
+           20.0,
+           0.0,
+           0.0,
+           20.0,
+           5.0,
+           5.0,
+           20.0,
+           5.0,
+           5.0
+          ]
+         },
+         "AlphaScaleOverLifeA": {
+          "Distribution": null,
+          "Type": 2,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 1,
+          "LookupTable": [
+           0.0,
+           0.5358239412307739,
+           4.656612873077393e-10,
+           20.0,
+           0.5358239412307739,
+           0.4645552635192871,
+           0.3998657464981079,
+           0.3414391577243805,
+           0.2889592945575714,
+           0.24210990965366364,
+           0.20057480037212372,
+           0.1640377938747406,
+           0.13218259811401367,
+           0.1046929806470871,
+           0.08125282824039459,
+           0.061545826494693756,
+           0.04525578022003174,
+           0.03206649795174599,
+           0.021661771461367607,
+           0.013725312426686287,
+           0.007941015996038914,
+           0.003992482554167509,
+           0.0015635417075827718,
+           0.00033816383802331984,
+           0.0
+          ]
+         },
+         "ColorScaleOverLifeB": {
+          "Distribution": null,
+          "Type": 8,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 3,
+          "LookupTable": [
+           2.5,
+           5.0,
+           0.0,
+           0.0,
+           2.5,
+           2.5,
+           5.0,
+           2.5,
+           2.5,
+           5.0
+          ]
+         },
+         "AlphaScaleOverLifeB": {
+          "Distribution": null,
+          "Type": 2,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 1,
+          "LookupTable": [
+           0.0,
+           0.20000000298023224,
+           0.0,
+           20.0,
+           0.20000000298023224,
+           0.17322543263435364,
+           0.14894205331802368,
+           0.1270289421081543,
+           0.10736522078514099,
+           0.0898299515247345,
+           0.07430223375558853,
+           0.060661185532808304,
+           0.048785872757434845,
+           0.03855537995696068,
+           0.029848843812942505,
+           0.02254531718790531,
+           0.016523903235793114,
+           0.011663705110549927,
+           0.007843820378184319,
+           0.004943316336721182,
+           0.0028413289692252874,
+           0.001416883198544383,
+           0.0005490904441103339,
+           0.00011711454862961546,
+           0.0
+          ]
+         },
+         "ChannelSwitch": "PMC_A",
+         "bSpawnModule": true,
+         "bUpdateModule": true,
+         "bEnabled": true
+        }
+       }
+      ],
+      "assignment_complete": true
+     }
+    ],
+    "beam_modules (template sub-objects)": null,
+    "beam_modules_note": null
+   }
+  },
+  "default_decal": {
+   "Material": null,
+   "MinWidth": 100.0,
+   "MinHeight": 100.0,
+   "WidthRange": 100.0,
+   "HeightRange": 100.0,
+   "Thickness": 10.0,
+   "Lifetime": 30.0,
+   "NoClip": false,
+   "UniformScale": true,
+   "ApplyRandomRotation": true
+  },
+  "muzzle_light": "WEP_RocketLauncher_p.RocketLauncher_WEPMESH.PointLightComponent_14276",
+  "muzzle_flash_duration": 0.10000000149011612,
+  "impact_squib": {
+   "ImpactSquibPercentage": 1.0,
+   "ImpactSquibMaxCount": 10,
+   "MaxImpactEffectDistance": 2500.0
+  }
+ },
+ "projectiles": null,
+ "sounds": [
+  {
+   "event": "WP_Overheat",
+   "cue": "BL_WPN_GUN_ROCKET.Overheat",
+   "class": "SoundCue",
+   "waves": []
+  },
+  {
+   "event": "WP_Fire",
+   "cue": "BL_WPN_GUN_ROCKET.SHOOT",
+   "class": "SoundCue",
+   "waves": [
+    {
+     "wave": "WL_GUN_FOLEY.GUN_RIFLE_BOLT_IN",
+     "wav": "content/WL_GUN_FOLEY/GUN_RIFLE_BOLT_IN.wav"
+    },
+    {
+     "wave": "WL_GUN_FOLEY.RELOAD_AIR_RELEASE_THUMP",
+     "wav": "content/WL_GUN_FOLEY/RELOAD_AIR_RELEASE_THUMP.wav"
+    },
+    {
+     "wave": "WL_GUN_ROCKET.GUN_ROCKET_LAUNCH_SHOOT_LR_01",
+     "wav": "content/WL_GUN_ROCKET/GUN_ROCKET_LAUNCH_SHOOT_LR_01.wav"
+    },
+    {
+     "wave": "WL_GUN_ROCKET.GUN_ROCKET_LAUNCH_SHOOT_LR_02",
+     "wav": "content/WL_GUN_ROCKET/GUN_ROCKET_LAUNCH_SHOOT_LR_02.wav"
+    },
+    {
+     "wave": "WL_GUN_ROCKET.GUN_ROCKET_LAUNCH_SHOOT_LR_03",
+     "wav": "content/WL_GUN_ROCKET/GUN_ROCKET_LAUNCH_SHOOT_LR_03.wav"
+    },
+    {
+     "wave": "WL_GUN_ROCKET.GUN_ROCKET_LAUNCH_SHOOT_LR_04",
+     "wav": "content/WL_GUN_ROCKET/GUN_ROCKET_LAUNCH_SHOOT_LR_04.wav"
+    },
+    {
+     "wave": "WL_GUN_ROCKET.GUN_ROCKET_SHOOT_WHISTLE_01",
+     "wav": "content/WL_GUN_ROCKET/GUN_ROCKET_SHOOT_WHISTLE_01.wav"
+    },
+    {
+     "wave": "WL_GUN_ROCKET.GUN_ROCKET_SHOOT_WHISTLE_02",
+     "wav": "content/WL_GUN_ROCKET/GUN_ROCKET_SHOOT_WHISTLE_02.wav"
+    },
+    {
+     "wave": "WL_GUN_ROCKET.GUN_ROCKET_SHOOT_WHISTLE_03",
+     "wav": "content/WL_GUN_ROCKET/GUN_ROCKET_SHOOT_WHISTLE_03.wav"
+    }
+   ]
+  },
+  {
+   "event": "WP_Special",
+   "cue": "BL_HUD_INTERFACE.HUD_TARGET_LOCK",
+   "class": "SoundCue",
+   "waves": [
+    {
+     "wave": "WL_GUN_ROCKET.BEEP_LOCK_INDICATOR_FLATLINE",
+     "wav": "content/WL_GUN_ROCKET/BEEP_LOCK_INDICATOR_FLATLINE.wav"
+    },
+    {
+     "wave": "WL_HUD_INTERFACE.HUD_TARGET_LOCK_BEEP_01",
+     "wav": "content/WL_HUD_INTERFACE/HUD_TARGET_LOCK_BEEP_01.wav"
+    }
+   ]
+  },
+  {
+   "event": "WP_LowAmmoFire",
+   "cue": "BL_WPN_GUN_ROCKET.SHOOT_LOW_AMMO",
+   "class": "SoundCue",
+   "waves": [
+    {
+     "wave": "WL_GUN_FOLEY.GUN_RIFLE_BOLT_IN",
+     "wav": "content/WL_GUN_FOLEY/GUN_RIFLE_BOLT_IN.wav"
+    },
+    {
+     "wave": "WL_GUN_FOLEY.RELOAD_AIR_RELEASE_THUMP",
+     "wav": "content/WL_GUN_FOLEY/RELOAD_AIR_RELEASE_THUMP.wav"
+    },
+    {
+     "wave": "WL_GUN_ROCKET.GUN_ROCKET_LAUNCH_SHOOT_LR_01",
+     "wav": "content/WL_GUN_ROCKET/GUN_ROCKET_LAUNCH_SHOOT_LR_01.wav"
+    },
+    {
+     "wave": "WL_GUN_ROCKET.GUN_ROCKET_LAUNCH_SHOOT_LR_02",
+     "wav": "content/WL_GUN_ROCKET/GUN_ROCKET_LAUNCH_SHOOT_LR_02.wav"
+    },
+    {
+     "wave": "WL_GUN_ROCKET.GUN_ROCKET_LAUNCH_SHOOT_LR_03",
+     "wav": "content/WL_GUN_ROCKET/GUN_ROCKET_LAUNCH_SHOOT_LR_03.wav"
+    },
+    {
+     "wave": "WL_GUN_ROCKET.GUN_ROCKET_LAUNCH_SHOOT_LR_04",
+     "wav": "content/WL_GUN_ROCKET/GUN_ROCKET_LAUNCH_SHOOT_LR_04.wav"
+    },
+    {
+     "wave": "WL_GUN_ROCKET.GUN_ROCKET_SHOOT_WHISTLE_01",
+     "wav": "content/WL_GUN_ROCKET/GUN_ROCKET_SHOOT_WHISTLE_01.wav"
+    },
+    {
+     "wave": "WL_GUN_ROCKET.GUN_ROCKET_SHOOT_WHISTLE_02",
+     "wav": "content/WL_GUN_ROCKET/GUN_ROCKET_SHOOT_WHISTLE_02.wav"
+    },
+    {
+     "wave": "WL_GUN_ROCKET.GUN_ROCKET_SHOOT_WHISTLE_03",
+     "wav": "content/WL_GUN_ROCKET/GUN_ROCKET_SHOOT_WHISTLE_03.wav"
+    }
+   ]
+  },
+  {
+   "event": "WP_NoAmmoFire",
+   "cue": "BL_WPN_FOLEY.SHOOT_DRY_FIRE_BALLISTIC",
+   "class": "SoundCue",
+   "waves": [
+    {
+     "wave": "WL_GUN_FOLEY.DRY_FIRE_BALLISTIC",
+     "wav": "content/WL_GUN_FOLEY/DRY_FIRE_BALLISTIC.wav"
+    },
+    {
+     "wave": "WL_GUN_FOLEY.RELOAD_BOLT_07",
+     "wav": "content/WL_GUN_FOLEY/RELOAD_BOLT_07.wav"
+    }
+   ]
+  },
+  {
+   "event": "WP_StartFineAim",
+   "cue": "BL_WPN_GUN_ROCKET.FINE_AIM_START",
+   "class": "SoundCue",
+   "waves": [
+    {
+     "wave": "WL_FS_BOT.MTL_FOLY_FS_BOT_MVMNT_01",
+     "wav": "content/WL_FS_BOT/MTL_FOLY_FS_BOT_MVMNT_01.wav"
+    },
+    {
+     "wave": "WL_FS_BOT.MTL_FOLY_FS_BOT_MVMNT_02",
+     "wav": "content/WL_FS_BOT/MTL_FOLY_FS_BOT_MVMNT_02.wav"
+    },
+    {
+     "wave": "WL_FS_BOT.MTL_FOLY_FS_BOT_MVMNT_03",
+     "wav": "content/WL_FS_BOT/MTL_FOLY_FS_BOT_MVMNT_03.wav"
+    },
+    {
+     "wave": "WL_FS_BOT.MTL_FOLY_FS_BOT_MVMNT_04",
+     "wav": "content/WL_FS_BOT/MTL_FOLY_FS_BOT_MVMNT_04.wav"
+    },
+    {
+     "wave": "WL_GUN_FOLEY.GUNf_MVMNT_01",
+     "wav": "content/WL_GUN_FOLEY/GUNf_MVMNT_01.wav"
+    },
+    {
+     "wave": "WL_GUN_FOLEY.GUNf_MVMNT_02",
+     "wav": "content/WL_GUN_FOLEY/GUNf_MVMNT_02.wav"
+    }
+   ]
+  },
+  {
+   "event": "WP_EndFineAim",
+   "cue": "BL_WPN_GUN_ROCKET.FINE_AIM_START",
+   "class": "SoundCue",
+   "waves": [
+    {
+     "wave": "WL_FS_BOT.MTL_FOLY_FS_BOT_MVMNT_01",
+     "wav": "content/WL_FS_BOT/MTL_FOLY_FS_BOT_MVMNT_01.wav"
+    },
+    {
+     "wave": "WL_FS_BOT.MTL_FOLY_FS_BOT_MVMNT_02",
+     "wav": "content/WL_FS_BOT/MTL_FOLY_FS_BOT_MVMNT_02.wav"
+    },
+    {
+     "wave": "WL_FS_BOT.MTL_FOLY_FS_BOT_MVMNT_03",
+     "wav": "content/WL_FS_BOT/MTL_FOLY_FS_BOT_MVMNT_03.wav"
+    },
+    {
+     "wave": "WL_FS_BOT.MTL_FOLY_FS_BOT_MVMNT_04",
+     "wav": "content/WL_FS_BOT/MTL_FOLY_FS_BOT_MVMNT_04.wav"
+    },
+    {
+     "wave": "WL_GUN_FOLEY.GUNf_MVMNT_01",
+     "wav": "content/WL_GUN_FOLEY/GUNf_MVMNT_01.wav"
+    },
+    {
+     "wave": "WL_GUN_FOLEY.GUNf_MVMNT_02",
+     "wav": "content/WL_GUN_FOLEY/GUNf_MVMNT_02.wav"
+    }
+   ]
+  },
+  {
+   "event": "PickupSound",
+   "cue": "BL_WPN_GUN_ROCKET.PICK_UP",
+   "class": "SoundCue",
+   "waves": [
+    {
+     "wave": "WL_GUN_FOLEY.RELOAD_BOLT_07",
+     "wav": "content/WL_GUN_FOLEY/RELOAD_BOLT_07.wav"
+    },
+    {
+     "wave": "WL_GUN_FOLEY.RELOAD_MTL_SCRAPE_02",
+     "wav": "content/WL_GUN_FOLEY/RELOAD_MTL_SCRAPE_02.wav"
+    },
+    {
+     "wave": "WL_GUN_FOLEY.RELOAD_SERVO_AIRY",
+     "wav": "content/WL_GUN_FOLEY/RELOAD_SERVO_AIRY.wav"
+    },
+    {
+     "wave": "WL_GUN_FOLEY.RELOAD_SYNTH_BUBBLE",
+     "wav": "content/WL_GUN_FOLEY/RELOAD_SYNTH_BUBBLE.wav"
+    }
+   ]
+  },
+  {
+   "event": "DefaultImpactSound",
+   "cue": "BL_WPN_GUN_ROCKET.EXPL_IMPT_WORLD",
+   "class": "SoundCue",
+   "waves": [
+    {
+     "wave": "WL_EXPLOSIONS.EXPL_AMB_DIST_01",
+     "wav": "content/WL_EXPLOSIONS/EXPL_AMB_DIST_01.wav"
+    },
+    {
+     "wave": "WL_EXPLOSIONS.EXPL_AMB_DIST_02",
+     "wav": "content/WL_EXPLOSIONS/EXPL_AMB_DIST_02.wav"
+    },
+    {
+     "wave": "WL_EXPLOSIONS.EXPL_AMB_DIST_03",
+     "wav": "content/WL_EXPLOSIONS/EXPL_AMB_DIST_03.wav"
+    },
+    {
+     "wave": "WL_EXPLOSIONS.EXPL_AMB_DIST_04",
+     "wav": "content/WL_EXPLOSIONS/EXPL_AMB_DIST_04.wav"
+    },
+    {
+     "wave": "WL_EXPLOSIONS.EXPL_AMB_DIST_05",
+     "wav": "content/WL_EXPLOSIONS/EXPL_AMB_DIST_05.wav"
+    },
+    {
+     "wave": "WL_EXPLOSIONS.EXPL_AMB_DIST_06",
+     "wav": "content/WL_EXPLOSIONS/EXPL_AMB_DIST_06.wav"
+    },
+    {
+     "wave": "WL_EXPLOSIONS.EXPL_AMB_DIST_07",
+     "wav": "content/WL_EXPLOSIONS/EXPL_AMB_DIST_07.wav"
+    },
+    {
+     "wave": "WL_EXPLOSIONS.EXPL_AMB_DIST_08",
+     "wav": "content/WL_EXPLOSIONS/EXPL_AMB_DIST_08.wav"
+    },
+    {
+     "wave": "WL_EXPLOSIONS.EXPL_AMB_DIST_09",
+     "wav": "content/WL_EXPLOSIONS/EXPL_AMB_DIST_09.wav"
+    },
+    {
+     "wave": "WL_EXPLOSIONS.EXPL_AMB_DIST_10",
+     "wav": "content/WL_EXPLOSIONS/EXPL_AMB_DIST_10.wav"
+    },
+    {
+     "wave": "WL_EXPLOSIONS.EXPL_AMB_DIST_11",
+     "wav": "content/WL_EXPLOSIONS/EXPL_AMB_DIST_11.wav"
+    },
+    {
+     "wave": "WL_EXPLOSIONS.EXPL_CANNON_01",
+     "wav": "content/WL_EXPLOSIONS/EXPL_CANNON_01.wav"
+    },
+    {
+     "wave": "WL_EXPLOSIONS.EXPL_CANNON_02",
+     "wav": "content/WL_EXPLOSIONS/EXPL_CANNON_02.wav"
+    },
+    {
+     "wave": "WL_EXPLOSIONS.EXPL_CANNON_04",
+     "wav": "content/WL_EXPLOSIONS/EXPL_CANNON_04.wav"
+    },
+    {
+     "wave": "WL_EXPLOSIONS.EXPL_CANNON_05",
+     "wav": "content/WL_EXPLOSIONS/EXPL_CANNON_05.wav"
+    },
+    {
+     "wave": "WL_EXPLOSIONS.EXPL_CANNON_07",
+     "wav": "content/WL_EXPLOSIONS/EXPL_CANNON_07.wav"
+    },
+    {
+     "wave": "WL_EXPLOSIONS.EXPL_ROCKET_WHSH_01",
+     "wav": "content/WL_EXPLOSIONS/EXPL_ROCKET_WHSH_01.wav"
+    },
+    {
+     "wave": "WL_EXPLOSIONS.EXPL_ROCKET_WHSH_02",
+     "wav": "content/WL_EXPLOSIONS/EXPL_ROCKET_WHSH_02.wav"
+    },
+    {
+     "wave": "WL_EXPLOSIONS.EXPL_ROCKET_WHSH_03",
+     "wav": "content/WL_EXPLOSIONS/EXPL_ROCKET_WHSH_03.wav"
+    },
+    {
+     "wave": "WL_EXPLOSIONS.EXPL_ROCKET_WHSH_04",
+     "wav": "content/WL_EXPLOSIONS/EXPL_ROCKET_WHSH_04.wav"
+    },
+    {
+     "wave": "WL_EXPLOSIONS.EXPL_ROCKET_WHSH_05",
+     "wav": "content/WL_EXPLOSIONS/EXPL_ROCKET_WHSH_05.wav"
+    }
+   ]
+  }
+ ],
+ "gameplay (versus WEPDATA = MultiplayerData, CONFIRMED)": {},
+ "versus_data_source": {
+  "object": "WEP_RocketLauncher_p.RocketLauncher_WEPDATA",
+  "selected_by": "MultiplayerData",
+  "rule": "TnWeapon.GivenTo: TnMultiplayerGame.DesiredWeaponDataType = 3 (Multiplayer); GetWeaponDataByType(3) == none -> WDT 1 PlayerData; no fallback to DefaultTnWeaponData; AI holders use AiData (RE 2026-10-07, CONFIRMED from script)"
+ },
+ "wepdata_objects": {
+  "MultiplayerData (versus)": "WEP_RocketLauncher_p.RocketLauncher_WEPDATA",
+  "PlayerData (campaign / SP)": "WEP_RocketLauncher_p.RocketLauncher_SP_WEPDATA",
+  "SurvivalData (Escalation)": null,
+  "AiData": "WEP_RocketLauncher_AI_p.RocketLauncher_AI_WEPDATA"
+ },
+ "class_defaults (weapon CDO, sub-objects resolved)": {
+  "FireIntervalLerper": {
+   "object": "TransContent.Default__TnWeaponRocketLauncher.Lerper0",
+   "class": "HmValueLerper",
+   "values": {}
+  },
+  "WeaponHeat": {
+   "object": "TransContent.Default__TnWeaponRocketLauncher.WeaponHeat0",
+   "class": "TnWeaponHeat",
+   "values": {
+    "HeatProperties": {
+     "HeatMax": 100.0,
+     "Modifiers": []
+    }
+   }
+  },
+  "MultiplayerData": "WEP_RocketLauncher_p.RocketLauncher_WEPDATA",
+  "ShotStatId": 4152,
+  "Defragger": {
+   "object": "TransContent.Default__TnWeaponRocketLauncher.Defragger0",
+   "class": "TnDefragger",
+   "values": {
+    "DefragTime": 1.0,
+    "Range": {
+     "Min": 0.0,
+     "Max": 1.0
+    },
+    "DefragShaderParamName": "Defrag",
+    "CurrentValue": -1.0
+   }
+  },
+  "AmmoMaterialRamper": {
+   "object": "TransContent.Default__TnWeaponRocketLauncher.AmmoMaterialRamper0",
+   "class": "TnDefragger",
+   "values": {
+    "DefragTime": 0.800000011920929,
+    "Range": {
+     "Min": 1.0,
+     "Max": 80.0
+    },
+    "DefragShaderParamName": "EmissiveIntensity",
+    "CurrentValue": -1.0
+   }
+  },
+  "WeaponMeshTemplate": "WEP_RocketLauncher_p.RocketLauncher_WEPMESH",
+  "PlayerData": "WEP_RocketLauncher_p.RocketLauncher_SP_WEPDATA",
+  "AiData": "WEP_RocketLauncher_AI_p.RocketLauncher_AI_WEPDATA",
+  "ItemName": "Thermo Rocket Launcher (Vehicle Lock-On)",
+  "LockedOnMessage": "LOCKED ON",
+  "PutDownImmediatelyDetachDelay": 0.009999999776482582,
+  "PutDownImmediatelyTime": 0.019999999552965164,
+  "IsEffectedByIncreaseAmmoSkill": true,
+  "DamageModifier": "TransGame.Default__TnWeapon.DamageModifier0",
+  "PickupObtainedDialog": "SoundEvents_Dialog.WeaponPickupObtainedDialog",
+  "SpawnOffsetAngle": {
+   "Pitch": 3000,
+   "Yaw": 0,
+   "Roll": 0
+  },
+  "PickupScale": 1.0,
+  "IncreaseAmmoSkill": "TransGame.TnSkillIncreaseAmmoFromClips",
+  "AmmoClipCount": 10,
+  "Data": "TransGame.Default__TnWeapon.DefaultTnWeaponData",
+  "DroppedPickupClass": "TransGame.TnDroppedPickupWeapon",
+  "PickupRating": 1.0,
+  "PickupRotationRate": {
+   "Pitch": 0,
+   "Yaw": 10000,
+   "Roll": 0
+  },
+  "ReserveAmmoCount": 40,
+  "FiringStatesArray": [
+   "WeaponFiring",
+   "WeaponFiring"
+  ],
+  "ShouldFireOnRelease": [
+   0,
+   0
+  ],
+  "MessageClass": "HM_Engine.HmLocalMessage",
+  "DefaultAnimSpeed": 1.0,
+  "RespawnTime": 30.0,
+  "MaxDesireability": 0.10000000149011612,
+  "PickupMessage": "Snagged an item.",
+  "FindLevelStartOffset": {
+   "X": 0.0,
+   "Y": 0.0,
+   "Z": 25.0
+  },
+  "FindLevelEndOffset": {
+   "X": 0.0,
+   "Y": 0.0,
+   "Z": -15000.0
+  },
+  "CollisionPreset": "COLLIDE_CustomDefault",
+  "CustomTimeDilation": 1.0,
+  "DrawScale": 1.0,
+  "DrawScale3D": {
+   "X": 1.0,
+   "Y": 1.0,
+   "Z": 1.0
+  },
+  "ActorIndex": -1,
+  "ReplicatedCollisionPreset": "None"
+ },
+ "fine_aim_camera (OverTheShoulder strategy FOV)": {
+  "weapon_pcs": null,
+  "source": "CAM_Strategies_p.OverTheShoulder_STRATEGY.TnFovCameraBehavior_1013",
+  "fov_default": {
+   "Fov": 80.0,
+   "SmoothTime": 0.4000000059604645
+  },
+  "fov_fine_aim": {
+   "Fov": 45.0,
+   "SmoothTime": 0.10000000149011612
+  },
+  "fov_fine_aim_hovering": {
+   "Fov": 45.0,
+   "SmoothTime": 0.10000000149011612
+  },
+  "rule": "first FOVsByPCS entry whose PlayerCameraStates are all active; weapon adds WeaponPCS, fine aim adds TnPCS_FineAim"
+ },
+ "hud_scope (Hud_GFX ActionScript on NotifyFineAimChanged(1), by weapon class; RE TARGETED_PASS5 CONFIRMED)": null,
+ "gameplay (campaign / SP PlayerData)": {
+  "object": "WEP_RocketLauncher_p.RocketLauncher_SP_WEPDATA"
+ },
+ "ai_data": {
+  "object": "WEP_RocketLauncher_AI_p.RocketLauncher_AI_WEPDATA",
+  "DesiredFiringRange": "RANGE_Retreated"
+ },
+ "damage_types": {},
+ "restrictions": {},
+ "usable_by_chassis": null,
+ "ui": {
+  "ratings": {},
+  "kill_feed_icon": null,
+  "hud_weapon_icon": null,
+  "loadout_icons (GFx export name == provider id, HIGH)": null,
+  "menu_preview": "weapon glTF (no dedicated preview mesh authored for MP loadouts: INFERRED from absence)"
+ },
+ "mp": {
+  "in_every_mp_map": false,
+  "in_any_mp_map": false,
+  "escalation_ai_weapon": true
+ },
+ "mp_weapons_entry": "manifests/mp_content/mp_weapons.json weapons[\"TransContent.TnWeaponRocketLauncher\"]",
+ "validation": {
+  "paths_checked": 50,
+  "missing": [],
+  "glb": true,
+  "clips": 6,
+  "sounds_with_wav": 8,
+  "sounds": 9,
+  "seconds": 2.0
+ },
+ "files": {
+  "json": "VerticalSlice/Weapons/RocketLauncher/weapon.json",
+  "slice_weapon_kept": false
+ }
+}

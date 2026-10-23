@@ -1,0 +1,934 @@
+{
+ "generated_by": "AssetTools/scripts/wfc/vs_weapon_export.py",
+ "weapon_id": "TankRobotGatlingGunAutobot",
+ "stable_id_source": "TnDataProvider_Weapon UniqueId (TransWeapons.ini)",
+ "class": "TransContent.TnWeaponTankRobotGatlingGunAutobot",
+ "provider_ids": [],
+ "display_name": {
+  "ItemName": "Missing Weapon, needs entry in TransContent.int"
+ },
+ "description": null,
+ "weapon_type_code": null,
+ "mesh": {
+  "object": "WEP_SoldierTank_p.WEP_SoldierTankAut_SKEL",
+  "weapon_mesh_template": "WEP_SoldierTank_p.SoldierTankAutGatling_AI_WEPMESH",
+  "glb": "../AssetTools/out/campaign_characters/weapons/TankRobotGatlingGunAutobot/weapon.glb",
+  "source_gltf": "content/WEP_SoldierTank_p/WEP_SoldierTankAut_SKEL.gltf",
+  "mesh_note": null,
+  "materials": [
+   {
+    "slot": 0,
+    "material": "TR_SoldierTankAut_VEH_p.VH_SoldierTankAutA_NormSpec_Cust_E_Mat_INST",
+    "textures": {
+     "CustClrAlphasMap": "content/TR_SoldierTankAut_VEH_p/VH_SoldierTankAut_CustAB_AuxGlow.png",
+     "Lum_Map": "content/TR_SoldierTankAut_VEH_p/VH_SoldierTankAut_SpecPwr_DifLum_EnrGlow.png",
+     "Grunge_Map": "content/TR_SoldierTankAut_VEH_p/VH_SoldierTankAut_GrungeClr.png",
+     "MaterialExpressionTextureSample_9942": "content/TR_AllShader_p/Textures/Decepticon_SoldierCustomColorLUT.png",
+     "MaterialExpressionTextureSample_9712": "content/TR_AllShader_p/Textures/Autobot_SoldierCustomColorLUT.png",
+     "MaterialExpressionTextureSample_13572": "content/TR_AllShader_p/Textures/Neutral_SoldierCustomColorLUT.png",
+     "Reflection_Map": null,
+     "Normal_Map": "content/TR_AllShader_p/Textures/VH_Bumblebee_Norm.png",
+     "VarienceNormal_XY_Map": "content/TR_SoldierTankAut_VEH_p/VH_SoldierTankAut_NORM.png",
+     "MaterialExpressionTextureSample_13970": "content/TR_AllShader_p/Textures/fractalMaps.png"
+    },
+    "roles": {
+     "reflection": {
+      "texture": "TR_AllShader_p.CubeMaps.CHR_Metals_CUBEMAP3D",
+      "file": null,
+      "inputs": [
+       "DiffuseColor",
+       "EmissiveColor"
+      ],
+      "channels": [],
+      "graph_depth": 5,
+      "sampler": "Reflection_Map",
+      "role_source": "cubemap"
+     },
+     "normal": {
+      "texture": "TR_AllShader_p.Textures.VH_Bumblebee_Norm",
+      "file": "content/TR_AllShader_p/Textures/VH_Bumblebee_Norm.png",
+      "inputs": [
+       "Normal",
+       "EmissiveColor"
+      ],
+      "channels": [],
+      "graph_depth": 1,
+      "sampler": "Normal_Map",
+      "role_source": "param_name+graph"
+     },
+     "emissive": {
+      "texture": "TR_SoldierTankAut_VEH_p.VH_SoldierTankAut_SpecPwr_DifLum_EnrGlow",
+      "file": "content/TR_SoldierTankAut_VEH_p/VH_SoldierTankAut_SpecPwr_DifLum_EnrGlow.png",
+      "inputs": [
+       "DiffuseColor",
+       "EmissiveColor",
+       "SpecularColor",
+       "SpecularPower"
+      ],
+      "channels": [
+       "R"
+      ],
+      "graph_depth": 4,
+      "sampler": "Lum_Map",
+      "role_source": "param_name+graph"
+     },
+     "mask": {
+      "texture": "TR_SoldierTankAut_VEH_p.VH_SoldierTankAut_CustAB_AuxGlow",
+      "file": "content/TR_SoldierTankAut_VEH_p/VH_SoldierTankAut_CustAB_AuxGlow.png",
+      "inputs": [
+       "DiffuseColor",
+       "EmissiveColor",
+       "SpecularColor",
+       "SpecularPower"
+      ],
+      "channels": [],
+      "graph_depth": 6,
+      "sampler": "CustClrAlphasMap",
+      "role_source": "name"
+     },
+     "base_color": {
+      "texture": "TR_SoldierTankAut_VEH_p.VH_SoldierTankAut_GrungeClr",
+      "file": "content/TR_SoldierTankAut_VEH_p/VH_SoldierTankAut_GrungeClr.png",
+      "inputs": [
+       "DiffuseColor",
+       "EmissiveColor",
+       "SpecularColor",
+       "SpecularPower"
+      ],
+      "channels": [],
+      "graph_depth": 5,
+      "sampler": "Grunge_Map",
+      "role_source": "name"
+     }
+    },
+    "blend_mode": "BLEND_Opaque"
+   }
+  ],
+  "buff_materials": null,
+  "sockets": [
+   {
+    "socket": "MuzzleFlash_2",
+    "bone": "C_Robo05_XT",
+    "relative_location_ue": [
+     0,
+     0,
+     0
+    ],
+    "relative_rotation_ue": [
+     0,
+     0,
+     0
+    ],
+    "relative_location_gltf": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "relative_scale": 1.0
+   },
+   {
+    "socket": "MuzzleFlash_1",
+    "bone": "C_Robo09_XT",
+    "relative_location_ue": [
+     0,
+     0,
+     0
+    ],
+    "relative_rotation_ue": [
+     0,
+     0,
+     0
+    ],
+    "relative_location_gltf": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "relative_scale": 1.0
+   }
+  ],
+  "muzzle_sockets": [
+   "MuzzleFlash_1",
+   "MuzzleFlash_2"
+  ],
+  "reference_bone": "WEP_Reference_XR",
+  "pickup_mesh": null,
+  "pickup_mesh_translation_ue": null
+ },
+ "animations": {
+  "anim_sets": [
+   "WEP_SoldierTank_p.WEP_SoldierTankAut_ANIM"
+  ],
+  "clips_in_glb": [
+   {
+    "name": "SoldierTank_Fire",
+    "sequence": "SoldierTank_Fire",
+    "category": "weapon",
+    "source_animset": "WEP_SoldierTank_p.WEP_SoldierTankAut_ANIM",
+    "source_gltf": "content/WEP_SoldierTank_p/WEP_SoldierTankAut_ANIM.anim.gltf",
+    "duration_s": 0.4667,
+    "channels": 15,
+    "unmapped_channels": 0,
+    "additive": false,
+    "provenance": "original"
+   }
+  ],
+  "idle": null,
+  "event_anims (weapon mesh)": [
+   {
+    "WeaponEventType": "WP_Fire",
+    "AnimName": "SoldierTank_Fire"
+   },
+   {
+    "WeaponEventType": "WP_Reload",
+    "AnimName": "SoldierTank_Reload"
+   }
+  ],
+  "owner_animations (robot body)": null
+ },
+ "attachment": {
+  "owner_socket (robot)": "WeaponSocket_Primary",
+  "reference_bone": "WEP_Reference_XR",
+  "rule": "weapon reference bone placed at the robot WeaponSocket_Primary (per-chassis socket in Characters/<ChassisId>/character.json robot.sockets); vehicle-form weapons fire from the vehicle sockets"
+ },
+ "recoil (procedural, WEPMESH)": {
+  "SpineRecoil": {
+   "TimeToGo": 0.0,
+   "TimeDuration": 0.20000000298023224,
+   "RotAmplitude": {
+    "X": 500.0,
+    "Y": 150.0,
+    "Z": 0.0
+   },
+   "RotFrequency": {
+    "X": 10.0,
+    "Y": 10.0,
+    "Z": 0.0
+   },
+   "RotSinOffset": {
+    "X": 0.0,
+    "Y": 0.0,
+    "Z": 0.0
+   },
+   "RotParams": {
+    "X": "ERS_Zero",
+    "Y": "ERS_Random",
+    "Z": "ERS_Zero",
+    "Padding": 0
+   },
+   "RotOffset": {
+    "Pitch": 0,
+    "Yaw": 0,
+    "Roll": 0
+   },
+   "LocAmplitude": {
+    "X": 0.0,
+    "Y": 0.0,
+    "Z": 0.0
+   },
+   "LocFrequency": {
+    "X": 0.0,
+    "Y": 0.0,
+    "Z": 0.0
+   },
+   "LocSinOffset": {
+    "X": 0.0,
+    "Y": 0.0,
+    "Z": 0.0
+   },
+   "LocParams": {
+    "X": "ERS_Zero",
+    "Y": "ERS_Zero",
+    "Z": "ERS_Zero",
+    "Padding": 0
+   },
+   "LocOffset": {
+    "X": 0.0,
+    "Y": 0.0,
+    "Z": 0.0
+   }
+  },
+  "RightHandRecoil": {
+   "TimeToGo": 0.0,
+   "TimeDuration": 0.20000000298023224,
+   "RotAmplitude": {
+    "X": 1000.0,
+    "Y": 150.0,
+    "Z": 0.0
+   },
+   "RotFrequency": {
+    "X": 10.0,
+    "Y": 10.0,
+    "Z": 0.0
+   },
+   "RotSinOffset": {
+    "X": 0.0,
+    "Y": 0.0,
+    "Z": 0.0
+   },
+   "RotParams": {
+    "X": "ERS_Zero",
+    "Y": "ERS_Random",
+    "Z": "ERS_Zero",
+    "Padding": 0
+   },
+   "RotOffset": {
+    "Pitch": 0,
+    "Yaw": 0,
+    "Roll": 0
+   },
+   "LocAmplitude": {
+    "X": -8.0,
+    "Y": 0.0,
+    "Z": 0.0
+   },
+   "LocFrequency": {
+    "X": 10.0,
+    "Y": 0.0,
+    "Z": 0.0
+   },
+   "LocSinOffset": {
+    "X": 0.0,
+    "Y": 0.0,
+    "Z": 0.0
+   },
+   "LocParams": {
+    "X": "ERS_Zero",
+    "Y": "ERS_Zero",
+    "Z": "ERS_Random",
+    "Padding": 0
+   },
+   "LocOffset": {
+    "X": 0.0,
+    "Y": 0.0,
+    "Z": 0.0
+   }
+  }
+ },
+ "heat": {},
+ "effects": {
+  "authored": {
+   "muzzle_flashes": [
+    {
+     "WeaponEventType": "WP_Fire",
+     "PSTemplate": "FX_Weapons_p.Blaster.MuzzleFlash_Blaster_FX",
+     "PSLoops": false,
+     "PSComponent": null,
+     "DisableLight": false
+    }
+   ],
+   "tracers": null,
+   "default_squib": "FX_ElectronPulseRifle_p.FX.Impact_ElectronPulse_FX",
+   "effects_type": null
+  },
+  "decode_status": {
+   "FX_ElectronPulseRifle_p.FX.Impact_ElectronPulse_FX": {
+    "template": "FX_ElectronPulseRifle_p.FX.Impact_ElectronPulse_FX",
+    "in_dump": true,
+    "emitters": [
+     {
+      "emitter": "GLOW_Dup",
+      "type_data": "Sprite (no TypeData)",
+      "type_data_props": null,
+      "material": "FX_Materials_p.Materials.MuzzleFlash_White_Mat",
+      "undecoded_modules (PMI_Unknown)": 0,
+      "resolved_modules (PMI_Unknown slots named by object class)": [
+       {
+        "slot": 9,
+        "module": "PMI_AttractorPoint",
+        "object": "FX_ElectronPulseRifle_p.FX.Impact_ElectronPulse_FX.ParticleModuleAttractorPoint_11714",
+        "properties": {
+         "Range": {
+          "Distribution": null,
+          "Type": 1,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 1,
+          "LookupTable": [
+           300.0
+          ]
+         },
+         "Strength": {
+          "Distribution": null,
+          "Type": 1,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 1,
+          "LookupTable": [
+           1000.0
+          ]
+         },
+         "Position": {
+          "Distribution": null,
+          "Type": 7,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 3,
+          "LookupTable": [
+           0.0,
+           0.0,
+           0.0
+          ]
+         },
+         "StrengthByDistance": true,
+         "bUpdateModule": true,
+         "bEnabled": true
+        }
+       }
+      ],
+      "assignment_complete": true
+     },
+     {
+      "emitter": "GLOW",
+      "type_data": "Sprite (no TypeData)",
+      "type_data_props": null,
+      "material": "FX_Materials_p.Materials.Glow_Mod_MAT",
+      "undecoded_modules (PMI_Unknown)": 0,
+      "resolved_modules (PMI_Unknown slots named by object class)": null,
+      "assignment_complete": true
+     },
+     {
+      "emitter": "GLOW_Dup",
+      "type_data": "Sprite (no TypeData)",
+      "type_data_props": null,
+      "material": "FX_Materials_p.Materials.Glow_Mod_MAT",
+      "undecoded_modules (PMI_Unknown)": 0,
+      "resolved_modules (PMI_Unknown slots named by object class)": null,
+      "assignment_complete": true
+     },
+     {
+      "emitter": "GLOWHole",
+      "type_data": "Sprite (no TypeData)",
+      "type_data_props": null,
+      "material": "FX_Materials_p.Materials.Glow_Mod_MAT",
+      "undecoded_modules (PMI_Unknown)": 0,
+      "resolved_modules (PMI_Unknown slots named by object class)": null,
+      "assignment_complete": true
+     },
+     {
+      "emitter": "Sparks_bolts_Dup",
+      "type_data": "Sprite (no TypeData)",
+      "type_data_props": null,
+      "material": "FX_Materials_p.Materials.Spark_Tail_MAT",
+      "undecoded_modules (PMI_Unknown)": 0,
+      "resolved_modules (PMI_Unknown slots named by object class)": null,
+      "assignment_complete": true
+     },
+     {
+      "emitter": "Sparks_Collision_Dup",
+      "type_data": "Sprite (no TypeData)",
+      "type_data_props": null,
+      "material": "FX_Materials_p.Materials.Spark_Tail_MAT",
+      "undecoded_modules (PMI_Unknown)": 0,
+      "resolved_modules (PMI_Unknown slots named by object class)": [
+       {
+        "slot": 8,
+        "module": "PMI_Collision",
+        "object": "FX_ElectronPulseRifle_p.FX.Impact_ElectronPulse_FX.ParticleModuleCollision_819",
+        "properties": {
+         "DampingFactor": {
+          "Distribution": null,
+          "Type": 7,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 3,
+          "LookupTable": [
+           0.5,
+           0.5,
+           0.5
+          ]
+         },
+         "MaxCollisions": {
+          "Distribution": null,
+          "Type": 3,
+          "Op": 2,
+          "LookupTableNumElements": 2,
+          "LookupTableChunkSize": 2,
+          "LookupTable": [
+           3.0,
+           1.0
+          ]
+         },
+         "DelayAmount": {
+          "Distribution": null,
+          "Type": 1,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 1,
+          "LookupTable": [
+           0.10000000149011612
+          ]
+         },
+         "bEnabled": false,
+         "DampingFactorRotation": {
+          "Distribution": null,
+          "Type": 7,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 3,
+          "LookupTable": [
+           1.0,
+           1.0,
+           1.0
+          ]
+         },
+         "bDropDetail": true,
+         "ParticleMass": {
+          "Distribution": null,
+          "Type": 1,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 1,
+          "LookupTable": [
+           0.10000000149011612
+          ]
+         },
+         "DirScalar": 3.5,
+         "VerticalFudgeFactor": 0.10000000149011612,
+         "bSpawnModule": true,
+         "bUpdateModule": true,
+         "CollisionCompletionOption": "EPCC_Kill (default, enum 0)"
+        }
+       }
+      ],
+      "assignment_complete": true
+     },
+     {
+      "emitter": "Smoke_Dup",
+      "type_data": "Sprite (no TypeData)",
+      "type_data_props": null,
+      "material": "FX_Materials_p.Materials.SmokeCoolDepth_Mat",
+      "undecoded_modules (PMI_Unknown)": 0,
+      "resolved_modules (PMI_Unknown slots named by object class)": null,
+      "assignment_complete": true
+     },
+     {
+      "emitter": "lectro_Dup_Dup_Dup",
+      "type_data": "Sprite (no TypeData)",
+      "type_data_props": null,
+      "material": "FX_Materials_p.Materials.arcball01_MAT",
+      "undecoded_modules (PMI_Unknown)": 0,
+      "resolved_modules (PMI_Unknown slots named by object class)": [
+       {
+        "slot": 7,
+        "module": "PMI_Collision",
+        "object": "FX_ElectronPulseRifle_p.FX.Impact_ElectronPulse_FX.ParticleModuleCollision_8778",
+        "properties": {
+         "DampingFactor": {
+          "Distribution": null,
+          "Type": 7,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 3,
+          "LookupTable": [
+           1.0,
+           1.0,
+           1.0
+          ]
+         },
+         "MaxCollisions": {
+          "Distribution": null,
+          "Type": 1,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 1,
+          "LookupTable": [
+           1.0
+          ]
+         },
+         "bEnabled": false,
+         "DampingFactorRotation": {
+          "Distribution": null,
+          "Type": 7,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 3,
+          "LookupTable": [
+           1.0,
+           1.0,
+           1.0
+          ]
+         },
+         "bDropDetail": true,
+         "ParticleMass": {
+          "Distribution": null,
+          "Type": 1,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 1,
+          "LookupTable": [
+           0.10000000149011612
+          ]
+         },
+         "DirScalar": 3.5,
+         "VerticalFudgeFactor": 0.10000000149011612,
+         "DelayAmount": {
+          "Distribution": null,
+          "Type": 1,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 1,
+          "LookupTable": [
+           0.0
+          ]
+         },
+         "bSpawnModule": true,
+         "bUpdateModule": true,
+         "CollisionCompletionOption": "EPCC_Kill (default, enum 0)"
+        }
+       }
+      ],
+      "assignment_complete": true
+     }
+    ],
+    "beam_modules (template sub-objects)": null,
+    "beam_modules_note": null
+   },
+   "FX_Weapons_p.Blaster.MuzzleFlash_Blaster_FX": {
+    "template": "FX_Weapons_p.Blaster.MuzzleFlash_Blaster_FX",
+    "in_dump": true,
+    "emitters": [
+     {
+      "emitter": "CamerafacingBurst",
+      "type_data": "Sprite (no TypeData)",
+      "type_data_props": null,
+      "material": "FX_Materials_p.Materials.MuzzleFlash_Mat",
+      "undecoded_modules (PMI_Unknown)": 0,
+      "resolved_modules (PMI_Unknown slots named by object class)": null,
+      "assignment_complete": true
+     },
+     {
+      "emitter": "CamerafacingBurst_Dup",
+      "type_data": "Sprite (no TypeData)",
+      "type_data_props": null,
+      "material": "FX_Materials_p.Materials.MuzzleFlash_Mat",
+      "undecoded_modules (PMI_Unknown)": 0,
+      "resolved_modules (PMI_Unknown slots named by object class)": null,
+      "assignment_complete": true
+     },
+     {
+      "emitter": "Sparks",
+      "type_data": "Sprite (no TypeData)",
+      "type_data_props": null,
+      "material": "FX_Materials_p.Materials.SparksSheet1_MAT",
+      "undecoded_modules (PMI_Unknown)": 0,
+      "resolved_modules (PMI_Unknown slots named by object class)": null,
+      "assignment_complete": true
+     },
+     {
+      "emitter": "sparks2",
+      "type_data": "Sprite (no TypeData)",
+      "type_data_props": null,
+      "material": "FX_Materials_p.Materials.SparksSheet1_MAT",
+      "undecoded_modules (PMI_Unknown)": 0,
+      "resolved_modules (PMI_Unknown slots named by object class)": null,
+      "assignment_complete": true
+     },
+     {
+      "emitter": "Burst_Small_Dup_Dup_Dup",
+      "type_data": "ParticleModuleTypeDataMesh",
+      "type_data_props": {
+       "Mesh": "FX_Weapons_p.StaticMesh.CrossPlanes_STATMESH"
+      },
+      "material": "FX_Weapons_p.Materials.MuzzleFlash_Side_MAT",
+      "undecoded_modules (PMI_Unknown)": 0,
+      "resolved_modules (PMI_Unknown slots named by object class)": null,
+      "assignment_complete": true
+     }
+    ],
+    "beam_modules (template sub-objects)": null,
+    "beam_modules_note": null
+   }
+  },
+  "default_decal": {
+   "Material": "FX_Decals_p.DecalDefault_MAT",
+   "MinWidth": 50.0,
+   "MinHeight": 50.0,
+   "WidthRange": 25.0,
+   "HeightRange": 25.0,
+   "Thickness": 25.0,
+   "Lifetime": 30.0,
+   "NoClip": false,
+   "UniformScale": false,
+   "ApplyRandomRotation": true
+  },
+  "muzzle_light": "WEP_SoldierTank_p.SoldierTankAutGatling_AI_WEPMESH.PointLightComponent_14276",
+  "muzzle_flash_duration": 0.10000000149011612,
+  "impact_squib": {
+   "ImpactSquibPercentage": 1.0,
+   "ImpactSquibMaxCount": 10,
+   "MaxImpactEffectDistance": 2500.0
+  }
+ },
+ "projectiles": null,
+ "sounds": [
+  {
+   "event": "WP_Fire",
+   "cue": "BL_WPN_GUN_TANKSOLDIER.AI_TANK_MG_SHOOT",
+   "class": "SoundCue",
+   "waves": [
+    {
+     "wave": "WL_GUN_PISTOL_HVY.PHOTON_PISTOL_FIRE_01_LR",
+     "wav": "content/WL_GUN_PISTOL_HVY/PHOTON_PISTOL_FIRE_01_LR.wav"
+    }
+   ]
+  },
+  {
+   "event": "DefaultImpactSound",
+   "cue": "BL_WPN_GUN_TANKSOLDIER.AI_TANK_MG_IMPT_WORLD",
+   "class": "SoundCue",
+   "waves": [
+    {
+     "wave": "WL_EXPLOSIONS.EXPL_MTL_STON_DMG_01",
+     "wav": "content/WL_EXPLOSIONS/EXPL_MTL_STON_DMG_01.wav"
+    },
+    {
+     "wave": "WL_EXPLOSIONS.EXPL_MTL_STON_DMG_02",
+     "wav": "content/WL_EXPLOSIONS/EXPL_MTL_STON_DMG_02.wav"
+    },
+    {
+     "wave": "WL_EXPLOSIONS.EXPL_MTL_STON_DMG_03",
+     "wav": "content/WL_EXPLOSIONS/EXPL_MTL_STON_DMG_03.wav"
+    },
+    {
+     "wave": "WL_EXPLOSIONS.EXPL_MTL_STON_DMG_04",
+     "wav": "content/WL_EXPLOSIONS/EXPL_MTL_STON_DMG_04.wav"
+    },
+    {
+     "wave": "WL_GUN_PLASMA.GUN_PLASMA_CANNON_SQUIB_01",
+     "wav": "content/WL_GUN_PLASMA/GUN_PLASMA_CANNON_SQUIB_01.wav"
+    },
+    {
+     "wave": "WL_GUN_PLASMA.GUN_PLASMA_CANNON_SQUIB_02",
+     "wav": "content/WL_GUN_PLASMA/GUN_PLASMA_CANNON_SQUIB_02.wav"
+    },
+    {
+     "wave": "WL_GUN_PLASMA.GUN_PLASMA_CANNON_SQUIB_03",
+     "wav": "content/WL_GUN_PLASMA/GUN_PLASMA_CANNON_SQUIB_03.wav"
+    }
+   ]
+  },
+  {
+   "event": "BulletBySound",
+   "cue": "BL_WPN_GUN_TANKSOLDIER.AI_TANK_MG_SHOOT_BY",
+   "class": "SoundCue",
+   "waves": [
+    {
+     "wave": "WL_WHSH_BULLET.WHSH_BLLT_BY_PELLET_AIRY_01",
+     "wav": "content/WL_WHSH_BULLET/WHSH_BLLT_BY_PELLET_AIRY_01.wav"
+    },
+    {
+     "wave": "WL_WHSH_BULLET.WHSH_BLLT_BY_PELLET_AIRY_02",
+     "wav": "content/WL_WHSH_BULLET/WHSH_BLLT_BY_PELLET_AIRY_02.wav"
+    },
+    {
+     "wave": "WL_WHSH_BULLET.WHSH_BLLT_BY_PELLET_AIRY_03",
+     "wav": "content/WL_WHSH_BULLET/WHSH_BLLT_BY_PELLET_AIRY_03.wav"
+    },
+    {
+     "wave": "WL_WHSH_BULLET.WHSH_BLLT_BY_PELLET_AIRY_04",
+     "wav": "content/WL_WHSH_BULLET/WHSH_BLLT_BY_PELLET_AIRY_04.wav"
+    },
+    {
+     "wave": "WL_WHSH_BULLET.WHSH_BLLT_BY_PELLET_AIRY_05",
+     "wav": "content/WL_WHSH_BULLET/WHSH_BLLT_BY_PELLET_AIRY_05.wav"
+    },
+    {
+     "wave": "WL_WHSH_BULLET.WHSH_BULLET_WHINE_01",
+     "wav": "content/WL_WHSH_BULLET/WHSH_BULLET_WHINE_01.wav"
+    },
+    {
+     "wave": "WL_WHSH_BULLET.WHSH_BULLET_WHINE_02",
+     "wav": "content/WL_WHSH_BULLET/WHSH_BULLET_WHINE_02.wav"
+    },
+    {
+     "wave": "WL_WHSH_BULLET.WHSH_BULLET_WHINE_03",
+     "wav": "content/WL_WHSH_BULLET/WHSH_BULLET_WHINE_03.wav"
+    },
+    {
+     "wave": "WL_WHSH_BULLET.WHSH_BULLET_WHINE_04",
+     "wav": "content/WL_WHSH_BULLET/WHSH_BULLET_WHINE_04.wav"
+    },
+    {
+     "wave": "WL_WHSH_BULLET.WHSH_BULLET_WHINE_05",
+     "wav": "content/WL_WHSH_BULLET/WHSH_BULLET_WHINE_05.wav"
+    },
+    {
+     "wave": "WL_WHSH_BULLET.WHSH_BULLET_WHINE_06",
+     "wav": "content/WL_WHSH_BULLET/WHSH_BULLET_WHINE_06.wav"
+    }
+   ]
+  }
+ ],
+ "gameplay (versus WEPDATA = MultiplayerData, CONFIRMED)": {},
+ "versus_data_source": {
+  "object": null,
+  "selected_by": "PlayerData (fallback: MultiplayerData unset on the class chain)",
+  "rule": "TnWeapon.GivenTo: TnMultiplayerGame.DesiredWeaponDataType = 3 (Multiplayer); GetWeaponDataByType(3) == none -> WDT 1 PlayerData; no fallback to DefaultTnWeaponData; AI holders use AiData (RE 2026-10-07, CONFIRMED from script)"
+ },
+ "wepdata_objects": {
+  "MultiplayerData (versus)": null,
+  "PlayerData (campaign / SP)": "WEP_SoldierTank_p.SoldierTankAutGatling_AI_WEPDATA",
+  "SurvivalData (Escalation)": null,
+  "AiData": "WEP_SoldierTank_p.SoldierTankAutGatling_AI_WEPDATA"
+ },
+ "class_defaults (weapon CDO, sub-objects resolved)": {
+  "FireIntervalLerper": {
+   "object": "TransContent.Default__TnWeaponTankRobotGatlingGunAutobot.Lerper0",
+   "class": "HmValueLerper",
+   "values": {}
+  },
+  "_HoldWhileOwnerDying": true,
+  "_Stance": "WS_TWO_HANDED_GUN",
+  "WeaponHeat": {
+   "object": "TransContent.Default__TnWeaponTankRobotGatlingGunAutobot.WeaponHeat0",
+   "class": "TnWeaponHeat",
+   "values": {
+    "HeatProperties": {
+     "HeatMax": 100.0,
+     "Modifiers": []
+    }
+   }
+  },
+  "Defragger": {
+   "object": "TransContent.Default__TnWeaponTankRobotGatlingGunAutobot.Defragger0",
+   "class": "TnDefragger",
+   "values": {
+    "DefragTime": 1.0,
+    "Range": {
+     "Min": 0.0,
+     "Max": 1.0
+    },
+    "DefragShaderParamName": "Defrag",
+    "CurrentValue": -1.0
+   }
+  },
+  "AmmoMaterialRamper": {
+   "object": "TransContent.Default__TnWeaponTankRobotGatlingGunAutobot.AmmoMaterialRamper0",
+   "class": "TnDefragger",
+   "values": {
+    "DefragTime": 0.800000011920929,
+    "Range": {
+     "Min": 1.0,
+     "Max": 80.0
+    },
+    "DefragShaderParamName": "EmissiveIntensity",
+    "CurrentValue": -1.0
+   }
+  },
+  "WeaponMeshTemplate": "WEP_SoldierTank_p.SoldierTankAutGatling_AI_WEPMESH",
+  "PlayerData": "WEP_SoldierTank_p.SoldierTankAutGatling_AI_WEPDATA",
+  "AiData": "WEP_SoldierTank_p.SoldierTankAutGatling_AI_WEPDATA",
+  "DroppedPickupClass": null,
+  "PutDownImmediatelyDetachDelay": 0.009999999776482582,
+  "PutDownImmediatelyTime": 0.019999999552965164,
+  "IsEffectedByIncreaseAmmoSkill": true,
+  "ShotStatId": -1,
+  "DamageModifier": "TransGame.Default__TnWeapon.DamageModifier0",
+  "PickupObtainedDialog": "SoundEvents_Dialog.WeaponPickupObtainedDialog",
+  "SpawnOffsetAngle": {
+   "Pitch": 3000,
+   "Yaw": 0,
+   "Roll": 0
+  },
+  "PickupScale": 1.0,
+  "IncreaseAmmoSkill": "TransGame.TnSkillIncreaseAmmoFromClips",
+  "AmmoClipCount": 10,
+  "Data": "TransGame.Default__TnWeapon.DefaultTnWeaponData",
+  "ItemName": "Missing Weapon, needs entry in TransContent.int",
+  "PickupRating": 1.0,
+  "PickupRotationRate": {
+   "Pitch": 0,
+   "Yaw": 10000,
+   "Roll": 0
+  },
+  "ReserveAmmoCount": 40,
+  "FiringStatesArray": [
+   "WeaponFiring",
+   "WeaponFiring"
+  ],
+  "ShouldFireOnRelease": [
+   0,
+   0
+  ],
+  "MessageClass": "HM_Engine.HmLocalMessage",
+  "DefaultAnimSpeed": 1.0,
+  "RespawnTime": 30.0,
+  "MaxDesireability": 0.10000000149011612,
+  "PickupMessage": "Snagged an item.",
+  "FindLevelStartOffset": {
+   "X": 0.0,
+   "Y": 0.0,
+   "Z": 25.0
+  },
+  "FindLevelEndOffset": {
+   "X": 0.0,
+   "Y": 0.0,
+   "Z": -15000.0
+  },
+  "CollisionPreset": "COLLIDE_CustomDefault",
+  "CustomTimeDilation": 1.0,
+  "DrawScale": 1.0,
+  "DrawScale3D": {
+   "X": 1.0,
+   "Y": 1.0,
+   "Z": 1.0
+  },
+  "ActorIndex": -1,
+  "ReplicatedCollisionPreset": "None"
+ },
+ "fine_aim_camera (OverTheShoulder strategy FOV)": {
+  "weapon_pcs": null,
+  "source": "CAM_Strategies_p.OverTheShoulder_STRATEGY.TnFovCameraBehavior_1013",
+  "fov_default": {
+   "Fov": 80.0,
+   "SmoothTime": 0.4000000059604645
+  },
+  "fov_fine_aim": {
+   "Fov": 45.0,
+   "SmoothTime": 0.10000000149011612
+  },
+  "fov_fine_aim_hovering": {
+   "Fov": 45.0,
+   "SmoothTime": 0.10000000149011612
+  },
+  "rule": "first FOVsByPCS entry whose PlayerCameraStates are all active; weapon adds WeaponPCS, fine aim adds TnPCS_FineAim"
+ },
+ "hud_scope (Hud_GFX ActionScript on NotifyFineAimChanged(1), by weapon class; RE TARGETED_PASS5 CONFIRMED)": null,
+ "gameplay (campaign / SP PlayerData)": {
+  "object": "WEP_SoldierTank_p.SoldierTankAutGatling_AI_WEPDATA"
+ },
+ "ai_data": {
+  "object": "WEP_SoldierTank_p.SoldierTankAutGatling_AI_WEPDATA",
+  "DesiredFiringRange": "RANGE_Medium"
+ },
+ "damage_types": {},
+ "restrictions": {},
+ "usable_by_chassis": null,
+ "ui": {
+  "ratings": {},
+  "kill_feed_icon": null,
+  "hud_weapon_icon": null,
+  "loadout_icons (GFx export name == provider id, HIGH)": null,
+  "menu_preview": "weapon glTF (no dedicated preview mesh authored for MP loadouts: INFERRED from absence)"
+ },
+ "mp": {
+  "in_every_mp_map": false,
+  "in_any_mp_map": false,
+  "escalation_ai_weapon": true
+ },
+ "mp_weapons_entry": "manifests/mp_content/mp_weapons.json weapons[\"TransContent.TnWeaponTankRobotGatlingGunAutobot\"]",
+ "validation": {
+  "paths_checked": 30,
+  "missing": [],
+  "glb": true,
+  "clips": 1,
+  "sounds_with_wav": 3,
+  "sounds": 3,
+  "seconds": 3.4
+ },
+ "files": {
+  "json": "VerticalSlice/Weapons/TankRobotGatlingGunAutobot/weapon.json",
+  "slice_weapon_kept": false
+ }
+}
