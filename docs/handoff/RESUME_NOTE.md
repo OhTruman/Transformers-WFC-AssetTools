@@ -11,7 +11,13 @@
   - #4: package 6 carries hd_pbr_index.json and all 498 m6 files;
   - #10 / #13: work/handoff/PLAYTEST_20261023_SEED_COLLISION.md (22bb058);
   - #14: work/handoff/PLAYTEST_20261023_WATER.md (3e6e4d0).
-- Next: stand by (Systems' package-7 data list; any follow-ups from Gameplay / Rendering on the playtest).
+- Seed PC adaptation (Integration decision): out/pc_adapt/MP_IAC_Seed (9745 dropped, per-poly pawn collision on 40 meshes, nav and air
+  nav rebuilt; bot_nav / bot_nav_air got an optional --overlay, no-change proof done). Frozen overlays work/overlay_20261023 (87 files,
+  adopted by Systems) and the superset overlay_20261023b (90 files, + Seed nav; Systems asked to switch). Gameplay dev pickup:
+  WFC_OVERLAY_ROOT. Open: Gameplay re-test of the centre strand (offered a clearance-clipped nav).
+- Campaign render gaps a–e DONE (work/handoff/CAMPAIGN_RENDER_GAPS_20261023.md): inline LM lists, fog cause, material lists, per-sublevel
+  split (392 folders, 996 MB, PASS), proposed tools/render patch (not applied).
+- Next: stand by (Systems' package-7 data list; Gameplay / Rendering follow-ups).
 
 - **Integration session:** now rebuild-07 (same owner as rebuild-9c). Gameplay is rebuild-gameplay-0a. The machine rebooted at 05:41;
   the queue was resumed and finished.

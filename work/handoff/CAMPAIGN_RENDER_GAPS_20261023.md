@@ -35,7 +35,8 @@ Nothing in `Rebuild/tools/render` was touched (`git status` is clean).
   - energy-death (Defrag) instances;
   - runtime-assigned, by referrer class. The largest group is ParticleModuleRequired; the others include TnWeaponMesh, TnTransformer,
     DecalComponent, LensFlare, MaterialInstanceActor and SeqAct_SetMaterial.
-- Parent-only, ObjectReferencer-only and unreferenced materials are recorded but not listed.
+- ObjectReferencer-only materials are in the build list (cooked keep-alives, likely spawned at run time); parent-only (compiled through
+  their children) and unreferenced materials are recorded in the .json but not listed.
 - `.txt` is the build list, one path per line. Chapter membership comes from inventory.db, because authored.db keeps one row per object
   path.
 
