@@ -2,8 +2,7 @@
  "chapter": "A2_KON",
  "generated_by": "AssetTools/work/campaign_render/add_transforming_actors.py",
  "counts": {
-  "added": 28,
-  "level_without_unit_or_split": 1
+  "added": 29
  },
  "materials_used": [
   "TPRO_KON_Doors_p.KON_InteriorDoor_Active_MATINST"
@@ -15,6 +14,7 @@
   "A2_KON_Courtyard2_Design_m",
   "A2_KON_Courtyard_Design_m",
   "A2_KON_DRIVE3_Design_m",
+  "A2_KON_DRIVE3_Trans_Design_m",
   "A2_KON_Dungeons2_Design_m",
   "A2_KON_GuardRoom_Design_m",
   "A2_KON_Hangar_Design_m",
@@ -357,7 +357,46 @@
     }
    ]
   },
-  "A2_KON_DRIVE3_Trans_Design_m": "no unit dir / split world.glb",
+  "A2_KON_DRIVE3_Trans_Design_m": {
+   "unit": "A2_KON_DRIVE3_Trans_Design",
+   "source_sha256": "5661ef9b7c6a64c280a1dace85e5491aab944283fdcba2e0981d1740391e9219",
+   "world_glb_sha256": "e811c8ed535cb25f4ca5a97686a448b28535cc9184678df91299840a51616ce6",
+   "actors": [
+    {
+     "actor": "TnTransformingWorldActor_8329",
+     "class": "TnTransformingWorldActor",
+     "component": "A2_KON_DRIVE3_Trans_Design_m.TheWorld.PersistentLevel.TnTransformingWorldActor_8329.HmInterpolatedLightMappedSkeletalMeshComponent_12563",
+     "mesh": "TPRO_KON_Doors_p.KON_InteriorDoor_SKEL",
+     "gltf": "content/TPRO_KON_Doors_p/KON_InteriorDoor_SKEL.gltf",
+     "material_source": "glTF slot names resolved by name (inventory.db; mesh package first)",
+     "materials": [
+      "TPRO_KON_Doors_p.KON_InteriorDoor_Active_MATINST"
+     ],
+     "primitives": 1,
+     "material_slots": [
+      0
+     ],
+     "gltf_matrix": [
+      2.0,
+      0.0,
+      -4.898587196589413e-16,
+      0.0,
+      0.0,
+      2.0,
+      0.0,
+      0.0,
+      4.898587196589413e-16,
+      0.0,
+      2.0,
+      0.0,
+      1961.6000000000001,
+      61.462900390625,
+      -356.8,
+      1.0
+     ]
+    }
+   ]
+  },
   "A2_KON_Dungeons2_Design_m": {
    "unit": "A2_KON_Dungeons2_Design",
    "source_sha256": "fab44004d6bc07afaa1e069b28727b9b11dcd5a0d0fe2d81cc2cb05672e4621a",
@@ -1042,5 +1081,9 @@
    ]
   }
  },
- "materials_step_rerun_for": []
+ "materials_step_rerun_for": [],
+ "gameplay_export": {
+  "file": "transforming_actors_gameplay.json",
+  "rc": 0
+ }
 }
