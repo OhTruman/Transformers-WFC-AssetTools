@@ -1,0 +1,4267 @@
+{
+ "generated_by": "AssetTools/scripts/wfc/vs_weapon_export.py",
+ "weapon_id": "SentryRepair",
+ "stable_id_source": "TnDataProvider_Weapon UniqueId (TransWeapons.ini)",
+ "class": "TransContent.TnWeaponSentryRepair",
+ "provider_ids": [],
+ "display_name": {
+  "ItemName": "Missing Weapon, needs entry in TransContent.int"
+ },
+ "description": null,
+ "weapon_type_code": null,
+ "mesh": {
+  "object": null,
+  "weapon_mesh_template": "WEP_SentryBlaster01_p.RepairSentry_WEPMESH",
+  "glb": null,
+  "source_gltf": null,
+  "mesh_note": "the weapon mesh component authors no SkeletalMesh (fires from sockets) - CONFIRMED absence",
+  "materials": [],
+  "buff_materials": null,
+  "sockets": [],
+  "muzzle_sockets": [
+   "MuzzleFlash"
+  ],
+  "reference_bone": "WEP_Reference_XR",
+  "pickup_mesh": null,
+  "pickup_mesh_translation_ue": {
+   "X": 0.0,
+   "Y": 0.0,
+   "Z": 150.0
+  }
+ },
+ "animations": {
+  "anim_sets": [],
+  "clips_in_glb": [],
+  "idle": null,
+  "event_anims (weapon mesh)": [
+   {
+    "WeaponEventType": "WP_Equip",
+    "AnimName": "RepairBeam_Equip"
+   },
+   {
+    "WeaponEventType": "WP_PutDown",
+    "AnimName": "RepairBeam_Drop"
+   },
+   {
+    "WeaponEventType": "WP_Fire",
+    "AnimName": "RepairBeam_Fire"
+   }
+  ],
+  "owner_animations (robot body)": null
+ },
+ "attachment": {
+  "owner_socket (robot)": "WeaponSocket_Primary",
+  "reference_bone": "WEP_Reference_XR",
+  "rule": "weapon reference bone placed at the robot WeaponSocket_Primary (per-chassis socket in Characters/<ChassisId>/character.json robot.sockets); vehicle-form weapons fire from the vehicle sockets"
+ },
+ "recoil (procedural, WEPMESH)": {
+  "SpineRecoil": {
+   "TimeToGo": 0.0,
+   "TimeDuration": 0.699999988079071,
+   "RotAmplitude": {
+    "X": -2000.0,
+    "Y": 150.0,
+    "Z": 0.0
+   },
+   "RotFrequency": {
+    "X": 10.0,
+    "Y": 10.0,
+    "Z": 0.0
+   },
+   "RotSinOffset": {
+    "X": 0.0,
+    "Y": 0.0,
+    "Z": 0.0
+   },
+   "RotParams": {
+    "X": "ERS_Zero",
+    "Y": "ERS_Random",
+    "Z": "ERS_Zero",
+    "Padding": 0
+   },
+   "RotOffset": {
+    "Pitch": 0,
+    "Yaw": 0,
+    "Roll": 0
+   },
+   "LocAmplitude": {
+    "X": 0.0,
+    "Y": 0.0,
+    "Z": 0.0
+   },
+   "LocFrequency": {
+    "X": 0.0,
+    "Y": 0.0,
+    "Z": 0.0
+   },
+   "LocSinOffset": {
+    "X": 0.0,
+    "Y": 0.0,
+    "Z": 0.0
+   },
+   "LocParams": {
+    "X": "ERS_Zero",
+    "Y": "ERS_Zero",
+    "Z": "ERS_Zero",
+    "Padding": 0
+   },
+   "LocOffset": {
+    "X": 0.0,
+    "Y": 0.0,
+    "Z": 0.0
+   }
+  },
+  "RightHandRecoil": {
+   "TimeToGo": 0.0,
+   "TimeDuration": 0.800000011920929,
+   "RotAmplitude": {
+    "X": 2000.0,
+    "Y": 150.0,
+    "Z": 0.0
+   },
+   "RotFrequency": {
+    "X": 10.0,
+    "Y": 20.0,
+    "Z": 0.0
+   },
+   "RotSinOffset": {
+    "X": 0.0,
+    "Y": 0.0,
+    "Z": 0.0
+   },
+   "RotParams": {
+    "X": "ERS_Zero",
+    "Y": "ERS_Random",
+    "Z": "ERS_Zero",
+    "Padding": 0
+   },
+   "RotOffset": {
+    "Pitch": 0,
+    "Yaw": 0,
+    "Roll": 0
+   },
+   "LocAmplitude": {
+    "X": -20.0,
+    "Y": 0.0,
+    "Z": 0.0
+   },
+   "LocFrequency": {
+    "X": 10.0,
+    "Y": 0.0,
+    "Z": 0.0
+   },
+   "LocSinOffset": {
+    "X": 0.0,
+    "Y": 0.0,
+    "Z": 0.0
+   },
+   "LocParams": {
+    "X": "ERS_Zero",
+    "Y": "ERS_Zero",
+    "Z": "ERS_Random",
+    "Padding": 0
+   },
+   "LocOffset": {
+    "X": 0.0,
+    "Y": 0.0,
+    "Z": 0.0
+   }
+  }
+ },
+ "heat": {},
+ "effects": {
+  "authored": {
+   "muzzle_flashes": null,
+   "tracers": [
+    {
+     "WeaponEventType": "WP_Looping",
+     "TracerTemplate": "FX_RepairBeam_p.FX.Tracer_RepairBeam_FX"
+    }
+   ],
+   "default_squib": "FX_RepairBeam_p.FX.Squib_RepairEnemy_FX",
+   "effects_type": null
+  },
+  "decode_status": {
+   "FX_RepairBeam_p.FX.Squib_RepairEnemy_FX": {
+    "template": "FX_RepairBeam_p.FX.Squib_RepairEnemy_FX",
+    "in_dump": true,
+    "emitters": [
+     {
+      "emitter": "GLOW_Dup",
+      "type_data": "Sprite (no TypeData)",
+      "type_data_props": null,
+      "material": "FX_Materials_p.Materials.MuzzleFlash_White_Mat",
+      "undecoded_modules (PMI_Unknown)": 0,
+      "resolved_modules (PMI_Unknown slots named by object class)": [
+       {
+        "slot": 9,
+        "module": "PMI_AttractorPoint",
+        "object": "FX_RepairBeam_p.FX.Squib_RepairEnemy_FX.ParticleModuleAttractorPoint_11714",
+        "properties": {
+         "Range": {
+          "Distribution": null,
+          "Type": 1,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 1,
+          "LookupTable": [
+           300.0
+          ]
+         },
+         "Strength": {
+          "Distribution": null,
+          "Type": 1,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 1,
+          "LookupTable": [
+           1000.0
+          ]
+         },
+         "Position": {
+          "Distribution": null,
+          "Type": 7,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 3,
+          "LookupTable": [
+           0.0,
+           0.0,
+           0.0
+          ]
+         },
+         "StrengthByDistance": true,
+         "bUpdateModule": true,
+         "bEnabled": true
+        }
+       }
+      ],
+      "assignment_complete": true
+     },
+     {
+      "emitter": "GLOW",
+      "type_data": "Sprite (no TypeData)",
+      "type_data_props": null,
+      "material": "FX_Materials_p.Materials.Glow_Mod_MAT",
+      "undecoded_modules (PMI_Unknown)": 0,
+      "resolved_modules (PMI_Unknown slots named by object class)": null,
+      "assignment_complete": true
+     },
+     {
+      "emitter": "GLOWHole",
+      "type_data": "Sprite (no TypeData)",
+      "type_data_props": null,
+      "material": "FX_Materials_p.Materials.ParticleBase_BW_MAT",
+      "undecoded_modules (PMI_Unknown)": 0,
+      "resolved_modules (PMI_Unknown slots named by object class)": null,
+      "assignment_complete": true
+     },
+     {
+      "emitter": "Sparks_bolts_Dup",
+      "type_data": "Sprite (no TypeData)",
+      "type_data_props": null,
+      "material": "FX_Materials_p.Materials.Spark_Tail_MAT",
+      "undecoded_modules (PMI_Unknown)": 0,
+      "resolved_modules (PMI_Unknown slots named by object class)": null,
+      "assignment_complete": true
+     },
+     {
+      "emitter": "Smoke_Dup",
+      "type_data": "Sprite (no TypeData)",
+      "type_data_props": null,
+      "material": "FX_Materials_p.Materials.SmokeCoolDepth_Mat",
+      "undecoded_modules (PMI_Unknown)": 0,
+      "resolved_modules (PMI_Unknown slots named by object class)": null,
+      "assignment_complete": true
+     },
+     {
+      "emitter": "BeamThick",
+      "type_data": "ParticleModuleTypeDataBeam2",
+      "type_data_props": {
+       "TaperMethod": "PEBTM_Full",
+       "MaxBeamCount": 1,
+       "Speed": 1000.0,
+       "InterpolationPoints": 50,
+       "Distance": {
+        "Distribution": null,
+        "LookupTable": [
+         100.0
+        ]
+       },
+       "TaperFactor": {
+        "Distribution": null,
+        "Type": 2,
+        "LookupTable": [
+         0.0,
+         1.0,
+         0.0,
+         1.0,
+         0.0,
+         1.0
+        ]
+       }
+      },
+      "material": "FX_Materials_p.Materials.Tracer_MAT",
+      "undecoded_modules (PMI_Unknown)": 0,
+      "resolved_modules (PMI_Unknown slots named by object class)": [
+       {
+        "slot": 4,
+        "module": "PMI_BeamNoise",
+        "object": "FX_RepairBeam_p.FX.Squib_RepairEnemy_FX.ParticleModuleBeamNoise_7357",
+        "properties": {
+         "bLowFreq_Enabled": true,
+         "bApplyNoiseScale": true,
+         "Frequency": 10,
+         "Frequency_LowRange": 10,
+         "NoiseRange": {
+          "Distribution": null,
+          "Type": 10,
+          "Op": 2,
+          "LookupTableNumElements": 2,
+          "LookupTableChunkSize": 6,
+          "LookupTable": [
+           -3.140183210372925,
+           4.998707294464111,
+           -0.0013824885245412588,
+           19.141481399536133,
+           0.0,
+           0.0,
+           0.0,
+           0.0,
+           0.0,
+           0.0,
+           0.3433709442615509,
+           0.5227160453796387,
+           0.6662975549697876,
+           0.05218508839607239,
+           -0.37011784315109253,
+           -0.1697315275669098,
+           1.1522266864776611,
+           1.7247313261032104,
+           2.183396339416504,
+           0.1947130709886551,
+           -1.2269930839538574,
+           -0.5742886662483215,
+           2.094681739807129,
+           3.0568463802337646,
+           3.828605890274048,
+           0.4065430760383606,
+           -2.190408706665039,
+           -1.0567153692245483,
+           2.838850259780884,
+           3.9698615074157715,
+           4.879234790802002,
+           0.6666341423988342,
+           -2.8801465034484863,
+           -1.4600553512573242,
+           3.197186231613159,
+           4.168964862823486,
+           4.966739654541016,
+           0.9516782760620117,
+           -3.0927538871765137,
+           -1.6768245697021484,
+           3.474571704864502,
+           4.0809326171875,
+           4.621784687042236,
+           1.33247971534729,
+           -3.1394588947296143,
+           -1.8558038473129272,
+           3.683363437652588,
+           3.8403029441833496,
+           4.054795742034912,
+           1.7353014945983887,
+           -3.0868139266967773,
+           -2.01232647895813,
+           3.8212015628814697,
+           3.567645788192749,
+           3.4625086784362793,
+           2.0785505771636963,
+           -2.9897561073303223,
+           -2.153407335281372,
+           3.885727882385254,
+           3.3835337162017822,
+           3.0416579246520996,
+           2.2806341648101807,
+           -2.9032230377197266,
+           -2.2860608100891113,
+           3.871760129928589,
+           3.3975870609283447,
+           2.9424824714660645,
+           2.2610232830047607,
+           -2.8665688037872314,
+           -2.4230728149414062,
+           3.769294261932373,
+           3.5842041969299316,
+           3.072723627090454,
+           2.01733660697937,
+           -2.846344232559204,
+           -2.5585670471191406,
+           3.581463575363159,
+           3.823040723800659,
+           3.319380283355713,
+           1.6425050497055054,
+           -2.814598560333252,
+           -2.6811013221740723,
+           3.3125619888305664,
+           3.9915096759796143,
+           3.574221134185791,
+           1.2341480255126953,
+           -2.7457432746887207,
+           -2.7836270332336426,
+           2.9668819904327393,
+           3.9670252799987793,
+           3.729016065597534,
+           0.8898836970329285,
+           -2.6141910552978516,
+           -2.859096050262451,
+           2.458353042602539,
+           3.5877766609191895,
+           3.7043328285217285,
+           0.6411430835723877,
+           -2.3575448989868164,
+           -2.897787570953369,
+           1.700732707977295,
+           2.8453710079193115,
+           3.554363250732422,
+           0.4025876522064209,
+           -1.9475682973861694,
+           -2.8966329097747803,
+           0.8971748352050781,
+           1.9933862686157227,
+           3.354846239089966,
+           0.1975700706243515,
+           -1.502897024154663,
+           -2.873081684112549,
+           0.25961706042289734,
+           1.2916518449783325,
+           3.1804089546203613,
+           0.05405307561159134,
+           -1.1461631059646606,
+           -2.845489740371704,
+           0.0,
+           1.0,
+           3.1056792736053467,
+           0.0,
+           -1.0,
+           -2.8322134017944336
+          ]
+         },
+         "NoiseRangeScale": {
+          "Distribution": null,
+          "Type": 2,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 1,
+          "LookupTable": [
+           8.991002082824707,
+           13.37071418762207,
+           -0.0016304734162986279,
+           19.049179077148438,
+           8.991002082824707,
+           9.130915641784668,
+           9.50762939453125,
+           10.05660629272461,
+           10.713309288024902,
+           11.413200378417969,
+           12.091739654541016,
+           12.684391975402832,
+           13.126617431640625,
+           13.353880882263184,
+           13.311909675598145,
+           13.026642799377441,
+           12.556694030761719,
+           11.96033763885498,
+           11.295848846435547,
+           10.621501922607422,
+           9.995569229125977,
+           9.476325988769531,
+           9.122045516967773,
+           8.991002082824707
+          ]
+         },
+         "NoiseSpeed": {
+          "Distribution": null,
+          "Type": 7,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 3,
+          "LookupTable": [
+           13.324198722839355,
+           2.5514421463012695,
+           15.16690444946289
+          ]
+         },
+         "NoiseTangentStrength": {
+          "Distribution": null,
+          "Type": 1,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 1,
+          "LookupTable": [
+           10.0
+          ]
+         },
+         "NoiseScale": {
+          "Distribution": null,
+          "Type": 2,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 1,
+          "LookupTable": [
+           0.0,
+           5.0,
+           0.0,
+           1.0,
+           5.0,
+           0.0
+          ]
+         },
+         "NoiseLockRadius": 1.0,
+         "NoiseTension": 0.5,
+         "NoiseTessellation": 1,
+         "bSpawnModule": true,
+         "bUpdateModule": true,
+         "bEnabled": true
+        }
+       },
+       {
+        "slot": 5,
+        "module": "PMI_BeamTarget",
+        "object": "FX_RepairBeam_p.FX.Squib_RepairEnemy_FX.ParticleModuleBeamTarget_3443",
+        "properties": {
+         "TargetMethod": "PEB2STM_Emitter",
+         "Target": {
+          "Distribution": null,
+          "Type": 7,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 3,
+          "LookupTable": [
+           0.0,
+           0.0,
+           0.0
+          ]
+         },
+         "TargetTangent": {
+          "Distribution": null,
+          "Type": 7,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 3,
+          "LookupTable": [
+           1.0,
+           0.0,
+           0.0
+          ]
+         },
+         "TargetStrength": {
+          "Distribution": null,
+          "Type": 1,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 1,
+          "LookupTable": [
+           25.0
+          ]
+         },
+         "LockRadius": 10.0,
+         "bSpawnModule": true,
+         "bUpdateModule": true,
+         "bEnabled": true
+        }
+       },
+       {
+        "slot": 6,
+        "module": "PMI_BeamSource",
+        "object": "FX_RepairBeam_p.FX.Squib_RepairEnemy_FX.ParticleModuleBeamSource_1774",
+        "properties": {
+         "SourceMethod": "PEB2STM_Particle",
+         "SourceName": "Orbit2",
+         "Source": {
+          "Distribution": null,
+          "Type": 10,
+          "Op": 2,
+          "LookupTableNumElements": 2,
+          "LookupTableChunkSize": 6,
+          "LookupTable": [
+           -248.78160095214844,
+           241.17567443847656,
+           -0.014832606539130211,
+           19.74346351623535,
+           25.358957290649414,
+           234.0663604736328,
+           241.17567443847656,
+           5.359007835388184,
+           -180.3048858642578,
+           -216.88888549804688,
+           24.094240188598633,
+           233.72857666015625,
+           234.86468505859375,
+           3.020373582839966,
+           -178.73435974121094,
+           -220.96739196777344,
+           21.081764221191406,
+           232.30734252929688,
+           220.07049560546875,
+           -2.5123183727264404,
+           -175.4578094482422,
+           -230.3413848876953,
+           17.494033813476562,
+           229.19094848632812,
+           203.00123596191406,
+           -9.014252662658691,
+           -172.62786865234375,
+           -240.71865844726562,
+           14.503559112548828,
+           223.7677001953125,
+           189.86500549316406,
+           -14.260612487792969,
+           -172.3970947265625,
+           -247.8070068359375,
+           13.282842636108398,
+           215.42579650878906,
+           186.8699188232422,
+           -16.026586532592773,
+           -176.91807556152344,
+           -247.31419372558594,
+           13.356489181518555,
+           213.31764221191406,
+           188.05934143066406,
+           -15.759987831115723,
+           -178.6120147705078,
+           -245.90090942382812,
+           13.356489181518555,
+           213.31764221191406,
+           188.05934143066406,
+           -15.759987831115723,
+           -178.6120147705078,
+           -245.90090942382812,
+           13.356489181518555,
+           213.31764221191406,
+           188.05934143066406,
+           -15.759987831115723,
+           -178.6120147705078,
+           -245.90090942382812,
+           13.356489181518555,
+           213.31764221191406,
+           188.05934143066406,
+           -15.759987831115723,
+           -178.6120147705078,
+           -245.90090942382812,
+           13.356489181518555,
+           213.31764221191406,
+           188.05934143066406,
+           -15.759987831115723,
+           -178.6120147705078,
+           -245.90090942382812,
+           14.926112174987793,
+           214.83953857421875,
+           159.26881408691406,
+           -15.071223258972168,
+           -196.67123413085938,
+           -228.055419921875,
+           19.807601928710938,
+           211.754638671875,
+           155.02816772460938,
+           -12.929182052612305,
+           -206.3348846435547,
+           -222.05148315429688,
+           25.441017150878906,
+           207.78219604492188,
+           149.10992431640625,
+           -10.457189559936523,
+           -217.86582946777344,
+           -214.39747619628906,
+           29.15639877319336,
+           204.24147033691406,
+           142.91900634765625,
+           -8.826847076416016,
+           -226.31655883789062,
+           -207.72988891601562,
+           28.945011138916016,
+           202.3236083984375,
+           138.00595092773438,
+           -8.919605255126953,
+           -227.7823944091797,
+           -204.3816375732422,
+           26.225969314575195,
+           200.88177490234375,
+           132.516845703125,
+           -10.11274528503418,
+           -225.30230712890625,
+           -202.1676025390625,
+           22.2227840423584,
+           199.6436767578125,
+           126.63314819335938,
+           -11.869379043579102,
+           -220.83837890625,
+           -200.4638671875,
+           18.020275115966797,
+           198.67630004882812,
+           121.28230285644531,
+           -13.713478088378906,
+           -215.84689331054688,
+           -199.25991821289062,
+           14.70323657989502,
+           198.0466766357422,
+           117.39167785644531,
+           -15.169023513793945,
+           -211.7840576171875,
+           -198.54527282714844,
+           13.356489181518555,
+           197.82191467285156,
+           115.88871002197266,
+           -15.759987831115723,
+           -210.10617065429688,
+           -198.30938720703125
+          ]
+         },
+         "SourceTangent": {
+          "Distribution": null,
+          "Type": 7,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 3,
+          "LookupTable": [
+           1.0,
+           0.0,
+           0.0
+          ]
+         },
+         "SourceStrength": {
+          "Distribution": null,
+          "Type": 1,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 1,
+          "LookupTable": [
+           25.0
+          ]
+         },
+         "bSpawnModule": true,
+         "bUpdateModule": true,
+         "bEnabled": true
+        }
+       }
+      ],
+      "assignment_complete": true
+     },
+     {
+      "emitter": "BeamThick_Dup",
+      "type_data": "ParticleModuleTypeDataBeam2",
+      "type_data_props": {
+       "TaperMethod": "PEBTM_Full",
+       "MaxBeamCount": 1,
+       "Speed": 1000.0,
+       "InterpolationPoints": 50,
+       "Distance": {
+        "Distribution": null,
+        "LookupTable": [
+         100.0
+        ]
+       },
+       "TaperFactor": {
+        "Distribution": null,
+        "Type": 2,
+        "LookupTable": [
+         0.0,
+         1.0,
+         0.0,
+         1.0,
+         0.0,
+         1.0
+        ]
+       }
+      },
+      "material": "FX_Materials_p.Materials.Tracer_MAT",
+      "undecoded_modules (PMI_Unknown)": 0,
+      "resolved_modules (PMI_Unknown slots named by object class)": [
+       {
+        "slot": 4,
+        "module": "PMI_BeamNoise",
+        "object": "FX_RepairBeam_p.FX.Squib_RepairEnemy_FX.ParticleModuleBeamNoise_7357",
+        "properties": {
+         "bLowFreq_Enabled": true,
+         "bApplyNoiseScale": true,
+         "Frequency": 10,
+         "Frequency_LowRange": 10,
+         "NoiseRange": {
+          "Distribution": null,
+          "Type": 10,
+          "Op": 2,
+          "LookupTableNumElements": 2,
+          "LookupTableChunkSize": 6,
+          "LookupTable": [
+           -3.140183210372925,
+           4.998707294464111,
+           -0.0013824885245412588,
+           19.141481399536133,
+           0.0,
+           0.0,
+           0.0,
+           0.0,
+           0.0,
+           0.0,
+           0.3433709442615509,
+           0.5227160453796387,
+           0.6662975549697876,
+           0.05218508839607239,
+           -0.37011784315109253,
+           -0.1697315275669098,
+           1.1522266864776611,
+           1.7247313261032104,
+           2.183396339416504,
+           0.1947130709886551,
+           -1.2269930839538574,
+           -0.5742886662483215,
+           2.094681739807129,
+           3.0568463802337646,
+           3.828605890274048,
+           0.4065430760383606,
+           -2.190408706665039,
+           -1.0567153692245483,
+           2.838850259780884,
+           3.9698615074157715,
+           4.879234790802002,
+           0.6666341423988342,
+           -2.8801465034484863,
+           -1.4600553512573242,
+           3.197186231613159,
+           4.168964862823486,
+           4.966739654541016,
+           0.9516782760620117,
+           -3.0927538871765137,
+           -1.6768245697021484,
+           3.474571704864502,
+           4.0809326171875,
+           4.621784687042236,
+           1.33247971534729,
+           -3.1394588947296143,
+           -1.8558038473129272,
+           3.683363437652588,
+           3.8403029441833496,
+           4.054795742034912,
+           1.7353014945983887,
+           -3.0868139266967773,
+           -2.01232647895813,
+           3.8212015628814697,
+           3.567645788192749,
+           3.4625086784362793,
+           2.0785505771636963,
+           -2.9897561073303223,
+           -2.153407335281372,
+           3.885727882385254,
+           3.3835337162017822,
+           3.0416579246520996,
+           2.2806341648101807,
+           -2.9032230377197266,
+           -2.2860608100891113,
+           3.871760129928589,
+           3.3975870609283447,
+           2.9424824714660645,
+           2.2610232830047607,
+           -2.8665688037872314,
+           -2.4230728149414062,
+           3.769294261932373,
+           3.5842041969299316,
+           3.072723627090454,
+           2.01733660697937,
+           -2.846344232559204,
+           -2.5585670471191406,
+           3.581463575363159,
+           3.823040723800659,
+           3.319380283355713,
+           1.6425050497055054,
+           -2.814598560333252,
+           -2.6811013221740723,
+           3.3125619888305664,
+           3.9915096759796143,
+           3.574221134185791,
+           1.2341480255126953,
+           -2.7457432746887207,
+           -2.7836270332336426,
+           2.9668819904327393,
+           3.9670252799987793,
+           3.729016065597534,
+           0.8898836970329285,
+           -2.6141910552978516,
+           -2.859096050262451,
+           2.458353042602539,
+           3.5877766609191895,
+           3.7043328285217285,
+           0.6411430835723877,
+           -2.3575448989868164,
+           -2.897787570953369,
+           1.700732707977295,
+           2.8453710079193115,
+           3.554363250732422,
+           0.4025876522064209,
+           -1.9475682973861694,
+           -2.8966329097747803,
+           0.8971748352050781,
+           1.9933862686157227,
+           3.354846239089966,
+           0.1975700706243515,
+           -1.502897024154663,
+           -2.873081684112549,
+           0.25961706042289734,
+           1.2916518449783325,
+           3.1804089546203613,
+           0.05405307561159134,
+           -1.1461631059646606,
+           -2.845489740371704,
+           0.0,
+           1.0,
+           3.1056792736053467,
+           0.0,
+           -1.0,
+           -2.8322134017944336
+          ]
+         },
+         "NoiseRangeScale": {
+          "Distribution": null,
+          "Type": 2,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 1,
+          "LookupTable": [
+           8.991002082824707,
+           13.37071418762207,
+           -0.0016304734162986279,
+           19.049179077148438,
+           8.991002082824707,
+           9.130915641784668,
+           9.50762939453125,
+           10.05660629272461,
+           10.713309288024902,
+           11.413200378417969,
+           12.091739654541016,
+           12.684391975402832,
+           13.126617431640625,
+           13.353880882263184,
+           13.311909675598145,
+           13.026642799377441,
+           12.556694030761719,
+           11.96033763885498,
+           11.295848846435547,
+           10.621501922607422,
+           9.995569229125977,
+           9.476325988769531,
+           9.122045516967773,
+           8.991002082824707
+          ]
+         },
+         "NoiseSpeed": {
+          "Distribution": null,
+          "Type": 7,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 3,
+          "LookupTable": [
+           13.324198722839355,
+           2.5514421463012695,
+           15.16690444946289
+          ]
+         },
+         "NoiseTangentStrength": {
+          "Distribution": null,
+          "Type": 1,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 1,
+          "LookupTable": [
+           10.0
+          ]
+         },
+         "NoiseScale": {
+          "Distribution": null,
+          "Type": 2,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 1,
+          "LookupTable": [
+           0.0,
+           5.0,
+           0.0,
+           1.0,
+           5.0,
+           0.0
+          ]
+         },
+         "NoiseLockRadius": 1.0,
+         "NoiseTension": 0.5,
+         "NoiseTessellation": 1,
+         "bSpawnModule": true,
+         "bUpdateModule": true,
+         "bEnabled": true
+        }
+       },
+       {
+        "slot": 5,
+        "module": "PMI_BeamTarget",
+        "object": "FX_RepairBeam_p.FX.Squib_RepairEnemy_FX.ParticleModuleBeamTarget_3443",
+        "properties": {
+         "TargetMethod": "PEB2STM_Emitter",
+         "Target": {
+          "Distribution": null,
+          "Type": 7,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 3,
+          "LookupTable": [
+           0.0,
+           0.0,
+           0.0
+          ]
+         },
+         "TargetTangent": {
+          "Distribution": null,
+          "Type": 7,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 3,
+          "LookupTable": [
+           1.0,
+           0.0,
+           0.0
+          ]
+         },
+         "TargetStrength": {
+          "Distribution": null,
+          "Type": 1,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 1,
+          "LookupTable": [
+           25.0
+          ]
+         },
+         "LockRadius": 10.0,
+         "bSpawnModule": true,
+         "bUpdateModule": true,
+         "bEnabled": true
+        }
+       },
+       {
+        "slot": 6,
+        "module": "PMI_BeamSource",
+        "object": "FX_RepairBeam_p.FX.Squib_RepairEnemy_FX.ParticleModuleBeamSource_6949",
+        "properties": {
+         "SourceMethod": "PEB2STM_Particle",
+         "SourceName": "Orbit2",
+         "Source": {
+          "Distribution": null,
+          "Type": 10,
+          "Op": 2,
+          "LookupTableNumElements": 2,
+          "LookupTableChunkSize": 6,
+          "LookupTable": [
+           -270.9453125,
+           287.65838623046875,
+           -0.008194169029593468,
+           19.787443161010742,
+           25.358957290649414,
+           -124.08352661132812,
+           3.1728038787841797,
+           5.359007835388184,
+           -176.63272094726562,
+           -235.31277465820312,
+           24.03656768798828,
+           -87.45896911621094,
+           14.163190841674805,
+           2.9139723777770996,
+           -139.68617248535156,
+           -221.42933654785156,
+           20.909915924072266,
+           -0.374542236328125,
+           40.955169677734375,
+           -2.826277494430542,
+           -51.72835159301758,
+           -187.6688995361328,
+           17.239755630493164,
+           102.98594665527344,
+           74.27998352050781,
+           -9.469463348388672,
+           52.917930603027344,
+           -145.86630249023438,
+           14.286857604980469,
+           188.4386749267578,
+           104.86885070800781,
+           -14.623300552368164,
+           139.92987060546875,
+           -107.85639953613281,
+           13.311985969543457,
+           221.79978942871094,
+           123.45301055908203,
+           -15.895508766174316,
+           174.98471069335938,
+           -85.4740219116211,
+           13.356489181518555,
+           221.20587158203125,
+           124.13545227050781,
+           -15.759987831115723,
+           174.52615356445312,
+           -84.72174835205078,
+           13.356489181518555,
+           221.20587158203125,
+           124.13545227050781,
+           -15.759987831115723,
+           174.52615356445312,
+           -84.72174835205078,
+           13.356489181518555,
+           221.20587158203125,
+           124.13545227050781,
+           -15.759987831115723,
+           174.52615356445312,
+           -84.72174835205078,
+           13.356489181518555,
+           221.20587158203125,
+           124.13545227050781,
+           -15.759987831115723,
+           174.52615356445312,
+           -84.72174835205078,
+           13.356489181518555,
+           221.20587158203125,
+           124.13545227050781,
+           -15.759987831115723,
+           174.52615356445312,
+           -84.72174835205078,
+           15.055059432983398,
+           -187.7832489013672,
+           278.4946594238281,
+           -15.014640808105469,
+           -221.81024169921875,
+           -155.93560791015625,
+           19.562118530273438,
+           -59.537872314453125,
+           252.92776489257812,
+           -13.03690242767334,
+           -90.76732635498047,
+           -173.025634765625,
+           24.805959701538086,
+           91.70935821533203,
+           220.08029174804688,
+           -10.735858917236328,
+           63.34730529785156,
+           -194.92120361328125,
+           28.695724487304688,
+           208.19732666015625,
+           189.17539978027344,
+           -9.028995513916016,
+           181.1451416015625,
+           -215.40516662597656,
+           29.27487564086914,
+           235.59693908691406,
+           169.26779174804688,
+           -8.774858474731445,
+           206.82720947265625,
+           -228.3847198486328,
+           26.855243682861328,
+           185.29583740234375,
+           154.7606964111328,
+           -9.836613655090332,
+           151.4964599609375,
+           -237.52549743652344,
+           22.811969757080078,
+           93.72163391113281,
+           141.96495056152344,
+           -11.61083984375,
+           52.94775390625,
+           -245.37457275390625,
+           18.386676788330078,
+           -8.994056701660156,
+           131.74940490722656,
+           -13.552696228027344,
+           -56.92793273925781,
+           -251.507080078125,
+           14.820974349975586,
+           -92.72003936767578,
+           124.98289489746094,
+           -15.117359161376953,
+           -146.24009704589844,
+           -255.49815368652344,
+           13.356489181518555,
+           -127.32461547851562,
+           122.53431701660156,
+           -15.759987831115723,
+           -183.09768676757812,
+           -256.92291259765625
+          ]
+         },
+         "SourceTangent": {
+          "Distribution": null,
+          "Type": 7,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 3,
+          "LookupTable": [
+           1.0,
+           0.0,
+           0.0
+          ]
+         },
+         "SourceStrength": {
+          "Distribution": null,
+          "Type": 1,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 1,
+          "LookupTable": [
+           25.0
+          ]
+         },
+         "bSpawnModule": true,
+         "bUpdateModule": true,
+         "bEnabled": true
+        }
+       }
+      ],
+      "assignment_complete": true
+     },
+     {
+      "emitter": "ElectricRing",
+      "type_data": "Sprite (no TypeData)",
+      "type_data_props": null,
+      "material": "FX_Materials_p.Materials.ElectroRing01_Mat",
+      "undecoded_modules (PMI_Unknown)": 0,
+      "resolved_modules (PMI_Unknown slots named by object class)": null,
+      "assignment_complete": true
+     },
+     {
+      "emitter": "Shimmer",
+      "type_data": "Sprite (no TypeData)",
+      "type_data_props": null,
+      "material": "FX_Materials_p.Materials.Distortion_Cloud_01_MAT",
+      "undecoded_modules (PMI_Unknown)": 0,
+      "resolved_modules (PMI_Unknown slots named by object class)": null,
+      "assignment_complete": true
+     }
+    ],
+    "beam_modules (template sub-objects)": [
+     {
+      "object": "FX_RepairBeam_p.FX.Squib_RepairEnemy_FX.ParticleModuleBeamNoise_3108",
+      "class": "ParticleModuleBeamNoise",
+      "values": {
+       "bLowFreq_Enabled": true,
+       "bApplyNoiseScale": true,
+       "Frequency": 10,
+       "Frequency_LowRange": 10,
+       "NoiseRange": {
+        "Distribution": null,
+        "Type": 10,
+        "Op": 2,
+        "LookupTableNumElements": 2,
+        "LookupTableChunkSize": 6,
+        "LookupTable": [
+         -3.140183210372925,
+         4.998707294464111,
+         -0.0013824885245412588,
+         19.141481399536133,
+         0.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0,
+         0.3433709442615509,
+         0.5227160453796387,
+         0.6662975549697876,
+         0.05218508839607239,
+         -0.37011784315109253,
+         -0.1697315275669098,
+         1.1522266864776611,
+         1.7247313261032104,
+         2.183396339416504,
+         0.1947130709886551,
+         -1.2269930839538574,
+         -0.5742886662483215,
+         2.094681739807129,
+         3.0568463802337646,
+         3.828605890274048,
+         0.4065430760383606,
+         -2.190408706665039,
+         -1.0567153692245483,
+         2.838850259780884,
+         3.9698615074157715,
+         4.879234790802002,
+         0.6666341423988342,
+         -2.8801465034484863,
+         -1.4600553512573242,
+         3.197186231613159,
+         4.168964862823486,
+         4.966739654541016,
+         0.9516782760620117,
+         -3.0927538871765137,
+         -1.6768245697021484,
+         3.474571704864502,
+         4.0809326171875,
+         4.621784687042236,
+         1.33247971534729,
+         -3.1394588947296143,
+         -1.8558038473129272,
+         3.683363437652588,
+         3.8403029441833496,
+         4.054795742034912,
+         1.7353014945983887,
+         -3.0868139266967773,
+         -2.01232647895813,
+         3.8212015628814697,
+         3.567645788192749,
+         3.4625086784362793,
+         2.0785505771636963,
+         -2.9897561073303223,
+         -2.153407335281372,
+         3.885727882385254,
+         3.3835337162017822,
+         3.0416579246520996,
+         2.2806341648101807,
+         -2.9032230377197266,
+         -2.2860608100891113,
+         3.871760129928589,
+         3.3975870609283447,
+         2.9424824714660645,
+         2.2610232830047607,
+         -2.8665688037872314,
+         -2.4230728149414062,
+         3.769294261932373,
+         3.5842041969299316,
+         3.072723627090454,
+         2.01733660697937,
+         -2.846344232559204,
+         -2.5585670471191406,
+         3.581463575363159,
+         3.823040723800659,
+         3.319380283355713,
+         1.6425050497055054,
+         -2.814598560333252,
+         -2.6811013221740723,
+         3.3125619888305664,
+         3.9915096759796143,
+         3.574221134185791,
+         1.2341480255126953,
+         -2.7457432746887207,
+         -2.7836270332336426,
+         2.9668819904327393,
+         3.9670252799987793,
+         3.729016065597534,
+         0.8898836970329285,
+         -2.6141910552978516,
+         -2.859096050262451,
+         2.458353042602539,
+         3.5877766609191895,
+         3.7043328285217285,
+         0.6411430835723877,
+         -2.3575448989868164,
+         -2.897787570953369,
+         1.700732707977295,
+         2.8453710079193115,
+         3.554363250732422,
+         0.4025876522064209,
+         -1.9475682973861694,
+         -2.8966329097747803,
+         0.8971748352050781,
+         1.9933862686157227,
+         3.354846239089966,
+         0.1975700706243515,
+         -1.502897024154663,
+         -2.873081684112549,
+         0.25961706042289734,
+         1.2916518449783325,
+         3.1804089546203613,
+         0.05405307561159134,
+         -1.1461631059646606,
+         -2.845489740371704,
+         0.0,
+         1.0,
+         3.1056792736053467,
+         0.0,
+         -1.0,
+         -2.8322134017944336
+        ]
+       },
+       "NoiseRangeScale": {
+        "Distribution": null,
+        "Type": 2,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 1,
+        "LookupTable": [
+         8.991002082824707,
+         13.37071418762207,
+         -0.0016304734162986279,
+         19.049179077148438,
+         8.991002082824707,
+         9.130915641784668,
+         9.50762939453125,
+         10.05660629272461,
+         10.713309288024902,
+         11.413200378417969,
+         12.091739654541016,
+         12.684391975402832,
+         13.126617431640625,
+         13.353880882263184,
+         13.311909675598145,
+         13.026642799377441,
+         12.556694030761719,
+         11.96033763885498,
+         11.295848846435547,
+         10.621501922607422,
+         9.995569229125977,
+         9.476325988769531,
+         9.122045516967773,
+         8.991002082824707
+        ]
+       },
+       "NoiseSpeed": {
+        "Distribution": null,
+        "Type": 7,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 3,
+        "LookupTable": [
+         13.324198722839355,
+         2.5514421463012695,
+         15.16690444946289
+        ]
+       },
+       "NoiseTangentStrength": {
+        "Distribution": null,
+        "Type": 1,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 1,
+        "LookupTable": [
+         10.0
+        ]
+       },
+       "NoiseScale": {
+        "Distribution": null,
+        "Type": 2,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 1,
+        "LookupTable": [
+         0.0,
+         5.0,
+         0.0,
+         1.0,
+         5.0,
+         0.0
+        ]
+       },
+       "NoiseLockRadius": 1.0,
+       "NoiseTension": 0.5,
+       "NoiseTessellation": 1,
+       "bSpawnModule": true,
+       "bUpdateModule": true,
+       "bEnabled": true
+      }
+     },
+     {
+      "object": "FX_RepairBeam_p.FX.Squib_RepairEnemy_FX.ParticleModuleBeamNoise_6695",
+      "class": "ParticleModuleBeamNoise",
+      "values": {
+       "bLowFreq_Enabled": true,
+       "bApplyNoiseScale": true,
+       "Frequency": 10,
+       "Frequency_LowRange": 10,
+       "NoiseRange": {
+        "Distribution": null,
+        "Type": 10,
+        "Op": 2,
+        "LookupTableNumElements": 2,
+        "LookupTableChunkSize": 6,
+        "LookupTable": [
+         -3.140183210372925,
+         4.998707294464111,
+         -0.0013824885245412588,
+         19.141481399536133,
+         0.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0,
+         0.3433709442615509,
+         0.5227160453796387,
+         0.6662975549697876,
+         0.05218508839607239,
+         -0.37011784315109253,
+         -0.1697315275669098,
+         1.1522266864776611,
+         1.7247313261032104,
+         2.183396339416504,
+         0.1947130709886551,
+         -1.2269930839538574,
+         -0.5742886662483215,
+         2.094681739807129,
+         3.0568463802337646,
+         3.828605890274048,
+         0.4065430760383606,
+         -2.190408706665039,
+         -1.0567153692245483,
+         2.838850259780884,
+         3.9698615074157715,
+         4.879234790802002,
+         0.6666341423988342,
+         -2.8801465034484863,
+         -1.4600553512573242,
+         3.197186231613159,
+         4.168964862823486,
+         4.966739654541016,
+         0.9516782760620117,
+         -3.0927538871765137,
+         -1.6768245697021484,
+         3.474571704864502,
+         4.0809326171875,
+         4.621784687042236,
+         1.33247971534729,
+         -3.1394588947296143,
+         -1.8558038473129272,
+         3.683363437652588,
+         3.8403029441833496,
+         4.054795742034912,
+         1.7353014945983887,
+         -3.0868139266967773,
+         -2.01232647895813,
+         3.8212015628814697,
+         3.567645788192749,
+         3.4625086784362793,
+         2.0785505771636963,
+         -2.9897561073303223,
+         -2.153407335281372,
+         3.885727882385254,
+         3.3835337162017822,
+         3.0416579246520996,
+         2.2806341648101807,
+         -2.9032230377197266,
+         -2.2860608100891113,
+         3.871760129928589,
+         3.3975870609283447,
+         2.9424824714660645,
+         2.2610232830047607,
+         -2.8665688037872314,
+         -2.4230728149414062,
+         3.769294261932373,
+         3.5842041969299316,
+         3.072723627090454,
+         2.01733660697937,
+         -2.846344232559204,
+         -2.5585670471191406,
+         3.581463575363159,
+         3.823040723800659,
+         3.319380283355713,
+         1.6425050497055054,
+         -2.814598560333252,
+         -2.6811013221740723,
+         3.3125619888305664,
+         3.9915096759796143,
+         3.574221134185791,
+         1.2341480255126953,
+         -2.7457432746887207,
+         -2.7836270332336426,
+         2.9668819904327393,
+         3.9670252799987793,
+         3.729016065597534,
+         0.8898836970329285,
+         -2.6141910552978516,
+         -2.859096050262451,
+         2.458353042602539,
+         3.5877766609191895,
+         3.7043328285217285,
+         0.6411430835723877,
+         -2.3575448989868164,
+         -2.897787570953369,
+         1.700732707977295,
+         2.8453710079193115,
+         3.554363250732422,
+         0.4025876522064209,
+         -1.9475682973861694,
+         -2.8966329097747803,
+         0.8971748352050781,
+         1.9933862686157227,
+         3.354846239089966,
+         0.1975700706243515,
+         -1.502897024154663,
+         -2.873081684112549,
+         0.25961706042289734,
+         1.2916518449783325,
+         3.1804089546203613,
+         0.05405307561159134,
+         -1.1461631059646606,
+         -2.845489740371704,
+         0.0,
+         1.0,
+         3.1056792736053467,
+         0.0,
+         -1.0,
+         -2.8322134017944336
+        ]
+       },
+       "NoiseRangeScale": {
+        "Distribution": null,
+        "Type": 2,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 1,
+        "LookupTable": [
+         8.991002082824707,
+         13.37071418762207,
+         -0.0016304734162986279,
+         19.049179077148438,
+         8.991002082824707,
+         9.130915641784668,
+         9.50762939453125,
+         10.05660629272461,
+         10.713309288024902,
+         11.413200378417969,
+         12.091739654541016,
+         12.684391975402832,
+         13.126617431640625,
+         13.353880882263184,
+         13.311909675598145,
+         13.026642799377441,
+         12.556694030761719,
+         11.96033763885498,
+         11.295848846435547,
+         10.621501922607422,
+         9.995569229125977,
+         9.476325988769531,
+         9.122045516967773,
+         8.991002082824707
+        ]
+       },
+       "NoiseSpeed": {
+        "Distribution": null,
+        "Type": 7,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 3,
+        "LookupTable": [
+         13.324198722839355,
+         2.5514421463012695,
+         15.16690444946289
+        ]
+       },
+       "NoiseTangentStrength": {
+        "Distribution": null,
+        "Type": 1,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 1,
+        "LookupTable": [
+         10.0
+        ]
+       },
+       "NoiseScale": {
+        "Distribution": null,
+        "Type": 2,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 1,
+        "LookupTable": [
+         0.0,
+         5.0,
+         0.0,
+         1.0,
+         5.0,
+         0.0
+        ]
+       },
+       "NoiseLockRadius": 1.0,
+       "NoiseTension": 0.5,
+       "NoiseTessellation": 1,
+       "bSpawnModule": true,
+       "bUpdateModule": true,
+       "bEnabled": true
+      }
+     },
+     {
+      "object": "FX_RepairBeam_p.FX.Squib_RepairEnemy_FX.ParticleModuleBeamNoise_7357",
+      "class": "ParticleModuleBeamNoise",
+      "values": {
+       "bLowFreq_Enabled": true,
+       "bApplyNoiseScale": true,
+       "Frequency": 10,
+       "Frequency_LowRange": 10,
+       "NoiseRange": {
+        "Distribution": null,
+        "Type": 10,
+        "Op": 2,
+        "LookupTableNumElements": 2,
+        "LookupTableChunkSize": 6,
+        "LookupTable": [
+         -3.140183210372925,
+         4.998707294464111,
+         -0.0013824885245412588,
+         19.141481399536133,
+         0.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0,
+         0.3433709442615509,
+         0.5227160453796387,
+         0.6662975549697876,
+         0.05218508839607239,
+         -0.37011784315109253,
+         -0.1697315275669098,
+         1.1522266864776611,
+         1.7247313261032104,
+         2.183396339416504,
+         0.1947130709886551,
+         -1.2269930839538574,
+         -0.5742886662483215,
+         2.094681739807129,
+         3.0568463802337646,
+         3.828605890274048,
+         0.4065430760383606,
+         -2.190408706665039,
+         -1.0567153692245483,
+         2.838850259780884,
+         3.9698615074157715,
+         4.879234790802002,
+         0.6666341423988342,
+         -2.8801465034484863,
+         -1.4600553512573242,
+         3.197186231613159,
+         4.168964862823486,
+         4.966739654541016,
+         0.9516782760620117,
+         -3.0927538871765137,
+         -1.6768245697021484,
+         3.474571704864502,
+         4.0809326171875,
+         4.621784687042236,
+         1.33247971534729,
+         -3.1394588947296143,
+         -1.8558038473129272,
+         3.683363437652588,
+         3.8403029441833496,
+         4.054795742034912,
+         1.7353014945983887,
+         -3.0868139266967773,
+         -2.01232647895813,
+         3.8212015628814697,
+         3.567645788192749,
+         3.4625086784362793,
+         2.0785505771636963,
+         -2.9897561073303223,
+         -2.153407335281372,
+         3.885727882385254,
+         3.3835337162017822,
+         3.0416579246520996,
+         2.2806341648101807,
+         -2.9032230377197266,
+         -2.2860608100891113,
+         3.871760129928589,
+         3.3975870609283447,
+         2.9424824714660645,
+         2.2610232830047607,
+         -2.8665688037872314,
+         -2.4230728149414062,
+         3.769294261932373,
+         3.5842041969299316,
+         3.072723627090454,
+         2.01733660697937,
+         -2.846344232559204,
+         -2.5585670471191406,
+         3.581463575363159,
+         3.823040723800659,
+         3.319380283355713,
+         1.6425050497055054,
+         -2.814598560333252,
+         -2.6811013221740723,
+         3.3125619888305664,
+         3.9915096759796143,
+         3.574221134185791,
+         1.2341480255126953,
+         -2.7457432746887207,
+         -2.7836270332336426,
+         2.9668819904327393,
+         3.9670252799987793,
+         3.729016065597534,
+         0.8898836970329285,
+         -2.6141910552978516,
+         -2.859096050262451,
+         2.458353042602539,
+         3.5877766609191895,
+         3.7043328285217285,
+         0.6411430835723877,
+         -2.3575448989868164,
+         -2.897787570953369,
+         1.700732707977295,
+         2.8453710079193115,
+         3.554363250732422,
+         0.4025876522064209,
+         -1.9475682973861694,
+         -2.8966329097747803,
+         0.8971748352050781,
+         1.9933862686157227,
+         3.354846239089966,
+         0.1975700706243515,
+         -1.502897024154663,
+         -2.873081684112549,
+         0.25961706042289734,
+         1.2916518449783325,
+         3.1804089546203613,
+         0.05405307561159134,
+         -1.1461631059646606,
+         -2.845489740371704,
+         0.0,
+         1.0,
+         3.1056792736053467,
+         0.0,
+         -1.0,
+         -2.8322134017944336
+        ]
+       },
+       "NoiseRangeScale": {
+        "Distribution": null,
+        "Type": 2,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 1,
+        "LookupTable": [
+         8.991002082824707,
+         13.37071418762207,
+         -0.0016304734162986279,
+         19.049179077148438,
+         8.991002082824707,
+         9.130915641784668,
+         9.50762939453125,
+         10.05660629272461,
+         10.713309288024902,
+         11.413200378417969,
+         12.091739654541016,
+         12.684391975402832,
+         13.126617431640625,
+         13.353880882263184,
+         13.311909675598145,
+         13.026642799377441,
+         12.556694030761719,
+         11.96033763885498,
+         11.295848846435547,
+         10.621501922607422,
+         9.995569229125977,
+         9.476325988769531,
+         9.122045516967773,
+         8.991002082824707
+        ]
+       },
+       "NoiseSpeed": {
+        "Distribution": null,
+        "Type": 7,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 3,
+        "LookupTable": [
+         13.324198722839355,
+         2.5514421463012695,
+         15.16690444946289
+        ]
+       },
+       "NoiseTangentStrength": {
+        "Distribution": null,
+        "Type": 1,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 1,
+        "LookupTable": [
+         10.0
+        ]
+       },
+       "NoiseScale": {
+        "Distribution": null,
+        "Type": 2,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 1,
+        "LookupTable": [
+         0.0,
+         5.0,
+         0.0,
+         1.0,
+         5.0,
+         0.0
+        ]
+       },
+       "NoiseLockRadius": 1.0,
+       "NoiseTension": 0.5,
+       "NoiseTessellation": 1,
+       "bSpawnModule": true,
+       "bUpdateModule": true,
+       "bEnabled": true
+      }
+     },
+     {
+      "object": "FX_RepairBeam_p.FX.Squib_RepairEnemy_FX.ParticleModuleBeamSource_11574",
+      "class": "ParticleModuleBeamSource",
+      "values": {
+       "SourceMethod": "PEB2STM_Particle",
+       "SourceName": "Orbit2",
+       "Source": {
+        "Distribution": null,
+        "Type": 10,
+        "Op": 2,
+        "LookupTableNumElements": 2,
+        "LookupTableChunkSize": 6,
+        "LookupTable": [
+         -270.9453125,
+         287.65838623046875,
+         -0.008194169029593468,
+         19.787443161010742,
+         25.358957290649414,
+         -124.08352661132812,
+         3.1728038787841797,
+         5.359007835388184,
+         -176.63272094726562,
+         -235.31277465820312,
+         24.03656768798828,
+         -87.45896911621094,
+         14.163190841674805,
+         2.9139723777770996,
+         -139.68617248535156,
+         -221.42933654785156,
+         20.909915924072266,
+         -0.374542236328125,
+         40.955169677734375,
+         -2.826277494430542,
+         -51.72835159301758,
+         -187.6688995361328,
+         17.239755630493164,
+         102.98594665527344,
+         74.27998352050781,
+         -9.469463348388672,
+         52.917930603027344,
+         -145.86630249023438,
+         14.286857604980469,
+         188.4386749267578,
+         104.86885070800781,
+         -14.623300552368164,
+         139.92987060546875,
+         -107.85639953613281,
+         13.311985969543457,
+         221.79978942871094,
+         123.45301055908203,
+         -15.895508766174316,
+         174.98471069335938,
+         -85.4740219116211,
+         13.356489181518555,
+         221.20587158203125,
+         124.13545227050781,
+         -15.759987831115723,
+         174.52615356445312,
+         -84.72174835205078,
+         13.356489181518555,
+         221.20587158203125,
+         124.13545227050781,
+         -15.759987831115723,
+         174.52615356445312,
+         -84.72174835205078,
+         13.356489181518555,
+         221.20587158203125,
+         124.13545227050781,
+         -15.759987831115723,
+         174.52615356445312,
+         -84.72174835205078,
+         13.356489181518555,
+         221.20587158203125,
+         124.13545227050781,
+         -15.759987831115723,
+         174.52615356445312,
+         -84.72174835205078,
+         13.356489181518555,
+         221.20587158203125,
+         124.13545227050781,
+         -15.759987831115723,
+         174.52615356445312,
+         -84.72174835205078,
+         15.055059432983398,
+         -187.7832489013672,
+         278.4946594238281,
+         -15.014640808105469,
+         -221.81024169921875,
+         -155.93560791015625,
+         19.562118530273438,
+         -59.537872314453125,
+         252.92776489257812,
+         -13.03690242767334,
+         -90.76732635498047,
+         -173.025634765625,
+         24.805959701538086,
+         91.70935821533203,
+         220.08029174804688,
+         -10.735858917236328,
+         63.34730529785156,
+         -194.92120361328125,
+         28.695724487304688,
+         208.19732666015625,
+         189.17539978027344,
+         -9.028995513916016,
+         181.1451416015625,
+         -215.40516662597656,
+         29.27487564086914,
+         235.59693908691406,
+         169.26779174804688,
+         -8.774858474731445,
+         206.82720947265625,
+         -228.3847198486328,
+         26.855243682861328,
+         185.29583740234375,
+         154.7606964111328,
+         -9.836613655090332,
+         151.4964599609375,
+         -237.52549743652344,
+         22.811969757080078,
+         93.72163391113281,
+         141.96495056152344,
+         -11.61083984375,
+         52.94775390625,
+         -245.37457275390625,
+         18.386676788330078,
+         -8.994056701660156,
+         131.74940490722656,
+         -13.552696228027344,
+         -56.92793273925781,
+         -251.507080078125,
+         14.820974349975586,
+         -92.72003936767578,
+         124.98289489746094,
+         -15.117359161376953,
+         -146.24009704589844,
+         -255.49815368652344,
+         13.356489181518555,
+         -127.32461547851562,
+         122.53431701660156,
+         -15.759987831115723,
+         -183.09768676757812,
+         -256.92291259765625
+        ]
+       },
+       "SourceTangent": {
+        "Distribution": null,
+        "Type": 7,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 3,
+        "LookupTable": [
+         1.0,
+         0.0,
+         0.0
+        ]
+       },
+       "SourceStrength": {
+        "Distribution": null,
+        "Type": 1,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 1,
+        "LookupTable": [
+         25.0
+        ]
+       },
+       "bSpawnModule": true,
+       "bUpdateModule": true,
+       "bEnabled": true
+      }
+     },
+     {
+      "object": "FX_RepairBeam_p.FX.Squib_RepairEnemy_FX.ParticleModuleBeamSource_12539",
+      "class": "ParticleModuleBeamSource",
+      "values": {
+       "SourceMethod": "PEB2STM_Particle",
+       "SourceName": "Orbit2",
+       "Source": {
+        "Distribution": null,
+        "Type": 10,
+        "Op": 2,
+        "LookupTableNumElements": 2,
+        "LookupTableChunkSize": 6,
+        "LookupTable": [
+         -248.78160095214844,
+         241.17567443847656,
+         -0.014832606539130211,
+         19.74346351623535,
+         25.358957290649414,
+         234.0663604736328,
+         241.17567443847656,
+         5.359007835388184,
+         -180.3048858642578,
+         -216.88888549804688,
+         24.094240188598633,
+         233.72857666015625,
+         234.86468505859375,
+         3.020373582839966,
+         -178.73435974121094,
+         -220.96739196777344,
+         21.081764221191406,
+         232.30734252929688,
+         220.07049560546875,
+         -2.5123183727264404,
+         -175.4578094482422,
+         -230.3413848876953,
+         17.494033813476562,
+         229.19094848632812,
+         203.00123596191406,
+         -9.014252662658691,
+         -172.62786865234375,
+         -240.71865844726562,
+         14.503559112548828,
+         223.7677001953125,
+         189.86500549316406,
+         -14.260612487792969,
+         -172.3970947265625,
+         -247.8070068359375,
+         13.282842636108398,
+         215.42579650878906,
+         186.8699188232422,
+         -16.026586532592773,
+         -176.91807556152344,
+         -247.31419372558594,
+         13.356489181518555,
+         213.31764221191406,
+         188.05934143066406,
+         -15.759987831115723,
+         -178.6120147705078,
+         -245.90090942382812,
+         13.356489181518555,
+         213.31764221191406,
+         188.05934143066406,
+         -15.759987831115723,
+         -178.6120147705078,
+         -245.90090942382812,
+         13.356489181518555,
+         213.31764221191406,
+         188.05934143066406,
+         -15.759987831115723,
+         -178.6120147705078,
+         -245.90090942382812,
+         13.356489181518555,
+         213.31764221191406,
+         188.05934143066406,
+         -15.759987831115723,
+         -178.6120147705078,
+         -245.90090942382812,
+         13.356489181518555,
+         213.31764221191406,
+         188.05934143066406,
+         -15.759987831115723,
+         -178.6120147705078,
+         -245.90090942382812,
+         14.926112174987793,
+         214.83953857421875,
+         159.26881408691406,
+         -15.071223258972168,
+         -196.67123413085938,
+         -228.055419921875,
+         19.807601928710938,
+         211.754638671875,
+         155.02816772460938,
+         -12.929182052612305,
+         -206.3348846435547,
+         -222.05148315429688,
+         25.441017150878906,
+         207.78219604492188,
+         149.10992431640625,
+         -10.457189559936523,
+         -217.86582946777344,
+         -214.39747619628906,
+         29.15639877319336,
+         204.24147033691406,
+         142.91900634765625,
+         -8.826847076416016,
+         -226.31655883789062,
+         -207.72988891601562,
+         28.945011138916016,
+         202.3236083984375,
+         138.00595092773438,
+         -8.919605255126953,
+         -227.7823944091797,
+         -204.3816375732422,
+         26.225969314575195,
+         200.88177490234375,
+         132.516845703125,
+         -10.11274528503418,
+         -225.30230712890625,
+         -202.1676025390625,
+         22.2227840423584,
+         199.6436767578125,
+         126.63314819335938,
+         -11.869379043579102,
+         -220.83837890625,
+         -200.4638671875,
+         18.020275115966797,
+         198.67630004882812,
+         121.28230285644531,
+         -13.713478088378906,
+         -215.84689331054688,
+         -199.25991821289062,
+         14.70323657989502,
+         198.0466766357422,
+         117.39167785644531,
+         -15.169023513793945,
+         -211.7840576171875,
+         -198.54527282714844,
+         13.356489181518555,
+         197.82191467285156,
+         115.88871002197266,
+         -15.759987831115723,
+         -210.10617065429688,
+         -198.30938720703125
+        ]
+       },
+       "SourceTangent": {
+        "Distribution": null,
+        "Type": 7,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 3,
+        "LookupTable": [
+         1.0,
+         0.0,
+         0.0
+        ]
+       },
+       "SourceStrength": {
+        "Distribution": null,
+        "Type": 1,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 1,
+        "LookupTable": [
+         25.0
+        ]
+       },
+       "bSpawnModule": true,
+       "bUpdateModule": true,
+       "bEnabled": true
+      }
+     },
+     {
+      "object": "FX_RepairBeam_p.FX.Squib_RepairEnemy_FX.ParticleModuleBeamSource_1774",
+      "class": "ParticleModuleBeamSource",
+      "values": {
+       "SourceMethod": "PEB2STM_Particle",
+       "SourceName": "Orbit2",
+       "Source": {
+        "Distribution": null,
+        "Type": 10,
+        "Op": 2,
+        "LookupTableNumElements": 2,
+        "LookupTableChunkSize": 6,
+        "LookupTable": [
+         -248.78160095214844,
+         241.17567443847656,
+         -0.014832606539130211,
+         19.74346351623535,
+         25.358957290649414,
+         234.0663604736328,
+         241.17567443847656,
+         5.359007835388184,
+         -180.3048858642578,
+         -216.88888549804688,
+         24.094240188598633,
+         233.72857666015625,
+         234.86468505859375,
+         3.020373582839966,
+         -178.73435974121094,
+         -220.96739196777344,
+         21.081764221191406,
+         232.30734252929688,
+         220.07049560546875,
+         -2.5123183727264404,
+         -175.4578094482422,
+         -230.3413848876953,
+         17.494033813476562,
+         229.19094848632812,
+         203.00123596191406,
+         -9.014252662658691,
+         -172.62786865234375,
+         -240.71865844726562,
+         14.503559112548828,
+         223.7677001953125,
+         189.86500549316406,
+         -14.260612487792969,
+         -172.3970947265625,
+         -247.8070068359375,
+         13.282842636108398,
+         215.42579650878906,
+         186.8699188232422,
+         -16.026586532592773,
+         -176.91807556152344,
+         -247.31419372558594,
+         13.356489181518555,
+         213.31764221191406,
+         188.05934143066406,
+         -15.759987831115723,
+         -178.6120147705078,
+         -245.90090942382812,
+         13.356489181518555,
+         213.31764221191406,
+         188.05934143066406,
+         -15.759987831115723,
+         -178.6120147705078,
+         -245.90090942382812,
+         13.356489181518555,
+         213.31764221191406,
+         188.05934143066406,
+         -15.759987831115723,
+         -178.6120147705078,
+         -245.90090942382812,
+         13.356489181518555,
+         213.31764221191406,
+         188.05934143066406,
+         -15.759987831115723,
+         -178.6120147705078,
+         -245.90090942382812,
+         13.356489181518555,
+         213.31764221191406,
+         188.05934143066406,
+         -15.759987831115723,
+         -178.6120147705078,
+         -245.90090942382812,
+         14.926112174987793,
+         214.83953857421875,
+         159.26881408691406,
+         -15.071223258972168,
+         -196.67123413085938,
+         -228.055419921875,
+         19.807601928710938,
+         211.754638671875,
+         155.02816772460938,
+         -12.929182052612305,
+         -206.3348846435547,
+         -222.05148315429688,
+         25.441017150878906,
+         207.78219604492188,
+         149.10992431640625,
+         -10.457189559936523,
+         -217.86582946777344,
+         -214.39747619628906,
+         29.15639877319336,
+         204.24147033691406,
+         142.91900634765625,
+         -8.826847076416016,
+         -226.31655883789062,
+         -207.72988891601562,
+         28.945011138916016,
+         202.3236083984375,
+         138.00595092773438,
+         -8.919605255126953,
+         -227.7823944091797,
+         -204.3816375732422,
+         26.225969314575195,
+         200.88177490234375,
+         132.516845703125,
+         -10.11274528503418,
+         -225.30230712890625,
+         -202.1676025390625,
+         22.2227840423584,
+         199.6436767578125,
+         126.63314819335938,
+         -11.869379043579102,
+         -220.83837890625,
+         -200.4638671875,
+         18.020275115966797,
+         198.67630004882812,
+         121.28230285644531,
+         -13.713478088378906,
+         -215.84689331054688,
+         -199.25991821289062,
+         14.70323657989502,
+         198.0466766357422,
+         117.39167785644531,
+         -15.169023513793945,
+         -211.7840576171875,
+         -198.54527282714844,
+         13.356489181518555,
+         197.82191467285156,
+         115.88871002197266,
+         -15.759987831115723,
+         -210.10617065429688,
+         -198.30938720703125
+        ]
+       },
+       "SourceTangent": {
+        "Distribution": null,
+        "Type": 7,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 3,
+        "LookupTable": [
+         1.0,
+         0.0,
+         0.0
+        ]
+       },
+       "SourceStrength": {
+        "Distribution": null,
+        "Type": 1,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 1,
+        "LookupTable": [
+         25.0
+        ]
+       },
+       "bSpawnModule": true,
+       "bUpdateModule": true,
+       "bEnabled": true
+      }
+     },
+     {
+      "object": "FX_RepairBeam_p.FX.Squib_RepairEnemy_FX.ParticleModuleBeamSource_6949",
+      "class": "ParticleModuleBeamSource",
+      "values": {
+       "SourceMethod": "PEB2STM_Particle",
+       "SourceName": "Orbit2",
+       "Source": {
+        "Distribution": null,
+        "Type": 10,
+        "Op": 2,
+        "LookupTableNumElements": 2,
+        "LookupTableChunkSize": 6,
+        "LookupTable": [
+         -270.9453125,
+         287.65838623046875,
+         -0.008194169029593468,
+         19.787443161010742,
+         25.358957290649414,
+         -124.08352661132812,
+         3.1728038787841797,
+         5.359007835388184,
+         -176.63272094726562,
+         -235.31277465820312,
+         24.03656768798828,
+         -87.45896911621094,
+         14.163190841674805,
+         2.9139723777770996,
+         -139.68617248535156,
+         -221.42933654785156,
+         20.909915924072266,
+         -0.374542236328125,
+         40.955169677734375,
+         -2.826277494430542,
+         -51.72835159301758,
+         -187.6688995361328,
+         17.239755630493164,
+         102.98594665527344,
+         74.27998352050781,
+         -9.469463348388672,
+         52.917930603027344,
+         -145.86630249023438,
+         14.286857604980469,
+         188.4386749267578,
+         104.86885070800781,
+         -14.623300552368164,
+         139.92987060546875,
+         -107.85639953613281,
+         13.311985969543457,
+         221.79978942871094,
+         123.45301055908203,
+         -15.895508766174316,
+         174.98471069335938,
+         -85.4740219116211,
+         13.356489181518555,
+         221.20587158203125,
+         124.13545227050781,
+         -15.759987831115723,
+         174.52615356445312,
+         -84.72174835205078,
+         13.356489181518555,
+         221.20587158203125,
+         124.13545227050781,
+         -15.759987831115723,
+         174.52615356445312,
+         -84.72174835205078,
+         13.356489181518555,
+         221.20587158203125,
+         124.13545227050781,
+         -15.759987831115723,
+         174.52615356445312,
+         -84.72174835205078,
+         13.356489181518555,
+         221.20587158203125,
+         124.13545227050781,
+         -15.759987831115723,
+         174.52615356445312,
+         -84.72174835205078,
+         13.356489181518555,
+         221.20587158203125,
+         124.13545227050781,
+         -15.759987831115723,
+         174.52615356445312,
+         -84.72174835205078,
+         15.055059432983398,
+         -187.7832489013672,
+         278.4946594238281,
+         -15.014640808105469,
+         -221.81024169921875,
+         -155.93560791015625,
+         19.562118530273438,
+         -59.537872314453125,
+         252.92776489257812,
+         -13.03690242767334,
+         -90.76732635498047,
+         -173.025634765625,
+         24.805959701538086,
+         91.70935821533203,
+         220.08029174804688,
+         -10.735858917236328,
+         63.34730529785156,
+         -194.92120361328125,
+         28.695724487304688,
+         208.19732666015625,
+         189.17539978027344,
+         -9.028995513916016,
+         181.1451416015625,
+         -215.40516662597656,
+         29.27487564086914,
+         235.59693908691406,
+         169.26779174804688,
+         -8.774858474731445,
+         206.82720947265625,
+         -228.3847198486328,
+         26.855243682861328,
+         185.29583740234375,
+         154.7606964111328,
+         -9.836613655090332,
+         151.4964599609375,
+         -237.52549743652344,
+         22.811969757080078,
+         93.72163391113281,
+         141.96495056152344,
+         -11.61083984375,
+         52.94775390625,
+         -245.37457275390625,
+         18.386676788330078,
+         -8.994056701660156,
+         131.74940490722656,
+         -13.552696228027344,
+         -56.92793273925781,
+         -251.507080078125,
+         14.820974349975586,
+         -92.72003936767578,
+         124.98289489746094,
+         -15.117359161376953,
+         -146.24009704589844,
+         -255.49815368652344,
+         13.356489181518555,
+         -127.32461547851562,
+         122.53431701660156,
+         -15.759987831115723,
+         -183.09768676757812,
+         -256.92291259765625
+        ]
+       },
+       "SourceTangent": {
+        "Distribution": null,
+        "Type": 7,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 3,
+        "LookupTable": [
+         1.0,
+         0.0,
+         0.0
+        ]
+       },
+       "SourceStrength": {
+        "Distribution": null,
+        "Type": 1,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 1,
+        "LookupTable": [
+         25.0
+        ]
+       },
+       "bSpawnModule": true,
+       "bUpdateModule": true,
+       "bEnabled": true
+      }
+     },
+     {
+      "object": "FX_RepairBeam_p.FX.Squib_RepairEnemy_FX.ParticleModuleBeamTarget_11172",
+      "class": "ParticleModuleBeamTarget",
+      "values": {
+       "TargetMethod": "PEB2STM_Emitter",
+       "Target": {
+        "Distribution": null,
+        "Type": 7,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 3,
+        "LookupTable": [
+         0.0,
+         0.0,
+         0.0
+        ]
+       },
+       "TargetTangent": {
+        "Distribution": null,
+        "Type": 7,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 3,
+        "LookupTable": [
+         1.0,
+         0.0,
+         0.0
+        ]
+       },
+       "TargetStrength": {
+        "Distribution": null,
+        "Type": 1,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 1,
+        "LookupTable": [
+         25.0
+        ]
+       },
+       "LockRadius": 10.0,
+       "bSpawnModule": true,
+       "bUpdateModule": true,
+       "bEnabled": true
+      }
+     },
+     {
+      "object": "FX_RepairBeam_p.FX.Squib_RepairEnemy_FX.ParticleModuleBeamTarget_3443",
+      "class": "ParticleModuleBeamTarget",
+      "values": {
+       "TargetMethod": "PEB2STM_Emitter",
+       "Target": {
+        "Distribution": null,
+        "Type": 7,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 3,
+        "LookupTable": [
+         0.0,
+         0.0,
+         0.0
+        ]
+       },
+       "TargetTangent": {
+        "Distribution": null,
+        "Type": 7,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 3,
+        "LookupTable": [
+         1.0,
+         0.0,
+         0.0
+        ]
+       },
+       "TargetStrength": {
+        "Distribution": null,
+        "Type": 1,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 1,
+        "LookupTable": [
+         25.0
+        ]
+       },
+       "LockRadius": 10.0,
+       "bSpawnModule": true,
+       "bUpdateModule": true,
+       "bEnabled": true
+      }
+     },
+     {
+      "object": "FX_RepairBeam_p.FX.Squib_RepairEnemy_FX.ParticleModuleBeamTarget_6886",
+      "class": "ParticleModuleBeamTarget",
+      "values": {
+       "TargetMethod": "PEB2STM_Emitter",
+       "Target": {
+        "Distribution": null,
+        "Type": 7,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 3,
+        "LookupTable": [
+         0.0,
+         0.0,
+         0.0
+        ]
+       },
+       "TargetTangent": {
+        "Distribution": null,
+        "Type": 7,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 3,
+        "LookupTable": [
+         1.0,
+         0.0,
+         0.0
+        ]
+       },
+       "TargetStrength": {
+        "Distribution": null,
+        "Type": 1,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 1,
+        "LookupTable": [
+         25.0
+        ]
+       },
+       "LockRadius": 10.0,
+       "bSpawnModule": true,
+       "bUpdateModule": true,
+       "bEnabled": true
+      }
+     }
+    ],
+    "beam_modules_note": "PMI_Unknown / module_id 0 entries in beam LODs are these modules: ParticleModuleBeamSource, ParticleModuleBeamTarget (TargetMethod PEB2STM_UserSet, TargetName \"TargetLocation\"), and the WFC-specific ParticleModuleBeamSineWave. Emitter / LOD binding comes from the native LOD module list (RE TARGETED_PASS5 raw scan, HIGH)"
+   },
+   "FX_RepairBeam_p.FX.Tracer_RepairBeam_FX": {
+    "template": "FX_RepairBeam_p.FX.Tracer_RepairBeam_FX",
+    "in_dump": true,
+    "emitters": [
+     {
+      "emitter": "TestBeam_Dup_Dup_Dup_Dup",
+      "type_data": "ParticleModuleTypeDataBeam2",
+      "type_data_props": {
+       "TaperMethod": "PEBTM_Full",
+       "MaxBeamCount": 1,
+       "Speed": 0.0,
+       "InterpolationPoints": 50,
+       "TaperScale": {
+        "Distribution": null,
+        "Type": 2,
+        "LookupTable": [
+         0.0,
+         1.0,
+         0.0,
+         20.0,
+         0.0,
+         0.10000000149011612,
+         0.20000000298023224,
+         0.30000001192092896,
+         0.4000000059604645,
+         0.5,
+         0.6000000238418579,
+         0.699999988079071,
+         0.800000011920929,
+         0.9000000357627869,
+         1.0,
+         0.949999988079071,
+         0.8999999761581421,
+         0.8499999642372131,
+         0.800000011920929,
+         0.75,
+         0.699999988079071,
+         0.6499999761581421,
+         0.5999999642372131,
+         0.550000011920929,
+         0.5
+        ]
+       }
+      },
+      "material": "FX_Materials_p.Materials.HealBeam_MAT",
+      "undecoded_modules (PMI_Unknown)": 0,
+      "resolved_modules (PMI_Unknown slots named by object class)": [
+       {
+        "slot": 3,
+        "module": "PMI_BeamSource",
+        "object": "FX_RepairBeam_p.FX.Tracer_RepairBeam_FX.ParticleModuleBeamSource_1272",
+        "properties": {
+         "Source": {
+          "Distribution": null,
+          "Type": 7,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 3,
+          "LookupTable": [
+           0.0,
+           0.0,
+           0.0
+          ]
+         },
+         "SourceTangent": {
+          "Distribution": null,
+          "Type": 7,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 3,
+          "LookupTable": [
+           1.0,
+           0.0,
+           0.0
+          ]
+         },
+         "SourceStrength": {
+          "Distribution": null,
+          "Type": 1,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 1,
+          "LookupTable": [
+           25.0
+          ]
+         },
+         "bSpawnModule": true,
+         "bUpdateModule": true,
+         "bEnabled": true
+        }
+       },
+       {
+        "slot": 4,
+        "module": "PMI_BeamTarget",
+        "object": "FX_RepairBeam_p.FX.Tracer_RepairBeam_FX.ParticleModuleBeamTarget_13360",
+        "properties": {
+         "TargetMethod": "PEB2STM_UserSet",
+         "TargetTangentMethod": "PEB2STTM_UserSet",
+         "TargetName": "TargetLocation",
+         "Target": {
+          "Distribution": null,
+          "Type": 7,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 3,
+          "LookupTable": [
+           5000.0,
+           0.0,
+           0.0
+          ]
+         },
+         "TargetTangent": {
+          "Distribution": null,
+          "Type": 7,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 3,
+          "LookupTable": [
+           1.0,
+           0.0,
+           0.0
+          ]
+         },
+         "TargetStrength": {
+          "Distribution": null,
+          "Type": 1,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 1,
+          "LookupTable": [
+           25.0
+          ]
+         },
+         "LockRadius": 10.0,
+         "bSpawnModule": true,
+         "bUpdateModule": true,
+         "bEnabled": true
+        }
+       },
+       {
+        "slot": 5,
+        "module": "PMI_BeamSineWave",
+        "object": "FX_RepairBeam_p.FX.Tracer_RepairBeam_FX.ParticleModuleBeamSineWave_14633",
+        "properties": {
+         "SineWaves": [
+          {
+           "Amplitude": -25.0,
+           "Period": 500.0,
+           "Speed": -3000.0,
+           "PhaseOffset": 0.0,
+           "Direction": {
+            "X": 1.0,
+            "Y": 0.0,
+            "Z": 0.0
+           }
+          },
+          {
+           "Amplitude": -10.0,
+           "Period": 500.0,
+           "Speed": 0.0,
+           "PhaseOffset": 0.0,
+           "Direction": {
+            "X": -0.5,
+            "Y": 0.0,
+            "Z": 0.0
+           }
+          },
+          {
+           "Amplitude": -100.0,
+           "Period": 500.0,
+           "Speed": -2500.0,
+           "PhaseOffset": 0.0,
+           "Direction": {
+            "X": 0.0,
+            "Y": 0.5,
+            "Z": 0.0
+           }
+          }
+         ],
+         "bEnabled": true
+        }
+       }
+      ],
+      "assignment_complete": true
+     },
+     {
+      "emitter": "TestBeam_Dup_Dup_Dup_Dup",
+      "type_data": "ParticleModuleTypeDataBeam2",
+      "type_data_props": {
+       "TaperMethod": "PEBTM_Full",
+       "MaxBeamCount": 1,
+       "Speed": 0.0,
+       "InterpolationPoints": 50,
+       "TaperScale": {
+        "Distribution": null,
+        "Type": 2,
+        "LookupTable": [
+         0.0,
+         1.0,
+         0.0,
+         20.0,
+         0.0,
+         0.10000000149011612,
+         0.20000000298023224,
+         0.30000001192092896,
+         0.4000000059604645,
+         0.5,
+         0.6000000238418579,
+         0.699999988079071,
+         0.800000011920929,
+         0.9000000357627869,
+         1.0,
+         1.0,
+         1.0,
+         1.0,
+         1.0,
+         1.0,
+         1.0,
+         1.0,
+         1.0,
+         1.0,
+         1.0
+        ]
+       }
+      },
+      "material": "FX_Materials_p.Materials.Ring_DistortTrail_Add_MAT",
+      "undecoded_modules (PMI_Unknown)": 0,
+      "resolved_modules (PMI_Unknown slots named by object class)": [
+       {
+        "slot": 3,
+        "module": "PMI_BeamSource",
+        "object": "FX_RepairBeam_p.FX.Tracer_RepairBeam_FX.ParticleModuleBeamSource_14913",
+        "properties": {
+         "Source": {
+          "Distribution": null,
+          "Type": 7,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 3,
+          "LookupTable": [
+           0.0,
+           0.0,
+           0.0
+          ]
+         },
+         "SourceTangent": {
+          "Distribution": null,
+          "Type": 7,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 3,
+          "LookupTable": [
+           1.0,
+           0.0,
+           0.0
+          ]
+         },
+         "SourceStrength": {
+          "Distribution": null,
+          "Type": 1,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 1,
+          "LookupTable": [
+           25.0
+          ]
+         },
+         "bSpawnModule": true,
+         "bUpdateModule": true,
+         "bEnabled": true
+        }
+       },
+       {
+        "slot": 4,
+        "module": "PMI_BeamTarget",
+        "object": "FX_RepairBeam_p.FX.Tracer_RepairBeam_FX.ParticleModuleBeamTarget_6389",
+        "properties": {
+         "TargetMethod": "PEB2STM_UserSet",
+         "TargetTangentMethod": "PEB2STTM_UserSet",
+         "TargetName": "TargetLocation",
+         "Target": {
+          "Distribution": null,
+          "Type": 7,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 3,
+          "LookupTable": [
+           5000.0,
+           0.0,
+           0.0
+          ]
+         },
+         "TargetTangent": {
+          "Distribution": null,
+          "Type": 7,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 3,
+          "LookupTable": [
+           1.0,
+           0.0,
+           0.0
+          ]
+         },
+         "TargetStrength": {
+          "Distribution": null,
+          "Type": 1,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 1,
+          "LookupTable": [
+           25.0
+          ]
+         },
+         "LockRadius": 10.0,
+         "bSpawnModule": true,
+         "bUpdateModule": true,
+         "bEnabled": true
+        }
+       },
+       {
+        "slot": 5,
+        "module": "PMI_BeamSineWave",
+        "object": "FX_RepairBeam_p.FX.Tracer_RepairBeam_FX.ParticleModuleBeamSineWave_9838",
+        "properties": {
+         "SineWaves": [
+          {
+           "Amplitude": 50.0,
+           "Period": 500.0,
+           "Speed": -3000.0,
+           "PhaseOffset": 0.0,
+           "Direction": {
+            "X": 1.0,
+            "Y": 0.0,
+            "Z": 0.0
+           }
+          },
+          {
+           "Amplitude": 10.0,
+           "Period": 500.0,
+           "Speed": 0.0,
+           "PhaseOffset": 0.0,
+           "Direction": {
+            "X": -0.5,
+            "Y": 0.0,
+            "Z": 0.0
+           }
+          },
+          {
+           "Amplitude": 100.0,
+           "Period": 500.0,
+           "Speed": -2500.0,
+           "PhaseOffset": 0.0,
+           "Direction": {
+            "X": 0.0,
+            "Y": 0.5,
+            "Z": 0.0
+           }
+          }
+         ],
+         "bEnabled": true
+        }
+       }
+      ],
+      "assignment_complete": true
+     },
+     {
+      "emitter": "TestBeam_Dup_Dup_Dup_Dup_Dup",
+      "type_data": "ParticleModuleTypeDataBeam2",
+      "type_data_props": {
+       "TaperMethod": "PEBTM_Full",
+       "MaxBeamCount": 1,
+       "Speed": 0.0,
+       "InterpolationPoints": 50,
+       "TaperFactor": {
+        "Distribution": null,
+        "LookupTable": [
+         10.0
+        ]
+       },
+       "TaperScale": {
+        "Distribution": null,
+        "Type": 2,
+        "LookupTable": [
+         0.0,
+         1.100000023841858,
+         0.0,
+         20.0,
+         0.02500000037252903,
+         0.07874999940395355,
+         0.13250000774860382,
+         0.1862500160932541,
+         0.24000000953674316,
+         0.29375001788139343,
+         0.3475000262260437,
+         0.4012500047683716,
+         0.45500001311302185,
+         0.5087500214576721,
+         0.5625,
+         0.6162500381469727,
+         0.6700000166893005,
+         0.7237500548362732,
+         0.7775000333786011,
+         0.831250011920929,
+         0.8850000500679016,
+         0.9387500286102295,
+         0.9925000667572021,
+         1.0462499856948853,
+         0.0
+        ]
+       }
+      },
+      "material": "FX_Materials_p.MatInst.Blaster_Trail_MAT_INST",
+      "undecoded_modules (PMI_Unknown)": 0,
+      "resolved_modules (PMI_Unknown slots named by object class)": [
+       {
+        "slot": 3,
+        "module": "PMI_BeamSource",
+        "object": "FX_RepairBeam_p.FX.Tracer_RepairBeam_FX.ParticleModuleBeamSource_9539",
+        "properties": {
+         "Source": {
+          "Distribution": null,
+          "Type": 7,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 3,
+          "LookupTable": [
+           0.0,
+           0.0,
+           0.0
+          ]
+         },
+         "SourceTangent": {
+          "Distribution": null,
+          "Type": 7,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 3,
+          "LookupTable": [
+           1.0,
+           0.0,
+           0.0
+          ]
+         },
+         "SourceStrength": {
+          "Distribution": null,
+          "Type": 1,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 1,
+          "LookupTable": [
+           25.0
+          ]
+         },
+         "bSpawnModule": true,
+         "bUpdateModule": true,
+         "bEnabled": true
+        }
+       },
+       {
+        "slot": 4,
+        "module": "PMI_BeamTarget",
+        "object": "FX_RepairBeam_p.FX.Tracer_RepairBeam_FX.ParticleModuleBeamTarget_377",
+        "properties": {
+         "TargetMethod": "PEB2STM_UserSet",
+         "TargetTangentMethod": "PEB2STTM_UserSet",
+         "TargetName": "TargetLocation",
+         "Target": {
+          "Distribution": null,
+          "Type": 7,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 3,
+          "LookupTable": [
+           3500.0,
+           0.0,
+           0.0
+          ]
+         },
+         "TargetTangent": {
+          "Distribution": null,
+          "Type": 7,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 3,
+          "LookupTable": [
+           1.0,
+           0.0,
+           0.0
+          ]
+         },
+         "TargetStrength": {
+          "Distribution": null,
+          "Type": 1,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 1,
+          "LookupTable": [
+           25.0
+          ]
+         },
+         "LockRadius": 10.0,
+         "bSpawnModule": true,
+         "bUpdateModule": true,
+         "bEnabled": true
+        }
+       }
+      ],
+      "assignment_complete": true
+     },
+     {
+      "emitter": "SouceBoltsDown_Dup_Dup",
+      "type_data": "Sprite (no TypeData)",
+      "type_data_props": null,
+      "material": "FX_Materials_p.Materials.Lightning_Anim_02_MAT",
+      "undecoded_modules (PMI_Unknown)": 0,
+      "resolved_modules (PMI_Unknown slots named by object class)": null,
+      "assignment_complete": true
+     },
+     {
+      "emitter": "SouceBoltsOut_Dup_Dup",
+      "type_data": "Sprite (no TypeData)",
+      "type_data_props": null,
+      "material": "FX_Materials_p.Materials.Lightning_Anim_02_MAT",
+      "undecoded_modules (PMI_Unknown)": 0,
+      "resolved_modules (PMI_Unknown slots named by object class)": null,
+      "assignment_complete": true
+     },
+     {
+      "emitter": "SourceGlow_Dup_Dup_Dup",
+      "type_data": "Sprite (no TypeData)",
+      "type_data_props": null,
+      "material": "FX_Materials_p.Materials.Ring_Distort_Add_MAT",
+      "undecoded_modules (PMI_Unknown)": 0,
+      "resolved_modules (PMI_Unknown slots named by object class)": null,
+      "assignment_complete": true
+     },
+     {
+      "emitter": "SourceGlow_Dup_Dup_Dup",
+      "type_data": "Sprite (no TypeData)",
+      "type_data_props": null,
+      "material": "FX_Materials_p.Materials.Embers_Blue_MAT_INST",
+      "undecoded_modules (PMI_Unknown)": 0,
+      "resolved_modules (PMI_Unknown slots named by object class)": null,
+      "assignment_complete": true
+     },
+     {
+      "emitter": "SourceGlow_Dup_Dup_Dup_Dup",
+      "type_data": "Sprite (no TypeData)",
+      "type_data_props": null,
+      "material": "FX_Materials_p.Materials.Fire_Ring01_Mat",
+      "undecoded_modules (PMI_Unknown)": 0,
+      "resolved_modules (PMI_Unknown slots named by object class)": null,
+      "assignment_complete": true
+     }
+    ],
+    "beam_modules (template sub-objects)": [
+     {
+      "object": "FX_RepairBeam_p.FX.Tracer_RepairBeam_FX.ParticleModuleBeamSineWave_14633",
+      "class": "ParticleModuleBeamSineWave",
+      "values": {
+       "SineWaves": [
+        {
+         "Amplitude": -25.0,
+         "Period": 500.0,
+         "Speed": -3000.0,
+         "PhaseOffset": 0.0,
+         "Direction": {
+          "X": 1.0,
+          "Y": 0.0,
+          "Z": 0.0
+         }
+        },
+        {
+         "Amplitude": -10.0,
+         "Period": 500.0,
+         "Speed": 0.0,
+         "PhaseOffset": 0.0,
+         "Direction": {
+          "X": -0.5,
+          "Y": 0.0,
+          "Z": 0.0
+         }
+        },
+        {
+         "Amplitude": -100.0,
+         "Period": 500.0,
+         "Speed": -2500.0,
+         "PhaseOffset": 0.0,
+         "Direction": {
+          "X": 0.0,
+          "Y": 0.5,
+          "Z": 0.0
+         }
+        }
+       ],
+       "bEnabled": true
+      }
+     },
+     {
+      "object": "FX_RepairBeam_p.FX.Tracer_RepairBeam_FX.ParticleModuleBeamSineWave_2492",
+      "class": "ParticleModuleBeamSineWave",
+      "values": {
+       "SineWaves": [
+        {
+         "Amplitude": 50.0,
+         "Period": 500.0,
+         "Speed": -3000.0,
+         "PhaseOffset": 0.0,
+         "Direction": {
+          "X": 1.0,
+          "Y": 0.0,
+          "Z": 0.0
+         }
+        },
+        {
+         "Amplitude": 10.0,
+         "Period": 500.0,
+         "Speed": 0.0,
+         "PhaseOffset": 0.0,
+         "Direction": {
+          "X": -0.5,
+          "Y": 0.0,
+          "Z": 0.0
+         }
+        },
+        {
+         "Amplitude": 100.0,
+         "Period": 500.0,
+         "Speed": -2500.0,
+         "PhaseOffset": 0.0,
+         "Direction": {
+          "X": 0.0,
+          "Y": 0.5,
+          "Z": 0.0
+         }
+        }
+       ],
+       "bEnabled": true
+      }
+     },
+     {
+      "object": "FX_RepairBeam_p.FX.Tracer_RepairBeam_FX.ParticleModuleBeamSineWave_3858",
+      "class": "ParticleModuleBeamSineWave",
+      "values": {
+       "SineWaves": [
+        {
+         "Amplitude": -25.0,
+         "Period": 500.0,
+         "Speed": -3000.0,
+         "PhaseOffset": 0.0,
+         "Direction": {
+          "X": 1.0,
+          "Y": 0.0,
+          "Z": 0.0
+         }
+        },
+        {
+         "Amplitude": -10.0,
+         "Period": 500.0,
+         "Speed": 0.0,
+         "PhaseOffset": 0.0,
+         "Direction": {
+          "X": -0.5,
+          "Y": 0.0,
+          "Z": 0.0
+         }
+        },
+        {
+         "Amplitude": -100.0,
+         "Period": 500.0,
+         "Speed": -2500.0,
+         "PhaseOffset": 0.0,
+         "Direction": {
+          "X": 0.0,
+          "Y": 0.5,
+          "Z": 0.0
+         }
+        }
+       ],
+       "bEnabled": true
+      }
+     },
+     {
+      "object": "FX_RepairBeam_p.FX.Tracer_RepairBeam_FX.ParticleModuleBeamSineWave_9838",
+      "class": "ParticleModuleBeamSineWave",
+      "values": {
+       "SineWaves": [
+        {
+         "Amplitude": 50.0,
+         "Period": 500.0,
+         "Speed": -3000.0,
+         "PhaseOffset": 0.0,
+         "Direction": {
+          "X": 1.0,
+          "Y": 0.0,
+          "Z": 0.0
+         }
+        },
+        {
+         "Amplitude": 10.0,
+         "Period": 500.0,
+         "Speed": 0.0,
+         "PhaseOffset": 0.0,
+         "Direction": {
+          "X": -0.5,
+          "Y": 0.0,
+          "Z": 0.0
+         }
+        },
+        {
+         "Amplitude": 100.0,
+         "Period": 500.0,
+         "Speed": -2500.0,
+         "PhaseOffset": 0.0,
+         "Direction": {
+          "X": 0.0,
+          "Y": 0.5,
+          "Z": 0.0
+         }
+        }
+       ],
+       "bEnabled": true
+      }
+     },
+     {
+      "object": "FX_RepairBeam_p.FX.Tracer_RepairBeam_FX.ParticleModuleBeamSource_1272",
+      "class": "ParticleModuleBeamSource",
+      "values": {
+       "Source": {
+        "Distribution": null,
+        "Type": 7,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 3,
+        "LookupTable": [
+         0.0,
+         0.0,
+         0.0
+        ]
+       },
+       "SourceTangent": {
+        "Distribution": null,
+        "Type": 7,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 3,
+        "LookupTable": [
+         1.0,
+         0.0,
+         0.0
+        ]
+       },
+       "SourceStrength": {
+        "Distribution": null,
+        "Type": 1,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 1,
+        "LookupTable": [
+         25.0
+        ]
+       },
+       "bSpawnModule": true,
+       "bUpdateModule": true,
+       "bEnabled": true
+      }
+     },
+     {
+      "object": "FX_RepairBeam_p.FX.Tracer_RepairBeam_FX.ParticleModuleBeamSource_14913",
+      "class": "ParticleModuleBeamSource",
+      "values": {
+       "Source": {
+        "Distribution": null,
+        "Type": 7,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 3,
+        "LookupTable": [
+         0.0,
+         0.0,
+         0.0
+        ]
+       },
+       "SourceTangent": {
+        "Distribution": null,
+        "Type": 7,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 3,
+        "LookupTable": [
+         1.0,
+         0.0,
+         0.0
+        ]
+       },
+       "SourceStrength": {
+        "Distribution": null,
+        "Type": 1,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 1,
+        "LookupTable": [
+         25.0
+        ]
+       },
+       "bSpawnModule": true,
+       "bUpdateModule": true,
+       "bEnabled": true
+      }
+     },
+     {
+      "object": "FX_RepairBeam_p.FX.Tracer_RepairBeam_FX.ParticleModuleBeamSource_15184",
+      "class": "ParticleModuleBeamSource",
+      "values": {
+       "Source": {
+        "Distribution": null,
+        "Type": 7,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 3,
+        "LookupTable": [
+         0.0,
+         0.0,
+         0.0
+        ]
+       },
+       "SourceTangent": {
+        "Distribution": null,
+        "Type": 7,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 3,
+        "LookupTable": [
+         1.0,
+         0.0,
+         0.0
+        ]
+       },
+       "SourceStrength": {
+        "Distribution": null,
+        "Type": 1,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 1,
+        "LookupTable": [
+         25.0
+        ]
+       },
+       "bSpawnModule": true,
+       "bUpdateModule": true,
+       "bEnabled": true
+      }
+     },
+     {
+      "object": "FX_RepairBeam_p.FX.Tracer_RepairBeam_FX.ParticleModuleBeamSource_4774",
+      "class": "ParticleModuleBeamSource",
+      "values": {
+       "Source": {
+        "Distribution": null,
+        "Type": 7,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 3,
+        "LookupTable": [
+         0.0,
+         0.0,
+         0.0
+        ]
+       },
+       "SourceTangent": {
+        "Distribution": null,
+        "Type": 7,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 3,
+        "LookupTable": [
+         1.0,
+         0.0,
+         0.0
+        ]
+       },
+       "SourceStrength": {
+        "Distribution": null,
+        "Type": 1,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 1,
+        "LookupTable": [
+         25.0
+        ]
+       },
+       "bSpawnModule": true,
+       "bUpdateModule": true,
+       "bEnabled": true
+      }
+     },
+     {
+      "object": "FX_RepairBeam_p.FX.Tracer_RepairBeam_FX.ParticleModuleBeamSource_9539",
+      "class": "ParticleModuleBeamSource",
+      "values": {
+       "Source": {
+        "Distribution": null,
+        "Type": 7,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 3,
+        "LookupTable": [
+         0.0,
+         0.0,
+         0.0
+        ]
+       },
+       "SourceTangent": {
+        "Distribution": null,
+        "Type": 7,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 3,
+        "LookupTable": [
+         1.0,
+         0.0,
+         0.0
+        ]
+       },
+       "SourceStrength": {
+        "Distribution": null,
+        "Type": 1,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 1,
+        "LookupTable": [
+         25.0
+        ]
+       },
+       "bSpawnModule": true,
+       "bUpdateModule": true,
+       "bEnabled": true
+      }
+     },
+     {
+      "object": "FX_RepairBeam_p.FX.Tracer_RepairBeam_FX.ParticleModuleBeamSource_9588",
+      "class": "ParticleModuleBeamSource",
+      "values": {
+       "Source": {
+        "Distribution": null,
+        "Type": 7,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 3,
+        "LookupTable": [
+         0.0,
+         0.0,
+         0.0
+        ]
+       },
+       "SourceTangent": {
+        "Distribution": null,
+        "Type": 7,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 3,
+        "LookupTable": [
+         1.0,
+         0.0,
+         0.0
+        ]
+       },
+       "SourceStrength": {
+        "Distribution": null,
+        "Type": 1,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 1,
+        "LookupTable": [
+         25.0
+        ]
+       },
+       "bSpawnModule": true,
+       "bUpdateModule": true,
+       "bEnabled": true
+      }
+     },
+     {
+      "object": "FX_RepairBeam_p.FX.Tracer_RepairBeam_FX.ParticleModuleBeamTarget_11650",
+      "class": "ParticleModuleBeamTarget",
+      "values": {
+       "TargetMethod": "PEB2STM_UserSet",
+       "TargetTangentMethod": "PEB2STTM_UserSet",
+       "TargetName": "TargetLocation",
+       "Target": {
+        "Distribution": null,
+        "Type": 7,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 3,
+        "LookupTable": [
+         3500.0,
+         0.0,
+         0.0
+        ]
+       },
+       "TargetTangent": {
+        "Distribution": null,
+        "Type": 7,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 3,
+        "LookupTable": [
+         1.0,
+         0.0,
+         0.0
+        ]
+       },
+       "TargetStrength": {
+        "Distribution": null,
+        "Type": 1,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 1,
+        "LookupTable": [
+         25.0
+        ]
+       },
+       "LockRadius": 10.0,
+       "bSpawnModule": true,
+       "bUpdateModule": true,
+       "bEnabled": true
+      }
+     },
+     {
+      "object": "FX_RepairBeam_p.FX.Tracer_RepairBeam_FX.ParticleModuleBeamTarget_13360",
+      "class": "ParticleModuleBeamTarget",
+      "values": {
+       "TargetMethod": "PEB2STM_UserSet",
+       "TargetTangentMethod": "PEB2STTM_UserSet",
+       "TargetName": "TargetLocation",
+       "Target": {
+        "Distribution": null,
+        "Type": 7,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 3,
+        "LookupTable": [
+         5000.0,
+         0.0,
+         0.0
+        ]
+       },
+       "TargetTangent": {
+        "Distribution": null,
+        "Type": 7,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 3,
+        "LookupTable": [
+         1.0,
+         0.0,
+         0.0
+        ]
+       },
+       "TargetStrength": {
+        "Distribution": null,
+        "Type": 1,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 1,
+        "LookupTable": [
+         25.0
+        ]
+       },
+       "LockRadius": 10.0,
+       "bSpawnModule": true,
+       "bUpdateModule": true,
+       "bEnabled": true
+      }
+     },
+     {
+      "object": "FX_RepairBeam_p.FX.Tracer_RepairBeam_FX.ParticleModuleBeamTarget_15415",
+      "class": "ParticleModuleBeamTarget",
+      "values": {
+       "TargetMethod": "PEB2STM_UserSet",
+       "TargetTangentMethod": "PEB2STTM_UserSet",
+       "TargetName": "TargetLocation",
+       "Target": {
+        "Distribution": null,
+        "Type": 7,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 3,
+        "LookupTable": [
+         5000.0,
+         0.0,
+         0.0
+        ]
+       },
+       "TargetTangent": {
+        "Distribution": null,
+        "Type": 7,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 3,
+        "LookupTable": [
+         1.0,
+         0.0,
+         0.0
+        ]
+       },
+       "TargetStrength": {
+        "Distribution": null,
+        "Type": 1,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 1,
+        "LookupTable": [
+         25.0
+        ]
+       },
+       "LockRadius": 10.0,
+       "bSpawnModule": true,
+       "bUpdateModule": true,
+       "bEnabled": true
+      }
+     },
+     {
+      "object": "FX_RepairBeam_p.FX.Tracer_RepairBeam_FX.ParticleModuleBeamTarget_377",
+      "class": "ParticleModuleBeamTarget",
+      "values": {
+       "TargetMethod": "PEB2STM_UserSet",
+       "TargetTangentMethod": "PEB2STTM_UserSet",
+       "TargetName": "TargetLocation",
+       "Target": {
+        "Distribution": null,
+        "Type": 7,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 3,
+        "LookupTable": [
+         3500.0,
+         0.0,
+         0.0
+        ]
+       },
+       "TargetTangent": {
+        "Distribution": null,
+        "Type": 7,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 3,
+        "LookupTable": [
+         1.0,
+         0.0,
+         0.0
+        ]
+       },
+       "TargetStrength": {
+        "Distribution": null,
+        "Type": 1,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 1,
+        "LookupTable": [
+         25.0
+        ]
+       },
+       "LockRadius": 10.0,
+       "bSpawnModule": true,
+       "bUpdateModule": true,
+       "bEnabled": true
+      }
+     },
+     {
+      "object": "FX_RepairBeam_p.FX.Tracer_RepairBeam_FX.ParticleModuleBeamTarget_6389",
+      "class": "ParticleModuleBeamTarget",
+      "values": {
+       "TargetMethod": "PEB2STM_UserSet",
+       "TargetTangentMethod": "PEB2STTM_UserSet",
+       "TargetName": "TargetLocation",
+       "Target": {
+        "Distribution": null,
+        "Type": 7,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 3,
+        "LookupTable": [
+         5000.0,
+         0.0,
+         0.0
+        ]
+       },
+       "TargetTangent": {
+        "Distribution": null,
+        "Type": 7,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 3,
+        "LookupTable": [
+         1.0,
+         0.0,
+         0.0
+        ]
+       },
+       "TargetStrength": {
+        "Distribution": null,
+        "Type": 1,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 1,
+        "LookupTable": [
+         25.0
+        ]
+       },
+       "LockRadius": 10.0,
+       "bSpawnModule": true,
+       "bUpdateModule": true,
+       "bEnabled": true
+      }
+     },
+     {
+      "object": "FX_RepairBeam_p.FX.Tracer_RepairBeam_FX.ParticleModuleBeamTarget_8872",
+      "class": "ParticleModuleBeamTarget",
+      "values": {
+       "TargetMethod": "PEB2STM_UserSet",
+       "TargetTangentMethod": "PEB2STTM_UserSet",
+       "TargetName": "TargetLocation",
+       "Target": {
+        "Distribution": null,
+        "Type": 7,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 3,
+        "LookupTable": [
+         5000.0,
+         0.0,
+         0.0
+        ]
+       },
+       "TargetTangent": {
+        "Distribution": null,
+        "Type": 7,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 3,
+        "LookupTable": [
+         1.0,
+         0.0,
+         0.0
+        ]
+       },
+       "TargetStrength": {
+        "Distribution": null,
+        "Type": 1,
+        "Op": 1,
+        "LookupTableNumElements": 1,
+        "LookupTableChunkSize": 1,
+        "LookupTable": [
+         25.0
+        ]
+       },
+       "LockRadius": 10.0,
+       "bSpawnModule": true,
+       "bUpdateModule": true,
+       "bEnabled": true
+      }
+     }
+    ],
+    "beam_modules_note": "PMI_Unknown / module_id 0 entries in beam LODs are these modules: ParticleModuleBeamSource, ParticleModuleBeamTarget (TargetMethod PEB2STM_UserSet, TargetName \"TargetLocation\"), and the WFC-specific ParticleModuleBeamSineWave. Emitter / LOD binding comes from the native LOD module list (RE TARGETED_PASS5 raw scan, HIGH)"
+   }
+  },
+  "default_decal": {
+   "Material": null,
+   "MinWidth": 100.0,
+   "MinHeight": 100.0,
+   "WidthRange": 100.0,
+   "HeightRange": 100.0,
+   "Thickness": 10.0,
+   "Lifetime": 30.0,
+   "NoClip": false,
+   "UniformScale": true,
+   "ApplyRandomRotation": true
+  },
+  "muzzle_light": "WEP_SentryBlaster01_p.RepairSentry_WEPMESH.PointLightComponent_14276",
+  "muzzle_flash_duration": 0.10000000149011612,
+  "impact_squib": {
+   "ImpactSquibPercentage": 1.0,
+   "ImpactSquibMaxCount": 5,
+   "MaxImpactEffectDistance": 2500.0
+  }
+ },
+ "projectiles": null,
+ "sounds": [
+  {
+   "event": "WP_Looping",
+   "cue": "BL_WPN_GUN_REPAIR_WPN.SHOOT_LP",
+   "class": "SoundCue",
+   "waves": [
+    {
+     "wave": "WL_GUN_REPAIR_WPN.GUN_REPAIR_WPN_FIRE_LP_01",
+     "wav": "content/WL_GUN_REPAIR_WPN/GUN_REPAIR_WPN_FIRE_LP_01.wav"
+    },
+    {
+     "wave": "WL_GUN_REPAIR_WPN.GUN_REPAIR_WPN_FIRE_START_01_LR",
+     "wav": "content/WL_GUN_REPAIR_WPN/GUN_REPAIR_WPN_FIRE_START_01_LR.wav"
+    }
+   ]
+  },
+  {
+   "event": "WP_LoopingTail",
+   "cue": "BL_WPN_GUN_REPAIR_WPN.SHOOT_LAST_SHOT",
+   "class": "SoundCue",
+   "waves": [
+    {
+     "wave": "WL_GUN_REPAIR_WPN.GUN_REPAIR_WPN_FIRE_LAST_SHOT_01_LR",
+     "wav": "content/WL_GUN_REPAIR_WPN/GUN_REPAIR_WPN_FIRE_LAST_SHOT_01_LR.wav"
+    }
+   ]
+  },
+  {
+   "event": "WP_Overheat",
+   "cue": "BL_WPN_GUN_REPAIR_WPN.Overheat",
+   "class": "SoundCue",
+   "waves": []
+  },
+  {
+   "event": "WP_Fire",
+   "cue": "BL_WPN_GUN_REPAIR_WPN.SHOOT_HEAL_LP",
+   "class": "SoundCue",
+   "waves": [
+    {
+     "wave": "WL_GUN_REPAIR_WPN.GUN_REPAIR_WPN_FIRE_HEAL_LP_01",
+     "wav": "content/WL_GUN_REPAIR_WPN/GUN_REPAIR_WPN_FIRE_HEAL_LP_01.wav"
+    }
+   ]
+  },
+  {
+   "event": "WP_FireSecondary",
+   "cue": "BL_WPN_GUN_REPAIR_WPN.SHOOT_DMG_LP",
+   "class": "SoundCue",
+   "waves": [
+    {
+     "wave": "WL_GUN_REPAIR_WPN.GUN_REPAIR_WPN_FIRE_DAMAGE_LP_01",
+     "wav": "content/WL_GUN_REPAIR_WPN/GUN_REPAIR_WPN_FIRE_DAMAGE_LP_01.wav"
+    }
+   ]
+  },
+  {
+   "event": "DefaultImpactSound",
+   "cue": "BL_WPN_GUN_REPAIR_WPN.IMPT_WORLD",
+   "class": "SoundCue",
+   "waves": [
+    {
+     "wave": "WL_GUN_REPAIR_WPN.GUN_REPAIR_WPN_SQUIB_01",
+     "wav": "content/WL_GUN_REPAIR_WPN/GUN_REPAIR_WPN_SQUIB_01.wav"
+    },
+    {
+     "wave": "WL_GUN_REPAIR_WPN.GUN_REPAIR_WPN_SQUIB_02",
+     "wav": "content/WL_GUN_REPAIR_WPN/GUN_REPAIR_WPN_SQUIB_02.wav"
+    },
+    {
+     "wave": "WL_GUN_REPAIR_WPN.GUN_REPAIR_WPN_SQUIB_03",
+     "wav": "content/WL_GUN_REPAIR_WPN/GUN_REPAIR_WPN_SQUIB_03.wav"
+    },
+    {
+     "wave": "WL_GUN_REPAIR_WPN.GUN_REPAIR_WPN_SQUIB_04",
+     "wav": "content/WL_GUN_REPAIR_WPN/GUN_REPAIR_WPN_SQUIB_04.wav"
+    }
+   ]
+  }
+ ],
+ "gameplay (versus WEPDATA = MultiplayerData, CONFIRMED)": {},
+ "versus_data_source": {
+  "object": null,
+  "selected_by": "PlayerData (fallback: MultiplayerData unset on the class chain)",
+  "rule": "TnWeapon.GivenTo: TnMultiplayerGame.DesiredWeaponDataType = 3 (Multiplayer); GetWeaponDataByType(3) == none -> WDT 1 PlayerData; no fallback to DefaultTnWeaponData; AI holders use AiData (RE 2026-10-07, CONFIRMED from script)"
+ },
+ "wepdata_objects": {
+  "MultiplayerData (versus)": null,
+  "PlayerData (campaign / SP)": null,
+  "SurvivalData (Escalation)": null,
+  "AiData": "WEP_SentryBlaster01_p.RepairSentry_WEPDATA"
+ },
+ "class_defaults (weapon CDO, sub-objects resolved)": {
+  "RepairRateModifier": {
+   "object": "TransContent.Default__TnWeaponSentryRepair.RepairRateModifier0",
+   "class": "TnValueTimesProductBuffModifier",
+   "values": {}
+  },
+  "FireIntervalLerper": {
+   "object": "TransContent.Default__TnWeaponSentryRepair.Lerper0",
+   "class": "HmValueLerper",
+   "values": {}
+  },
+  "WeaponHeat": {
+   "object": "TransContent.Default__TnWeaponSentryRepair.WeaponHeat0",
+   "class": "TnWeaponHeat",
+   "values": {
+    "HeatProperties": {
+     "HeatMax": 100.0,
+     "Modifiers": []
+    }
+   }
+  },
+  "Defragger": {
+   "object": "TransContent.Default__TnWeaponSentryRepair.Defragger0",
+   "class": "TnDefragger",
+   "values": {
+    "DefragTime": 1.0,
+    "Range": {
+     "Min": 0.0,
+     "Max": 1.0
+    },
+    "DefragShaderParamName": "Defrag",
+    "CurrentValue": -1.0
+   }
+  },
+  "AmmoMaterialRamper": {
+   "object": "TransContent.Default__TnWeaponSentryRepair.AmmoMaterialRamper0",
+   "class": "TnDefragger",
+   "values": {
+    "DefragTime": 0.800000011920929,
+    "Range": {
+     "Min": 1.0,
+     "Max": 80.0
+    },
+    "DefragShaderParamName": "EmissiveIntensity",
+    "CurrentValue": -1.0
+   }
+  },
+  "WeaponMeshTemplate": "WEP_SentryBlaster01_p.RepairSentry_WEPMESH",
+  "AiData": "WEP_SentryBlaster01_p.RepairSentry_WEPDATA",
+  "CanTargetTeammates": true,
+  "PutDownImmediatelyDetachDelay": 0.009999999776482582,
+  "PutDownImmediatelyTime": 0.019999999552965164,
+  "IsEffectedByIncreaseAmmoSkill": true,
+  "ShotStatId": -1,
+  "DamageModifier": "TransGame.Default__TnWeapon.DamageModifier0",
+  "PickupObtainedDialog": "SoundEvents_Dialog.WeaponPickupObtainedDialog",
+  "SpawnOffsetAngle": {
+   "Pitch": 3000,
+   "Yaw": 0,
+   "Roll": 0
+  },
+  "PickupScale": 1.0,
+  "IncreaseAmmoSkill": "TransGame.TnSkillIncreaseAmmoFromClips",
+  "AmmoClipCount": 10,
+  "Data": "TransGame.Default__TnWeapon.DefaultTnWeaponData",
+  "ItemName": "Missing Weapon, needs entry in TransContent.int",
+  "DroppedPickupClass": "TransGame.TnDroppedPickupWeapon",
+  "PickupRating": 1.0,
+  "PickupRotationRate": {
+   "Pitch": 0,
+   "Yaw": 10000,
+   "Roll": 0
+  },
+  "ReserveAmmoCount": 40,
+  "FiringStatesArray": [
+   "WeaponFiring",
+   "WeaponFiring"
+  ],
+  "ShouldFireOnRelease": [
+   0,
+   0
+  ],
+  "MessageClass": "HM_Engine.HmLocalMessage",
+  "DefaultAnimSpeed": 1.0,
+  "RespawnTime": 30.0,
+  "MaxDesireability": 0.10000000149011612,
+  "PickupMessage": "Snagged an item.",
+  "FindLevelStartOffset": {
+   "X": 0.0,
+   "Y": 0.0,
+   "Z": 25.0
+  },
+  "FindLevelEndOffset": {
+   "X": 0.0,
+   "Y": 0.0,
+   "Z": -15000.0
+  },
+  "CollisionPreset": "COLLIDE_CustomDefault",
+  "CustomTimeDilation": 1.0,
+  "DrawScale": 1.0,
+  "DrawScale3D": {
+   "X": 1.0,
+   "Y": 1.0,
+   "Z": 1.0
+  },
+  "ActorIndex": -1,
+  "ReplicatedCollisionPreset": "None"
+ },
+ "fine_aim_camera (OverTheShoulder strategy FOV)": {
+  "weapon_pcs": null,
+  "source": "CAM_Strategies_p.OverTheShoulder_STRATEGY.TnFovCameraBehavior_1013",
+  "fov_default": {
+   "Fov": 80.0,
+   "SmoothTime": 0.4000000059604645
+  },
+  "fov_fine_aim": {
+   "Fov": 45.0,
+   "SmoothTime": 0.10000000149011612
+  },
+  "fov_fine_aim_hovering": {
+   "Fov": 45.0,
+   "SmoothTime": 0.10000000149011612
+  },
+  "rule": "first FOVsByPCS entry whose PlayerCameraStates are all active; weapon adds WeaponPCS, fine aim adds TnPCS_FineAim"
+ },
+ "hud_scope (Hud_GFX ActionScript on NotifyFineAimChanged(1), by weapon class; RE TARGETED_PASS5 CONFIRMED)": null,
+ "gameplay (campaign / SP PlayerData)": {
+  "object": null
+ },
+ "ai_data": {
+  "object": "WEP_SentryBlaster01_p.RepairSentry_WEPDATA",
+  "DesiredFiringRange": "RANGE_Medium"
+ },
+ "damage_types": {},
+ "restrictions": {},
+ "usable_by_chassis": null,
+ "ui": {
+  "ratings": {},
+  "kill_feed_icon": null,
+  "hud_weapon_icon": null,
+  "loadout_icons (GFx export name == provider id, HIGH)": null,
+  "menu_preview": "weapon glTF (no dedicated preview mesh authored for MP loadouts: INFERRED from absence)"
+ },
+ "mp": {
+  "in_every_mp_map": false,
+  "in_any_mp_map": false,
+  "escalation_ai_weapon": true
+ },
+ "mp_weapons_entry": "manifests/mp_content/mp_weapons.json weapons[\"TransContent.TnWeaponSentryRepair\"]",
+ "validation": {
+  "paths_checked": 9,
+  "missing": [],
+  "glb": false,
+  "clips": 0,
+  "sounds_with_wav": 5,
+  "sounds": 6,
+  "seconds": 2.2
+ },
+ "files": {
+  "json": "VerticalSlice/Weapons/SentryRepair/weapon.json",
+  "slice_weapon_kept": false
+ }
+}
