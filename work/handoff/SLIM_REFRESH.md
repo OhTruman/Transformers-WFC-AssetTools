@@ -1,6 +1,6 @@
 # Slim list refresh (staged; Systems adopts at the package step)
 
-Measured 2026-10-23 00:14. Live `out/package/slim_files.tsv` untouched; refreshed copy `out/package/slim_files.refresh.tsv` (same rows, order, columns, line endings; only the bytes column of keep / xpr rows re-measured). Generator `scripts/wfc/slim_refresh.py` (rerun at the head).
+Measured 2026-10-23 00:40. Live `out/package/slim_files.tsv` untouched; refreshed copy `out/package/slim_files.refresh.tsv` (same rows, order, columns, line endings; only the bytes column of keep / xpr rows re-measured). Generator `scripts/wfc/slim_refresh.py` (rerun at the head).
 
 | | value |
 |---|---|
