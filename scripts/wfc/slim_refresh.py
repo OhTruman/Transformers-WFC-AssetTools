@@ -17,6 +17,14 @@ OUT = os.path.join(ROOT, 'out', 'package', 'slim_files.refresh.tsv')
 ADD = [('Transformers Rebuild/Rebuild/work/render/%s/lens_flares.json' % m, 'Rebuild/work/render/%s/lens_flares.json' % m, 'keep')
        for m in ('MP_ESC_BrokenHope', 'MP_ESC_Remnant', 'MP_IAC_Rust', 'MP_IAC_Seed', 'MP_ORB_Debris', 'MP_UND_Gorge')]
 
+# Escalation horde runtime packaging (Integration 2026-10-23): every file under these AssetTools dirs ships, same dest form
+ADD_DIRS = ['AssetTools/out/escalation_characters']
+for _d in ADD_DIRS:
+    for _r, _, _fs in os.walk(os.path.join(TR, _d)):
+        for _f in sorted(_fs):
+            _src = os.path.relpath(os.path.join(_r, _f), TR).replace(os.sep, '/')
+            ADD.append(('Transformers Rebuild/' + _src, _src, 'keep'))
+
 def main():
     raw = open(TSV, 'rb').read().decode('utf-8')
     # the live file mixes endings: the generated rows end CRLF, the 11 rows AssetTools appended on 2026-10-18 (10 physmat +

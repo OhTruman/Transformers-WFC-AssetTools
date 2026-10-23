@@ -1,15 +1,15 @@
 # Slim list refresh (staged; Systems adopts at the package step)
 
-Measured 2026-10-17 15:26. Live `out/package/slim_files.tsv` untouched; refreshed copy `out/package/slim_files.refresh.tsv` (same rows, order, columns, line endings; only the bytes column of keep / xpr rows re-measured). Generator `scripts/wfc/slim_refresh.py` (rerun at the head).
+Measured 2026-10-23 00:13. Live `out/package/slim_files.tsv` untouched; refreshed copy `out/package/slim_files.refresh.tsv` (same rows, order, columns, line endings; only the bytes column of keep / xpr rows re-measured). Generator `scripts/wfc/slim_refresh.py` (rerun at the head).
 
 | | value |
 |---|---|
-| rows | 101031 -> 101037 |
+| rows | 101031 -> 101198 |
 | rows with a changed byte count | 47 |
-| rows added | 6 |
+| rows added | 167 |
 | line endings | live: 101021 CRLF + 11 LF-only rows (the LF ones are AssetTools appends of 2026-10-18); refresh: all CRLF |
 | rows whose source is missing (kept) | 0 |
-| keep / xpr bytes | 12,945,073,330 -> 12,974,424,843 (+29351513) |
+| keep / xpr bytes | 12,945,073,330 -> 13,116,521,980 (+171448650) |
 
 ## Changed rows
 
@@ -17,7 +17,7 @@ Measured 2026-10-17 15:26. Live `out/package/slim_files.tsv` untouched; refreshe
 |---|---|---|---|---|
 | `AssetTools/manifests/package/slim_package.json` | 154,012 | 52,139 | -101873 | 2026-10-11 12:09 |
 | `Rebuild/data/frontend/graphics_presets.json` | 2,789 | 2,688 | -101 | 2026-10-12 22:51 |
-| `Rebuild/data/frontend/pc_strings.int` | 1,991 | 2,471 | +480 | 2026-10-17 12:36 |
+| `Rebuild/data/frontend/pc_strings.int` | 1,991 | 2,963 | +972 | 2026-10-23 00:10 |
 | `Rebuild/work/render/MP_ESC_BrokenHope/decals.glb` | 264,584 | 352,104 | +87520 | 2026-10-12 21:20 |
 | `Rebuild/work/render/MP_ESC_BrokenHope/lighting.json` | 2,735,657 | 2,755,360 | +19703 | 2026-10-17 14:13 |
 | `Rebuild/work/render/MP_ESC_BrokenHope/map_fx_runtime.json` | 18,879,871 | 21,969,999 | +3090128 | 2026-10-17 13:47 |

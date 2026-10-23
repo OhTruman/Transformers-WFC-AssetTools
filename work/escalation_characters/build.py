@@ -98,6 +98,16 @@ def main():
     elif mode == 'character':
         import vs_roster_export as R
         cid = arg.replace('_AICD', '')
+        # AnimSets that ExtractedAssets holds only as raw .psa were converted into AssetTools/out/campaign_anims (campaign_anim_gaps.py,
+        # same conventions); fall back to that copy when the content glTF is absent (path relative to the exporter's ROOT)
+        orig_set_gltf = R.set_gltf
+        def set_gltf(set_op):
+            p = orig_set_gltf(set_op)
+            if p: return p
+            pkg, name = set_op.split('.', 1)
+            alt = os.path.join(ROOT, 'out', 'campaign_anims', pkg, name.split('.')[-1] + '.anim.gltf')
+            return os.path.relpath(alt, R.ROOT).replace(os.sep, '/') if os.path.exists(alt) else None
+        R.set_gltf = set_gltf
         m = R.export(cid, character_entry(arg), None, materials.assets(), R.runtime_colors_common(), out_dir=os.path.join(OUT, cid))
         print(cid, json.dumps(m['validation'])[:300])
     elif mode == 'index':
