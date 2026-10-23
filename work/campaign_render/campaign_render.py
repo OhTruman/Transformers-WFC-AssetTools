@@ -6,8 +6,9 @@ Per streaming sublevel (the original's streaming model): each sublevel of a chap
                                                    no duplication); world.glb / map_fx.json / render_index.json are already there
                                                    (split_sublevels.py)
   python campaign_render.py step <CH> <SUB> <step> one step, one process (call it under run_bounded)
-  python campaign_render.py chapter <CH>           every sublevel x step, each under run_bounded (6 GB), sequential, resumable: a step
+  python campaign_render.py chapter <CH> [--force=step,step]   every sublevel x step (--force reruns those steps even if ok), each under run_bounded (6 GB), sequential, resumable: a step
                                                    whose status file says ok is skipped; exits 75 on a PERF_HOLD file
+  python campaign_render.py layout <CH>            rename <SUB>_m output dirs to the URL name without _m; write chapter.json
   python campaign_render.py report <CH>            sizes / failures / gap list -> out/campaign_render/<CH>/report.json + .md
 
 Inputs : VS_MAPS -> work/campaign_pilot/VerticalSlice/Maps/<CH>/sublevels (each <SUB> folder is a map); VS -> the campaign VerticalSlice;
@@ -31,6 +32,8 @@ STEPS = ['lm_umodel', 'inline_umodel', 'lighting', 'materials', 'fog', 'beast', 
 FILTERED = ('props.json', 'props_authored.json', 'postprocess.json', 'light_probes.json')
 
 def chapter_levels(ch): return json.load(open(os.path.join(CVS, 'Maps', ch, 'map.json'), encoding='utf-8'))['sublevels']
+def outname(sub): return sub[:-2] if sub.endswith('_m') else sub   # Integration 2026-10-23: render dirs use the URL name without _m
+RE_ORDER = os.path.join(TR, 'RE-Workspace', 'work', 'handoff', 'campaign_streaming_order.json')
 
 # ---------------------------------------------------------------- prep
 def filt(v, lv, levels):
@@ -70,15 +73,18 @@ def prep(ch):
 # ---------------------------------------------------------------- one step
 def step(ch, sub, s):
     sys.path.insert(0, TOOLS)
-    S = os.path.join(CVS, 'Maps', ch, 'sublevels'); OUT = os.path.join(OUTR, ch, sub); UM = os.path.join(OUTR, ch, '_umodel')
+    S = os.path.join(CVS, 'Maps', ch, 'sublevels'); OUT = os.path.join(OUTR, ch, outname(sub)); UM = os.path.join(OUTR, ch, '_umodel')
     os.makedirs(OUT, exist_ok=True); os.makedirs(UM, exist_ok=True)
     cooked = {f.lower(): f for f in os.listdir(COOKED)}
     pers = next((l for l in chapter_levels(ch) if l.lower().endswith('_base_m') or l.lower() == ch.lower() + '_m'), sub)
+    levels = set(chapter_levels(ch))
     def map_packages(mapname):
-        p = [cooked[(sub + '.xxx').lower()]] if (sub + '.xxx').lower() in cooked else []
+        lv = mapname if mapname in levels else sub          # the M72 sibling fallback asks for other sublevels of the chapter by name
+        p = [cooked[(lv + '.xxx').lower()]] if (lv + '.xxx').lower() in cooked else []
         return p, cooked.get((pers + '.xxx').lower(), p[0] if p else None)
     def map_lm_packages(mapname):
-        k = (sub + '_LM.xxx').lower(); return [cooked[k]] if k in cooked else []
+        lv = mapname if mapname in levels else sub
+        k = (lv + '_LM.xxx').lower(); return [cooked[k]] if k in cooked else []
     import ue3obj
     ue3obj.VS_MAPS = S; ue3obj.map_packages = map_packages; ue3obj.map_lm_packages = map_lm_packages
     def load(name):
@@ -115,16 +121,7 @@ def step(ch, sub, s):
                 rd(os.path.join(TOOLS, 'ui_materials.txt')) + scene + fxlib
         res = {'extra_list_entries': len(extra), 'campaign_list': len(rd(os.path.join(AT, 'manifests', 'campaign', 'render_materials', ch + '.txt'))),
                'fxlib': len(fxlib), 'scene': len(scene)}
-        # build_materials reads world.glb from VS/Maps/<map> (not VS_MAPS): redirect that one read to the sublevel folder. Its M72 fallback
-        # scans VS/Maps for MP_* maps; the campaign tree has none, so materials cooked only elsewhere stay missing (reported as gaps)
-        bm = load('build_materials'); _gj = bm.glb_json
-        wrong = os.path.normcase(os.path.normpath(os.path.join(CVS, 'Maps', sub)))
-        def _glb(p, _gj=_gj):
-            j = _gj(os.path.join(S, sub, os.path.basename(p)) if os.path.normcase(os.path.normpath(os.path.dirname(p))) == wrong else p)
-            for k in ('materials', 'meshes', 'nodes', 'accessors', 'textures', 'images'): j.setdefault(k, [])   # a level with no static meshes (glTF omits empty arrays)
-            return j
-        bm.glb_json = _glb
-        sys.argv = ['build_materials.py', sub, OUT] + list(dict.fromkeys(extra)); bm.main()
+        run_main('build_materials', [sub, OUT] + list(dict.fromkeys(extra)))   # integration build_materials reads ue3obj.VS_MAPS (set above) and guards empty arrays
     elif s == 'fog': run_main('build_fog_volumes', [sub, OUT])
     elif s == 'beast': run_main('beast_probes', [sub, OUT])
     elif s == 'movers': run_main('build_movers', [sub, OUT])
@@ -135,7 +132,7 @@ def step(ch, sub, s):
     return res
 
 def step_cmd(ch, sub, s):
-    stf = os.path.join(OUTR, ch, sub, '_status', s + '.json'); os.makedirs(os.path.dirname(stf), exist_ok=True)
+    stf = os.path.join(OUTR, ch, outname(sub), '_status', s + '.json'); os.makedirs(os.path.dirname(stf), exist_ok=True)
     t0 = time.time(); rec = {'chapter': ch, 'sublevel': sub, 'step': s}
     try:
         rec['result'] = step(ch, sub, s); rec['ok'] = True
@@ -148,15 +145,15 @@ def step_cmd(ch, sub, s):
     print(json.dumps({k: rec[k] for k in rec if k != 'error'}, default=str)[:400]); sys.exit(0 if rec['ok'] else 1)
 
 # ---------------------------------------------------------------- chapter loop
-def chapter(ch):
+def chapter(ch, force=()):
     S = os.path.join(CVS, 'Maps', ch, 'sublevels')
     subs = [l for l in chapter_levels(ch) if os.path.isdir(os.path.join(S, l))]
     for sub in subs:
-        od = os.path.join(OUTR, ch, sub); os.makedirs(od, exist_ok=True)
+        od = os.path.join(OUTR, ch, outname(sub)); os.makedirs(od, exist_ok=True)
         if not os.path.exists(os.path.join(od, 'world.glb')): shutil.copyfile(os.path.join(S, sub, 'world.glb'), os.path.join(od, 'world.glb'))
         for s in STEPS:
             stf = os.path.join(od, '_status', s + '.json')
-            if os.path.exists(stf) and json.load(open(stf, encoding='utf-8')).get('ok'): continue
+            if s not in force and os.path.exists(stf) and json.load(open(stf, encoding='utf-8')).get('ok'): continue
             if glob.glob(os.path.join(TR, '*', 'work', 'PERF_HOLD')): print('PERF_HOLD present: stopping', flush=True); sys.exit(75)
             log = os.path.join(od, '_status', s + '.log'); os.makedirs(os.path.dirname(log), exist_ok=True)
             env = dict(os.environ, PYTHONDONTWRITEBYTECODE='1')
@@ -167,7 +164,37 @@ def chapter(ch):
                 json.dump({'chapter': ch, 'sublevel': sub, 'step': s, 'ok': False, 'error': 'process ended without a status (rc %s; see %s)' % (r.returncode, log)},
                           open(stf, 'w', encoding='utf-8'), indent=1)
             print('%s %-34s %-13s %s' % (ch, sub, s, 'ok' if ok else 'FAIL rc %s' % r.returncode), flush=True)
-    report(ch)
+    report(ch); layout(ch)
+
+# ---------------------------------------------------------------- layout
+def layout(ch):
+    """rename any old <SUB>_m render dirs to the URL name without _m, then write chapter.json: the persistent level and the sublevels in
+    streaming order (the authored WorldInfo.InitialStreamingState's levels first, then each checkpoint's state in display order, RE
+    campaign_streaming_order.json; first appearance wins; render dirs not visible in any state follow in map.json order)"""
+    R = os.path.join(OUTR, ch); levels = chapter_levels(ch); moved = []
+    for sub in levels:
+        a, b = os.path.join(R, sub), os.path.join(R, outname(sub))
+        if a != b and os.path.isdir(a) and not os.path.exists(b): os.rename(a, b); moved.append(sub)
+    pers = next((l for l in levels if l.lower().endswith('_base_m')), None)
+    order_src = json.load(open(RE_ORDER, encoding='utf-8')) if os.path.exists(RE_ORDER) else {}
+    entry = next((v for k, v in order_src.items() if pers and k.lower() == pers.lower()), {})
+    ini = (json.load(open(os.path.join(AT, 'manifests', 'campaign', 'initial_streaming_state.json'), encoding='utf-8'))['chapters'].get(ch) or {})
+    states = entry.get('states') or {}; seq = []
+    ini_state = (ini.get('InitialStreamingState') or '').split('.')[-1]
+    for st in [ini_state] + [c.get('state') for c in entry.get('checkpoints_in_display_order') or []]:
+        for lv, vis in states.get(st, []):
+            if vis and lv not in seq: seq.append(lv)
+    have = [l for l in levels if os.path.isdir(os.path.join(R, outname(l)))]
+    ordered = [l for l in seq if l in have] + [l for l in have if l not in seq]
+    vis_in = {l: sorted(st for st, ls in states.items() if any(x == l and v for x, v in ls)) for l in have}
+    cj = {'chapter': ch, 'generated_by': 'AssetTools/work/campaign_render/campaign_render.py layout', 'persistent_level': pers,
+          'persistent_dir': outname(pers) if pers and pers in have else None, 'initial_streaming_state': ini.get('InitialStreamingState'),
+          'order_method': 'initial state levels, then checkpoint states in display order (RE campaign_streaming_order.json); first appearance; '
+                          'levels visible in no state (e.g. CINE) last in map.json order',
+          'sublevels': [{'dir': outname(l), 'level': l, 'visible_in_states': vis_in[l], 'in_initial_state': l in (states.get(ini_state) and [x for x, v in states[ini_state] if v] or [])}
+                        for l in ordered]}
+    json.dump(cj, open(os.path.join(R, 'chapter.json'), 'w', encoding='utf-8'), indent=1)
+    print(ch, 'renamed', len(moved), '| chapter.json sublevels', len(ordered), '| initial', ini_state, '| in a state', len([l for l in ordered if l in seq]))
 
 # ---------------------------------------------------------------- report
 def report(ch):
@@ -205,4 +232,4 @@ def report(ch):
 
 if __name__ == '__main__':
     a = sys.argv[1:]
-    {'prep': lambda: prep(a[1]), 'step': lambda: step_cmd(a[1], a[2], a[3]), 'chapter': lambda: chapter(a[1]), 'report': lambda: report(a[1])}[a[0]]()
+    {'layout': lambda: layout(a[1]), 'prep': lambda: prep(a[1]), 'step': lambda: step_cmd(a[1], a[2], a[3]), 'chapter': lambda: chapter(a[1], tuple(x.split('=', 1)[1].split(',') for x in a[2:] if x.startswith('--force='))[0] if any(x.startswith('--force=') for x in a[2:]) else ()), 'report': lambda: report(a[1])}[a[0]]()
