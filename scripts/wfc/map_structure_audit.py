@@ -34,7 +34,7 @@ MAX_LAYERS = 48     # per-cell layer cap (memory guard; Gorge gate shafts stack 
 def node_tris(path, want_normals=False):
     """yield (node, prim material, world tris (n,3,3), normal agreement for mirrored check)"""
     j, bins = read_glb(path)
-    for n in j['nodes']:
+    for n in j.get('nodes', []):           # an empty glb (a campaign unit without collision) has no 'nodes'
         if 'mesh' not in n: continue
         M = np.array(n['matrix']).reshape(4, 4).T if 'matrix' in n else np.eye(4)
         for p in j['meshes'][n['mesh']]['primitives']:

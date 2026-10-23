@@ -111,7 +111,8 @@ def weapon_pickups(pkgs, targeted_by):
 
 def navmesh(m, pkgs, enabled_by):
     cells = level_objects(pkgs, 'NavigationCell')
-    ids = {k: i for i, k in enumerate(sorted(cells, key=lambda x: int(x.rsplit('_', 1)[1])))}
+    # numeric suffix order; a name without one ('NavigationCell', A3_COR) sorts first (stable: ties keep their order, as before)
+    ids = {k: i for i, k in enumerate(sorted(cells, key=lambda x: int(x.rsplit('_', 1)[1]) if '_' in x and x.rsplit('_', 1)[1].isdigit() else -1))}
     setup_off, setup_on = setup_toggles(pkgs)
     out = []
     for name in sorted(ids, key=ids.get):

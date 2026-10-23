@@ -18,6 +18,7 @@ import lower_nav_cells as LNC  # noqa: E402
 import campaign_render as CR  # noqa: E402
 CVS = os.path.join(AT, 'work', 'campaign_pilot', 'VerticalSlice', 'Maps')
 DEEP = 400.0
+FILL_RADIUS_M = 60.0
 
 def floor_below(V, grid, p, drop=DEEP):
     best = None
@@ -63,25 +64,57 @@ def prepare(ch):
                              ('floor_y', round(f, 3) if f is not None else None),
                              ('location_gltf', [a['location_gltf'][0], round(f + 0.3, 3), a['location_gltf'][2]] if f is not None else None)]))
     for f in ('collision_pawn.glb', 'physics.json'): shutil.copyfile(os.path.join(D, f), os.path.join(I, f))
-    g = {'map': ch, 'note': 'synthetic: the off-nav start / checkpoints at their collision floor (campaign_nav_fill.py)',
-         'player_starts': [{'actor': s['actor'], 'class': s['class'], 'location_gltf': s['location_gltf']} for s in seeds if s['location_gltf']],
-         'pickups': [], 'objectives': {}}
-    json.dump(g, open(os.path.join(I, 'gameplay.json'), 'w', encoding='utf-8'), indent=1)
-    json.dump({'seeds': seeds}, open(os.path.join(I, 'fill_seeds.json'), 'w', encoding='utf-8'), indent=1)
+    # ONE bot_nav run per seed (A3_COR: two starts 1.8 km apart made a single run's working set exceed the 6 GB cap): <I>_<k>/gameplay.json
+    # holds that seed only (collision / physics fall back to the chapter's VerticalSlice dir, the same files), output <R>/_fill_out_<k>.
+    # The shared <I>/gameplay.json gets no starts, so run_chapters.sh's single fill run is skipped; merge() reads every _fill_out_<k>.
+    import glob, subprocess
+    for old in glob.glob(os.path.join(R, '_fill_out_*')): shutil.rmtree(old, ignore_errors=True)
+    g0 = {'map': ch, 'note': 'synthetic; the fill runs per seed in _fill_input_<k> (campaign_nav_fill.py)', 'player_starts': [], 'pickups': [], 'objectives': {}}
+    json.dump(g0, open(os.path.join(I, 'gameplay.json'), 'w', encoding='utf-8'), indent=1)
+    runs = []
+    for k, s in enumerate(x for x in seeds if x['location_gltf']):
+        Ik = os.path.join(R, '_fill_input_%d' % k); Ok = os.path.join(R, '_fill_out_%d' % k); os.makedirs(Ik, exist_ok=True); os.makedirs(Ok, exist_ok=True)
+        json.dump({'map': ch, 'note': 'synthetic: one off-nav seed (campaign_nav_fill.py)', 'pickups': [], 'objectives': {},
+                   'player_starts': [{'actor': s['actor'], 'class': s['class'], 'location_gltf': s['location_gltf']}]},
+                  open(os.path.join(Ik, 'gameplay.json'), 'w', encoding='utf-8'), indent=1)
+        log = os.path.join(R, '_fill_out_%d.log' % k)
+        r = subprocess.run([sys.executable, os.path.join(AT, 'scripts', 'wfc', 'run_bounded.py'), '--cap-gb', '6', '--log', log,
+                            os.path.join(AT, 'scripts', 'wfc', 'bot_nav.py'), ch, '--overlay', Ik, '--out', Ok], stdin=subprocess.DEVNULL,
+                           stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+                           env=dict(os.environ, PYTHONDONTWRITEBYTECODE='1', WFC_VS_ROOT=os.path.join(AT, 'work', 'campaign_pilot', 'VerticalSlice')))
+        runs.append(OD([('seed', s['actor']), ('rc', r.returncode), ('out', os.path.relpath(Ok, R).replace(os.sep, '/'))]))
+    json.dump({'seeds': seeds, 'runs': runs}, open(os.path.join(I, 'fill_seeds.json'), 'w', encoding='utf-8'), indent=1)
     for s in seeds: print(s['actor'], s['kind'], 'anchor y', s['anchor_location_gltf'][1], 'floor', s['floor_y'])
+    print('fill runs', runs)
 
 def merge(ch):
     R = os.path.join(CR.OUTR, ch); I = os.path.join(R, '_fill_input'); FO = os.path.join(R, '_fill_out')
     nav = json.load(open(os.path.join(R, 'bot_nav.json'), encoding='utf-8'))
-    fp = os.path.join(FO, 'bot_nav.json')
-    fill = json.load(open(fp, encoding='utf-8')) if os.path.exists(fp) else {'cells': [], 'links': []}   # nothing to fill: mover cells only
+    # every fill output (per-seed _fill_out_<k>, and the older single _fill_out) combined, ids renumbered: cells, edge neighbours, links
+    import glob
+    fill = {'cells': [], 'links': []}
+    for fp in [os.path.join(FO, 'bot_nav.json')] + sorted(glob.glob(os.path.join(R, '_fill_out_*', 'bot_nav.json'))):
+        if not os.path.exists(fp) or (fp.startswith(FO + os.sep) and glob.glob(os.path.join(R, '_fill_out_*', 'bot_nav.json'))): continue
+        f = json.load(open(fp, encoding='utf-8')); off = len(fill['cells'])
+        for c in f['cells']:
+            c = dict(c, id=c['id'] + off)
+            c['edges'] = [dict(e, neighbors=[dict(nb, cell=nb['cell'] + off) for nb in e.get('neighbors') or [] if nb.get('cell') is not None])
+                          for e in c.get('edges') or []]
+            fill['cells'].append(c)
+        for l in f.get('links') or []:
+            fill['links'].append(dict(l, from_cell=l['from_cell'] + off, to_cell=l['to_cell'] + off))
     cells = [c for c in nav['cells'] if not ((c.get('flags') or {}).get('campaign_fill') or (c.get('flags') or {}).get('mover_attached'))]; n0 = len(cells)
     links = [l for l in nav['links'] if l.get('source') not in ('campaign fill', 'campaign fill bridge', 'airborne drop', 'mover attach')]
     def under_orig(p):
         h = V2.find_cell(cells[:n0], p, up=1.0, drop=1.0); return h[0] if h else None
+    # the fill covers the off-nav start / checkpoint AREAS only: cells within FILL_RADIUS_M (horizontal) of a seed (A2_KON: unbounded, the
+    # per-seed runs flooded 7,321 cells over a chapter with 2,170 original cells)
+    sp = os.path.join(I, 'fill_seeds.json')
+    seeds = [x['location_gltf'] for x in (json.load(open(sp, encoding='utf-8')).get('seeds') or []) if x.get('location_gltf')] if os.path.exists(sp) else []
+    near = lambda p: any(math.hypot(p[0] - q[0], p[2] - q[2]) <= FILL_RADIUS_M and abs(p[1] - q[1]) <= 15.0 for q in seeds)
     merged = {}
     for c in fill['cells']:
-        if under_orig(c['centroid_gltf']) is None: merged[c['id']] = n0 + len(merged)
+        if near(c['centroid_gltf']) and under_orig(c['centroid_gltf']) is None: merged[c['id']] = n0 + len(merged)
     for fid, nid in merged.items():
         c = dict(fill['cells'][fid]); c['id'] = nid; c['actor'] = 'campaign_fill_%d' % fid
         c['flags'] = dict(c.get('flags') or {}, campaign_fill=True, blocked_at_start=False)
