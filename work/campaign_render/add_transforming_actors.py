@@ -109,6 +109,7 @@ def chapter(ch):
             mat = ue_to_gltf_matrix(cm @ am)
             g.node({'name': row['actor'], 'mesh': mi, 'matrix': mat,
                     'extras': {'actor': row['actor'], 'class': c, 'component': comp, 'mesh': skm, 'skeletal_bind_pose': True,
+                               'hidden': bool(v.get('bHidden')),   # authored bHidden (effective); Gameplay honours it at load
                                'anim_sets': [x for x in cv.get('AnimSets') or [] if x], 'added_by': TAG}})
             row.update(primitives=len(prims), material_slots=[p['material'] for p in prims], gltf_matrix=mat); rows.append(row); why['added'] += 1
         g.write(dst)
