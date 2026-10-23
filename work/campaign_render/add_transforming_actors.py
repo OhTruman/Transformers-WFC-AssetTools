@@ -62,8 +62,14 @@ def material_index(g, opath, split_dir):
 def chapter(ch):
     R = os.path.join(CR.OUTR, ch); S = os.path.join(AT, 'work', 'campaign_pilot', 'VerticalSlice', 'Maps', ch, 'sublevels')
     levels = CR.chapter_levels(ch); ph = ','.join('?' * len(levels))
+    # --extra-actors <opath,...>: other skeletal world actors to draw at bind pose the same way (Integration 2026-10-23: D3A CourtTrans_VIG's
+    # HmLightMappedSkeletalMeshActor_7263, not matinee-driven); listed explicitly, so no chapter gains nodes it was not asked for
+    extra = set()
+    if '--extra-actors' in sys.argv: extra = {x for x in sys.argv[sys.argv.index('--extra-actors') + 1].split(',') if x}
+    ep = os.path.join(AT, 'manifests', 'campaign', 'extra_skeletal_actors.json')   # the decided ones persist, so a plain rerun keeps them
+    if os.path.exists(ep): extra |= set((json.load(open(ep, encoding='utf-8')).get('chapters') or {}).get(ch, []))
     acts = sorted((o, c) for o, c in INV.execute('select distinct opath, class from exports where package in (%s)' % ph, levels)
-                  if c in CLASSES and o.count('.') == 3 and '.TheWorld.PersistentLevel.' in o)
+                  if (c in CLASSES or o in extra) and o.count('.') == 3 and '.TheWorld.PersistentLevel.' in o)
     by_lv = {}
     for o, c in acts: by_lv.setdefault(o.split('.')[0], []).append((o, c))
     rep, why = OD(), Counter()
@@ -149,4 +155,6 @@ def chapter(ch):
     print(ch, json.dumps(out['counts']), 'materials rerun', out.get('materials_step_rerun_for'))
 
 if __name__ == '__main__':
-    for ch in [a for a in sys.argv[1:] if not a.startswith('--')]: chapter(ch)
+    args = sys.argv[1:]
+    if '--extra-actors' in args: i = args.index('--extra-actors'); args = args[:i] + args[i + 2:]
+    for ch in [a for a in args if not a.startswith('--')]: chapter(ch)
