@@ -1,0 +1,1523 @@
+{
+ "generated_by": "AssetTools/work/campaign_characters/campaign_destructibles.py",
+ "source": "manifests/authored.db + cooked StaticMesh sections + compiled particle streams (vs_destructibles helpers)",
+ "factory_class": "TnActorFactoryOmegaBatteryDestructible",
+ "actor_class": "TransGame.TnOmegaBatteryDestructibleActor",
+ "chapters": [
+  "D5_OME"
+ ],
+ "blueprint": "DES_NEU_Battery_p.DES_OmegaRobotBattery",
+ "class": "HmDestructibleBlueprint",
+ "BlueprintVersion": 144,
+ "blueprint_defaults (inherited)": {
+  "DamageAngle": {
+   "value": 180.0,
+   "source_package": "HM_Engine",
+   "object": "HM_Engine.Default__HmDestructibleBlueprint",
+   "class": "HmDestructibleBlueprint",
+   "property": "DamageAngle",
+   "origin": "inherited from HM_Engine.Default__HmDestructibleBlueprint",
+   "confidence": "CONFIRMED AUTHORED DATA"
+  },
+  "AIDamageModifier": {
+   "value": 1.0,
+   "source_package": "HM_Engine",
+   "object": "HM_Engine.Default__HmDestructibleBlueprint",
+   "class": "HmDestructibleBlueprint",
+   "property": "AIDamageModifier",
+   "origin": "inherited from HM_Engine.Default__HmDestructibleBlueprint",
+   "confidence": "CONFIRMED AUTHORED DATA"
+  },
+  "RadiusDamageModifier": {
+   "value": 1.0,
+   "source_package": "HM_Engine",
+   "object": "HM_Engine.Default__HmDestructibleBlueprint",
+   "class": "HmDestructibleBlueprint",
+   "property": "RadiusDamageModifier",
+   "origin": "inherited from HM_Engine.Default__HmDestructibleBlueprint",
+   "confidence": "CONFIRMED AUTHORED DATA"
+  },
+  "MinRadiusDamageDistanceForModifier": {
+   "value": 50.0,
+   "source_package": "HM_Engine",
+   "object": "HM_Engine.Default__HmDestructibleBlueprint",
+   "class": "HmDestructibleBlueprint",
+   "property": "MinRadiusDamageDistanceForModifier",
+   "origin": "inherited from HM_Engine.Default__HmDestructibleBlueprint",
+   "confidence": "CONFIRMED AUTHORED DATA"
+  }
+ },
+ "pieces": [
+  {
+   "object": "DES_NEU_Battery_p.DES_OmegaRobotBattery.HmDestructiblePieceBlueprint_14321",
+   "PieceName": "BaseBattery",
+   "Transform": null,
+   "states": [
+    {
+     "handle": 0,
+     "object": "DES_NEU_Battery_p.DES_OmegaRobotBattery.HmDestructiblePieceBlueprint_14321.HmDestructionStateBlueprint_1632",
+     "StateName": {
+      "value": "EmptyMesh",
+      "source_package": "D5_OME_DSN_m",
+      "object": "DES_NEU_Battery_p.DES_OmegaRobotBattery.HmDestructiblePieceBlueprint_14321.HmDestructionStateBlueprint_1632",
+      "class": "HmDestructionStateBlueprint",
+      "property": "StateName",
+      "origin": "authored on object",
+      "confidence": "CONFIRMED AUTHORED DATA"
+     },
+     "InitialHealth": {
+      "value": 0,
+      "source_package": "D5_OME_DSN_m",
+      "object": "DES_NEU_Battery_p.DES_OmegaRobotBattery.HmDestructiblePieceBlueprint_14321.HmDestructionStateBlueprint_1632",
+      "class": "HmDestructionStateBlueprint",
+      "property": "InitialHealth",
+      "origin": "unset in whole chain -> property zero/None default",
+      "confidence": "CONFIRMED AUTHORED DATA"
+     },
+     "AutomaticTransitionTime": {
+      "value": 0.10000000149011612,
+      "source_package": "D5_OME_DSN_m",
+      "object": "DES_NEU_Battery_p.DES_OmegaRobotBattery.HmDestructiblePieceBlueprint_14321.HmDestructionStateBlueprint_1632",
+      "class": "HmDestructionStateBlueprint",
+      "property": "AutomaticTransitionTime",
+      "origin": "authored on object",
+      "confidence": "CONFIRMED AUTHORED DATA"
+     },
+     "effects": [
+      {
+       "object": "DES_NEU_Battery_p.DES_OmegaRobotBattery.HmDestructiblePieceBlueprint_14321.HmDestructionStateBlueprint_1632.HmStaticMeshDestructionEffectFactory_3307",
+       "class": "HmStaticMeshDestructionEffectFactory",
+       "authored": {
+        "Mesh": "PROP_NEU_BatteryOS_p.BatteryOmegaEmpty_STAT",
+        "LightingOption": "EHmDestructionLightingOption_UseDynamicLighting",
+        "ShadowingOption": "EHmDestructionShadowOption_CastNoShadow"
+       },
+       "effective": {
+        "Mesh": "PROP_NEU_BatteryOS_p.BatteryOmegaEmpty_STAT",
+        "LightingOption": "EHmDestructionLightingOption_UseDynamicLighting",
+        "ShadowingOption": "EHmDestructionShadowOption_CastNoShadow",
+        "EffectClass": "HM_Engine.HmStaticMeshDestructionEffect"
+       }
+      }
+     ],
+     "links": [
+      {
+       "object": "DES_NEU_Battery_p.DES_OmegaRobotBattery.HmDestructiblePieceBlueprint_14321.HmDestructionStateBlueprint_1632.HmDestructionLinkBlueprint_3752",
+       "NextStateHandle": 2,
+       "Enabled": {
+        "value": true,
+        "source_package": "HM_Engine",
+        "object": "HM_Engine.Default__HmDestructionLinkBlueprint",
+        "class": "HmDestructionLinkBlueprint",
+        "property": "Enabled",
+        "origin": "inherited from HM_Engine.Default__HmDestructionLinkBlueprint",
+        "confidence": "CONFIRMED AUTHORED DATA"
+       },
+       "TransitionTrigger": "HM_Engine.HmTimerExpiredDestructionTrigger",
+       "trigger_meaning (class name)": "the state's AutomaticTransitionTime expiring"
+      }
+     ]
+    },
+    {
+     "handle": 1,
+     "object": "DES_NEU_Battery_p.DES_OmegaRobotBattery.HmDestructiblePieceBlueprint_14321.HmDestructionStateBlueprint_11183",
+     "StateName": {
+      "value": "FullNonCorruptedMesh",
+      "source_package": "D5_OME_DSN_m",
+      "object": "DES_NEU_Battery_p.DES_OmegaRobotBattery.HmDestructiblePieceBlueprint_14321.HmDestructionStateBlueprint_11183",
+      "class": "HmDestructionStateBlueprint",
+      "property": "StateName",
+      "origin": "authored on object",
+      "confidence": "CONFIRMED AUTHORED DATA"
+     },
+     "InitialHealth": {
+      "value": 0,
+      "source_package": "D5_OME_DSN_m",
+      "object": "DES_NEU_Battery_p.DES_OmegaRobotBattery.HmDestructiblePieceBlueprint_14321.HmDestructionStateBlueprint_11183",
+      "class": "HmDestructionStateBlueprint",
+      "property": "InitialHealth",
+      "origin": "unset in whole chain -> property zero/None default",
+      "confidence": "CONFIRMED AUTHORED DATA"
+     },
+     "AutomaticTransitionTime": {
+      "value": 0.0,
+      "source_package": "D5_OME_DSN_m",
+      "object": "DES_NEU_Battery_p.DES_OmegaRobotBattery.HmDestructiblePieceBlueprint_14321.HmDestructionStateBlueprint_11183",
+      "class": "HmDestructionStateBlueprint",
+      "property": "AutomaticTransitionTime",
+      "origin": "unset in whole chain -> property zero/None default",
+      "confidence": "CONFIRMED AUTHORED DATA"
+     },
+     "effects": [
+      {
+       "object": "DES_NEU_Battery_p.DES_OmegaRobotBattery.HmDestructiblePieceBlueprint_14321.HmDestructionStateBlueprint_11183.HmSoundDestructionEffectFactory_9745",
+       "class": "HmSoundDestructionEffectFactory",
+       "authored": {
+        "Cue": "BL_CHR_OMEGA_SUPREME.BATTERY_RIP_OUT"
+       },
+       "effective": {
+        "Cue": "BL_CHR_OMEGA_SUPREME.BATTERY_RIP_OUT",
+        "TerminateSoundOnExitState": true
+       }
+      },
+      {
+       "object": "DES_NEU_Battery_p.DES_OmegaRobotBattery.HmDestructiblePieceBlueprint_14321.HmDestructionStateBlueprint_11183.HmDamageDependentsDestructionEffectFactory_7135",
+       "class": "HmDamageDependentsDestructionEffectFactory",
+       "authored": {
+        "DamageAmount": 10.0
+       },
+       "effective": {
+        "DamageAmount": 10.0,
+        "DestructionTrigger": "HM_Engine.HmNotificationDestructionTrigger"
+       }
+      }
+     ],
+     "links": []
+    },
+    {
+     "handle": 2,
+     "object": "DES_NEU_Battery_p.DES_OmegaRobotBattery.HmDestructiblePieceBlueprint_14321.HmDestructionStateBlueprint_12934",
+     "StateName": {
+      "value": "FillingLiquid",
+      "source_package": "D5_OME_DSN_m",
+      "object": "DES_NEU_Battery_p.DES_OmegaRobotBattery.HmDestructiblePieceBlueprint_14321.HmDestructionStateBlueprint_12934",
+      "class": "HmDestructionStateBlueprint",
+      "property": "StateName",
+      "origin": "authored on object",
+      "confidence": "CONFIRMED AUTHORED DATA"
+     },
+     "InitialHealth": {
+      "value": 0,
+      "source_package": "D5_OME_DSN_m",
+      "object": "DES_NEU_Battery_p.DES_OmegaRobotBattery.HmDestructiblePieceBlueprint_14321.HmDestructionStateBlueprint_12934",
+      "class": "HmDestructionStateBlueprint",
+      "property": "InitialHealth",
+      "origin": "unset in whole chain -> property zero/None default",
+      "confidence": "CONFIRMED AUTHORED DATA"
+     },
+     "AutomaticTransitionTime": {
+      "value": 15.0,
+      "source_package": "D5_OME_DSN_m",
+      "object": "DES_NEU_Battery_p.DES_OmegaRobotBattery.HmDestructiblePieceBlueprint_14321.HmDestructionStateBlueprint_12934",
+      "class": "HmDestructionStateBlueprint",
+      "property": "AutomaticTransitionTime",
+      "origin": "authored on object",
+      "confidence": "CONFIRMED AUTHORED DATA"
+     },
+     "effects": [
+      {
+       "object": "DES_NEU_Battery_p.DES_OmegaRobotBattery.HmDestructiblePieceBlueprint_14321.HmDestructionStateBlueprint_12934.HmAnimatedMeshDestructionEffectFactory_3253",
+       "class": "HmAnimatedMeshDestructionEffectFactory",
+       "authored": {
+        "ComponentTemplate": "DES_NEU_Battery_p.DES_OmegaRobotBattery.HmDestructiblePieceBlueprint_14321.HmDestructionStateBlueprint_12934.HmAnimatedMeshDestructionEffectFactory_3253.SkeletalMeshComponent_11942",
+        "SequenceNode": "DES_NEU_Battery_p.DES_OmegaRobotBattery.HmDestructiblePieceBlueprint_14321.HmDestructionStateBlueprint_12934.HmAnimatedMeshDestructionEffectFactory_3253.AnimNodeSequence_14939"
+       },
+       "effective": {
+        "ComponentTemplate": "DES_NEU_Battery_p.DES_OmegaRobotBattery.HmDestructiblePieceBlueprint_14321.HmDestructionStateBlueprint_12934.HmAnimatedMeshDestructionEffectFactory_3253.SkeletalMeshComponent_11942",
+        "SequenceNode": "DES_NEU_Battery_p.DES_OmegaRobotBattery.HmDestructiblePieceBlueprint_14321.HmDestructionStateBlueprint_12934.HmAnimatedMeshDestructionEffectFactory_3253.AnimNodeSequence_14939"
+       }
+      }
+     ],
+     "links": [
+      {
+       "object": "DES_NEU_Battery_p.DES_OmegaRobotBattery.HmDestructiblePieceBlueprint_14321.HmDestructionStateBlueprint_12934.HmDestructionLinkBlueprint_724",
+       "NextStateHandle": 3,
+       "Enabled": {
+        "value": true,
+        "source_package": "HM_Engine",
+        "object": "HM_Engine.Default__HmDestructionLinkBlueprint",
+        "class": "HmDestructionLinkBlueprint",
+        "property": "Enabled",
+        "origin": "inherited from HM_Engine.Default__HmDestructionLinkBlueprint",
+        "confidence": "CONFIRMED AUTHORED DATA"
+       },
+       "TransitionTrigger": "HM_Engine.HmTimerExpiredDestructionTrigger",
+       "trigger_meaning (class name)": "the state's AutomaticTransitionTime expiring"
+      }
+     ]
+    },
+    {
+     "handle": 3,
+     "object": "DES_NEU_Battery_p.DES_OmegaRobotBattery.HmDestructiblePieceBlueprint_14321.HmDestructionStateBlueprint_14678",
+     "StateName": {
+      "value": "FullMesh",
+      "source_package": "D5_OME_DSN_m",
+      "object": "DES_NEU_Battery_p.DES_OmegaRobotBattery.HmDestructiblePieceBlueprint_14321.HmDestructionStateBlueprint_14678",
+      "class": "HmDestructionStateBlueprint",
+      "property": "StateName",
+      "origin": "authored on object",
+      "confidence": "CONFIRMED AUTHORED DATA"
+     },
+     "InitialHealth": {
+      "value": 0,
+      "source_package": "D5_OME_DSN_m",
+      "object": "DES_NEU_Battery_p.DES_OmegaRobotBattery.HmDestructiblePieceBlueprint_14321.HmDestructionStateBlueprint_14678",
+      "class": "HmDestructionStateBlueprint",
+      "property": "InitialHealth",
+      "origin": "unset in whole chain -> property zero/None default",
+      "confidence": "CONFIRMED AUTHORED DATA"
+     },
+     "AutomaticTransitionTime": {
+      "value": 0.0,
+      "source_package": "D5_OME_DSN_m",
+      "object": "DES_NEU_Battery_p.DES_OmegaRobotBattery.HmDestructiblePieceBlueprint_14321.HmDestructionStateBlueprint_14678",
+      "class": "HmDestructionStateBlueprint",
+      "property": "AutomaticTransitionTime",
+      "origin": "unset in whole chain -> property zero/None default",
+      "confidence": "CONFIRMED AUTHORED DATA"
+     },
+     "effects": [
+      {
+       "object": "DES_NEU_Battery_p.DES_OmegaRobotBattery.HmDestructiblePieceBlueprint_14321.HmDestructionStateBlueprint_14678.HmStaticMeshDestructionEffectFactory_7498",
+       "class": "HmStaticMeshDestructionEffectFactory",
+       "authored": {
+        "Mesh": "PROP_NEU_BatteryOS_p.BatteryOmegaFull_STAT",
+        "LightingOption": "EHmDestructionLightingOption_UseDynamicLighting",
+        "ShadowingOption": "EHmDestructionShadowOption_CastNoShadow"
+       },
+       "effective": {
+        "Mesh": "PROP_NEU_BatteryOS_p.BatteryOmegaFull_STAT",
+        "LightingOption": "EHmDestructionLightingOption_UseDynamicLighting",
+        "ShadowingOption": "EHmDestructionShadowOption_CastNoShadow",
+        "EffectClass": "HM_Engine.HmStaticMeshDestructionEffect"
+       }
+      }
+     ],
+     "links": [
+      {
+       "object": "DES_NEU_Battery_p.DES_OmegaRobotBattery.HmDestructiblePieceBlueprint_14321.HmDestructionStateBlueprint_14678.HmDestructionLinkBlueprint_16158",
+       "NextStateHandle": 1,
+       "Enabled": {
+        "value": true,
+        "source_package": "HM_Engine",
+        "object": "HM_Engine.Default__HmDestructionLinkBlueprint",
+        "class": "HmDestructionLinkBlueprint",
+        "property": "Enabled",
+        "origin": "inherited from HM_Engine.Default__HmDestructionLinkBlueprint",
+        "confidence": "CONFIRMED AUTHORED DATA"
+       },
+       "TransitionTrigger": "TransGame.TnTractorBeamDestructionTrigger",
+       "trigger_meaning (class name)": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "object": "DES_NEU_Battery_p.DES_OmegaRobotBattery.HmDestructiblePieceBlueprint_324",
+   "PieceName": "CorruptedSpikes",
+   "Transform": null,
+   "states": [
+    {
+     "handle": 0,
+     "object": "DES_NEU_Battery_p.DES_OmegaRobotBattery.HmDestructiblePieceBlueprint_324.HmDestructionStateBlueprint_11875",
+     "StateName": {
+      "value": "State",
+      "source_package": "HM_Engine",
+      "object": "HM_Engine.Default__HmDestructionStateBlueprint",
+      "class": "HmDestructionStateBlueprint",
+      "property": "StateName",
+      "origin": "inherited from HM_Engine.Default__HmDestructionStateBlueprint",
+      "confidence": "CONFIRMED AUTHORED DATA"
+     },
+     "InitialHealth": {
+      "value": 5,
+      "source_package": "D5_OME_DSN_m",
+      "object": "DES_NEU_Battery_p.DES_OmegaRobotBattery.HmDestructiblePieceBlueprint_324.HmDestructionStateBlueprint_11875",
+      "class": "HmDestructionStateBlueprint",
+      "property": "InitialHealth",
+      "origin": "authored on object",
+      "confidence": "CONFIRMED AUTHORED DATA"
+     },
+     "AutomaticTransitionTime": {
+      "value": 0.0,
+      "source_package": "D5_OME_DSN_m",
+      "object": "DES_NEU_Battery_p.DES_OmegaRobotBattery.HmDestructiblePieceBlueprint_324.HmDestructionStateBlueprint_11875",
+      "class": "HmDestructionStateBlueprint",
+      "property": "AutomaticTransitionTime",
+      "origin": "unset in whole chain -> property zero/None default",
+      "confidence": "CONFIRMED AUTHORED DATA"
+     },
+     "effects": [],
+     "links": [
+      {
+       "object": "DES_NEU_Battery_p.DES_OmegaRobotBattery.HmDestructiblePieceBlueprint_324.HmDestructionStateBlueprint_11875.HmDestructionLinkBlueprint_1970",
+       "NextStateHandle": 1,
+       "Enabled": {
+        "value": true,
+        "source_package": "HM_Engine",
+        "object": "HM_Engine.Default__HmDestructionLinkBlueprint",
+        "class": "HmDestructionLinkBlueprint",
+        "property": "Enabled",
+        "origin": "inherited from HM_Engine.Default__HmDestructionLinkBlueprint",
+        "confidence": "CONFIRMED AUTHORED DATA"
+       },
+       "TransitionTrigger": "TransGame.TnCorruptionDestructionTrigger",
+       "trigger_meaning (class name)": null
+      },
+      {
+       "object": "DES_NEU_Battery_p.DES_OmegaRobotBattery.HmDestructiblePieceBlueprint_324.HmDestructionStateBlueprint_11875.HmDestructionLinkBlueprint_14999",
+       "NextStateHandle": 3,
+       "Enabled": {
+        "value": true,
+        "source_package": "HM_Engine",
+        "object": "HM_Engine.Default__HmDestructionLinkBlueprint",
+        "class": "HmDestructionLinkBlueprint",
+        "property": "Enabled",
+        "origin": "inherited from HM_Engine.Default__HmDestructionLinkBlueprint",
+        "confidence": "CONFIRMED AUTHORED DATA"
+       },
+       "TransitionTrigger": "HM_Engine.HmNotificationDestructionTrigger",
+       "trigger_meaning (class name)": null
+      }
+     ]
+    },
+    {
+     "handle": 1,
+     "object": "DES_NEU_Battery_p.DES_OmegaRobotBattery.HmDestructiblePieceBlueprint_324.HmDestructionStateBlueprint_8504",
+     "StateName": {
+      "value": "spikes",
+      "source_package": "D5_OME_DSN_m",
+      "object": "DES_NEU_Battery_p.DES_OmegaRobotBattery.HmDestructiblePieceBlueprint_324.HmDestructionStateBlueprint_8504",
+      "class": "HmDestructionStateBlueprint",
+      "property": "StateName",
+      "origin": "authored on object",
+      "confidence": "CONFIRMED AUTHORED DATA"
+     },
+     "InitialHealth": {
+      "value": 5,
+      "source_package": "D5_OME_DSN_m",
+      "object": "DES_NEU_Battery_p.DES_OmegaRobotBattery.HmDestructiblePieceBlueprint_324.HmDestructionStateBlueprint_8504",
+      "class": "HmDestructionStateBlueprint",
+      "property": "InitialHealth",
+      "origin": "authored on object",
+      "confidence": "CONFIRMED AUTHORED DATA"
+     },
+     "AutomaticTransitionTime": {
+      "value": 0.0,
+      "source_package": "D5_OME_DSN_m",
+      "object": "DES_NEU_Battery_p.DES_OmegaRobotBattery.HmDestructiblePieceBlueprint_324.HmDestructionStateBlueprint_8504",
+      "class": "HmDestructionStateBlueprint",
+      "property": "AutomaticTransitionTime",
+      "origin": "unset in whole chain -> property zero/None default",
+      "confidence": "CONFIRMED AUTHORED DATA"
+     },
+     "effects": [
+      {
+       "object": "DES_NEU_Battery_p.DES_OmegaRobotBattery.HmDestructiblePieceBlueprint_324.HmDestructionStateBlueprint_8504.HmAnimatedMeshDestructionEffectFactory_6023",
+       "class": "HmAnimatedMeshDestructionEffectFactory",
+       "authored": {
+        "ComponentTemplate": "DES_NEU_Battery_p.DES_OmegaRobotBattery.HmDestructiblePieceBlueprint_324.HmDestructionStateBlueprint_8504.HmAnimatedMeshDestructionEffectFactory_6023.SkeletalMeshComponent_3352",
+        "SequenceNode": "DES_NEU_Battery_p.DES_OmegaRobotBattery.HmDestructiblePieceBlueprint_324.HmDestructionStateBlueprint_8504.HmAnimatedMeshDestructionEffectFactory_6023.AnimNodeSequence_15309"
+       },
+       "effective": {
+        "ComponentTemplate": "DES_NEU_Battery_p.DES_OmegaRobotBattery.HmDestructiblePieceBlueprint_324.HmDestructionStateBlueprint_8504.HmAnimatedMeshDestructionEffectFactory_6023.SkeletalMeshComponent_3352",
+        "SequenceNode": "DES_NEU_Battery_p.DES_OmegaRobotBattery.HmDestructiblePieceBlueprint_324.HmDestructionStateBlueprint_8504.HmAnimatedMeshDestructionEffectFactory_6023.AnimNodeSequence_15309"
+       }
+      },
+      {
+       "object": "DES_NEU_Battery_p.DES_OmegaRobotBattery.HmDestructiblePieceBlueprint_324.HmDestructionStateBlueprint_8504.HmSoundDestructionEffectFactory_2592",
+       "class": "HmSoundDestructionEffectFactory",
+       "authored": {
+        "Cue": "BL_CHR_OMEGA_SUPREME.BATTERY_CORRUPT",
+        "TerminateSoundOnExitState": false
+       },
+       "effective": {
+        "Cue": "BL_CHR_OMEGA_SUPREME.BATTERY_CORRUPT",
+        "TerminateSoundOnExitState": false
+       }
+      }
+     ],
+     "links": [
+      {
+       "object": "DES_NEU_Battery_p.DES_OmegaRobotBattery.HmDestructiblePieceBlueprint_324.HmDestructionStateBlueprint_8504.HmDestructionLinkBlueprint_352",
+       "NextStateHandle": 2,
+       "Enabled": {
+        "value": true,
+        "source_package": "HM_Engine",
+        "object": "HM_Engine.Default__HmDestructionLinkBlueprint",
+        "class": "HmDestructionLinkBlueprint",
+        "property": "Enabled",
+        "origin": "inherited from HM_Engine.Default__HmDestructionLinkBlueprint",
+        "confidence": "CONFIRMED AUTHORED DATA"
+       },
+       "TransitionTrigger": "HM_Engine.HmNotificationDestructionTrigger",
+       "trigger_meaning (class name)": null
+      }
+     ]
+    },
+    {
+     "handle": 2,
+     "object": "DES_NEU_Battery_p.DES_OmegaRobotBattery.HmDestructiblePieceBlueprint_324.HmDestructionStateBlueprint_1619",
+     "StateName": {
+      "value": "State",
+      "source_package": "HM_Engine",
+      "object": "HM_Engine.Default__HmDestructionStateBlueprint",
+      "class": "HmDestructionStateBlueprint",
+      "property": "StateName",
+      "origin": "inherited from HM_Engine.Default__HmDestructionStateBlueprint",
+      "confidence": "CONFIRMED AUTHORED DATA"
+     },
+     "InitialHealth": {
+      "value": 0,
+      "source_package": "D5_OME_DSN_m",
+      "object": "DES_NEU_Battery_p.DES_OmegaRobotBattery.HmDestructiblePieceBlueprint_324.HmDestructionStateBlueprint_1619",
+      "class": "HmDestructionStateBlueprint",
+      "property": "InitialHealth",
+      "origin": "unset in whole chain -> property zero/None default",
+      "confidence": "CONFIRMED AUTHORED DATA"
+     },
+     "AutomaticTransitionTime": {
+      "value": 0.0,
+      "source_package": "D5_OME_DSN_m",
+      "object": "DES_NEU_Battery_p.DES_OmegaRobotBattery.HmDestructiblePieceBlueprint_324.HmDestructionStateBlueprint_1619",
+      "class": "HmDestructionStateBlueprint",
+      "property": "AutomaticTransitionTime",
+      "origin": "unset in whole chain -> property zero/None default",
+      "confidence": "CONFIRMED AUTHORED DATA"
+     },
+     "effects": [
+      {
+       "object": "DES_NEU_Battery_p.DES_OmegaRobotBattery.HmDestructiblePieceBlueprint_324.HmDestructionStateBlueprint_1619.HmPhysicalMeshDestructionEffectFactory_7163",
+       "class": "HmPhysicalMeshDestructionEffectFactory",
+       "authored": {
+        "MeshTemplate": "PROP_NEU_BatteryOS_p.BatteryOmegaFullSpikes_STAT",
+        "SpawnedActorType": "TransGame.TnExplodeAfterGrabSpawnedChunk",
+        "LifeSpan": 60,
+        "CollisionLifeSpan": 60
+       },
+       "effective": {
+        "MeshTemplate": "PROP_NEU_BatteryOS_p.BatteryOmegaFullSpikes_STAT",
+        "SpawnedActorType": "TransGame.TnExplodeAfterGrabSpawnedChunk",
+        "LifeSpan": 60,
+        "CollisionLifeSpan": 60
+       }
+      },
+      {
+       "object": "DES_NEU_Battery_p.DES_OmegaRobotBattery.HmDestructiblePieceBlueprint_324.HmDestructionStateBlueprint_1619.HmSoundDestructionEffectFactory_2415",
+       "class": "HmSoundDestructionEffectFactory",
+       "authored": {
+        "Cue": "BL_CHR_OMEGA_SUPREME.BATTERY_CORRUPT_RIP_OUT"
+       },
+       "effective": {
+        "Cue": "BL_CHR_OMEGA_SUPREME.BATTERY_CORRUPT_RIP_OUT",
+        "TerminateSoundOnExitState": true
+       }
+      }
+     ],
+     "links": []
+    },
+    {
+     "handle": 3,
+     "object": "DES_NEU_Battery_p.DES_OmegaRobotBattery.HmDestructiblePieceBlueprint_324.HmDestructionStateBlueprint_8806",
+     "StateName": {
+      "value": "State",
+      "source_package": "HM_Engine",
+      "object": "HM_Engine.Default__HmDestructionStateBlueprint",
+      "class": "HmDestructionStateBlueprint",
+      "property": "StateName",
+      "origin": "inherited from HM_Engine.Default__HmDestructionStateBlueprint",
+      "confidence": "CONFIRMED AUTHORED DATA"
+     },
+     "InitialHealth": {
+      "value": 0,
+      "source_package": "D5_OME_DSN_m",
+      "object": "DES_NEU_Battery_p.DES_OmegaRobotBattery.HmDestructiblePieceBlueprint_324.HmDestructionStateBlueprint_8806",
+      "class": "HmDestructionStateBlueprint",
+      "property": "InitialHealth",
+      "origin": "unset in whole chain -> property zero/None default",
+      "confidence": "CONFIRMED AUTHORED DATA"
+     },
+     "AutomaticTransitionTime": {
+      "value": 0.0,
+      "source_package": "D5_OME_DSN_m",
+      "object": "DES_NEU_Battery_p.DES_OmegaRobotBattery.HmDestructiblePieceBlueprint_324.HmDestructionStateBlueprint_8806",
+      "class": "HmDestructionStateBlueprint",
+      "property": "AutomaticTransitionTime",
+      "origin": "unset in whole chain -> property zero/None default",
+      "confidence": "CONFIRMED AUTHORED DATA"
+     },
+     "effects": [
+      {
+       "object": "DES_NEU_Battery_p.DES_OmegaRobotBattery.HmDestructiblePieceBlueprint_324.HmDestructionStateBlueprint_8806.HmPhysicalMeshDestructionEffectFactory_8212",
+       "class": "HmPhysicalMeshDestructionEffectFactory",
+       "authored": {
+        "MeshTemplate": "PROP_NEU_BatteryOS_p.BatteryOmegaFull_STAT",
+        "SpawnedActorType": "TransGame.TnExplodeAfterGrabSpawnedChunk",
+        "LifeSpan": 60,
+        "CollisionLifeSpan": 60
+       },
+       "effective": {
+        "MeshTemplate": "PROP_NEU_BatteryOS_p.BatteryOmegaFull_STAT",
+        "SpawnedActorType": "TransGame.TnExplodeAfterGrabSpawnedChunk",
+        "LifeSpan": 60,
+        "CollisionLifeSpan": 60
+       }
+      },
+      {
+       "object": "DES_NEU_Battery_p.DES_OmegaRobotBattery.HmDestructiblePieceBlueprint_324.HmDestructionStateBlueprint_8806.HmSoundDestructionEffectFactory_5295",
+       "class": "HmSoundDestructionEffectFactory",
+       "authored": {
+        "Cue": "BL_CHR_OMEGA_SUPREME.BATTERY_CORRUPT_RIP_OUT",
+        "TerminateSoundOnExitState": false
+       },
+       "effective": {
+        "Cue": "BL_CHR_OMEGA_SUPREME.BATTERY_CORRUPT_RIP_OUT",
+        "TerminateSoundOnExitState": false
+       }
+      }
+     ],
+     "links": []
+    }
+   ]
+  }
+ ],
+ "state_graph": {
+  "edges": [
+   {
+    "piece": "BaseBattery",
+    "from_handle": 0,
+    "to_handle": 2,
+    "trigger": "HM_Engine.HmTimerExpiredDestructionTrigger",
+    "enabled": true
+   },
+   {
+    "piece": "BaseBattery",
+    "from_handle": 2,
+    "to_handle": 3,
+    "trigger": "HM_Engine.HmTimerExpiredDestructionTrigger",
+    "enabled": true
+   },
+   {
+    "piece": "BaseBattery",
+    "from_handle": 3,
+    "to_handle": 1,
+    "trigger": "TransGame.TnTractorBeamDestructionTrigger",
+    "enabled": true
+   },
+   {
+    "piece": "CorruptedSpikes",
+    "from_handle": 0,
+    "to_handle": 1,
+    "trigger": "TransGame.TnCorruptionDestructionTrigger",
+    "enabled": true
+   },
+   {
+    "piece": "CorruptedSpikes",
+    "from_handle": 0,
+    "to_handle": 3,
+    "trigger": "HM_Engine.HmNotificationDestructionTrigger",
+    "enabled": true
+   },
+   {
+    "piece": "CorruptedSpikes",
+    "from_handle": 1,
+    "to_handle": 2,
+    "trigger": "HM_Engine.HmNotificationDestructionTrigger",
+    "enabled": true
+   }
+  ],
+  "initial_state": {
+   "value": 0,
+   "note": "handle 0 = first StateBlueprints entry (HmDestructibleComponent convention, as for the MP destructibles; native confirmation pending)"
+  }
+ },
+ "meshes": {
+  "PROP_NEU_BatteryOS_p.BatteryOmegaEmpty_STAT": {
+   "mesh": "PROP_NEU_BatteryOS_p.BatteryOmegaEmpty_STAT",
+   "cooked_in": "D5_OME_BASE_m",
+   "gltf": "content/PROP_NEU_BatteryOS_p/BatteryOmegaEmpty_STAT.gltf",
+   "sections": [
+    {
+     "index": 0,
+     "material": "PROP_NEU_BatteryOS_p.OmegaBattery_MATINST",
+     "num_triangles": 1710,
+     "enable_collision": true,
+     "cast_shadow": true
+    },
+    {
+     "index": 1,
+     "material": "PROP_NEU_BatteryOS_p.BatteryOmegaGlass_MATINST",
+     "num_triangles": 36,
+     "enable_collision": true,
+     "cast_shadow": false
+    },
+    {
+     "index": 2,
+     "material": "PROP_NEU_BatteryOS_p.OmegaLiquid_MATINST",
+     "num_triangles": 36,
+     "enable_collision": true,
+     "cast_shadow": false
+    },
+    {
+     "index": 3,
+     "material": "PROP_NEU_BatteryOS_p.OmegaLiquidSurface_MATINST",
+     "num_triangles": 32,
+     "enable_collision": true,
+     "cast_shadow": true
+    }
+   ],
+   "collision_flags": {
+    "UseSimpleBoxCollision": true,
+    "UseSimpleLineCollision": true,
+    "UseSimpleRigidBodyCollision": true,
+    "BodySetup": "PROP_NEU_BatteryOS_p.BatteryOmegaEmpty_STAT.RB_BodySetup_9070"
+   },
+   "lightmap": {
+    "LightMapResolution": 128,
+    "LightMapCoordinateIndex": 1
+   },
+   "provenance": "StaticMesh tagged props + cooked FStaticMeshElement (smsections): CONFIRMED AUTHORED DATA"
+  },
+  "PROP_NEU_BatteryOS_p.BatteryOmegaFull_STAT": {
+   "mesh": "PROP_NEU_BatteryOS_p.BatteryOmegaFull_STAT",
+   "cooked_in": "D5_OME_BASE_m",
+   "gltf": "content/PROP_NEU_BatteryOS_p/BatteryOmegaFull_STAT.gltf",
+   "sections": [
+    {
+     "index": 0,
+     "material": "PROP_NEU_BatteryOS_p.OmegaBattery_MATINST",
+     "num_triangles": 1710,
+     "enable_collision": true,
+     "cast_shadow": true
+    },
+    {
+     "index": 1,
+     "material": "PROP_NEU_BatteryOS_p.BatteryOmegaGlass_MATINST",
+     "num_triangles": 36,
+     "enable_collision": true,
+     "cast_shadow": false
+    },
+    {
+     "index": 2,
+     "material": "PROP_NEU_BatteryOS_p.OmegaLiquid_MATINST",
+     "num_triangles": 36,
+     "enable_collision": true,
+     "cast_shadow": false
+    },
+    {
+     "index": 3,
+     "material": "PROP_NEU_BatteryOS_p.OmegaLiquidSurface_MATINST",
+     "num_triangles": 32,
+     "enable_collision": true,
+     "cast_shadow": true
+    }
+   ],
+   "collision_flags": {
+    "UseSimpleBoxCollision": true,
+    "UseSimpleLineCollision": true,
+    "UseSimpleRigidBodyCollision": true,
+    "BodySetup": "PROP_NEU_BatteryOS_p.BatteryOmegaFull_STAT.RB_BodySetup_12101"
+   },
+   "lightmap": {
+    "LightMapResolution": 128,
+    "LightMapCoordinateIndex": 1
+   },
+   "provenance": "StaticMesh tagged props + cooked FStaticMeshElement (smsections): CONFIRMED AUTHORED DATA"
+  },
+  "PROP_NEU_BatteryOS_p.BatteryOmegaFullSpikes_STAT": {
+   "mesh": "PROP_NEU_BatteryOS_p.BatteryOmegaFullSpikes_STAT",
+   "cooked_in": "D5_OME_BASE_m",
+   "gltf": "content/PROP_NEU_BatteryOS_p/BatteryOmegaFullSpikes_STAT.gltf",
+   "sections": [
+    {
+     "index": 0,
+     "material": "PROP_NEU_BatteryOS_p.OmegaLiquid_MATINST",
+     "num_triangles": 0,
+     "enable_collision": true,
+     "cast_shadow": false
+    },
+    {
+     "index": 1,
+     "material": "PROP_NEU_BatteryOS_p.OmegaBatterySpikes_MATINST",
+     "num_triangles": 5194,
+     "enable_collision": true,
+     "cast_shadow": true
+    },
+    {
+     "index": 2,
+     "material": "PROP_NEU_BatteryOS_p.OmegaBattery_MATINST",
+     "num_triangles": 1710,
+     "enable_collision": true,
+     "cast_shadow": true
+    },
+    {
+     "index": 3,
+     "material": "PROP_NEU_BatteryOS_p.OmegaLiquid_MATINST",
+     "num_triangles": 32,
+     "enable_collision": true,
+     "cast_shadow": false
+    },
+    {
+     "index": 4,
+     "material": "PROP_NEU_BatteryOS_p.OmegaLiquid_MATINST",
+     "num_triangles": 36,
+     "enable_collision": true,
+     "cast_shadow": false
+    },
+    {
+     "index": 5,
+     "material": "PROP_NEU_BatteryOS_p.BatteryOmegaGlass_MATINST",
+     "num_triangles": 36,
+     "enable_collision": true,
+     "cast_shadow": false
+    }
+   ],
+   "collision_flags": {
+    "UseSimpleBoxCollision": true,
+    "UseSimpleLineCollision": true,
+    "UseSimpleRigidBodyCollision": true,
+    "BodySetup": "PROP_NEU_BatteryOS_p.BatteryOmegaFullSpikes_STAT.RB_BodySetup_10964"
+   },
+   "lightmap": {
+    "LightMapResolution": 256,
+    "LightMapCoordinateIndex": 1
+   },
+   "provenance": "StaticMesh tagged props + cooked FStaticMeshElement (smsections): CONFIRMED AUTHORED DATA"
+  }
+ },
+ "particle_systems": {},
+ "sound_cues": {
+  "BL_CHR_OMEGA_SUPREME.BATTERY_RIP_OUT": {
+   "cue": "BL_CHR_OMEGA_SUPREME.BATTERY_RIP_OUT",
+   "class": "SoundCue",
+   "tree": {
+    "node": "SoundNodeRoot_6019",
+    "class": "SoundNodeRoot",
+    "params": {
+     "EnableOcclusionVolume": false,
+     "EnableOcclusionPitch": false,
+     "DistanceMin": 15000.0,
+     "DistanceMax": 650000.0,
+     "Priority": 205.0,
+     "SmartPanDistance2D": 4000.0,
+     "SmartPanDistance3D": 8000.0,
+     "Category": "SFX_WET_BOSS_COMBAT",
+     "PlayMixerPreset": "D5_BATTERY_RIP_OUT"
+    },
+    "children": [
+     {
+      "node": "SoundNodeWaveEvent_15472",
+      "class": "SoundNodeWaveEvent",
+      "params": {
+       "Pitch": -9.0
+      },
+      "children": [
+       {
+        "node": "WL_EVENT_IACON.IACON_EYE_SCAN_BOT_SERVO_01",
+        "class": "SoundNodeWaveEx",
+        "wav": "content/WL_EVENT_IACON/IACON_EYE_SCAN_BOT_SERVO_01.wav",
+        "duration": 1.1763333082199097
+       },
+       {
+        "node": "WL_EVENT_IACON.IACON_EYE_SCAN_BOT_SERVO_06",
+        "class": "SoundNodeWaveEx",
+        "wav": "content/WL_EVENT_IACON/IACON_EYE_SCAN_BOT_SERVO_06.wav",
+        "duration": 1.4339375495910645
+       }
+      ]
+     },
+     {
+      "node": "SoundNodeWaveEvent_3766",
+      "class": "SoundNodeWaveEvent",
+      "params": {
+       "Pitch": 7.0
+      },
+      "children": [
+       {
+        "node": "WL_EVENT_IACON.IACON_EYE_SCAN_BOT_LASER_UP",
+        "class": "SoundNodeWaveEx",
+        "wav": "content/WL_EVENT_IACON/IACON_EYE_SCAN_BOT_LASER_UP.wav",
+        "duration": 2.6666667461395264
+       }
+      ]
+     },
+     {
+      "node": "SoundNodeWaveEvent_2386",
+      "class": "SoundNodeWaveEvent",
+      "params": {
+       "Pitch": 4.0
+      },
+      "children": [
+       {
+        "node": "WL_DEST_METAL.MTL_STRESS_WRONK_03",
+        "class": "SoundNodeWaveEx",
+        "wav": "content/WL_DEST_METAL/MTL_STRESS_WRONK_03.wav",
+        "duration": 2.752000093460083
+       }
+      ]
+     },
+     {
+      "node": "SoundNodeWaveEvent_10138",
+      "class": "SoundNodeWaveEvent",
+      "params": {
+       "Time": 0.8984201550483704
+      },
+      "children": [
+       {
+        "node": "WL_DEST_METAL.MTL_IMPT_MANHOLE_COVER_FALL_04",
+        "class": "SoundNodeWaveEx",
+        "wav": "content/WL_DEST_METAL/MTL_IMPT_MANHOLE_COVER_FALL_04.wav",
+        "duration": 2.068000078201294
+       }
+      ]
+     }
+    ]
+   },
+   "root": {
+    "EnableOcclusionVolume": false,
+    "EnableOcclusionPitch": false,
+    "DistanceMin": 15000.0,
+    "DistanceMax": 650000.0,
+    "Priority": 205.0,
+    "SmartPanDistance2D": 4000.0,
+    "SmartPanDistance3D": 8000.0,
+    "Category": "SFX_WET_BOSS_COMBAT",
+    "PlayMixerPreset": "D5_BATTERY_RIP_OUT"
+   },
+   "waves": [
+    {
+     "wave": "WL_EVENT_IACON.IACON_EYE_SCAN_BOT_SERVO_01",
+     "wav": "content/WL_EVENT_IACON/IACON_EYE_SCAN_BOT_SERVO_01.wav",
+     "duration": 1.1763333082199097,
+     "path": [
+      "SoundNodeRoot",
+      "SoundNodeWaveEvent"
+     ]
+    },
+    {
+     "wave": "WL_EVENT_IACON.IACON_EYE_SCAN_BOT_SERVO_06",
+     "wav": "content/WL_EVENT_IACON/IACON_EYE_SCAN_BOT_SERVO_06.wav",
+     "duration": 1.4339375495910645,
+     "path": [
+      "SoundNodeRoot",
+      "SoundNodeWaveEvent"
+     ]
+    },
+    {
+     "wave": "WL_EVENT_IACON.IACON_EYE_SCAN_BOT_LASER_UP",
+     "wav": "content/WL_EVENT_IACON/IACON_EYE_SCAN_BOT_LASER_UP.wav",
+     "duration": 2.6666667461395264,
+     "path": [
+      "SoundNodeRoot",
+      "SoundNodeWaveEvent"
+     ]
+    },
+    {
+     "wave": "WL_DEST_METAL.MTL_STRESS_WRONK_03",
+     "wav": "content/WL_DEST_METAL/MTL_STRESS_WRONK_03.wav",
+     "duration": 2.752000093460083,
+     "path": [
+      "SoundNodeRoot",
+      "SoundNodeWaveEvent"
+     ]
+    },
+    {
+     "wave": "WL_DEST_METAL.MTL_IMPT_MANHOLE_COVER_FALL_04",
+     "wav": "content/WL_DEST_METAL/MTL_IMPT_MANHOLE_COVER_FALL_04.wav",
+     "duration": 2.068000078201294,
+     "path": [
+      "SoundNodeRoot",
+      "SoundNodeWaveEvent"
+     ]
+    }
+   ],
+   "category": "SFX_WET_BOSS_COMBAT"
+  },
+  "BL_CHR_OMEGA_SUPREME.BATTERY_CORRUPT": {
+   "cue": "BL_CHR_OMEGA_SUPREME.BATTERY_CORRUPT",
+   "class": "SoundCue",
+   "tree": {
+    "node": "SoundNodeRoot_6019",
+    "class": "SoundNodeRoot",
+    "params": {
+     "Volume": -3.0,
+     "EnableOcclusionVolume": false,
+     "EnableOcclusionPitch": false,
+     "DistanceMin": 25000.0,
+     "DistanceMax": 650000.0,
+     "Priority": 205.0,
+     "SmartPanDistance2D": 4000.0,
+     "SmartPanDistance3D": 15000.0,
+     "Category": "SFX_WET_INTERACT",
+     "PlayMixerPreset": "D5_CORRUPT_BATTERY"
+    },
+    "children": [
+     {
+      "node": "SoundNodeWaveEvent_13108",
+      "class": "SoundNodeWaveEvent",
+      "params": {
+       "OverrideSpatialization": true,
+       "SpatializationType": "kSmartPan"
+      },
+      "children": [
+       {
+        "node": "WL_MECH.MECH_FLOOR_BUTTON_FLANGE_DOWN_01",
+        "class": "SoundNodeWaveEx",
+        "wav": "content/WL_MECH/MECH_FLOOR_BUTTON_FLANGE_DOWN_01.wav",
+        "duration": 3.131479263305664
+       }
+      ]
+     },
+     {
+      "node": "SoundNodeWaveEvent_10093",
+      "class": "SoundNodeWaveEvent",
+      "params": {
+       "Envelope": {
+        "PitchCurve": [
+         {
+          "X": 0.13047830760478973,
+          "Y": 0.0
+         },
+         {
+          "X": 0.5088654160499573,
+          "Y": 12.0
+         }
+        ]
+       }
+      },
+      "children": [
+       {
+        "node": "WL_MECH.MECH_RACHET_03",
+        "class": "SoundNodeWaveEx",
+        "wav": "content/WL_MECH/MECH_RACHET_03.wav",
+        "duration": 0.8758749961853027
+       }
+      ]
+     },
+     {
+      "node": "SoundNodeWaveEvent_15479",
+      "class": "SoundNodeWaveEvent",
+      "params": {
+       "Time": 0.4175305664539337
+      },
+      "children": [
+       {
+        "node": "WL_TRANS_ENV.MECH_PARASITE_ARM_LOW",
+        "class": "SoundNodeWaveEx",
+        "wav": "content/WL_TRANS_ENV/MECH_PARASITE_ARM_LOW.wav",
+        "duration": 0.5674791932106018
+       }
+      ]
+     },
+     {
+      "node": "SoundNodeWaveEvent_1540",
+      "class": "SoundNodeWaveEvent",
+      "params": {
+       "Time": 0.33730778098106384
+      },
+      "children": [
+       {
+        "node": "WL_TRANS_ENV.CORRUPTOR_SPIKES_GROW_01",
+        "class": "SoundNodeWaveEx",
+        "wav": "content/WL_TRANS_ENV/CORRUPTOR_SPIKES_GROW_01.wav",
+        "duration": 2.218270778656006
+       },
+       {
+        "node": "WL_TRANS_ENV.CORRUPTOR_SPIKES_GROW_02",
+        "class": "SoundNodeWaveEx",
+        "wav": "content/WL_TRANS_ENV/CORRUPTOR_SPIKES_GROW_02.wav",
+        "duration": 2.006479263305664
+       },
+       {
+        "node": "WL_TRANS_ENV.CORRUPTOR_SPIKES_GROW_03",
+        "class": "SoundNodeWaveEx",
+        "wav": "content/WL_TRANS_ENV/CORRUPTOR_SPIKES_GROW_03.wav",
+        "duration": 1.7381666898727417
+       },
+       {
+        "node": "WL_TRANS_ENV.CORRUPTOR_SPIKES_GROW_04",
+        "class": "SoundNodeWaveEx",
+        "wav": "content/WL_TRANS_ENV/CORRUPTOR_SPIKES_GROW_04.wav",
+        "duration": 1.977874994277954
+       }
+      ]
+     }
+    ]
+   },
+   "root": {
+    "Volume": -3.0,
+    "EnableOcclusionVolume": false,
+    "EnableOcclusionPitch": false,
+    "DistanceMin": 25000.0,
+    "DistanceMax": 650000.0,
+    "Priority": 205.0,
+    "SmartPanDistance2D": 4000.0,
+    "SmartPanDistance3D": 15000.0,
+    "Category": "SFX_WET_INTERACT",
+    "PlayMixerPreset": "D5_CORRUPT_BATTERY"
+   },
+   "waves": [
+    {
+     "wave": "WL_MECH.MECH_FLOOR_BUTTON_FLANGE_DOWN_01",
+     "wav": "content/WL_MECH/MECH_FLOOR_BUTTON_FLANGE_DOWN_01.wav",
+     "duration": 3.131479263305664,
+     "path": [
+      "SoundNodeRoot",
+      "SoundNodeWaveEvent"
+     ]
+    },
+    {
+     "wave": "WL_MECH.MECH_RACHET_03",
+     "wav": "content/WL_MECH/MECH_RACHET_03.wav",
+     "duration": 0.8758749961853027,
+     "path": [
+      "SoundNodeRoot",
+      "SoundNodeWaveEvent"
+     ]
+    },
+    {
+     "wave": "WL_TRANS_ENV.MECH_PARASITE_ARM_LOW",
+     "wav": "content/WL_TRANS_ENV/MECH_PARASITE_ARM_LOW.wav",
+     "duration": 0.5674791932106018,
+     "path": [
+      "SoundNodeRoot",
+      "SoundNodeWaveEvent"
+     ]
+    },
+    {
+     "wave": "WL_TRANS_ENV.CORRUPTOR_SPIKES_GROW_01",
+     "wav": "content/WL_TRANS_ENV/CORRUPTOR_SPIKES_GROW_01.wav",
+     "duration": 2.218270778656006,
+     "path": [
+      "SoundNodeRoot",
+      "SoundNodeWaveEvent"
+     ]
+    },
+    {
+     "wave": "WL_TRANS_ENV.CORRUPTOR_SPIKES_GROW_02",
+     "wav": "content/WL_TRANS_ENV/CORRUPTOR_SPIKES_GROW_02.wav",
+     "duration": 2.006479263305664,
+     "path": [
+      "SoundNodeRoot",
+      "SoundNodeWaveEvent"
+     ]
+    },
+    {
+     "wave": "WL_TRANS_ENV.CORRUPTOR_SPIKES_GROW_03",
+     "wav": "content/WL_TRANS_ENV/CORRUPTOR_SPIKES_GROW_03.wav",
+     "duration": 1.7381666898727417,
+     "path": [
+      "SoundNodeRoot",
+      "SoundNodeWaveEvent"
+     ]
+    },
+    {
+     "wave": "WL_TRANS_ENV.CORRUPTOR_SPIKES_GROW_04",
+     "wav": "content/WL_TRANS_ENV/CORRUPTOR_SPIKES_GROW_04.wav",
+     "duration": 1.977874994277954,
+     "path": [
+      "SoundNodeRoot",
+      "SoundNodeWaveEvent"
+     ]
+    }
+   ],
+   "category": "SFX_WET_INTERACT"
+  },
+  "BL_CHR_OMEGA_SUPREME.BATTERY_CORRUPT_RIP_OUT": {
+   "cue": "BL_CHR_OMEGA_SUPREME.BATTERY_CORRUPT_RIP_OUT",
+   "class": "SoundCue",
+   "tree": {
+    "node": "SoundNodeRoot_6019",
+    "class": "SoundNodeRoot",
+    "params": {
+     "Volume": -3.0,
+     "EnableOcclusionVolume": false,
+     "EnableOcclusionPitch": false,
+     "DistanceMin": 25000.0,
+     "DistanceMax": 650000.0,
+     "Priority": 205.0,
+     "SmartPanDistance2D": 4000.0,
+     "SmartPanDistance3D": 8000.0,
+     "Category": "SFX_WET_BOSS",
+     "PlayMixerPreset": "D5_BATTERY_RIP_OUT"
+    },
+    "children": [
+     {
+      "node": "SoundNodeWaveEvent_15472",
+      "class": "SoundNodeWaveEvent",
+      "params": {
+       "Pitch": -9.0,
+       "Envelope": {
+        "PitchCurve": [
+         {
+          "X": 0.2842819094657898,
+          "Y": 0.0
+         },
+         {
+          "X": 0.8404856324195862,
+          "Y": 24.000003814697266
+         }
+        ]
+       }
+      },
+      "children": [
+       {
+        "node": "WL_EVENT_IACON.IACON_EYE_SCAN_BOT_SERVO_01",
+        "class": "SoundNodeWaveEx",
+        "wav": "content/WL_EVENT_IACON/IACON_EYE_SCAN_BOT_SERVO_01.wav",
+        "duration": 1.1763333082199097
+       }
+      ]
+     },
+     {
+      "node": "SoundNodeWaveEvent_3766",
+      "class": "SoundNodeWaveEvent",
+      "params": {
+       "Pitch": 7.0
+      },
+      "children": [
+       {
+        "node": "WL_EVENT_IACON.IACON_EYE_SCAN_BOT_LASER_UP",
+        "class": "SoundNodeWaveEx",
+        "wav": "content/WL_EVENT_IACON/IACON_EYE_SCAN_BOT_LASER_UP.wav",
+        "duration": 2.6666667461395264
+       }
+      ]
+     },
+     {
+      "node": "SoundNodeWaveEvent_2386",
+      "class": "SoundNodeWaveEvent",
+      "params": {
+       "Volume": -3.0,
+       "Pitch": 4.0
+      },
+      "children": [
+       {
+        "node": "WL_DEST_METAL.MTL_STRESS_WRONK_03",
+        "class": "SoundNodeWaveEx",
+        "wav": "content/WL_DEST_METAL/MTL_STRESS_WRONK_03.wav",
+        "duration": 2.752000093460083
+       }
+      ]
+     },
+     {
+      "node": "SoundNodeWaveEvent_10138",
+      "class": "SoundNodeWaveEvent",
+      "params": {
+       "Time": 0.7624591588973999,
+       "Volume": -5.0
+      },
+      "children": [
+       {
+        "node": "WL_DEST_METAL.MTL_IMPT_MANHOLE_COVER_FALL_04",
+        "class": "SoundNodeWaveEx",
+        "wav": "content/WL_DEST_METAL/MTL_IMPT_MANHOLE_COVER_FALL_04.wav",
+        "duration": 2.068000078201294
+       }
+      ]
+     },
+     {
+      "node": "SoundNodeWaveEvent_10832",
+      "class": "SoundNodeWaveEvent",
+      "params": {
+       "Pitch": 7.0
+      },
+      "children": [
+       {
+        "node": "WL_DEST_METAL.MTL_STRESS_FRACTURE_01",
+        "class": "SoundNodeWaveEx",
+        "wav": "content/WL_DEST_METAL/MTL_STRESS_FRACTURE_01.wav",
+        "duration": 4.793749809265137
+       }
+      ]
+     }
+    ]
+   },
+   "root": {
+    "Volume": -3.0,
+    "EnableOcclusionVolume": false,
+    "EnableOcclusionPitch": false,
+    "DistanceMin": 25000.0,
+    "DistanceMax": 650000.0,
+    "Priority": 205.0,
+    "SmartPanDistance2D": 4000.0,
+    "SmartPanDistance3D": 8000.0,
+    "Category": "SFX_WET_BOSS",
+    "PlayMixerPreset": "D5_BATTERY_RIP_OUT"
+   },
+   "waves": [
+    {
+     "wave": "WL_EVENT_IACON.IACON_EYE_SCAN_BOT_SERVO_01",
+     "wav": "content/WL_EVENT_IACON/IACON_EYE_SCAN_BOT_SERVO_01.wav",
+     "duration": 1.1763333082199097,
+     "path": [
+      "SoundNodeRoot",
+      "SoundNodeWaveEvent"
+     ]
+    },
+    {
+     "wave": "WL_EVENT_IACON.IACON_EYE_SCAN_BOT_LASER_UP",
+     "wav": "content/WL_EVENT_IACON/IACON_EYE_SCAN_BOT_LASER_UP.wav",
+     "duration": 2.6666667461395264,
+     "path": [
+      "SoundNodeRoot",
+      "SoundNodeWaveEvent"
+     ]
+    },
+    {
+     "wave": "WL_DEST_METAL.MTL_STRESS_WRONK_03",
+     "wav": "content/WL_DEST_METAL/MTL_STRESS_WRONK_03.wav",
+     "duration": 2.752000093460083,
+     "path": [
+      "SoundNodeRoot",
+      "SoundNodeWaveEvent"
+     ]
+    },
+    {
+     "wave": "WL_DEST_METAL.MTL_IMPT_MANHOLE_COVER_FALL_04",
+     "wav": "content/WL_DEST_METAL/MTL_IMPT_MANHOLE_COVER_FALL_04.wav",
+     "duration": 2.068000078201294,
+     "path": [
+      "SoundNodeRoot",
+      "SoundNodeWaveEvent"
+     ]
+    },
+    {
+     "wave": "WL_DEST_METAL.MTL_STRESS_FRACTURE_01",
+     "wav": "content/WL_DEST_METAL/MTL_STRESS_FRACTURE_01.wav",
+     "duration": 4.793749809265137,
+     "path": [
+      "SoundNodeRoot",
+      "SoundNodeWaveEvent"
+     ]
+    }
+   ],
+   "category": "SFX_WET_BOSS"
+  }
+ },
+ "factories": [
+  {
+   "chapter": "D5_OME",
+   "action": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_01.SeqAct_TnPawnFactory_10184",
+   "sublevel": "D5_OME_DSN_m",
+   "sequence": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_01",
+   "factory": {
+    "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_01.SeqAct_TnPawnFactory_10184.TnActorFactoryOmegaBatteryDestructible_15947",
+    "class": "TnActorFactoryOmegaBatteryDestructible",
+    "NewActorClass": "TransGame.TnOmegaBatteryDestructibleActor",
+    "Blueprint": "DES_NEU_Battery_p.DES_OmegaRobotBattery",
+    "archetype": "DES_NEU_Battery_p.DES_OmegaRobotBattery"
+   },
+   "factory_authored": {
+    "Blueprint": "DES_NEU_Battery_p.DES_OmegaRobotBattery"
+   },
+   "spawn_points": [
+    {
+     "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.Trigger_9724",
+     "class": "Trigger",
+     "location_ue": [
+      120064.0,
+      71552.0,
+      38212.0
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": null,
+   "spawn_delay": 0.5,
+   "destroy_spawned_on_stream_out": true,
+   "fired_by_direct": [
+    {
+     "op": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_01.SeqAct_Interp_6653",
+     "class": "SeqAct_Interp",
+     "output": "Completed"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_01.SeqEvent_SequenceActivated_12106",
+     "class": "SeqEvent_SequenceActivated",
+     "EventName": null,
+     "Originator": null,
+     "ObjComment": "Wounded Spawn Battery",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    }
+   ],
+   "outputs": [
+    {
+     "output": "All Pawns Spawned",
+     "to": [
+      "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_01.SeqAct_Gate_1357"
+     ]
+    }
+   ],
+   "spawned_variable": null
+  },
+  {
+   "chapter": "D5_OME",
+   "action": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_02.SeqAct_TnPawnFactory_10184",
+   "sublevel": "D5_OME_DSN_m",
+   "sequence": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_02",
+   "factory": {
+    "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_02.SeqAct_TnPawnFactory_10184.TnActorFactoryOmegaBatteryDestructible_15947",
+    "class": "TnActorFactoryOmegaBatteryDestructible",
+    "NewActorClass": "TransGame.TnOmegaBatteryDestructibleActor",
+    "Blueprint": "DES_NEU_Battery_p.DES_OmegaRobotBattery",
+    "archetype": "DES_NEU_Battery_p.DES_OmegaRobotBattery"
+   },
+   "factory_authored": {
+    "Blueprint": "DES_NEU_Battery_p.DES_OmegaRobotBattery"
+   },
+   "spawn_points": [
+    {
+     "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.Trigger_7259",
+     "class": "Trigger",
+     "location_ue": [
+      120064.0,
+      81024.0,
+      38212.0
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": null,
+   "spawn_delay": 0.5,
+   "destroy_spawned_on_stream_out": true,
+   "fired_by_direct": [
+    {
+     "op": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_02.SeqAct_Interp_11315",
+     "class": "SeqAct_Interp",
+     "output": "Completed"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_02.SeqEvent_SequenceActivated_1711",
+     "class": "SeqEvent_SequenceActivated",
+     "EventName": null,
+     "Originator": null,
+     "ObjComment": "Wounded Spawn Battery",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    }
+   ],
+   "outputs": [
+    {
+     "output": "All Pawns Spawned",
+     "to": [
+      "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_02.SeqAct_Gate_15610"
+     ]
+    }
+   ],
+   "spawned_variable": null
+  },
+  {
+   "chapter": "D5_OME",
+   "action": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_03.SeqAct_TnPawnFactory_10184",
+   "sublevel": "D5_OME_DSN_m",
+   "sequence": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_03",
+   "factory": {
+    "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_03.SeqAct_TnPawnFactory_10184.TnActorFactoryOmegaBatteryDestructible_15947",
+    "class": "TnActorFactoryOmegaBatteryDestructible",
+    "NewActorClass": "TransGame.TnOmegaBatteryDestructibleActor",
+    "Blueprint": "DES_NEU_Battery_p.DES_OmegaRobotBattery",
+    "archetype": "DES_NEU_Battery_p.DES_OmegaRobotBattery"
+   },
+   "factory_authored": {
+    "Blueprint": "DES_NEU_Battery_p.DES_OmegaRobotBattery"
+   },
+   "spawn_points": [
+    {
+     "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.Trigger_10130",
+     "class": "Trigger",
+     "location_ue": [
+      105472.0,
+      82944.0,
+      39492.0
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": null,
+   "spawn_delay": 0.5,
+   "destroy_spawned_on_stream_out": true,
+   "fired_by_direct": [
+    {
+     "op": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_03.SeqAct_Interp_6653",
+     "class": "SeqAct_Interp",
+     "output": "Completed"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_03.SeqEvent_SequenceActivated_15071",
+     "class": "SeqEvent_SequenceActivated",
+     "EventName": null,
+     "Originator": null,
+     "ObjComment": "Wounded Spawn Battery",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    }
+   ],
+   "outputs": [
+    {
+     "output": "All Pawns Spawned",
+     "to": [
+      "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_03.SeqAct_Gate_13339"
+     ]
+    }
+   ],
+   "spawned_variable": null
+  },
+  {
+   "chapter": "D5_OME",
+   "action": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_04.SeqAct_TnPawnFactory_10184",
+   "sublevel": "D5_OME_DSN_m",
+   "sequence": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_04",
+   "factory": {
+    "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_04.SeqAct_TnPawnFactory_10184.TnActorFactoryOmegaBatteryDestructible_15947",
+    "class": "TnActorFactoryOmegaBatteryDestructible",
+    "NewActorClass": "TransGame.TnOmegaBatteryDestructibleActor",
+    "Blueprint": "DES_NEU_Battery_p.DES_OmegaRobotBattery",
+    "archetype": "DES_NEU_Battery_p.DES_OmegaRobotBattery"
+   },
+   "factory_authored": {
+    "Blueprint": "DES_NEU_Battery_p.DES_OmegaRobotBattery"
+   },
+   "spawn_points": [
+    {
+     "object": "D5_OME_DSN_m.TheWorld.PersistentLevel.Trigger_6546",
+     "class": "Trigger",
+     "location_ue": [
+      105472.0,
+      69632.0,
+      39492.0
+     ]
+    }
+   ],
+   "spawn_count": 1,
+   "max_spawned_in_world": null,
+   "spawn_delay": 0.5,
+   "destroy_spawned_on_stream_out": true,
+   "fired_by_direct": [
+    {
+     "op": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_04.SeqAct_Interp_6653",
+     "class": "SeqAct_Interp",
+     "output": "Completed"
+    }
+   ],
+   "fired_by_events": [
+    {
+     "event": "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_04.SeqEvent_SequenceActivated_11980",
+     "class": "SeqEvent_SequenceActivated",
+     "EventName": null,
+     "Originator": null,
+     "ObjComment": "Wounded Spawn Battery",
+     "MaxTriggerCount": 0,
+     "depth": 2
+    }
+   ],
+   "outputs": [
+    {
+     "output": "All Pawns Spawned",
+     "to": [
+      "D5_OME_DSN_m.TheWorld.PersistentLevel.Main_Sequence.Battery_04.SeqAct_Gate_3081"
+     ]
+    }
+   ],
+   "spawned_variable": null
+  }
+ ]
+}
