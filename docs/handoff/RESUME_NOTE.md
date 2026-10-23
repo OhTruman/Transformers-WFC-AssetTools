@@ -24,7 +24,14 @@
 - Escalation spawn points: escalation_geometry zones[].spawn_points (9ca9a9e). Slim refresh + bot_skill.json (101,215 rows).
 - Campaign scoping (df3d56e): HD gap 937 textures / ~1.77 GB PROVISIONAL; audio / FMV / dialog complete (1 A3 line without wave).
   Doc work/handoff/CAMPAIGN_HD_AV_COVERAGE.md. Remnant volume fog params sent to Rendering.
-- Next: stand by (Gameplay BOTTEST results on overlay c; Systems' package-7 data list; Rendering campaign queue).
+- Gameplay three-arm test: adapted collision ships for all 10 maps; rebuilt navs regress (per-poly broken floors expose cracks the hulls
+  span; same bot_nav code). Overlay work/overlay_20261023d (114 files; rebuilt nav only BrokenHope / Remnant / Seed) supersedes c.
+  Seed nav v3 candidate out/pc_adapt/_candidates/seed_nav_v3 (shipped collision + #13 hulls), awaiting Gameplay's A/B.
+  Berth fall-through: not a collision hole.
+- Campaign HD closed (covered by pack D). Confirmation of the 10 (out/hd/campaign_push_20261023): 1 eye-passed row,
+  ENV_statue01_NORM, waits for the next pack-D snapshot (work/campaign_hd/confirm10_eye.json). New opt-in envs: hd_push
+  WFC_HD_PUSH_ROOT, hd_torch WFC_HD_DEVICE.
+- Next: stand by (Gameplay's Seed v3 A/B; Systems' package-7 data list; Rendering campaign queue).
 
 - **Integration session:** now rebuild-07 (same owner as rebuild-9c). Gameplay is rebuild-gameplay-0a. The machine rebooted at 05:41;
   the queue was resumed and finished.
