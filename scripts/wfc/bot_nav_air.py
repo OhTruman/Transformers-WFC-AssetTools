@@ -33,7 +33,7 @@ DST = sys.argv[sys.argv.index('--out') + 1] if '--out' in sys.argv else OUT
 def inp(name):
     p = os.path.join(OVL, name) if OVL else None
     return p if p and os.path.exists(p) else os.path.join(OUT, name)
-VOX = 2.0
+VOX = float(os.environ.get('WFC_AIR_VOX') or 2.0)   # WFC_AIR_VOX: coarser voxels for very large campaign chapters (A1_IAC); unset = 2.0 as before
 P = OD([
     ('voxel_m', (VOX, 'tool parameter')),
     ('air_radius_m', (4.4, 'vehicle radius from versus TnReachSpec CollisionRadius 440 cm (CONFIRMED); jets fly RB physics (RE) - PROVISIONAL use')),

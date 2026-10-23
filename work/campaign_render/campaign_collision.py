@@ -3,10 +3,12 @@
     python campaign_collision.py <CH>
 
 Per sublevel (out/campaign_render/<CH>/<dir>/, dir = the level name without _m):
-  collision_pawn.glb  the chapter collision_pawn.glb nodes of that level: BSP by its BSPCollision_<level> node name; volumes by
+  collision_pawn.glb / collision_weapon.glb  the chapter files' nodes of that level: BSP by its BSPCollision_<level> node name; volumes by
                       physics.json volumes (actor + sublevel; a name repeated across levels is matched by its first vertex); props by
                       (actor, mesh, gltf matrix) against physics.json props. No-loss check: every chapter node lands in exactly one level
   physics.json        the chapter physics.json filtered to that level (meshes: only those the level's props use; chapter-wide settings as is)
+  gameplay.json       the persistent unit only: the WHOLE chapter gameplay.json (the World reads start points / pickups / map state
+                      from the map dir)
 Per chapter (out/campaign_render/<CH>/):
   navigation.json     the chapter's path nodes + reach specs (copy of the campaign VerticalSlice navigation.json)
   navmesh.json        the ORIGINAL cooked NavigationCell mesh + TnTacticalPathNode / PathNode (escalation_data.navmesh, the
@@ -14,7 +16,7 @@ Per chapter (out/campaign_render/<CH>/):
 Read-only on every input.
 """
 import json, os, shutil, sys
-from collections import Counter, defaultdict
+from collections import Counter, OrderedDict as OD, defaultdict
 import numpy as np
 HERE = os.path.dirname(os.path.abspath(__file__)); AT = os.path.abspath(os.path.join(HERE, '..', '..'))
 sys.path.insert(0, os.path.join(AT, 'scripts', 'wfc')); sys.path.insert(0, HERE)
@@ -31,7 +33,36 @@ def main(ch):
     for p in ph['props']: prop_lv[(p['actor'], p['mesh'], mkey(p.get('gltf_matrix')))].add(p['sublevel'])
     vol_lv = defaultdict(list)
     for v in ph['volumes']: vol_lv[v['actor']].append(v)
-    bj, bb = read_glb(os.path.join(D, 'collision_pawn.glb'))
+    split = {}
+    for gname in ('collision_pawn.glb', 'collision_weapon.glb'):
+        if os.path.exists(os.path.join(D, gname)): split[gname] = split_glb(D, R, ch, levels, gname, prop_lv, vol_lv)
+    why = split['collision_pawn.glb']['why']; assign = split['collision_pawn.glb']['assign']
+    out = {}
+    for lv in levels:
+        od = os.path.join(R, CR.outname(lv))
+        if not os.path.isdir(od): continue
+        sp = CR.filt(ph, lv, levels)
+        used = {p['mesh'] for p in sp.get('props') or []}
+        sp['meshes'] = {k: v for k, v in (ph.get('meshes') or {}).items() if k in used}
+        sp.update(sublevel=lv, split_from='physics.json')
+        json.dump(sp, open(os.path.join(od, 'physics.json'), 'w', encoding='utf-8'), indent=1, default=str)
+        out[CR.outname(lv)] = OD([('collision_nodes', split['collision_pawn.glb']['per_level'].get(lv, 0)),
+                                  ('weapon_collision_nodes', (split.get('collision_weapon.glb') or {}).get('per_level', {}).get(lv, 0)),
+                                  ('props', len(sp.get('props') or [])), ('volumes', len(sp.get('volumes') or [])),
+                                  ('collision_bytes', os.path.getsize(os.path.join(od, 'collision_pawn.glb')) if os.path.exists(os.path.join(od, 'collision_pawn.glb')) else 0),
+                                  ('weapon_collision_bytes', os.path.getsize(os.path.join(od, 'collision_weapon.glb')) if os.path.exists(os.path.join(od, 'collision_weapon.glb')) else 0),
+                                  ('physics_bytes', os.path.getsize(os.path.join(od, 'physics.json')))])
+    # gameplay.json: the World reads it from the map dir (start points, pickup factories, match spawn data, map state); for a chapter that is
+    # the persistent unit, so the persistent unit gets the WHOLE chapter file (its records span the sublevels; one map state per World)
+    pers = next((l for l in levels if l.lower().endswith('_base_m')), None)
+    if pers and os.path.isdir(os.path.join(R, CR.outname(pers))) and os.path.exists(os.path.join(D, 'gameplay.json')):
+        shutil.copyfile(os.path.join(D, 'gameplay.json'), os.path.join(R, CR.outname(pers), 'gameplay.json'))
+    _rest(ch, D, R, levels, assign, why, out, split)
+
+def split_glb(D, R, ch, levels, gname, prop_lv, vol_lv):
+    """split a chapter collision glb by level (BSP by node name, volumes by physics.json actor + sublevel / first vertex, props by actor /
+    mesh / matrix); writes <unit>/<gname>; no-loss counts"""
+    bj, bb = read_glb(os.path.join(D, gname))
     assign, why = {}, Counter()
     for i, n in enumerate(bj['nodes']):
         if n.get('mesh') is None: continue
@@ -50,12 +81,12 @@ def main(ch):
                 lv = best['sublevel']; why['volume_by_vertex'] += 1
         assign[i] = lv if lv in levels else None
         if assign[i] is None: why['unassigned'] += 1
-    out = {}
+    per_level = {}
     for lv in levels:
         od = os.path.join(R, CR.outname(lv))
         if not os.path.isdir(od): continue
-        idx = [i for i, l in assign.items() if l == lv]
-        g = GLB('AssetTools campaign_collision (%s %s)' % (ch, lv)); cache = {}
+        idx = [i for i, l in assign.items() if l == lv]; per_level[lv] = len(idx)
+        g = GLB('AssetTools campaign_collision (%s %s %s)' % (ch, lv, gname)); cache = {}
         for i in idx:
             n = bj['nodes'][i]; mi = n['mesh']
             if mi not in cache:
@@ -66,15 +97,10 @@ def main(ch):
                     prims.append(p2)
                 cache[mi] = g.mesh(bj['meshes'][mi].get('name', ''), prims)
             g.node(dict(n, mesh=cache[mi]))
-        if idx: g.write(os.path.join(od, 'collision_pawn.glb'))
-        sp = CR.filt(ph, lv, levels)
-        used = {p['mesh'] for p in sp.get('props') or []}
-        sp['meshes'] = {k: v for k, v in (ph.get('meshes') or {}).items() if k in used}
-        sp.update(sublevel=lv, split_from='physics.json')
-        json.dump(sp, open(os.path.join(od, 'physics.json'), 'w', encoding='utf-8'), indent=1, default=str)
-        out[CR.outname(lv)] = {'collision_nodes': len(idx), 'props': len(sp.get('props') or []), 'volumes': len(sp.get('volumes') or []),
-                               'collision_bytes': os.path.getsize(os.path.join(od, 'collision_pawn.glb')) if idx else 0,
-                               'physics_bytes': os.path.getsize(os.path.join(od, 'physics.json'))}
+        g.write(os.path.join(od, gname))   # every unit gets the file, an empty valid glb when the level owns no such collision (the loader opens it)
+    return {'assign': assign, 'why': why, 'per_level': per_level, 'nodes_total': len(assign), 'unassigned': why['unassigned']}
+
+def _rest(ch, D, R, levels, assign, why, out, split):
     shutil.copyfile(os.path.join(D, 'navigation.json'), os.path.join(R, 'navigation.json'))
     import escalation_data as ED
     cells, nodes, setup_off = ED.navmesh(ch, levels, {})
@@ -84,6 +110,9 @@ def main(ch):
           'cells': cells, 'nodes': nodes}
     json.dump(nm, open(os.path.join(R, 'navmesh.json'), 'w', encoding='utf-8'), indent=1)
     rep = {'chapter': ch, 'nodes_total': len(assign), 'assigned_by': dict(why), 'no_loss': why['unassigned'] == 0 and sum(v['collision_nodes'] for v in out.values()) == len(assign),
+           'weapon_collision': {k: {'nodes_total': v['nodes_total'], 'unassigned': v['unassigned'], 'no_loss': v['unassigned'] == 0 and sum(v['per_level'].values()) == v['nodes_total']}
+                                for k, v in split.items()},
+           'gameplay_json': 'whole chapter file in the persistent unit (the World reads it from the map dir)',
            'sublevels': out, 'navmesh_counts': nm['counts'], 'navigation_nodes': len(json.load(open(os.path.join(R, 'navigation.json'), encoding='utf-8'))['nodes'])}
     json.dump(rep, open(os.path.join(R, 'collision_report.json'), 'w', encoding='utf-8'), indent=1)
     print(json.dumps(rep)[:900])

@@ -27,7 +27,8 @@ WALKOFF_M, JMAX = 6.0, 5.0
 SPECIAL_CLS = ('JumpPad', 'Lift', 'Teleport', 'Mover', 'Elevator', 'Ladder')
 LAUNCH_KEYS = ('JumpVelocity', 'JumpTarget', 'JumpZ', 'DesiredDestination', 'URL', 'LiftTrigger', 'MyLift', 'LiftTag', 'JumpTime')
 ANCHOR_KIND = OD([('TnCampaignPlayerStart', 'player_start'), ('PlayerStart', 'player_start'), ('Checkpoint', 'checkpoint'),
-                  ('TnTacticalPathNode', 'tactical'), ('PathNode', 'path_node'), ('AirPathNode', 'air_path_node')])
+                  ('TnTacticalPathNode', 'tactical'), ('PathNode', 'path_node'), ('AirPathNode', 'air_path_node'),
+                  ('MoverPathNode', 'mover_path_node')])   # RE 2026-10-23: lift-based path nodes (A1's intro elevator); ride with their Base mover
 
 def g(v): return [round(0.01 * v['X'], 4), round(0.01 * v['Z'], 4), round(0.01 * v['Y'], 4)]
 def obj(op):
@@ -87,8 +88,16 @@ def main(ch):
             c_, p = obj(op); L = p.get('Location')
             if not L: continue
             pos = g(L); hh = V2.find_cell(cells, pos, up=2.0, drop=8.0) if kind != 'air_path_node' else None
+            drop_m = None
+            if hh is None and kind in ('player_start', 'checkpoint'):
+                # airborne starts / checkpoints (A1_IAC: the level opens mid-air, CAMPAIGN_BACKLOG item 5): the cell straight below
+                land = V2.find_cell(cells, pos, up=2.0, drop=300.0)
+                if land: hh = land; drop_m = round(pos[1] - land[1], 2)
             a = OD([('actor', op.rsplit('.', 1)[-1]), ('class', cls), ('kind', kind), ('level', op.split('.')[0]), ('location_gltf', pos),
                     ('cell', hh[0] if hh else None), ('approach_cell', hh[0] if hh else None)])
+            if drop_m is not None: a['airborne_drop_m'] = drop_m
+            if kind == 'mover_path_node':
+                a['base'] = p.get('Base'); a['cell'] = a['approach_cell'] = None      # rides the mover: no static cell
             if kind == 'checkpoint':
                 a['tag'] = p.get('Tag'); a['display_order'] = p.get('DisplayOrder'); a['streaming_state'] = p.get('StreamingState')
             anchors.append(a)
