@@ -37,6 +37,26 @@ Texture2D only, per chapter manifest (light maps are a separate group).
 **Resolution mix** (mostly small textures): 128² 344, 64² 121, 512² 115, 1024² 71, 32² 49, 256² 44, 256×1 35, others.
 The full list with sizes and chapters is in `hd_coverage.json` → `distinct_gap`.
 
+## Correction: the real build scope (2026-10-23, later the same day)
+
+The gap above counts every Texture2D without a pack D row. Under pack D's own rules almost all of them stay original:
+
+| of the 937 distinct gap textures | count | outcome |
+|---|---|---|
+| 64 px or less | 297 | original (pack D rule: Lanczos / kept) |
+| pack D verdict KEEP | 86 | original (pack D decision) |
+| pack D verdict REMAKE | 96 | original (pack D decision) |
+| eye-rejected in pack D (cap None) | 92 | original |
+| editor ThumbnailTexture (never used at runtime; cooked inside FX / material packages) | 269 | not applicable |
+| TEXTUREGROUP_UI | 85 | original (pack D excludes UI) |
+| TEXTUREGROUP_Skybox | 2 | original (pack D excludes skyboxes) |
+| **PASS verdict, never eye-reviewed (pack D batches after 31)** | **10** | **the only build work: 2.9 Mtexel** |
+
+- So the campaign is already covered by pack D, apart from 10 textures. The 1.77 GB estimate above does not apply.
+- The 10 are listed in `work/campaign_hd/campaign_hd_build_set.json`.
+- Those 10 were in pack D's selection, in reviewed batches (all 32 batches were reviewed), with no eye cap, yet they have no pack row. Most likely pack D's build ladder fell back to the original at its automatic gates (PROVISIONAL: the per-texture results went with the deleted `out/hd/push_full` working folder). Rerunning the same deterministic pipeline should reproduce that, so the campaign HD pass adds about nothing under pack D's rules.
+- Widening scope (UI 85, skybox 2, 64 px or less 297) would be a policy change, the user's to decide.
+
 ## 2. Audio / FMV / dialog presence
 
 Re-verified on disk, not taken from the manifest flags.

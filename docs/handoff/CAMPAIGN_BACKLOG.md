@@ -27,3 +27,8 @@ Order set by Integration (2026-10-16). Each fix is generic: MP / Streets outputs
 5. **Player-start ground check: campaign-mode relaxation** (approved 2026-10-16; in progress 2026-10-17). All 10 chapters are through the pipeline. Campaign starts are often airborne or on platforms
    (A1_IAC: 236 m drop; D2_COR: 15 of 30 grounded). Allow them in campaign mode; the MP rule stays unchanged.
 
+6. **Known silent dialog line (A3_COR)** - recorded 2026-10-23 (campaign presence check, CAMPAIGN_HD_AV_COVERAGE.md).
+   - `A3_COR_OmegaFacility_Design_m` `SeqAct_Conversation_7226` (fired by SeqEvent_RemoteEvent 'Elevators_Unlocked' after a
+     SeqAct_Delay): 1 line, speaker Ironhide (`Speaker_0 <no subtitle>`), cue null, no wave, no FaceFX.
+   - CONFIRMED cooked data: the conversation exists with no cue, so the original plays nothing here. Play it as a silent line; nothing
+     to extract.
