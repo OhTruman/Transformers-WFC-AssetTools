@@ -21,3 +21,9 @@ for CH in A2_KON A3_COR A4_ORB A5_TRY D1_ORB D2_COR D3A_IAC D3B_IAC; do
   $PY $RB --cap-gb 6 --log work/campaign_render/logs_actors/matskel_$CH.log work/campaign_render/campaign_matinee_skeletal.py $CH >/dev/null 2>&1
   echo "matinee_skeletal $CH $(grep -o 'rc=[0-9]*' work/campaign_render/logs_actors/matskel_$CH.log)"
 done
+# one lightmap set per chapter (additive; unit copies removed only on Integration's go with --remove-unit-copies), then the asset list
+for CH in A2_KON A3_COR A4_ORB A5_TRY D1_ORB D2_COR D3A_IAC D3B_IAC; do
+  hold; $PY $RB --cap-gb 6 --log work/campaign_render/logs_actors/dedupe_$CH.log work/campaign_render/dedupe_lightmaps.py $CH >/dev/null 2>&1
+  echo "lightmaps $CH $(grep -o 'rc=[0-9]*' work/campaign_render/logs_actors/dedupe_$CH.log)"
+done
+hold; $PY $RB --cap-gb 6 --log work/campaign_render/logs_actors/asset_list.log work/campaign_render/campaign_asset_list.py >/dev/null 2>&1; echo "asset list $(grep -o 'rc=[0-9]*' work/campaign_render/logs_actors/asset_list.log)"
