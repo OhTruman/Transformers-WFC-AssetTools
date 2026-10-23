@@ -61,6 +61,30 @@ def main():
                 d = os.path.join(AT, 'out', 'campaign_characters', t['id'])
                 for r, _, fs in os.walk(d):
                     for x in fs: add(os.path.join(r, x), 'character:' + t['id'], ch)
+    # 2b. textures the unit world.glb files reference (image URIs into ExtractedAssets/content; incl. the added skeletal / transforming
+    #     nodes' materials) and the shared transforming-actor GLBs' own URIs (2026-10-23)
+    import struct
+    for ch in CHS:
+        R = os.path.join(AT, 'out', 'campaign_render', ch)
+        if not os.path.isdir(R): continue
+        for u in sorted(os.listdir(R)):
+            g = os.path.join(R, u, 'world.glb')
+            if not os.path.exists(g): continue
+            with open(g, 'rb') as f:
+                head = f.read(20); jl = struct.unpack_from('<I', head, 12)[0]; j = json.loads(f.read(jl))
+            for im in j.get('images') or []:
+                uri = im.get('uri') or ''
+                if 'ExtractedAssets/' in uri: add(os.path.join(TR, *('ExtractedAssets/' + uri.split('ExtractedAssets/', 1)[1]).split('/')), rel(g), ch)
+    TA = os.path.join(AT, 'out', 'campaign_render', '_transforming_actors')
+    for f in sorted(os.listdir(TA)) if os.path.isdir(TA) else []:
+        if f.endswith('.glb'):
+            p = os.path.join(TA, f)
+            with open(p, 'rb') as fh:
+                head = fh.read(20); jl = struct.unpack_from('<I', head, 12)[0]; j = json.loads(fh.read(jl))
+            for im in j.get('images') or []:
+                uri = im.get('uri') or ''
+                if 'ExtractedAssets/' in uri: add(os.path.join(TR, *('ExtractedAssets/' + uri.split('ExtractedAssets/', 1)[1]).split('/')), rel(p), None)
+                elif uri and not uri.startswith('data:'): add(os.path.normpath(os.path.join(TA, uri)), rel(p), None)
     # 3. glTF dependencies
     for p in list(files):
         if p.endswith('.gltf') and os.path.exists(p):
