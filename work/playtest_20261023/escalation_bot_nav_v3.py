@@ -9,8 +9,8 @@ Gameplay's BotNav schema, ids = escalation_navmesh ids):
        walk            R_WALK otherwise (level / ramps)
        UNKNOWN         an R_WALK fall wider than WALKOFF_M (not executable as walk or fall; kept for the record, Gameplay skips it)
      executable_as = walk / fall / jump / special / UNKNOWN.
-  2. MERGE (Gameplay chose b): cells of the shipped versus nav (overlay_20261023g) where no original cell lies under the centroid
-     (+-1.5 m) are appended after the original ids with flags.versus_only = true; their edge neighbours among themselves are kept (remapped),
+  2. MERGE (Gameplay chose b): cells of the shipped versus nav (overlay_20261023g) where no original cell lies at the centroid's
+     height + 1.75 m (+-1.0 m; the original cells sit at pawn-centre height, measured) are appended after the original ids with flags.versus_only = true; their edge neighbours among themselves are kept (remapped),
      an edge neighbour that is an overlapping versus cell becomes a two-way walk link to the original cell under it; versus links between
      merged cells are kept. Original ids stay first and unchanged (blockers / unlocks index them).
   3. coverage with start-blocked cells applied and executable links only (walk / fall / jump): every TnTeamPlayerStart reaches every
@@ -47,8 +47,11 @@ def main(mp):
     jmax = v2['parameters'].get('jump_up_max_m') or 5.0
     # ---- 2. merge versus cells
     vs = json.load(open(os.path.join(VERSUS, mp, 'bot_nav.json'), encoding='utf-8'))
-    def under_orig(p, up=1.5, drop=1.5):
-        h = V2.find_cell(cells[:n0], p, up=up, drop=drop); return h[0] if h else None
+    # the original NavigationCell polygons sit at pawn-centre height: measured median 1.75 m (p10-p90 1.44-2.01 BrokenHope, 1.73-1.99
+    # Remnant) above the floor-level versus cells. The merge test compares at that offset; heights stay as authored.
+    OFF = 1.75
+    def under_orig(p, up=1.0, drop=1.0):
+        h = V2.find_cell(cells[:n0], [p[0], p[1] + OFF, p[2]], up=up, drop=drop); return h[0] if h else None
     merged = {}
     for c in vs['cells']:
         if under_orig(c['centroid_gltf']) is None: merged[c['id']] = n0 + len(merged)
@@ -139,8 +142,17 @@ def main(mp):
         return out
     starts = [a for a in anchors if a.get('class') == 'TnTeamPlayerStart' or a.get('kind') == 'player_start']
     gens = []
+    def nearest_cell(p, r=8.0, dy=10.0):
+        best = None
+        for c in cells:
+            q = c['centroid_gltf']
+            if abs(q[1] - p[1]) > dy: continue
+            d = math.hypot(q[0] - p[0], q[2] - p[2])
+            if d <= r and (best is None or d < best[1]): best = (c['id'], d)
+        return best[0] if best else None
     for gn in geo['generators']:
-        h = V2.find_cell(cells, gn['location_gltf'], up=3.0, drop=8.0); gens.append((gn['generator'], h[0] if h else None))
+        h = V2.find_cell(cells, gn['location_gltf'], up=3.0, drop=8.0)
+        gens.append((gn['generator'], h[0] if h else nearest_cell(gn['location_gltf'])))
     start_cells = {a['cell'] for a in starts if a.get('cell') is not None}
     from_starts = set().union(*[reach(c) for c in start_cells]) if start_cells else set()
     cov = json.load(open(os.path.join(M, 'escalation_nav_coverage.json'), encoding='utf-8'))
@@ -168,7 +180,7 @@ def main(mp):
     out['stats'] = OD(v2['stats'], cells=len(cells), versus_only_cells=len(merged), links=len(links))
     out['cells'] = cells; out['links'] = links; out['anchors'] = anchors
     json.dump(out, open(os.path.join(M, 'bot_nav_escalation.json'), 'w', encoding='utf-8'), separators=(',', ':'))
-    json.dump(OD([('map', mp), ('summary_v2', cov['summary']), ('summary_v3', summ), ('generators', [{'generator': a, 'cell': b, 'reached_from_starts': b in from_starts} for a, b in gens]),
+    json.dump(OD([('map', mp), ('summary_v2', cov.get('summary') or cov.get('summary_v2')), ('summary_v3', summ), ('generators', [{'generator': a, 'cell': b, 'reached_from_starts': b in from_starts} for a, b in gens]),
                   ('points', pts)]), open(os.path.join(M, 'escalation_nav_coverage.json'), 'w', encoding='utf-8'), indent=1)
     print(mp, json.dumps(summ))
     big = sorted((l for l in links if l.get('span_m') and l['span_m'] > 20), key=lambda l: -l['span_m'])[:5]
