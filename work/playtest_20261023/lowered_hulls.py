@@ -16,7 +16,9 @@ OVE = os.path.join(AT, 'work', 'overlay_20261023e', 'VerticalSlice', 'Maps')
 REVERT = '--revert' in sys.argv
 # --revert: restore the authored hull unchanged (a uniform drop sinks hulls whose gap varies per spot: Debris (-134.9, 31.4) hull top
 # = visual top there, so lowering by the placement median put it 0.76 m under the visible floor)
-OUT = os.path.join(AT, 'out', 'pc_adapt', '_candidates', 'reverted_broken_floors' if REVERT else 'lowered_hulls', 'VerticalSlice', 'Maps')
+CAND = os.environ.get('WFC_CAND') or ('reverted_broken_floors' if REVERT else 'lowered_hulls')   # candidate name (WFC_CAND overrides)
+OUT = os.path.join(AT, 'out', 'pc_adapt', '_candidates', CAND, 'VerticalSlice', 'Maps')
+OVE = os.environ.get('WFC_CAND_BASE') or OVE
 def mkey(m): return tuple(np.round(np.array(m, float), 3)) if m else None
 
 def one(mp, subs):
@@ -62,4 +64,4 @@ if __name__ == '__main__':
     for a in [x for x in sys.argv[1:] if not x.startswith('--')]:
         mp, s = a.split(':', 1); rep[mp] = one(mp, s.split(','))
     json.dump({'generated_by': 'AssetTools/work/playtest_20261023/lowered_hulls.py', 'base': 'overlay_20261023e', 'maps': rep},
-              open(os.path.join(os.path.dirname(OUT), '..', 'reverted_broken_floors.json' if REVERT else 'lowered_hulls.json'), 'w', encoding='utf-8'), indent=1)
+              open(os.path.join(os.path.dirname(OUT), '..', CAND + '.json'), 'w', encoding='utf-8'), indent=1)

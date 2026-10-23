@@ -13,8 +13,11 @@ Output manifests/maps/<MAP>/bot_nav_escalation.json   Gameplay BotNav schema (ce
        manifests/maps/<MAP>/escalation_nav_coverage.json  per spawn point: its authored nav_anchor cell and a geometric findCell test
 Clearance / headroom: the cell's authored MaxPathSize Radius / Height (cm -> m), PROVISIONAL (UE3 MaxPathSize is the largest
 reachspec-able size through the cell, used here as the clearance the loader filters on); vehicle_capable = clearance >= bot_nav's
-vehicle_radius_m (4.4, CONFIRMED). Links: none (the original NavigationCell mesh connects heights through shared edges; drop-offs are
-edges whose neighbour is lower).
+vehicle_radius_m (4.4, CONFIRMED). Links (Gameplay 2026-10-23: perches were islands without them): every cooked TnReachSpec of the map's packages
+(start / end = a NavigationCell directly, or any other actor resolved to the cell under its location) becomes a BotNav link; kind by height (end higher than
+jump_up_max_m -> double_jump_up, higher than 1 m -> jump_up, else drop_down: the loader's non-jump move, so level R_WALK specs map there,
+PROVISIONAL); R_PROSCRIBED / R_PLAYERONLY / R_FLY-only specs are skipped; forms: robot, + vehicle when the spec's CollisionRadius >=
+vehicle_radius_m. Connectivity (loader rule: portals + links, undirected) is reported in escalation_nav_coverage.json.
 """
 import json, os, sys
 from collections import OrderedDict as OD, defaultdict
@@ -50,6 +53,28 @@ def find_cell(cells, p, up=2.0, drop=8.0):
         if y is not None and p[1] - drop <= y <= p[1] + up and (best is None or y > best[1]): best = (c['id'], y)
     return best
 
+import sqlite3
+DBA = sqlite3.connect(os.path.join(AT, 'manifests', 'authored.db'))
+R_FLY, R_PROSCRIBED, R_PLAYERONLY = 2, 128, 512
+
+def pieces(cells, links):
+    """connected pieces over edge neighbours + links (undirected), the BotNav loader's rule"""
+    adj = defaultdict(set)
+    for c in cells:
+        for e in c['edges']:
+            for nb in e['neighbors']: adj[c['id']].add(nb['cell']); adj[nb['cell']].add(c['id'])
+    for l in links: adj[l['from_cell']].add(l['to_cell']); adj[l['to_cell']].add(l['from_cell'])
+    pid, n = {}, 0
+    for c in cells:
+        if c['id'] in pid: continue
+        st = [c['id']]; pid[c['id']] = n
+        while st:
+            v = st.pop()
+            for w in adj[v]:
+                if w not in pid: pid[w] = n; st.append(w)
+        n += 1
+    return pid, n
+
 def main(mp):
     M = os.path.join(AT, 'manifests', 'maps', mp)
     nm = json.load(open(os.path.join(M, 'escalation_navmesh.json'), encoding='utf-8'))
@@ -68,6 +93,39 @@ def main(mp):
                          ('clearance_m', round(r, 2)), ('clearance_max_m', round(r, 2)), ('headroom_m', round(h, 2)),
                          ('flags', OD([('vehicle_capable', r >= VEH_R), ('tactical', c.get('tactical')), ('blocked_at_start', c.get('blocked_at_start'))])),
                          ('edges', edges)]))
+    P = shipped.get('parameters') or {}
+    jmax = ((P.get('jump_up_max_m') or {}).get('value') or 5.0)
+    node_loc = {}
+    for cls, lst in (nm.get('nodes') or {}).items():
+        for nd in lst: node_loc[nd['actor']] = nd.get('location_gltf')
+    links, skipped, seen = [], 0, set()
+    pk = {'MP_ESC_BrokenHope': ('MP_ESC_BrokenHope_Base_m', 'MP_ESC_BrokenHope_ART_m'), 'MP_ESC_Remnant': ('MP_ESC_Remnant_BASE_m', 'MP_ESC_Remnant_ART_m')}[mp]
+    loc_cache = {}
+    def cell_of(op):
+        """a reach spec endpoint -> cell id: a NavigationCell directly, any other actor (path node, spawn point, pickup ...) by the cell
+        under its location (up to the 34 m MaxFallHeight below)"""
+        name = op.rsplit('.', 1)[-1]
+        if name in by_actor: return by_actor[name]
+        if op not in loc_cache:
+            r = DBA.execute('select props from objects where opath=?', (op,)).fetchone()
+            L = (json.loads(r[0] or '{}').get('Location') if r else None)
+            h = find_cell(cells, [0.01 * L['X'], 0.01 * L['Z'], 0.01 * L['Y']], up=2.0, drop=34.0) if L else None
+            loc_cache[op] = h[0] if h else None
+        return loc_cache[op]
+    for pkg in pk:
+        for (q_,) in DBA.execute("select props from objects where package=? and class='TnReachSpec'", (pkg,)):
+            q = json.loads(q_ or '{}'); fl = q.get('reachFlags') or 0
+            if fl & (R_PROSCRIBED | R_PLAYERONLY) or (fl & R_FLY and not fl & ~R_FLY): skipped += 1; continue
+            st, en = q.get('Start'), (q.get('End') or {}).get('Nav')
+            if not st or not en: continue
+            fa, to = cell_of(st), cell_of(en)
+            if fa is None or to is None or fa == to or (fa, to) in seen: continue
+            seen.add((fa, to))
+            a_ = cells[fa]['centroid_gltf']; b_ = cells[to]['centroid_gltf']; dy = b_[1] - a_[1]
+            kind = 'double_jump_up' if dy > jmax else ('jump_up' if dy > 1.0 else 'drop_down')
+            forms = ['robot'] + (['vehicle'] if (q.get('CollisionRadius') or 0) / 100.0 >= VEH_R else [])
+            links.append(OD([('kind', kind), ('from_cell', fa), ('to_cell', to), ('rise_m', round(dy, 2)), ('from_gltf', a_), ('to_gltf', b_),
+                             ('forms', forms), ('reach_start', st.rsplit('.', 1)[-1]), ('reach_end', en.rsplit('.', 1)[-1]), ('reach_flags', fl)]))
     anchors = []
     for a in shipped.get('anchors') or []:
         hit = find_cell(cells, a['location_gltf'])
@@ -86,11 +144,12 @@ def main(mp):
     out = OD([('map', mp), ('generated_by', 'AssetTools/work/playtest_20261023/escalation_bot_nav.py'), ('status', 'Escalation nav (GameModeTag ESC only)'),
               ('source', 'the ORIGINAL cooked NavigationCell mesh (manifests/maps/%s/escalation_navmesh.json); cell ids = its ids' % mp),
               ('units', 'gltf metres Y-up'), ('parameters', OD([('clearance', 'MaxPathSize.Radius / 100 (PROVISIONAL)'), ('headroom', 'MaxPathSize.Height / 100 (PROVISIONAL)'),
-                                                                ('vehicle_radius_m', VEH_R), ('links', 'none (heights connect through shared edges)')])),
+                                                                ('vehicle_radius_m', VEH_R), ('jump_up_max_m', jmax),
+                                                                ('links', 'cooked TnReachSpec per cell PathList (see docstring); skipped R_PROSCRIBED / R_PLAYERONLY / fly-only: %d' % skipped)])),
               ('stats', OD([('cells', len(cells)), ('blocked_at_start', sum(1 for c in cells if c['flags']['blocked_at_start'])),
                             ('vehicle_capable_cells', sum(1 for c in cells if c['flags']['vehicle_capable'])), ('walkable_area_m2', round(sum(c['area_m2'] for c in cells))),
                             ('anchors', len(anchors)), ('anchors_on_nav', sum(1 for a in anchors if a['cell'] is not None))])),
-              ('cells', cells), ('links', []), ('cover', []), ('anchors', anchors), ('waypoints', [])])
+              ('cells', cells), ('links', links), ('cover', []), ('anchors', anchors), ('waypoints', [])])
     json.dump(out, open(os.path.join(M, 'bot_nav_escalation.json'), 'w', encoding='utf-8'), separators=(',', ':'))
     gens = defaultdict(list)
     for c in nm['cells']:
@@ -100,7 +159,33 @@ def main(mp):
              ('opened_by_generator', OD((k, sorted(v)) for k, v in sorted(gens.items()))),
              ('blocked_by_setup', OD((c['actor'], c['blocked_by_setup']) for c in nm['cells'] if c.get('blocked_by_setup')))])
     json.dump(bl, open(os.path.join(M, 'escalation_nav_blockers.json'), 'w', encoding='utf-8'), indent=1)
-    summ = OD([('spawn_points', len(cov)), ('on_nav_mesh_true', sum(1 for c in cov if c['on_nav_mesh'])),
+    pid, npieces = pieces(cells, links); pid0, np0 = pieces(cells, [])
+    from collections import Counter
+    main_piece = Counter(pid.values()).most_common(1)[0][0]
+    for cv in cov:
+        cv['piece'] = pid.get(cv['anchor_cell']) if cv['anchor_cell'] is not None else None
+        cv['in_main_piece'] = cv['piece'] == main_piece if cv['piece'] is not None else None
+    fwd = defaultdict(set)                                   # directed: edge neighbours both ways, links from -> to
+    for c in cells:
+        for e in c['edges']:
+            for nb in e['neighbors']: fwd[c['id']].add(nb['cell']); fwd[nb['cell']].add(c['id'])
+    for l in links: fwd[l['from_cell']].add(l['to_cell'])
+    goals = {a['cell'] for a in anchors if a.get('kind') == 'player_start' and a.get('cell') is not None}
+    def reaches(s0):
+        seenr, st = {s0}, [s0]
+        while st:
+            v = st.pop()
+            if v in goals: return True
+            for w in fwd[v]:
+                if w not in seenr: seenr.add(w); st.append(w)
+        return False
+    for cv in cov: cv['reaches_player_starts (directed)'] = reaches(cv['anchor_cell']) if cv['anchor_cell'] is not None and goals else None
+    summ = OD([('pieces_before_blocking (edges + links)', npieces), ('pieces_edges_only', np0),
+               ('player_start_cells', len(goals)),
+               ('on_nav_mesh_points_reaching_player_starts (directed, before blocking)', sum(1 for c in cov if c['on_nav_mesh'] and c['reaches_player_starts (directed)'])),
+               ('main_piece_cells', sum(1 for v in pid.values() if v == main_piece)), ('links', len(links)),
+               ('on_nav_mesh_points_in_main_piece', sum(1 for c in cov if c['on_nav_mesh'] and c['in_main_piece'])),
+               ('spawn_points', len(cov)), ('on_nav_mesh_true', sum(1 for c in cov if c['on_nav_mesh'])),
                ('anchor_cell_found', sum(1 for c in cov if c['anchor_cell'] is not None)),
                ('on_nav_mesh_true_and_anchor_cell', sum(1 for c in cov if c['on_nav_mesh'] and c['anchor_cell'] is not None)),
                ('findcell_hit', sum(1 for c in cov if c['findcell'] is not None)),
