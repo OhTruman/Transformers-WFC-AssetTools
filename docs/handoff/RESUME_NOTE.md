@@ -17,7 +17,14 @@
   WFC_OVERLAY_ROOT. Open: Gameplay re-test of the centre strand (offered a clearance-clipped nav).
 - Campaign render gaps a–e DONE (work/handoff/CAMPAIGN_RENDER_GAPS_20261023.md): inline LM lists, fog cause, material lists, per-sublevel
   split (392 folders, 996 MB, PASS), proposed tools/render patch (not applied).
-- Next: stand by (Systems' package-7 data list; Gameplay / Rendering follow-ups).
+- Gameplay #18 raised collision (38985d9): audit hull_float_audit.py (nav-first, world.glb probe) on all 10 versus maps; 266 raised
+  simple-hull placements switched to per-poly + nav rebuilt in out/pc_adapt/<MAP>; volumes list-only (Integration). Gameplay-confirmed
+  placements in work/playtest_20261023/gameplay_confirmed.json. Frozen overlay work/overlay_20261023c (135 files, all 10 maps),
+  adopted by Systems refresh.sh; Gameplay uses WFC_OVERLAY_ROOT. Doc work/handoff/PLAYTEST_20261023_RAISED_COLLISION.md.
+- Escalation spawn points: escalation_geometry zones[].spawn_points (9ca9a9e). Slim refresh + bot_skill.json (101,215 rows).
+- Campaign scoping (df3d56e): HD gap 937 textures / ~1.77 GB PROVISIONAL; audio / FMV / dialog complete (1 A3 line without wave).
+  Doc work/handoff/CAMPAIGN_HD_AV_COVERAGE.md. Remnant volume fog params sent to Rendering.
+- Next: stand by (Gameplay BOTTEST results on overlay c; Systems' package-7 data list; Rendering campaign queue).
 
 - **Integration session:** now rebuild-07 (same owner as rebuild-9c). Gameplay is rebuild-gameplay-0a. The machine rebooted at 05:41;
   the queue was resumed and finished.
