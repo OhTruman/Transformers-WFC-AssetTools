@@ -136,6 +136,15 @@ def chapter(ch):
                            stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
             reran.append(l['unit'])
         out['materials_step_rerun_for'] = reran
+    # the gameplay side in the MP schema (clip, bodies / boxes, drivers, initial state): mp_transforming_actors.py --campaign
+    # -> <CH>/transforming_actors_gameplay.json (Integration 2026-10-23; run from here so every lane chapter gets it)
+    if '--gameplay' in sys.argv or '--rerun-materials' in sys.argv:
+        import subprocess
+        r = subprocess.run([sys.executable, os.path.join(AT, 'scripts', 'wfc', 'run_bounded.py'), '--cap-gb', '4', '--log',
+                            os.path.join(R, '_transforming_gameplay.log'), os.path.join(AT, 'scripts', 'wfc', 'mp_transforming_actors.py'),
+                            '--campaign', ch], stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+                           env=dict(os.environ, PYTHONDONTWRITEBYTECODE='1'))
+        out['gameplay_export'] = OD([('file', 'transforming_actors_gameplay.json'), ('rc', r.returncode)])
     json.dump(out, open(os.path.join(R, 'transforming_actors.json'), 'w', encoding='utf-8'), indent=1, default=str)
     print(ch, json.dumps(out['counts']), 'materials rerun', out.get('materials_step_rerun_for'))
 

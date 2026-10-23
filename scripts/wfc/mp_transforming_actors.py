@@ -33,9 +33,9 @@ KEY_HZ = 30.0
 DIRECTION = ('t = 0 is Untransformed, t = clip_length is Transformed (RE MP_TRANSFORMING_ACTORS_RE.md: one AnimNodeSequence at normalized '
              'position 0 = Untransformed / 1 = Transformed, rate +-1)')
 
-def kismet(M):
+def kismet(M, subs=None):
     """ops of every exported level of the map + backward links dst -> [(src, output, input index)]"""
-    subs = json.load(open(os.path.join(VS_SHARED, 'Maps', M, 'map.json'), encoding='utf-8'))['sublevels']
+    subs = subs or json.load(open(os.path.join(VS_SHARED, 'Maps', M, 'map.json'), encoding='utf-8'))['sublevels']
     ops = {}
     for lv in subs:
         for o in A.find(lv + '.TheWorld.PersistentLevel.%'):
@@ -213,5 +213,62 @@ def main():
     doc = os.path.join(AT, 'docs', 'handoff', 'MP_TRANSFORMING_ACTORS.md')
     open(doc, 'w', encoding='utf-8').write('\n'.join(L) + '\n'); print(doc, len(rows), 'actors', len(meshes), 'meshes')
 
+def campaign(ch):
+    """--campaign <CH> (Integration / Gameplay 2026-10-23: nobody implemented TnSeqAct_TransformWorldProp, campaign doors / pods never open):
+    the same records for a campaign chapter's TnTransformingWorldActors -> out/campaign_render/<CH>/transforming_actors_gameplay.json
+    (the MP schema: actors[] + meshes{} + posing); mesh GLBs -> out/campaign_render/_transforming_actors/ (shared by the chapters).
+    Levels = the chapter's levels; navigation.json = out/campaign_render/<CH>/navigation.json. main() / the MP outputs are untouched."""
+    sys.path.insert(0, os.path.join(AT, 'work', 'campaign_render')); import campaign_render as CR
+    TG.OUTDIR = os.path.join(AT, 'out', 'campaign_render', '_transforming_actors'); os.makedirs(TG.OUTDIR, exist_ok=True)
+    levels = CR.chapter_levels(ch); R = os.path.join(AT, 'out', 'campaign_render', ch)
+    nf = os.path.join(R, 'navigation.json'); nav = json.load(open(nf, encoding='utf-8')).get('nodes', []) if os.path.exists(nf) else []
+    ops, back = kismet(ch, levels)
+    rows = []; meshes = {}; posed = {}; errors = {}
+    for lv in levels:
+        for r in A.find(lv + '.TheWorld.PersistentLevel.%', 'TnTransformingWorldActor'):
+            if r['opath'].count('.') != 3: continue
+            v = A.values(r['opath']) or {}; c = A.values(v.get('SkeletalMeshComponent') or '') or {}
+            try: T, info = K.actor_tris(r['opath'])
+            except Exception as x: T, info = np.zeros((0, 3, 3)), {'boxes': 0, 'undecoded': {}, 'skipped': 'actor_tris: %r' % (x,)}
+            L = v.get('Location') or {}; Rr = v.get('Rotation') or {}
+            W = ue_actor_matrix((L.get('X', 0), L.get('Y', 0), L.get('Z', 0)), (Rr.get('Pitch', 0), Rr.get('Yaw', 0), Rr.get('Roll', 0)), v.get('DrawScale', 1.0))
+            row = {'map': ch, 'sublevel': lv, 'actor': r['opath'].rsplit('.', 1)[-1], 'object': r['opath'],
+                   'skeletal_mesh': c.get('SkeletalMesh'), 'physics_asset': c.get('PhysicsAsset'),
+                   'location_ue': [L.get('X'), L.get('Y'), L.get('Z')], 'rotation_ue': [Rr.get('Pitch', 0), Rr.get('Yaw', 0), Rr.get('Roll', 0)],
+                   'draw_scale': v.get('DrawScale', 1.0), 'gltf_matrix': ue_to_gltf_matrix(W),
+                   'initial_state': v.get('InitialState'), 'hidden': bool(v.get('bHidden')), 'physics': v.get('Physics'),
+                   'block': {'actor_bBlockActors': v.get('bBlockActors'), 'component_BlockActors': c.get('BlockActors'),
+                             'component_CollideActors': c.get('CollideActors'), 'CollisionPreset': v.get('CollisionPreset')},
+                   'boxes': info['boxes'], 'skipped': info.get('skipped'), 'undecoded': info['undecoded'],
+                   'collision_bounds_gltf_m': [T.reshape(-1, 3).min(0).round(2).tolist(), T.reshape(-1, 3).max(0).round(2).tolist()] if len(T) else None}
+            seq = (A.values(c.get('Animations')) or {}).get('AnimSeqName') if c.get('Animations') else None
+            animset = (c.get('AnimSets') or [None])[0]; mk = (c.get('SkeletalMesh') or '').rsplit('.', 1)[-1]
+            if mk and mk not in meshes and mk not in errors and seq and animset:
+                try: meshes[mk], posed[mk] = mesh_record(c['SkeletalMesh'], animset, seq, c.get('PhysicsAsset'))
+                except Exception as x: errors[mk] = repr(x)[:300]
+            row.update({'mesh': mk, 'animset': animset, 'anim_sequence': seq, 'ue_matrix': [float(x) for x in W.reshape(-1)],
+                        'drivers': drivers(r['opath'], ops, back)})
+            if mk in errors: row['mesh_error'] = errors[mk]
+            pts = []; Wg = np.array(row['gltf_matrix']).reshape(4, 4).T
+            for bd in (meshes.get(mk) or {}).get('bodies', []):
+                for ms in (posed.get(mk) or {}).get(bd['bone'], [])[:1] + (posed.get(mk) or {}).get(bd['bone'], [])[-1:]:
+                    for bx in bd['boxes']:
+                        Lg = np.array(bx['box_local_gltf']).reshape(4, 4).T; h = np.array(bx['box_extent_gltf']) / 2
+                        for sg in ((-1, -1, -1), (1, 1, 1), (-1, 1, -1), (1, -1, 1), (-1, -1, 1), (1, 1, -1), (-1, 1, 1), (1, -1, -1)):
+                            pts.append((Wg @ ms @ Lg @ np.array([sg[0] * h[0], sg[1] * h[1], sg[2] * h[2], 1.0]))[:3])
+            if pts:
+                P = np.array(pts); lo, hi = P.min(0) - 1.0, P.max(0) + 1.0
+                row['nav_nodes_in_volume'] = [{'node': n['node'], 'class': n['class'], 'location_gltf': n['location_gltf']} for n in nav
+                                              if n.get('location_gltf') and all(lo[k] <= n['location_gltf'][k] <= hi[k] for k in range(3))]
+                row['volume_aabb_gltf_m'] = [lo.round(2).tolist(), hi.round(2).tolist()]
+            rows.append(row)
+    out = os.path.join(R, 'transforming_actors_gameplay.json')
+    json.dump({'generated_by': 'AssetTools/scripts/wfc/mp_transforming_actors.py --campaign ' + ch, 'chapter': ch, 'actors': rows, 'meshes': meshes,
+               'mesh_errors': errors, 'posing': 'world_box = actor gltf_matrix x bone_global(t) x box_local_gltf; half extents = box_extent_gltf / 2; ' + DIRECTION},
+              open(out, 'w', encoding='utf-8'), indent=1)
+    print(out, len(rows), 'actors', len(meshes), 'meshes', 'errors', errors, '| with drivers', sum(1 for r in rows if r['drivers']),
+          '| with boxes', sum(1 for r in rows if r['boxes']))
+
 if __name__ == '__main__':
-    main()
+    if '--campaign' in sys.argv: campaign(sys.argv[sys.argv.index('--campaign') + 1])
+    else: main()
