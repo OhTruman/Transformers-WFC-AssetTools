@@ -72,11 +72,19 @@ def chapter(ch):
                   if (c in CLASSES or o in extra) and o.count('.') == 3 and '.TheWorld.PersistentLevel.' in o)
     by_lv = {}
     for o, c in acts: by_lv.setdefault(o.split('.')[0], []).append((o, c))
+    # every unit is rebuilt (also those without actors to add), so every actor-keyed node gets extras.actor_path
+    for lv in levels:
+        if os.path.isdir(os.path.join(R, CR.outname(lv))) and os.path.exists(os.path.join(S, lv, 'world.glb')): by_lv.setdefault(lv, [])
     rep, why = OD(), Counter()
     for lv, items in sorted(by_lv.items()):
         ud = os.path.join(R, CR.outname(lv)); src = os.path.join(S, lv, 'world.glb'); dst = os.path.join(ud, 'world.glb')
         if not (os.path.isdir(ud) and os.path.exists(src)): why['level_without_unit_or_split'] += len(items); rep[lv] = 'no unit dir / split world.glb'; continue
         g = open_glb(src); split_dir = os.path.join(S, lv); rows = []
+        # extras.actor_path = the full object path (actors.json 'object'; Rendering / Gameplay 2026-10-23: short names collide across a
+        # chapter's levels) on every actor-keyed node of the unit; a unit's world.glb holds only its own level's actors
+        for nd in g.j['nodes']:
+            ex = nd.get('extras')
+            if isinstance(ex, dict) and ex.get('actor') and 'actor_path' not in ex: ex['actor_path'] = '%s.TheWorld.PersistentLevel.%s' % (lv, ex['actor'])
         for o, c in items:
             v = A.values(o); comp = v.get('SkeletalMeshComponent'); cv = A.values(comp) if comp else {}
             skm = cv.get('SkeletalMesh'); gl = M.gltf(skm) if skm else None
@@ -108,7 +116,7 @@ def chapter(ch):
                                  xyz(v.get('DrawScale3D'), 'XYZ', 1.0), xyz(v.get('PrePivot'), 'XYZ', 0.0))
             mat = ue_to_gltf_matrix(cm @ am)
             g.node({'name': row['actor'], 'mesh': mi, 'matrix': mat,
-                    'extras': {'actor': row['actor'], 'class': c, 'component': comp, 'mesh': skm, 'skeletal_bind_pose': True,
+                    'extras': {'actor': row['actor'], 'actor_path': o, 'class': c, 'component': comp, 'mesh': skm, 'skeletal_bind_pose': True,
                                'hidden': bool(v.get('bHidden')),   # authored bHidden (effective); Gameplay honours it at load
                                'anim_sets': [x for x in cv.get('AnimSets') or [] if x], 'added_by': TAG}})
             row.update(primitives=len(prims), material_slots=[p['material'] for p in prims], gltf_matrix=mat); rows.append(row); why['added'] += 1
