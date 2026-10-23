@@ -1,0 +1,475 @@
+{
+ "map": "MP_ESC_BrokenHope",
+ "generated_by": "AssetTools/work/playtest_20261023/hull_float_audit.py",
+ "rule": "python hull_float_audit.py <MAP>        -> work/playtest_20261023/hull_float/<MAP>.json\n\nPer collision_pawn.glb node of kind prop_simple or a volume class (BSP / per-poly props are the visual surface itself):\n  1. its walkable top: every triangle with |normal.y| >= WALK_NY (0.7, bot_nav's rule) rasterised on a 1 m XZ grid (cell centres),\n     keeping the TOPMOST hull height per cell (where a robot stands);\n  2. a vertical probe against world.glb (visible render geometry; nodes tagged hidden_game left out; triangles over HUGE_M2 or spanning\n     more than 128 m in X or Z kept out of the grid: the Streets sky-dome / backdrop guard): visual surfaces within (+0.05, +0.6] m above\n     the sample mean the hull is under a visible skin there (not floating); otherwise gap = sample height - the highest visual surface at\n     or below +0.05 m (no visual below: gap = null, 'no_visual_below');\n  3. only where robots STAND: the map's bot_nav.json cells rasterised on the same grid; each nav sample is attributed to the audited\n     node whose walkable top lies within the nav cell's recorded height range +- 0.4 m (the highest such); nav on BSP / per-poly surfaces is the render geometry itself (skipped);\n     unreachable hull tops and hull tops under another walked surface are not reported;\n  4. per sample: 'raised' 0.5 m < gap < 5 m (standing above the visible floor: Gameplay #18), 'large' gap >= 5 m (overhang edge or\n     catwalk: Gameplay's probable false positives, list only), 'no_visual_below' (UNKNOWN: no visual surface under the sample in the grid).\n     Per node: reachable samples, m^2 of each class, raised gap median / max; walkable = raised >= 1 m^2.",
+ "visual_tris_in_grid": 1583456,
+ "collision_nodes_audited": 2073,
+ "nodes_floating": 12,
+ "walkable_raised_nodes": 11,
+ "by_kind_walkable_raised": {
+  "BlockingVolume": 3,
+  "prop_simple": 8
+ },
+ "rows": [
+  {
+   "actor": "BlockingVolume_13818",
+   "kind": "BlockingVolume",
+   "mesh": null,
+   "matrix": null,
+   "standing_samples": 326,
+   "raised_m2": 217.0,
+   "raised_fraction": 0.666,
+   "raised_gap_median_m": 0.95,
+   "raised_gap_max_m": 2.41,
+   "large_gap_m2 (overhang / catwalk, list only)": 0.0,
+   "no_visual_below_m2 (UNKNOWN)": 0.0,
+   "top_y_m": 2.88,
+   "aabb_gltf": [
+    [
+     137.91,
+     0.16,
+     -97.36
+    ],
+    [
+     158.39,
+     2.88,
+     -76.88
+    ]
+   ],
+   "walkable_raised": true
+  },
+  {
+   "actor": "StaticMeshCollectionActor_10585",
+   "kind": "prop_simple",
+   "mesh": "ENV_CORE_Platform_p.Floors.ENV_CORE_CanyonFloor_A_STAT",
+   "matrix": [
+    -1.0,
+    0.0,
+    1.2246063538223773e-16,
+    0.0,
+    -1.4996607218221374e-32,
+    -1.0,
+    -1.2246063538223773e-16,
+    0.0,
+    1.2246063538223773e-16,
+    -1.2246063538223773e-16,
+    1.0,
+    0.0,
+    52.5418017578125,
+    10.079000244140625,
+    -74.72009765625,
+    1.0
+   ],
+   "standing_samples": 77,
+   "raised_m2": 77.0,
+   "raised_fraction": 1.0,
+   "raised_gap_median_m": 0.84,
+   "raised_gap_max_m": 1.0,
+   "large_gap_m2 (overhang / catwalk, list only)": 0.0,
+   "no_visual_below_m2 (UNKNOWN)": 0.0,
+   "top_y_m": 11.08,
+   "aabb_gltf": [
+    [
+     42.35,
+     10.08,
+     -85.01
+    ],
+    [
+     62.83,
+     11.08,
+     -64.53
+    ]
+   ],
+   "walkable_raised": true
+  },
+  {
+   "actor": "BlockingVolume_12476",
+   "kind": "BlockingVolume",
+   "mesh": null,
+   "matrix": null,
+   "standing_samples": 183,
+   "raised_m2": 73.0,
+   "raised_fraction": 0.399,
+   "raised_gap_median_m": 0.87,
+   "raised_gap_max_m": 2.1,
+   "large_gap_m2 (overhang / catwalk, list only)": 0.0,
+   "no_visual_below_m2 (UNKNOWN)": 0.0,
+   "top_y_m": 2.64,
+   "aabb_gltf": [
+    [
+     99.36,
+     -0.08,
+     -103.52
+    ],
+    [
+     119.84,
+     2.64,
+     -83.04
+    ]
+   ],
+   "walkable_raised": true
+  },
+  {
+   "actor": "StaticMeshCollectionActor_3463",
+   "kind": "prop_simple",
+   "mesh": "ENV_IAC_Decagon_p.Exterior.Dec_StepsFront_STAT",
+   "matrix": [
+    -0.0980171412229538,
+    0.0,
+    0.9951847195625305,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    -0.9951847195625305,
+    0.0,
+    -0.0980171412229538,
+    0.0,
+    300.05,
+    0.015976400375366212,
+    -68.574296875,
+    1.0
+   ],
+   "standing_samples": 456,
+   "raised_m2": 46.0,
+   "raised_fraction": 0.101,
+   "raised_gap_median_m": 0.61,
+   "raised_gap_max_m": 0.77,
+   "large_gap_m2 (overhang / catwalk, list only)": 0.0,
+   "no_visual_below_m2 (UNKNOWN)": 0.0,
+   "top_y_m": 3.86,
+   "aabb_gltf": [
+    [
+     170.13,
+     0.02,
+     -81.31
+    ],
+    [
+     198.14,
+     3.86,
+     -55.84
+    ]
+   ],
+   "walkable_raised": true
+  },
+  {
+   "actor": "BlockingVolume_10635",
+   "kind": "BlockingVolume",
+   "mesh": null,
+   "matrix": null,
+   "standing_samples": 135,
+   "raised_m2": 35.0,
+   "raised_fraction": 0.259,
+   "raised_gap_median_m": 0.73,
+   "raised_gap_max_m": 1.38,
+   "large_gap_m2 (overhang / catwalk, list only)": 0.0,
+   "no_visual_below_m2 (UNKNOWN)": 0.0,
+   "top_y_m": 4.05,
+   "aabb_gltf": [
+    [
+     73.49,
+     -11.34,
+     -35.16
+    ],
+    [
+     94.07,
+     4.48,
+     -7.72
+    ]
+   ],
+   "walkable_raised": true
+  },
+  {
+   "actor": "StaticMeshCollectionActor_3463",
+   "kind": "prop_simple",
+   "mesh": "ENV_IAC_Decagon_p.Exterior.Dec_StepsFront_STAT",
+   "matrix": [
+    -0.0980171412229538,
+    0.0,
+    0.9951847195625305,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    -0.9951847195625305,
+    0.0,
+    -0.0980171412229538,
+    0.0,
+    319.25,
+    3.8559799194335938,
+    -68.574296875,
+    1.0
+   ],
+   "standing_samples": 561,
+   "raised_m2": 34.0,
+   "raised_fraction": 0.061,
+   "raised_gap_median_m": 0.58,
+   "raised_gap_max_m": 0.66,
+   "large_gap_m2 (overhang / catwalk, list only)": 0.0,
+   "no_visual_below_m2 (UNKNOWN)": 0.0,
+   "top_y_m": 7.7,
+   "aabb_gltf": [
+    [
+     189.33,
+     3.86,
+     -81.31
+    ],
+    [
+     217.34,
+     7.7,
+     -55.84
+    ]
+   ],
+   "walkable_raised": true
+  },
+  {
+   "actor": "StaticMeshCollectionActor_3463",
+   "kind": "prop_simple",
+   "mesh": "ENV_IAC_Decagon_p.Exterior.Dec_StepsFront_STAT",
+   "matrix": [
+    -0.290284663438797,
+    0.0,
+    0.9569403529167176,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    -0.9569403529167176,
+    0.0,
+    -0.290284663438797,
+    0.0,
+    300.05,
+    0.015976400375366212,
+    -68.574296875,
+    1.0
+   ],
+   "standing_samples": 245,
+   "raised_m2": 17.0,
+   "raised_fraction": 0.069,
+   "raised_gap_median_m": 0.61,
+   "raised_gap_max_m": 0.75,
+   "large_gap_m2 (overhang / catwalk, list only)": 0.0,
+   "no_visual_below_m2 (UNKNOWN)": 0.0,
+   "top_y_m": 3.86,
+   "aabb_gltf": [
+    [
+     170.76,
+     0.02,
+     -106.29
+    ],
+    [
+     202.06,
+     3.86,
+     -78.61
+    ]
+   ],
+   "walkable_raised": true
+  },
+  {
+   "actor": "StaticMeshCollectionActor_11656",
+   "kind": "prop_simple",
+   "mesh": "ENV_IAC_Decagon_p.Exterior.Dec_StepsFront_STAT",
+   "matrix": [
+    -0.290284663438797,
+    0.0,
+    0.9569403529167176,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    -0.9569403529167176,
+    0.0,
+    -0.290284663438797,
+    0.0,
+    319.25,
+    3.8559799194335938,
+    -68.574296875,
+    1.0
+   ],
+   "standing_samples": 157,
+   "raised_m2": 15.0,
+   "raised_fraction": 0.096,
+   "raised_gap_median_m": 0.61,
+   "raised_gap_max_m": 0.74,
+   "large_gap_m2 (overhang / catwalk, list only)": 0.0,
+   "no_visual_below_m2 (UNKNOWN)": 0.0,
+   "top_y_m": 7.7,
+   "aabb_gltf": [
+    [
+     189.96,
+     3.86,
+     -106.29
+    ],
+    [
+     221.26,
+     7.7,
+     -78.61
+    ]
+   ],
+   "walkable_raised": true
+  },
+  {
+   "actor": "StaticMeshCollectionActor_3463",
+   "kind": "prop_simple",
+   "mesh": "ENV_IAC_Decagon_p.Exterior.Dec_StepsFront_STAT",
+   "matrix": [
+    0.0980171412229538,
+    0.0,
+    0.9951847195625305,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    -0.9951847195625305,
+    0.0,
+    0.0980171412229538,
+    0.0,
+    300.05,
+    0.015976400375366212,
+    -68.574296875,
+    1.0
+   ],
+   "standing_samples": 189,
+   "raised_m2": 12.0,
+   "raised_fraction": 0.063,
+   "raised_gap_median_m": 0.61,
+   "raised_gap_max_m": 0.73,
+   "large_gap_m2 (overhang / catwalk, list only)": 0.0,
+   "no_visual_below_m2 (UNKNOWN)": 0.0,
+   "top_y_m": 3.86,
+   "aabb_gltf": [
+    [
+     170.76,
+     0.02,
+     -58.54
+    ],
+    [
+     202.06,
+     3.86,
+     -30.86
+    ]
+   ],
+   "walkable_raised": true
+  },
+  {
+   "actor": "StaticMeshCollectionActor_3463",
+   "kind": "prop_simple",
+   "mesh": "ENV_IAC_Decagon_p.Exterior.Dec_StepsFront_STAT",
+   "matrix": [
+    0.0980171412229538,
+    0.0,
+    0.9951847195625305,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    -0.9951847195625305,
+    0.0,
+    0.0980171412229538,
+    0.0,
+    319.25,
+    3.8559799194335938,
+    -68.574296875,
+    1.0
+   ],
+   "standing_samples": 151,
+   "raised_m2": 12.0,
+   "raised_fraction": 0.079,
+   "raised_gap_median_m": 0.61,
+   "raised_gap_max_m": 0.73,
+   "large_gap_m2 (overhang / catwalk, list only)": 0.0,
+   "no_visual_below_m2 (UNKNOWN)": 0.0,
+   "top_y_m": 7.7,
+   "aabb_gltf": [
+    [
+     189.96,
+     3.86,
+     -58.54
+    ],
+    [
+     221.26,
+     7.7,
+     -30.86
+    ]
+   ],
+   "walkable_raised": true
+  },
+  {
+   "actor": "StaticMeshCollectionActor_10300",
+   "kind": "prop_simple",
+   "mesh": "ENV_CORE_Wall_p.Inside_Walls.ENV_CORE_InroomWall4Tunel_A_STAT",
+   "matrix": [
+    -0.00010021163102902354,
+    0.13241878675853425,
+    -1.6518688363633544e-05,
+    0.0,
+    -0.17350822666724497,
+    -0.00010979519498305249,
+    0.1724468910690593,
+    0.0,
+    0.17244683274510386,
+    0.00015214840394491003,
+    0.1735082558292227,
+    0.0,
+    50.7212841796875,
+    13.09013427734375,
+    4.189962158203125,
+    1.0
+   ],
+   "standing_samples": 4,
+   "raised_m2": 2.0,
+   "raised_fraction": 0.5,
+   "raised_gap_median_m": 0.65,
+   "raised_gap_max_m": 0.77,
+   "large_gap_m2 (overhang / catwalk, list only)": 0.0,
+   "no_visual_below_m2 (UNKNOWN)": 0.0,
+   "top_y_m": 21.42,
+   "aabb_gltf": [
+    [
+     40.52,
+     13.08,
+     -6.57
+    ],
+    [
+     61.43,
+     25.44,
+     14.46
+    ]
+   ],
+   "walkable_raised": true
+  },
+  {
+   "actor": "BlockingVolume_10727",
+   "kind": "BlockingVolume",
+   "mesh": null,
+   "matrix": null,
+   "standing_samples": 9,
+   "raised_m2": 0.0,
+   "raised_fraction": 0.0,
+   "raised_gap_median_m": null,
+   "raised_gap_max_m": null,
+   "large_gap_m2 (overhang / catwalk, list only)": 1.0,
+   "no_visual_below_m2 (UNKNOWN)": 0.0,
+   "top_y_m": 8.89,
+   "aabb_gltf": [
+    [
+     63.31,
+     -2.8,
+     -31.0
+    ],
+    [
+     82.7,
+     9.2,
+     -12.52
+    ]
+   ],
+   "walkable_raised": false
+  }
+ ]
+}

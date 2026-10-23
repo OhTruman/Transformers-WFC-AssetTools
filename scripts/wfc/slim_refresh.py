@@ -16,6 +16,8 @@ OUT = os.path.join(ROOT, 'out', 'package', 'slim_files.refresh.tsv')
 # package 7 head deed7f1a (Integration 2026-10-18): Rendering's loader reads <map>/lens_flares.json next to materials_glsl.json
 ADD = [('Transformers Rebuild/Rebuild/work/render/%s/lens_flares.json' % m, 'Rebuild/work/render/%s/lens_flares.json' % m, 'keep')
        for m in ('MP_ESC_BrokenHope', 'MP_ESC_Remnant', 'MP_IAC_Rust', 'MP_IAC_Seed', 'MP_ORB_Debris', 'MP_UND_Gorge')]
+# Gameplay e33a2c85 (Integration 2026-10-23): read through frontendDataFile like pc_strings.int
+ADD.append(('Transformers Rebuild/Rebuild/data/frontend/bot_skill.json', 'Rebuild/data/frontend/bot_skill.json', 'keep'))
 
 # Escalation horde runtime packaging (Integration 2026-10-23): every file under these AssetTools dirs ships, same dest form
 ADD_DIRS = ['AssetTools/out/escalation_characters',
