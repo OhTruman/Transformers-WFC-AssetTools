@@ -31,7 +31,21 @@
 - Campaign HD closed (covered by pack D). Confirmation of the 10 (out/hd/campaign_push_20261023): 1 eye-passed row,
   ENV_statue01_NORM, waits for the next pack-D snapshot (work/campaign_hd/confirm10_eye.json). New opt-in envs: hd_push
   WFC_HD_PUSH_ROOT, hd_torch WFC_HD_DEVICE.
-- Next: stand by (Gameplay's Seed v3 A/B; Systems' package-7 data list; Rendering campaign queue).
+- Overlays: e (Seed nav v3) then f (Debris / Gorge broken floors back on hulls) = the shipping set (work/overlay_20261023f;
+  Systems refresh.sh). Streets stuck candidates out/pc_adapt/_candidates/overlay_f_streets_revert{A,B} await Gameplay's A/B.
+- Campaign render (work/campaign_render/campaign_render.py; out/campaign_render/<CH>/<Sublevel without _m>/ + chapter.json):
+  D5_OME done on the integration head; A1_IAC done, lighting + materials rerun on the head running (--force). D5 collision / nav
+  inputs (campaign_collision.py). InitialStreamingState for RE (manifests/campaign/initial_streaming_state.json).
+- Escalation: weapon_pickups + spawn_points in escalation_geometry; bot_nav_escalation.json v2 (original NavigationCell mesh + all
+  TnReachSpec links; 1 piece, every on-mesh spawn point reaches the starts) + blockers / coverage / air; escalation_weapons.json;
+  horde chassis in roster_package.json; 10-chapter INT subtitle sidecars (manifests/campaign/*_loc_int_subtitles.json).
+- Later 2026-10-23: overlay g (f + Streets SideSupp01 / GiantPillar on hulls) = shipping set. A1 rerun on the head: 0 compile errors;
+  work/campaign_render/relpaths.py post-pass (unit-relative paths, both chapters). ESC nav v3 (escalation_bot_nav_v3.py: typed
+  reach-spec links, versus_only merge) + lower_nav_cells.py (original cells were at pawn-centre height, +1.75 m; lowered, authored
+  heights kept) + air navs rebuilt. D5 campaign bot_nav.json / bot_nav_air.json (campaign_bot_nav.py) at out/campaign_render/D5_OME/;
+  D5_OME_BASE/vbake = Rendering's RT calibration copy. Kismet seq_inputs / seq_outputs / inputs_disabled for all chapters (m04_kismet,
+  campaign only; run with WFC_VS_ROOT=work/campaign_pilot/VerticalSlice or map_levels sees only base / art / audio).
+- Next: stand by (Gameplay's runs on ESC v3 / D5; next campaign chapter when asked: campaign_collision.py, campaign_bot_nav.py).
 
 - **Integration session:** now rebuild-07 (same owner as rebuild-9c). Gameplay is rebuild-gameplay-0a. The machine rebooted at 05:41;
   the queue was resumed and finished.
