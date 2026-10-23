@@ -16,4 +16,6 @@ for CH in A2_KON A3_COR A4_ORB A5_TRY D1_ORB D2_COR D3A_IAC D3B_IAC; do
   else echo "pp $CH: no chapter.json, skipped"; fi
   $PY $RB --cap-gb 6 --log work/campaign_render/logs_actors/$CH.log work/campaign_render/campaign_actors.py $CH >/dev/null 2>&1
   echo "actors $CH $(grep -o 'rc=[0-9]*' work/campaign_render/logs_actors/$CH.log)"
+  $PY $RB --cap-gb 6 --log work/campaign_render/logs_actors/dest_$CH.log work/campaign_render/campaign_placed_destructibles.py $CH >/dev/null 2>&1
+  echo "destructibles $CH $(grep -o 'rc=[0-9]*' work/campaign_render/logs_actors/dest_$CH.log)"
 done
