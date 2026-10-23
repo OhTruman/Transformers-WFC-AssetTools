@@ -1,0 +1,836 @@
+{
+ "generated_by": "AssetTools/scripts/wfc/vs_weapon_export.py",
+ "weapon_id": "OmegaShootingFrenzyArm",
+ "stable_id_source": "TnDataProvider_Weapon UniqueId (TransWeapons.ini)",
+ "class": "TransContent.TnWeaponOmegaShootingFrenzyArm",
+ "provider_ids": [],
+ "display_name": {
+  "ItemName": "Missing Weapon, needs entry in TransContent.int"
+ },
+ "description": null,
+ "weapon_type_code": null,
+ "mesh": {
+  "object": null,
+  "weapon_mesh_template": "WEP_Omega_AI_p.OMEGA_ShootingFrenzy_AI_WEPMESH",
+  "glb": null,
+  "source_gltf": null,
+  "mesh_note": "the weapon mesh component authors no SkeletalMesh (fires from sockets) - CONFIRMED absence",
+  "materials": [],
+  "buff_materials": null,
+  "sockets": [],
+  "muzzle_sockets": [
+   "MuzzleFlash"
+  ],
+  "reference_bone": "WEP_Reference_XR",
+  "pickup_mesh": null,
+  "pickup_mesh_translation_ue": {
+   "X": 0.0,
+   "Y": 0.0,
+   "Z": 150.0
+  }
+ },
+ "animations": {
+  "anim_sets": [],
+  "clips_in_glb": [],
+  "idle": null,
+  "event_anims (weapon mesh)": null,
+  "owner_animations (robot body)": null
+ },
+ "attachment": {
+  "owner_socket (robot)": "WeaponSocket_Primary",
+  "reference_bone": "WEP_Reference_XR",
+  "rule": "weapon reference bone placed at the robot WeaponSocket_Primary (per-chassis socket in Characters/<ChassisId>/character.json robot.sockets); vehicle-form weapons fire from the vehicle sockets"
+ },
+ "recoil (procedural, WEPMESH)": {
+  "SpineRecoil": {
+   "TimeToGo": 0.0,
+   "TimeDuration": 0.20000000298023224,
+   "RotAmplitude": {
+    "X": 500.0,
+    "Y": 150.0,
+    "Z": 0.0
+   },
+   "RotFrequency": {
+    "X": 10.0,
+    "Y": 10.0,
+    "Z": 0.0
+   },
+   "RotSinOffset": {
+    "X": 0.0,
+    "Y": 0.0,
+    "Z": 0.0
+   },
+   "RotParams": {
+    "X": "ERS_Zero",
+    "Y": "ERS_Random",
+    "Z": "ERS_Zero",
+    "Padding": 0
+   },
+   "RotOffset": {
+    "Pitch": 0,
+    "Yaw": 0,
+    "Roll": 0
+   },
+   "LocAmplitude": {
+    "X": 0.0,
+    "Y": 0.0,
+    "Z": 0.0
+   },
+   "LocFrequency": {
+    "X": 0.0,
+    "Y": 0.0,
+    "Z": 0.0
+   },
+   "LocSinOffset": {
+    "X": 0.0,
+    "Y": 0.0,
+    "Z": 0.0
+   },
+   "LocParams": {
+    "X": "ERS_Zero",
+    "Y": "ERS_Zero",
+    "Z": "ERS_Zero",
+    "Padding": 0
+   },
+   "LocOffset": {
+    "X": 0.0,
+    "Y": 0.0,
+    "Z": 0.0
+   }
+  },
+  "RightHandRecoil": {
+   "TimeToGo": 0.0,
+   "TimeDuration": 0.20000000298023224,
+   "RotAmplitude": {
+    "X": 1000.0,
+    "Y": 150.0,
+    "Z": 0.0
+   },
+   "RotFrequency": {
+    "X": 10.0,
+    "Y": 10.0,
+    "Z": 0.0
+   },
+   "RotSinOffset": {
+    "X": 0.0,
+    "Y": 0.0,
+    "Z": 0.0
+   },
+   "RotParams": {
+    "X": "ERS_Zero",
+    "Y": "ERS_Random",
+    "Z": "ERS_Zero",
+    "Padding": 0
+   },
+   "RotOffset": {
+    "Pitch": 0,
+    "Yaw": 0,
+    "Roll": 0
+   },
+   "LocAmplitude": {
+    "X": -8.0,
+    "Y": 0.0,
+    "Z": 0.0
+   },
+   "LocFrequency": {
+    "X": 10.0,
+    "Y": 0.0,
+    "Z": 0.0
+   },
+   "LocSinOffset": {
+    "X": 0.0,
+    "Y": 0.0,
+    "Z": 0.0
+   },
+   "LocParams": {
+    "X": "ERS_Zero",
+    "Y": "ERS_Zero",
+    "Z": "ERS_Random",
+    "Padding": 0
+   },
+   "LocOffset": {
+    "X": 0.0,
+    "Y": 0.0,
+    "Z": 0.0
+   }
+  }
+ },
+ "heat": {},
+ "effects": {
+  "authored": {
+   "muzzle_flashes": [
+    {
+     "WeaponEventType": "WP_Fire",
+     "PSTemplate": "FX_OS_Turret_p.FX.MuzzleFlash_Turret_A_FX",
+     "PSLoops": false,
+     "PSComponent": null,
+     "DisableLight": false
+    }
+   ],
+   "tracers": null,
+   "default_squib": "FX_OS_Turret_p.FX.Impact_OS_Turret_A_FX",
+   "effects_type": null
+  },
+  "decode_status": {
+   "FX_OS_Turret_p.FX.Impact_OS_Turret_A_FX": {
+    "template": "FX_OS_Turret_p.FX.Impact_OS_Turret_A_FX",
+    "in_dump": true,
+    "emitters": [
+     {
+      "emitter": "GLOW_Dup",
+      "type_data": "Sprite (no TypeData)",
+      "type_data_props": null,
+      "material": "FX_Materials_p.Materials.MuzzleFlash_White_Mat",
+      "undecoded_modules (PMI_Unknown)": 0,
+      "resolved_modules (PMI_Unknown slots named by object class)": [
+       {
+        "slot": 9,
+        "module": "PMI_AttractorPoint",
+        "object": "FX_OS_Turret_p.FX.Impact_OS_Turret_A_FX.ParticleModuleAttractorPoint_11714",
+        "properties": {
+         "Range": {
+          "Distribution": null,
+          "Type": 1,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 1,
+          "LookupTable": [
+           300.0
+          ]
+         },
+         "Strength": {
+          "Distribution": null,
+          "Type": 1,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 1,
+          "LookupTable": [
+           1000.0
+          ]
+         },
+         "Position": {
+          "Distribution": null,
+          "Type": 7,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 3,
+          "LookupTable": [
+           0.0,
+           0.0,
+           0.0
+          ]
+         },
+         "StrengthByDistance": true,
+         "bUpdateModule": true,
+         "bEnabled": true
+        }
+       }
+      ],
+      "assignment_complete": true
+     },
+     {
+      "emitter": "GLOW",
+      "type_data": "Sprite (no TypeData)",
+      "type_data_props": null,
+      "material": "FX_Materials_p.Materials.Glow_Mod_MAT",
+      "undecoded_modules (PMI_Unknown)": 0,
+      "resolved_modules (PMI_Unknown slots named by object class)": null,
+      "assignment_complete": true
+     },
+     {
+      "emitter": "GLOW_Dup",
+      "type_data": "Sprite (no TypeData)",
+      "type_data_props": null,
+      "material": "FX_Materials_p.Materials.Glow_Mod_MAT",
+      "undecoded_modules (PMI_Unknown)": 0,
+      "resolved_modules (PMI_Unknown slots named by object class)": null,
+      "assignment_complete": true
+     },
+     {
+      "emitter": "GLOWHole",
+      "type_data": "Sprite (no TypeData)",
+      "type_data_props": null,
+      "material": "FX_Materials_p.Materials.Glow_Mod_MAT",
+      "undecoded_modules (PMI_Unknown)": 0,
+      "resolved_modules (PMI_Unknown slots named by object class)": null,
+      "assignment_complete": true
+     },
+     {
+      "emitter": "Sparks_bolts_Dup",
+      "type_data": "Sprite (no TypeData)",
+      "type_data_props": null,
+      "material": "FX_Materials_p.Materials.Spark_Tail_MAT",
+      "undecoded_modules (PMI_Unknown)": 0,
+      "resolved_modules (PMI_Unknown slots named by object class)": null,
+      "assignment_complete": true
+     },
+     {
+      "emitter": "Sparks_Collision_Dup",
+      "type_data": "Sprite (no TypeData)",
+      "type_data_props": null,
+      "material": "FX_Materials_p.Materials.Spark_Tail_MAT",
+      "undecoded_modules (PMI_Unknown)": 0,
+      "resolved_modules (PMI_Unknown slots named by object class)": [
+       {
+        "slot": 6,
+        "module": "PMI_Collision",
+        "object": "FX_OS_Turret_p.FX.Impact_OS_Turret_A_FX.ParticleModuleCollision_819",
+        "properties": {
+         "DampingFactor": {
+          "Distribution": null,
+          "Type": 7,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 3,
+          "LookupTable": [
+           0.5,
+           0.5,
+           0.5
+          ]
+         },
+         "MaxCollisions": {
+          "Distribution": null,
+          "Type": 3,
+          "Op": 2,
+          "LookupTableNumElements": 2,
+          "LookupTableChunkSize": 2,
+          "LookupTable": [
+           3.0,
+           1.0
+          ]
+         },
+         "DelayAmount": {
+          "Distribution": null,
+          "Type": 1,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 1,
+          "LookupTable": [
+           0.10000000149011612
+          ]
+         },
+         "bEnabled": false,
+         "DampingFactorRotation": {
+          "Distribution": null,
+          "Type": 7,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 3,
+          "LookupTable": [
+           1.0,
+           1.0,
+           1.0
+          ]
+         },
+         "bDropDetail": true,
+         "ParticleMass": {
+          "Distribution": null,
+          "Type": 1,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 1,
+          "LookupTable": [
+           0.10000000149011612
+          ]
+         },
+         "DirScalar": 3.5,
+         "VerticalFudgeFactor": 0.10000000149011612,
+         "bSpawnModule": true,
+         "bUpdateModule": true,
+         "CollisionCompletionOption": "EPCC_Kill (default, enum 0)"
+        }
+       }
+      ],
+      "assignment_complete": true
+     },
+     {
+      "emitter": "Smoke_Dup",
+      "type_data": "Sprite (no TypeData)",
+      "type_data_props": null,
+      "material": "FX_Materials_p.Materials.SmokeCoolDepth_Mat",
+      "undecoded_modules (PMI_Unknown)": 0,
+      "resolved_modules (PMI_Unknown slots named by object class)": null,
+      "assignment_complete": true
+     },
+     {
+      "emitter": "Shimmer",
+      "type_data": "Sprite (no TypeData)",
+      "type_data_props": null,
+      "material": "FX_Materials_p.Materials.Distortion_Cloud_01_MAT",
+      "undecoded_modules (PMI_Unknown)": 0,
+      "resolved_modules (PMI_Unknown slots named by object class)": null,
+      "assignment_complete": true
+     },
+     {
+      "emitter": "lectro_Dup_Dup_Dup",
+      "type_data": "Sprite (no TypeData)",
+      "type_data_props": null,
+      "material": "FX_Materials_p.Materials.arcball01_MAT",
+      "undecoded_modules (PMI_Unknown)": 0,
+      "resolved_modules (PMI_Unknown slots named by object class)": [
+       {
+        "slot": 7,
+        "module": "PMI_Collision",
+        "object": "FX_OS_Turret_p.FX.Impact_OS_Turret_A_FX.ParticleModuleCollision_8778",
+        "properties": {
+         "DampingFactor": {
+          "Distribution": null,
+          "Type": 7,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 3,
+          "LookupTable": [
+           1.0,
+           1.0,
+           1.0
+          ]
+         },
+         "MaxCollisions": {
+          "Distribution": null,
+          "Type": 1,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 1,
+          "LookupTable": [
+           1.0
+          ]
+         },
+         "DampingFactorRotation": {
+          "Distribution": null,
+          "Type": 7,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 3,
+          "LookupTable": [
+           1.0,
+           1.0,
+           1.0
+          ]
+         },
+         "bDropDetail": true,
+         "ParticleMass": {
+          "Distribution": null,
+          "Type": 1,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 1,
+          "LookupTable": [
+           0.10000000149011612
+          ]
+         },
+         "DirScalar": 3.5,
+         "VerticalFudgeFactor": 0.10000000149011612,
+         "DelayAmount": {
+          "Distribution": null,
+          "Type": 1,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 1,
+          "LookupTable": [
+           0.0
+          ]
+         },
+         "bSpawnModule": true,
+         "bUpdateModule": true,
+         "bEnabled": true,
+         "CollisionCompletionOption": "EPCC_Kill (default, enum 0)"
+        }
+       }
+      ],
+      "assignment_complete": true
+     }
+    ],
+    "beam_modules (template sub-objects)": null,
+    "beam_modules_note": null
+   },
+   "FX_OS_Turret_p.FX.MuzzleFlash_Turret_A_FX": {
+    "template": "FX_OS_Turret_p.FX.MuzzleFlash_Turret_A_FX",
+    "in_dump": true,
+    "emitters": [
+     {
+      "emitter": "CamerafacingBurst",
+      "type_data": "Sprite (no TypeData)",
+      "type_data_props": null,
+      "material": "FX_Materials_p.Materials.MuzzleFlash_White_Mat",
+      "undecoded_modules (PMI_Unknown)": 0,
+      "resolved_modules (PMI_Unknown slots named by object class)": null,
+      "assignment_complete": true
+     },
+     {
+      "emitter": "CamerafacingBurst_Dup",
+      "type_data": "Sprite (no TypeData)",
+      "type_data_props": null,
+      "material": "FX_Materials_p.Materials.MuzzleFlash_White_Mat",
+      "undecoded_modules (PMI_Unknown)": 0,
+      "resolved_modules (PMI_Unknown slots named by object class)": null,
+      "assignment_complete": true
+     },
+     {
+      "emitter": "Sparks",
+      "type_data": "Sprite (no TypeData)",
+      "type_data_props": null,
+      "material": "FX_Materials_p.Materials.SparksSheet1_MAT",
+      "undecoded_modules (PMI_Unknown)": 0,
+      "resolved_modules (PMI_Unknown slots named by object class)": null,
+      "assignment_complete": true
+     },
+     {
+      "emitter": "sparks2",
+      "type_data": "Sprite (no TypeData)",
+      "type_data_props": null,
+      "material": "FX_Materials_p.Materials.SparksSheet1_MAT",
+      "undecoded_modules (PMI_Unknown)": 0,
+      "resolved_modules (PMI_Unknown slots named by object class)": null,
+      "assignment_complete": true
+     },
+     {
+      "emitter": "Burst_Small_Dup_Dup_Dup",
+      "type_data": "ParticleModuleTypeDataMesh",
+      "type_data_props": {
+       "Mesh": "FX_IonBlaster_p.StaticMesh.SideMuzzle_STAT"
+      },
+      "material": "FX_Materials_p.Materials.MFlash_Side_Desat_MAT",
+      "undecoded_modules (PMI_Unknown)": 0,
+      "resolved_modules (PMI_Unknown slots named by object class)": null,
+      "assignment_complete": true
+     },
+     {
+      "emitter": "lectro_Dup_Dup",
+      "type_data": "Sprite (no TypeData)",
+      "type_data_props": null,
+      "material": "FX_Materials_p.Materials.arcball01_MAT",
+      "undecoded_modules (PMI_Unknown)": 0,
+      "resolved_modules (PMI_Unknown slots named by object class)": [
+       {
+        "slot": 7,
+        "module": "PMI_Collision",
+        "object": "FX_OS_Turret_p.FX.MuzzleFlash_Turret_A_FX.ParticleModuleCollision_5317",
+        "properties": {
+         "DampingFactor": {
+          "Distribution": null,
+          "Type": 7,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 3,
+          "LookupTable": [
+           1.0,
+           1.0,
+           1.0
+          ]
+         },
+         "MaxCollisions": {
+          "Distribution": null,
+          "Type": 1,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 1,
+          "LookupTable": [
+           1.0
+          ]
+         },
+         "bEnabled": false,
+         "DampingFactorRotation": {
+          "Distribution": null,
+          "Type": 7,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 3,
+          "LookupTable": [
+           1.0,
+           1.0,
+           1.0
+          ]
+         },
+         "bDropDetail": true,
+         "ParticleMass": {
+          "Distribution": null,
+          "Type": 1,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 1,
+          "LookupTable": [
+           0.10000000149011612
+          ]
+         },
+         "DirScalar": 3.5,
+         "VerticalFudgeFactor": 0.10000000149011612,
+         "DelayAmount": {
+          "Distribution": null,
+          "Type": 1,
+          "Op": 1,
+          "LookupTableNumElements": 1,
+          "LookupTableChunkSize": 1,
+          "LookupTable": [
+           0.0
+          ]
+         },
+         "bSpawnModule": true,
+         "bUpdateModule": true,
+         "CollisionCompletionOption": "EPCC_Kill (default, enum 0)"
+        }
+       }
+      ],
+      "assignment_complete": true
+     }
+    ],
+    "beam_modules (template sub-objects)": null,
+    "beam_modules_note": null
+   }
+  },
+  "default_decal": {
+   "Material": null,
+   "MinWidth": 100.0,
+   "MinHeight": 100.0,
+   "WidthRange": 100.0,
+   "HeightRange": 100.0,
+   "Thickness": 10.0,
+   "Lifetime": 30.0,
+   "NoClip": false,
+   "UniformScale": true,
+   "ApplyRandomRotation": true
+  },
+  "muzzle_light": "WEP_Omega_AI_p.OMEGA_ShootingFrenzy_AI_WEPMESH.PointLightComponent_14276",
+  "muzzle_flash_duration": 0.10000000149011612,
+  "impact_squib": {
+   "ImpactSquibPercentage": 1.0,
+   "ImpactSquibMaxCount": 10,
+   "MaxImpactEffectDistance": 2500.0
+  }
+ },
+ "projectiles": null,
+ "sounds": [
+  {
+   "event": "WP_Special",
+   "cue": "BL_CHR_OMEGA_SUPREME.ATTACK_FLAME_TROWER_START",
+   "class": "SoundCue",
+   "waves": [
+    {
+     "wave": "WL_CHR_OMEGA_SUPREME.SYNTH_ELEC_ROCKETSONLINE_01",
+     "wav": "content/WL_CHR_OMEGA_SUPREME/SYNTH_ELEC_ROCKETSONLINE_01.wav"
+    },
+    {
+     "wave": "WL_CHR_OMEGA_SUPREME.SYNTH_IMPT_START_LASER",
+     "wav": "content/WL_CHR_OMEGA_SUPREME/SYNTH_IMPT_START_LASER.wav"
+    },
+    {
+     "wave": "WL_CHR_OMEGA_SUPREME.SYNTH_VOX_OMEGASUPREME_AOE_02",
+     "wav": "content/WL_CHR_OMEGA_SUPREME/SYNTH_VOX_OMEGASUPREME_AOE_02.wav"
+    },
+    {
+     "wave": "WL_CHR_TRYPTICON.GUN_TRYPTICON_MOUTH_CANNON_01",
+     "wav": "content/WL_CHR_TRYPTICON/GUN_TRYPTICON_MOUTH_CANNON_01.wav"
+    }
+   ]
+  },
+  {
+   "event": "WP_Looping",
+   "cue": "BL_CHR_OMEGA_SUPREME.ATTACK_FLAME_TROWER_LP",
+   "class": "SoundCue",
+   "waves": [
+    {
+     "wave": "WL_CHR_OMEGA_SUPREME.GUN_OMEGA_FLAMETHROWER_LP",
+     "wav": "content/WL_CHR_OMEGA_SUPREME/GUN_OMEGA_FLAMETHROWER_LP.wav"
+    },
+    {
+     "wave": "WL_CHR_OMEGA_SUPREME.SYNTH_ELEC_LASR_BUILD",
+     "wav": "content/WL_CHR_OMEGA_SUPREME/SYNTH_ELEC_LASR_BUILD.wav"
+    },
+    {
+     "wave": "WL_CHR_TRYPTICON.GUN_TRYPTICON_MOUTH_CANNON_01",
+     "wav": "content/WL_CHR_TRYPTICON/GUN_TRYPTICON_MOUTH_CANNON_01.wav"
+    },
+    {
+     "wave": "WL_TRANS_ENV.CORRUPTER_GROWL",
+     "wav": "content/WL_TRANS_ENV/CORRUPTER_GROWL.wav"
+    }
+   ]
+  },
+  {
+   "event": "WP_LoopingTail",
+   "cue": "BL_CHR_OMEGA_SUPREME.ATTACK_FLAME_TROWER_END",
+   "class": "SoundCue",
+   "waves": [
+    {
+     "wave": "WL_CHR_TRYPTICON.GUN_TRYPTICON_DEATH_RAY_POWERDOWN",
+     "wav": "content/WL_CHR_TRYPTICON/GUN_TRYPTICON_DEATH_RAY_POWERDOWN.wav"
+    }
+   ]
+  },
+  {
+   "event": "DefaultImpactSound",
+   "cue": "BL_CHR_OMEGA_SUPREME.ATTACK_FLAMETHROWER_SQUIB",
+   "class": "SoundCue",
+   "waves": []
+  }
+ ],
+ "gameplay (versus WEPDATA = MultiplayerData, CONFIRMED)": {},
+ "versus_data_source": {
+  "object": null,
+  "selected_by": "PlayerData (fallback: MultiplayerData unset on the class chain)",
+  "rule": "TnWeapon.GivenTo: TnMultiplayerGame.DesiredWeaponDataType = 3 (Multiplayer); GetWeaponDataByType(3) == none -> WDT 1 PlayerData; no fallback to DefaultTnWeaponData; AI holders use AiData (RE 2026-10-07, CONFIRMED from script)"
+ },
+ "wepdata_objects": {
+  "MultiplayerData (versus)": null,
+  "PlayerData (campaign / SP)": "WEP_Omega_AI_p.Omega_ShootingFrenzy_AI_WEPDATA",
+  "SurvivalData (Escalation)": null,
+  "AiData": "WEP_Omega_AI_p.Omega_ShootingFrenzy_AI_WEPDATA"
+ },
+ "class_defaults (weapon CDO, sub-objects resolved)": {
+  "FireIntervalLerper": {
+   "object": "TransContent.Default__TnWeaponOmegaShootingFrenzyArm.Lerper0",
+   "class": "HmValueLerper",
+   "values": {}
+  },
+  "_Stance": "WS_TWO_HANDED_MELEE",
+  "WeaponHeat": {
+   "object": "TransContent.Default__TnWeaponOmegaShootingFrenzyArm.WeaponHeat0",
+   "class": "TnWeaponHeat",
+   "values": {
+    "HeatProperties": {
+     "HeatMax": 100.0,
+     "Modifiers": []
+    }
+   }
+  },
+  "Defragger": {
+   "object": "TransContent.Default__TnWeaponOmegaShootingFrenzyArm.Defragger0",
+   "class": "TnDefragger",
+   "values": {
+    "DefragTime": 1.0,
+    "Range": {
+     "Min": 0.0,
+     "Max": 1.0
+    },
+    "DefragShaderParamName": "Defrag",
+    "CurrentValue": -1.0
+   }
+  },
+  "AmmoMaterialRamper": {
+   "object": "TransContent.Default__TnWeaponOmegaShootingFrenzyArm.AmmoMaterialRamper0",
+   "class": "TnDefragger",
+   "values": {
+    "DefragTime": 0.800000011920929,
+    "Range": {
+     "Min": 1.0,
+     "Max": 80.0
+    },
+    "DefragShaderParamName": "EmissiveIntensity",
+    "CurrentValue": -1.0
+   }
+  },
+  "WeaponMeshTemplate": "WEP_Omega_AI_p.OMEGA_ShootingFrenzy_AI_WEPMESH",
+  "PlayerData": "WEP_Omega_AI_p.Omega_ShootingFrenzy_AI_WEPDATA",
+  "AiData": "WEP_Omega_AI_p.Omega_ShootingFrenzy_AI_WEPDATA",
+  "DroppedPickupClass": null,
+  "PutDownImmediatelyDetachDelay": 0.009999999776482582,
+  "PutDownImmediatelyTime": 0.019999999552965164,
+  "IsEffectedByIncreaseAmmoSkill": true,
+  "ShotStatId": -1,
+  "DamageModifier": "TransGame.Default__TnWeapon.DamageModifier0",
+  "PickupObtainedDialog": "SoundEvents_Dialog.WeaponPickupObtainedDialog",
+  "SpawnOffsetAngle": {
+   "Pitch": 3000,
+   "Yaw": 0,
+   "Roll": 0
+  },
+  "PickupScale": 1.0,
+  "IncreaseAmmoSkill": "TransGame.TnSkillIncreaseAmmoFromClips",
+  "AmmoClipCount": 10,
+  "Data": "TransGame.Default__TnWeapon.DefaultTnWeaponData",
+  "ItemName": "Missing Weapon, needs entry in TransContent.int",
+  "PickupRating": 1.0,
+  "PickupRotationRate": {
+   "Pitch": 0,
+   "Yaw": 10000,
+   "Roll": 0
+  },
+  "ReserveAmmoCount": 40,
+  "FiringStatesArray": [
+   "WeaponFiring",
+   "WeaponFiring"
+  ],
+  "ShouldFireOnRelease": [
+   0,
+   0
+  ],
+  "MessageClass": "HM_Engine.HmLocalMessage",
+  "DefaultAnimSpeed": 1.0,
+  "RespawnTime": 30.0,
+  "MaxDesireability": 0.10000000149011612,
+  "PickupMessage": "Snagged an item.",
+  "FindLevelStartOffset": {
+   "X": 0.0,
+   "Y": 0.0,
+   "Z": 25.0
+  },
+  "FindLevelEndOffset": {
+   "X": 0.0,
+   "Y": 0.0,
+   "Z": -15000.0
+  },
+  "CollisionPreset": "COLLIDE_CustomDefault",
+  "CustomTimeDilation": 1.0,
+  "DrawScale": 1.0,
+  "DrawScale3D": {
+   "X": 1.0,
+   "Y": 1.0,
+   "Z": 1.0
+  },
+  "ActorIndex": -1,
+  "ReplicatedCollisionPreset": "None"
+ },
+ "fine_aim_camera (OverTheShoulder strategy FOV)": {
+  "weapon_pcs": null,
+  "source": "CAM_Strategies_p.OverTheShoulder_STRATEGY.TnFovCameraBehavior_1013",
+  "fov_default": {
+   "Fov": 80.0,
+   "SmoothTime": 0.4000000059604645
+  },
+  "fov_fine_aim": {
+   "Fov": 45.0,
+   "SmoothTime": 0.10000000149011612
+  },
+  "fov_fine_aim_hovering": {
+   "Fov": 45.0,
+   "SmoothTime": 0.10000000149011612
+  },
+  "rule": "first FOVsByPCS entry whose PlayerCameraStates are all active; weapon adds WeaponPCS, fine aim adds TnPCS_FineAim"
+ },
+ "hud_scope (Hud_GFX ActionScript on NotifyFineAimChanged(1), by weapon class; RE TARGETED_PASS5 CONFIRMED)": null,
+ "gameplay (campaign / SP PlayerData)": {
+  "object": "WEP_Omega_AI_p.Omega_ShootingFrenzy_AI_WEPDATA"
+ },
+ "ai_data": {
+  "object": "WEP_Omega_AI_p.Omega_ShootingFrenzy_AI_WEPDATA",
+  "DesiredFiringRange": "RANGE_Medium"
+ },
+ "damage_types": {},
+ "restrictions": {},
+ "usable_by_chassis": null,
+ "ui": {
+  "ratings": {},
+  "kill_feed_icon": null,
+  "hud_weapon_icon": null,
+  "loadout_icons (GFx export name == provider id, HIGH)": null,
+  "menu_preview": "weapon glTF (no dedicated preview mesh authored for MP loadouts: INFERRED from absence)"
+ },
+ "mp": {
+  "in_every_mp_map": false,
+  "in_any_mp_map": false,
+  "escalation_ai_weapon": true
+ },
+ "mp_weapons_entry": "manifests/mp_content/mp_weapons.json weapons[\"TransContent.TnWeaponOmegaShootingFrenzyArm\"]",
+ "validation": {
+  "paths_checked": 8,
+  "missing": [],
+  "glb": false,
+  "clips": 0,
+  "sounds_with_wav": 3,
+  "sounds": 4,
+  "seconds": 2.0
+ },
+ "files": {
+  "json": "VerticalSlice/Weapons/OmegaShootingFrenzyArm/weapon.json",
+  "slice_weapon_kept": false
+ }
+}

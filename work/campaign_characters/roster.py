@@ -12,6 +12,24 @@ sys.path.insert(0, os.path.join(ROOT, 'work', 'escalation_roster'))
 import roster as ER  # noqa: E402  (module import only: its main() is not run)
 ORDER = ['D5_OME', 'A1_IAC', 'A2_KON', 'A3_COR', 'A4_ORB', 'A5_TRY', 'D1_ORB', 'D2_COR', 'D3A_IAC', 'D3B_IAC']
 
+def action_weapons(t):
+    """weapon classes the template's AI actions use: TnAiAction* objects within 2 hops of the template (ActionSet / ActionOverrides ->
+    action blueprints) naming a TransContent.TnWeapon* class; sensors and anim choosers are not weapons. [{class, actions}]"""
+    import re
+    seen, front, hits = set(), [t], {}
+    for hop in range(3):
+        nxt = []
+        for o in front:
+            if o in seen: continue
+            seen.add(o); r = ER.DB.execute('select class, props from objects where opath=?', (o,)).fetchone()
+            if not r: continue
+            for m in set(re.findall(r'"([A-Za-z0-9_]+(?:\.[A-Za-z0-9_]+)+)"', r[1] or '')):
+                if m.startswith('TransContent.TnWeapon'):
+                    if (r[0] or '').startswith('TnAiAction'): hits.setdefault(m, set()).add(r[0])
+                elif m not in seen and hop < 2: nxt.append(m)
+        front = nxt
+    return [OD([('class', w), ('actions', sorted(a))]) for w, a in sorted(hits.items())]
+
 def main():
     seen, blueprints = OD(), OD()
     for ch in ORDER:
@@ -36,6 +54,7 @@ def main():
         n = t.split('.')[-1].replace('_AICD', '')
         cid = n if len(names[t.split('.')[-1]]) == 1 else '%s__%s' % (n, t.split('.')[0])
         rec = ER.template(t); rec.update(OD([('id', cid)] + list(info.items())[1:]))
+        rec['action_weapon_classes'] = action_weapons(t)
         rows.append(rec)
     json.dump(OD([('generated_by', 'AssetTools/work/campaign_characters/roster.py'), ('order', ORDER), ('templates', rows),
                   ('destructible_blueprints', list(blueprints.values()))]),

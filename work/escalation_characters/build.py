@@ -85,7 +85,8 @@ def character_entry(tpl):
                ('class', None), ('availability', 'Escalation horde (AI only)'), ('mp_status', 'Escalation AI template (not a player chassis)'),
                ('locks', None), ('robot', robot), ('vehicle', vehicle), ('animation_compat', compat), ('transform_clips', trans),
                ('stats', {'ai_template': t['template'], 'chassis': robo}),
-               ('weapons', {'ai_weapon_classes': [w['class'] for w in t['weapon_classes']]}),
+               ('weapons', dict({'ai_weapon_classes': [w['class'] for w in t['weapon_classes']]},
+                                **({'action_weapon_classes': t['action_weapon_classes']} if 'action_weapon_classes' in t else {}))),
                ('abilities', {}), ('ui', {}), ('audio', {'voice': robot.get('sound_event_set'), 'vehicle': (vehicle or {}).get('sound_event_set')})])
 
 def main():

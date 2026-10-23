@@ -1,0 +1,230 @@
+{
+ "generated_by": "AssetTools/scripts/wfc/vs_weapon_export.py",
+ "weapon_id": "OmegaTractorBeamArm",
+ "stable_id_source": "TnDataProvider_Weapon UniqueId (TransWeapons.ini)",
+ "class": "TransContent.TnWeaponOmegaTractorBeamArm",
+ "provider_ids": [],
+ "display_name": {
+  "ItemName": "Missing Weapon, needs entry in TransContent.int"
+ },
+ "description": null,
+ "weapon_type_code": null,
+ "mesh": {
+  "object": null,
+  "weapon_mesh_template": null,
+  "glb": null,
+  "source_gltf": null,
+  "mesh_note": "the weapon mesh component authors no SkeletalMesh (fires from sockets) - CONFIRMED absence",
+  "materials": [],
+  "buff_materials": null,
+  "sockets": [],
+  "muzzle_sockets": null,
+  "reference_bone": null,
+  "pickup_mesh": null,
+  "pickup_mesh_translation_ue": null
+ },
+ "animations": {
+  "anim_sets": [],
+  "clips_in_glb": [],
+  "idle": null,
+  "event_anims (weapon mesh)": null,
+  "owner_animations (robot body)": null
+ },
+ "attachment": {
+  "owner_socket (robot)": "WeaponSocket_Primary",
+  "reference_bone": null,
+  "rule": "weapon reference bone placed at the robot WeaponSocket_Primary (per-chassis socket in Characters/<ChassisId>/character.json robot.sockets); vehicle-form weapons fire from the vehicle sockets"
+ },
+ "recoil (procedural, WEPMESH)": {},
+ "heat": {},
+ "effects": {
+  "authored": {
+   "muzzle_flashes": null,
+   "tracers": null,
+   "default_squib": null,
+   "effects_type": null
+  },
+  "decode_status": {},
+  "default_decal": null,
+  "muzzle_light": null,
+  "muzzle_flash_duration": null,
+  "impact_squib": {
+   "ImpactSquibPercentage": null,
+   "ImpactSquibMaxCount": null,
+   "MaxImpactEffectDistance": null
+  }
+ },
+ "projectiles": null,
+ "sounds": [],
+ "gameplay (versus WEPDATA = MultiplayerData, CONFIRMED)": {},
+ "versus_data_source": {
+  "object": null,
+  "selected_by": "PlayerData (fallback: MultiplayerData unset on the class chain)",
+  "rule": "TnWeapon.GivenTo: TnMultiplayerGame.DesiredWeaponDataType = 3 (Multiplayer); GetWeaponDataByType(3) == none -> WDT 1 PlayerData; no fallback to DefaultTnWeaponData; AI holders use AiData (RE 2026-10-07, CONFIRMED from script)"
+ },
+ "wepdata_objects": {
+  "MultiplayerData (versus)": null,
+  "PlayerData (campaign / SP)": "WEP_Omega_AI_p.OMEGA_Arm_AI_WEPDATA",
+  "SurvivalData (Escalation)": null,
+  "AiData": "WEP_Omega_AI_p.OMEGA_Arm_AI_WEPDATA"
+ },
+ "class_defaults (weapon CDO, sub-objects resolved)": {
+  "FireIntervalLerper": {
+   "object": "TransContent.Default__TnWeaponOmegaTractorBeamArm.Lerper0",
+   "class": "HmValueLerper",
+   "values": {}
+  },
+  "_Stance": "WS_TWO_HANDED_MELEE",
+  "WeaponHeat": {
+   "object": "TransContent.Default__TnWeaponOmegaTractorBeamArm.WeaponHeat0",
+   "class": "TnWeaponHeat",
+   "values": {
+    "HeatProperties": {
+     "HeatMax": 100.0,
+     "Modifiers": []
+    }
+   }
+  },
+  "Defragger": {
+   "object": "TransContent.Default__TnWeaponOmegaTractorBeamArm.Defragger0",
+   "class": "TnDefragger",
+   "values": {
+    "DefragTime": 1.0,
+    "Range": {
+     "Min": 0.0,
+     "Max": 1.0
+    },
+    "DefragShaderParamName": "Defrag",
+    "CurrentValue": -1.0
+   }
+  },
+  "AmmoMaterialRamper": {
+   "object": "TransContent.Default__TnWeaponOmegaTractorBeamArm.AmmoMaterialRamper0",
+   "class": "TnDefragger",
+   "values": {
+    "DefragTime": 0.800000011920929,
+    "Range": {
+     "Min": 1.0,
+     "Max": 80.0
+    },
+    "DefragShaderParamName": "EmissiveIntensity",
+    "CurrentValue": -1.0
+   }
+  },
+  "PlayerData": "WEP_Omega_AI_p.OMEGA_Arm_AI_WEPDATA",
+  "AiData": "WEP_Omega_AI_p.OMEGA_Arm_AI_WEPDATA",
+  "ExcludeFromWeaponCycling": true,
+  "WeaponType": "WT_Melee",
+  "PutDownImmediatelyDetachDelay": 0.009999999776482582,
+  "PutDownImmediatelyTime": 0.019999999552965164,
+  "IsEffectedByIncreaseAmmoSkill": true,
+  "ShotStatId": -1,
+  "DamageModifier": "TransGame.Default__TnWeapon.DamageModifier0",
+  "PickupObtainedDialog": "SoundEvents_Dialog.WeaponPickupObtainedDialog",
+  "SpawnOffsetAngle": {
+   "Pitch": 3000,
+   "Yaw": 0,
+   "Roll": 0
+  },
+  "PickupScale": 1.0,
+  "IncreaseAmmoSkill": "TransGame.TnSkillIncreaseAmmoFromClips",
+  "AmmoClipCount": 10,
+  "Data": "TransGame.Default__TnWeapon.DefaultTnWeaponData",
+  "ItemName": "Missing Weapon, needs entry in TransContent.int",
+  "DroppedPickupClass": "TransGame.TnDroppedPickupWeapon",
+  "PickupRating": 1.0,
+  "PickupRotationRate": {
+   "Pitch": 0,
+   "Yaw": 10000,
+   "Roll": 0
+  },
+  "ReserveAmmoCount": 40,
+  "FiringStatesArray": [
+   "WeaponFiring",
+   "WeaponFiring"
+  ],
+  "ShouldFireOnRelease": [
+   0,
+   0
+  ],
+  "MessageClass": "HM_Engine.HmLocalMessage",
+  "DefaultAnimSpeed": 1.0,
+  "RespawnTime": 30.0,
+  "MaxDesireability": 0.10000000149011612,
+  "PickupMessage": "Snagged an item.",
+  "FindLevelStartOffset": {
+   "X": 0.0,
+   "Y": 0.0,
+   "Z": 25.0
+  },
+  "FindLevelEndOffset": {
+   "X": 0.0,
+   "Y": 0.0,
+   "Z": -15000.0
+  },
+  "CollisionPreset": "COLLIDE_CustomDefault",
+  "CustomTimeDilation": 1.0,
+  "DrawScale": 1.0,
+  "DrawScale3D": {
+   "X": 1.0,
+   "Y": 1.0,
+   "Z": 1.0
+  },
+  "ActorIndex": -1,
+  "ReplicatedCollisionPreset": "None"
+ },
+ "fine_aim_camera (OverTheShoulder strategy FOV)": {
+  "weapon_pcs": null,
+  "source": "CAM_Strategies_p.OverTheShoulder_STRATEGY.TnFovCameraBehavior_1013",
+  "fov_default": {
+   "Fov": 80.0,
+   "SmoothTime": 0.4000000059604645
+  },
+  "fov_fine_aim": {
+   "Fov": 45.0,
+   "SmoothTime": 0.10000000149011612
+  },
+  "fov_fine_aim_hovering": {
+   "Fov": 45.0,
+   "SmoothTime": 0.10000000149011612
+  },
+  "rule": "first FOVsByPCS entry whose PlayerCameraStates are all active; weapon adds WeaponPCS, fine aim adds TnPCS_FineAim"
+ },
+ "hud_scope (Hud_GFX ActionScript on NotifyFineAimChanged(1), by weapon class; RE TARGETED_PASS5 CONFIRMED)": null,
+ "gameplay (campaign / SP PlayerData)": {
+  "object": "WEP_Omega_AI_p.OMEGA_Arm_AI_WEPDATA"
+ },
+ "ai_data": {
+  "object": "WEP_Omega_AI_p.OMEGA_Arm_AI_WEPDATA",
+  "DesiredFiringRange": "RANGE_Medium"
+ },
+ "damage_types": {},
+ "restrictions": {},
+ "usable_by_chassis": null,
+ "ui": {
+  "ratings": {},
+  "kill_feed_icon": null,
+  "hud_weapon_icon": null,
+  "loadout_icons (GFx export name == provider id, HIGH)": null,
+  "menu_preview": "weapon glTF (no dedicated preview mesh authored for MP loadouts: INFERRED from absence)"
+ },
+ "mp": {
+  "in_every_mp_map": false,
+  "in_any_mp_map": false,
+  "escalation_ai_weapon": true
+ },
+ "mp_weapons_entry": "manifests/mp_content/mp_weapons.json weapons[\"TransContent.TnWeaponOmegaTractorBeamArm\"]",
+ "validation": {
+  "paths_checked": 0,
+  "missing": [],
+  "glb": false,
+  "clips": 0,
+  "sounds_with_wav": 0,
+  "sounds": 0,
+  "seconds": 0.0
+ },
+ "files": {
+  "json": "VerticalSlice/Weapons/OmegaTractorBeamArm/weapon.json",
+  "slice_weapon_kept": false
+ }
+}
