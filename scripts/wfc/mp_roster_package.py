@@ -5,6 +5,10 @@ RE's roster is the identity / behaviour evidence; this package cross-checks ever
 portraits, class icons, weapons, abilities, audio, and the resolved stat blueprints (per-chassis ROBODEF / VEHDEF scalar export
 requested by RE OVERNIGHT_2026-10-04 'STILL OPEN').
 Output: manifests/mp_content/roster_package.json        python mp_roster_package.py
+Escalation horde (Gameplay E3a / Integration 2026-10-23): the 14 AI bodies of out/escalation_characters (index.json) are appended to
+`chassis` after the MP entries, keyed by their id (AICD name minus _AICD), from their ROBODEF (CONFIRMED cooked values) and character.json;
+they are not in RE's MP roster, so re_identity.source says so and no RE cross-check applies. MP entries and every other key are unchanged
+(re_cross_check_summary counts the MP roster only; escalation_horde_chassis lists the added ids).
 """
 import json, os, re, sys
 from collections import OrderedDict
@@ -47,6 +51,40 @@ def resolve_bp(o, depth=0):
 
 def VEH_IDS(weapons):
     return {pid for w in weapons.values() if w.get('weapon_type_code') == '3' for pid in w.get('provider_ids') or []}
+
+def escalation_horde():
+    """the Escalation AI bodies as roster entries: re_identity from the ROBODEF (collision cylinder, size, movement, health, momentum,
+    vehicle form) + the packaged character.json (meshes, definitions); robot_only for a chassis without a vehicle form (Spider)"""
+    root = os.path.normpath(os.path.join(HERE, '..', '..', 'out', 'escalation_characters'))
+    ix = os.path.join(root, 'index.json')
+    if not os.path.exists(ix): return OrderedDict()
+    idx = json.load(open(ix, encoding='utf-8'))
+    ids = sorted((idx.get('characters') or idx).keys()) if isinstance(idx.get('characters') or idx, dict) else sorted(c['id'] for c in idx.get('characters'))
+    out = OrderedDict()
+    for cid in ids:
+        cj = os.path.join(root, cid, 'character.json')
+        if not os.path.exists(cj): continue
+        c = json.load(open(cj, encoding='utf-8'))
+        rd = (c.get('stats') or {}).get('chassis'); v = V(rd); rob = c.get('robot') or {}; veh = c.get('vehicle') or {}
+        has_veh = bool(veh) and 'skipped' not in veh
+        col = v.get('Collision') or {}
+        ident = OrderedDict([('UniqueId', cid), ('ObjectPath', rd), ('ai_template', (c.get('stats') or {}).get('ai_template')),
+                             ('robot_skel', rob.get('mesh_object')), ('robot_animtree', rob.get('anim_tree')),
+                             ('collision', OrderedDict([('CollisionRadius', col.get('CollisionRadius')), ('CollisionHeight', col.get('CollisionHeight'))])),
+                             ('size', v.get('Size')), ('ground_speed', v.get('BaseGroundSpeed')), ('accel', v.get('AccelRate')), ('air_speed', v.get('AirSpeed')),
+                             ('health', v.get('Health')), ('segmented_health', v.get('SegmentedHealth')), ('momentum', v.get('MomentumBlueprint')),
+                             ('vehicle_form', v.get('TransformerVehicle') if has_veh else None), ('vehicle_skel', veh.get('mesh_object') if has_veh else None),
+                             ('robot_only', not has_veh),
+                             ('source', CONF + ': ROBODEF values (authored.db) + AssetTools character.json; not in RE mp_chassis_roster.json')])
+        out[cid] = OrderedDict([('re_identity', ident), ('re_cross_check', {'fields_compared': 0, 'mismatches': [], 'detail': {'note': 'no RE roster row (AI-only body)'}}),
+                                ('display', c.get('display')), ('faction', c.get('faction')), ('class', c.get('class (chassis DefaultSpecialty)')),
+                                ('availability', c.get('availability')), ('mp_status', c.get('mp_status')), ('locks', c.get('locks')),
+                                ('robot', {k: rob.get(k) for k in ('definition', 'mesh_object', 'glb', 'physics_asset', 'anim_tree')}),
+                                ('vehicle', {k: veh.get(k) for k in ('definition', 'mesh_object', 'glb', 'physics_asset', 'anim_tree')} if has_veh else None),
+                                ('character_json', 'AssetTools/out/escalation_characters/%s/character.json' % cid),
+                                ('stats', {'robot_scalars (ROBODEF)': scalars(rd)}), ('escalation_horde', True),
+                                ('confidence', CONF + ' (ROBODEF values; AI-only body, no RE roster row)')])
+    return out
 
 def main():
     re_r = json.load(open(RE_ROSTER, encoding='utf-8'))
@@ -137,6 +175,11 @@ def main():
                            'class_pool': sorted(k for k, a in classes['abilities'].items() if a.get('SpecialtyRestriction') == (m or {}).get('default_class'))}),
             ('audio', {'voice': (m or {}).get('voice_sound_event_set'), 'vehicle': (m or {}).get('vehicle_sound_event_set'), 'vehicle_death_sound': v.get('death_sound')}),
             ('confidence', CONF + ' (RE identity + AssetTools extraction agree field by field unless listed in re_cross_check.mismatches)')])
+    mp_count = len(out)
+    horde = escalation_horde()
+    for k, x in horde.items():
+        if k in out: raise SystemExit('horde id collides with an MP chassis: ' + k)
+        out[k] = x
     defaults = OrderedDict()
     for cls, p in presets.items():
         defaults[cls] = {'Autobot': p['ChassisTypes'][0], 'Decepticon': p['ChassisTypes'][1],
@@ -147,12 +190,13 @@ def main():
     json.dump(OrderedDict([
         ('generated_by', GEN), ('re_evidence', [RE_ROSTER.replace('F:/Transformers Rebuild/', ''), RE_NOTE]),
         ('default_four_classes (MP presets)', defaults),
-        ('re_cross_check_summary', {'chassis': len(out), 'field_mismatches_total': mism_total}),
+        ('re_cross_check_summary', {'chassis': mp_count, 'field_mismatches_total': mism_total}),
         ('shared_health_note', 'ROBODEF SegmentedHealth = TR_Health_p.SharedHealth (175/125/125/125, overshield 550) is the value '
                                'ApplyTransformer sets; in VERSUS the specialty blueprint replaces it (Leader 300 / Scientist 180 / Scout 200 / '
                                'Soldier 330, overshield 200: stats.versus_health). SharedHealth stands in campaign / Escalation / campaign lobby '
                                '(RE TARGETED_PASS3_2026-10-05 A4).'),
-        ('chassis', out)]), open(os.path.join(MANI, 'mp_content', 'roster_package.json'), 'w', encoding='utf-8'), indent=1, ensure_ascii=False, default=str)
+        ('chassis', out)] + ([('escalation_horde_chassis', OrderedDict([('ids', list(horde)), ('source', 'AssetTools out/escalation_characters (ROBODEF '
+                               'values; not in RE mp_chassis_roster.json)')]))] if horde else [])), open(os.path.join(MANI, 'mp_content', 'roster_package.json'), 'w', encoding='utf-8'), indent=1, ensure_ascii=False, default=str)
     print('chassis', len(out), 'mismatches', mism_total, {k: v['re_cross_check']['mismatches'] for k, v in out.items() if v['re_cross_check']['mismatches']})
     print({k: (v['Autobot'], v['Decepticon'], v['names']) for k, v in defaults.items()})
 
