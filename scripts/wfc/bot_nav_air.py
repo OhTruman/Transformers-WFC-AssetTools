@@ -24,8 +24,15 @@ sys.path.insert(0, HERE)
 from vs_common import VS  # noqa: E402
 import map_structure_audit as MSA  # noqa: E402
 
-MAP = sys.argv[1] if len(sys.argv) > 1 else 'MP_ORB_Debris'
+MAP = sys.argv[1] if len(sys.argv) > 1 and not sys.argv[1].startswith('--') else 'MP_ORB_Debris'
 OUT = os.path.join(VS, 'Maps', MAP)
+# --overlay DIR: read collision_pawn.glb / bot_nav.json from DIR when it holds them; --out DIR: write bot_nav_air.json there.
+# Without them every path is unchanged.
+OVL = sys.argv[sys.argv.index('--overlay') + 1] if '--overlay' in sys.argv else None
+DST = sys.argv[sys.argv.index('--out') + 1] if '--out' in sys.argv else OUT
+def inp(name):
+    p = os.path.join(OVL, name) if OVL else None
+    return p if p and os.path.exists(p) else os.path.join(OUT, name)
 VOX = 2.0
 P = OD([
     ('voxel_m', (VOX, 'tool parameter')),
@@ -38,7 +45,7 @@ P = OD([
 
 def main():
     t0 = time.time()
-    nav = json.load(open(os.path.join(OUT, 'bot_nav.json'), encoding='utf-8'))
+    nav = json.load(open(inp('bot_nav.json'), encoding='utf-8'))
     A = np.array([a['location_gltf'] for a in nav['anchors'] if a.get('location_gltf')])
     m = P['xz_margin_m'][0]
     gy = min(c['height_range_m'][0] for c in nav['cells']) if nav['cells'] else A[:, 1].min()
@@ -47,7 +54,7 @@ def main():
     dims = np.ceil((hi - lo) / VOX).astype(int) + 1
     occ = np.zeros(dims, dtype=bool)
     dropped = 0
-    for j, n, mat, T, agree, det in MSA.node_tris(os.path.join(OUT, 'collision_pawn.glb')):
+    for j, n, mat, T, agree, det in MSA.node_tris(inp('collision_pawn.glb')):
         if not len(T): continue
         mn = T.min(1); mx = T.max(1)
         T = T[(mx >= lo).all(1) & (mn <= hi).all(1)]
@@ -135,7 +142,7 @@ def main():
                        sum(1 for x in approaches if x['ground_approach_cell'] is None)),
                       ('ground_unreachable_anchors', sum(1 for a in nav['anchors'] if a.get('approach_cell') is None)),
                       ('oversized_triangles_excluded', dropped), ('seconds', round(time.time() - t0, 1))]))])
-    json.dump(out, open(os.path.join(OUT, 'bot_nav_air.json'), 'w', encoding='utf-8'), separators=(',', ':'))
+    json.dump(out, open(os.path.join(DST, 'bot_nav_air.json'), 'w', encoding='utf-8'), separators=(',', ':'))
     print(json.dumps(out['stats']))
 
 if __name__ == '__main__':

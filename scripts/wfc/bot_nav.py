@@ -38,6 +38,12 @@ MAP = sys.argv[1] if len(sys.argv) > 1 and not sys.argv[1].startswith('--') else
 OUT = os.path.join(VS, 'Maps', MAP)                                       # inputs (collision_pawn.glb, gameplay.json)
 # --out DIR: write bot_nav.json / .glb (+ bot_nav_pruned.json with --debug) there instead of next to the inputs (dry runs)
 DST = sys.argv[sys.argv.index('--out') + 1] if '--out' in sys.argv else OUT
+# --overlay DIR: read physics.json / collision_pawn.glb from DIR when it holds them (a PC-adapted package overlay, e.g.
+# out/pc_adapt/<MAP>), else from the map folder. Without it every input path is unchanged.
+OVL = sys.argv[sys.argv.index('--overlay') + 1] if '--overlay' in sys.argv else None
+def inp(name):
+    p = os.path.join(OVL, name) if OVL else None
+    return p if p and os.path.exists(p) else os.path.join(OUT, name)
 CELL = MSA.CELL
 WALK_NY = MSA.WALK_NY
 HUGE_M2 = MSA.HUGE_M2
@@ -131,7 +137,7 @@ def forced_dir_blocks(occ, lo, hi):
     true = every chassis). Its brush is added to the obstruction samples: per cell, the volume's lower and upper surface
     heights (vertical ray through the cell centre), so floors whose agent column reaches into it are not open.
     Streets: 4 volumes over the whole map from y ~-682 up (rooftop band)."""
-    ph = os.path.join(OUT, 'physics.json')
+    ph = inp('physics.json')
     if not os.path.exists(ph): return []
     used = []
     for v in json.load(open(ph, encoding='utf-8')).get('volumes') or []:
@@ -172,7 +178,7 @@ def forced_dir_blocks(occ, lo, hi):
 def main():
     t0 = time.time()
     P, jumps = params(); p = {k: v[0] for k, v in P.items()}
-    pawn_glb = os.path.join(OUT, 'collision_pawn.glb')
+    pawn_glb = inp('collision_pawn.glb')
     # working-set guard: only geometry within the anchors' region (+ margin) is rasterised; the playable set is anchor-reachable
     # anyway, so this only drops far-away shells (sky / backdrop / under-map) that otherwise blow the memory cap (Seed > 6 GB)
     g0 = json.load(open(os.path.join(OUT, 'gameplay.json'), encoding='utf-8'))

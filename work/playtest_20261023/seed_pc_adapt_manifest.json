@@ -437,5 +437,33 @@
   "nodes_copied": 1533,
   "volume_nodes_dropped": 1,
   "props_simple_to_per_poly": 440
+ },
+ "dev_pickup": {
+  "env": "WFC_OVERLAY_ROOT",
+  "value": "F:/Transformers Rebuild/AssetTools/work/overlay_20261023b",
+  "rule": "the map loader reads an ExtractedAssets-relative file from the overlay when it holds it, else ExtractedAssets (Gameplay GAMEPLAY_OVERLAY_ROOT.patch, agents/gameplay 5d1eed0b)",
+  "package": "Systems build_slim --overlay (same folder)"
+ },
+ "nav_rebuilt": {
+  "reason": "Gameplay Seed TDM 4v5 check: a bot stranded at (-8.4, -8.2, -44.4) next to BlockingVolume_7008 with the original nav on the adapted collision",
+  "commands": [
+   "bot_nav.py MP_IAC_Seed --overlay out/pc_adapt/MP_IAC_Seed --out out/pc_adapt/MP_IAC_Seed",
+   "bot_nav_air.py MP_IAC_Seed --overlay out/pc_adapt/MP_IAC_Seed --out out/pc_adapt/MP_IAC_Seed"
+  ],
+  "files": {
+   "bot_nav.json": {
+    "bytes": 13131138,
+    "sha256_12": "ddfc68a321bc"
+   },
+   "bot_nav.glb": {
+    "bytes": 730252,
+    "sha256_12": "86276027fa02"
+   },
+   "bot_nav_air.json": {
+    "bytes": 1146290,
+    "sha256_12": "d55650bfbe20"
+   }
+  },
+  "no_change_proof": "without --overlay the same code reproduces the live Seed bot_nav.glb byte-identically and bot_nav.json except stats.seconds / generated"
  }
 }
