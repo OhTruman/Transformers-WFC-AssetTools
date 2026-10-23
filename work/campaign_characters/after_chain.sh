@@ -18,4 +18,6 @@ for CH in A2_KON A3_COR A4_ORB A5_TRY D1_ORB D2_COR D3A_IAC D3B_IAC; do
   echo "actors $CH $(grep -o 'rc=[0-9]*' work/campaign_render/logs_actors/$CH.log)"
   $PY $RB --cap-gb 6 --log work/campaign_render/logs_actors/dest_$CH.log work/campaign_render/campaign_placed_destructibles.py $CH >/dev/null 2>&1
   echo "destructibles $CH $(grep -o 'rc=[0-9]*' work/campaign_render/logs_actors/dest_$CH.log)"
+  $PY $RB --cap-gb 6 --log work/campaign_render/logs_actors/matskel_$CH.log work/campaign_render/campaign_matinee_skeletal.py $CH >/dev/null 2>&1
+  echo "matinee_skeletal $CH $(grep -o 'rc=[0-9]*' work/campaign_render/logs_actors/matskel_$CH.log)"
 done
