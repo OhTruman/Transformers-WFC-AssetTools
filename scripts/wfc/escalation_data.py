@@ -3,7 +3,9 @@
   A  manifests/maps/<MAP>/escalation_geometry.json  per TnSurvivalGenerator: location, PowerLevels / DrainRate, activation-volume
      polygons; its Kismet event outputs (RE export notes/data/escalation/<MAP>.json, 'downstream') with every target resolved:
      (zones[].spawn_points, Gameplay 2026-10-23: the zone's authored PossibleSpawnPoints in array order -> TnSurvivalSpawnPoint actor,
-     class, location, yaw, nav anchor, authored props)
+     class, location, yaw, nav anchor, authored props); weapon_pickups (Gameplay E2b 2026-10-23): every TnWeaponPickupFactory / plain
+     TnPickupFactory of the level packages with InventoryType, RespawnTime, the pickup mesh / effect components resolved to their assets,
+     nav anchor, yaw, and the generators whose Kismet events target it
      volumes -> physics.json polygons + collision flags, NavigationCells -> ids into the navmesh, transforming actors -> object paths of
      manifests/maps/mp_transforming_actors.json, pickup factories / nodes / emitters -> location + authored class props.
   B  manifests/maps/<MAP>/escalation_navmesh.json   the ORIGINAL cooked NavigationCell mesh (bot_nav cell schema + the original actor
@@ -83,6 +85,29 @@ def spawn_points(pkgs, zone):
                                                                               'CollisionComponent', 'CylinderComponent', 'Base', 'NavGuid')})]))
         return out
     return None
+
+def weapon_pickups(pkgs, targeted_by):
+    """TnWeaponPickupFactory + TnPickupFactory actors of the level packages (CONFIRMED cooked data)"""
+    def props(o):
+        r = DB.execute('select class, props from objects where opath=?', (o,)).fetchone()
+        return (r[0], json.loads(r[1] or '{}')) if r else (None, {})
+    out = []
+    for cls in ('TnWeaponPickupFactory', 'TnPickupFactory'):
+        for name, (o, q) in sorted(level_objects(pkgs, cls).items(), key=lambda kv: int(kv[0].rsplit('_', 1)[1])):
+            rot = q.get('Rotation') or {}; yaw = rot.get('Yaw', 0)
+            mc, mp_ = props(q['PickupMesh']) if q.get('PickupMesh') else (None, {})
+            ec, ep = props(q['PickupEffect']) if q.get('PickupEffect') else (None, {})
+            out.append(OD([('actor', name), ('class', cls), ('object', o), ('inventory_type', q.get('InventoryType')),
+                           ('mounted_weapon', 'Mounted' in str(q.get('InventoryType'))), ('respawn_time', q.get('RespawnTime')),
+                           ('location_gltf', g(q['Location']) if q.get('Location') else None), ('location_ue', ue(q['Location']) if q.get('Location') else None),
+                           ('yaw_ue', yaw), ('yaw_deg', round(yaw * 360.0 / 65536.0, 3)),
+                           ('pickup_mesh', OD([('component', short(q.get('PickupMesh'))), ('class', mc),
+                                               ('mesh', mp_.get('StaticMesh') or mp_.get('SkeletalMesh'))]) if q.get('PickupMesh') else None),
+                           ('pickup_effect', OD([('component', short(q.get('PickupEffect'))), ('class', ec), ('template', ep.get('Template'))]) if q.get('PickupEffect') else None),
+                           ('nav_anchor', short((q.get('StaticAnchor') or {}).get('Nav'))), ('targeted_by_generators', sorted(targeted_by.get(name, []))),
+                           ('props', {k: v for k, v in q.items() if k not in ('Location', 'Rotation', 'StaticAnchor', 'PickupMesh', 'PickupEffect', 'Components',
+                                                                              'CollisionComponent', 'CylinderComponent', 'Base', 'NavGuid', 'PathList')})]))
+    return out
 
 def navmesh(m, pkgs, enabled_by):
     cells = level_objects(pkgs, 'NavigationCell')
@@ -175,6 +200,13 @@ def main():
                             ('activation_volume', av), ('activation_polygons_gltf', v.get('polygons_gltf')), ('events', evs)]))
         other = [OD([('event', e['event']), ('class', e['class']), ('originator', e.get('originator')), ('comment', e.get('comment')),
                      ('outputs', e.get('outputs'))]) for e in re['events'] if e.get('originator') not in {x['object'] for x in re['generators']}]
+        tb = defaultdict(set)
+        for gn in gens:
+            for ev in gn['events']:
+                for ac in ev['actions']:
+                    for t in ac['targets']:
+                        if 'PickupFactory' in t['target']: tb[t['target']].add(gn['generator'])
+        wp = weapon_pickups(pkgs, tb)
         zones = [OD([('zone', short(z.get('object') or z.get('zone') or '')), ('polygons_gltf', (phys.get(short(z.get('object') or '')) or {}).get('polygons_gltf')),
                      ('re', z), ('spawn_points', spawn_points(pkgs, short(z.get('object') or z.get('zone') or '')))]) for z in re.get('zones') or []]
         A = OD([('map', m), ('generated_by', 'AssetTools/scripts/wfc/escalation_data.py'),
@@ -184,8 +216,8 @@ def main():
                 ('units', 'gltf metres Y-up = 0.01 * (x, z, y)_UE'),
                 ('counts', OD([('generators', len(gens)), ('generators_with_events', sum(1 for x in gens if x['events'])),
                                ('other_events', len(other)), ('zones', len(zones)),
-                               ('zone_spawn_points', sum(len(z['spawn_points'] or []) for z in zones))])),
-                ('generators', gens), ('other_events', other), ('zones', zones)])
+                               ('zone_spawn_points', sum(len(z['spawn_points'] or []) for z in zones)), ('weapon_pickups', len(wp))])),
+                ('generators', gens), ('other_events', other), ('zones', zones), ('weapon_pickups', wp)])
         json.dump(A, open(os.path.join(ROOT, 'manifests', 'maps', m, 'escalation_geometry.json'), 'w', encoding='utf-8'), indent=1)
         cells, nodes, setup_off = navmesh(m, pkgs, enabled_by)
         on = {k for k in enabled_by}; blocked = {c['actor'] for c in cells if c['blocked_at_start']}
