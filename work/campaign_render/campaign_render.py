@@ -119,7 +119,11 @@ def step(ch, sub, s):
         # scans VS/Maps for MP_* maps; the campaign tree has none, so materials cooked only elsewhere stay missing (reported as gaps)
         bm = load('build_materials'); _gj = bm.glb_json
         wrong = os.path.normcase(os.path.normpath(os.path.join(CVS, 'Maps', sub)))
-        bm.glb_json = lambda p, _gj=_gj: _gj(os.path.join(S, sub, os.path.basename(p)) if os.path.normcase(os.path.normpath(os.path.dirname(p))) == wrong else p)
+        def _glb(p, _gj=_gj):
+            j = _gj(os.path.join(S, sub, os.path.basename(p)) if os.path.normcase(os.path.normpath(os.path.dirname(p))) == wrong else p)
+            for k in ('materials', 'meshes', 'nodes', 'accessors', 'textures', 'images'): j.setdefault(k, [])   # a level with no static meshes (glTF omits empty arrays)
+            return j
+        bm.glb_json = _glb
         sys.argv = ['build_materials.py', sub, OUT] + list(dict.fromkeys(extra)); bm.main()
     elif s == 'fog': run_main('build_fog_volumes', [sub, OUT])
     elif s == 'beast': run_main('beast_probes', [sub, OUT])

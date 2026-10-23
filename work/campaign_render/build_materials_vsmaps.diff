@@ -1,0 +1,41 @@
+# PROPOSED, NOT APPLIED (AssetTools 2026-10-23; Integration). build_materials.py read world.glb from VS/Maps/<map> instead of VS_MAPS
+# (the one read the merged WFC_VS_ROOT patch missed) and assumed every world.glb has materials / meshes / nodes. Unset WFC_VS_ROOT:
+# ue3obj.VS_MAPS is VS + '/Maps' as before and every MP world.glb has all three arrays, so MP render data is unchanged. With it, a
+# per-sublevel campaign run needs no driver redirect. The M72 fallback loop (os.listdir(VS/Maps), MP_* only) is intentionally unchanged.
+--- a/tools/render/build_materials.py
++++ b/tools/render/build_materials.py
+@@ -10,7 +10,8 @@
+ """
+ import json, os, struct, subprocess, sys
+ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+-from ue3obj import Repo, map_packages, CONTENT, COOKED  # noqa: E402
++from ue3obj import Repo, map_packages, CONTENT, COOKED  # noqa: E402
++import ue3obj  # noqa: E402  (ue3obj.VS_MAPS read at call time: WFC_VS_ROOT / a per-sublevel maps root)
+ import matc  # noqa: E402
+ import character_materials  # noqa: E402
+ import impact_decals  # noqa: E402
+@@ -144,10 +145,10 @@
+         pk = repo.pkgs[pi]
+         if pk.class_name(pk.exports[ix - 1]) in ('Material', 'MaterialInstanceConstant'):
+             byname[k.rsplit('.', 1)[-1]].append(pk.object_path(ix))
+-    nomat = {i for i, m in enumerate(j['materials']) if not m.get('extras', {}).get('wfc_material')}
+-    meshname = {n['mesh']: n.get('extras', {}).get('mesh') for n in j['nodes'] if 'mesh' in n}
++    nomat = {i for i, m in enumerate(j.get('materials', [])) if not m.get('extras', {}).get('wfc_material')}
++    meshname = {n['mesh']: n.get('extras', {}).get('mesh') for n in j.get('nodes', []) if 'mesh' in n}
+     out = {}
+-    for mi, m in enumerate(j['meshes']):
++    for mi, m in enumerate(j.get('meshes', [])):
+         for k, pr in enumerate(m['primitives']):
+             if pr.get('material') not in nomat: continue
+             mesh = meshname.get(mi)
+@@ -175,8 +176,8 @@
+     # streets_pickup_fx.json: package TransGame); map copies win when both exist (largest export).
+     # UI_GFxHud_p: the HUD post-process chain materials (Milestone E: LowHealth / StaticDischarge screen effects)
+     repo = Repo(list(reversed(map_packages(mapname)[0])), fallback=['TransGame.xxx', 'TR_AllShader_p.xxx', 'UI_GFxHud_p.xxx'])
+-    j = glb_json(os.path.join(VS, 'Maps', mapname, 'world.glb'))
+-    names = {m.get('extras', {}).get('wfc_material') for m in j['materials']}
++    j = glb_json(os.path.join(ue3obj.VS_MAPS, mapname, 'world.glb'))
++    names = {m.get('extras', {}).get('wfc_material') for m in j.get('materials', [])}   # a level with no meshes omits the arrays
+     for extra_glb in ('bsp.glb', 'decals.glb'):  # rebuilt by build_lighting.py (run it first)
+         f = os.path.join(out, extra_glb)
+         if os.path.exists(f):
