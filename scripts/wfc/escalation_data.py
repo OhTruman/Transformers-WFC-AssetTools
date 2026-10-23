@@ -2,6 +2,8 @@
 
   A  manifests/maps/<MAP>/escalation_geometry.json  per TnSurvivalGenerator: location, PowerLevels / DrainRate, activation-volume
      polygons; its Kismet event outputs (RE export notes/data/escalation/<MAP>.json, 'downstream') with every target resolved:
+     (zones[].spawn_points, Gameplay 2026-10-23: the zone's authored PossibleSpawnPoints in array order -> TnSurvivalSpawnPoint actor,
+     class, location, yaw, nav anchor, authored props)
      volumes -> physics.json polygons + collision flags, NavigationCells -> ids into the navmesh, transforming actors -> object paths of
      manifests/maps/mp_transforming_actors.json, pickup factories / nodes / emitters -> location + authored class props.
   B  manifests/maps/<MAP>/escalation_navmesh.json   the ORIGINAL cooked NavigationCell mesh (bot_nav cell schema + the original actor
@@ -58,6 +60,29 @@ def setup_toggles(pkgs, max_depth=8):
                     for ln in ol.get('Links') or []:
                         if ln.get('LinkedOp'): frontier.append((ln['LinkedOp'], ln.get('InputLinkIdx', 0), dep + 1))
     return off, on
+
+def spawn_points(pkgs, zone):
+    """a TnSurvivalZoneVolume's authored PossibleSpawnPoints (array order) resolved to their actors (CONFIRMED cooked data);
+    yaw: Rotation.Yaw in UE units (65536 = 360 deg, about UE +Z, 0 = facing +X) and in degrees"""
+    for pk in pkgs:
+        r = DB.execute('select props from objects where opath=?', (pk + '.TheWorld.PersistentLevel.' + zone,)).fetchone()
+        if not r: continue
+        sp = json.loads(r[0] or '{}').get('PossibleSpawnPoints') or []
+        if isinstance(sp, str): sp = json.loads(sp)
+        out = []
+        for o in sp:
+            row = DB.execute('select class, props from objects where opath=?', (o,)).fetchone()
+            if not row: out.append(OD([('actor', short(o)), ('object', o), ('resolved', False)])); continue
+            q = json.loads(row[1] or '{}'); rot = q.get('Rotation') or {}; yaw = rot.get('Yaw', 0)
+            out.append(OD([('actor', short(o)), ('class', row[0]), ('object', o),
+                           ('location_gltf', g(q['Location']) if q.get('Location') else None),
+                           ('location_ue', ue(q['Location']) if q.get('Location') else None),
+                           ('yaw_ue', yaw), ('yaw_deg', round(yaw * 360.0 / 65536.0, 3)), ('rotation_ue', rot or None),
+                           ('nav_anchor', short((q.get('StaticAnchor') or {}).get('Nav'))), ('on_nav_mesh', q.get('OnNavMesh')),
+                           ('props', {k: v for k, v in q.items() if k not in ('Location', 'Rotation', 'StaticAnchor', 'OnNavMesh', 'Components',
+                                                                              'CollisionComponent', 'CylinderComponent', 'Base', 'NavGuid')})]))
+        return out
+    return None
 
 def navmesh(m, pkgs, enabled_by):
     cells = level_objects(pkgs, 'NavigationCell')
@@ -151,14 +176,15 @@ def main():
         other = [OD([('event', e['event']), ('class', e['class']), ('originator', e.get('originator')), ('comment', e.get('comment')),
                      ('outputs', e.get('outputs'))]) for e in re['events'] if e.get('originator') not in {x['object'] for x in re['generators']}]
         zones = [OD([('zone', short(z.get('object') or z.get('zone') or '')), ('polygons_gltf', (phys.get(short(z.get('object') or '')) or {}).get('polygons_gltf')),
-                     ('re', z)]) for z in re.get('zones') or []]
+                     ('re', z), ('spawn_points', spawn_points(pkgs, short(z.get('object') or z.get('zone') or '')))]) for z in re.get('zones') or []]
         A = OD([('map', m), ('generated_by', 'AssetTools/scripts/wfc/escalation_data.py'),
                 ('sources', ['RE-Workspace/notes/data/escalation/%s.json (generators / events / zones, RE)' % m,
                              'ExtractedAssets/VerticalSlice/Maps/%s/physics.json (volume polygons)' % m, 'manifests/authored.db',
                              'manifests/maps/mp_transforming_actors.json']),
                 ('units', 'gltf metres Y-up = 0.01 * (x, z, y)_UE'),
                 ('counts', OD([('generators', len(gens)), ('generators_with_events', sum(1 for x in gens if x['events'])),
-                               ('other_events', len(other)), ('zones', len(zones))])),
+                               ('other_events', len(other)), ('zones', len(zones)),
+                               ('zone_spawn_points', sum(len(z['spawn_points'] or []) for z in zones))])),
                 ('generators', gens), ('other_events', other), ('zones', zones)])
         json.dump(A, open(os.path.join(ROOT, 'manifests', 'maps', m, 'escalation_geometry.json'), 'w', encoding='utf-8'), indent=1)
         cells, nodes, setup_off = navmesh(m, pkgs, enabled_by)
