@@ -1,0 +1,81 @@
+# PROPOSED, NOT APPLIED (AssetTools 2026-10-23; campaign render gaps #2 and #6, CAMPAIGN_RENDER_DRYRUN.md). Against Rebuild
+# tools/render at deed7f1a. Rendering applies it when they reach the campaign. With WFC_VS_ROOT unset every path resolves exactly as
+# before (the default string + '/Maps' is the old literal, byte for byte), so MP render data is unchanged.
+# #2: build_lighting reads props_authored.json through VS_MAPS. #6: one VS root for build_lighting / build_map_fx / build_movers /
+# build_render_index / build_materials / ue3obj (beast_probes reads through ue3obj). Not covered here: build_materials' M72 fallback
+# filter and energy_death_materials.py iterate MP_* only -> use manifests/campaign/render_materials/<CH>.txt (gap #4) instead.
+--- a/tools/render/build_lighting.py
++++ b/tools/render/build_lighting.py
+@@ -23,7 +23,7 @@
+ POINT_DEFAULTS = {'Radius': 1024.0, 'FalloffExponent': 2.0, 'ShadowFalloffExponent': 2.0}
+ SPOT_DEFAULTS = {'OuterConeAngle': 44.0, 'InnerConeAngle': 0.0}
+ CHANNEL_DEFAULTS = {'BSP': True, 'Static': True, 'Dynamic': True, 'CompositeDynamic': True}
+-VS_MAPS = r'F:/Transformers Rebuild/ExtractedAssets/VerticalSlice/Maps'
++VS_MAPS = os.environ.get('WFC_VS_ROOT', r'F:/Transformers Rebuild/ExtractedAssets/VerticalSlice') + '/Maps'  # WFC_VS_ROOT: campaign VerticalSlice root (AssetTools/work/campaign_pilot/VerticalSlice); unset = ExtractedAssets (MP unchanged)
+ FOG_DEFAULTS = {'bEnabled': True, 'Density': 5e-05, 'LightBrightness': 0.1, 'LightColor': [255, 255, 255, 0],
+                 'ExtinctionDistance': 100000000.0, 'StartDistance': 0.0, 'Height': 0.0}
+ 
+@@ -99,7 +99,7 @@
+     archetype chain): hidden actors (bHidden, not drawn in game) and components that receive no light
+     (bAcceptsLights False or an empty LightingChannels set: UE3 lights only affect overlapping channels), and the
+     shadow-casting exceptions (no_shadow: CastShadow False; dynamic_shadow: bCastDynamicShadow True). Keyed by component path and by 'actor:<Actor>' (world.glb tags actor-placed nodes that way)."""
+-    p = os.path.join('F:/Transformers Rebuild/ExtractedAssets/VerticalSlice/Maps', mapname, 'props_authored.json')
++    p = os.path.join(VS_MAPS, mapname, 'props_authored.json')
+     if not os.path.exists(p):
+         return {}
+     out = {}
+--- a/tools/render/build_map_fx.py
++++ b/tools/render/build_map_fx.py
+@@ -16,7 +16,7 @@
+ from ue3obj import Repo  # noqa: E402
+ 
+ MANI = r'F:/Transformers Rebuild/AssetTools/manifests'
+-VS_MAPS = r'F:/Transformers Rebuild/ExtractedAssets/VerticalSlice/Maps'
++VS_MAPS = os.environ.get('WFC_VS_ROOT', r'F:/Transformers Rebuild/ExtractedAssets/VerticalSlice') + '/Maps'  # WFC_VS_ROOT: campaign VerticalSlice root (AssetTools/work/campaign_pilot/VerticalSlice); unset = ExtractedAssets (MP unchanged)
+ CONTENT = r'F:/Transformers Rebuild/ExtractedAssets/content'
+ WFC = r'F:/Transformers Rebuild/AssetTools/scripts/wfc'
+ 
+--- a/tools/render/build_movers.py
++++ b/tools/render/build_movers.py
+@@ -14,7 +14,7 @@
+ import json, math, os, struct, sys
+ 
+ MANI = r'F:/Transformers Rebuild/AssetTools/manifests'
+-VS_MAPS = r'F:/Transformers Rebuild/ExtractedAssets/VerticalSlice/Maps'
++VS_MAPS = os.environ.get('WFC_VS_ROOT', r'F:/Transformers Rebuild/ExtractedAssets/VerticalSlice') + '/Maps'  # WFC_VS_ROOT: campaign VerticalSlice root (AssetTools/work/campaign_pilot/VerticalSlice); unset = ExtractedAssets (MP unchanged)
+ U2D = 360.0 / 65536.0
+ 
+ 
+--- a/tools/render/build_render_index.py
++++ b/tools/render/build_render_index.py
+@@ -21,7 +21,7 @@
+ """
+ import json, os, re, sys
+ 
+-VS_MAPS = r'F:/Transformers Rebuild/ExtractedAssets/VerticalSlice/Maps'
++VS_MAPS = os.environ.get('WFC_VS_ROOT', r'F:/Transformers Rebuild/ExtractedAssets/VerticalSlice') + '/Maps'  # WFC_VS_ROOT: campaign VerticalSlice root (AssetTools/work/campaign_pilot/VerticalSlice); unset = ExtractedAssets (MP unchanged)
+ CONTENT = r'F:/Transformers Rebuild/ExtractedAssets/content'
+ MANI = os.environ.get('WFC_ASSETTOOLS_MANIFESTS', r'F:/Transformers Rebuild/AssetTools/manifests')
+ 
+--- a/tools/render/build_materials.py
++++ b/tools/render/build_materials.py
+@@ -17,7 +17,7 @@
+ import xbox_texture  # noqa: E402
+ 
+ UMODEL = r'F:/Transformers Rebuild/AssetTools/bin/umodel/umodel_64.exe'
+-VS = r'F:/Transformers Rebuild/ExtractedAssets/VerticalSlice'
++VS = os.environ.get('WFC_VS_ROOT', r'F:/Transformers Rebuild/ExtractedAssets/VerticalSlice')  # WFC_VS_ROOT: campaign VerticalSlice root (AssetTools/work/campaign_pilot/VerticalSlice); unset = ExtractedAssets (MP unchanged)
+ 
+ 
+ def glb_json(path):
+--- a/tools/render/ue3obj.py
++++ b/tools/render/ue3obj.py
+@@ -151,7 +151,7 @@
+     return (c / 255.0) ** 2.2
+ 
+ 
+-VS_MAPS = 'F:/Transformers Rebuild/ExtractedAssets/VerticalSlice/Maps'
++VS_MAPS = os.environ.get('WFC_VS_ROOT', r'F:/Transformers Rebuild/ExtractedAssets/VerticalSlice') + '/Maps'  # WFC_VS_ROOT: campaign VerticalSlice root (AssetTools/work/campaign_pilot/VerticalSlice); unset = ExtractedAssets (MP unchanged)
+ 
+ 
+ def map_packages(mapname):
