@@ -54,6 +54,7 @@ def main():
         cat = OD((k, Counter()) for k in CAT); per_pkg = OD(); langs = set(); inis = OD(); maps = OD(); chassis = []
         for e in man['entries']:
             p = os.path.join(F, *e['path'].split('/')); ext = os.path.splitext(p)[1].lower(); stem = os.path.splitext(os.path.basename(p))[0]
+            if ext == '.xxx' and not os.path.exists(p): p = os.path.join(HERE, 'cooked', os.path.basename(p))   # packages moved to work/dlc/cooked
             head = open(p, 'rb').read(4)
             db.execute('INSERT INTO files VALUES(?,?,?,?,?,?)', (pack, e['path'], os.path.basename(p), ext, e['size'], head.hex()))
             if ext in ('.int', '.fra', '.deu', '.ita', '.esn', '.jpn', '.kor', '.cht', '.pol', '.rus', '.ptb', '.cze', '.hun'):

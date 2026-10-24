@@ -25,7 +25,15 @@ _con = None
 
 def con():
     global _con
-    if _con is None: _con = sqlite3.connect('file:%s?mode=ro' % DB.replace('\\', '/'), uri=True)
+    if _con is None:
+        _con = sqlite3.connect('file:%s?mode=ro' % DB.replace('\\', '/'), uri=True)
+        # opt-in (DLC 2026-10-23): WFC_AUTHORED_EXTRA_DB = a second authored.db (the DLC packs). It is attached read-only and TEMP views
+        # named like the base tables shadow them (temp schema resolves first), so every query sees base + extra rows. Unset: unchanged.
+        extra = os.environ.get('WFC_AUTHORED_EXTRA_DB')
+        if extra:
+            _con.execute("ATTACH DATABASE ? AS xdb", ('file:%s?mode=ro' % extra.replace('\\', '/'),))
+            for t in ('objects', 'refs'):
+                _con.execute('CREATE TEMP VIEW %s AS SELECT * FROM main.%s UNION ALL SELECT * FROM xdb.%s' % (t, t, t))
     return _con
 
 def _row(r):

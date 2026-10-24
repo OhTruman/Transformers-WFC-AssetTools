@@ -21,9 +21,12 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.abspath(os.path.join(HERE, '..', '..', '..'))
 TOOLS = os.path.join(ROOT, 'AssetTools')
-COOKED = os.path.join(ROOT, 'Game Dump', 'TransGame', 'CookedXenon')
-OUT = os.path.join(ROOT, 'ExtractedAssets', 'content')
-MANI = os.path.join(TOOLS, 'manifests')
+# opt-in overrides (DLC 2026-10-23: the DLC packs are a second read-only cooked source; unset = the Game Dump / ExtractedAssets /
+# manifests as always): WFC_COOKED_DIR = the cooked package dir, WFC_EXTRACT_OUT = the umodel content root, WFC_MANI_DIR = manifests
+COOKED = os.environ.get('WFC_COOKED_DIR') or os.path.join(ROOT, 'Game Dump', 'TransGame', 'CookedXenon')
+ROOT_EA_DEFAULT = os.path.join(ROOT, 'ExtractedAssets', 'content')   # the base content root (shared slice data stays here)
+OUT = os.environ.get('WFC_EXTRACT_OUT') or ROOT_EA_DEFAULT
+MANI = os.environ.get('WFC_MANI_DIR') or os.path.join(TOOLS, 'manifests')
 LOGS = os.path.join(TOOLS, 'logs')
 UMODEL = os.path.join(TOOLS, 'bin', 'umodel', 'umodel_64.exe')
 VGM = os.path.join(TOOLS, 'bin', 'vgmstream', 'vgmstream-cli.exe')

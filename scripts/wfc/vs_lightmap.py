@@ -22,7 +22,7 @@ import ue3pkg, props as propsmod
 from vs_common import VS
 
 MAP = sys.argv[1] if len(sys.argv) > 1 else 'MP_IAC_Streets'
-CK = r'F:/Transformers Rebuild/Game Dump/TransGame/CookedXenon'
+CK = os.environ.get('WFC_COOKED_DIR') or r'F:/Transformers Rebuild/Game Dump/TransGame/CookedXenon'   # opt-in DLC override (extract.py)
 OUT = os.path.join(VS, 'Maps', MAP)
 SHARED = None  # discovered: the shared dominant-light GUID
 
