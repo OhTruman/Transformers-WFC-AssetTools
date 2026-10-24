@@ -25301,6 +25301,89 @@
    },
    "confidence": "CONFIRMED AUTHORED DATA (RE identity + AssetTools extraction agree field by field unless listed in re_cross_check.mismatches)"
   },
+  "AiEscalation_Soldier_Jet_Autobot": {
+   "re_identity": {
+    "UniqueId": "AiEscalation_Soldier_Jet_Autobot",
+    "ObjectPath": "TR_SoldierJetAut_ROBODEF_p.SoldierJetAut_ROBODEF",
+    "ai_template": "TR_District_p.AiEscalation_Soldier_Jet_Autobot_AICD",
+    "robot_skel": "TR_SoldierJetAut_ROBO_p.RB_SoldierJetAutNoLeg_SKEL",
+    "robot_animtree": "TR_Shared_ANIMTREE_p.SoldierJet_ANIMTREE",
+    "collision": {
+     "CollisionRadius": 175.0,
+     "CollisionHeight": 225.0
+    },
+    "size": "SIZE_HeavyMedium",
+    "ground_speed": 2000.0,
+    "accel": 4000.0,
+    "air_speed": 1200.0,
+    "health": 250.0,
+    "segmented_health": null,
+    "momentum": null,
+    "vehicle_form": "TR_SoldierJetAut_VEHDEF_p.SoldierJetAutVehicleForm",
+    "vehicle_skel": "TR_SoldierJetAut_VEH_p.VH_SoldierJetAut_SKEL",
+    "robot_only": false,
+    "source": "CONFIRMED AUTHORED DATA: ROBODEF values (authored.db) + AssetTools character.json; not in RE mp_chassis_roster.json"
+   },
+   "re_cross_check": {
+    "fields_compared": 0,
+    "mismatches": [],
+    "detail": {
+     "note": "no RE roster row (AI-only body)"
+    }
+   },
+   "display": {
+    "iconic": {
+     "INT": "AiEscalation_Soldier_Jet_Autobot_AICD"
+    }
+   },
+   "faction": "Autobot",
+   "class": null,
+   "availability": "Escalation horde (AI only)",
+   "mp_status": "Escalation AI template (not a player chassis)",
+   "locks": null,
+   "robot": {
+    "definition": "TR_SoldierJetAut_ROBODEF_p.SoldierJetAut_ROBODEF",
+    "mesh_object": "TR_SoldierJetAut_ROBO_p.RB_SoldierJetAutNoLeg_SKEL",
+    "glb": "../AssetTools/out/escalation_characters/AiEscalation_Soldier_Jet_Autobot/robot.glb",
+    "physics_asset": "TR_SoldierJetAut_ROBO_p.RB_SoldierJetAutNoLeg_PHYSSYS",
+    "anim_tree": "TR_Shared_ANIMTREE_p.SoldierJet_ANIMTREE"
+   },
+   "vehicle": {
+    "definition": "TR_SoldierJetAut_VEHDEF_p.SoldierJetAutVehicleForm",
+    "mesh_object": "TR_SoldierJetAut_VEH_p.VH_SoldierJetAut_SKEL",
+    "glb": "../AssetTools/out/escalation_characters/AiEscalation_Soldier_Jet_Autobot/vehicle.glb",
+    "physics_asset": "TR_SoldierJetAut_VEH_p.VH_SoldierJetAut_PHYSSYS",
+    "anim_tree": "VEH_Proxy_p.VEH_Plane_ANIMTREE"
+   },
+   "character_json": "AssetTools/out/escalation_characters/AiEscalation_Soldier_Jet_Autobot/character.json",
+   "stats": {
+    "robot_scalars (ROBODEF)": {
+     "UseHighlighting": false,
+     "DropHealthPickup": false,
+     "CanInstaGib": true,
+     "Size": "SIZE_HeavyMedium",
+     "BaseGroundSpeed": 2000.0,
+     "AccelRate": 4000.0,
+     "AirSpeed": 1200.0,
+     "AirControl": 0.4000000059604645,
+     "TerminalVelocity": 6000.0,
+     "Health": 250.0,
+     "DeathCameraFollowBoneName": "C_Spine01_Lumbar01_XB",
+     "SoundEventSet": "SoundEvents.AI.CHR_AI_SNIPER_AUTOBOT",
+     "InteractSkeletonType": "TransGame.TnInteractSkeletonHeavyMedium",
+     "Mass": 100.0,
+     "BaseEyeHeight": 150.0,
+     "DamageMultiplier": 1.0,
+     "SelfDamageMultiplier": 0.25,
+     "GrabVictimAnimation": "HitReactions_React_TractorGun_Stand_F",
+     "SimulatedAimSmoothTime": 0.20000000298023224,
+     "MovementNoiseRadius": 3000.0,
+     "MeleeSoundRadius": 1000.0
+    }
+   },
+   "escalation_horde": true,
+   "confidence": "CONFIRMED AUTHORED DATA (ROBODEF values; AI-only body, no RE roster row)"
+  },
   "Brute_Autobot": {
    "re_identity": {
     "UniqueId": "Brute_Autobot",
@@ -26463,6 +26546,7 @@
  },
  "escalation_horde_chassis": {
   "ids": [
+   "AiEscalation_Soldier_Jet_Autobot",
    "Brute_Autobot",
    "Brute_Decepticon",
    "CQCSpecialist_Autobot",

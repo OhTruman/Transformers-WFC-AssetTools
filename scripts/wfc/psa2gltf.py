@@ -164,7 +164,8 @@ def main():
         uniq.setdefault(w[0], w)
     work = list(uniq.values())
     res = []
-    with ProcessPoolExecutor() as ex:
+    # opt-in WFC_JOBS caps the pool (DLC run 2026-10-23: one worker per CPU exceeded run_bounded's 6 GB Job-Object cap); unset = as before
+    with ProcessPoolExecutor(max_workers=int(os.environ['WFC_JOBS']) if os.environ.get('WFC_JOBS') else None) as ex:
         for r in ex.map(convert, work, chunksize=4): res.append(r)
     with open(os.path.join(extract.MANI, 'extracted', 'animations_gltf.jsonl'), 'w') as f:
         for r in res: f.write(json.dumps(r) + '\n')
