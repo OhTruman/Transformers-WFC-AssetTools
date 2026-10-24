@@ -85,8 +85,10 @@ def main():
                        ('paths_with_both_twins', sum(1 for r in rec.values() if 'int' in r and 'FRA' in r)),
                        ('merged_copy_language (content/<group>/<name>.wav matches which twin)', dict(same)),
                        ('differing_copies_within_a_twin', diff[:200]), ('waves', rec)])
-    os.makedirs(os.path.join(AT, 'manifests', 'audio'), exist_ok=True)
-    json.dump(out, open(os.path.join(AT, 'manifests', 'audio', 'loc_twins.json'), 'w', encoding='utf-8'), indent=1)
+    # opt-in DLC run (WFC_COOKED_DIR = the DLC packs, 2026-10-23): the manifest goes to manifests/dlc/audio/, the base one is untouched
+    mdir = os.path.join(AT, 'manifests', 'dlc', 'audio') if os.environ.get('WFC_COOKED_DIR') else os.path.join(AT, 'manifests', 'audio')
+    os.makedirs(mdir, exist_ok=True)
+    json.dump(out, open(os.path.join(mdir, 'loc_twins.json'), 'w', encoding='utf-8'), indent=1)
     print(json.dumps({k: out[k] for k in ('packages', 'stats', 'paths', 'paths_with_both_twins')}), out['merged_copy_language (content/<group>/<name>.wav matches which twin)'])
 
 if __name__ == '__main__':

@@ -1,0 +1,312 @@
+{
+ "map": "MP_ESC_Tranquillity",
+ "generated_by": "AssetTools/scripts/wfc/map_structure_audit.py",
+ "method": {
+  "cell_m": 1.0,
+  "walk_step_m": 1.25,
+  "walkable_normal_y": 0.7,
+  "huge_triangle_m2": 20000.0,
+  "note": "walk graph is conservative (no jumping / vehicle form / jump pads): unreachable != unplayable"
+ },
+ "transforms": {
+  "smca_nodes_checked": 4524,
+  "smca_world_glb_matrix_mismatch": 0,
+  "examples": [],
+  "rule": "world.glb node matrix == props.json gltf_matrix (component S*R*T x native CachedParentToWorld; Streets lesson)"
+ },
+ "mirrored_instances": {
+  "primitive_instances": {
+   "normal": 4151,
+   "det>0 tris normal-agree": 2972926,
+   "det>0 tris normal-oppose": 1843,
+   "mirrored": 1242,
+   "det<0 tris normal-agree": 70,
+   "det<0 tris normal-oppose": 689974
+  },
+  "verdict": "CONSISTENT",
+  "rule": "for det<0 nodes the transformed winding opposes the transformed normals; a glTF renderer must flip the front face (glTF 2.0 spec 3.7.4). Exported data is consistent when det<0 tris mostly oppose and det>0 tris mostly agree."
+ },
+ "playable_space": {
+  "player_starts": 4,
+  "starts_on_reachable_floor": 4,
+  "starts_without_floor_below": [],
+  "starts_off_walk_graph_diagnosis": [],
+  "walk_graph_cells": 387404,
+  "walk_graph_layers": 1723721,
+  "walk_graph_area_m2": 1723721.0,
+  "connected_from_any_start": true,
+  "bounds": {
+   "x_m": [
+    307.0,
+    1034.0
+   ],
+   "z_m": [
+    -229.0,
+    334.0
+   ],
+   "floor_height_m": [
+    242.51,
+    396.18
+   ]
+  },
+  "kill_z_ue": [
+   -262143.0,
+   -262143.0,
+   -262143.0,
+   -262143.0
+  ],
+  "placement_checks": {
+   "pickups": {
+    "count": 6,
+    "on_walkable_reachable_floor": 6,
+    "not_on_walk_graph": []
+   },
+   "objectives": {
+    "count": 0,
+    "on_walkable_reachable_floor": 0,
+    "not_on_walk_graph": []
+   }
+  }
+ },
+ "collision_vs_visible": {
+  "reachable_floor_cells_with_visible_floor": 940749,
+  "reachable_floor_cells_without_visible_floor (invisible floor) by collision source": {
+   "StaticMeshCollectionActor": 776197,
+   "StaticMeshActor": 5919,
+   "BlockingVolume": 243,
+   "StaticInterpActor": 209,
+   "TnTeamBlockingVolume": 173,
+   "DynamicBlockingVolume": 117,
+   "InterpActor": 114
+  },
+  "agreement_pct": 54.58,
+  "agreement_pct_excluding_volume_tops": 54.59,
+  "visible_floor_cells_next_to_walk_graph_without_collision (fall-through candidates)": 182081,
+  "fall_through_candidates_by_visible_source (top 25)": {
+   "ENV_CORE_Wall_p.CanyonWalls.ENV_CORE_CanyonJunkPillar_C_STAT": 112751,
+   "ENV_CORE_Wall_p.CanyonWalls.ENV_CORE_CanyonJunkWall_A_STAT": 25813,
+   "ENV_ORB_CoolantRoom_p.Model.CoolingCylinderPanel_STAT": 3025,
+   "ENV_CORE_SupportColumns_p.StaticMesh.RoutingSupportA_STAT": 2865,
+   "TPRO_KON_CorruptorSpike_p.Meshes.CorruptorSpike_Large_02_STAT": 2849,
+   "ENV_ORB_CoolantRoom_p.Model.CoolingCylinder_STAT": 2685,
+   "ENV_IAC_BLDS_1_p.StaticMesh.Saucer_8192_STAT": 2375,
+   "ENV_CORE_Platform_p.Floors.ENV_CORE_CanyonFloor_E_STAT": 2329,
+   "PROP_NEU_Debris_p.StaticMeshes.DebriPile_STAT": 2307,
+   "PROP_UND_MechParts_p.StaticMesh.PROP_UND_PistonSet_B_STAT": 1794,
+   "ENV_ORB_D1_Architecture_p.Meshes.SideSupportPillar_01_STAT": 1673,
+   "ENV_CORE_Deco_p.StaticMesh.ENV_CORE_CanyonDeco_D_STAT": 1239,
+   "Prop_Core_EnergonFloors_p.CaveB_Floor1": 1171,
+   "ENV_ORB_CoolantRoom_p.Model.WallFilimentDoors_STAT": 1137,
+   "ENV_CORE_Platform_p.Platform.ENV_CORE_GatePlatform_D_STAT": 1003,
+   "ENV_CORE_Platform_p.Trim.ENV_CORE_WallTrim_STAT": 969,
+   "ENV_CORE_Platform_p.Floors.ENV_CORE_PipeFloorRing_B_STAT": 920,
+   "PROP_NEU_WallProps_p.Mesh.PROP_NEU_MachinePress_A_STAT": 891,
+   "ENV_CORE_Wall_p.CanyonWalls.ENV_CORE_CliffWall_A_STAT": 859,
+   "ENV_CORE_Platform_p.Trim.ENV_CORE_CanyonTrim_A_STAT": 792,
+   "ENV_IAC_Deco_1_p.Supports.ORB_PistonHousingHOLE_STAT": 787,
+   "ENV_GLB_EnvEffects_p.StaticMesh.LightBeam_Cone_STAT": 728,
+   "ENV_ORB_CoolantRoom_p.Model.AngledSupportMid_STAT": 635,
+   "ENV_ORB_D1_Deco_p.Meshes.Capacitor_01_STAT": 597,
+   "ENV_CORE_Wall_p.Inside_Walls.ENV_CORE_InroomWall_F_STAT": 521
+  },
+  "non_blocking_props_by_mesh (authored bCollideActors/bBlockActors false)": {
+   "ENV_GLB_EnvEffects_p.StaticMesh.LightBeam_Cone_STAT": 195,
+   "ENV_IAC_LightSources_p.LightPlanes.SquareLightPlane_STAT": 18,
+   "ENV_CORE_Platform_p.Floors.ENV_CORE_CanyonFloor_C_STAT": 17,
+   "ENV_ORB_D1_Architecture_p.Meshes.FloorTrim_Curved_STAT": 8,
+   "PROP_NEU_Debris_p.StaticMeshes.DebriPile_STAT": 5,
+   "ENV_CORE_Platform_p.Trim.ENV_CORE_CanyonTrim_A_STAT": 4
+  },
+  "fall_through_examples_gltf": [
+   [
+    345.5,
+    384.89,
+    67.5
+   ],
+   [
+    346.5,
+    384.57,
+    67.5
+   ],
+   [
+    347.5,
+    383.4,
+    59.5
+   ],
+   [
+    347.5,
+    383.31,
+    60.5
+   ],
+   [
+    347.5,
+    383.43,
+    61.5
+   ],
+   [
+    347.5,
+    383.52,
+    62.5
+   ],
+   [
+    347.5,
+    384.34,
+    67.5
+   ],
+   [
+    347.5,
+    384.87,
+    68.5
+   ],
+   [
+    348.5,
+    383.44,
+    57.5
+   ],
+   [
+    348.5,
+    383.2,
+    58.5
+   ],
+   [
+    348.5,
+    382.99,
+    59.5
+   ],
+   [
+    348.5,
+    382.98,
+    60.5
+   ],
+   [
+    348.5,
+    383.1,
+    61.5
+   ],
+   [
+    348.5,
+    383.22,
+    62.5
+   ],
+   [
+    348.5,
+    383.31,
+    63.5
+   ],
+   [
+    348.5,
+    383.33,
+    64.5
+   ],
+   [
+    348.5,
+    383.34,
+    65.5
+   ],
+   [
+    348.5,
+    384.11,
+    67.5
+   ],
+   [
+    348.5,
+    384.64,
+    68.5
+   ],
+   [
+    349.5,
+    383.36,
+    56.5
+   ]
+  ],
+  "blocking_props_without_collision_node": {},
+  "blocking_gaps_explained": [],
+  "collision_nodes_without_blocking_prop": {
+   "DynamicBlockingVolume_1127": 1,
+   "DynamicBlockingVolume_11279": 1,
+   "DynamicBlockingVolume_14383": 1,
+   "DynamicBlockingVolume_14784": 1,
+   "DynamicBlockingVolume_15054": 1,
+   "DynamicBlockingVolume_1599": 1,
+   "DynamicBlockingVolume_1977": 1,
+   "DynamicBlockingVolume_248": 1,
+   "DynamicBlockingVolume_2638": 1,
+   "DynamicBlockingVolume_5543": 1,
+   "DynamicBlockingVolume_8188": 1,
+   "DynamicBlockingVolume_8414": 1,
+   "DynamicBlockingVolume_8499": 1,
+   "DynamicBlockingVolume_9335": 1,
+   "DynamicBlockingVolume_9528": 1,
+   "TnForcedDirVolume_11001": 1,
+   "TnForcedDirVolume_7621": 1,
+   "TnTeamBlockingVolume_10671": 1,
+   "TnTeamBlockingVolume_11023": 1,
+   "TnTeamBlockingVolume_1120": 1,
+   "TnTeamBlockingVolume_1133": 1,
+   "TnTeamBlockingVolume_12160": 1,
+   "TnTeamBlockingVolume_13914": 1,
+   "TnTeamBlockingVolume_15483": 1,
+   "TnTeamBlockingVolume_16141": 1,
+   "TnTeamBlockingVolume_2868": 1,
+   "TnTeamBlockingVolume_3480": 1,
+   "TnTeamBlockingVolume_3571": 1,
+   "TnTeamBlockingVolume_399": 1,
+   "TnTeamBlockingVolume_4896": 1,
+   "TnTeamBlockingVolume_5395": 1,
+   "TnTeamBlockingVolume_6108": 1,
+   "TnTeamBlockingVolume_6139": 1,
+   "TnTeamBlockingVolume_753": 1,
+   "TnTeamBlockingVolume_9010": 1,
+   "TnTeamBlockingVolume_9200": 1
+  },
+  "collision_node_kinds": {
+   "BSPCollision_MP_ESC_Tranquillity_Art": 1,
+   "BlockingVolume": 5,
+   "DynamicBlockingVolume": 15,
+   "TnForcedDirVolume": 2,
+   "TnTeamBlockingVolume": 19,
+   "StaticInterpActor": 24,
+   "StaticMeshCollectionActor": 378,
+   "StaticMeshActor": 169,
+   "InterpActor": 2
+  },
+  "oversized_triangles_excluded": {
+   "world": 10,
+   "collision": 18
+  }
+ },
+ "materials": {
+  "default_material_triangles_by_kind": {
+   "bsp": 539
+  },
+  "default_material_area_m2_by_kind": {
+   "bsp": 1303514.3
+  },
+  "note": "BSP faces with DefaultMaterial and their in-play visibility: manifests/next_map/<MAP>_bsp_default_faces.json (Streets: streets_bsp_default_faces.json)"
+ },
+ "lightmaps": {
+  "lightmaps_json_props": 4488,
+  "world_glb_nodes_with_lm_atlas": 4488,
+  "of_which_have_TEXCOORD_1": 4488,
+  "atlases_used": 52,
+  "atlases_without_png": [],
+  "binding_ok": true
+ },
+ "actors": {
+  "world_glb_nodes_by_kind": {
+   "bsp": 1,
+   "StaticInterpActor": 24,
+   "StaticMeshCollectionActor": 4524,
+   "StaticMeshActor": 304,
+   "InterpActor": 2
+  },
+  "non_collection_actors": 330,
+  "non_collection_actors_missing_from_world_glb": [],
+  "mode_gated_targets": 0,
+  "mode_gated_missing_from_world_glb": []
+ },
+ "verdict": {
+  "status": "PASS",
+  "failures": []
+ }
+}
