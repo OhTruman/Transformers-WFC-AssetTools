@@ -212,7 +212,11 @@ def main():
                                     ('depth', s.get('depth')), ('comment', s.get('comment')),
                                     ('targets', [resolve(x) for x in tg if not x.startswith('SeqVar_')]),
                                     ('variable_targets', [x for x in tg if x.startswith('SeqVar_')])]))
+                    # DLC --maps mode only (base outputs unchanged): RE 1104a86 'seq' = the op's sequence below Main_Sequence; short op names
+                    # repeat across instanced sequences (District's five Door_Lasers copies)
+                    if DLC_MAPS: acts[-1]['seq'] = s.get('seq')
                 evs.append(OD([('event', e['event']), ('class', e['class']), ('outputs', e.get('outputs')), ('actions', acts)]))
+                if DLC_MAPS: evs[-1]['seq'] = e.get('seq')
             v = phys.get(av) or {}
             gens.append(OD([('generator', gid), ('name_key', gen.get('LocalizedGeneratorNameKey')), ('power_levels', gen.get('PowerLevels')),
                             ('drain_rate', gen.get('DrainRate')), ('location_ue', ue(gen['Location'])), ('location_gltf', g(gen['Location'])),

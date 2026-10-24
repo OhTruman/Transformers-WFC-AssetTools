@@ -509,7 +509,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "RocketLauncher"
       },
       {
        "op": "SeqAct_Toggle_16154",
@@ -920,9 +921,11 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "RocketLauncher"
       }
-     ]
+     ],
+     "seq": "RocketLauncher"
     }
    ]
   },
@@ -1396,7 +1399,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "OverSheilds"
       },
       {
        "op": "SeqAct_Toggle_16154",
@@ -1807,9 +1811,11 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "OverSheilds"
       }
-     ]
+     ],
+     "seq": "OverSheilds"
     }
    ]
   },
@@ -2285,7 +2291,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "NucleonShockCannon"
       },
       {
        "op": "SeqAct_Toggle_16154",
@@ -2696,9 +2703,11 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "NucleonShockCannon"
       }
-     ]
+     ],
+     "seq": "NucleonShockCannon"
     }
    ]
   },
@@ -3190,7 +3199,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "BattlePistol"
       },
       {
        "op": "SeqAct_Toggle_16154",
@@ -3601,9 +3611,11 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "BattlePistol"
       }
-     ]
+     ],
+     "seq": "BattlePistol"
     }
    ]
   },
@@ -4079,7 +4091,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "HealGrenades"
       },
       {
        "op": "SeqAct_Toggle_16154",
@@ -4490,9 +4503,11 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "HealGrenades"
       }
-     ]
+     ],
+     "seq": "HealGrenades"
     }
    ]
   },
@@ -4850,7 +4865,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Door_One"
       },
       {
        "op": "SeqAct_Toggle_14722",
@@ -5009,7 +5025,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Door_One"
       },
       {
        "op": "SeqAct_Interp_10535",
@@ -5077,7 +5094,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Door_One"
       },
       {
        "op": "SeqAct_Toggle_15949",
@@ -5808,7 +5826,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Door_One"
       },
       {
        "op": "SeqAct_Toggle_14386",
@@ -5829,7 +5848,8 @@
          "navmesh_actor": "NavigationCell_11612"
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Door_One"
       },
       {
        "op": "SeqAct_Toggle_398",
@@ -6531,9 +6551,11 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Door_One"
       }
-     ]
+     ],
+     "seq": "Door_One"
     }
    ]
   },
@@ -7025,7 +7047,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "HealthGenerator_2"
       },
       {
        "op": "SeqAct_Toggle_16154",
@@ -7436,9 +7459,11 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "HealthGenerator_2"
       }
-     ]
+     ],
+     "seq": "HealthGenerator_2"
     }
    ]
   },
@@ -7763,7 +7788,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Flood_Gate"
       },
       {
        "op": "SeqAct_ActivateRemoteEvent_13038",
@@ -7773,7 +7799,231 @@
        "depth": 1,
        "comment": "AUDIO_DRAIN_02",
        "targets": [],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Flood_Gate"
+      },
+      {
+       "op": "SeqEvent_RemoteEvent_8069",
+       "class": "SeqEvent_RemoteEvent",
+       "input": 0,
+       "via": "SeqAct_ActivateRemoteEvent_13038.remote:AUDIO_DRAIN_02",
+       "depth": 2,
+       "comment": "AUDIO_DRAIN_02",
+       "targets": [],
+       "variable_targets": [],
+       "seq": ""
+      },
+      {
+       "op": "SeqAct_Switch_372",
+       "class": "SeqAct_Switch",
+       "input": "In",
+       "via": "SeqEvent_RemoteEvent_8069.Out",
+       "depth": 3,
+       "comment": null,
+       "targets": [],
+       "variable_targets": [],
+       "seq": ""
+      },
+      {
+       "op": "SeqAct_Delay_5765",
+       "class": "SeqAct_Delay",
+       "input": 0,
+       "via": "SeqAct_Switch_372.Link 2",
+       "depth": 4,
+       "comment": null,
+       "targets": [],
+       "variable_targets": [],
+       "seq": ""
+      },
+      {
+       "op": "SeqAct_Gate_9428",
+       "class": "SeqAct_Gate",
+       "input": 0,
+       "via": "SeqAct_Switch_372.Link 2",
+       "depth": 4,
+       "comment": null,
+       "targets": [],
+       "variable_targets": [],
+       "seq": ""
+      },
+      {
+       "op": "SeqAct_Switch_7519",
+       "class": "SeqAct_Switch",
+       "input": "In",
+       "via": "SeqEvent_RemoteEvent_8069.Out",
+       "depth": 3,
+       "comment": null,
+       "targets": [],
+       "variable_targets": [],
+       "seq": ""
+      },
+      {
+       "op": "SeqAct_Delay_7140",
+       "class": "SeqAct_Delay",
+       "input": 0,
+       "via": "SeqAct_Switch_7519.Link 1",
+       "depth": 4,
+       "comment": null,
+       "targets": [],
+       "variable_targets": [],
+       "seq": ""
+      },
+      {
+       "op": "SeqAct_Gate_8314",
+       "class": "SeqAct_Gate",
+       "input": 0,
+       "via": "SeqAct_Switch_7519.Link 1",
+       "depth": 4,
+       "comment": null,
+       "targets": [],
+       "variable_targets": [],
+       "seq": ""
+      },
+      {
+       "op": "SeqAct_Switch_1106",
+       "class": "SeqAct_Switch",
+       "input": "In",
+       "via": "SeqEvent_RemoteEvent_8069.Out",
+       "depth": 3,
+       "comment": null,
+       "targets": [],
+       "variable_targets": [],
+       "seq": ""
+      },
+      {
+       "op": "SeqAct_PlaySound_13695",
+       "class": "SeqAct_PlaySound",
+       "input": "Stop",
+       "via": "SeqAct_Switch_1106.Link 3",
+       "depth": 4,
+       "comment": "AMB_ENERGON_LAKE",
+       "targets": [
+        {
+         "target": "HmAmbientSoundVolumeEmitter_398",
+         "class": "HmAmbientSoundVolumeEmitter",
+         "resolved": false
+        },
+        {
+         "target": "HmAmbientSoundVolumeEmitter_12610",
+         "class": "HmAmbientSoundVolumeEmitter",
+         "resolved": false
+        }
+       ],
+       "variable_targets": [],
+       "seq": ""
+      },
+      {
+       "op": "SeqAct_PlaySound_15772",
+       "class": "SeqAct_PlaySound",
+       "input": "Play",
+       "via": "SeqAct_Switch_1106.Link 3",
+       "depth": 4,
+       "comment": "EVENT_COOLANT_DROP_START",
+       "targets": [
+        {
+         "target": "HmAmbientSoundVolumeEmitter_5066",
+         "class": "HmAmbientSoundVolumeEmitter",
+         "resolved": false
+        }
+       ],
+       "variable_targets": [],
+       "seq": ""
+      },
+      {
+       "op": "SeqAct_Delay_12076",
+       "class": "SeqAct_Delay",
+       "input": 0,
+       "via": "SeqAct_Switch_1106.Link 3",
+       "depth": 4,
+       "comment": null,
+       "targets": [],
+       "variable_targets": [],
+       "seq": ""
+      },
+      {
+       "op": "SeqAct_PlaySound_11664",
+       "class": "SeqAct_PlaySound",
+       "input": "Play",
+       "via": "SeqAct_Switch_1106.Link 3",
+       "depth": 4,
+       "comment": "EVENT_COOLANT_DROP_LP",
+       "targets": [
+        {
+         "target": "HmAmbientSoundVolumeEmitter_5066",
+         "class": "HmAmbientSoundVolumeEmitter",
+         "resolved": false
+        }
+       ],
+       "variable_targets": [],
+       "seq": ""
+      },
+      {
+       "op": "SeqAct_PlaySound_12580",
+       "class": "SeqAct_PlaySound",
+       "input": "Play",
+       "via": "SeqEvent_RemoteEvent_8069.Out",
+       "depth": 3,
+       "comment": "EMIT_ENERGON_WATERFALL_DRIP",
+       "targets": [
+        {
+         "target": "HmAmbientSoundVolumeEmitter_11622",
+         "class": "HmAmbientSoundVolumeEmitter",
+         "resolved": false
+        }
+       ],
+       "variable_targets": [],
+       "seq": ""
+      },
+      {
+       "op": "SeqAct_PlaySound_11091",
+       "class": "SeqAct_PlaySound",
+       "input": "Stop",
+       "via": "SeqEvent_RemoteEvent_8069.Out",
+       "depth": 3,
+       "comment": "EMIT_ENERGON_WATERFALL_LARGE_02",
+       "targets": [
+        {
+         "target": "HmAmbientSoundVolumeEmitter_11622",
+         "class": "HmAmbientSoundVolumeEmitter",
+         "resolved": false
+        }
+       ],
+       "variable_targets": [],
+       "seq": ""
+      },
+      {
+       "op": "SeqAct_PlaySound_12345",
+       "class": "SeqAct_PlaySound",
+       "input": "Stop",
+       "via": "SeqEvent_RemoteEvent_8069.Out",
+       "depth": 3,
+       "comment": "EMIT_ENERGON_WATERFALL_MED_02",
+       "targets": [
+        {
+         "target": "HmAmbientSoundVolumeEmitter_4405",
+         "class": "HmAmbientSoundVolumeEmitter",
+         "resolved": false
+        }
+       ],
+       "variable_targets": [],
+       "seq": ""
+      },
+      {
+       "op": "SeqAct_PlaySound_9590",
+       "class": "SeqAct_PlaySound",
+       "input": "Stop",
+       "via": "SeqEvent_RemoteEvent_8069.Out",
+       "depth": 3,
+       "comment": "EMIT_ENERGON_WATERFALL_MIST_02",
+       "targets": [
+        {
+         "target": "HmAmbientSoundVolumeEmitter_3392",
+         "class": "HmAmbientSoundVolumeEmitter",
+         "resolved": false
+        }
+       ],
+       "variable_targets": [],
+       "seq": ""
       },
       {
        "op": "SeqAct_Interp_15196",
@@ -7837,7 +8087,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Flood_Gate"
       },
       {
        "op": "SeqAct_Toggle_15531",
@@ -8393,7 +8644,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Flood_Gate"
       },
       {
        "op": "SeqAct_Interp_5361",
@@ -8602,7 +8854,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Flood_Gate"
       },
       {
        "op": "SeqAct_Interp_5361",
@@ -8811,7 +9064,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Flood_Gate"
       },
       {
        "op": "SeqAct_ToggleHidden_9226",
@@ -9049,7 +9303,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Flood_Gate"
       },
       {
        "op": "SeqAct_ActivateRemoteEvent_14288",
@@ -9059,7 +9314,8 @@
        "depth": 3,
        "comment": "FogOn",
        "targets": [],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Flood_Gate"
       },
       {
        "op": "SeqEvent_RemoteEvent_11181",
@@ -9069,7 +9325,8 @@
        "depth": 4,
        "comment": "FogOn",
        "targets": [],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Fog"
       },
       {
        "op": "SeqAct_Toggle_2379",
@@ -9079,7 +9336,8 @@
        "depth": 5,
        "comment": null,
        "targets": [],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Fog"
       },
       {
        "op": "BaseDoors",
@@ -9089,7 +9347,8 @@
        "depth": 3,
        "comment": null,
        "targets": [],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Flood_Gate"
       },
       {
        "op": "SeqAct_Toggle_318",
@@ -9455,7 +9714,8 @@
          "navmesh_actor": "NavigationCell_12844"
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Flood_Gate"
       },
       {
        "op": "SeqAct_Toggle_6882",
@@ -10538,7 +10798,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Flood_Gate"
       },
       {
        "op": "SeqAct_Toggle_13756",
@@ -10838,7 +11099,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Flood_Gate"
       },
       {
        "op": "SeqAct_Toggle_8441",
@@ -11137,9 +11399,11 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Flood_Gate"
       }
-     ]
+     ],
+     "seq": "Flood_Gate"
     }
    ]
   },
@@ -11613,7 +11877,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "AmmoGenerator_Seq_1"
       },
       {
        "op": "SeqAct_Toggle_16154",
@@ -12024,9 +12289,11 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "AmmoGenerator_Seq_1"
       }
-     ]
+     ],
+     "seq": "AmmoGenerator_Seq_1"
     }
    ]
   },
@@ -12502,7 +12769,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "HealthGenerator"
       },
       {
        "op": "SeqAct_Toggle_16154",
@@ -12913,9 +13181,11 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "HealthGenerator"
       }
-     ]
+     ],
+     "seq": "HealthGenerator"
     }
    ]
   },
@@ -13275,7 +13545,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "code_of_Power_0"
       },
       {
        "op": "SeqAct_Toggle_14722",
@@ -13434,7 +13705,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "code_of_Power_0"
       },
       {
        "op": "SeqAct_Interp_10535",
@@ -13504,7 +13776,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "code_of_Power_0"
       },
       {
        "op": "SeqAct_Toggle_13309",
@@ -13525,7 +13798,8 @@
          "navmesh_actor": "NavigationCell_6272"
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "code_of_Power_0"
       },
       {
        "op": "SeqAct_Toggle_398",
@@ -13808,9 +14082,11 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "code_of_Power_0"
       }
-     ]
+     ],
+     "seq": "code_of_Power_0"
     }
    ]
   },
@@ -14286,7 +14562,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "ShotgunGenerator"
       },
       {
        "op": "SeqAct_Toggle_16154",
@@ -14697,9 +14974,11 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "ShotgunGenerator"
       }
-     ]
+     ],
+     "seq": "ShotgunGenerator"
     }
    ]
   },
@@ -15024,7 +15303,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Flood_Gate"
       },
       {
        "op": "SeqAct_ActivateRemoteEvent_8884",
@@ -15034,7 +15314,231 @@
        "depth": 1,
        "comment": "AUDIO_DRAIN_03",
        "targets": [],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Flood_Gate"
+      },
+      {
+       "op": "SeqEvent_RemoteEvent_12448",
+       "class": "SeqEvent_RemoteEvent",
+       "input": 0,
+       "via": "SeqAct_ActivateRemoteEvent_8884.remote:AUDIO_DRAIN_03",
+       "depth": 2,
+       "comment": "AUDIO_DRAIN_03",
+       "targets": [],
+       "variable_targets": [],
+       "seq": ""
+      },
+      {
+       "op": "SeqAct_Switch_7519",
+       "class": "SeqAct_Switch",
+       "input": "In",
+       "via": "SeqEvent_RemoteEvent_12448.Out",
+       "depth": 3,
+       "comment": null,
+       "targets": [],
+       "variable_targets": [],
+       "seq": ""
+      },
+      {
+       "op": "SeqAct_Delay_7140",
+       "class": "SeqAct_Delay",
+       "input": 0,
+       "via": "SeqAct_Switch_7519.Link 1",
+       "depth": 4,
+       "comment": null,
+       "targets": [],
+       "variable_targets": [],
+       "seq": ""
+      },
+      {
+       "op": "SeqAct_Gate_8314",
+       "class": "SeqAct_Gate",
+       "input": 0,
+       "via": "SeqAct_Switch_7519.Link 1",
+       "depth": 4,
+       "comment": null,
+       "targets": [],
+       "variable_targets": [],
+       "seq": ""
+      },
+      {
+       "op": "SeqAct_Switch_372",
+       "class": "SeqAct_Switch",
+       "input": "In",
+       "via": "SeqEvent_RemoteEvent_12448.Out",
+       "depth": 3,
+       "comment": null,
+       "targets": [],
+       "variable_targets": [],
+       "seq": ""
+      },
+      {
+       "op": "SeqAct_Delay_5765",
+       "class": "SeqAct_Delay",
+       "input": 0,
+       "via": "SeqAct_Switch_372.Link 2",
+       "depth": 4,
+       "comment": null,
+       "targets": [],
+       "variable_targets": [],
+       "seq": ""
+      },
+      {
+       "op": "SeqAct_Gate_9428",
+       "class": "SeqAct_Gate",
+       "input": 0,
+       "via": "SeqAct_Switch_372.Link 2",
+       "depth": 4,
+       "comment": null,
+       "targets": [],
+       "variable_targets": [],
+       "seq": ""
+      },
+      {
+       "op": "SeqAct_Switch_1106",
+       "class": "SeqAct_Switch",
+       "input": "In",
+       "via": "SeqEvent_RemoteEvent_12448.Out",
+       "depth": 3,
+       "comment": null,
+       "targets": [],
+       "variable_targets": [],
+       "seq": ""
+      },
+      {
+       "op": "SeqAct_PlaySound_13695",
+       "class": "SeqAct_PlaySound",
+       "input": "Stop",
+       "via": "SeqAct_Switch_1106.Link 3",
+       "depth": 4,
+       "comment": "AMB_ENERGON_LAKE",
+       "targets": [
+        {
+         "target": "HmAmbientSoundVolumeEmitter_398",
+         "class": "HmAmbientSoundVolumeEmitter",
+         "resolved": false
+        },
+        {
+         "target": "HmAmbientSoundVolumeEmitter_12610",
+         "class": "HmAmbientSoundVolumeEmitter",
+         "resolved": false
+        }
+       ],
+       "variable_targets": [],
+       "seq": ""
+      },
+      {
+       "op": "SeqAct_PlaySound_15772",
+       "class": "SeqAct_PlaySound",
+       "input": "Play",
+       "via": "SeqAct_Switch_1106.Link 3",
+       "depth": 4,
+       "comment": "EVENT_COOLANT_DROP_START",
+       "targets": [
+        {
+         "target": "HmAmbientSoundVolumeEmitter_5066",
+         "class": "HmAmbientSoundVolumeEmitter",
+         "resolved": false
+        }
+       ],
+       "variable_targets": [],
+       "seq": ""
+      },
+      {
+       "op": "SeqAct_Delay_12076",
+       "class": "SeqAct_Delay",
+       "input": 0,
+       "via": "SeqAct_Switch_1106.Link 3",
+       "depth": 4,
+       "comment": null,
+       "targets": [],
+       "variable_targets": [],
+       "seq": ""
+      },
+      {
+       "op": "SeqAct_PlaySound_11664",
+       "class": "SeqAct_PlaySound",
+       "input": "Play",
+       "via": "SeqAct_Switch_1106.Link 3",
+       "depth": 4,
+       "comment": "EVENT_COOLANT_DROP_LP",
+       "targets": [
+        {
+         "target": "HmAmbientSoundVolumeEmitter_5066",
+         "class": "HmAmbientSoundVolumeEmitter",
+         "resolved": false
+        }
+       ],
+       "variable_targets": [],
+       "seq": ""
+      },
+      {
+       "op": "SeqAct_PlaySound_4246",
+       "class": "SeqAct_PlaySound",
+       "input": "Stop",
+       "via": "SeqEvent_RemoteEvent_12448.Out",
+       "depth": 3,
+       "comment": "EMIT_ENERGON_WATERFALL_LARGE_03",
+       "targets": [
+        {
+         "target": "HmAmbientSoundVolumeEmitter_5152",
+         "class": "HmAmbientSoundVolumeEmitter",
+         "resolved": false
+        }
+       ],
+       "variable_targets": [],
+       "seq": ""
+      },
+      {
+       "op": "SeqAct_PlaySound_15537",
+       "class": "SeqAct_PlaySound",
+       "input": "Stop",
+       "via": "SeqEvent_RemoteEvent_12448.Out",
+       "depth": 3,
+       "comment": "EMIT_ENERGON_WATERFALL_MED_03",
+       "targets": [
+        {
+         "target": "HmAmbientSoundVolumeEmitter_8319",
+         "class": "HmAmbientSoundVolumeEmitter",
+         "resolved": false
+        }
+       ],
+       "variable_targets": [],
+       "seq": ""
+      },
+      {
+       "op": "SeqAct_PlaySound_8697",
+       "class": "SeqAct_PlaySound",
+       "input": "Stop",
+       "via": "SeqEvent_RemoteEvent_12448.Out",
+       "depth": 3,
+       "comment": "EMIT_ENERGON_WATERFALL_MIST_03",
+       "targets": [
+        {
+         "target": "HmAmbientSoundVolumeEmitter_8048",
+         "class": "HmAmbientSoundVolumeEmitter",
+         "resolved": false
+        }
+       ],
+       "variable_targets": [],
+       "seq": ""
+      },
+      {
+       "op": "SeqAct_PlaySound_3810",
+       "class": "SeqAct_PlaySound",
+       "input": "Play",
+       "via": "SeqEvent_RemoteEvent_12448.Out",
+       "depth": 3,
+       "comment": "EMIT_ENERGON_WATERFALL_DRIP",
+       "targets": [
+        {
+         "target": "HmAmbientSoundVolumeEmitter_5152",
+         "class": "HmAmbientSoundVolumeEmitter",
+         "resolved": false
+        }
+       ],
+       "variable_targets": [],
+       "seq": ""
       },
       {
        "op": "SeqAct_Interp_10625",
@@ -15098,7 +15602,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Flood_Gate"
       },
       {
        "op": "SeqAct_Toggle_877",
@@ -15654,7 +16159,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Flood_Gate"
       },
       {
        "op": "SeqAct_Interp_5361",
@@ -15863,7 +16369,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Flood_Gate"
       },
       {
        "op": "SeqAct_Interp_5361",
@@ -16072,7 +16579,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Flood_Gate"
       },
       {
        "op": "SeqAct_ToggleHidden_9226",
@@ -16310,7 +16818,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Flood_Gate"
       },
       {
        "op": "SeqAct_ActivateRemoteEvent_14288",
@@ -16320,7 +16829,8 @@
        "depth": 3,
        "comment": "FogOn",
        "targets": [],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Flood_Gate"
       },
       {
        "op": "SeqEvent_RemoteEvent_11181",
@@ -16330,7 +16840,8 @@
        "depth": 4,
        "comment": "FogOn",
        "targets": [],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Fog"
       },
       {
        "op": "SeqAct_Toggle_2379",
@@ -16340,7 +16851,8 @@
        "depth": 5,
        "comment": null,
        "targets": [],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Fog"
       },
       {
        "op": "BaseDoors",
@@ -16350,7 +16862,8 @@
        "depth": 3,
        "comment": null,
        "targets": [],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Flood_Gate"
       },
       {
        "op": "SeqAct_Toggle_318",
@@ -16716,7 +17229,8 @@
          "navmesh_actor": "NavigationCell_12844"
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Flood_Gate"
       },
       {
        "op": "SeqAct_Toggle_6882",
@@ -17799,7 +18313,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Flood_Gate"
       },
       {
        "op": "SeqAct_Toggle_13756",
@@ -18099,7 +18614,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Flood_Gate"
       },
       {
        "op": "SeqAct_Toggle_8441",
@@ -18398,9 +18914,11 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Flood_Gate"
       }
-     ]
+     ],
+     "seq": "Flood_Gate"
     }
    ]
   },
@@ -18883,7 +19401,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "GrenadeLauncher"
       },
       {
        "op": "SeqAct_Toggle_16154",
@@ -19294,9 +19813,11 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "GrenadeLauncher"
       }
-     ]
+     ],
+     "seq": "GrenadeLauncher"
     }
    ]
   },
@@ -19790,7 +20311,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Breaker_one"
       },
       {
        "op": "SeqAct_Toggle_7366",
@@ -20073,7 +20595,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Breaker_one"
       },
       {
        "op": "SeqAct_Delay_7539",
@@ -20083,7 +20606,8 @@
        "depth": 1,
        "comment": null,
        "targets": [],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Breaker_one"
       },
       {
        "op": "SeqAct_Interp_7207",
@@ -20138,7 +20662,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Breaker_one"
       },
       {
        "op": "SeqAct_Interp_8359",
@@ -20193,7 +20718,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Breaker_one"
       },
       {
        "op": "SeqAct_CameraShake_11581",
@@ -20205,7 +20731,8 @@
        "targets": [],
        "variable_targets": [
         "SeqVar_Player_11570"
-       ]
+       ],
+       "seq": "Breaker_one"
       },
       {
        "op": "SeqAct_ForceFeedback_1527",
@@ -20217,7 +20744,8 @@
        "targets": [],
        "variable_targets": [
         "SeqVar_Player_11570"
-       ]
+       ],
+       "seq": "Breaker_one"
       },
       {
        "op": "SeqAct_Toggle_14852",
@@ -20252,7 +20780,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Breaker_one"
       },
       {
        "op": "SeqAct_CauseDamage_9695",
@@ -20359,7 +20888,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Breaker_one"
       },
       {
        "op": "SeqAct_Toggle_5286",
@@ -20395,7 +20925,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Breaker_one"
       },
       {
        "op": "SeqAct_CauseDamage_582",
@@ -20504,7 +21035,8 @@
        ],
        "variable_targets": [
         "SeqVar_Object_3643"
-       ]
+       ],
+       "seq": "Breaker_one"
       },
       {
        "op": "SeqAct_Interp_4280",
@@ -20556,7 +21088,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Breaker_one"
       },
       {
        "op": "SeqAct_Interp_228",
@@ -20608,7 +21141,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Breaker_one"
       },
       {
        "op": "SeqAct_CameraShake_13823",
@@ -20620,7 +21154,8 @@
        "targets": [],
        "variable_targets": [
         "SeqVar_Player_8115"
-       ]
+       ],
+       "seq": "Breaker_one"
       },
       {
        "op": "SeqAct_ForceFeedback_15722",
@@ -20632,7 +21167,8 @@
        "targets": [],
        "variable_targets": [
         "SeqVar_Player_8115"
-       ]
+       ],
+       "seq": "Breaker_one"
       },
       {
        "op": "SeqAct_Toggle_5882",
@@ -20667,7 +21203,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Breaker_one"
       },
       {
        "op": "SeqAct_Toggle_15435",
@@ -20703,9 +21240,11 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Breaker_one"
       }
-     ]
+     ],
+     "seq": "Breaker_one"
     }
    ]
   },
@@ -21179,7 +21718,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "AmmoGenerator_Seq_0"
       },
       {
        "op": "SeqAct_Toggle_16154",
@@ -21590,9 +22130,11 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "AmmoGenerator_Seq_0"
       }
-     ]
+     ],
+     "seq": "AmmoGenerator_Seq_0"
     }
    ]
   },
@@ -21917,7 +22459,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Flood_Gate"
       },
       {
        "op": "SeqAct_ActivateRemoteEvent_13979",
@@ -21927,7 +22470,231 @@
        "depth": 1,
        "comment": "AUDIO_DRAIN_01",
        "targets": [],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Flood_Gate"
+      },
+      {
+       "op": "SeqEvent_RemoteEvent_4559",
+       "class": "SeqEvent_RemoteEvent",
+       "input": 0,
+       "via": "SeqAct_ActivateRemoteEvent_13979.remote:AUDIO_DRAIN_01",
+       "depth": 2,
+       "comment": "AUDIO_DRAIN_01",
+       "targets": [],
+       "variable_targets": [],
+       "seq": ""
+      },
+      {
+       "op": "SeqAct_Switch_372",
+       "class": "SeqAct_Switch",
+       "input": "In",
+       "via": "SeqEvent_RemoteEvent_4559.Out",
+       "depth": 3,
+       "comment": null,
+       "targets": [],
+       "variable_targets": [],
+       "seq": ""
+      },
+      {
+       "op": "SeqAct_Delay_5765",
+       "class": "SeqAct_Delay",
+       "input": 0,
+       "via": "SeqAct_Switch_372.Link 2",
+       "depth": 4,
+       "comment": null,
+       "targets": [],
+       "variable_targets": [],
+       "seq": ""
+      },
+      {
+       "op": "SeqAct_Gate_9428",
+       "class": "SeqAct_Gate",
+       "input": 0,
+       "via": "SeqAct_Switch_372.Link 2",
+       "depth": 4,
+       "comment": null,
+       "targets": [],
+       "variable_targets": [],
+       "seq": ""
+      },
+      {
+       "op": "SeqAct_Switch_7519",
+       "class": "SeqAct_Switch",
+       "input": "In",
+       "via": "SeqEvent_RemoteEvent_4559.Out",
+       "depth": 3,
+       "comment": null,
+       "targets": [],
+       "variable_targets": [],
+       "seq": ""
+      },
+      {
+       "op": "SeqAct_Delay_7140",
+       "class": "SeqAct_Delay",
+       "input": 0,
+       "via": "SeqAct_Switch_7519.Link 1",
+       "depth": 4,
+       "comment": null,
+       "targets": [],
+       "variable_targets": [],
+       "seq": ""
+      },
+      {
+       "op": "SeqAct_Gate_8314",
+       "class": "SeqAct_Gate",
+       "input": 0,
+       "via": "SeqAct_Switch_7519.Link 1",
+       "depth": 4,
+       "comment": null,
+       "targets": [],
+       "variable_targets": [],
+       "seq": ""
+      },
+      {
+       "op": "SeqAct_Switch_1106",
+       "class": "SeqAct_Switch",
+       "input": "In",
+       "via": "SeqEvent_RemoteEvent_4559.Out",
+       "depth": 3,
+       "comment": null,
+       "targets": [],
+       "variable_targets": [],
+       "seq": ""
+      },
+      {
+       "op": "SeqAct_PlaySound_13695",
+       "class": "SeqAct_PlaySound",
+       "input": "Stop",
+       "via": "SeqAct_Switch_1106.Link 3",
+       "depth": 4,
+       "comment": "AMB_ENERGON_LAKE",
+       "targets": [
+        {
+         "target": "HmAmbientSoundVolumeEmitter_398",
+         "class": "HmAmbientSoundVolumeEmitter",
+         "resolved": false
+        },
+        {
+         "target": "HmAmbientSoundVolumeEmitter_12610",
+         "class": "HmAmbientSoundVolumeEmitter",
+         "resolved": false
+        }
+       ],
+       "variable_targets": [],
+       "seq": ""
+      },
+      {
+       "op": "SeqAct_PlaySound_15772",
+       "class": "SeqAct_PlaySound",
+       "input": "Play",
+       "via": "SeqAct_Switch_1106.Link 3",
+       "depth": 4,
+       "comment": "EVENT_COOLANT_DROP_START",
+       "targets": [
+        {
+         "target": "HmAmbientSoundVolumeEmitter_5066",
+         "class": "HmAmbientSoundVolumeEmitter",
+         "resolved": false
+        }
+       ],
+       "variable_targets": [],
+       "seq": ""
+      },
+      {
+       "op": "SeqAct_Delay_12076",
+       "class": "SeqAct_Delay",
+       "input": 0,
+       "via": "SeqAct_Switch_1106.Link 3",
+       "depth": 4,
+       "comment": null,
+       "targets": [],
+       "variable_targets": [],
+       "seq": ""
+      },
+      {
+       "op": "SeqAct_PlaySound_11664",
+       "class": "SeqAct_PlaySound",
+       "input": "Play",
+       "via": "SeqAct_Switch_1106.Link 3",
+       "depth": 4,
+       "comment": "EVENT_COOLANT_DROP_LP",
+       "targets": [
+        {
+         "target": "HmAmbientSoundVolumeEmitter_5066",
+         "class": "HmAmbientSoundVolumeEmitter",
+         "resolved": false
+        }
+       ],
+       "variable_targets": [],
+       "seq": ""
+      },
+      {
+       "op": "SeqAct_PlaySound_9248",
+       "class": "SeqAct_PlaySound",
+       "input": "Play",
+       "via": "SeqEvent_RemoteEvent_4559.Out",
+       "depth": 3,
+       "comment": "EMIT_ENERGON_WATERFALL_DRIP",
+       "targets": [
+        {
+         "target": "HmAmbientSoundVolumeEmitter_6531",
+         "class": "HmAmbientSoundVolumeEmitter",
+         "resolved": false
+        }
+       ],
+       "variable_targets": [],
+       "seq": ""
+      },
+      {
+       "op": "SeqAct_PlaySound_9719",
+       "class": "SeqAct_PlaySound",
+       "input": "Stop",
+       "via": "SeqEvent_RemoteEvent_4559.Out",
+       "depth": 3,
+       "comment": "EMIT_ENERGON_WATERFALL_LARGE_01",
+       "targets": [
+        {
+         "target": "HmAmbientSoundVolumeEmitter_6531",
+         "class": "HmAmbientSoundVolumeEmitter",
+         "resolved": false
+        }
+       ],
+       "variable_targets": [],
+       "seq": ""
+      },
+      {
+       "op": "SeqAct_PlaySound_16098",
+       "class": "SeqAct_PlaySound",
+       "input": "Stop",
+       "via": "SeqEvent_RemoteEvent_4559.Out",
+       "depth": 3,
+       "comment": "EMIT_ENERGON_WATERFALL_MED_01",
+       "targets": [
+        {
+         "target": "HmAmbientSoundVolumeEmitter_8798",
+         "class": "HmAmbientSoundVolumeEmitter",
+         "resolved": false
+        }
+       ],
+       "variable_targets": [],
+       "seq": ""
+      },
+      {
+       "op": "SeqAct_PlaySound_9310",
+       "class": "SeqAct_PlaySound",
+       "input": "Stop",
+       "via": "SeqEvent_RemoteEvent_4559.Out",
+       "depth": 3,
+       "comment": "EMIT_ENERGON_WATERFALL_MIST_01",
+       "targets": [
+        {
+         "target": "HmAmbientSoundVolumeEmitter_2393",
+         "class": "HmAmbientSoundVolumeEmitter",
+         "resolved": false
+        }
+       ],
+       "variable_targets": [],
+       "seq": ""
       },
       {
        "op": "SeqAct_Interp_2657",
@@ -21991,7 +22758,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Flood_Gate"
       },
       {
        "op": "SeqAct_Toggle_10578",
@@ -22547,7 +23315,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Flood_Gate"
       },
       {
        "op": "SeqAct_Interp_5361",
@@ -22756,7 +23525,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Flood_Gate"
       },
       {
        "op": "SeqAct_Interp_5361",
@@ -22965,7 +23735,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Flood_Gate"
       },
       {
        "op": "SeqAct_ToggleHidden_9226",
@@ -23203,7 +23974,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Flood_Gate"
       },
       {
        "op": "SeqAct_ActivateRemoteEvent_14288",
@@ -23213,7 +23985,8 @@
        "depth": 3,
        "comment": "FogOn",
        "targets": [],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Flood_Gate"
       },
       {
        "op": "SeqEvent_RemoteEvent_11181",
@@ -23223,7 +23996,8 @@
        "depth": 4,
        "comment": "FogOn",
        "targets": [],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Fog"
       },
       {
        "op": "SeqAct_Toggle_2379",
@@ -23233,7 +24007,8 @@
        "depth": 5,
        "comment": null,
        "targets": [],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Fog"
       },
       {
        "op": "BaseDoors",
@@ -23243,7 +24018,8 @@
        "depth": 3,
        "comment": null,
        "targets": [],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Flood_Gate"
       },
       {
        "op": "SeqAct_Toggle_318",
@@ -23609,7 +24385,8 @@
          "navmesh_actor": "NavigationCell_12844"
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Flood_Gate"
       },
       {
        "op": "SeqAct_Toggle_6882",
@@ -24692,7 +25469,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Flood_Gate"
       },
       {
        "op": "SeqAct_Toggle_13756",
@@ -24992,7 +25770,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Flood_Gate"
       },
       {
        "op": "SeqAct_Toggle_8441",
@@ -25291,9 +26070,11 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Flood_Gate"
       }
-     ]
+     ],
+     "seq": "Flood_Gate"
     }
    ]
   },
@@ -25651,7 +26432,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Door_One"
       },
       {
        "op": "SeqAct_Toggle_14722",
@@ -25810,7 +26592,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Door_One"
       },
       {
        "op": "SeqAct_Interp_10535",
@@ -25878,7 +26661,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Door_One"
       },
       {
        "op": "SeqAct_Toggle_14386",
@@ -25899,7 +26683,8 @@
          "navmesh_actor": "NavigationCell_11612"
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Door_One"
       },
       {
        "op": "SeqAct_Toggle_398",
@@ -26601,9 +27386,11 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Door_One"
       }
-     ]
+     ],
+     "seq": "Door_One"
     }
    ]
   },
@@ -27105,7 +27892,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "KMine_Generator"
       },
       {
        "op": "SeqAct_Toggle_16154",
@@ -27516,9 +28304,11 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "KMine_Generator"
       }
-     ]
+     ],
+     "seq": "KMine_Generator"
     }
    ]
   },
@@ -27878,7 +28668,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Door_Two"
       },
       {
        "op": "SeqAct_ToggleHidden_4680",
@@ -27943,7 +28734,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Door_Two"
       },
       {
        "op": "SeqAct_Toggle_14722",
@@ -28101,7 +28893,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Door_Two"
       },
       {
        "op": "SeqAct_Interp_10535",
@@ -28171,7 +28964,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Door_Two"
       },
       {
        "op": "SeqAct_Interp_13330",
@@ -28239,7 +29033,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Door_Two"
       },
       {
        "op": "SeqAct_Toggle_14741",
@@ -28398,7 +29193,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Door_Two"
       },
       {
        "op": "SeqAct_Interp_13330",
@@ -28466,7 +29262,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Door_Two"
       },
       {
        "op": "SeqAct_Toggle_13519",
@@ -29053,7 +29850,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Door_Two"
       },
       {
        "op": "SeqAct_Toggle_13309",
@@ -29084,7 +29882,8 @@
          "navmesh_actor": "NavigationCell_10155"
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Door_Two"
       },
       {
        "op": "SeqAct_Toggle_398",
@@ -29809,9 +30608,11 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Door_Two"
       }
-     ]
+     ],
+     "seq": "Door_Two"
     }
    ]
   },
@@ -30294,7 +31095,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "IonBlaster"
       },
       {
        "op": "SeqAct_Toggle_16154",
@@ -30705,9 +31507,11 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "IonBlaster"
       }
-     ]
+     ],
+     "seq": "IonBlaster"
     }
    ]
   },
@@ -31152,7 +31956,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Oversheild_Door"
       },
       {
        "op": "SeqAct_Interp_10535",
@@ -31222,7 +32027,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Oversheild_Door"
       },
       {
        "op": "SeqAct_Toggle_14722",
@@ -31380,7 +32186,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Oversheild_Door"
       },
       {
        "op": "SeqAct_Interp_10535",
@@ -31450,7 +32257,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Oversheild_Door"
       },
       {
        "op": "SeqAct_Toggle_13309",
@@ -31471,7 +32279,8 @@
          "navmesh_actor": "NavigationCell_680"
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Oversheild_Door"
       },
       {
        "op": "SeqAct_Toggle_398",
@@ -31754,9 +32563,11 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Oversheild_Door"
       }
-     ]
+     ],
+     "seq": "Oversheild_Door"
     }
    ]
   },
@@ -32234,7 +33045,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "ScatterBlaster"
       },
       {
        "op": "SeqAct_Toggle_16154",
@@ -32645,9 +33457,11 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "ScatterBlaster"
       }
-     ]
+     ],
+     "seq": "ScatterBlaster"
     }
    ]
   },
@@ -33128,7 +33942,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "AmmoGenerator_Seq_2"
       },
       {
        "op": "SeqAct_Toggle_16154",
@@ -33539,9 +34354,11 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "AmmoGenerator_Seq_2"
       }
-     ]
+     ],
+     "seq": "AmmoGenerator_Seq_2"
     }
    ]
   },
@@ -33899,7 +34716,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Door_One_0"
       },
       {
        "op": "SeqAct_Toggle_14285",
@@ -34058,7 +34876,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Door_One_0"
       },
       {
        "op": "SeqAct_Interp_10535",
@@ -34126,7 +34945,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Door_One_0"
       },
       {
        "op": "SeqAct_Interp_11336",
@@ -34194,7 +35014,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Door_One_0"
       },
       {
        "op": "SeqAct_Toggle_8536",
@@ -34353,7 +35174,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Door_One_0"
       },
       {
        "op": "SeqAct_Interp_11336",
@@ -34421,7 +35243,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Door_One_0"
       },
       {
        "op": "SeqAct_Toggle_14386",
@@ -34442,7 +35265,8 @@
          "navmesh_actor": "NavigationCell_7423"
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Door_One_0"
       },
       {
        "op": "SeqAct_Toggle_5244",
@@ -36037,7 +36861,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Door_One_0"
       },
       {
        "op": "SeqAct_Toggle_398",
@@ -36468,9 +37293,11 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Door_One_0"
       }
-     ]
+     ],
+     "seq": "Door_One_0"
     }
    ]
   },
@@ -36946,7 +37773,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "EMPGrenades"
       },
       {
        "op": "SeqAct_Toggle_16154",
@@ -37357,9 +38185,11 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "EMPGrenades"
       }
-     ]
+     ],
+     "seq": "EMPGrenades"
     }
    ]
   },
@@ -37835,7 +38665,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "SniperGenerator"
       },
       {
        "op": "SeqAct_Toggle_16154",
@@ -38246,9 +39077,11 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "SniperGenerator"
       }
-     ]
+     ],
+     "seq": "SniperGenerator"
     }
    ]
   },
@@ -38724,7 +39557,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "FlakGrenades"
       },
       {
        "op": "SeqAct_Toggle_16154",
@@ -39135,9 +39969,11 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "FlakGrenades"
       }
-     ]
+     ],
+     "seq": "FlakGrenades"
     }
    ]
   },
@@ -39581,7 +40417,8 @@
        ],
        "variable_targets": [
         "SeqVar_Object_2660"
-       ]
+       ],
+       "seq": "Breaker_Two"
       },
       {
        "op": "SeqAct_Toggle_8717",
@@ -39864,7 +40701,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Breaker_Two"
       },
       {
        "op": "SeqAct_CauseDamage_582",
@@ -39879,7 +40717,8 @@
         "SeqVar_Object_7122",
         "SeqVar_Object_7995",
         "SeqVar_Object_839"
-       ]
+       ],
+       "seq": "Breaker_Two"
       },
       {
        "op": "SeqAct_Interp_4280",
@@ -39937,7 +40776,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Breaker_Two"
       },
       {
        "op": "SeqAct_Interp_228",
@@ -39995,7 +40835,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Breaker_Two"
       },
       {
        "op": "SeqAct_CameraShake_13823",
@@ -40007,7 +40848,8 @@
        "targets": [],
        "variable_targets": [
         "SeqVar_Player_8115"
-       ]
+       ],
+       "seq": "Breaker_Two"
       },
       {
        "op": "SeqAct_ForceFeedback_15722",
@@ -40019,7 +40861,8 @@
        "targets": [],
        "variable_targets": [
         "SeqVar_Player_8115"
-       ]
+       ],
+       "seq": "Breaker_Two"
       },
       {
        "op": "SeqAct_Toggle_5882",
@@ -40054,7 +40897,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Breaker_Two"
       },
       {
        "op": "SeqAct_Toggle_15435",
@@ -40090,9 +40934,11 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Breaker_Two"
       }
-     ]
+     ],
+     "seq": "Breaker_Two"
     }
    ]
   },
@@ -40568,7 +41414,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Repair_Ray"
       },
       {
        "op": "SeqAct_Toggle_16154",
@@ -40979,9 +41826,11 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Repair_Ray"
       }
-     ]
+     ],
+     "seq": "Repair_Ray"
     }
    ]
   },
@@ -41464,7 +42313,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "BURSTRIFLE"
       },
       {
        "op": "SeqAct_Toggle_16154",
@@ -41875,9 +42725,11 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "BURSTRIFLE"
       }
-     ]
+     ],
+     "seq": "BURSTRIFLE"
     }
    ]
   },
@@ -42237,7 +43089,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "FloodGate_2_Door"
       },
       {
        "op": "SeqAct_Toggle_14722",
@@ -42395,7 +43248,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "FloodGate_2_Door"
       },
       {
        "op": "SeqAct_Interp_10535",
@@ -42465,7 +43319,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "FloodGate_2_Door"
       },
       {
        "op": "SeqAct_Toggle_13309",
@@ -42486,7 +43341,8 @@
          "navmesh_actor": "NavigationCell_10689"
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "FloodGate_2_Door"
       },
       {
        "op": "SeqAct_Toggle_398",
@@ -42769,9 +43625,11 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "FloodGate_2_Door"
       }
-     ]
+     ],
+     "seq": "FloodGate_2_Door"
     }
    ]
   },
@@ -43247,7 +44105,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Heavy_MG"
       },
       {
        "op": "SeqAct_Toggle_16154",
@@ -43658,9 +44517,11 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Heavy_MG"
       }
-     ]
+     ],
+     "seq": "Heavy_MG"
     }
    ]
   },
@@ -44131,7 +44992,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Heavy_Turret"
       },
       {
        "op": "SeqAct_Toggle_16154",
@@ -44542,9 +45404,11 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Heavy_Turret"
       }
-     ]
+     ],
+     "seq": "Heavy_Turret"
     }
    ]
   },
@@ -44904,7 +45768,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "HealRaydoor"
       },
       {
        "op": "SeqAct_Toggle_14722",
@@ -45063,7 +45928,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "HealRaydoor"
       },
       {
        "op": "SeqAct_Interp_10535",
@@ -45133,7 +45999,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "HealRaydoor"
       },
       {
        "op": "SeqAct_Toggle_13309",
@@ -45143,7 +46010,8 @@
        "depth": 1,
        "comment": null,
        "targets": [],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "HealRaydoor"
       },
       {
        "op": "SeqAct_Toggle_398",
@@ -45426,9 +46294,11 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "HealRaydoor"
       }
-     ]
+     ],
+     "seq": "HealRaydoor"
     },
     {
      "event": "TnSeqEvent_SurvivalGenerator_5361",
@@ -45505,7 +46375,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Repair_Ray"
       },
       {
        "op": "SeqAct_Toggle_14722",
@@ -45517,7 +46388,8 @@
        "targets": [],
        "variable_targets": [
         "SeqVar_Object_1763"
-       ]
+       ],
+       "seq": "Repair_Ray"
       },
       {
        "op": "SeqAct_Interp_10535",
@@ -45587,7 +46459,8 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Repair_Ray"
       },
       {
        "op": "SeqAct_Toggle_13309",
@@ -45600,7 +46473,8 @@
        "variable_targets": [
         "SeqVar_Object_3614",
         "SeqVar_Object_13437"
-       ]
+       ],
+       "seq": "Repair_Ray"
       },
       {
        "op": "SeqAct_Toggle_398",
@@ -45883,9 +46757,11 @@
          }
         }
        ],
-       "variable_targets": []
+       "variable_targets": [],
+       "seq": "Repair_Ray"
       }
-     ]
+     ],
+     "seq": "Repair_Ray"
     }
    ]
   }
