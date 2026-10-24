@@ -213,15 +213,31 @@ def main():
     doc = os.path.join(AT, 'docs', 'handoff', 'MP_TRANSFORMING_ACTORS.md')
     open(doc, 'w', encoding='utf-8').write('\n'.join(L) + '\n'); print(doc, len(rows), 'actors', len(meshes), 'meshes')
 
+def dlc_map(M):
+    """--dlc-map <MAP> (DLC 2026-10-23): the same records for a DLC map's TnTransformingWorldActors (source dlc_env.sh: the DLC packages
+    via WFC_COOKED_DIR, the DLC authored.db attached) -> manifests/maps/<MAP>/transforming_actors_gameplay.json; GLBs ->
+    out/dlc_render/_transforming_actors/. main() / the MP outputs are untouched."""
+    from m03_common import map_levels
+    from vs_common import VS
+    nf = os.path.join(VS, 'Maps', M, 'navigation.json')
+    out = os.path.join(AT, 'manifests', 'maps', M, 'transforming_actors_gameplay.json')
+    return collect(M, map_levels(M)['all'], nf, out, os.path.join(AT, 'out', 'dlc_render', '_transforming_actors'))
+
 def campaign(ch):
     """--campaign <CH> (Integration / Gameplay 2026-10-23: nobody implemented TnSeqAct_TransformWorldProp, campaign doors / pods never open):
     the same records for a campaign chapter's TnTransformingWorldActors -> out/campaign_render/<CH>/transforming_actors_gameplay.json
     (the MP schema: actors[] + meshes{} + posing); mesh GLBs -> out/campaign_render/_transforming_actors/ (shared by the chapters).
     Levels = the chapter's levels; navigation.json = out/campaign_render/<CH>/navigation.json. main() / the MP outputs are untouched."""
     sys.path.insert(0, os.path.join(AT, 'work', 'campaign_render')); import campaign_render as CR
-    TG.OUTDIR = os.path.join(AT, 'out', 'campaign_render', '_transforming_actors'); os.makedirs(TG.OUTDIR, exist_ok=True)
-    levels = CR.chapter_levels(ch); R = os.path.join(AT, 'out', 'campaign_render', ch)
-    nf = os.path.join(R, 'navigation.json'); nav = json.load(open(nf, encoding='utf-8')).get('nodes', []) if os.path.exists(nf) else []
+    R = os.path.join(AT, 'out', 'campaign_render', ch)
+    return collect(ch, CR.chapter_levels(ch), os.path.join(R, 'navigation.json'), os.path.join(R, 'transforming_actors_gameplay.json'),
+                   os.path.join(AT, 'out', 'campaign_render', '_transforming_actors'))
+
+def collect(ch, levels, nf, out, glb_dir):
+    """the per-map / per-chapter loop shared by campaign() and dlc_map(): levels to scan, the navigation.json for nav_nodes_in_volume,
+    the output JSON and the GLB dir"""
+    TG.OUTDIR = glb_dir; os.makedirs(TG.OUTDIR, exist_ok=True)
+    nav = json.load(open(nf, encoding='utf-8')).get('nodes', []) if os.path.exists(nf) else []
     ops, back = kismet(ch, levels)
     rows = []; meshes = {}; posed = {}; errors = {}
     for lv in levels:
@@ -262,8 +278,8 @@ def campaign(ch):
                                               if n.get('location_gltf') and all(lo[k] <= n['location_gltf'][k] <= hi[k] for k in range(3))]
                 row['volume_aabb_gltf_m'] = [lo.round(2).tolist(), hi.round(2).tolist()]
             rows.append(row)
-    out = os.path.join(R, 'transforming_actors_gameplay.json')
-    json.dump({'generated_by': 'AssetTools/scripts/wfc/mp_transforming_actors.py --campaign ' + ch, 'chapter': ch, 'actors': rows, 'meshes': meshes,
+    os.makedirs(os.path.dirname(out), exist_ok=True)
+    json.dump({'generated_by': 'AssetTools/scripts/wfc/mp_transforming_actors.py (campaign / dlc) ' + ch, 'chapter': ch, 'actors': rows, 'meshes': meshes,
                'mesh_errors': errors, 'posing': 'world_box = actor gltf_matrix x bone_global(t) x box_local_gltf; half extents = box_extent_gltf / 2; ' + DIRECTION},
               open(out, 'w', encoding='utf-8'), indent=1)
     print(out, len(rows), 'actors', len(meshes), 'meshes', 'errors', errors, '| with drivers', sum(1 for r in rows if r['drivers']),
@@ -271,4 +287,5 @@ def campaign(ch):
 
 if __name__ == '__main__':
     if '--campaign' in sys.argv: campaign(sys.argv[sys.argv.index('--campaign') + 1])
+    elif '--dlc-map' in sys.argv: dlc_map(sys.argv[sys.argv.index('--dlc-map') + 1])
     else: main()

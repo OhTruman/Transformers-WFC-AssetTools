@@ -25,6 +25,20 @@ RE = os.path.join(TR, 'RE-Workspace', 'notes', 'data', 'escalation')
 MAPS = {'MP_ESC_BrokenHope': ('MP_ESC_BrokenHope_Base_m', 'MP_ESC_BrokenHope_ART_m'),
         'MP_ESC_Remnant': ('MP_ESC_Remnant_BASE_m', 'MP_ESC_Remnant_ART_m')}
 
+# opt-in DLC mode (2026-10-23): `--maps M1,M2` builds A / B for those maps only (level packages via the cooked lookup, which honours
+# WFC_COOKED_DIR), with the DLC authored.db attached behind the base one (WFC_AUTHORED_EXTRA_DB), physics.json from WFC_VS_ROOT and the
+# transforming actors from manifests/maps/<MAP>/transforming_actors_gameplay.json; part D (base-wide weapon data) is not rerun.
+# Without --maps: unchanged.
+DLC_MAPS = sys.argv[sys.argv.index('--maps') + 1].split(',') if '--maps' in sys.argv else None
+if DLC_MAPS:
+    from m03_common import map_levels
+    MAPS = {m: tuple(x for x in (map_levels(m)['base'], map_levels(m)['art']) if x) for m in DLC_MAPS}
+    if os.environ.get('WFC_VS_ROOT'): VS = os.path.join(os.environ['WFC_VS_ROOT'], 'Maps')
+    if os.environ.get('WFC_AUTHORED_EXTRA_DB'):
+        DB.execute('ATTACH DATABASE ? AS xdb', (os.environ['WFC_AUTHORED_EXTRA_DB'],))
+        for _t in ('objects', 'refs'):
+            DB.execute('CREATE TEMP VIEW %s AS SELECT * FROM main.%s UNION ALL SELECT * FROM xdb.%s' % (_t, _t, _t))
+
 def g(v): return [round(0.01 * v['X'], 4), round(0.01 * v['Z'], 4), round(0.01 * v['Y'], 4)]
 def ue(v): return [v['X'], v['Y'], v['Z']]
 def short(o): return o.rsplit('.', 1)[-1] if o else o
@@ -153,6 +167,10 @@ def navmesh(m, pkgs, enabled_by):
 def main():
     os.makedirs(os.path.join(ROOT, 'manifests', 'escalation'), exist_ok=True)
     ta = json.load(open(os.path.join(ROOT, 'manifests', 'maps', 'mp_transforming_actors.json'), encoding='utf-8'))['actors']
+    if DLC_MAPS:
+        for m in DLC_MAPS:
+            tf = os.path.join(ROOT, 'manifests', 'maps', m, 'transforming_actors_gameplay.json')
+            if os.path.exists(tf): ta += json.load(open(tf, encoding='utf-8'))['actors']
     for m, pkgs in MAPS.items():
         re = json.load(open(os.path.join(RE, m + '.json'), encoding='utf-8'))
         phys = {v['actor']: v for v in json.load(open(os.path.join(VS, m, 'physics.json'), encoding='utf-8')).get('volumes') or []}
@@ -240,6 +258,7 @@ def main():
         json.dump(B, open(os.path.join(ROOT, 'manifests', 'maps', m, 'escalation_navmesh.json'), 'w', encoding='utf-8'), indent=1)
         print(m, 'A', A['counts'], 'B', B['counts'], 'blocked', len(blocked), 'on', len(on), 'on-not-blocked', len(on - blocked))
     # ---- D
+    if DLC_MAPS: return                     # DLC mode: the base-wide weapon data is not rerun
     rows = []
     for o, p in DB.execute("select opath, props from objects where (opath like 'TransContent.Default__TnWeapon%' or opath like "
                            "'TransGame.Default__TnWeapon%') and opath not like '%.%.%' order by opath"):
