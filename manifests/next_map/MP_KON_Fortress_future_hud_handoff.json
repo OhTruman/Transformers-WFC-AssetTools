@@ -1,0 +1,542 @@
+{
+ "generated_by": "AssetTools/scripts/wfc/m04_kismet.py",
+ "scope": "authored references only; the HUD is not built here",
+ "hud_movies": {
+  "HudMovie": {
+   "value": "UI_GFxHud_p.Hud_GFX_1",
+   "source_package": "TransGame",
+   "object": "TransGame.Default__TnHUD",
+   "class": "TnHUD",
+   "property": "HudMovie",
+   "origin": "authored on object",
+   "confidence": "CONFIRMED AUTHORED DATA"
+  },
+  "DefaultHudMovie": {
+   "value": "UI_GFxHud_p.Hud_GFX_1",
+   "source_package": "TransGame",
+   "object": "TransGame.Default__TnHUD",
+   "class": "TnHUD",
+   "property": "DefaultHudMovie",
+   "origin": "authored on object",
+   "confidence": "CONFIRMED AUTHORED DATA"
+  },
+  "ScoreboardMovie": {
+   "value": "UI_GFxInGameStats_p.InGameStats_GFX_1",
+   "source_package": "TransGame",
+   "object": "TransGame.Default__TnHUD",
+   "class": "TnHUD",
+   "property": "ScoreboardMovie",
+   "origin": "authored on object",
+   "confidence": "CONFIRMED AUTHORED DATA"
+  }
+ },
+ "hud_callbacks (TnHUD CDO)": {
+  "PointEventScaleformCallback": "_global.PointEvent",
+  "ApplyBuffCallBack": "_global.ApplyBuff",
+  "ReapplyBuffCallBack": "_global.ReapplyBuff",
+  "UnapplyBuffCallBack": "_global.UnapplyBuff",
+  "UpdateAbilityCooldownCallBack": "_global.UpdateAbilityCooldown",
+  "SetAbilityCallBack": "_global.SetAbility",
+  "WaveformDataCallBack": "_global.WaveformData",
+  "UpdateObjectiveMarkerCallback": "_global.UpdateMarker",
+  "AddObjectiveCallback": "_global.AddObjective",
+  "CompleteObjectiveCallback": "_global.CompleteObjective",
+  "StartMarkerUpdateCallBack": "_global.StartMarkerUpdate",
+  "FinishMarkerUpdateCallBack": "_global.FinishMarkerUpdate",
+  "GameMessageCallBack": "_global.GameMessage",
+  "GameAnnouncementCallBack": "_global.GameAnnouncement",
+  "RewardAnnouncementCallBack": "_global.RewardAnnouncement",
+  "CausedDamageScaleformCallback": "_global.CausedDamage",
+  "NotifyLevelUpCallBack": "_global.NotifyLevelUp",
+  "NotifyAmmoAddedCallback": "_global.NotifyAmmoAdded",
+  "NotifyBadConnectionCallback": "_global.NotifyBadConnection",
+  "UpdatePlayerListDataCallback": "_global.UpdatePlayerListData",
+  "NotifyCantTransformCallback": "_global.NotifyCantTransform"
+ },
+ "temporary_observer_classes": [
+  "TransGame.TnHudDataObserverDominationCapture",
+  "TransGame.TnHudDataObserverBombDefuseTimer"
+ ],
+ "objective_classes": {
+  "TnGameObjectivePickupFactoryFlag": {
+   "cdo": "TransContent.Default__TnGameObjectivePickupFactoryFlag",
+   "instances_in_streets": 2,
+   "MarkerType": {
+    "value": "TransGame.TnObjectiveMarkerTypeFlag",
+    "source_package": "MP_IAC_Berth_BASE_m",
+    "object": "TransContent.Default__TnGameObjectivePickupFactoryFlag",
+    "class": "TnGameObjectivePickupFactoryFlag",
+    "property": "MarkerType",
+    "origin": "authored on object",
+    "confidence": "CONFIRMED AUTHORED DATA"
+   },
+   "MarkerString": {
+    "value": "Code Of Power",
+    "source_package": "MP_IAC_Berth_BASE_m",
+    "object": "TransContent.Default__TnGameObjectivePickupFactoryFlag",
+    "class": "TnGameObjectivePickupFactoryFlag",
+    "property": "MarkerString",
+    "origin": "authored on object",
+    "confidence": "CONFIRMED AUTHORED DATA"
+   },
+   "MessageClass": {
+    "value": "TransGame.TnFlagMessage",
+    "source_package": "MP_IAC_Berth_BASE_m",
+    "object": "TransContent.Default__TnGameObjectivePickupFactoryFlag",
+    "class": "TnGameObjectivePickupFactoryFlag",
+    "property": "MessageClass",
+    "origin": "authored on object",
+    "confidence": "CONFIRMED AUTHORED DATA"
+   },
+   "RequiredGameRuleClass": {
+    "value": "TransGame.TnGameRules_SingleFlagCTF",
+    "source_package": "MP_IAC_Berth_BASE_m",
+    "object": "TransContent.Default__TnGameObjectivePickupFactoryFlag",
+    "class": "TnGameObjectivePickupFactoryFlag",
+    "property": "RequiredGameRuleClass",
+    "origin": "authored on object",
+    "confidence": "CONFIRMED AUTHORED DATA"
+   },
+   "marker_setup": {
+    "CaptureLabel": "Capture",
+    "EscortLabel": "Escort",
+    "DefendLabel": "Defend",
+    "ReturnLabel": "Return",
+    "KillLabel": "Kill",
+    "MarkerSetup": {
+     "Mat": "UI_HudMarkers_p.MPMarkerCOP_MAT",
+     "MatInst": null,
+     "HealthBarMat": null,
+     "HealthBarMatInst": null,
+     "MarkerZOffsetWS": 0.0,
+     "DrawLabelWhenFocused": true,
+     "DrawLabelWhenUnfocused": true,
+     "DrawLabelWhenOffscreen": true,
+     "LabelOffset": {
+      "X": 0.0,
+      "Y": -0.03999999910593033,
+      "Z": 0.0
+     },
+     "LabelZOffsetWS": 0.0,
+     "LabelColor": {
+      "B": 250,
+      "G": 210,
+      "R": 100,
+      "A": 220
+     },
+     "FocusParam": "Over",
+     "FocusedMarkerSize": 0.05000000074505806,
+     "UnfocusedMarkerSize": 0.05000000074505806,
+     "DrawWhenOffscreen": true,
+     "OnScreenParam": "OnScreen",
+     "OffscreenMarkerSize": 0.0625,
+     "RotationParam": "ArrowAngle"
+    },
+    "PulseFrequency": 2.5,
+    "PulseExpPower": 5.0,
+    "LabelFont": "UI_TransEngineFonts_p.MarkerFont",
+    "DistanceFromCenterFocusThreshold": 0.0625,
+    "SafeFramePaddingPercent": 0.07999999821186066,
+    "FocusHysterisis": 0.20000000298023224,
+    "FriendlyLabelColor": {
+     "B": 213,
+     "G": 181,
+     "R": 80,
+     "A": 255
+    },
+    "EnemyLabelColor": {
+     "B": 60,
+     "G": 60,
+     "R": 240,
+     "A": 255
+    },
+    "NeutralLabelColor": {
+     "B": 255,
+     "G": 255,
+     "R": 255,
+     "A": 255
+    }
+   }
+  },
+  "TnGameObjectivePickupFactoryBomb": {
+   "cdo": "TransContent.Default__TnGameObjectivePickupFactoryBomb",
+   "instances_in_streets": 1,
+   "MarkerType": {
+    "value": "TransGame.TnObjectiveMarkerTypeBomb",
+    "source_package": "MP_IAC_Berth_BASE_m",
+    "object": "TransContent.Default__TnGameObjectivePickupFactoryBomb",
+    "class": "TnGameObjectivePickupFactoryBomb",
+    "property": "MarkerType",
+    "origin": "authored on object",
+    "confidence": "CONFIRMED AUTHORED DATA"
+   },
+   "MarkerString": {
+    "value": "Bomb",
+    "source_package": "MP_IAC_Berth_BASE_m",
+    "object": "TransContent.Default__TnGameObjectivePickupFactoryBomb",
+    "class": "TnGameObjectivePickupFactoryBomb",
+    "property": "MarkerString",
+    "origin": "authored on object",
+    "confidence": "CONFIRMED AUTHORED DATA"
+   },
+   "MessageClass": {
+    "value": "TransGame.TnBombMessage",
+    "source_package": "MP_IAC_Berth_BASE_m",
+    "object": "TransContent.Default__TnGameObjectivePickupFactoryBomb",
+    "class": "TnGameObjectivePickupFactoryBomb",
+    "property": "MessageClass",
+    "origin": "authored on object",
+    "confidence": "CONFIRMED AUTHORED DATA"
+   },
+   "RequiredGameRuleClass": {
+    "value": "TransGame.TnGameRules_ScoreBombingRun",
+    "source_package": "MP_IAC_Berth_BASE_m",
+    "object": "TransContent.Default__TnGameObjectivePickupFactoryBomb",
+    "class": "TnGameObjectivePickupFactoryBomb",
+    "property": "RequiredGameRuleClass",
+    "origin": "authored on object",
+    "confidence": "CONFIRMED AUTHORED DATA"
+   },
+   "marker_setup": {
+    "IdleLabel": "Bomb",
+    "EscortLabel": "Escort",
+    "AttackLabel": "Kill",
+    "MarkerSetup": {
+     "Mat": "UI_HudMarkers_p.MPMarkerBomb_MAT",
+     "MatInst": null,
+     "HealthBarMat": null,
+     "HealthBarMatInst": null,
+     "MarkerZOffsetWS": 0.0,
+     "DrawLabelWhenFocused": true,
+     "DrawLabelWhenUnfocused": true,
+     "DrawLabelWhenOffscreen": true,
+     "LabelOffset": {
+      "X": 0.0,
+      "Y": -0.03999999910593033,
+      "Z": 0.0
+     },
+     "LabelZOffsetWS": 0.0,
+     "LabelColor": {
+      "B": 250,
+      "G": 210,
+      "R": 100,
+      "A": 220
+     },
+     "FocusParam": "Over",
+     "FocusedMarkerSize": 0.05000000074505806,
+     "UnfocusedMarkerSize": 0.05000000074505806,
+     "DrawWhenOffscreen": true,
+     "OnScreenParam": "OnScreen",
+     "OffscreenMarkerSize": 0.0625,
+     "RotationParam": "ArrowAngle"
+    },
+    "PulseFrequency": 2.5,
+    "PulseExpPower": 5.0,
+    "LabelFont": "UI_TransEngineFonts_p.MarkerFont",
+    "DistanceFromCenterFocusThreshold": 0.0625,
+    "SafeFramePaddingPercent": 0.07999999821186066,
+    "FocusHysterisis": 0.20000000298023224,
+    "FriendlyLabelColor": {
+     "B": 213,
+     "G": 181,
+     "R": 80,
+     "A": 255
+    },
+    "EnemyLabelColor": {
+     "B": 60,
+     "G": 60,
+     "R": 240,
+     "A": 255
+    },
+    "NeutralLabelColor": {
+     "B": 255,
+     "G": 255,
+     "R": 255,
+     "A": 255
+    }
+   }
+  },
+  "TnFlagCapturePoint": {
+   "cdo": "TransContent.Default__TnFlagCapturePoint",
+   "instances_in_streets": 2,
+   "MessageClass": {
+    "value": "Engine.LocalMessage",
+    "source_package": "Engine",
+    "object": "Engine.Default__Actor",
+    "class": "Actor",
+    "property": "MessageClass",
+    "origin": "inherited from Engine.Default__Actor",
+    "confidence": "CONFIRMED AUTHORED DATA"
+   },
+   "marker_setup": null
+  },
+  "TnBombPlantPoint": {
+   "cdo": "TransContent.Default__TnBombPlantPoint",
+   "instances_in_streets": 2,
+   "MessageClass": {
+    "value": "Engine.LocalMessage",
+    "source_package": "Engine",
+    "object": "Engine.Default__Actor",
+    "class": "Actor",
+    "property": "MessageClass",
+    "origin": "inherited from Engine.Default__Actor",
+    "confidence": "CONFIRMED AUTHORED DATA"
+   },
+   "DetonateSound": {
+    "value": "BL_WPN_GRENADE.MP_BOMB_EXPL_IMPT_WORLD",
+    "source_package": "MP_IAC_Berth_BASE_m",
+    "object": "TransContent.Default__TnBombPlantPoint",
+    "class": "TnBombPlantPoint",
+    "property": "DetonateSound",
+    "origin": "authored on object",
+    "confidence": "CONFIRMED AUTHORED DATA"
+   },
+   "marker_setup": null
+  },
+  "TnDominationPoint": {
+   "cdo": "TransContent.Default__TnDominationPoint",
+   "instances_in_streets": 3,
+   "MessageClass": {
+    "value": "Engine.LocalMessage",
+    "source_package": "Engine",
+    "object": "Engine.Default__Actor",
+    "class": "Actor",
+    "property": "MessageClass",
+    "origin": "inherited from Engine.Default__Actor",
+    "confidence": "CONFIRMED AUTHORED DATA"
+   },
+   "CaptureColor": {
+    "value": [
+     {
+      "R": 0.7299000024795532,
+      "G": 0.1274999976158142,
+      "B": 0.1274999976158142,
+      "A": 1.0
+     },
+     {
+      "R": 0.267300009727478,
+      "G": 0.18690000474452972,
+      "B": 0.7592999935150146,
+      "A": 1.0
+     }
+    ],
+    "source_package": "TransGame",
+    "object": "TransGame.Default__TnDominationPointBase",
+    "class": "TnDominationPointBase",
+    "property": "CaptureColor",
+    "origin": "inherited from TransGame.Default__TnDominationPointBase",
+    "confidence": "CONFIRMED AUTHORED DATA"
+   },
+   "CaptureTime": {
+    "value": 20.0,
+    "source_package": "TransGame",
+    "object": "TransGame.Default__TnDominationPointBase",
+    "class": "TnDominationPointBase",
+    "property": "CaptureTime",
+    "origin": "inherited from TransGame.Default__TnDominationPointBase",
+    "confidence": "CONFIRMED AUTHORED DATA"
+   },
+   "ScoreInterval": {
+    "value": 3.0,
+    "source_package": "TransGame",
+    "object": "TransGame.Default__TnDominationPointBase",
+    "class": "TnDominationPointBase",
+    "property": "ScoreInterval",
+    "origin": "inherited from TransGame.Default__TnDominationPointBase",
+    "confidence": "CONFIRMED AUTHORED DATA"
+   },
+   "ScoreAmount": {
+    "value": 1,
+    "source_package": "TransGame",
+    "object": "TransGame.Default__TnDominationPointBase",
+    "class": "TnDominationPointBase",
+    "property": "ScoreAmount",
+    "origin": "inherited from TransGame.Default__TnDominationPointBase",
+    "confidence": "CONFIRMED AUTHORED DATA"
+   },
+   "marker_setup": null
+  },
+  "TnKingOfTheHillZone": {
+   "cdo": "TransContent.Default__TnKingOfTheHillZone",
+   "instances_in_streets": 5,
+   "MarkerString": {
+    "value": "Active Node",
+    "source_package": "TransGame",
+    "object": "TransGame.Default__TnKingOfTheHillZoneBase",
+    "class": "TnKingOfTheHillZoneBase",
+    "property": "MarkerString",
+    "origin": "inherited from TransGame.Default__TnKingOfTheHillZoneBase",
+    "confidence": "CONFIRMED AUTHORED DATA"
+   },
+   "MessageClass": {
+    "value": "TransGame.TnKingOfTheHillMessage",
+    "source_package": "TransGame",
+    "object": "TransGame.Default__TnKingOfTheHillZoneBase",
+    "class": "TnKingOfTheHillZoneBase",
+    "property": "MessageClass",
+    "origin": "inherited from TransGame.Default__TnKingOfTheHillZoneBase",
+    "confidence": "CONFIRMED AUTHORED DATA"
+   },
+   "CaptureColor": {
+    "value": [
+     {
+      "R": 0.7299000024795532,
+      "G": 0.1274999976158142,
+      "B": 0.1274999976158142,
+      "A": 1.0
+     },
+     {
+      "R": 0.267300009727478,
+      "G": 0.18690000474452972,
+      "B": 0.7592999935150146,
+      "A": 1.0
+     }
+    ],
+    "source_package": "TransGame",
+    "object": "TransGame.Default__TnKingOfTheHillZoneBase",
+    "class": "TnKingOfTheHillZoneBase",
+    "property": "CaptureColor",
+    "origin": "inherited from TransGame.Default__TnKingOfTheHillZoneBase",
+    "confidence": "CONFIRMED AUTHORED DATA"
+   },
+   "NeutralColor": {
+    "value": {
+     "R": 0.8050000071525574,
+     "G": 0.3019999861717224,
+     "B": 0.028999999165534973,
+     "A": 1.0
+    },
+    "source_package": "TransGame",
+    "object": "TransGame.Default__TnKingOfTheHillZoneBase",
+    "class": "TnKingOfTheHillZoneBase",
+    "property": "NeutralColor",
+    "origin": "inherited from TransGame.Default__TnKingOfTheHillZoneBase",
+    "confidence": "CONFIRMED AUTHORED DATA"
+   },
+   "NeutralSound": {
+    "value": "SoundEvents_Dialog.Announcer.MP_HillNeutralDialog",
+    "source_package": "MP_IAC_Berth_BASE_m",
+    "object": "TransContent.Default__TnKingOfTheHillZone",
+    "class": "TnKingOfTheHillZone",
+    "property": "NeutralSound",
+    "origin": "authored on object",
+    "confidence": "CONFIRMED AUTHORED DATA"
+   },
+   "ContestedSound": {
+    "value": "SoundEvents_Dialog.Announcer.MP_HillContestedDialog",
+    "source_package": "MP_IAC_Berth_BASE_m",
+    "object": "TransContent.Default__TnKingOfTheHillZone",
+    "class": "TnKingOfTheHillZone",
+    "property": "ContestedSound",
+    "origin": "authored on object",
+    "confidence": "CONFIRMED AUTHORED DATA"
+   },
+   "CapturedSoundAutobotSound": {
+    "value": "SoundEvents_Dialog.Announcer.MP_HillCapturedAutobotDialog",
+    "source_package": "MP_IAC_Berth_BASE_m",
+    "object": "TransContent.Default__TnKingOfTheHillZone",
+    "class": "TnKingOfTheHillZone",
+    "property": "CapturedSoundAutobotSound",
+    "origin": "authored on object",
+    "confidence": "CONFIRMED AUTHORED DATA"
+   },
+   "CapturedSoundDecepticonSound": {
+    "value": "SoundEvents_Dialog.Announcer.MP_HillCapturedDecepticonDialog",
+    "source_package": "MP_IAC_Berth_BASE_m",
+    "object": "TransContent.Default__TnKingOfTheHillZone",
+    "class": "TnKingOfTheHillZone",
+    "property": "CapturedSoundDecepticonSound",
+    "origin": "authored on object",
+    "confidence": "CONFIRMED AUTHORED DATA"
+   },
+   "ZoneChangeSound": {
+    "value": "SoundEvents_Dialog.Announcer.MP_HillMovedDialog",
+    "source_package": "MP_IAC_Berth_BASE_m",
+    "object": "TransContent.Default__TnKingOfTheHillZone",
+    "class": "TnKingOfTheHillZone",
+    "property": "ZoneChangeSound",
+    "origin": "authored on object",
+    "confidence": "CONFIRMED AUTHORED DATA"
+   },
+   "ScoreInterval": {
+    "value": 1.0,
+    "source_package": "TransGame",
+    "object": "TransGame.Default__TnKingOfTheHillZoneBase",
+    "class": "TnKingOfTheHillZoneBase",
+    "property": "ScoreInterval",
+    "origin": "inherited from TransGame.Default__TnKingOfTheHillZoneBase",
+    "confidence": "CONFIRMED AUTHORED DATA"
+   },
+   "marker_setup": null
+  },
+  "TnAmmoCratePickupFactory": {
+   "cdo": "TransGame.Default__TnAmmoCratePickupFactory",
+   "instances_in_streets": 14,
+   "MessageClass": {
+    "value": "Engine.LocalMessage",
+    "source_package": "Engine",
+    "object": "Engine.Default__Actor",
+    "class": "Actor",
+    "property": "MessageClass",
+    "origin": "inherited from Engine.Default__Actor",
+    "confidence": "CONFIRMED AUTHORED DATA"
+   },
+   "marker_setup": null
+  },
+  "TnHealthPickupFactory": {
+   "cdo": "TransGame.Default__TnHealthPickupFactory",
+   "instances_in_streets": 12,
+   "MessageClass": {
+    "value": "Engine.LocalMessage",
+    "source_package": "Engine",
+    "object": "Engine.Default__Actor",
+    "class": "Actor",
+    "property": "MessageClass",
+    "origin": "inherited from Engine.Default__Actor",
+    "confidence": "CONFIRMED AUTHORED DATA"
+   },
+   "marker_setup": null
+  },
+  "TnOverShieldPickupFactory": {
+   "cdo": "TransGame.Default__TnOverShieldPickupFactory",
+   "instances_in_streets": 2,
+   "MessageClass": {
+    "value": "Engine.LocalMessage",
+    "source_package": "Engine",
+    "object": "Engine.Default__Actor",
+    "class": "Actor",
+    "property": "MessageClass",
+    "origin": "inherited from Engine.Default__Actor",
+    "confidence": "CONFIRMED AUTHORED DATA"
+   },
+   "marker_setup": null
+  }
+ },
+ "announcer": {
+  "value": "SoundEvents_Dialog.Announcer.CHR_ANNOUNCER_DIALOG",
+  "source_package": "MP_KON_Fortress_BASE_m",
+  "object": "MP_KON_Fortress_BASE_m.TheWorld.PersistentLevel.TnWorldInfo_14276",
+  "class": "TnWorldInfo",
+  "property": "AnnouncerSoundEventSet",
+  "origin": "authored on object",
+  "confidence": "CONFIRMED AUTHORED DATA"
+ },
+ "pickup_feedback": {
+  "TransGame.Default__TnAmmoCratePickup": {
+   "PickupSound": "BL_HUD_INTERFACE.HEALTH_PU_AMMO",
+   "PickupObtainedDialog": "SoundEvents_Dialog.AmmoPickupObtainedDialog"
+  },
+  "TransGame.Default__TnHealthPickup": {
+   "PickupSound": "BL_HUD_INTERFACE.HEALTH_PU_ENERGON",
+   "PickupObtainedDialog": "SoundEvents_Dialog.HealthPickupObtainedDialog"
+  },
+  "TransGame.Default__TnOverShieldPickup": {
+   "PickupSound": "BL_HUD_INTERFACE.OVERSHIELD_POWER_UP",
+   "PickupObtainedDialog": "SoundEvents_Dialog.OvershieldPickupObtainedDialog"
+  }
+ },
+ "hud_gfx_symbols_matching_objective_score_terms": [],
+ "marker_material_package": "UI_HudMarkers_p (marker materials referenced by the marker types above)",
+ "radar_minimap_assets": "none found in authored.db (no radar/minimap object names)",
+ "confidence": "CONFIRMED AUTHORED DATA"
+}

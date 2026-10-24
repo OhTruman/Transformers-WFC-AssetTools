@@ -1,0 +1,4376 @@
+{
+ "map": "MP_KON_Fortress",
+ "generated_by": "AssetTools/scripts/wfc/vs_surface_audio.py",
+ "headline": {
+  "value": "Every MP_KON_Fortress surface resolves to the SAME footstep events (FS_DEFAULT_*). WFC has no surface-specific robot footstep/landing audio on this map: the per-character HmSoundEventSet chooses the sound (Optimus -> BL_FS_LRG_BOT.*). The rebuild's \"generic/default\" footsteps are the authored behaviour, not a fallback.",
+  "confidence": "CONFIRMED AUTHORED DATA",
+  "distinct_footstep_tables_across_streets_physmats": 1
+ },
+ "pawn_footstep_component": {
+  "object": "TransGame.Default__TnPawn.FootstepComp0",
+  "defaults": {
+   "DefaultWalkSound": "SoundEvents_Footsteps.FS_DEFAULT_WALK",
+   "DefaultJogSound": "SoundEvents_Footsteps.FS_DEFAULT_JOG",
+   "DefaultRunSound": "SoundEvents_Footsteps.FS_DEFAULT_RUN",
+   "DefaultCrouchWalkSound": "SoundEvents_Footsteps.FS_DEFAULT_CROUCH_WALK",
+   "DefaultCrouchJogSound": "SoundEvents_Footsteps.FS_DEFAULT_CROUCH_JOG",
+   "DefaultCrouchRunSound": "SoundEvents_Footsteps.FS_DEFAULT_CROUCH_RUN",
+   "DefaultScuffSound": "SoundEvents_Footsteps.FS_DEFAULT_SCUFF",
+   "DefaultCrouchScuffSound": "SoundEvents_Footsteps.FS_DEFAULT_CROUCH_SCUFF",
+   "DefaultJumpSound": "SoundEvents_Footsteps.FS_DEFAULT_JUMP",
+   "DefaultLandSound": "SoundEvents_Footsteps.FS_DEFAULT_LAND",
+   "DefaultHardLandSound": "SoundEvents_Footsteps.FS_DEFAULT_HARD_LAND"
+  },
+  "PhysicalMaterialOverride": {
+   "value": null,
+   "source_package": "TransGame",
+   "object": "TransGame.Default__TnPawn.FootstepComp0",
+   "class": "HmFootstepComponent",
+   "property": "PhysicalMaterialOverride",
+   "origin": "absent (engine default)",
+   "confidence": "CONFIRMED AUTHORED DATA"
+  },
+  "confidence": "CONFIRMED AUTHORED DATA"
+ },
+ "kismet_footstep_overrides_in_streets": {
+  "value": 0,
+  "class": "SeqAct_SetFootstepMaterialOverride",
+  "confidence": "CONFIRMED AUTHORED DATA"
+ },
+ "engine_fallback_physmat": {
+  "value": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+  "source_package": "Engine",
+  "object": "Engine.Default__Engine",
+  "class": "Engine",
+  "property": "DefaultPhysMaterialName",
+  "origin": "authored on object",
+  "confidence": "CONFIRMED AUTHORED DATA",
+  "note": "value baked into the cooked Engine CDO (config); used when a trace hits no physical material"
+ },
+ "surface_materials": [
+  {
+   "material": "Designer_Materials_p.DarkGray_Mat",
+   "usage": {
+    "bsp_or_other(vs_map)": 1
+   },
+   "physmat": "ENV_PHYSMAT_p.Concrete_PHYSMAT",
+   "set_on": "Designer_Materials_p.DarkGray_Mat",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "Designer_Materials_p.DarkGray_Mat"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_AllShader_p.Release.ENV_ForceField_MATINST",
+   "usage": {
+    "prop_sections": 6
+   },
+   "physmat": "ENV_PHYSMAT_p.ForceField_PHYSMAT",
+   "set_on": "ENV_AllShader_p.Special.ENV_ForceField_ALL_MAT",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_AllShader_p.Release.ENV_ForceField_MATINST",
+    "ENV_AllShader_p.Special.ENV_ForceField_ALL_MAT"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_ArchiveInterior_p.FaceDeco.FaceDeco1_red_MATINST",
+   "usage": {
+    "prop_sections": 2,
+    "component_overrides": 2
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_AllShader_p.Release.ENV_PhongMain_NS_Mat",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_ArchiveInterior_p.FaceDeco.FaceDeco1_red_MATINST",
+    "ENV_IAC_Shader_p.Material.IAC_Base_Shader_MAT",
+    "ENV_AllShader_p.Release.ENV_PhongMain_NS_Mat"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_CORE_Floors_p.Materials.ENV_COR_ChamberFloorCenterdisc_purple_MAT",
+   "usage": {
+    "prop_sections": 15,
+    "component_overrides": 15
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_CORE_Floors_p.Materials.ENV_COR_ChamberFloorCenterdisc_purple_MAT",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_CORE_Floors_p.Materials.ENV_COR_ChamberFloorCenterdisc_purple_MAT"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_CORE_Floors_p.Materials.ENV_COR_ChamberFloorDiffBoost_MAT",
+   "usage": {
+    "prop_sections": 12,
+    "component_overrides": 12
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_CORE_Floors_p.Materials.ENV_COR_ChamberFloorDiffBoost_MAT",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_CORE_Floors_p.Materials.ENV_COR_ChamberFloorDiffBoost_MAT"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_CORE_Floors_p.Materials.ENV_COR_rustFloor_MAT",
+   "usage": {
+    "bsp_or_other(vs_map)": 1
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_CORE_Floors_p.Materials.ENV_COR_rustFloor_MAT",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_CORE_Floors_p.Materials.ENV_COR_rustFloor_MAT"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_CORE_Wall_p.Textures.ENV_CORE_InroomRndTunnel_A_MATINST",
+   "usage": {
+    "prop_sections": 12
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_CORE_Wall_p.Textures.ENV_CORE_InroomRndTunnel_A_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_CORE_Wall_p.Textures.ENV_CORE_InroomRndTunnel_A_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_GLB_EnvEffects_p.Material.FogSheet_GreenYellow_MATINST",
+   "usage": {
+    "prop_sections": 5,
+    "component_overrides": 5
+   },
+   "physmat": null,
+   "set_on": null,
+   "property": null,
+   "parent_chain": [
+    "ENV_GLB_EnvEffects_p.Material.FogSheet_GreenYellow_MATINST",
+    "ENV_GLB_EnvEffects_p.Material.FogSheet_Parent_MAT"
+   ],
+   "confidence": "HIGH CONFIDENCE",
+   "note": "no PhysMaterial on the material or any parent -> engine fallback (Engine.DefaultPhysMaterialName)"
+  },
+  {
+   "material": "ENV_IAC_BLDS_1_p.Material.Arch_MAT_INST",
+   "usage": {
+    "prop_sections": 20
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_IAC_BLDS_1_p.Material.Arch_MAT_INST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_IAC_BLDS_1_p.Material.Arch_MAT_INST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_IAC_BLDS_3_p.Texture.HalfArch_Aqua_MATINST",
+   "usage": {
+    "prop_sections": 32,
+    "component_overrides": 32
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_AllShader_p.Release.ENV_PhongMain_NS_Mat",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_IAC_BLDS_3_p.Texture.HalfArch_Aqua_MATINST",
+    "ENV_IAC_Shader_p.Material.IAC_Base_Shader_MAT",
+    "ENV_AllShader_p.Release.ENV_PhongMain_NS_Mat"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_IAC_BLDS_3_p.Texture.HalfArch_Detail_MATINST",
+   "usage": {
+    "prop_sections": 16
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_AllShader_p.Release.ENV_PhongMain_NS_Mat",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_IAC_BLDS_3_p.Texture.HalfArch_Detail_MATINST",
+    "ENV_IAC_Shader_p.Material.IAC_Base_Shader_MAT",
+    "ENV_AllShader_p.Release.ENV_PhongMain_NS_Mat"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_IAC_BLDS_3_p.Texture.HalfArch_red_MATINST",
+   "usage": {
+    "prop_sections": 68,
+    "component_overrides": 68
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_AllShader_p.Release.ENV_PhongMain_NS_Mat",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_IAC_BLDS_3_p.Texture.HalfArch_red_MATINST",
+    "ENV_IAC_Shader_p.Material.IAC_Base_Shader_MAT",
+    "ENV_AllShader_p.Release.ENV_PhongMain_NS_Mat"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_IAC_Decagon_p.Materials.DecoPlazaFloor_noEmissLoSpec_MATINST",
+   "usage": {
+    "bsp_or_other(vs_map)": 1
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_AllShader_p.Release.ENV_PhongMain_NS_Mat",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_IAC_Decagon_p.Materials.DecoPlazaFloor_noEmissLoSpec_MATINST",
+    "ENV_IAC_Decagon_p.Materials.DecoPlazaFloor_MATINST",
+    "ENV_IAC_Shader_p.Material.IAC_Base_Shader_MAT",
+    "ENV_AllShader_p.Release.ENV_PhongMain_NS_Mat"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_IAC_Decagon_p.Materials.ENV_IAC_AutoLogo_Matinst",
+   "usage": {
+    "prop_sections": 1
+   },
+   "physmat": null,
+   "set_on": null,
+   "property": null,
+   "parent_chain": [
+    "ENV_IAC_Decagon_p.Materials.ENV_IAC_AutoLogo_Matinst",
+    "ENV_IAC_Bridge_p.ENV_Bridge_Lock"
+   ],
+   "confidence": "HIGH CONFIDENCE",
+   "note": "no PhysMaterial on the material or any parent -> engine fallback (Engine.DefaultPhysMaterialName)"
+  },
+  {
+   "material": "ENV_IAC_Deco_1_p.Material.ArchSupport_Var1_MATINST",
+   "usage": {
+    "prop_sections": 11
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_AllShader_p.Release.ENV_PhongMain_NS_Mat",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_IAC_Deco_1_p.Material.ArchSupport_Var1_MATINST",
+    "ENV_IAC_Shader_p.Material.IAC_Base_Shader_MAT",
+    "ENV_AllShader_p.Release.ENV_PhongMain_NS_Mat"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_IAC_Deco_1_p.Material.ArchSupport_purple_MATINST",
+   "usage": {
+    "prop_sections": 5,
+    "component_overrides": 5
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_AllShader_p.Release.ENV_PhongMain_NS_Mat",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_IAC_Deco_1_p.Material.ArchSupport_purple_MATINST",
+    "ENV_IAC_Shader_p.Material.IAC_Base_Shader_MAT",
+    "ENV_AllShader_p.Release.ENV_PhongMain_NS_Mat"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_IAC_Deco_1_p.Material.ChainLinkFence_MATINST",
+   "usage": {
+    "prop_sections": 4
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_AllShader_p.Release.ENV_PhongMain_Masked2sided_Mat",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_IAC_Deco_1_p.Material.ChainLinkFence_MATINST",
+    "ENV_AllShader_p.Release.ENV_PhongMain_Masked2sided_Mat"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_IAC_Deco_1_p.Material.SideSupport_MATINST",
+   "usage": {
+    "prop_sections": 16
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_AllShader_p.Release.ENV_PhongMain_NS_Mat",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_IAC_Deco_1_p.Material.SideSupport_MATINST",
+    "ENV_NEU_VariantShaders_p.Materials.SideSupport_MATINST",
+    "ENV_IAC_Shader_p.Material.IAC_Base_Shader_MAT",
+    "ENV_AllShader_p.Release.ENV_PhongMain_NS_Mat"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_IAC_Deco_1_p.Material.TrainTrack_Light_NOEMISS_MATINST",
+   "usage": {
+    "prop_sections": 33,
+    "component_overrides": 33
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_AllShader_p.Release.ENV_PhongMain_NS_Mat",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_IAC_Deco_1_p.Material.TrainTrack_Light_NOEMISS_MATINST",
+    "ENV_IAC_Deco_1_p.Material.TrainTrack_MATINST",
+    "ENV_IAC_Shader_p.Material.IAC_Base_Shader_MAT",
+    "ENV_AllShader_p.Release.ENV_PhongMain_NS_Mat"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_IAC_Deco_1_p.Material.TrainTrack_MATINST",
+   "usage": {
+    "prop_sections": 9
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_AllShader_p.Release.ENV_PhongMain_NS_Mat",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_IAC_Deco_1_p.Material.TrainTrack_MATINST",
+    "ENV_IAC_Shader_p.Material.IAC_Base_Shader_MAT",
+    "ENV_AllShader_p.Release.ENV_PhongMain_NS_Mat"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_IAC_Deco_1_p.Material.TrainTrack_NOEMISS_MATINST",
+   "usage": {
+    "prop_sections": 33,
+    "component_overrides": 33
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_AllShader_p.Release.ENV_PhongMain_NS_Mat",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_IAC_Deco_1_p.Material.TrainTrack_NOEMISS_MATINST",
+    "ENV_IAC_Deco_1_p.Material.TrainTrack_MATINST",
+    "ENV_IAC_Shader_p.Material.IAC_Base_Shader_MAT",
+    "ENV_AllShader_p.Release.ENV_PhongMain_NS_Mat"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_IAC_Ground_p.Material.FloorRampLight_MAT_INST",
+   "usage": {
+    "bsp_or_other(vs_map)": 1
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_IAC_Ground_p.Material.FloorRampLight_MAT_INST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_IAC_Ground_p.Material.FloorRampLight_MAT_INST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_IAC_LightSources_p.PinLights.PinLights_Orange_1_MAT_INST",
+   "usage": {
+    "prop_sections": 1
+   },
+   "physmat": null,
+   "set_on": null,
+   "property": null,
+   "parent_chain": [
+    "ENV_IAC_LightSources_p.PinLights.PinLights_Orange_1_MAT_INST",
+    "ENV_IAC_LightSources_p.PinLights.PinLights_Parent_MAT"
+   ],
+   "confidence": "HIGH CONFIDENCE",
+   "note": "no PhysMaterial on the material or any parent -> engine fallback (Engine.DefaultPhysMaterialName)"
+  },
+  {
+   "material": "ENV_IAC_LightSources_p.PinLights.PinLights_Orange_3_MAT_INST",
+   "usage": {
+    "prop_sections": 60,
+    "component_overrides": 60
+   },
+   "physmat": null,
+   "set_on": null,
+   "property": null,
+   "parent_chain": [
+    "ENV_IAC_LightSources_p.PinLights.PinLights_Orange_3_MAT_INST",
+    "ENV_IAC_LightSources_p.PinLights.PinLights_Parent_MAT"
+   ],
+   "confidence": "HIGH CONFIDENCE",
+   "note": "no PhysMaterial on the material or any parent -> engine fallback (Engine.DefaultPhysMaterialName)"
+  },
+  {
+   "material": "ENV_IAC_LightSources_p.PinLights.PinLights_Purple_1_MAT_INST",
+   "usage": {
+    "prop_sections": 277,
+    "component_overrides": 277
+   },
+   "physmat": null,
+   "set_on": null,
+   "property": null,
+   "parent_chain": [
+    "ENV_IAC_LightSources_p.PinLights.PinLights_Purple_1_MAT_INST",
+    "ENV_IAC_LightSources_p.PinLights.PinLights_Parent_MAT"
+   ],
+   "confidence": "HIGH CONFIDENCE",
+   "note": "no PhysMaterial on the material or any parent -> engine fallback (Engine.DefaultPhysMaterialName)"
+  },
+  {
+   "material": "ENV_IAC_LightSources_p.PinLights.PinLights_Red_1_MAT_INST",
+   "usage": {
+    "prop_sections": 197,
+    "component_overrides": 197
+   },
+   "physmat": null,
+   "set_on": null,
+   "property": null,
+   "parent_chain": [
+    "ENV_IAC_LightSources_p.PinLights.PinLights_Red_1_MAT_INST",
+    "ENV_IAC_LightSources_p.PinLights.PinLights_Parent_MAT"
+   ],
+   "confidence": "HIGH CONFIDENCE",
+   "note": "no PhysMaterial on the material or any parent -> engine fallback (Engine.DefaultPhysMaterialName)"
+  },
+  {
+   "material": "ENV_IAC_LightSources_p.PinLights.PinLights_SupaBlue_MATINST",
+   "usage": {
+    "prop_sections": 87,
+    "component_overrides": 87
+   },
+   "physmat": null,
+   "set_on": null,
+   "property": null,
+   "parent_chain": [
+    "ENV_IAC_LightSources_p.PinLights.PinLights_SupaBlue_MATINST",
+    "ENV_IAC_LightSources_p.PinLights.PinLights_Parent_MAT"
+   ],
+   "confidence": "HIGH CONFIDENCE",
+   "note": "no PhysMaterial on the material or any parent -> engine fallback (Engine.DefaultPhysMaterialName)"
+  },
+  {
+   "material": "ENV_IAC_Spacedome_p.Nebulae_blob_MATISNT",
+   "usage": {
+    "prop_sections": 1,
+    "component_overrides": 1
+   },
+   "physmat": null,
+   "set_on": null,
+   "property": null,
+   "parent_chain": [
+    "ENV_IAC_Spacedome_p.Nebulae_blob_MATISNT",
+    "PROP_EnergonSigns_p.EnergonSigns_CLR_Mat"
+   ],
+   "confidence": "HIGH CONFIDENCE",
+   "note": "no PhysMaterial on the material or any parent -> engine fallback (Engine.DefaultPhysMaterialName)"
+  },
+  {
+   "material": "ENV_KON_Architecture_p.Materials.BasePlatform_02_MATINST",
+   "usage": {
+    "prop_sections": 20
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_KON_Architecture_p.Materials.BasePlatform_02_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_Architecture_p.Materials.BasePlatform_02_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_Architecture_p.Materials.BasePlatform_04_MATINST",
+   "usage": {
+    "prop_sections": 19
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_KON_Architecture_p.Materials.BasePlatform_04_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_Architecture_p.Materials.BasePlatform_04_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_Architecture_p.Materials.BridgeArchBase_MATINST",
+   "usage": {
+    "prop_sections": 217
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_KON_Architecture_p.Materials.BridgeArchBase_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_Architecture_p.Materials.BridgeArchBase_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_Architecture_p.Materials.BridgeArchTop_SPHONG_B_MATINST",
+   "usage": {
+    "prop_sections": 147
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_KON_Architecture_p.Materials.BridgeArchTop_SPHONG_B_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_Architecture_p.Materials.BridgeArchTop_SPHONG_B_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_Architecture_p.Materials.BuildingSupport_01_C_MATINST",
+   "usage": {
+    "prop_sections": 468
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_KON_Architecture_p.Materials.BuildingSupport_01_C_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_Architecture_p.Materials.BuildingSupport_01_C_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_Architecture_p.Materials.CeilingTile_02_MATINST",
+   "usage": {
+    "prop_sections": 65,
+    "component_overrides": 65
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_KON_Architecture_p.Materials.CeilingTile_02_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_Architecture_p.Materials.CeilingTile_02_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_Architecture_p.Materials.CrownTrim_01_MATINST",
+   "usage": {
+    "prop_sections": 348
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_KON_Architecture_p.Materials.CrownTrim_01_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_Architecture_p.Materials.CrownTrim_01_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_Architecture_p.Materials.DoorFrame_01_MATINST",
+   "usage": {
+    "prop_sections": 342
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_KON_Architecture_p.Materials.DoorFrame_01_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_Architecture_p.Materials.DoorFrame_01_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_Architecture_p.Materials.ENV_CORE_BSPWall_B_MATINST",
+   "usage": {
+    "bsp_or_other(vs_map)": 1
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_KON_Architecture_p.Materials.ENV_CORE_BSPWall_B_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_Architecture_p.Materials.ENV_CORE_BSPWall_B_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_Architecture_p.Materials.FloorPanel_01_MATINST",
+   "usage": {
+    "prop_sections": 287
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_KON_Architecture_p.Materials.FloorPanel_01_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_Architecture_p.Materials.FloorPanel_01_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_Architecture_p.Materials.FloorTrim_01_MATINST",
+   "usage": {
+    "prop_sections": 70
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_KON_Architecture_p.Materials.FloorTrim_01_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_Architecture_p.Materials.FloorTrim_01_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_Architecture_p.Materials.FloorTrim_02_MATINST",
+   "usage": {
+    "prop_sections": 360
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_KON_Architecture_p.Materials.FloorTrim_02_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_Architecture_p.Materials.FloorTrim_02_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_Architecture_p.Materials.PillarEnergon_MATINST",
+   "usage": {
+    "prop_sections": 21
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_KON_Architecture_p.Materials.PillarEnergon_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_Architecture_p.Materials.PillarEnergon_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_Architecture_p.Materials.Pillar_01_MATINST",
+   "usage": {
+    "prop_sections": 51
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_KON_Architecture_p.Materials.Pillar_01_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_Architecture_p.Materials.Pillar_01_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_Architecture_p.Materials.TrackConveyor_MATINST",
+   "usage": {
+    "prop_sections": 37
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_KON_Architecture_p.Materials.TrackConveyor_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_Architecture_p.Materials.TrackConveyor_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_Architecture_p.Materials.TurretBase_MATINST",
+   "usage": {
+    "prop_sections": 41
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_KON_Architecture_p.Materials.TurretBase_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_Architecture_p.Materials.TurretBase_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_Architecture_p.Materials.WallLight_01_MATINST",
+   "usage": {
+    "prop_sections": 3
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_KON_Architecture_p.Materials.WallLight_01_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_Architecture_p.Materials.WallLight_01_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_Architecture_p.Materials.WallPanel_04_MATINST",
+   "usage": {
+    "bsp_or_other(vs_map)": 1
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_KON_Architecture_p.Materials.WallPanel_04_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_Architecture_p.Materials.WallPanel_04_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_Architecture_p.Materials.WallPanel_05_MATINST",
+   "usage": {
+    "bsp_or_other(vs_map)": 1
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_KON_Architecture_p.Materials.WallPanel_05_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_Architecture_p.Materials.WallPanel_05_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_Architecture_p.Materials.Wall_Piece_01_MATINST",
+   "usage": {
+    "bsp_or_other(vs_map)": 1
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_KON_Architecture_p.Materials.Wall_Piece_01_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_Architecture_p.Materials.Wall_Piece_01_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_Architecture_p.Materials.YellowPlasma_SewageFall_MATINST",
+   "usage": {
+    "prop_sections": 1,
+    "component_overrides": 1
+   },
+   "physmat": "ENV_PHYSMAT_p.Water_Yellow_PHYSMAT",
+   "set_on": "ENV_KON_Architecture_p.Materials.YellowPlasma_SewageFall_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_Architecture_p.Materials.YellowPlasma_SewageFall_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_Architecture_p.Materials.YellowPlasma_Sewage_MATINST",
+   "usage": {
+    "prop_sections": 3,
+    "component_overrides": 3
+   },
+   "physmat": "ENV_PHYSMAT_p.Water_Yellow_PHYSMAT",
+   "set_on": "ENV_KON_Architecture_p.Materials.YellowPlasma_Sewage_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_Architecture_p.Materials.YellowPlasma_Sewage_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_Bridges_p.Materials.KON_Bridge_Arch_MATINST",
+   "usage": {
+    "prop_sections": 2
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_AllShader_p.Release.ENV_PhongMain_NS_Mat",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_Bridges_p.Materials.KON_Bridge_Arch_MATINST",
+    "ENV_AllShader_p.Release.ENV_PhongMain_NS_Mat"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_Bridges_p.Materials.KON_Bridge_StraightYellow_MATINST",
+   "usage": {
+    "prop_sections": 2,
+    "component_overrides": 2
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_AllShader_p.Release.ENV_PhongMain_NS_Mat",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_Bridges_p.Materials.KON_Bridge_StraightYellow_MATINST",
+    "ENV_AllShader_p.Release.ENV_PhongMain_NS_Mat"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_Bridges_p.Materials.KON_Bridge_Straight_MATINST",
+   "usage": {
+    "prop_sections": 2
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_AllShader_p.Release.ENV_PhongMain_NS_Mat",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_Bridges_p.Materials.KON_Bridge_Straight_MATINST",
+    "ENV_AllShader_p.Release.ENV_PhongMain_NS_Mat"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_Bridges_p.Materials.Small1_Flat1_Corner_384x1536x512_MATINST",
+   "usage": {
+    "prop_sections": 54
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_AllShader_p.Release.ENV_PhongMain_NS_Mat",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_Bridges_p.Materials.Small1_Flat1_Corner_384x1536x512_MATINST",
+    "ENV_IAC_Shader_p.Material.IAC_Base_Shader_MAT",
+    "ENV_AllShader_p.Release.ENV_PhongMain_NS_Mat"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_Bridges_p.Materials.Small1_Flat1_Side_384x1536x768_MATINST",
+   "usage": {
+    "prop_sections": 11
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_AllShader_p.Release.ENV_PhongMain_NS_Mat",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_Bridges_p.Materials.Small1_Flat1_Side_384x1536x768_MATINST",
+    "ENV_IAC_Shader_p.Material.IAC_Base_Shader_MAT",
+    "ENV_AllShader_p.Release.ENV_PhongMain_NS_Mat"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_Deco_p.Materials.BackgroundIsland_01_MATINST",
+   "usage": {
+    "prop_sections": 7
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_KON_Deco_p.Materials.BackgroundIsland_01_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_Deco_p.Materials.BackgroundIsland_01_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_Deco_p.Materials.BackgroundIsland_MATINST",
+   "usage": {
+    "prop_sections": 7
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_KON_Deco_p.Materials.BackgroundIsland_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_Deco_p.Materials.BackgroundIsland_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_Deco_p.Materials.ColumnCap_01_MATINST",
+   "usage": {
+    "prop_sections": 69
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_KON_Deco_p.Materials.ColumnCap_01_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_Deco_p.Materials.ColumnCap_01_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_Deco_p.Materials.DoorWayCap_01_MATINST",
+   "usage": {
+    "prop_sections": 11
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_KON_Deco_p.Materials.DoorWayCap_01_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_Deco_p.Materials.DoorWayCap_01_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_Deco_p.Materials.LightSupport1_MATINST",
+   "usage": {
+    "prop_sections": 35
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_KON_Deco_p.Materials.LightSupport1_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_Deco_p.Materials.LightSupport1_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_Deco_p.Materials.Light_01a_MATINST",
+   "usage": {
+    "prop_sections": 60
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_KON_Deco_p.Materials.Light_01a_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_Deco_p.Materials.Light_01a_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_Deco_p.Materials.Plasma_Purple_MATINST",
+   "usage": {
+    "prop_sections": 11
+   },
+   "physmat": null,
+   "set_on": null,
+   "property": null,
+   "parent_chain": [
+    "ENV_KON_Deco_p.Materials.Plasma_Purple_MATINST",
+    "ENV_AllShader_p.Special.Plasma"
+   ],
+   "confidence": "HIGH CONFIDENCE",
+   "note": "no PhysMaterial on the material or any parent -> engine fallback (Engine.DefaultPhysMaterialName)"
+  },
+  {
+   "material": "ENV_KON_Deco_p.Materials.Railing_01_MATINST",
+   "usage": {
+    "prop_sections": 7
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_KON_Deco_p.Materials.Railing_01_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_Deco_p.Materials.Railing_01_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_Deco_p.Materials.Wing_01_MATINST",
+   "usage": {
+    "prop_sections": 4
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_KON_Deco_p.Materials.Wing_01_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_Deco_p.Materials.Wing_01_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_PrisonBarge_p.Materials.CeilingDeco_01_MATINST",
+   "usage": {
+    "prop_sections": 21
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_KON_PrisonBarge_p.Materials.CeilingDeco_01_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_PrisonBarge_p.Materials.CeilingDeco_01_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_PrisonBarge_p.Materials.DomeDeco_01RedLITE_MATINST",
+   "usage": {
+    "prop_sections": 14,
+    "component_overrides": 14
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_KON_PrisonBarge_p.Materials.DomeDeco_01RedLITE_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_PrisonBarge_p.Materials.DomeDeco_01RedLITE_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_PrisonBarge_p.Materials.DomeDeco_01_MATINST",
+   "usage": {
+    "prop_sections": 3
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_KON_PrisonBarge_p.Materials.DomeDeco_01_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_PrisonBarge_p.Materials.DomeDeco_01_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_PrisonBarge_p.Materials.DomeDeco_GreenYellow_MATINST",
+   "usage": {
+    "prop_sections": 6,
+    "component_overrides": 6
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_KON_PrisonBarge_p.Materials.DomeDeco_GreenYellow_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_PrisonBarge_p.Materials.DomeDeco_GreenYellow_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_PrisonBarge_p.Materials.Pillar_01_MATINST",
+   "usage": {
+    "prop_sections": 75
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_KON_PrisonBarge_p.Materials.Pillar_01_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_PrisonBarge_p.Materials.Pillar_01_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_PrisonBarge_p.Materials.SpikeDeco_01_MATINST",
+   "usage": {
+    "prop_sections": 32
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_KON_PrisonBarge_p.Materials.SpikeDeco_01_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_PrisonBarge_p.Materials.SpikeDeco_01_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_Prison_p.Materials.BottomPillarSupport_MATINST",
+   "usage": {
+    "prop_sections": 16
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_KON_Prison_p.Materials.BottomPillarSupport_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_Prison_p.Materials.BottomPillarSupport_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_Prison_p.Materials.CellBlocksCap_MATINST",
+   "usage": {
+    "prop_sections": 10
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_KON_Prison_p.Materials.CellBlocksCap_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_Prison_p.Materials.CellBlocksCap_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_Prison_p.Materials.ClawEnd_MATINST_02",
+   "usage": {
+    "prop_sections": 11
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_KON_Prison_p.Materials.ClawEnd_MATINST_02",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_Prison_p.Materials.ClawEnd_MATINST_02"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_Prison_p.Materials.ForceField_02_Matinst",
+   "usage": {
+    "prop_sections": 6
+   },
+   "physmat": "ENV_PHYSMAT_p.Ice_PHYSMAT",
+   "set_on": "ENV_KON_Prison_p.Materials.ForceField_02_Matinst",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_Prison_p.Materials.ForceField_02_Matinst"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_Prison_p.Materials.GlassFloor_Dungeons_Matinst",
+   "usage": {
+    "prop_sections": 2,
+    "component_overrides": 2
+   },
+   "physmat": "ENV_PHYSMAT_p.Ice_PHYSMAT",
+   "set_on": "ENV_KON_Prison_p.Materials.GlassFloor_Dungeons_Matinst",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_Prison_p.Materials.GlassFloor_Dungeons_Matinst"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_Prison_p.Materials.GlowSphere_Purple2_MATINST",
+   "usage": {
+    "prop_sections": 1,
+    "component_overrides": 1
+   },
+   "physmat": null,
+   "set_on": null,
+   "property": null,
+   "parent_chain": [
+    "ENV_KON_Prison_p.Materials.GlowSphere_Purple2_MATINST",
+    "ENV_GLB_EnvEffects_p.Material.GlowSphereCheapBias_Parent_MAT"
+   ],
+   "confidence": "HIGH CONFIDENCE",
+   "note": "no PhysMaterial on the material or any parent -> engine fallback (Engine.DefaultPhysMaterialName)"
+  },
+  {
+   "material": "ENV_KON_Prison_p.Materials.Grate_MATINST",
+   "usage": {
+    "prop_sections": 12
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_KON_Prison_p.Materials.Grate_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_Prison_p.Materials.Grate_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_Prison_p.Materials.Mechanical_Arm_02_MATINST",
+   "usage": {
+    "prop_sections": 48
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_AllShader_p.Release.ENV_PhongMain_NS_Mat",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_Prison_p.Materials.Mechanical_Arm_02_MATINST",
+    "ENV_AllShader_p.Release.ENV_PhongMain_NS_Mat"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_Prison_p.Materials.MiddlePillarSupport_MATINST",
+   "usage": {
+    "prop_sections": 16
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_KON_Prison_p.Materials.MiddlePillarSupport_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_Prison_p.Materials.MiddlePillarSupport_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_Prison_p.Materials.Parasite_01_MATINST",
+   "usage": {
+    "prop_sections": 73
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_KON_Prison_p.Materials.Parasite_01_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_Prison_p.Materials.Parasite_01_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_Prison_p.Materials.Parasite_green_01_MATINST",
+   "usage": {
+    "prop_sections": 12,
+    "component_overrides": 12
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_KON_Prison_p.Materials.Parasite_green_01_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_Prison_p.Materials.Parasite_green_01_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_Prison_p.Materials.Pillar_02_MATINST",
+   "usage": {
+    "prop_sections": 88
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_KON_Prison_p.Materials.Pillar_02_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_Prison_p.Materials.Pillar_02_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_Prison_p.Materials.PrisonCell_01_Glass_MATINST",
+   "usage": {
+    "prop_sections": 3
+   },
+   "physmat": "ENV_PHYSMAT_p.Ice_PHYSMAT",
+   "set_on": "ENV_KON_Prison_p.Materials.PrisonCell_01_Glass_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_Prison_p.Materials.PrisonCell_01_Glass_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_Prison_p.Materials.PrisonCell_01_MATINST",
+   "usage": {
+    "prop_sections": 3
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_KON_Prison_p.Materials.PrisonCell_01_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_Prison_p.Materials.PrisonCell_01_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_Prison_p.Materials.PrisonCell_3_MATINST",
+   "usage": {
+    "prop_sections": 6
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_KON_Prison_p.Materials.PrisonCell_3_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_Prison_p.Materials.PrisonCell_3_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_Prison_p.Materials.Top_Pillar_Support_MATINST",
+   "usage": {
+    "prop_sections": 151
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_KON_Prison_p.Materials.Top_Pillar_Support_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_Prison_p.Materials.Top_Pillar_Support_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_Prison_p.Materials.TortureTable_MATINST",
+   "usage": {
+    "prop_sections": 11
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_KON_Prison_p.Materials.TortureTable_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_Prison_p.Materials.TortureTable_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_Prison_p.Materials.TransformBridgeBase_MATINST",
+   "usage": {
+    "prop_sections": 36
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_KON_Prison_p.Materials.TransformBridgeBase_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_Prison_p.Materials.TransformBridgeBase_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_Prison_p.Materials.WallLight_02YWarm_MATINST",
+   "usage": {
+    "prop_sections": 3,
+    "component_overrides": 3
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_KON_Prison_p.Materials.WallLight_02YWarm_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_Prison_p.Materials.WallLight_02YWarm_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_Prison_p.Materials.WallLight_02Yellow_MATINST",
+   "usage": {
+    "prop_sections": 1,
+    "component_overrides": 1
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_KON_Prison_p.Materials.WallLight_02Yellow_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_Prison_p.Materials.WallLight_02Yellow_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_Prison_p.Materials.WallLight_02_MATINST",
+   "usage": {
+    "prop_sections": 7,
+    "component_overrides": 1
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_KON_Prison_p.Materials.WallLight_02_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_Prison_p.Materials.WallLight_02_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_Prison_p.Materials.WallLight_02_Plasma_02_MATINST",
+   "usage": {
+    "prop_sections": 2
+   },
+   "physmat": "ENV_PHYSMAT_p.Ice_PHYSMAT",
+   "set_on": "ENV_KON_Prison_p.Materials.WallLight_02_Plasma_02_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_Prison_p.Materials.WallLight_02_Plasma_02_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_Prison_p.Materials.WallLight_02_Plasma_MATINST",
+   "usage": {
+    "prop_sections": 8
+   },
+   "physmat": "ENV_PHYSMAT_p.Ice_PHYSMAT",
+   "set_on": "ENV_KON_Prison_p.Materials.WallLight_02_Plasma_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_Prison_p.Materials.WallLight_02_Plasma_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_Prison_p.Materials.WallSupport_01_MATINST",
+   "usage": {
+    "prop_sections": 199
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_KON_Prison_p.Materials.WallSupport_01_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_KON_Prison_p.Materials.WallSupport_01_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_KON_StarDome_p.Test.KON_newSky_MAT",
+   "usage": {
+    "prop_sections": 1,
+    "component_overrides": 1
+   },
+   "physmat": null,
+   "set_on": null,
+   "property": null,
+   "parent_chain": [
+    "ENV_KON_StarDome_p.Test.KON_newSky_MAT"
+   ],
+   "confidence": "HIGH CONFIDENCE",
+   "note": "no PhysMaterial on the material or any parent -> engine fallback (Engine.DefaultPhysMaterialName)"
+  },
+  {
+   "material": "ENV_NEU_Structures_p.Big3.Big3_Building3Walkway_1024x1536x4096_MATINST",
+   "usage": {
+    "prop_sections": 4
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_AllShader_p.Release.ENV_PhongMain_NS_Mat",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_NEU_Structures_p.Big3.Big3_Building3Walkway_1024x1536x4096_MATINST",
+    "ENV_IAC_Shader_p.Material.IAC_Base_Shader_MAT",
+    "ENV_AllShader_p.Release.ENV_PhongMain_NS_Mat"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_NEU_Variation_p.ENV_manholes_CLR_Mat",
+   "usage": {
+    "prop_sections": 27
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_NEU_Variation_p.ENV_manholes_CLR_Mat",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_NEU_Variation_p.ENV_manholes_CLR_Mat"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_NEU_Variation_p.ENV_manholes_orange_CLR_Mat",
+   "usage": {
+    "prop_sections": 16,
+    "component_overrides": 16
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_NEU_Variation_p.ENV_manholes_orange_CLR_Mat",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_NEU_Variation_p.ENV_manholes_orange_CLR_Mat"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_NEU_Variation_p.ENV_manholes_purple_CLR_Mat",
+   "usage": {
+    "prop_sections": 8,
+    "component_overrides": 8
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_NEU_Variation_p.ENV_manholes_purple_CLR_Mat",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_NEU_Variation_p.ENV_manholes_purple_CLR_Mat"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_NEU_Variation_p.ENV_manholes_red_CLR_Mat",
+   "usage": {
+    "prop_sections": 4,
+    "component_overrides": 4
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_NEU_Variation_p.ENV_manholes_red_CLR_Mat",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_NEU_Variation_p.ENV_manholes_red_CLR_Mat"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_NEU_Variation_p.MOD_rustpatch1_CLR_Mat",
+   "usage": {
+    "decals": 1
+   },
+   "physmat": null,
+   "set_on": null,
+   "property": null,
+   "parent_chain": [
+    "ENV_NEU_Variation_p.MOD_rustpatch1_CLR_Mat"
+   ],
+   "confidence": "HIGH CONFIDENCE",
+   "note": "no PhysMaterial on the material or any parent -> engine fallback (Engine.DefaultPhysMaterialName)"
+  },
+  {
+   "material": "ENV_NEU_Variation_p.MOD_rustpatch5_CLR_Mat",
+   "usage": {
+    "decals": 1
+   },
+   "physmat": null,
+   "set_on": null,
+   "property": null,
+   "parent_chain": [
+    "ENV_NEU_Variation_p.MOD_rustpatch5_CLR_Mat"
+   ],
+   "confidence": "HIGH CONFIDENCE",
+   "note": "no PhysMaterial on the material or any parent -> engine fallback (Engine.DefaultPhysMaterialName)"
+  },
+  {
+   "material": "ENV_NEU_Variation_p.MOD_rustpatch7_CLR_Mat",
+   "usage": {
+    "decals": 4
+   },
+   "physmat": null,
+   "set_on": null,
+   "property": null,
+   "parent_chain": [
+    "ENV_NEU_Variation_p.MOD_rustpatch7_CLR_Mat"
+   ],
+   "confidence": "HIGH CONFIDENCE",
+   "note": "no PhysMaterial on the material or any parent -> engine fallback (Engine.DefaultPhysMaterialName)"
+  },
+  {
+   "material": "ENV_NEU_Variation_p.esigns_d2_CLR_Mat",
+   "usage": {
+    "prop_sections": 3
+   },
+   "physmat": null,
+   "set_on": null,
+   "property": null,
+   "parent_chain": [
+    "ENV_NEU_Variation_p.esigns_d2_CLR_Mat"
+   ],
+   "confidence": "HIGH CONFIDENCE",
+   "note": "no PhysMaterial on the material or any parent -> engine fallback (Engine.DefaultPhysMaterialName)"
+  },
+  {
+   "material": "ENV_NEU_Variation_p.fbook_readout2_CLR_Mat",
+   "usage": {
+    "prop_sections": 4
+   },
+   "physmat": null,
+   "set_on": null,
+   "property": null,
+   "parent_chain": [
+    "ENV_NEU_Variation_p.fbook_readout2_CLR_Mat"
+   ],
+   "confidence": "HIGH CONFIDENCE",
+   "note": "no PhysMaterial on the material or any parent -> engine fallback (Engine.DefaultPhysMaterialName)"
+  },
+  {
+   "material": "ENV_NEU_Variation_p.fbook_readout3_CLR_Mat",
+   "usage": {
+    "prop_sections": 1
+   },
+   "physmat": null,
+   "set_on": null,
+   "property": null,
+   "parent_chain": [
+    "ENV_NEU_Variation_p.fbook_readout3_CLR_Mat"
+   ],
+   "confidence": "HIGH CONFIDENCE",
+   "note": "no PhysMaterial on the material or any parent -> engine fallback (Engine.DefaultPhysMaterialName)"
+  },
+  {
+   "material": "ENV_NEU_Variation_p.fbook_sinewave2_CLR_Mat",
+   "usage": {
+    "prop_sections": 12
+   },
+   "physmat": null,
+   "set_on": null,
+   "property": null,
+   "parent_chain": [
+    "ENV_NEU_Variation_p.fbook_sinewave2_CLR_Mat"
+   ],
+   "confidence": "HIGH CONFIDENCE",
+   "note": "no PhysMaterial on the material or any parent -> engine fallback (Engine.DefaultPhysMaterialName)"
+  },
+  {
+   "material": "ENV_NEU_Variation_p.fbook_sinewave4_CLR_Mat",
+   "usage": {
+    "prop_sections": 10
+   },
+   "physmat": null,
+   "set_on": null,
+   "property": null,
+   "parent_chain": [
+    "ENV_NEU_Variation_p.fbook_sinewave4_CLR_Mat"
+   ],
+   "confidence": "HIGH CONFIDENCE",
+   "note": "no PhysMaterial on the material or any parent -> engine fallback (Engine.DefaultPhysMaterialName)"
+  },
+  {
+   "material": "ENV_NEU_Variation_p.fbook_sinewave5_CLR_Mat",
+   "usage": {
+    "prop_sections": 5
+   },
+   "physmat": null,
+   "set_on": null,
+   "property": null,
+   "parent_chain": [
+    "ENV_NEU_Variation_p.fbook_sinewave5_CLR_Mat"
+   ],
+   "confidence": "HIGH CONFIDENCE",
+   "note": "no PhysMaterial on the material or any parent -> engine fallback (Engine.DefaultPhysMaterialName)"
+  },
+  {
+   "material": "ENV_NEU_Variation_p.fbook_sinewave6_CLR_Mat",
+   "usage": {
+    "prop_sections": 2
+   },
+   "physmat": null,
+   "set_on": null,
+   "property": null,
+   "parent_chain": [
+    "ENV_NEU_Variation_p.fbook_sinewave6_CLR_Mat"
+   ],
+   "confidence": "HIGH CONFIDENCE",
+   "note": "no PhysMaterial on the material or any parent -> engine fallback (Engine.DefaultPhysMaterialName)"
+  },
+  {
+   "material": "ENV_NEU_Variation_p.fbook_sinewave_CLR_Mat",
+   "usage": {
+    "prop_sections": 1
+   },
+   "physmat": null,
+   "set_on": null,
+   "property": null,
+   "parent_chain": [
+    "ENV_NEU_Variation_p.fbook_sinewave_CLR_Mat"
+   ],
+   "confidence": "HIGH CONFIDENCE",
+   "note": "no PhysMaterial on the material or any parent -> engine fallback (Engine.DefaultPhysMaterialName)"
+  },
+  {
+   "material": "ENV_NEU_Variation_p.stationbits_CLR_Mat",
+   "usage": {
+    "prop_sections": 6
+   },
+   "physmat": null,
+   "set_on": null,
+   "property": null,
+   "parent_chain": [
+    "ENV_NEU_Variation_p.stationbits_CLR_Mat"
+   ],
+   "confidence": "HIGH CONFIDENCE",
+   "note": "no PhysMaterial on the material or any parent -> engine fallback (Engine.DefaultPhysMaterialName)"
+  },
+  {
+   "material": "ENV_NEU_landmarking_p.landmark_Dchevrons_clr_Mat",
+   "usage": {
+    "decals": 1
+   },
+   "physmat": null,
+   "set_on": null,
+   "property": null,
+   "parent_chain": [
+    "ENV_NEU_landmarking_p.landmark_Dchevrons_clr_Mat"
+   ],
+   "confidence": "HIGH CONFIDENCE",
+   "note": "no PhysMaterial on the material or any parent -> engine fallback (Engine.DefaultPhysMaterialName)"
+  },
+  {
+   "material": "ENV_NEU_landmarking_p.landmark_Dtarget_clr_Mat",
+   "usage": {
+    "prop_sections": 1
+   },
+   "physmat": null,
+   "set_on": null,
+   "property": null,
+   "parent_chain": [
+    "ENV_NEU_landmarking_p.landmark_Dtarget_clr_Mat"
+   ],
+   "confidence": "HIGH CONFIDENCE",
+   "note": "no PhysMaterial on the material or any parent -> engine fallback (Engine.DefaultPhysMaterialName)"
+  },
+  {
+   "material": "ENV_NEU_landmarking_p.landmark_chevrons_V2_Mat",
+   "usage": {
+    "decals": 4
+   },
+   "physmat": null,
+   "set_on": null,
+   "property": null,
+   "parent_chain": [
+    "ENV_NEU_landmarking_p.landmark_chevrons_V2_Mat"
+   ],
+   "confidence": "HIGH CONFIDENCE",
+   "note": "no PhysMaterial on the material or any parent -> engine fallback (Engine.DefaultPhysMaterialName)"
+  },
+  {
+   "material": "ENV_NEU_landmarking_p.landmark_target_clr_Mat",
+   "usage": {
+    "prop_sections": 1
+   },
+   "physmat": null,
+   "set_on": null,
+   "property": null,
+   "parent_chain": [
+    "ENV_NEU_landmarking_p.landmark_target_clr_Mat"
+   ],
+   "confidence": "HIGH CONFIDENCE",
+   "note": "no PhysMaterial on the material or any parent -> engine fallback (Engine.DefaultPhysMaterialName)"
+  },
+  {
+   "material": "ENV_ORB_A1_LowRez_p.Material.ENV_ORB_Wing_MATINST",
+   "usage": {
+    "prop_sections": 46
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_ORB_A1_LowRez_p.Material.ENV_ORB_Wing_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_ORB_A1_LowRez_p.Material.ENV_ORB_Wing_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_ORB_D1_Architecture_p.Materials.Crate_MATINST",
+   "usage": {
+    "prop_sections": 22
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_ORB_D1_Architecture_p.Materials.Crate_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_ORB_D1_Architecture_p.Materials.Crate_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_ORB_D1_Architecture_p.Materials.Crate_V2_MATINST",
+   "usage": {
+    "prop_sections": 30
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_ORB_D1_Architecture_p.Materials.Crate_V2_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_ORB_D1_Architecture_p.Materials.Crate_V2_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_ORB_D1_Deco_p.Materials.GasChamberSubstructureDarkEnergon_MATINST",
+   "usage": {
+    "prop_sections": 1,
+    "component_overrides": 1
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_AllShader_p.Release.ENV_PhongMain_NS_Mat",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_ORB_D1_Deco_p.Materials.GasChamberSubstructureDarkEnergon_MATINST",
+    "ENV_ORB_D1_Deco_p.Materials.GasChamberSubstructure_MATINST",
+    "ENV_ORB_D1_Shader_p.Materials.ORB_D1_Base_Shader_MAT",
+    "ENV_AllShader_p.Release.ENV_PhongMain_NS_Mat"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_ORB_D1_Deco_p.Materials.GasChamberSubstructure_MATINST",
+   "usage": {
+    "prop_sections": 10
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_AllShader_p.Release.ENV_PhongMain_NS_Mat",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_ORB_D1_Deco_p.Materials.GasChamberSubstructure_MATINST",
+    "ENV_ORB_D1_Shader_p.Materials.ORB_D1_Base_Shader_MAT",
+    "ENV_AllShader_p.Release.ENV_PhongMain_NS_Mat"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_ORB_D1_Deco_p.Materials.GasChamber_purple_MATINST",
+   "usage": {
+    "prop_sections": 7,
+    "component_overrides": 7
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_AllShader_p.Release.ENV_PhongMain_NS_Mat",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_ORB_D1_Deco_p.Materials.GasChamber_purple_MATINST",
+    "ENV_ORB_D1_Deco_p.Materials.GasChamber_MATINST",
+    "ENV_ORB_D1_Shader_p.Materials.ORB_D1_Base_Shader_MAT",
+    "ENV_AllShader_p.Release.ENV_PhongMain_NS_Mat"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_ORB_D1_Deco_p.Materials.PowerCables_01_MATINST",
+   "usage": {
+    "prop_sections": 6
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_AllShader_p.Release.ENV_PhongMain_NS_Mat",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_ORB_D1_Deco_p.Materials.PowerCables_01_MATINST",
+    "ENV_ORB_D1_Shader_p.Materials.ORB_D1_Base_Shader_MAT",
+    "ENV_AllShader_p.Release.ENV_PhongMain_NS_Mat"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_ORB_D1_Deco_p.Materials.PowerTubes_DarkEnergon_MATINST",
+   "usage": {
+    "prop_sections": 3,
+    "component_overrides": 3
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_AllShader_p.Release.ENV_PhongMain_NS_Mat",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_ORB_D1_Deco_p.Materials.PowerTubes_DarkEnergon_MATINST",
+    "ENV_ORB_D1_Shader_p.Materials.ORB_D1_Base_Shader_MAT",
+    "ENV_AllShader_p.Release.ENV_PhongMain_NS_Mat"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_ORB_D1_MegatronCruiser_p.Materials.Ship_CeilingPanel_01_MATINST",
+   "usage": {
+    "prop_sections": 11
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_ORB_D1_MegatronCruiser_p.Materials.Ship_CeilingPanel_01_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_ORB_D1_MegatronCruiser_p.Materials.Ship_CeilingPanel_01_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_ORB_D1_MegatronCruiser_p.Materials.Ship_Engine_MATINST",
+   "usage": {
+    "prop_sections": 1
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_ORB_D1_MegatronCruiser_p.Materials.Ship_Engine_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_ORB_D1_MegatronCruiser_p.Materials.Ship_Engine_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_ORB_D1_MegatronCruiser_p.Materials.Ship_FloorPanel_01_MATINST",
+   "usage": {
+    "prop_sections": 19
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_ORB_D1_MegatronCruiser_p.Materials.Ship_FloorPanel_01_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_ORB_D1_MegatronCruiser_p.Materials.Ship_FloorPanel_01_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_ORB_D1_MegatronCruiser_p.Materials.Ship_FloorPanel_01_NOEMISS_MATINST",
+   "usage": {
+    "prop_sections": 57
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_ORB_D1_MegatronCruiser_p.Materials.Ship_FloorPanel_01_NOEMISS_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_ORB_D1_MegatronCruiser_p.Materials.Ship_FloorPanel_01_NOEMISS_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_ORB_D1_MegatronCruiser_p.ShipEngineEnergon_MATINST",
+   "usage": {
+    "prop_sections": 1
+   },
+   "physmat": "ENV_PHYSMAT_p.ForceField_Blue_PHYSMAT",
+   "set_on": "ENV_ORB_D1_MegatronCruiser_p.ShipEngineEnergon_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_ORB_D1_MegatronCruiser_p.ShipEngineEnergon_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_ORB_D1_Shader_p.Materials.Transparency_MAT",
+   "usage": {
+    "bsp_or_other(vs_map)": 1
+   },
+   "physmat": null,
+   "set_on": null,
+   "property": null,
+   "parent_chain": [
+    "ENV_ORB_D1_Shader_p.Materials.Transparency_MAT"
+   ],
+   "confidence": "HIGH CONFIDENCE",
+   "note": "no PhysMaterial on the material or any parent -> engine fallback (Engine.DefaultPhysMaterialName)"
+  },
+  {
+   "material": "ENV_ORB_PowerCorridor_p.Materials.TrypPowerTubes_MATINST",
+   "usage": {
+    "prop_sections": 266
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_ORB_PowerCorridor_p.Materials.TrypPowerTubes_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "ENV_ORB_PowerCorridor_p.Materials.TrypPowerTubes_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "ENV_ORB_Spacedome_p.Spacedome_MAT",
+   "usage": {
+    "prop_sections": 1
+   },
+   "physmat": null,
+   "set_on": null,
+   "property": null,
+   "parent_chain": [
+    "ENV_ORB_Spacedome_p.Spacedome_MAT"
+   ],
+   "confidence": "HIGH CONFIDENCE",
+   "note": "no PhysMaterial on the material or any parent -> engine fallback (Engine.DefaultPhysMaterialName)"
+  },
+  {
+   "material": "EngineMaterials.DefaultMaterial",
+   "usage": {
+    "bsp_or_other(vs_map)": 1
+   },
+   "physmat": null,
+   "set_on": null,
+   "property": null,
+   "parent_chain": [
+    "EngineMaterials.DefaultMaterial"
+   ],
+   "confidence": "HIGH CONFIDENCE",
+   "note": "no PhysMaterial on the material or any parent -> engine fallback (Engine.DefaultPhysMaterialName)"
+  },
+  {
+   "material": "FX_Materials_p.Materials.Basic_Particle_Add_MAT",
+   "usage": {
+    "particles": 2
+   },
+   "physmat": null,
+   "set_on": null,
+   "property": null,
+   "parent_chain": [
+    "FX_Materials_p.Materials.Basic_Particle_Add_MAT"
+   ],
+   "confidence": "HIGH CONFIDENCE",
+   "note": "no PhysMaterial on the material or any parent -> engine fallback (Engine.DefaultPhysMaterialName)"
+  },
+  {
+   "material": "FX_Materials_p.Materials.Distortion_Cloud_01_MAT",
+   "usage": {
+    "particles": 1
+   },
+   "physmat": null,
+   "set_on": null,
+   "property": null,
+   "parent_chain": [
+    "FX_Materials_p.Materials.Distortion_Cloud_01_MAT"
+   ],
+   "confidence": "HIGH CONFIDENCE",
+   "note": "no PhysMaterial on the material or any parent -> engine fallback (Engine.DefaultPhysMaterialName)"
+  },
+  {
+   "material": "FX_Materials_p.Materials.Glow_Mod_Depth_MAT",
+   "usage": {
+    "particles": 2
+   },
+   "physmat": null,
+   "set_on": null,
+   "property": null,
+   "parent_chain": [
+    "FX_Materials_p.Materials.Glow_Mod_Depth_MAT"
+   ],
+   "confidence": "HIGH CONFIDENCE",
+   "note": "no PhysMaterial on the material or any parent -> engine fallback (Engine.DefaultPhysMaterialName)"
+  },
+  {
+   "material": "FX_Materials_p.Materials.Glow_Mod_MAT",
+   "usage": {
+    "particles": 1
+   },
+   "physmat": null,
+   "set_on": null,
+   "property": null,
+   "parent_chain": [
+    "FX_Materials_p.Materials.Glow_Mod_MAT"
+   ],
+   "confidence": "HIGH CONFIDENCE",
+   "note": "no PhysMaterial on the material or any parent -> engine fallback (Engine.DefaultPhysMaterialName)"
+  },
+  {
+   "material": "FX_Materials_p.Materials.LightVolume_WepPickup_MAT",
+   "usage": {
+    "particles": 1
+   },
+   "physmat": null,
+   "set_on": null,
+   "property": null,
+   "parent_chain": [
+    "FX_Materials_p.Materials.LightVolume_WepPickup_MAT"
+   ],
+   "confidence": "HIGH CONFIDENCE",
+   "note": "no PhysMaterial on the material or any parent -> engine fallback (Engine.DefaultPhysMaterialName)"
+  },
+  {
+   "material": "FX_Materials_p.Materials.ParticleBase_BW_MAT",
+   "usage": {
+    "particles": 1
+   },
+   "physmat": null,
+   "set_on": null,
+   "property": null,
+   "parent_chain": [
+    "FX_Materials_p.Materials.ParticleBase_BW_MAT"
+   ],
+   "confidence": "HIGH CONFIDENCE",
+   "note": "no PhysMaterial on the material or any parent -> engine fallback (Engine.DefaultPhysMaterialName)"
+  },
+  {
+   "material": "FX_Materials_p.Materials.SmokeCoolDepth_Mat",
+   "usage": {
+    "particles": 1
+   },
+   "physmat": null,
+   "set_on": null,
+   "property": null,
+   "parent_chain": [
+    "FX_Materials_p.Materials.SmokeCoolDepth_Mat"
+   ],
+   "confidence": "HIGH CONFIDENCE",
+   "note": "no PhysMaterial on the material or any parent -> engine fallback (Engine.DefaultPhysMaterialName)"
+  },
+  {
+   "material": "FX_Materials_p.Materials.Spark_MAT",
+   "usage": {
+    "particles": 1
+   },
+   "physmat": null,
+   "set_on": null,
+   "property": null,
+   "parent_chain": [
+    "FX_Materials_p.Materials.Spark_MAT"
+   ],
+   "confidence": "HIGH CONFIDENCE",
+   "note": "no PhysMaterial on the material or any parent -> engine fallback (Engine.DefaultPhysMaterialName)"
+  },
+  {
+   "material": "FX_Materials_p.Materials.Steam_Mat",
+   "usage": {
+    "particles": 1
+   },
+   "physmat": null,
+   "set_on": null,
+   "property": null,
+   "parent_chain": [
+    "FX_Materials_p.Materials.Steam_Mat"
+   ],
+   "confidence": "HIGH CONFIDENCE",
+   "note": "no PhysMaterial on the material or any parent -> engine fallback (Engine.DefaultPhysMaterialName)"
+  },
+  {
+   "material": "FX_Materials_p.Materials.flareball01_MAT",
+   "usage": {
+    "particles": 1
+   },
+   "physmat": null,
+   "set_on": null,
+   "property": null,
+   "parent_chain": [
+    "FX_Materials_p.Materials.flareball01_MAT"
+   ],
+   "confidence": "HIGH CONFIDENCE",
+   "note": "no PhysMaterial on the material or any parent -> engine fallback (Engine.DefaultPhysMaterialName)"
+  },
+  {
+   "material": "PROP_EnergonSigns_p.AnimTes_staticLong_CLR_Mat",
+   "usage": {
+    "prop_sections": 15,
+    "component_overrides": 15
+   },
+   "physmat": null,
+   "set_on": null,
+   "property": null,
+   "parent_chain": [
+    "PROP_EnergonSigns_p.AnimTes_staticLong_CLR_Mat"
+   ],
+   "confidence": "HIGH CONFIDENCE",
+   "note": "no PhysMaterial on the material or any parent -> engine fallback (Engine.DefaultPhysMaterialName)"
+  },
+  {
+   "material": "PROP_EnergonSigns_p.AutobotLOGO_CLR_Mat",
+   "usage": {
+    "prop_sections": 1,
+    "component_overrides": 1
+   },
+   "physmat": null,
+   "set_on": null,
+   "property": null,
+   "parent_chain": [
+    "PROP_EnergonSigns_p.AutobotLOGO_CLR_Mat"
+   ],
+   "confidence": "HIGH CONFIDENCE",
+   "note": "no PhysMaterial on the material or any parent -> engine fallback (Engine.DefaultPhysMaterialName)"
+  },
+  {
+   "material": "PROP_EnergonSigns_p.DecepticonGraffit.DecepticonPrisonerRing_Inactive_Mat",
+   "usage": {
+    "prop_sections": 13,
+    "component_overrides": 13
+   },
+   "physmat": null,
+   "set_on": null,
+   "property": null,
+   "parent_chain": [
+    "PROP_EnergonSigns_p.DecepticonGraffit.DecepticonPrisonerRing_Inactive_Mat"
+   ],
+   "confidence": "HIGH CONFIDENCE",
+   "note": "no PhysMaterial on the material or any parent -> engine fallback (Engine.DefaultPhysMaterialName)"
+  },
+  {
+   "material": "PROP_EnergonSigns_p.DecepticonGraffit.FlippingLetters_Blue_Mat_INST",
+   "usage": {
+    "prop_sections": 3,
+    "component_overrides": 3
+   },
+   "physmat": null,
+   "set_on": null,
+   "property": null,
+   "parent_chain": [
+    "PROP_EnergonSigns_p.DecepticonGraffit.FlippingLetters_Blue_Mat_INST",
+    "PROP_EnergonSigns_p.DecepticonGraffit.DecepticonMonitor_Mat"
+   ],
+   "confidence": "HIGH CONFIDENCE",
+   "note": "no PhysMaterial on the material or any parent -> engine fallback (Engine.DefaultPhysMaterialName)"
+  },
+  {
+   "material": "PROP_EnergonSigns_p.DecepticonGraffit.KONPrisonGlyphs_Mat",
+   "usage": {
+    "prop_sections": 13,
+    "component_overrides": 13
+   },
+   "physmat": null,
+   "set_on": null,
+   "property": null,
+   "parent_chain": [
+    "PROP_EnergonSigns_p.DecepticonGraffit.KONPrisonGlyphs_Mat"
+   ],
+   "confidence": "HIGH CONFIDENCE",
+   "note": "no PhysMaterial on the material or any parent -> engine fallback (Engine.DefaultPhysMaterialName)"
+  },
+  {
+   "material": "PROP_EnergonSigns_p.DecepticonGraffit.Kaon_ChevronHolograms_MATINST",
+   "usage": {
+    "prop_sections": 1
+   },
+   "physmat": null,
+   "set_on": null,
+   "property": null,
+   "parent_chain": [
+    "PROP_EnergonSigns_p.DecepticonGraffit.Kaon_ChevronHolograms_MATINST",
+    "PROP_EnergonSigns_p.DecepticonGraffiti_brighter_MATISNT",
+    "PROP_EnergonSigns_p.LaserMarks_CLR_Mat"
+   ],
+   "confidence": "HIGH CONFIDENCE",
+   "note": "no PhysMaterial on the material or any parent -> engine fallback (Engine.DefaultPhysMaterialName)"
+  },
+  {
+   "material": "PROP_EnergonSigns_p.DecepticonGraffit.Kaon_ChevronHolograms_Orange_MATINST",
+   "usage": {
+    "prop_sections": 4,
+    "component_overrides": 4
+   },
+   "physmat": null,
+   "set_on": null,
+   "property": null,
+   "parent_chain": [
+    "PROP_EnergonSigns_p.DecepticonGraffit.Kaon_ChevronHolograms_Orange_MATINST",
+    "PROP_EnergonSigns_p.DecepticonGraffiti_brighter_MATISNT",
+    "PROP_EnergonSigns_p.LaserMarks_CLR_Mat"
+   ],
+   "confidence": "HIGH CONFIDENCE",
+   "note": "no PhysMaterial on the material or any parent -> engine fallback (Engine.DefaultPhysMaterialName)"
+  },
+  {
+   "material": "PROP_EnergonSigns_p.DecepticonGraffit.Kaon_ChevronHolograms_dark_MATINST",
+   "usage": {
+    "prop_sections": 10,
+    "component_overrides": 10
+   },
+   "physmat": null,
+   "set_on": null,
+   "property": null,
+   "parent_chain": [
+    "PROP_EnergonSigns_p.DecepticonGraffit.Kaon_ChevronHolograms_dark_MATINST",
+    "PROP_EnergonSigns_p.DecepticonGraffiti_brighter_MATISNT",
+    "PROP_EnergonSigns_p.LaserMarks_CLR_Mat"
+   ],
+   "confidence": "HIGH CONFIDENCE",
+   "note": "no PhysMaterial on the material or any parent -> engine fallback (Engine.DefaultPhysMaterialName)"
+  },
+  {
+   "material": "PROP_EnergonSigns_p.DecepticonGraffit.Kaon_ChevronHolograms_red_MATINST",
+   "usage": {
+    "prop_sections": 6,
+    "component_overrides": 6
+   },
+   "physmat": null,
+   "set_on": null,
+   "property": null,
+   "parent_chain": [
+    "PROP_EnergonSigns_p.DecepticonGraffit.Kaon_ChevronHolograms_red_MATINST",
+    "PROP_EnergonSigns_p.DecepticonGraffiti_brighter_MATISNT",
+    "PROP_EnergonSigns_p.LaserMarks_CLR_Mat"
+   ],
+   "confidence": "HIGH CONFIDENCE",
+   "note": "no PhysMaterial on the material or any parent -> engine fallback (Engine.DefaultPhysMaterialName)"
+  },
+  {
+   "material": "PROP_EnergonSigns_p.DecepticonGraffiti_brighter_MATISNT",
+   "usage": {
+    "prop_sections": 9,
+    "component_overrides": 9
+   },
+   "physmat": null,
+   "set_on": null,
+   "property": null,
+   "parent_chain": [
+    "PROP_EnergonSigns_p.DecepticonGraffiti_brighter_MATISNT",
+    "PROP_EnergonSigns_p.LaserMarks_CLR_Mat"
+   ],
+   "confidence": "HIGH CONFIDENCE",
+   "note": "no PhysMaterial on the material or any parent -> engine fallback (Engine.DefaultPhysMaterialName)"
+  },
+  {
+   "material": "PROP_EnergonSigns_p.EnergonSigns2.BlueEnergonSigns_MATINST",
+   "usage": {
+    "prop_sections": 19
+   },
+   "physmat": null,
+   "set_on": null,
+   "property": null,
+   "parent_chain": [
+    "PROP_EnergonSigns_p.EnergonSigns2.BlueEnergonSigns_MATINST",
+    "PROP_EnergonSigns_p.EnergonSigns_CLR_Mat"
+   ],
+   "confidence": "HIGH CONFIDENCE",
+   "note": "no PhysMaterial on the material or any parent -> engine fallback (Engine.DefaultPhysMaterialName)"
+  },
+  {
+   "material": "PROP_EnergonSigns_p.communications.DecepticonLogo_Com_Mat",
+   "usage": {
+    "prop_sections": 1,
+    "component_overrides": 1
+   },
+   "physmat": null,
+   "set_on": null,
+   "property": null,
+   "parent_chain": [
+    "PROP_EnergonSigns_p.communications.DecepticonLogo_Com_Mat"
+   ],
+   "confidence": "HIGH CONFIDENCE",
+   "note": "no PhysMaterial on the material or any parent -> engine fallback (Engine.DefaultPhysMaterialName)"
+  },
+  {
+   "material": "PROP_EnergonSigns_p.decepticonLOGO_CLR_Mat",
+   "usage": {
+    "prop_sections": 1
+   },
+   "physmat": null,
+   "set_on": null,
+   "property": null,
+   "parent_chain": [
+    "PROP_EnergonSigns_p.decepticonLOGO_CLR_Mat"
+   ],
+   "confidence": "HIGH CONFIDENCE",
+   "note": "no PhysMaterial on the material or any parent -> engine fallback (Engine.DefaultPhysMaterialName)"
+  },
+  {
+   "material": "PROP_NEU_BatteryOS_p.OmegaBattery_MATINST",
+   "usage": {
+    "prop_sections": 26
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_AllShader_p.Release.ENV_Lerped_Mat",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "PROP_NEU_BatteryOS_p.OmegaBattery_MATINST",
+    "ENV_AllShader_p.Release.ENV_Lerped_Mat"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "PROP_NEU_BatteryOS_p.OmegaBattery_PurpTemp_MATINST",
+   "usage": {
+    "prop_sections": 8,
+    "component_overrides": 8
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_AllShader_p.Release.ENV_Lerped_Mat",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "PROP_NEU_BatteryOS_p.OmegaBattery_PurpTemp_MATINST",
+    "PROP_NEU_BatteryOS_p.OmegaBattery_MATINST",
+    "ENV_AllShader_p.Release.ENV_Lerped_Mat"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "PROP_NEU_BatteryOS_p.OmegaDonutBase_MATINST",
+   "usage": {
+    "prop_sections": 17
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_AllShader_p.Release.ENV_Lerped_Mat",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "PROP_NEU_BatteryOS_p.OmegaDonutBase_MATINST",
+    "PROP_NEU_BatteryOS_p.OmegaBattery_MATINST",
+    "ENV_AllShader_p.Release.ENV_Lerped_Mat"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "PROP_NEU_BatteryOS_p.OmegaLiquidSurfacePurp_MATINST",
+   "usage": {
+    "prop_sections": 8,
+    "component_overrides": 8
+   },
+   "physmat": "ENV_PHYSMAT_p.ForceField_Blue_PHYSMAT",
+   "set_on": "PROP_NEU_BatteryOS_p.OmegaLiquidSurfacePurp_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "PROP_NEU_BatteryOS_p.OmegaLiquidSurfacePurp_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "PROP_NEU_BatteryOS_p.OmegaLiquidSurface_MATINST",
+   "usage": {
+    "prop_sections": 26,
+    "component_overrides": 9
+   },
+   "physmat": "ENV_PHYSMAT_p.ForceField_Blue_PHYSMAT",
+   "set_on": "PROP_NEU_BatteryOS_p.OmegaLiquidSurface_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "PROP_NEU_BatteryOS_p.OmegaLiquidSurface_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "PROP_NEU_BatteryOS_p.OmegaLiquid_MATINST",
+   "usage": {
+    "prop_sections": 9
+   },
+   "physmat": null,
+   "set_on": null,
+   "property": null,
+   "parent_chain": [
+    "PROP_NEU_BatteryOS_p.OmegaLiquid_MATINST",
+    "ENV_ORB_PowerCorridor_p.Materials.TryptiGelGlass_Mat"
+   ],
+   "confidence": "HIGH CONFIDENCE",
+   "note": "no PhysMaterial on the material or any parent -> engine fallback (Engine.DefaultPhysMaterialName)"
+  },
+  {
+   "material": "PROP_NEU_BatteryOS_p.OmegaLiquid_PurpTemp_MATINST",
+   "usage": {
+    "prop_sections": 8,
+    "component_overrides": 8
+   },
+   "physmat": null,
+   "set_on": null,
+   "property": null,
+   "parent_chain": [
+    "PROP_NEU_BatteryOS_p.OmegaLiquid_PurpTemp_MATINST",
+    "ENV_ORB_PowerCorridor_p.Materials.TryptiGelGlass_Mat"
+   ],
+   "confidence": "HIGH CONFIDENCE",
+   "note": "no PhysMaterial on the material or any parent -> engine fallback (Engine.DefaultPhysMaterialName)"
+  },
+  {
+   "material": "PROP_NEU_Monitors_p.MonitorScreenActiveBrightBlue_MATINST",
+   "usage": {
+    "prop_sections": 8,
+    "component_overrides": 8
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "PROP_NEU_Monitors_p.MonitorScreen_Parent_MAT",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "PROP_NEU_Monitors_p.MonitorScreenActiveBrightBlue_MATINST",
+    "PROP_NEU_Monitors_p.MonitorScreen_Parent_MAT"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "PROP_NEU_Monitors_p.MonitorScreenActiveOrange_MATINST",
+   "usage": {
+    "prop_sections": 4
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "PROP_NEU_Monitors_p.MonitorScreen_Parent_MAT",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "PROP_NEU_Monitors_p.MonitorScreenActiveOrange_MATINST",
+    "PROP_NEU_Monitors_p.MonitorScreen_Parent_MAT"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "PROP_NEU_Monitors_p.MonitorScreenActiveReddish_MATINST",
+   "usage": {
+    "prop_sections": 8,
+    "component_overrides": 8
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "PROP_NEU_Monitors_p.MonitorScreen_Parent_MAT",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "PROP_NEU_Monitors_p.MonitorScreenActiveReddish_MATINST",
+    "PROP_NEU_Monitors_p.MonitorScreen_Parent_MAT"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "PROP_NEU_Monitors_p.MonitorScreenActive_MAT_INST",
+   "usage": {
+    "prop_sections": 7
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "PROP_NEU_Monitors_p.MonitorScreen_Parent_MAT",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "PROP_NEU_Monitors_p.MonitorScreenActive_MAT_INST",
+    "PROP_NEU_Monitors_p.MonitorScreen_Parent_MAT"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "PROP_NEU_Monitors_p.PROP_NEU_Monitor01_MATINST",
+   "usage": {
+    "prop_sections": 14
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_AllShader_p.Release.ENV_PhongMain_NS_Mat",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "PROP_NEU_Monitors_p.PROP_NEU_Monitor01_MATINST",
+    "ENV_AllShader_p.Release.ENV_PhongMain_NS_Mat"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "PROP_NEU_Monitors_p.PROP_NEU_Monitor01noEmiss_Darker_MATINST",
+   "usage": {
+    "prop_sections": 22,
+    "component_overrides": 22
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "ENV_AllShader_p.Release.ENV_PhongMain_NS_Mat",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "PROP_NEU_Monitors_p.PROP_NEU_Monitor01noEmiss_Darker_MATINST",
+    "ENV_AllShader_p.Release.ENV_PhongMain_NS_Mat"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "PROP_NEU_WallProps_p.Material.PROP_NEU_AssortedGearsAndPipes_MATINST",
+   "usage": {
+    "prop_sections": 4
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "PROP_NEU_WallProps_p.Material.PROP_NEU_AssortedGearsAndPipes_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "PROP_NEU_WallProps_p.Material.PROP_NEU_AssortedGearsAndPipes_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "PROP_NEU_WallProps_p.Material.PROP_NEU_CoolerA_MATINST",
+   "usage": {
+    "prop_sections": 4
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "PROP_NEU_WallProps_p.Material.PROP_NEU_CoolerA_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "PROP_NEU_WallProps_p.Material.PROP_NEU_CoolerA_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "PROP_NEU_WreckedBodies_p.DeadBodies_Mat_INST",
+   "usage": {
+    "prop_sections": 3
+   },
+   "physmat": null,
+   "set_on": null,
+   "property": null,
+   "parent_chain": [
+    "PROP_NEU_WreckedBodies_p.DeadBodies_Mat_INST",
+    "PROP_NEU_WreckedBodies_p.ENV_PhongMain_NS_Mat_Dup"
+   ],
+   "confidence": "HIGH CONFIDENCE",
+   "note": "no PhysMaterial on the material or any parent -> engine fallback (Engine.DefaultPhysMaterialName)"
+  },
+  {
+   "material": "PROP_NEU_WreckedBodies_p.RB_SoldierCarAut_Robo_NormSpec_Cust_E_Mat_INST",
+   "usage": {
+    "prop_sections": 6
+   },
+   "physmat": null,
+   "set_on": null,
+   "property": null,
+   "parent_chain": [
+    "PROP_NEU_WreckedBodies_p.RB_SoldierCarAut_Robo_NormSpec_Cust_E_Mat_INST",
+    "TR_AllShader_p.Release.CHR_Transformer_NormSpec_Cust_E_Mat"
+   ],
+   "confidence": "HIGH CONFIDENCE",
+   "note": "no PhysMaterial on the material or any parent -> engine fallback (Engine.DefaultPhysMaterialName)"
+  },
+  {
+   "material": "PROP_UND_MechParts_p.Materials.PROP_UND_RepairNodeB_A_CLR_MATIST",
+   "usage": {
+    "prop_sections": 2
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "PROP_UND_MechParts_p.Materials.PROP_UND_RepairNodeB_A_CLR_MATIST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "PROP_UND_MechParts_p.Materials.PROP_UND_RepairNodeB_A_CLR_MATIST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  {
+   "material": "TPRO_KON_CorruptorSpike_p.Materials.DarkEnergonCrystalDark_MAT_INST",
+   "usage": {
+    "prop_sections": 4
+   },
+   "physmat": null,
+   "set_on": null,
+   "property": null,
+   "parent_chain": [
+    "TPRO_KON_CorruptorSpike_p.Materials.DarkEnergonCrystalDark_MAT_INST",
+    "ENV_AllShader_p.Special.DarkEnergonCrystal_MAT"
+   ],
+   "confidence": "HIGH CONFIDENCE",
+   "note": "no PhysMaterial on the material or any parent -> engine fallback (Engine.DefaultPhysMaterialName)"
+  },
+  {
+   "material": "TPRO_KON_CorruptorSpike_p.Materials.DarkEnergonCrystal_MATINST",
+   "usage": {
+    "prop_sections": 28
+   },
+   "physmat": null,
+   "set_on": null,
+   "property": null,
+   "parent_chain": [
+    "TPRO_KON_CorruptorSpike_p.Materials.DarkEnergonCrystal_MATINST",
+    "ENV_AllShader_p.Special.DarkEnergonCrystal_DEST_MATINST",
+    "ENV_AllShader_p.Special.DarkEnergonCrystal_MAT"
+   ],
+   "confidence": "HIGH CONFIDENCE",
+   "note": "no PhysMaterial on the material or any parent -> engine fallback (Engine.DefaultPhysMaterialName)"
+  },
+  {
+   "material": "TPRO_KON_Doors_p.KON_InteriorDoor_Inactive_MATINST",
+   "usage": {
+    "prop_sections": 2
+   },
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "set_on": "TPRO_KON_Doors_p.KON_InteriorDoor_Inactive_MATINST",
+   "property": "PhysMaterial",
+   "parent_chain": [
+    "TPRO_KON_Doors_p.KON_InteriorDoor_Inactive_MATINST"
+   ],
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  }
+ ],
+ "materials_per_physmat": {
+  "ENV_PHYSMAT_p.Concrete_PHYSMAT": [
+   "Designer_Materials_p.DarkGray_Mat"
+  ],
+  "ENV_PHYSMAT_p.ForceField_PHYSMAT": [
+   "ENV_AllShader_p.Release.ENV_ForceField_MATINST"
+  ],
+  "ENV_PHYSMAT_p.Metal_PHYSMAT": [
+   "ENV_ArchiveInterior_p.FaceDeco.FaceDeco1_red_MATINST",
+   "ENV_CORE_Floors_p.Materials.ENV_COR_ChamberFloorCenterdisc_purple_MAT",
+   "ENV_CORE_Floors_p.Materials.ENV_COR_ChamberFloorDiffBoost_MAT",
+   "ENV_CORE_Floors_p.Materials.ENV_COR_rustFloor_MAT",
+   "ENV_CORE_Wall_p.Textures.ENV_CORE_InroomRndTunnel_A_MATINST",
+   "ENV_IAC_BLDS_1_p.Material.Arch_MAT_INST",
+   "ENV_IAC_BLDS_3_p.Texture.HalfArch_Aqua_MATINST",
+   "ENV_IAC_BLDS_3_p.Texture.HalfArch_Detail_MATINST",
+   "ENV_IAC_BLDS_3_p.Texture.HalfArch_red_MATINST",
+   "ENV_IAC_Decagon_p.Materials.DecoPlazaFloor_noEmissLoSpec_MATINST",
+   "ENV_IAC_Deco_1_p.Material.ArchSupport_Var1_MATINST",
+   "ENV_IAC_Deco_1_p.Material.ArchSupport_purple_MATINST",
+   "ENV_IAC_Deco_1_p.Material.ChainLinkFence_MATINST",
+   "ENV_IAC_Deco_1_p.Material.SideSupport_MATINST",
+   "ENV_IAC_Deco_1_p.Material.TrainTrack_Light_NOEMISS_MATINST",
+   "ENV_IAC_Deco_1_p.Material.TrainTrack_MATINST",
+   "ENV_IAC_Deco_1_p.Material.TrainTrack_NOEMISS_MATINST",
+   "ENV_IAC_Ground_p.Material.FloorRampLight_MAT_INST",
+   "ENV_KON_Architecture_p.Materials.BasePlatform_02_MATINST",
+   "ENV_KON_Architecture_p.Materials.BasePlatform_04_MATINST",
+   "ENV_KON_Architecture_p.Materials.BridgeArchBase_MATINST",
+   "ENV_KON_Architecture_p.Materials.BridgeArchTop_SPHONG_B_MATINST",
+   "ENV_KON_Architecture_p.Materials.BuildingSupport_01_C_MATINST",
+   "ENV_KON_Architecture_p.Materials.CeilingTile_02_MATINST",
+   "ENV_KON_Architecture_p.Materials.CrownTrim_01_MATINST",
+   "ENV_KON_Architecture_p.Materials.DoorFrame_01_MATINST",
+   "ENV_KON_Architecture_p.Materials.ENV_CORE_BSPWall_B_MATINST",
+   "ENV_KON_Architecture_p.Materials.FloorPanel_01_MATINST",
+   "ENV_KON_Architecture_p.Materials.FloorTrim_01_MATINST",
+   "ENV_KON_Architecture_p.Materials.FloorTrim_02_MATINST",
+   "ENV_KON_Architecture_p.Materials.PillarEnergon_MATINST",
+   "ENV_KON_Architecture_p.Materials.Pillar_01_MATINST",
+   "ENV_KON_Architecture_p.Materials.TrackConveyor_MATINST",
+   "ENV_KON_Architecture_p.Materials.TurretBase_MATINST",
+   "ENV_KON_Architecture_p.Materials.WallLight_01_MATINST",
+   "ENV_KON_Architecture_p.Materials.WallPanel_04_MATINST",
+   "ENV_KON_Architecture_p.Materials.WallPanel_05_MATINST",
+   "ENV_KON_Architecture_p.Materials.Wall_Piece_01_MATINST",
+   "ENV_KON_Bridges_p.Materials.KON_Bridge_Arch_MATINST",
+   "ENV_KON_Bridges_p.Materials.KON_Bridge_StraightYellow_MATINST",
+   "ENV_KON_Bridges_p.Materials.KON_Bridge_Straight_MATINST",
+   "ENV_KON_Bridges_p.Materials.Small1_Flat1_Corner_384x1536x512_MATINST",
+   "ENV_KON_Bridges_p.Materials.Small1_Flat1_Side_384x1536x768_MATINST",
+   "ENV_KON_Deco_p.Materials.BackgroundIsland_01_MATINST",
+   "ENV_KON_Deco_p.Materials.BackgroundIsland_MATINST",
+   "ENV_KON_Deco_p.Materials.ColumnCap_01_MATINST",
+   "ENV_KON_Deco_p.Materials.DoorWayCap_01_MATINST",
+   "ENV_KON_Deco_p.Materials.LightSupport1_MATINST",
+   "ENV_KON_Deco_p.Materials.Light_01a_MATINST",
+   "ENV_KON_Deco_p.Materials.Railing_01_MATINST",
+   "ENV_KON_Deco_p.Materials.Wing_01_MATINST",
+   "ENV_KON_PrisonBarge_p.Materials.CeilingDeco_01_MATINST",
+   "ENV_KON_PrisonBarge_p.Materials.DomeDeco_01RedLITE_MATINST",
+   "ENV_KON_PrisonBarge_p.Materials.DomeDeco_01_MATINST",
+   "ENV_KON_PrisonBarge_p.Materials.DomeDeco_GreenYellow_MATINST",
+   "ENV_KON_PrisonBarge_p.Materials.Pillar_01_MATINST",
+   "ENV_KON_PrisonBarge_p.Materials.SpikeDeco_01_MATINST",
+   "ENV_KON_Prison_p.Materials.BottomPillarSupport_MATINST",
+   "ENV_KON_Prison_p.Materials.CellBlocksCap_MATINST",
+   "ENV_KON_Prison_p.Materials.ClawEnd_MATINST_02",
+   "ENV_KON_Prison_p.Materials.Grate_MATINST",
+   "ENV_KON_Prison_p.Materials.Mechanical_Arm_02_MATINST",
+   "ENV_KON_Prison_p.Materials.MiddlePillarSupport_MATINST",
+   "ENV_KON_Prison_p.Materials.Parasite_01_MATINST",
+   "ENV_KON_Prison_p.Materials.Parasite_green_01_MATINST",
+   "ENV_KON_Prison_p.Materials.Pillar_02_MATINST",
+   "ENV_KON_Prison_p.Materials.PrisonCell_01_MATINST",
+   "ENV_KON_Prison_p.Materials.PrisonCell_3_MATINST",
+   "ENV_KON_Prison_p.Materials.Top_Pillar_Support_MATINST",
+   "ENV_KON_Prison_p.Materials.TortureTable_MATINST",
+   "ENV_KON_Prison_p.Materials.TransformBridgeBase_MATINST",
+   "ENV_KON_Prison_p.Materials.WallLight_02YWarm_MATINST",
+   "ENV_KON_Prison_p.Materials.WallLight_02Yellow_MATINST",
+   "ENV_KON_Prison_p.Materials.WallLight_02_MATINST",
+   "ENV_KON_Prison_p.Materials.WallSupport_01_MATINST",
+   "ENV_NEU_Structures_p.Big3.Big3_Building3Walkway_1024x1536x4096_MATINST",
+   "ENV_NEU_Variation_p.ENV_manholes_CLR_Mat",
+   "ENV_NEU_Variation_p.ENV_manholes_orange_CLR_Mat",
+   "ENV_NEU_Variation_p.ENV_manholes_purple_CLR_Mat",
+   "ENV_NEU_Variation_p.ENV_manholes_red_CLR_Mat",
+   "ENV_ORB_A1_LowRez_p.Material.ENV_ORB_Wing_MATINST",
+   "ENV_ORB_D1_Architecture_p.Materials.Crate_MATINST",
+   "ENV_ORB_D1_Architecture_p.Materials.Crate_V2_MATINST",
+   "ENV_ORB_D1_Deco_p.Materials.GasChamberSubstructureDarkEnergon_MATINST",
+   "ENV_ORB_D1_Deco_p.Materials.GasChamberSubstructure_MATINST",
+   "ENV_ORB_D1_Deco_p.Materials.GasChamber_purple_MATINST",
+   "ENV_ORB_D1_Deco_p.Materials.PowerCables_01_MATINST",
+   "ENV_ORB_D1_Deco_p.Materials.PowerTubes_DarkEnergon_MATINST",
+   "ENV_ORB_D1_MegatronCruiser_p.Materials.Ship_CeilingPanel_01_MATINST",
+   "ENV_ORB_D1_MegatronCruiser_p.Materials.Ship_Engine_MATINST",
+   "ENV_ORB_D1_MegatronCruiser_p.Materials.Ship_FloorPanel_01_MATINST",
+   "ENV_ORB_D1_MegatronCruiser_p.Materials.Ship_FloorPanel_01_NOEMISS_MATINST",
+   "ENV_ORB_PowerCorridor_p.Materials.TrypPowerTubes_MATINST",
+   "PROP_NEU_BatteryOS_p.OmegaBattery_MATINST",
+   "PROP_NEU_BatteryOS_p.OmegaBattery_PurpTemp_MATINST",
+   "PROP_NEU_BatteryOS_p.OmegaDonutBase_MATINST",
+   "PROP_NEU_Monitors_p.MonitorScreenActiveBrightBlue_MATINST",
+   "PROP_NEU_Monitors_p.MonitorScreenActiveOrange_MATINST",
+   "PROP_NEU_Monitors_p.MonitorScreenActiveReddish_MATINST",
+   "PROP_NEU_Monitors_p.MonitorScreenActive_MAT_INST",
+   "PROP_NEU_Monitors_p.PROP_NEU_Monitor01_MATINST",
+   "PROP_NEU_Monitors_p.PROP_NEU_Monitor01noEmiss_Darker_MATINST",
+   "PROP_NEU_WallProps_p.Material.PROP_NEU_AssortedGearsAndPipes_MATINST",
+   "PROP_NEU_WallProps_p.Material.PROP_NEU_CoolerA_MATINST",
+   "PROP_UND_MechParts_p.Materials.PROP_UND_RepairNodeB_A_CLR_MATIST",
+   "TPRO_KON_Doors_p.KON_InteriorDoor_Inactive_MATINST"
+  ],
+  "None": [
+   "ENV_GLB_EnvEffects_p.Material.FogSheet_GreenYellow_MATINST",
+   "ENV_IAC_Decagon_p.Materials.ENV_IAC_AutoLogo_Matinst",
+   "ENV_IAC_LightSources_p.PinLights.PinLights_Orange_1_MAT_INST",
+   "ENV_IAC_LightSources_p.PinLights.PinLights_Orange_3_MAT_INST",
+   "ENV_IAC_LightSources_p.PinLights.PinLights_Purple_1_MAT_INST",
+   "ENV_IAC_LightSources_p.PinLights.PinLights_Red_1_MAT_INST",
+   "ENV_IAC_LightSources_p.PinLights.PinLights_SupaBlue_MATINST",
+   "ENV_IAC_Spacedome_p.Nebulae_blob_MATISNT",
+   "ENV_KON_Deco_p.Materials.Plasma_Purple_MATINST",
+   "ENV_KON_Prison_p.Materials.GlowSphere_Purple2_MATINST",
+   "ENV_KON_StarDome_p.Test.KON_newSky_MAT",
+   "ENV_NEU_Variation_p.MOD_rustpatch1_CLR_Mat",
+   "ENV_NEU_Variation_p.MOD_rustpatch5_CLR_Mat",
+   "ENV_NEU_Variation_p.MOD_rustpatch7_CLR_Mat",
+   "ENV_NEU_Variation_p.esigns_d2_CLR_Mat",
+   "ENV_NEU_Variation_p.fbook_readout2_CLR_Mat",
+   "ENV_NEU_Variation_p.fbook_readout3_CLR_Mat",
+   "ENV_NEU_Variation_p.fbook_sinewave2_CLR_Mat",
+   "ENV_NEU_Variation_p.fbook_sinewave4_CLR_Mat",
+   "ENV_NEU_Variation_p.fbook_sinewave5_CLR_Mat",
+   "ENV_NEU_Variation_p.fbook_sinewave6_CLR_Mat",
+   "ENV_NEU_Variation_p.fbook_sinewave_CLR_Mat",
+   "ENV_NEU_Variation_p.stationbits_CLR_Mat",
+   "ENV_NEU_landmarking_p.landmark_Dchevrons_clr_Mat",
+   "ENV_NEU_landmarking_p.landmark_Dtarget_clr_Mat",
+   "ENV_NEU_landmarking_p.landmark_chevrons_V2_Mat",
+   "ENV_NEU_landmarking_p.landmark_target_clr_Mat",
+   "ENV_ORB_D1_Shader_p.Materials.Transparency_MAT",
+   "ENV_ORB_Spacedome_p.Spacedome_MAT",
+   "EngineMaterials.DefaultMaterial",
+   "FX_Materials_p.Materials.Basic_Particle_Add_MAT",
+   "FX_Materials_p.Materials.Distortion_Cloud_01_MAT",
+   "FX_Materials_p.Materials.Glow_Mod_Depth_MAT",
+   "FX_Materials_p.Materials.Glow_Mod_MAT",
+   "FX_Materials_p.Materials.LightVolume_WepPickup_MAT",
+   "FX_Materials_p.Materials.ParticleBase_BW_MAT",
+   "FX_Materials_p.Materials.SmokeCoolDepth_Mat",
+   "FX_Materials_p.Materials.Spark_MAT",
+   "FX_Materials_p.Materials.Steam_Mat",
+   "FX_Materials_p.Materials.flareball01_MAT",
+   "PROP_EnergonSigns_p.AnimTes_staticLong_CLR_Mat",
+   "PROP_EnergonSigns_p.AutobotLOGO_CLR_Mat",
+   "PROP_EnergonSigns_p.DecepticonGraffit.DecepticonPrisonerRing_Inactive_Mat",
+   "PROP_EnergonSigns_p.DecepticonGraffit.FlippingLetters_Blue_Mat_INST",
+   "PROP_EnergonSigns_p.DecepticonGraffit.KONPrisonGlyphs_Mat",
+   "PROP_EnergonSigns_p.DecepticonGraffit.Kaon_ChevronHolograms_MATINST",
+   "PROP_EnergonSigns_p.DecepticonGraffit.Kaon_ChevronHolograms_Orange_MATINST",
+   "PROP_EnergonSigns_p.DecepticonGraffit.Kaon_ChevronHolograms_dark_MATINST",
+   "PROP_EnergonSigns_p.DecepticonGraffit.Kaon_ChevronHolograms_red_MATINST",
+   "PROP_EnergonSigns_p.DecepticonGraffiti_brighter_MATISNT",
+   "PROP_EnergonSigns_p.EnergonSigns2.BlueEnergonSigns_MATINST",
+   "PROP_EnergonSigns_p.communications.DecepticonLogo_Com_Mat",
+   "PROP_EnergonSigns_p.decepticonLOGO_CLR_Mat",
+   "PROP_NEU_BatteryOS_p.OmegaLiquid_MATINST",
+   "PROP_NEU_BatteryOS_p.OmegaLiquid_PurpTemp_MATINST",
+   "PROP_NEU_WreckedBodies_p.DeadBodies_Mat_INST",
+   "PROP_NEU_WreckedBodies_p.RB_SoldierCarAut_Robo_NormSpec_Cust_E_Mat_INST",
+   "TPRO_KON_CorruptorSpike_p.Materials.DarkEnergonCrystalDark_MAT_INST",
+   "TPRO_KON_CorruptorSpike_p.Materials.DarkEnergonCrystal_MATINST"
+  ],
+  "ENV_PHYSMAT_p.Water_Yellow_PHYSMAT": [
+   "ENV_KON_Architecture_p.Materials.YellowPlasma_SewageFall_MATINST",
+   "ENV_KON_Architecture_p.Materials.YellowPlasma_Sewage_MATINST"
+  ],
+  "ENV_PHYSMAT_p.Ice_PHYSMAT": [
+   "ENV_KON_Prison_p.Materials.ForceField_02_Matinst",
+   "ENV_KON_Prison_p.Materials.GlassFloor_Dungeons_Matinst",
+   "ENV_KON_Prison_p.Materials.PrisonCell_01_Glass_MATINST",
+   "ENV_KON_Prison_p.Materials.WallLight_02_Plasma_02_MATINST",
+   "ENV_KON_Prison_p.Materials.WallLight_02_Plasma_MATINST"
+  ],
+  "ENV_PHYSMAT_p.ForceField_Blue_PHYSMAT": [
+   "ENV_ORB_D1_MegatronCruiser_p.ShipEngineEnergon_MATINST",
+   "PROP_NEU_BatteryOS_p.OmegaLiquidSurfacePurp_MATINST",
+   "PROP_NEU_BatteryOS_p.OmegaLiquidSurface_MATINST"
+  ]
+ },
+ "blocking_volume_overrides": [],
+ "physical_materials": {
+  "ENV_PHYSMAT_p.Concrete_PHYSMAT": {
+   "physmat": "ENV_PHYSMAT_p.Concrete_PHYSMAT",
+   "package_of_record": "A4_ORB_PreRelay1_DSN_m",
+   "authored": {
+    "Friction": 0.5,
+    "Restitution": 0.10000000149011612,
+    "PhysicalMaterialProperty": "ENV_PHYSMAT_p.Concrete_PHYSMAT.TnPhysicalMaterialProperty_11396"
+   },
+   "PhysicalMaterialProperty": "ENV_PHYSMAT_p.Concrete_PHYSMAT.TnPhysicalMaterialProperty_11396",
+   "property_object": {
+    "object": "ENV_PHYSMAT_p.Concrete_PHYSMAT.TnPhysicalMaterialProperty_11396",
+    "class": "TnPhysicalMaterialProperty",
+    "read_from_package": "A4_ORB_PreRelay1_DSN_m",
+    "cooked_in_streets": [],
+    "Type": null,
+    "FootstepSounds_raw": {
+     "FootstepWalk": "SoundEvents_Footsteps.FS_DEFAULT_WALK",
+     "FootstepJog": "SoundEvents_Footsteps.FS_DEFAULT_JOG",
+     "FootstepRun": "SoundEvents_Footsteps.FS_DEFAULT_RUN",
+     "FootstepScuff": "SoundEvents_Footsteps.FS_DEFAULT_SCUFF",
+     "FootstepJump": "SoundEvents_Footsteps.FS_DEFAULT_JUMP",
+     "FootstepLand": "SoundEvents_Footsteps.FS_DEFAULT_LAND",
+     "FootstepHardLand": "SoundEvents_Footsteps.FS_DEFAULT_HARD_LAND"
+    },
+    "BodyImpactSounds": null,
+    "has_weapon_impact_tables": true
+   },
+   "slots": {
+    "FootstepWalk": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_WALK",
+     "origin": "authored on ENV_PHYSMAT_p.Concrete_PHYSMAT.TnPhysicalMaterialProperty_11396.FootstepSounds.FootstepWalk",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "FootstepJog": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_JOG",
+     "origin": "authored on ENV_PHYSMAT_p.Concrete_PHYSMAT.TnPhysicalMaterialProperty_11396.FootstepSounds.FootstepJog",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "FootstepRun": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_RUN",
+     "origin": "authored on ENV_PHYSMAT_p.Concrete_PHYSMAT.TnPhysicalMaterialProperty_11396.FootstepSounds.FootstepRun",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "FootstepCrouchWalk": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_CROUCH_WALK",
+     "origin": "slot unset (or no PhysicalMaterialProperty) -> TransGame.Default__TnPawn.FootstepComp0.DefaultCrouchWalkSound",
+     "confidence": "HIGH CONFIDENCE",
+     "note": "fallback to the footstep component default is the documented role of Default*Sound; the native lookup itself is not authored data"
+    },
+    "FootstepCrouchJog": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_CROUCH_JOG",
+     "origin": "slot unset (or no PhysicalMaterialProperty) -> TransGame.Default__TnPawn.FootstepComp0.DefaultCrouchJogSound",
+     "confidence": "HIGH CONFIDENCE",
+     "note": "fallback to the footstep component default is the documented role of Default*Sound; the native lookup itself is not authored data"
+    },
+    "FootstepCrouchRun": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_CROUCH_RUN",
+     "origin": "slot unset (or no PhysicalMaterialProperty) -> TransGame.Default__TnPawn.FootstepComp0.DefaultCrouchRunSound",
+     "confidence": "HIGH CONFIDENCE",
+     "note": "fallback to the footstep component default is the documented role of Default*Sound; the native lookup itself is not authored data"
+    },
+    "FootstepScuff": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_SCUFF",
+     "origin": "authored on ENV_PHYSMAT_p.Concrete_PHYSMAT.TnPhysicalMaterialProperty_11396.FootstepSounds.FootstepScuff",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "FootstepCrouchScuff": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_CROUCH_SCUFF",
+     "origin": "slot unset (or no PhysicalMaterialProperty) -> TransGame.Default__TnPawn.FootstepComp0.DefaultCrouchScuffSound",
+     "confidence": "HIGH CONFIDENCE",
+     "note": "fallback to the footstep component default is the documented role of Default*Sound; the native lookup itself is not authored data"
+    },
+    "FootstepJump": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_JUMP",
+     "origin": "authored on ENV_PHYSMAT_p.Concrete_PHYSMAT.TnPhysicalMaterialProperty_11396.FootstepSounds.FootstepJump",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "FootstepLand": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_LAND",
+     "origin": "authored on ENV_PHYSMAT_p.Concrete_PHYSMAT.TnPhysicalMaterialProperty_11396.FootstepSounds.FootstepLand",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "FootstepHardLand": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_HARD_LAND",
+     "origin": "authored on ENV_PHYSMAT_p.Concrete_PHYSMAT.TnPhysicalMaterialProperty_11396.FootstepSounds.FootstepHardLand",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "FootstepDashLand": {
+     "event": null,
+     "origin": "slot unset and HmFootstepComponent has no default for it -> no event",
+     "confidence": "CONFIRMED AUTHORED DATA",
+     "note": null
+    }
+   }
+  },
+  "ENV_PHYSMAT_p.ForceField_Blue_PHYSMAT": {
+   "physmat": "ENV_PHYSMAT_p.ForceField_Blue_PHYSMAT",
+   "package_of_record": "A1_IAC_DecoFoyer_Design_m",
+   "authored": {
+    "ImpactEffect": "FX_Hologram_p.FX.ForceField_Squib_Blue_FX"
+   },
+   "PhysicalMaterialProperty": null,
+   "property_object": null,
+   "slots": {
+    "FootstepWalk": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_WALK",
+     "origin": "slot unset (or no PhysicalMaterialProperty) -> TransGame.Default__TnPawn.FootstepComp0.DefaultWalkSound",
+     "confidence": "HIGH CONFIDENCE",
+     "note": "fallback to the footstep component default is the documented role of Default*Sound; the native lookup itself is not authored data"
+    },
+    "FootstepJog": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_JOG",
+     "origin": "slot unset (or no PhysicalMaterialProperty) -> TransGame.Default__TnPawn.FootstepComp0.DefaultJogSound",
+     "confidence": "HIGH CONFIDENCE",
+     "note": "fallback to the footstep component default is the documented role of Default*Sound; the native lookup itself is not authored data"
+    },
+    "FootstepRun": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_RUN",
+     "origin": "slot unset (or no PhysicalMaterialProperty) -> TransGame.Default__TnPawn.FootstepComp0.DefaultRunSound",
+     "confidence": "HIGH CONFIDENCE",
+     "note": "fallback to the footstep component default is the documented role of Default*Sound; the native lookup itself is not authored data"
+    },
+    "FootstepCrouchWalk": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_CROUCH_WALK",
+     "origin": "slot unset (or no PhysicalMaterialProperty) -> TransGame.Default__TnPawn.FootstepComp0.DefaultCrouchWalkSound",
+     "confidence": "HIGH CONFIDENCE",
+     "note": "fallback to the footstep component default is the documented role of Default*Sound; the native lookup itself is not authored data"
+    },
+    "FootstepCrouchJog": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_CROUCH_JOG",
+     "origin": "slot unset (or no PhysicalMaterialProperty) -> TransGame.Default__TnPawn.FootstepComp0.DefaultCrouchJogSound",
+     "confidence": "HIGH CONFIDENCE",
+     "note": "fallback to the footstep component default is the documented role of Default*Sound; the native lookup itself is not authored data"
+    },
+    "FootstepCrouchRun": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_CROUCH_RUN",
+     "origin": "slot unset (or no PhysicalMaterialProperty) -> TransGame.Default__TnPawn.FootstepComp0.DefaultCrouchRunSound",
+     "confidence": "HIGH CONFIDENCE",
+     "note": "fallback to the footstep component default is the documented role of Default*Sound; the native lookup itself is not authored data"
+    },
+    "FootstepScuff": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_SCUFF",
+     "origin": "slot unset (or no PhysicalMaterialProperty) -> TransGame.Default__TnPawn.FootstepComp0.DefaultScuffSound",
+     "confidence": "HIGH CONFIDENCE",
+     "note": "fallback to the footstep component default is the documented role of Default*Sound; the native lookup itself is not authored data"
+    },
+    "FootstepCrouchScuff": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_CROUCH_SCUFF",
+     "origin": "slot unset (or no PhysicalMaterialProperty) -> TransGame.Default__TnPawn.FootstepComp0.DefaultCrouchScuffSound",
+     "confidence": "HIGH CONFIDENCE",
+     "note": "fallback to the footstep component default is the documented role of Default*Sound; the native lookup itself is not authored data"
+    },
+    "FootstepJump": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_JUMP",
+     "origin": "slot unset (or no PhysicalMaterialProperty) -> TransGame.Default__TnPawn.FootstepComp0.DefaultJumpSound",
+     "confidence": "HIGH CONFIDENCE",
+     "note": "fallback to the footstep component default is the documented role of Default*Sound; the native lookup itself is not authored data"
+    },
+    "FootstepLand": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_LAND",
+     "origin": "slot unset (or no PhysicalMaterialProperty) -> TransGame.Default__TnPawn.FootstepComp0.DefaultLandSound",
+     "confidence": "HIGH CONFIDENCE",
+     "note": "fallback to the footstep component default is the documented role of Default*Sound; the native lookup itself is not authored data"
+    },
+    "FootstepHardLand": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_HARD_LAND",
+     "origin": "slot unset (or no PhysicalMaterialProperty) -> TransGame.Default__TnPawn.FootstepComp0.DefaultHardLandSound",
+     "confidence": "HIGH CONFIDENCE",
+     "note": "fallback to the footstep component default is the documented role of Default*Sound; the native lookup itself is not authored data"
+    },
+    "FootstepDashLand": {
+     "event": null,
+     "origin": "slot unset and HmFootstepComponent has no default for it -> no event",
+     "confidence": "CONFIRMED AUTHORED DATA",
+     "note": null
+    }
+   }
+  },
+  "ENV_PHYSMAT_p.ForceField_PHYSMAT": {
+   "physmat": "ENV_PHYSMAT_p.ForceField_PHYSMAT",
+   "package_of_record": "A1_IAC_Base_m",
+   "authored": {
+    "ImpactEffect": "FX_Hologram_p.FX.ForceField_Squib_FX",
+    "ImpactSound": "BL_SHIELD.FORCE_FIELD_IMPT"
+   },
+   "PhysicalMaterialProperty": null,
+   "property_object": null,
+   "slots": {
+    "FootstepWalk": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_WALK",
+     "origin": "slot unset (or no PhysicalMaterialProperty) -> TransGame.Default__TnPawn.FootstepComp0.DefaultWalkSound",
+     "confidence": "HIGH CONFIDENCE",
+     "note": "fallback to the footstep component default is the documented role of Default*Sound; the native lookup itself is not authored data"
+    },
+    "FootstepJog": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_JOG",
+     "origin": "slot unset (or no PhysicalMaterialProperty) -> TransGame.Default__TnPawn.FootstepComp0.DefaultJogSound",
+     "confidence": "HIGH CONFIDENCE",
+     "note": "fallback to the footstep component default is the documented role of Default*Sound; the native lookup itself is not authored data"
+    },
+    "FootstepRun": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_RUN",
+     "origin": "slot unset (or no PhysicalMaterialProperty) -> TransGame.Default__TnPawn.FootstepComp0.DefaultRunSound",
+     "confidence": "HIGH CONFIDENCE",
+     "note": "fallback to the footstep component default is the documented role of Default*Sound; the native lookup itself is not authored data"
+    },
+    "FootstepCrouchWalk": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_CROUCH_WALK",
+     "origin": "slot unset (or no PhysicalMaterialProperty) -> TransGame.Default__TnPawn.FootstepComp0.DefaultCrouchWalkSound",
+     "confidence": "HIGH CONFIDENCE",
+     "note": "fallback to the footstep component default is the documented role of Default*Sound; the native lookup itself is not authored data"
+    },
+    "FootstepCrouchJog": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_CROUCH_JOG",
+     "origin": "slot unset (or no PhysicalMaterialProperty) -> TransGame.Default__TnPawn.FootstepComp0.DefaultCrouchJogSound",
+     "confidence": "HIGH CONFIDENCE",
+     "note": "fallback to the footstep component default is the documented role of Default*Sound; the native lookup itself is not authored data"
+    },
+    "FootstepCrouchRun": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_CROUCH_RUN",
+     "origin": "slot unset (or no PhysicalMaterialProperty) -> TransGame.Default__TnPawn.FootstepComp0.DefaultCrouchRunSound",
+     "confidence": "HIGH CONFIDENCE",
+     "note": "fallback to the footstep component default is the documented role of Default*Sound; the native lookup itself is not authored data"
+    },
+    "FootstepScuff": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_SCUFF",
+     "origin": "slot unset (or no PhysicalMaterialProperty) -> TransGame.Default__TnPawn.FootstepComp0.DefaultScuffSound",
+     "confidence": "HIGH CONFIDENCE",
+     "note": "fallback to the footstep component default is the documented role of Default*Sound; the native lookup itself is not authored data"
+    },
+    "FootstepCrouchScuff": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_CROUCH_SCUFF",
+     "origin": "slot unset (or no PhysicalMaterialProperty) -> TransGame.Default__TnPawn.FootstepComp0.DefaultCrouchScuffSound",
+     "confidence": "HIGH CONFIDENCE",
+     "note": "fallback to the footstep component default is the documented role of Default*Sound; the native lookup itself is not authored data"
+    },
+    "FootstepJump": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_JUMP",
+     "origin": "slot unset (or no PhysicalMaterialProperty) -> TransGame.Default__TnPawn.FootstepComp0.DefaultJumpSound",
+     "confidence": "HIGH CONFIDENCE",
+     "note": "fallback to the footstep component default is the documented role of Default*Sound; the native lookup itself is not authored data"
+    },
+    "FootstepLand": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_LAND",
+     "origin": "slot unset (or no PhysicalMaterialProperty) -> TransGame.Default__TnPawn.FootstepComp0.DefaultLandSound",
+     "confidence": "HIGH CONFIDENCE",
+     "note": "fallback to the footstep component default is the documented role of Default*Sound; the native lookup itself is not authored data"
+    },
+    "FootstepHardLand": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_HARD_LAND",
+     "origin": "slot unset (or no PhysicalMaterialProperty) -> TransGame.Default__TnPawn.FootstepComp0.DefaultHardLandSound",
+     "confidence": "HIGH CONFIDENCE",
+     "note": "fallback to the footstep component default is the documented role of Default*Sound; the native lookup itself is not authored data"
+    },
+    "FootstepDashLand": {
+     "event": null,
+     "origin": "slot unset and HmFootstepComponent has no default for it -> no event",
+     "confidence": "CONFIRMED AUTHORED DATA",
+     "note": null
+    }
+   }
+  },
+  "ENV_PHYSMAT_p.Ice_PHYSMAT": {
+   "physmat": "ENV_PHYSMAT_p.Ice_PHYSMAT",
+   "package_of_record": "A1_IAC_DecoInt_Art_m",
+   "authored": {
+    "Friction": 0.5,
+    "Restitution": 0.10000000149011612,
+    "PhysicalMaterialProperty": "ENV_PHYSMAT_p.Ice_PHYSMAT.TnPhysicalMaterialProperty_11396",
+    "AudioOcclusionVolume": 0.0,
+    "AudioOcclusionTransitionTime": 0.0
+   },
+   "PhysicalMaterialProperty": "ENV_PHYSMAT_p.Ice_PHYSMAT.TnPhysicalMaterialProperty_11396",
+   "property_object": {
+    "object": "ENV_PHYSMAT_p.Ice_PHYSMAT.TnPhysicalMaterialProperty_11396",
+    "class": "TnPhysicalMaterialProperty",
+    "read_from_package": "A1_IAC_DecoInt_Art_m",
+    "cooked_in_streets": [],
+    "Type": null,
+    "FootstepSounds_raw": {
+     "FootstepWalk": "SoundEvents_Footsteps.FS_DEFAULT_WALK",
+     "FootstepJog": "SoundEvents_Footsteps.FS_DEFAULT_JOG",
+     "FootstepRun": "SoundEvents_Footsteps.FS_DEFAULT_RUN",
+     "FootstepScuff": "SoundEvents_Footsteps.FS_DEFAULT_SCUFF",
+     "FootstepJump": "SoundEvents_Footsteps.FS_DEFAULT_JUMP",
+     "FootstepLand": "SoundEvents_Footsteps.FS_DEFAULT_LAND",
+     "FootstepHardLand": "SoundEvents_Footsteps.FS_DEFAULT_HARD_LAND"
+    },
+    "BodyImpactSounds": null,
+    "has_weapon_impact_tables": false
+   },
+   "slots": {
+    "FootstepWalk": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_WALK",
+     "origin": "authored on ENV_PHYSMAT_p.Ice_PHYSMAT.TnPhysicalMaterialProperty_11396.FootstepSounds.FootstepWalk",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "FootstepJog": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_JOG",
+     "origin": "authored on ENV_PHYSMAT_p.Ice_PHYSMAT.TnPhysicalMaterialProperty_11396.FootstepSounds.FootstepJog",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "FootstepRun": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_RUN",
+     "origin": "authored on ENV_PHYSMAT_p.Ice_PHYSMAT.TnPhysicalMaterialProperty_11396.FootstepSounds.FootstepRun",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "FootstepCrouchWalk": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_CROUCH_WALK",
+     "origin": "slot unset (or no PhysicalMaterialProperty) -> TransGame.Default__TnPawn.FootstepComp0.DefaultCrouchWalkSound",
+     "confidence": "HIGH CONFIDENCE",
+     "note": "fallback to the footstep component default is the documented role of Default*Sound; the native lookup itself is not authored data"
+    },
+    "FootstepCrouchJog": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_CROUCH_JOG",
+     "origin": "slot unset (or no PhysicalMaterialProperty) -> TransGame.Default__TnPawn.FootstepComp0.DefaultCrouchJogSound",
+     "confidence": "HIGH CONFIDENCE",
+     "note": "fallback to the footstep component default is the documented role of Default*Sound; the native lookup itself is not authored data"
+    },
+    "FootstepCrouchRun": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_CROUCH_RUN",
+     "origin": "slot unset (or no PhysicalMaterialProperty) -> TransGame.Default__TnPawn.FootstepComp0.DefaultCrouchRunSound",
+     "confidence": "HIGH CONFIDENCE",
+     "note": "fallback to the footstep component default is the documented role of Default*Sound; the native lookup itself is not authored data"
+    },
+    "FootstepScuff": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_SCUFF",
+     "origin": "authored on ENV_PHYSMAT_p.Ice_PHYSMAT.TnPhysicalMaterialProperty_11396.FootstepSounds.FootstepScuff",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "FootstepCrouchScuff": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_CROUCH_SCUFF",
+     "origin": "slot unset (or no PhysicalMaterialProperty) -> TransGame.Default__TnPawn.FootstepComp0.DefaultCrouchScuffSound",
+     "confidence": "HIGH CONFIDENCE",
+     "note": "fallback to the footstep component default is the documented role of Default*Sound; the native lookup itself is not authored data"
+    },
+    "FootstepJump": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_JUMP",
+     "origin": "authored on ENV_PHYSMAT_p.Ice_PHYSMAT.TnPhysicalMaterialProperty_11396.FootstepSounds.FootstepJump",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "FootstepLand": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_LAND",
+     "origin": "authored on ENV_PHYSMAT_p.Ice_PHYSMAT.TnPhysicalMaterialProperty_11396.FootstepSounds.FootstepLand",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "FootstepHardLand": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_HARD_LAND",
+     "origin": "authored on ENV_PHYSMAT_p.Ice_PHYSMAT.TnPhysicalMaterialProperty_11396.FootstepSounds.FootstepHardLand",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "FootstepDashLand": {
+     "event": null,
+     "origin": "slot unset and HmFootstepComponent has no default for it -> no event",
+     "confidence": "CONFIRMED AUTHORED DATA",
+     "note": null
+    }
+   }
+  },
+  "ENV_PHYSMAT_p.Metal_PHYSMAT": {
+   "physmat": "ENV_PHYSMAT_p.Metal_PHYSMAT",
+   "package_of_record": "A1_IAC_Armory_m",
+   "authored": {
+    "Friction": 0.5,
+    "Restitution": 0.10000000149011612,
+    "PhysicalMaterialProperty": "ENV_PHYSMAT_p.Metal_PHYSMAT.TnPhysicalMaterialProperty_11396"
+   },
+   "PhysicalMaterialProperty": "ENV_PHYSMAT_p.Metal_PHYSMAT.TnPhysicalMaterialProperty_11396",
+   "property_object": {
+    "object": "ENV_PHYSMAT_p.Metal_PHYSMAT.TnPhysicalMaterialProperty_11396",
+    "class": "TnPhysicalMaterialProperty",
+    "read_from_package": "A1_IAC_Armory_m",
+    "cooked_in_streets": [],
+    "Type": null,
+    "FootstepSounds_raw": {
+     "FootstepWalk": "SoundEvents_Footsteps.FS_DEFAULT_WALK",
+     "FootstepJog": "SoundEvents_Footsteps.FS_DEFAULT_JOG",
+     "FootstepRun": "SoundEvents_Footsteps.FS_DEFAULT_RUN",
+     "FootstepScuff": "SoundEvents_Footsteps.FS_DEFAULT_SCUFF",
+     "FootstepJump": "SoundEvents_Footsteps.FS_DEFAULT_JUMP",
+     "FootstepLand": "SoundEvents_Footsteps.FS_DEFAULT_LAND",
+     "FootstepHardLand": "SoundEvents_Footsteps.FS_DEFAULT_HARD_LAND"
+    },
+    "BodyImpactSounds": null,
+    "has_weapon_impact_tables": true
+   },
+   "slots": {
+    "FootstepWalk": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_WALK",
+     "origin": "authored on ENV_PHYSMAT_p.Metal_PHYSMAT.TnPhysicalMaterialProperty_11396.FootstepSounds.FootstepWalk",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "FootstepJog": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_JOG",
+     "origin": "authored on ENV_PHYSMAT_p.Metal_PHYSMAT.TnPhysicalMaterialProperty_11396.FootstepSounds.FootstepJog",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "FootstepRun": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_RUN",
+     "origin": "authored on ENV_PHYSMAT_p.Metal_PHYSMAT.TnPhysicalMaterialProperty_11396.FootstepSounds.FootstepRun",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "FootstepCrouchWalk": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_CROUCH_WALK",
+     "origin": "slot unset (or no PhysicalMaterialProperty) -> TransGame.Default__TnPawn.FootstepComp0.DefaultCrouchWalkSound",
+     "confidence": "HIGH CONFIDENCE",
+     "note": "fallback to the footstep component default is the documented role of Default*Sound; the native lookup itself is not authored data"
+    },
+    "FootstepCrouchJog": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_CROUCH_JOG",
+     "origin": "slot unset (or no PhysicalMaterialProperty) -> TransGame.Default__TnPawn.FootstepComp0.DefaultCrouchJogSound",
+     "confidence": "HIGH CONFIDENCE",
+     "note": "fallback to the footstep component default is the documented role of Default*Sound; the native lookup itself is not authored data"
+    },
+    "FootstepCrouchRun": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_CROUCH_RUN",
+     "origin": "slot unset (or no PhysicalMaterialProperty) -> TransGame.Default__TnPawn.FootstepComp0.DefaultCrouchRunSound",
+     "confidence": "HIGH CONFIDENCE",
+     "note": "fallback to the footstep component default is the documented role of Default*Sound; the native lookup itself is not authored data"
+    },
+    "FootstepScuff": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_SCUFF",
+     "origin": "authored on ENV_PHYSMAT_p.Metal_PHYSMAT.TnPhysicalMaterialProperty_11396.FootstepSounds.FootstepScuff",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "FootstepCrouchScuff": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_CROUCH_SCUFF",
+     "origin": "slot unset (or no PhysicalMaterialProperty) -> TransGame.Default__TnPawn.FootstepComp0.DefaultCrouchScuffSound",
+     "confidence": "HIGH CONFIDENCE",
+     "note": "fallback to the footstep component default is the documented role of Default*Sound; the native lookup itself is not authored data"
+    },
+    "FootstepJump": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_JUMP",
+     "origin": "authored on ENV_PHYSMAT_p.Metal_PHYSMAT.TnPhysicalMaterialProperty_11396.FootstepSounds.FootstepJump",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "FootstepLand": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_LAND",
+     "origin": "authored on ENV_PHYSMAT_p.Metal_PHYSMAT.TnPhysicalMaterialProperty_11396.FootstepSounds.FootstepLand",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "FootstepHardLand": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_HARD_LAND",
+     "origin": "authored on ENV_PHYSMAT_p.Metal_PHYSMAT.TnPhysicalMaterialProperty_11396.FootstepSounds.FootstepHardLand",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "FootstepDashLand": {
+     "event": null,
+     "origin": "slot unset and HmFootstepComponent has no default for it -> no event",
+     "confidence": "CONFIRMED AUTHORED DATA",
+     "note": null
+    }
+   }
+  },
+  "ENV_PHYSMAT_p.Water_Yellow_PHYSMAT": {
+   "physmat": "ENV_PHYSMAT_p.Water_Yellow_PHYSMAT",
+   "package_of_record": "A2_KON_AirRaid_Trans_Art_m",
+   "authored": {
+    "Friction": 0.5,
+    "Restitution": 0.10000000149011612,
+    "ImpactReFireDelay": 0.5,
+    "ImpactEffect": "FX_Debris_p.FX.Liquid_Impact_yellow_FX",
+    "PhysicalMaterialProperty": "ENV_PHYSMAT_p.Water_Yellow_PHYSMAT.TnPhysicalMaterialProperty_11396"
+   },
+   "PhysicalMaterialProperty": "ENV_PHYSMAT_p.Water_Yellow_PHYSMAT.TnPhysicalMaterialProperty_11396",
+   "property_object": {
+    "object": "ENV_PHYSMAT_p.Water_Yellow_PHYSMAT.TnPhysicalMaterialProperty_11396",
+    "class": "TnPhysicalMaterialProperty",
+    "read_from_package": "A2_KON_AirRaid_Trans_Art_m",
+    "cooked_in_streets": [],
+    "Type": null,
+    "FootstepSounds_raw": {
+     "FootstepWalk": "SoundEvents_Footsteps.FS_DEFAULT_WALK",
+     "FootstepJog": "SoundEvents_Footsteps.FS_DEFAULT_JOG",
+     "FootstepRun": "SoundEvents_Footsteps.FS_DEFAULT_RUN",
+     "FootstepScuff": "SoundEvents_Footsteps.FS_DEFAULT_SCUFF",
+     "FootstepJump": "SoundEvents_Footsteps.FS_DEFAULT_JUMP",
+     "FootstepLand": "SoundEvents_Footsteps.FS_DEFAULT_LAND",
+     "FootstepHardLand": "SoundEvents_Footsteps.FS_DEFAULT_HARD_LAND"
+    },
+    "BodyImpactSounds": null,
+    "has_weapon_impact_tables": false
+   },
+   "slots": {
+    "FootstepWalk": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_WALK",
+     "origin": "authored on ENV_PHYSMAT_p.Water_Yellow_PHYSMAT.TnPhysicalMaterialProperty_11396.FootstepSounds.FootstepWalk",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "FootstepJog": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_JOG",
+     "origin": "authored on ENV_PHYSMAT_p.Water_Yellow_PHYSMAT.TnPhysicalMaterialProperty_11396.FootstepSounds.FootstepJog",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "FootstepRun": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_RUN",
+     "origin": "authored on ENV_PHYSMAT_p.Water_Yellow_PHYSMAT.TnPhysicalMaterialProperty_11396.FootstepSounds.FootstepRun",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "FootstepCrouchWalk": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_CROUCH_WALK",
+     "origin": "slot unset (or no PhysicalMaterialProperty) -> TransGame.Default__TnPawn.FootstepComp0.DefaultCrouchWalkSound",
+     "confidence": "HIGH CONFIDENCE",
+     "note": "fallback to the footstep component default is the documented role of Default*Sound; the native lookup itself is not authored data"
+    },
+    "FootstepCrouchJog": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_CROUCH_JOG",
+     "origin": "slot unset (or no PhysicalMaterialProperty) -> TransGame.Default__TnPawn.FootstepComp0.DefaultCrouchJogSound",
+     "confidence": "HIGH CONFIDENCE",
+     "note": "fallback to the footstep component default is the documented role of Default*Sound; the native lookup itself is not authored data"
+    },
+    "FootstepCrouchRun": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_CROUCH_RUN",
+     "origin": "slot unset (or no PhysicalMaterialProperty) -> TransGame.Default__TnPawn.FootstepComp0.DefaultCrouchRunSound",
+     "confidence": "HIGH CONFIDENCE",
+     "note": "fallback to the footstep component default is the documented role of Default*Sound; the native lookup itself is not authored data"
+    },
+    "FootstepScuff": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_SCUFF",
+     "origin": "authored on ENV_PHYSMAT_p.Water_Yellow_PHYSMAT.TnPhysicalMaterialProperty_11396.FootstepSounds.FootstepScuff",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "FootstepCrouchScuff": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_CROUCH_SCUFF",
+     "origin": "slot unset (or no PhysicalMaterialProperty) -> TransGame.Default__TnPawn.FootstepComp0.DefaultCrouchScuffSound",
+     "confidence": "HIGH CONFIDENCE",
+     "note": "fallback to the footstep component default is the documented role of Default*Sound; the native lookup itself is not authored data"
+    },
+    "FootstepJump": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_JUMP",
+     "origin": "authored on ENV_PHYSMAT_p.Water_Yellow_PHYSMAT.TnPhysicalMaterialProperty_11396.FootstepSounds.FootstepJump",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "FootstepLand": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_LAND",
+     "origin": "authored on ENV_PHYSMAT_p.Water_Yellow_PHYSMAT.TnPhysicalMaterialProperty_11396.FootstepSounds.FootstepLand",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "FootstepHardLand": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_HARD_LAND",
+     "origin": "authored on ENV_PHYSMAT_p.Water_Yellow_PHYSMAT.TnPhysicalMaterialProperty_11396.FootstepSounds.FootstepHardLand",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "FootstepDashLand": {
+     "event": null,
+     "origin": "slot unset and HmFootstepComponent has no default for it -> no event",
+     "confidence": "CONFIRMED AUTHORED DATA",
+     "note": null
+    }
+   }
+  },
+  "<no PhysicalMaterialProperty / engine default component>": {
+   "slots": {
+    "FootstepWalk": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_WALK",
+     "origin": "TransGame.Default__TnPawn.FootstepComp0.DefaultWalkSound",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "FootstepJog": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_JOG",
+     "origin": "TransGame.Default__TnPawn.FootstepComp0.DefaultJogSound",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "FootstepRun": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_RUN",
+     "origin": "TransGame.Default__TnPawn.FootstepComp0.DefaultRunSound",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "FootstepCrouchWalk": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_CROUCH_WALK",
+     "origin": "TransGame.Default__TnPawn.FootstepComp0.DefaultCrouchWalkSound",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "FootstepCrouchJog": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_CROUCH_JOG",
+     "origin": "TransGame.Default__TnPawn.FootstepComp0.DefaultCrouchJogSound",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "FootstepCrouchRun": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_CROUCH_RUN",
+     "origin": "TransGame.Default__TnPawn.FootstepComp0.DefaultCrouchRunSound",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "FootstepScuff": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_SCUFF",
+     "origin": "TransGame.Default__TnPawn.FootstepComp0.DefaultScuffSound",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "FootstepCrouchScuff": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_CROUCH_SCUFF",
+     "origin": "TransGame.Default__TnPawn.FootstepComp0.DefaultCrouchScuffSound",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "FootstepJump": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_JUMP",
+     "origin": "TransGame.Default__TnPawn.FootstepComp0.DefaultJumpSound",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "FootstepLand": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_LAND",
+     "origin": "TransGame.Default__TnPawn.FootstepComp0.DefaultLandSound",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "FootstepHardLand": {
+     "event": "SoundEvents_Footsteps.FS_DEFAULT_HARD_LAND",
+     "origin": "TransGame.Default__TnPawn.FootstepComp0.DefaultHardLandSound",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    },
+    "FootstepDashLand": {
+     "event": null,
+     "origin": "TransGame.Default__TnPawn.FootstepComp0.-",
+     "confidence": "CONFIRMED AUTHORED DATA"
+    }
+   }
+  }
+ },
+ "notify_to_slot (Systems-confirmed notify logic -> PhysicalMaterialPropertyFootstepSounds slot)": {
+  "walk": "FootstepWalk",
+  "run": "FootstepRun",
+  "scuff": "FootstepScuff",
+  "land": "FootstepLand",
+  "hard-land": "FootstepHardLand"
+ },
+ "event_to_cue (Optimus robot)": {
+  "SoundEvents_Footsteps.FS_DEFAULT_CROUCH_JOG": {
+   "cue": null,
+   "event_set": "SoundEvents.CHR_OPTIMUS",
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": "event not present in the Optimus HmSoundEventSet -> no sound is mapped (whether the engine plays anything is native: treat as silent)"
+  },
+  "SoundEvents_Footsteps.FS_DEFAULT_CROUCH_RUN": {
+   "cue": null,
+   "event_set": "SoundEvents.CHR_OPTIMUS",
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": "event not present in the Optimus HmSoundEventSet -> no sound is mapped (whether the engine plays anything is native: treat as silent)"
+  },
+  "SoundEvents_Footsteps.FS_DEFAULT_CROUCH_SCUFF": {
+   "cue": null,
+   "event_set": "SoundEvents.CHR_OPTIMUS",
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": "event not present in the Optimus HmSoundEventSet -> no sound is mapped (whether the engine plays anything is native: treat as silent)"
+  },
+  "SoundEvents_Footsteps.FS_DEFAULT_CROUCH_WALK": {
+   "cue": null,
+   "event_set": "SoundEvents.CHR_OPTIMUS",
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": "event not present in the Optimus HmSoundEventSet -> no sound is mapped (whether the engine plays anything is native: treat as silent)"
+  },
+  "SoundEvents_Footsteps.FS_DEFAULT_HARD_LAND": {
+   "cue": "BL_FS_LRG_BOT.FS_LAND_HARD",
+   "event_set": "SoundEvents.CHR_OPTIMUS",
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  "SoundEvents_Footsteps.FS_DEFAULT_JOG": {
+   "cue": null,
+   "event_set": "SoundEvents.CHR_OPTIMUS",
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": "event not present in the Optimus HmSoundEventSet -> no sound is mapped (whether the engine plays anything is native: treat as silent)"
+  },
+  "SoundEvents_Footsteps.FS_DEFAULT_JUMP": {
+   "cue": "BL_FS_LRG_BOT.FS_JUMP",
+   "event_set": "SoundEvents.CHR_OPTIMUS",
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  "SoundEvents_Footsteps.FS_DEFAULT_JUMP_CHARGED": {
+   "cue": "BL_FS_LRG_BOT.FS_JUMP_CHARGED",
+   "event_set": "SoundEvents.CHR_OPTIMUS",
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  "SoundEvents_Footsteps.FS_DEFAULT_LAND": {
+   "cue": "BL_FS_LRG_BOT.FS_LAND_DEFAULT",
+   "event_set": "SoundEvents.CHR_OPTIMUS",
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  "SoundEvents_Footsteps.FS_DEFAULT_LAND_HIGH_FALL": {
+   "cue": "BL_FS_LRG_BOT.FS_LAND_HIGH_FALL",
+   "event_set": "SoundEvents.CHR_OPTIMUS",
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  "SoundEvents_Footsteps.FS_DEFAULT_RUN": {
+   "cue": "BL_FS_LRG_BOT.FS_RUN_DEFAULT",
+   "event_set": "SoundEvents.CHR_OPTIMUS",
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  "SoundEvents_Footsteps.FS_DEFAULT_SCUFF": {
+   "cue": "BL_FS_LRG_BOT.FS_SCUFF_DEFAULT",
+   "event_set": "SoundEvents.CHR_OPTIMUS",
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  },
+  "SoundEvents_Footsteps.FS_DEFAULT_WALK": {
+   "cue": "BL_FS_LRG_BOT.FS_WALK_DEFAULT",
+   "event_set": "SoundEvents.CHR_OPTIMUS",
+   "confidence": "CONFIRMED AUTHORED DATA",
+   "note": null
+  }
+ },
+ "cues": {
+  "BL_FS_LRG_BOT.FS_LAND_HARD": {
+   "cue": "BL_FS_LRG_BOT.FS_LAND_HARD",
+   "root": {
+    "Volume": -5.0,
+    "SpatializationType": "kSmartPan_PreferPlayer",
+    "DistanceMin": 1500.0,
+    "DistanceMax": 15000.0,
+    "RolloffFactor": 2.0,
+    "Priority": 35.0,
+    "SmartPanDistance2D": 75.0,
+    "SmartPanDistance3D": 150.0,
+    "Category": "SFX_WET_NAV"
+   },
+   "category": "SFX_WET_NAV",
+   "wave_events": [
+    {
+     "node": "SoundNodeWaveEvent_7503",
+     "params": {},
+     "waves": [
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_LAND_01",
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_LAND_02",
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_LAND_03",
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_LAND_04"
+     ]
+    },
+    {
+     "node": "SoundNodeWaveEvent_7964",
+     "params": {
+      "Volume": -4.0,
+      "VolumeVariationMin": -3.0,
+      "Pitch": -3.0,
+      "PitchVariationMin": 2.0,
+      "PitchVariationMax": -3.0
+     },
+     "waves": [
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_01",
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_02",
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_03",
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_04",
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_05",
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_06"
+     ]
+    },
+    {
+     "node": "SoundNodeWaveEvent_13768",
+     "params": {
+      "Volume": -4.0,
+      "VolumeVariationMin": -6.0,
+      "Pitch": -3.0
+     },
+     "waves": [
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_01",
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_02",
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_03",
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_04",
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_RATTLE_01",
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_RATTLE_02",
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_RATTLE_03"
+     ]
+    }
+   ],
+   "waves": [
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_LAND_01",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_LAND_01.wav",
+     "duration": 0.8019166588783264
+    },
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_LAND_02",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_LAND_02.wav",
+     "duration": 0.8973333239555359
+    },
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_LAND_03",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_LAND_03.wav",
+     "duration": 0.9599999785423279
+    },
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_LAND_04",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_LAND_04.wav",
+     "duration": 0.8373333215713501
+    },
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_01",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_01.wav",
+     "duration": 0.4846666753292084
+    },
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_02",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_02.wav",
+     "duration": 0.4673333466053009
+    },
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_03",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_03.wav",
+     "duration": 0.4860000014305115
+    },
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_04",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_04.wav",
+     "duration": 0.47999998927116394
+    },
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_05",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_05.wav",
+     "duration": 0.5406666398048401
+    },
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_06",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_06.wav",
+     "duration": 0.5433333516120911
+    },
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_01",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_GROAN_01.wav",
+     "duration": 1.4906666278839111
+    },
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_02",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_GROAN_02.wav",
+     "duration": 1.3359999656677246
+    },
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_03",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_GROAN_03.wav",
+     "duration": 1.2719999551773071
+    },
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_04",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_GROAN_04.wav",
+     "duration": 1.2960000038146973
+    },
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_RATTLE_01",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_GROAN_RATTLE_01.wav",
+     "duration": 1.0533332824707031
+    },
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_RATTLE_02",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_GROAN_RATTLE_02.wav",
+     "duration": 1.2333333492279053
+    },
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_RATTLE_03",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_GROAN_RATTLE_03.wav",
+     "duration": 1.0853333473205566
+    }
+   ],
+   "random_selection": "each SoundNodeWaveEvent with >1 child wave picks one child per play (variants); selection weighting/no-repeat is native (no Weights authored)"
+  },
+  "BL_FS_LRG_BOT.FS_JUMP": {
+   "cue": "BL_FS_LRG_BOT.FS_JUMP",
+   "root": {
+    "Volume": -10.0,
+    "SpatializationType": "kSmartPan_PreferPlayer",
+    "DistanceMin": 1500.0,
+    "DistanceMax": 15000.0,
+    "RolloffFactor": 2.0,
+    "Priority": 50.0,
+    "SmartPanDistance2D": 75.0,
+    "SmartPanDistance3D": 150.0,
+    "Category": "SFX_WET_NAV"
+   },
+   "category": "SFX_WET_NAV",
+   "wave_events": [
+    {
+     "node": "SoundNodeWaveEvent_14325",
+     "params": {
+      "VolumeVariationMin": -6.0,
+      "Pitch": -2.0,
+      "PitchVariationMin": -2.0
+     },
+     "waves": [
+      "WL_FS_BOT.MTL_FOLEY_JUMP_MED_BOT_01"
+     ]
+    },
+    {
+     "node": "SoundNodeWaveEvent_2527",
+     "params": {
+      "Volume": -6.0,
+      "Pitch": 8.0,
+      "PitchVariationMin": -2.0
+     },
+     "waves": [
+      "WL_WHSH_MELEE.WHSH_JET_BY_JUMPJETS"
+     ]
+    },
+    {
+     "node": "SoundNodeWaveEvent_9485",
+     "params": {
+      "Volume": -2.0
+     },
+     "waves": [
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_LAND_01",
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_LAND_02",
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_LAND_03",
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_LAND_04"
+     ]
+    }
+   ],
+   "waves": [
+    {
+     "wave": "WL_FS_BOT.MTL_FOLEY_JUMP_MED_BOT_01",
+     "wav": "content/WL_FS_BOT/MTL_FOLEY_JUMP_MED_BOT_01.wav",
+     "duration": 0.39022916555404663
+    },
+    {
+     "wave": "WL_WHSH_MELEE.WHSH_JET_BY_JUMPJETS",
+     "wav": "content/WL_WHSH_MELEE/WHSH_JET_BY_JUMPJETS.wav",
+     "duration": 1.7066667079925537
+    },
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_LAND_01",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_LAND_01.wav",
+     "duration": 0.8019166588783264
+    },
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_LAND_02",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_LAND_02.wav",
+     "duration": 0.8973333239555359
+    },
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_LAND_03",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_LAND_03.wav",
+     "duration": 0.9599999785423279
+    },
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_LAND_04",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_LAND_04.wav",
+     "duration": 0.8373333215713501
+    }
+   ],
+   "random_selection": "each SoundNodeWaveEvent with >1 child wave picks one child per play (variants); selection weighting/no-repeat is native (no Weights authored)"
+  },
+  "BL_FS_LRG_BOT.FS_JUMP_CHARGED": {
+   "cue": "BL_FS_LRG_BOT.FS_JUMP_CHARGED",
+   "root": {
+    "Volume": -5.0,
+    "SpatializationType": "kSmartPan_PreferPlayer",
+    "DistanceMin": 1500.0,
+    "DistanceMax": 15000.0,
+    "RolloffFactor": 2.0,
+    "Priority": 75.0,
+    "SmartPanDistance2D": 75.0,
+    "SmartPanDistance3D": 150.0,
+    "Category": "SFX_WET_NAV"
+   },
+   "category": "SFX_WET_NAV",
+   "wave_events": [
+    {
+     "node": "SoundNodeWaveEvent_8112",
+     "params": {},
+     "waves": [
+      "WL_FS_BOT.FS_BOT_LARGE_JUMP_CHARGED_01",
+      "WL_FS_BOT.FS_BOT_LARGE_JUMP_CHARGED_02",
+      "WL_FS_BOT.FS_BOT_LARGE_JUMP_CHARGED_03",
+      "WL_FS_BOT.FS_BOT_LARGE_JUMP_CHARGED_04"
+     ]
+    }
+   ],
+   "waves": [
+    {
+     "wave": "WL_FS_BOT.FS_BOT_LARGE_JUMP_CHARGED_01",
+     "wav": "content/WL_FS_BOT/FS_BOT_LARGE_JUMP_CHARGED_01.wav",
+     "duration": 1.378666639328003
+    },
+    {
+     "wave": "WL_FS_BOT.FS_BOT_LARGE_JUMP_CHARGED_02",
+     "wav": "content/WL_FS_BOT/FS_BOT_LARGE_JUMP_CHARGED_02.wav",
+     "duration": 1.402666687965393
+    },
+    {
+     "wave": "WL_FS_BOT.FS_BOT_LARGE_JUMP_CHARGED_03",
+     "wav": "content/WL_FS_BOT/FS_BOT_LARGE_JUMP_CHARGED_03.wav",
+     "duration": 1.5706666707992554
+    },
+    {
+     "wave": "WL_FS_BOT.FS_BOT_LARGE_JUMP_CHARGED_04",
+     "wav": "content/WL_FS_BOT/FS_BOT_LARGE_JUMP_CHARGED_04.wav",
+     "duration": 1.343999981880188
+    }
+   ],
+   "random_selection": "each SoundNodeWaveEvent with >1 child wave picks one child per play (variants); selection weighting/no-repeat is native (no Weights authored)"
+  },
+  "BL_FS_LRG_BOT.FS_LAND_DEFAULT": {
+   "cue": "BL_FS_LRG_BOT.FS_LAND_DEFAULT",
+   "root": {
+    "Volume": -8.0,
+    "SpatializationType": "kSmartPan_PreferPlayer",
+    "DistanceMin": 1500.0,
+    "DistanceMax": 15000.0,
+    "RolloffFactor": 2.0,
+    "Priority": 35.0,
+    "SmartPanDistance2D": 75.0,
+    "SmartPanDistance3D": 150.0,
+    "Category": "SFX_WET_NAV"
+   },
+   "category": "SFX_WET_NAV",
+   "wave_events": [
+    {
+     "node": "SoundNodeWaveEvent_1697",
+     "params": {
+      "Pitch": 2.0
+     },
+     "waves": [
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_LAND_01",
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_LAND_02",
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_LAND_03",
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_LAND_04"
+     ]
+    },
+    {
+     "node": "SoundNodeWaveEvent_10753",
+     "params": {
+      "Volume": -6.0,
+      "VolumeVariationMin": -3.0,
+      "Pitch": -3.0,
+      "PitchVariationMin": 2.0,
+      "PitchVariationMax": -3.0
+     },
+     "waves": [
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_01",
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_02",
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_03",
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_04",
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_05",
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_06"
+     ]
+    },
+    {
+     "node": "SoundNodeWaveEvent_10097",
+     "params": {
+      "Time": 0.0506758838891983,
+      "Volume": -6.0,
+      "VolumeVariationMin": -6.0
+     },
+     "waves": [
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_01",
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_02",
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_03",
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_04",
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_RATTLE_01",
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_RATTLE_02",
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_RATTLE_03"
+     ]
+    }
+   ],
+   "waves": [
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_LAND_01",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_LAND_01.wav",
+     "duration": 0.8019166588783264
+    },
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_LAND_02",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_LAND_02.wav",
+     "duration": 0.8973333239555359
+    },
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_LAND_03",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_LAND_03.wav",
+     "duration": 0.9599999785423279
+    },
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_LAND_04",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_LAND_04.wav",
+     "duration": 0.8373333215713501
+    },
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_01",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_01.wav",
+     "duration": 0.4846666753292084
+    },
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_02",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_02.wav",
+     "duration": 0.4673333466053009
+    },
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_03",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_03.wav",
+     "duration": 0.4860000014305115
+    },
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_04",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_04.wav",
+     "duration": 0.47999998927116394
+    },
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_05",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_05.wav",
+     "duration": 0.5406666398048401
+    },
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_06",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_06.wav",
+     "duration": 0.5433333516120911
+    },
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_01",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_GROAN_01.wav",
+     "duration": 1.4906666278839111
+    },
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_02",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_GROAN_02.wav",
+     "duration": 1.3359999656677246
+    },
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_03",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_GROAN_03.wav",
+     "duration": 1.2719999551773071
+    },
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_04",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_GROAN_04.wav",
+     "duration": 1.2960000038146973
+    },
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_RATTLE_01",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_GROAN_RATTLE_01.wav",
+     "duration": 1.0533332824707031
+    },
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_RATTLE_02",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_GROAN_RATTLE_02.wav",
+     "duration": 1.2333333492279053
+    },
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_GROAN_RATTLE_03",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_GROAN_RATTLE_03.wav",
+     "duration": 1.0853333473205566
+    }
+   ],
+   "random_selection": "each SoundNodeWaveEvent with >1 child wave picks one child per play (variants); selection weighting/no-repeat is native (no Weights authored)"
+  },
+  "BL_FS_LRG_BOT.FS_LAND_HIGH_FALL": {
+   "cue": "BL_FS_LRG_BOT.FS_LAND_HIGH_FALL",
+   "root": {
+    "Volume": 0.0,
+    "SpatializationType": "kSmartPan_PreferPlayer",
+    "DistanceMin": 1500.0,
+    "DistanceMax": 15000.0,
+    "RolloffFactor": 2.0,
+    "Priority": 75.0,
+    "SmartPanDistance2D": 1000.0,
+    "SmartPanDistance3D": 1500.0,
+    "Category": "SFX_WET_NAV"
+   },
+   "category": "SFX_WET_NAV",
+   "wave_events": [
+    {
+     "node": "SoundNodeWaveEvent_7964",
+     "params": {
+      "Time": 0.0035890405997633934,
+      "VolumeVariationMin": -3.0,
+      "Pitch": -6.0,
+      "PitchVariationMin": 2.0,
+      "PitchVariationMax": -3.0
+     },
+     "waves": [
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_01",
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_02",
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_03",
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_04",
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_05",
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_06"
+     ]
+    },
+    {
+     "node": "SoundNodeWaveEvent_15781",
+     "params": {
+      "PitchVariationMin": -1.0,
+      "PitchVariationMax": 1.0
+     },
+     "waves": [
+      "WL_FS_BOT.FS_GENERIC_HIGH_FALL_02_LR"
+     ]
+    }
+   ],
+   "waves": [
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_01",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_01.wav",
+     "duration": 0.4846666753292084
+    },
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_02",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_02.wav",
+     "duration": 0.4673333466053009
+    },
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_03",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_03.wav",
+     "duration": 0.4860000014305115
+    },
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_04",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_04.wav",
+     "duration": 0.47999998927116394
+    },
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_05",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_05.wav",
+     "duration": 0.5406666398048401
+    },
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_06",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_06.wav",
+     "duration": 0.5433333516120911
+    },
+    {
+     "wave": "WL_FS_BOT.FS_GENERIC_HIGH_FALL_02_LR",
+     "wav": "content/WL_FS_BOT/FS_GENERIC_HIGH_FALL_02_LR.wav",
+     "duration": 2.0450000762939453
+    }
+   ],
+   "random_selection": "each SoundNodeWaveEvent with >1 child wave picks one child per play (variants); selection weighting/no-repeat is native (no Weights authored)"
+  },
+  "BL_FS_LRG_BOT.FS_RUN_DEFAULT": {
+   "cue": "BL_FS_LRG_BOT.FS_RUN_DEFAULT",
+   "root": {
+    "Volume": -8.0,
+    "VolumeVariationMin": -3.0,
+    "SpatializationType": "kSmartPan_PreferPlayer",
+    "DistanceMin": 1500.0,
+    "DistanceMax": 15000.0,
+    "RolloffFactor": 2.0,
+    "Priority": 25.0,
+    "SmartPanDistance2D": 75.0,
+    "SmartPanDistance3D": 150.0,
+    "Category": "SFX_WET_NAV"
+   },
+   "category": "SFX_WET_NAV",
+   "wave_events": [
+    {
+     "node": "SoundNodeWaveEvent_4719",
+     "params": {
+      "VolumeVariationMin": -6.0,
+      "PitchVariationMin": -3.0,
+      "PitchVariationMax": 2.0
+     },
+     "waves": [
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_01",
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_02",
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_03",
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_04",
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_05",
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_06"
+     ]
+    },
+    {
+     "node": "SoundNodeWaveEvent_3913",
+     "params": {
+      "Volume": -12.0,
+      "VolumeVariationMin": -12.0,
+      "Pitch": -3.0,
+      "PitchVariationMin": -3.0
+     },
+     "waves": [
+      "WL_FS_BOT.SRVO_BOT_FOLY_FS_FILTSWEEP_01",
+      "WL_FS_BOT.SRVO_BOT_FOLY_FS_FILTSWEEP_02",
+      "WL_FS_BOT.SRVO_BOT_FOLY_FS_FILTSWEEP_03",
+      "WL_FS_BOT.SRVO_BOT_FOLY_FS_FILTSWEEP_04",
+      "WL_FS_BOT.SRVO_BOT_FOLY_FS_FILTSWEEP_05",
+      "WL_FS_BOT.SRVO_BOT_FOLY_FS_FILTSWEEP_06",
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_01",
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_02",
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_03",
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_04",
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_05",
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_06"
+     ]
+    }
+   ],
+   "waves": [
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_01",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_01.wav",
+     "duration": 0.5733333230018616
+    },
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_02",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_02.wav",
+     "duration": 0.5839999914169312
+    },
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_03",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_03.wav",
+     "duration": 0.5960000157356262
+    },
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_04",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_04.wav",
+     "duration": 0.628000020980835
+    },
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_05",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_05.wav",
+     "duration": 0.6426666378974915
+    },
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_06",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_06.wav",
+     "duration": 0.5680000185966492
+    },
+    {
+     "wave": "WL_FS_BOT.SRVO_BOT_FOLY_FS_FILTSWEEP_01",
+     "wav": "content/WL_FS_BOT/SRVO_BOT_FOLY_FS_FILTSWEEP_01.wav",
+     "duration": 0.30533334612846375
+    },
+    {
+     "wave": "WL_FS_BOT.SRVO_BOT_FOLY_FS_FILTSWEEP_02",
+     "wav": "content/WL_FS_BOT/SRVO_BOT_FOLY_FS_FILTSWEEP_02.wav",
+     "duration": 0.257999986410141
+    },
+    {
+     "wave": "WL_FS_BOT.SRVO_BOT_FOLY_FS_FILTSWEEP_03",
+     "wav": "content/WL_FS_BOT/SRVO_BOT_FOLY_FS_FILTSWEEP_03.wav",
+     "duration": 0.28600001335144043
+    },
+    {
+     "wave": "WL_FS_BOT.SRVO_BOT_FOLY_FS_FILTSWEEP_04",
+     "wav": "content/WL_FS_BOT/SRVO_BOT_FOLY_FS_FILTSWEEP_04.wav",
+     "duration": 0.2933333218097687
+    },
+    {
+     "wave": "WL_FS_BOT.SRVO_BOT_FOLY_FS_FILTSWEEP_05",
+     "wav": "content/WL_FS_BOT/SRVO_BOT_FOLY_FS_FILTSWEEP_05.wav",
+     "duration": 0.36533331871032715
+    },
+    {
+     "wave": "WL_FS_BOT.SRVO_BOT_FOLY_FS_FILTSWEEP_06",
+     "wav": "content/WL_FS_BOT/SRVO_BOT_FOLY_FS_FILTSWEEP_06.wav",
+     "duration": 0.27799999713897705
+    },
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_01",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_01.wav",
+     "duration": 0.4846666753292084
+    },
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_02",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_02.wav",
+     "duration": 0.4673333466053009
+    },
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_03",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_03.wav",
+     "duration": 0.4860000014305115
+    },
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_04",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_04.wav",
+     "duration": 0.47999998927116394
+    },
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_05",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_05.wav",
+     "duration": 0.5406666398048401
+    },
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_SERVO_06",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_SERVO_06.wav",
+     "duration": 0.5433333516120911
+    }
+   ],
+   "random_selection": "each SoundNodeWaveEvent with >1 child wave picks one child per play (variants); selection weighting/no-repeat is native (no Weights authored)"
+  },
+  "BL_FS_LRG_BOT.FS_SCUFF_DEFAULT": {
+   "cue": "BL_FS_LRG_BOT.FS_SCUFF_DEFAULT",
+   "root": {
+    "Volume": -9.0,
+    "VolumeVariationMin": -6.0,
+    "SpatializationType": "kSmartPan_PreferPlayer",
+    "DistanceMin": 1500.0,
+    "DistanceMax": 15000.0,
+    "RolloffFactor": 2.0,
+    "Priority": 25.0,
+    "SmartPanDistance2D": 75.0,
+    "SmartPanDistance3D": 150.0,
+    "Category": "SFX_WET_NAV"
+   },
+   "category": "SFX_WET_NAV",
+   "wave_events": [
+    {
+     "node": "SoundNodeWaveEvent_11624",
+     "params": {
+      "VolumeVariationMin": -6.0,
+      "PitchVariationMin": -1.0,
+      "PitchVariationMax": 1.0
+     },
+     "waves": [
+      "WL_FS_BOT.MTL_FOLY_FS_BOT_MVMNT_01",
+      "WL_FS_BOT.MTL_FOLY_FS_BOT_MVMNT_02",
+      "WL_FS_BOT.MTL_FOLY_FS_BOT_MVMNT_03",
+      "WL_FS_BOT.MTL_FOLY_FS_BOT_MVMNT_04"
+     ]
+    }
+   ],
+   "waves": [
+    {
+     "wave": "WL_FS_BOT.MTL_FOLY_FS_BOT_MVMNT_01",
+     "wav": "content/WL_FS_BOT/MTL_FOLY_FS_BOT_MVMNT_01.wav",
+     "duration": 0.7866666913032532
+    },
+    {
+     "wave": "WL_FS_BOT.MTL_FOLY_FS_BOT_MVMNT_02",
+     "wav": "content/WL_FS_BOT/MTL_FOLY_FS_BOT_MVMNT_02.wav",
+     "duration": 0.637333333492279
+    },
+    {
+     "wave": "WL_FS_BOT.MTL_FOLY_FS_BOT_MVMNT_03",
+     "wav": "content/WL_FS_BOT/MTL_FOLY_FS_BOT_MVMNT_03.wav",
+     "duration": 0.8519999980926514
+    },
+    {
+     "wave": "WL_FS_BOT.MTL_FOLY_FS_BOT_MVMNT_04",
+     "wav": "content/WL_FS_BOT/MTL_FOLY_FS_BOT_MVMNT_04.wav",
+     "duration": 0.7279999852180481
+    }
+   ],
+   "random_selection": "each SoundNodeWaveEvent with >1 child wave picks one child per play (variants); selection weighting/no-repeat is native (no Weights authored)"
+  },
+  "BL_FS_LRG_BOT.FS_WALK_DEFAULT": {
+   "cue": "BL_FS_LRG_BOT.FS_WALK_DEFAULT",
+   "root": {
+    "Volume": -12.0,
+    "VolumeVariationMin": -3.0,
+    "SpatializationType": "kSmartPan_PreferPlayer",
+    "DistanceMin": 1500.0,
+    "DistanceMax": 15000.0,
+    "RolloffFactor": 2.0,
+    "Priority": 25.0,
+    "SmartPanDistance2D": 75.0,
+    "SmartPanDistance3D": 150.0,
+    "Category": "SFX_WET_NAV"
+   },
+   "category": "SFX_WET_NAV",
+   "wave_events": [
+    {
+     "node": "SoundNodeWaveEvent_9021",
+     "params": {
+      "VolumeVariationMin": -5.0,
+      "PitchVariationMin": -2.0,
+      "PitchVariationMax": 2.0
+     },
+     "waves": [
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_01",
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_02",
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_03",
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_04",
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_05",
+      "WL_FS_BOT.FS_MTL_BOT_LARGE_06"
+     ]
+    }
+   ],
+   "waves": [
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_01",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_01.wav",
+     "duration": 0.5733333230018616
+    },
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_02",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_02.wav",
+     "duration": 0.5839999914169312
+    },
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_03",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_03.wav",
+     "duration": 0.5960000157356262
+    },
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_04",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_04.wav",
+     "duration": 0.628000020980835
+    },
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_05",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_05.wav",
+     "duration": 0.6426666378974915
+    },
+    {
+     "wave": "WL_FS_BOT.FS_MTL_BOT_LARGE_06",
+     "wav": "content/WL_FS_BOT/FS_MTL_BOT_LARGE_06.wav",
+     "duration": 0.5680000185966492
+    }
+   ],
+   "random_selection": "each SoundNodeWaveEvent with >1 child wave picks one child per play (variants); selection weighting/no-repeat is native (no Weights authored)"
+  }
+ },
+ "robot_size_distinction": {
+  "mechanism": "per-character HmSoundEventSet maps the same FS_DEFAULT_* events to different banks",
+  "FS_DEFAULT_WALK bank usage across all event sets": {
+   "BL_FS_LRG_BOT": 27,
+   "BL_FS_SML_BOT": 14,
+   "BL_FS_MED_BOT": 28,
+   "BL_CHR_STARSCREAM": 1,
+   "BL_FS_BRUTE": 11
+  },
+  "confidence": "CONFIRMED AUTHORED DATA"
+ },
+ "vehicle": "no footstep path in vehicle form; vehicle land sounds come from HmPlayerVehicleAudioComponent (Hover/BoostLandSound) - see vehicle_audio_loops.json / vertical_slice_audio_concurrency.json",
+ "unresolved": [
+  "which surface the native footstep trace samples (hit triangle material vs component PhysMaterialOverride vs BodySetup) - irrelevant here because every candidate yields identical events",
+  "FootstepJog / Crouch* / DashLand events are not mapped in SoundEvents.CHR_OPTIMUS: native behaviour for an unmapped event (expected: silent)"
+ ]
+}
