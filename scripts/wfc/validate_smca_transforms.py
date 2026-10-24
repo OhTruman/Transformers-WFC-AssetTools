@@ -189,6 +189,9 @@ def main():
     for x in smca:
         # campaign: components whose StaticMesh does not resolve (D5 GLB_ART sky / light-ray cards) have no world.glb node
         if is_campaign(MAP) and not x.get('gltf'): st['campaign_meshless_components_skipped'] += 1; continue
+        # any map: a component that authors NO StaticMesh at all (archetype Engine.Default__StaticMeshActor.StaticMeshComponent0, no mesh;
+        # DLC MP_ORB_Havoc 6) draws nothing in the original either -> no node expected (maps without such components: unchanged)
+        if not x.get('mesh'): st['meshless_components_skipped'] += 1; continue
         key = tuple(np.round(np.array(x['gltf_matrix'], 'f8'), 4).tolist())
         st['world_glb_node_match'] += int(key in wm)
         if key not in wm: fails.append('world.glb node missing for ' + x['component'])

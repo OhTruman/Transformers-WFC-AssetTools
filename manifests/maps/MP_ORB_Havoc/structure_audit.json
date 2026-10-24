@@ -1,0 +1,1011 @@
+{
+ "map": "MP_ORB_Havoc",
+ "generated_by": "AssetTools/scripts/wfc/map_structure_audit.py",
+ "method": {
+  "cell_m": 1.0,
+  "walk_step_m": 1.25,
+  "walkable_normal_y": 0.7,
+  "huge_triangle_m2": 20000.0,
+  "note": "walk graph is conservative (no jumping / vehicle form / jump pads): unreachable != unplayable"
+ },
+ "transforms": {
+  "smca_nodes_checked": 4257,
+  "smca_world_glb_matrix_mismatch": 0,
+  "examples": [],
+  "rule": "world.glb node matrix == props.json gltf_matrix (component S*R*T x native CachedParentToWorld; Streets lesson)"
+ },
+ "mirrored_instances": {
+  "primitive_instances": {
+   "normal": 3269,
+   "det>0 tris normal-agree": 2174002,
+   "det>0 tris normal-oppose": 1685,
+   "mirrored": 1273,
+   "det<0 tris normal-agree": 164,
+   "det<0 tris normal-oppose": 731262
+  },
+  "verdict": "CONSISTENT",
+  "rule": "for det<0 nodes the transformed winding opposes the transformed normals; a glTF renderer must flip the front face (glTF 2.0 spec 3.7.4). Exported data is consistent when det<0 tris mostly oppose and det>0 tris mostly agree."
+ },
+ "playable_space": {
+  "player_starts": 76,
+  "starts_on_reachable_floor": 76,
+  "starts_without_floor_below": [],
+  "starts_off_walk_graph_diagnosis": [],
+  "walk_graph_cells": 140628,
+  "walk_graph_layers": 637030,
+  "walk_graph_area_m2": 637030.0,
+  "connected_from_any_start": true,
+  "bounds": {
+   "x_m": [
+    -118.0,
+    407.0
+   ],
+   "z_m": [
+    -213.0,
+    191.0
+   ],
+   "floor_height_m": [
+    2.33,
+    93.81
+   ]
+  },
+  "kill_z_ue": [
+   -262143.0,
+   -262143.0,
+   -262143.0
+  ],
+  "placement_checks": {
+   "pickups": {
+    "count": 40,
+    "on_walkable_reachable_floor": 40,
+    "not_on_walk_graph": []
+   },
+   "objectives": {
+    "count": 15,
+    "on_walkable_reachable_floor": 15,
+    "not_on_walk_graph": []
+   }
+  }
+ },
+ "collision_vs_visible": {
+  "reachable_floor_cells_with_visible_floor": 401615,
+  "reachable_floor_cells_without_visible_floor (invisible floor) by collision source": {
+   "BlockingVolume": 122399,
+   "StaticMeshCollectionActor": 102704,
+   "TnForcedDirVolume": 10108,
+   "InterpActor": 204
+  },
+  "agreement_pct": 63.04,
+  "agreement_pct_excluding_volume_tops": 78.04,
+  "visible_floor_cells_next_to_walk_graph_without_collision (fall-through candidates)": 95907,
+  "fall_through_candidates_by_visible_source (top 25)": {
+   "ENV_UND_Support_p.StaticMesh.Indust_Cratestack2_STATMESH": 12370,
+   "ENV_ORB_D1_Architecture_p.Meshes.FloorTrim_Straight_01_STAT": 5567,
+   "ENV_CORE_Platform_p.Gate.DES_COR_ShaftWall_STAT": 4719,
+   "ENV_CORE_Wall_p.Inside_Walls.ENV_CORE_InroomWall_C_STAT": 4209,
+   "ENV_CORE_Wall_p.Corner_Walls.ENV_CORE_InroomCnrWall_B_STAT": 4005,
+   "ENV_CORE_Wall_p.Inside_Walls.ENV_CORE_InroomRndTunnel_A_STAT": 3769,
+   "ENV_CORE_Wall_p.CanyonWalls.ENV_CORE_CanyonWall_A_STAT": 3561,
+   "ENV_CORE_Mechparts_p.StaticMesh.Tunnel_StraightTrack_STAT": 3505,
+   "ENV_CORE_SupportColumns_p.StaticMesh.TunnelPipeA_Straight_STAT": 3387,
+   "ENV_UND_Floors_p.StaticMesh.ENV_UND_TunnelArch_B_STATMESH": 3320,
+   "ENV_ORB_DecoTrim_p.Structural_Trim.PROP_ORB_SideSupp01_STAT": 2679,
+   "ENV_ORB_DecoTrim_p.Structural_Trim.PROP_ORB_DoorTrim_STAT": 2232,
+   "ENV_UND_Walls_p.StaticMesh.ENV_UND_WallM_C_STAT": 1960,
+   "ENV_ORB_D1_Architecture_p.Meshes.InroomCnrWall_B_STAT": 1854,
+   "ENV_CORE_SupportColumns_p.StaticMesh.TNPipeSetAStraight_STAT": 1836,
+   "ENV_CORE_Wall_p.WallSupport.ENV_CORE_CanyonTopPillar_D_STAT": 1811,
+   "ENV_ORB_D1_Deco_p.Meshes.Capacitor_01_STAT": 1716,
+   "ENV_GLB_EnvEffects_p.StaticMesh.LightBeam_Cone_STAT": 1356,
+   "ENV_CORE_Wall_p.CanyonWalls.ENV_CORE_CanyonWall_B_STAT": 1321,
+   "PROP_UND_MechParts_p.StaticMesh.PROP_UND_PistonSet_C_STAT": 1118,
+   "ENV_ORB_D1_Architecture_p.Meshes.WallPanelWarningSign_STAT": 1066,
+   "ENV_CORE_SupportColumns_p.PowerPipeWire.COR_TNPowerWireC_STAT": 1030,
+   "ENV_CORE_Platform_p.Floors.ENV_CORE_CanyonFloor_E_STAT": 1005,
+   "ENV_CORE_Platform_p.Floors.ENV_CORE_CanyonFloor_D_STAT": 996,
+   "DES_ORB_WallSocket_01_p.Meshes.Wall_Socket_01_Socketed_STAT": 975
+  },
+  "non_blocking_props_by_mesh (authored bCollideActors/bBlockActors false)": {
+   "ENV_ORB_D1_Architecture_p.Meshes.FloorTrim_Straight_01_STAT": 162,
+   "ENV_UND_Floors_p.StaticMesh.ENV_UND_TunnelArch_B_STATMESH": 124,
+   "ENV_CORE_Platform_p.Floors.ENV_CORE_CanyonFloor_A_STAT": 59,
+   "ENV_GLB_EnvEffects_p.StaticMesh.LightBeam_Cone_STAT": 47,
+   "ENV_CORE_Platform_p.Floors.ENV_CORE_CanyonFloor_C_STAT": 38,
+   "ENV_IAC_LightSources_p.PinLights.PinLight_04_STAT": 32,
+   "ENV_CORE_Platform_p.Floors.ENV_CORE_CanyonFloor_D_STAT": 24,
+   "ENV_ORB_D1_Architecture_p.Meshes.FloorTrim_Corner_01_STAT": 16,
+   "ENV_ORB_PowerCorridor_p.StaticMesh.Gantry_Curve90_STAT": 16,
+   "ENV_ORB_D1_Deco_p.Meshes.OrbitalDonut_STAT": 9,
+   "ENV_ORB_D1_Deco_p.Meshes.GasChamber_Bottom_B_STAT": 9,
+   "ENV_NEU_Variation_p.manhole_02_STAT": 8,
+   "ENV_ORB_D1_Deco_p.Meshes.GasChamber_Top_A_STAT": 6,
+   "ENV_ORB_CoolantRoom_p.Model.ENV_ORB_TunnelTrim_STAT": 6,
+   "TPRO_IAC_ElevatoriPod_p.Model.ElevatorPodLeg2_STAT": 6,
+   "ENV_ORB_DecoTrim_p.Structural_Trim.PROP_ORB_SideSupp01_STAT": 5,
+   "DES_ORB_Asteroids_p.StaticMesh.DebrisCard_STAT": 5,
+   "ENV_GLB_EnvEffects_p.StaticMesh.GlowSphere_STAT": 5,
+   "ENV_IAC_Ground_p.Debris.craterDebris_EdgeGlow_STAT": 4,
+   "ENV_NEU_Variation_p.manhole_04_STAT": 2,
+   "PROP_UND_MechParts_p.StaticMesh.PROP_UND_RepairNodeB_A_STAT": 2,
+   "ENV_IAC_BLDS_3_p.Elevator.elevator_platform_STAT": 1,
+   "PROP_NEU_WallProps_p.Mesh.PROP_NEU_Piston_A_STAT": 1,
+   "PROP_NEU_Pickups_p.ObjBases.Base_D": 1,
+   "PROP_NEU_Pickups_p.ObjBases.Base_A": 1
+  },
+  "fall_through_examples_gltf": [
+   [
+    -114.5,
+    17.91,
+    -52.5
+   ],
+   [
+    -114.5,
+    18.03,
+    -47.5
+   ],
+   [
+    -114.5,
+    18.03,
+    -37.5
+   ],
+   [
+    -114.5,
+    17.96,
+    -36.5
+   ],
+   [
+    -114.5,
+    17.96,
+    -32.5
+   ],
+   [
+    -114.5,
+    18.03,
+    -31.5
+   ],
+   [
+    -113.5,
+    18.03,
+    -53.5
+   ],
+   [
+    -113.5,
+    18.03,
+    -46.5
+   ],
+   [
+    -113.5,
+    18.03,
+    -38.5
+   ],
+   [
+    -113.5,
+    17.96,
+    -30.5
+   ],
+   [
+    -112.5,
+    18.03,
+    -53.5
+   ],
+   [
+    -112.5,
+    17.96,
+    -46.5
+   ],
+   [
+    -112.5,
+    18.03,
+    -42.5
+   ],
+   [
+    -112.5,
+    18.03,
+    -41.5
+   ],
+   [
+    -112.5,
+    17.96,
+    -38.5
+   ],
+   [
+    -112.5,
+    18.03,
+    -30.5
+   ],
+   [
+    -112.5,
+    40.56,
+    129.5
+   ],
+   [
+    -111.5,
+    18.03,
+    -53.5
+   ],
+   [
+    -111.5,
+    44.8,
+    -51.5
+   ],
+   [
+    -111.5,
+    18.03,
+    -46.5
+   ]
+  ],
+  "blocking_props_without_collision_node": {
+   "StaticMeshCollectionActor_10103": 5,
+   "StaticMeshCollectionActor_10400": 1,
+   "StaticMeshCollectionActor_10461": 3,
+   "StaticMeshCollectionActor_11453": 5,
+   "StaticMeshCollectionActor_12303": 4,
+   "StaticMeshCollectionActor_12874": 2,
+   "StaticMeshCollectionActor_12960": 1,
+   "StaticMeshCollectionActor_13483": 4,
+   "StaticMeshCollectionActor_3027": 1,
+   "StaticMeshCollectionActor_3266": 3,
+   "StaticMeshCollectionActor_4970": 12,
+   "StaticMeshCollectionActor_5485": 2,
+   "StaticMeshCollectionActor_5845": 1,
+   "StaticMeshCollectionActor_6172": 1,
+   "StaticMeshCollectionActor_6213": 1,
+   "StaticMeshCollectionActor_7969": 1,
+   "StaticMeshCollectionActor_9114": 2,
+   "StaticMeshCollectionActor_9184": 1,
+   "StaticMeshCollectionActor_9229": 1,
+   "StaticMeshCollectionActor_9926": 7
+  },
+  "blocking_gaps_explained": [
+   {
+    "actor": "StaticMeshCollectionActor_10103",
+    "component": "StaticMeshActor_2415_SMC",
+    "mesh": "ENV_ORB_D1_Architecture_p.Meshes.WallPanelWarningSign_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     366.3,
+     14.6,
+     -186.3
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_10103",
+    "component": "StaticMeshActor_3872_SMC",
+    "mesh": "ENV_ORB_D1_Architecture_p.Meshes.WallPanelWarningSign_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     366.3,
+     14.6,
+     -137.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_10103",
+    "component": "StaticMeshActor_15900_SMC",
+    "mesh": "ENV_ORB_D1_Architecture_p.Meshes.WallPanelWarningSign_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     333.7,
+     14.6,
+     -98.6
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_10103",
+    "component": "StaticMeshActor_2461_SMC",
+    "mesh": "ENV_ORB_D1_Architecture_p.Meshes.WallPanelWarningSign_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     330.5,
+     14.6,
+     -234.9
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_10103",
+    "component": "StaticMeshActor_9912_SMC",
+    "mesh": "ENV_ORB_D1_Architecture_p.Meshes.WallPanelWarningSign_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     236.4,
+     14.6,
+     -234.3
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_10400",
+    "component": "StaticMeshActor_6144_SMC",
+    "mesh": "ENV_ORB_D1_Architecture_p.Meshes.WallPanelWarningSign_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     265.9,
+     81.2,
+     -179.9
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_10461",
+    "component": "StaticMeshActor_10522_SMC",
+    "mesh": "ENV_CORE_Floors_p.StaticMesh.OmegaBridgeSupport_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     202.1,
+     39.8,
+     46.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_10461",
+    "component": "StaticMeshActor_14482_SMC",
+    "mesh": "ENV_CORE_Floors_p.StaticMesh.OmegaBridgeSupport_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     124.4,
+     23.1,
+     28.9
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_10461",
+    "component": "StaticMeshActor_2324_SMC",
+    "mesh": "ENV_CORE_Floors_p.StaticMesh.OmegaBridgeSupport_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     112.4,
+     23.1,
+     28.9
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_11453",
+    "component": "StaticMeshActor_4342_SMC",
+    "mesh": null,
+    "pawn_channel": "per_poly",
+    "gltf_translation_m": [
+     112.3,
+     10.2,
+     2.6
+    ],
+    "reason": "component has no StaticMesh (none authored, even through its archetype) -> no geometry to collide with"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_11453",
+    "component": "StaticMeshActor_11432_SMC",
+    "mesh": null,
+    "pawn_channel": "per_poly",
+    "gltf_translation_m": [
+     112.3,
+     10.2,
+     3.0
+    ],
+    "reason": "component has no StaticMesh (none authored, even through its archetype) -> no geometry to collide with"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_11453",
+    "component": "StaticMeshActor_2540_SMC",
+    "mesh": null,
+    "pawn_channel": "per_poly",
+    "gltf_translation_m": [
+     113.0,
+     10.2,
+     -44.3
+    ],
+    "reason": "component has no StaticMesh (none authored, even through its archetype) -> no geometry to collide with"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_11453",
+    "component": "StaticMeshActor_2168_SMC",
+    "mesh": null,
+    "pawn_channel": "per_poly",
+    "gltf_translation_m": [
+     113.0,
+     10.2,
+     -43.8
+    ],
+    "reason": "component has no StaticMesh (none authored, even through its archetype) -> no geometry to collide with"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_11453",
+    "component": "StaticMeshActor_519_SMC",
+    "mesh": null,
+    "pawn_channel": "per_poly",
+    "gltf_translation_m": [
+     112.3,
+     10.2,
+     -43.8
+    ],
+    "reason": "component has no StaticMesh (none authored, even through its archetype) -> no geometry to collide with"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_12303",
+    "component": "StaticMeshActor_11049_SMC",
+    "mesh": "ENV_CORE_Deco_p.StaticMesh.ENV_CORE_CanyonDeco_B_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     119.2,
+     99.6,
+     36.1
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_12303",
+    "component": "StaticMeshActor_9010_SMC",
+    "mesh": "ENV_CORE_Deco_p.StaticMesh.ENV_CORE_CanyonDeco_B_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     119.3,
+     99.6,
+     36.1
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_12303",
+    "component": "StaticMeshActor_9059_SMC",
+    "mesh": "ENV_CORE_Deco_p.StaticMesh.ENV_CORE_CanyonDeco_B_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     190.0,
+     99.6,
+     36.1
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_12303",
+    "component": "StaticMeshActor_10739_SMC",
+    "mesh": "ENV_CORE_Deco_p.StaticMesh.ENV_CORE_CanyonDeco_B_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     190.0,
+     99.6,
+     36.1
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_12874",
+    "component": "StaticMeshActor_9586_SMC",
+    "mesh": "ENV_IAC_Spacedome_p.BlueNebulae_Card_STAT",
+    "pawn_channel": "per_poly",
+    "gltf_translation_m": [
+     2883.2,
+     913.2,
+     -591.9
+    ],
+    "reason": "per_poly collision expected but vs_physics wrote no node: physics.json pawn stats oversize_skipped=5 (>2 km shells), missing_geometry=0 (render mesh / hull not available)"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_12874",
+    "component": "StaticMeshActor_15207_SMC",
+    "mesh": "ENV_GLB_EnvEffects_p.StaticMesh.GlowSphere_STAT",
+    "pawn_channel": "per_poly",
+    "gltf_translation_m": [
+     2723.8,
+     1088.0,
+     -176.9
+    ],
+    "reason": "per_poly collision expected but vs_physics wrote no node: physics.json pawn stats oversize_skipped=5 (>2 km shells), missing_geometry=0 (render mesh / hull not available)"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_12960",
+    "component": "StaticMeshActor_12658_SMC",
+    "mesh": "ENV_CORE_Mechparts_p.StaticMesh.Tunnel_StraightTrack_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     14.9,
+     69.4,
+     -2.6
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_13483",
+    "component": "StaticMeshActor_15731_SMC",
+    "mesh": "ENV_ORB_D1_Architecture_p.Meshes.WallPanelWarningSign_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     242.1,
+     84.7,
+     -79.8
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_13483",
+    "component": "StaticMeshActor_9407_SMC",
+    "mesh": "ENV_ORB_D1_Architecture_p.Meshes.WallPanelWarningSign_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     241.9,
+     84.7,
+     23.5
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_13483",
+    "component": "StaticMeshActor_11807_SMC",
+    "mesh": "ENV_ORB_D1_Architecture_p.Meshes.WallPanelWarningSign_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     240.3,
+     81.2,
+     15.9
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_13483",
+    "component": "StaticMeshActor_5554_SMC",
+    "mesh": "ENV_ORB_D1_Architecture_p.Meshes.WallPanelWarningSign_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     240.4,
+     81.2,
+     -80.0
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_3027",
+    "component": "StaticMeshActor_6097_SMC",
+    "mesh": "ENV_ORB_D1_Architecture_p.Meshes.WallPanelWarningSign_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     283.8,
+     73.5,
+     -127.4
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_3266",
+    "component": "StaticMeshActor_9819_SMC",
+    "mesh": "ENV_ORB_D1_Architecture_p.Meshes.WallPanelWarningSign_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     328.9,
+     12.8,
+     -43.8
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_3266",
+    "component": "StaticMeshActor_11625_SMC",
+    "mesh": "ENV_ORB_D1_Architecture_p.Meshes.WallPanelWarningSign_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     303.6,
+     14.7,
+     -23.6
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_3266",
+    "component": "StaticMeshActor_13472_SMC",
+    "mesh": "ENV_ORB_D1_Architecture_p.Meshes.WallPanelWarningSign_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     346.9,
+     14.7,
+     2.8
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_4970",
+    "component": "StaticMeshActor_16322_SMC",
+    "mesh": "ENV_CORE_Floors_p.StaticMesh.OmegaBridgeSupport_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     175.5,
+     9.6,
+     56.6
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_4970",
+    "component": "StaticMeshActor_15605_SMC",
+    "mesh": "ENV_CORE_Floors_p.StaticMesh.OmegaBridgeSupport_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     184.3,
+     9.6,
+     85.9
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_4970",
+    "component": "StaticMeshActor_3341_SMC",
+    "mesh": "ENV_CORE_Floors_p.StaticMesh.OmegaBridgeSupport_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     172.1,
+     39.8,
+     99.3
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_4970",
+    "component": "StaticMeshActor_9621_SMC",
+    "mesh": "ENV_CORE_Floors_p.StaticMesh.OmegaBridgeSupport_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     162.3,
+     39.8,
+     99.3
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_4970",
+    "component": "StaticMeshActor_6827_SMC",
+    "mesh": "ENV_CORE_Floors_p.StaticMesh.OmegaBridgeSupport_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     167.1,
+     39.8,
+     99.3
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_4970",
+    "component": "StaticMeshActor_15273_SMC",
+    "mesh": "ENV_CORE_Floors_p.StaticMesh.OmegaBridgeSupport_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     139.7,
+     39.8,
+     46.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_4970",
+    "component": "StaticMeshActor_3381_SMC",
+    "mesh": "ENV_CORE_Floors_p.StaticMesh.OmegaBridgeSupport_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     134.7,
+     39.8,
+     46.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_4970",
+    "component": "StaticMeshActor_8001_SMC",
+    "mesh": "ENV_CORE_Floors_p.StaticMesh.OmegaBridgeSupport_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     149.2,
+     39.8,
+     46.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_4970",
+    "component": "StaticMeshActor_3291_SMC",
+    "mesh": "ENV_CORE_Floors_p.StaticMesh.OmegaBridgeSupport_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     154.0,
+     39.8,
+     46.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_4970",
+    "component": "StaticMeshActor_1136_SMC",
+    "mesh": "ENV_CORE_Floors_p.StaticMesh.OmegaBridgeSupport_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     197.4,
+     39.8,
+     46.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_4970",
+    "component": "StaticMeshActor_12530_SMC",
+    "mesh": "ENV_CORE_Floors_p.StaticMesh.OmegaBridgeSupport_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     187.9,
+     39.8,
+     46.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_4970",
+    "component": "StaticMeshActor_5600_SMC",
+    "mesh": "ENV_CORE_Floors_p.StaticMesh.OmegaBridgeSupport_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     183.1,
+     39.8,
+     46.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_5485",
+    "component": "StaticMeshActor_13238_SMC",
+    "mesh": "ENV_ORB_D1_Architecture_p.Meshes.WallPanelWarningSign_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     440.3,
+     8.3,
+     -49.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_5485",
+    "component": "StaticMeshActor_1157_SMC",
+    "mesh": "ENV_ORB_D1_Architecture_p.Meshes.WallPanelWarningSign_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     405.8,
+     8.3,
+     51.4
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_5845",
+    "component": "StaticMeshActor_2351_SMC",
+    "mesh": "ENV_IAC_Spacedome_p.BlueNebulae_Card_STAT",
+    "pawn_channel": "per_poly",
+    "gltf_translation_m": [
+     60.1,
+     724.8,
+     6.3
+    ],
+    "reason": "per_poly collision expected but vs_physics wrote no node: physics.json pawn stats oversize_skipped=5 (>2 km shells), missing_geometry=0 (render mesh / hull not available)"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_6172",
+    "component": "StaticMeshActor_12899_SMC",
+    "mesh": "ENV_CORE_Floors_p.StaticMesh.OmegaBridgeSupport_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     177.1,
+     9.6,
+     68.6
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_6213",
+    "component": "StaticMeshActor_4498_SMC",
+    "mesh": "ENV_ORB_CybertronPlanet_p.MATTE.Cybertron_MATTE_STAT",
+    "pawn_channel": "per_poly",
+    "gltf_translation_m": [
+     1896.5,
+     198.2,
+     588.9
+    ],
+    "reason": "per_poly collision expected but vs_physics wrote no node: physics.json pawn stats oversize_skipped=5 (>2 km shells), missing_geometry=0 (render mesh / hull not available)"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_7969",
+    "component": "StaticMeshActor_13783_SMC",
+    "mesh": "ENV_CORE_Floors_p.StaticMesh.OmegaBridgeSupport_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     115.8,
+     23.1,
+     11.6
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_9114",
+    "component": "StaticMeshActor_11834_SMC",
+    "mesh": "ENV_ORB_D1_Architecture_p.Meshes.WallPanelWarningSign_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     316.1,
+     16.9,
+     37.0
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_9114",
+    "component": "StaticMeshActor_5676_SMC",
+    "mesh": "ENV_ORB_D1_Architecture_p.Meshes.WallPanelWarningSign_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     316.1,
+     16.9,
+     37.0
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_9184",
+    "component": "StaticMeshActor_13606_SMC",
+    "mesh": null,
+    "pawn_channel": "per_poly",
+    "gltf_translation_m": [
+     113.0,
+     10.2,
+     -0.0
+    ],
+    "reason": "component has no StaticMesh (none authored, even through its archetype) -> no geometry to collide with"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_9229",
+    "component": "StaticMeshActor_5480_SMC",
+    "mesh": "ENV_ORB_Spacedome_p.StaticMesh.ENV_SkyDome_STAT",
+    "pawn_channel": "per_poly",
+    "gltf_translation_m": [
+     112.6,
+     21.8,
+     -20.5
+    ],
+    "reason": "per_poly collision expected but vs_physics wrote no node: physics.json pawn stats oversize_skipped=5 (>2 km shells), missing_geometry=0 (render mesh / hull not available)"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_9926",
+    "component": "StaticMeshActor_14723_SMC",
+    "mesh": "ENV_ORB_D1_Architecture_p.Meshes.WallPanelWarningSign_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     346.9,
+     14.7,
+     2.7
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_9926",
+    "component": "StaticMeshActor_3745_SMC",
+    "mesh": "ENV_ORB_D1_Architecture_p.Meshes.WallPanelWarningSign_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     302.3,
+     1.7,
+     61.0
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_9926",
+    "component": "StaticMeshActor_3594_SMC",
+    "mesh": "ENV_ORB_D1_Architecture_p.Meshes.WallPanelWarningSign_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     302.3,
+     1.7,
+     61.0
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_9926",
+    "component": "StaticMeshActor_14323_SMC",
+    "mesh": "ENV_ORB_D1_Architecture_p.Meshes.WallPanelWarningSign_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     303.6,
+     14.7,
+     28.4
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_9926",
+    "component": "StaticMeshActor_8486_SMC",
+    "mesh": "ENV_ORB_D1_Architecture_p.Meshes.WallPanelWarningSign_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     349.9,
+     14.7,
+     28.5
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_9926",
+    "component": "StaticMeshActor_9173_SMC",
+    "mesh": "ENV_ORB_D1_Architecture_p.Meshes.WallPanelWarningSign_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     349.9,
+     14.7,
+     -23.2
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   },
+   {
+    "actor": "StaticMeshCollectionActor_9926",
+    "component": "StaticMeshActor_2274_SMC",
+    "mesh": "ENV_ORB_D1_Architecture_p.Meshes.WallPanelWarningSign_STAT",
+    "pawn_channel": "none",
+    "gltf_translation_m": [
+     318.3,
+     2.3,
+     -48.2
+    ],
+    "reason": "mesh has no simple collision and no per-poly flag -> no pawn collision in UE3 either"
+   }
+  ],
+  "collision_nodes_without_blocking_prop": {
+   "TnForcedDirVolume_13792": 1,
+   "TnForcedDirVolume_2786": 1,
+   "TnForcedDirVolume_2851": 1,
+   "TnForcedDirVolume_3641": 1,
+   "TnForcedDirVolume_12087": 1,
+   "TnForcedDirVolume_4266": 1,
+   "TnForcedDirVolume_8182": 1,
+   "TnForcedDirVolume_8266": 1
+  },
+  "collision_node_kinds": {
+   "BSPCollision_MP_ORB_Havoc_ART": 1,
+   "BlockingVolume": 86,
+   "TnForcedDirVolume": 8,
+   "InterpActor": 12,
+   "StaticMeshCollectionActor": 339
+  },
+  "oversized_triangles_excluded": {
+   "world": 2178,
+   "collision": 0
+  }
+ },
+ "materials": {
+  "default_material_triangles_by_kind": {
+   "bsp": 1896
+  },
+  "default_material_area_m2_by_kind": {
+   "bsp": 415211.4
+  },
+  "note": "BSP faces with DefaultMaterial and their in-play visibility: manifests/next_map/<MAP>_bsp_default_faces.json (Streets: streets_bsp_default_faces.json)"
+ },
+ "lightmaps": {
+  "lightmaps_json_props": 3902,
+  "world_glb_nodes_with_lm_atlas": 3902,
+  "of_which_have_TEXCOORD_1": 3902,
+  "atlases_used": 89,
+  "atlases_without_png": [],
+  "binding_ok": true
+ },
+ "actors": {
+  "world_glb_nodes_by_kind": {
+   "bsp": 1,
+   "InterpActor": 16,
+   "StaticMeshCollectionActor": 4251
+  },
+  "non_collection_actors": 16,
+  "non_collection_actors_missing_from_world_glb": [],
+  "mode_gated_targets": 8,
+  "mode_gated_missing_from_world_glb": []
+ },
+ "verdict": {
+  "status": "PASS",
+  "failures": []
+ }
+}

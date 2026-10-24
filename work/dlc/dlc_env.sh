@@ -4,5 +4,5 @@ export WFC_COOKED_DIR='F:\Transformers Rebuild\AssetTools\work\dlc\cooked'      
 export WFC_EXTRACT_OUT='F:\Transformers Rebuild\AssetTools\out\dlc_content\content'  # umodel content of the DLC packages
 export WFC_AUTHORED_EXTRA_DB='F:/Transformers Rebuild/AssetTools/manifests/dlc/authored.db'   # attached behind the base authored.db
 export WFC_EXTRA_ASSETS_JSON='F:\Transformers Rebuild\AssetTools\manifests\dlc\assets.json'    # overlays the base assets.json
-export WFC_VS_ROOT='F:\Transformers Rebuild\AssetTools\work\dlc_maps\VerticalSlice'  # map outputs (ExtractedAssets untouched)
+export WFC_VS_ROOT='F:\Transformers Rebuild\AssetTools\out\dlc_content\VerticalSlice'  # map outputs BESIDE content/ (the ExtractedAssets layout: world.glb texture URIs ../../../content/..., Gameplay 2026-10-23)
 export PYTHONDONTWRITEBYTECODE=1

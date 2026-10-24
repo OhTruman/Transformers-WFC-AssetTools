@@ -25,7 +25,7 @@ def resolve_content(rel):
 def main(M):
     short = M.split('_', 2)[-1].lower()                                   # e.g. fortress
     out = os.path.join(AT, 'out', 'dlc_render', M); os.makedirs(out, exist_ok=True)
-    VS = os.path.join(AT, 'work', 'dlc_maps', 'VerticalSlice', 'Maps', M)
+    VS = os.path.join(os.environ.get('WFC_VS_ROOT') or os.path.join(DLC_CONTENT, 'VerticalSlice'), 'Maps', M)
     pk = [os.path.splitext(f)[0] for f in os.listdir(os.path.join(HERE, 'cooked'))]
     audio = [p for p in pk if p.lower() == (M + '_audio_m').lower() or (p.upper().startswith(('BL_LVL_', 'WL_LVL_')) and short in p.lower())]
     loc = sorted(p for p in pk if p.lower().startswith(M.lower() + '_') and '_loc_' in p.lower())
