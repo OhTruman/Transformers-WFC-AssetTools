@@ -26,7 +26,13 @@ CAT = OD([('characters', re.compile(r'(RobotDef|RoboDef|ROBODEF|AiCharacterDefin
 
 def ini(path):
     secs = OD(); cur = None
-    for raw in open(path, 'rb').read().decode('utf-8', 'replace').replace('\x00', '').splitlines():
+    b = open(path, 'rb').read()
+    # the localized TransGame.<lang> files are UTF-16 LE with a BOM (Frontend 2026-10-23: "D�vastation"); ini files plain ASCII / UTF-8
+    if b[:2] in (b'\xff\xfe', b'\xfe\xff'): text = b.decode('utf-16')
+    else:
+        try: text = b.decode('utf-8')
+        except UnicodeDecodeError: text = b.decode('cp1252')
+    for raw in text.lstrip('﻿').replace('\x00', '').splitlines():
         l = raw.strip()
         if l.startswith('[') and l.endswith(']'): cur = l[1:-1]; secs.setdefault(cur, [])
         elif cur and '=' in l: k, v = l.split('=', 1); secs[cur].append((k.strip().lstrip('+.'), v.strip()))
