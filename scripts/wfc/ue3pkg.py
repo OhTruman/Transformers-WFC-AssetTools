@@ -100,9 +100,15 @@ def decompress(data, summary=None):
         w = c['uncomp_offset']
         for bcs, bus in blocks:
             dec = _decode_block(data[p:p + bcs], bus, s['compression_flags'])
-            out[w:w + len(dec)] = dec
-            w += len(dec); p += bcs
+            # each block sits at its DECLARED uncompressed offset (RE 2026-10-23, DLC MP_ESC_Tranquillity_AUDIO_m: one block of the
+            # shipped cook decodes 26,428 bytes short; advancing by len(dec) shifted the rest of the chunk). A block whose decoded
+            # length differs from its declared size is recorded in SHORT_BLOCKS; packages without one decompress exactly as before.
+            if len(dec) != bus: SHORT_BLOCKS.append({'chunk_uncomp_offset': c['uncomp_offset'], 'block_uncomp_offset': w, 'declared': bus, 'decoded': len(dec)})
+            out[w:w + min(len(dec), bus)] = dec[:bus]
+            w += bus; p += bcs
     return bytes(out)
+
+SHORT_BLOCKS = []   # blocks whose decoded size != declared size (see decompress)
 
 
 # --------------------------------------------------------------------------
