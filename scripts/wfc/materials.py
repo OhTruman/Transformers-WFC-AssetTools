@@ -34,6 +34,11 @@ def assets():
     if _assets is None:
         A = json.load(open(os.path.join(extract.MANI, 'assets.json'), encoding='utf-8'))['assets']
         _assets = {a['object_path'].lower(): a for a in A}
+        # opt-in (DLC 2026-10-23): WFC_EXTRA_ASSETS_JSON = a second assets.json (the DLC packs, build_db.py with WFC_MANI_DIR); its records
+        # win for the same object path (they describe the copies exported to the DLC content root). Unset: unchanged.
+        extra = os.environ.get('WFC_EXTRA_ASSETS_JSON')
+        if extra:
+            for a in json.load(open(extra, encoding='utf-8'))['assets']: _assets[a['object_path'].lower()] = a
     return _assets
 
 @lru_cache(maxsize=24)

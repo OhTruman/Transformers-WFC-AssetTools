@@ -110,6 +110,12 @@ def decompress(data, summary=None):
 
 class Package:
     def __init__(self, path):
+        import os as _os
+        # opt-in DLC second source (2026-10-23): with WFC_COOKED_DIR set (the DLC cooked dir), a package that is not there is read
+        # from the base Game Dump cooked dir (DLC maps reference base-owned objects); unset or file present: unchanged
+        if not _os.path.exists(path) and _os.environ.get('WFC_COOKED_DIR'):
+            alt = _os.path.join(r'F:/Transformers Rebuild/Game Dump/TransGame/CookedXenon', _os.path.basename(path))
+            if _os.path.exists(alt): path = alt
         raw = open(path, 'rb').read()
         self.path = path
         import os as _os
